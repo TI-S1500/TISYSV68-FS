@@ -13,4 +13,7 @@
 ## Branches
 
 * [clean3221](https://github.com/TI-S1500/TISYSV68-FS/tree/clean3221) -
-   Fresh installation of `2540590-0001J_sysVr3.2.2.1.tap`
+  Fresh installation of `2540590-0001J_sysVr3.2.2.1.tap`
+* [tijdis322](https://github.com/TI-S1500/TISYSV68-FS/tree/tijdis332) -
+  Extracted contents of `s1505_cp3540.dd`
+  (*NOTE*: May contain [PII](https://en.wikipedia.org/wiki/Personal_data))
