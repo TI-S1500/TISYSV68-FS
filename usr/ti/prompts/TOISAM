@@ -1,0 +1,42 @@
+# bshf	toisam - read data to isam file; copy from stdout
+#	@(#)FRISAM.sh	1.2 87/10/16
+#
+onintr end
+
+if ($nopt == "") set nopt="y"
+if ($Fopt == "") set Fopt="n"
+if ($eopt == "") set eopt="y"
+if ($fopt == "") set fopt=""
+
+prompt	"^TOISAM -- COPY DATA TO T-ISAM FILE"\
+	"^T-ISAM Data File:"          dfile acnm $dfile\
+	"^*T-ISAM Index File:"        ifile acnm $ifile\
+	"^Input File:"               sfile acnm $sfile\
+	"^*Record Size:"             siz   integer $siz\
+	"^Newline Record Separators? (y/n):"     nopt  yesno  $nopt\
+	"^*Null or Blank Fill (n/b/ ):" fopt "element(N,n=n,B,b=b)" $fopt\
+	"^Exclusive Access? (y/n):"   eopt  yesno  $eopt\
+	"^#$*"
+
+if ($abort) goto end
+
+set sfl=""
+set sz=""
+set nop=""
+set eop=""
+set fop=""
+
+if ( $sfile != "") set sfl="-f "${sfile}" "
+if ($siz != "") set sz="-s "${siz}" "
+if ($nopt == "y") then
+	set nop="-n "
+	if ($eopt == "y") set eop="-e "
+	if ($fopt == "n") set fop="-F "
+endif
+if ($fopt == "b") set fop="-B "
+
+echo toisam ${sfl}${sz}${nop}${fop}${eop} ${dfile} ${ifile}
+toisam ${sfl}${sz}${nop}${fop}${eop} ${dfile} ${ifile}
+
+end:
+unset sfl sz nop eop fop

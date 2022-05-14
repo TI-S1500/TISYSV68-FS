@@ -1,0 +1,114 @@
+#	@(#)uucpfrom	1.1 (TI) 87/08/13
+# uucp file xfer proc-  uucpto fromfile site tofile 
+#                  or-  uucpto all
+#                  or-  uucpto site
+#                  or-  uucpfrom fromfile site tofile
+#                  or-  uucpfrom all
+#                  or-  uucpfrom site
+#
+# enable signal traps
+trap ' exit' 1 2 3 15
+# test for some parameters
+if test $# -le 0
+then
+     echo "usage: $0 {fromfile} sitename/ALL {tofile} ";
+    exit
+fi
+# check for existence of file/directory
+case $0 in
+ uucpto) if test $# -gt 1
+          then
+              if test -f $1
+              then
+                   if test -r $1
+                   then
+                       continue
+                   else
+                       echo "file is not readable"
+                       exit
+                   fi
+              else
+                   if test -d $1
+                   then
+                       continue
+                   else
+                       echo "file/directory $1 does not exist"
+                       exit
+                   fi
+              fi
+          fi;;
+esac
+# check to insure that uucp main routine, uucico, is not running
+x=`ps -el | fgrep uucico | wc -l`;
+d=`pwd`
+cd /usr/lib/uucp
+case $1 in
+all) if test $x -le 0
+      then
+         ./uucico -r1 &  
+         echo "uucp daemon started"
+      else
+         exit
+      fi;;
+  *) if test $# = 1
+     then
+         site=$1
+     else
+         site=$2
+     fi
+     cd /usr/spool/uucp
+     s=`uuname | fgrep $site | wc -l`;
+     if test $s -le 0
+        then
+           echo "system name not defined in /usr/lib/uucp/L.sys"
+           exit
+     fi
+     if test -f LCK..$site
+     then
+         echo "site lock file being removed"
+         rm LCK..$site
+     fi
+     if test -f LCK..$dname
+     then
+         echo "device lock file being removed"
+         rm LCK..$dname
+     fi
+     if test -f STST.$site
+     then
+         echo "site status lock file being removed"
+         rm STST.$site
+     fi
+     if test $# = 1
+        then
+            if test $x -gt 0
+               then
+                   echo "uucp daemon already active, try again later"
+                   exit
+               else
+                   echo "starting uucp daemon"
+                   /usr/lib/uucp/uucico -r1 -s$site &
+            fi
+        else
+            cd $d
+            case `basename $0` in
+          uucpto) echo "request entered to send:"
+                  echo "$1 to $2\!$3"
+                  if test $x -le 0
+                     then
+                         uucp $1 $2\!$3
+                     else
+                         uucp -r $1 $2\!$3
+                  fi;;
+        uucpfrom)  echo "request entered to receive:"
+                   echo "$2\!$1 to $3"
+                   if test $x -le 0
+                      then
+                          uucp $2\!$1 $3
+                      else
+                          uucp -r $2\!$1 $3
+                   fi;;
+               *)  echo "invalid command, not uucpfrom or uucpto"
+                   exit
+            esac
+     fi
+esac

@@ -1,0 +1,29 @@
+# cshf  mesg -- Permits or denies messages to a terminal 
+#	@(#)MESG.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^MESG -- PERMITS OR DENIES MESSAGES"\
+	"^Report Current State:" state yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($state == "n") then
+	prompt "^MESG -- OPTIONS"\
+		"^Allow Messages:" flag yesno n\
+		"^#$*"
+	if ($flag == "y") then 
+		set opt = "y"
+	else
+		set opt = "n"
+	endif
+endif
+
+if ($abort) goto end
+echo "=== MESG COMMAND EXECUTING ==="
+echo mesg $opt
+mesg $opt
+
+#clean up time
+end:
+unset *flag *opt state

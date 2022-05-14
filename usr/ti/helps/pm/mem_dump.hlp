@@ -1,0 +1,32 @@
+
+The Memory Map screens display a physical memory map for a particular CPU.
+Memory on the map is broken into pages of 4096 bytes (4 K-bytes). Each line 
+on the memory map contains a physical address followed by the status and 
+usage of each of the 69 memory pages beginning at that address. The following 
+symbols are used to indicate the usage of each memory page:
+
+    .    - Free page
+
+    d    - Shared data page
+
+    D    - Data page
+
+    K    - System kernel page
+
+    m    - Shared memory
+
+    s    - Shared stack page
+
+    S    - Stack page
+
+    t    - Shared text page
+
+    T    - Text page
+
+Several screens are displayed for each memory map. Use the + and - commands to 
+display the next and previous screens. Blank lines appear at the end of a 
+memory map to indicate the end of physical memory for the current CPU. To view 
+the memory map for a different processor, first access the processor screen by 
+slot number (0-f), then use the m command to display the memory map for that 
+processor.
+

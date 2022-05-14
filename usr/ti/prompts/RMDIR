@@ -1,0 +1,25 @@
+# cshf  rmdir -- remove directories  
+#	@(#)RMDIR.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^RMDIR -- REMOVES DIRECTORIES"\
+	"^Directory Name(s):" _input_dir macnm "$_input_dir"\
+	"^#$*"
+
+if ($abort) goto end
+if ("$_input_dir" != "") then
+	prompt "^RMDIR -- REMOVES DIRECTORIES"\
+		"^Are you sure?" sure yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($sure == "y") then
+		echo "=== RMDIR COMMAND EXECUTING ==="
+		echo rmdir $_input_dir 
+		rmdir $_input_dir 
+	else echo $_input_dir is unchanged
+	endif
+endif
+
+end:

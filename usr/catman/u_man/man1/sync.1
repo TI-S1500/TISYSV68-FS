@@ -1,0 +1,29 @@
+SYNC(1M)                                                 SYNC(1M)
+
+NAME
+     sync - Updates the super block
+
+SYNOPSIS
+     sync
+
+DESCRIPTION
+   Purpose
+     The sync command executes the sync system call.  If the
+     system is to be stopped, sync must be called to ensure file
+     system integrity.
+
+   Discussion
+     This command flushes all previously unwritten system buffers
+     to disk, thus assuring that all file modifications up to
+     that point are saved.  See sync(2) for details.
+
+EXAMPLE
+     To write the contents of previously unwritten system buffers
+     out to disk, type the following command:
+
+          sync
+
+SEE ALSO
+     sync(2).
+
+

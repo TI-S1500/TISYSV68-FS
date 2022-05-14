@@ -1,0 +1,153 @@
+FF(1M)							   FF(1M)
+
+NAME
+     ff - Lists file names and statistics for a file system
+
+SYNOPSIS
+     ff -acfiIlmnpsu special
+
+DESCRIPTION
+   Purpose
+     The ff command reads the inode list and directories of the
+     special file, assuming it to be a file system, and saves
+     inode data for files that match the selection criteria.
+     Output consists of the path name for each saved inode and
+     any other file information requested with print options.
+
+     Output fields are positional.  The output is produced in
+     inode order; fields are separated by tabs.  The form of the
+     default line produced by ff is as follows:
+
+	  pathname inumber
+
+     With all options except -f enabled, the form of the output
+     fields are as follows:
+
+	  pathname inumber size uid
+
+     With the -f option, the form of the output is the form in
+     which the frec(1) command expects the input to be. The
+     format is as follows:
+
+	  inumber:pathname
+
+   Options
+     The argument n in the option descriptions that follow is
+     used as an optionally signed  decimal integer, where +n
+     means more than n, -n means less than n, and n means exactly
+     n.  A day is defined as a 24-hour period.
+
+     -a n	Selects if the inode has been accessed in n days.
+
+     -c n	Selects if the inode has been changed in n days.
+
+     -f 	Generates the output format that can be used for
+		frec input.
+
+     -i inode-list
+		Generates names for only those inodes specified
+		in inode-list.
+
+     -I 	Does not print the inode number after each path
+		name.
+
+     -l 	Generates a supplementary list of all path names
+		for multiply linked files.
+
+     -m n	Selects if the inode has been modified in n days.
+
+     -n file	Selects if the inode has been modified more
+		recently than the argument file.
+
+     -p prefix	Adds the specified prefix to each generated path
+		name.  The default prefix is the period-slash
+		(./) sequence character.
+
+     -s 	Prints after each path name the file size in
+		bytes.
+
+     -u 	Print after each path name the owner's login
+		name.
+
+EXAMPLES
+     The following command generates a list of the names of all
+     files on a specified file system:
+
+	  ff -I /dev/dsk/sys:root
+
+     The following command produces an index of files and
+     inumbers that are on the /usr file system and have been
+     modified in the last 24 hours:
+
+	  ff -m -1 /dev/dsk/sys:usr > /log/incbackup/usr/tuesday
+
+     The following command provides the path names for inodes 451
+     and 76 on the /aux file system:
+
+	  ff -i 451,76 /dev/dsk/data:aux
+
+PROMPTS
+   File System Name:
+     Enter the name of the file system to process.
+
+   Output File Name:
+     Response to this prompt is optional. Enter the name of the
+     file to receive the output of the
+     command.
+
+   Print I-Node Number:
+     The initial value is yes.	If you enter yes or accept the
+     initial value, the utility prints the inode number after
+     each path name.
+
+   Print File Size:
+     The initial value is yes.	If you enter yes or accept the
+     initial value, the utility prints the file size in bytes
+     after each path name.
+
+   Select Advanced Options:
+     The initial value is no.  Enter yes to receive the following
+     prompts.
+
+   List Multiply Linked Files:
+     The initial value is no.  Enter yes to print a list of all
+     path names for multiply linked files.
+
+   Add Prefix to Path Name:
+     Enter a prefix to add to each generated path name.
+
+   Days Since Last Access (+,-):" aflag
+     The utility prints inode data if the inode has been accessed
+     in the specified number of days.
+
+   Days Since Last Modification (+,-):" mflaag
+     The utility prints inode data if the inode has been modified
+     in the specified number of days.
+
+   Days Since Last Change (+,-):" Cflag
+     The utility prints inode data if the inode has been changed
+     in the specified number of days.
+
+   Altered After File:
+     Enter a file name.  The utility prints inode data if the
+     inode has been modified more recently than the specified
+     file.
+
+   List Only These Inodes:
+     Enter a list of inodes.  The utility generates names for
+     only those inodes specified in the list.
+
+SEE ALSO
+     finc(1M), find(1), frec(1M), ncheck(1M).
+
+NOTES
+     Only a single path name is generated for a multiple linked
+     inode unless the -l option is specified.  When -l is
+     specified, no selection criteria applies to the names
+     generated; all possible names for every linked file on the
+     file system are included in the output.
+
+     On very large file systems, memory may run out before ff
+     terminates.
+
+

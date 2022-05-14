@@ -1,0 +1,44 @@
+# cshf  grep -- search a file for a pattern 
+#	@(#)GREP.sh	1.1  87/03/09
+#
+onintr end
+set quote = '"'
+
+prompt "^GREP -- SEARCHES A FILE FOR A PATTERN"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Pattern for Search:" eopt string "$eopt"\
+	"^Print All But Matching Lines:" vopt yesno n\
+	"^Count Matching Lines:" copt yesno n\
+	"^Ignore Upper/Lower Case:" iopt yesno n\
+	"^File Names Only:" lopt yesno n\
+	"^Print File Line Numbers:" nopt yesno n\
+	"^Print Block Numbers:" bopt yesno n\
+	"^Suppress Error messages:" sopt yesno n\
+	"^#$*"
+
+if ($abort) goto end
+
+if ($copt == "y") set opt = c$opt
+if ($vopt == "y") set opt = v$opt
+if ($lopt == "y") set opt = l$opt
+if ($iopt == "y") set opt = i$opt
+if ($nopt == "y") set opt = n$opt
+if ($bopt == "y") set opt = b$opt
+if ($sopt == "y") set opt = s$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== GREP COMMAND EXECUTING ==="
+if ($_output_file != "") then 
+	echo grep $opt $eopt $_input_file ">$_output_file"
+	grep $opt "$eopt" $_input_file >$_output_file
+else
+	echo grep $opt $eopt $_input_file
+	grep $opt "$eopt" $_input_file | \
+	pg -cp"Output from GREP is being piped through pg: "
+endif
+
+#clean up time
+end:
+unset *opt *exp quote

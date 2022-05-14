@@ -1,0 +1,181 @@
+TPUT(1) 						  TPUT(1)
+
+NAME
+     tput - Initializes a terminal or queries the terminfo
+     database
+
+SYNOPSIS
+     tput -S
+     tput -T capname
+     tput init
+     tput reset
+     tput longname
+
+DESCRIPTION
+   Purpose
+     The tput command uses the terminfo(4) database to make
+     terminal-dependent capabilities and information available to
+     the shell.
+
+     The command outputs a string if the attribute capability
+     name (capname) is of type string or outputs an integer if
+     the attribute is of type integer.	If the attribute is of
+     type Boolean, tput simply sets the exit code (0 for TRUE, 1
+     for FALSE) and returns no output.
+
+     -S        Allows more than one capability per invocation of
+	       tput.  The capabilities must be passed to tput
+	       from the standard input instead of from the
+	       command line (see example).  Only one  capname is
+	       allowed per line.  The -S option changes the
+	       meaning of the 0 and 1 Boolean and string exit
+	       codes (see EXIT CODES).
+
+     -Ttype    Indicates the type of terminal.	Normally this
+	       flag is unnecessary, because the default is taken
+	       from the environment variable TERM.
+
+     capname   Indicates the attribute from the terminfo
+	       database.  See terminfo(4).
+
+     init      Initiates the following if the terminfo database
+	       is present and an entry for the user's terminal
+	       exists (see -Ttype, above):
+
+	       1. If present, the terminal's initialization
+		  strings will be output (is1, is2, is3, if,
+		  iprog)
+
+	       2. Any delays (e.g., newline) specified in the
+		  entry will be set in the tty driver
+
+	       3. Tabs expansion will be turned on or off
+		  according to the specification in the entry
+
+	       4. If tabs are not expanded, standard tabs will be
+		  set (every 8 spaces).
+
+	       If an entry does not contain the information
+	       needed for any of the four above activities, that
+	       activity will be skipped silently.
+
+     reset     Outputs the terminal's reset strings (rs1, rs3,
+	       rf), if present, instead of putting out
+	       initialization strings. If the reset strings are
+	       not present but initialization strings are, the
+	       initialization strings will be output. Otherwise,
+	       reset acts identically to init.
+
+     longname  Outputs the long name of the terminal if the
+	       terminfo database is present and an entry for the
+	       user's terminal exists (see -Ttype above). The
+	       longname is the last name in the first line of the
+	       terminal's description in the terminfo database.
+	       See term(5).
+
+EXAMPLES
+     tput clear        Echoes clear-screen sequence for the
+		       current terminal.
+
+     tput cols	       Prints number of columns for the current
+		       terminal.
+
+     bold=`tput smso`  Sets shell variable bold to stand-out mode
+		       sequence for current terminal.  This might
+		       be followed by a prompt:
+
+		       echo "${bold}Please type in your name: \c"
+
+     tput init	       Initializes the terminal according to the
+		       type of terminal in the environmental
+		       variable TERM. This command should be
+		       included in everyone's .profile after the
+		       environmental variable TERM has been
+		       exported, as illustrated on the profile(4)
+		       manual page.
+
+     tput -Tt9 reset   Resets a Texas Instruments 931 terminal,
+		       overriding the type of terminal in the
+		       environmental variable TERM.
+
+     tput cup 23 4     Sends the sequence to move the cursor to
+		       row 23, column 4.
+
+     tput longname     Prints the long name from the terminfo
+		       database for the type of terminal
+		       specified in the environmental variable
+		       TERM.
+
+PROMPTS
+   Reset:
+     Initial value is no.  If you enter yes, your terminal will
+     be reset to its original attributes.
+
+   Blink:
+     Initial value is no.  If you enter yes, the current input
+     line will blink.
+
+   Bold:
+     Initial value is no.  If you enter yes, the current input
+     line will be in bold print.
+
+   Clear Screen:
+     Initial value is no.  If yes is entered the screen will be
+     cleared.
+
+   Print Number of Columns:
+     Initial value is no.  If you enter yes, the number of
+     columns for your terminal type will be printed.
+
+   Reverse Video:
+     Initial value is no.  If you enter yes, the current input
+     line will be in reversed video.
+
+   Underline On:
+     Initial value is no.  If you enter yes, the current input
+     line will be underlined.
+
+   Underline Off:
+     Initial value is no.  If you enter yes, the current input
+     line will not be underlined.
+
+FILES
+     /usr/lib/terminfo/?/*    Terminal descriptor files
+     /usr/include/term.h      Definition files
+     /usr/include/curses.h    curses(3X) header file
+     /usr/lib/tabset/*	      Tab settings for some terminals, in
+			      a format appropriate to be output
+			      to the terminal (escape sequences
+			      that set margins and tabs).
+
+SEE ALSO
+     stty(1), terminfo(4).
+
+   Exit Codes
+     The tput command prints error messages and returns the
+     following exit codes on error (Note that the following are
+     not the printed error messages but an explanation of the
+     printed error messages):
+
+     -1 	    Usage error.
+
+     -2 	    Bad terminal type.
+
+     -3 	    Bad capname.
+
+     In addition, -1 is printed if a capname is requested for a
+     terminal that has no value for that capname.
+
+   Diagnostics
+     Usage: tput [-T term] capname [tparm argument...]
+	  Indicates an invalid argument on the command line.
+
+     Unknown terminfo capability xxx
+	  Indicates xxx is not a valid attribute found in the
+	  terminfo database.
+
+     Unknown terminal "xxx"
+	  Indicates that xxx is a terminal type not found in
+	  the terminfo database.
+
+

@@ -1,0 +1,305 @@
+NAWK(1) 						  NAWK(1)
+
+NAME
+     nawk - Indicates pattern scanning and processing language
+
+SYNOPSIS
+     nawk [-F re][parameter...] [`prog'] [-f progfile] [file...]
+
+DESCRIPTION
+     nawk is a new version of awk that provides capabilities
+     unavailable in previous versions.	This version will become
+     the default version of awk in the next major release of TI
+     System V.
+
+     The -F re option defines the input field separator to be the
+     regular expression re.
+
+     Parameters, in the form x=... y=... can be passed to nawk,
+     where x and y are nawk built-in variables (see the list that
+     follows).
+
+     nawk scans each input file for lines that match any of a set
+     of patterns specified in prog.  The prog string must be
+     enclosed in single quotes ('') to protect it from the shell.
+     For each pattern in prog, there may be an associated action
+     performed when a line of a file matches the pattern.  The
+     set of pattern-action statements may appear literally as
+     prog or in a file specified with the -f progfile option.
+
+     Input files are read in order; if there are no files, the
+     standard input is read.  The file name - means the standard
+     input.  Each input line is matched against the pattern
+     portion of every pattern-action statement; the associated
+     action is performed for each matched pattern.
+
+     An input line is normally made up of fields separated by
+     white space.  (This default can be changed by using the FS
+     built-in variable or the -F re option.)  The fields are
+     denoted $1, $2, ...; $0 refers to the entire line.
+
+     A pattern-action statement has the following form:
+
+	  pattern { action }
+
+     Either pattern or action may be omitted.  If there is no
+     action with a pattern, the matching line is printed.  If
+     there is no pattern with an action, the action is performed
+     on every input line.
+
+     Patterns are arbitrary Boolean combinations ( !, ||, &&, and
+     parentheses) of relational expressions and regular expressions.
+     A relational expression is one of the following:
+
+	  expression relop expression
+	  expression matchop regular expression
+
+     where a relop is any of the six relational operators in C,
+     and a matchop is either ~ (contains) or !~ (does not
+     contain).	A conditional is an arithmetic expression, a
+     relational expression, the special expression ``var in
+     array'', or a Boolean combination of these.
+
+     The special patterns BEGIN and END can be used to capture
+     control before the first input line has been read and after
+     the last input line has been read respectively.
+
+     Regular expressions are as in egrep [see grep(1)].  In
+     patterns they must be surrounded by slashes.  Isolated
+     regular expressions in a pattern apply to the entire line.
+     Regular expressions can also occur in relational
+     expressions.  A pattern can consist of two patterns
+     separated by a comma; in this case, the action is performed
+     for all lines between an occurrence of the first pattern and
+     the next occurrence of the second pattern.
+
+     A regular expression can be used to separate fields by using
+     the -F re option or by assigning the expression to the
+     built-in variable FS.  The default is to ignore leading
+     blanks and to separate fields by blanks and/or tab
+     characters.  However, if FS is assigned a value, leading
+     blanks are no longer ignored.
+
+     Other built-in variables include the following:
+
+     ARGC      Command line argument count
+
+     ARGV      Command line argument array
+
+     FILENAME  Name of the current input file
+
+     FNR       Ordinal number of the current record in the
+	       current file
+
+     FS        Input field separator regular expression (default
+	       blank)
+
+     NF        Number of fields in the current record
+
+     NR        Ordinal number of the current record
+
+     OFMT      Output format for numbers (default %.6g)
+
+     OFS       Output field separator (default blank)
+
+     ORS       Output record separator (default new-line)
+
+     RS        Input record separator (default new-line)
+
+     An action is a sequence of statements.  A statement can be
+     one of the following:
+
+	  if ( conditional ) statement [ else statement ]
+	  while ( conditional ) statement
+	  do statement while ( conditional )
+	  for ( expression ; conditional ; expression ) statement
+	  for ( var in array ) statement
+	  delete array[subscript]
+	  break
+	  continue
+	  { [ statement ] ... }
+	  expression	 # commonly variable = expression
+	  print [ expression-list ] [ >expression ]
+	  printf format [ , expression-list ] [ >expression ]
+	  next	    # skip remaining patterns on this input line
+	  exit [expr]	 # skip the rest of the input; exit status is expr
+	  return [expr]
+
+     Statements are terminated by semicolons, new-line characters, or right
+     braces.  An empty expression-list stands for the whole input line.
+     Expressions take on string or numeric values as appropriate, and are
+     built using the operators +, -, *, /, %, and concatenation (indicated
+     by a blank).  The C operators ++, - -, +=, -=, *=, /=, and %= are also
+     available in expressions.	Variables can be scalars, array elements
+     (denoted x[i]), or fields.  Variables are initialized to the null
+     string or zero.  Array subscripts can be any string, not necessarily
+     numeric; this allows for a form of associative memory.  String constants
+     are quoted (").
+
+     The print statement prints its arguments on the standard
+     output, or on a file if >expression is present, or on a pipe
+     if | cmd is present.  The arguments are separated by the
+     current output field separator and terminated by the output
+     record separator.	The printf statement formats its
+     expression list according to the format [see printf(3S) in
+     the TI System V Programmer's Reference.
+
+     nawk has a variety of built-in functions:	arithmetic,
+     string, input/output, and general.
+
+     The arithmetic functions are:  atan2, cos, exp, int, log,
+     rand, sin, sqrt, and srand.  int truncates its argument to
+     an integer.  rand returns a random number between 0 and 1.
+     srand ( expr ) sets the seed value for rand to expr or uses
+     the time of day if expr is omitted.
+
+     The string functions are as follows:
+
+     gsub(for, repl, in)
+	       Behaves like sub (that follows), except that it
+	       replaces successive occurrences of the regular
+	       expression (like the ed global substitute
+	       command).
+
+     index(s, t)
+	       Returns the position in string s where string t
+	       first occurs, or 0 if it does not occur at all.
+
+     length(s) Returns the length of its argument taken as a
+	       string, or of the whole line if there is no
+	       argument.
+
+     match(s, re)
+	       Returns the position in string s where the regular
+	       expression re occurs, or 0 if it does not occur at
+	       all.  RSTART is set to the starting position
+	       (which is the same as the returned value), and
+	       RLENGTH is set to the length of the matched
+	       string.
+
+     split(s, a, fs)
+	       Splits the string s into array elements a[1],
+	       a[2], a[n], and returns n.  The separation is done
+	       with the regular expression fs or with the field
+	       separator FS if fs is not given.
+
+     sprintf(fmt, expr, expr, ...)
+	       Formats the expressions according to the
+	       printf(3S) format given by fmt and returns the
+	       resulting string.
+
+     sub(for, repl, in)
+	       Substitutes the string repl in place of the first
+	       instance of the regular expression for in string
+	       in and returns the number of substitutions.  If in
+	       is omitted, nawk substitutes in the current record
+	       ($0).
+
+     substr(s, m, n)
+	       Returns the n-character substring of s that begins
+	       at position m.
+
+     The input/output and general functions are:
+
+     close(filename)
+	       Closes the file or pipe named filename.
+
+     cmd| getline
+	       Pipes the output of cmd into getline; each
+	       successive call to getline returns the next line
+	       of output from cmd.
+
+     getline   Sets $0 to the next input record from the current
+	       input file.
+
+     getline <file
+	       Sets $0 to the next record from file.
+
+     getline var
+	       Sets variable var instead.
+
+     getline var <file
+	       Sets var from the next record of file.
+
+     system(cmd)
+	       Executes cmd and returns its exit status.
+
+     All forms of getline return 1 for successful input, 0 for
+     end of file, and -1 for an error.
+
+     nawk also provides user-defined functions.  Such functions
+     may be defined (in the pattern position of a pattern-action
+     statement) as
+
+	       function name(args,...) { stmts }
+	       func name(args,...) { stmts }
+
+     Function arguments are passed by value if scalar and by
+     reference if array name.  Argument names are local to the
+     function; all other variable names are global.  Function
+     calls can be nested and functions can be recursive.  The
+     return statement can be used to return a value.
+
+EXAMPLES
+     Print lines longer than 72 characters:
+
+	  length > 72
+
+     Print first two fields in opposite order:
+
+	  { print $2, $1 }
+
+     Same, with input fields separated by comma and/or blanks and
+     tabs:
+
+	  BEGIN { FS = ",[\t]*|[\t]+" }
+		 { print $2, $1 }
+
+     Add up first column, print sum and average:
+
+		 { s += $1 }
+	  END	 { print "sum is", s, " average is", s/NR }
+
+     Print fields in reverse order:
+
+	  { for (i = NF; i > 0; - -i) print $i }
+
+     Print all lines between start/stop pairs:
+
+	  /start/, /stop/
+
+     Print all lines whose first field is different from previous
+     one:
+
+	  $1 != prev { print; prev = $1 }
+
+     Simulate echo(1):
+
+	       BEGIN {
+		     for (i = 1; i < ARGC; i++)
+			      printf "%s", ARGV[i]
+		     printf "\ n"
+		     exit
+		     }
+
+     Print file, filling in page numbers starting at 5:
+
+	  /Page/ { $2 = n++; }
+		 { print }
+
+	  command line:  nawk -f program n=5 input
+
+SEE ALSO
+     grep(1), lex(1), printf(3S), sed(1).
+     See the section on nawk in the TI System V Support Tools
+     Guide.
+
+BUGS
+     Input white space is not preserved on output if fields are
+     involved.
+     There are no explicit conversions between numbers and
+     strings.  To force an expression to be treated as a number,
+     add 0 to it; to force it to be treated as a string,
+     concatenate the null string ("") to it.
+
+

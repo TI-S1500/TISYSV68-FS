@@ -1,0 +1,65 @@
+DU(1)                                                       DU(1)
+
+NAME
+     du - Summarizes disk usage
+
+SYNOPSIS
+     du -ars names
+
+DESCRIPTION
+   Purpose
+     The du command reports the number of 1K-byte blocks
+     contained in all files and (recursively) directories within
+     each directory and file specified by the names argument.
+
+     The block count includes the indirect blocks of the file.
+     If the names argument is missing, . (all) is assumed.  A
+     file with two or more links is only counted once.
+
+   Options
+     -a   Causes an entry to be generated for each file.  Absence
+          of either -a or -s causes an entry to be generated for
+          each directory only.
+
+     -r   Generates messages about directories that cannot be
+          read.  The du command is normally silent in such
+          instances.
+
+     -s   Causes only the grand total for each of the specified
+          names to be reported.
+
+EXAMPLE
+     The following example displays the block count within all
+     files and directories within the directory dir1.  The
+     example displays messages for directories that cannot be
+     read.
+
+          du -r dir1
+
+PROMPTS
+   Input File Name(s):
+     Enter the path name of the file to process.
+
+   Display Blocks/File:
+     The initial value is no.  Enter yes to display information
+     for each file.
+
+   Generate Status Messages:
+     The initial value is no.  Enter yes to display messages
+     about directories that cannot be read.
+
+   Display Total Blocks:
+     The initial value is no.  Enter yes to display only the
+     grand total for each file.
+
+NOTES
+     If the -a option is not used, nondirectories given as
+     arguments are not listed.
+
+     If there are too many distinct linked files, du counts the
+     excess files more than once.
+
+     Files with spaces not accounted for get an incorrect block
+     count.
+
+

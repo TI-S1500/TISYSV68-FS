@@ -1,0 +1,139 @@
+PRMSG(1T)						PRMSG(1T)
+
+NAME
+     prmsg - Prints an error message from within a shell script
+
+SYNOPSIS
+     prmsg -f who tag_no severity prob soln log strng1...strng8
+
+DESCRIPTION
+   Purpose
+     The prmsg program enables a shell script to use the
+     printm(3T) routine to print an error message.
+
+   Option
+     -f msg_set
+	  A space is required between -f and msg-set.  The error
+	  message text is found in directory msg_set.  This
+	  option serves the same function that pick_msg_set(3T)
+	  serves within a utility.  If this option is omitted,
+	  the message text is fetched from the /ti/ptext/USA
+	  file.
+
+   Arguments
+     The argument meanings are identical to those of the printm
+     parameters.  It is important to note that the prmsg
+     arguments can only be strings.  Command-line arguments are
+     passed to the program as strings only.
+
+     who  Name of the script needing a message.  The printm
+	  command normally prints the name of the program that
+	  calls it as a part of the message prefix.  In this
+	  case, the name of the calling program would be prmsg.
+	  The prmsg command uses the who argument to substitute
+	  the name of the calling shell script in place of prmsg
+	  in the message prefix.
+
+     tag_no
+	  Number that identifies the message.  Decimal numbers
+	  greater than or equal to 1,000,000 identify TI-supplied
+	  error message text.  Decimal tag numbers less than
+	  1,000,000 indicate error message text written by users.
+	  These tag numbers require the -f option.
+
+     severity
+	  Number that specifies which severity label is appended
+	  to the message.  The values and labels are as follows:
+
+	  0    Info
+
+	  1    Warning
+
+	  2    Error
+
+	  3    HALT
+
+     prob
+	  Number that specifies the disposition of the problem
+	  description.	TI-supplied English problem description
+	  text is in the file /usr/ti/ptext/USA.  The prob values
+	  and meanings are as follows:
+
+	  0    Problem description is not printed.
+
+	  1    Problem description is printed on the standard
+	       output.
+
+	  2    Problem description is printed on the standard
+	       error output.
+
+	  3    Problem description is printed to the device
+	       /dev/console.
+
+	  5    problem description is printed to the standard
+	       output but without the identifying prefix.  See
+	       EXAMPLE below for a definition of the prefix.
+
+     soln
+	  Number that specifies the disposition of the solution
+	  description.	TI-supplied solution description text is
+	  in the file /usr/ti/stext/USA.  The solution
+	  description suggests corrective actions.  The soln
+	  values and meanings are as follows:
+
+	  0    Solution description is not printed.
+
+	  5    Solution description is printed on the standard
+	       output.
+
+     log  Number that determines whether the error message is
+	  appended to the system error log.  The system error log
+	  is /etc/SYS.ERR.LOG .  The log values and meanings are
+	  as follows:
+
+	  0    Error message is not appended to the system error
+	       log.
+
+	  1    Error message is appended to the system error log.
+
+     strng1...strng8
+	  Parameters that can be embedded in the body of the
+	  problem description.	These parameters must be strings.
+	  The problem description text contains %-conversion
+	  specifiers that determine where the parameters are
+	  inserted into the text.  These %-conversion specifiers
+	  must indicate strings.
+
+EXAMPLE
+     Assume that a message with tag number 1001345 is defined by
+     the following master file entry:
+
+     1001345~0~%s could not proceed: %s~~
+
+     The following command prints error message 1001345 from
+     within a script:
+
+	  prmsg "xmpl" 1001345 0 2 0 0 "script name" "type of
+	  error"
+
+     The problem description is printed on the standard output as
+     follows:
+
+	  xmpl: script name could not proceed: type of error
+	  (Info 1001345)
+
+     No solution description is printed.  The error message is
+     not appended to the system error log.
+
+     In the following example, if file
+     /usr/customer/msgs/ptext/USA contains texts for messages in
+     the range of 3000-4000, the following command accesses
+     message 3175:
+
+	  prmsg -f /usr/customer/msgs "sample" 3175 0 2 0 0
+	  "error description"
+
+SEE ALSO
+     printm(3T), mkmsg(1T), showmsg(1T).
+
+

@@ -1,0 +1,35 @@
+NOHUP(1)                                                 NOHUP(1)
+
+NAME
+     nohup - Runs a command immune to hangups and quits
+
+SYNOPSIS
+     nohup command [arguments]
+
+DESCRIPTION
+     The nohup command executes command with hangups and quits
+     ignored.  (These are not stty(1) quits.)
+
+     If output is not redirected by the user, it is sent to the
+     file named nohup.out.  If nohup.out is not writable in the
+     current directory, output is redirected to $HOME/nohup.out.
+
+EXAMPLES
+     The nohup command is useful with pipelines or lists of
+     commands.  Pipelines and lists of commands can be placed in
+     a single file, called a shell procedure. The following
+     example applies nohup to everything in the file procfile .
+
+          nohup sh procfile
+
+     If the shell procedure procfile is to be executed often, the
+     need to type sh can be eliminated by giving procfile execute
+     permission.  Add an ampersand to execute the contents of
+     procfile in background with interrupts ignored (see sh(1)).
+
+          nohup procfile &
+
+SEE ALSO
+     nice(1), signal(2).
+
+

@@ -1,0 +1,218 @@
+MENU(1T)                                                 MENU(1T)
+
+NAME
+     menu - Displays a menu containing commands, displays, and
+     submenus
+
+SYNOPSIS
+     menu [name]
+
+DESCRIPTION
+   Purpose
+     The menu command is a bsh(1T) internal command.  It displays
+     a group of related commands and submenus.  Using the arrow
+     keys to position the cursor next to the desired element, you
+     can either select the menu element or obtain a brief
+     explanation of the menu element.
+
+   Discussion
+     The argument name specifies the menu.  The default menu is
+     mlc, which stands for Master List of Commands.  This is a
+     top level menu designed to provide functional groupings of
+     submenus.  You can begin at any other menu level by
+     specifying a name other than mlc.  You can also create your
+     own menus.  See menu(4) for the menu file format.
+
+     When you execute menu, the utility clears the screen and
+     then displays a title line indicating the version number of
+     the menu utility and the name and level of the active menu.
+     Immediately below the title line is the header indicating
+     the position of the name, type, and description for each
+     element.  The following list shows the type characters and
+     their meanings:
+
+     + c - The menu element is a command
+     + m - The menu element is another menu (a submenu)
+     + d - The menu element is a display (text that explains the
+           element)
+
+     The cursor appears on the first element below the header.
+     The bottom line of the display indicates the functions
+     available.  Additional functions are displayed when you
+     press the SPACE BAR.
+
+     The menu system expects a directory structure that contains
+     the subdirectories menus, prompts, and helps.  The default
+     directory base is /usr/ti.  The default directory can be
+     changed by setting the MLC environment variable to the
+     desired directory.  To search more than one directory for
+     menus, prompts, and help displays, separate directories with
+     a colon.  For example, set the MLC variable as follows to
+     search both /usr/jon and /usr/ti:
+
+          setenv MLC /usr/jon/:/usr/ti
+
+     The length of the value for MLC is limited to 64 characters.
+
+   Menu Operations
+     The following keys control menu operations.
+
+     q              Quits the execution of the current menu.  If
+                    the current menu is a submenu that you
+                    selected earlier, the previous (parent) menu
+                    is displayed.   If the current menu is the
+                    top-level menu, the menu utility returns you
+                    to your shell.  The level display in the menu
+                    header shows how many levels, including the
+                    current menu, exist.
+
+     Enter or s     Selects the current element.  If the current
+                    element is a submenu, it is displayed.  If
+                    the current element is an executable command,
+                    the menu utility executes the command.  If
+                    the element is a display type, a file is
+                    shown with information about the element.
+
+     ?              Displays the help text for the current
+                    element.  During any help session, the
+                    show(1T) utility is used.  The commands
+                    available with the show utility are in effect
+                    until the q command is entered to exit show.
+                    A different show-file utility can be used by
+                    setting the SHOW environment variable to the
+                    name of the desired show-file utility.
+
+     h              Displays the help information for the current
+                    menu.
+
+     F1 or J        Scrolls the menu to the next page.
+
+     F2 or K        Scrolls the menu to the previous page.
+
+     F3             Positions the cursor on the first element of
+                    the menu.
+
+     F4             Positions the cursor on the last element of
+                    the menu.
+
+     F5             Quits the execution of the current menu and
+                    returns to the top level menu specified at
+                    invocation.  If you have not invoked a
+                    submenu, your terminal will beep and the
+                    display will not change.
+
+     F6             Displays the help information for the menu
+                    utility.
+
+     Up-arrow or k  Moves the cursor to the element above the
+                    current element.
+
+     Dn-arrow or j  Moves the cursor to the element below the
+                    current element.
+
+     Home           Moves the cursor to the top element of the
+                    current screen.
+
+     a              Aborts the menu utility and returns you to
+                    your shell even if you are currently in a
+                    submenu.
+
+     !              Allows you to execute a shell command.  The
+                    following prompt appears on the screen:
+                         Enter bsh command:
+                    Enter a command and press RETURN.  After the
+                    command completes, the menu from which you
+                    entered ! is displayed.
+
+     Command or c   Positions the cursor at a command prompt at
+                    the bottom of the screen.  Any menu element
+                    that is a command (type c) can be entered at
+                    this prompt.  After the command completes,
+                    the command prompt appears.  Type ``menu'' or
+                    press the Command key to return the screen to
+                    normal menu operations.
+
+EXAMPLES
+     The following example shows a menu for commands related to
+     the uucp(1C) utility.
+
+     Menu v1.0    UNIX to UNIX Communications Menu (uucp) level:1
+
+     Element     Type     Description
+     CT          c        Spawns getty to a remote terminal
+     CU          c        Calls another UNIX system
+     UNAME       c        Names the system
+     UUCP        c        UNIX to UNIX file copy
+     UULOG       c        Uucp log summary
+     UUNAME      c        Lists uucp names of systems
+     UUPICK      c        Pick uucp files
+     UUSTAT      c        Reports uucp status
+     UUTO        c        Public UNIX to UNIX file copy
+     UUX         c        UNIX to UNIX command execution
+
+     Enter-Select F1-Down F2-Up F3-Top F4-Bottom F5-Top Level F6-Tutor Space
+
+FILES
+     /usr/ti/menus/*
+
+SEE ALSO
+     bsh(1T), menu(4), prompt(1T).
+
+DIAGNOSTICS
+     menu access error on menu
+          The specified menu does not exist or access permissions
+          prevent reading.
+                       
+     menu too large, limit = x bytes
+          The 4K-byte limit for a single menu has been exceeded.
+
+     No memory available      
+          The shell stack has been exhausted.
+
+     Bad menu element name, line: x
+          Element name is more than 14 characters or is blank.
+
+     Bad menu type, line: x   
+          An element type not beginning with c.dfm was found.
+
+     Bad menu description, line: x
+          The description was longer than 60 characters.
+
+     Bad menu help filename, line: x
+          The help file was larger than 14 characters or 
+          contained an invalid character.
+
+     Blank line in menu, line: x
+          A blank line was found in the menu file.
+
+     Command cmd not found    
+          The specified element, cmd, did not exist in the 
+          prompts directory or permissions do not allow reading.
+
+     FATAL Error encountered in menu
+          A non-recoverable error was encountered.  
+          Report the problem to your system administrator.
+
+     Interrupt not handled by script
+          An interrupt was encountered during a shell script 
+          that was not trapped.  All menu shell scripts must
+          include the bsh(1T) onintr command to trap interrupts.
+
+     Cannot open stdout, errno: xxxx
+          The file /dev/tty does not have read/write permissions.
+
+     Cannot open stdin, errno: xxxx
+          The file /dev/tty does not have read/write permissions.
+
+     No Help is available     
+          A help file was not found for the specified element.
+
+     Display file: file not available
+          The display file was not found for the element.
+
+     An error occurred in a shell script, restart menu
+          A syntax error occurred in the menu shell script that 
+          is currently executing.  The menu system must be exited
+          before another command element can be selected.
+
+

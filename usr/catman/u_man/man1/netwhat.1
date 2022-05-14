@@ -1,0 +1,47 @@
+NETWHAT(1T)                                           NETWHAT(1T)
+
+NAME
+     netwhat - Displays versions of the CCB and NTC networking
+     modules
+
+SYNOPSIS
+     /usr/ti/net/netwhat
+
+DESCRIPTION
+     The netwhat command is used to display the current versions
+     of the CCB LAN and NTC networking modules. This command will
+     help the user find out if updates have been made to any of
+     these modules.
+
+EXAMPLE
+     The following is an example of output from the netwhat
+     command:
+
+     Displaying CCB/NTC networking version(s)
+     ----------------------------------------------------------------
+     ******   Module     /etc/ccbenet:       Version 3.2.0
+     ******   Module     /etc/ccbiop:        Version 3.2.1
+     ******   Module     /etc/ccbllien:      Version 3.2.1
+     ******   Module     /etc/ccbnet:        Version 3.2.0
+     ******   Module     /etc/ccbrout:       Version 3.2.0
+     ******   Module     /etc/ccbtokr:       Version 3.2.0
+     ******   Module     /etc/ccbxns:        Version 3.2.0
+     ******   Module     /etc/tcload:        Version 3.2.1
+     ----------------------------------------------------------------
+
+SEE ALSO
+     netstat(1T), tcstat(1T).
+
+DIAGNOSTICS
+     There may be a problem if any of the following messages
+     appear:
+
+          module: No version number currently listed
+          module: Does not exist
+          Invalid permissions for getting version of module
+
+NOTES
+     Only the load modules displayed in the example are supported
+     by this command.
+
+

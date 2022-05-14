@@ -1,0 +1,5 @@
+lexical:menu:     LEXICAL ANALYSIS TOOLS MENU Series 1000     :lexical.hlp
+AWK:c:Calls a pattern scanning and processing language:
+LEX:c:Generates programs for simple lexical tasks:
+REGCMP:c:Compiles regular expressions:
+YACC:c:Aids user in generating parsers:

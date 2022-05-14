@@ -1,0 +1,37 @@
+					
+
+#-------------PUT THE ACTUAL PATCH INSTALLATION SCRIPT HERE------------------#
+if [ ! -f /usr/sys/io.lib ]; then
+	echo "ERROR: system does not have /usr/sys/io.lib!"
+	exit 255
+fi
+
+verify=`what /usr/sys/io.lib  | grep ldterm.c ` 
+if [ "X$verify" = X ]; then
+	echo "ERROR:  System does not have pseudo-tty driver code! ."
+	exit 100
+fi
+
+echo "making master device node /dev/ptmx."
+mknod /dev/ptmx c 54 72 
+if [ $? != 0 ]; then
+	echo "ERROR in $patch"
+	exit 255
+fi
+echo "making 256 slave device nodes.  Please be patient."
+./mkpts
+sync
+
+echo
+echo "Verifying that the device nodes installed correctly..."
+verify=`ls -al /dev/ptmx `
+if [ "X$verify" = X ]; then
+	echo "ERROR:	the master device node /dev/ptmx was not created!"
+	exit 255
+fi
+echo "Device nodes installed correctly."
+echo "IMPORTANT!!"
+echo "You must now change some cband parameters and re-boot the system to"
+echo "enable the streams-based pseudo-tty devices."
+echo "See the readme file in this directory or the 3.2.2 release notes."
+

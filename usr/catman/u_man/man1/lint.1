@@ -1,0 +1,216 @@
+LINT(1) 						  LINT(1)
+
+NAME
+     lint - Invokes a C program checker
+
+SYNOPSIS
+     lint -abchlnpuvxDUI files
+
+DESCRIPTION
+   Purpose
+     The lint command attempts to detect features of the C
+     program files that are likely to be incorrect, non-portable,
+     or wasteful.  It also checks type usage more strictly than
+     the compilers.
+
+   Options
+     The lint options can be used in any order.  The following
+     options are used to suppress certain kinds of complaints:
+
+     -a      Suppresses complaints about assignments of long
+	     values to variables that are not long.
+
+     -b      Suppresses complaints about break statements that
+	     cannot be reached.  Programs produced by lex(1) or
+	     yacc(1) often result in a large number of such
+	     complaints.
+
+     -h      Does not apply heuristic tests that attempt to
+	     intuit bugs, improve style, and reduce waste.
+
+     -u      Suppresses complaints about functions and external
+	     variables used and not defined or defined and not
+	     used.  (This option is suitable for running lint on
+	     a subset of files of a larger program.)
+
+     -v      Suppresses complaints about unused arguments in
+	     functions.
+
+     -x      Does not report variables referred to by external
+	     declarations but never used.
+
+     The following arguments alter lint behavior:
+
+     -c      Produces a .ln file for every .c file on the command
+	     line.  These .ln files are the product of lint first
+	     pass only, and are not checked for inter-function
+	     compatibility.
+
+     -lx     Includes additional lint library llib-lx.ln.  You
+	     can include a lint version of the math library
+	     llib-lm.ln by inserting -lm on the command line.
+	     This argument does not suppress the default use of
+	     llib-lc.ln.  This option can be used to keep local
+	     lint libraries and is useful in the development of
+	     multifile projects.
+
+     -n      Does not check compatibility against either the
+	     standard or the portable lint library.
+
+     -p      Attempts to check portability to other dialects
+	     (IBM(R) and GCOS) of C.
+
+     -Dsymbol
+	     Defines symbol to the preprocessor.  This mechanism
+	     is useful with the conditional statements in the
+	     preprocessor because it allows symbols to be defined
+	     external to the source file.
+
+     -Usymbol
+	     Undefines symbol to the preprocessor.
+
+     -Idir   Changes the algorithm for searching for #include
+	     files whose names do not begin with / to look in dir
+	     before looking in the directories on the standard
+	     list.  Thus, #include files whose names are enclosed
+	     in double quotes are searched for first in the
+	     directory of the file argument, then in directories
+	     named in -I options, and last in directories on a
+	     standard list.  For #include files whose names are
+	     enclosed in <>, the directory of the file argument
+	     is not searched.
+
+
+	     IBM is a registered trademark of International
+	     Business Machines Corporation.
+
+   Discussion
+     Among the features currently detected are unreachable
+     statements, loops not entered at the top, automatic
+     variables declared and not used, and logical expressions
+     whose value is constant.  Moreover, the usage of functions
+     is checked to find functions that return values in some
+     places and not in others, functions called with varying
+     numbers of arguments, and functions whose values are not
+     used.
+
+     It is assumed that all the files are to be loaded together;
+     they are checked for mutual compatibility.  By default, lint
+     uses function definitions from the standard lint library
+     llib-lc.ln; function definitions from the portable lint
+     library llib-port.ln are used when lint is invoked with the
+     -p option.
+
+     The following conventional comments in the C source change
+     the behavior of lint:
+
+     /*NOTREACHED*/
+		  At appropriate points, stops comments about
+		  unreachable code.
+
+     /*VARARGSn*/ Suppresses the usual checking for variable
+		  numbers of arguments in the following function
+		  declaration.	The data types of the first n
+		  arguments are checked; a missing n is taken to
+		  be 0.
+
+     /*ARGSUSED*/ Turns on the -v option for the next function.
+
+     /*LINTLIBRARY*/
+		  At the beginning of a file, shuts off
+		  complaints about unused functions in the file.
+
+     The lint command produces its first output on a per source
+     file basis.  Complaints regarding included files are
+     collected and printed after all source files have been
+     processed.  Finally, information gathered from all input
+     files is collected and checked for consistency.  At this
+     point, if it is not clear whether a complaint stems from a
+     given source file or from one of its included files, the
+     source file name is printed, followed by a question mark.
+
+FILES
+     /usr/lib/lint[12]	    Programs
+     /usr/lib/llib-lc.ln    Declarations for standard functions
+			    (binary format; source is in
+			    /usr/lib/llib-lc )
+     /usr/lib/llib-port.ln  Declarations for portable functions
+			    (binary format; source is in
+			    /usr/lib/llib-port )
+     /usr/lib/llib-lm.ln    Declarations for standard math
+			    functions (binary format; source is
+			    in /usr/lib/llib-lm )
+     /usr/tmp/*lint*	    Temporaries
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of a file to be processed.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Additional Libraries:
+     Enter the name of the additional lint library to be used.
+
+   Check Compatibility:
+     Initial value is yes.  If you enter no, the compatibility
+     between the standard and portable lint library is not
+     checked.
+
+   Check Portability:
+     Initial value is yes.  If you enter no, the portability to
+     other dialetics is not checked.
+
+   Define Preprocessor Symbol:
+     Enter the symbol to be defined to the preprocessor.
+
+   Undefine Preprocessor Symbol:
+     Enter the symbol to be undefined to the preprocessor.
+
+   Directories to Search:
+     Enter the name of the directories to search for #include
+     files before searching directories on the standard list.
+
+   Select Suppressed Complaints:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear.
+
+   Long Value Assignments:
+     Initial value is no.  If you enter yes, the complaints about
+     long values assigned to variables that are not long are
+     suppressed.
+
+   Break statements:
+     Initial value is no.  If you enter yes, the complaints about
+     break statements that cannot be reached are suppressed.
+
+   Apply Heuristic Tests:
+     Initial value is no.  If yes is entered the heuristic tests
+     are not applied.
+
+   Not Used/Defined Var/Func:
+     Initial value is no.  If yes is entered the error messages
+     about functions and external variables are suppressed.
+
+   Unused Args in Functions:
+     Initial value is no.  If you enter yes, the messages about
+     unused arguments in functions are suppressed.
+
+   Referred Variables:
+     Initial value is no.  If you enter yes, the messages about
+     unused variables referred to by external declarations are
+     suppressed.
+
+SEE ALSO
+     ``C Program Checker (lint)'' in the TI System V Support
+     Tools Guide.
+
+NOTES
+     The exit(2) function and other functions that do not return
+     are not understood.  This causes various inaccuracies. The
+     lint command cannot handle excessively large structures with
+     too many fields. The error message that is displayed states
+     that a parameter stack overflow has occurred.
+
+

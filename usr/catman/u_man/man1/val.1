@@ -1,0 +1,88 @@
+VAL(1)                                                     VAL(1)
+
+NAME
+     val - Validates an SCCS file
+
+SYNOPSIS
+     val -
+     val -mrsy files
+
+DESCRIPTION
+   Purpose
+     The val command determines if the specified file is an SCCS
+     file that meets the characteristics specified by the options
+     and arguments.
+
+   Options
+     Options for val can appear in any order.  The effects of any
+     option apply independently to each named file on the command
+     line.  The options are as follows:
+
+     -       Causes reading of the standard input until an end-
+             of-file condition is detected.  Each line read is
+             independently processed as if it were a command line
+             argument list.
+
+     -mname  The argument value name is compared with the SCCS
+             %M% keyword in file.
+
+     -rSID   The argument value SCCS identification (SID) sring
+             is an SCCS delta number.  A check is made to
+             determine if the SID is ambiguous or invalid.  For
+             example, r1 is ambiguous because it physically does
+             not exist but implies 1.1, 1.2, and so on, which
+             might exist.  Also, r1.0 or r1.1.0 is invalid
+             because neither can exist as a valid delta number.
+             If the SID is valid and not ambiguous, a check is
+             made to determine if it actually exists.
+
+     -s      Silences the diagnostic message normally generated
+             on the standard output for any error detected while
+             processing each named file on a given command line.
+
+     -ytype  The argument value type is compared with the SCCS
+             %Y% keyword in file.
+
+EXAMPLE
+     The following command reads the standard input to process
+     two command lines.  The first command line verifies that the
+     SCCS file s.file1 has the type flag value c and the module
+     name flag value abc.  After val has processed s.file1, file2
+     is checked for the type flag d and the module name flag
+     value xyz.
+
+          val -
+          -yc -mabc s.file1
+          -yd -mxyz w.file2
+
+PROMPTS
+   Input File Name(s):
+     Enter the names of the files to process.
+
+   SCCS Delta Version Number:
+     Optional string.  Enter the SID of the delta to process.
+
+   Supress Output:
+     The initial value is no.  Enter yes to suppress the
+     diagnostic messages for errors.
+
+   Name to Compare With VAL.pr:
+     Optional. Enter the name of a file to compare with the SCCS
+     %M% keyword in the file specified in the Input File Name:
+     prompt.
+
+   Type for File Comparison:
+     Optional. Enter a value to compare with the SCCS %Y% keyword
+     in the file specified in the Input File Name: prompt.
+
+SEE ALSO
+     admin(1), delta(1), get(1), prs(1).
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+NOTES
+     The val command can process up to 50 files on a single
+     command line.  Any number above 50 produces a core dump.
+
+

@@ -1,0 +1,73 @@
+
+The CPU screen displays statistics for a particular CPU, including a table
+of various rate statistics as well as mode of operation and on-board memory
+utilization bar graphs.  To display the screen for a particular CPU, press
+the number (0-f) that corresponds to the system slot number of that CPU.
+
+The mode of operation graph on the left side of the screen shows the percentage 
+of time the specified CPU is in the following modes of operation:
+
+    User   Shows the percentage of time the specified CPU spends executing 
+           code in a user process.
+
+    Sys    Shows the percentage of time the specified CPU spends executing 
+           code in the TI system kernel.
+
+    Wait   Shows the percentage of time the specified CPU spends waiting 
+           for a resource to become available. Most wait time is spent 
+           waiting for I/O operations to complete.
+
+    Idle   Shows the percentage of time the specified CPU is idle.
+
+The on-board memory utilization graph in the upper right corner of the screen 
+shows the percentage of memory utilization for the specified CPU, as computed 
+by the following formula:
+
+           %used = memory in use / available memory
+
+Available memory refers to the amount of memory that is available for user 
+processes after operating system resources have been allocated. The graph does 
+not reflect memory used by the operating system on this CPU. (The memory map 
+screen shows memory usage by the operating system.)
+
+The table in the lower right corner of the screen shows the following rates and 
+statistics for the selected CPU:
+
+    Number of Processes   Shows the number of processes that are currently 
+        running on the selected CPU.
+
+    Number of Clones   Shows the number of clone processes produced by a 
+        fork(2) system call that are currently running on the selected CPU. 
+        A clone is a process that is a logical copy of another process.
+
+    Process Switches per Second   Shows the average number of times the CPU 
+        schedules a process in one second.
+
+    Swap-ins per Second   Shows the average number of requests per second 
+        to transfer data from the swap device.
+
+    Blks Swapped In per Second   Shows the average number of blocks 
+        transferred per second from the swap device as a result of a swap-in 
+        operation.
+
+    Swap-outs per Second   Shows the average number of requests per second 
+        to transfer data to the swap device.
+
+    Blks Swapped Out per Second   Shows the average number of blocks 
+        transferred per second to the swap device as a result of a swap-out 
+        operation.
+
+    Page-ins per Second   Shows the average number of requests per second 
+        by the virtual memory subsystem to transfer data into memory.
+
+    Blks Paged In per Second   Shows the average number of blocks 
+        transferred per second into memory as a result of a page-in 
+        operation.
+
+    Page-outs per Second   Shows the average number of requests per second 
+        by the virtual memory subsystem to transfer data out of memory.
+
+    Blks Paged Out per Second   Shows the average number of blocks 
+        transferred per second out of memory as a result of a page-out 
+        operation.
+

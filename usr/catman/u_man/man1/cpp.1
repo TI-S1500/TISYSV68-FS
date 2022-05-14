@@ -1,0 +1,196 @@
+CPP(1)                                                     CPP(1)
+
+NAME
+     cpp - Invokes the C language preprocessor
+
+SYNOPSIS
+     cpp -CDIPTU ifile ofile
+
+DESCRIPTION
+   Purpose
+     The cpp command is the C language preprocessor which is
+     invoked as the first pass of any C compilation using the
+     cc(1) command.  Thus, the output of cpp is designed to be in
+     a form acceptable as input to the next pass of the C
+     compiler.
+
+     This command is in the /lib directory.
+
+   Options
+     -C   By default, cpp strips C-style comments.  If the -C
+          option is specified, all comments (except those found
+          on cpp directive lines) are passed along.
+
+     -Dname[=def]
+          Define name as if by a #define directive.  If no =def
+          is given, name is defined as 1.  The -D option has
+          lower precedence than the -U option.  That is, if the
+          same name is used in both a -U option and a -D option,
+          the name will be undefined regardless of the order of
+          the options.
+
+     -Idir
+          Change the algorithm for searching for #include files
+          whose names do not begin with / to look in dir before
+          looking in the directories on the standard list.  Thus,
+          #include files whose names are enclosed in "" will be
+          searched for first in the directory of the file with
+          the #include line, then in directories named in -I
+          options, and last in directories on a standard list.
+          For #include files whose names are enclosed in <>, the
+          directory of the file with the #include line is not
+          searched.
+
+     -P   Preprocess the input without producing the line control
+          information used by the next pass of the C compiler.
+
+     -T   Preprocessor symbols are no longer restricted to eight
+          characters.  The -T option forces cpp to use only the
+          first eight characters for distinguishing different
+          preprocessor names.  This behavior is the same as
+          previous preprocessors with respect to the length of
+          names and is included for backward compatibility.
+
+     -Uname
+          Remove any initial definition of name, where name is a
+          reserved symbol that is predefined by the particular
+          preprocessor.  The current list of these possibly
+          reserved symbols includes:
+
+               operating system:      ibm, gcos, os, tss, unix
+
+               hardware:              interdata, pdp11, u370,
+                                      u3b, u3b5, vax
+
+               UNIX system variant:   RES, RT
+
+               lint(1):               lint
+
+   Directives
+     All cpp directives start with lines begun by #.  Any number
+     of blanks and tabs are allowed between the # and the
+     directive.  The directives are:
+
+     #define name token-string
+          Replace subsequent instances of name with token-string.
+
+     #define name( arg, ..., arg ) token-string
+          This directive defines a macro with arguments.  Notice
+          that there can be no space between name and the (.
+
+          Replace subsequent instances of name followed by a (, a
+          list of comma-separated set of tokens, and a ) by
+          token-string.  Each occurrence of an arg in the token-
+          string is replaced by the corresponding set of tokens
+          in the comma-separated list.
+
+          When a macro with arguments is expanded, the arguments
+          are placed into the expanded token-string unchanged.
+          This requires you to be careful when precedence is
+          significant.  You might need to use parentheses.
+
+          After the entire token-string has been expanded, cpp
+          scans at least once more to detect and expand embedded
+          macros.
+
+     #undef name
+          Cause the definition of name (if any) to be forgotten
+          from now on.
+
+     #include "filename"
+
+     #include <filename>
+          Include at this point the contents of filename (which
+          will then be run through cpp).  When the <filename>
+          notation is used, filename is only searched for in the
+          standard places.  See the -I option above for more
+          detail.
+
+     #line integer-constant "filename"
+          Causes cpp to generate line control information for the
+          next pass of the C compiler.  Integer-constant is the
+          line number of the next line and filename is the file
+          where it comes from.  If "filename" is not given, the
+          current file name is unchanged.
+
+     #endif
+          Ends a section of lines begun by a test directive (#if,
+          #ifdef, or #ifndef).  Each test directive must have a
+          matching #endif.
+
+     #ifdef name
+          The lines following will appear in the output if and
+          only if name has been the subject of a previous #define
+          without being the subject of an intervening #undef.
+
+     #ifndef name
+          The lines following will not appear in the output if
+          and only if name has been the subject of a previous
+          #define without being the subject of an intervening
+          #undef.
+
+     #if constant-expression
+          Lines following will appear in the output if and only
+          if the constant-expression evaluates to non-zero.  All
+          binary non-assignment C operators, the ?: operator, the
+          unary -, !, and ~ operators are all legal in constant-
+          expression.  The precedence of the operators is the
+          same as defined by the C language.  There is also a
+          unary operator defined, which can be used in constant-
+          expression in these two forms:  defined ( name ) or
+          defined name.  This allows the use of #ifdef and
+          #ifndef in a #if directive.  Only these operators,
+          integer constants, and names that are known by cpp
+          should be used in constant-expression.  In particular,
+          the sizeof operator is not available.
+
+     #else
+          Reverses the notion of the test directive that matches
+          this directive.  So if lines previous to this directive
+          are ignored, the following lines will appear in the
+          output.  And vice versa.
+
+     The test directives and the #else directives can be nested.
+
+   Discussion
+     As the C language evolves, cpp and the rest of the C
+     compilation package will be modified to follow these
+     changes.  Therefore, the use of cpp other than in this
+     framework is not suggested.
+
+     The preferred way to invoke cpp is through the cc(1) command
+     since the functionality of cpp may someday be moved
+     elsewhere.  See m4(1) for a general macro processor.
+
+     The cpp program optionally accepts two file names as
+     arguments.  Ifile and ofile are respectively the input and
+     output for the preprocessor.  They default to standard input
+     and standard output if not supplied.
+
+     Two special names are understood by cpp.  The name __LINE__
+     is defined as the current line number (as a decimal integer)
+     as known by cpp, and __FILE__ is defined as the current file
+     name (as a C string) as known by cpp. They can be used
+     anywhere (including in macros) just as any other defined
+     name.
+
+FILES
+     /usr/include  Standard directory for #include files
+
+SEE ALSO
+     cc(1), m4(1).
+
+DIAGNOSTICS
+     The error messages produced by cpp are intended to be self-
+     explanatory.  The line number and file name where the error
+     occurred are printed along with the diagnostic message.
+
+NOTES
+     When newline characters were found in argument lists for
+     macros to be expanded, previous versions of cpp put out the
+     newlines as they were found and expanded.  The current
+     version of cpp replaces these newlines with blanks to
+     alleviate problems that the previous versions had when this
+     occurred.
+
+

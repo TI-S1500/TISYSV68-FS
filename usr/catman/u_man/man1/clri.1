@@ -1,0 +1,38 @@
+CLRI(1M)                                                 CLRI(1M)
+
+NAME
+     clri - Clears inode
+
+SYNOPSIS
+     /etc/clri file-system inumber ...
+
+DESCRIPTION
+     The command clri writes zeros on the 64 bytes occupied by
+     the inode(s) numbered inumber. The argument file-system must
+     be a special file name referring to a device containing a
+     file system.  After clri is executed, any blocks in the
+     affected file will show up as missing in an fsck [see
+     fsck(1M)] of the file system. This command should only be
+     used in emergencies and extreme care should be exercised.
+
+     Read and write permission is required on the specified
+     file-system device.  The inode specified by inumber becomes
+     allocatable.
+
+     The primary purpose of this routine is to clear an inode for
+     a file that does not appear in a directory.  If it is used
+     to clear an inode that does appear in a directory, care
+     should be taken to track down the inode entry in the
+     directory and remove it from the directory. Otherwise, when
+     the cleared inode is reallocated in a current directory to a
+     new file, the inode's entry in the old directory points to
+     the new file.  When an attempt to remove the old file
+     occurs, what actually gets removed is the new file. This
+     results in the new inode entry in the current directory
+     pointing to an unallocated inode, so the whole cycle will
+     likely repeat.
+
+SEE ALSO
+     dfsck(1M), fsck(1M), ncheck(1M)
+
+

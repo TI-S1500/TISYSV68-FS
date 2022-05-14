@@ -1,0 +1,60 @@
+UPDATE(1M)                                             UPDATE(1M)
+
+NAME
+     update - Periodically updates the super block
+
+SYNOPSIS
+     update -ft
+
+DESCRIPTION
+     The update command executes the sync(2) system call every
+     few seconds as specified by -t.  The default value is 30
+     seconds.  This ensures that the file system is relatively
+     current in case of a crash.  This command should not be
+     executed directly, but should be executed out of the
+     initialization shell command rc, which is called by inittab.
+
+   Options
+     -f filename
+          Specifies a path name for a file containing a list of
+          files that are used frequently and that update is to
+          open. Having update open the files causes the inodes
+          for the files to remain in memory until update
+          terminates (when shutdown is done.) The update utility
+          does not do any input/output to the files; it only
+          opens the files.  This causes opens by other programs
+          to be faster for those files because the inode does not
+          need to be read from disk.
+          The format of the file is as follows:
+
+          + Lines that are totally blank or have a pound sign (#)
+            in column 1 are ignored. This allows comments to be
+            added as desired.
+
+          + Each file path name specified must begin in column 1
+            and be terminated by a carriage return character.
+            Path names must not exceed 254 characters.
+
+          + A maximum of 99 file path names can be specified.
+
+     -t delay-time
+          Specifies how many seconds the update utility should
+          delay between sync() system calls.
+
+SEE ALSO
+     init(1M), sync(2), sync(1).
+
+NOTES
+     If the update utility encounters any error in opening a
+     file, the error is totally ignored. Because update should be
+     started by the rc script, there is no terminal on which to
+     report errors. Additionally, the opening of files is only a
+     performance optimization and is not necessary for correct
+     operation of the system. The fuser utility can be used to
+     check whether update successfully opened a file.
+
+     The cband parameters "open file table size" and "inode table
+     size" may need to be increased if you have update open many
+     files.
+
+

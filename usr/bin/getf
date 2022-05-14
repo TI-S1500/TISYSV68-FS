@@ -1,0 +1,139 @@
+# beta site uucp proc-  putf fromfile site tofile
+#                  or-  putf all
+#                  or-  putf site
+#                  or-  getf fromfile site tofile
+#                  or-  getf all
+#                  or-  getf site
+# to modify the uucp port being used, assign tname to the tty terminal name
+# and dname to the device name in the following 2 lines. these names are
+# the ones used in the /etc/inittab file, as follows:
+# t07:2:respawn:/etc/getty tty7 1200 t9
+#  ^                        ^
+#  |- tname                 |- dname
+tname=t$4
+dname=tty$5
+#
+# enable signal traps
+trap ' cp /tmp/inittab.evas /etc/inittab;rm /tmp/inittab.evas; exit' 1 2 3 15
+# test for some parameters
+if test $# -le 0
+then
+     echo "usage: $0 {fromfile} sitename/ALL {tofile} terminal-name tty-name";
+    exit
+fi
+# check for terminal in use
+t=`who | fgrep $dname | wc -l`;
+if test $t -gt 0
+then
+     echo "line in use"
+     exit
+fi
+# check for existence of file/directory
+case $0 in
+   putf) if test $# -gt 1
+          then
+              if test -f $1
+              then
+                   if test -r $1
+                   then
+                       continue
+                   else
+                       echo "file is not readable"
+                       exit
+                   fi
+              else
+                   if test -d $1
+                   then
+                       continue
+                   else
+                       echo "file/directory $1 does not exist"
+                       exit
+                   fi
+              fi
+          fi;;
+esac
+# check to insure that uucp main routine, uucico, is not running
+x=`ps -el | fgrep uucico | wc -l`;
+if test $x -gt 0
+then
+     echo "uucp already active"
+     exit
+fi
+s=/tmp/sitesv;
+uuname -l >$s;          
+# put in site name test here
+rm $s
+t=`fgrep $tname: /etc/inittab | wc -l`;
+if test $t -le 0
+then
+    echo "terminal not defined in /etc/inittab"
+    exit
+fi
+cp /etc/inittab /tmp/inittab.evas
+sed 's/'$tname':2:respawn/'$tname':2:off/' /tmp/inittab.evas > /etc/inittab
+if test $? -gt 0
+then
+     echo "inittab error"
+     rm /tmp/inittab.evas
+     exit
+fi
+init q
+if test $? -gt 0
+then
+     echo "init error, are you super user?"
+     cp /tmp/inittab.evas /etc/inittab
+     rm /tmp/inittab.evas
+     exit
+fi
+d=`pwd`
+cd /usr/lib/uucp
+case $1 in
+all) uucico -r1;;
+  *) if test $# = 1
+     then
+         site=$1
+     else
+         site=$2
+     fi
+     x=`fgrep $site L.sys| wc -l`
+     cd /usr/spool/uucp
+     if test $x -le 0
+     then
+         echo "invalid system name for L.sys file"
+         cp /tmp/inittab.evas /etc/inittab
+         rm /tmp/inittab.evas
+         exit
+     fi
+     if test -f LCK..$site
+     then
+         echo "site lock file being removed"
+         rm LCK..$site
+     fi
+     if test -f LCK..$dname
+     then
+         echo "device lock file being removed"
+         rm LCK..$dname
+     fi
+     if test -f STST.$site
+     then
+         echo "site status lock file being removed"
+         rm STST.$site
+     fi
+     if test $# = 1
+        then
+            uucico -r1 -s$site
+        else
+            cd $d
+            case `basename $0` in
+            putf) echo "sending $1 to $2\!$3"
+                   uucp $1 $2\!$3;;
+            getf)  echo "receiving $2\!$1 to $3"
+                   uucp $2\!$1 $3;;
+               *)  echo "invalid command, not getf or putf"
+            esac
+     fi
+esac
+#cp /tmp/inittab.evas /etc/inittab
+#rm /tmp/inittab.evas
+#wait
+#init q

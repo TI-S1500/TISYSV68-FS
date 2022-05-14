@@ -1,0 +1,12 @@
+
+The sample rate refers to the rate at which PM collects system statistics
+and updates the performance screens.  The default sample rate is two seconds,
+which means that new data is collected and the screen that is currently 
+displayed is updated every two seconds.
+
+Press the up arrow key or "k" to increase the sample rate in increments of 
+one second. Press the down arrow key or "j" to decrease the sample rate in 
+increments of one second. When the desired sample rate is set, press "q" or 
+the Return key to return to the current performance screen. PM will use the 
+new sample rate for all performance screens. You can change the sample rate 
+at any time.

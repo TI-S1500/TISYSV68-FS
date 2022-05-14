@@ -1,0 +1,79 @@
+WC(1)                                                       WC(1)
+
+NAME
+     wc - Provides a count of characters, words, and lines
+
+SYNOPSIS
+     wc -clw [files]
+
+DESCRIPTION
+   Purpose
+     The wc command counts characters, words, and lines in the
+     named files or in the standard input if no files appear.
+
+     It also keeps a total count for all named files.  A word is
+     a maximal string of characters delimited by spaces, tabs, or
+     newlines.  An unprintable character also terminates a word.
+
+     When files are specified on the command line, their names
+     are printed along with the counts.
+
+   Options
+     The default is -clw.
+
+     -c   Reports character count
+
+     -l   Reports line count
+
+     -w   Reports word count
+
+EXAMPLE
+     Assume that filea consists of the following lines:
+
+     this is filea
+     1
+     2 3 4
+     5 6
+     last line
+
+     The following example:
+
+          wc filea
+
+     results in the following output:
+
+          5   11   36   filea
+
+     where 5 is the number of lines, 11 is the number of words,
+     and 38 is the number of characters.
+
+     The next example:
+
+          wc -w filea
+
+     results in the following output:
+
+          11    filea
+
+PROMPTS
+   Input File Name:
+     Enter the names of the files to be expanded.
+
+   Count All:
+     Initial value is yes.  If you enter yes, all lines, words,
+     characters are counted and printed.  If you enter no, the
+     following prompts will appear.
+
+   Count Lines:
+     Initial value is no.  If you enter yes, the number of lines
+     in the files is reported.
+
+   Count Words:
+     Initial value is no.  If you enter yes, the number of words
+     in the files is reported.
+
+   Count Characters:
+     Initial value is no.  If you enter yes, the number of
+     characters in the file is reported.
+
+

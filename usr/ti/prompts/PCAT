@@ -1,0 +1,23 @@
+# cshf  pcat  -- Expands packed files 
+#	@(#)PCAT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^PCAT -- EXPANDS PACKED FILES"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== PCAT COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo pcat $_input_file
+	pcat $_input_file | \
+	pg -cp"Output from PCAT is being piped through pg: "
+else
+	echo pcat $_input_file ">"$_output_file
+	pcat $_input_file >$_output_file
+endif
+
+#clean up time
+end:

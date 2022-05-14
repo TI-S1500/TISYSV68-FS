@@ -1,0 +1,47 @@
+PWUNCONV(1M)                                         PWUNCONV(1M)
+
+NAME
+     pwunconv - Converts from a two- to a one-password file
+     scheme
+
+SYNOPSIS
+     pwunconv
+
+DESCRIPTION
+     pwunconv converts the TI System V two-password file scheme
+     (/etc/passwd and /etc/shadow) in to a one-password file
+     scheme (/etc/passwd).  It updates /etc/passwd with password
+     information from /etc/shadow.  If aging information is
+     present in /etc/shadow, the password aging information in
+     /etc/passwd is also updated.
+
+     The total size of a login entry for the password file is
+     limited to a maximum of 511 bytes.
+
+FILES
+     /etc/passwd, /etc/shadow, /etc/opasswd, /etc/oshadow
+
+SEE ALSO
+     passwd(1), passwd(4), pwconv(1M), shadow(4), usradm(1T).
+     "User Management" in the TI System V Administrator's Guide.
+
+DIAGNOSTICS
+     The pwunconv command exits with one of the following values:
+
+     0         Success.
+
+     1         Permission denied.
+
+     2         Invalid command syntax.
+
+     3         Unexpected failure.  Conversion not done.
+
+     4         Unexpected failure.  Password file missing.
+
+     5         Password file(s) busy.  Try again later.
+
+     6         Shadow password file does not exist.
+
+     7         Entry for name too long.  Conversion not done.
+
+

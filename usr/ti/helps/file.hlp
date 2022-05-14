@@ -1,0 +1,7 @@
+	file - File Operations Menu
+		@(#)file.sh	1.1 87/03/09
+
+	This menu lists tools which allow the system user to maintain
+           files.  These utilities help the user copy, delete, print
+	   view, and archive files, as well as to manipulate file
+	   formats.

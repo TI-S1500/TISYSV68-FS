@@ -1,0 +1,121 @@
+TIMEX(1)                                                 TIMEX(1)
+
+NAME
+     timex - Times a command and reports process data and system
+     activity
+
+SYNOPSIS
+     timex -fhkmoprst command
+
+DESCRIPTION
+   Purpose
+     After the given command is executed, timex reports the
+     elapsed time, user time, and system time spent in execution.
+     The timex command reports time in seconds.  Optionally,
+     process accounting data for the command and all its children
+     can be listed or summarized, and total system activity
+     during the execution interval can be reported.
+
+     The output of timex is written on standard error.
+
+   Options
+     -p  Lists process accounting records for command and all its
+         children.  This option works only if the process
+         accounting software is running.  The suboptions f, h, k,
+         m, r, and t modify the data items reported.  The number
+         of blocks read or written and the number of characters
+         transferred are always reported.
+
+         f    Prints the fork(2) and exec(2) flags and system
+              exit status columns in the output.
+
+         h    Prints the fraction of total available CPU time
+              consumed by the process during its execution.  This
+              hog time is computed as follows:  (total CPU
+              time)/(elapsed time).
+
+         k    Prints total kcore-minutes.
+
+         m    Prints mean core size.
+
+         r    Prints CPU factor (user time)/(system time + user
+              time).
+
+         t    Prints separate system and user CPU times.
+
+     -o  Reports the total number of blocks read or written and
+         total characters transferred by command and all its
+         children.  This option works only if the process
+         accounting software is running.
+
+     -s  Reports total system activity (not just that caused by
+         command) that occurred during the execution interval of
+         command.  All the data items listed in sar(1) are
+         reported.
+
+EXAMPLES
+     The following command is a simple example:
+
+          timex -ops sleep 60
+
+     A terminal session of arbitrary complexity can be measured
+     by timing a subshell as follows:
+
+          timex -opskmt sh
+            session commands
+          EOT
+
+PROMPTS
+   Command to be Timed:
+     Enter the command to execute and time.
+
+   Total Number of Blocks:
+     The initial value is no.  Enter yes to print the total
+     number of blocks read or written and total characters
+     transferred by the specified command and its children.
+
+   Report System Activity:
+     The initial value is no.  Enter yes to print total system
+     activity that occurred during the execution interval of the
+     specified command.
+
+   Show Accounting Record Options:
+     The initial value is no.  Enter yes to receive the following
+     prompts.
+
+   Print Fork/Exec Flag:
+     The initial value is no.  Enter yes to print flags from the
+     fork and exec system calls.
+
+   Total Available CPU Time:
+     The initial value is no.  Enter yes to print the fraction of
+     available CPU time consumed by the specified process during
+     its execution.
+
+   Total Kcore Minutes:
+     The initial value is no.  Enter yes to print total kcore-
+     minutes.
+
+   Print Mean Core Size:
+     The initial value is no.  Enter yes to print mean core size.
+
+   Print CPU Factor:
+     The initial value is no.  Enter yes to print (user
+     time)/(ststem time + user time).
+
+   Separate System/User Times:
+     The initial value is no.  Enter yes to print separate system
+     and user times.
+
+SEE ALSO
+     sa1(1M), sa2(1M), sadc(1M), sadsp(1T), sar(1).
+
+NOTES
+     Process records associated with command are selected from
+     the accounting file /usr/adm/pacct by inference, since
+     process genealogy is not available.  Reports of background
+     processes having the same user ID, terminal ID, and
+     execution time window will be included with the report to
+     the command.
+
+

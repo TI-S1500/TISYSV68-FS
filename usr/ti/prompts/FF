@@ -1,0 +1,55 @@
+# cshf	ff--lists statistics for a file system 
+#	@(#)FF.sh	1.2  88/03/30
+#
+onintr end
+
+prompt "^FF -- LISTS STATISTICS FOR A FILE SYSTEM"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^File System Name:" file acnm $file\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Print I-Node Number:" Iflag yesno y\
+	"^Print File Size:" sflag yesno n\
+	"^Select Advanced Options:" action yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($action == "y") then
+	prompt "^FF -- OPTIONS"\
+		"^List Multiply Linked Files:" lflag yesno n\
+		"^*Add Prefix to Path Name:" pflag string $pflag\
+		"^Print Owner's Name:" uflag yesno n\
+		"^*Days Since Last Access (+,-):" aflag string $aflag\
+		"^*Days Since Last Modification (+,-):" mflag string $mflag\
+		"^*Days Since Last Change (+,-):" cflag string $cflag\
+		"^*Altered After File:" nflag string $nflag\
+		"^*List Only These Inodes:" iflag string "$iflag"\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($lflag == "y") set opt = l$opt
+	if ($uflag == "y") set opt = u$opt
+	if ($pflag != "") set popt = "-p "$pflag
+	if ($aflag != "") set aopt = "-a "$aflag
+	if ($mflag != "") set mopt = "-m "$mflag
+	if ($cflag != "") set copt = "-c "$cflag
+	if ($nflag != "") set nopt = "-n "$nflag
+	if ($iflag != "") set iopt = "-i "$iflag
+endif
+
+if ($abort) goto end
+if ($Iflag == "n") set opt = I$opt
+if ($sflag == "y") set opt = s$opt
+if ($opt != "") set opt = -$opt
+
+if ($_output_file == "") then
+	echo === FF COMMAND EXECUTING ===
+	echo /etc/ff $opt $popt $aopt $mopt $copt $nopt $iopt $file
+	/etc/ff $opt $popt $aopt $mopt $copt $nopt $iopt $file
+else
+     echo === FF COMMAND EXECUTING ===
+     echo /etc/ff $opt $popt $aopt $mopt $copt $nopt $iopt $file > $_output_file
+     /etc/ff $opt $popt $aopt $mopt $copt $nopt $iopt $file > $_output_file
+endif
+
+end:
+unset *flag *opt file action

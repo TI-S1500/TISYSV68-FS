@@ -1,0 +1,248 @@
+SED(1)							   SED(1)
+
+NAME
+     sed - Invokes the stream editor
+
+SYNOPSIS
+     sed -fen files
+
+DESCRIPTION
+   Purpose
+     The sed command copies the named files (standard input
+     default) to the standard output, editing them according to a
+     script of commands.
+
+   Options
+     -f sfile
+	  Causes the script to be taken from file sfile.
+
+     -escript
+	  Causes the argument following the option to be taken as
+	  the script.  If there is just one -e option and no -f
+	  option, the -e can be omitted.
+
+     -n   Suppresses the default output.
+
+   Script
+     A script consists of editing commands, one per line, in the
+     following form:
+
+     [address[,address]]function[arguments]
+
+     In normal operation, sed cyclically copies a line of input
+     into a pattern space (unless there is something left after a
+     D command), applies in sequence all commands whose addresses
+     select that pattern space, and at the end of the script
+     copies the pattern space to the standard output (except
+     under -n) and deletes the pattern space.
+
+     Some of the commands use a hold space to save all or part of
+     the pattern space for subsequent retrieval.
+
+   Address
+     An address is either a decimal number that counts input
+     lines cumulatively across files, a $ that addresses the last
+     line of input, or a context address, i.e., a /regular
+     expression/ in the style of ed(1) modified in the following
+     ways:
+
+     + In a context address, the construction \?regular
+       expression?, where ? is any character, is identical to
+       /regular expression/.  Note that in the context address
+       \xabc\xdefx, the second x stands for itself, so that the
+       regular expression is abcxdef.
+
+     + The escape sequence \n matches a newline embedded in the
+       pattern space.
+
+     + A period . matches any character except the terminal
+       newline of the pattern space.
+
+     + A command line with no addresses selects every pattern
+       space.
+
+     + A command line with one address selects each pattern space
+       that matches the address.
+
+     + A command line with two addresses selects the inclusive
+       range from the first pattern space that matches the first
+       address through the next pattern space that matches the
+       second.	(If the second address is a number less than or
+       equal to the line number first selected, only one line is
+       selected.)  Thereafter the process is repeated and the
+       program looks again for the first address.
+
+     Editing commands can be applied only to non-selected pattern
+     spaces by use of the negation function ! (described in the
+     following text).
+
+   Editing Functions
+     In the following list of functions, the maximum number of
+     permissible addresses for each function is indicated in
+     parentheses.
+
+     The text argument consists of one or more lines, all but the
+     last of which end with \ to hide the newline.  Backslashes
+     in text are treated like backslashes in the replacement
+     string of an s command and can be used to protect initial
+     blanks and tabs against the stripping that is done on every
+     script line.  The rfile or wfile argument must terminate the
+     command line and must be preceded by exactly one blank.
+     Each wfile is created before processing begins.  There can
+     be at most 10 distinct wfile arguments.
+
+     (1)a\
+     text      Appends text on the output before reading the next
+	       input line.
+
+     (2)b label
+	       Branches to the : command bearing the label.  If
+	       label is empty, branch to the end of the script.
+
+     (2)c\
+     text      Changes the text and deletes the pattern space.
+	       With 0 or 1 address or at the end of a 2-address
+	       range, place text on the output.  Start the next
+	       cycle.
+
+     (2)d      Deletes the pattern space.  Starts the next cycle.
+
+     (2)D      Deletes the initial segment of the pattern space
+	       through the first newline.  Starts the next cycle.
+
+     (2)g      Replaces the contents of the pattern space by the
+	       contents of the hold space.
+
+     (2)G      Appends the contents of the hold space to the
+	       pattern space.
+
+     (2)h      Replaces the contents of the hold space by the
+	       contents of the pattern space.
+
+     (2)H      Appends the contents of the pattern space to the
+	       hold space.
+
+     (1)i\
+     text      Inserts the text and places text on the standard
+	       output.
+
+     (2)l      Lists the pattern space on the standard output in
+	       an unambiguous form.  Nonprintable characters are
+	       spelled in two-digit ASCII and long lines are
+	       folded.
+
+     (2)n      Copies the pattern space to the standard output.
+	       Replaces the pattern space with the next line of
+	       input.
+
+     (2)N      Appends the next line of input to the pattern
+	       space with an embedded newline.	(The current line
+	       number changes.)
+
+     (2)p      Prints the pattern space to the standard output.
+
+     (2)P      Copies the initial segment of the pattern space
+	       through the first newline to the standard output.
+
+     (1)q      Quits and branches to the end of the script.  Does
+	       not start a new cycle.
+
+     (2)r rfile
+	       Reads the contents of rfile.  Places them on the
+	       output before reading the next input line.
+
+     (2)s/regular expression/replacement/flags
+	       Substitutes the replacement string for instances
+	       of the regular expression in the pattern space.
+	       Any character can be used instead of /.	For a
+	       fuller description, see ed(1).  Flags is zero or
+	       more of the following:
+
+	       g	 Globally substitutes for nonoverlapping
+			 instances of the regular expression
+			 (rather than just the first instance).
+
+	       n	 n=1-512. Substitute for just the nth
+			 occurrence of the regular expression in
+			 each line.
+
+	       p	 Prints the pattern space despite use of
+			 the -n option if a replacement was made.
+
+	       w wfile	 Writes (appends) the pattern space to
+			 wfile if a replacement was made.
+
+     (2)t label
+	  Tests and branches to the : command bearing the label
+	  if any substitutions have been made since the most
+	  recent reading of an input line or execution of a t.
+	  If label is empty, branch to the end of the script.
+
+     (2)w wfile
+	  Writes (appends) the pattern space to wfile.
+
+     (2)x Exchanges the contents of the pattern and hold spaces.
+
+     (2)y/string1/string2/
+	  Transforms (replaces) all occurrences of characters in
+	  string1 with the corresponding character in string2.
+	  The lengths of string1 and string2 must be equal.
+
+     (2)! function
+	  Applies the function (or group, if function is {) only
+	  to lines not selected by the address(es).
+
+     (0): label
+	  Does nothing except bear a label for b and t commands
+	  to branch to.
+
+     (1)= Places the current line number on the standard output
+	  as a line.
+
+     (2){ Executes the following commands through a matching }
+	  only when the pattern space is selected.
+
+     (0)  Is ignored by the program.
+
+     (0)# If a # appears as the first character on the first line
+	  of a script file, that entire line is treated as a
+	  comment, with one exception. If the character after the
+	  # is an "n", the default output will be suppressed.
+	  The rest of the line after #n is also ignored. A script
+	  file must contain at least one non-comment line.
+
+EXAMPLE
+     The following example is for use with the C shell or the TI
+     Business shell.  Assume that the file named sfile consists
+     of the following lines:
+
+	  s/April 1985/April 1986/
+	  s/accomplished/will accomplish/
+	  27 a \
+	  See the attached for a comprehensive list of unforeseen
+	  circumstances.
+
+     Assume that the file named myscript consists of the
+     following lines:
+
+	  #csh
+	  foreach  file (*.report)
+	     sed -f /usr/rr/scripts/sfile /usr/rr/folder/$file > temp;
+	     mv temp $file; end
+
+     The command  myscript & does the following in all files with
+     the suffix .report in the current directory:
+
+     + Changes all occurrences of ``April 1985'' to ``April
+       1986''
+
+     + Changes all occurrences of ``accomplished'' to ``will
+       accomplish''
+
+     + Appends ``See the attached for a comprehensive list of
+       unforeseen circumstances.'' to line 27.
+
+SEE ALSO
+     awk(1), ed(1), grep(1).
+
+

@@ -1,0 +1,63 @@
+MTCRESET(1T)					     MTCRESET(1T)
+
+NAME
+     mtcreset - Forces a download of multidrop terminal
+     concentrators
+
+SYNOPSIS
+     mtcreset -Rps [mtcnames]
+
+DESCRIPTION
+   Function
+     The mtcreset command forces the specified multidrop terminal
+     concentrators (MTCs) to enter the download mode.  When the
+     terminal concentrator is running in the RAM downloaded code,
+     this command has the same effect as physically pushing the
+     ATTN button on the MTC once.
+
+     Only the super-user is allowed to issue this command.
+
+   Options
+     -R     Resets all the MTCs defined in the MTC definition
+	    file, /etc/mtctab.	The utility scans the MTC
+	    information table kept by the MTC download process
+	    and resets each MTC.
+
+     -p port
+	    Resets all the MTCs defined on this CCB option port.
+	    This option is only valid when entered along with the
+	    -s option.
+
+     -s slot
+	    Resets all the MTCs defined on this CCB slot.
+
+   Arguments
+     mtcnames
+	    An MTC global name or a list of MTC global names as
+	    specified in the MTC definition file, /etc/mtctab.
+
+EXAMPLES
+     The following are example command lines for the mtcreset
+     command:
+
+	  mtcreset payroll mtc0
+	  mtcreset -R
+
+DIAGNOSTICS
+     One of the following messages is displayed for each specified MTC upon
+     normal mtcreset completion:
+
+     mtcname is reset
+		      Indicates that the specified MTC is reset
+		      and has entered the download mode.  The
+		      download LEDs on the MTC will be turned on.
+
+     Unable to reset mtcname
+		      Indicates that the specified MTC did not
+		      reset.  The MTC might be in an unknown
+		      state.  Further investigation is required.
+
+SEE ALSO
+     mtcdl(1T), mtcdump(1T), mtcstat(1T).
+
+

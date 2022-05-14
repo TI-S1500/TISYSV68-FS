@@ -1,0 +1,40 @@
+# cshf DIRCMP - COMPARE TWO DIRECTORIES 
+#	@(#)DIRCMP.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^DIRCMP -- COMPARES DIRECTORIES"     \
+	"^Directory 1:"  _input_dir  acnm $_input_dir  \
+	"^Directory 2:"  F2  acnm $F2  \
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Compare Files With the Same Name:" dflag yesno n\
+	"^Print Messages About Identical Files:" sflag yesno y\
+	"^#$*"
+
+if( $abort) goto end
+if ($dflag == "y") set dopt = -d$opt
+if ($sflag == "n") set sopt = -s$opt
+
+echo "=== DIRCMP COMMAND EXECUTING ==="
+if (!(-d "$_input_dir")) then
+	echo ERROR - $_input_dir is not a directory.
+	set abort = 1
+endif
+if (!(-d "$F2")) then
+	echo ERROR - $F2 is not a directory.
+	set abort = 1
+endif
+
+if ($abort) goto end
+if ($_output_file == "") then
+	echo dircmp "$dopt $sopt $_input_dir  $F2"
+	echo Waiting for completion of command
+	dircmp  $dopt $sopt $_input_dir  $F2 
+else
+	echo dircmp $dopt $sopt $_input_dir  $F2 ">"$_output_file
+	echo Waiting for completion of command
+	dircmp  $dopt $sopt $_input_dir  $F2  >$_output_file
+endif
+
+end:
+unset  *opt *flag

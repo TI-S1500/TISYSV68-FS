@@ -1,0 +1,56 @@
+LTXCOFF(1T)                                           LTXCOFF(1T)
+
+NAME
+     ltxcoff - Invokes the 68020 assembler linker text conversion
+     utility
+
+SYNOPSIS
+     ltxcoff file
+
+DESCRIPTION
+   Purpose
+     The ltxcoff command converts an intermediate linker text
+     (ltx) format file to TI System V Common Object File Format
+     (COFF).  The ltxcoff command processes an ltx file created
+     by the 68020 assembler source processor as(1T) and produces
+     a COFF output file for input to the link editor ld(1) or the
+     archive utility ar(1).
+
+   Discussion
+     The ltxcoff command appends the default file name suffix
+     .ltx to the input file name.  The user is not allowed to
+     specify an input file name suffix.
+
+     The ltxcoff command derives the output file name by adding
+     .o to the input file name.  The user is not allowed to
+     specify any part of the output file name.
+
+     The linker text dump utility, ltxdump(1T) is useful in
+     diagnosing error messages produced by ltxcoff.
+
+     See the TI System V 68020 Assembler manual for further
+     discussion of the ltx conversion process.  See the TI System
+     V Support Tools Guide for information about COFF.
+
+PROMPTS
+   File Name:
+     Enter the name of the file to be processed.
+
+DIAGNOSTICS
+     Exit status values are as follows:
+
+     + 0 - Completed with no errors and no warnings
+
+     + 1 - Completed with no errors; warnings only
+
+     + 2 - Completed with error(s)
+
+     + 3 - Aborted; did not run to completion
+
+SEE ALSO
+     a68k(1T), as(1), ar(1), ld(1), ltxdump(1T).
+     TI System V 68020 Assembler manual.
+     ``Common Object File Format'' in the TI System V Support
+     Tools Guide .
+
+

@@ -1,0 +1,193 @@
+UUSTAT(1C)                                             UUSTAT(1C)
+
+NAME
+     uustat - Performs a uucp(1) status inquiry and job control
+
+SYNOPSIS
+     uustat -cjkmMoOqrsuy
+
+DESCRIPTION
+   Purpose
+     The uustat command displays the status of, or cancels,
+     previously specified uucp(1) commands or provides general
+     status on uucp connections to other systems.
+
+   Options
+     -chour    Removes status entries older than hour hours.
+               This administrative option can be initiated only
+               by the user uucp or the super-user.
+
+     -jjobn    Reports the status of the uucp request jobn.  If
+               all is used for jobn, the status of all uucp
+               requests is reported.  A jobn must be supplied.
+               Otherwise, the command usage message is displayed
+               and the uustat command fails.
+
+     -kjobn    Kills the uucp request whose job number is jobn.
+               The killed uucp request must belong to the person
+               issuing the uustat command unless the user is the
+               super-user.
+
+     -mmch     Reports the status of accessibility of machine
+               mch.  If mch is specified as all, then the status
+               of all machines known to the local uucp is
+               provided.
+
+     -Mmch     Performs the same task as the -m option except
+               that two times are printed:  the time that the
+               last status was obtained and the time that the
+               last successful transfer to that system occurred.
+
+     -ohour    Reports the status of all uucp requests older than
+               hour hours.
+
+     -O        Reports the uucp status using the octal status
+               codes listed in the next section.  If this option
+               is not specified, the verbose description is
+               printed with each uucp request.
+
+     -q        Lists the number of jobs and other control files
+               queued for each machine and the time of the oldest
+               and youngest file queued for each machine.  If a
+               lock file exists for that system, its date of
+               creation is listed.
+
+     -rjobn    Rejuvenates jobn. The modification time of jobn is
+               set to the current time.  This setting prevents
+               uuclean from deleting the job until the job's
+               modification time reaches the limit imposed by
+               uuclean.
+
+     -ssys     Reports the status of all uucp requests that
+               communicate with remote system sys.
+
+     -uuser    Reports the status of all uucp requests issued by
+               user.
+
+     -yhour    Reports the status of all uucp requests younger
+               than hour hours.
+
+     When no options are given, uustat outputs the status of all
+     uucp requests issued by the current user.  Note that the
+     options -j, -m, -k, -c, or -r, are mutually exclusive.
+
+   Octal Status Codes
+     OCTAL     STATUS
+
+     000001    The copy failed, but the reason cannot be
+               determined.
+
+     000002    Permission to access local file is denied.
+
+     000004    Permission to access remote file is denied.
+
+     000010    Bad uucp command is generated.
+
+     000020    The remote system cannot create temporary file.
+
+     000040    Cannot copy to remote directory.
+
+     000100    Cannot copy to local directory.
+
+     000200    The local system cannot create temporary file.
+
+     000400    The uucp command cannot be executed.
+
+     001000    The copy partially succeeded.
+
+     002000    The copy finished and the job has been deleted.
+
+     004000    The job is queued.
+
+     010000    The job is being killed.
+
+     020000    The job has been killed.
+
+EXAMPLE
+     The following command prints the status of all uucp requests
+     issued by user hdc to communicate with system mhtsa within
+     the last 72 hours:
+
+          uustat -uhdc -smhtsa -y72
+
+     The job request status statement has the following form:
+
+          job-number user remote-system command-time status-time
+          status
+
+     The status may be either an octal number or a verbose
+     description.
+
+     The machine accessibility status statement has the following
+     form:
+          system-name time status
+
+     The time is the latest status time and status is a self-
+     explanatory description of the machine status.
+
+PROMPTS
+   Report Current User's Requests:
+     Initial value is no.  If you enter yes, information about
+     only the current user is displayed.
+
+   Hour to Remove Status Entries:
+     Optional. All status entries older than the value entered
+     will be removed.
+
+   Job Number for Status Report :
+     Optional. The status report will be printed for the value
+     entered.
+
+   Job Number to be Killed :
+     Optional. Enter the job number of the request to be killed.
+
+   Machine Name to Report Accessibility:
+     Response to this prompt is optional. The machines
+     accessibility will be printed for the name entered.
+
+   Job Number for Rejuvenation:
+     Optional. Enter the job number to be rejuvenated.  The
+     modification time is set to the current time.  After one of
+     these options another menu appears:
+
+   Machine Name for Statuses:
+     Optional. The machine status will be printed for the name
+     entered.
+
+   Hour Report Statuses:
+     Optional. All status entries older than the value entered
+     will be reported.
+
+   Report Statues in Octal:
+     Initial value is no.  If you enter yes, the statues will be
+     reported in octal.
+
+   List Number of Queued Jobs:
+     No is the initial value.  Enter yes to list the number of
+     jobs and other control files queued for each system and the
+     time of the oldest and youngest file queued for each system.
+     If a lock file exists for that system, the date of creation
+     of the lock file is listed.
+
+   Remote System Name for Status Report:
+     Optional. Enter a system name.  The command reports the
+     status of all uucp requests that communicate with that
+     remote system.
+
+   User Name for Request Status Report:
+     Optional. Enter a user name.  The command reports the status
+     of all requests issued by that user.
+
+   Hour for Younger Than Status Report:
+     Optional. All status entries younger than the value entered
+     will be reported.
+
+FILES
+     /usr/spool/uucp         Spool directory
+     /usr/lib/uucp/L_stat    System status file
+     /usr/lib/uucp/R_stat    Request status file
+
+SEE ALSO
+     uucp(1C).
+
+

@@ -1,0 +1,24 @@
+
+The slot configuration screen presents the following information for each 
+processor board in the system:
+
+    Slot        Shows the number of the system board slot in which the 
+                processor board resides. The PM software can monitor as 
+                many as 16 system board slots. The slot numbers appear in 
+                decimal format (0-15) on this screen.
+
+    Vendor      Shows the manufacturer of the board. For example, TIAU refers 
+                to Texas Instruments Austin site.
+
+    Part Number Shows the TI part number for this board.
+
+    Revision    Shows the revision level of this board.
+
+    Type        Identifies the board type: CPU, CCB, MSC, or NPI.
+
+    Processor   Identifies the processor on this board. This information is 
+                given only for CPU boards.
+
+This screen allows you to see the configuration of your system and the revision 
+levels of the system boards without shutting down the system or opening the 
+system enclosure.

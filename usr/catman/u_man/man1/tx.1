@@ -1,0 +1,401 @@
+TX(1T)							   TX(1T)
+
+NAME
+     tx - Invokes a screen editor
+
+SYNOPSIS
+     tx [file]
+
+DESCRIPTION
+   Purpose
+     The tx command allows screen mode editing of an ASCII text
+     file.  This editor is easier to learn and to use than the
+     vi(1) editor because tx uses function keys and cursor
+     positioning keys.
+
+   Overview
+     Support exists for recovery of edits in the event of a
+     system crash or abnormal edit termination.  In the event of
+     an abnormal edit termination (such as a system crash), the
+     edit can be recovered.  When the system is restored, invoke
+     tx.  The following message is displayed:
+
+	  An incomplete edit exists.  Recover filename?
+
+     Enter y to recover or n to abort the edit.  If you enter y,
+     the editor displays filename (the file to be recovered) and
+     executes the changes made up to the time of termination.
+     You can now resume editing.
+
+     The editor handles files containing a maximum of 512
+     characters per line.  The edited file is not modified until
+     a Replace or Save command is executed.
+
+     The editor supports terminals that are supported by field
+     edit.  See the Key command described in the Commands part of
+     this manual entry and see ``Terminal I/O Overview'' in the
+     TI System V Programmer's Guide.
+
+   Invocation
+     To invoke the tx editor, enter the following command:
+
+	  tx [file]
+
+     If the file name is not given, a prompt for the file name is
+     displayed.
+
+     When an edit session begins, the editor is in typeover mode;
+     that is, every character entered is written over the
+     character in the current cursor position.
+
+     The edited text can be replaced in the original file,
+     replaced in a different file, or discarded with no change to
+     the original file.  See the Quit command described in the
+     Commands part of this manual entry.
+
+   Commands
+     To enter command mode, press the CMD (command) key.  In
+     command mode, the following command names appear at the top
+     of the display.  Select a command by pressing the key that
+     corresponds to the first letter of the desired command name.
+
+     Block   Moves or copies a block of text.  Before selecting
+	     the Block command, a block of text must be defined.
+	     To define a block, move the cursor to the beginning
+	     of the block and press F5 (the block key).  If the
+	     block is more than one line, move to the end of the
+	     block and press F5.  The block is highlighted.
+	     Blocks can contain whole lines only.  To move or
+	     copy the block, position the cursor at the line
+	     above where you want the block to be moved or
+	     copied.  Now that a block has been defined, press
+	     the CMD key.
+
+	     The bottom status line of the screen shows the block
+	     start/stop line numbers.  Press b to show the block
+	     operations list.  From this list select one of the
+	     following block operations by pressing A, C, D, M,
+	     or P:
+
+	     Adjust
+		  Adjusts text to the left or right.  To
+		  reposition the block left or right, enter a
+		  positive or negative integer.  If a large
+		  negative value is entered, the text will be
+		  left justified.  If a large positive value is
+		  entered, each line will be moved toward the
+		  right margin as much as possible.
+
+	     Copy
+		  Copies a duplicate of the selected block to the
+		  current cursor position.
+
+	     Delete
+		  Deletes the selected block.
+
+	     Move
+		  Moves the selected block to the current cursor
+		  position.
+
+	     Put  Saves the block to a file.  The user must enter
+		  the destination file name.
+
+     Find    Searches for a string.  The search occurs from the
+	     current position to the end of the file.  The user
+	     must enter the desired text string at the prompt and
+	     press RETURN.  Imbedded spaces are allowed.  The
+	     search string can be a maximum of 36 characters
+	     long.  To search for another occurrence of the same
+	     string, press the FndNx function key.  The user can
+	     define a key to represent the FndNx function with
+	     the Key command or use the default, SHIFT-F10 (that
+	     is, press and hold the SHIFT key and press the F10
+	     key).
+
+     Help    Displays the help information for the tx editor.
+	     (While the help information is displayed, all
+	     show(1T) commands are valid.  For example, press F1
+	     to scroll the display toward the end of the file.)
+	     Press q to return to the editor.
+
+     Insert  Inserts a file, beginning on the line below the
+	     cursor.  The user enters the desired file name at
+	     the prompt.
+
+     Key     Displays a list of functions that allow mapping of
+	     function keys.  The editor retains a default set of
+	     function key assignments.	Use Key to customize the
+	     terminal function keys to perform editor functions.
+	     If the default key mapping is modified by this
+	     function, a file can be created to retain the new
+	     mapping for future edits.	The default file name is
+	     EDITKEYS.DAT in the user's home directory.  See ``TI
+	     Utilities Tutorial'' in the TI System V User's Guide
+	     for more information on Key.
+
+     Position
+	     Positions the cursor to any line in the file.  Enter
+	     the absolute line number.
+
+     Quit    Displays a command list.  If tabs existed in the
+	     file when the file was read for editing, the words
+	     With Tabs are displayed.  If no tabs existed,
+	     Without Tabs is displayed.  Select one of the
+	     following commands by pressing the key that
+	     corresponds to the first letter of the desired
+	     option:
+
+	     Abort   Discards all editing changes made during the
+		     current edit.  A secondary prompt appears to
+		     confirm that the changes are to be
+		     discarded.
+
+	     No tabs
+		     Does not compress spaces into tab characters
+		     when saving the file.  The message displayed
+		     after the Quit Edit prompt gives the status
+		     of this option.  Once this option is
+		     selected, another Quit command can be
+		     entered.
+
+	     Replace
+		     Saves the edited text to the original file.
+
+	     Save    Saves the edited text to the file name
+		     specified by the user.  The default file
+		     name is the original file name.  If the file
+		     name entered is different from the original
+		     file name, the original file is untouched,
+		     and the text is saved in the new file.  If
+		     the new file already exists, another prompt
+		     confirms the overwrite of this file.
+
+	     Tabs    Saves the file, compressing spaces using the
+		     tab character.  The message displayed after
+		     the Quit Edit prompt gives the status of
+		     this option.  Using Tabs to compress a file
+		     can save much disk space if the text has
+		     white space in the left margin.
+
+     Replace
+	     Replaces a string.  Enter the original string then
+	     the replacement string.  To replace the same string
+	     again, press the RepNx function key.  This key is
+	     defined by the Key command.  The F6 key is the
+	     default.  Replacement strings can be a maximum of 36
+	     characters long.  Global replacement is optional and
+	     causes replacement on all occurrences of the string
+	     throughout the file.  Without global replacement,
+	     only the first occurrence of the string is replaced.
+
+     Show    Shows another file.  Enter the file name if the file
+	     is in the current working directory or enter the
+	     absolute file name.  The show utility is used to
+	     view the file.  Press the q key to stop displaying
+	     the file and return to the edit.  Other show file
+	     utilities can be used by setting the SHOW
+	     environment variable to the path of the desired show
+	     file utility.
+
+     Tabs    Lists functions that allow manipulation of tabs.  A
+	     default tab ruler line is displayed if the tabs have
+	     not been modified.  If the tabs have been changed, a
+	     file that retains the new ruler line can be created
+	     in the current working directory.	Subsequent edits
+	     started from this current working directory will use
+	     the tab settings saved in the default file
+	     EDITTABS.DAT.  See the TI System V User's Guide for
+	     more information on this function.
+
+     Update  Updates the original file during an edit by writing
+	     all new changes to disk.  No confirmation prompt is
+	     given.
+
+     !	     Escapes to the shell and allows entry of shell
+	     commands.
+
+   Programming Function Keys
+     The tx editor supports functions that are accessed with
+     function keys or control keys.  The following list shows
+     function mnemonics and function descriptions.
+
+     Mnemonic	 Description
+
+     AdjLn	 Enters line-adjust mode to change indentation.
+
+     BegFl	 Moves to the beginning of the file.
+
+     BegLn	 Moves to the beginning of the line.
+
+     BkDel	 Delete a character to the left of the cursor.
+
+     BkTab	 Moves to the previous tab stop on the line.
+
+     BkWd	 Moves to the end of the previous word.
+
+     Block	 Marks the boundaries of a block.
+
+     BotLn	 Moves to the bottom line on the display.
+
+     CmdMd	 Enters command mode.
+
+     DelCh	 Deletes the character to the right of the
+		 cursor.
+
+     DelEL	 Deletes all characters to the right of the
+		 cursor.
+
+     DelLn	 Removes the current line.
+
+     DelWd	 Deletes a word.  (Words are delimited by
+		 spaces.)
+
+     Down	 Moves the cursor down one line.
+
+     DupLn	 Copies the contents of the previous line up to
+		 the next tab stop.
+
+     EndFl	 Moves to the end of the file.
+
+     EndLn	 Moves to the end of the line.
+
+     FndNx	 Finds the next occurrence of the search string.
+		 (See Find in the Commands part of this manual
+		 entry.)
+
+     FstWd	 Moves to the first word on the line.
+
+     Home	 Moves to the home position of the current
+		 display.
+
+     InsCh	 Inserts any character that follows until a
+		 noncharacter is specified.
+
+     InsLn	 Inserts a line above the current line.
+
+     InsMd	 Toggles insert line mode after RETURN key.
+
+     Join	 Adds as many words as possible to the current
+		 line from the next line.
+
+     Left	 Moves the cursor one character position to the
+		 left.
+
+     LnDwn	 Scrolls the screen down a line.
+
+     LnUp	 Scrolls the screen up a line.
+
+     LstWd	 Moves to the last word on the line.
+
+     NxtWd	 Moves to the beginning of the next word.
+
+     Paste	 Writes a previously deleted line at the current
+		 location.
+
+     PgDwn	 Moves to the next screen.
+
+     PgUp	 Moves to the previous screen.
+
+     RepNx	 Replace the next occurrence of the replacement
+		 string.  (See Replace in the Commands part of
+		 this manual entry.)
+
+     Retrn	 Moves to the next line; adds a new line if in
+		 insert mode.
+
+     Right	 Moves the cursor one character position to the
+		 right.
+
+     Split	 Moves all text to the right of and under the
+		 cursor to next line.
+
+     Tab	 Moves to the next tab stop.
+
+     TopLn	 Moves to the top line on the screen.
+
+     UndLn	 Adds a previously deleted line to the current
+		 location.
+
+     Undo	 Restores a line to its previous form.
+
+     UndWd	 Restores (undeletes) a word that was previously
+		 deleted.
+
+     Up 	 Moves one line closer to the beginning of the
+		 file.
+
+     If function keys have not been customized or if function
+     keys are not available on a particular terminal,  a default
+     set of function and control keys are used to perform the
+     various editor functions.
+
+     The following list shows the correspondence between control
+     keys and editor functions.
+
+     Control Key		 Editor Function
+
+     BACKSPACE or CTRL-H	 BkSp
+
+     SHIFT-TAB or CTRL-I	 Tab
+
+     LINEFEED or CTRL-J 	 Down
+
+     Up Arrow   		 Up
+
+     -> 			 Right
+
+     RETURN or CTRL-M		 Return
+
+     F2 			 PgDwn
+
+     TAB			 BkTab
+
+     F6 			 RepNx
+
+     SHIFT-F2			 BegFl
+
+     CMD			 CmdMd
+
+     F1 			 PgUp
+
+   termcap File Entries
+     The list that follows shows the the operations required of
+     the terminal for the tx editor to execute.  The two-
+     character termcap function name is shown followed by the
+     function description.
+
+     cl - Clears screen
+     cm - Positions cursor
+     dl - Delete the current line
+     al - Add a line
+     ce - Delete to the end of line
+
+FILES
+     /etc/termcap
+     /etc/fecap
+     $HOME/EDITTABS.DAT
+     $HOME/EDITKEY.DAT
+     $HOME/tx.process_ID
+     /process_ID/tx
+     current_working_directory/txbakprocess_ID
+
+PROMPTS
+   File Name:
+     Enter the name of the file to edit.
+
+SEE ALSO
+     dfm(1T), pwd(1), show(1T).
+     ``TI Utilities Tutorial'' in the TI System V User's Guide.
+
+NOTES
+     When responding to prompts with file names, enter either the
+     absolute file name or the file name relative to the current
+     working directory.  When tx is invoked from dfm(1T), the
+     current working directory is the working directory when dfm
+     was first entered; this directory is not always the same as
+     the currently displayed directory.  If in doubt, enter the
+     absolute file name.
+
+     The tx editor requires terminal entries in /etc/termcap and
+     /etc/fecap.  The name of the termcap and fecap entries must
+     be the same.

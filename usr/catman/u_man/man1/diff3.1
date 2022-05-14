@@ -1,0 +1,168 @@
+DIFF3(1)                                                 DIFF3(1)
+
+NAME
+     diff3 - Compares three files
+
+SYNOPSIS
+     diff3 [-e|x|3] file1 file2 file3
+
+DESCRIPTION
+   Purpose
+     The diff3 command compares three files and publishes
+     disagreeing ranges of text flagged with codes and with
+     script for the editor ed(1).  The following are the codes
+     and their meanings:
+
+     ====   All three files differ
+
+     ====1  file1 is different
+
+     ====2  file2 is different
+
+     ====3  file3 is different
+
+   Options
+     The options are mutually exclusive.
+
+     -3     Produces a script for the ed editor that incorporates
+            all changes between file3 and the other 2 files. (The
+            3: portion of the differences flagged by ====3).
+
+     -e     The combination of -3 and -x
+
+     -x     Produces an ed script that incorporates all changes
+            between file1 and file3. (The 3: portion of the
+            differences flagged by ====).
+
+   Discussion
+     The type of change that results when converting a given
+     range of a given file to some other is indicated by the
+     command output in one of these ways:
+
+     f:n1a           Text is to be appended after line number n1
+                     in file f, where f = 1, 2, or 3.
+
+     f:n1,n2c        Text is to be changed in the range line n1
+                     to line n2.  If n1 = n2, the range may be
+                     abbreviated to n1.
+
+     The original contents of the range follow immediately after
+     a c indication.  When the contents of two files are
+     identical, the contents of the lower-numbered file are
+     suppressed.
+
+     The diff3 command uses diff(1) to preprocess the files.  If
+     diff(1) detects errors, diff3 will be unable to complete its
+     job.
+
+EXAMPLES
+     The following examples operate on the files named x, y, and
+     z.  File x consists of the following lines:
+
+          Same 1
+          Same 2
+          Different A
+          Same 4
+          Same 5
+
+     File y consists of the following lines:
+
+          Same 1
+          Same 2
+          Different B
+          Same 4
+          Same 5
+
+     File z consists of the following lines:
+
+          Same 1
+          Same 2
+          Different C
+          Same 4
+          Same 5
+
+     The command diff3 x y z results in the following output:
+
+          ====
+          1:3c
+            Different A
+          2:3c
+            Different B
+          3:3c
+            Different C
+
+     The command diff3 -e x y z > out redirects the following
+     output to the file out:
+
+          3c
+          Different C
+          w
+          q
+
+     The following command can be used to apply the resulting
+     script to file x.
+
+          (cat out; echo '1,$p') | ed - x
+
+     The file named x now contains the following lines:
+
+          Same 1
+          Same 2
+          Different C
+          Same 4
+          Same 5
+
+PROMPTS
+   File 1:
+     Path name of file to compare.
+
+   File 2:
+     Path name of file to compare.
+
+   File 3:
+     Path name of file to compare.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Produce Script for ED Editor:
+     The initial value is no.  Enter a yes to produces a script
+     for the editor ed that incorporates into file 1 all changes
+     between file 2 and file 3.
+
+   Select Changes Flagged ====:
+     The initial value is no.  Enter a yes to produces a script
+     for the editor ed that incorporates only changes flagged
+     ====.
+
+   Select Changes Flagged ====3:
+     The initial value is no.  Enter a yes to produces a script
+     for the editor ed that incorporates only changes flagged
+     ====3.
+
+FILES
+     /tmp/d3*
+     /bin/diff3prog
+
+SEE ALSO
+     diff(1).
+
+NOTES
+     Text lines that consist of a single . negate the effect of
+     option -e.
+
+     The diff3 command cannot process files longer than 64K
+     bytes.
+
+     If the files are too different, diff3 can fail with a too
+     many changes message.
+
+     If lines in any of the three files being compared are longer
+     than 512 characters, errors might occur.
+
+     Depending on the specific context of the differences, the
+     edit scripts may not be what is expected. Examine them
+     carefully before applying them.
+
+

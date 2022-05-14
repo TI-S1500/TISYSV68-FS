@@ -1,0 +1,28 @@
+# cshf 	du--displays disk usage 
+#	@(#)DU.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^DU -- SUMMARIZES DISK USAGE"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^Display Blocks/File:" aflag yesno n\
+	"^Generate Status Messages:" rflag yesno n\
+	"^Display Total Blocks:" sflag yesno n\
+	"^#$*"
+#
+# code for du to enter extra file names
+#
+if ($abort) goto end
+if ("$_input_file" == "") set _input_file = "."
+if ($sflag == "y") set opt = s$opt
+if ($aflag == "y") set opt = a$opt
+if ($rflag == "y") set opt = r$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== DU COMMAND EXECUTING ==="
+echo du $opt $_input_file
+du $opt $_input_file
+
+end:
+unset *opt *flag

@@ -1,0 +1,15 @@
+# cshf  ltxcoff -- Creates COFF module for assembler linker 
+#	@(#)LTXCOFF.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^LTXCOFF -- INVOKES THE 68020 ASSEMBLER LINKER TEXT CONVERSION UTILITY"\
+	"^*File Name:" _input_file acnm $_input_file\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== LTXCOFF COMMAND EXECUTING ==="
+echo ltxcoff $_input_file
+ltxcoff $_input_file
+
+end:

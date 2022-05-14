@@ -1,0 +1,49 @@
+UNPACK(1)                                               UNPACK(1)
+
+NAME
+     unpack - Expands packed files
+
+SYNOPSIS
+     unpack files
+
+DESCRIPTION
+   Purpose
+     The unpack command expands files created by pack(1).
+
+   Discussion
+     For each file specified in the command, a search is made for
+     file.z (or just file, if file ends in .z).  If this file
+     appears to be a packed file, it is replaced by its expanded
+     version.  The new file has the .z suffix stripped from its
+     name, and it has the same access modes, access and
+     modification dates, and owner as the packed file.
+
+     The unpack command returns a value for the number of files
+     it was unable to unpack.  Failure might occur for any of the
+     following reasons:
+
+     + The file name (exclusive of the .z ) has more than 12
+       characters.
+
+     + The file cannot be opened.
+
+     + The file does not appear to be the output of pack.
+
+     + A file with the unpacked name already exists.
+
+     + The unpacked file cannot be created.
+
+EXAMPLE
+     The following example displays to the standard input a
+     packed file named name.z:
+
+          unpack name.z
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of the files to be expanded.
+
+SEE ALSO
+     cat(1), pack(1), pcat(1).
+
+

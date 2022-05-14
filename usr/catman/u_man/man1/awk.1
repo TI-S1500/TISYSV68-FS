@@ -1,0 +1,201 @@
+AWK(1)                                                     AWK(1)
+
+NAME
+     awk - Calls a pattern scanning and processing language
+
+SYNOPSIS
+     awk -fF prog parameters files
+
+DESCRIPTION
+   Purpose
+     The awk command scans each input file for lines that match
+     any of a set of patterns specified in prog.  With each
+     pattern in prog there can be an associated action that is
+     performed when a line of a file matches the pattern.
+
+     The set of patterns may appear literally as prog, or in a
+     file specified as -f file.  The prog string should be
+     enclosed in single quotes (') to protect it from the shell.
+
+   Options
+     -Fc  Specifies any single character, c, as a field
+          separator.
+
+     -ffile
+          Specifies the file containing the set of patterns to
+          match.
+
+   Discussion
+     Parameters, in the form x=... y=... etc., can be passed to
+     awk.
+
+     Files are read in order.  If there are no files, the
+     standard input is read.  The file name - means the standard
+     input.  Each line is matched against the pattern portion of
+     every pattern-action statement.  The associated action is
+     performed for each matched pattern.
+
+     An input line consists of fields separated by white space.
+     (This default can be changed by using FS, as shown below).
+     The fields are denoted $1, $2, ...; $0 refers to the entire
+     line.
+
+     A pattern-action statement has the form:
+
+          pattern { action }
+
+     A missing action means print the line.  A missing pattern
+     always matches.  An action is a sequence of statements.  A
+     statement can be one of the following:
+
+          if ( conditional ) statement [ else statement ]
+          while ( conditional ) statement
+          for ( expression ; conditional ; expression ) statement
+          break
+          continue
+          { [ statement ] ... }
+          variable = expression
+          print [ expression-list ] [ >expression ]
+          printf format [ , expression-list ] [ >expression ]
+          next # skip remaining patterns on this input line
+          exit # skip the rest of the input
+
+     Statements are terminated by semicolons, newlines, or right
+     braces.  An empty expression-list stands for the whole line.
+     Expressions take on string or numeric values as appropriate,
+     and are built using the operators +, -, *, /, %, and
+     concatenation (indicated by a blank).  The C operators ++,
+     --, +=, -=, *=, /=, and %= are also available in
+     expressions.  Variables may be scalars, array elements
+     (denoted x[i]) or fields.  Variables are initialized to the
+     null string.  Array subscripts may be any string, not
+     necessarily numeric.  This allows for a form of associative
+     memory.  String constants are surrounded by quotation marks.
+
+     The print statement prints its arguments to the standard
+     output (or to a file if >expr is present), separated by the
+     current output field separator and terminated by the output
+     record separator.  The printf statement formats its
+     expression list according to the format (see printf(3S)).
+
+     The built-in function length returns the length of its
+     argument taken as a string, or of the whole line if no
+     argument.  There are also built-in functions exp, log, sqrt,
+     and int.  The int function truncates its argument to an
+     integer.  The function substr (s,m,n returns the n
+     -character substring of s that begins at position m.  The
+     function sprintf (fmt,`expr, `expr,`...) formats the
+     expressions according to the printf(3S) format given by fmt
+     and returns the resulting string.
+
+     Patterns are arbitrary Boolean combinations ( !, ||, &&, and
+     parentheses) of regular expressions and relational
+     expressions.  Regular expressions must be surrounded by
+     slashes and are as in egrep(1).  Isolated regular
+     expressions in a pattern apply to the entire line.  Regular
+     expressions may also occur in relational expressions.  A
+     pattern may consist of two patterns separated by a comma.
+     In this case, the action is performed for all lines between
+     an occurrence of the first pattern and the next occurrence
+     of the second.
+
+     A relational expression is one of the following:
+
+     + expression matchop regular-expression
+
+     + expression relop expression
+
+     where a relop is any of the six relational operators in C,
+     and a matchop is either ~ (for contains) or !~ (for does not
+     contain).
+
+     A conditional is an arithmetic expression, a relational
+     expression, or a Boolean combination of these.
+
+     The special patterns BEGIN and END can be used to capture
+     control before the first input line is read and after the
+     last.  BEGIN must be the first pattern, END the last.
+
+     A single character c may be used to separate the fields by
+     starting the program with:
+
+     BEGIN1 { FS1 = c }
+
+     or by using the -Fc option.
+
+     Other variable names with special meanings include NF, the
+     number of fields in NR, the ordinal number of the FILENAME,
+     the name of the current OFS, the output field separator
+     (default ORS, the output record separator (default and OFMT,
+     the output format for numbers %.6g).
+
+EXAMPLE
+     The following example scans the file named input for
+     patterns defined in the file named program.  The parameter x
+     is passed to awk.
+
+          awk -f program n=5 input
+
+     The file named program consists of the following lines:
+
+          length > 72        # Print lines longer than 72 characters.
+          { print $2, $1 }   # Print first two fields in opposite order.
+          { s += $1 }
+                             # The previous two lines say to add the elements of
+                             # the first column, print the sum and average.
+
+          { for (i = NF1; i > 0; -i) print $i }
+                             # Print fields in reverse order.
+          /start/, /stop/    # Print all lines between start/stop pairs.
+
+          $1 != prev { print; prev = $1 }
+                             # Print all lines whose first field is
+                             # different from the previous one.
+
+          /Page/ { $2 = n++; }
+          { print }
+                             # Print file, filling in page numbers
+                             # starting at 5.
+          END  {print "sum is", s, " average is", s/NR }
+
+PROMPTS
+   Input File Name(s):
+     Response to this prompt is optional.  Enter the name of the
+     file that contains the pattern or set of patterns to be
+     matched.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Pattern File Name:
+     Response to this prompt is optional.  Enter the name of the
+     file to process.
+
+   Pattern(s) to be Matched:
+     Response to this prompt is optional.  Enter the pattern or
+     patterns to be matched with the input file.
+
+   Field Character Separator:
+     Response to this prompt is optional.  Enter a character to
+     use as a field delimiter.
+
+   Parameters:
+     Response to this prompt is optional.  Enter the parameters
+     that specify the action to be performed.
+
+SEE ALSO
+     grep(1), lex(1), sed(1).
+     ``awk Programming Language'' in the TI System V Support
+     Tools Guide.
+
+NOTES
+     Input white space is not preserved on output if fields are
+     involved.
+
+     There are no explicit conversions between numbers and
+     strings.  To force an expression to be treated as a number,
+     add 0 to it.  To force an expression to be treated as a
+     string, concatenate the null string ("") to it.
+
+

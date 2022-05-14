@@ -1,0 +1,576 @@
+# @(#)install.scr	1.23 90/11/27 Texas Instruments
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1989.  ALL	
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	
+#	ASSOCIATED DOCUMENTATION.					
+
+while true; do
+	echo
+	echo "What kind of terminal is this?"
+	echo "          (1):      931"
+	echo "          (2):      924"
+	echo "          (3):      924 in 931 mode"
+	echo "          (4):      928"
+	echo "          (5):      hardcopy device"
+	echo "Enter the number of your selection: \c"
+	read type
+	if [ $type = "1" ]; then
+		TERM=t9
+		export TERM
+		BOLD="tput smso"
+		PLAIN="tput rmso"
+		mv t9in logoin
+		mv t9out logoout
+		break
+	fi
+	if [ $type = "2" ]; then
+		TERM=t1
+		export TERM
+		BOLD="tput smso"
+		PLAIN="tput rmso"
+		mv t1in logoin
+		mv t1out logoout
+		break
+	fi
+	if [ $type = "3" ]; then
+		TERM=x5
+		export TERM
+		BOLD="echo 4A\c"
+		PLAIN="echo 4@\c"
+		mv t9in logoin
+		mv t9out logoout
+		break
+	fi
+	if [ $type = "4" ]; then
+		TERM=x1
+		export TERM
+		BOLD="tput smso"
+		PLAIN="tput rmso"
+		mv x1in logoin
+		mv x1out logoout
+		break
+	fi
+	if [ $type = "5" ]; then
+		TERM=t9
+		export TERM
+		touch logoin
+		touch logoout
+		break
+	fi
+done
+
+tput clear
+cat ./logoin
+tput cup 22 1
+echo "return" to continue"\c"
+read junk
+cat ./logoout
+tput clear
+sync
+
+#
+# Install the 3.2.1 os patches if they are on this tape
+#
+uname -a >junk
+if fgrep '3.2.1' junk 1>/dev/null 2>&1
+then
+	if [ -f ./patchos ]
+	then sh -xv ./patchos
+	fi
+fi
+
+#Check/install password for NFS.
+sh -xv inst.passwd 
+sync
+
+tput clear
+echo 
+
+echo "sitename set to: \c">conf.temp
+cat /etc/sitename >>conf.temp
+
+
+tput clear
+echo "********************************************************************"
+echo "*          N F S   C O M M A N D S   I N S T A L L A T I O N       *"
+echo "********************************************************************"
+
+echo
+echo "Installing the NFS header files..."
+( cd ./usr; tar cbf 10 - . ) | ( cd /usr; tar xbvf 10 - )
+sync
+
+#clean to conserve space.
+rm -rf ./usr
+sync
+
+echo
+echo "Installing the NFS libraries..."
+mv ./libdbm.a /usr/lib
+mv ./librpc.a /usr/lib
+mv ./librpcsvc.a /usr/lib
+mv ./libyp.a /usr/lib
+sync
+
+if [ -d /usr/etc/yp ]; then
+	rm -rf /usr/etc/yp
+	echo
+	echo "Creating new /usr/etc/yp directory..."
+	mkdir /usr/etc/yp
+	mkdir /usr/etc/yp/map2ascii
+else
+	echo
+	echo "Creating /usr/etc/yp directory..."
+	mkdir /usr/etc/yp
+	mkdir /usr/etc/yp/map2ascii
+fi
+sync
+
+tput clear
+echo "********************************************************************"
+echo "*                             P C N F S D                          *"
+echo "********************************************************************"
+echo 
+echo "In order to support some of the services offered by some software "
+echo "packages for PC's, you need the pcnfsd process running."
+echo "Do you want to run pcnfsd on this host? [y/n]: \c"
+read ok
+if [ X$ok = Xy -o X$ok = Xyes -o X$ok = XY ]; then
+	echo
+	echo modifying /etc/nfs...
+	sed "s/\#ZZ\#/    /g" nfs > /usr/tmp/nfstemp$$
+	mv nfstemp$$ nfs
+fi
+sleep 3
+sync
+
+tput clear
+echo "********************************************************************"
+echo "*                          L O C K D                               *"
+echo "********************************************************************"
+echo 
+echo "The three daemons lockd(1M), statd(1M) and lckclnt(1M) are required"
+echo "for file and record locking over the network through NFS.  However,"
+echo "these daemons greatly reduce local lock performance."
+echo "Do you want to run the lock daemons on this host? [y/n]: \c"
+read ok
+if [ X$ok = Xy -o X$ok = Xyes -o X$ok = XY ]; then
+	echo
+	echo modifying /etc/nfs...
+	sed "s/\#ZZLOCK\#/  /g" nfs > /usr/tmp/nfstemp$$
+	mv nfstemp$$ nfs
+fi
+sleep 3
+sync
+
+tput clear
+echo "********************************************************************"
+echo "*            C O M M A N D S   I N S T A L L A T I O N             *"
+echo "********************************************************************"
+echo 
+echo "Installing utilities Makefile through ypxfr2dy..."
+echo 
+make -f commands > /usr/ti/nfs/commands.out 
+make -f commands clean > /dev/null
+rm -f commands 
+sync
+
+echo
+echo "Installing new online man pages..."
+mv man_lib /usr/catman/u_man/man1
+cd /usr/catman/u_man/man1
+if [ -r mount.1 ]; then
+	mv mount.1 /usr/ti/nfs
+fi
+
+if [ -r passwd.1 ]; then
+	mv passwd.1 /usr/ti/nfs
+fi
+
+ar x man_lib
+sync
+
+chmod 644 domainname.1 	fsirand.1 	                                \
+	lckclnt.1 	lockd.1 	makedbm.1 	map2ascii.1 	\
+	mount.1 	mountd.1 	nfs.1 		nfsclnt.1  	\
+	nfsd.1 		nfsstat.1 	nmountall.1 	on.1 		\
+			passwd.1 	passwd.1 	pcnfsd.1 	\
+	portmap.1 	rexd.1 		rpcgen.1 	rpcinfo.1 	\
+	showmount.1 	statd.1 	ypcat.1 	ypday.1 	\
+	ypinit.1 	ypmake.1 	ypmatch.1 	yppassmgt.1 	\
+	yppasswd.1 	yppasswdd.1 	yppoll.1 	yppush.1 	\
+	ypserv.1 	ypset.1 	ypsync.1 	ypwhich.1 	\
+	ypxfr.1		under.1		where.1
+
+chgrp bin domainname.1 	fsirand.1 					\
+	lckclnt.1 	lockd.1 	makedbm.1 	map2ascii.1 	\
+	mount.1 	mountd.1 	nfs.1 		nfsclnt.1  	\
+	nfsd.1 		nfsstat.1 	nmountall.1 	on.1 		\
+			passwd.1 	passwd.1 	pcnfsd.1 	\
+	portmap.1 	rexd.1 		rpcgen.1 	rpcinfo.1 	\
+	showmount.1 	statd.1 	ypcat.1 	ypday.1 	\
+	ypinit.1 	ypmake.1 	ypmatch.1 	yppassmgt.1 	\
+	yppasswd.1 	yppasswdd.1 	yppoll.1 	yppush.1 	\
+	ypserv.1 	ypset.1 	ypsync.1 	ypwhich.1 	\
+	ypxfr.1		under.1		where.1
+
+chown bin domainname.1 	fsirand.1 					\
+	lckclnt.1 	lockd.1 	makedbm.1 	map2ascii.1 	\
+	mount.1 	mountd.1 	nfs.1 		nfsclnt.1  	\
+	nfsd.1 		nfsstat.1 	nmountall.1 	on.1 		\
+			passwd.1 	passwd.1 	pcnfsd.1 	\
+	portmap.1 	rexd.1 		rpcgen.1 	rpcinfo.1 	\
+	showmount.1 	statd.1 	ypcat.1 	ypday.1 	\
+	ypinit.1 	ypmake.1 	ypmatch.1 	yppassmgt.1 	\
+	yppasswd.1 	yppasswdd.1 	yppoll.1 	yppush.1 	\
+	ypserv.1 	ypset.1 	ypsync.1 	ypwhich.1 	\
+	ypxfr.1		under.1		where.1
+
+rm man_lib
+cd /usr/tmp
+sync
+
+echo
+echo "Adding the NFS error messages to the master message file..."
+
+cd /usr/ti
+if test ! -f master.noNFS
+    then cp master master.noNFS
+    rm -f master.noTCP master.nodnio
+fi
+
+#-------------------------KERNEL MESSAGES-------------------------------
+if fgrep '<%%> Inserted NFS kernel messages start' master > /dev/null
+then
+        csplit -s -f nfstmp master '/<%%> Inserted NFS kernel messages start/' \
+	                         '/<\*\*> NFS kernel messages end here/'
+        cat nfstmp00 /usr/tmp/kmessages nfstmp02 > master.tmp
+        mv master.tmp master
+        rm nfstmp00 nfstmp01 nfstmp02
+else
+        csplit -s -f nfstmp master '/<\*\*> NFS kernel messages end here/'
+        cat nfstmp00 /usr/tmp/kmessages nfstmp01 > master.tmp
+        mv master.tmp master
+        rm nfstmp00 nfstmp01
+fi
+#-----------------------------------------------------------------------
+
+echo
+echo "Building the new ptext and stext files..."
+echo
+mkmsg master ptext stext 
+cp ptext /ti/ptext/USA 
+cp stext /ti/stext/USA
+rm -f ptext stext
+cd /usr/tmp
+rm -f messages kmessages
+sync
+
+tput clear
+echo "********************************************************************"
+echo "*            N F S   C O M M A N D S   C O N F I G U R A T I O N   *"
+echo "********************************************************************"
+
+
+echo
+echo creating /usr/spool/lp/pcnfs...
+if [ -r /usr/spool/lp/pcnfs -o -d /usr/spool/lp/pcnfs ]; then 
+	rm -rf /usr/spool/lp/pcnfs
+	mkdir /usr/spool/lp/pcnfs 
+else 
+	mkdir /usr/spool/lp/pcnfs 
+fi 
+
+if [ -f /usr/ti/nfs/exports ]; then
+	echo
+	echo "Do you want to restore your old /etc/exports file instead"
+	echo "of creating a new one? [y/n]: \c"
+	read ok
+	if [ X$ok = Xy -o X$ok = Xyes ]; then
+		echo
+		echo "Moving /usr/ti/nfs/exports to /etc/exports..."
+		mv /usr/ti/nfs/exports /etc
+	else
+		echo
+		echo creating /etc/exports file...
+		mv /usr/tmp/exports /etc
+	fi
+else
+	echo
+	echo creating /etc/exports file...
+	mv /usr/tmp/exports /etc
+fi
+sync
+
+echo
+echo updating /etc/download...
+echo /tcp start/D > /usr/tmp/sfile$$
+sed -f /usr/tmp/sfile$$  /etc/download > tempload$$
+mv tempload$$ /etc/download
+echo /nfs start/D > /usr/tmp/sfile$$
+sed -f /usr/tmp/sfile$$  /etc/download > tempload$$
+mv tempload$$ /etc/download
+echo tcp start >> /etc/download
+echo nfs start >> /etc/download
+chmod 770 /etc/download
+chgrp root /etc/download
+chown root /etc/download
+rm -f tempload$$ sfile$$
+sync
+
+echo
+echo updating /etc/shutdown...
+echo "\t/etc/nfs stop" > shuttemp$$
+echo "\t/etc/tcp stop" >> shuttemp$$
+echo /tcp stop/D > /usr/tmp/sfile1$$
+sed -f /usr/tmp/sfile1$$  /etc/shutdown > tempload1$$
+echo /nfs stop/D > /usr/tmp/sfile1$$
+sed -f /usr/tmp/sfile1$$  tempload1$$ > tempload2$$
+csplit -s -f csplittmp1 tempload2$$ '/killall/'
+cat csplittmp100 shuttemp$$ csplittmp101 > shutdown
+mv shutdown  /etc/shutdown
+chmod 755 /etc/shutdown
+chgrp root /etc/shutdown
+chown root /etc/shutdown
+rm -f tempload* csplittmp* shuttemp* sfile1$$
+sync
+
+echo
+echo updating /bin/sysboot... 
+echo "\t/etc/nfs stop" > shuttemp$$
+echo "\t/etc/tcp stop" >> shuttemp$$
+echo /tcp stop/D > /usr/tmp/sfile1$$
+sed -f /usr/tmp/sfile1$$  /bin/sysboot > tempload1$$
+echo /nfs stop/D > /usr/tmp/sfile1$$
+sed -f /usr/tmp/sfile1$$  tempload1$$ > tempload2$$
+csplit -s -f csplittmp1 tempload2$$ '/killall/'
+cat csplittmp100 shuttemp$$ csplittmp101 > sysboot
+mv sysboot  /bin/sysboot
+chmod 700 /bin/sysboot
+chgrp root /bin/sysboot
+chown root /bin/sysboot
+rm -f tempload* csplittmp* shuttemp* sfile1$$ 
+sync
+
+tput clear
+echo "********************************************************************"
+echo "*         N F S   D E V I C E   I N S T A L L A T I O N            *"
+echo "********************************************************************"
+echo
+echo "Making new devices..."
+echo
+
+	if [ -b /dev/nfs ]; then
+		rm -f /dev/nfs
+		mknod /dev/nfs b 10 0
+		echo /dev/nfs 
+	else
+		mknod /dev/nfs b 10 0
+		echo /dev/nfs 
+	fi
+
+	if [ -c /dev/nfsd ]; then
+		rm -f /dev/nfsd
+		mknod /dev/nfsd c 67 0
+		echo /dev/nfsd 
+	else
+		mknod /dev/nfsd c 67 0
+		echo /dev/nfsd
+	fi
+
+	if [ -c /dev/lockd ]; then
+		rm -f /dev/lockd
+		mknod /dev/lockd c 68 0
+		echo /dev/lockd 
+	else
+		mknod /dev/lockd c 68 0
+		echo /dev/lockd
+	fi
+
+sync
+sleep 5
+
+tput clear
+echo "********************************************************************"
+echo "*            N F S   K E R N E L   I N S T A L L A T I O N         *"
+echo "********************************************************************"
+echo
+echo "archiving new kernel parts... "
+echo 
+
+if [ ! -r /usr/ti/nfs/nfs.lib ]; then
+	echo "Saving dummy /usr/sys/nfs.lib to /usr/ti/nfs/nfs.lib..."
+	mv /usr/sys/nfs.lib /usr/ti/nfs
+fi
+sync
+
+mv /usr/tmp/nfs.lib /usr/sys
+
+uname -a >junk
+if fgrep '3.2.2' junk 1>/dev/null 2>&1
+then
+	if [ -f /usr/ti/nfs/flock.o ]
+	then
+		ar x /usr/sys/nfs.lib flock.o 
+		what flock.o 1>junk 2>&1
+		if fgrep '1.15' junk 1>/dev/null 2>&1
+		then
+			ar r /usr/sys/nfs.lib /usr/ti/nfs/flock.o
+		fi
+		rm -f flock.o junk
+   fi
+fi
+
+cp /usr/tmp/setcband /usr/tmp/settings /usr/ti/nfs
+echo
+echo "Do you wish to build a new kernel now? [y/n]: \c"
+read ok
+if [ X$ok = Xy -o X$ok = Xyes ]; then
+	echo
+	echo "Which boot band would you like the new kernel installed in?"
+	echo "-----------------------------------------------------------"
+	echo "IMPORTANT: The boot band that you install NFS in must have"
+	echo "had TCP/IP installed in it or had the cband parameters"
+	echo "set for TCP/IP.  NFS can not run with out TCP/IP."
+	echo "-----------------------------------------------------------"
+	while true; do
+		echo [unx2 or unx3]:" \c"
+		read bband
+		if [ X$bband = Xunx2 -o X$bband = Xunx3 ]; then
+			if [ X$bband = Xunx2 ]; then
+				cband=cfg2
+			else
+				cband=cfg3
+			fi
+			break
+		fi
+		echo
+	done	
+	cd /usr/sys
+	echo
+	mnttab=`ls -l /etc/mnttab`
+	mnttab=`echo $mnttab | cut -f5 -d" "`
+	if [ $mnttab != "0" ]; then
+	while true; do
+		dfvol=`df / | cut -f5 -d"/" | cut -f1 -d:`
+		echo "Partition / was found on system volume: $dfvol."
+		echo ------------------------------------------------
+		df / | cut -f1-2 -d:
+		echo ------------------------------------------------
+		echo "On which volume do you want this boot band installed?"
+		if [ X$dfvol = X ]; then
+			echo "Enter system volume name: \c"
+		else
+			echo "Enter system volume name (or just return for $dfvol): \c"
+		fi
+		read newvolume
+		if [ X$newvolume = X ]; then
+			volume=$dfvol
+			break
+		else
+			volume=$newvolume
+		fi
+		echo "You've specified: $volume.  Is this correct? [y/n]: \c"
+		read ok
+		if [ X$ok = Xy -o X$ok = Xyes ]; then
+			break
+		else
+			continue
+		fi
+	done
+	else
+	while true; do
+		echo "On which system volume do you want this boot band installed?"
+		echo "Enter system volume name (or just return for \"sys\"): \c"
+		read newvolume
+		if [ X$newvolume = X ]; then
+			volume=sys
+			break
+		else
+			volume=$newvolume
+		fi
+		echo "You've specified: $volume.  Is this correct? [y/n]: \c"
+		read ok
+		if [ X$ok = Xy -o X$ok = Xyes ]; then
+			break
+		else
+			continue
+		fi
+	done
+	fi
+	echo
+	echo "Making new unix.new..."
+	rm -f unix.new
+	make 1>>/usr/ti/nfs/install.out 2>&1
+	sync
+	echo
+	echo Installing unix.new in $bband...
+	if [ X$volume = X ]; then
+		make $bband 1>>/usr/ti/nfs/install.out 2>&1
+	else
+		make $bband VOLNAME=$volume 1>>/usr/ti/nfs/install.out 2>&1
+	fi
+	sync
+	echo "kernel made with boot band set to: $bband" >>conf.temp
+	echo "kernel made with system volume set to: $volume" >>conf.temp
+	echo
+	echo "Setting cband parameters in /dev/dsk/$volume:$cband..."
+	echo "-----------------------------------------------------------------"
+	sh /usr/tmp/setcband /dev/dsk/$volume:$cband < /usr/tmp/settings
+	sync
+	echo "-----------------------------------------------------------------"
+	echo "cband parameters set in: /dev/dsk/$volume:$cband" >>conf.temp
+	echo
+	echo "In order to use the default boot partition you will need to"
+	echo "increase the cband parameters along with a \"make default\"."
+	echo "Do you want this script to increase the parameters now? [y/n]: \c"
+	read ok
+	if [ X$ok = Xy -o X$ok = Xyes ]; then
+		echo
+		echo "Setting cband parameters in /dev/dsk/$volume:cfg1..."
+		echo "-----------------------------------------------------------------"
+		sh /usr/tmp/setcband /dev/dsk/$volume:cfg1 < /usr/tmp/settings
+		sync
+		echo "-----------------------------------------------------------------"
+	else
+		echo 
+		echo "Parameters have not been increased.  Don't forget to "
+		echo "increase them so you can run NFS from default!"
+		echo "You can do this by running the script setcband in "
+		echo "/usr/ti/nfs.  Instructions are contained in that file."
+	fi
+	cat /usr/tmp/settings >>conf.temp
+	if [ -r /unix.noTCP ]; then
+		echo
+		echo "Removing /unix.noTCP..."
+		rm -f /unix.noTCP
+	fi
+	echo
+	echo "Saving /unix to /unix.noNFS..."
+	mv /unix /unix.noNFS
+	sync
+	echo 
+	echo "Moving /usr/sys/unix.new to /unix..."
+	mv /usr/sys/unix.new /unix
+	echo
+	echo NFS and the new kernel are now installed.  Reboot your system.
+	cd /usr/tmp
+	echo
+	echo cleaning up...
+	touch normcomp
+	sync
+	exit 0
+fi
+
+echo
+echo "Only NFS has been installed.  You will need to rebuild your kernel"
+echo "with the new nfs.lib, install it in the desired boot band, increase the"
+echo "cband paramters for that boot band and then reboot from that boot band.  "
+echo "You can increase the cband parameters by executing the script setcband "
+echo "in /usr/ti/nfs.  Instructions are contained in the file."
+cd /usr/tmp
+echo
+echo cleaning up...
+touch normcomp
+sync

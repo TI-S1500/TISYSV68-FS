@@ -1,0 +1,142 @@
+PM(1T)							   PM(1T)
+
+NAME
+     pm - Invokes TI System V Performance Monitor
+
+SYNOPSIS
+     pm -f[-u]
+     pm -b[-0...9A...FaegiLlMnprstuvw]
+     pm -h[-0...9A...FaegiLnpRstuvw]
+     pm -k
+     pm -x[-Lu]
+
+DESCRIPTION
+     The TI System V Performance Monitor (pm) is a data gathering
+     and system measurement tool for performance tuning your
+     system.  In foreground mode, pm graphically displays
+     information on the system configuration, peripheral devices,
+     processor utilization, and operating system functions and
+     data structures. In background mode, pm collects user-
+     selectable system metrics at a specified sample rate and
+     saves them in a LOG file. At a later time, pm can be
+     initiated to either examine the collected system metrics
+     interactively or generate hardcopy reports and summaries.
+
+     The pm command is terminal-independent; no escape codes or
+     hardware characteristics are assumed. All knowledge of the
+     terminal environment is acquired at run time from a terminal
+     data base indexed by the TERM environmental symbol. This
+     database is created and maintained by tde(1T), the terminal
+     definition editor.
+
+   Options
+     -0...9A...F	 Includes statistics for processor board
+			 in slot.
+
+     -a 		 Includes statistics for all options.
+
+     -b 		 Collects statistics in background, and
+			 sends to LOG file.
+
+     -eMMddhhmmYY	 Sets end date in date(1) format of
+			 collection process.
+
+     -f 		 Collects statistics in foreground, and
+			 displays on terminal.
+
+     -g 		 Includes statistics for general
+			 information.
+
+     -h 		 Generates history report from LOG file.
+
+     -i 		 Includes statistics for BusNet I/O
+			 activity.
+
+     -k 		 Kills pm background process.
+
+     -Lfile		 Uses file instead of /usr/adm/sa/pm_log.
+
+     -lpid		 Includes statistics for linear process
+			 space for pid, where pid is the process
+			 ID.
+
+     -MuserID		 Sends mail to userID if error occurs
+			 during background execution.
+
+     -mx		 Includes statistics for physical memory
+			 map for CPU in slot x, where x is the
+			 slot number.
+
+     -nx		 Includes statistics for network activity
+			 for CCB in slot x, where x is the slot
+			 number.
+
+     -p 		 Includes statistics for configurable
+			 parameters.
+
+     -Rfile		 Sends history report to file instead of
+			 /usr/adm/sa/pm_report.
+
+     -rx		 Sets background mode sample rate to x,
+			 where x is the number of seconds.
+
+     -sMMddhhmmYY	 Sets start date in date(1) format of
+			 collection process.
+
+     -tx		 Includes statistics for system totals
+			 for CPU in slot x, where x is the slot
+			 number.
+
+     -ufile		 Uses file for system kernel.
+
+     -vx		 Includes statistics for virtual memory
+			 subsystem for CPU in slot x, where x is
+			 the slot number.
+
+     -w 		 Includes statistics for system-wide
+			 activity.
+
+     -x 		 Examines LOG file on terminal screen.
+
+EXAMPLES
+     To start pm in foreground mode type the following:
+
+	       pm -f
+
+     To start pm in background mode at 8:00am on April 21, 1988,
+     to collect general system metrics and information about the
+     processor board in slot 4, type the following:
+
+	       pm -bg4 -s0421080088
+
+     To examine the data collected in an archived LOG file from a
+     previous pm background task, type the following:
+
+	       pm -x -L/usr/activity/pmlog_042188
+
+FILES
+      /unix			 UNIX(R) operating system kernel
+      /usr/bin/pm		 The pm(1T) program
+      /usr/bin/tde		 The terminal definition editor program
+      /usr/adm/sa/tdecap	 The tde terminal definition data base
+      /usr/adm/sa/pm_log	 Default pm system data file
+      /usr/adm/sa/pm_error_log	 pm error log file
+      /usr/adm/sa/pm_report	 pm history report file
+      /usr/adm/sa/pm_LOCK	 pm background LOCK file
+      /dev/mem			 Special image file of physical memory
+      /dev/kmem 		 Special image file of virtual memory
+      /dev/pmem 		 Special image file of NuBus(R)
+
+SEE ALSO
+     cband(1T); mem(7); profile(1); sh(1); sa1(1M); sa2(1M);
+     sadsp(1T); stty(1); tde(1T); term(5); termcap(5); the
+     following sections in TI System V Administrator's Guide:
+     "System Performance", "Network Terminal Concentrators", and
+     "Monitoring System Activity."
+
+
+     UNIX is a registered trademark of AT&T.
+
+     NuBus is a registered trademark of Texas Instruments Incorporated.
+
+

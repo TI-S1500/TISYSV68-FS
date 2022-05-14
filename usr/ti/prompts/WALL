@@ -1,0 +1,14 @@
+# cshf  wall -- writes to all users 
+#	@(#)WALL.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^WALL -- WRITES TO ALL USERS"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== WALL COMMAND EXECUTING ==="
+echo Enter message text now, and hit \<CTRL\> d when finished
+wall 
+end:

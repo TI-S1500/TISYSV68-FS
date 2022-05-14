@@ -1,0 +1,56 @@
+#cshf   sh - Bourne Shell Command Interpreter  
+#	@(#)SH.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^SH -- INVOKES THE BOURNE SHELL COMMAND INTERPRETER"\
+	"^*Input File Name:" input_file acnm $input_file\
+	"^Accept Default Options:" options yesno y\
+	"^#$*"
+
+if ($abort) goto end
+if ($options == "n") then
+	prompt "^SH -- OPTIONS:"\
+		"^Exit on Abnormal Termination:" eflag yesno n\
+		"^Keywords go into Environment:" kflag yesno n\
+		"^Parse Commands:" nflag yesno n\
+		"^Read/Execute One Command:" tflag yesno n\
+		"^Variable Substitution Error:" uflag yesno n\
+		"^Set Verbose Variable:" vflag yesno n\
+		"^Set Echo Variable:" xflag yesno n\
+		"^Restricted Shell:" rflag yesno n\
+		"^#$*"
+endif
+
+if ($abort) goto end
+
+# Set default values
+set opt = ""
+
+# set flags for interactive mode or file read
+if ($input_file == "") then
+	set opt = i
+else
+	set opt = s
+endif
+
+# set all other flags - non default options
+if ($options == "n") then
+	if ($eflag == "y") set opt = e$opt  
+	if ($kflag == "y") set opt = k$opt  
+	if ($nflag == "y") set opt = n$opt  
+	if ($tflag == "y") set opt = t$opt  
+	if ($uflag == "y") set opt = u$opt  
+	if ($vflag == "y") set opt = v$opt  
+	if ($xflag == "y") set opt = x$opt  
+	if ($rflag == "y") set opt = r$opt  
+endif
+if (opt != "") set opt = -$opt
+
+echo "=== SH COMMAND EXECUTING ==="
+echo sh $opt $input_file
+
+sh $opt $input_file
+
+end:
+unset *flag options opt

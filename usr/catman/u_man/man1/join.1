@@ -1,0 +1,116 @@
+JOIN(1) 						  JOIN(1)
+
+NAME
+     join - Database operator that joins two relations
+
+SYNOPSIS
+     join -aejot file1 file2
+
+DESCRIPTION
+   Purpose
+     The join command forms, on the standard output, a join of
+     the two relations specified by the lines of file1 and file2.
+
+   Options
+     Some options use the argument n.  This argument should be a
+     1 or a 2 referring to either file1 or file2, respectively.
+
+     -an      In addition to the normal output, produces a line
+	      for each unpairable line in file n.
+
+     -e s     Replaces empty output fields by string s.
+
+     -jn m    Joins on the mth field of file n.  If n is missing,
+	      use the mth field in each file.  Fields are
+	      numbered starting with 1.
+
+     -o list  Outputs lines comprising the fields specified in
+	      list, each element of which has the form n.m, where
+	      n is a file number and m is a field number.  The
+	      common field is not printed unless specifically
+	      requested.
+
+     -tc      Uses character c as a separator (tab character).
+	      Every appearance of c in a line is significant.
+	      The character c is used as the field separator for
+	      both input and output.
+
+   Discussion
+     If file1 is -, the standard input is used.
+
+     File1 and file2 must be sorted in increasing ASCII collating
+     sequence on the fields on which they are to be joined, the
+     default being the first field in each line.
+
+     There is one line in the output for each pair of lines in
+     file1 and file2 that have identical join fields.  The output
+     line normally consists of the common field, then the rest of
+     the line from file1, then the rest of the line from file2.
+
+     The default input field separators are blank, tab, or
+     newline.  In this case, multiple separators count as one
+     field separator and leading separators are ignored.  The
+     default output field separator is a blank.
+
+EXAMPLE
+     The following command line joins the password file and the
+     group file, matching on the numeric group ID, and outputting
+     the login name, the group name, and the login directory.  It
+     is assumed that the files have been sorted in ASCII
+     collating sequence on the group ID fields.
+
+	  join -j1 4 -j2 3 -o 1.1 2.1 1.6 -t: /etc/passwd /etc/group
+
+PROMPTS
+   File 1:
+     Enter the name of a file to be processed.
+
+   File 2:
+     Enter the name of the other file to be processed.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Unpairable Line File Number (0-2):
+     Enter the number of the file whose unpairable lines are to
+     be written to the output file specified.  Enter 0 for no
+     information of either file to be written.	Enter 1 for file
+     1.  Enter 2 for file 2.
+
+   Field Line Output List:
+     Response to this prompt is optional.  Enter the list of
+     fields to be used for output.
+
+   Field Replacement String:
+     Response to this prompt is optional.  Enter the string to be
+     used to replace empty output fields.
+
+   Separator Character:
+     Response to this prompt is optional.  Enter the character to
+     be used in the separation of fields.
+
+   Number of Fields to Join:
+     Response to this prompt is optional.  Enter the number of
+     fields to be joined.  The following prompt will appear for
+     each entry:
+
+   File Number (1,2):
+     Response to this prompt is optional.  Enter the file number
+     used in the selection of a field.
+
+   Field Number:
+     Enter the field number to be used.
+
+SEE ALSO
+     awk(1), comm(1), sort(1), uniq(1).
+
+NOTES
+     With default field separation, the collating sequence is
+     that of sort -b; with -t, the sequence is that of a plain
+     sort.
+
+     Numeric file names may cause conflict when the -o option is
+     used right before listing file names.
+
+

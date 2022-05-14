@@ -1,0 +1,155 @@
+AT(1)                                                       AT(1)
+
+NAME
+     at - Executes commands at a later time
+
+SYNOPSIS
+     at time [date] [+increment]
+     at -rjobs
+     at -l [jobs]
+
+DESCRIPTION
+   Purpose
+     The at command reads commands from standard input to be
+     executed at a later time.  The command also removes or lists
+     jobs previously scheduled with at.
+
+   Discussion
+     Standard output and standard error output are mailed to the
+     user unless they are redirected elsewhere.  The shell
+     environment variables, current directory, umask, and ulimit
+     are retained when the commands are executed.  Open file
+     descriptors, traps, and priority are lost.
+
+     Users are permitted to use at if their names appear in the
+     file /usr/lib/cron/at.allow.  If that file does not exist,
+     the file /usr/lib/cron/at.deny is checked to determine if
+     the user should be denied access to at.  If neither file
+     exists, only root is allowed to submit a job.  If only
+     at.deny exists and is empty, global usage is permitted.  The
+     allow and deny files consist of one user name per line.
+
+   Arguments
+     time Specifies time as one, two, or four digits.  One- and
+          two-digit numbers are interpreted as hours.  Four
+          digits are interpreted to be hours and minutes.  The
+          time can alternately be specified as two numbers
+          separated by a colon, meaning hour:minute.  A suffix am
+          or pm can be appended.  Otherwise a 24-hour clock time
+          is understood.  The suffix zulu can be used to indicate
+          Greenwich mean time (GMT).  The special names noon,
+          midnight, now, and next are also recognized.
+
+     date Specifies either a month name followed by a day number
+          (and possibly year number preceded by an optional
+          comma) or a day of the week (fully spelled or
+          abbreviated to three characters).  Two special days,
+          today and tomorrow, are recognized.  If no date is
+          given, today is assumed if the given hour is greater
+          than the current hour and tomorrow is assumed if it is
+          less.  If the given month is less than the current
+          month (and no year is given), next year is assumed.
+
+     increment
+          Specifies a number suffixed by one of the following:
+          minutes
+          hours
+          days
+          weeks
+          months
+          years
+
+          The singular form is also accepted; for example, minute
+          or year.
+
+     The at command writes the job number and schedule time to
+     standard error.
+
+   Options
+     -rjobs
+          Removes jobs previously scheduled by at.  The jobs
+          value is the job number reported when the previous at
+          was executed.
+
+     -l   Lists job numbers.  If you are not super-user, at -l
+          will list only your job numbers.
+
+EXAMPLES
+     The following are legal commands:
+
+          at 0815am Jan 24
+          at 8:15am Jan 24
+          at now + 1 day
+          at 5 pm Friday
+
+     The at and batch commands read from standard input the
+     commands to be executed at a later time. sh(1) provides
+     different ways of specifying standard input. Within your
+     commands, it may be useful to redirect standard output.
+
+     This sequence can be used at a terminal:
+
+          batch
+          sort filename > outfile
+          <Control-D> (hold down Control and press D)
+
+     This sequence, which demonstrates redirecting standard error
+     to a pipe, is useful in a shell procedure (the sequence of
+     output redirection specifications is significant):
+          batch <<!
+          sort filename 2>&1 > outfile | mail loginid
+          !
+
+     To have a job reschedule itself, invoke at from within the
+     shell procedure by including code similar to the following
+     within the shell file.
+
+          echo "sh shellfile" | at 1900 thursday next week
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file that contains commands to be
+     input to the shell.
+
+   Time:
+     Enter the time when the specified file is to be input to the
+     shell.
+
+FILES
+     /usr/lib/cron  Main cron directory
+
+     /usr/lib/cron/at.allow
+                    List of allowed users (this file is not
+                    shipped with the system)
+
+     /usr/lib/cron/at.deny
+                    List of denied users (this file is not
+                    shipped with the system)
+
+     /usr/lib/cron/log
+                    Log file
+
+     /usr/lib/cron/queue
+                    Scheduling information
+
+     /usr/spool/cron/atjobs
+                    Spool area
+
+SEE ALSO
+     cron(1M), crontab(1), kill(1), mail(1), nice(1), ps(1),
+     sh(1).
+
+DIAGNOSTICS
+     The utility displays messages about various syntax errors
+     and times out of range.
+
+NOTES
+     Commands such as write(1) that try to determine the tty name
+     of standard input may exhibit strange behavior when run by
+     batch.
+
+     The owner of the files /usr/lib/cron/at.allow and
+     /usr/lib/cron/at.deny must be root, the group sys, and the
+     mode 644.
+
+

@@ -1,0 +1,57 @@
+UUCPTO(1T)                                             UUCPTO(1T)
+
+NAME
+     uucpto - Sends files to a remote system via uucp(1C)
+
+SYNOPSIS
+     uucpto srcfile sitename destfile
+     uucpto srcfile all destfile
+     uucpto sitename
+
+DESCRIPTION
+   Purpose
+     The uucpto command copies the file named srcfile located on
+     the local system to the file, destfile, on the remote
+     system.
+
+   Discussion
+     Prior to invoking uucp to perform the file transfer, uucpto
+     performs preliminary checks to ensure that lock files do not
+     currently exist, that the remote system is currently
+     defined, and that other checks are valid (such as ensuring
+     that the file or directory is valid and readable).  If the
+     all parameter is specified instead of a site name, the uucp
+     daemon, uucico, is activated to perform all work files
+     currently queued for execution.  If only the sitename
+     parameter is specified, uucico contacts the system,
+     sitename, and performs all work requests queued at the local
+     and remote sites concerning the two systems.
+
+FILES
+     /usr/spool/uucp
+                    Spool directory
+
+     /usr/lib/uucp/*
+                    uucp configuration and program files
+
+SEE ALSO
+     uucico(1C), uucp(1C), uucpfrom(1T).
+
+DIAGNOSTICS
+     Messages are displayed to inform the user that certain lock
+     or status files are being removed.  Other messages are
+     displayed to inform the user of error or success conditions
+     in queueing or activation of the uucp daemon.
+
+NOTES
+     If the uucp daemon, uucico, is not currently active when
+     uucpto is activated, all lock and status files for the
+     device and system being accessed will be removed.  If uucico
+     is active, the request will be queued for execution, unless
+     only the site name is provided, in which case a message is
+     displayed informing the user to try later.
+
+     To verify that the specified files were transferred, inspect
+     the uucp log file, /usr/spool/uucp/LOGFILE.
+
+

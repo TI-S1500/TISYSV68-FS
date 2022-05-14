@@ -1,0 +1,304 @@
+CPIO(1) 						  CPIO(1)
+
+NAME
+     cpio - Copies file archives in and out in tape format
+
+SYNOPSIS
+     cpio -oacBv < name-list > collection
+
+     cpio -iBcdmrtuvfsS6b patterns < collection
+
+     cpio -padlmuv directory < name-list
+
+     cpio -kcvB < name-list
+
+DESCRIPTION
+   Purpose
+   cpio -o
+     The cpio -o (copy out) command reads the standard input to
+     obtain a list of path names and copies the path names,
+     status information, and content of those files onto the
+     standard output.  The output is in tape format.
+
+   cpio -i
+     The cpio -i (copy in) command extracts files from the
+     standard input.  The standard input is assumed to be the
+     product of a previous cpio -o.  Only files with names that
+     match patterns are selected.
+
+     Patterns are given in the name-generating notation of sh(1).
+     Enclose patterns that include the meta-characters ?, *, and
+     [...]  in double quotes (" ").  Multiple patterns may be
+     specified and if no patterns are specified, the default for
+     patterns is * (i.e., select all files).  The extracted files
+     are conditionally created and copied into the current
+     directory tree based upon the options described below.
+
+   cpio -p
+     The cpio -p (pass) command reads the standard input to
+     obtain a list of path names of files that are conditionally
+     created and copied into the destination directory tree.  The
+     directory must already exist.  The conditions of the
+     creation and copying of files depend upon the options.
+
+   Arguments
+     The argument name-list is the name of a file that contains a
+     list of file names, one file name per line with no trailing
+     spaces.  The argument collection is a device or file name.
+
+   Options
+     The following are cpio options.
+
+     a	  Reset the access times of the input files to the values 
+	  that were assigned before cpio was used (by default, the
+          access times are updated).
+
+     B	  Input/output is to be blocked 5,120 bytes to the
+	  record.  This option does not apply to the pass
+	  function and is meaningful only with data directed to
+	  or from /dev/r[mq]t/0[hm].
+
+     c	  Write header information in ASCII character form for
+	  portability.
+
+     d	  Directories are to be created as needed.
+
+     k	  Verifies data on tape. The following restrictions apply
+	  to this option:
+
+	  It must be used after the cpio tape has been created.
+
+	  The destination device must be a tape drive.
+
+	  The verify operation is issued while in the same
+	  directory as the original command if any files on the
+	  tape are path relative. No response, means it verifies
+	  correctly.
+
+	  EXAMPLES:
+	       (Non-path relative)
+	       find /bin -depth -print | cpio -ovB > /dev/rqt/0h
+	       cd /usr
+	       cpio -kvB < /dev/rqt/0h
+
+	       (Path relative)
+	       find . -depth -print | cpio -ovB > /dev/rqt/0h
+	       cpio -kvB < /dev/rqt/0h
+
+     r	  Interactively rename files.  If the user types a null
+	  line, the file is skipped.  Any other input is taken as
+	  the new name for the file.  This option is available
+	  only with the i option. Directories cannot be renamed.
+
+     t	  Print a table of contents of the input.  No files are
+	  created.
+
+     u	  Copy unconditionally (normally, an older file will not
+	  replace a newer file with the same name).
+
+     v	  Verbose: causes a list of file names to be printed.
+	  When used with the t function, the table of contents
+	  looks like the output of an ls -l command (see ls(1)).
+
+     l	  Whenever possible, link files rather than copying them.
+	  Usable only with the -p function.
+
+     m	  Retain previous file modification time.  This option is
+	  ineffective on directories that are being copied.
+
+     f	  Copy in all files except those in patterns.
+
+     s	  Swap bytes.  Use only with the -i function.
+
+     S	  Swap halfwords.  Use only with the -i function.
+
+     T	  You must use this option to read cpio-formatted tapes
+	  that were written on machines other than the System
+	  1500 or to write cpio-formatted tapes destined for
+	  machines other than the System 1500.
+
+     b	  Swap both bytes and halfwords. Use only with the -i
+	  function.
+
+     6	  Process a UNIX(R) System Sixth Edition format file.  This
+	  option is only useful with the -i function.
+
+EXAMPLES
+     The first example below copies the contents of a directory
+     into an archive.
+
+	  ls | cpio -o >/dev/rqt/0h
+
+     The following example copies all of the files named within
+     file1 onto the tape.  A text editor was used to create file1.
+
+	  cpio -o <file1 >/dev/rqt/0h
+
+     The next example duplicates a directory hierarchy.
+
+	  cd olddir
+	  find . -depth -print | cpio -pdl newdir
+
+     The following example:
+
+	  find . -depth -print | cpio -oB >/dev/rqt/0h
+
+     can be handled more efficiently (that is, using less cpu
+     time) by:
+
+	  find . -cpio /dev/rqt/0h
+
+
+     UNIX is a registered trademark of AT&T.
+
+PROMPTS
+   Read, Write, Copy, or Index (r,w,c,i):
+     Enter R or r to read files from tape and put into directory
+     to be specified with a subsequent prompt.	Enter W or w to
+     write files to tape.  Enter C or c to copy files to a new
+     directory.  Enter I or i to generate a table of contents of
+     a tape.
+
+
+   READ FILES FROM TAPE:
+     If you respond to the Read, Write, Copy, or Index:  prompt
+     with an R or r, the following set of prompts is displayed.
+
+   Name of Tape:
+     Enter the device name of the tape from which you wish to
+     read.
+
+   Name Patterns:
+     Enter shell name-generating patterns.  Response to this
+     prompt is optional.
+
+   Ascii Header:
+     The initial value is yes.	Enter yes to write header
+     information in ASCII form.
+
+   Blocked:
+     The initial value is yes.	Enter yes to block the output
+     5,120 bytes to the record.  This option is meaningful only
+     with data directed to or from a raw tape device.
+
+   Create directory:
+     The initial value is yes.	Enter yes to create directories
+     as needed.
+
+   Retain Mod Time:
+     The initial value is yes.	Enter yes to retain previous file
+     modification time.
+
+   Replace Newer Files:
+     The initial value is no.  Enter yes to copy unconditionally;
+     that is, to replace a newer file with the same name.  Enter
+     no to avoid replacing a newer file with the same name.
+
+   Verbose:
+     The initial value is yes.	Enter yes to display a list of
+     the file names as they are read from tape.
+
+
+   WRITE A NEW TAPE:
+     If you respond with W or w to the Read, Write, Copy, or
+     Index: prompt, the following set of prompts is displayed.
+
+   Name of Tape:
+     Enter the tape device name where you wish to write.
+
+   Name List File:
+     Enter the name of a file that contains a list of path names
+     of files to write to tape.  Response to this prompt is
+     optional.
+
+   Ascii Header:
+     The initial value is yes.	Enter yes to write header
+     information in ASCII form.
+
+   Blocked:
+     The initial value is yes.	Enter yes to block the output
+     5,120 bytes to the record.  This option is meaningful only
+     with data directed to or from a raw tape device.
+
+   Verbose:
+     The initial value is yes.	Enter yes to display a list of
+     the file names as they are written to tape.
+
+   COPY FILES TO A NEW DIRECTORY:
+     If you respond with C or c to the Read, Write, Copy, or
+     Index: prompt, the following set of prompts is displayed.
+
+   Name List File:
+     Enter a list of names of files to write to tape.  Use a
+     space to separate file names.  Response to this prompt is
+     optional.
+
+   Put in Directory:
+     Enter the name of the directory to receive the copied files.
+
+   Create Direct:
+     The initial value is yes.	Enter yes to create directories
+     as needed.
+
+   Link if Possible:
+     Enter yes to link rather than copy files wherever possible.
+
+   Replace Newer Files:
+     The initial value is no.  Enter yes to copy unconditionally;
+     that is, to replace a newer file with the same name.  Enter
+     no to avoid replacing a newer file with the same name.
+
+   Retain Mod Time:
+     The initial value is yes.	Enter yes to retain previous file
+     modification time.
+
+   Verbose:
+     The initial value is yes.	Enter yes to display a list of
+     the file names as they are read from tape.
+
+   LIST THE CONTENTS:
+     If you respond with I or i to the Read, Write, Copy, or
+     Index: prompt, the following set of prompts is displayed.
+
+   Name of Tape:
+     Enter the tape device name whose contents will be displayed.
+
+   Ascii Header:
+     The initial value is yes.	Enter yes to write header
+     information in ASCII form.
+
+   Blocked:
+     The initial value is yes.	Enter yes to block the output
+     5,120 bytes to the record.  This option is meaningful only
+     with data directed to or from a raw tape device.
+
+SEE ALSO
+     cpio(4), find(1), ls(1), sh(1).
+
+NOTES
+     + Path names are restricted to 128 characters.
+
+     + If there are too many unique linked files, the program
+       runs out of memory to keep track of them and, thereafter,
+       linking information is lost.
+
+     + Only the super-user can copy special files.
+
+     + When the cpio -o or cpio -p commands read the names of
+       files from a file (as in the second example above), the
+       file names should not have trailing blanks.
+
+     + Tapes written with the -B option should be read with the
+       -B option.
+
+     + The cpio command does handle multi-tape archives.
+
+     + The cpio command does not handle tape errors well.  The
+       command treats many errors as if the end of tape had been
+       found.
+
+     + When logged on as root, cpio changes the owner, group, and
+       permissions of the destination directory to match the
+       owner, group and permissions of the source directory.
+
+

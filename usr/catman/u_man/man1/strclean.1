@@ -1,0 +1,35 @@
+STRCLEAN(1M)                                         STRCLEAN(1M)
+
+NAME
+     strclean - Specifies the STREAMS error logger clean-up
+     program
+
+SYNOPSIS
+     strclean [ -d logdir ] [-a age ]
+
+DESCRIPTION
+     strclean is used to clean up the STREAMS error logger
+     directory on a regular basis (for example, by using
+     cron(1M)).  By default, all files with names matching
+     error.* in /usr/adm/streams that have not been modified in
+     the last 3 days are removed.  A directory other than
+     /usr/adm/streams can be specified using the -d option.  The
+     maximum age in days for a log file can be changed using the
+     -a option.
+
+EXAMPLE
+          strclean -d /usr/adm/streams -a 3
+
+     has the same result as running strclean with no arguments.
+
+NOTES
+     strclean is typically run from cron(1M) on a daily or weekly
+     basis.
+
+FILES
+     /usr/adm/streams/error.*
+
+SEE ALSO
+     cron(1M), strerr(1M).
+
+

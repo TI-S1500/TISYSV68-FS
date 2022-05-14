@@ -1,0 +1,95 @@
+TDTS(1T)						 TDTS(1T)
+
+NAME
+     tdts - Invokes the transaction data transfer server
+
+SYNOPSIS
+     tdts -s
+
+DESCRIPTION
+   Purpose
+     The tdts command invokes the transaction data transfer
+     server parent daemon running on the System 1500.
+
+   Option
+     -s slot_num The server daemon (tdts) is started only on the
+     chassis slot specified. The slot_num is a decimal number in
+     the range 0 through 15. If no slot number is specified a
+     server daemon is started for each CCB that has a LAN option
+     board specified.
+
+   Discussion
+     The tdts daemon is called by the tdts command in the
+     /etc/download file when you enter multiuser mode. One tdts
+     daemon is started for each existing communications carrier
+     board (CCB) with a local area network (LAN) option board.
+     The initial connection request for each communications
+     session is sent to the parent daemon through a well known
+     socket. When a session is granted by the parent, a tdts
+     child is forked to handle exclusively through an ephemeral
+     socket the remaining communications for that session.  Each
+     session can have a different time-out value assigned by the
+     requester. The default time-out value is 30 seconds.
+
+     The tdts daemon responds to the transaction data transfer
+     (TDT) requests received on a Xerox Network Systems(TM) (XNS)
+     well known socket (socket number hex 04B1). The TDT protocol
+     is a simple file transfer protocol based upon the XNS Packet
+     Exchange Protocol (PEP). This protocol is used by the netcp
+     and the netexec to move files or directories between the
+     local system and a remote system (System 1500 or Business
+     System). To obtain a detailed specification of the TDT
+     protocol, write to:
+
+     Texas Instruments Customer Support
+     Network System Administration Office
+     P.O. Box 2909
+     M/S 2188
+     Austin, Texas 78769
+
+     You need the following hardware, software, and installation
+     updates when you use tdts.
+
+     + Hardware requirements - The netcp, netexec, and tdts
+       program will work over a LAN or a wide area network (WAN)
+       using V.35 modems and leased communications lines.
+       Depending on the type of network used, the following
+       hardware is required.
+
+       For the LAN, the System 1500 requires the 802.3/Ethernet
+       LAN option board and the Ethernet adapter board. If your
+       system has a network terminal concentrator (NTC), the
+       System 1500 is configured with the required option and
+       Ethernet adapter boards. The LAN configuration must be
+       used to connect to the Business Systems.
+
+       For the WAN, the System 1500 requires the 802.3/Ethernet
+       LAN option board and the V.35 adapter board. The System
+       1500 supports speeds up to 1 megabit per second.
+       Typically, V.35 modems operate in the range of 56 to 64
+       kilobits per second. Modems with speeds greater than 64
+       kilobits per second or modem eliminators can be used with
+       the System 1500, but the V.35 configuration is supported
+       only between System 1500s.
+
+     + Software requirements - Distributed Network Input/Output
+       (DNIO) release 2.1.1 or later must be installed on the
+       Business System.
+
+
+       Xerox Network Systems is a trademark of Xerox Corporation.
+
+       The site name defined in the /etc/sitename file is used by
+       tdts to identify the local site on the network.	Replace
+       the dummy sitename entry in the /etc/sitename file with
+       the desired site name. A site name is a 1- to 8-character
+       alphanumeric string, with no special characters allowed.
+       This site name is also used by uucp and by the DNIO/1500
+       upgrade software. The next time (init 2) is executed, the
+       tdts daemon is started and netcp/netexec sessions
+       accepted.
+
+SEE ALSO
+     netcp(1T), netexec(1T).
+
+

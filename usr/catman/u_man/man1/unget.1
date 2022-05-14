@@ -1,0 +1,71 @@
+UNGET(1)                                                 UNGET(1)
+
+NAME
+     unget - Undoes a previous get(1) of an SCCS file
+
+SYNOPSIS
+     unget -nrs files
+
+DESCRIPTION
+   Purpose
+     The unget command reverses the effect of a get -e executed
+     prior to creating the intended new delta.
+
+   Options
+     The following options apply independently to each named
+     file:
+
+     -n     Causes the retention of the gotten file, which would
+            normally be removed from the current directory.
+
+     -rSID  Uniquely identifies which delta is no longer
+            intended.  (This delta would have been specified by
+            get as the new delta).  The use of this option is
+            necessary only if two or more outstanding gets for
+            editing on the same SCCS file were done by the same
+            person (login name).  A diagnostic message results if
+            the specified SID is ambiguous, or if it is necessary
+            and omitted on the command line.
+
+     -s     Suppresses the printout of the intended delta's SID
+            on the standard output.
+
+   Discussion
+     If a directory is named, unget behaves as though each file
+     in the directory were specified as a named file, except that
+     non-SCCS files and unreadable files are silently ignored.
+     If a name of - is given, the standard input is read with
+     each line being taken as the name of an SCCS file to be
+     processed.
+
+EXAMPLE
+     A user executes two get -e (get with intent to edit)
+     commands on SIDs 1.3 and 1.4 of the SCCS file s.file1, but
+     does not execute a delta command.  The user now wants to
+     execute a delta on SID 1.4 only.  The following command
+     cancels the get -e command on SID 1.3:
+
+          unget -r1.3 s.file1
+
+PROMPTS
+   Input File Name(s):
+     Enter the names of the files to process.
+
+   Retain the Gotten File:
+     The initial value is no.  Enter yes to retain rather than
+     remove the gotten file.
+
+   Delta Version Number:
+     Enter the SID of the delta to process.
+
+   Suppress Output:
+     The initial value is no.  Enter yes to suppress printing of
+     the SID on the standard output.
+
+SEE ALSO
+     delta(1), get(1), sact(1).
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+

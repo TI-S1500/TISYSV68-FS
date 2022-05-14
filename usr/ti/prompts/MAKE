@@ -1,0 +1,54 @@
+# cshf	 make--maintains and regenerates programs 
+#	@(#)MAKE.sh	1.2  88/03/21
+#
+onintr end
+
+prompt "^MAKE -- MAINTAINS, UPDATES, AND REGENERATES GROUPS OF PROGRAMS"\
+       "^*Makefile Name(s):" _input_file macnm "$_input_file"\
+       "^*List of Targets:" target string "$target"\
+       "^Execute in No Execute Mode:" nflag yesno n\
+       "^Touch the Target Files:" tflag yesno n\
+       "^Execute in Background:" back yesno n\
+       "^Select Additional Options:" options yesno n\
+       "^#$*"
+
+if ($abort) goto end
+if ($options == "y") then
+	prompt "^MAKE -- OPTIONS, PAGE 2"\
+		"^Execute in Debug Mode:" dflag yesno n\
+		"^Ignore Built in Rules:" rflag yesno n\
+		"^Execute in Silent Mode:" sflag yesno n\
+		"^Ignore All Error Codes:" iflag yesno n\
+		"^Execute in Verbose Mode:" pflag yesno n\
+		"^Stop Work on Current Entry:" kflag yesno n\
+		"^Global Var. Override Assign.:" eflag yesno n\
+		"^Print a Memory Map:" mflag yesno n\
+		"^Return a Status Code:" qflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($sflag == "y") set opt = s$opt
+	if ($rflag == "y") set opt = r$opt
+	if ($dflag == "y") set opt = d$opt
+	if ($iflag == "y") set opt = i$opt
+	if ($pflag == "y") set opt = p$opt
+	if ($kflag == "y") set opt = k$opt
+	if ($eflag == "y") set opt = e$opt
+	if ($mflag == "y") set opt = m$opt
+	if ($qflag == "y") set opt = q$opt
+endif
+
+if ($abort) goto end
+if ($nflag == "y") set opt = n$opt
+if ($tflag == "y") set opt = t$opt
+if ($opt != "") set opt = -$opt
+if ($back == "y") set mode = "&"
+if ($_input_file != "") set fopt = -f
+
+if ($abort) goto end
+echo "=== MAKE COMMAND EXECUTING ==="
+echo make $opt $fopt $_input_file $target $mode 
+make $opt $fopt $_input_file $target $mode 
+
+end:
+unset *flag target back *opt options mode

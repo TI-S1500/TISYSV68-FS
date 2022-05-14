@@ -1,0 +1,141 @@
+CFLOW(1)						 CFLOW(1)
+
+NAME
+     cflow - Generates C flow graph
+
+SYNOPSIS
+     cflow -ix -i_ -rd files
+
+DESCRIPTION
+   Purpose
+     The cflow command analyzes a collection of C, yacc, lex,
+     assembler, and object files and attempts to build a graph
+     charting the external references.
+
+   Options
+     -dnum  The num decimal integer indicates the depth at which
+	    the flow graph is cut off.	By default this is a very
+	    large number.  Do not set the cutoff depth to a
+	    nonpositive integer.
+
+     -ix    Include external and static data symbols. The default
+	    is to include only functions in the flow graph.
+
+     -i_    Include names that begin with an underscore. The
+	    default is to exclude these functions (and data if
+	    -ix is used).
+
+     -r     Reverse the "caller:callee" relationship producing an
+	    inverted listing showing the callers of each
+	    function.  The listing is also sorted in
+	    lexicographical order by callee.
+
+   Discussion
+     Files suffixed with .y, .l, .c, and .i are processed by yacc
+     or lex and C-preprocessed (bypassed for .i files) as
+     appropriate and then run through the first pass of lint(1).
+     (The -I, -D, and -U options of the C-preprocessor are also
+     understood.)  Files suffixed with .s are assembled, and
+     information is extracted (as in .o files) from the symbol
+     table.  The output of all this non-trivial processing is
+     collected and turned into a graph of external references,
+     which is displayed upon the standard output.
+
+     Each line of output begins with a reference (i.e., line)
+     number, followed by a suitable number of tabs indicating the
+     level.  The tabs are followed by the name of the global
+     (normally only a function not defined as an external or
+     beginning with an underscore; see the -i option), a colon,
+     and its definition.  For information extracted from C
+     source, the definition consists of an abstract type
+     declaration (e.g., char *), and the name of the source file
+     delimited by angle brackets and the line number where the
+     definition was found.  Definitions extracted from object
+     files indicate the file name and location counter under
+     which the symbol appeared (e.g., text).  Leading underscores
+     in C-style external names are deleted.
+
+     Once a definition of a name has been printed, subsequent
+     references to that name contain only the reference number of
+     the line where the definition may be found.  For undefined
+     references, only <> is printed.
+
+EXAMPLE
+     Given the following in file.c :
+
+	  int  i;
+	  main()
+	  {
+	       f();
+	       g();
+	       f();
+	  }
+
+	  f()
+	  {
+	       i = h();
+	  }
+     the command
+
+	  cflow -ix file.c
+
+     produces the the output
+
+	  1    main: int(), <file.c 4>
+	  2		f: int(), <file.c 11>
+	  3			   h: <>
+	  4			   i: int, <file.c 1>
+	  5		g: <>
+
+     When the nesting level becomes too deep, the  -e  option  of
+     pr(1) can be used to compress the tab expansion to something
+     less than every eight spaces.
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of the file to be processed.
+
+   Output File Name(s):
+     Enter the name of the file to  receive  the  output  of  the
+     command.  The default is standard output.
+
+   List Callers of Functions:
+     The initial value is no.  Enter yes to  produce  a  list  of
+     callers of each function.
+
+   External/Static Symbols:
+     The initial value is no.  Enter yes to  produce  a  list  of
+     external and static data symbols.
+
+   Include Underscore Names:
+     The initial value is no.  Enter yes to  produce  a  list  of
+     names that begin with an underscore.
+
+SEE ALSO
+     as(1), cc(1), lex(1), lint(1), nm(1), pr(1), yacc(1).
+
+DIAGNOSTICS
+     Attempts to set the cutoff depth to  a  nonpositive  integer
+     results  in  an error message.  Illegal options and multiple
+     definitions result  in  error  messages.	In  the  case  of
+     multiple  definitions,  the  cflow  command accepts only the
+     first definition.	Other messages may come from the  various
+     programs used (e.g., the C-preprocessor).
+
+NOTES
+     Files produced by lex(1) and yacc(1) cause the reordering of
+     line  number  declarations  that  can confuse cflow.  To get
+     proper results, feed cflow the yacc(1) or lex(1) input.
+
+     The  cflow  program  uses	the  following	 executables   in
+     /usr/lib:
+
+     + dag
+
+     + flip
+
+     + lpfx
+
+     + nmf
+
+

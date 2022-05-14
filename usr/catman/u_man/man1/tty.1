@@ -1,0 +1,56 @@
+TTY(1)                                                     TTY(1)
+
+NAME
+     tty - Gets the terminal's name
+
+SYNOPSIS
+     tty -ls
+
+DESCRIPTION
+   Purpose
+     The tty command prints the path name of the user's terminal.
+
+   Options
+     -l   Prints the synchronous line number to which the user's
+          terminal is connected (if it is on an active
+          synchronous line).
+
+     -s   Inhibits printing of the terminal's path name, allowing
+          the user to test the exit code only.
+
+EXAMPLE
+     The command tty -l might return output similar to the
+     following:
+
+          /dev/tty4
+          tty: Not an active synchronous line (INFO 1002312)
+
+PROMPTS
+   Synchronous Line Number:
+     Initial value is no. If yes is entered the synchronous line
+     number to which the user's terminal is connected is
+     reported.
+
+   Inhibit Printing Terminal's Path Name:
+     Initial value is no.  If you enter yes, the terminal's path
+     name is not printed.
+
+DIAGNOSTICS
+     Not an active synchronous line  Means the standard input is
+                                     not a synchronous terminal
+                                     and the -l option is
+                                     specified.
+
+     not a tty                       Means the standard input is
+                                     not a terminal and the -s
+                                     option is not specified.
+
+     The utility returns the following exit codes:
+
+     2    Invalid options have been specified
+
+     0    Standard input is a terminal
+
+     1    Normal exit
+
+

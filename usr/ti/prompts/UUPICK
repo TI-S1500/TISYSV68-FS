@@ -1,0 +1,28 @@
+# cshf     uupick -- accept/reject uuto files 
+#	@(#)UUPICK.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UUPICK -- PICKS UUTO FILES"\
+	"^*Search PUBDIR for User or System (u,s):" search\
+	"element(U,u=u,S,s=s)" u\
+       "^#$*"
+
+if ($abort) goto end
+if ($search == "s") then
+	if ($abort) goto end
+	prompt "^UUPICK -- INPUT SYSTEM NAME"\
+		"^System Name:" system string\
+       		"^#$*"
+
+	if ($abort) goto end
+	set opt = -s$system
+endif
+
+if ($abort) goto end
+echo "=== UUPICK COMMAND EXECUTING ==="
+echo uupick $opt 
+uupick $opt
+ 
+end:
+unset system opt search

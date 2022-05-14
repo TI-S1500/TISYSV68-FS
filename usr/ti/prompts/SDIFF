@@ -1,0 +1,38 @@
+# cshf 	sdiff - compares 2 files  
+#	@(#)SDIFF.sh	1.2  87/10/15
+#
+onintr end
+
+prompt  "^SDIFF -- COMPARES FILES SIDE-BY-SIDE" \
+	"^File 1:" _input_file acnm $_input_file   \
+	"^File 2:" F2 acnm $F2   \
+	"^*File Name to Merge Identical Lines:" oflag acnm \
+	"^Print Left Side of Identical Lines:" lflag yesno n\
+	"^Print Identical Lines:" sflag yesno y\
+	"^Output Line Width (20-200):" wflag\
+	"range(20,200)" 80\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== SDIFF COMMAND EXECUTING ==="
+if (!(-e "$_input_file")) then
+	echo ERROR: $_input_file does not exist
+	set abort = "1"
+endif
+if (!(-e "$F2")) then
+	echo ERROR: $F2 does not exist
+	set abort = "1"
+endif
+ 
+if ($abort) goto end
+if ($lflag == "y") set opt = l$opt
+if ($sflag == "n") set opt = s$opt
+if ($opt != "") set opt = -$opt
+if ($oflag != "") set oopt = "-o "$oflag
+if ($wflag != "") set wopt = "-w "$wflag
+
+echo sdiff  $opt $wopt $oopt $_input_file  $F2
+sdiff  $opt $wopt $oopt $_input_file  $F2
+
+end:
+unset *opt *flag 

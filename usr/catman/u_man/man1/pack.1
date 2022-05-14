@@ -1,0 +1,93 @@
+PACK(1)                                                   PACK(1)
+
+NAME
+     pack - Compresses files
+
+SYNOPSIS
+     pack - [-f] files
+
+DESCRIPTION
+   Purpose
+     The pack command attempts to store the specified files in a
+     compressed form.  Wherever possible and useful, each input
+     file is replaced by a packed file (file.z) with the same
+     access modes, access and modified dates, and owner as those
+     of file.  If pack is successful, file is removed.  Packed
+     files can be restored to their original form using unpack or
+     pcat.
+
+   Option
+     -f   Forces packing of files. This is useful for causing an
+          entire directory to be packed even if some of the files
+          will not benefit.
+
+     -    The pack command uses Huffman (minimum redundancy)
+          codes on a byte-by-byte basis.  If the - option is
+          used, an internal flag is set that causes the number of
+          times each byte is used, its relative frequency, and
+          the code for the byte to be printed on the standard
+          output.  Additional occurrences of - in place of file
+          cause the internal flag to be set and reset.
+
+   Discussion
+     The amount of compression obtained depends on the size of
+     the input file and the character frequency distribution.
+     Because a decoding tree forms the first part of each .z
+     file, it is usually not worthwhile to pack files smaller
+     than three blocks, unless the character frequency
+     distribution is very skewed, which may occur with printer
+     plots or pictures.
+
+     Typically, text files are reduced to 60-75% of their
+     original size.  Load modules, which use a larger character
+     set and have a more uniform distribution of characters, show
+     little compression, the packed versions being about 90% of
+     the original size.
+
+     The pack program returns a value that is the number of files
+     that it failed to compress.
+
+     No packing occurs if:
+
+          a.  The file appears to be already packed
+          b.  The file name has more than 12 characters
+          c.  The file has links
+          d.  The file is a directory
+          e.  The file cannot be opened
+          f.  No disk storage blocks will be saved by packing
+          g.  A file called file.z already exists
+          h.  The .z file cannot be created
+          i.  An I/O error occurred during processing
+
+     The last segment of the file name must contain no more than
+     12 characters to allow space for the appended .z extension.
+     Directories cannot be compressed.
+
+EXAMPLE
+     The following example compresses the file named test.pak:
+
+          pack - test.pak
+
+     The following result is displayed on standard output:
+
+          pack: test.pak: 38.2% Compression
+               from 7326 to 4528 bytes
+               Huffman tree has 13 levels below root
+               84 distinct bytes in input
+               dictionary overhead = 104 bytes
+               effective entropy = 4.94 bits/byte
+               asymptotic entropy = 4.83 bits/byte
+
+PROMPTS
+   Input File Name(s):
+     Enter the names of the files to be processed.
+
+   Minimum Redundancy:
+     Initial value is no.  If you enter yes, a flag is set that
+     causes the number of times each byte is used, its relative
+     frequency, and the code for the byte to be printed.
+
+SEE ALSO
+     pcat(1), unpack(1).
+
+

@@ -1,0 +1,50 @@
+# cshf  ltxdump -- Invokes the 68020 assembler linker text dump utility 
+#	@(#)LTXDUMP.sh	1.1  87/03/09
+#
+onintr end
+set comma = ','
+
+@ count = 0
+while ($count == 0)
+  prompt "^LTXDUMP -- INVOKES THE 68020 ASSEMBLER LINKER TEXT DUMP UTILITY"\
+	"^Input File Name:"  _input_file acnm $_input_file\
+	"^Append Symbol Table to Error Listing:" sflag yesno n\
+	"^SELECT ONLY ONE OR NONE OF THE FOLLOWING:"\
+	"^Define Output File Names:" exten yesno n\
+	"^Produce Only the Dump File:" dmp yesno n\
+	"^#$*"
+
+  if ($abort) goto end
+  @ count++
+  if (($exten == "y") && ($dmp == "y")) @ count = 0
+end
+
+if ($exten == "y") then
+	prompt "^LTXDUMP -- DEFINE OUTPUT FILE NAMES OPTTION"\
+ 		"^*Linker Text Dump File Name:" _dmp_file acnm $_dmp_file\
+ 		"^*Symbol Table File Name:" _symtbl_file acnm $_symtbl_file\
+
+	if ($abort) goto end
+	set ltxd = $_dmp_file$comma
+	set sym = $_symtbl_file$comma
+endif
+
+if ($abort) goto end
+if ($sflag == "y") set opt = -s$opt
+
+echo "=== LTXDUMP COMMAND EXECUTING ==="
+if ($exten == "y") then
+	echo ltxdump $opt $ltxd$sym=$_input_file
+	ltxdump $opt $ltxd$sym=$_input_file
+else if ($dmp == "y") then
+	echo ltxdump $opt =$_input_file
+	ltxdump $opt =$_input_file
+else
+	echo ltxdump $opt $_input_file
+	ltxdump $opt $_input_file
+endif
+endif
+
+#clean up time
+end:
+unset *flag *opt ltxd options exten comma file dmp sym

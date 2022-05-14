@@ -1,0 +1,23 @@
+ERRSTOP(1M)                                           ERRSTOP(1M)
+
+NAME
+     errstop - Terminates the error-logging daemon
+
+SYNOPSIS
+     errstop [namelist]
+
+DESCRIPTION
+   Purpose
+     Only the super-user can use errstop.  The error-logging
+     daemon errdemon(1M) is terminated by using errstop.  This
+     task is accomplished by executing ps(1) to determine the
+     daemon's identity and then sending it a software kill signal
+     with signal(2).
+
+   System Name List:
+     Enter the path name of the system.  Default is /unix.
+
+SEE ALSO
+     errdemon(1M), kill(2), ps(1).
+
+

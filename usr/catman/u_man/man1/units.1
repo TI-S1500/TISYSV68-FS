@@ -1,0 +1,53 @@
+UNITS(1)                                                 UNITS(1)
+
+NAME
+     units - Specifies the conversion program
+
+SYNOPSIS
+     units
+
+DESCRIPTION
+     units converts quantities expressed in various standard
+     scales to their equivalents in other scales.  It works
+     interactively in this fashion (remember that you can
+     exit units at any time by pressing Ctrl-c):
+
+          You have:inch
+          You want:cm
+                  * 2.540000e+00
+                  / 3.937008e-01
+
+     A quantity is specified as a multiplicative combination of
+     units optionally preceded by a numeric multiplier.  Powers
+     are indicated by suffixed positive integers, division by the
+     usual sign:
+
+          You have:15 lbs force/in2
+          You want:atm
+                  * 1.020689e+00
+                  / 9.797299e-01
+
+     units only does multiplicative scale changes; thus, it can
+     convert Kelvin to Rankine, but not Celsius to Fahrenheit.
+     Most familiar units, abbreviations, and metric prefixes are
+     recognized, including the following:
+          pi       Ratio of circumference to diameter
+          c        Speed of light
+          e        Charge on an electron
+          g        Acceleration of gravity
+          force    Same as g
+          mole     Avogadro's number
+          water    Pressure head per unit height of water
+          au       Astronomical unit
+
+     Pound is not recognized as a unit of mass; lb is.  Compound
+     names are run together, (e.g., lightyear).  British units
+     that differ from their U.S. counterparts are prefixed, for
+     example, brgallon.  For a complete list of units, enter:
+
+          cat /usr/lib/unittab
+
+FILES
+     /usr/lib/unittab
+
+

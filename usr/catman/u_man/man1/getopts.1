@@ -1,0 +1,141 @@
+GETOPTS(1)                                             GETOPTS(1)
+
+NAME
+     getopts - Parses command options
+
+SYNOPSIS
+     getopts optstring name [arg ...]
+
+DESCRIPTION
+     getopts is used by shell procedures to parse positional
+     parameters and to check for legal options.  It supports all
+     applicable rules of the command syntax standard. It should
+     be used in place of the getopt(1) command.  (See the
+     WARNING, that follows.)
+
+     optstring must contain the option letters the command using
+     getopts will recognize; if a letter is followed by a colon,
+     the option is expected to have an argument, or group of
+     arguments, which must be separated from it by white space.
+
+     Each time it is invoked, getopts will place the next option
+     in the shell variable name and the index of the next
+     argument to be processed in the shell variable OPTIND.
+     Whenever the shell or a shell procedure is invoked, OPTIND
+     is initialized to 1.  PP When an option requires an option-
+     argument, getopts places it in the shell variable OPTARG.
+
+     If an illegal option is encountered, ? will be placed in
+     name.
+
+     When the end of options is encountered, getopts exits with a
+     nonzero exit status.  The special option ``--'' can be used
+     to delimit the end of the options.
+
+     By default, getopts parses the positional parameters.  If
+     extra arguments (arg ...)  are given on the getopts command
+     line, getopts will parse them instead.
+
+     All new commands will adhere to the command syntax standard
+     described in the following rules; they should use getopts(1)
+     or getopt(3C) to parse positional parameters and check for
+     options that are legal for that command (see WARNING that
+     follows).
+
+     Command Syntax Standard: Rules
+
+     These command syntax rules are not followed by all current
+     commands, but all new commands will obey them.  getopts(1)
+     should be used by all shell procedures to parse positional
+     parameters and to check for legal options.  It supports
+     Rules 3 through 10 below.  The enforcement of the other
+     rules must be done by the command itself.
+
+      1.    Command names (name above) must be between two and
+            nine characters long.
+
+      2.    Command names must include only lowercase letters and
+            digits.
+
+      3.    Option names (option above) must be one character
+            long.
+
+      4.    All options must be preceded by ``-''.
+
+      5.    Options with no arguments can be grouped after a
+            single ``-''.
+
+      6.    The first option-argument (optarg above) following an
+            option must be preceded by white space.
+
+      7.    Option-arguments cannot be optional.
+
+      8.    Groups of option-arguments following an option must
+            either be separated by commas or separated by white
+            space and quoted (e.g., -o xxx, z, yy or -o "xxx z
+            yy").
+
+      9.    All options must precede operands (cmdarg above) on
+            the command line.
+
+     10.    ``--'' can be used to indicate the end of the
+            options.
+
+     11.    The order of the options relative to one another
+            should not matter.
+
+     12.    The relative order of the operands (cmdarg above) may
+            affect their significance in ways determined by the
+            command with which they appear.
+
+     13.    ``-'' preceded and followed by white space should
+            only be used to mean standard input.
+
+EXAMPLE
+     The following fragment of a shell program shows how one
+     might process the arguments for a command that can take the
+     options a or b, as well as the option o, which requires an
+     option-argument:
+
+          while getopts abo: c
+          do
+               case $c in
+               a | b)    FLAG=$c;;
+               o)        OARG=$OPTARG;;
+               \?)       echo $USAGE
+                         exit 2;;
+               esac
+          done
+          shift expr $OPTIND - 1
+
+     This code will accept any of the following as equivalent:
+
+          cmd -a -b -o "xxx z yy" file
+          cmd -a -b -o "xxx z yy" -- file
+          cmd -ab -o xxx,z,yy file
+          cmd -ab -o "xxx z yy" file
+          cmd -o xxx,z,yy -b -a file
+
+SEE ALSO
+     getopt(3C), getoptcvt(1), sh(1).
+
+WARNING
+     Although the following command syntax rule relaxations are
+     permitted under the current implementation, they should not
+     be used because they may not be supported in future releases
+     of the system.  As in the preceding EXAMPLE section, a and b
+     are options, and the option o requires an option-argument:
+
+          cmd -aboxxx file  (Rule 5 violation:  options with
+                option-arguments must not be grouped with other options)
+          cmd -ab -oxxx file  (Rule 6 violation:  there must be
+                white space after an option that takes an option-argument)
+
+     Changing the value of the shell variable OPTIND or parsing
+     different sets of arguments may lead to unexpected results.
+
+DIAGNOSTICS
+     getopts prints an error message on the standard error when
+     it encounters an option letter not included in optstring.
+
+

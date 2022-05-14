@@ -1,0 +1,37 @@
+DDINQ(1T)                                               DDINQ(1T)
+
+NAME
+     ddinq - Reports information on device drivers loaded
+
+SYNOPSIS
+     ddinq -al name download_device
+
+DESCRIPTION
+   Purpose
+     The ddinq command reports the name of the device drivers
+     downloaded with the specified download_device . You must
+     specify exactly one of the two options as well as a download
+     device name.
+
+   Options
+     -a   Reports a list of all device drivers downloaded using
+          the specified download_device.
+
+     -l   Reports the name, location and length of the last
+          device driver downloaded with the specified
+          download_device.
+
+   Arguments
+     name The four-character name of a particular program. The
+          command responds with the location and length of that
+          program if it has been downloaded.
+
+     download_device
+          The path name of the download pseudo-device for the
+          communications carrier board (CCB) to be downloaded.
+          This path name is specified in the file /etc/ccbdev.
+
+FILES
+     /etc/ccbdev
+
+

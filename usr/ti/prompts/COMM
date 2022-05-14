@@ -1,0 +1,27 @@
+# cshf	 comm - compare two sorted files 
+#	@(#)COMM.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^COMM -- SELECTS OR REJECTS LINES COMMON TO TWO SORTED FILES"\
+	"^File 1 :"   _input_file  acnm  $_input_file\
+	"^File 2 :"   F2  acnm  $F2\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^*Columns to Omit (1,2,3):"  omit  integer\
+	"^#$*"
+
+if( $abort )  goto end
+if( $omit != "" ) set omit="-$omit"
+
+echo "=== COMM COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo comm $omit  $_input_file  $F2
+	comm $omit  $_input_file  $F2 | \
+	pg -cp"Output from COMM is being piped through pg: "
+else
+	echo comm $omit  $_input_file  $F2 ">"$_output_file
+	comm $omit  $_input_file  $F2 >$_output_file
+endif
+
+end:
+unset omit

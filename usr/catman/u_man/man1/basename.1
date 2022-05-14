@@ -1,0 +1,31 @@
+BASENAME(1)                                           BASENAME(1)
+
+NAME
+     basename - Delivers portions of path names
+
+SYNOPSIS
+     basename string suffix
+
+DESCRIPTION
+   Purpose
+     The basename program deletes from string any prefix ending
+     in / and the suffix (if present in string).  The program
+     prints the result on the standard output.  It is normally
+     used inside substitution marks (``) within shell procedures.
+
+EXAMPLE
+     The following example, invoked with the argument
+     /usr/src/cmd/xmpl.c, compiles the named file and moves the
+     output to a file named xmpl in the current directory.  Note
+     that cc(1) stores its output in a file named a.out.
+
+          cc $1
+          mv a.out `basename $1 .c`
+
+SEE ALSO
+     sh(1), dirname(1).
+
+NOTES
+     The basename of / is null and is considered an error.
+
+

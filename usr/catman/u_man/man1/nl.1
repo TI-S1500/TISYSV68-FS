@@ -1,0 +1,119 @@
+NL(1)                                                       NL(1)
+
+NAME
+     nl - Invokes a line numbering filter
+
+SYNOPSIS
+     nl -bdfhilnpsvw file
+
+DESCRIPTION
+   Purpose
+     The nl command reads lines from the named file or the
+     standard input if no file is named and reproduces the lines
+     on the standard output.  Lines are numbered on the left in
+     accordance with the command options in effect.
+
+   Options
+     The type option value specifies the type of lines to be
+     numbered.  The following types are available:
+
+          a  All lines (see the -l option for numbering empty
+             lines)
+
+          n  No lines numbered
+
+          p  Lines that contain the regular expression ``string''
+             immediately following p
+
+          t  All non-empty lines (an empty line is one that
+             begins with the newline character)
+
+     Command options can appear in any order and can be
+     intermingled with an optional file name.  Only one file can
+     be named.
+
+     -btype    Specifies which lines in the logical body of a
+               page are numbered.  The default type is t.
+
+     -dxx      Changes the delimiter characters specifying the
+               start of a logical page section from the default
+               characters (\:) to two user-specified characters.
+               If only one character is entered, the second
+               character remains the default character (:).  No
+               space should appear between the -d and the
+               delimiter characters.  To enter a backslash, use
+               two backslashes.
+
+     -ftype    Specifies which lines in the logical footer are
+               numbered.  The default type is n.
+
+     -htype    Specifies which lines in the logical header are
+               numbered.  The default type is n.
+
+     -iincr    Numbers logical page lines with the increment
+               value incr.  Default is 1.
+
+     -lnum     Defines num as the number of blank lines to be
+               considered as one.  For example, -l2 results in
+               only the second adjacent blank being numbered (if
+               the appropriate -ha, -ba, and/or -fa option is
+               set).  Default is 1.  This option is effective
+               only if the a type is in effect.
+
+     -nformat  Numbers lines according to format.  Default format
+               is rn (right justified).  Recognized values are:
+
+               ln   Left justified, leading zeroes suppressed
+
+               rn   Right justified, leading zeroes suppressed
+
+               rz   Right justified, leading zeroes kept
+
+     -p        Supresses restarting numbering at logical page
+               delimiters.
+
+     -ssep     Separates the line number and the corresponding
+               text line with the character or characters sep.
+               Default sep is a tab.
+
+     -vstart#  Numbers logical page lines with the initial value
+               start#.  Default is 1.
+
+     -wwidth   Uses width number of characters for the line
+               number.  Default width is 6.
+
+   Discussion
+     The nl command views the text it reads in terms of logical
+     pages.  Line numbering is reset at the start of each logical
+     page.  A logical page consists of a header, a body, and a
+     footer section.  Empty sections are valid.  Different line
+     numbering options are independently available for header,
+     body, and footer (e.g., no numbering of header and footer
+     lines while numbering blank lines only in the body).
+
+     The start of logical page sections is signaled by input
+     lines containing nothing but the following delimiter
+     character(s):
+
+     Line contents  Start of
+
+     \:\:\:         header
+
+     \:\:           body
+
+     \:             footer
+
+     Unless otherwise specified with an option, nl assumes the
+     text being read is in a single logical page body.
+
+EXAMPLE
+     The following command numbers files 1 and 2 starting at line
+     number 10 with an increment of ten.  The logical page
+     delimiters are !+.
+
+          nl -v10 -i10 -d!+ file1 file2
+
+SEE ALSO
+     pr(1).
+
+

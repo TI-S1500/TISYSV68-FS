@@ -1,0 +1,617 @@
+EX(1)                                                       EX(1)
+
+NAME
+     ex - Invokes the text editor
+
+SYNOPSIS
+     ex - -lrRv + files
+
+DESCRIPTION
+   Purpose
+     The ex editor is the root of a family of editors which
+     includes edit, ed, and vi. The ex editor is a line-oriented
+     editor, a superset of ed.
+
+     If you have a VDT terminal, you may wish to use the display
+     based editor vi which focuses on the display editing portion
+     of ex.  See vi(1).
+
+    Invocation Options
+     The following options are available when you specify the ex
+     command:
+
+     -         Suppresses all interactive user feedback.  This is
+               useful in processing editor scripts.
+
+     -v        Invokes the vi(1) editor
+
+     -rfile    Recovers file after an editor or system crash.  If
+               file is not specified, a list of all saved files
+               is printed.
+
+     -R        Specifies read-only mode. The read-only flag is
+               set, preventing accidental overwriting of the
+               file.
+
+     +command  Begins editing by executing the specified editor
+               search or positioning command.
+
+     -l        Initiates LISP mode; indents appropriately for
+               LISP code.  The (, ), {, }, [[, and ]] commands in
+               vi and open are modified to have meaning for LISP.
+
+   Arguments
+     The files argument indicates files to be edited.
+
+   ex Features
+     The following are ex editor features useful on VDT terminals
+     and not available with the ed editor.
+
+     Driving Terminals   The ex editor uses many more terminal
+                         capabilities than ed does. It uses the
+                         data base termcap(5) and your terminal
+                         type (from the variable TERM in the
+                         environment) to determine how to drive
+                         your terminal efficiently.  The ed
+                         editor makes use of features that insert
+                         and delete characters and lines in its
+                         visual command.  This visual command can
+                         be abbreviated vi and is the central
+                         mode of editing when using vi(1).  The
+                         ed interline editing command, open or o
+                         works on all terminals.
+
+     Viewing Text        The ex editor has commands for easily
+                         viewing the text of the file.  The z
+                         command gives access to windows of text.
+                         For example, press z and Return to cause
+                         the line where the cursor currently
+                         resides to become the top line on the
+                         screen.  The ctrl-D command causes the
+                         editor to scroll a half-window of text.
+                         This is useful for quickly stepping
+                         through a file.
+
+     Correcting Mistakes The undo or u command allows you to
+                         reverse any single change.  The editor
+                         gives you feedback, usually by printing
+                         changed lines, and it indicates when
+                         more than a few lines are affected by a
+                         command.  This makes it easy to detect
+                         when a command has affected more lines
+                         than you intended.
+
+                         The editor normally prevents overwriting
+                         existing files so that you cannot
+                         accidentally destroy a file other than
+                         the one you are editing.  If the system
+                         (or editor) crashes, you can use the
+                         recover command to retrieve your work.
+                         This gets you back to within a few lines
+                         of where you stopped.
+
+     Multiple Files      You can give ex a list of files on the
+                         command line and use the next or n
+                         command to edit each file in turn.  The
+                         next command can also be given a list of
+                         file names or a pattern (as used by the
+                         shell) to specify a new set of files to
+                         be edited.  In general, file names in
+                         the editor may be formed with full shell
+                         metacharacter syntax.  The metacharacter
+                         `%' is also available in forming file
+                         names and is replaced by the name of the
+                         current file.
+
+     Moving Text         For moving text between files and within
+                         a file the editor has a group of
+                         buffers, named a through z. You can
+                         place text in these named buffers and
+                         carry the text over when you edit
+                         another file.
+
+     Substitutions       The command & repeats the last
+                         substitute command.  The following
+                         confirmed substitute command accepts a
+                         range of substitutions to be done.
+
+                              g/target/s//replacement/c
+
+                         The editor interactively asks whether
+                         each substitution is desired.
+
+                         It is possible to ignore the case of
+                         letters in searches and substitutions.
+                         The editor also allows regular
+                         expressions which match words to be
+                         constructed.  This is convenient, for
+                         example, in searching for the word
+                         ``edit'' if your document also contains
+                         the word ``editor.''
+
+     Customizing ex      The ex editor has a set of options which
+                         you can set to alter the editor as you
+                         wish.  See Initializing Options and
+                         Useful Options.  For example, one useful
+                         option is autoindent, which allows the
+                         editor to automatically supply leading
+                         white space to align text.  You can then
+                         use the ctrl-D key as a backtab and
+                         space and tab forward to align new text
+                         easily.
+
+     Miscellaneous       Miscellaneous new features include an
+                         intelligent join or j command, which
+                         supplies white space between joined
+                         lines automatically; commands < and >,
+                         which shift groups of lines; and the
+                         ability to filter portions of the buffer
+                         through commands such as sort.
+
+   ex States
+     Command        Normal and initial state. The input to the
+                    command is prompted for by :.  Your kill
+                    character cancels a partial command.
+
+     Insert         Entered by a,  i,  and c.  Arbitrary text may
+                    be entered. Insert is terminated normally by
+                    a line having only a period (.)  on it, or
+                    abnormally with an interrupt.
+
+     Open/visual    Entered by open or vi; terminated with Q or
+                    ^\.
+
+   ex Command Abbreviations and Names
+     abbrev   ab   next         n     unabbrev     una
+     append   a    number       nu    undo         u
+     args     ar   open         o     unmap        unm
+     change   c    preserve     pre   version      ve
+     copy     co   print        p     visual       vi
+     delete   d    put          pu    write        w
+     edit     e    quit         q     xit          x
+     file     f    read         re    yank         ya
+     global   g    recover      rec   window       z
+     insert   i    rewind       rew   escape       !
+     join     j    set          se    lshift       <
+     list     l    shell        sh    print next   CR
+     map           source       so    resubst      &
+     mark     ma   stop         st    rshift       >
+     move     m    substitute   s     scroll       ^D
+
+     In the following, line is a single line address, given in
+     any of the forms described in ex Command Addressing table
+     above; range is a pair of line addresses, separated by a
+     comma or semicolon (see ex Command Addressing for the
+     difference between the two); count is a positive integer,
+     specifying the number of lines to be affected by the
+     command; flags is one or more of the characters #, p, and l;
+     the corresponding command to print the line is executed
+     after the command completes. Any number of + or /-
+     characters may also be given with these flags.
+
+     ab word rhs
+          Add the named abbreviation to the current list.  In
+          visual mode, if word is typed as a complete word during
+          input, it is replaced by the string rhs.
+
+     line a
+          Enters input mode; the input text is placed after the
+          specified line.
+
+     ar   The argument list is printed, with the current argument
+          inside `[' and `]'.
+
+     range c count
+          Enters input mode; the input text replaces the
+          specified lines.
+
+     range co line flags
+          A copy of the specified lines (range) is placed after
+          the specified destination line.
+
+     range d buffer count
+          The specified lines are deleted from the buffer. If a
+          named buffer is specified, the deleted text is saved in
+          it.
+
+     e +line file
+          Begin editing a new file.  If the +line option is
+          specified, the current line is set to the specified
+          position, where line may be a number (or $) or
+          specified as /pat or ?pat.
+
+     f    Prints the current file name and other information,
+          including the number of lines and the current position.
+
+     range g /pat/ cmds
+          First marks the lines within the given range that match
+          the given pattern. Then the given command(s) are
+          executed with
+
+          The cmds may be specified on multiple lines by hiding
+          newlines with a backslash. If cmds are omitted, each
+          line is printed.  Append, change, and insert commands
+          are omitted; the terminating dot may be omitted if it
+          ends cmds.  Visual commands are also permitted, and
+          take input from the terminal.
+
+          The global command itself, and the undo command are not
+          allowed in cmds. The edit options autoprint, autoindent
+          and report are inhibited.
+
+     range v /pat/ cmds
+          This is similar to the global command, except that cmda
+          is run on the lines that do not match the pattern.
+
+     line i
+          Enters input mode; the input text is placed before the
+          specified line.
+
+     range j count flags
+          Joins the text from the specified lines together into
+          one line.  White space is adjusted to provide at least
+          one blank character.
+
+          Appending the command with a ! causes a simpler join
+          with no white space processing.
+
+     range 1 count flags
+          Prints the specified lines with tabs printed as ^I and
+          the end of each line marked with a trailing $. (The
+          only useful flag is # for line numbers.)
+
+     map x rhs
+          The map command is used to define macros for use in
+          visual mode.  The first argument is a single character,
+          or the sequence #n, where n is a digit, to refer to the
+          function key n.  When this character or function key is
+          typed in visual mode, the action is as if the
+          corresponding rhs had been typed.  If ! is appended to
+          the command map, then the mapping is effective during
+          insert mode rather than command mode. Special
+          characters, white space, and newline must be escaped
+          with a CTRL-V to be entered in the arguments.
+
+     line ma x
+          (The letter k is an alternative abbreviation for the
+          mark command.)  The specified line is given the
+          specified mark x, which must be a single lowercase
+          letter.
+
+     range m line
+          Moves the specified lines (range) to be after the
+          target line.
+
+     n    The next file from the command line argument list is
+          edited.
+
+     range nu count flags
+          Prints the lines, each preceded by its line number.
+          (The only useful flag is l.)  (An abbreviation for this
+          command is the character #.)
+
+     pre  This command is for use in emergencies. For example,
+          when a write does not work, and the buffer cannot be
+          saved in any other way, pre will save it. Also if a
+          system crash occurs pre saves the current editor
+          buffer.
+
+     range p count
+          Prints the specified lines, with non-printing
+          characters printed as control characters in the form
+          ^x; DEL is represented as ^?.
+
+     line pu buffer
+          Puts back deleted or yanked lines.
+
+     q    Causes termination of the edit.
+
+     line r file
+          Places a copy of the specified file in the buffer after
+          the target line. Target line may be 0 to place text at
+          the beginning of the file.
+
+          If file is given as !string, string is taken to be a
+          system command and passed to the command interpreter;
+          the resultant output is read in to the buffer.  A blank
+          or tab must be precede the !.
+
+     rec file
+          Recovers file from the save area after an accidental
+          hangup or a system crash.
+
+     rew  The argument list is rewound, and the first file in the
+          list is edited.
+
+     se parameter
+          With no argument, the set command prints those options
+          whose values have been changed from the default
+          settings; with the parameter all, it prints all of the
+          option values.
+
+          Giving an option name followed by a ? causes the
+          current value of that option to be printed. The ? is
+          necessary only for Boolean valued options. Boolean
+          options are given values by the form se option to turn
+          them on, or se nooption to turn them off. String and
+          numeric options are assigned by the form se
+          option=value.  More than one parameter may be given.
+          They are interpreted from left to right.
+
+     sh   The user is put into the command interpreter; editing
+          resumes on exit.
+
+     so file
+          Reads and executes commands from the specified file.
+          The so commands may be nested.
+
+     range s /pat/repl/ options count flags
+          On each specified line, the first instance of the
+          pattern pat is replaced by the string repl. If options
+          includes the letter g (global), all instances of the
+          pattern in the line are substituted. If the option
+          letter c (confirm) is included, then before each
+          substitution the line is typed with the pattern to be
+          replaced marked with ^ characters.  You type y to make
+          the substitution; any subsequent input aborts it. The
+          last line substituted becomes the current line.
+
+     una word
+          Delete word from the list of abbreviations.
+
+     u    Reverses the changes made by the previous editing
+          command. For this purpose, global and visual are
+          considered single commands.  Commands which affect the
+          external environment, such as write, edit, and next,
+          cannot be undone. An undo can reverse.
+
+     unm x
+          The macro definition for x is removed.
+
+     ve   Prints the current version of the editor.
+
+     line vi type count
+          Enters visual mode at the specified line. The type is
+          optional, and may be - or ., as in the z command, to
+          position the specified line on the screen window.  A
+          count specifies an initial window size; the default is
+          the value of the edit-option window. The command Q
+          exits visual mode.
+
+     range w file
+          Writes the specified lines (the whole buffer, if no
+          range is given) to file, printing the number of lines
+          and characters written. If file is not specified, the
+          default is the current file.
+
+          If an alternate file is specified, and the file exists,
+          then the write will fail. It may be forced by appending
+          a ! to the command.  An existing file may be appended
+          to by appending >> to the command.  If the file does
+          not exist, an error is reported.
+
+          If the file is specified as !string, string is taken as
+          a system command.  The command interpreter is invoked,
+          and the specified lines are passed as standard input to
+          the command.
+
+          The command wq is equivalent to a w followed by a q.
+          The command wq! is equivalent to w! followed by q.
+
+     x    Writes out the buffer if any changes have been made,
+          and then quits.
+
+     range ya buffer count
+          Places the specified lines in the named buffer.  If no
+          buffer is specified, the unnamed buffer is used.
+
+     line z type count
+          If type is omitted, then count lines following the
+          specified line (default current line) are printed.  The
+          default for count is the value of the edit option
+          window.
+
+          If type is specified, it must be - or ..  A - causes
+          the line to be placed at the bottom of the screen,
+          while a . causes the line to be placed in the middle.
+
+     ! command
+          The remainder of the line after the ! is passed to the
+          system command interpreter for execution.  A warning is
+          issued if the buffer has been changed since the last
+          write.  A single ! is printed when the command
+          completes.
+
+          Within the text of command % and # are expanded as file
+          names, and ! is replaced with the text of the previous
+          ! command.  (Thus !! repeats the previous ! command.)
+          If any such expansion is done, the expanded line will
+          be echoed.
+
+     range ! command
+          In this form of the ! command, the specified lines are
+          passed to the command interpreter as standard input.
+          The resulting output replaces the specified lines.
+
+     range < count
+          Shift the specified lines to the left; the number of
+          spaces to be shifted is determined by the edit option
+          shiftwidth.
+
+     range > count
+          Shift the specified lines to the right, by inserting
+          white space.
+
+     range & options count flags
+          Repeats the previous substitute command, as if & were
+          replaced by the previous s/pat/repl/.
+
+     CTRL-D
+          Prints the next 1n lines, where n is the value of the
+          edit option scroll.
+
+   ex Command Addresses
+     n       line n                /pat/   next with pat
+     .       current line          ?pat?   previous with pat
+     $       last line             x-n     n before x
+     +       next line             x,y     x through y
+     -       previous line         'x      marked with x
+     +n,-n   n forward/backward    ''      previous context
+     %       1,$ (entire buffer)
+
+   Initializing options
+     EXINIT         Environmental variable for options
+     $HOME/.exrc    Editor initialization file
+     ./.exrc        Editor initialization file
+     set x          Enable option
+     set nox        Disable option
+     set x=val      Give value val
+     set            Show changed options
+     set All        show all options
+     set x?         Show value of option x
+
+   Useful options
+     The following option values are either off (nooption) or on
+     (option) unless otherwise specified.  For example, the
+     autodindent value is on or off (ai or noai) and the report
+     option value is an integer (report=5 is the default value).
+
+     Option(abbreviation)   Default         Description
+
+     autoindent(ai)         noai            Supply indent automatically
+     autoprint(ap)          ap              Print line after any d c J m
+                                            :s t u command
+     autowrite(aw)          noaw            Automatic write before changing
+                                            files (:n and !)
+     beautify(bf)           nobf            Discard all control characters
+                                            from input except tab, newline, and 
+                                            formfeed
+     directory              =/tmp           Specify directory of ex buffer file
+     errorbells(eb)         noeb            Suppress error bells in ex and not
+                                            in vi
+     hardtabs(ht)           ht=8            Define setting for terminal hardware
+                                            tabs
+     ignorecase(ic)         noic            Ignore upper- and lowercase in 
+                                            searches 
+     lisp                   nolisp          Modify ( ) { } [[ ]] to be 
+                                            compatible with LISP  
+     list                   nolist          Tabs print as CTRL-I, end of line 
+                                            indicated by $
+     magic                  nomagic         . & CTRL [ * are special in patterns
+     number(nu)             nonu            Number the lines in the display
+     open                   open            If set to noopen, open and vi are 
+                                            permitted
+     optimize(opt)          opt             Eliminate automatic return to speed 
+                                            output
+     paragraphs             para=IPLPPPQP
+                            vpPLI           Macro names that start paragraphs
+                                            for { and }
+     prompt                 prompt          Prompt for command mode input with 
+                                            a :
+     readonly(ro)           noro            Change file status to read only
+     redraw(re)             nore            Simulate smart terminal
+     scroll                 scroll=11       Determine number of lines scrolled 
+                                            with z
+     sections(sect)         sect=NHSHH HU   Macro names that define sections
+                                            for [[ and ]]
+     shiftwidth(sw)         sw=8            Shift distance for <, >, input,
+                                            CTRL-D, and CTRL-T
+     showmatch(sm)          nosm            To show matching, ) and } as ( 
+                                            and { are typed
+     slowopen               slow            Stop updates during insert
+     tabstop(ts)            ts=8            CTRL-I - tab stops set for input 
+                                            of text
+     tablength(tl)          tl=0            Tags are not significant beyond 
+                                            specified number of characters
+     term                   dumb            Value is set by term and is the 
+                                            name of the terminal being used
+     terse                  noterse         Produce shorter than normal error 
+                                            diagnostics
+     timeout(to)            noto            Eliminates one second time limit 
+                                            for map request
+     warn                   warn            Warn if there has not been a write 
+                                            since last change before a ! command
+     window                 window=23       Visual mode lines in a text window
+     wrapmargin(wm)         wm=0            Make lines break at a space at least
+                                            the specified number of spaces from
+                                            the right edge of the screen
+     wrapmargin             wm              Automatic line splitting
+     wrapscan(ws)           ws              Searches wrap around end of buffer
+     writeany(wa)           nowa            Stop usual checks prior to write 
+                                            commands
+
+   Scanning pattern formation
+      ^           Beginning of line
+      $           End of line
+      .           Any character
+      \<          Beginning of word
+      \>          End of word
+      [str]       Any char in str
+      [|str]      Any char not in str
+      [x-y]       Any char between x and y
+      *           Any number of preceding
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to be edited.
+
+   Suppress Interactive Feedback:
+     Initial value is no.  If you enter yes, all interactive
+     feedback is suppressed.
+
+   Invoke the VI Editor:
+     Initial value is no.  If you enter yes, the vi editor is
+     invoked.
+
+   Recover Files:
+     Response is optional. Initial value is no. If yes is entered
+     an attempt is made to recover the input file.
+
+   Readonly Mode:
+     Response is optional. Initial value is no. If yes is entered
+     the input file cannot be accidently overwritten.
+
+   Search/Positioning Command:
+     Enter the editing command to be executed upon entering the
+     edit session.
+
+   Initiate LISP Mode:
+     Initial value is no.  If you enter yes, the text is indented
+     appropriately for LISP code.
+
+FILES
+     /usr/lib/ex?.?strings    Error messages
+     /usr/lib/ex?.?recover    Recover command
+     /usr/lib/ex?.?preserve   Preserve command
+     /etc/termcap             Describes capabilities of terminals
+     $HOME/.exrc              Editor startup file
+     ./.exrc                  Editor startup file
+     /tmp/Exnnnnn             Editor temporary
+     /tmp/Rxnnnnn             Named buffer temporary
+     /usr/preserve            Preservation directory
+
+SEE ALSO
+     awk(1), ed(1), grep(1), termcap(5), vi(1),
+     Screen Editor Tutorial in the TI System V User's Guide.
+
+NOTES
+     The undo command causes all marks to be lost on the lines
+     changed and then restored if the marked lines were changed.
+     The command never clears the buffer modified condition.
+
+     The z command prints a number of logical rather than
+     physical lines.  More than a screen full of output may
+     result if long lines are present.
+
+     File input/output errors do not print a name if the command
+     line `-' option is used.
+
+     There is no easy way to do a single scan ignoring case.
+
+     The editor does not warn if text is placed in named buffers
+     and not used before exiting the editor.
+
+     Null characters are discarded in input files, and cannot
+     appear in resultant files.
+
+

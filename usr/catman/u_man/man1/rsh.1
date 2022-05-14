@@ -1,0 +1,51 @@
+RSH(1)                                                     RSH(1)
+
+NAME
+     rsh - Invokes the restricted Bourne shell
+
+SYNOPSIS
+     rsh -acefhiknstuvx args
+
+DESCRIPTION
+   Purpose
+     The rsh command sets up login names and execution
+     environments with capabilities more controlled than those of
+     the standard Bourne shell.  The actions of rsh are identical
+     to those of sh(1), except that the following are disallowed:
+          Changing directory, as described in cd(1)
+          Setting the value of $PATH
+          Specifying path or command names containing /
+          Redirecting output with > and >>
+
+   Options
+     See sh(1).
+
+   Discussion
+     Shell restrictions are enforced after the .profile file is
+     interpreted.
+
+     When a command to be executed is a shell procedure, rsh
+     invokes sh to execute the command.  Thus, it is possible to
+     provide to the end-user shell procedures that have access to
+     the full power of the standard shell, while imposing a
+     limited menu of commands.  This scheme assumes that the
+     end-user does not have write and execute permissions in the
+     same directory.
+
+     The net effect of these rules is that the writer of the
+     .profile file has complete control over user actions by
+     performing guaranteed setup actions and leaving the user in
+     an appropriate directory (probably not the login directory).
+
+     The rsh command is intended to protect the system from
+     valid, but potentially destructive commands given by the
+     novice user.  It does not reliably safeguard the system from
+     a knowledgeable intruder.
+
+     The system administrator can set up a directory of commands
+     (the directory /usr/rbin) that can be safely invoked by rsh.
+
+SEE ALSO
+     sh(1).
+
+

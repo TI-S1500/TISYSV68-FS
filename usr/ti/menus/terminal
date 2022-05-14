@@ -1,0 +1,6 @@
+terminal:menu:TERMINAL OPERATIONS MENU Series 1000, Model 1500:terminal.hlp
+DEVADM:c:Manages peripheral devices:
+STTY:c:Sets the modes for a terminal:
+TIC:c:Compiles terminfo:
+TPUT:c:Queries the terminfo database:
+TTY:c:Gets a terminal's name:

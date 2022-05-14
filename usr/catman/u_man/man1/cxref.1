@@ -1,0 +1,90 @@
+CXREF(1)                                                 CXREF(1)
+
+NAME
+     cxref - Generates C program cross-reference
+
+SYNOPSIS
+     cxref -cDIUostw files
+
+DESCRIPTION
+   Purpose
+     The cxref program analyzes a collection of C files and
+     attempts to build a cross-reference table.
+
+     The command utilizes a special version of cpp to include
+     #define information in its symbol table.  It produces a
+     listing on standard output of all symbols (auto, static, and
+     global) in each file separately, or with the -c option, in
+     combination.  Each symbol contains an asterisk (*) before
+     the declaring reference.
+
+   Options
+     -c   Prints a combined cross-reference of all input files.
+
+     -Dsym
+          Defines a symbol to the preprocessor. This mechanism is
+          useful with the conditional statements in the
+          preprocessor by allowing symbols to be defined external
+          to the source file.
+
+     -Idir
+          Changes the algorithm for searching for #include files
+          whose names do not begin with / to look in the
+          specified directory before looking in the directories
+          on the standard list.  Thus, #include files whose names
+          are enclosed in double quotes are searched for first in
+          the directory of the file argument, then in directories
+          named in -I options, and last in directories on a
+          standard list.  For #include files whose names are
+          enclosed in <>, the directory of the file argument is
+          not searched.
+
+     -Usym
+          Undefines the symbol that you defined with the -D
+          option.
+
+     -o file
+          Directs output to the named file.
+
+     -s   Operates silently. Input file names are not printed.
+
+     -t   Specifies 80-column width in the formatted output.
+
+     -w[num]
+          Specifies specifies the maximum number of columns in
+          the formatted output.  This option defaults to 80 if a
+          value is not specified or is less than 51.
+
+PROMPTS
+   Input File Name(s):
+     Enter the names of the files to process.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Combined Cross-Reference:
+     The initial value is no.  Enter yes to print a combined
+     cross-reference of all input files.
+
+   Define Symbol:
+     Response to this prompt is optional.  Enter a character as a
+     symbol that is defined to the preprocessor.
+
+   Undefine Symbol:
+     Response to this prompt is optional.  Enter a character that
+     you previously defined to the processor and that you now
+     undefine.
+
+   Maximum Number of Columns (51-80):
+     Integer.  The initial value is 80.  Enter a number that
+     specifies a maximum of columns in the formatted output.
+
+SEE ALSO
+     cc(1).
+
+DIAGNOSTICS
+     Error messages usually mean that you cannot compile the C
+     files.
+
+

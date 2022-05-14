@@ -1,0 +1,124 @@
+MKMSG(1T)						MKMSG(1T)
+
+NAME
+     mkmsg - Creates message files
+
+SYNOPSIS
+     mkmsg master ptext stext
+
+DESCRIPTION
+   Purpose
+     The mkmsg command reads message texts from the master file,
+     stores the problem description text in the ptext file, and
+     stores the solution text in the stext file.
+
+   Discussion
+     The master file contains all the message texts in tag number
+     order.  The entry for each message has four fields:
+
+     tag  Message identification number.  Messages for TI-
+	  supplied programs have decimal tag numbers of 1,000,000
+	  or greater; user-supplied messages have tag numbers of
+	  less than 1,000,000.
+
+     plugn
+	  Code that describes the order in which the parameters
+	  are to be plugged into the text before the text is
+	  printed.  A value of 0 is standard for English systems
+	  and means to insert the parameters in the order they
+	  are passed in the printm call.  See ``Message Retrieval
+	  and Delivery'' in the TI System V Programmer's Guide
+	  for the use of plugn for non-English systems.
+
+     prob 
+          Text for the problem description.  The %-conversion
+	  specifiers are embedded in this text.  These specifiers
+	  determine where the parameters are inserted and the
+	  type of conversion required.	All standard printf(3S)
+	  %-conversion type specifiers are available.  The text
+	  length is limited to 80 characters.
+
+     soln 
+          Text for the solution to the problem.  No parameters
+	  are allowed in this text.  The text length is limited
+	  to 5120 characters and should not exceed what will fit
+	  on a VDT screen.  The text can have newlines, tabs, and
+	  other characters as required for ease in formatting the
+	  output.
+
+     Each field in the entry for a message is terminated by a
+     tilde (~).  The entries are free-format in order to be
+     entered in the master file in a readable form.  Any editor
+     can be used to enter or modify messages in the master file.
+     The mkmsg program then reads these messages, builds the b-
+     tree index, and writes the index, message codes, and texts
+     to the proper working files.
+
+     Within the master file, the messages must be in order.  The
+     plugn code must agree with the number and type of %-
+     conversion specifiers in the text, or unpredictable behavior
+     occurs when printm tries to handle the message.
+
+EXAMPLE
+     The following example accesses the master file called
+     /usr/pgm1/mastr1 and creates the ptext and stext files for
+     printm to use.
+
+	  mkmsg /usr/pgm1/mastr1 /usr/pgm1/ptext/USA /usr/pgm1/stext/USA
+
+     The following are legal message entries in /usr/pgm1/mastr1:
+
+	  144~00~This is a sample problem text~~
+	  153~10~Problem in file %s~Short solution text~
+	  178~20~Error number %d~
+	  This is a longer description and suggested solution to
+	  the problem.	Note that this text is several lines
+	  long.  The newline immediately following the tilde is
+	  ignored, so it will not be in the solution text when
+	  the solution text is printed.~
+	  199~
+	  0~
+	  File %s had problem %d in  it~
+	  What to do about the problem.~
+	  207~4213~ Text illustrating a %s non-standard %d order
+	  %x of parameters %c~ See the Programmer's Guide for
+	  more info~
+
+     Message 144 has no solution text; therefore, two tildes are
+     required after the problem text.  If the solution text is
+     requested by printm or showmsg(1T), then the following
+     standard message is substituted:
+
+     solution not defined
+
+     Note that each field in message 199 is on a separate line.
+     This is allowed because mkmsg ignores white space and
+     newlines that immediately follow a tilde.
+
+     Message 207 shows how the plugn code can be used to plug the
+     parameters into the problem text in a scrambled order.  In
+     this example, the parameters will be changed from their
+     normal 1-2-3-4 order (the order of the parameters in the
+     printm call) to a 4-2-1-3 order.  This is normally done only
+     for a non-English system where the grammar of the language
+     requires the parameters in a different order.  In this
+     example, the first and second parameters must be numbers,
+     the third must be a character, and the fourth must be a
+     string.
+
+PROMPTS
+   Master File Name:
+     Enter the name of the message file to be modified.
+
+   Problem Description File:
+     Enter the name of the file where the problem description
+     text will be stored.
+
+   Solution Text File Name:
+     Enter the name of the file were the solution text will be
+     stored.
+
+SEE ALSO
+     pick_msg_set(3T), printm(3T), showmsg(1T).
+
+

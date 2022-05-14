@@ -1,0 +1,114 @@
+DATE(1)                                                   DATE(1)
+
+NAME
+     date - Prints and sets the date
+
+SYNOPSIS
+     date [+format]
+     date [mmddhhmm[[yy] | [ccyy]]]
+
+DESCRIPTION
+     If no argument is given, or if the argument begins with +,
+     the current date and time are printed.  Otherwise, the
+     current date is set (only by super-user).  The first mm is
+     the month number; dd is the day number in the month; hh is
+     the hour number (24-hour system); the second mm is the
+     minute number; cc is the century minus one and is optional;
+     and yy is the last 2 digits of the year number and is
+     optional.  For example:
+
+          date 10080045
+
+     sets the date to Oct 8, 12:45 AM.  The current year is the
+     default if no year is mentioned.  The system operates in
+     Greenwich mean time (GMT).  date takes care of the
+     conversion to and from local standard and daylight time.
+     Only the super-user can change the date.
+
+     If the argument begins with +, the output of date is under
+     the control of the user.  All output fields are of fixed
+     size (zero-padded if necessary).  Each field descriptor is
+     preceded by % and will be replaced in the output by its
+     corresponding value.  A single % is encoded by %%.  All
+     other characters are copied to the output without change.
+     The string is always terminated with a new-line character.
+     If the argument contains embedded blanks it must be quoted
+     (see the EXAMPLE section).
+
+     Specifications of native language translations of month and
+     weekday names are supported.  The language used depends on
+     the value of the environment variable LANGUAGE (see
+     environ(5)).  The month and weekday names used for a
+     language are taken from strings in the file for that
+     language in the /lib/cftime directory (see cftime(4)).
+
+     After successfully setting the date and time, date will
+     display the new date according to the format defined in the
+     environment variable CFTIME (see environ(5)).
+
+     Field descriptors (must be preceded by a %):
+          a    Abbreviated weekday name
+          A    Full weekday name
+          b    Abbreviated month name
+          B    Full month name
+          d    Day of month - 01 to 31
+          D    Date as mm/dd/yy
+          e    Day of month - 1 to 31 (single digits are preceded
+               by a blank)
+          h    Abbreviated month name (alias for %b)
+          H    Hour - 00 to 23
+          I    Hour - 01 to 12
+          j    Day of year - 001 to 366
+          m    Month of year - 01 to 12
+          M    Minute - 00 to 59
+          n    Insert a new-line character
+          p    String containing ante-meridiem or post-meridiem
+               indicator (by default, AM or PM)
+          r    Time as hh:mm:ss pp where pp is the ante-meridiem
+               or post-meridiem indicator (by default, AM or PM)
+          R    Time as hh:mm
+          S    Second - 00 to 59
+          t    Insert a tab character
+          T    Time as hh:mm:ss
+          U    Week number of year (Sunday as the first day of
+               the week) - 01 to 52
+          w    Day of week - Sunday = 0
+          W    Week number of year (Monday as the first day of
+               the week) - 01 to 52
+          x    Country-specific date format
+          X    Country-specific time format
+          y    Year within century - 00 to 99
+          Y    Year as ccyy (4 digits)
+          Z    Time zone name
+
+EXAMPLE
+          date '+DATE: %m/%d/%y%nTIME: %H:%M:%S'
+
+     would have generated as output:
+
+          DATE: 08/01/76
+          TIME: 14:45:05
+
+DIAGNOSTICS
+     no permission       If you are not the super-user and you
+                         try to change the date
+     bad conversion      If the date set is syntactically
+                         incorrect
+
+FILES
+     /dev/kmem
+
+NOTE
+     Administrators should note the following:  if you attempt to
+     set the current date to one of the dates that the standard
+     and alternate time zones change (for example, the date that
+     daylight time is starting or ending), and you attempt to set
+     the time to a time in the interval between the end of
+     standard time and the beginning of the alternate time (or
+     the end of the alternate time and the beginning of standard
+     time), the results are unpredictable.
+
+SEE ALSO
+     cftime(4), environ(5).
+
+

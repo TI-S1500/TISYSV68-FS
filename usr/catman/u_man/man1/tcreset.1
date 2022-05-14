@@ -1,0 +1,73 @@
+TCRESET(1T)                                           TCRESET(1T)
+
+NAME
+     tcreset - Forces a download of network terminal
+     concentrators
+
+SYNOPSIS
+     tcreset -R [tcnames]
+
+DESCRIPTION
+   Function
+     The tcreset command forces the specified network terminal
+     concentrators (NTCs) to enter the download mode and start
+     requesting a download from the host.  When the NTC is
+     running in the RAM downloaded code, this command has the
+     same effect as physically pushing the Reset button on the
+     NTC once.  If the NTC is already waiting for or processing a
+     download (that is, in the ROM download code, the download
+     LED is on), the download processing is also forced to begin
+     again.
+
+     Only the super-user is allowed to issue this command.
+
+   Arguments
+     tcnames
+            An NTC global name or a list of NTC global names as
+            specified in the NTC definition file, /etc/tctab.
+
+   Options
+     -R     Resets all the NTCs defined in the NTC definition
+            file, /etc/tctab.  The utility scans the NTC
+            information table kept by the NTC download process
+            and issues a reset request to each NTC.
+
+EXAMPLES
+     The following are example command lines for the tcreset
+     command:
+
+          tcreset payroll tc0
+          tcreset -R
+
+DIAGNOSTICS
+     One of the following messages is displayed for each
+     specified NTC upon normal tcreset completion:
+
+     tcname is reset  Indicates that the specified NTC responded
+                      to the reset request and should have
+                      entered the download mode successfully.
+                      The download LED on the NTC will be turned
+                      on.
+
+     Unable to reset tcname
+                      Indicates that the specified NTC did not
+                      respond to the reset request.  The NTC
+                      might be in an unknown stage.  Further
+                      investigation is required.
+
+     The following messages can be displayed by the tcreset
+     utility:
+
+     usage: tcreset -[R] [tcname(s)]
+     Unable to locate shared memory segment, error =
+     Attaching shared memory segment, error =
+     Can't open the INET device driver on CCB, err =
+     Error from INET device driver on CCB, err =
+     tcname is not found in NTC definition file
+     tcname has an undefined 48 bit address
+     IOCTL ext-read error from CCBX, error =
+
+SEE ALSO
+     tcdl(1T), tcdump(1T), tcstat(1T).
+
+

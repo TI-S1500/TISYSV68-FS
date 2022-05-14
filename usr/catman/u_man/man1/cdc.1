@@ -1,0 +1,135 @@
+CDC(1)							   CDC(1)
+
+NAME
+     cdc - Changes the delta commentary of an SCCS delta
+
+SYNOPSIS
+     cdc -mry files
+
+DESCRIPTION
+   Purpose
+     The cdc command changes the delta commentary for the SID
+     specified by the -r option of each named SCCS file.
+
+   Discussion
+     Delta commentary is defined to be the Modification Request
+     (MR) and comment information normally specified via the
+     delta(1) command (-m and -y options).
+
+     If a directory is named, cdc behaves as though each file in
+     the directory were specified as a named file, except that
+     non-SCCS files (last component of the path name does not
+     begin with s.)  and unreadable files are silently ignored.
+     If a name of - is given, the standard input is read (see
+     NOTES).  Each line of the standard input is taken to be the
+     name of an SCCS file to be processed.
+
+     The exact permissions necessary to modify the SCCS file are
+     documented in the ``Source Code Control System'' in the
+     TI System V User's Guide.  There are two permission conditions.
+     If you made the delta, you can change its delta commentary.
+     If you own the file and directory, you can modify the delta
+     commentary. The v flag must be set (see admin(1)) in order to
+     modify delta commentary.
+
+   Options
+     Options to cdc may appear in any order.  All the described
+     options apply independently to each named file.
+
+     -rSID
+	  Specifies the SCCS IDentification (SID) string of a
+	  delta for which the delta commentary is to be changed.
+
+     -mmrlist
+	  The value for this option is a list of MR numbers.  If
+	  the SCCS file has the v flag set (see admin(1)), then a
+	  list of MR numbers to be added and/or deleted in the
+	  delta commentary of the SID specified by the -r keyletter
+	  may be supplied.  A null MR list has no effect.
+
+	  MR entries are added to the list of MRs in the same
+	  manner as that of delta(1).  In order to delete an MR,
+	  precede the MR number with the character ! (see
+	  EXAMPLES).  If the MR to be deleted is currently in the
+	  list of MRs, it is removed and changed into a "comment"
+	  line.  A list of all deleted MRs is placed in the
+	  comment section of the delta commentary and preceded by
+	  a comment line stating that they were deleted.
+
+	  If -m is not used and the standard input is a terminal,
+	  the prompt MRs? is issued on the standard output before
+	  the standard input is read; if the standard input is
+	  not a terminal, no prompt is issued.	The MRs? prompt
+	  always precedes the comments? prompt (see -y
+	  keyletter).
+
+	  MRs in a list are separated by blanks and/or tab
+	  characters.  An unescaped newline character terminates
+	  the MR list.
+
+	  Note that if the v flag has a value (see admin(1)), it
+	  is taken to be the name of a program (or shell
+	  procedure) that validates the correctness of the MR
+	  numbers.  If a non-zero exit status is returned from
+	  the MR number validation program, cdc terminates and
+	  the delta commentary remains unchanged.
+
+     -ycomment
+	  The value for this argument is arbitrary text that is
+	  used to replace the comment(s) already existing for the
+	  delta specified by the -r option.  The previous comments
+	  are kept and preceded by a comment line stating that they
+	  were changed.  A null comment has no effect.
+
+	  If -y is not specified and the standard input is a
+	  terminal, the prompt comments? is issued on the
+	  standard output before the standard input is read; if
+	  the standard input is not a terminal, no prompt is
+	  issued.  An unescaped newline character terminates the
+	  comment text.
+
+EXAMPLES
+       cdc -r1.6 -m"bl78-12345 !bl77-54321 bl79-00001" -ytrouble s.file
+
+     The previous example adds bl78-12345 and bl79-00001 to the
+     MR list, removes bl77-54321 from the MR list, and adds the
+     comment ``trouble'' to delta 1.6 of s.file.  The following
+     example performs the same functions:
+
+	  cdc -r1.6 s.file
+	  MRs? !bl77-54321 bl78-12345 bl79-00001
+	  comments? trouble
+
+PROMPTS
+   File Name(s) Containing Delta:
+     Enter the names of the files to process.
+
+   Give Delta Version Number:
+     Enter the delta number for the delta commentary you wish to
+     change.
+
+   List of MR Numbers:
+     Response to this prompt is optional. List the Modification
+     Request numbers of the comments you wish to change.
+
+   Comment Changes:
+     Enter comments to add to the delta.
+
+FILES
+     x-file    see delta(1)
+     z-file    see delta(1)
+
+SEE ALSO
+     admin(1), delta(1), get(1), help(1), prs(1), sccsfile(4).
+     ``Source Code Control System'' in the TI System V Support
+     Tools Guide.
+
+NOTES
+     If SCCS file names are supplied to the cdc command via the
+     standard input (- on the command line), then the -m and -y
+     options must also be used.
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+

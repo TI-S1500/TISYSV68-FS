@@ -1,0 +1,96 @@
+STRIP(1)						 STRIP(1)
+
+NAME
+     strip - Strips symbol and line number information from a
+     common object file
+
+SYNOPSIS
+     strip -blrVx files
+
+DESCRIPTION
+   Purpose
+     The strip command strips the symbol table and line number
+     information from common object files, including archives.
+     The purpose of this command is to reduce the file storage
+     overhead taken by the object file.
+
+   Options
+     -b   Does not strip static or external symbol in formation
+	  or strip scoping information (e.g., beginning and end
+	  of block delimiters).
+
+     -l   Strips line number information only; does not strip any
+	  symbol table information.  Line number information will
+	  not be in the file unless it was compiled with the -g
+	  option.
+
+     -r   Resets the relocation indexes into the symbol table
+
+     -V   Gives the version of strip command
+
+     -x   Does not strip static or external symbol information
+
+   Discussion
+     If there are any relocation entries in the object file and
+     any symbol table information is to be stripped, strip will
+     complain and terminate without stripping file unless the -r
+     flag is used.
+
+     If the strip command is executed on a common archive file
+     (see ar(4)) the archive symbol table will be removed.  The
+     archive symbol table must be restored by executing the ar(1)
+     command with the s option before the archive can be link
+     edited by the ld(1) command.  strip will instruct the user
+     with appropriate warning messages when this situation
+     arises.  strip is used to reduce the file storage overhead.
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of the files to be expanded.
+
+   No Line Number Information:
+     Initial value is no.  If you enter yes, the line number
+     information is stripped from the input file.
+
+   Not Strip Scoping Information:
+     Initial value is no.  If you enter yes, the scoping
+     information is stripped.
+
+   Reset the Relocation Indexes:
+     Initial value is no.  If you enter yes, the relocation
+     indexes are reset into the symbol table.
+
+   Report Version Number:
+     Initial value is no.  If you enter yes, the version number
+     of the process is printed.
+
+   Retain Static/External Info:
+     Initial value is no.  If you enter yes, the static or
+     external symbol information is not stripped.
+
+EXAMPLE
+     The following example strips the line numbers and symbol
+     table information from a file called accept.o:
+
+	  strip accept.o
+
+FILES
+     /tmp/strp?
+
+SEE ALSO
+     a.out(4), ar(4), as(1), ld(1).
+
+DIAGNOSTICS
+     strip:  name:  cannot open
+		      name cannot be read.
+
+     strip:  name:  bad magic
+		      name is not an appropriate common object
+		      file.
+
+     strip:  name:  relocation entries present; cannot strip
+		      name contains relocation entries and the -r
+		      flag is not used, the symbol table
+		      information cannot be stripped.
+
+

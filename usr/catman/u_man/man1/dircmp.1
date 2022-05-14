@@ -1,0 +1,60 @@
+DIRCMP(1)                                               DIRCMP(1)
+
+NAME
+     dircmp - Compares directories
+
+SYNOPSIS
+     dircmp -d -s dir1 dir2
+
+DESCRIPTION
+   Purpose
+     The dircmp command examines dir1 and dir2 and generates
+     various tabulated information about the contents of the
+     directories.
+
+   Options
+     Listings of files that are unique to each directory are
+     generated for all the options.  If no option is entered, a
+     list is output indicating whether the file names common to
+     both directories have the same contents.
+
+     -d   Compares the contents of files with the same name in
+          both directories.  The output is a list reporting what
+          must be changed in the two files to bring them into
+          agreement.  The list format is described in diff(1).
+
+     -s   Suppresses messages about identical files.
+
+EXAMPLE
+     The following example compares the contents of those files
+     in dir1 and dir2 with the same file name. The command output
+     is a list that describes what lines must be changed to make
+     the files identical.
+
+          dircmp -d dir1 dir2
+
+PROMPTS
+   Directory 1:
+     The path name of the directory to compare.
+
+   Directory 2:
+     The path name of the directory to compare to directory 1.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Compare Files With the Same Name:
+     Initial value is no.  Enter yes to compare the contents of
+     files with the same name in both directories. The output is
+     a list reporting what must be changed in the two files to
+     bring them into agreement.
+
+   Print Messages About Identical Files:
+     Initial value is yes. Enter no to suppress messages about
+     identical files.
+
+SEE ALSO
+     cmp(1), diff(1).
+
+

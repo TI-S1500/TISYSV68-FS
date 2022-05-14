@@ -1,0 +1,75 @@
+IPCRM(1M)                                               IPCRM(1M)
+
+NAME
+     ipcrm - Removes a message queue, semaphore, or shared memory
+     ID
+
+SYNOPSIS
+     ipcrm -qmsQMS
+
+DESCRIPTION
+   Purpose
+     The ipcrm command removes one or more specified messages,
+     semaphores, or shared memory identifiers. This command can
+     only be executed by the super-user.
+
+     The details of the removals are described in msgctl(2),
+     shmctl(2), and semctl(2).  The identifiers and keys may be
+     found by using ipcs(1).
+
+   Options
+     -q msqid    Removes the message queue identifier msqid from
+                 the system and destroys the message queue and
+                 data structure associated with it.
+
+     -m shmid    Removes the shared memory identifier shmid from
+                 the system.  The shared memory segment and data
+                 structure associated with it are destroyed after
+                 the last detach.
+
+     -s semid    Removes the semaphore identifier semid from the
+                 system and destroys the set of semaphores and
+                 data structure associated with it.
+
+     -Q msgkey   Removes the message queue identifier, created
+                 with key msgkey, from the system and destroys
+                 the message queue and data structure associated
+                 with it.
+
+     -M shmkey   Removes the shared memory identifier, created
+                 with key shmkey, from the system.  The shared
+                 memory segment and data structure associated
+                 with it are destroyed after the last detach.
+
+     -S semkey   Removes the semaphore identifier, created with
+                 key semkey, from the system and destroys the set
+                 of semaphores and data structure associated with
+                 it.
+
+PROMPTS
+   Message Queue Identifier:
+     Enter the message queue identifier to be removed.
+
+   Shared Memory Identifier:
+     Enter the shared memory identifier to be removed.
+
+   Semaphore Identifier:
+     Enter the semaphore identifier to be removed.
+
+   Message Queue Key:
+     Enter the key used in creating the message queue identifier
+     selected to be removed.
+
+   Shared Memory Key
+     Enter the key used in creating the shared memory identifier
+     selected to be removed.
+
+   Semaphore Key:
+     Enter the key used in creating the semaphore identifier
+     selected to be removed.
+
+SEE ALSO
+     ipcs(1), msgctl(2), msgget(2), msgop(2), semctl(2),
+     semget(2), semop(2), shmctl(2), shmget(2), shmop(2).
+
+

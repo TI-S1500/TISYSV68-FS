@@ -1,0 +1,62 @@
+MAN(1)                                                     MAN(1)
+
+NAME
+     man - Prints entries in the TI System V User's Reference
+     manual
+
+SYNOPSIS
+     man -dw titles
+
+DESCRIPTION
+   Purpose
+     The man command locates and prints the manual entry named
+     title from the TI System V User's Reference manual.  (The
+     term man page is an abbreviation of manual entry.)
+
+     The title(s) is entered in lowercase.  As an example, man
+     man reproduces on the terminal the manual entry for man(1).
+
+   Options
+     -d   Search the current directory rather than /usr/catman.
+          This option requires the full file name (e.g., cu.1c ,
+          rather than just cu).
+
+     -w   Print on the standard output only the path names of the
+          entries, relative to /usr/catman or to the current
+          directory for the -d option.
+
+EXAMPLE
+     The following example prints the chmod(1) description from
+     the TI System V User's Reference manual.
+
+          man chmod
+
+PROMPTS
+   Titles:
+     Enter the desired manual entry or entries.  Separate
+     multiple entries with a space.
+
+   Output File Name:
+     Enter the name of the file to receive the manual entry.  The
+     default is the standard output.
+
+   Accept Default Options:
+     The initial value is yes. Enter no to receive the following
+     prompts.
+
+   Search Current Directory:
+     The default is no.
+
+   Print Path Names Only:
+     The default is no.
+
+FILES
+     /usr/catman/u_man/man1/*
+
+NOTES
+     All entries are intended to be reproducible on a terminal.
+     The usr/catman/a_man/man1 directory is searched before
+     /usr/catman/u_man/man1. If a file name appears in both
+     directories, the a_man entry appears before the u_man entry.
+
+

@@ -1,0 +1,23 @@
+# @(#)download	1.16 90/11/09
+TZ=`cat /etc/TZ`
+trap "" 1
+export TZ
+rm -fr /usr/adm/arlog
+mv /usr/adm/comlog /usr/adm/arlog >/dev/null 2>&1
+mkdir /usr/adm/comlog
+echo "Downloading CCB(s)."
+cload -r
+ddload
+echo "CCB(s) loaded."
+tcdl -v
+mtcdl -v
+initterm p &
+tdts
+/usr/lib/lpsched
+#
+# start UPS monitor. this MUST be done AFTER
+# ccb's are loaded or a false shutdown will occur
+# as soon as the system comes up! read the 
+# administrators section on the UPS before using
+# upswait.
+# /bin/upswait ttyXX &

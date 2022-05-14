@@ -1,0 +1,53 @@
+RDFLUSH(1T)                                           RDFLUSH(1T)
+
+NAME
+     rdflush - Copies to a disk file system the RAM disk files
+     marked as flushable in the RAM disk list (/etc/rdlist)
+
+SYNOPSIS
+     rdflush -df
+
+DESCRIPTION
+   Purpose
+     The RAM disk list contains a list of path names to files in
+     the hard disk file system. Each entry may be optionally
+     preceded with a colon (:)  indicating that the file is to be
+     flushed to the entry from the corresponding RAM disk file
+     system path name (which is identical to the entry prefixed
+     by the RAM disk mount point-for example, /ram), whenever
+     rdflush is executed.
+
+   Options
+     -ddir
+          Identifies an alternate RAM disk file system mount
+          point directory. The default is /ram.
+
+     -ffile
+          Identifies alternate RAM disk list. The default file is
+          /etc/rdlist.
+
+   Discussion
+     The RAM disk must be mounted before the rdflush utility can
+     be used.
+
+     All necessary directories will be created on real disk
+     during a copy if they are not already present.
+
+     The rdflush utility terminates after all flushable entries
+     in the RAM disk list have been copied from the RAM disk to
+     the real disk file system.
+
+FILES
+     /etc/rdlist
+     /etc/rdflscr
+
+SEE ALSO
+     rdload(1T), rdlist(4), ramdsk(7).
+     "External Memory Boards and RAM Disk" in the TI System V
+     Administrator's Guide.
+
+DIAGNOSTICS
+     An error will be returned if the rdlist file is not found or
+     is in the wrong format or if a copy fails.
+
+

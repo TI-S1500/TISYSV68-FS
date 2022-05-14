@@ -1,0 +1,242 @@
+MAIL(1)                                                   MAIL(1)
+
+NAME
+     mail, rmail - Sends mail to users or reads mail
+
+SYNOPSIS
+     Sending mail:
+
+     mail [ -wt ] persons
+
+     rmail [ -wt ] persons
+
+     Reading mail:
+
+     mail [ -ehpqr ] [ -f file ] [ -F persons ]
+
+DESCRIPTION
+     Sending mail:
+
+     The command-line arguments that follow affect sending mail:
+
+     -w   Causes a letter to be sent to a remote user without
+          waiting for the completion of the remote transfer
+          program.
+
+     -t   Causes a To: line to be added to the letter, showing
+          the intended recipients.
+
+     A person is usually a user name recognized by login(1).
+     When persons are named, mail assumes a message is being sent
+     (except in the case of the -F option).  It reads from the
+     standard input up to an end-of-file (Control-d), or until it
+     reads a line consisting of just a period.  When either of
+     those signals is received, mail adds the letter to the
+     mailfile for each person.  A letter is a message preceded by
+     a postmark.  The message is preceded by the sender's name
+     and a postmark.  A postmark consists of one or more From
+     lines followed by a blank line.
+
+     If a letter is found to be undeliverable, it is returned to
+     the sender with diagnostics that indicate the location and
+     nature of the failure.  If mail is interrupted during input,
+     the file dead.letter is saved to allow editing and
+     resending.  The file dead.letter is recreated every time it
+     is needed, erasing any previous contents.
+
+     To prevent two senders from simultaneously writing to the
+     recipient's mailfile, the .lock suffix is added to the
+     directory path name whenever mail is being received.  The
+     lock is created and serviced automatically.
+
+     rmail only permits the sending of mail; uucp uses rmail as a
+     security precaution.
+
+     Note that mail uses the TCP/IP sendmail utility if TCP/IP is
+     installed.
+
+   Remote Recipient
+     To denote a recipient on a remote system, prefix person by
+     the system name and exclamation mark. See uucp(1C).
+     Everything after the first exclamation mark in person is
+     interpreted by the remote system.  In particular, if person
+     contains additional exclamation marks, it can denote a
+     sequence of machines through which the message is to be sent
+     on the way to its ultimate destination.  For example,
+     specifying a!b!cde as a recipient's name causes the message
+     to be sent to user b!cde on system a.  System a interprets
+     that destination as a request to send the message to user
+     cde on system b.  This might be useful, for instance, if the
+     sending system can access system a but not system b, and
+     system a has access to system b.
+
+     Reading Mail:
+
+     The command-line arguments that follow affect reading mail:
+
+     -e   Causes mail not to be printed.  An exit value of 0 is
+          returned if the user has mail; otherwise, an exit value
+          of 1 is returned.
+     -h   Causes a window of headers to be displayed rather than
+          the latest message.  The display is
+          followed by the ? prompt.
+     -p   Causes all messages to be printed without prompting for
+          disposition.
+     -q   Causes mail to terminate after interrupts.  Normally an
+          interrupt causes only the termination of the message
+          being printed.
+     -r   Causes messages to be printed in first-in, first-out
+          order.
+     -ffile
+          Causes mail to use file (e.g., mbox) instead of the
+          default mailfile.
+     -Fpersons
+          Entered into an empty mailbox, causes all incoming mail
+          to be forwarded to persons.
+
+     mail, unless otherwise influenced by command-line arguments,
+     prints a user's mail messages in last-in, first-out order.
+     For each message, the user is prompted with a ?, and a line
+     is read from the standard input.  The following commands are
+     available to determine the disposition of the message:
+
+     <new-line>, +, or n   Go on to next message.
+
+     d or dp               Deletes message and goes on to next
+                           message.
+
+     d #                   Deletes message number #.  Do not go
+                           on to next message.
+
+     dq                    Deletes message and quits mail.
+
+     h                     Displays a window of headers around
+                           current message.
+
+     h #                   Displays header of message number #.
+
+     h a                   Displays headers of all messages in
+                           the user's mailfile.
+
+     h d                   Displays headers of messages scheduled
+                           for deletion.
+
+     p                     Prints current message again.
+
+     -                     Prints previous message.
+
+     a                     Prints message that arrived during the
+                           mail session.
+
+     #                     Prints message number #.
+
+     r [ users ]           Replies to the sender, and other
+                           user(s); then deletes the message.
+
+     s [ files ]           Saves message in the named files (mbox
+                           is default).
+
+     y                     Same as save.
+
+     u [ # ]               Undeletes message number # (default is
+                           last read).
+
+     w [ files ]           Saves message, without its top-most
+                           header, in the named files (mbox is
+                           default).
+
+     m [ persons ]         Mails the message to the named
+                           persons.
+
+     q, or ctl-d           Puts undeleted mail back in the
+                           mailfile and quit mail.
+
+     x                     Puts all mail back in the mailfile
+                           unchanged and exits mail.
+
+     !command              Escapes to the shell to do command.
+
+     ?                     Prints a command summary.
+
+     When a user logs in, the presence of mail, if any, is
+     indicated. Also, notification is made if new mail arrives
+     while using mail.
+
+     The mailfile can be manipulated in two ways to alter the
+     function of mail.  The other permissions of the file can be
+     read-write, read-only, or neither read nor write to allow
+     different levels of privacy.  If changed to other than the
+     default, the file will be preserved even when empty to
+     perpetuate the desired permissions.  The file may also
+     contain the first line:
+
+          Forward to person
+
+     which will cause all mail sent to the owner of the mailfile
+     to be forwarded to person.  A Forwarded by... message is
+     added to the header.  This is especially useful in a
+     multimachine environment to forward all of a person's mail
+     to a single machine, and to keep the recipient informed if
+     the mail has been forwarded.  Installation and removal of
+     forwarding is done with the -F option.
+
+     To forward all of one's mail to systema!user, enter:
+
+          mail -Fsystema!user
+
+     To forward to more than one user, enter:
+
+          mail -F"user1,systema!user2,systema!systemb!user3"
+
+     Note that when more than one user is specified, the whole
+     list should be enclosed in double quotes so that it may all
+     be interpreted as the operand of the -F option.  The list
+     can be up to 1024 bytes; either commas or white space can be
+     used to separate users.
+
+     The following list of characters are prohibited from
+     appearing anywhere in the mail -F argument list or in the
+     Forward to line:
+          ;  &  |  ^  <  >  `  (  )  <CR>
+
+     To remove forwarding, enter:
+
+          mail -F ""
+
+     The pair of double quotes is mandatory to set a NULL
+     argument for the -F option.
+
+     In order for forwarding to work properly the mailfile should
+     have "mail" as the group ID, and the group permission should
+     be read-write.
+
+FILES
+     /etc/passwd       Indicates to identify sender and locate
+                       persons
+     /usr/mail/user    Indicates incoming mail for user; i.e.,
+                       the mailfile
+     $HOME/mbox        Indicates saved mail
+     $MAIL             Indicates a variable containing path name
+                       of mailfile
+     /tmp/ma*          Indicates a temporary file
+     /usr/mail/*.lock  Indicates a lock for mail directory
+     dead.letter       Indicates unmailable text
+
+SEE ALSO
+     login(1), mailx(1), write(1).
+     TI System V User's Guide.
+     TI System V Administrator's Guide.
+
+WARNING
+     The "Forward to person" feature may result in a loop, if
+     sys1!userb forwards to sys2!userb and sys2!userb forwards to
+     sys1!userb.  The symptom is a message saying
+     unbounded...saved mail in dead.letter.
+
+BUGS
+     Conditions sometimes result in a failure to remove a lock
+     file.
+     After an interrupt, the next message may not be printed;
+     printing can be forced by entering p.
+
+

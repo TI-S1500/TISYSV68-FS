@@ -1,0 +1,34 @@
+SLEEP(1)                                                 SLEEP(1)
+
+NAME
+     sleep - Suspends execution for an interval
+
+SYNOPSIS
+     sleep time
+
+DESCRIPTION
+   Purpose
+     The sleep command suspends execution for time seconds.
+
+EXAMPLES
+     The following example allows you continuous use of the shell
+     during the ten minutes of delayed execution of the cat(1)
+     command:
+
+          (sleep 600; cat sample/a) &
+
+     The following example executes a command periodically:
+
+          while true
+          do
+               command
+               sleep 37
+          done
+
+SEE ALSO
+     alarm(2), sleep(3C).
+
+NOTES
+     The time argument must be less than 65536 seconds.
+
+

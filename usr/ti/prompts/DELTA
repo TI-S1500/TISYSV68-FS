@@ -1,0 +1,33 @@
+# cshf	delta--makes a change to an sccs file 
+#	@(#)DELTA.sh	1.1  87/03/09
+# 
+onintr end 
+
+prompt "^DELTA -- MAKES A DELTA (CHANGE) TO AN SCCS FILE"\
+       "^File Name(s):" _input_file macnm "$_input_file"\
+       "^*Give Delta (revision) Number:" rflag string \
+       "^Run in Silent Mode:" sflag yesno n\
+       "^*Delta(s) to be Ignored:" gflag string "$gflag"\
+       "^*Additional Comments:" yflag string "$yflag"\
+       "^*Modification Request Number:" mflag string \
+       "^List Differences:" pflag yesno n\
+       "^Retain Edited g-File:" nflag yesno n\
+       "^#$*"
+
+if ($abort) goto end
+if ("$gflag" != "") set gopt = -g"$gflag"
+if ("$mflag" != "") set mopt = -m"$mflag"
+if ("$rflag" != "") set ropt = -r"$rflag"
+if ("$yflag" != "") set yopt = -y"$yflag"
+if ($pflag == "y") set sopt = "-p"
+if ($sflag == "y") set popt = "-s"
+if ($nflag == "y") set nopt = "-n"
+
+if ($abort) goto end
+echo "=== DELTA COMMAND EXECUTING ==="
+echo delta $gopt $mopt $nopt $popt $ropt $sopt $yopt $_input_file
+delta $gopt $mopt $nopt $popt $ropt $sopt $yopt $_input_file
+
+#cleanup time
+end:
+unset *flag *opt 

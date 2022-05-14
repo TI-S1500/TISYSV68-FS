@@ -1,0 +1,53 @@
+TIME(1)                                                   TIME(1)
+
+NAME
+     time - Times a command
+
+SYNOPSIS
+     time command
+
+DESCRIPTION
+   Purpose
+     After the command is executed, time prints the time elapsed
+     during the command, the time spent in the system, and the
+     time spent in execution of the command.  Times are reported
+     in seconds and are printed on standard error.
+
+     A command is any command supplied by the system or by the
+     user.
+
+EXAMPLE
+     The following example shows the command line and the ouput
+     for a command executed in the Business shell, bsh(1):
+
+          time ls -l
+
+          1.4u   5.6s   0:25   27%
+
+     The output is as follows:
+
+     1.4u  User time.
+
+     5.6s  System time.
+
+     0:25  Real time.
+
+     27%   Percentage of real time in which the cpu was active
+           (the sum of the user and system times divided by the
+           real time).
+
+     The following example shows the output of the same command
+     executed in the Bourne shell, sh(1):
+
+          real   21.2
+          user    4.4
+          sys    16.0
+
+PROMPTS
+   Command to be Timed:
+     Enter the command to execute and time.
+
+SEE ALSO
+     timex(1), times(2).
+
+

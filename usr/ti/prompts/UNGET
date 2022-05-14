@@ -1,0 +1,23 @@
+# cshf	unget -- undoes a previous get of an SCCS file 
+#	@(#)UNGET.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UNGET -- UNDOES A PREVIOUS GET OF AN SCCS FILE"\
+       "^Input File Name(s):" _input_file macnm "$_input_$file"\
+       "^Retain the Gotten File:" nflag yesno n\
+       "^*Delta Version Number:" rflag string $rflag\
+       "^Suppress Output:" sflag yesno n\
+       "^#$*"
+
+if ($abort) goto end
+if ($rflag != "") set ropt = -r$rflag
+if ($sflag == "y") set sopt = -s
+if ($nflag == "y") set nopt = -n
+
+echo "=== UNGET COMMAND EXECUTING ==="
+echo unget $nopt $ropt $sopt $_input_file
+unget $nopt $ropt $sopt $_input_file
+
+end:
+unset *flag *opt

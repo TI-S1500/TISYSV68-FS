@@ -1,0 +1,33 @@
+REJECT(1M)                                             REJECT(1M)
+
+NAME
+     reject - Prevents LP requests
+
+SYNOPSIS
+     /usr/lib/reject [-r[reason]] destinations
+
+DESCRIPTION
+     reject prevents lp(1) from accepting requests for the named
+     destinations.  A destination can be either a printer or a
+     class of printers.  Use lpstat(1) to find the status of
+     destinations.  The following option is useful with reject.
+
+     -r[reason]    Associates a reason with preventing lp from
+                   accepting requests.  This reason applies to
+                   all printers mentioned up to the next -r
+                   option.  reason is reported by lp when users
+                   direct requests to the named destinations and
+                   by lpstat(1).  If the -r option is not present
+                   or the -r option is given without a reason, a
+                   default reason will be used.  If reason contains
+                   embedded blanks, you must enclose reason in
+                   double quotes.
+
+FILES
+     /usr/spool/lp/*
+
+SEE ALSO
+     accept(1M), enable(1), lp(1), lpadmin(1M), lpsched(1M),
+     lpstat(1).
+
+

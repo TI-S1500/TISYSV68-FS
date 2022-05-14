@@ -1,0 +1,454 @@
+NETSTAT(1T)                                           NETSTAT(1T)
+
+NAME
+     netstat - Displays network statistics
+
+SYNOPSIS
+     netstat -rst
+
+DESCRIPTION
+   Purpose
+     The netstat command reports the 802.3/Ethernet(R) Local Area
+     Network (LAN) option board statistics for either
+     communications carrier board (CCB) options or terminal
+     concentrators (TCs).  These statistics include the 48-bit
+     physical address, number and size of messages sent and
+     received, transmit and receive errors, transmit deferrals
+     and collisions.  This information is useful for monitoring
+     normal operation and for troubleshooting the network.
+
+   Options
+     -r      Resets the statistics counters back to zero after
+             displaying the current statistics for the specified
+             CCB or TC.  Without this option, the statistics are
+             not reset.
+
+     -s slot 
+             Specifies the slot number of the CCB that contains
+             the 802.3/Ethernet option.  This option can be used
+             to override the default slot value.  If this option
+             is not selected, netstat defaults to reporting on
+             every CCB installed in the system.  If an
+             802.3/Ethernet option card is found, netstat reports
+             on that CCB, and then continues to search the rest
+             of the slots for other CCBs.  The device names in
+             /dev determine the slot designations.  If two
+             802.3/Ethernet option cards are installed in a CCB,
+             the statistics for both options are listed, option
+             port 0 first followed by option port 1.
+
+     -t tcname
+             Specifies that the statistics are to be obtained
+             from the named TC.  This is the global TC name.  The
+             /etc/tctab file is scanned for this TC name to
+             obtain the addressing information for the TC.  This
+             option and the -s option are mutually exclusive.
+
+   Discussion
+     The netstat command lists the network statistics that the
+     device driver has gathered and stored since the last time
+     the Ethernet controller's statistics were reset.  You can
+     use this information to monitor the operation of the
+     802.3/Ethernet option boards and the operation of the LAN.
+     While the netstat command is useful for judging the general
+     performance of an 802.3/Ethernet LAN during normal
+     operations, this command is especially useful during
+     troubleshooting operations.
+
+     The listing of information provided by the netstat command
+     can be used to identify problems such as the following:
+
+     + When the listing shows that no messages are being sent or
+       received, the controller might not be communicating with
+       the LAN.
+
+     + When the listing shows a high number of transmission
+       deferrals, the LAN might be heavily loaded by
+       transmissions from other stations.
+
+     + When the listing shows a high number of cyclic redundancy
+       checks (CRC) and framing errors, the network cable and/or
+       transceivers might be faulty, or another station might be
+       forming its transmissions incorrectly or responding
+       incorrectly to collisions.
+
+     A careful examination of the netstat listing can alert you
+     to problems developing in the Ethernet LAN or in the
+     connection to the LAN.
+
+
+     Ethernet is a registered trademark of Xerox Corporation.
+
+PROMPTS
+   CCB Slot or TC name:
+     Specify the chassis slot number of the slot containing a CCB
+     with the LAN option or a valid TC name.  The default is a
+     report on every CCB with an 802.3/Ethernet option in the
+     system.
+
+   Read and Clear?:
+     Enter yes to reset the statistical data in the memory of the
+     Ethernet device while listing the current statistics.  Enter
+     no to cause the current statistics to be listed without
+     resetting the counters to zero.
+
+   Output File Name:
+     Enter the File name of the device or file where the netstat
+     output will be listed.  The default value is standard
+     output.
+
+EXAMPLE
+     The following example lists statistics from the Ethernet
+     device in option port 1 of the CCB in slot 3.  All the
+     defaults to the prompts are accepted.  Therefore, statistics
+     are returned from all functional 802.3/Ethernet option
+     cards, regardless of their slot and port.  Also, the
+     statistical data area on this device is not cleared after
+     being read and the listing is displayed at the local
+     terminal.
+
+          NETSTAT
+
+          LIST ETHERNET STATISTICS
+          CCB Slot or TC Name:
+              Read and Clear?: no
+            Output Path Name:
+
+     When the netstat procedure executes properly, the controller
+     statistics appear in the following format.  In the listings
+     that follow, numbers preceded by an asterisk are not part of
+     the display; these numbers refer to the notes at the end of
+     the third screen.
+
+     The following screen displays network statistics for the
+     802.3/Ethernet option in port 1 of a CCB in slot 3.
+
+     Wed May 21 15:25:38 CDT 1986               *1
+
+     NETWORK STATISTICS FOR SLOT 3 PORT 1 ADAPTOR TYPE: IEEE 802.3 *2
+      ELAPSED TIME:   0:00:09:52 *3  REV: 2.3.0  *4
+      ROM ETHERNET ADDR: 08-00-28-00-07-44 *5  CHECKSUM: 77-44   *6
+
+      ---  RECEIVE STATUS  --- *7      -- RECEIVE ERRORS  --- *8
+
+      PACKETS RCVD     :  23           CRC ERRORS             :   0
+      BYTES RCVD       :  2632         FRAMING ERRORS         :   0
+      MULTICASTS       :  0            NO RCV BUFFERS         :   0
+      BROADCASTS       :  22           RECEIVER OVERRUN       :   0
+      UNKNOWN TYPE     :  0            FRAME TOO SMALL        :   0
+                                       NO EOF FLAG            :   0
+
+
+      --- TRANSMIT STATUS  --- *9     --- TRANSMIT ERRORS  --- *10
+
+      PACKETS SENT     :  1            NO CARRIER             :   0
+      BYTES SENT       :  64           LOSS OF CTS            :   0
+      DEFERRALS        :  0            COLLISIONS EXCEEDED    :   0
+      HEARTBEAT        :  0            DMA UNDERRUN           :   0
+
+
+     The following screen displays collision retries and extended
+     statistics.
+
+      ---  TRANSMIT COLLISION RETRIES (RETRIES....NUMBER)   ----  *11
+
+      1:        0         6:        0         11:       0
+      2:        0         7:        0         12:       0
+      3:        0         8:        0         13:       0
+      4:        0         9:        0         14:       0
+      5:        0         10:       0         15:       0
+
+
+                     EXTENDED STATISTICS   *12
+
+                     TRANSMITTER RESTARTS      :    0 
+                     RECEIVER RESTARTS         :    0
+               NUMBER OF FRAME DESCRIPTORS     :    25
+               MIN #  OF FRAME DESCRIPTORS     :    24
+               NUMBER OF BUFFER DESCRIPTORS    :    50
+               MIN #  OF BUFFER DESCRIPTORS    :    49
+
+
+     The following screen displays received frame size and
+     transmitted frame size statistics.
+
+                   RECEIVED FRAME SIZE AND COUNT    *13
+      0 to  63:    0     512 to  575:  0    1024 to 1087:  0
+      64 to 127:   22    576 to  639:  0    1088 to 1151:  0
+      128 to 191:  1     640 to  703:  0    1152 to 1215:  0
+      192 to 255:  0     704 to  767:  0    1216 to 1279:  0
+      256 to 319:  0     768 to  831:  0    1280 to 1343:  0
+      320 to 383:  0     832 to  895:  0    1344 to 1407:  0
+      384 to 447:  0     896 to  959:  0    1408 to 1471:  0
+      448 to 511:  0     960 to 1023:  0    1472 to 1535:  0
+                                            over 1535:     0
+
+                   TRANSMITTED FRAME SIZE AND COUNT   *14
+      0 to  63:    0     512 to  575:  0    1024 to 1087:  0
+      64 to 127:   1     576 to  639:  0    1088 to 1151:  0
+      128 to 191:  0     640 to  703:  0    1152 to 1215:  0
+      192 to 255:  0     704 to  767:  0    1216 to 1279:  0
+      256 to 319:  0     768 to  831:  0    1280 to 1343:  0
+      320 to 383:  0     832 to  895:  0    1344 to 1407:  0
+      384 to 447:  0     896 to  959:  0    1408 to 1471:  0
+      448 to 511:  0     960 to 1023:  0    1472 to 1535:  0
+                                            over 1535:     0
+
+NOTES:
+     *1  The current date and time.
+
+     *2  The chassis slot and option of the Ethernet interface or
+         the terminal concentrator name and the interface adaptor
+         type.
+
+     *3  The elapsed time since the last time the controller's
+         statistical counters were initialized or cleared.  The
+         format is days:hours:min:sec.
+
+     *4  The revision level of the 802.3/Ethernet device driver.
+
+     *5  The Ethernet 48-bit physical address.  Each TC and CCB
+         has a unique 48-bit Ethernet address in ROM so that each
+         node on the network has a unique address.
+
+     *6  The checksum on the Ethernet ROM address.  If the
+         address is entered into any control file, this checksum
+         should be used to ensure that the address is valid.
+
+     *7  Receive Status statistics counted since the last time
+         the controller's counters were initialized or cleared.
+         The following list explains the fields and the
+         conditions counted for this part of the netstat listing:
+
+         PACKETS RCVD        The number of packets (frames) that
+                             have been received.
+
+         BYTES RCVD          Total bytes received.
+
+         MULTICASTS          Total number of packets received for
+                             a multicast address.
+
+         BROADCASTS          Total number of packets received for
+                             the broadcast address.  Broadcast
+                             packets are received by all devices
+                             on the network.
+
+         UNKNOWN TYPE        Packets received with an Ethernet
+                             TYPE value for which the software
+                             has not registered to receive.  This
+                             can occur on a network that is
+                             running other protocols and using
+                             the broadcast address.  These
+                             packets are discarded.
+
+     *8  Receive Error statistics counted since the last time the
+         controller's counters were initialized or cleared.  A
+         small percentage of any of these errors is normal.  A
+         large percentage of errors relative to the total number
+         of received packets indicates a problem.  The following
+         list explains the fields and the conditions counted in
+         this part of the netstat listing:
+
+         CRC ERRORS          Frames with cyclic redundancy check
+                             (CRC) errors.  Each packet (frame)
+                             has a CRC value that is validated to
+                             ensure the packet is received
+                             correctly.  These packets are
+                             discarded.
+
+         FRAMING ERRORS      Frames with alignment errors.  Each
+                             frame must be an integral number of
+                             bytes.  Any excess bits will result
+                             in a framing error.  These packets
+                             are discarded.
+
+         NO RCV BUFFER       Frames discarded because the
+                             controller could not obtain buffers,
+                             either frame descriptors or buffer
+                             descriptors.  If this count is
+                             unusually high, the Ethernet option
+                             might be malfunctioning.
+
+         RCV OVERRUN         Frames discarded because the
+                             controller could not move data into
+                             on-board memory fast enough.  If
+                             this count is unusually high, the
+                             Ethernet option might be
+                             malfunctioning.
+
+         FRAME TOO SMALL     The frame is smaller than 64 bytes,
+                             which is the minimum Ethernet packet
+                             size.  These are known as runt
+                             packets.  These are a common
+                             occurrence after collisions on the
+                             network.
+
+         NO EOF FLAG         No End of Frame flag delimiter.
+                             This count is only valid for a
+                             remote (V.35) interface adaptor.
+                             This is similar to a framing error
+                             with the Ethernet adaptor.
+
+     *9  Transmit Status statistics on messages transmitted to
+         the LAN since the last time the controller's counters
+         were initialized or cleared.  The following list
+         explains the fields and the conditions counted for this
+         part of the netstat listing:
+
+         PACKETS SENT        Total frames transmitted.
+
+         BYTES SENT          Total bytes transmitted.
+
+         XMIT DEFERRALS      Frame transmissions deferred to
+                             traffic on the LAN.  This is not an
+                             error condition but simply a count
+                             of the number of times transmission
+                             of a frame was delayed.  This number
+                             will increase as the load on the
+                             network increases.
+
+         HEARTBEAT           Frame transmissions completed with
+                             heartbeat detected. If the
+                             transceiver has the heartbeat
+                             option, this count should be one
+                             less than the number of packets
+                             transmitted. The heartbeat is a
+                             self-test of the collision detect
+                             logic that occurs after each packet
+                             is transmitted. This self-test
+                             indicates that the collision-detect
+                             hardware is working properly for
+                             this option card and the
+                             transceiver.
+
+     *10 Transmit Errors on messages transmitted to the LAN since
+         the last time the controller's counters were initialized
+         or cleared.  Some errors may occur under normal
+         operation but the number of packets with errors should
+         be a small percentage of the total number of packets
+         transmitted.  The following list explains the fields and
+         the conditions counted in this part of the netstat
+         listing:
+
+         NO CARRIER          Frame transmissions with no carrier
+                             detected from the transceiver during
+                             transmission.  For the
+                             802.3/Ethernet adaptor, this can be
+                             caused by a transceiver cable not
+                             connected to a transceiver or a
+                             faulty transceiver. For the V.35
+                             modem adaptor, no carrier errors
+                             will occur on most packets
+                             transmitted. This is due to a
+                             different mode of operation with a
+                             modem.
+
+         LOSS OF CTS         Loss of Clear To Send.  This applies
+                             if a V.35 adaptor and modem are
+                             installed and is not applicable to
+                             the Ethernet adaptor.  This might
+                             indicate faulty modem operation.
+
+         COLLISIONS EXCEEDED 
+                             Frame transmissions failed because
+                             of too many collisions. This should
+                             not occur on a normal network.
+                             Excessive collisions can occur if a
+                             terminator is loose or missing or if
+                             there is a short or kink in the
+                             Ethernet coaxial cable.
+
+         DMA UNDERRUN        Frames discarded because the option
+                             card could not move data out of the
+                             CCB on-board memory fast enough.
+                             This might indicate a CCB or option
+                             card problem.
+
+     *11 Transmit Collision Retries statistics counts the number
+         of collision retries for collisions occurring from one
+         through fifteen times.  Ethernet retries to fifteen
+         times for each transmitted frame before aborting a
+         transmission.  Under normal operation, there should be a
+         small number of collisions relative to the number of
+         transmits.  The number of collisions increases as more
+         devices are added to the network.  Collisions are a
+         normal part of Ethernet operation and cause only a small
+         delay to the transmission of a packet.
+
+     *12 Extended Statistics contains several useful counts for
+         hardware and software debugging.
+
+         TRANSMITTER RESTARTS
+                             The Transmitter Restart count
+                             indicates the number of times the
+                             LAN coprocessor on the option card
+                             has been restarted by the Ethernet
+                             device driver.  This is an error
+                             condition and occurs only if the
+                             coprocessor does not respond with a
+                             transmit complete within the
+                             required time period; that is, if
+                             the coprocessor locks up.  This
+                             might happen on occasion under
+                             normal operation.
+
+         RECEIVER RESTARTS   The Receiver Restart count indicates
+                             the number of times that the
+                             coprocessor's receive unit has been
+                             restarted by the Ethernet device
+                             driver.  This is an error condition
+                             that indicates that the coprocessor
+                             receive unit stopped receiving.
+                             This can occur if there are no
+                             receive buffers.  In most cases,
+                             these are soft (recoverable)
+                             failures and Ethernet operations
+                             continue normally.  An unusually
+                             large Transmitter or Receiver
+                             Restarts value indicates a restart
+                             is being performed frequently; the
+                             Ethernet option card might need
+                             servicing.
+
+         NUMBER OF FRAME DESCRIPTORS and MIN # OF FRAME DESCRIPTORS
+                             Maximum and Minimum Number of Frame
+                             Descriptors shows the maximum number
+                             possible and the minimum number ever
+                             reached.  Frame Descriptors are
+                             consumed, one per receive frame, and
+                             later restored.  This is the basic
+                             receive control block to the LAN
+                             coprocessor on the option card.
+                             This statistic is mainly for
+                             software debugging.
+
+         NUMBER OF BUFFER DESCRIPTORS and MIN # OF BUFFER DESCRIPTORS
+                             Maximum and Minimum number of Buffer
+                             Descriptors shows the maximum number
+                             possible and the minimum number ever
+                             reached.  Buffer Descriptors are
+                             consumed, one per each 300 bytes of
+                             received data, and restored as long
+                             as more buffers are available from
+                             the buffer pool.  This statistic is
+                             mainly for software debugging and
+                             buffer tuning.
+
+     *13 Received Frame statistics is a histogram of the size and
+         number of received frames since the last time the
+         controller's counters were reset.  This part of the
+         listing shows the number of received frames grouped by
+         frame size.  Normal packet sizes range from 64 to 1535
+         bytes.
+
+     *14 Transmitted Frame statistics is a histogram of the size
+         and number of transmitted frames since the last time the
+         controller's counters were reset.  This part of the
+         listing shows the number of transmitted frames grouped
+         by frame size range.  Normal packet sizes range from 64
+         to 1535 bytes.
+
+SEE ALSO
+     netecho(1T), tcstat(1T), ddinq(1T).
+
+

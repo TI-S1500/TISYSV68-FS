@@ -1,0 +1,30 @@
+# cshf	sccsdiff--finds differences in SCCS files  
+#	@(#)SCCSDIFF.sh	1.2  87/10/13
+# 
+onintr end
+prompt "^SCCSDIFF -- COMPARES TWO VERSIONS OF AN SCCS FILE"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Give First Delta Version Number:" r1flag string \
+	"^Give Second Delta Version Number:" r2flag string \
+	"^Pipe Output Through pr(1):" pflag yesno n\
+	"^*File Segment Size:" sflag integer\
+	"^#$*"
+
+if ($abort) goto end
+if ($r1flag != "") set r1opt = -r$r1flag
+if ($r2flag != "") set r2opt = -r$r2flag
+if ($pflag == "y") set popt = -p
+if ($sflag != "") set sopt = -s$sflag
+
+echo "=== SCCSDIFF COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo sccsdiff $r1opt $r2opt $popt $sopt $_input_file
+	sccsdiff $r1opt $r2opt $popt $sopt $_input_file
+else
+	echo sccsdiff $r1opt $r2opt $popt $sopt $_input_file ">"$_output_file
+	sccsdiff $r1opt $r2opt $popt $sopt $_input_file >$_output_file
+endif
+
+end:
+unset *flag *opt 

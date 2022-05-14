@@ -1,0 +1,42 @@
+TSORT(1)                                                 TSORT(1)
+
+NAME
+     tsort - Performs a topological sort
+
+SYNOPSIS
+     tsort [file]
+
+DESCRIPTION
+   Purpose
+     The tsort command produces on the standard output a totally
+     ordered list of items consistent with a partial ordering of
+     items mentioned in the input file.
+
+   Discussion
+     The input consists of pairs of items (nonempty strings)
+     separated by blanks.  Pairs of different items indicate
+     ordering.  Pairs of identical items indicate presence, but
+     not ordering.  If no file is specified, the standard input
+     is understood.
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to be sorted.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+SEE ALSO
+     lorder(1).
+
+DIAGNOSTICS
+     Odd data
+            There is an odd number of fields in the input file.
+
+NOTES
+     This command uses a quadratic algorithm.  Modifying this
+     program for the typical use of ordering a library archive
+     file is probably not worth the effort.
+
+

@@ -1,0 +1,198 @@
+A68M(1T)                                                 A68M(1T)
+
+NAME
+     a68m - Invokes the 68020 assembler macro preprocessor
+
+SYNOPSIS
+     a68m -alstv file1[,file2 ...]
+     a68m -alt =file1[,file2 ...]
+     a68m -alstv [a68],[err]=file1[,file2 ...]
+
+DESCRIPTION
+   Purpose
+     The a68m command processes one or more TI System V 68020
+     assembler source files that include macro definitions and
+     macro calls.  It expands each macro reference into assembler
+     code and produces a 68020 assembler source output file for
+     input to the 68020 assembler source processor, a68k(1T).
+     The a68m command also produces a printable error listing
+     file to which an optional symbol table listing can be
+     appended.
+
+   Options
+     -aal Passes argument list al to a68m for substitution into
+          the assembler source input file.  Specify al in the
+          format a0,a1,a2,...,a9 where a0 is argument zero, a1 is
+          argument one, and so on.  A maximum of 10 arguments can
+          be passed in this fashion.  Embedded spaces are not
+          allowed in the arguments.  The -a option allows you to
+          control conditional assembly without editing the source
+          file.  See the TI System V 68020 Assembler manual for
+          more information about this feature.
+
+     -l   Retains lowercase characters in user-defined symbols.
+          Without this option, a68m converts lowercase characters
+          to uppercase in user-defined symbols.  The program does
+          not distinguish between upper- and lowercase in
+          instruction mnemonics, directives mnemonics, and
+          register designations.
+
+     -s   Appends symbol table to the error listing file.  This
+          symbol table is listed in ASCII order. Each symbol is
+          tagged with a letter that signifies its type:
+          m  macro
+          e  permanent (EQU directive)
+          s  temporary (SET directive)
+          The value associated with a macro name is the highest
+          parameter number referenced in the macro body.
+
+     -t   Truncates long symbols to 8 characters.  Without this
+          option, symbols are truncated to 31 characters.
+
+     -v   Inserts an ASCII formfeed character at the beginning of
+          the error listing file.
+
+   Arguments
+     a68  User-defined 68020 assembler source output file name.
+          If no suffix is specified, the default file name suffix
+          .a68 is appended to this value.
+
+     err  User-defined error listing output file name.  If no
+          suffix is specified, the default file name suffix .err
+          is appended to this value.
+
+   Discussion
+     The diagnostic and informational messages and the listings
+     produced by a68m refer to this macro preprocessor as M68K.
+
+     The a68m command appends the default file name suffix .m68
+     to each listed input file name for which no suffix is
+     specified.
+
+     The default output file name suffixes are .a68 (68020
+     assembler source) and .err (error listing).  Only one output
+     file of each type (.a68, .err) is produced per execution of
+     a68m.
+
+     Specify output file requirements in one of the following
+     three ways:
+
+     + If you omit the = from the command line, each output file
+       name is derived by adding the appropriate default suffix
+       (.a68, .err) to the first input file name in the list.
+
+     + If you include the = and specify no user-defined output
+       file name, only the 68020 assembler source file is
+       produced (its name is derived as described above).
+       Options related to generation of the error listing file
+       are ignored if specified.
+
+     + If you include the = and one or more user-defined output
+       file names, only those files corresponding to the user-
+       defined names are produced.  The appropriate default
+       suffix (.a68, .err) is appended to each user-defined name
+       for which no suffix is specified.
+
+     In the typical case, it is sufficient to specify a single
+     input file that consists of a complete assembly language
+     program terminated by an END directive.  Specification of a
+     list of input files implies concatenation of several source
+     files that will be processed as a single program by a68m,
+     resulting in the generation of a single 68020 assembler
+     source output file for the entire group of input files.  The
+     a68m command will terminate processing upon encountering an
+     END directive in an input file; therefore, only the last
+     input file in the list should contain an END directive.
+
+EXAMPLES
+     The following example processes the input file lt30.m68 and
+     produces the output files lt30.a68 and lt30.err.
+
+          a68m -l lt30
+
+     The following example processes the input file lt30.mac and
+     produces the output files lt30.a68 and lt30.err.
+
+          a68m lt30.mac
+
+     The following example processes the input file lt30.m68 and
+     produces the output file lt30.a68 (suppressing lt30.err).
+
+          a68m =lt30
+
+     The following example processes the input file lt30.m68 and
+     produces the output file lt30.s (suppressing lt30.err).
+
+          a68m lt30.s=lt30
+
+     The following example processes the input file lt30.m68 and
+     produces the output file lst.err (suppressing lt30.a68).
+     The -s option appends the symbol table to the error listing
+     file.  The -a option passes a value of 1 for argument zero
+     and a value of 0 for argument two (no value is passed for
+     argument one).
+
+          a68m -s -a1,,0 ,lst=lt30
+
+PROMPTS
+   Input File Name:
+     Enter one or more 68020 assembler source file names that
+     include macro definitions and macro calls.  Separate
+     multiple input file names with commas.
+
+   Argument List (a0,a1,...,a9):
+     Enter an argument list for substitution into the assembler
+     source input files.  See the description of the -a option
+     under Options in this manual entry.
+
+   Retain Lowercase Char. Symbols:
+     The initial value is no.  Enter yes to retain lowercase
+     characters in user-defined symbols.
+
+   Append Symbol Table to Error Listing:
+     The initial value is no.  Enter yes to append the symbol
+     table to the error listing file.
+
+   Truncate Long Symbols:
+     The initial value is no.  Enter yes to truncate long symbols
+     to 8 characters.
+
+   Inserts Formfeed Character:
+     The initial value is no.  Enter yes to insert an ASCII
+     formfeed character at the beginning of the error listing
+     file.
+
+   Select Advanced Options:
+     The initial value is no.  Enter yes to receive the following
+     four prompts.  Respond to only one of the first and second
+     of these.
+
+   Define Output File Names:
+     The initial value is no.  Enter yes to define output file
+     names rather than accepting the default file names.
+
+   Produce Only the Source File:
+     The initial value is no.  Enter yes to produce only the
+     68020 assembler source file.
+
+   Linker File Name:
+     Enter a user-defined linker file name.
+
+   Assembly Listing File Name:
+     Enter a user-defined assembly listing file name.
+
+DIAGNOSTICS
+     Exit status values are as follows:
+
+     + 0 - Completed with no errors and no warnings
+
+     + 1 - Completed with no errors; warnings only
+
+     + 2 - Completed with error(s)
+
+     + 3 - Aborted; did not run to completion
+
+SEE ALSO
+     a68k(1T), as(1).
+     TI System V 68020 Assembler manual.
+

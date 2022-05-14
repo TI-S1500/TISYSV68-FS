@@ -1,0 +1,735 @@
+# <%%> Inserted DNIO messages start on this line. <%%>
+#  @(#)messages	1.37 89/12/08
+#
+#  Message numbers 1004700 through 1005600 have been reserved for
+#  DNIO/1500.
+#
+#==================================================================
+#  1004700 - 1004729 are the TLI messages corresponding to the
+#  t_errno values.
+#
+1004701~0~TLI error = TBADADDR:\n~
+Incorrect address format. This is a DNIO/1500 System V internal error.~
+1004702~0~TLI error = TBADOPT:\n~
+Incorrect option format. This is a DNIO/1500 System V internal error.~
+1004703~0~TLI error = TACCES:\n~
+User doesn't have access to this address. This is a DNIO/1500 System V internal
+error.~
+1004704~0~TLI error = TBADF:\n~
+Invalid transport file descriptor. This is a DNIO/1500 System V internal error.~
+1004705~0~TLI error = TNOADDR:\n~
+Couldn't allocate address. This is a DNIO/1500 System V internal error.~
+1004706~0~TLI error = TOUTSTATE:\n~
+Invalid state for operation. This is a DNIO/1500 System V internal error.~
+1004707~0~TLI error = TBADSEQ:\n~
+Invalid call sequence number. This is a DNIO/1500 System V internal error.~
+1004708~0~TLI error = TSYSERR:\n~
+System error. A system error has occurred during execution of a call to the 
+network transport service. A message with a more specific error code should 
+follow.~
+1004709~0~TLI error = TLOOK:\n~
+An event occurred. This is a DNIO/1500 System V internal error.~
+1004710~0~TLI error = TBADDATA:\n~
+Data buffer exceeded maximum size. This is a DNIO/1500 System V internal error.~
+1004711~0~TLI error = TBUFOVFLW:\n~
+User buffer too small. This is a DNIO/1500 System V internal error.~
+1004712~0~TLI error = TFLOW:\n~
+Flow control error. This is a DNIO/1500 System V internal error.~
+1004713~0~TLI error = TNODATA:\n~
+No data present. This is a DNIO/1500 System V internal error.~
+1004714~0~TLI error = TNODIS:\n~
+No disconnect indication. This is a DNIO/1500 System V internal error.~
+1004715~0~TLI error = TNOUDERR:\n~
+No unitdata error. This is a DNIO/1500 System V internal error.~
+1004716~0~TLI error = TBADFLAG:\n~
+Illegal flags specified. This is a DNIO/1500 System V internal error.~
+1004717~0~TLI error = TNOREL:\n~
+No orderly release on queue. This is a DNIO/1500 System V internal error.~
+1004718~0~TLI error = TNOTSUPPORT:\n~
+Operation not supported. This is a DNIO/1500 System V internal error.~
+1004719~0~TLI error = TSTATECHNG:\n~
+State changing. This is a DNIO/1500 System V internal error.~
+1004720~0~TLI error = TCONNECTFAIL:\n~
+Connection failed. An attempt to connect to another system has failed. A more 
+specific error code should follow.~
+1004721~0~TLI error = TLISTENFAIL:\n~
+Listen failed. An error has occurred while a session was being established with
+another system. A more specific error code should follow.~
+1004722~0~TLI error = TTIMEOUT:\n~
+Timeout occurred. A communications session with another system has timed out. 
+The other system may have crashed, or an intermediate router may have stopped 
+working.~
+1004723~0~TLI error = TSPPERR:\n~
+Fatal sequenced packet protocol error. This is a DNIO/1500 System V internal 
+error.~
+1004724~0~TLI error = TTOOMANYDS:\n~
+Too many data stream types registered. This is a DNIO/1500 System V internal 
+error.~
+1004725~0~TLI error = TCCBDOWN:\n~
+CCB not operational. The communications carrier board is not downloaded or has 
+crashed.~
+1004726~0~TLI error = TCCBSYSERR:\n~
+Error occurred on CCB. An error was reported by one of the device drivers on 
+the CCB. A more specific error message should follow.~
+#
+#===================================================================
+#  error codes for cpcf (1004733)
+#
+1004733~0~
+Usage:  cpcf [-b] sourcefile destfile\n~~
+#===================================================================
+#  error codes for ccbxport (1004734 - 1004750)
+#
+1004734~0~Failure allocating socket\n~
+The transport driver on the CCB (ccbxport) could not allocate a socket. In some
+situations, this error could be caused by too many DNIO/1500 System V users. 
+However, it is more likely to be an internal error that should be reported to 
+your system administrator.~
+1004735~0~Transport session table is full.\n~
+Increase the maximum number of transport sessions by editing the file 
+/etc/ccbdev. In the line: Sessions = 40, replace 40 with a higher number. 
+Increasing this number reduces the amount of memory on the CCB available for 
+network buffers, which may reduce performance. Therefore, do not increase the 
+number more than necessary.~
+1004736~0~Data transfer across Nubus failed.\n~
+An error occurred while data was being transferred between the application 
+processor and the communications carrier board (CCB). This is an internal error
+and should be reported to your system administrator.~
+1004737~0~Receive attempted while receive pending.\n~
+This is an internal error and should be reported to your system administrator.~
+1004738~0~Bad NRB correlation ID on response queue.\n~
+This is an internal error and should be reported to your system administrator.~
+1004739~0~Invalid IOCTL opcode.\n~
+This is an internal error and should be reported to your system administrator.~
+1004740~0~Invalid NRB opcode.\n~
+This is an internal error and should be reported to your system administrator.~
+1004741~0~Invalid SPP connection ID.\n~
+This is an internal error and should be reported to your system administrator.~
+1004742~0~Inconsistent continuation element.\n~
+This is an internal error and should be reported to your system administrator.~
+1004743~0~Error reading Nubus buffer.\n~
+This is an internal error and should be reported to your system administrator.~
+1004744~0~Null request pointer encountered.\n~
+This is an internal error and should be reported to your system administrator.~
+1004745~0~Sequence packet protocol send error.\n~
+This is an internal error and should be reported to your system administrator.~
+1004746~0~Insufficient CCB memory.\n~
+There was insufficient memory on the CCB for the allocation of an internal 
+table. The requested number of sessions may be too high. It may be necessary to
+reduce the number of device drivers downloaded to the CCB.~
+#
+# name manager utility messages (1004747 - 1004774)
+#
+1004747~0~Invalid slot number.\n~
+The slot number must be between 0 and 15, inclusive. The slot number specified 
+was outside the range of valid slot numbers.~
+1004748~0~Clearing name manager cache entry: %s.\n~
+The specified site name will be deleted from the name manager cache. The next 
+request to name manager to map that name to an address will result in a network
+name management query. This command can be used after the network topology has 
+been changed to force name manager to find the new address of a site.~
+1004749~0~Usage: nmclr [-n <sitename> ] [ -s <slot> ]\n~~
+1004750~0~Name management cache on slot %-2d has been cleared.\n~
+The name management cache on the specified slot has had all of its entries 
+deleted. The name management cache is a table of site names and their 
+corresponding network addresses. After the cache is cleared, a request to map a
+name to an address will result in a network name management query.~
+1004751~0~Cache entry for sitename %s has been cleared on slot %-2d.\n~
+The name management cache entry for the specified sitename has been cleared. 
+The next request to name manager to map that name to a network address will 
+result in a network name management query.~
+1004752~0~The name manager is not active on slot %-2d.\n~
+The name manager software has not been downloaded to the specified CCB. The 
+name manager is included in the download module ccbxport. Execute devadm(1) to 
+install the transport level interface.~
+1004753~0~The name manager is not active on any CCB.\n~
+The name manager software has not been downloaded to any communications carrier
+board. To start the name manager on a CCB, use devadm(1) to define the 
+transport level interface devices. The transport device driver for the CCB 
+(ccbxport) can only be installed on one CCB. That CCB must have a LAN option 
+board.~
+1004754~0~Invalid 48-bit host address.\n~
+The 48-bit network host address must be composed of 12 contiguous hexadecimal 
+digits. The digits a through f can be either uppercase or lowercase. Examples: 
+0800280001a5 02608C01B23A.~
+1004755~0~Invalid network number.\n~
+The 32-bit network number is a hexadecimal number of 8 or fewer digits. The 
+numbers a through f can be in either uppercase or lowercase.
+Examples: 0001256A 000124f2~
+1004756~0~Usage: nmsdn -a <48-bit host address> [-n <32-bit network number> ]\n~
+~
+1004757~0~
+-   Sitename       = %s
+-   Network Number = %x
+-   Host Address   = %4.4x%4.4x%4.4x\n~~
+1004758~0~
+-   Sitename       = %s
+-   Network Number = %x
+-   Host Address   = %4.4x%4.4x%4.4x\n~~
+1004760~0~Could not find a site with the specified network address.\n~
+The name manager searched the network for a site with the specified host 
+address and network number. No site responded to the query. It is possible that
+there is a system on the network with the specified address but that it is not 
+responding to the query because it does not have an active name manager 
+process.~
+1004761~0~Usage: nmset [ -s <slot> ]\n~~
+1004762~0~Cannot open /etc/sitename.\n~
+The name manager could not open the file /etc/sitename to read the site name. A
+more specific error message should follow.~
+1004763~0~Cannot read /etc/sitename.\n~
+The name manager could not read the file /etc/sitename. A more specific error 
+message should follow.~
+1004764~0~Assigning sitename %s to this site.\n~
+The specified site name is being set on the CCB. The name manager software on 
+the CCB will verify that no other site on the network has the same name.~
+1004765~0~Error occurred while setting sitename.\n~
+An error occurred while setting the site name. A more specific error message 
+should follow.~
+1004766~0~Local sitename has been set to %s.\n~
+The specified site name has now been assigned to this site.~
+1004767~0~Usage: nmsia <sitename>\n~~
+1004768~0~Searching for site with name %s.\n~~
+1004769~0~Could not find site %s.\n~
+There is no system on the network that has the specified site name.~
+1004770~0~Address retrieved from the name management cache:\n~~
+1004771~0~Address acquired by network query:\n~~
+1004772~0~Sitename longer than 8 characters.\n~~
+1004773~0~Error occurred while mapping sitename to address.\n~
+An error occurred while the site name was being mapped to an address. A more 
+specific error message should follow.~
+1004774~0~Mapping address %x, %4.4x%4.4x%4.4x to sitename.\n~~
+1004775~0~Sitename not set in /etc/sitename.\n~
+The file /etc/sitename must be edited to contain the correct site name for the 
+system. The default site name sitename is not accepted as a valid site name by 
+DNIO/1500 System V.~
+1004776~0~The set_sitename function returned %d.\n~
+The error could be the result of another system having the same sitename.
+Try changeing the sitename in /etc/sitename.  If another sitename doesn't work get help.~
+#
+#  name manager driver message codes (1004778 - 1004795)
+#
+1004778~0~Insufficient memory on CCB for name manager heap.\n~
+The DNIO/1500 System V name manager was unable to allocate memory for internal 
+structures. Reduce the amount of memory needed by reducing the number of 
+transport sessions. It may be necessary to download fewer drivers to the CCB.~
+1004779~0~Error allocating name management well-known socket: %d.\n~
+The name manager could not allocate its well-known socket. The specified error 
+code will give the reason for the failure.~
+1004780~0~Error opening name management socket: %d.\n~
+The name manager could not open its network socket. The specified error code 
+will give the reason for the failure.~
+1004781~0~Invalid NRB operation code: %x.\n~
+This is an internal error. Report it to your system administrator.~
+1004782~0~Error on call to packet exchange protocol: %d.\n~
+This is an internal error. Report it to your system administrator.~
+1004783~0~Unable to get outbound packet.\n~
+The buffer pool in the CCB is exhausted. If this error happens regularly, 
+reduce the number of transport sessions, or reduce the number of device drivers
+downloaded to the CCB.~
+1004784~0~Error transferring data to network buffer.\n~
+This error can be caused by a shortage of CCB network buffer space. If this 
+error happens regularly, reduce the number of transport sessions, or reduce the
+number of device drivers downloaded to the CCB.~
+1004785~0~Invalid Name Manager operation code: %x.\n~
+This is an internal error. Report it to your system administrator.~
+1004786~0~No matching pending operation.\n~
+This is an internal error. report it to your system administrator.~
+1004787~0~Sitename not cached.\n~
+The site name that the user attempted to remove from the cache was not in
+the cache.~
+1004788~0~The site name was set.\n~~
+1004789~0~Cannot map sitename to address.\n~
+The name manager attempted to map the specified site name to a network address,
+but no site with the specified site name responded.~
+1004790~0~Cannot map address to sitename.\n~
+The name manager attempted to map the specified address to a site name, but no 
+site with the specified address responded.~
+1004791~0~The name manager received a bad response packet.\n~
+A name manager request was returned in error. This may be an error at the site 
+whose name is the site name requested. If this happens consistently, report the
+problem to your system administrator.~
+1004792~0~Error getting network buffer.\n~
+The buffer pool in the CCB is exhausted. If this error happens regularly, 
+reduce the number of transport sessions, or reduce the number of device drivers
+downloaded to the CCB.~
+1004793~0~Name manager not ready.\n~
+The name manager received a request before it had set the local site name or 
+initialized its internal tables. Make sure that the DNIO/1500 System V start-up
+script (/etc/dnio1500init) is getting executed from the download script 
+(/etc/download).~
+1004794~0~Lost a pending request.\n~
+This is an internal error and should be reported to your system administrator.~
+1004795~0~Heap exhausted.\n~
+The name manager was unable to allocate an internal structure. This may not be 
+fatal. The likely result of this error is that a name will not get cached, 
+slowing the next access to that name, but the error will not interfere with 
+normal operation of DNIO/1500 System V. However, if this error happens fairly 
+often, the error should be reported to your system administrator.~
+#===================================================================
+#       1004800 - 1004870 are reserved for inl990 
+#===================================================================
+1004800~0~Usage: inl990 -bcghv sitename\n~
+b <bid char> - define the application bid character. 
+c            - reset the terminal.
+g            - disable graphics.
+h <hot key>  - enable hot key.
+v <vt num>   - specify the virtual terminal number.~
+1004801~0~Enter remote sitename, please.\n~
+The name of the remote site is not found in the command line. Please refer to 
+TI System V User's Reference manual for the correct command syntax and try 
+again.~
+1004802~0~Could not open log file %s, errno = %d.\n~
+The debugging/logging options were specified, but an error was encountered 
+while attempting to open the log file, /usr/adm/comlog/inltrc.ttyxx, where xx 
+is the terminal number of the local terminal on which the command was issued. 
+Please refer to the TI system V Programmer's Reference manual for an 
+explanation of the error and any corrective measures.~
+1004803~0~Invalid virtual terminal number.\n~
+The number specified with the -v option is not a valid virtual terminal number.
+The virtual terminal number should be in the range of 51 to 99 (decimal). 
+Please issue the inl990 command again with a valid virtual terminal number.~
+1004804~0~Default tty settings have been restored.\n~
+This is an informative message. The local terminal is cleared and reset to its 
+default options for proper operations.~
+1004805~0~Network login session has terminated normally.\n~
+This is an informative message. The network login session is terminated 
+properly, and the local terminal is reset to its default options for normal 
+operations.~
+1004806~0~A fcntl system call to terminal device failed, errno=%d.\n~
+An error was encountered while a fcntl system call was issued to local terminal
+device. Please refer to the TI System V Programmer's Reference manual for an 
+explanation of the error and any corrective measures.~
+1004807~0~Network login session was aborted.\n~
+The network login session was aborted by signals or hotkey followed by a period
+(.).~
+1004808~0~Network Login session aborted through quit or hangup signal.\n~
+The network login session was aborted because a QUIT or HANGUP signal was 
+received.~
+1004809~0~Could not get local sitename. Error = %d.\n~
+Could not obtain the local site name from the name manager. A network login 
+session cannot be established. Refer to the error returned for more 
+information.~
+1004810~0~Unrecognizable terminal name - %s.\n~
+The path name of the local terminal device is not recognized by inl990. A 
+network login session cannot be established. Consult your system administrator 
+to correct your terminal device name.~
+1004811~0~Unable to allocate specified VT on %s.\n~
+The virtual terminal specified on the remote site is not available for use, or 
+all virtual terminals are currently in use. Try to log in with another virtual 
+terminal number, or try again later.~ 
+1004812~0~Unable to bid specified application on %s.\n~
+An error was encountered when the application bid character was processed at 
+the remote site. Verify that the application to be bid has been installed 
+correctly on the remote site and that the bid character was set up properly.~
+1004813~0~Unsupported protocol opcode encountered.\n~
+A virtual terminal management request was received while that virtual terminal 
+was not currently in use. This is an unexpected error. Report this error to 
+your system administrator.~
+1004814~0~Specified VT has already been allocated.\n~
+The virtual terminal specified is currently in use by another user. Try to log 
+in with another virtual terminal number, or try again later.~
+1004815~0~Could not connect to %s.\n~
+Communications could not be established with the remote site specified. Verify 
+that the remote site specified exists and is operational. Refer to other errors
+reported with this message for more information about the cause.~
+1004816~0~Communications error.\n~
+A generic communications error was encountered. Contact your system 
+administrator to verify that the network software has been installed 
+correctly.~
+1004817~0~Specified VT does not exist, or no VTs are available.\n~
+All of the virtual terminals on the remote site are currently in use or 
+offline. Try again later, or verify the status of the virtual terminals on the 
+remote site.~
+1004818~0~Fatal SVC error encountered on %s.\n~
+An error was encountered when the SVC call was trying to bid the remote 
+application. Verify that the application to be bid has been installed correctly
+on the remote site and that the bid character was set up properly.~
+1004819~0~Unexpected error returned by VT DSR.\n~
+An error was encountered when xnets was accessing the virtual terminal device 
+service routine on the remote site. Verify that virtual terminals exist at the 
+remote site. If they do, contact your system administrator to verify that the 
+network software has been installed correctly.~
+1004820~0~Specified VT is offline.\n~
+The specified virtual terminal is offline. Try to log in with another virtual 
+terminal number, or try again later.~
+1004821~0~Error accessing VT DSR.\n~
+An error was encountered when xnets was accessing the virtual terminal device 
+service routine. Verify that virtual terminals exist at the remote site. If 
+they do, contact your system administrator to verify that the network software 
+has been installed correctly.~
+1004822~0~NIOS: fatal error.\n~
+An error was encountered during NIOS initiation for network login session 
+connection. Refer to other errors returned with this message for more 
+information about the error. Contact your system administrator to verify that 
+the network software has been installed correctly.~
+1004823~0~Undefined error code returned in XNET message - %d.\n~
+An unknown error was returned in the xnet message when trying to establish a 
+network login session with the remote site. Contact your system administrator 
+to verify that the network software has been installed correctly. If the 
+problem persists, contact your system administrator.~
+1004824~0~Could not get a t_call structure.\n~
+An error was encountered when trying to allocate a TLI library structure. Refer
+to other errors reported with this message for more information.~
+1004825~0~Listen failed.\n~
+A t_listen library call failed. The network login session cannot be 
+established. Refer to other errors reported with this message for further 
+explanation and possible corrective action.~
+1004826~0~Accept failed.\n~
+A t_accept library call failed. The network login session cannot be 
+established. Refer to other errors reported with this message for further 
+explanation and possible corrective action.~
+1004827~0~FE_getparm failed, errno = %d.\n~
+An error was returned from a FE_getparm call. Please refer to the TI System V 
+Programmer's Reference manual for an explanation of the error and any 
+corrective measures.~
+1004828~0~Could not get memory of %d bytes, errno = %d.\n~
+An attempt to allocate memory failed. Please refer to the TI System V 
+Programmer's Reference manual for an explanation of the error and any 
+corrective measures.~
+1004829~0~Graphics on read is not allowed.\n~
+The graphics input is not supported by inl990. The network login session 
+terminated because a READ operation with the graphics flag set in the SVC 
+extended block was encountered.~
+1004830~0~Unexpected data character event = %d.\n~
+An unknown event character was returned for a read operation. Contact your 
+system administrator to verify that the network software has been installed 
+correctly.~
+1004831~0~Not a tty device.\n~
+The inl or inl990 command can only be executed from a terminal device. This 
+error indicates that your local device is not defined as a tty device under 
+/dev. Please consult your system administrator and try again on a terminal 
+device.~
+1004832~0~Invalid hot key.\n~
+The specified hot key value for option h is not a valid control character. 
+Please refer to TI System V Programmer's Reference manual for more information 
+about the hot key option and try again.~
+1004833~0~Could not open %s, errno = %d.\n~
+An error was encountered while the indicated device was being opened. Please 
+refer to the TI System V Programmer's Reference manual for an explanation of 
+the error and any corrective measures~ 
+1004834~0~FE_open failed, errno = %d.\n~
+An error was returned from a FE_open call. Please refer to the TI System V 
+Programmer's Reference manual for an explanation of the error and any 
+corrective measures.~
+1004835~0~t_open failed.\n~
+A t_open library call failed. The network login session cannot be established. 
+Refer to other errors reported with this message for further explanation and 
+any possible corrective measures.~
+1004836~0~t_bind failed.\n~
+A t_bind library call failed. The network login session cannot be established. 
+Refer to other errors reported with this message for further explanation and 
+any possible corrective measures.~
+1004837~0~Could not get a t_bind structure.\n~
+An error was encountered when trying to allocate a TLI library structure. Refer
+to other errors reported with this message for more information.~
+1004838~0~t_look failed.\n~
+A t_look library call failed. The network login session cannot be established. 
+Refer to other errors reported with this message for further explanation and 
+any possible corrective measures.~
+1004839~0~Unexpected T_LISTEN event occurred.\n~
+An unexpected connection indication was received and a t-listen event was 
+returned by a t_look library call. The network login session terminated due to 
+this abnormal condition. If this problem persists, report this error to your 
+system administrator.~
+1004840~0~T_DISCONNECT event occurred.\n~
+A disconnect indication was received and a t_disconnect event was returned by a
+t_look library call. The network login session terminated due to this abnormal 
+condition. If this problem persists, report this error to your system 
+administrator.~
+1004841~0~T_ERROR event occurred.\n~
+A fatal error indication was received and a t_error event was returned by a 
+t_look library call. The network login session terminated due to this abnormal 
+condition. If this problem persists, report this error to your system 
+administrator.~
+1004842~0~Unexpected T_ORDREL event occurred.\n~
+An unexpected orderly release indication was received and a T_ORDREL event was 
+returned by t_look library call. The network login session terminated due to 
+this abnormal condition. If this problem persists, report this error to your 
+system administrator.~
+1004843~0~Unexpected event %d occurred.\n~
+An unknown event was returned by t_look library call. The network login session
+terminated due to this abnormal condition. If this problem persists, report 
+this error to your system administrator.~
+1004844~0~Read screen failed, errno = %d.\n~
+An error was returned from a FE_exportscreen call. Please refer to TI System
+V Programmer's Reference manual for an explanation of the error and any 
+corrective measures.~
+1004845~0~Receive failed.\n~
+A t_rcv library called failed. Refer to other errors reported with this message
+for further explanation and any possible corrective measures.~
+1004846~0~Could not get data stream.\n~
+A t_getdstype library called failed. Refer to other errors reported with this 
+message for further explanation and any possible corrective measures.~
+1004847~0~Compressed packet size error.\n~
+The data size in the compressed network packet is not correct. Size checking 
+failed. This is an unexpected error. Report this error to your system 
+administrator.~
+1004848~0~Network message size error, compressed size=%d, irb size=%d.\n~
+The size of the network message is greater than the maximum message size 
+allowed. Size checking failed. This is an unexpected error. Report this error 
+to your system administrator.~
+1004849~0~ti_expand failed, error = %d.\n~
+A t_expand library call failed. An error was encountered when a compressed 
+network message was being expanded. Refer to other errors reported with this 
+message for further explanation of the error. If this problem persists, report 
+this error to your system administrator.~
+1004850~0~Unexpected data stream type %d.\n~
+A network message with an unexpected data stream type was received. This is an 
+unexpected error. If this problem persists, report to your system 
+administrator.~
+1004851~0~Scroll up failed, errno = %d.\n~
+An error was returned from a FE_importscreen call. Please refer to the TI 
+System V Programmer's Reference manual for an explanation of the error and any 
+corrective measures.~
+1004852~0~Could not set data stream.\n~
+A t_setdstype library call failed. Refer to other errors reported with this 
+message for further explanation and any possible corrective measures.~
+1004853~0~Send failed.\n~
+A t_snd library called failed. Refer to other errors reported with this message
+for further explanation and any possible corrective measures.~
+1004854~0~XNETS connection failed.\n~
+An error was encountered while attempting to connect to the xnets process on 
+the remote site. The network login session cannot be established. Refer to 
+other errors reported with this message for further explanation and any 
+possible corrective measures. If this problem persists, report it to your 
+system administrator.~
+1004855~0~Usage: inl -hv <sitename>\n~
+h <hot key> - Change the hot key. <hot key> can be either an ascii character, 
+or \xxx where xxx is the octal code for the control character. The default hot 
+key is GS (Ctrl-], or \035).
+
+
+	Enter the hot key followed by a period (Ctrl-].) to abort the logon 
+	session.
+
+	Enter the hot key followed by an exclamation character and a TI System 
+	V command (! cmd) to execute the command on your local system.
+
+	Enter the hot key followed by a colon (:) to bid the business system 
+	shell (bsh) on your local system. A normal logout returns you to the 
+	point at which you exited the remote system.
+
+v <vt num> - Specify the virtual terminal number from 50 to 99.~
+1004856~0~The remote site is not a %s system.\n~
+There are two commands (inl and inl990) in DNIO/1500 System V that can initiate 
+the remote login. The inl command supports remote login between two system 
+1500's, and the inl990 command supports remote login from a system 1500 to a TI 
+990. This error indicates that you tried to login a TI 990 system using the inl 
+command, or the vice versa. Please try again with the proper command.~
+1004857~0~The %s call failed in %s, errno = %d.\n~
+The specified semaphore operation failed with the specified errno returned. 
+This error may indicate that there is some problems in the inl processes 
+coordination or there is a system configuration limitation was encountered.
+Please refer to the TI System V Programmer's Reference for an explanation of 
+the error or report this error to your system administrator.~
+1004858~0~The %s system call failed, errno = %d.\n~
+The specified system call failed with the specified errno returned. This error 
+may indicate that there is a system configuration limitation was encountered.
+Please refer to the TI System V Programmer's Reference for an explanation of 
+the error or report this error to your system administrator.~
+1004859~0~Can't perform the hot key function.\n~
+An error occurred when performing the hot key function. Please refer to the 
+messages displayed prior to this message for detailed information about the 
+error that caused the problem.~
+1004860~0~Invalid virtual terminal operation - %d.\n~
+An unknown operation was received from the primary side. This may indicate that 
+you are trying to login to a system that is running with an incompatible 
+networking package, or a communications failure occurred. Please make sure that 
+the DNIO/1500 System V release 2.0 or later is running on the remote system and 
+try to login again. If the error persists, report it to your system 
+administrator.~
+1004861~0~Network packet is too short.\n~
+The network packet received is too short. This indicates that there are 
+problems in communication or low level networking software. Report this error 
+to your system administrator.~
+1004862~0~Can't set the terminal setup information, errno = %d.\n~
+The specified error is returned when trying to execute a TCGETA ioctl to the 
+local terminal to obtain the terminal setup information. Please refer to the TI 
+System V Programmer's Reference for an explanation of the error or report this 
+error to your system administrator.~
+#
+#   Event messages (1004871 - 1004878)
+#
+1004871~0~Event = T_LISTEN.\n~~
+1004872~0~Event = T_CONNECT.\n~~
+1004873~0~Event = T_DATA.\n~~
+1004874~0~Event = T_EXDATA.\n~~
+1004875~0~Event = T_DISCONNECT.\n~~ 
+1004876~0~Event = T_ERROR.\n~~ 
+1004877~0~Event = T_UDERR.\n~~ 
+1004878~0~Event = T_ORDREL.\n~~ 
+#
+#   Miscellaneous messages (1004879)
+#
+1004879~0~Failure opening DNIO logger pipe %s\n~
+A system error occurred while opening the DNIO/1500 System V logger pipe. A 
+more specific error should follow. The DNIO/1500 System V logger daemon 
+(niologger) should be active when the pipe is opened. If it is not, restart 
+DNIO/1500 System V and look at any messages that get printed to the console 
+during the DNIO/1500 System V initialization to determine why the logger 
+process is terminating.~
+#
+#   NIO messages (1004880 - 1004960)
+#
+1004880~0~%s unable to read %s, errno = %d\n~~ 
+1004881~0~%s sequence error, seqnum = %d, expected seqnum = %d"\n~~ 
+1004882~0~%s %s can't find %s\n~~ 
+1004883~0~%s login failed from %s, %s\n~~ 
+1004884~0~%s unknown opcode = %d from %s\n~~ 
+1004885~0~%s BAD pathname = %[s]\n~~ 
+1004886~0~%s %d = fork(), errno = %d\n~~ 
+1004887~0~%s T_MORE flag should not be on or message is too big\n~~ 
+1004888~0~%s invalid request from a 1500, %d = tli_rcv_length\n~~ 
+1004889~0~%s signal call failed, errno = %d.\n~~ 
+1004890~0~%s FATAL ERROR, can't open [%s], errno = %d\n~~ 
+1004891~0~%s FATAL ERROR, malloc(%d) = 0x%x\n~~ 
+1004892~0~%s FATAL ERROR, con_req == comp\n~~ 
+1004893~0~%s FATAL ERROR, can't get user information uid=%d, errno=%d\n~~ 
+1004894~0~%s exec failed for IPC owner\n~~ 
+1004895~0~%s IPC owner process not specified\n~~ 
+1004896~0~%s IPC read from owner failed, rdlen=0x%x, gS_msg_size=0x%x, 
+IPCseq=0x%x\n~~ 
+1004897~0~%s IPC symmetric read failed, rdlen = 0x%x, mrbicc = 0x%x\n~~ 
+1004898~0~%s IPC write to owner failed, wrtlen = 0x%x, len = 0x%x\n~~ 
+1004899~0~%s IPC symmetric write failed, wrtlen=0x%x,
+IPCmrb->mrb990.base.mrbocc=0x%x\n~~ 
+1004900~0~%s look_events = %s\n~~ 
+1004901~0~%s t_accept = %d, con_req = %d, con_comp = %d\n~~ 
+1004902~0~%s t_alloc = 0x%x\n~~ 
+1004903~0~%s t_bind = %d\n~~ 
+1004904~0~%s %d = ti_connect(%s,%s,0x%x,%s,%s)\n~~ 
+1004905~0~%s t_getstate = %d\n~~ 
+1004906~0~%s t_getstate = %s\n~~ 
+1004907~0~%s t_listen = %d\n~~ 
+1004908~0~%s 0x%x = t_look(%d)\n~~ 
+1004909~0~%s t_look = 0x%x\n~~ 
+1004910~0~%s t_look = %d, con_req = %d, com_comp = %d\n~~ 
+1004911~0~%s t_open = %d\n~~ 
+1004912~0~%s ti_rcv error, ti_rcv = %d\n~~ 
+1004913~0~%s 0x%x = ti_rcv(%d,0x%x,%d,0x%x)\n~~ 
+1004914~0~%s 0x%x = ti_rcv(%d,0x%x,%d,0x%x), ctr = %d\n~~ 
+1004915~0~%s %d = ti_rcv(%d,0x%x,%d,0x%x), dstype = %d\n~~ 
+1004916~0~%s %d = ti_2rcv(%d,0x%x,%d,0x%x,%d,0x%x)\n~~ 
+1004917~0~%s t_rcvrel = %d\n~~ 
+1004918~0~%s ti_setopt = %d\n~~ 
+1004919~0~%s ti_setopt = 0x%x\n~~ 
+1004920~0~%s %d = ti_snd(%d,0x%x,%d,%d)\n~~ 
+1004921~0~%s %d = ti_snd(%d,0x%x,%d,0x%x)\n~~ 
+1004922~0~%s %d = ti_2snd( %d, 0x%x, %d, 0x%x, %d, 0x%x)\n~~ 
+1004923~0~%s t_sndrel = %d\n~~ 
+1004924~0~%s calling ti_sndrcv: fd=%d, sndptr=0x%x, send length=0x%x, 
+flags=0x%x.\n~~ 
+1004925~0~%s 0x%x=ti_sndrcv(fd=%d, rcvptr=0x%x, max rcv length=x%x, 
+flags=0x%x).\n~~ 
+1004926~0~%s calling ti_sndrcv: fd=%d, sndptr1=0x%x, len1=0x%x, ptr2=0x%x, 
+len2=0x%x, flags=0x%x.\n~~ 
+1004927~0~%s 0x%x=ti_sndrcv(fd=%d, rcvptr1=0x%x, len1=0x%x, ptr2=0x%x, 
+len2=0x%x, flags=0x%x).\n~~ 
+1004928~0~%s 0x%x=ti_sndrcv(fd=%d, rcvptr=0x%x, max rcv length=0x%x, 
+flags=0x%x, dstype=0x%x).\n~~ 
+#
+#   XNET messages (1004961 - 4980)
+#
+1004961~0~Invalid option : -%c\n~
+The only legal option for xnet is -d, which turns on the DNIO device driver 
+debug messages.~
+1004962~0~Failure opening virtual terminal control device.\n~
+The process xnets was unable to open the virtual terminal control device 
+/dev/inldd. A more specific error message should follow.~
+1004963~0~Unable to define signal handlers.\n~
+The process xnets was unable to execute the signal() system call. A more 
+specific error message should follow.~
+1004964~0~Failure while executing ioctl to set debug mode.\n~
+The process xnets was unable to execute an ioctl call to turn on the device 
+driver debug messages. A more specific error should follow.~
+1004965~0~Failure while executing ioctl to start buffer flushing process.\n~
+The process xnets was unable to execute an ioctl call to start the buffer 
+flushing process. A more specific error should follow.~
+1004966~0~Error occurred while allocating local memory.\n~
+An error occurred while allocating a block of memory. A more specific error 
+message should follow.~
+1004967~0~An error occurred while executing a listen call.\n~
+The xnets process received an unexpected error from a listen operation. A more 
+specific error message should follow.~
+1004968~0~Too many simultaneous connect requests.\n~
+This is an internal error. It should be reported to your system administrator.~
+1004969~0~Unexpected event occurred while accepting a connect request.\n~
+An unexpected event occurred while accepting a connection request. A message 
+that explains the event should follow.~
+1004970~0~Failure while receiving data.\n~
+An error occurred while the xnets process was receiving data from the network. 
+A more specific error message should follow.~
+1004971~0~Unable to execute ioctl to allocate virtual terminal.\n~
+An error occurred while the xnets process was executing an ioctl to allocate a 
+virtual terminal. A more specific error message should follow.~
+1004972~0~Virtual terminal allocation failure, error = %d.\n~~
+1004973~0~Unable to execute ioctl to send interrupt signal to a process.\n~
+A system error occurred when xnets did an ioctl to send an interrupt signal to 
+a process. A message specifying the error should follow.~
+1004974~0~Error returned from BREAK ioctl, error = %d.\n~
+An error was returned from the virtual terminal device on an attempt to 
+interrupt another process (to handle the hard-break event).~
+1004975~0~Invalid XNET opcode received, opcode = %d.\n~
+This is an internal error. Report this error to your system administrator.~
+1004976~0~Failure while sending data.\n~
+An error occurred while the xnets process was sending data. A more specific 
+error message should follow.~
+1004977~0~Error occurred on t_open call to allocate working endpoint.\n~
+An attempt to allocate a transport endpoint failed. A more specific error 
+message should follow.~
+1004978~0~Error occurred on t_bind call for working endpoint.\n~
+An error occurred on a call to the DNIO/1500 System V transport service. A more 
+specific error message should follow.~
+1004979~0~Error occurred on t_open call to allocate listening endpoint.\n~
+An attempt to allocate a transport endpoint failed. A more specific error 
+message should follow.~
+1004980~0~Error occurred on t_bind call for listening endpoint.\n~
+An error occurred on a call to the DNIO/1500 System V transport service. A more 
+specific error message should follow.~
+#
+#   SPA (from procedures xnets and nios990) messages (1005001 - 5007)
+#
+1005001~0~Failure opening software protection password file.\n~
+DNIO/1500 System V could not open the password file, /etc/softpwd. This 
+prevents execution of DNIO/1500.~
+1005002~0~Failure while executing ioctl call to %s, errno = %d.\n~
+DNIO/1500 System V could not execute the necessary ioctl call preventing 
+execution of DNIO/1500 System V. Verify that the kernel which was booted has 
+been linked with the current release of the DNIO/1500 System V driver.~
+1005003~0~Incorrect ciphered password in software protection password file.\n~
+The software protection password file, /etc/softpwd, contains an incorrect 
+ciphered password for DNIO/1500 System V. This prevents execution of DNIO/1500 
+System V.~
+1005004~0~Software protection password file has no entry for DNIO/1500.\n~
+The password file, /etc/softpwd, does not contain an entry for DNIO/1500 System 
+V with the format, 
+    DNIOsys5:ciphered password:comment.
+The password can be obtained from Texas Instruments.~
+1005005~0~Could not open %s, errno = %d.\n~
+An error was encountered while trying to open the indicated device. Verify that 
+the kernel which was booted has been linked with the current release of the 
+DNIO/1500 System V driver. See TI System V Programmer's Reference manual for an
+explanation of this error.~
+1005006~0~Unable to run DNIO/1500, an old kernel has been booted.\n~
+An error was encountered while initializing DNIO/1500 System V. The kernel 
+which was booted contains an old version of the DNIO/1500 System V driver.~
+1005007~0~Unable to run DNIO/1500, an invalid kernel has been booted.\n~
+An error was encountered while initializing DNIO/1500 System V. The kernel 
+which was booted contains a version of the DNIO/1500 System driver inconsistent 
+with the DNIO/1500 System V task.~
+#
+#   rin (remote in) and rout (remote out) messages (1005011 - 5015)
+#
+1005011~0~Usage: rin sitename:filename | TI_System_V_command\n~~
+1005012~0~Failure opening %s.\n~
+The rin utility was unable to open the specified remote file. Check that the 
+file exists and that you have permissions to open the file.~
+1005013~0~Usage: TI_System_V_command | rout sitename:filename\n~~
+1005014~0~Failure creating %s.\n~
+The rout utility was unable to create the specified remote file. Check that you 
+have permissions to create to the file.~
+1005015~0~Failure writing to remote file, %s, error: %d\n~
+The rout utility was unable to write to the specified remote file. Check that 
+you have permissions to write to the file.~
+#
+# <%%> Inserted DNIO messages end on this line. <%%>

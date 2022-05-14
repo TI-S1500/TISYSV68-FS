@@ -1,0 +1,77 @@
+UUPICK(1C)                                             UUPICK(1C)
+
+NAME
+     uupick - Picks uuto(1C) files
+
+SYNOPSIS
+     uupick -s
+
+DESCRIPTION
+   Purpose
+     The uupick command accepts or rejects the files transmitted
+     to the user by the uuto(1C) command.
+
+   Option
+     -ssystem
+          Searches the PUBDIR for files sent from system only.
+
+   Discussion
+     The command searches PUBDIR for files destined for the user.
+     For each entry (file or directory) found, the following
+     message is printed on the standard output:
+
+     from system: [file file-name] [directory dirname]
+     ?
+
+     The user enters one of the following commands, which uupick
+     then reads from the standard input to determine the
+     disposition of the file:
+
+     newline    Goes on to next entry
+
+     d          Deletes the entry
+
+     m [ dir ]  Moves the entry to named directory dir with the
+                current directory as the default
+
+     a [ dir ]  Performs the same task as m except that all the
+                files sent from system are moved
+
+     p          Prints the contents of the file
+
+     q          Stops and exits.
+
+     CTRL-d     Performs same task as q
+
+     !command   Escapes to the shell to do command
+
+     *          Prints a command summary
+
+PROMPTS
+   Search PUBDIR for User or System
+     Enter u or s to to search the PUBDIR for files destined to
+     the user or the system, respectively.  (PUBDIR is
+     /usr/spool/uucppublic.)
+
+   System Name:
+     Enter the name of a system.  The command searches the PUBDIR
+     for files sent from this system.
+
+     Once these prompts are answered, the following message is
+     printed on standard output for each file found:
+
+          from system: [file file-name] [directory dirname]
+          ?
+
+     The uupick command then waits for the user to enter one of
+     the previously described commands to determine the
+     disposition of the file.
+
+FILES
+     /usr/spool/uucppublic       Public directory(PUBDIR)
+
+SEE ALSO
+     mail(1), uuclean(1M), uucp(1C), uustat(1C), uuto(1C),
+     uux(1C).
+
+

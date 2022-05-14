@@ -1,0 +1,60 @@
+PWCONV(1M)                                             PWCONV(1M)
+
+NAME
+     pwconv - Installs and updates /etc/shadow with information
+     from /etc/passwd
+
+SYNOPSIS
+     pwconv
+
+DESCRIPTION
+     The pwconv command creates and updates /etc/shadow with
+     information from /etc/passwd.
+
+     If the /etc/shadow file does not exist, this command will
+     create /etc/shadow with information from /etc/passwd.  The
+     command populates /etc/shadow with the user's login name,
+     password, and password aging information.  If password aging
+     information does not exist in /etc/passwd for a given user,
+     none will be added to /etc/shadow.  However, the "last
+     changed" information will always be updated.
+
+     If the /etc/shadow file does exist, the following tasks will
+     be performed:
+
+          Entries that are in the /etc/passwd file and not in the
+          /etc/shadow file will be added to the /etc/shadow file.
+
+          Entries that are in the /etc/shadow file and not in the
+          /etc/passwd file will be removed from /etc/shadow.
+
+          Password attributes (e.g., password and aging
+          information) that exist in an /etc/passwd entry will be
+          moved to the corresponding entry in /etc/shadow.
+
+     The pwconv program is a privileged system command that
+     cannot be executed by ordinary users.
+
+FILES
+     /etc/passwd, /etc/shadow, /etc/opasswd, /etc/oshadow
+
+SEE ALSO
+     passwd(1), passwd(4), pwunconv(1M), shadow(4), usradm(1T).
+     "User Management" in the TI System V Administrator's Guide.
+
+DIAGNOSTICS
+     The pwconv command exits with one of the following values:
+
+     0         Success.
+
+     1         Permission denied.
+
+     2         Invalid command syntax.
+
+     3         Unexpected failure.  Conversion not done.
+
+     4         Unexpected failure.  Password file(s) missing.
+
+     5         Password file(s) busy. Try again later.
+
+

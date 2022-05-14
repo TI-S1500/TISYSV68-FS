@@ -1,0 +1,8 @@
+	mail - Mail and Message System Menu
+		@(#)mail.sh	1.1 87/03/09
+
+	This menu lists tools which allow the system user to compose,
+	   send, receive, forward, and reply to mail and messages.  The
+	   user may also create distribution groups in order to send 
+	   copies of messages to multiple users.
+

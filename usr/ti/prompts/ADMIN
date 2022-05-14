@@ -1,0 +1,65 @@
+# cshf	 admin--creates and administers SCCS files.  
+#	@(#)ADMIN.sh	1.2  87/10/13
+# 
+onintr end
+
+prompt "^ADMIN -- CREATES AND ADMINISTERS SCCS FILES"\
+	"^Create or Modify an SCCS File (c,m):" action\
+	"element(C,c=c,M,m=m)" m\
+	"^#$*"
+
+if ($abort) goto end
+if ($action == "c") then
+	prompt "^ADMIN -- CREATING A NEW SCCS FILE"\
+		"^SCCS File Name:" _input_file acnm $_input_file\
+		"^*Current File Name:" iflag acnm \
+		"^Allow Branch Deltas:" fbflag yesno y\
+		"^Make Ghost for Skipped Delta:" fnflag yesno y\
+		"^*Specify Delta Release Number:" rflag string\
+		"^*Description Text File:" tflag acnm \
+		"^Allow Concurrent Get's:" fjflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($rflag != "") set ropt = -r$rflag
+	if ($tflag != "") set topt = -t$tflag
+	if ($iflag == "") set nopt = -n
+	if ($iflag != "") set iopt = -i$iflag
+	if ($fnflag == "y") set fnopt = -fn
+	if ($fbflag == "y") set fbopt = -fb
+	if ($fjflag == "y") set fjopt = -fj
+
+	echo "=== ADMIN COMMAND EXECUTING ==="
+	echo admin $fbopt $fnopt $fjopt $iopt $nopt $ropt $topt $_input_file
+	admin $fbopt $fnopt $fjopt $iopt $nopt $ropt $topt $_input_file
+else
+	prompt "^ADMIN -- MODIFYING A NEW SCCS FILE"\
+		"^SCCS File Name(s):" _input_file macnm $_input_file\
+		"^Allow Branch Deltas:" fbflag yesno y\
+		"^*Remove the Following Flag:" dflag string \
+		"^Allow Concurrent Get's:" fjflag yesno n\
+		"^Compute a New Checksum:" hflag yesno n\
+		"^Compute Checksum:" zflag yesno y\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($dflag != "") set dopt = -d$dflag
+	if ($hflag == "y") set hopt = -h
+	if ($zflag == "y") set zopt = -z
+	if ($fbflag == "y") set fbopt = -fb
+	if ($fjflag == "y") set fjopt = -fj
+
+	echo "=== ADMIN COMMAND EXECUTING ==="
+	if (($hflag == "y") && (("$dflag" != "") || ($fjflag == "y") \
+	     || ($zflag == "y") || ("$fbflag" == "y") || \
+	     ("$_input_file" != ""))) then
+		echo ..warning.. All options are nullified when computing new
+		echo "            "checksum.   
+	endif
+	echo admin $fbopt $fjopt $zopt $hopt $dopt $_input_file
+	admin $fbopt $fjopt $zopt $hopt $dopt $_input_file
+endif 
+
+# cleanup time
+end:
+unset *flag *opt action

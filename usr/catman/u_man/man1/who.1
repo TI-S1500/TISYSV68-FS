@@ -1,0 +1,203 @@
+WHO(1)							   WHO(1)
+
+NAME
+     who - Provides information about users and system activity
+
+SYNOPSIS
+     who -AabdHlpqrstTu [file]
+
+     who am i
+
+DESCRIPTION
+   Purpose
+     With no options, the who command lists the user's name,
+     terminal line, and login time for each current system user. 
+
+   Options
+     With options, who lists logins, logoffs, reboots, and
+     changes to the system clock, as well as other processes
+     spawned by the init(1M) process.
+
+     -A   Displays limited accounting information, but only if
+	  you specify /etc/wtmp for file.
+
+     -a   Processes /etc/utmp or the named file with the Abdlprtu
+	  options turned on.
+
+     -b   Indicates the time and date of the last reboot.
+
+     -d   Displays all processes that have expired and have not
+	  been respawned by init.  The exit field appears for
+	  dead processes and contains the termination and exit
+	  values (as returned by wait(2)), of the dead process.
+	  This can be useful in determining why a process
+	  terminated.
+
+     -H   Prints column headings above the regular output.
+
+     -l   Lists only those lines on which the system is waiting
+	  for someone to login.  The name field is LOGIN in such
+	  cases.  Other fields are the same as for user entries
+	  except that the state field does not exist.
+
+     -p   Lists any other process that is currently active and
+	  has been previously spawned by init.	The name field of
+	  who output is the name of the program executed by init
+	  as found in the file named /etc/inittab .  The state,
+	  line, and activity fields have no meaning.  The comment
+	  field shows the id field of the line from script stored
+	  in the file named /etc/inittab that spawned this
+	  process.  See inittab(4).  See -u and -T options for
+	  field descriptions.
+
+     -q   A quick who displays the names and number of users
+	  currently logged on. When this option is used, all
+	  other options are ignored.
+
+     -r   Indicates the current run-level of the init process.
+	  Following the run-level and date information are three
+	  fields that indicate the current state, the number of
+	  times that state was previously entered, and the
+	  previous state.
+
+     -s   Lists only the name, line and time fields; this is the
+	  default.
+
+     -t   Indicates the last change to the system clock (via the
+	  date(1) command) by root.  See su(1).
+
+     -T   Prints the state of the terminal line.  The state
+	  describes whether someone else can write to that
+	  terminal.  A + appears if the terminal is writable by
+	  anyone; a - appears if it is not.  Root can write to
+	  all lines having a + or a - in the state field.  If a
+	  bad line is encountered, a ? is printed.
+
+     -u   Lists information about those users who are currently
+	  logged in.  The information consists of the following
+	  entries:
+
+	    name   The user's login name.
+
+	    line   The name of the line as found in the directory
+		   named /dev.
+
+	    time   The time that the user logged in.
+
+	    activity
+		   The number of hours and minutes since activity
+		   last occurred on that particular line.  A dot
+		   (.)	indicates that the terminal has seen
+		   activity in the last minute and is therefore
+		   current.  If more than 24 hours have elapsed
+		   or the line has not been used since boot time,
+		   the entry is marked old.
+
+	    pid    The process ID of the user's shell.
+
+	    comment
+		   The comment field associated with this line as
+		   found in directory named /etc/inittab (see
+		   inittab(4)).  This file can contain
+		   information such as the location of the
+		   terminal, the telephone number of the dataset,
+		   and the terminal type if hardwired.
+
+   Discussion
+     The command examines the /etc/utmp file to obtain its
+     information.  If file is given, that file is examined.
+     Usually, file is the file named /etc/wtmp, which contains a
+     history of all the logins since the file was last created.
+
+     The who command with the am i option identifies the invoking
+     user.
+
+     Except for the default -s option, the general format for
+     output entries is as follows:
+
+     name [state] line time activity pid [comment] [exit]
+
+EXAMPLE
+     The command who -bu results in a display similar to the
+     following:
+
+		   system boot	Feb 13 13:24
+	  jim	   tty0 	Feb 25 08:10   .       25566
+	  michael  tty4 	Feb 24 08:47   16:51   23248
+
+     The system was booted on February 13 at 13:24.  User jim,
+     terminal line tty0, logged on February 25 at 08:10 and is
+     currently active.	The user's shell process ID is 25566.
+     User michael, terminal line tty4, logged on February 24 at
+     08:47.  It has been 16 hours and 51 minutes since activity
+     last occurred on line tty4.  The user's shell process ID is
+     23248.
+
+PROMPTS
+   Display Full Information:
+     The initial value is yes.
+
+   Quick Who:
+     The initial value is no.  If you enter yes, the command
+     displays the names and number of users currently logged on.
+
+   Select Advanced Options:
+     Initial value is no.
+
+     If you enter yes, the following prompts will appear:
+
+   Output File Name:
+     Response to this prompt is optional.  Enter the name of the
+     output file.
+
+   Process /etc/utmp With All Options:
+     Initial value is no.  If you enter yes, /etc/utmp or the
+     named file is processed with all options turned on.
+
+   Report Last Reboot:
+     Initial value is no.  If you enter yes, the date and time of
+     the last reboot is printed.
+
+   Display Expired Processes:
+     Initial value is no.  If you enter yes, the processes that
+     have expired and have not been respawned by init are
+     printed.
+
+   Print Headers:
+     The initial value is no.  If you enter yes, the command
+     prints column headers above the regular output.
+
+   Report Lines Waiting to Login:
+     Initial value is no.  If you enter yes, the lines on which
+     the system is waiting for someone to log in is printed.
+
+   Display Active Processes:
+     Initial value is no.  If you enter yes, all active processes
+     are reported.
+
+   Report Run-Level of Init Process:
+     Initial value is no.  If you enter yes, the run-level of the
+     init process is reported.
+
+   Display Name, Line, Time Fields:
+     Initial value is yes.  If you enter yes, only the name, line
+     and time fields are reported.
+
+   Report Last Change to System Clock:
+     Initial value is no.  If you enter yes, the last change to
+     the system clock is reported.
+
+   Print State of Terminal Line:
+     Initial value is no.  If you enter yes, the state of the
+     terminal line is reported.
+
+FILES
+     /etc/utmp
+     /etc/wtmp
+     /etc/inittab
+
+SEE ALSO
+     acct(1M), date(1), init(1M), inittab(4), login(1), mesg(1),
+     su(1), utmp(4), wait(2).
+
+

@@ -1,0 +1,312 @@
+STTY(1) 						  STTY(1)
+
+NAME
+     stty - Sets the modes for a terminal
+
+SYNOPSIS
+     stty -ag modes
+
+DESCRIPTION
+   Purpose
+     The stty command sets certain terminal I/O modes for the
+     current standard input device.
+
+   Options
+     -a   Reports all mode settings.
+
+     -g   Reports current settings in a form that can be used as
+	  an argument to another stty command.
+
+   Discussion
+     Without options, stty reports the setting of certain modes.
+     Detailed information about the modes listed in the first
+     five groups that follow can be found in termio(7).  Although
+     many combinations of modes make no sense, no sanity checking
+     is performed.
+
+   Control Modes
+     parenb (-parenb)
+	       Enables (disables) parity generation and
+	       detection.
+
+     parodd (-parodd)
+	       Selects odd (even) parity.
+
+     cs5 cs6 cs7 cs8
+	       Selects character size (see termio(7)).
+
+     0	       Hangs up phone line immediately.
+
+     50 75 110 134 150 200 300 600 1200 1800 2400 4800 9600 19200 exta
+       extb
+	       Sets terminal baud rate to the number given, if
+	       possible.  (All speeds are not supported by all
+	       hardware interfaces.)
+
+     hupcl (-hupcl)
+	       Hangs up (does not hang up) a DATA-PHONE(Reg.)
+	       data set connection on last close.
+
+     hup (-hup)
+	       Performs same task as hupcl (-hupcl).
+
+     cstopb (-cstopb)
+	       Uses two (one) stop bits per character.
+
+     cread (-cread)
+	       Enables (disables) the receiver.
+
+     clocal (-clocal)
+	       Assumes a line without (with) modem control.
+
+     loblk (-loblk)
+	       Blocks (does not block) output from a non-current
+	       layer.
+
+   Input Modes
+     ignbrk (-ignbrk)
+	       Ignores (does not ignore) break on input.
+
+     brkint (-brkint)
+	       Signals (does not signal) INTR on break.
+
+     ignpar (-ignpar)
+	       Ignores (does not ignore) parity errors.
+
+     parmrk (-parmrk)
+	       Marks (does not mark) parity errors (see
+	       termio(7)).
+
+     inpck (-inpck)
+	       Enables (disables) input parity checking.
+
+     istrip (-istrip)
+	       Strips (does not strip) input characters to seven
+	       bits.
+
+     inlcr (-inlcr)
+	       Maps (does not map) NL to CR on input.
+
+     igncr (-igncr)
+	       Ignores (does not ignore) CR on input.
+
+     icrnl (-icrnl)
+	       Maps (does not map) CR to NL on input.
+
+     iuclc (-iuclc)
+	       Maps (does not map) uppercase alphabetics to
+	       lowercase on input.
+
+     ixon (-ixon)
+	       Enables (disables) START/STOP output control.
+	       Output is stopped by sending an ASCII DC3 and
+	       started by sending an ASCII DC1.
+
+     ixany (-ixany)
+	       Allows any character (only DC1) to restart output.
+
+     ixoff (-ixoff)
+	       Requests that the system send (not send)
+	       START/STOP characters when the input queue is
+	       nearly empty/full.
+
+   Output Modes
+     opost (-opost)
+	       Post-processes output (does not post-process
+	       output; ignores all other output modes).
+
+     olcuc (-olcuc)
+	       Maps (does not map) lowercase alphabetics to
+	       uppercase on output.
+
+     onlcr (-onlcr)
+	       Maps (does not map) newline to carriage return-
+	       newline on output.
+
+     ocrnl (-ocrnl)
+	       Maps (does not map) carriage return to newline on
+	       output.
+
+     onocr (-onocr)
+	       Does not (does) output carriage return at column
+	       zero.
+
+     onlret (-onlret)
+	       Causes newline to perform (not perform) the
+	       carriage return function.
+
+     ofill (-ofill)
+	       Uses fill characters (uses timing) for delays.
+
+     ofdel (-ofdel)
+	       Uses the fill character DEL (NUL).
+
+     cr0 cr1 cr2 cr3
+	       Selects style of delay for carriage returns (see
+	       termio(7)).
+
+     nl0 nl1   Selects style of delay for line-feeds (see
+	       termio(7)).
+
+     tab0 tab1 tab2 tab3
+	       Selects style of delay for horizontal tabs.  See
+	       termio(7).
+
+     bs0 bs1   Selects style of delay for backspaces (see
+	       termio(7)).
+
+     ff0 ff1   Selects style of delay for form-feeds (see
+	       termio(7)).
+
+     vt0 vt1   Selects style of delay for vertical tabs (see
+	       termio(7)).
+
+   Local Modes
+     isig (-isig)
+	       Enables (disables) the checking of characters
+	       against the special control characters INTR and
+	       QUIT.
+
+     icanon (-icanon)
+	       Enables (disables) canonical input (ERASE and KILL
+	       processing).
+
+     xcase (-xcase)
+	       Provides canonical (unprocessed) upper- lowercase
+	       presentation.
+
+     echo (-echo)
+	       Echoes back (does not echo back) every character
+	       typed.
+
+     echoe (-echoe)
+	       Echoes (does not echo) ERASE character as a
+	       backspace-space-backspace string.  Note: this mode
+	       erases the ERASEed character on many CRT
+	       terminals; however, it does not keep track of
+	       column position and, as a result, may be confusing
+	       on escaped characters, tabs, and backspaces.
+
+     echok (-echok)
+	       Echoes (does not echo) NL after KILL character.
+
+     lfkc (-lfkc)
+	       Performs the same task as echok (-echok);
+	       obsolete.
+
+     echonl (-echonl)
+	       Echoes (does not echo) NL.
+
+     noflsh (-noflsh)
+	       Disables (enables) flush after INTR or QUIT.
+
+     stwrap (-stwrap)
+	       Disables (enables) truncation of lines longer than
+	       79 characters on a synchronous line.  (Not
+	       supported.)
+
+     stflush (-stflush)
+	       Enables (disables) flush on a synchronous line
+	       after every write(2).  (Not supported.)
+
+     stappl (-stappl)
+	       Uses application mode (use line mode) on a
+	       synchronous line.  (Not supported.)
+
+   Control Assignments
+     control-character c
+	       Set control-character to c, where control-
+	       character is erase, kill, intr, quit, eof, eol,
+	       ctab, min, or time(Use ctab with -stappl and use
+	       min and time with -icanon; termio(7) provides
+	       further information.) If c is preceded by a \^ (a
+	       caret escaped from the shell), the value used is
+	       the corresponding CTRL character (^d is a CTRL-d).
+	       A ^? is interpreted as DEL and ^- is interpreted
+	       as undefined.
+
+     line i    Sets line discipline to i (0 < i < 127 ).  (Not
+	       supported.)
+
+   Combination Modes
+     evenp or parity
+	       Enables parenb and cs7.
+
+     oddp      Enables parenb, cs7, and parodd.
+
+     -parity, -evenp, or -oddp
+	       Disables parenb, and set cs8.
+
+     raw (-raw or cooked)
+	       Enables (disables) raw input and output (no ERASE,
+	       KILL, INTR, QUIT, EOT, or output post processing).
+
+     nl (-nl)  Unsets (sets) icrnl, onlcr.  In addition -nl
+	       unsets inlcr, igncr, ocrnl, and onlret.
+
+     lcase (-lcase)
+	       set (unset) xcase, iuclc, and olcuc.
+
+     LCASE (-LCASE)
+	       Performs same function as lcase (-lcase).
+
+     tabs (-tabs or tab3)
+	       Preserves (expands to spaces) tabs when printing.
+
+     ek        Resets ERASE and KILL characters back to normal #
+	       and @.
+
+     sane      Resets all modes to some reasonable values.
+
+     term      Sets all modes suitable for the terminal type
+	       term, where term is one of the following:  tty33,
+	       tty37, vt05, tn300, ti700, or tek.  (Not
+	       supported.)
+
+PROMPTS
+   Display or Set (d,s):
+     The default response is d.  Enter s to set terminal
+     settings.	Enter d to display terminal settings.
+
+   Report All Mode Settings:
+     Initial value is no.  If you enter yes, all mode settings
+     are reported.
+
+   Settings:
+     Enter the select terminal commands to modify your terminal.
+
+EXAMPLES
+     The following command shows some of the stty values
+     currently in effect:
+
+	  stty
+
+     The following sets the terminal erase character to CTRL-h
+     and sets the line kill character to CTRL-u:
+
+	  stty erase '^h' kill '^u'
+
+     The first of the following commands resets all modes to
+     reasonable values.  The second command displays the values.
+
+	  stty sane
+	  stty -a
+
+     The stty -a command displays values similar to the
+     following:
+     speed = 19200 baud; line = 0; intr = ^C; quit = ^; erase = ^H; kill = ^U;
+     eof = ^D; eol = ^@
+     parenb parodd cs7 -cstopb -hupcl cread clocal
+     -ignbrk brkint -ignpar -parmrk -inpck -istrip -inclr -igncr icrnl -iuclc
+     ixon -ixany ixoff
+     isig icanon -xcase echo echoe echok -echonl -noflsh
+     opost -olcuc onlcr -oncrnl -onocr -onlret -ofill -ofdel tab3
+
+SEE ALSO
+     ioctl(2), termio(7).
+
+NOTE
+     The command stty sane does not alter the present parity or
+     number of bits.
+
+

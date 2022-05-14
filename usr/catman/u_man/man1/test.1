@@ -1,0 +1,95 @@
+TEST(1)                                                   TEST(1)
+
+NAME
+     test - Evaluates a test condition
+
+SYNOPSIS
+     test expr
+
+DESCRIPTION
+   Purpose
+     The test command is a Bourne shell, sh(1), built-in command.
+     The command evaluates the expression expr and returns a zero
+     (true) exit status if its value is true or a nonzero (false)
+     exit status if its value is false.  This command also
+     returns a nonzero exit status if there are no arguments.
+
+     Note that all the operators and flags are separate arguments
+     to test and that parentheses are meaningful to the shell and
+     therefore must be escaped.
+
+   Primitives
+     The following primitives are used to construct expr:
+
+     -r file     True if file exists and is readable
+
+     -w file     True if file exists and is writable
+
+     -x file     True if file exists and is executable
+
+     -f file     True if file exists and is a regular file
+
+     -d file     True if file exists and is a directory
+
+     -c file     True if file exists and is a character special
+                 file
+
+     -b file     True if file exists and is a block special file
+
+     -p file     True if file exists and is a named pipe (fifo)
+
+     -u file     True if file exists and its set-user-ID bit is
+                 set
+
+     -g file     True if file exists and its set-group-ID bit is
+                 set
+
+     -k file     True if file exists and its sticky bit is set
+
+     -s file     True if file exists and has a size greater than
+                 zero
+
+     -t [ fildes ]
+                 True if the open file whose file descriptor
+                 number is fildes (1 by default) is associated
+                 with a terminal device
+
+     -z s1       True if the length of string s1 is zero
+
+     -n s1       True if the length of the string s1 is nonzero
+
+     s1 = s2     True if strings s1 and s2 are identical
+
+     s1 != s2    True if strings s1 and s2 are not identical
+
+     s1          True if s1 is not the null string
+
+     n1 -eq n2   True if the integers n1 and n2 are algebraically
+                 equal (Any of the comparisons -ne, -gt, -ge,
+                 -lt, and -le may be used in place of -eq.)
+
+   Operators
+     Primitives can be combined with the following operators:
+
+     !           unary negation operator
+
+     -a          binary and operator
+
+     -o          binary or operator (-a has higher precedence
+                 than -o.)
+
+     ( expr )    parentheses for grouping
+
+EXAMPLE
+     The example that follows illustrates the use of test in
+     shell scripts.  If file1 is executable and if its set-user-
+     ID bit is set, a message is printed.
+
+          if (test -x file1 -a -u file1) then
+              echo "file1 is executable"
+          fi
+
+SEE ALSO
+     find(1), sh(1).
+
+

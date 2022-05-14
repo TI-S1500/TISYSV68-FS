@@ -1,0 +1,90 @@
+CAT(1)                                                     CAT(1)
+
+NAME
+     cat - Concatenates and prints files
+
+SYNOPSIS
+     cat -bestuv files
+
+DESCRIPTION
+   Purpose
+     The cat command reads each file in sequence and writes it on
+     the standard output.
+
+   Options
+     -b   Forces conversion of unprintable characters to a |.
+          Use this option if the output is going to the terminal.
+
+     -e   When used with -v, causes a $ to be printed after the
+          last character of a line.
+
+     -s   Makes cat silent about non-existent files.
+
+     -t   When used with -v, causes a tab to be printed as a ^I.
+
+     -u   Output is buffered unless the -u option is specified.
+
+     -v   Makes the following unprintable characters visible:
+
+          +  Control characters are printed as ^X.
+
+          +  The DEL character (octal 0177) is printed as ^?.
+
+          +  Non-ASCII characters (with the high-order bit set)
+             are printed as M-x, where x is the character
+             specified by the seven low-order bits.
+
+   Discussion
+     If no input file is given, or if the argument - is
+     encountered, cat reads from the standard input.
+
+     The output file cannot have the same name as an input file
+     unless the input file is a special file.
+
+     If cat is invoked without the -v option and the argument to
+     cat is a file containing unprintable characters (such as an
+     executable command file), a | is substituted for the
+     unprintable character.
+
+EXAMPLES
+     The following example prints file1 to the terminal screen.
+
+          cat file1
+
+     The following example concatenates file1 and file2.  The
+     output is redirected with > to file3.
+
+          cat file1 file2 >file3
+
+PROMPTS
+   File Name(s):
+     The name of the files to be processed.  If the files are to
+     be sent somewhere other than to the screen (standard
+     output), these are the source files.
+
+   Output File Name:
+     If you do not respond to this prompt, the file specified in
+     the previous prompt is displayed.  If you respond to this
+     prompt, the following additional prompt is displayed:
+
+   Replace or Append:
+     Respond to this prompt to specify the operation on the file
+     specified with the Output File Name: prompt.  Respond R or r
+     to replace the destination file with the source file.
+     Respond A or a to append the destination file with the
+     source file.
+
+SEE ALSO
+     cp(1), more(1), pg(1), pr(1), show(1T).
+
+NOTES
+     Command formats such as the following cause the original
+     data in file1 to be lost:
+
+          cat file1 file2 >file1
+
+     To append file2 to file1, specify the following:
+
+          cat file2 >>file1
+
+

@@ -1,0 +1,29 @@
+FSSTAT(1M)                                             FSSTAT(1M)
+
+NAME
+     fsstat - Reports the file system status
+
+SYNOPSIS
+     /etc/fsstat special_file
+
+DESCRIPTION
+     fsstat reports on the status of the file system on
+     special_file.  During startup, this command is used to
+     determine if the file system needs checking before it is
+     mounted.  fsstat succeeds if the file system is unmounted
+     and appears okay.  For the root file system, it succeeds if
+     the file system is active and not marked bad.
+
+SEE ALSO
+     fs(4).
+
+DIAGNOSTICS
+     The command has the following exit codes:
+
+          0 - The file system is not mounted and appears okay,
+               (except for root where 0 means mounted and okay).
+          1 - The file system is not mounted and needs to be checked.
+          2 - The file system is mounted.
+          3 - The command failed.
+
+

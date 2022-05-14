@@ -1,0 +1,55 @@
+MOUNTALL(1M)                                         MOUNTALL(1M)
+
+NAME
+     mountall - Mounts multiple file systems
+
+SYNOPSIS
+     /etc/mountall [-] [file-system-table]  ...
+
+DESCRIPTION
+     This command can be executed only by the super-user.
+
+     mountall  is used to mount file systems according to a
+     file-system-table. (/etc/fstab is the default file system
+     table.) The special file name - reads from the standard
+     input.
+
+     Before each file system is mounted, it is checked using
+     fsstat(1M) to see if it appears mountable.  If the file
+     system does not appear mountable, it is checked using
+     fsck(1M) before the mount is attempted.
+
+FILES
+     file-system-table format:
+
+	     parameter 1   Block special file name of file system
+
+	     parameter 2   Mount-point directory
+
+	     parameter 3   -r if to be mounted read-only
+
+	     parameter 4   File system type string (optional)
+
+	     parameter 5+  Ignored
+
+     White space separates parameters.  Lines beginning with # are
+     comments.  Empty lines are ignored.
+
+     A typical file-system-table might read as follows:
+
+          /dev/dsk/sys:usr /usr -r S51K
+
+          /dev/disk/sys:pipe /pipe
+
+SEE ALSO
+     fsck(1M), fsstat(1M), fstab(4), fuser(1M), mount(1M),
+     signal(2), umountall(1M).
+
+DIAGNOSTICS
+     No messages are printed if the file systems are mountable
+     and clean.
+
+     Error and warning messages come from fsck(1M), fsstat(1M),
+     and mount(1M).
+
+

@@ -1,0 +1,35 @@
+# cshf  awk -- Calls a pattern scanning and processing language 
+#	@(#)AWK.sh	1.2  88/02/10
+#
+onintr end
+set single = \'
+
+prompt "^AWK -- CALLS A PATTERN SCANNING AND PROCESSING LANGUAGE"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^*Pattern File Name:" flist string \
+	"^*Pattern(s) to be Matched:" prog string \
+	"^*Field Character Separator:" Fchar string \
+	"^*Parameters:" parms string \
+	"^#$*"
+
+if ($abort) goto end
+if ("$Fchar" != "") set Fchar = -F$Fchar
+if ("$flist" != "") set flist = -f $flist
+if ("$prog" != "") set prog = $single"$prog"$single
+if ("$_input_file" == "") set _input_file = "-"                      
+
+if ($abort) goto end
+echo "=== AWK COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo awk $Fchar $flist $prog $parms $_input_file
+	awk $Fchar $flist $prog $parms $_input_file | \
+	pg -cp"Output from AWK is being piped through pg: "
+else
+	echo awk $Fchar $flist $prog $parms $_input_file ">"$_output_file
+	awk $Fchar $flist $prog $parms $_input_file >$_output_file
+endif
+
+#clean up time
+end:
+unset Fchar flist prog parms

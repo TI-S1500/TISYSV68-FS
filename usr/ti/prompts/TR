@@ -1,0 +1,50 @@
+# cshf  tr -- translates characters 
+#	@(#)TR.sh	1.1  87/03/09
+#
+onintr end
+set quote = '"'
+
+prompt "^TR -- TRANSLATES CHARACTERS"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^String 1:" string1 string "$string1"\
+	"^String 2:" string2 string "$string2"\
+	"^Complement character Set:" cflag yesno n\
+	"^Delete String1 Input Char:" dflag yesno n\
+ 	"^Squeeze Repeated-Single Char:" sflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($cflag == "y") set opt = c$opt
+if ($dflag == "y") set opt = d$opt
+if ($sflag == "y") set opt = s$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== TR COMMAND EXECUTING ==="
+if (($_input_file != "") && ($_output_file != "")) then
+	echo tr $opt $quote"$string1"$quote $quote"$string2$quote"\
+	 "<"$_input_file ">"$_output_file
+	tr $opt "$string1" "$string2" <$_input_file >$_output_file
+endif
+
+if (($_input_file != "") && ($_output_file == "")) then
+	echo tr $opt $quote"$string1"$quote $quote"$string2"$quote\
+	 "<"$_input_file
+	tr $opt "$string1" "$string2" <$_input_file 
+endif
+
+if (($_input_file == "") && ($_output_file != "")) then
+	echo tr $opt $quote"$string1"$quote $quote"$string2"$quote \
+	">"$_output_file
+	tr $opt "$string1" "$string2" >$_output_file
+endif
+
+if (($_input_file == "") && ($_output_file == "")) then
+	echo tr $opt $quote"$string1"$quote $quote"$string2"$quote
+	tr $opt "$string1" "$string2"
+endif
+
+#clean up time
+end:
+unset *flag *opt string* quote

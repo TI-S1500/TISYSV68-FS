@@ -1,0 +1,42 @@
+# cshf  devadm -- Manages peripheral devices 
+#	@(#)DEVADM.sh	1.3 89/12/01
+#
+onintr end
+
+@ count = 0
+while ($count != 1)
+	prompt "^DEVADM -- MANAGES PERIPHERAL DEVICES"\
+	"^SELECT ONLY ONE OF THE FOLLOWING:"\
+	"^Interactive Mode:" inter yesno n\
+	"^Command Line Mode:" cmd yesno n\
+	"^#$*"
+
+	if ($abort) goto end
+	if ($inter == "y") @ count++
+	if ($cmd == "y") @ count++
+	if ($count != 1) @ count = 0
+end
+
+if ($abort) goto end
+
+# interactive mode
+if ($inter == "y") then
+	echo === DEVADM COMMAND EXECUTING ===
+	echo /etc/devadm -i
+	/etc/devadm -i
+endif
+
+# command mode
+if ($cmd == "y") then
+	prompt "^DEVADM -- COMMAND LINE MODE"\
+		"^ENTER COMMAND EXACTLY AS YOU WOULD FROM SHELL"\
+		"^Command:" opt string\
+		"^#$*"
+
+	echo === DEVADM COMMAND EXECUTING ===
+	echo $opt
+	$opt
+endif
+
+end:
+unset opt *flag auto cmd inter

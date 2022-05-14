@@ -1,0 +1,104 @@
+MNETECHO(1T)                                         MNETECHO(1T)
+
+NAME
+     mnetecho - Echoes MTC network messages
+
+SYNOPSIS
+     mnetecho -cdemnx
+
+DESCRIPTION
+   Purpose
+     The mnetecho command verifies multidrop terminal
+     concentrator (MTC) network communication capabilities
+     between the System 1500 computer and an MTC on the network.
+     This command is supported for CCB devices that have been
+     configured with the multidrop host adapter (MHA) option.
+
+     In a limited sense, the user can determine where a
+     communication failure exists by executing mnetecho.  The
+     command verifies that the System 1500 computer and MTC and
+     the network between them are operational by transmitting
+     known messages to the specified MTC on the network and
+     receiving the echoes of those same messages from that MTC.
+
+   Options
+     -c count  Transmits count number of messages.  The default
+               is 10.
+
+     -d        Disables the real-time status display.  This
+               allows disabling updates to the screen to allow
+               maximum performance testing with mnetecho.  The -d
+               option must be used when executing mnetecho from a
+               hardcopy terminal.
+
+     -e        Overrides errors and continues to transmit
+               messages. Press Ctrl-C to stop the command.
+
+     -m mtcname
+               Scans the /etc/mtctab file for mtcname and obtains
+               the physical address (slot, port, and address) of
+               the MTC.  The mtcname is the global name of an
+               MTC.
+
+     -n size   Specifies the minimum echo data size.  The default
+               is 1 byte of echo data.  The mnetecho command
+               varies the echo data size by increasing the size
+               by 1 byte and wraps between the minimum and
+               maximum echo data size.
+
+     -x size   Specifies the maximum echo data size.  The default
+               is 128 bytes of echo data.  The mnetecho command
+               varies the echo data size by increasing the size
+               by 1 byte and wraps between the minimum and
+               maximum echo data size.
+
+   Discussion
+     The mnetecho command performs limited verification that your
+     machine can successfully communicate with an MTC on your
+     network.  During the execution of mnetecho, a series of
+     messages is sent to the  MTC you specify.  That MTC then
+     returns those same messages to your system.  The mnetecho
+     command verifies that the messages returned are exact echoes
+     of the messages sent.  By determining the MTCs with which
+     you can communicate, network problems can be isolated.
+
+     If errors are encountered, it is likely that problems exist
+     at that MTC. You should verify that mnetecho successfully
+     completes communication to at least one MTC before deciding
+     that your site is operating properly.
+
+     If you execute the mnetecho command from a hardcopy data
+     terminal, use the -d option to disable the real-time screen
+     updates.
+
+EXAMPLES
+     The following example illustrates how to verify
+     communication with the MTC whose global name is ENGttys.  In
+     this example, mnetecho sends out a total of 10 messages.
+
+               mnetecho -m ENGttys
+
+     While mnetecho executes, the counts displayed are
+     dynamically updated, unless the -d option is used. When
+     mnetecho completes successfully, the total errors field
+     displayed is 0.
+
+     The following is output from mnetecho:
+
+     mnetecho to name:     ENGttys  slot:03      port: 1 address:0
+     echos: 10       min size: 1                         max size:  128
+     send: frame # of size  receive: frame # of size  total errors:
+                 10      10                10      10             0
+     Echo complete for 10 frames
+
+SEE ALSO
+     mnetstat(1T), mtcdump(1T), mtcreset(1T), mtcstat(1T).
+
+DIAGNOSTICS
+     If mnetecho encounters an error, the total errors field in
+     the real-time display is incremented.  Following completion
+     of the mnetecho command, an error summary is displayed if
+     errors were encountered.  When an error occurs, make note of
+     any information that appears.
+
+

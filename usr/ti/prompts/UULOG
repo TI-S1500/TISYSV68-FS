@@ -1,0 +1,45 @@
+# cshf	uulog -- uucp log maintainer 
+#	@(#)UULOG.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UULOG -- ACCESSES UUCP AND UUX LOG FILE"\
+	"^Output Log on System,User,Both(s,u,b):" action\
+	"element(S,s=s,U,u=u,B,b=b)" b\
+	"^#$*"
+
+if ($abort) goto end
+switch ($action)
+case b:
+	prompt "^UULOG -- ACCESSES UUCP LOG SUMMARY"\
+		"^*System Name:" sys string \
+		"^*User Name:" usr string \
+		"^#$*"
+	if ($abort) goto end
+	set uopt = -u$usr
+	set sopt = -s$sys
+	breaksw
+case s:
+	prompt "^UULOG -- ACCESSES UUCP LOG SUMMARY"\
+		"^*System Name:" sys string \
+		"^#$*"
+	if ($abort) goto end
+	set sopt = -s$sys
+	breaksw
+case u:
+	prompt "^UULOG -- ACCESSES UUCP LOG SUMMARY"\
+		"^*User Name:" usr string \
+		"^#$*"
+	if ($abort) goto end
+	set uopt = -u$usr
+	breaksw
+endsw
+
+
+if ($abort) goto end
+echo "=== UULOG COMMAND EXECUTING ==="
+echo uulog $uopt $sopt
+uulog $uopt $sopt
+
+end:
+unset usr sys action *opt

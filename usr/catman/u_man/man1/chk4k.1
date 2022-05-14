@@ -1,0 +1,66 @@
+CHK4K(1T)                                               CHK4K(1T)
+
+NAME                                                                
+     chk4k - Checks to see if V/68 executables are linked on 4K-    
+     byte boundaries                                                
+
+SYNOPSIS                                                            
+     chk4k files                                                    
+
+DESCRIPTION                                                         
+   Purpose                                                          
+     Future releases of TI System V may not support executables     
+     that are not linked on 4K-byte boundaries. chk4k is a          
+     utility that provides a way to check your executables and      
+     determine if they need to be relinked with the latest          
+     linker.                                                        
+
+     chk4k examines V/68 executable files to see if they have       
+     been linked on 4K-byte boundaries. Files are first examined    
+     to see if they have a magic number corresponding to V/68       
+     executables (see /etc/magic). Then the files are checked to    
+     ensure that they are indeed executable. If the file is not a   
+     V/68 executable, it is ignored; otherwise, remainder           
+     arithmetic is performed on the physical address of the data    
+     section in the data section header. If the address is a        
+     multiple of 4096, a message is returned to standard out that   
+     the program is linked on a 4K-byte boundary. If the address    
+     is not a multiple of 4096, a warning message is returned.      
+
+EXAMPLES                                                            
+     The following example determines if the program prog3 is       
+     linked on a 4K-byte boundary.
+
+               chk4k prog3                                                
+
+     The output of the command would be:                                  
+
+               prog3 is 4k byte aligned                                   
+
+     or
+
+               Warning: prog3 is not linked on a 4k byte boundary         
+
+     If prog3 is a nonexecutable V/68 file, the preceding command   
+     simply returns the TI System V prompt, and no message is       
+     displayed.
+
+
+     To check all of the V/68 executables in /bin, you would use:         
+
+               chk4k /bin/* | grep Warning                                
+
+NOTES                                                               
+     chk4k requires that the user has read permissions on the       
+     files that are being checked.                                  
+
+FILES                                                               
+     /etc/magic                                                     
+     /usr/bin/chk4k                                                 
+
+SEE ALSO                                                            
+     file(1), ld(1).                                                
+     "Common Object File Format" in the TI System V Support Tools   
+     Guide.
+
+

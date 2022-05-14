@@ -1,0 +1,241 @@
+INTRODUCTION(1) 				  INTRODUCTION(1)
+
+ORGANIZATION OF REFERENCE MANUALS
+     A complete list of the TI System V documentation is provided
+     in the frontispiece of this manual.  TI System V reference
+     documentation consists of the following manuals:
+
+     +	TI System V User's Reference, TI part number 2540558-0001
+
+     +	TI System V Programmer's Reference, TI part number
+	2540543-0001
+
+     Each manual is divided into numbered sections.  Sections are
+     the largest components of a manual.  Manual entries, also
+     called man pages, are the smallest components of a manual.
+     Manual entry names appear in the upper corners of the pages.
+     These names are followed by a header number in parentheses.
+     The header number consists of the section number and
+     sometimes a letter that indicates the type of manual entry.
+
+     See the manual entry commands(5) in the TI System V
+     Programmer's Reference for the directory locations of all TI
+     System V commands.
+
+     Manual entries other than introductions are arranged within
+     each section alphabetically by entry name, regardless of the
+     header letter.  Throughout the documentation, references to
+     the contents of the reference manuals are given as
+     name(header no.).	For example, menu(4) is a reference to
+     the menu entry in Section 4 of the Programmer's Reference,
+     and menu(1T) is a reference to the menu entry in Section 1
+     of the User's Reference.  The 1T header number means that
+     the utility is a TI extension to UNIX(R) System V.
+
+     The page numbers of each entry start at 1.  A permuted index
+     is located in the back of each manual.  Index references are
+     to manual entries in both manuals, with the appropriate
+     header number in parentheses.  All entries for utilities
+     (that is, entries in Section 1) are available online via the
+     man(1) command.
+
+     Section numbers, page header numbers, and section contents
+     are as follows:
+
+     Manual	 Section No.	      Header No.Contents
+
+     User's        1       1          General-purpose utilities
+     Reference		   1C	      Communications utilities
+			   1M	      System maintenance utilities
+			   1T	      TI extensions to utilities
+
+     Programmer's  2       2          System calls
+     Reference     3	   3C	      C language and assembler
+                                        library routines
+			   3M	      Math library routines
+			   3N	      Networking support routines
+			   3S	      C language standard I/O
+                                        routines
+			   3T	      TI extensions to C language
+                                        routines
+			   3X	      Miscellaneous routines
+       		   4	   4	      File formats
+		   5	   5	      Miscellaneous features
+		   7	   7	      Special files
+
+     UNIX is a registered trademark of AT&T.
+
+     Manual entries are presented in a standard format.  Not all
+     of the following parts always appear:
+
+     NAME	      Gives the name of the entry and briefly
+		      states its purpose.
+
+     SYNOPSIS	      Summarizes the invocation of the program
+		      being described.
+
+     DESCRIPTION      Provides additional information about the
+		      program or feature.
+
+     EXAMPLES	      Gives examples of usage.
+
+     PROMPTS	      Describes prompts.
+
+     FILES	      Gives the names of some files that are
+		      associated with the program.  Files are
+		      sometimes named using the shell
+		      metacharacters * (meaning any or no
+		      character), ? (meaning any single
+		      character), or [x-y] (meaning any of a
+		      range of characters from x to y).
+
+     SEE ALSO	      Directs the reader to related information.
+
+     DIAGNOSTICS      Describes some diagnostic messages that
+		      might be produced.
+
+     WARNINGS	      Points out potential problems.
+
+     NOTES	      Describes miscellaneous topics.
+
+CONVENTIONS USED IN REFERENCE MANUALS
+     Boldface strings are used for the following items:
+
+     +	References to manual entries, except for the (header no.)
+	component (This convention is not used in NAMES or SEE
+	ALSO or in indented examples.)
+
+     +	Utility names
+
+     +	Command options
+
+     +	Function names
+
+     Italic strings are used for the following items:
+
+     +	Place-holders for actual user-supplied values (For
+	example, file typically appears in the SYNOPSIS.  The
+	user might enter an actual file name such as
+	/usr/rr/report1 in place of file.)
+
+     +	Emphasis
+
+     +	Manual titles
+
+     Square brackets, [], indicate a command argument that is
+     optional.	Command options are not set in square brackets in
+     the SYNOPSIS in order to make the list of options easy to
+     scan.  For example, the following SYNOPSIS from the wc(1)
+     manual entry indicates optional command options c, l, and w
+     and an optional argument, files.
+
+	  wc -clw [files]
+
+     A plural argument indicates that the argument can be
+     repeated.	For example, the argument files means that you
+     can enter more than one file name on the command line.
+     Unless otherwise noted, you should separate multiple
+     arguments and multiple prompt responses with blanks.
+
+     An argument beginning with a minus (-), plus (+), or equal
+     (=) sign is often interpreted as an option, even if the
+     argument appears in a position where a file name could
+     appear.  Therefore, avoid naming files with -, +, or = as
+     the first character of the name.
+
+     Prompt descriptions specify initial values if present.  An
+     initial value is a prompt response that need not be typed by
+     the user.	Press Return to accept the initial value as the
+     response to the prompt.  Type another response to override
+     the initial value.
+
+     Example command lines and system responses are indented in
+     the manuals.
+
+COMMAND SYNTAX
+     Unless otherwise noted, command line syntax is as follows:
+
+	  name -options [value] arguments
+
+     The components of a command string are defined as follows:
+
+     name	 Name of an executable file (the command name).
+
+     -options [value]
+		 Single character representing a command option
+		 either without a value or with a default value.
+		 Some command options require a value.	For most
+		 commands, you can string together multiple
+		 options behind a single -.  Unless otherwise
+		 specified, if you enter an option value, the
+		 value must immediately follow the option.  In
+		 most cases, separate the option and its value
+		 with a single space.
+
+     arguments	 Path name or other command argument not
+		 beginning with -.  The argument can also be - by
+		 itself, indicating the standard input.  Unless
+		 otherwise specified, multiple arguments are
+		 separated by a single space.
+
+COMMAND PROMPTS
+     You can execute many TI System V commands with prompts
+     rather than with command lines.  The following paragraphs
+     describe three methods of obtaining TI-supplied prompts.
+
+     You can enter the menu(1T) command to display menus of
+     related commands.	With the cursor at the desired menu
+     entry, press Enter to receive prompts for the specified
+     command.  Respond to the prompts to execute the command.
+     Rather than pressing Enter when the cursor is at the menu
+     entry, you can press the C key to receive a command prompt
+     at the bottom of the screen display.  Then enter the name of
+     a command at the command prompt to receive prompts for the
+     specified command.  See the menu entry in this manual for
+     further details.
+
+     You also can use the TI Business shell built-in command
+     named source to access prompts.  The command sequence is
+     source/usr/ti/prompts/command_name_in_uppercase.  For
+     example, enter the following command line to access prompts
+     for the ps(1) command:
+
+	  source/usr/ti/prompts/PS
+
+     The third and slowest method of accessing prompts is to set
+     the path name of the prompts directory in the PATH
+     environment variable, as follows:
+
+	  setenv PATH "$PATH":/usr/ti/prompts
+
+     After setting the PATH variable, obtain prompts by entering
+     the command name in uppercase letters.  For example, to
+     obtain prompts for ps, enter the following:
+
+	  PS
+
+COMMAND DIAGNOSTICS
+     Upon termination, each command returns two bytes of status,
+     one supplied by the system and giving the cause for
+     termination, and (in the case of normal termination) one
+     supplied by the program.  See wait(2) and exit(2).  The byte
+     supplied by the system is 0 for normal termination. The byte
+     supplied by the program is usually 0 for successful
+     execution and nonzero to indicate troubles such as erroneous
+     parameters, bad or inaccessible data, or other inability to
+     cope with the task at hand.
+
+     These bytes of status are called exit code, exit status, or
+     return code and are described only where special conventions
+     are involved.
+
+     Some commands produce unexpected results when the commands
+     process files containing null characters.	These commands
+     often treat text input lines as strings and, therefore,
+     might incorrectly interpret a null character (the string
+     terminator) within a line.
+
+SEE ALSO
+     exit(2), getopt(1), getopt(3C), wait(2).
+
+

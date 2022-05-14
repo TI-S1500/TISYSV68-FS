@@ -1,0 +1,25 @@
+# cshf   umask -- sets files-creation mode mask 
+#	@(#)UMASK.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UMASK -- SETS FILES-CREATION MODE MASK"\
+	"^*Set or Read Mode (s,r):" action\
+	"element(s,S=s,r,R=r)" r\
+	"^#$*"
+
+if ($abort) goto end
+if ($action == "s") then
+	prompt "^UMASK -- FILES CREATION MODE"\
+		"^Creation Mode(000,777):" value "range(0,777)" 000\
+		"^#$*"
+endif
+
+if ($abort) goto end
+echo "=== UMASK COMMAND EXECUTING ==="
+echo umask $value
+umask $value
+
+#clean up time
+end:
+unset action value

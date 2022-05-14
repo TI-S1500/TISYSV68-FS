@@ -1,0 +1,20 @@
+# cshf  setsite -- Names the site  
+#	@(#)SETSITE.sh	1.1  87/03/09
+#
+onintr end
+
+set name = `cat /etc/sitename`
+prompt "^SETSITE -- SETS THE SITE NAME OF A TI SYSTEM V MACHINE"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^*File Name:" file acnm /etc/sitename\
+	"^*Current Site Name:" name string $name\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== SETSITE COMMAND EXECUTING ==="
+echo setsite $file $name
+setsite $file $name
+
+#clean up time
+end:
+unset file name

@@ -1,0 +1,2596 @@
+total 877
+
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 .
+drwxrwxrwx  12 root     root         192 May  6 09:17 ..
+-rw-------   1 root     root         230 Dec 16 15:20 .cshrc
+-rw-------   1 root     root          12 Dec 16 15:20 .exrc
+-rw-------   1 root     root         311 Dec 16 15:20 .login
+-rw-------   1 root     root         216 Dec 16 15:20 .profile
+drwxr-xr-x   2 bin      bin         2048 Dec 16 16:02 bin
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 dev
+drwxr-xr-x   5 bin      bin         1936 Dec 16 16:03 etc
+drwxr-xr-x   3 bin      bin          128 Dec 16 15:30 lib
+drwx------   2 bin      bin           32 Dec 16 15:18 lost+found
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 pipe
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 plib
+-r--r--r--   1 root     root      146168 Dec 16 15:21 primitive
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 ram
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:18 ti
+drwxrwxrwx   2 bin      bin           32 Dec 16 15:18 tmp
+-r--r--r--   1 sys      bin       719944 May  6 09:23 unix
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 usr
+drwxr-xr-x   2 bin      bin           80 Dec 16 15:33 util
+
+/bin:
+total 4191
+
+drwxr-xr-x   2 bin      bin         2048 Dec 16 16:02 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+-rwxr-xr-x   1 bin      adm        51716 Dec 16 15:25 acctcom
+-rwxr-xr-x   1 bin      bin        47500 Dec 16 15:26 ar
+-rwxr-xr-x   1 bin      bin         4188 Dec 16 15:27 as
+-rwxr-xr-x   1 bin      bin         1966 Dec 16 15:27 backup
+-rwxr-xr-x   1 bin      bin          335 Dec 16 15:28 basename
+-rwx------   1 root     root       31118 Dec 16 15:52 bootdvr
+-rwx--x--x   2 bin      bin       170440 Dec 16 15:56 bsh
+-rwxr-xr-x   1 bin      bin        29124 Dec 16 15:28 cat
+-rwxr-xr-x   1 bin      bin       123432 Dec 16 15:58 ccbda
+-rwxr-xr-x   1 bin      bin        30860 Dec 16 15:28 chgrp
+-rwxr-xr-x   1 bin      bin        31864 Dec 16 15:29 chmod
+-rwxr-xr-x   1 bin      bin        29816 Dec 16 15:29 chown
+-rwxr-xr-x   1 bin      bin        30868 Dec 16 15:29 cmp
+-rwxr-xr-x   1 bin      bin        30852 Dec 16 15:29 comm
+-rwxr-xr-x   3 bin      bin        16700 Dec 16 15:41 cp
+-rwxr-xr-x   1 bin      bin        54020 Dec 16 15:29 cpio
+-rwxr-xr-x   1 bin      bin        23384 Dec 16 15:30 crypt
+-rwx--x--x   2 bin      bin       170440 Dec 16 15:56 csh
+-rwxr-xr-x   1 bin      bin        24338 Dec 16 15:30 csplit
+-rwxr-xr-x   2 bin      bin         3292 Dec 16 15:30 ctc
+-rwxr-xr-x   2 bin      bin         3292 Dec 16 15:30 ctcr
+-rwxr-xr-x   1 bin      bin        55312 Dec 16 15:30 ctrace
+-rwxr-xr-x   1 bin      bin        30868 Dec 16 15:30 cut
+-rwxr-xr-x   1 bin      bin        34984 Dec 16 15:31 date
+-rwxr-xr-x   1 bin      bin        37120 Dec 16 15:31 dd
+-rws--x--x   1 bin      bin        22476 Dec 16 15:31 df
+-rwxr-xr-x   1 bin      bin        32948 Dec 16 15:32 diff
+-rwxr-xr-x   1 bin      bin         1069 Dec 16 15:32 diff3
+-rwxr-xr-x   1 bin      bin        19332 Dec 16 15:32 diff3prog
+-rwxr-xr-x   1 bin      bin        28788 Dec 16 15:32 diffh
+-rwxr-xr-x   1 bin      bin         2681 Dec 16 15:32 dircmp
+-rwxr-xr-x   1 bin      bin          359 Dec 16 15:32 dirname
+-rwx--x--x   1 bin      bin        33006 Dec 16 15:32 du
+-rwxr-xr-x   1 bin      bin        58958 Dec 16 15:32 dump
+-rwx--x--x   1 bin      bin         5952 Dec 16 15:32 echo
+-rwx--x--x   2 bin      bin        36096 Dec 16 15:32 ed
+-rwx--x--x   1 bin      bin        33210 Dec 16 15:32 env
+-rwx------   1 bin      bin        38310 Dec 16 15:33 errpt
+-rwx--x--x   1 bin      bin        35272 Dec 16 15:33 expr
+-rwxr-xr-x   1 bin      bin        18680 Dec 16 15:33 factor
+-rwxr-xr-x   1 bin      bin           38 Dec 16 15:33 false
+-rwx--x--x   1 bin      bin        41838 Dec 16 15:33 file
+-rwxr-xr-x   1 bin      bin        29854 Dec 16 15:33 finc
+-rwxr-xr-x   1 bin      bin        45034 Dec 16 15:33 find
+-rwxr-xr-x   1 bin      bin        47164 Dec 16 15:33 frec
+-rwx--x--x   1 bin      bin        30984 Dec 16 15:34 getopt
+-rwx--x--x   1 bin      bin        35106 Dec 16 15:34 grep
+-rwxr-xr-x   1 bin      bin        29844 Dec 16 15:34 head
+-rwx--x--x   1 bin      bin        18246 Dec 16 15:34 id
+-rwxr-xr-x   1 bin      bin        31904 Dec 16 15:35 join
+-rwx------   1 root     root       23590 Dec 16 15:58 kcdb
+-rwx--x--x   1 bin      bin        15156 Dec 16 15:35 kill
+-rwx--x--x   1 bin      bin        89468 Dec 16 15:35 ld
+-rwx--x--x   1 bin      bin         5954 Dec 16 15:35 line
+-rwxr-xr-x   3 bin      bin        16700 Dec 16 15:41 ln
+-rwx--x--x   1 bin      bin        31948 Dec 16 15:36 login
+-rwxr-xr-x   1 bin      bin         1750 Dec 16 15:36 lorder
+-rwxr-xr-x   1 bin      bin        41176 Dec 16 15:38 ls
+-rwx--s--x   2 bin      mail       63872 Dec 16 15:38 mail
+-rwx--x--x   1 bin      bin        53238 Dec 16 15:39 make
+-rwxr-xr-x   1 bin      bin         7826 Dec 16 15:39 makekey
+-rwx--x--x   1 bin      bin        65838 Dec 16 15:26 mc68as
+-rwsr-xr-x   1 root     root       32026 Dec 16 15:40 mkdir
+-rwxr-xr-x   1 bin      bin        34230 Dec 16 15:40 mkmsg
+-rwxr-xr-x   1 bin      bin        40448 Dec 16 15:41 more
+-rwxr-xr-x   1 bin      bin        81295 Dec 16 16:02 mtcda
+-rwxr-xr-x   3 bin      bin        16700 Dec 16 15:41 mv
+-rwx------   1 bin      bin        32944 Dec 16 15:41 ncheck
+-rwxr-xr-x   1 bin      bin        23900 Dec 16 15:42 newform
+-rws--x--x   1 root     bin        22424 Dec 16 15:42 newgrp
+-rwx--x--x   1 bin      bin        17452 Dec 16 15:42 nice
+-rwxr-xr-x   1 bin      bin        21404 Dec 16 15:42 nl
+-rwxr-xr-x   1 bin      bin        36160 Dec 16 15:42 nm
+-rwx--x--x   1 bin      bin        18672 Dec 16 15:42 nohup
+-rwxr-xr-x   1 bin      bin        31894 Dec 16 15:42 od
+-rwxr-xr-x   1 bin      bin        18752 Dec 16 15:42 pack
+-rws--s--x   1 root     bin        47126 Dec 16 15:42 passwd
+-rwxr-xr-x   1 bin      bin        30898 Dec 16 15:42 paste
+-rwxr-xr-x   1 bin      bin        16268 Dec 16 15:43 pcat
+-rwxr-xr-x   1 bin      bin        45150 Dec 16 15:43 pg
+-rwx------   1 root     bin        16294 Dec 16 15:54 portwait
+-rwxr-xr-x   1 bin      bin        30842 Dec 16 15:44 prmsg
+-rwsr-xr-x   1 bin      bin        38254 Dec 16 15:44 ps
+-rwxr-xr-x   1 bin      bin        30838 Dec 16 15:44 pwd
+-rwx--x--x   2 bin      bin        36096 Dec 16 15:32 red
+-rwxr-xr-x   1 bin      bin        35150 Dec 16 15:45 rm
+-rwx--s--x   2 bin      mail       63872 Dec 16 15:38 rmail
+-rwsr-xr-x   1 root     bin        32112 Dec 16 15:45 rmdir
+-rwx--x--x   2 bin      bin        52296 Dec 16 15:47 rsh
+-rwxr-xr-x   1 bin      bin        37248 Dec 16 15:47 sdiff
+-rwx--x--x   1 bin      bin        31438 Dec 16 15:47 sed
+-rwx--x--x   2 bin      bin        52296 Dec 16 15:47 sh
+-rwxr-xr-x   1 bin      bin        39028 Dec 16 15:48 show
+-rwxr-xr-x   1 bin      bin        28432 Dec 16 15:48 showfs
+-rwxr-xr-x   1 bin      bin        42840 Dec 16 15:48 showhex
+-rwxr-xr-x   1 bin      bin        30846 Dec 16 15:48 showmsg
+-rwxr-xr-x   1 bin      bin        37524 Dec 16 15:48 size
+-rwx--x--x   1 bin      bin        16110 Dec 16 15:48 sleep
+-rwxr-xr-x   1 bin      bin        45258 Dec 16 15:48 sort
+-rwxr-xr-x   1 bin      bin        16236 Dec 16 15:50 split
+-rwxr-xr-x   1 bin      bin        37424 Dec 16 15:51 strip
+-rwx--x--x   1 bin      bin        45534 Dec 16 15:51 stty
+-rws--x--x   1 root     root       36382 Dec 16 15:51 su
+-rwx--x--x   1 bin      bin        29840 Dec 16 15:51 sum
+-rwx--x--x   1 bin      bin         5956 Dec 16 15:52 sync
+-rwx------   1 root     root        2573 Dec 16 15:52 sysboot
+-rwx------   1 root     root       40170 Dec 16 15:52 sysdump
+-rwxr-xr-x   1 bin      bin        31868 Dec 16 15:52 tail
+-rwxr-xr-x   1 bin      bin        53528 Dec 16 15:52 tar
+-rwx--x--x   1 bin      bin        18566 Dec 16 15:52 time
+-rwx--x--x   1 bin      bin        32040 Dec 16 15:52 touch
+-rwxr-xr-x   1 bin      bin           29 Dec 16 15:53 true
+-rwxr-xr-x   1 bin      bin        21586 Dec 16 15:53 tsort
+-rwx--x--x   1 bin      bin        30966 Dec 16 15:53 tty
+-rwxr-xr-x   1 bin      bin        16238 Dec 16 15:53 uname
+-rwxr-xr-x   1 bin      bin        31898 Dec 16 15:53 uniq
+-rwxr-xr-x   1 bin      bin        17374 Dec 16 15:53 unpack
+-rwx------   1 root     bin         8342 Dec 16 15:54 upsmon
+-rwx------   1 root     bin         7304 Dec 16 15:54 upsoff
+-rwx------   1 root     bin         7306 Dec 16 15:54 upson
+-rwx------   1 root     bin        18788 Dec 16 15:54 upsstat
+-rwx------   1 root     bin         2767 Dec 16 15:54 upswait
+-rwxr-xr-x   1 bin      bin         8366 Dec 16 15:54 usradm
+-rwxr-xr-x   1 bin      bin        84268 Dec 16 15:54 usradm1
+-rwxr-xr-x   1 bin      bin        31010 Dec 16 15:56 wc
+-rwx--x--x   1 bin      bin        35830 Dec 16 15:56 who
+
+/dev:
+total 10
+
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+crw-------   1 bin      bin       14,  0 Dec 16 15:19 boot
+crw-rw-rw-   1 bin      bin       54,  0 Dec 16 15:19 clone
+crw-------   2 bin      bin        0,  0 Dec 16 15:19 console
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:19 dsk
+crw-rw----   1 bin      bin       16,  0 Dec 16 15:19 error
+crw-rw-r--   1 root     root      22,  0 Dec 16 15:19 hot
+crw-------   1 bin      bin        4,  1 Dec 16 15:19 kmem
+crw-rw-rw-   1 bin      bin       54, 53 Dec 16 15:19 log
+crw-------   1 bin      bin        4,  0 Dec 16 15:19 mem
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 mt
+crw-rw-rw-   1 bin      bin        4,  2 Dec 16 15:19 null
+crw-------   1 bin      bin       36,  0 Dec 16 15:19 opctl
+crw-------   1 bin      bin       13,  0 Dec 16 15:19 phys0
+crw-------   1 bin      bin       13,  1 Dec 16 15:19 phys1
+crw-------   1 bin      bin       13,  2 Dec 16 15:19 phys2
+crw-------   1 bin      bin       13,  3 Dec 16 15:19 phys3
+crw-------   1 bin      bin       13,  4 Dec 16 15:19 phys4
+crw-------   1 bin      bin       13,  5 Dec 16 15:19 phys5
+crw-------   1 bin      bin       13,  6 Dec 16 15:19 phys6
+crw-------   1 bin      bin       13,  7 Dec 16 15:19 phys7
+crw-------   1 bin      bin        4,  3 Dec 16 15:19 pmem
+crw-r--r--   1 bin      bin       31,  0 Dec 16 15:19 prf
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 qt
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:19 rdsk
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 rmt
+brw-------   1 bin      bin        0,  0 Dec 16 15:19 root
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 rqt
+crw-------   1 bin      bin       28,  0 Dec 16 15:19 rtc
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 rvt
+crw-rw-rw-   1 bin      bin       23,  0 Dec 16 15:19 spa
+crw-rw-rw-   1 bin      bin       54, 66 Dec 16 15:19 strnet
+brw-------   1 bin      bin        0,  1 Dec 16 15:19 swap
+crw-------   2 bin      bin        0,  0 Dec 16 15:19 syscon
+crw-------   1 bin      bin       12,  0 Dec 16 15:19 systty
+crw-rw-rw-   1 bin      bin        3,  0 Dec 16 15:19 tty
+crw-------   1 root     root      69, 13 Dec 16 15:19 ups
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 vt
+
+/dev/dsk:
+total 2
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:19 .
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 ..
+brw-------   1 bin      bin        9,  0 Dec 16 15:19 ram
+
+/dev/mt:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 ..
+
+/dev/qt:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 ..
+
+/dev/rdsk:
+total 2
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:19 .
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 ..
+crw-------   1 bin      bin       49,  0 Dec 16 15:19 ram
+
+/dev/rmt:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 ..
+
+/dev/rqt:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 ..
+
+/dev/rvt:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 ..
+
+/dev/vt:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  10 bin      bin          624 Dec 16 15:19 ..
+
+/etc:
+total 3163
+
+drwxr-xr-x   5 bin      bin         1936 Dec 16 16:03 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+-rw-r--r--   1 root     root         618 Dec 16 15:20 .bshlogin
+-rw-r--r--   1 root     root          54 Dec 16 15:20 .bshlogout
+-rw-r--r--   1 root     root           8 Dec 16 15:20 TZ
+-rw-rw-r--   1 root     root        3722 Feb  1 14:03 alpcaps
+-rw-rw-r--   1 root     root        4824 Feb  1 14:03 alpdefs
+drwxr-xr-x   2 bin      bin          128 Dec 16 15:27 backups
+-rwxr-x---   1 root     root       43532 Dec 16 15:28 bband
+-rwxr-x---   1 root     root         913 Dec 16 15:20 bcheckrc
+-rwx--x--x   1 root     root       18866 Dec 16 15:28 bdcast
+-rwxr-x---   1 root     root         205 Dec 16 15:20 brc
+-rwxr-x---   1 root     root       58422 Dec 16 15:28 cband
+-rw-r--r--   1 root     root        8087 Dec 16 15:59 ccbacu
+-rwx------   1 root     root       38488 Dec 16 15:58 ccbdump
+-rw-r--r--   1 root     root       28532 Feb  1 14:02 ccbenet
+-rw-r--r--   1 root     root       66763 Dec 16 15:58 ccbexec
+-rw-r--r--   1 root     root       42353 Dec 16 15:59 ccbiop
+-rw-r--r--   1 root     root       19087 Feb  1 14:02 ccbllien
+-rw-rw-r--   1 root     root       70363 Dec 16 16:02 ccbmtc
+-rw-r--r--   1 root     root       32250 Feb  1 14:02 ccbnet
+-rw-r--r--   1 root     root       12774 Dec 16 15:59 ccbplp
+-rw-r--r--   1 root     root       14665 Dec 16 15:59 ccbplp202
+-rw-r--r--   1 root     root        6612 Feb  1 14:01 ccbrout
+-rw-r--r--   1 root     root       19802 Feb  1 14:02 ccbtokr
+-rw-r--r--   1 root     root      112856 Dec 16 15:58 ccbtty
+-rw-r--r--   1 root     root       55368 Feb  1 14:02 ccbxns
+-rw-rw-r--   1 root     root          73 Dec 16 15:20 checklist
+-rwxr-x---   1 root     root        1764 Dec 16 15:20 checkups
+-rwx------   1 root     root       31126 Dec 16 15:29 chroot
+-rwx------   1 root     root       47940 Dec 16 15:58 cload
+-rwx--x--x   1 bin      bin        30854 Dec 16 15:29 clri
+-rwx------   1 root     sys        51866 Dec 16 15:30 cron
+-rwx--x--x   1 bin      bin        28136 Dec 16 15:31 dcopy
+-rwxr-xr-x   1 bin      bin        30840 Dec 16 15:58 ddinq
+-rwx------   1 root     root       38404 Dec 16 15:58 ddload
+-rwx------   1 root     root       30840 Dec 16 15:58 ddunload
+-rwsr-xr-x   1 root     root      126832 Dec 16 15:31 devadinter
+-rwsr-xr-x   1 root     root      200968 Dec 16 15:31 devadm
+-rwsr-xr-x   1 root     root       24528 Dec 16 15:31 devadslot
+-rwx------   1 bin      bin        29850 Dec 16 15:31 devnm
+-rwxrwx---   1 root     root         501 Feb  1 14:03 download
+-rwxrwxr-x   1 bin      bin          224 Dec 16 15:33 errstop
+-rw-rw-r--   1 root     root       13834 Feb  1 14:03 fecap
+-rwxr--r--   1 root     root       46778 Dec 16 15:33 ff
+-rwx------   1 root     root       57082 Dec 16 15:34 fsck
+-rwxr-xr-x   1 bin      bin        15338 Dec 16 15:34 fsstat
+-rw-rw-r--   1 root     root         408 Dec 16 15:20 fstab
+-r-xr-xr-x   1 root     sys          758 Dec 16 15:34 fstyp
+drwxrwx---   2 root     root          48 Dec 16 15:34 fstyp.d
+-rwx------   1 bin      bin        25708 Dec 16 15:34 fuser
+-rwx------   1 bin      bin        48356 Dec 16 15:34 getty
+-rw-rw-r--   1 bin      bin         1945 Dec 16 15:20 gettydefs
+-rw-rw-r--   1 bin      bin          112 Dec 16 15:20 group
+-rwx--x--x   1 bin      bin        18428 Dec 16 15:34 grpck
+-rwxr-xr-x   1 bin      bin        37448 Dec 16 15:34 init
+-rw-r-----   1 root     root         462 Dec 16 15:20 inittab
+-rwxr-xr-x   1 root     root       21802 Dec 16 15:58 initterm
+-rwxr-xr-x   1 bin      bin         5576 Dec 16 15:34 install
+-rw-r-----   1 root     root          41 Dec 16 15:20 ioctl.syscon
+-rw-rw-r--   1 bin      bin           53 Dec 16 15:20 issue
+-rwx------   1 root     root       21312 Dec 16 15:35 killall
+-rwx------   1 bin      bin        34914 Dec 16 15:35 labelit
+-rwxr-xr-x   1 root     root       29812 Dec 16 15:35 link
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:56 log
+-rwx------   1 root     root       31878 Dec 16 15:58 logdmon
+-rw-r--r--   1 bin      bin         1953 Dec 16 15:33 magic
+-rwxr-xr-x   1 bin      bin        23644 Dec 16 15:58 mapout
+-rwx------   1 root     root       26356 Dec 16 15:40 mkfs
+-rwx--x--x   1 bin      bin        31136 Dec 16 15:41 mknod
+-rw-r--r--   1 root     root           0 Dec 16 15:41 mnttab
+-rw-rw-r--   1 bin      bin          216 Dec 16 15:20 motd
+-rwx------   1 bin      bin        67808 Dec 16 15:41 mount
+-rwx------   1 root     root        2017 Dec 16 15:20 mountall
+-rwx------   1 adm      root       19646 Dec 16 15:41 movhd
+-rwx------   1 root     root       60419 Dec 16 16:02 mtcdl
+-rw-rw-r--   1 root     root      165072 Dec 16 16:02 mtcload
+-rwx------   1 bin      bin         1285 Dec 16 15:41 mvdir
+-rwx------   1 root     bin        22546 Dec 16 15:42 opctl
+-rwx--x--x   1 root     root       27538 Dec 16 15:42 packfs
+-rw-rw-r--   1 root     root         677 Dec 16 15:20 passwd
+-rwx------   1 bin      bin        29646 Dec 16 15:43 patch
+-rwxr-xr-x   1 root     root       36642 Dec 16 15:58 pdmon
+-rwxr-xr-x   1 bin      bin        30998 Dec 16 15:44 prfdc
+-rwxr-xr-x   1 bin      bin        24024 Dec 16 15:44 prfld
+-rwxr-xr-x   1 bin      bin        37848 Dec 16 15:44 prfpr
+-rwxr-xr-x   1 bin      bin         6042 Dec 16 15:44 prfsnap
+-rwxr-xr-x   1 bin      bin        15166 Dec 16 15:44 prfstat
+-rw-rw-r--   1 bin      bin          689 Dec 16 15:20 profile
+-rwxr-x---   1 root     root       35580 Dec 16 15:44 ptu
+-rwx------   1 bin      bin        17472 Dec 16 15:44 pwck
+-rwxr-x---   1 root     root        2038 Dec 16 15:20 rc
+-rwxr-x---   1 root     root         260 Dec 16 15:20 rdflscr
+-rwx------   1 bin      bin        18740 Dec 16 15:44 rdflush
+-rw-r--r--   1 root     root           0 Dec 16 15:45 rdlist
+-rwx------   1 bin      bin        34858 Dec 16 15:44 rdload
+-rwxr-x---   1 root     root         397 Dec 16 15:20 rdscript
+-rwx------   1 root     root        5984 Dec 16 15:47 setmnt
+-rwx------   1 root     root       23428 Dec 16 15:47 setsite
+-rwxr-xr-x   1 bin      bin         7572 Dec 16 15:48 shutdown
+-rw-rw-r--   1 bin      bin            9 Dec 16 15:20 sitename
+-rwxrwx---   1 root     root         157 Feb  1 14:03 slotload
+-rw-rw-r--   1 bin      bin          250 Dec 16 15:20 softpwd
+-rwxr-xr-x   1 bin      bin        29870 Dec 16 15:48 spaid
+-rwx------   1 root     root        2135 Dec 16 15:52 swupdate
+-rwxr-xr-x   1 bin      bin        33546 Dec 16 15:52 sysinit
+-rwx------   1 root     root       65172 Dec 16 15:59 tcdl
+-rw-r--r--   1 root     root      160206 Dec 16 15:59 tcload
+-rw-r--r--   1 root     root       28100 Dec 16 15:59 tcload.sym
+-rwx------   1 root     root       57166 Dec 16 16:00 tdts
+-rw-rw-r--   1 bin      bin         9031 Feb  1 14:03 termcap
+-rwx------   1 bin      bin        60328 Dec 16 15:53 umount
+-rwx------   1 root     root         922 Dec 16 15:20 umountall
+-rwx------   1 root     root       29814 Dec 16 15:53 unlink
+-rwx------   1 root     root        9776 Dec 16 15:54 update
+-rw-rw-r--   1 root     root         155 Dec 16 15:20 update.open
+-rw-rw-rw-   1 adm      adm            0 Dec 16 15:20 utmp
+-rwxr-xr-x   1 bin      bin        47998 Dec 16 15:56 volcopy
+-rwx------   1 bin      bin        35136 Dec 16 15:56 wall
+-rwxr-xr-x   1 bin      bin          605 Dec 16 15:56 whodo
+-rw-rw-rw-   1 adm      adm            0 Dec 16 15:20 wtmp
+
+/etc/backups:
+total 13
+
+drwxr-xr-x   2 bin      bin          128 Dec 16 15:27 .
+drwxr-xr-x   5 bin      bin         1936 Dec 16 16:03 ..
+-rwxr-xr-x   1 bin      bin         1293 Dec 16 15:27 daily.usr
+-rwxr-xr-x   1 bin      bin         1207 Dec 16 15:27 do_monthly
+-rwxr-xr-x   1 bin      bin          453 Dec 16 15:27 ff_to_frec
+-rwxr-xr-x   1 bin      bin          916 Dec 16 15:27 monthly
+-rwxr-xr-x   1 bin      bin         1218 Dec 16 15:27 monthly.usr
+-rwxr-xr-x   1 bin      bin         1298 Dec 16 15:27 weekly.usr
+
+/etc/fstyp.d:
+total 19
+
+drwxrwx---   2 root     root          48 Dec 16 15:34 .
+drwxr-xr-x   5 bin      bin         1936 Dec 16 16:03 ..
+-r-xr-xr-x   1 root     sys        15358 Dec 16 15:34 s5fstyp
+
+/etc/log:
+total 3
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:56 .
+drwxr-xr-x   5 bin      bin         1936 Dec 16 16:03 ..
+-rwxrw-rw-   1 root     root           0 Dec 16 15:56 filesave.log
+
+/lib:
+total 255
+
+drwxr-xr-x   3 bin      bin          128 Dec 16 15:30 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:29 chrclass
+-rwxrwxr-x   1 bin      bin        33512 Dec 16 15:29 cpp
+-rw-r--r--   1 bin      bin          490 Dec 16 15:23 crt0.o
+-rw-r--r--   1 bin      bin       208178 Dec 16 15:23 libc.a
+-rw-r--r--   1 bin      bin          953 Dec 16 15:23 mcrt0.o
+-rwxr-xr-x   1 bin      bin         8227 Dec 16 15:30 runtime.c
+
+/lib/chrclass:
+total 3
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:29 .
+drwxr-xr-x   3 bin      bin          128 Dec 16 15:30 ..
+-rw-r--r--   1 bin      bin          514 Dec 16 15:29 ascii
+
+/lost+found:
+total 2
+
+drwx------   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+
+/pipe:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+
+/plib:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+
+/ram:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+
+/ti:
+total 4
+
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:18 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:40 ptext
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:40 stext
+
+/ti/ptext:
+total 130
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:40 .
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:18 ..
+-rw-r--r--   1 root     root      129068 Dec 16 15:40 USA
+
+/ti/stext:
+total 289
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:40 .
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:18 ..
+-rw-r--r--   1 root     root      289214 Dec 16 15:40 USA
+
+/tmp:
+total 2
+
+drwxrwxrwx   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+
+/usr:
+total 26
+
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+drwxr-xr-x   4 adm      adm           96 Dec 16 15:26 adm
+drwxr-xr-x   2 bin      bin         2112 Dec 16 16:02 bin
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:18 catman
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 etc
+drwxr-xr-x   2 guest    guest         32 Dec 16 15:18 guest
+drwxr-xr-x   3 bin      bin         1264 Dec 16 15:20 include
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 lib
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:29 local
+drwx------   2 bin      bin           32 Dec 16 15:18 lost+found
+drwxrwxr-x   3 bin      mail          48 Dec 16 15:18 mail
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 news
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:19 plib
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 preserve
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 pub
+drwxr-xr-x   2 bin      bin           96 Dec 16 15:54 skel
+drwxrwxrwx   8 bin      bin          128 Dec 16 15:19 spool
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 src
+drwxrwx---   4 sys      sys          288 Dec 16 15:22 sys
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ti
+drwxrwxrwx   2 bin      bin           32 Dec 16 15:19 tmp
+
+/usr/adm:
+total 6
+
+drwxr-xr-x   4 adm      adm           96 Dec 16 15:26 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+-rwx------   1 adm      adm          321 Dec 16 15:26 .cshrc
+-rwx------   1 adm      adm           47 Dec 16 15:26 .login
+drwxr-xr-x   5 adm      adm           80 Dec 16 15:19 acct
+drwxr-xr-x   2 adm      adm           48 Dec 16 15:43 sa
+
+/usr/adm/acct:
+total 5
+
+drwxr-xr-x   5 adm      adm           80 Dec 16 15:19 .
+drwxr-xr-x   4 adm      adm           96 Dec 16 15:26 ..
+drwxr-xr-x   2 adm      adm           32 Dec 16 15:19 fiscal
+drwxr-xr-x   2 adm      adm           32 Dec 16 15:19 nite
+drwxr-xr-x   2 adm      adm           32 Dec 16 15:19 sum
+
+/usr/adm/acct/fiscal:
+total 2
+
+drwxr-xr-x   2 adm      adm           32 Dec 16 15:19 .
+drwxr-xr-x   5 adm      adm           80 Dec 16 15:19 ..
+
+/usr/adm/acct/nite:
+total 2
+
+drwxr-xr-x   2 adm      adm           32 Dec 16 15:19 .
+drwxr-xr-x   5 adm      adm           80 Dec 16 15:19 ..
+
+/usr/adm/acct/sum:
+total 2
+
+drwxr-xr-x   2 adm      adm           32 Dec 16 15:19 .
+drwxr-xr-x   5 adm      adm           80 Dec 16 15:19 ..
+
+/usr/adm/sa:
+total 50
+
+drwxr-xr-x   2 adm      adm           48 Dec 16 15:43 .
+drwxr-xr-x   4 adm      adm           96 Dec 16 15:26 ..
+-rw-rw-r--   1 bin      bin        48066 Feb  1 14:06 tdecap
+
+/usr/bin:
+total 6686
+
+drwxr-xr-x   2 bin      bin         2112 Dec 16 16:02 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+-rwx--x--x   1 bin      bin       134504 Dec 16 15:27 a68k
+-rwx--x--x   1 bin      bin        77648 Dec 16 15:27 a68m
+-rwx--x--x   1 bin      bin        58552 Dec 16 15:45 admin
+-rwx--x--x   1 bin      bin        17220 Dec 16 15:26 asa
+-rwsr-xr-x   1 root     sys        53436 Dec 16 15:30 at
+-rwx--x--x   1 bin      bin        83350 Dec 16 15:27 awk
+-rwx--x--x   1 bin      bin        16022 Dec 16 15:27 banner
+-rwsr-xr-x   1 root     sys          116 Dec 16 15:30 batch
+-rwx--x--x   1 bin      bin        31576 Dec 16 15:28 bc
+-rwx--x--x   1 bin      bin        23434 Dec 16 15:45 bdiff
+-rwx--x--x   1 bin      bin        30938 Dec 16 15:28 cal
+-rwxr-xr-x   1 bin      bin         1183 Dec 16 15:28 calendar
+-r-xr-xr-x   1 lp       bin        31268 Dec 16 15:36 cancel
+-r-xr-xr-x   1 bin      bin        44504 Dec 16 15:24 captoinfo
+-rwx--x--x   1 bin      bin        27382 Dec 16 15:28 cb
+-rwx--x--x   1 bin      bin        59076 Dec 16 15:45 cdc
+-rwxr-xr-x   1 bin      bin         1686 Dec 16 15:28 cflow
+-rwxr-xr-x   1 bin      bin        28250 Dec 16 15:29 chrtbl
+-rwx------   1 bin      bin        47060 Dec 16 15:45 comb
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 cpisam
+-rws--x--x   1 root     sys        23766 Dec 16 15:30 crontab
+-rwxr-xr-x   1 bin      bin        42908 Dec 16 15:55 ct
+-rwx--x--x   1 bin      bin        24196 Dec 16 15:55 ctags
+-rwsr-xr-x   1 root     bin        53610 Dec 16 15:55 cu
+-rwxr-xr-x   1 bin      bin        30848 Dec 16 15:30 cxref
+-rwx--x--x   1 bin      bin        38790 Dec 16 15:31 dc
+-rwx--x--x   1 bin      bin        68868 Dec 16 15:45 delta
+-rwx--x--x   1 bin      bin        33836 Dec 16 15:31 deroff
+-rwx--x--x   1 bin      bin        99396 Dec 16 15:31 dfm
+-rwx------   1 bin      bin        22248 Dec 16 15:32 dfsck
+-r-sr-xr-x   1 lp       bin        42744 Dec 16 15:36 disable
+-rwx--x--x   4 bin      bin       147068 Dec 16 15:56 edit
+-rwxr-xr-x   1 bin      bin        25418 Dec 16 15:32 egrep
+-r-sr-xr-x   1 lp       bin        42744 Dec 16 15:36 enable
+-rwx--x--x   4 bin      bin       147068 Dec 16 15:56 ex
+-rwxr-xr-x   1 bin      bin        19458 Dec 16 15:33 fgrep
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 findisam
+-rwx--x--x   1 bin      bin        17392 Dec 16 15:55 fold
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 frisam
+-rwx--x--x   1 bin      bin        38770 Dec 16 15:34 frpc
+-rwx--x--x   1 bin      bin        63202 Dec 16 15:46 get
+-rwxr-xr-x   1 bin      bin         3453 Dec 16 15:34 getf
+-rwx--x--x   1 bin      bin        15110 Dec 16 15:46 help
+-r-xr-xr-x   1 bin      bin        52950 Dec 16 15:24 infocmp
+-rwx--x--x   1 bin      bin        32084 Dec 16 15:34 ipcrm
+-rws--x--x   1 bin      bin        35900 Dec 16 15:35 ipcs
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 kiftisam
+-rwxr-xr-x   1 bin      bin        48664 Dec 16 15:35 lex
+-rwxr-xr-x   1 bin      bin         3548 Dec 16 15:38 lint
+-rwx--x--x   1 bin      bin        10738 Dec 16 15:36 logname
+-r-xr-xr-x   1 lp       bin        61144 Dec 16 15:36 lp
+-r-xr-xr-x   1 lp       bin       102724 Dec 16 15:37 lpstat
+-rwx--x--x   1 bin      bin        62580 Dec 16 15:27 ltxcoff
+-rwx--x--x   1 bin      bin        64162 Dec 16 15:27 ltxdump
+-rwx--x--x   1 bin      bin        33204 Dec 16 15:38 m4
+-rwx--s--x   1 bin      mail      111866 Dec 16 15:39 mailx
+-rwxr-xr-x   1 bin      bin         1313 Dec 16 15:39 man
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 mapisam
+-rwx--x--x   1 bin      bin        16312 Dec 16 15:40 mesg
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 mkisam
+-rws--x--x   1 root     root       45903 Dec 16 16:02 mnetecho
+-rws--x--x   1 root     root       49745 Dec 16 16:02 mnetstat
+-rwx------   1 root     root       35921 Dec 16 16:02 mtcdump
+-rwx------   1 root     root       44257 Dec 16 16:02 mtcreset
+-rwx------   1 root     root       34825 Dec 16 16:02 mtcshmd
+-rws--x--x   1 root     root       41700 Dec 16 16:02 mtcstat
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 mvisam
+-rwx--x--x   1 bin      bin       113356 Dec 16 15:41 nawk
+-rwx--x--x   1 root     root       63618 Dec 16 16:00 netcp
+-rws--x--x   1 root     root       44690 Dec 16 15:59 netecho
+-rws--x--x   1 root     root       44294 Dec 16 16:00 netexec
+-rws--x--x   1 root     root       55710 Dec 16 15:59 netstat
+-rws--x--x   1 root     root       24568 Dec 16 15:59 netu
+-rws--x--x   1 root     root       25616 Dec 16 15:59 networks
+-rwx--x--x   1 bin      bin        34396 Dec 16 15:42 news
+-rws--x--x   1 root     root      198128 Feb  1 14:06 pm
+-rwx--x--x   1 bin      bin        39220 Dec 16 15:44 pr
+-rwx--x--x   1 bin      bin        26378 Dec 16 15:44 prof
+-rwx--x--x   1 bin      bin        54236 Dec 16 15:46 prs
+-r-x------   1 root     sys        22252 Dec 16 15:44 pwconv
+-r-x------   1 root     sys        21046 Dec 16 15:44 pwunconv
+-rwx--x--x   1 bin      bin        71740 Dec 16 15:27 qsym
+-rwx--x--x   1 bin      bin        19326 Dec 16 15:45 regcmp
+-rwx--x--x   1 bin      bin        59076 Dec 16 15:46 rmdel
+-rwx--x--x   1 bin      bin        44114 Dec 16 15:46 sact
+-rwsr-xr-x   1 root     bin        71936 Dec 16 15:45 sadsp
+-rwxr-xr-x   1 bin      bin        58266 Dec 16 15:45 sar
+-rwxr-xr-x   1 bin      bin         1217 Dec 16 15:46 sccsdiff
+-rwx--x--x   1 bin      bin       119412 Dec 16 15:47 sdb
+-rwxr--r--   1 bin      bin         1165 Dec 16 15:47 sdbnews1
+-rwxr--r--   1 bin      bin         5930 Dec 16 15:47 sdbnews2
+-rwxr-xr-x   1 bin      bin         1564 Dec 16 15:50 spell
+-rwxr-xr-x   1 bin      bin        99680 Dec 16 15:50 spooladm
+-rwxr-xr-x   1 bin      bin        30980 Dec 16 15:57 strace
+-rwxr-xr-x   1 bin      bin        18544 Dec 16 15:57 strclean
+-rwxr-xr-x   1 bin      bin        32110 Dec 16 15:57 strerr
+-rwx--x--x   1 bin      bin        23760 Dec 16 15:55 strings
+-rwsr-xr-x   1 root     root       17728 Dec 16 15:57 strnstat
+-rwx------   1 root     root       33178 Dec 16 15:59 tcdump
+-rwx------   1 root     root       35322 Dec 16 15:59 tcreset
+-rws--x--x   1 root     root       38958 Dec 16 15:59 tcstat
+-rws--x--x   1 root     root       45932 Feb  1 14:06 tde
+-rwx--x--x   1 bin      bin        31090 Dec 16 15:52 tee
+-r-xr-xr-x   1 bin      bin        44184 Dec 16 15:24 tic
+-rwxr-xr-x   1 bin      bin        41204 Dec 16 15:45 timex
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 toisam
+-rwx--x--x   1 bin      bin        37676 Dec 16 15:52 topc
+-r-xr-xr-x   1 bin      bin        37676 Dec 16 15:24 tput
+-rwx--x--x   1 bin      bin        30838 Dec 16 15:52 tr
+-rwx--x--x   1 bin      bin       125332 Dec 16 15:53 tx
+-rwx--x--x   1 bin      bin        44114 Dec 16 15:46 unget
+-rwxr-xr-x   1 bin      bin        17496 Dec 16 15:53 units
+---s--x--x   1 uucp     bin        59974 Dec 16 15:54 uucp
+-rwxr-xr-x   2 uucp     bin         3041 Dec 16 15:55 uucpfrom
+-rwxr-xr-x   2 uucp     bin         3041 Dec 16 15:55 uucpto
+---s--x--x   1 uucp     bin        42754 Dec 16 15:54 uulog
+---s--x--x   1 uucp     bin        36582 Dec 16 15:54 uuname
+-rwxr-xr-x   1 bin      bin         1675 Dec 16 15:55 uupick
+---s--x--x   1 uucp     bin        56880 Dec 16 15:54 uustat
+-rwxr-xr-x   1 bin      bin          975 Dec 16 15:55 uuto
+---s--x--x   1 uucp     bin        63912 Dec 16 15:54 uux
+-rwx--x--x   1 bin      bin        22868 Dec 16 15:46 val
+-rwx--x--x   1 bin      bin        23562 Dec 16 15:46 vc
+-rwxr-xr-x   9 bin      bin       140020 Dec 16 15:35 vfisam
+-rwx--x--x   4 bin      bin       147068 Dec 16 15:56 vi
+-rwx--x--x   4 bin      bin       147068 Dec 16 15:56 view
+-rwx--x--x   1 bin      bin        16178 Dec 16 15:46 what
+-rwx--x--x   1 bin      bin        34710 Dec 16 15:56 write
+-rwx--x--x   1 bin      bin        19692 Dec 16 15:56 xargs
+-rwx--x--x   1 bin      bin        43094 Dec 16 15:56 yacc
+
+/usr/catman:
+total 4
+
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:18 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+drwxr-xr-x   3 bin      bin           48 Dec 16 15:19 a_man
+drwxr-xr-x   3 bin      bin           48 Dec 16 15:19 u_man
+
+/usr/catman/a_man:
+total 3
+
+drwxr-xr-x   3 bin      bin           48 Dec 16 15:19 .
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:18 ..
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 man1
+
+/usr/catman/a_man/man1:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 .
+drwxr-xr-x   3 bin      bin           48 Dec 16 15:19 ..
+
+/usr/catman/u_man:
+total 8
+
+drwxr-xr-x   3 bin      bin           48 Dec 16 15:19 .
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:18 ..
+drwxr-xr-x   2 bin      bin         5296 Dec 16 15:40 man1
+
+/usr/catman/u_man/man1:
+total 1708
+
+drwxr-xr-x   2 bin      bin         5296 Dec 16 15:40 .
+drwxr-xr-x   3 bin      bin           48 Dec 16 15:19 ..
+-rw-r--r--   1 bin      bin         8002 Dec 16 15:39 a68k.1
+-rw-r--r--   1 bin      bin         7449 Dec 16 15:39 a68m.1
+-rw-r--r--   1 bin      bin          490 Dec 16 15:39 accept.1
+-rw-r--r--   1 bin      bin        20442 Dec 16 15:39 acct.1
+-rw-r--r--   1 bin      bin         4738 Dec 16 15:39 acctcom.1
+-rw-r--r--   1 bin      bin        16080 Dec 16 15:39 admin.1
+-rw-r--r--   1 bin      bin         7589 Dec 16 15:39 ar.1
+-rw-r--r--   1 bin      bin         6173 Dec 16 15:39 as.1
+-rw-r--r--   1 bin      bin         1376 Dec 16 15:39 asa.1
+-rw-r--r--   1 bin      bin         5109 Dec 16 15:39 at.1
+-rw-r--r--   1 bin      bin         7690 Dec 16 15:39 awk.1
+-rw-r--r--   1 bin      bin         4828 Dec 16 15:39 backup.1
+-rw-r--r--   1 bin      bin          845 Dec 16 15:39 banner.1
+-rw-r--r--   1 bin      bin          841 Dec 16 15:39 basename.1
+-rw-r--r--   1 bin      bin         2050 Dec 16 15:39 batch.1
+-rw-r--r--   1 bin      bin         2162 Dec 16 15:39 bband.1
+-rw-r--r--   1 bin      bin         4544 Dec 16 15:39 bc.1
+-rw-r--r--   1 bin      bin         2234 Dec 16 15:39 bdiff.1
+-rw-r--r--   1 bin      bin          522 Dec 16 15:39 bootdvr.1
+-rw-r--r--   1 bin      bin        56574 Dec 16 15:39 bsh.1
+-rw-r--r--   1 bin      bin          865 Dec 16 15:39 cal.1
+-rw-r--r--   1 bin      bin         1481 Dec 16 15:39 calendar.1
+-rw-r--r--   1 bin      bin          853 Dec 16 15:39 cancel.1
+-rw-r--r--   1 bin      bin         4540 Dec 16 15:39 captoinfo.1
+-rw-r--r--   1 bin      bin         2694 Dec 16 15:39 cat.1
+-rw-r--r--   1 bin      bin         1678 Dec 16 15:39 cb.1
+-rw-r--r--   1 bin      bin        10246 Dec 16 15:39 cband.1
+-rw-r--r--   1 bin      bin          993 Dec 16 15:39 ccbdump.1
+-rw-r--r--   1 bin      bin         1464 Dec 16 15:39 cd.1
+-rw-r--r--   1 bin      bin         4862 Dec 16 15:39 cdc.1
+-rw-r--r--   1 bin      bin         4467 Dec 16 15:39 cflow.1
+-rw-r--r--   1 bin      bin          549 Dec 16 15:39 chgrp.1
+-rw-r--r--   1 bin      bin         3090 Dec 16 15:39 chk4k.1
+-rw-r--r--   1 bin      bin         5205 Dec 16 15:39 chmod.1
+-rw-r--r--   1 bin      bin          968 Dec 16 15:39 chown.1
+-rw-r--r--   1 bin      bin          999 Dec 16 15:39 chroot.1
+-rw-r--r--   1 bin      bin         6650 Dec 16 15:39 chrtbl.1
+-rw-r--r--   1 bin      bin         1500 Dec 16 15:39 clri.1
+-rw-r--r--   1 bin      bin         3055 Dec 16 15:39 cmp.1
+-rw-r--r--   1 bin      bin         3209 Dec 16 15:39 comb.1
+-rw-r--r--   1 bin      bin         1480 Dec 16 15:39 comm.1
+-rw-r--r--   1 bin      bin         1812 Dec 16 15:39 cp.1
+-rw-r--r--   1 bin      bin         2059 Dec 16 15:39 cpdir.1
+-rw-r--r--   1 bin      bin         9808 Dec 16 15:39 cpio.1
+-rw-r--r--   1 bin      bin         3479 Dec 16 15:39 cpisam.1
+-rw-r--r--   1 bin      bin         7907 Dec 16 15:39 cpp.1
+-rw-r--r--   1 bin      bin        11455 Dec 16 15:39 crash.1
+-rw-r--r--   1 bin      bin         1100 Dec 16 15:39 cron.1
+-rw-r--r--   1 bin      bin         4513 Dec 16 15:39 crontab.1
+-rw-r--r--   1 bin      bin         2226 Dec 16 15:39 crypt.1
+-rw-r--r--   1 bin      bin         1794 Dec 16 15:39 csh.1
+-rw-r--r--   1 bin      bin         3961 Dec 16 15:39 csplit.1
+-rw-r--r--   1 bin      bin         2825 Dec 16 15:39 ct.1
+-rw-r--r--   1 bin      bin         1865 Dec 16 15:39 ctags.1
+-rw-r--r--   1 bin      bin         9534 Dec 16 15:39 ctrace.1
+-rw-r--r--   1 bin      bin         9605 Dec 16 15:39 cu.1
+-rw-r--r--   1 bin      bin         4391 Dec 16 15:39 cut.1
+-rw-r--r--   1 bin      bin         2924 Dec 16 15:39 cxref.1
+-rw-r--r--   1 bin      bin         4412 Dec 16 15:39 date.1
+-rw-r--r--   1 bin      bin         5084 Dec 16 15:39 dc.1
+-rw-r--r--   1 bin      bin         2225 Dec 16 15:39 dcopy.1
+-rw-r--r--   1 bin      bin         5903 Dec 16 15:39 dd.1
+-rw-r--r--   1 bin      bin         1089 Dec 16 15:39 ddinq.1
+-rw-r--r--   1 bin      bin         6792 Dec 16 15:39 delta.1
+-rw-r--r--   1 bin      bin         2490 Dec 16 15:39 deroff.1
+-rw-r--r--   1 bin      bin         7418 Dec 16 15:39 devadm.1
+-rw-r--r--   1 bin      bin          999 Dec 16 15:39 devnm.1
+-rw-r--r--   1 bin      bin         1429 Dec 16 15:39 df.1
+-rw-r--r--   1 bin      bin         9429 Dec 16 15:39 dfm.1
+-rw-r--r--   1 bin      bin         6378 Dec 16 15:39 dfsck.1
+-rw-r--r--   1 bin      bin         4046 Dec 16 15:39 diff.1
+-rw-r--r--   1 bin      bin         4299 Dec 16 15:39 diff3.1
+-rw-r--r--   1 bin      bin         1827 Dec 16 15:39 dircmp.1
+-rw-r--r--   1 bin      bin          485 Dec 16 15:39 dirname.1
+-rw-r--r--   1 bin      bin         1447 Dec 16 15:39 disable.1
+-rw-r--r--   1 bin      bin         1881 Dec 16 15:39 du.1
+-rw-r--r--   1 bin      bin         6236 Dec 16 15:39 dump.1
+-rw-r--r--   1 bin      bin         1724 Dec 16 15:39 echo.1
+-rw-r--r--   1 bin      bin        26866 Dec 16 15:39 ed.1
+-rw-r--r--   1 bin      bin         8782 Dec 16 15:39 edit.1
+-rw-r--r--   1 bin      bin         4249 Dec 16 15:39 egrep.1
+-rw-r--r--   1 bin      bin          385 Dec 16 15:39 enable.1
+-rw-r--r--   1 bin      bin         1582 Dec 16 15:39 env.1
+-rw-r--r--   1 bin      bin         1571 Dec 16 15:39 errdemon.1
+-rw-r--r--   1 bin      bin         3630 Dec 16 15:39 errpt.1
+-rw-r--r--   1 bin      bin          582 Dec 16 15:39 errstop.1
+-rw-r--r--   1 bin      bin        27080 Dec 16 15:39 ex.1
+-rw-r--r--   1 bin      bin         3755 Dec 16 15:39 expr.1
+-rw-r--r--   1 bin      bin          924 Dec 16 15:39 factor.1
+-rw-r--r--   1 bin      bin          436 Dec 16 15:39 false.1
+-rw-r--r--   1 bin      bin         4621 Dec 16 15:39 ff.1
+-rw-r--r--   1 bin      bin         3274 Dec 16 15:39 fgrep.1
+-rw-r--r--   1 bin      bin         2365 Dec 16 15:39 file.1
+-rw-r--r--   1 bin      bin         2576 Dec 16 15:39 finc.1
+-rw-r--r--   1 bin      bin         9984 Dec 16 15:39 find.1
+-rw-r--r--   1 bin      bin         2817 Dec 16 15:39 findisam.1
+-rw-r--r--   1 bin      bin          456 Dec 16 15:39 fold.1
+-rw-r--r--   1 bin      bin         2631 Dec 16 15:39 frec.1
+-rw-r--r--   1 bin      bin         5292 Dec 16 15:39 frisam.1
+-rw-r--r--   1 bin      bin         3795 Dec 16 15:39 frpc.1
+-rw-r--r--   1 bin      bin         7631 Dec 16 15:39 fsck.1
+-rw-r--r--   1 bin      bin          886 Dec 16 15:39 fsstat.1
+-rw-r--r--   1 bin      bin         1624 Dec 16 15:39 fstyp.1
+-rw-r--r--   1 bin      bin         2183 Dec 16 15:39 fuser.1
+-rw-r--r--   1 bin      bin        17638 Dec 16 15:39 get.1
+-rw-r--r--   1 bin      bin         1866 Dec 16 15:39 getf.1
+-rw-r--r--   1 bin      bin         2379 Dec 16 15:39 getopt.1
+-rw-r--r--   1 bin      bin          713 Dec 16 15:39 getoptcvt.1
+-rw-r--r--   1 bin      bin         5201 Dec 16 15:39 getopts.1
+-rw-r--r--   1 bin      bin         4713 Dec 16 15:39 getty.1
+-rw-r--r--   1 bin      bin         3357 Dec 16 15:39 grep.1
+-rw-r--r--   1 bin      bin          852 Dec 16 15:39 grpck.1
+-rw-r--r--   1 bin      bin         1017 Dec 16 15:39 head.1
+-rw-r--r--   1 bin      bin         2072 Dec 16 15:39 help.1
+-rw-r--r--   1 bin      bin          803 Dec 16 15:39 id.1
+-rw-r--r--   1 bin      bin         7625 Dec 16 15:39 infocmp.1
+-rw-r--r--   1 bin      bin        10230 Dec 16 15:39 init.1
+-rw-r--r--   1 bin      bin         1806 Dec 16 15:39 initterm.1
+-rw-r--r--   1 bin      bin         4892 Dec 16 15:39 install.1
+-rw-r--r--   1 bin      bin         9270 Dec 16 15:39 intro.1
+-rw-r--r--   1 bin      bin         2537 Dec 16 15:39 ipcrm.1
+-rw-r--r--   1 bin      bin         9425 Dec 16 15:39 ipcs.1
+-rw-r--r--   1 bin      bin         3877 Dec 16 15:39 join.1
+-rw-r--r--   1 bin      bin         1608 Dec 16 15:39 kiftisam.1
+-rw-r--r--   1 bin      bin         1858 Dec 16 15:39 kill.1
+-rw-r--r--   1 bin      bin         1684 Dec 16 15:39 killall.1
+-rw-r--r--   1 bin      bin         2019 Dec 16 15:39 labelit.1
+-rw-r--r--   1 bin      bin         9173 Dec 16 15:39 ld.1
+-rw-r--r--   1 bin      bin         5594 Dec 16 15:39 lex.1
+-rw-r--r--   1 bin      bin          864 Dec 16 15:39 line.1
+-rw-r--r--   1 bin      bin          551 Dec 16 15:39 link.1
+-rw-r--r--   1 bin      bin         7709 Dec 16 15:39 lint.1
+-rw-r--r--   1 bin      bin         1922 Dec 16 15:39 ln.1
+-rw-r--r--   1 bin      bin         4643 Dec 16 15:39 login.1
+-rw-r--r--   1 bin      bin          576 Dec 16 15:39 logname.1
+-rw-r--r--   1 bin      bin         1613 Dec 16 15:39 lorder.1
+-rw-r--r--   1 bin      bin        18576 Dec 16 15:39 lp.1
+-rw-r--r--   1 bin      bin        32622 Dec 16 15:39 lpadmin.1
+-rw-r--r--   1 bin      bin         8085 Dec 16 15:39 lpfilter.1
+-rw-r--r--   1 bin      bin        14857 Dec 16 15:39 lpforms.1
+-rw-r--r--   1 bin      bin         2066 Dec 16 15:39 lpmove.1
+-rw-r--r--   1 bin      bin          953 Dec 16 15:39 lpsched.1
+-rw-r--r--   1 bin      bin          609 Dec 16 15:39 lpshut.1
+-rw-r--r--   1 bin      bin         4592 Dec 16 15:39 lpstat.1
+-rw-r--r--   1 bin      bin         1930 Dec 16 15:39 lpusers.1
+-rw-r--r--   1 bin      bin        11235 Dec 16 15:39 ls.1
+-rw-r--r--   1 bin      bin         1694 Dec 16 15:39 ltxcoff.1
+-rw-r--r--   1 bin      bin         4819 Dec 16 15:39 ltxdump.1
+-rw-r--r--   1 bin      bin        10725 Dec 16 15:39 m4.1
+-rw-r--r--   1 bin      bin         9051 Dec 16 15:39 mail.1
+-rw-r--r--   1 bin      bin        33239 Dec 16 15:39 mailx.1
+-rw-r--r--   1 bin      bin        18873 Dec 16 15:39 make.1
+-rw-r--r--   1 bin      bin         1810 Dec 16 15:39 makekey.1
+-rw-r--r--   1 bin      bin         1738 Dec 16 15:39 man.1
+-rw-r--r--   1 bin      bin         2444 Dec 16 15:39 mapisam.1
+-rw-r--r--   1 bin      bin         8422 Dec 16 15:39 mapout.1
+-rw-r--r--   1 bin      bin         2019 Dec 16 15:39 mc68as.1
+-rw-r--r--   1 bin      bin         8605 Dec 16 15:39 menu.1
+-rw-r--r--   1 bin      bin         1154 Dec 16 15:39 mesg.1
+-rw-r--r--   1 bin      bin         1344 Dec 16 15:39 mkdir.1
+-rw-r--r--   1 bin      bin         5785 Dec 16 15:39 mkfs.1
+-rw-r--r--   1 bin      bin         8160 Dec 16 15:39 mkisam.1
+-rw-r--r--   1 bin      bin         4612 Dec 16 15:39 mkmsg.1
+-rw-r--r--   1 bin      bin         1381 Dec 16 15:39 mknod.1
+-rw-r--r--   1 bin      bin         4216 Dec 16 15:39 mnetecho.1
+-rw-r--r--   1 bin      bin        12597 Dec 16 15:39 mnetstat.1
+-rw-r--r--   1 bin      bin         6294 Dec 16 15:39 more.1
+-rw-r--r--   1 bin      bin         2076 Dec 16 15:39 mount.1
+-rw-r--r--   1 bin      bin         1469 Dec 16 15:39 mountall.1
+-rw-r--r--   1 bin      bin         2904 Dec 16 15:39 mtcdl.1
+-rw-r--r--   1 bin      bin         1805 Dec 16 15:39 mtcdump.1
+-rw-r--r--   1 bin      bin         1747 Dec 16 15:39 mtcreset.1
+-rw-r--r--   1 bin      bin         3050 Dec 16 15:39 mtcstat.1
+-rw-r--r--   1 bin      bin         3093 Dec 16 15:39 mv.1
+-rw-r--r--   1 bin      bin          814 Dec 16 15:39 mvdir.1
+-rw-r--r--   1 bin      bin         3394 Dec 16 15:39 mvisam.1
+-rw-r--r--   1 bin      bin        10562 Dec 16 15:39 nawk.1
+-rw-r--r--   1 bin      bin         1134 Dec 16 15:39 ncheck.1
+-rw-r--r--   1 bin      bin        16798 Dec 16 15:39 netcp.1
+-rw-r--r--   1 bin      bin        14969 Dec 16 15:39 netecho.1
+-rw-r--r--   1 bin      bin         5877 Dec 16 15:39 netexec.1
+-rw-r--r--   1 bin      bin        21250 Dec 16 15:39 netstat.1
+-rw-r--r--   1 bin      bin         3370 Dec 16 15:39 netu.1
+-rw-r--r--   1 bin      bin         1524 Dec 16 15:39 netwhat.1
+-rw-r--r--   1 bin      bin         4166 Dec 16 15:39 networks.1
+-rw-r--r--   1 bin      bin         9644 Dec 16 15:39 newform.1
+-rw-r--r--   1 bin      bin         1682 Dec 16 15:39 newgrp.1
+-rw-r--r--   1 bin      bin         2050 Dec 16 15:39 news.1
+-rw-r--r--   1 bin      bin         1517 Dec 16 15:39 nice.1
+-rw-r--r--   1 bin      bin         4116 Dec 16 15:39 nl.1
+-rw-r--r--   1 bin      bin         5360 Dec 16 15:39 nm.1
+-rw-r--r--   1 bin      bin         1098 Dec 16 15:39 nohup.1
+-rw-r--r--   1 bin      bin         3278 Dec 16 15:39 od.1
+-rw-r--r--   1 bin      bin         6829 Dec 16 15:39 opctl.1
+-rw-r--r--   1 bin      bin         3382 Dec 16 15:39 pack.1
+-rw-r--r--   1 bin      bin         9392 Dec 16 15:39 packfs.1
+-rw-r--r--   1 bin      bin         5842 Dec 16 15:39 passwd.1
+-rw-r--r--   1 bin      bin         4176 Dec 16 15:39 paste.1
+-rw-r--r--   1 bin      bin         5343 Dec 16 15:39 patch.1
+-rw-r--r--   1 bin      bin         1246 Dec 16 15:39 pcat.1
+-rw-r--r--   1 bin      bin         5768 Dec 16 15:39 pdmon.1
+-rw-r--r--   1 bin      bin         7834 Dec 16 15:39 pg.1
+-rw-r--r--   1 bin      bin         4382 Dec 16 15:39 pm.1
+-rw-r--r--   1 bin      bin         1168 Dec 16 15:39 portwait.1
+-rw-r--r--   1 bin      bin         6951 Dec 16 15:39 pr.1
+-rw-r--r--   1 bin      bin         4272 Dec 16 15:39 prmsg.1
+-rw-r--r--   1 bin      bin         2917 Dec 16 15:39 prof.1
+-rw-r--r--   1 bin      bin         1775 Dec 16 15:39 profiler.1
+-rw-r--r--   1 bin      bin         9597 Dec 16 15:39 prompt.1
+-rw-r--r--   1 bin      bin         8643 Dec 16 15:39 prs.1
+-rw-r--r--   1 bin      bin         8598 Dec 16 15:39 ps.1
+-rw-r--r--   1 bin      bin         4834 Dec 16 15:39 ptu.1
+-rw-r--r--   1 bin      bin         1078 Dec 16 15:39 pwck.1
+-rw-r--r--   1 bin      bin         1914 Dec 16 15:39 pwconv.1
+-rw-r--r--   1 bin      bin          715 Dec 16 15:39 pwd.1
+-rw-r--r--   1 bin      bin         1305 Dec 16 15:39 pwunconv.1
+-rw-r--r--   1 bin      bin         7287 Dec 16 15:39 qsym.1
+-rw-r--r--   1 bin      bin         1565 Dec 16 15:39 rdflush.1
+-rw-r--r--   1 bin      bin         3851 Dec 16 15:39 rdload.1
+-rw-r--r--   1 bin      bin         1817 Dec 16 15:39 regcmp.1
+-rw-r--r--   1 bin      bin         1159 Dec 16 15:39 reject.1
+-rw-r--r--   1 bin      bin         2894 Dec 16 15:39 rm.1
+-rw-r--r--   1 bin      bin         9053 Dec 16 15:39 rmail.1
+-rw-r--r--   1 bin      bin         2057 Dec 16 15:39 rmdel.1
+-rw-r--r--   1 bin      bin         1142 Dec 16 15:39 rmdir.1
+-rw-r--r--   1 bin      bin         1778 Dec 16 15:39 rsh.1
+-rw-r--r--   1 bin      bin         3352 Dec 16 15:39 sa1.1
+-rw-r--r--   1 bin      bin         7628 Dec 16 15:39 sa2.1
+-rw-r--r--   1 bin      bin         2343 Dec 16 15:39 sact.1
+-rw-r--r--   1 bin      bin         2952 Dec 16 15:39 sadc.1
+-rw-r--r--   1 bin      bin         4705 Dec 16 15:39 sadsp.1
+-rw-r--r--   1 bin      bin         4962 Dec 16 15:39 sar.1
+-rw-r--r--   1 bin      bin         1913 Dec 16 15:39 sccsdiff.1
+-rw-r--r--   1 bin      bin        10366 Dec 16 15:39 sdb.1
+-rw-r--r--   1 bin      bin         4492 Dec 16 15:39 sdiff.1
+-rw-r--r--   1 bin      bin         8413 Dec 16 15:39 sed.1
+-rw-r--r--   1 bin      bin          908 Dec 16 15:39 setmnt.1
+-rw-r--r--   1 bin      bin         1225 Dec 16 15:39 setsite.1
+-rw-r--r--   1 bin      bin        33996 Dec 16 15:39 sh.1
+-rw-r--r--   1 bin      bin         2516 Dec 16 15:39 show.1
+-rw-r--r--   1 bin      bin         2124 Dec 16 15:39 showfs.1
+-rw-r--r--   1 bin      bin         3411 Dec 16 15:39 showhex.1
+-rw-r--r--   1 bin      bin         3187 Dec 16 15:39 showmsg.1
+-rw-r--r--   1 bin      bin         2128 Dec 16 15:39 shutdown.1
+-rw-r--r--   1 bin      bin         1567 Dec 16 15:39 size.1
+-rw-r--r--   1 bin      bin          681 Dec 16 15:39 sleep.1
+-rw-r--r--   1 bin      bin          667 Dec 16 15:39 slotload.1
+-rw-r--r--   1 bin      bin        11408 Dec 16 15:39 sort.1
+-rw-r--r--   1 bin      bin          450 Dec 16 15:39 spaid.1
+-rw-r--r--   1 bin      bin         8372 Dec 16 15:39 spell.1
+-rw-r--r--   1 bin      bin         1573 Dec 16 15:40 split.1
+-rw-r--r--   1 bin      bin         4768 Dec 16 15:40 spooladm.1
+-rw-r--r--   1 bin      bin         2901 Dec 16 15:40 strace.1
+-rw-r--r--   1 bin      bin          928 Dec 16 15:40 strclean.1
+-rw-r--r--   1 bin      bin         2446 Dec 16 15:40 strerr.1
+-rw-r--r--   1 bin      bin          405 Dec 16 15:40 strings.1
+-rw-r--r--   1 bin      bin         2928 Dec 16 15:40 strip.1
+-rw-r--r--   1 bin      bin         4710 Dec 16 15:40 strnstat.1
+-rw-r--r--   1 bin      bin         8577 Dec 16 15:40 stty.1
+-rw-r--r--   1 bin      bin         2871 Dec 16 15:40 su.1
+-rw-r--r--   1 bin      bin         1428 Dec 16 15:40 sum.1
+-rw-r--r--   1 bin      bin         4787 Dec 16 15:40 swupdate.1
+-rw-r--r--   1 bin      bin          660 Dec 16 15:40 sync.1
+-rw-r--r--   1 bin      bin          381 Dec 16 15:40 sysboot.1
+-rw-r--r--   1 bin      bin         3167 Dec 16 15:40 tail.1
+-rw-r--r--   1 bin      bin        12073 Dec 16 15:40 tar.1
+-rw-r--r--   1 bin      bin         4302 Dec 16 15:40 tcdl.1
+-rw-r--r--   1 bin      bin         6243 Dec 16 15:40 tcdump.1
+-rw-r--r--   1 bin      bin         2481 Dec 16 15:40 tcreset.1
+-rw-r--r--   1 bin      bin         4659 Dec 16 15:40 tcstat.1
+-rw-r--r--   1 bin      bin          959 Dec 16 15:40 tde.1
+-rw-r--r--   1 bin      bin         3907 Dec 16 15:40 tdts.1
+-rw-r--r--   1 bin      bin          793 Dec 16 15:40 tee.1
+-rw-r--r--   1 bin      bin         2809 Dec 16 15:40 test.1
+-rw-r--r--   1 bin      bin         4323 Dec 16 15:40 tic.1
+-rw-r--r--   1 bin      bin         1203 Dec 16 15:40 time.1
+-rw-r--r--   1 bin      bin         3976 Dec 16 15:40 timex.1
+-rw-r--r--   1 bin      bin         4324 Dec 16 15:40 toisam.1
+-rw-r--r--   1 bin      bin         3992 Dec 16 15:40 topc.1
+-rw-r--r--   1 bin      bin         1994 Dec 16 15:40 touch.1
+-rw-r--r--   1 bin      bin         5835 Dec 16 15:40 tput.1
+-rw-r--r--   1 bin      bin         3140 Dec 16 15:40 tr.1
+-rw-r--r--   1 bin      bin          565 Dec 16 15:40 true.1
+-rw-r--r--   1 bin      bin         1116 Dec 16 15:40 tsort.1
+-rw-r--r--   1 bin      bin         1573 Dec 16 15:40 tty.1
+-rw-r--r--   1 bin      bin        13214 Dec 16 15:40 tx.1
+-rw-r--r--   1 bin      bin         1160 Dec 16 15:40 umask.1
+-rw-r--r--   1 bin      bin          855 Dec 16 15:40 umount.1
+-rw-r--r--   1 bin      bin         1201 Dec 16 15:40 umountall.1
+-rw-r--r--   1 bin      bin         1872 Dec 16 15:40 uname.1
+-rw-r--r--   1 bin      bin         2251 Dec 16 15:40 unget.1
+-rw-r--r--   1 bin      bin         3178 Dec 16 15:40 uniq.1
+-rw-r--r--   1 bin      bin         1717 Dec 16 15:40 units.1
+-rw-r--r--   1 bin      bin          426 Dec 16 15:40 unlink.1
+-rw-r--r--   1 bin      bin         1278 Dec 16 15:40 unpack.1
+-rw-r--r--   1 bin      bin         2319 Dec 16 15:40 update.1
+-rw-r--r--   1 bin      bin         1198 Dec 16 15:40 upsmon.1
+-rw-r--r--   1 bin      bin         1020 Dec 16 15:40 upsoff.1
+-rw-r--r--   1 bin      bin          505 Dec 16 15:40 upson.1
+-rw-r--r--   1 bin      bin         2473 Dec 16 15:40 upsstat.1
+-rw-r--r--   1 bin      bin         2682 Dec 16 15:40 upswait.1
+-rw-r--r--   1 bin      bin         4689 Dec 16 15:40 usradm.1
+-rw-r--r--   1 bin      bin         7288 Dec 16 15:40 uucico.1
+-rw-r--r--   1 bin      bin         2737 Dec 16 15:40 uuclean.1
+-rw-r--r--   1 bin      bin         6082 Dec 16 15:40 uucp.1
+-rw-r--r--   1 bin      bin         1980 Dec 16 15:40 uucpfrom.1
+-rw-r--r--   1 bin      bin         2020 Dec 16 15:40 uucpto.1
+-rw-r--r--   1 bin      bin         2531 Dec 16 15:40 uulog.1
+-rw-r--r--   1 bin      bin          808 Dec 16 15:40 uuname.1
+-rw-r--r--   1 bin      bin         2082 Dec 16 15:40 uupick.1
+-rw-r--r--   1 bin      bin         6498 Dec 16 15:40 uustat.1
+-rw-r--r--   1 bin      bin         3243 Dec 16 15:40 uusub.1
+-rw-r--r--   1 bin      bin         2404 Dec 16 15:40 uuto.1
+-rw-r--r--   1 bin      bin         4497 Dec 16 15:40 uux.1
+-rw-r--r--   1 bin      bin         2936 Dec 16 15:40 val.1
+-rw-r--r--   1 bin      bin         6480 Dec 16 15:40 vc.1
+-rw-r--r--   1 bin      bin         6839 Dec 16 15:40 vfisam.1
+-rw-r--r--   1 bin      bin        28661 Dec 16 15:40 vi.1
+-rw-r--r--   1 bin      bin          342 Dec 16 15:40 view.1
+-rw-r--r--   1 bin      bin         6587 Dec 16 15:40 volcopy.1
+-rw-r--r--   1 bin      bin          762 Dec 16 15:40 wait.1
+-rw-r--r--   1 bin      bin          660 Dec 16 15:40 wall.1
+-rw-r--r--   1 bin      bin         1813 Dec 16 15:40 wc.1
+-rw-r--r--   1 bin      bin         1446 Dec 16 15:40 what.1
+-rw-r--r--   1 bin      bin         6767 Dec 16 15:40 who.1
+-rw-r--r--   1 bin      bin          433 Dec 16 15:40 whodo.1
+-rw-r--r--   1 bin      bin         2570 Dec 16 15:40 write.1
+-rw-r--r--   1 bin      bin         6832 Dec 16 15:40 xargs.1
+-rw-r--r--   1 bin      bin         3514 Dec 16 15:40 yacc.1
+
+/usr/etc:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+
+/usr/guest:
+total 2
+
+drwxr-xr-x   2 guest    guest         32 Dec 16 15:18 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+
+/usr/include:
+total 266
+
+drwxr-xr-x   3 bin      bin         1264 Dec 16 15:20 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+-r--r--r--   1 bin      bin         1698 Dec 16 15:20 M_DEFS.h
+-r--r--r--   1 bin      bin         7306 Dec 16 15:20 a.out.h
+-r--r--r--   1 bin      bin         1121 Dec 16 15:20 alarm.h
+-r--r--r--   1 bin      bin          653 Dec 16 15:20 aouthdr.h
+-r--r--r--   1 bin      bin         1856 Dec 16 15:20 ar.h
+-r--r--r--   1 bin      bin          300 Dec 16 15:20 assert.h
+-r--r--r--   1 bin      bin          954 Dec 16 15:20 core.h
+-r--r--r--   1 bin      bin          699 Dec 16 15:20 cpio.h
+-r--r--r--   1 bin      bin         1167 Dec 16 15:20 ctype.h
+-r--r--r--   1 bin      bin        23759 Dec 16 15:24 curses.h
+-r--r--r--   1 bin      bin         1102 Dec 16 15:20 decimal.h
+-r--r--r--   1 bin      bin         1757 Dec 16 15:20 dial.h
+-r--r--r--   1 bin      bin          163 Dec 16 15:20 dialio.h
+-r--r--r--   1 bin      bin          672 Dec 16 15:20 dirent.h
+-r--r--r--   1 bin      bin          707 Dec 16 15:20 dumprestor.h
+-r--r--r--   1 bin      bin          245 Dec 16 15:20 errno.h
+-r--r--r--   1 bin      bin          522 Dec 16 15:20 execargs.h
+-r--r--r--   1 bin      bin          612 Dec 16 15:20 fatal.h
+-r--r--r--   1 bin      bin          293 Dec 16 15:20 fcntl.h
+-r--r--r--   1 bin      bin         2652 Dec 16 15:20 filehdr.h
+-r--r--r--   1 bin      bin          442 Dec 16 15:20 ftw.h
+-r--r--r--   1 bin      bin          280 Dec 16 15:20 grp.h
+-r--r--r--   1 bin      bin         8574 Dec 16 15:20 isam.h
+-r--r--r--   1 bin      bin         5010 Dec 16 15:20 lan.h
+-r--r--r--   1 bin      bin         2548 Dec 16 15:20 ldfcn.h
+-r--r--r--   1 bin      bin          773 Dec 16 15:20 linenum.h
+-r--r--r--   1 bin      bin         2347 Dec 16 15:20 macros.h
+-r--r--r--   1 bin      bin         4701 Dec 16 15:20 mallint.h
+-r--r--r--   1 bin      bin         1117 Dec 16 15:20 malloc.h
+-r--r--r--   1 bin      bin         2243 Dec 16 15:20 math.h
+-r--r--r--   1 bin      bin          245 Dec 16 15:20 memory.h
+-r--r--r--   1 bin      bin          372 Dec 16 15:20 mnttab.h
+-r--r--r--   1 bin      bin          497 Dec 16 15:20 mon.h
+-r--r--r--   1 bin      bin          542 Dec 16 15:20 nan.h
+-r--r--r--   1 bin      bin         3803 Dec 16 15:20 netstat.h
+-r--r--r--   1 bin      bin          751 Dec 16 15:20 nlist.h
+-r--r--r--   1 bin      bin         4857 Dec 16 15:20 nserve.h
+-r--r--r--   1 bin      bin         1913 Dec 16 15:20 pn.h
+-r--r--r--   1 bin      bin          232 Dec 16 15:20 poll.h
+-r--r--r--   1 bin      bin          360 Dec 16 15:20 printm.h
+-r--r--r--   1 bin      bin         1530 Dec 16 15:20 prmode.h
+-r--r--r--   1 bin      bin          812 Dec 16 15:20 prof.h
+-r--r--r--   1 bin      bin          419 Dec 16 15:20 pwd.h
+-r--r--r--   1 bin      bin         6450 Dec 16 15:20 regexp.h
+-r--r--r--   1 bin      bin         1887 Dec 16 15:20 reloc.h
+-r--r--r--   1 bin      bin         2743 Dec 16 15:20 rje.h
+-r--r--r--   1 bin      bin         2160 Dec 16 15:20 scnhdr.h
+-r--r--r--   1 bin      bin          347 Dec 16 15:20 search.h
+-r--r--r--   1 bin      bin          441 Dec 16 15:20 setjmp.h
+-r--r--r--   1 bin      bin         1546 Dec 16 15:20 sgtty.h
+-r--r--r--   1 bin      bin         1258 Dec 16 15:20 shadow.h
+-r--r--r--   1 bin      bin          260 Dec 16 15:20 signal.h
+-r--r--r--   1 bin      bin         2180 Dec 16 15:20 stand.h
+-r--r--r--   1 bin      bin         2042 Dec 16 15:20 stdio.h
+-r--r--r--   1 bin      bin         1213 Dec 16 15:20 stermio.h
+-r--r--r--   1 bin      bin         1758 Dec 16 15:20 storclass.h
+-r--r--r--   1 bin      bin          343 Dec 16 15:20 string.h
+-r--r--r--   1 bin      bin          365 Dec 16 15:20 stropts.h
+-r--r--r--   1 bin      bin          295 Dec 16 15:20 symbol.h
+-r--r--r--   1 bin      bin         5093 Dec 16 15:20 syms.h
+drwxr-xr-x   3 bin      bin         2112 Feb  1 14:00 sys
+-r--r--r--   1 bin      bin         1060 Dec 16 15:20 sys.m68k
+-r--r--r--   1 bin      bin        47697 Dec 16 15:24 term.h
+-r--r--r--   1 bin      bin          207 Dec 16 15:20 termio.h
+-r--r--r--   1 bin      bin          689 Dec 16 15:20 time.h
+-r--r--r--   1 bin      bin        12014 Dec 16 15:20 tisam.h
+-r--r--r--   1 bin      bin          442 Dec 16 15:20 tiuser.h
+-r--r--r--   1 bin      bin          323 Dec 16 15:20 tp_defs.h
+-r--r--r--   1 bin      bin          538 Dec 16 15:24 unctrl.h
+-r--r--r--   1 bin      bin         1052 Dec 16 15:20 unistd.h
+-r--r--r--   1 bin      bin          353 Dec 16 15:20 ustat.h
+-r--r--r--   1 bin      bin         1573 Dec 16 15:20 utmp.h
+-r--r--r--   1 bin      bin         4917 Dec 16 15:20 values.h
+-r--r--r--   1 bin      bin          487 Dec 16 15:20 varargs.h
+-r--r--r--   1 bin      bin        22428 Dec 16 15:20 vdtrdwrt.h
+-r--r--r--   1 bin      bin            0 Dec 16 15:20 x25lib.h
+-r--r--r--   1 bin      bin         4147 Dec 16 15:20 xns.h
+
+/usr/include/sys:
+total 516
+
+drwxr-xr-x   3 bin      bin         2112 Feb  1 14:00 .
+drwxr-xr-x   3 bin      bin         1264 Dec 16 15:20 ..
+-r--r--r--   1 bin      bin         1388 Dec 16 15:21 acct.h
+-r--r--r--   1 bin      bin         1595 Dec 16 15:21 alloc.h
+-r--r--r--   1 bin      bin         1261 Dec 16 15:21 anchor.h
+-r--r--r--   1 bin      bin         5500 Dec 16 15:21 boot.h
+-r--r--r--   1 bin      bin         1113 Dec 16 15:21 bswap.h
+-r--r--r--   1 bin      bin         5521 Dec 16 15:21 buf.h
+-r--r--r--   1 bin      bin         8884 Dec 16 15:21 busnet.h
+-r--r--r--   1 bin      bin          868 Dec 16 15:21 callo.h
+-r--r--r--   1 bin      bin         2029 Dec 16 15:21 cirmgr.h
+-r--r--r--   1 bin      bin         2005 Dec 16 15:21 cmap.h
+-r--r--r--   1 bin      bin         7571 Dec 16 15:21 comm.h
+-r--r--r--   1 bin      bin         4654 Dec 16 15:21 conf.h
+-r--r--r--   1 bin      bin         3318 Dec 16 15:21 confrom.h
+-r--r--r--   1 bin      bin        12672 Dec 16 15:21 cpu.h
+-r--r--r--   1 bin      bin         4572 Dec 16 15:21 cpuloc.h
+-r--r--r--   1 bin      bin         2438 Dec 16 15:21 crtctl.h
+-r--r--r--   1 bin      bin         1911 Dec 16 15:21 device.h
+-r--r--r--   1 bin      bin          735 Dec 16 15:21 devinfo.h
+-r--r--r--   1 bin      bin         4706 Dec 16 15:21 devmap.h
+-r--r--r--   1 bin      bin         2637 Dec 16 15:21 dialio.h
+-r--r--r--   1 bin      bin          489 Dec 16 15:21 dir.h
+-r--r--r--   1 bin      bin          699 Dec 16 15:21 dirent.h
+-r--r--r--   1 bin      bin         1645 Dec 16 15:21 elog.h
+-r--r--r--   1 bin      bin        15472 Dec 16 15:21 enc.h
+-r--r--r--   1 bin      bin         4392 Dec 16 15:21 erec.h
+-r--r--r--   1 bin      bin          968 Dec 16 15:21 err.h
+-r--r--r--   1 bin      bin         7318 Dec 16 15:21 errno.h
+-r--r--r--   1 bin      bin         1011 Dec 16 15:21 fault.h
+-r--r--r--   1 bin      bin          492 Dec 16 15:21 fblk.h
+-r--r--r--   1 bin      bin         1574 Dec 16 15:21 fcntl.h
+-r--r--r--   1 bin      bin         1339 Dec 16 15:21 file.h
+-r--r--r--   1 bin      bin          498 Dec 16 15:21 filsys.h
+-r--r--r--   1 bin      bin         2830 Dec 16 15:21 flock.h
+-r--r--r--   1 bin      bin         1264 Dec 16 15:21 fp.h
+drwxr-xr-x   2 bin      bin          128 Dec 16 15:21 fs
+-r--r--r--   1 bin      bin          713 Dec 16 15:21 fsid.h
+-r--r--r--   1 bin      bin         3960 Dec 16 15:21 fstyp.h
+-r--r--r--   1 bin      bin         1090 Dec 16 15:21 init.h
+-r--r--r--   1 bin      bin         1403 Dec 16 15:21 ino.h
+-r--r--r--   1 bin      bin         7654 Dec 16 15:21 inode.h
+-r--r--r--   1 bin      bin         2088 Dec 16 15:21 iobuf.h
+-r--r--r--   1 bin      bin         1241 Dec 16 15:21 ioctl.h
+-r--r--r--   1 bin      bin         1196 Dec 16 15:21 ipc.h
+-r--r--r--   1 bin      bin         1922 Feb  1 14:00 jioctl.h
+-r--r--r--   1 bin      bin         2307 Dec 16 15:21 kdb.h
+-r--r--r--   1 bin      bin         2767 Dec 16 15:21 kerrf.h
+-r--r--r--   1 bin      bin         3169 Feb  1 14:00 ldterm.h
+-r--r--r--   1 bin      bin         5440 Dec 16 15:21 lihdr.h
+-r--r--r--   1 bin      bin          526 Dec 16 15:21 lock.h
+-r--r--r--   1 bin      bin         1712 Dec 16 15:21 log.h
+-r--r--r--   1 bin      bin          837 Dec 16 15:21 map.h
+-r--r--r--   1 bin      bin         1389 Dec 16 15:21 mapout.h
+-r--r--r--   1 bin      bin         3363 Dec 16 15:21 mmu.h
+-r--r--r--   1 bin      bin         2427 Dec 16 15:21 mount.h
+-r--r--r--   1 bin      bin         5413 Dec 16 15:21 msc.h
+-r--r--r--   1 bin      bin         3052 Dec 16 15:21 msg.h
+-r--r--r--   1 bin      bin         1612 Dec 16 15:21 mtio.h
+-r--r--r--   1 bin      bin         1773 Dec 16 15:21 multivol.h
+-r--r--r--   1 bin      bin         4152 Dec 16 15:21 nami.h
+-r--r--r--   1 bin      bin        10760 Dec 16 15:21 np.h
+-r--r--r--   1 bin      bin         2063 Dec 16 15:21 nserve.h
+-r--r--r--   1 bin      bin         1151 Dec 16 15:21 nubus.h
+-r--r--r--   1 bin      bin         2769 Dec 16 15:21 opc.h
+-r--r--r--   1 bin      bin         2019 Dec 16 15:21 open.h
+-r--r--r--   1 bin      bin          616 Dec 16 15:21 opt.h
+-r--r--r--   1 bin      bin        10013 Dec 16 15:21 param.h
+-r--r--r--   1 bin      bin         2516 Dec 16 15:21 partab.h
+-r--r--r--   1 bin      bin          642 Dec 16 15:21 phys.h
+-r--r--r--   1 bin      bin         2835 Dec 16 15:21 pmapinfo.h
+-r--r--r--   1 bin      bin         1264 Dec 16 15:21 poll.h
+-r--r--r--   1 bin      bin         8450 Dec 16 15:21 proc.h
+-r--r--r--   1 bin      bin         2028 Dec 16 15:21 psl.h
+-r--r--r--   1 bin      bin         6407 Dec 16 15:21 pte.h
+-r--r--r--   1 bin      bin         1363 Feb  1 14:00 ptem.h
+-r--r--r--   1 bin      bin         1536 Dec 16 15:21 ptms.h
+-r--r--r--   1 bin      bin         5966 Dec 16 15:21 queue.h
+-r--r--r--   1 bin      bin          517 Dec 16 15:21 rd.h
+-r--r--r--   1 bin      bin          871 Dec 16 15:21 reg.h
+-r--r--r--   1 bin      bin         1384 Dec 16 15:21 rfsys.h
+-r--r--r--   1 bin      bin          531 Dec 16 15:21 rtc.h
+-r--r--r--   1 bin      bin          686 Dec 16 15:21 runq.h
+-r--r--r--   1 bin      bin         1319 Dec 16 15:21 sat.h
+-r--r--r--   1 bin      bin         1615 Dec 16 15:21 sdma.h
+-r--r--r--   1 bin      bin          511 Dec 16 15:21 seg.h
+-r--r--r--   1 bin      bin         3409 Dec 16 15:21 sem.h
+-r--r--r--   1 bin      bin         1510 Dec 16 15:21 sema.h
+-r--r--r--   1 bin      bin         3870 Dec 16 15:21 shm.h
+-r--r--r--   1 bin      bin         2390 Dec 16 15:21 signal.h
+-r--r--r--   1 bin      bin         2250 Dec 16 15:21 sky.h
+-r--r--r--   1 bin      bin         1179 Dec 16 15:21 smap.h
+-r--r--r--   1 bin      bin        12276 Dec 16 15:21 socket.h
+-r--r--r--   1 bin      bin         1203 Dec 16 15:21 sockvars.h
+-r--r--r--   1 bin      bin         2892 Dec 16 15:21 spa.h
+-r--r--r--   1 bin      bin         7889 Dec 16 15:21 space.h
+-r--r--r--   1 bin      bin         2651 Dec 16 15:21 splx.h
+-r--r--r--   1 bin      bin         7357 Dec 16 15:21 stack.h
+-r--r--r--   1 bin      bin         2031 Dec 16 15:21 stat.h
+-r--r--r--   1 bin      bin          861 Dec 16 15:21 statfs.h
+-r--r--r--   1 bin      bin        41007 Dec 16 15:21 stbm.h
+-r--r--r--   1 bin      bin         2934 Dec 16 15:21 strcom.h
+-r--r--r--   1 bin      bin        16992 Dec 16 15:21 stream.h
+-r--r--r--   1 bin      bin         1324 Dec 16 15:21 strlog.h
+-r--r--r--   1 bin      bin         6449 Dec 16 15:21 strnet.h
+-r--r--r--   1 bin      bin         2715 Dec 16 15:21 stropts.h
+-r--r--r--   1 bin      bin         1532 Dec 16 15:21 strstat.h
+-r--r--r--   1 bin      bin         3589 Dec 16 15:21 sysinfo.h
+-r--r--r--   1 bin      bin         1179 Dec 16 15:21 sysm68k.h
+-r--r--r--   1 bin      bin         5237 Dec 16 15:21 sysmacros.h
+-r--r--r--   1 bin      bin         3156 Dec 16 15:21 systm.h
+-r--r--r--   1 bin      bin         5947 Dec 16 15:21 termio.h
+-r--r--r--   1 bin      bin         1877 Dec 16 15:21 text.h
+-r--r--r--   1 bin      bin        11766 Dec 16 15:21 tihdr.h
+-r--r--r--   1 bin      bin          535 Dec 16 15:21 timeb.h
+-r--r--r--   1 bin      bin          636 Dec 16 15:21 times.h
+-r--r--r--   1 bin      bin         2215 Dec 16 15:21 timod.h
+-r--r--r--   1 bin      bin         6705 Dec 16 15:21 tiuser.h
+-r--r--r--   1 bin      bin         1150 Dec 16 15:21 tmrinfo.h
+-r--r--r--   1 bin      bin          596 Dec 16 15:21 trace.h
+-r--r--r--   1 bin      bin         3012 Dec 16 15:21 trap.h
+-r--r--r--   1 bin      bin          984 Dec 16 15:21 ttold.h
+-r--r--r--   1 bin      bin         5691 Dec 16 15:21 tty.h
+-r--r--r--   1 bin      bin         2426 Dec 16 15:21 types.h
+-r--r--r--   1 bin      bin         7688 Dec 16 15:21 user.h
+-r--r--r--   1 bin      bin          558 Dec 16 15:21 utsname.h
+-r--r--r--   1 bin      bin         1444 Dec 16 15:21 var.h
+-r--r--r--   1 bin      bin         2777 Dec 16 15:21 vlabel.h
+-r--r--r--   1 bin      bin          644 Dec 16 15:21 vm.h
+-r--r--r--   1 bin      bin         3050 Dec 16 15:21 vmmacros.h
+-r--r--r--   1 bin      bin         2314 Dec 16 15:21 vmmeter.h
+-r--r--r--   1 bin      bin         3340 Dec 16 15:21 vmparams.h
+
+/usr/include/sys/fs:
+total 18
+
+drwxr-xr-x   2 bin      bin          128 Dec 16 15:21 .
+drwxr-xr-x   3 bin      bin         2112 Feb  1 14:00 ..
+-r--r--r--   1 bin      bin          467 Dec 16 15:21 s5dir.h
+-r--r--r--   1 bin      bin          432 Dec 16 15:21 s5fblk.h
+-r--r--r--   1 bin      bin         2648 Dec 16 15:21 s5filsys.h
+-r--r--r--   1 bin      bin         2393 Dec 16 15:21 s5inode.h
+-r--r--r--   1 bin      bin         2827 Dec 16 15:21 s5macros.h
+-r--r--r--   1 bin      bin         2822 Dec 16 15:21 s5param.h
+
+/usr/lib:
+total 2063
+
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+-r-xr-xr-x   1 lp       bin        42744 Dec 16 15:36 accept
+drwxr-xr-x   2 bin      bin          480 Dec 16 15:26 acct
+-rwxr-xr-x   1 bin      bin        31096 Dec 16 15:28 calprog
+drwxr-xr-x   2 bin      bin          128 Dec 16 15:30 cron
+-rwxr-xr-x   1 bin      bin        18374 Dec 16 15:28 dag
+-r-xr-xr-x   1 lp       bin        13976 Dec 16 15:37 dumpolp
+-rwx------   1 bin      bin        30986 Dec 16 15:33 errdemon
+-rwxrwxr-x   1 bin      bin        23282 Dec 16 15:56 expreserve
+-rwxrwxr-x   1 bin      bin        44054 Dec 16 15:56 exrecover
+-rwxr-xr-x   1 bin      bin        15042 Dec 16 15:28 flip
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 font
+-rwxr-xr-x   1 bin      bin         1857 Dec 16 15:34 getoptcvt
+drwxr-xr-x   3 bin      bin          288 Dec 16 15:46 help
+-rw-r--r--   1 bin      bin           71 Dec 16 15:22 ld.default
+drwxr-xr-x   2 bin      bin           64 Dec 16 15:23 lex
+-rw-r--r--   1 bin      bin         1632 Dec 16 15:28 lib.b
+-rw-r--r--   1 bin      bin        36858 Dec 16 15:23 libPW.a
+-rw-rw-r--   1 bin      bin       295958 Dec 16 15:24 libcurses.a
+-rwxr-xr-x   1 bin      bin        88258 Dec 16 15:23 libfe.a
+-rw-r--r--   1 bin      bin          550 Dec 16 15:23 libg.a
+-rw-r--r--   1 bin      bin        36166 Dec 16 15:25 libgen.a
+-rw-r--r--   1 bin      bin         4356 Dec 16 15:23 libl.a
+-rw-r--r--   1 bin      bin        18066 Dec 16 15:23 libld.a
+-rw-r--r--   1 bin      bin        26802 Dec 16 15:23 libm.a
+-rw-r--r--   1 bin      bin         7502 Dec 16 15:24 libmalloc.a
+-rwxr-xr-x   1 bin      bin         5824 Dec 16 15:23 libnet.a
+-rw-r--r--   1 bin      bin        36596 Dec 16 15:25 libnsl.a
+-rwxr-xr-x   1 bin      bin        41294 Dec 16 15:23 liboldfe.a
+-rw-r--r--   1 bin      bin         2866 Dec 16 15:24 libphys.a
+-rw-r--r--   1 bin      bin         1272 Feb  1 13:59 libpt.a
+-rw-rw-r--   1 bin      bin         3336 Dec 16 15:25 libsec.a
+-rw-rw-r--   2 bin      bin         5236 Dec 16 15:24 libtermcap.a
+-rw-rw-r--   2 bin      bin         5236 Dec 16 15:24 libtermlib.a
+-rw-r--r--   1 bin      bin       196246 Dec 16 15:25 libtisam.a
+-rw-r--r--   1 bin      bin         1136 Dec 16 15:24 liby.a
+-rwxr-xr-x   1 bin      bin        89058 Dec 16 15:38 lint1
+-rwxr-xr-x   1 bin      bin        29414 Dec 16 15:38 lint2
+-rw-r--r--   1 bin      bin        15099 Dec 16 15:38 llib-lc
+-rw-r--r--   1 bin      bin        13724 Dec 16 15:38 llib-lc.ln
+-rw-r--r--   1 bin      bin         1757 Dec 16 15:38 llib-lm
+-rw-r--r--   1 bin      bin         1502 Dec 16 15:38 llib-lm.ln
+-rw-r--r--   1 bin      bin         7291 Dec 16 15:38 llib-port
+-rw-r--r--   1 bin      bin         6894 Dec 16 15:38 llib-port.ln
+-r-xr-xr-x   1 lp       bin       147780 Dec 16 15:37 lpadmin
+-r-xr-xr-x   1 lp       bin        58616 Dec 16 15:36 lpfilter
+-r-xr-xr-x   1 lp       bin        75064 Dec 16 15:36 lpforms
+-rwxr-xr-x   1 bin      bin        19952 Dec 16 15:28 lpfx
+-r-xr-xr-x   1 lp       bin        41100 Dec 16 15:36 lpmove
+-r-sr-xr-x   1 root     bin       180896 Dec 16 15:37 lpsched
+-r-xr-xr-x   1 lp       bin        33332 Dec 16 15:36 lpshut
+-r-xr-xr-x   1 lp       bin        41488 Dec 16 15:36 lpusers
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 macros
+drwxr-xr-x   3 bin      bin           96 Dec 16 15:39 mailx
+drwxr-xr-x   2 bin      bin           64 Dec 16 16:03 mapout
+-rws--x--x   1 root     root       15408 Dec 16 15:41 mv_dir
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 news
+-rwxr-xr-x   1 bin      bin        16152 Dec 16 15:28 nmf
+-rws--x--x   1 root     bin        13996 Feb  1 13:59 pt_chmod
+-r-xr-xr-x   1 lp       bin        42744 Dec 16 15:36 reject
+drwxr-xr-x   2 bin      bin           80 Dec 16 15:45 sa
+drwxrwxrwx   2 bin      bin          176 Dec 16 15:50 spell
+drwxr-xr-x   2 bin      bin           64 Dec 16 15:25 tabset
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 term
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 terminfo
+drwxr-xr-x   2 bin      bin          656 Feb  1 14:05 terminfo_src
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 tmac
+-rw-rw-r--   1 bin      bin         7905 Dec 16 15:53 unittab
+drwxr-xr-x   3 uucp     bin          288 Dec 16 15:55 uucp
+-rwxr-xr-x   1 bin      bin        33582 Dec 16 15:30 xcpp
+-rwxr-xr-x   1 bin      bin        78882 Dec 16 15:30 xpass
+-rw-r--r--   1 bin      bin         9331 Dec 16 15:56 yaccpar
+
+/usr/lib/acct:
+total 404
+
+drwxr-xr-x   2 bin      bin          480 Dec 16 15:26 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rwx--x---   1 bin      adm        52156 Dec 16 15:25 acctcms
+-rwx--x---   1 bin      adm        41650 Dec 16 15:25 acctcon1
+-rwx--x---   1 bin      adm        15056 Dec 16 15:25 acctcon2
+-rwx--x---   1 bin      adm        15020 Dec 16 15:25 acctdisk
+-rwx--x---   1 bin      adm        22648 Dec 16 15:25 acctdusg
+-rwx--x---   1 bin      adm        22844 Dec 16 15:25 acctmerg
+-rws--x---   1 root     adm        16696 Dec 16 15:25 accton
+-rwx--x---   1 bin      adm        39232 Dec 16 15:26 acctprc1
+-rwx--x---   1 bin      adm        22590 Dec 16 15:26 acctprc2
+-rwx--x---   1 bin      adm        15102 Dec 16 15:26 acctwtmp
+-rwxrwx---   1 bin      adm          644 Dec 16 15:26 chargefee
+-rwxrwx---   1 bin      adm         1735 Dec 16 15:26 ckpacct
+-rws--x---   1 bin      adm        25120 Dec 16 15:26 diskusg
+-rwxrwx---   1 bin      adm         1801 Dec 16 15:26 dodisk
+-rwx--x---   1 bin      adm        35276 Dec 16 15:26 fwtmp
+-rw-rw----   1 bin      adm          565 Dec 16 15:26 holidays
+-rwxrwx---   1 bin      adm         1645 Dec 16 15:26 lastlogin
+-rwxrwx---   1 bin      adm         1154 Dec 16 15:26 monacct
+-rwxrwx---   1 bin      adm          314 Dec 16 15:26 nulladm
+-rwxrwx---   1 bin      adm          399 Dec 16 15:26 prctmp
+-rwxrwx---   1 bin      adm         1622 Dec 16 15:26 prdaily
+-rwxrwx---   1 bin      adm          515 Dec 16 15:26 prtacct
+-rwxrwx---   1 bin      adm          202 Dec 16 15:26 remove
+-rwxrwx---   1 bin      adm        12472 Dec 16 15:26 runacct
+-rwxrwx---   1 bin      adm          385 Dec 16 15:26 shutacct
+-rwxrwx---   1 bin      adm          326 Dec 16 15:26 startup
+-rwxrwx---   1 bin      adm          850 Dec 16 15:26 turnacct
+-rwx--x---   1 bin      adm        33470 Dec 16 15:26 wtmpfix
+
+/usr/lib/cron:
+total 7
+
+drwxr-xr-x   2 bin      bin          128 Dec 16 15:30 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rw-rw-r--   1 root     sys            3 Dec 16 15:30 .proto
+-rw-r--r--   1 root     sys            0 Dec 16 15:30 at.deny
+-rw-r--r--   1 root     sys            0 Dec 16 15:30 cron.deny
+-rw-rw-rw-   1 root     root           0 Dec 16 15:30 log
+-rw-r--r--   1 root     sys           24 Dec 16 15:30 queuedefs
+-rwx------   1 adm      adm         1969 Dec 16 15:30 start.new.log
+
+/usr/lib/font:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+
+/usr/lib/help:
+total 46
+
+drwxr-xr-x   3 bin      bin          288 Dec 16 15:46 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rw-rw-r--   1 bin      bin         4167 Dec 16 15:46 ad
+-rw-rw-r--   1 bin      bin         1262 Dec 16 15:46 bd
+-rw-rw-r--   1 bin      bin          671 Dec 16 15:46 cb
+-rw-rw-r--   1 bin      bin         2824 Dec 16 15:46 cm
+-rw-rw-r--   1 bin      bin         5437 Dec 16 15:46 cmds
+-rw-rw-r--   1 bin      bin         4158 Dec 16 15:46 co
+-rw-rw-r--   1 bin      bin         3362 Dec 16 15:46 de
+-rw-rw-r--   1 bin      bin          178 Dec 16 15:46 default
+-rw-rw-r--   1 bin      bin         2260 Dec 16 15:46 ge
+-rw-rw-r--   1 bin      bin          332 Dec 16 15:46 he
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:46 lib
+-rw-rw-r--   1 bin      bin          835 Dec 16 15:46 prs
+-rw-rw-r--   1 bin      bin         2284 Dec 16 15:46 rc
+-rw-rw-r--   1 bin      bin          648 Dec 16 15:46 un
+-rw-rw-r--   1 bin      bin         2324 Dec 16 15:46 ut
+-rw-rw-r--   1 bin      bin         2440 Dec 16 15:46 vc
+
+/usr/lib/help/lib:
+total 20
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:46 .
+drwxr-xr-x   3 bin      bin          288 Dec 16 15:46 ..
+-rwxrwxr-x   1 bin      bin        17320 Dec 16 15:46 help2
+
+/usr/lib/lex:
+total 11
+
+drwxr-xr-x   2 bin      bin           64 Dec 16 15:23 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rw-r--r--   1 bin      bin         3986 Dec 16 15:23 ncform
+-rw-r--r--   1 bin      bin         3115 Dec 16 15:23 nrform
+
+/usr/lib/macros:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+
+/usr/lib/mailx:
+total 23
+
+drwxr-xr-x   3 bin      bin           96 Dec 16 15:39 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 help
+-rw-rw-r--   1 bin      bin          943 Dec 16 15:39 mailx.help
+-rw-rw-r--   1 bin      bin         1042 Dec 16 15:39 mailx.help.~
+-rwx--s--x   1 bin      mail       15228 Dec 16 15:39 rmmail
+
+/usr/lib/mailx/help:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x   3 bin      bin           96 Dec 16 15:39 ..
+
+/usr/lib/mapout:
+total 6
+
+drwxr-xr-x   2 bin      bin           64 Dec 16 16:03 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rw-rw-r--   1 bin      bin         1576 Feb  1 14:03 prt931grph
+-rw-rw-r--   1 bin      bin          810 Feb  1 14:03 vdt931grph
+
+/usr/lib/news:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+
+/usr/lib/sa:
+total 21
+
+drwxr-xr-x   2 bin      bin           80 Dec 16 15:45 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rwxr-xr-x   1 bin      bin          457 Dec 16 15:45 sa1
+-rwxr-xr-x   1 bin      bin          512 Dec 16 15:45 sa2
+-rwsr-xr-x   1 root     bin        14564 Dec 16 15:45 sadc
+
+/usr/lib/spell:
+total 203
+
+drwxrwxrwx   2 bin      bin          176 Dec 16 15:50 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rwxr-xr-x   1 bin      bin          307 Dec 16 15:50 compress
+-rwx------   1 root     root       17336 Dec 16 15:50 hashcheck
+-rwx------   1 root     root       16224 Dec 16 15:50 hashmake
+-rw-r--r--   1 bin      bin        53872 Dec 16 15:50 hlista
+-rw-r--r--   1 bin      bin        53840 Dec 16 15:50 hlistb
+-rw-r--r--   1 bin      bin         6336 Dec 16 15:50 hstop
+-rw-rw-rw-   1 bin      bin            0 Dec 16 15:50 spellhist
+-rwx------   1 root     root       22840 Dec 16 15:50 spellin
+-rwx--x--x   1 bin      bin        24286 Dec 16 15:50 spellprog
+
+/usr/lib/tabset:
+total 5
+
+drwxr-xr-x   2 bin      bin           64 Dec 16 15:25 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rw-rw-r--   1 bin      bin          135 Dec 16 15:25 std
+-rw-rw-r--   1 bin      bin          159 Dec 16 15:25 vt100
+
+/usr/lib/term:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+
+/usr/lib/terminfo:
+total 19
+
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 7
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 M
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 T
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 X
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 a
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 b
+drwxr-xr-x   2 root     root          96 Feb  1 14:05 d
+drwxr-xr-x   2 root     root          64 Feb  1 14:05 e
+drwxr-xr-x   2 root     root          64 Feb  1 14:05 i
+drwxr-xr-x   2 root     root          64 Feb  1 14:05 n
+drwxr-xr-x   2 root     root          80 Dec 16 15:38 p
+drwxr-xr-x   2 root     root         800 Feb  1 14:05 t
+drwxr-xr-x   2 root     root          48 Dec 16 15:38 u
+drwxr-xr-x   2 root     root         112 Feb  1 14:05 v
+drwxr-xr-x   2 root     root          80 Feb  1 14:05 w
+drwxr-xr-x   2 root     root         128 Feb  1 14:05 x
+
+/usr/lib/terminfo/7:
+total 4
+
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   5 root     root        1908 Feb  1 14:05 75
+
+/usr/lib/terminfo/M:
+total 4
+
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   5 root     root        1908 Feb  1 14:05 Mw
+
+/usr/lib/terminfo/T:
+total 4
+
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   3 root     root        1341 Feb  1 14:05 T9
+
+/usr/lib/terminfo/X:
+total 4
+
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   3 root     root        1213 Feb  1 14:05 X5
+
+/usr/lib/terminfo/a:
+total 4
+
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   1 root     root        1109 Feb  1 14:05 ansi
+
+/usr/lib/terminfo/b:
+total 4
+
+drwxr-xr-x   2 root     root          48 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   1 root     root        1152 Feb  1 14:05 bpc
+
+/usr/lib/terminfo/d:
+total 10
+
+drwxr-xr-x   2 root     root          96 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   3 root     root        1262 Feb  1 14:05 d0
+-rw-r--r--   2 root     root        1313 Feb  1 14:05 d1
+-rw-r--r--   2 root     root        1162 Feb  1 14:05 d2
+-rw-r--r--   2 root     root        1243 Feb  1 14:05 d3
+
+/usr/lib/terminfo/e:
+total 6
+
+drwxr-xr-x   2 root     root          64 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   2 root     root        1246 Feb  1 14:05 em924
+-rw-r--r--   2 root     root        1214 Feb  1 14:05 em931
+
+/usr/lib/terminfo/i:
+total 6
+
+drwxr-xr-x   2 root     root          64 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   2 root     root        1236 Feb  1 14:05 i1
+-rw-r--r--   2 root     root        1224 Feb  1 14:05 i2
+
+/usr/lib/terminfo/n:
+total 6
+
+drwxr-xr-x   2 root     root          64 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   2 root     root        1291 Feb  1 14:05 nc
+-rw-r--r--   2 root     root        1291 Feb  1 14:05 ncsa
+
+/usr/lib/terminfo/p:
+total 5
+
+drwxr-xr-x   2 root     root          80 Dec 16 15:38 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   1 root     root         928 Dec 16 15:38 p300
+-rw-r--r--   1 root     root         928 Dec 16 15:38 p600
+-rw-r--r--   1 root     root         938 Dec 16 15:38 pbase
+
+/usr/lib/terminfo/t:
+total 97
+
+drwxr-xr-x   2 root     root         800 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   2 root     root        1249 Feb  1 14:05 t1
+-rw-r--r--   2 root     root        1239 Feb  1 14:05 t2
+-rw-r--r--   2 root     root        1244 Feb  1 14:05 t3
+-rw-r--r--   2 root     root        1234 Feb  1 14:05 t4
+-rw-r--r--   1 root     root        1241 Feb  1 14:05 t5
+-rw-r--r--   2 root     root        1246 Feb  1 14:05 t6
+-rw-r--r--   1 root     root        1219 Feb  1 14:05 t7
+-rw-r--r--   2 root     root        1214 Feb  1 14:05 t8
+-rw-r--r--   3 root     root        1341 Feb  1 14:05 t9
+-rw-r--r--   1 root     root        1287 Dec 16 15:38 ti2015-855dp
+-rw-r--r--   1 root     root        1480 Dec 16 15:38 ti2015-855wp
+-rw-r--r--   1 root     root        1090 Dec 16 15:38 ti2015-hpjet
+-rw-r--r--   1 root     root        1101 Dec 16 15:38 ti210-hpjet
+-rw-r--r--   1 root     root        1007 Dec 16 15:38 ti810
+-rw-r--r--   1 root     root        1475 Dec 16 15:38 ti830
+-rw-r--r--   1 root     root        1294 Dec 16 15:38 ti830-855dp
+-rw-r--r--   1 root     root        1487 Dec 16 15:38 ti830-855wp
+-rw-r--r--   1 root     root        1475 Dec 16 15:38 ti835
+-rw-r--r--   1 root     root        1294 Dec 16 15:38 ti835-855dp
+-rw-r--r--   1 root     root        1487 Dec 16 15:38 ti835-855wp
+-rw-r--r--   1 root     root        1067 Dec 16 15:38 ti850
+-rw-r--r--   1 root     root        1436 Dec 16 15:38 ti855
+-rw-r--r--   1 root     root        1270 Dec 16 15:38 ti855dp
+-rw-r--r--   1 root     root        1464 Dec 16 15:38 ti855wp
+-rw-r--r--   1 root     root        1063 Dec 16 15:38 ti860
+-rw-r--r--   1 root     root        1445 Dec 16 15:38 ti865
+-rw-r--r--   1 root     root        1275 Dec 16 15:38 ti865dp
+-rw-r--r--   1 root     root        1463 Dec 16 15:38 ti865wp
+-rw-r--r--   1 root     root        1261 Dec 16 15:38 ti880
+-rw-r--r--   1 root     root        1279 Dec 16 15:38 ti880-at
+-rw-r--r--   1 root     root        1261 Dec 16 15:38 ti885
+-rw-r--r--   1 root     root        1310 Dec 16 15:38 ti8930
+-rw-r--r--   1 root     root        1308 Dec 16 15:38 ti8930-855dp
+-rw-r--r--   1 root     root        1502 Dec 16 15:38 ti8930-855wp
+-rw-r--r--   1 root     root        1318 Dec 16 15:38 ti8930-880
+-rw-r--r--   2 root     root        1249 Feb  1 14:05 ti924
+-rw-r--r--   2 root     root        1244 Feb  1 14:05 ti924-132
+-rw-r--r--   2 root     root        1239 Feb  1 14:05 ti924-8
+-rw-r--r--   2 root     root        1234 Feb  1 14:05 ti924-8-132
+-rw-r--r--   2 root     root        1236 Feb  1 14:05 ti926
+-rw-r--r--   2 root     root        1224 Feb  1 14:05 ti926-8
+-rw-r--r--   2 root     root        1306 Feb  1 14:05 ti928
+-rw-r--r--   2 root     root        1301 Feb  1 14:05 ti928-132
+-rw-r--r--   2 root     root        1288 Feb  1 14:05 ti928-8
+-rw-r--r--   2 root     root        1283 Feb  1 14:05 ti928-8-132
+-rw-r--r--   3 root     root        1341 Feb  1 14:05 ti931
+-rw-r--r--   3 root     root        1213 Feb  1 14:05 ti931r
+-rw-r--r--   1 root     root        1359 Feb  1 14:05 tm
+
+/usr/lib/terminfo/u:
+total 3
+
+drwxr-xr-x   2 root     root          48 Dec 16 15:38 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   1 root     root         844 Dec 16 15:38 unknown
+
+/usr/lib/terminfo/v:
+total 12
+
+drwxr-xr-x   2 root     root         112 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   3 root     root        1262 Feb  1 14:05 vt100
+-rw-r--r--   3 root     root        1262 Feb  1 14:05 vt100-am
+-rw-r--r--   2 root     root        1243 Feb  1 14:05 vt200
+-rw-r--r--   2 root     root        1313 Feb  1 14:05 vt220
+-rw-r--r--   2 root     root        1162 Feb  1 14:05 vt220-8
+
+/usr/lib/terminfo/w:
+total 8
+
+drwxr-xr-x   2 root     root          80 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   5 root     root        1908 Feb  1 14:05 wy75
+-rw-r--r--   5 root     root        1908 Feb  1 14:05 wyse
+-rw-r--r--   5 root     root        1908 Feb  1 14:05 wyse75
+
+/usr/lib/terminfo/x:
+total 14
+
+drwxr-xr-x   2 root     root         128 Feb  1 14:05 .
+drwxr-xr-x  18 bin      bin          288 Dec 16 15:38 ..
+-rw-r--r--   2 root     root        1306 Feb  1 14:05 x1
+-rw-r--r--   2 root     root        1288 Feb  1 14:05 x2
+-rw-r--r--   2 root     root        1301 Feb  1 14:05 x3
+-rw-r--r--   2 root     root        1283 Feb  1 14:05 x4
+-rw-r--r--   3 root     root        1213 Feb  1 14:05 x5
+-rw-r--r--   1 root     root        1257 Feb  1 14:05 x6
+
+/usr/lib/terminfo_src:
+total 194
+
+drwxr-xr-x   2 bin      bin          656 Feb  1 14:05 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+-rw-rw----   1 root     root        2594 Feb  1 14:05 adds.ti
+-rw-rw----   1 root     root        5694 Feb  1 14:05 annarbor.ti
+-rw-rw----   1 root     root        4778 Feb  1 14:05 ansi.ti
+-rw-rw----   1 root     root       33792 Feb  1 14:05 att.ti
+-rw-rw----   1 root     root        4166 Feb  1 14:05 beehive.ti
+-rw-rw----   1 root     root         408 Feb  1 14:05 cdc.ti
+-rw-rw----   1 root     root         752 Feb  1 14:05 colorscan.ti
+-rw-rw----   1 root     root        5502 Feb  1 14:05 concept.ti
+-rw-rw----   1 root     root        2254 Feb  1 14:05 datamedia.ti
+-rw-rw----   1 root     root        6598 Feb  1 14:05 dec.ti
+-rw-rw----   1 root     root        2822 Feb  1 14:05 diablo.ti
+-rw-rw----   1 root     root        1551 Feb  1 14:05 fortune.ti
+-rw-rw----   1 root     root        1303 Feb  1 14:05 general.ti
+-rw-rw----   1 root     root         742 Feb  1 14:05 hardcopy.ti
+-rw-rw----   1 root     root        3410 Feb  1 14:05 hazeltine.ti
+-rw-rw----   1 root     root        2058 Feb  1 14:05 heath.ti
+-rw-rw----   1 root     root        2937 Feb  1 14:05 homebrew.ti
+-rw-rw----   1 root     root        6589 Feb  1 14:05 hp.ti
+-rw-rw----   1 root     root        3218 Feb  1 14:05 ibm.ti
+-rw-rw----   1 root     root        3215 Feb  1 14:05 lsi.ti
+-rw-rw----   1 root     root        2704 Feb  1 14:05 microterm.ti
+-rw-rw----   1 root     root       17359 Feb  1 14:05 misc.ti
+-rw-rw----   1 root     root        3975 Feb  1 14:05 pc.ti
+-rw-rw----   1 root     root        1013 Feb  1 14:05 perkinelm.ti
+-rw-rw----   1 root     root        1509 Feb  1 14:05 print.ti
+-rw-rw-r--   1 root     root        8921 Dec 16 15:38 printer.ti
+-rw-rw----   1 root     root       14178 Feb  1 14:05 s32.ti
+-rw-rw----   1 root     root         596 Feb  1 14:05 special.ti
+-rw-rw----   1 root     root        1683 Feb  1 14:05 sperry.ti
+-rw-rw----   1 root     root        3756 Feb  1 14:05 tektronix.ti
+-rw-rw----   1 root     root        2145 Feb  1 14:05 teleray.ti
+-rw-rw----   1 root     root        4573 Feb  1 14:05 teletype.ti
+-rw-rw----   1 root     root        6565 Feb  1 14:05 televideo.ti
+-rw-rw----   1 root     root         234 Feb  1 14:05 ti.ti
+-rw-rw----   1 root     root        1882 Feb  1 14:05 trailer.ti
+-rw-rw----   1 root     root         698 Feb  1 14:05 tymshare.ti
+-rw-rw----   1 root     root        3671 Feb  1 14:05 virtual.ti
+-rw-rw----   1 root     root        3801 Feb  1 14:05 visual.ti
+-rw-rw----   1 root     root         826 Feb  1 14:05 xterm.ti
+
+/usr/lib/tmac:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+
+/usr/lib/uucp:
+total 275
+
+drwxr-xr-x   3 uucp     bin          288 Dec 16 15:55 .
+drwxr-xr-x  19 bin      bin         1168 Feb  1 13:59 ..
+drwxrwxrwx   2 uucp     uucp          32 Dec 16 15:19 .XQTDIR
+-r--r--r--   1 uucp     bin           53 Dec 16 15:55 L-devices
+-r--r--r--   1 uucp     bin           39 Dec 16 15:55 L.cmds
+-r--r-----   1 uucp     bin           91 Dec 16 15:55 L.sys
+-rwxrw-rw-   1 uucp     bin            0 Dec 16 15:55 L_stat
+-rwxrw-rw-   1 uucp     bin            0 Dec 16 15:55 L_sub
+-rwxrw-rw-   1 uucp     bin            0 Dec 16 15:55 R_stat
+-rwxrw-rw-   1 uucp     bin            0 Dec 16 15:55 R_sub
+-r--r-----   1 uucp     bin           67 Dec 16 15:55 USERFILE
+---s--x--x   1 uucp     bin       108010 Dec 16 15:54 uucico
+---s--x--x   1 uucp     bin        53294 Dec 16 15:54 uuclean
+-rwxr-xr-x   1 uucp     bin          408 Dec 16 15:55 uudemon.day
+-rwxr-xr-x   1 uucp     bin          148 Dec 16 15:55 uudemon.hr
+-rwxr-xr-x   1 uucp     bin          298 Dec 16 15:55 uudemon.wk
+---x------   1 uucp     bin        42858 Dec 16 15:54 uusub
+---s--x--x   1 uucp     bin        59478 Dec 16 15:54 uuxqt
+
+/usr/lib/uucp/.XQTDIR:
+total 2
+
+drwxrwxrwx   2 uucp     uucp          32 Dec 16 15:19 .
+drwxr-xr-x   3 uucp     bin          288 Dec 16 15:55 ..
+
+/usr/local:
+total 113
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:29 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+-rwsr-x---   1 bin      sys       112104 Dec 16 15:29 crash
+
+/usr/lost+found:
+total 2
+
+drwx------   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+
+/usr/mail:
+total 3
+
+drwxrwxr-x   3 bin      mail          48 Dec 16 15:18 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+drwxrwxr-x   2 bin      mail          32 Dec 16 15:18 :saved
+
+/usr/mail/:saved:
+total 2
+
+drwxrwxr-x   2 bin      mail          32 Dec 16 15:18 .
+drwxrwxr-x   3 bin      mail          48 Dec 16 15:18 ..
+
+/usr/news:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+
+/usr/plib:
+total 4
+
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:19 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 lex
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 terminfo
+
+/usr/plib/lex:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 .
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:19 ..
+
+/usr/plib/terminfo:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 .
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:19 ..
+
+/usr/preserve:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+
+/usr/pub:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:18 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+
+/usr/skel:
+total 6
+
+drwxr-xr-x   2 bin      bin           96 Dec 16 15:54 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+-rw-r--r--   1 bin      bin          361 Dec 16 15:54 .cshrc
+-rw-r--r--   1 bin      bin          441 Dec 16 15:54 .login
+-rw-r--r--   1 bin      bin           41 Dec 16 15:54 .logout
+-rw-r--r--   1 bin      bin          509 Dec 16 15:54 .profile
+
+/usr/spool:
+total 8
+
+drwxrwxrwx   8 bin      bin          128 Dec 16 15:19 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:19 cron
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 lp
+drwxrwxrwx   2 lp       bin           32 Dec 16 15:19 lppublic
+drwxrwxrwx   2 bin      bin           32 Dec 16 15:19 pscrn
+drwxrwxrwx   2 uucp     uucp          32 Dec 16 15:19 uucp
+drwxrwxrwx   2 uucp     uucp          32 Dec 16 15:19 uucppublic
+
+/usr/spool/cron:
+total 4
+
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:19 .
+drwxrwxrwx   8 bin      bin          128 Dec 16 15:19 ..
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 atjobs
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:30 crontabs
+
+/usr/spool/cron/atjobs:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 .
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:19 ..
+
+/usr/spool/cron/crontabs:
+total 3
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:30 .
+drwxr-xr-x   4 bin      bin           64 Dec 16 15:19 ..
+-rw-r--r--   1 root     sys          129 Dec 16 15:30 adm
+
+/usr/spool/lp:
+total 10
+
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 .
+drwxrwxrwx   8 bin      bin          128 Dec 16 15:19 ..
+drwxrwxr-x   3 lp       bin           48 Dec 16 15:19 admins
+drwxrwxr-x   2 lp       bin          144 Dec 16 15:38 bin
+drwxrwxr-x   4 lp       bin           64 Dec 16 15:19 fifos
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 logs
+drwxrwxr-x   2 lp       bin          208 Dec 16 15:37 model
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 requests
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 system
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 temp
+
+/usr/spool/lp/admins:
+total 3
+
+drwxrwxr-x   3 lp       bin           48 Dec 16 15:19 .
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 ..
+drwxrwxr-x   8 lp       bin          128 Dec 16 15:19 lp
+
+/usr/spool/lp/admins/lp:
+total 8
+
+drwxrwxr-x   8 lp       bin          128 Dec 16 15:19 .
+drwxrwxr-x   3 lp       bin           48 Dec 16 15:19 ..
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 classes
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 forms
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 interfaces
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 logs
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 printers
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 pwheels
+
+/usr/spool/lp/admins/lp/classes:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x   8 lp       bin          128 Dec 16 15:19 ..
+
+/usr/spool/lp/admins/lp/forms:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x   8 lp       bin          128 Dec 16 15:19 ..
+
+/usr/spool/lp/admins/lp/interfaces:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x   8 lp       bin          128 Dec 16 15:19 ..
+
+/usr/spool/lp/admins/lp/logs:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x   8 lp       bin          128 Dec 16 15:19 ..
+
+/usr/spool/lp/admins/lp/printers:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x   8 lp       bin          128 Dec 16 15:19 ..
+
+/usr/spool/lp/admins/lp/pwheels:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x   8 lp       bin          128 Dec 16 15:19 ..
+
+/usr/spool/lp/bin:
+total 124
+
+drwxrwxr-x   2 lp       bin          144 Dec 16 15:38 .
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 ..
+-r--r--r--   1 lp       bin          700 Dec 16 15:38 alert.proto
+-r-xr-xr-x   1 lp       bin        14600 Dec 16 15:37 drain.output
+-r-xr-xr-x   1 lp       bin        24148 Dec 16 15:37 lp.cat
+-r-xr-xr-x   1 lp       bin        15216 Dec 16 15:37 lp.page
+-r-xr-xr-x   1 lp       bin        38600 Dec 16 15:37 lp.set
+-r-xr-xr-x   1 lp       bin        21936 Dec 16 15:37 lp.tell
+-r-xr-xr-x   1 bin      bin         1801 Dec 16 15:38 slow.filter
+
+/usr/spool/lp/fifos:
+total 4
+
+drwxrwxr-x   4 lp       bin           64 Dec 16 15:19 .
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 ..
+drwxrwx--x   2 lp       bin           32 Dec 16 15:19 private
+drwxrwx-wx   2 lp       bin           32 Dec 16 15:19 public
+
+/usr/spool/lp/fifos/private:
+total 2
+
+drwxrwx--x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x   4 lp       bin           64 Dec 16 15:19 ..
+
+/usr/spool/lp/fifos/public:
+total 2
+
+drwxrwx-wx   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x   4 lp       bin           64 Dec 16 15:19 ..
+
+/usr/spool/lp/logs:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 ..
+
+/usr/spool/lp/model:
+total 66
+
+drwxrwxr-x   2 lp       bin          208 Dec 16 15:37 .
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 ..
+-r-xr-xr-x   1 lp       bin         4914 Dec 16 15:37 2015
+-r-xr-xr-x   1 lp       bin         2761 Dec 16 15:37 600
+-r-xr-xr-x   1 lp       bin         3775 Dec 16 15:37 810
+-r-xr-xr-x   1 lp       bin         3497 Dec 16 15:37 810ex
+-r-xr-xr-x   1 lp       bin         4413 Dec 16 15:37 850
+-r-xr-xr-x   1 lp       bin         4711 Dec 16 15:37 855
+-r-xr-xr-x   1 lp       bin         4393 Dec 16 15:37 880
+-r-xr-xr-x   1 lp       bin         2713 Dec 16 15:37 dumb
+-r-xr-xr-x   1 lp       bin        24573 Dec 16 15:37 standard
+-r-xr-xr-x   1 lp       bin         2918 Dec 16 15:37 tr78
+-r-xr-xr-x   1 lp       bin         1695 Dec 16 15:37 tr87
+
+/usr/spool/lp/requests:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 ..
+
+/usr/spool/lp/system:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 ..
+
+/usr/spool/lp/temp:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxr-x  10 lp       bin          160 Dec 16 15:19 ..
+
+/usr/spool/lppublic:
+total 2
+
+drwxrwxrwx   2 lp       bin           32 Dec 16 15:19 .
+drwxrwxrwx   8 bin      bin          128 Dec 16 15:19 ..
+
+/usr/spool/pscrn:
+total 2
+
+drwxrwxrwx   2 bin      bin           32 Dec 16 15:19 .
+drwxrwxrwx   8 bin      bin          128 Dec 16 15:19 ..
+
+/usr/spool/uucp:
+total 2
+
+drwxrwxrwx   2 uucp     uucp          32 Dec 16 15:19 .
+drwxrwxrwx   8 bin      bin          128 Dec 16 15:19 ..
+
+/usr/spool/uucppublic:
+total 2
+
+drwxrwxrwx   2 uucp     uucp          32 Dec 16 15:19 .
+drwxrwxrwx   8 bin      bin          128 Dec 16 15:19 ..
+
+/usr/src:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+
+/usr/sys:
+total 1887
+
+drwxrwx---   4 sys      sys          288 Dec 16 15:22 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+drwxrwx---   2 sys      sys          160 Dec 16 15:22 cf
+-rw-rw----   1 sys      sys       137426 May  6 09:22 fpu.lib
+-rw-rw----   1 sys      sys        47386 May  6 09:21 fs.lib
+-rw-rw----   1 sys      sys       326250 May  6 09:22 io.lib
+-rw-rw----   1 sys      sys        31724 Dec 16 15:22 kdb.lib
+-rw-r--r--   1 sys      sys           71 Dec 16 15:22 lcf
+drwxrwx---   5 sys      sys          272 Dec 16 16:02 ldd
+-rw-rw----   1 sys      sys          948 Dec 16 15:22 makefile
+-rw-rw----   1 sys      sys        16386 May  6 09:21 ml.lib
+-rw-rw----   1 sys      sys         2174 Dec 16 15:22 nfs.lib
+-rw-rw----   1 sys      sys       232888 May  6 09:21 os.lib
+-rwxrwx---   1 sys      sys       146168 Feb  1 14:18 primitive.new
+-rw-rw----   1 sys      sys         1992 May  6 09:20 rev.o
+-rw-rw----   1 sys      sys       158494 Dec 16 15:22 stbm.lib
+-rwxrwx---   1 sys      sys       719944 May  6 09:23 unix.new
+-rw-rw----   1 sys      sys        72786 May  6 09:22 vm.lib
+
+/usr/sys/cf:
+total 103
+
+drwxrwx---   2 sys      sys          160 Dec 16 15:22 .
+drwxrwx---   4 sys      sys          288 Dec 16 15:22 ..
+-rw-rw----   1 sys      sys        26183 Dec 16 15:22 conf.c
+-rw-rw----   1 sys      sys        25247 Dec 16 15:22 conf.o
+-rw-rw----   1 sys      sys          720 Dec 16 15:22 linesw.o
+-rw-rw----   1 sys      sys        12155 Feb  1 14:16 locore.o
+-rw-rw----   1 sys      sys        28047 Feb  1 14:15 locore.s
+-rw-rw----   1 sys      sys          367 Dec 16 15:22 makefile
+-rw-rw----   1 sys      sys         2849 Dec 16 15:22 ttyioctl.c
+-rw-rw----   1 sys      sys          499 Dec 16 15:22 ttyioctl.o
+
+/usr/sys/ldd:
+total 575
+
+drwxrwx---   5 sys      sys          272 Dec 16 16:02 .
+drwxrwx---   4 sys      sys          288 Dec 16 15:22 ..
+-rw-r--r--   1 sys      sys           67 Dec 16 16:02 ccbifile
+-rw-r--r--   1 sys      sys        38172 Dec 16 16:01 ccbld
+-rw-r--r--   1 sys      sys        41838 Dec 16 16:01 ccbld.lib
+drwxrwx---   2 sys      sys          144 Dec 16 16:01 cf
+-rw-r--r--   1 sys      sys       161174 Dec 16 16:01 ios.lib
+drwxrwx---   2 sys      sys           64 Dec 16 16:02 lib
+-rw-r--r--   1 sys      sys          118 Dec 16 16:02 makefile
+-rw-r--r--   1 sys      sys         1399 Dec 16 16:02 mk.ld
+drwxrwx---   2 sys      sys          176 Dec 16 16:02 sys
+-rwxrwx---   1 sys      sys        17999 Dec 16 16:01 tcdlcvt
+-rw-rw----   1 sys      sys          110 Dec 16 16:02 tcifile
+-rw-r--r--   1 sys      sys       107230 Dec 16 16:01 tcld
+-rw-r--r--   1 sys      sys        42716 Dec 16 16:01 tcld.lib
+-rw-r--r--   1 sys      sys       131161 Dec 16 16:01 tcld.o
+-rw-r--r--   1 sys      sys        23943 Dec 16 16:01 tcld.sym
+
+/usr/sys/ldd/cf:
+total 10
+
+drwxrwx---   2 sys      sys          144 Dec 16 16:01 .
+drwxrwx---   5 sys      sys          272 Dec 16 16:02 ..
+-rw-r--r--   1 sys      sys          815 Dec 16 16:01 conf.O
+-rw-rw----   1 sys      sys         1500 Dec 16 16:01 conf.c
+-rw-r--r--   1 sys      sys          833 Dec 16 16:01 conf.o
+-rw-r--r--   1 sys      sys          720 Dec 16 16:01 linesw.O
+-rw-rw----   1 sys      sys          983 Dec 16 16:01 linesw.c
+-rw-r--r--   1 sys      sys          720 Dec 16 16:01 linesw.o
+-rw-rw----   1 sys      sys          355 Dec 16 16:01 makefile
+
+/usr/sys/ldd/lib:
+total 20
+
+drwxrwx---   2 sys      sys           64 Dec 16 16:02 .
+drwxrwx---   5 sys      sys          272 Dec 16 16:02 ..
+-rw-r--r--   1 sys      sys         8784 Dec 16 16:02 libccb.a
+-rw-r--r--   1 sys      sys         8798 Dec 16 16:02 libtc.a
+
+/usr/sys/ldd/sys:
+total 22
+
+drwxrwx---   2 sys      sys          176 Dec 16 16:02 .
+drwxrwx---   5 sys      sys          272 Dec 16 16:02 ..
+-rw-r--r--   1 sys      sys         1003 Dec 16 16:02 conf.h
+-rw-r--r--   1 sys      sys          849 Dec 16 16:02 file.h
+-rw-r--r--   1 sys      sys         1193 Dec 16 16:02 param.h
+-rw-r--r--   1 sys      sys          485 Dec 16 16:02 proc.h
+-rw-r--r--   1 sys      sys          632 Dec 16 16:02 sysinfo.h
+-rw-r--r--   1 sys      sys         6235 Dec 16 16:02 systm.h
+-rw-r--r--   1 sys      sys         4582 Dec 16 16:02 tty.h
+-rw-r--r--   1 sys      sys          715 Dec 16 16:02 types.h
+-rw-r--r--   1 sys      sys          965 Dec 16 16:02 user.h
+
+/usr/ti:
+total 551
+
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+drwxr-xr-x   2 bin      bin           80 Dec 16 15:29 collate
+drwxr-xr-x   2 bin      bin          288 Dec 16 16:01 dnio
+drwxr-xr-x   2 bin      bin          112 Dec 16 16:00 examples
+drwxr-xr-x   2 bin      bin           80 Dec 16 15:59 fetest
+-rw-rw-rw-   1 root     root      126942 Feb  1 14:19 filemap
+drwxr-xr-x   3 bin      bin          496 Dec 16 15:57 helps
+-rw-r--r--   1 root     root      413374 Dec 16 15:41 master
+drwxr-xr-x   2 bin      bin          448 Dec 16 15:57 menus
+drwxr-xr-x   2 bin      bin           48 Dec 16 16:00 net
+drwxr-xr-x   2 bin      bin           64 Dec 16 15:20 nfs
+drwxr-xr-x   2 bin      bin         3200 Dec 16 15:57 prompts
+drwxr-xr-x   2 bin      bin           80 Dec 16 16:03 ptty
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 tcp
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:35 tisam
+
+/usr/ti/collate:
+total 17
+
+drwxr-xr-x   2 bin      bin           80 Dec 16 15:29 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rw-r--r--   1 bin      bin         1024 Dec 16 15:29 INTL
+-rw-r--r--   1 bin      bin         1024 Dec 16 15:29 USA
+-rw-r--r--   1 bin      bin        11336 Dec 16 15:29 collate.c
+
+/usr/ti/dnio:
+total 807
+
+drwxr-xr-x   2 bin      bin          288 Dec 16 16:01 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rw-r--r--   1 root     root       36894 Dec 16 16:00 ccbxport
+-rw-r--r--   1 root     root       82232 Dec 16 16:00 dnio1500.o
+-rw-r--r--   1 root     root        1395 Feb  1 14:07 dnio1500init
+-rw-r--r--   1 root     root       14500 Feb  1 14:07 fecap.inl
+-rw-r--r--   1 root     root       27669 Dec 16 16:01 inl.o
+-rw-r--r--   1 root     root       35099 Dec 16 16:01 inl990.o
+-rw-r--r--   1 root     root       14905 Feb  1 14:07 install.scr
+-rw-r--r--   1 root     root       54454 Dec 16 16:01 libnetc.a
+-rw-r--r--   1 root     root       21344 Dec 16 16:01 libnetsubs.a
+-rw-r--r--   1 root     root       64330 Dec 16 16:01 libnettisam.a
+-rw-r--r--   1 root     root       40541 Feb  1 14:07 messages
+-rw-r--r--   1 root     root       63154 Dec 16 16:01 nios990.o
+-rw-rw----   1 root     root      309772 Dec 16 15:53 parts.a
+-rw-r--r--   1 root     root        6145 Dec 16 16:00 preinit.o
+-rw-r--r--   1 root     root       16896 Feb  1 14:07 relinfo
+-rw-r--r--   1 root     root        8228 Dec 16 16:01 xnets.o
+
+/usr/ti/examples:
+total 24
+
+drwxr-xr-x   2 bin      bin          112 Dec 16 16:00 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-r--r--r--   1 root     root        6057 Dec 16 15:59 inetxmit.c
+-r--r--r--   1 root     root        1194 Dec 16 16:00 post.c
+-r--r--r--   1 root     root        2027 Dec 16 16:00 rfind.c
+-r--r--r--   1 root     root        5437 Dec 16 16:00 siglv0.c
+-r--r--r--   1 root     root        5347 Dec 16 16:00 xmitlv0.c
+
+/usr/ti/fetest:
+total 166
+
+drwxr-xr-x   2 bin      bin           80 Dec 16 15:59 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rwxrwxrwx   1 bin      bin        75016 Dec 16 15:59 keytest
+-rwxrwxrwx   1 bin      bin        17125 Dec 16 15:59 keytrace
+-rwxrwxrwx   1 bin      bin        70739 Dec 16 15:59 wrtmulti
+
+/usr/ti/helps:
+total 42
+
+drwxr-xr-x   3 bin      bin          496 Dec 16 15:57 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rw-r--r--   1 bin      bin          276 Dec 16 15:57 accounts.hlp
+-rw-r--r--   1 bin      bin          179 Dec 16 15:57 activity.hlp
+-rw-r--r--   1 bin      bin          194 Dec 16 15:57 assembly.hlp
+-rw-r--r--   1 bin      bin          353 Dec 16 15:57 c.hlp
+-rw-r--r--   1 bin      bin         7202 Dec 16 15:57 cobol.hlp
+-rw-r--r--   1 bin      bin          369 Dec 16 15:57 cobolmen.hlp
+-rw-r--r--   1 bin      bin          290 Dec 16 15:57 data.hlp
+-rw-r--r--   1 bin      bin          244 Dec 16 15:57 dir.hlp
+-rw-r--r--   1 bin      bin          648 Dec 16 15:57 disk.hlp
+-rw-r--r--   1 bin      bin          261 Dec 16 15:57 file.hlp
+-rw-r--r--   1 bin      bin          377 Dec 16 15:57 fortran.hlp
+-rw-r--r--   1 bin      bin          381 Dec 16 15:57 lexical.hlp
+-rw-r--r--   1 bin      bin          299 Dec 16 15:57 mail.hlp
+-rw-r--r--   1 bin      bin         4114 Dec 16 15:57 menu.hlp
+-rw-r--r--   1 bin      bin          341 Dec 16 15:57 mlc.hlp
+-rw-r--r--   1 bin      bin          443 Dec 16 15:57 network.hlp
+-rw-r--r--   1 bin      bin          145 Dec 16 15:57 object.hlp
+-rw-r--r--   1 bin      bin          359 Dec 16 15:57 pascal.hlp
+-rw-r--r--   1 bin      bin          253 Dec 16 15:57 personal.hlp
+drwxr-xr-x   2 bin      bin          400 Dec 16 15:43 pm
+-rw-r--r--   1 bin      bin          211 Dec 16 15:57 process.hlp
+-rw-r--r--   1 bin      bin          309 Dec 16 15:57 program.hlp
+-rw-r--r--   1 bin      bin          483 Dec 16 15:57 sccs.hlp
+-rw-r--r--   1 bin      bin          176 Dec 16 15:57 software.hlp
+-rw-r--r--   1 bin      bin          175 Dec 16 15:57 spooler.hlp
+-rw-r--r--   1 bin      bin          604 Dec 16 15:57 support.hlp
+-rw-r--r--   1 bin      bin          216 Dec 16 15:57 terminal.hlp
+-rw-r--r--   1 bin      bin          424 Dec 16 15:57 users.hlp
+-rw-r--r--   1 bin      bin          407 Dec 16 15:57 uucp.hlp
+
+/usr/ti/helps/pm:
+total 72
+
+drwxr-xr-x   2 bin      bin          400 Dec 16 15:43 .
+drwxr-xr-x   3 bin      bin          496 Dec 16 15:57 ..
+-rw-rw-r--   1 bin      bin          864 Feb  1 14:06 bus_net.hlp
+-rw-rw-r--   1 bin      bin         2670 Feb  1 14:06 ccb_disp.hlp
+-rw-rw-r--   1 bin      bin        17461 Feb  1 14:06 cfg_item.hlp
+-rw-rw-r--   1 bin      bin         3234 Feb  1 14:06 cpu_disp.hlp
+-rw-rw-r--   1 bin      bin          661 Feb  1 14:06 dsk_exdb.hlp
+-rw-rw-r--   1 bin      bin          690 Feb  1 14:06 dsk_exdl.hlp
+-rw-rw-r--   1 bin      bin          615 Feb  1 14:06 dsk_exll.hlp
+-rw-rw-r--   1 bin      bin          544 Feb  1 14:06 dsk_exqc.hlp
+-rw-rw-r--   1 bin      bin          537 Feb  1 14:06 dsk_exts.hlp
+-rw-rw-r--   1 bin      bin         2419 Feb  1 14:06 dsk_info.hlp
+-rw-rw-r--   1 bin      bin         1013 Feb  1 14:06 gen_info.hlp
+-rw-rw-r--   1 bin      bin         1807 Feb  1 14:06 lin_inf1.hlp
+-rw-rw-r--   1 bin      bin         3821 Feb  1 14:06 lin_inf2.hlp
+-rw-rw-r--   1 bin      bin         1006 Feb  1 14:06 mem_dump.hlp
+-rw-rw-r--   1 bin      bin         2338 Feb  1 14:06 net_disp.hlp
+-rw-rw-r--   1 bin      bin         3234 Feb  1 14:06 qst_mark.hlp
+-rw-rw-r--   1 bin      bin          663 Feb  1 14:06 rate.hlp
+-rw-rw-r--   1 bin      bin          992 Feb  1 14:06 slot_cfg.hlp
+-rw-rw-r--   1 bin      bin         3404 Feb  1 14:06 sys_wide.hlp
+-rw-rw-r--   1 bin      bin          702 Feb  1 14:06 tc_disp.hlp
+-rw-rw-r--   1 bin      bin         1810 Feb  1 14:06 tde.hlp
+-rw-rw-r--   1 bin      bin         4822 Feb  1 14:06 total.hlp
+-rw-rw-r--   1 bin      bin         5225 Feb  1 14:06 vm.hlp
+
+/usr/ti/menus:
+total 30
+
+drwxr-xr-x   2 bin      bin          448 Dec 16 15:57 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rw-r--r--   1 bin      bin          314 Dec 16 15:57 accounts
+-rw-r--r--   1 bin      bin          118 Dec 16 15:57 activity
+-rw-r--r--   1 bin      bin          719 Dec 16 15:57 assembly
+-rw-r--r--   1 bin      bin          210 Dec 16 15:57 c
+-rw-r--r--   1 bin      bin          223 Dec 16 15:57 cobol
+-rw-r--r--   1 bin      bin         1210 Dec 16 15:57 data
+-rw-r--r--   1 bin      bin          340 Dec 16 15:57 dir
+-rw-r--r--   1 bin      bin          699 Dec 16 15:57 disk
+-rw-r--r--   1 bin      bin         1546 Dec 16 15:57 file
+-rw-r--r--   1 bin      bin          222 Dec 16 15:57 fortran
+-rw-r--r--   1 bin      bin          261 Dec 16 15:57 lexical
+-rw-r--r--   1 bin      bin          353 Dec 16 15:57 mail
+-rw-r--r--   1 bin      bin          879 Dec 16 15:57 mlc
+-rw-r--r--   1 bin      bin          129 Dec 16 15:57 network
+-rw-r--r--   1 bin      bin          331 Dec 16 15:57 object
+-rw-r--r--   1 bin      bin          220 Dec 16 15:57 pascal
+-rw-r--r--   1 bin      bin          300 Dec 16 15:57 personal
+-rw-r--r--   1 bin      bin          528 Dec 16 15:57 process
+-rw-r--r--   1 bin      bin          457 Dec 16 15:57 program
+-rw-r--r--   1 bin      bin          567 Dec 16 15:57 sccs
+-rw-r--r--   1 bin      bin          462 Dec 16 15:57 software
+-rw-r--r--   1 bin      bin          480 Dec 16 15:57 spooler
+-rw-r--r--   1 bin      bin          332 Dec 16 15:57 support
+-rw-r--r--   1 bin      bin          244 Dec 16 15:57 terminal
+-rw-r--r--   1 bin      bin          405 Dec 16 15:57 users
+-rw-r--r--   1 bin      bin          484 Dec 16 15:57 uucp
+
+/usr/ti/net:
+total 4
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 16:00 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rwxr-xr-x   1 root     root        1247 Dec 16 16:00 netwhat
+
+/usr/ti/nfs:
+total 23
+
+drwxr-xr-x   2 bin      bin           64 Dec 16 15:20 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rw-r--r--   1 root     root        4992 Dec 16 15:20 flock.o
+-rwxr-xr-x   1 root     root       15356 Dec 16 15:20 install.scr
+
+/usr/ti/prompts:
+total 308
+
+drwxr-xr-x   2 bin      bin         3200 Dec 16 15:57 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rwxr-xr-x   1 bin      bin         2273 Dec 16 15:57 A68K
+-rwxr-xr-x   1 bin      bin         1746 Dec 16 15:57 A68M
+-rwxr-xr-x   1 bin      bin          300 Dec 16 15:57 ACCEPT
+-rwxr-xr-x   1 bin      bin         2115 Dec 16 15:57 ADMIN
+-rwxr-xr-x   1 bin      bin         2605 Dec 16 15:57 AR
+-rwxr-xr-x   1 bin      bin         1010 Dec 16 15:57 AS
+-rwxr-xr-x   1 bin      bin          443 Dec 16 15:57 AT
+-rwxr-xr-x   1 bin      bin         1131 Dec 16 15:57 AWK
+-rwxr-xr-x   1 bin      bin         1903 Dec 16 15:57 BACKUP
+-rwxr-xr-x   1 bin      bin          715 Dec 16 15:57 BANNER
+-rwxr-xr-x   1 bin      bin          402 Dec 16 15:57 BATCH
+-rwxr-xr-x   1 bin      bin          562 Dec 16 15:57 BC
+-rwxr-xr-x   1 bin      bin         1166 Dec 16 15:57 BDIFF
+-rwxr-xr-x   1 bin      bin         1388 Dec 16 15:57 BSH
+-rwxr-xr-x   1 bin      bin          412 Dec 16 15:57 CAL
+-rwxr-xr-x   1 bin      bin          228 Dec 16 15:57 CALENDAR
+-rwxr-xr-x   1 bin      bin          805 Dec 16 15:57 CANCEL
+-rwxr-xr-x   1 bin      bin          963 Dec 16 15:57 CAT
+-rwxr-xr-x   1 bin      bin          818 Dec 16 15:57 CB
+-rwxr-xr-x   1 bin      bin         1006 Dec 16 15:57 CDC
+-rwxr-xr-x   1 bin      bin          990 Dec 16 15:57 CFLOW
+-rwxr-xr-x   1 bin      bin          384 Dec 16 15:57 CHGRP
+-rwxr-xr-x   1 bin      bin          370 Dec 16 15:57 CHMOD
+-rwxr-xr-x   1 bin      bin          365 Dec 16 15:57 CHOWN
+-rwxr-xr-x   1 bin      bin          671 Dec 16 15:57 CMP
+-rwxr-xr-x   1 bin      bin          724 Dec 16 15:57 COMM
+-rwxr-xr-x   1 bin      bin          358 Dec 16 15:57 CP
+-rwxr-xr-x   1 bin      bin         1260 Dec 16 15:57 CPDIR
+-rwxr-xr-x   1 bin      bin         3208 Dec 16 15:57 CPIO
+-rwxr-xr-x   1 bin      bin          680 Dec 16 15:57 CPISAM
+-rwxr-xr-x   1 bin      bin          780 Dec 16 15:57 CRONTAB
+-rwxr-xr-x   1 bin      bin          806 Dec 16 15:57 CRYPT
+-rwxr-xr-x   1 bin      bin         1410 Dec 16 15:57 CSH
+-rwxr-xr-x   1 bin      bin          667 Dec 16 15:57 CT
+-rwxr-xr-x   1 bin      bin         3234 Dec 16 15:57 CU
+-rwxr-xr-x   1 bin      bin         1245 Dec 16 15:57 CUT
+-rwxr-xr-x   1 bin      bin         1362 Dec 16 15:57 CXREF
+-rwxr-xr-x   1 bin      bin          831 Dec 16 15:57 DATE
+-rwxr-xr-x   1 bin      bin          294 Dec 16 15:57 DC
+-rwxr-xr-x   1 bin      bin         2384 Dec 16 15:57 DD
+-rwxr-xr-x   1 bin      bin         1102 Dec 16 15:57 DELTA
+-rwxr-xr-x   1 bin      bin          818 Dec 16 15:57 DEVADM
+-rwxr-xr-x   1 bin      bin          580 Dec 16 15:57 DF
+-rwxr-xr-x   1 bin      bin          314 Dec 16 15:57 DFM
+-rwxr-xr-x   1 bin      bin         1332 Dec 16 15:57 DIFF
+-rwxr-xr-x   1 bin      bin         1215 Dec 16 15:57 DIFF3
+-rwxr-xr-x   1 bin      bin         1069 Dec 16 15:57 DIRCMP
+-rwxr-xr-x   1 bin      bin          710 Dec 16 15:57 DISABLE
+-rwxr-xr-x   1 bin      bin          683 Dec 16 15:57 DU
+-rwxr-xr-x   1 bin      bin         2764 Dec 16 15:57 DUMP
+-rwxr-xr-x   1 bin      bin          523 Dec 16 15:57 ED
+-rwxr-xr-x   1 bin      bin          292 Dec 16 15:57 EDIT
+-rwxr-xr-x   1 bin      bin         2062 Dec 16 15:57 EGREP
+-rwxr-xr-x   1 bin      bin          296 Dec 16 15:57 ENABLE
+-rwxr-xr-x   1 bin      bin          681 Dec 16 15:57 ENV
+-rwxr-xr-x   1 bin      bin         1349 Dec 16 15:57 ERRPT
+-rwxr-xr-x   1 bin      bin          892 Dec 16 15:57 EX
+-rwxr-xr-x   1 bin      bin          274 Dec 16 15:57 FACTOR
+-rwxr-xr-x   1 bin      bin         1798 Dec 16 15:57 FF
+-rwxr-xr-x   1 bin      bin         2089 Dec 16 15:57 FGREP
+-rwxr-xr-x   1 bin      bin         1350 Dec 16 15:57 FILE
+-rwxr-xr-x   1 bin      bin          797 Dec 16 15:57 FINC
+-rwxr-xr-x   1 bin      bin         3180 Dec 16 15:57 FIND
+-rwxr-xr-x   1 bin      bin         1002 Dec 16 15:57 FINDISAM
+-rwxr-xr-x   1 bin      bin          612 Dec 16 15:57 FREC
+-rwxr-xr-x   1 bin      bin         1172 Dec 16 15:57 FRISAM
+-rwxr-xr-x   1 bin      bin         1143 Dec 16 15:57 FRPC
+-rwxr-xr-x   1 bin      bin         1737 Dec 16 15:57 FSCK
+-rwxr-xr-x   1 bin      bin          595 Dec 16 15:57 FUSER
+-rwxr-xr-x   1 bin      bin          707 Dec 16 15:57 GET
+-rwxr-xr-x   1 bin      bin         1272 Dec 16 15:57 GREP
+-rwxr-xr-x   1 bin      bin          532 Dec 16 15:57 GRPCK
+-rwxr-xr-x   1 bin      bin          633 Dec 16 15:57 HEAD
+-rwxr-xr-x   1 bin      bin          433 Dec 16 15:57 HELP
+-rwxr-xr-x   1 bin      bin          189 Dec 16 15:57 ID
+-rwxr-xr-x   1 bin      bin         1709 Dec 16 15:57 INSTALL
+-rwxr-xr-x   1 bin      bin          864 Dec 16 15:57 IPCRM
+-rwxr-xr-x   1 bin      bin         1349 Dec 16 15:57 IPCS
+-rwxr-xr-x   1 bin      bin         1437 Dec 16 15:57 JOIN
+-rwxr-xr-x   1 bin      bin          258 Dec 16 15:57 KIFTISAM
+-rwxr-xr-x   1 bin      bin          327 Dec 16 15:57 KILL
+-rwxr-xr-x   1 bin      bin         1266 Dec 16 15:57 LABELIT
+-rwxr-xr-x   1 bin      bin         1558 Dec 16 15:57 LD
+-rwxr-xr-x   1 bin      bin          665 Dec 16 15:57 LEX
+-rwxr-xr-x   1 bin      bin         2316 Dec 16 15:57 LINT
+-rwxr-xr-x   1 bin      bin          418 Dec 16 15:57 LN
+-rwxr-xr-x   1 bin      bin          173 Dec 16 15:57 LOGNAME
+-rwxr-xr-x   1 bin      bin         6056 Dec 16 15:57 LP
+-rwxr-xr-x   1 bin      bin         6483 Dec 16 15:57 LPADMIN
+-rwxr-xr-x   1 bin      bin          701 Dec 16 15:57 LPMOVE
+-rwxr-xr-x   1 bin      bin          265 Dec 16 15:57 LPSCHED
+-rwxr-xr-x   1 bin      bin          253 Dec 16 15:57 LPSHUT
+-rwxr-xr-x   1 bin      bin         3403 Dec 16 15:57 LPSTAT
+-rwxr-xr-x   1 bin      bin         3952 Dec 16 15:57 LS
+-rwxr-xr-x   1 bin      bin          358 Dec 16 15:57 LTXCOFF
+-rwxr-xr-x   1 bin      bin         1329 Dec 16 15:57 LTXDUMP
+-rwxr-xr-x   1 bin      bin         1226 Dec 16 15:57 MAIL
+-rwxr-xr-x   1 bin      bin         1364 Dec 16 15:57 MAILX
+-rwxr-xr-x   1 bin      bin         1740 Dec 16 15:57 MAKE
+-rwxr-xr-x   1 bin      bin          519 Dec 16 15:57 MAKEKEY
+-rwxr-xr-x   1 bin      bin          879 Dec 16 15:57 MAN
+-rwxr-xr-x   1 bin      bin          440 Dec 16 15:57 MAPISAM
+-rwxr-xr-x   1 bin      bin          518 Dec 16 15:57 MESG
+-rwxr-xr-x   1 bin      bin          290 Dec 16 15:57 MKDIR
+-rwxr-xr-x   1 bin      bin          554 Dec 16 15:57 MKISAM
+-rwxr-xr-x   1 bin      bin          462 Dec 16 15:57 MKMSG
+-rwxr-xr-x   1 bin      bin          332 Dec 16 15:57 MORE
+-rwxr-xr-x   1 bin      bin          616 Dec 16 15:57 MV
+-rwxr-xr-x   1 bin      bin          393 Dec 16 15:57 MVDIR
+-rwxr-xr-x   1 bin      bin          680 Dec 16 15:57 MVISAM
+-rwxr-xr-x   1 bin      bin         1425 Dec 16 15:57 NETCP
+-rwxr-xr-x   1 bin      bin          571 Dec 16 15:57 NETECHO
+-rwxr-xr-x   1 bin      bin          752 Dec 16 15:57 NETEXEC
+-rwxr-xr-x   1 bin      bin         2023 Dec 16 15:57 NETSTAT
+-rwxr-xr-x   1 bin      bin         2263 Dec 16 15:57 NEWFORM
+-rwxr-xr-x   1 bin      bin          365 Dec 16 15:57 NEWGRP
+-rwxr-xr-x   1 bin      bin          303 Dec 16 15:57 NEWS
+-rwxr-xr-x   1 bin      bin          955 Dec 16 15:57 NICE
+-rwxr-xr-x   1 bin      bin         1351 Dec 16 15:57 NM
+-rwxr-xr-x   1 bin      bin         1652 Dec 16 15:57 OD
+-rwxr-xr-x   1 bin      bin          419 Dec 16 15:57 PACK
+-rwxr-xr-x   1 bin      bin          181 Dec 16 15:57 PASSWD
+-rwxr-xr-x   1 bin      bin         1181 Dec 16 15:57 PASTE
+-rwxr-xr-x   1 bin      bin          613 Dec 16 15:57 PATCH
+-rwxr-xr-x   1 bin      bin          541 Dec 16 15:57 PCAT
+-rwxr-xr-x   1 bin      bin          313 Dec 16 15:57 PG
+-rwxr-xr-x   1 bin      bin         3283 Dec 16 15:57 PR
+-rwxr-xr-x   1 bin      bin         1171 Dec 16 15:57 PRS
+-rwxr-xr-x   1 bin      bin         1425 Dec 16 15:57 PS
+-rwxr-xr-x   1 bin      bin          319 Dec 16 15:57 PWCK
+-rwxr-xr-x   1 bin      bin          201 Dec 16 15:57 PWD
+-rwxr-xr-x   1 bin      bin         2029 Dec 16 15:57 QSYM
+-rwxr-xr-x   1 bin      bin          427 Dec 16 15:57 REGCMP
+-rwxr-xr-x   1 bin      bin          477 Dec 16 15:57 REJECT
+-rwxr-xr-x   1 bin      bin          788 Dec 16 15:57 RM
+-rwxr-xr-x   1 bin      bin          450 Dec 16 15:57 RMDEL
+-rwxr-xr-x   1 bin      bin          509 Dec 16 15:57 RMDIR
+-rwxr-xr-x   1 bin      bin          589 Dec 16 15:57 SACT
+-rwxr-xr-x   1 bin      bin          199 Dec 16 15:57 SADSP
+-rwxr-xr-x   1 bin      bin          993 Dec 16 15:57 SCCSDIFF
+-rwxr-xr-x   1 bin      bin          638 Dec 16 15:57 SDB
+-rwxr-xr-x   1 bin      bin          975 Dec 16 15:57 SDIFF
+-rwxr-xr-x   1 bin      bin          449 Dec 16 15:57 SETSITE
+-rwxr-xr-x   1 bin      bin         1388 Dec 16 15:57 SH
+-rwxr-xr-x   1 bin      bin          275 Dec 16 15:57 SHOW
+-rwxr-xr-x   1 bin      bin          295 Dec 16 15:57 SHOWFS
+-rwxr-xr-x   1 bin      bin          301 Dec 16 15:57 SHOWHEX
+-rwxr-xr-x   1 bin      bin          460 Dec 16 15:57 SHOWMSG
+-rwxr-xr-x   1 bin      bin          552 Dec 16 15:57 SIZE
+-rwxr-xr-x   1 bin      bin         3510 Dec 16 15:57 SORT
+-rwxr-xr-x   1 bin      bin         1173 Dec 16 15:57 SPELL
+-rwxr-xr-x   1 bin      bin          462 Dec 16 15:57 SPLIT
+-rwxr-xr-x   1 bin      bin          851 Dec 16 15:57 STRIP
+-rwxr-xr-x   1 bin      bin          783 Dec 16 15:57 STRNSTAT
+-rwxr-xr-x   1 bin      bin          698 Dec 16 15:57 STTY
+-rwxr-xr-x   1 bin      bin          612 Dec 16 15:57 SU
+-rwxr-xr-x   1 bin      bin          441 Dec 16 15:57 SUM
+-rwxr-xr-x   1 bin      bin         1049 Dec 16 15:57 TAIL
+-rwxr-xr-x   1 bin      bin         2570 Dec 16 15:57 TAR
+-rwx------   1 bin      bin         1301 Dec 16 15:57 TCDUMP
+-rwx------   1 bin      bin          649 Dec 16 15:57 TCRESET
+-rwxr-xr-x   1 bin      bin          760 Dec 16 15:57 TCSTAT
+-rwxr-xr-x   1 bin      bin          391 Dec 16 15:57 TIC
+-rwxr-xr-x   1 bin      bin          256 Dec 16 15:57 TIME
+-rwxr-xr-x   1 bin      bin         1347 Dec 16 15:57 TIMEX
+-rwxr-xr-x   1 bin      bin         1103 Dec 16 15:57 TOISAM
+-rwxr-xr-x   1 bin      bin         1145 Dec 16 15:57 TOPC
+-rwxr-xr-x   1 bin      bin         1047 Dec 16 15:57 TOUCH
+-rwxr-xr-x   1 bin      bin         1179 Dec 16 15:57 TPUT
+-rwxr-xr-x   1 bin      bin         1490 Dec 16 15:57 TR
+-rwxr-xr-x   1 bin      bin          485 Dec 16 15:57 TSORT
+-rwxr-xr-x   1 bin      bin          426 Dec 16 15:57 TTY
+-rwxr-xr-x   1 bin      bin          241 Dec 16 15:57 TX
+-rwxr-xr-x   1 bin      bin          504 Dec 16 15:57 UMASK
+-rwxr-xr-x   1 bin      bin          900 Dec 16 15:57 UNAME
+-rwxr-xr-x   1 bin      bin          648 Dec 16 15:57 UNGET
+-rwxr-xr-x   1 bin      bin         1488 Dec 16 15:57 UNIQ
+-rwxr-xr-x   1 bin      bin          305 Dec 16 15:57 UNPACK
+-rwxr-xr-x   1 bin      bin          255 Dec 16 15:57 USRADM
+-rwxr-xr-x   1 bin      bin         1057 Dec 16 15:57 UUCP
+-rwxr-xr-x   1 bin      bin          888 Dec 16 15:57 UULOG
+-rwxr-xr-x   1 bin      bin          579 Dec 16 15:57 UUNAME
+-rwxr-xr-x   1 bin      bin          554 Dec 16 15:57 UUPICK
+-rwxr-xr-x   1 bin      bin         2017 Dec 16 15:57 UUSTAT
+-rwxr-xr-x   1 bin      bin          678 Dec 16 15:57 UUSUB
+-rwxr-xr-x   1 bin      bin          608 Dec 16 15:57 UUTO
+-rwxr-xr-x   1 bin      bin          726 Dec 16 15:57 UUX
+-rwxr-xr-x   1 bin      bin          873 Dec 16 15:57 VAL
+-rwxr-xr-x   1 bin      bin         1040 Dec 16 15:57 VFISAM
+-rwxr-xr-x   1 bin      bin          748 Dec 16 15:57 VI
+-rwxr-xr-x   1 bin      bin         1942 Dec 16 15:57 VOLCOPY
+-rwxr-xr-x   1 bin      bin          293 Dec 16 15:57 WALL
+-rwxr-xr-x   1 bin      bin         1005 Dec 16 15:57 WC
+-rwxr-xr-x   1 bin      bin          314 Dec 16 15:57 WHAT
+-rwxr-xr-x   1 bin      bin         1635 Dec 16 15:57 WHO
+-rwxr-xr-x   1 bin      bin          202 Dec 16 15:57 WHODO
+-rwxr-xr-x   1 bin      bin          286 Dec 16 15:57 WRITE
+-rwxr-xr-x   1 bin      bin          689 Dec 16 15:57 YACC
+
+/usr/ti/ptty:
+total 23
+
+drwxr-xr-x   2 bin      bin           80 Dec 16 16:03 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rwxr-x---   1 bin      bin         1001 Dec 16 16:03 install
+-rwxr-x---   1 bin      bin        15835 Dec 16 16:03 mkpts
+-rw-r--r--   1 bin      bin         2860 Dec 16 16:03 readme
+
+/usr/ti/tcp:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 Dec 16 15:19 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+
+/usr/ti/tisam:
+total 108
+
+drwxr-xr-x   2 bin      bin           48 Dec 16 15:35 .
+drwxr-xr-x  14 bin      bin          256 Dec 16 17:43 ..
+-rw-r--r--   1 bin      bin       106742 Dec 16 15:35 isam.o
+
+/usr/tmp:
+total 2
+
+drwxrwxrwx   2 bin      bin           32 Dec 16 15:19 .
+drwxr-xr-x  22 bin      bin          368 May  6 09:22 ..
+
+/util:
+total 27
+
+drwxr-xr-x   2 bin      bin           80 Dec 16 15:33 .
+drwxr-xr-x  14 root     root         320 Dec 16 15:22 ..
+-rwx------   1 root     root        1123 Dec 16 15:20 MKSRCFS
+-rwx------   1 root     root        1196 Dec 16 15:20 exer
+-rwx------   1 root     root       20420 Dec 16 15:33 fndmap

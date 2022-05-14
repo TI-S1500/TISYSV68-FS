@@ -1,0 +1,73 @@
+# cshf  qsym -- Invokes the assembler symbol report generator  
+#	@(#)QSYM.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^QSYM -- INVOKES THE 68020 ASSEMBLER SYMBOL REPORT GENERATOR"\
+	"^*Symbol Data File Name:" _input_file acnm $_input_file\
+	"^*Symbol Report Output File Name:" rpt acnm \
+ 	"^Exclude Local Symbols From Reports:" eflag yesno n\
+	"^Insert Formfeed Character:" vflag yesno n\
+	"^Select Page Format Specification:" fflag yesno n\
+	"^Select a New Page Heading:" hflag yesno n\
+	"^Select Report Options:" report yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($report == "y") then
+	prompt "^QSYM -- PAGE FORMAT SPECIFICATIONS"\
+		"^Include Abbreviated Memory Map:" aflag yesno n\
+ 		"^Combine Symbol Table/Cross-ref:" bflag yesno n\
+		"^Compressed Memory Map Report:" cflag yesno n\
+		"^Select Memory Map Report:" mflag yesno n\
+		"^Select Symbol Table Report:" sflag yesno n\
+		"^Cross-Reference Report:" xflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($xflag == "y") set opt = x$opt
+	if ($sflag == "y") set opt = s$opt
+	if ($mflag == "y") set opt = m$opt
+	if ($cflag == "y") set opt = c$opt
+	if ($bflag == "y") set opt = b$opt
+	if ($aflag == "y") set opt = a$opt
+endif
+
+if ($fflag == "y") then
+	prompt "^QSYM -- PAGE FORMAT SPECIFICATIONS"\
+		"^Line Length:" ll integer\
+		"^Page Length:" pl integer\
+		"^Top Margin:" tm integer\
+		"^Bottom Margin:" bm integer\
+		"^#$*"
+
+	if ($abort) goto end
+	set fopt = -f$ll,$pl,$tm,$bm
+endif
+
+if ($hflag == "y") then
+	prompt "^QSYM -- PAGE HEADING SPECIFICATION"\
+		"^Heading:" heading string\
+		"^#$*"
+
+	if ($abort) goto end
+	set hopt = -h$heading
+endif
+
+if ($eflag == "y") set opt = e$opt
+if ($vflag == "y") set opt = v$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== QSYM COMMAND EXECUTING ==="
+if ($rpt == "") then
+	echo qsym $opt $fopt $hopt $_input_file
+	qsym $opt $fopt $hopt $_input_file
+else
+	echo qsym $opt $fopt $hopt $rpt=$_input_file
+	qsym $opt $fopt $hopt $rpt=$_input_file
+endif
+
+#clean up time
+end:
+unset *flag *opt heading ll pl tm bm report rpt

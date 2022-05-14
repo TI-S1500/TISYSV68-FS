@@ -1,0 +1,46 @@
+#cshf
+#	@(#)NETCP.sh	1.3 88/03/14
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1985.  ALL
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+#	ASSOCIATED DOCUMENTATION.
+# 
+onintr end
+prompt "^NETCP -- NETWORK COPY "\
+       "^Source Path Name(s):" nc_src string $nc_src\
+       "^Destination Path Name:" dest string\
+       "^Format(Binary/Text):" fmt "element(B,b=Binary,T,t=Text)" Text\
+       "^Replace?" rpl yesno No\
+       "^*Logical Record Length:" lrl "range(2,4096)"\
+       "^Copy Directories?" dir yesno No\
+       "^Interactive Mode?" iactv yesno No\
+       "^*Destination Path Name Suffix:" sfx string\
+       "^Restore Modification times?" mflag yesno Yes\
+       "^#$*"
+
+if (! $abort) then
+  if ("$fmt" == "Binary") set opt = b$opt
+  if ($rpl == "y") set opt = r$opt
+  if ($dir == "y") set opt = D$opt
+  if ($iactv == "y") set opt = i$opt
+  if ($mflag == "n") set opt = m$opt
+  if ($lrl != "") set lopt = -l$lrl
+  if ($sfx != "") set sopt = -s$sfx
+  if ($opt != "") set opt = -$opt
+
+  set noglob
+#
+# if colon is set; then ignore wildcard char in remote pathname
+#
+  set colon = ` echo $nc_src | awk ' BEGIN { FS = ":"} NF >= 2 ' `
+  if ($colon == "") then
+    unset noglob
+  endif
+
+  netcp $opt $lopt $sopt $nc_src $dest
+  unset *opt dest colon
+  
+endif
+end:

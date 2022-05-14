@@ -1,0 +1,56 @@
+SPLIT(1)                                                 SPLIT(1)
+
+NAME
+     split - Splits a file into pieces
+
+SYNOPSIS
+     split -n [file [name]]
+
+DESCRIPTION
+   Purpose
+     The split command reads file and writes it in n-line pieces
+     onto a set of output files. The default for n is 1000 lines.
+
+   Discussion
+     The name of the first output file is name with the
+     characters aa appended. Naming continues lexicographically
+     up to zz (a maximum of 676 files).  Name cannot be longer
+     than 12 characters.  If no output name is given, the name x
+     is the default.  If more lines remain in the file after the
+     676th file has been written, split aborts.  The output files
+     are not removed.
+
+     If no input file is given or if - is given, then the
+     standard input is used.  The input file is not changed.
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to be split.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Number of Lines:
+     Enter the number of lines for each piece of the input file.
+     The default is 1000.
+
+EXAMPLE
+     The following example splits a file named test into a series
+     of files, each containing 5 lines, whose names begin with
+     sort:
+
+          split -5 test sort
+
+     The first file is named sortaa, the second sortab, and so
+     on.
+
+     The following example produces file xaa containing lines 1-
+     50, xab containing lines 51-100, and so on:
+
+          split -50 test
+
+SEE ALSO
+     csplit(1).
+
+

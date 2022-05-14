@@ -1,0 +1,148 @@
+SDIFF(1)						 SDIFF(1)
+
+NAME
+     sdiff - Compares files side-by-side
+
+SYNOPSIS
+     sdiff -losw file1 file2
+
+DESCRIPTION
+   Purpose
+     The sdiff command uses the output of diff(1) to produce a
+     side-by-side listing of two files indicating those lines
+     that are different.
+
+   Discussion
+     Corresponding lines of the two files named in this command
+     are printed with a gutter (column) between them.  If the
+     gutter is empty, the lines are identical. A < in the gutter
+     indicates the line exists only in file1.  A > in the gutter
+     indicates the line exists only in file2.  A | indicates
+     lines that are different.
+
+   Options
+     -l     Prints only the left side of any lines that are
+	    identical.
+
+     -o  output
+	    Uses the next argument, output, as the name of a
+	    third file that is created as a user-controlled
+	    merging of file1 and file2.  Identical lines of file1
+	    and file2 are copied to output.  Sets of differences,
+	    as produced by diff(1), are printed; where a set of
+	    differences share a common gutter character.  After
+	    printing each set of differences, sdiff prompts the
+	    user with a % and waits a user-typed command.  If
+	    sdiff encounters consecutive sets of differences, it
+	    prompts the user for a user-typed command after the
+	    last set of differences and performs the selected
+	    operation on all of the consecutive differences.  The
+	    following are the user-typed commands:
+
+	    l	  Appends the left column to the output file.
+
+	    r	  Appends the right column to the output file.
+
+	    s	  Turns on silent mode so that identical lines
+		  are not printed.  Also produces a script not
+		  usable by ed.  After this command, sdiff waits
+		  for one of the other commands to indicate what
+		  should be done with the differences it prints.
+
+	    v	  Turns off silent mode.  After this command,
+		  sdiff is still waiting for one of the other
+		  commands to indicate what should be done with
+		  the differences it prints.
+
+	    e  l  Calls the ed editor with the left column.
+
+	    e  r  Calls the ed editor with the right column.
+
+	    e  b  Calls the ed editor with the concatenation of
+		  left and right.
+
+	    e	  Calls the ed editor with a zero-length file.
+
+	    q	  Exits from the program.
+
+		  On exit from the editor, the changes are
+		  incorporated into the output file.
+
+     -s     Does not print identical lines.  Also produces script
+	    not usable by ed.
+
+     -w n   Uses the next argument, n, as the width of the output
+	    line.  The default line length is 80 characters.  The
+	    minimum length is 20; the maximum is 200.  If n
+	    violates these limits, it is silently changed to the
+	    limit.
+
+PROMPTS
+   File 1:
+     Enter the name of a file to compare.
+
+   File 2:
+     Enter the name of a file to compare to file 1.
+
+   File Name to Merge Identical Lines:
+     Enter a file name to receive the output of as a result of
+     merging file 1 and file 2.
+
+   Print Left Side of Identical Lines:
+     Initial value is no.  If you enter yes, only the left side
+     of any identical lines are printed.
+
+   Print Identical Lines:
+     Initial value is yes.  If you enter no, identical lines are
+     not printed.
+
+   Output Line Width(20-200):
+     Enter the width of the output line.  The default width is 80
+     characters.
+
+EXAMPLE
+     Assume that the two files named test1 and test2 exist in
+     your current directory with the following contents:
+
+     test1:		 test2:
+
+     Test 1 results	 Test 2 results
+     red		 red
+     orange		 Orange
+     yellow		 yellow
+     green		 green
+     blue		 blue
+     indigo		 violet
+     violet		 black
+
+     Enter the following command to produce a side-by-side
+     listing of file differences with 60-column output:
+
+	  sdiff -w60 test1 test2
+
+     The output is as follows:
+
+	  Test 1 results |    Test 2 results
+	  red		      red
+	  orange	 |    Orange
+	  yellow	      yellow
+	  green 	      green
+	  blue		      blue
+	  indigo	 <
+	  violet	      violet
+			 >    black
+
+     Note that -w156 prints the two corresponding lines one above
+     the other with the indicator at the right margin.	This
+     format makes the differences easy for the user to find.
+
+SEE ALSO
+     diff(1), ed(1).
+
+NOTE
+     Since file 2 will be printed on the right side of the
+     output, the tab positions may be different. Columns that are
+     positioned with tabs may not line up with columns that are
+     positioned with spaces.
+
+

@@ -1,0 +1,63 @@
+# cshf	uustat -- uucp status inquiry 
+#	@(#)UUSTAT.sh	1.1  87/03/09
+#
+onintr end
+
+set count = 0
+while ($count != 1)
+prompt "^UUSTAT -- PERFORMS A UUCP STATUS INQUIRY AND JOB CONTROL"\
+	"^SELECT ONLY ONE  OF THE FOLLOWING"\
+	"^*Report Current User's Requests:" default yesno n\
+	"^*Hour to Remove Status Entries:" cflag integer \
+	"^*Job Number for Status Report :" jflag integer \
+	"^*Job Number to be Killed :" kflag integer \
+	"^*Machine Name to Report Accessibility:" mflag string\
+	"^*Job Number for Rejuvenation:" rflag integer\
+	"^#$*"
+
+  if ($abort) goto end
+  if ($default == "y") @ count++
+  if ($cflag != "") @ count++
+  if ($jflag != "") @ count++
+  if ($kflag != "") @ count++
+  if ($mflag != "") @ count++
+  if ($rflag != "") @ count++
+  if ($count != 1) set count = 0
+end
+
+if ($default == "y") then
+  echo === UUSTAT COMMAND EXECUTING ===
+  echo uustat
+  uustat
+else
+  if ($cflag != "") set action = c$cflag
+  if ($rflag != "") set action = r$rflag
+  if ($jflag != "") set action = j$jflag
+  if ($kflag != "") set action = k$kflag
+  if ($mflag != "") set action = m$mflag
+  prompt "^UUSTAT -- OPTIONS"\
+       "^*Machine Name for Statuses:" Mflag string\
+       "^*Hour Report Statuses:" oflag string\
+       "^Report Statues in Octal:" Oflag yesno n\
+       "^List Number of Queued Jobs:" qflag yesno n\
+       "^*Remote System Name for Status Report:" sflag acnm\
+       "^*User Name for Request Status Report:" uflag string\
+       "^*Hour for Younger Than Status Report:" yflag string\
+       "^#$*"
+
+  if ($abort) goto end
+  if ($Mflag != "") set Mopt = -M$Mflag
+  if ($oflag != "") set oopt = -o$oflag
+  if ($Oflag == "y") set Oopt = -O
+  if ($qflag == "y") set qopt = -q
+  if ($sflag != "") set sopt = -s$sflag
+  if ($uflag != "") set uopt = -u$uflag
+  if ($yflag != "") set yopt = -y$yflag
+
+echo === UUSTAT COMMAND EXECUTING ===
+echo uustat $action $mopt $oopt $Oopt $qopt $sopt $uopt $yopt 
+uustat $action $mopt $oopt $Oopt $qopt $sopt $uopt $yopt 
+endif
+
+end: 
+unset *flag *opt action default

@@ -1,0 +1,162 @@
+OPCTL(1T)                                               OPCTL(1T)
+
+NAME
+     opctl - Controls load balancing of processes
+
+SYNTAX
+     opctl -BDILMSbcdfgijlmnprsuxyz
+
+DESCRIPTION
+     The opctl command permits the system operator to control
+     load balancing of processes.
+
+   Options
+     -B integer_value
+          Sets the system load balance interval to the number of
+          seconds specified in integer_value.  The system load
+          balance interval determines how often the system
+          considers force migrating CPU-bound processes.
+
+     -D percentage_value
+          Sets the system value in percent for decrementing a
+          CPU's idle time (snapshot) when a known CPU-bound
+          process is migrated to that CPU.
+
+     -I percentage_value
+          Sets the system value in percent for the amount of idle
+          time difference between CPUs before the system decides
+          that the processing loads are out of balance.
+
+     -L percentage_value
+          Sets (in percent) the maximum processing load (non-idle
+          time) a CPU is permitted before the CPU initiates
+          forced load balancing.
+
+     -M integer_value
+          Sets the amount (in pages) of free memory in order for
+          the CPU to receive a new process.
+
+     -S percentage_value
+          This option has no effect. See -s that follows.
+
+     -b string_value
+          Allows or disallows CPU-bound processes on the CPU
+          specified by the -c option. If string_value is on or
+          yes, CPU-bound processes are permitted. If string_value
+          is off or no, CPU-bound processes are not permitted and
+          any CPU-bound process will be automatically force-
+          migrated to another CPU.
+
+     -c cpu_id
+          Applies the opctl action specified by other arguments
+          to the CPU number specified by cpu_id.  The CPUs in the
+          system are assigned cpu_ids based on chassis slot, with
+          the one in the numerically lowest chassis slot being
+          assigned a cpu_id of 0, the next cpu 1, and so on.
+          Chassis slots that are empty or that contain non-CPU
+          cards are (with respect to cpu_id assignment) ignored.
+
+     -d string_value
+          Specifies whether or not future children (and
+          subsequent generations) of the process specified by the
+          -p option are to be automatically locked onto the CPU
+          on which the parent process resides. Because this
+          property propagates to children, it effectively locks a
+          particular user onto a specific CPU. Because this
+          operation does not specify a particular CPU, if any
+          process in the family tree is moved to a new CPU with
+          the -f or -g option, the offspring of that process will
+          be locked on the new CPU. If string_value is no or off,
+          locking of children is turned off for the specified
+          process.
+
+     -f   Forces the process specified by the -p option to
+          migrate to the CPU specified by the -c option. The
+          process moves despite its lock status. However, if the
+          process was locked on its old CPU, it will still be
+          locked on the new one.
+
+     -g   Forces the process specified by the -p option to
+          migrate to the CPU specified by the -c option and to
+          lock. The process moves despite its current lock
+          status.
+
+     -i   Causes all processes currently running on the CPU
+          specified by the -c option to be locked on the CPU.
+
+     -j   Causes all processes currently running on the CPU
+          specified by the -c option to be unlocked.
+
+     -l   Locks the process specified by the -p option on its
+          current CPU.
+
+     -m string_value
+          Turns system process migration on or off. If
+          string_value is yes or on, process migration is
+          enabled. If string_value is no or off, process
+          migration is disabled.
+
+     -n string_value
+          Allows or disallows new processes to be placed on the
+          CPU specified by the -c option. Valid string_values
+          are:  yes, no, on, and off.
+
+     -p process_id
+          Specifies the ID of the process to act upon.
+
+     -r string_value
+          Turns on and off system round-robin CPU assignments for
+          newly created processes. If string_value is yes or on,
+          round-robin assignments are enabled. If string_value is
+          no or off, round-robin assignments are disabled.
+
+     -s speed_factor
+          Specifies a relative speed factor in the range of 100
+          to 1000 for the CPU specified by the -c option. This
+          speed factor is used in the load balancing algorithm. A
+          CPU board with a Motorola 68020 CPU is normally given a
+          value of 100 unless it is the leftmost CPU in the
+          chassis. The leftmost CPU has most of the system data
+          structures in its local memory, can run processes
+          slightly faster, and should be given a speed factor
+          about 20% higher than normal. A CPU board with a
+          Motorola 68030 CPU is normally given a speed factor of
+          about 220.
+
+     -u   Unlocks the process specified by the -p option.
+
+     -x   Halts the execution of the process specified by the -p
+          option. A process that is halted will not be scheduled
+          for execution even if it receives a signal.
+          Consequently, a kill command will not cause a process
+          to terminate unless it is first resumed with the -y
+          option.
+
+     -y   Resumes the execution of the process specified by the
+          -p option.
+
+     -z string_value
+          On 68030-based computers, this option allows you to
+          modify the cache-fill policy for the on-chip caches. If
+          string_value is inst, the burst-fill option is used
+          only for the instruction cache of the 68030 chip. If
+          string_value is data, the burst-fill option is used
+          only for the data cache of the 68030 chip. If
+          string_value is both, the burst-fill option is used for
+          both caches. If string_value is neither, the burst-fill
+          option is used on neither cache. For System 1505 
+          computers, the system normally uses the burst-fill
+          option for both caches because this gives the best
+          performance regardless of the application job mix. For
+          other models using the 68030, the system normally uses
+          the burst-fill option only for the instruction cache.
+          In some application job mixes, somewhat better
+          performance can be obtained by enabling the option for
+          both caches.
+
+NOTES
+     A process selected for migration to another CPU will not
+     migrate until the next time it is scheduled for
+     execution.
+
+

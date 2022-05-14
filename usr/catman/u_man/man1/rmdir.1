@@ -1,0 +1,44 @@
+RMDIR(1)                                                 RMDIR(1)
+
+NAME
+     rmdir  - Removes directories
+
+SYNOPSIS
+     rmdir -ps directories
+
+DESCRIPTION
+     The rmdir command removes entries for the named directories,
+     which must be empty.
+
+     The following directories cannot be removed:
+          The directory .
+          The directory ..
+          The current working directory
+          A directory that has been mounted (/usr, for example)
+
+   Options
+     -p   Allows users to remove the directory and its parent
+          directories that become empty.  A message is printed on
+          standard output as to whether the whole path is removed
+          or part of the path remains for some reason.
+
+     -s   Suppresses the message printed on standard error when
+          -p is in effect.
+
+PROMPTS
+   File Name(s):
+     Enter the name of the file (or files) to remove.
+
+   Are you sure:
+     The initial value is no.  Enter yes to verify that you want
+     the file removed.  Enter no to abort the command.
+
+EXAMPLE
+     To delete the empty directory named memos:
+
+          rmdir memos
+
+SEE ALSO
+     rm(1), unlink(2).
+
+

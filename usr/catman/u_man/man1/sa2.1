@@ -1,0 +1,202 @@
+SA2(1M) 						  SA2(1M)
+
+NAME
+     sa2 - Produces a daily system activity report
+
+SYNOPSIS
+     sa2 -aAbcdefimqrsuvwy
+
+DESCRIPTION
+   Purpose
+     The shell script sa2 calls sar(1) and writes a daily report
+     in file /usr/adm/sa/sardd, where dd is the current day.
+
+   Options
+     -a   Reports use of file access system routines:
+	  iget/s - uses of iget routine per second
+	  namei/s - uses of namei routine per second
+	  dirblk/s - uses of dirblk routine per second
+
+     -A   Reports all data.  Equivalent to -abcdmquvwy.
+
+     -b   Reports buffer activity:
+	  bread/s - read transfers of data per second between
+		    system buffers and disk or other block device
+	  lread/s - read accesses of system buffers per second
+	  %rcache - read cache hit ratio (1 - bread/lread)
+	  bwrit/s - write transfers of data per second between
+		    system buffers and disk or other block devices
+	  lwrit/s - write accesses of system buffers per second
+	  %wcache - write cache hit ratio (1 - bwrite/lwrite)
+	  pread/s - read transfers per second via raw (physical)
+		    device mechanism
+	  pwrit/s - write transfers per second via raw (physical)
+		    device mechanism
+
+     -c   Reports system calls:
+	  scall/s - system calls of all types per second
+	  sread/s - read system calls per second
+	  swrit/s - write system calls per second
+	  fork/s - fork system calls per second
+	  exec/s - exec system calls per second
+	  rchar/s - characters per second transferred by read
+		    system calls
+	  wchar/s - characters per second transferred by write
+		    system calls
+
+     -d   Reports activity for each block device, e. g., disk or
+	  tape drive:
+	  %busy - portion of time device was busy servicing a
+		  transfer request
+	  avque - average number of requests outstanding while
+		  busy
+	  r+w/s - number of data transfers per second from or to
+		  device
+	  blks/s - number of blocks per second transferred in
+		   1K-byte units
+	  avwait - average time in ms. that transfer requests
+		   wait idly on queue
+	  avserv - average time in ms. for transfer requests to
+		   be serviced (which for disks includes seek, rotational
+		   latency and data transfer times)
+
+     -ffile
+	  Causes sa2 to extract data from a previously recorded
+	  file.  Without the -f option the standard system
+	  activity daily data file /usr/adm/sa/sadd for the
+	  current day (dd) is accessed.
+
+     -etime
+	  Specifies the ending time of the report.  The time
+	  argument is of the form hh[:mm[:ss]].
+
+     -isec
+	  Selects records at sec second intervals; otherwise, all
+	  intervals found in the data file are reported.
+
+     -m   Reports message and semaphore activities:
+	  msg/s - msg primitives per second
+	  sema/s - sema primitives per second
+
+     -q   Reports average queue length while occupied, and % of
+	  time occupied:
+	  runq-sz - average run queue length while occupied
+	  %runocc - percentage of time run queue occupied
+	  swpq-sz - number of processes that, at examination
+		    time, were swapped and would run
+	  %swpocc - percentage of time that one or more processes
+		    were swapped out
+
+     -r   Reports RAM disk activity:
+	  r+w/s - number of data transfers per second from or to
+		  RAM disk
+	  blks/s - number of blocks per second transferred to or
+		   from RAM disk
+
+     -stime
+	  Specifies the starting time of the report.  The time
+	  argument is of the form hh[:mm[:ss]].
+
+     -u   Reports CPU utilization for each CPU
+	  %usr - portion of time running in user mode
+	  %sys - portion of time running in system mode
+	  %wait - portion of time idle with some process waiting
+		  for block I/O
+	  %idle - portion of time otherwise idle
+
+     -v   Reports status of text, process, inode and file tables:
+	  text-sz - entries/size of text table, evaluated at
+		    sampling point
+	  proc-sz - entries/size of process table, evaluated at
+		    sampling point
+	  inod-sz - entries/size of inode table, evaluated at
+		    sampling point
+	  file-sz - entries/size for file table, evaluated once
+		    at sampling point
+	  text-ov - number of overflows of text table occurring
+		    between sampling points
+	  proc-ov - number of overflows of process table
+		    occurring between sampling points
+	  inod-ov - number of overflows of inode table occurring
+		    between sampling points
+	  file-ov - number of overflows of file table occurring
+		    between sampling points
+
+     -w   Reports system swapping and switching activity:
+	  pgin/s - number of pagein transfers per second
+	  bpgin/s - number of bytes paged in per second
+	  pgot/s - number of pageout transfers per second
+	  bpgot/s - number of bytes paged out per second
+	  swpin/s - number of swapin transfers per second
+	  bswin/s - number of bytes transferred for
+		    swapins
+	  swpot/s - number of swapout transfers per second
+	  bswot/s - number of bytes transferred for
+		    swapouts
+	  pswch/s - number of process switches per second
+
+     -y   Reports tty device activity:
+	  rawch/s - input character rate
+	  canch/s - input character rate processed by canon
+	  outch/s - output character rate
+	  rcvin/s - receive rate
+	  xmtin/s - transmit rate
+	  mdmin/s - modem interrupt rate
+
+   Discussion
+     System activity data can be accessed at the special request
+     of a user, as discussed in sar(1), It can also be accessed
+     automatically on a routine basis as described here.  The
+     operating system contains counters that are incremented as
+     various system actions occur.  These include CPU utilization
+     counters, buffer usage counters, disk and tape I/O activity
+     counters, tty device activity counters, switching and
+     system-call counters, file-access counters, queue activity
+     counters, and counters for interprocess communications.
+
+   Binary Daily Data File Structure
+     The structure of the binary daily data file is as follows:
+
+     struct sa {
+	int num_cpu;	    /* number of cpus in chassis */
+	struct sysinfo si;  /* see /usr/include/sys/sysinfo.h */
+	int  szinode;	    /* current size of inode table  */
+	int  szfile;	    /* current size of file table  */
+	int  sztext;	    /* current size of text table  */
+	int  szproc;	    /* current size of proc table  */
+	int  mszinode;	    /* maximum size of inode table  */
+	int  mszfile;	    /* maximum size of file table  */
+	int  msztext;	    /* maximum size of text table  */
+	int  mszproc;	    /* maximum size of proc table  */
+	long  inodeovf;     /* cumul. overflows of inode table since boot  */
+	long  inodeovf;     /* cumul. overflows of file table since boot  */
+	long  textovf;	    /* cumul. overflows of text table  since boot */
+	long  procovf;	    /* cumul. overflows of proc table since boot */
+	time_t	ts;	    /* time stamp, seconds  */
+	long  ramio;	    /* I/O requests to/from ram disk */
+	long ramcnt	    /* number of blocks transferred from/to ram disk */
+	long  devio[NDEVS][4];	/* device info for up to NDEVS units  */
+     #define IO_OPS	    0	/* cumul. I/O requests	*/
+     #define IO_BCNT	    1	/* cumul. blocks transferred */
+     #define IO_ACT	    2	/* cumul. drive busy time in ticks  */
+     #define IO_RESP	    3	/* cumul. I/O resp time in ticks  */
+     };
+
+EXAMPLE
+     The following crontab entry reports important activities
+     hourly during the working day:
+
+       5 18 * * 1-5 "/usr/lib/sa/sa2 -s 8:00 -e 18:01 -i 3600 -A"
+
+FILES
+     /usr/adm/sa/sadd	     Daily data file, where dd is the
+			       current day
+     /usr/adm/sa/sardd	     Daily report file, where dd is the
+			       current day
+
+SEE ALSO
+     sar(1), sa1(1M), sadsp(1T), timex(1).
+     "System Activity Package" in TI System V Administrator's
+     Guide.
+
+

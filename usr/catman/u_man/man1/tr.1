@@ -1,0 +1,97 @@
+TR(1)                                                       TR(1)
+
+NAME
+     tr - Translates characters
+
+SYNOPSIS
+     tr -cds [string1[string2]]
+
+DESCRIPTION
+   Purpose
+     The tr command copies the standard input to the standard
+     output with substitution or deletion of selected characters.
+     Input characters found in string1 are mapped into the
+     corresponding characters of string2.
+
+   Options
+     Any combination of the following options can be used:
+
+     -c   Complements the set of characters in string1 with
+          respect to the universe of characters whose ASCII codes
+          are 001 through 377 octal.
+
+     -d   Deletes all input characters in string1.
+
+     -s   Squeezes all strings of repeated output characters that
+          are in string2 to single characters.
+
+   Arguments
+     The following abbreviation conventions can be used to
+     introduce ranges of characters or repeated characters into
+     the strings:
+
+     [a-z]   Stands for the string of characters whose ASCII
+             codes run from character a to character z,
+             inclusive.
+
+     [a*n]   Stands for n repetitions of a.  If the first digit
+             of n is 0, n is considered octal; otherwise, n is
+             taken to be decimal.  A zero or missing n is taken
+             to be huge; this facility is useful when the
+             required number of occurrences of string2 is
+             unknown.
+
+
+     The escape character \ can be used as in the shell to remove
+     special meaning from any character in a string.  In
+     addition, \ followed by 1, 2, or 3 octal digits stands for
+     the character whose ASCII code is given by those digits.
+
+EXAMPLE
+     The following example creates a list of all the words in
+     file1 and puts one per line in file2, where a word is taken
+     to be a maximal string of alphabetics.  The strings are
+     quoted to protect the special characters from interpretation
+     by the shell; 012 is the ASCII code for newline.
+
+          tr -cs "[A-Z][a-z]" "[\012*]" <file1 >file2
+
+PROMPTS
+   Input File Name:
+     Optional. Enter the name of the file to be translated.
+
+   Output File Name:
+     Optional.  Enter a file name to receive the output of the
+     command.
+
+   String 1:
+     Enter first string for mapping.  The expression should not
+     be enclosed in quotes.
+
+   String 2:
+     Optional. Enter second string for mapping.  The expression
+     should not be enclosed in quotes.
+
+   Complement Character Set:
+     Initial value is no.  If you enter yes, the set of
+     characters in string 1 is complemented with respect to the
+     universe of characters whose ASCII codes are 001 through 377
+     octal.
+
+   Delete String1 Input Char:
+     Initial value is no.  If you enter yes, all characters in
+     string 1 are deleted.
+
+   Squeeze Repeated-Single Char:
+     Initial value is no.  If you enter yes, all repeated output
+     characters that are in string 2 are squeezed into single
+     characters.
+
+SEE ALSO
+     ascii(5), ed(1), sh(1).
+
+NOTES
+     This command cannot handle ASCII NUL in string1 or string2;
+     it always deletes NUL from input.
+
+

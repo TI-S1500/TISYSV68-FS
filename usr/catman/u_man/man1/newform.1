@@ -1,0 +1,242 @@
+NEWFORM(1)                                             NEWFORM(1)
+
+NAME
+     newform - Changes the format of a text file
+
+SYNOPSIS
+     newform -abcefilops [files]
+
+DESCRIPTION
+   Purpose
+     The newform command reads lines from the named files or the
+     standard input if no input file is named, and reproduces the
+     lines on the standard output.  Lines are reformatted in
+     accordance with command-line options in effect.  The
+     reformatting is done by redefining the position of tab
+     stops.
+
+   Options
+     Except for -s, command-line options can appear in any order,
+     can be repeated, and can be intermingled with the optional
+     files.  Command-line options are processed in the order
+     specified.  This means that option sequences such as -e 15
+     -l 60 yield results different from -l 60 -e 15 . Options are
+     applied to all files on the command line.
+
+     -an       Appends characters to the end of the line;
+               otherwise same as -pn
+
+     -bn       Truncates n characters from the beginning of the
+               line when the line length is greater than the
+               effective line length (see -ln).  Default is to
+               truncate the number of characters necessary to
+               obtain the effective line length.  The default
+               value is used when -b with no n is used.  This
+               option can be used to delete the sequence numbers
+               from a COBOL program as follows:
+
+               newform -l1 -b7 filename
+
+               The -l1 must be used to set the effective line
+               length shorter than any existing line in the file
+               so that the -b option is activated.
+
+     -ck       Changes the prefix/append character to k.  Default
+               character for k is a space.
+
+     -en       Truncates characters from the end of the line;
+               otherwise, same as -bn
+
+     -f        Writes the tab specification format line on the
+               standard output before any other lines are output.
+               The printed tab specification format line
+               corresponds to the format specified in the last -o
+               option.  If no -o option is specified, the printed
+               line contains the default specification of -8.
+
+     -itabspec 
+               Input tab specification: expands tabs to spaces
+               according to the tab specifications given.  The
+               value tabspec recognizes all tab specification
+               forms.  If tabspec is - -, newform assumes that
+               the tab specification occurs in the first line
+               read from the standard input (see fspec(4)).  If
+               no tabspec is given, tabspec defaults to -8.  A
+               tabspec of -0 expects no tabs; if any are found,
+               they are treated as -1.
+
+     -ln       Sets the effective line length to n characters.
+               If n is not entered, -l defaults to 72.  The
+               default line length without the -l option is 80
+               characters.  Note that tabs and backspaces are
+               considered to be one character (use -i to expand
+               tabs to spaces).
+
+               Note that the -l option does not affect the length
+               of the line unless it is used with the default
+               cases of -b, -e, -a, and -p.
+
+     -otabspec 
+               Output tab specification:  replaces spaces by
+               tabs, according to the tab specifications given.
+               The tab specifications are the same as for
+               -itabspec.  If no tabspec is given, tabspec
+               defaults to -8.  A tabspec of -0 means that no
+               spaces will be converted to tabs on output.
+
+     -pn       Prefixes n characters (see -ck) to the beginning
+               of a line when the line length is less than the
+               effective line length.  Default is to prefix the
+               number of characters necessary to obtain the
+               effective line length.
+
+     -s        Shears off leading characters on each line up to
+               the first tab and places up to 8 of the sheared
+               characters at the end of the line.  If more than 8
+               characters (not counting the first tab) are
+               sheared, the eighth character is replaced by a *
+               and any characters to the right of it are
+               discarded.  The first tab is always discarded.
+
+               An error message and program exit occur if this
+               option is used on a file without a tab on each
+               line.  The characters sheared off are saved
+               internally until all other options specified are
+               applied to that line.  The characters are then
+               added at the end of the processed line.
+
+               For example, to convert a file with leading
+               digits, one or more tabs, and text on each line,
+               to a file beginning with the text, all tabs after
+               the first expanded to spaces, padded with spaces
+               out to column 72 (or truncated to column 72), and
+               the leading digits placed starting at column 73,
+               use the following command:
+
+               newform -s -i -l -a -e filename
+
+DIAGNOSTICS
+     All diagnostic messages indicate fatal errors.
+
+     usage: ...                   The newform command was called
+                                  with a bad option.
+
+     not -s format                There was no tab on some line.
+
+     can't open file              Self explanatory.
+
+     internal line too long       A line exceeds 512 characters
+                                  after being expanded in the
+                                  internal work buffer.
+
+     tabspec in error             A tab specification is
+                                  incorrectly formatted, or
+                                  specified tab stops are not
+                                  ascending.
+
+     tabspec indirection illegal  A tabspec read from a file (or
+                                  standard input) may not contain
+                                  a tabspec referencing another
+                                  file (or standard input).
+
+EXIT CODES
+     0 - normal execution
+     1 - for any error
+
+PROMPTS
+   Input File Name(s):
+     Response to this prompt is optional.  Enter the name of the
+     files to be changed.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Input Tab Specification:
+     Response to this prompt is optional.  Enter the spaces
+     requested between tabs.  The result expands tabs to spaces.
+
+   Output Tab Specification:
+     Response to this prompt is optional.  Enter the spaces
+     requested between tabs.  The result expands spaces to tabs.
+
+   Line Length:
+     Initial value is 80. Enter the number of characters allowed
+     on a line.
+
+   Truncate Beginning Characters:
+     Initial value is no.  Enter yes if some beginning characters
+     are to be truncated.
+
+     The following prompt is issued if yes was answered to the
+     previous prompt.
+
+   Number Beginning Char to Truncate:
+     Response to this prompt is optional.  Enter the number of
+     characters to be truncated at the beginning of each line.
+
+   Truncate End Characters:
+     Initial value is no.  Enter yes if some end characters are
+     to be truncated.
+
+     The following prompt is issued if yes was answered to the
+     previous prompt.
+
+   Number Ending Char to Truncate:
+     Response to this prompt is optional.  Enter the number of
+     characters to be truncated at the end of each line.
+
+   Prefix/Append Character:
+     Response to this prompt is optional.  Enter the character to
+     replace the prefix/append character.
+
+   Select Number of Prefix Char:
+     Initial value is no.  Enter yes if you wish to choose the
+     number of prefix characters.
+
+     The following prompt is issued if yes was answered to the
+     previous prompt.
+
+   Number of Prefix Characters:
+     Response to this prompt is optional.  Enter the number of
+     characters to be added to the beginning of a line if the
+     line length is less than the effective line length.
+
+   Select Number of Append Characters:
+     Initial value is no.  Enter yes if you wish to choose the
+     number of characters to be added to a line.
+
+     The following prompt is issued if yes was answered to the
+     previous prompt.
+
+   Number of Append Characters:
+     Response to this prompt is optional.  Enter the number of
+     characters to be added to the end of a line if the line
+     length is less than the effective line length.
+
+   Write Tab Spec. Format Line:
+     Initial value is no.  If you enter yes, a tab specification
+     line is output before any other line is output.
+
+   Tack Leading Char to EOL:
+     Initial value is no.  If you enter yes, the leading
+     characters of each line are appended to the end of the line.
+
+SEE ALSO
+     csplit(1), fspec(4), tabs(1).
+
+NOTES
+     The newform command normally only keeps track of physical
+     characters.  However, for the -i and -o options, newform
+     keeps track of backspaces in order to line up tabs in the
+     appropriate logical columns.
+
+     The newform command does not prompt the user if a tabspec is
+     to be read from the standard input (by use of -i- - or -o-
+     -).
+
+     If the -f option is used, and the last -o option specified
+     was -o- - and was preceded by either -o- - or -i- -, the tab
+     specification format line will be incorrect.
+
+

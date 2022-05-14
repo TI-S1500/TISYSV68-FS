@@ -1,0 +1,35 @@
+BANNER(1)                                               BANNER(1)
+
+NAME
+     banner - Makes posters
+
+SYNOPSIS
+     banner strings
+
+DESCRIPTION
+     The banner command prints its arguments (each up to 10
+     characters long) in large letters on the standard output.
+
+EXAMPLE
+     The following example prints on three lines the strings
+     "Report:", "week of", and "Oct 7" to the file named
+     weekly.1.
+
+          banner "Report:" "week of" "Oct 7" > weekly.1
+
+PROMPTS
+   Output File Name:
+     Enter the name of the file to receive the banner text.
+     Response to this prompt is optional.
+
+   Number of Lines (1-9):
+     Enter the total number of lines to be created.
+
+   Text for Line i:
+     Enter the the text for line i, where i is a number between
+     one and the number specified in the previous prompt.
+
+SEE ALSO
+     echo(1).
+
+

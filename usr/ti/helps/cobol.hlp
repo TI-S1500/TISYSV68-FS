@@ -1,0 +1,141 @@
+NAME
+  cobol - compiles a VS COBOL program
+	@(#)cobol.sh	1.1 87/03/09
+
+SYNOPSIS
+  cobol file-name [directive list]
+
+DESCRIPTION
+  Function
+    The cobol command compiles a VS COBOL source program indicated by
+    file-name and produces an intermediate code program that can be run by
+    cbrun.
+
+  Options
+    directive list
+      is a list of compiler directives, separated by one or more spaces.
+
+      A directive may be followed by a qualifier, which can be enclosed in
+      quotes or parentheses (note that you must escape parentheses).  Quotes
+      are used in the following description.
+
+      You can continue a sequence of directives on a new line by ending a line
+      of directives with the character "&".  You cannot split a directive over
+      two lines.  The compiler will accept or reject a line of directives
+      before processing a new line of directives.
+
+      Directive          Use                                        Default
+      -------------------------------------------------------------------------
+      [NO]ALTER          Allow ALTER statements                     ALTER
+      [NO]ANIM           Compile suitable for later use with        ANIM
+                         ANIMATOR
+      [NO]ANS85          Recognize ANSI '85 reserved words          ANS85
+      [NO]AUTOLOCK       Default locking for files opened I-O or    NO AUTOLOCK
+                         EXTEND is AUTOMATIC
+      [NO]BELL
+        BELL["n"]        Define bell character                      BELL
+      [NO]BRIEF          Suppress error messages                    NO BRIEF
+      [NO]COMP           Use computational subset                   NO COMP
+      [NO]CONFIRM        Echo directives to screen                  CONFIRM
+      [NO]COPYLIST"n"    List COPY files [for segment n]            NO COPYLIST
+      [NO]DATE           Use string for comment-entry in            DATE
+        DATE["string"]   DATE-COMPILED paragraph
+      [NO]ECHO           Echo errors to console                     ECHO
+      [NO]ECHOALL        Send listing to CRT                        NO ECHOALL
+      [NO]ERRLIST        List only errors and flags                 NO ERRLIST
+      [NO]ERRQ           Ask if compilation should continue after   NO ERRQ
+                         an error
+      [NO]FILESHARE      Has the same effect as specifying          NO
+                         AUTOLOCK and WRITELOCK.  Do not use in      FILESHARE
+                         new programs.
+      [NO]FLAG
+        FLAG" LOW "      Flag code higher than level indicated      NO FLAG
+              L-I
+              H-I
+              HIGH
+              L/II
+              IBM
+              MF
+              OSVS
+              VSC2
+              ANS74
+              ANS85
+      [NO]FORM           Suppress headers and form feeds.           FORM"60"
+        FORM"n"          Set length of page = n lines
+      [NO]IBM            Allows IBM extension IO DIVISION           NO IBM
+      [NO]IBMCOMP        Compile USAGE COMP items with IBM          NO IBMCOMP
+                         synchronized format
+      [NO]INT            Specify intermediate code                  INT
+        INT"file-name"   file name                                  source-file
+                                                                    .LST
+      [NO]LIST           Specify listing requirements               LIST
+          PRINT                                                     source-file
+                                                                     .LST
+      LIST ["file-name"] If file-name is omitted, standard
+      PRINT              output is assumed
+      LISTWIDTH "nn"     Specifies width of listing                 LISTWIDTH
+        LW                                                            "80"
+      [NO]OLDCOPY        COPY works according to ANSI 68 COBOL std  NO OLDCOPY
+      [NO]OSVS           Recognize OS/VS COBOL reserved words       OSVS
+      OVERRIDE           Change implementor-name (SYSOUT etc.) to
+      "implementor-name" new-name for SPECIAL-NAMES paragraph
+        = "new-name"
+      [NO]PROFILE        Specify that code to produce performance   NO PROFILE
+                         statistics is required
+      [NO]QUAL           Allows qualified data names and procedure  QUAL
+                         names
+      [NO]QUERY          Ask operator for name of COPY file if      QUERY
+                         not found
+      [NO]REF            Insert addresses on listing                NO REF
+      [NO]RESEQ          Resequence source file                     NO RESEQ
+      [NO]SEG            Allow segmentation                         SEG
+      [NO]SEQCHK         Flag lines with sequence numbers           NO SEQCHK
+                         out of sequence
+      SEQUENTIAL
+        ( RECORD )       Files with organization SEQUENTIAL         SEQUENTIAL
+          LINE           default to RECORD or LINE SEQUENTIAL
+      [NO]SUPFF          Suppress form feeds on listing             NO SUPFF
+      [NO]TIME           Add system time to system date.            TIME
+                         Can only be used with DATE
+      [NO]WRITELOCK      WRITE and REWRITE statements acquire       NO
+                         record locks when locking multiple records   WRITELOCK
+      [NO]VSC2           Recognize VS COBOL II resverved words      VSC2
+      [NO]XREF           Produce a cross-reference listing          NO XREF
+      [NO]ZEROSEQ        Suppress leading zeros in sequence numbers NO ZEROSEQ
+
+PROMPTS
+  Source File Name:
+    The name of the source file that is to be compiled.  All source file names
+    should use an extension.  Without an extension, some of the default values
+    may not work correctly.
+
+  Listing File Name:
+    The name of the file where the compiled listing appears.  The response is
+    optional.  If left blank, the default is the Source File Name root with the
+    appended extension ".LST".  If "dumy" is entered, no listing is made.  If
+    "me" is entered, the listing appears on the terminal.
+
+  Directive List:
+    A list of directives.  See the directive list defined above.  (Quotes should
+    not be escaped.)  If "savecbl" is implemented, the list of directives is
+    stored and becomes the default on subsequent compiles.
+
+  Mode F/B:
+    Determines whether the compile executes in "Foreground" or "Background".
+    The original default is "Foreground".  If "savecbl" is implemented, the
+    value is stored and becomes the default on subsequent compiles.
+
+  Background Status File:
+    If "Background" is selected for Mode F/B, the standard output of the
+    compiler is piped to this file.  The response is optional.  If left blank,
+    the default is the "Source File Name" root with the appended extension
+    ".bsc".
+
+NOTES
+  "savecbl" saves some of the COBOL shell variables by building the file
+  "~/setcbl" at logoff time.  The login process will set the previously saved
+  shell variables.  To implement this process, do the following:
+    1) add the line "source /usr/bin/savecbl" to the file "~/.logout"
+    2) add the line "source setcbl" to the file "~/.login".
+  These shell variables may be cleared by entering the command "unset _cbl*".
+

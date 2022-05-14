@@ -1,0 +1,45 @@
+MKNOD(1M)                                               MKNOD(1M)
+
+NAME
+     mknod - Builds special file
+
+SYNOPSIS
+     mknod name b major minor
+     mknod name c major minor
+     mknod name p
+
+DESCRIPTION
+   Purpose
+     The mknod command as specified in the first line of the
+     SYNOPSIS makes a directory entry and corresponding inode for
+     a block special file.  As specified in the second line of
+     the SYNOPSIS, mknod makes a directory entry and
+     corresponding inode for a character special file.  As used
+     in the last line of the SYNOPSIS, mknod creates permanent,
+     directory resident pipes.
+
+   Arguments
+     name The name of the entry.  The b argument indicates that
+          the special file is block-type (disks or tape), c
+          indicates character-type (other devices), and p
+          indicates permanent, directory resident pipes.
+
+     major
+          A number specifying the major device type.
+
+     minor
+          A number specifying the minor device type.
+
+     The device type number can indicate a unit, drive, or line
+     number, and can be either decimal or octal.
+
+FILES
+     /usr/sys/cf/conf.c       Defines major device numbers
+
+SEE ALSO
+     devadm(1T), mknod(2).
+     "Disk and Tape Management" and "Multivolume File Systems" in
+     the TI System V Administrator's Guide.  TI System V Terminal
+     Concentrator Software.
+
+

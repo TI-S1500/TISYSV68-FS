@@ -1,0 +1,39 @@
+# @(#)dnio1500init	1.14 90/09/21
+echo "Start DNIO/1500 Version 2.0.4 "
+if 
+    preinit
+then
+# start the niologger
+    ps -e|grep niologger >/dev/null
+    if [ $? != 0 ]
+    then niologger &
+         echo "DNIO/1500 log daemon started."
+    fi
+# set the site name
+    nmset
+# If there is a value for the environment variable 'NIOPATH', nios990 will
+# prefix a received pathname with the value of the environment variable
+# 'NIOPATH', if there has not been a previous substitution done for the
+# first element of the received pathname.  The first element of a received
+# pathname can be replaced with the value of an environment variable if the
+# first element of the received pathname does not start with a '.' or '/'
+# character.  If you want to restrict network access to a specific directory,
+# set the environment variable NIOPATH to the name of the directory and
+# advise users about the restriction.  If you want to restrict network
+# users to a set of directories, identify names and values for those names
+# and inform users of the additional names.
+#
+# example:
+#
+# NIOPATH=/usr	  Restricts network access to '/usr' directory
+# export NIOPATH
+#
+    nios990 &
+    echo "DNIO/1500 Network I/O daemon started."
+    xnets &
+    echo "DNIO/1500 Cross-Network Logon daemon started."
+    echo "End DNIO/1500 initialization."
+    sleep 2
+else
+    echo "SPA error, unable to start DNIO/1500."
+fi

@@ -1,0 +1,18 @@
+# cshf   regcmp -- regular expression compiler  
+# @(#)REGCMP.sh	1.2 87/10/19
+onintr end
+
+prompt "^REGCMP -- COMPILES REGULAR EXPRESSIONS"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^Place Output Into filename.c:" option yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($option == "y") set opt = "-"
+ 
+echo "=== REGCMP COMMAND EXECUTING ==="
+echo regcmp $opt $_input_file
+regcmp $opt $_input_file
+
+end:
+unset opt* 

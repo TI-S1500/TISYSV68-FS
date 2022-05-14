@@ -1,0 +1,55 @@
+GETF(1T)                                                 GETF(1T)
+
+NAME
+     getf - Retrieves files from a remote system via uucp(1C)
+
+SYNOPSIS
+     getf srcfile sitename destfile
+     getf srcfile all destfile
+     getf sitename
+
+DESCRIPTION
+   Purpose
+     The getf command copies files, srcfile, located on the
+     remote system, sitename, to the file, destfile, on the local
+     system.
+
+   Discussion
+     Prior to invoking uucp to perform the file transfer, getf
+     performs preliminary checks to ensure that lock files do not
+     currently exist, that the remote system is currently
+     defined, and that other checks are valid (such as ensuring
+     that the file or directory is valid and readable).  If the
+     all parameter is specified instead of a site name, the uucp
+     daemon uucico(1C) is activated to perform all work files
+     currently queued for execution.  If only the site name
+     parameter is specified, uucico contacts the system,
+     sitename, and performs all work requests queued at the local
+     and remote sites concerning the two systems.
+
+FILES
+     /usr/spool/uucp
+                   Spool directory
+
+     /usr/lib/uucp/*
+                   uucp configuration and program files
+
+SEE ALSO
+     uucico(1C), uucp(1C).
+
+DIAGNOSTICS
+     Messages are displayed to inform the user that certain lock
+     or status files are being removed.  Other messages are
+     displayed to inform the user of error or success conditions
+     in queueing or activation of the uucp daemon.
+
+NOTES
+     If uucico is not currently active when getf is activated,
+     all lock and status files for the device and system being
+     accessed will be removed.  If uucico is active, the request
+     will be queued for execution.
+
+     To verify that the specified files were transferred, inspect
+     the uucp log file, /usr/spool/uucp/LOGFILE.
+
+

@@ -1,0 +1,348 @@
+#
+# COPYRIGHT (c) 1985 TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+#
+#
+# @(#)shutdown.sh	1.25 (TI) 90/02/09
+#
+
+sync; sync; sync
+
+#
+# remember the name we were invoked with for usage messages
+myname=$0
+fail_reason="Unknown Reason - "`date`
+
+#
+# default to non-powerfail mode, and 60 second grace period.
+pfmode="no"
+GRACE=60
+
+#
+# parse command line args.
+#
+if [ $# -gt 0 ]
+then
+	for arg
+	do
+		case $arg in
+			[0-9] | \
+			[0-9][0-9] | \
+			[0-9][0-9][0-9] ) GRACE=$arg;;
+	
+			-p ) pfmode="yes"
+			     myname="`dirname $0`/powerfail";;
+
+			#
+			# add other options here
+			#
+	
+			* ) echo "Usage: $myname [ -p ] [ seconds ]\r" 1>&2
+				exit 1;;
+		esac
+	done
+fi
+
+#
+# check to make sure we are super user.
+# add to the case if you have other
+# id's that are super user, and want
+# them to use shutdown
+#
+myid=`id | cut -d= -f2 | cut -d\( -f1`
+case $myid in
+
+	0) ;;
+
+	*) echo "\n$myname must be run by the super user.\r\n"
+	   exit 1 ;;
+esac
+
+#
+# set up TZ for powerfail date command
+#
+TZ=`cat /etc/TZ`
+export TZ
+
+#
+# Tell 'init' to NOT do respawns---"init s" coming soon.
+# you must do an 'init q' (or some level other than z)
+# before leaving or gettys will not respawn, so we 
+# have trap do an init q at exit. you might add them
+# anyway, there are some cases where the trap won't
+# get called when we exit.
+#
+trap "/etc/init q ; exit 1" 1 2 3
+/etc/init z
+
+#
+# if we are in powerfail mode, lets verify that we actually lost
+# wall power
+if [ "$pfmode" = "yes" ]
+then
+	# check for overtemp condition. you must enable overtemp/powerfail
+	# via upsstat (see upsstat(1M) man page).
+	otemp_mode=`/bin/upsstat -O`
+	stillpf=`/bin/upsstat`
+
+	if [ "$otemp_mode" = "1" -a "$stillpf" = "0" ]
+	then
+		# remember why we went down
+		fail_reason="Overtemp Condition on "`date`
+
+		# this section is executed if overtemp caused this script
+		# to start AND the ups is NOT in backup mode
+		# if you do NOT want to shut the system down, exit here.
+		# we will sleep 60 seconds and then shut down!
+		sleep 60
+	else
+		# remember why we went down
+		fail_reason="Power Failure on "`date`
+
+		# startup up upsmon to monitor the ups. upsmon only works on
+		# systems with UPS hardware support. on other systems, the
+		# normal port monitor will still be in operation.
+		# upsmon will go into background by itself.
+		/bin/upsmon
+
+		# check again after some period of time to allow for glitches
+		# increase or decrease sleep time as desired.
+		sleep 60
+
+		stillpf=`/bin/upsstat`
+		if [ "$stillpf" = "0" ]
+		then
+			/bin/upsoff		# allow future interrupts
+			/etc/init q		# start spawning again
+			exit 0
+		fi
+	fi
+fi
+
+#
+# if we are in powerfail mode, then inform the console that the
+# system will be going down in GRACE seconds. otherwise we will
+# do some verifications interactively before shutting down.
+#
+if [ "$pfmode" = "yes" ]
+then
+	#
+	# put the powerfail date in /.power_fail
+	#
+	echo "$fail_reason" > /.power_fail
+
+	#
+	# since we are in power fail mode, don't bother asking questions,
+	# there is most likely nobody to answer
+	#
+	echo "\nSHUTDOWN PROGRAM - POWERFAIL MODE\007\r\n"
+	date
+	echo "\r\n      The system is now in battery backup mode.\r"
+	echo "      Shutdown will commence in $GRACE seconds.\r\n"
+
+	sleep $GRACE
+else
+	#
+	# normal shutdown mode, check some things before going on.
+	#
+	curr_dir=`pwd`
+	if [ "$curr_dir" != "/" ]
+	then
+		echo "\n$myname: You must be in the root directory (/) to use `/bin/basename $myname`.\n" 1>&2
+		/etc/init q
+		exit 1
+	fi
+	
+	#
+	# make sure the user wants to do this
+	#
+	echo "\nSHUTDOWN PROGRAM\007\n"
+	date
+	echo "\n      This program will bring the system to Single User Mode."
+	echo "      Press RETURN to continue or 'q' and RETURN to abort: \c"
+	read c
+	if [ "$c" = "q" -o "$c" = "Q" ]
+	then
+		/etc/init q
+		echo "\nShutdown Aborted\n"
+		exit 0
+	fi
+
+	#
+	# see if disk space is too tight for a good startup
+	# and give the user a chance to back out if it's not.
+	#
+	a=`df "/"`
+	set -- $a
+	blk=$3
+	if [ $blk -lt 50 ]
+	then
+		echo
+		echo
+		echo "	The ROOT, '/', file system has less than 50 free blocks"
+		echo "	available.  The actual number of free blocks is $blk."
+		echo "	This condition may prevent you from rebooting the system"
+		echo "	or cause unpredictable results upon rebooting."
+		echo "	Do you want to continue the shutdown? (y or n): \c";
+		read b
+		if [ "$b" != "y" -a "$b" != "Y" ]
+		then
+			/etc/init q
+			echo "\nShutdown Aborted\n"
+			exit 0
+		fi
+		echo
+		echo
+	fi
+
+
+	#
+	# if anyone but the user running this script is logged on,
+	# then we may want to send a custom message telling them
+	# of impending doom
+	#
+	a="`who | wc -l`"
+	if [ $a -gt 1 ]
+	then
+		echo "\nDo you want to send your own message? (y or n):   \c"
+		read b
+		if [ "$b" = "y" ]
+		then
+			echo "\nType your message followed by ctrl-d ...\n"
+			/etc/wall
+		else
+			/etc/wall <<!
+
+***********************************************
+        PLEASE LOG OFF NOW ! ! !
+      System maintenance about to begin.
+All processes will be killed in $GRACE seconds.
+***********************************************
+!
+		fi
+		sleep $GRACE
+	fi
+fi
+
+#
+# make sure we are in the root dir
+#
+cd /
+
+if [ "$pfmode" = "yes" ]
+then
+	#
+	# we don't want to wall in pf mode since it's likely that
+	# there are no terminals that can listen.
+	#
+	echo "\nSYSTEM BEING BROUGHT DOWN NOW ! ! !\007\r\n"
+else
+	/etc/wall <<!
+
+***********************************
+SYSTEM BEING BROUGHT DOWN NOW ! ! !
+***********************************
+!
+fi
+
+#
+# a little added bonus
+#
+if [ $GRACE -ne 0 ]
+then
+	sleep 10
+fi
+
+#
+# last chance to stop the countdown.
+# if we are in pf mode, then we go on,
+# otherwise give the user one last chance
+#
+if [ "$pfmode" = "yes" ]
+then
+	b="y"
+else
+	echo "\nKill all user processes and daemons for this system;"
+	echo "System will enter Single User Mode."
+	echo "Do you want to continue? (y or n):   \c";
+	read b
+fi
+
+
+#####################################
+#     the point of no return        #
+#####################################
+
+if [ "$b" = "y" ]
+then
+	/usr/lib/lpshut
+	/usr/lib/acct/shutacct
+	echo "\rProcess accounting stopped.\r"
+	/etc/errstop
+	echo "\rError logging stopped.\r"
+
+	echo "\r\nAll currently running processes will now be killed.\r"
+
+	# Give them a nice nudge ......
+	/etc/killall 15
+
+	sleep 15
+
+	# Now make them go away
+	/etc/killall 
+
+	mount | awk ' { x[NR] = $3 } END { for (i = NR; i > 1; --i) print "umount ", x[i] } ' > /.xx_yy_zz
+	sh < /.xx_yy_zz
+	rm /.xx_yy_zz
+
+	if [ "$pfmode" = "yes" ]
+	then
+		#
+		# at this point the script should wait for power
+		# to be restored to the system (wall power), and
+		# then reboot. this ensures that we come up with
+		# wall power present in order to charge the batteries.
+		#
+		# on systems without UPS hardware support, start up a daemon
+		# in background to monitor the UPS and run "upsoff" when
+		# wall power comes back.
+		# i.e.:
+		#/bin/portwait ttyXX ; /bin/upsoff &
+
+		echo "\r\n\n                           *** System Down ***\r"
+		echo "         You May Power Off Now or Press BREAK Four Times to Boot\r\n\n"
+
+		while :
+		do
+			sync;sync;sync
+			stillpf=`/bin/upsstat`
+			if [ "$stillpf" = "0" ]
+			then
+				# ups is not on batteries, must check to
+				# see if otemp caused this
+				otemp_mode=`/bin/upsstat -O`
+				if [ "$otemp_mode" = "1" ]
+				then
+					# otemp is still on, lets wait for
+					# that to clear
+					sleep 3
+				else
+					echo "\r\n\n*** Booting ***\r\n"
+					sync;sync;sync;
+					/bin/bootdvr
+				fi
+			fi
+			sleep 5
+		done
+
+	else
+		/etc/init s;
+		sync;sync;sync;
+	fi
+else
+	#
+	# bailing out!
+	#
+	/etc/init q
+	echo "For help, call your system administrator."
+fi

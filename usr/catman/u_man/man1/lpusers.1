@@ -1,0 +1,51 @@
+LPUSERS(1M)                                           LPUSERS(1M)
+
+NAME
+     lpusers - Sets printing queue priorities
+
+SYNOPSIS
+     /usr/lib/lpusers -d priority-level
+     /usr/lib/lpusers -q priority-level -u user-list
+     /usr/lib/lpusers -u user-list
+     /usr/lib/lpusers -q priority-level
+     /usr/lib/lpusers -l
+
+DESCRIPTION
+     The lpusers command is used to set limits to the queue
+     priority level that can be assigned to jobs submitted by
+     users of the LP print service.
+
+     The first form of the command (with -d) sets the systemwide
+     priority default to priority-level, where priority-level is
+     a value of 0 to 39, with 0 being the highest priority.  If a
+     user does not specify a priority level with a print request
+     (see lp(1)), the default priority is used.  Initially, the
+     default priority level is 20.
+
+     The second form of the command (with -q and -u) sets the
+     default highest priority-level (0-39) that the users in
+     user-list can request when submitting a print request.
+     Users that have been given a limit cannot submit a print
+     request with a higher priority level than the one assigned,
+     nor can they change a request already submitted to have a
+     higher priority.  Any print requests with priority levels
+     higher than allowed will be given the highest priority
+     allowed.
+
+     The third form of the command (with -u) removes the users
+     from any explicit priority level and returns them to the
+     default priority level.
+
+     The fourth form of the command (with -q) sets the default
+     highest priority level for all users not explicitly covered
+     by the use of the second form of this command.
+
+     The last form of the command (with -l) lists the default
+     priority level and the priority limits assigned to users.
+
+SEE ALSO
+     lp(1).
+     ``Printer Spooling System'' in the TI System V
+     Administrator's Guide.
+
+

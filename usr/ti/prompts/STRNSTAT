@@ -1,0 +1,33 @@
+#cshf
+#	@(#)@(#)STRNSTAT.sh	1.1 90/01/05
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1990.  ALL
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+#	ASSOCIATED DOCUMENTATION.
+# 
+onintr end
+prompt "^STRNSTAT -- DISPLAY STREAMSNET STATISTICS "\
+       "^Interface Name:" ifname string All\
+       "^Clear After Display:" reset yesno No\
+       "^#$*"
+
+if (! $abort) then
+  if ($ifname == "All") then
+    if ($reset == "n") then
+      strnstat -I 
+    else
+      strnstat -Ic
+    endif
+  else
+    if ($reset == "n") then
+      strnstat -i $ifname
+    else
+      strnstat -ci $ifname
+    endif
+  endif
+
+  unset ifname reset
+endif
+end:

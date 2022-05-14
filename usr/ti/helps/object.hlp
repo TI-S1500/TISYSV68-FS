@@ -1,0 +1,6 @@
+	object - Object Commands Menu
+		@(#)object.sh	1.1 87/03/09
+
+	This menu lists tools used in the creation and manipulation 
+	   of object files.
+

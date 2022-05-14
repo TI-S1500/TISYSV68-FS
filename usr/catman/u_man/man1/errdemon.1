@@ -1,0 +1,48 @@
+ERRDEMON(1M)                                         ERRDEMON(1M)
+
+NAME
+     errdemon - Provides an error-logging daemon
+
+SYNOPSIS
+     errdemon -c
+
+DESCRIPTION
+   Purpose
+     The error-logging daemon errdemon collects error records
+     from the operating system by reading the special file
+     /dev/error.
+
+     Only the super-user can start the daemon, and only one error
+     daemon can be active at any time.
+
+   Options
+     -c  Causes errdemon to log all messages to the system
+         console as well as to the error file.
+
+   Discussion
+     The daemon places the error records in the error file
+     /usr/adm/errfile.  The error file is created if it does not
+     exist.  If the error file exists, error records are appended
+     to it so that no previous error data is lost.
+
+     Error records are appended to /usr/adm/errfile until the
+     file reaches a size greater than 1,000 multiplied by the
+     largest record in /usr/adm/errfile.  The error file is then
+     renamed by appending .old to it (/usr/adm/errfile.old).  The
+     error file is recreated as /usr/adm/errfile.
+
+     No analysis of the error records is done by errdemon.
+     Analysis of error records is done by errpt(1M).
+
+     The error-logging daemon is terminated by sending it a
+     software kill signal, as explained in signal(2).
+
+FILES
+     /dev/error               Source of error records
+     /usr/adm/errfile         Repository for error records
+     /usr/adm/errfile.old     Repository for error records
+
+SEE ALSO
+     err(7), errpt(1M), errstop(1M), init(1M), kill(1).
+
+

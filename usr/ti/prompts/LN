@@ -1,0 +1,20 @@
+# cshf 	ln - links files 
+#	@(#)LN.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^LN -- LINK FILES"\
+	"^Input File or Directory Name(s):" F1 macnm "$F1"\
+	"^Target File or Directory Name:"  F2  acnm  $F2 \
+	"^Prompt to Change Write Permission:" fflag yesno y\
+	"^#$*"
+
+if ($abort) goto end
+if ($fflag == "n") set opt = "-f"
+
+echo "=== LN COMMAND EXECUTING ==="
+echo ln $opt $F1 $F2
+ln $opt $F1 $F2
+
+end:
+unset  *flag opt F*

@@ -1,0 +1,66 @@
+FUSER(1M)                                               FUSER(1M)
+
+NAME
+     fuser - Identifies processes using a file or file structure
+
+SYNOPSIS
+     fuser -ku files - [[-ku] files]
+
+DESCRIPTION
+   Purpose
+     The fuser command uses the specified files as arguments to
+     list the process IDs.  For block special devices, all
+     processes using any file on that device are listed.
+
+     The process ID is followed by one of the following suffixes:
+
+     c  Means the process is using the file as its current
+        directory
+
+     p  Means the process is using the parent of its current
+        directory (only when in use by the system)
+
+     r  Means the process is using its root directory
+
+     The process IDs are printed as a single line on the standard
+     output and are separated by spaces and terminated with a
+     single newline.  All other output is written on standard
+     error.
+
+   Options
+     -u   Indicates that the login name in parentheses (as well
+          as c, p, or r) follows the process ID.
+
+     -k   Indicates that the SIGKILL signal is sent to each
+          process.  Only the super-user can terminate another
+          user's process.  See kill(2).
+
+     Options can be respecified between groups of files.  The new
+     set of options replaces the old set, with a single dash
+     canceling any options currently in force.
+
+EXAMPLES
+     The command that follows, if executed by the super-user,
+     terminates all processes that are preventing the /usr file
+     system from being unmounted.  The command lists the process
+     ID and login name of each process as it is killed.
+
+          fuser -ku /dev/dsk/sys:usr
+
+     The following command lists the process ID of processes that
+     have the password file open:
+
+          fuser -u /etc/passwd
+
+     The following command uses a single command line to execute
+     both of the functions shown in the previous examples:
+
+          fuser -ku /dev/dsk/sys:usr -u /etc/passwd
+
+FILES
+     /unix        System namelist file
+     /dev/kmem    System image file for physical memory
+     /dev/mem     System image file for virtual memory
+
+SEE ALSO
+     mount(1M), ps(1), kill(2), signal(2).

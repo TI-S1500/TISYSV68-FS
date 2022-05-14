@@ -1,0 +1,39 @@
+# cshf  uname -- names the system 
+#	@(#)UNAME.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UNAME -- PRINTS NAME OF CURRENT SYSTEM"\
+	"^Select Options:" option yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($option == "n") then 
+	set opt = s
+else
+	prompt "^UNAME -- MODIFY DEFAULT OPTIONS"\
+		"^Print All Information:" aflag yesno n\
+		"^Print Nodename:" nflag yesno n\
+		"^Print Operating System Release:" rflag yesno n\
+		"^Print Operating System Version:" vflag yesno n\
+		"^Print Machine Hardware Name:" mflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($aflag == "y") set opt = a$opt
+	if ($nflag == "y") set opt = n$opt
+	if ($rflag == "y") set opt = r$opt
+	if ($vflag == "y") set opt = v$opt
+	if ($mflag == "y") set opt = m$opt
+endif
+
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== UNAME COMMAND EXECUTING ==="
+echo uname $opt 
+uname $opt 
+
+#clean up time
+end:
+unset *flag *opt option

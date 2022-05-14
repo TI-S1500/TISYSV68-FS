@@ -1,0 +1,301 @@
+CU(1C)							   CU(1C)
+
+NAME
+     cu - Calls another UNIX(R) system
+
+SYNOPSIS
+     cu -dehlmnost telno
+     cu -dehlmnost dir
+     cu -dehlos
+     cu -deho systemname
+
+DESCRIPTION
+   Purpose
+     The cu command calls another UNIX system, a terminal, or a
+     non-UNIX system.  It manages an interactive conversation and
+     can transfer ASCII files.
+
+   Options
+     -d   Causes diagnostic traces to be printed.
+
+     -e   Designates that even parity is to be generated for data
+	  sent to the remote.
+
+     -h   Emulates local echo, supporting calls to other computer
+	  systems that expect terminals to be in half-duplex
+	  mode.
+
+     -lline
+	  Specifies a device name for use as the communication
+	  line.  This option can be used to override searching
+	  for the first available line having the right speed.
+	  When this option is used without the -s option, the
+	  speed of a line is taken from the devices file.  When
+	  the -s and -l options are used together, cu searches
+	  the devices file to check if the requested speed for
+	  the requested line is available.  If so, the connection
+	  is made at the requested speed.  Otherwise, an error
+	  message is printed and the call is not made.	If the
+	  specified device is associated with an auto dialer, a
+	  telephone number must be provided.  Use of this option
+	  with systemname rather than telno is not allowed.
+
+     -m   Specifies a direct line with modem control.
+
+     -n   Prompts the user for a telephone number to be dialed
+	  rather than reading the number from the command line.
+
+     -o   Designates that odd parity is to be generated for data
+	  sent to the remote system.
+
+     -sspeed
+	  Specifies the transmission speed - 110, 150, 300, 600,
+	  1200, 2400, 4800, 9600, or 19200.  The default value is
+	  300.	Most modems are either 300 or 1200 baud.  For
+	  dial-out lines, cu chooses a modem speed (300 or 1200)
+	  as the slowest available that can handle the specified
+	  transmission speed.  Directly connected lines may be
+	  set to speeds higher than 2400 baud.
+
+     -t   Used when dialing an ASCII terminal that has been set
+	  to auto-answer.  Appropriate mapping of carriage-
+	  returns to carriage-return-line-feed pairs is set.
+
+   Arguments
+     telno
+	  Specifies the telephone number when using an automatic
+	  dialer, with equal signs for secondary dial tone or
+	  minus signs placed appropriately for 4 second delays.
+
+     dir  Used instead of telno for directly connected lines.
+	  The string dir implies a null modem.	Using dir ensures
+	  that a line has been specified by the -l option.
+
+     systemname
+	  A system name rather than a telephone number or keyword
+	  "DIR" can be specified.  In this case, cu obtains an
+	  appropriate direct line or telephone number from the
+	  file, L.sys.
+
+	  The systemname argument should not be used with the -l
+	  and -s options because cu will connect to the first
+	  available line for the system name specified, ignoring
+	  the requested line and speed.
+
+	  UNIX is a registered trademark of AT&T
+
+   Discussion
+     The cu command tries each line listed in the file
+     /usr/lib/uucp/L-devices until it finds an available line
+     with appropriate attributes or runs out of entries.  After
+     making the connection, cu runs as two processes.  The
+     transmit process reads data from the standard input and,
+     except for lines beginning with ~, passes the data to the
+     remote system.  The receive process accepts data from the
+     remote system and, except for lines beginning with ~, passes
+     the data to the standard output.  Normally, an automatic
+     DC3/DC1 protocol is used to control input from the remote so
+     that the buffer is not overrun.  Lines beginning with ~ have
+     special meanings.
+
+     The transmit process interprets the following user-initiated
+     commands:
+
+     ~. 		 Terminates the conversation.
+
+     ~! 		 Escapes to an interactive shell on the
+			 local system.
+
+     ~!cmd...		 Runs cmd on the local system (via sh
+			 -c).
+
+     ~$cmd...		 Runs cmd locally and send its output to
+			 the remote system.
+
+     ~%cd		 Changes the directory on the local
+			 system.
+
+     take from [to]	 Copies file from (on the remote system)
+			 to file to (on the local system).  If to
+			 is omitted, the from argument is used in
+			 both places.
+
+     ~%put from [ to ]	 Copies file from (on local system) to
+			 file to (on remote system).  If to is
+			 omitted, the from argument is used in
+			 both places.
+
+     ~~line		 Sends the line ~line to the remote
+			 system.
+
+     ~%break or ~%b	 Transmits a BREAK to the remote system.
+
+     ~~...		 Sends the line ~...  to the remote
+			 system.
+
+     ~%nostop		 Turns off the DC3/DC1 input control
+			 protocol for the remainder of the
+			 session.  This command is useful in case
+			 the remote system is one that does not
+			 respond properly to the DC3 and DC1
+			 characters.
+
+     The receive process normally copies data from the remote
+     system to its standard output.  A line from the remote that
+     begins with ~> initiates an output diversion to a file.  The
+     complete sequence is as follows:
+
+	  ~>[>]:file
+	  zero or more lines to be written to file
+	  ~>
+
+     Data from the remote is diverted (or appended, if >> is
+     used) to file.  The trailing ~> terminates the diversion.
+
+     The use of ~%put requires that stty(1) and cat(1) exist on
+     the remote system.  It also requires that the current erase
+     and kill characters on the remote system be identical to the
+     current ones on the local system.	Backslashes are inserted
+     at appropriate places.
+
+     The use of ~%take requires that echo(1) and cat(1) exist on
+     the remote system.  Also, stty tabs mode should be set on
+     the remote system if tabs are to be copied without
+     expansion.
+
+EXAMPLES
+     To dial a system whose number is 9 201 555 1212 using 1200
+     baud, enter the following command:
+
+	  cu -s1200 9=2015551212
+
+      To login to a system connected by a direct line, enter the
+     following command:
+
+	  cu -l /dev/ttyXX dir
+
+     To dial a system with the specific line and a specific
+     speed, enter the following command:
+
+	  cu -s1200 -l /dev/ttyXX dir
+
+     To dial a system using a specific line, enter the following
+     command:
+
+	  cu -l /dev/culXX 2015551212
+
+     To connect to a system, SYS1, without specifying any device
+     configuration information, enter the following command:
+
+	  cu sys1
+
+PROMPTS
+   Specify System Name:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear:
+
+   System Name:
+     Enter the name of the system to be called.
+
+   Print Diagnostic Traces:
+     Initial value is no.  If you enter yes, the diagnostic
+     traces are printed.
+
+   Even, Odd, or No Parity (e,o,n):
+     Enter e to send data in even parity. Enter o to send data in
+     odd parity.
+
+   Emulate Local Echo:
+     Initial value is no.  If you enter yes, the local echo is
+     emulated and terminals are expected to be in half duplex
+     mode.
+
+   Dial Into a System:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear.
+
+   Line Device to Use:
+     Response to this prompt is optional.  Enter the device name
+     for use as the communications line.
+
+   Print Diagnostic Traces:
+     Initial value is no.  If you enter yes, the diagnostic
+     traces are printed.
+
+   Even, Odd, or No Parity (e,o,n):
+     Enter e to send data in even parity. Enter o to send data in
+     odd parity.
+
+   Emulate Local Echo:
+     Initial value is no.  If you enter yes, the local echo is
+     emulated and terminals are expected to be in half duplex
+     mode.
+
+   Modem Control With Direct Line:
+     Initial value is no.  If you enter yes, a direct line with
+     modem control is assumed.
+
+   Prompt for Telephone Number:
+     Initial value is no.  If you enter yes, a prompt for the
+     phone number will appear.
+
+   Baud Rate:
+     Response to this prompt is optional.  Enter the baud rate
+     needed to transfer data.
+
+   Dial Terminal With Auto Ans:
+     Initial value is no.  If you enter yes, the system being
+     dialed is assumed to have auto-answer. Appropriate mapping
+     of carriage-return-line-feed pairs are set.
+
+   Direct Connect or Telephone # (d,t):
+     Enter d to directly connect to another UNIX system. Enter t
+     to be connected by phone.
+
+   Telephone Number:
+     Enter the phone number needed to be connected to the other
+     system.
+
+   Specify a Direct Communications Line:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear:
+
+   Line Device to Use:
+     Enter the device name for use as the communications line.
+
+   Print Diagnostic Traces:
+     Initial value is no.  If you enter yes, the diagnostic
+     traces are printed.
+
+   Even, Odd, or No Parity (e,o,n):
+     Enter e to send data in even parity.  Enter o to send data
+     in odd parity.
+
+   Emulate Local Echo:
+     Initial value is no.  If you enter yes, the local echo is
+     emulated and terminals are expected to be in half duplex
+     mode.
+
+   Baud Rate:
+     Enter the baud rate needed to transfer data.
+
+FILES
+     /usr/lib/uucp/L-devices
+     /usr/lib/uucp/L.sys
+     /usr/spool/uucp/LCK..(tty-device)
+     /dev/null
+
+SEE ALSO
+     cat(1), ct(1C), echo(1), stty(1), uucp(1C).
+
+DIAGNOSTICS
+     Exit code is zero for normal exit, nonzero (various values)
+     otherwise.
+
+NOTES
+     The cu command buffers input internally.
+
+     There is an artificial slowing of transmission by cu during
+     the ~%put operation so that loss of data is unlikely.
+
+

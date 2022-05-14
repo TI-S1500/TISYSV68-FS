@@ -1,0 +1,248 @@
+PS(1)							    PS(1)
+
+NAME
+     ps - Reports process status
+
+SYNOPSIS
+     ps -adefglnptu
+
+DESCRIPTION
+   Purpose
+     The ps command prints information about active processes by
+     accessing the executing kernel directly.
+
+   Options
+     Without options, information is printed about processes
+     associated with the current terminal.  Otherwise, the
+     displayed information is controlled by the following
+     options:
+
+     -a 	 Prints information about all processes except
+		 process group leaders and processes not
+		 associated with a terminal.
+
+     -d 	 Prints information about all processes except
+		 process group leaders.
+
+     -e 	 Prints information about all processes.
+
+     -f 	 Generates a full listing.  Normally, a short
+		 listing containing only process ID, terminal
+		 (tty) identifier, cumulative execution time, and
+		 the command name is printed.
+
+     -g glist	 Restricts listing to data about processes whose
+		 process groups are given in glist, where glist
+		 is a list of the PIDs of the process group
+		 leaders and is in the same format as tlist.
+
+     -l 	 Generates a long listing.
+
+     -n namelist
+		 Specifies an alternate system namelist file. The
+		 default file is /unix.
+
+     -p plist	 Restricts listing to data about processes whose
+		 process ID numbers are given in plist, where
+		 plist is in the same format as tlist.
+
+     -t tlist	 Restricts listing to data about the processes
+		 associated with the terminals given in tlist,
+		 where tlist can be in one of two forms: a list
+		 of terminal identifiers separated by commas, or
+		 a list of terminal identifiers enclosed in
+		 double quotes and separated by a comma and/or
+		 one or more spaces.
+
+     -u ulist	 Restricts listing to data about processes whose
+		 user ID numbers or login names are given in
+		 ulist, where ulist is in the same format as
+		 tlist.  In the listing, the numerical user ID is
+		 printed unless the -f option is used, in which
+		 case the login name is printed.
+
+   Command Output
+     The column headings and the meaning of the columns in a ps
+     listing are given below. The labels (f) and (l) indicate the
+     option (full or long) that causes the corresponding heading
+     to appear.  The label (all) means that the heading always
+     appears.  Note that the options -f and -l only determine
+     what information is provided for a process. They do not
+     determine which processes are to be listed.  The labels on
+     the left side of the following list are the column headings
+     in the ps output.
+
+     F	   (l)	     Flags (hex and additive) associated with the
+		     process:
+		     01    In core
+		     02    System process
+		     04    Locked in core (e.g., for physical
+			     I/O)
+		     08    Being swapped
+		     10    Being traced
+		     20    Another tracing flag
+		     40    Text pointer valid
+		     80    Process is partially swapped
+		     100   Sharing data/ustack due to fork
+		     200   Doing raw I/O to locked pages
+		     800   Doing an exit
+		     1000  Trying to expand
+		     2000  Requires SKY context save
+		     4000  Should have itself swapped
+		     8000  Swapper should swap out this process
+
+     S	   (l)	     The state of the process.	In the following
+		     list, x is a number indicating the processor
+		     where the process is executing.  Processors
+		     are numbered beginning with 0.
+		     0	   Non-existent
+		     Sx    Sleeping
+		     Wx    Waiting
+		     Rx    Running
+		     Ix    Intermediate
+		     Zx    Terminated
+		     Tx    Stopped
+		     Xx    Growing
+		     Hx    Halted by operator control utility
+
+     UID   (f,l)     The user ID number of the process owner; the
+		     login name is printed under the -f option.
+
+     PID   (all)     The process ID of the process. It is
+		     possible to kill a process if you know the
+		     PID.
+
+     PPID  (f,l)     The process ID of the parent process.
+
+     C	   (f,l)     Processor utilization for scheduling.
+
+     STIME (f)	     Starting time of the process.
+
+     PRI   (l)	     The priority of the process. Higher numbers
+		     mean lower priority.
+
+     NI    (l)	     Nice value. Used in priority computation.
+
+     RSSZ  (l)	     The number of data and stack pages currently
+		     in core.
+
+     SZ    (l)	     The number of pages in the process's data
+		     and stack segments.
+
+     WCHAN (l)	     The event for which the process is waiting
+		     or sleeping.  If blank, the process is
+		     running.
+
+     TTY   (all)     The controlling terminal for the process.
+
+     TIME  (all)     The cumulative execution time for the
+		     process.
+
+     COMD  (all)     The command name.
+
+     A process that has exited and has a parent but has not yet
+     been killed by the parent is marked <defunct>.  This does
+     not indicate a problem unless the defunct process is still
+     displayed when you invoke ps again immediately.
+
+     Under the -f option, ps tries to determine the command name
+     and arguments given when the process was created by
+     examining memory or the swap area. Failing this, the command
+     name, as it would appear without the -f option, is printed.
+
+EXAMPLE
+     The ps -f -u "root,lp,rwr" command line produces output
+     similar to the following:
+
+     UID   PID	 PPID  C  STIME   TTY	TIME  COMMAND
+
+     root  0	 0     0  Jan 16  ?	0:00  swapper
+     root  0	 0     0  Jan 16  ?	0:00  pageout
+     root  0	 0     0  Jan 16  ?	3:03  streamer
+     root  0	 0     0  Jan 16  ?	0:00  pageout
+     root  1	 0     0  Jan 16  ?	0:36  init
+     root  2776  1     0  Jan 18  cons	0:00  getty  console 9600 t9
+     root  124	 1     0  Jan 16  cons	0:09  tdts
+     root  63	 1     0  Jan 16  cons	0:00  errdemon-c
+     root  89	 1     0  Jan 16  ?	0:26  cron
+     root  93	 1     1  Jan 16  ?	4:22  lpsched
+     root  105	 1     0  Jan 16  cons	4:28  update  -t 30 -f /etc/update.open
+     root  96	 1     0  Jan 16  cons	0:00  bdcast
+     root  117	 1     0  Jan 16  cons	0:00  logdmon  /dev/ccb04/log
+     root  4674  1     0  Jan 20  00	0:00  getty    tty00 19200 t1
+
+PROMPTS
+   List All Processes:
+     The initial value is no. If you enter yes, the utility
+     prints information about all processes.
+
+   Full Listing:
+     The initial value is no.  See the preceding Command Output
+     section for the columns that are printed if you enter yes.
+
+   Long Listing:
+     The initial value is no.  See the preceding Command Output
+     section for the columns that are printed if you enter yes.
+
+   Accept Advanced Options:
+     The initial value is yes.
+
+     Enter no to receive the following prompts:
+
+   Omit Process Group Leaders:
+     Enter yes to print information about all processes except
+     group leaders.
+
+   Omit Non-Terminal Processes:
+     Enter yes to print information about all processes except
+     process group leaders and processes not associated with a
+     terminal.
+
+   Name List:
+     Enter an alternate system name list.
+
+   Specify Terminal List:
+     Enter a list of terminal identifiers separated by commas (do
+     not enclose in quotes).  The command prints data about the
+     processes associated with the specified terminals.
+
+   Specify Process List:
+     Enter a list of process ID numbers separated by commas (do
+     not enclose in quotes).  The command prints data about the
+     specified processes.
+
+   Specify User(s) List:
+     Enter a list of user ID numbers or login names separated by
+     commas (do not enclose in quotes).  The command prints data
+     about the processes associated with the specified user ID
+     numbers or login names.
+
+   Specify Group Leader(s) List:
+     Enter a list of process group leaders separated by commas
+     (do not enclose in quotes).  The command prints data about
+     the processes associated with the specified process group
+     leaders.
+
+FILES
+     /dev/*
+     /etc/ps_data
+     /etc/passwd
+
+SEE ALSO
+     kill(1), nice(1), whodo(1M).
+
+NOTES
+     Things can change while ps is running. The picture ps gives
+     is only a close approximation to reality.	Some data printed
+     for defunct processes are irrelevant.
+
+     It is remotely possible for ps to use old information in the
+     file /etc/ps_data.  The command will update ps_data when it
+     detects that the /dev directory or /etc/passwd file has been
+     modified.	The modify time of /dev will not change, however,
+     if, for instance, terminal names are changed because nothing
+     was added or deleted from /dev.  If ps ever displays suspect
+     information, the removal of ps_data will cause device and
+     user data to be updated.
+
+

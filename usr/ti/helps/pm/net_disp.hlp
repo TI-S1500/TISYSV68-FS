@@ -1,0 +1,44 @@
+
+The Network screen displays statistics about the network(s) connected to a
+particular CCB, including terminal concentrator utilization, network 
+availability, and various communications counts.  The graph on the left side 
+of the screen shows the activity levels for each of the terminal concentrators 
+connected to the system through this CCB. This graph identifies the terminal 
+concentrators by the unique local TC numbers assigned to them in the tctab(4) 
+file. The activity levels represent the percentage of time each terminal 
+concentrator is busy processing requests on its queue and servicing interrupts. 
+
+The network availability graph in the upper right corner of the screen shows 
+the network availability for the connected network(s). Network availability is 
+a measurement of network contention; the higher the percentage, the fewer times 
+network devices will find the network in use. A network is identified by the 
+CCB option port (0 or 1) to which its LAN board is connected. For example, C1 
+refers to a network supported by a LAN board connected to option port 1 of this 
+CCB.
+
+The table in the lower right corner of the screen shows the following rates and 
+counts for the network and for each terminal concentrator:
+
+    CCB/TC ID   Identifies the network (C0 or C1) or terminal concentrator 
+        for which statistics are being displayed on this line of the table.
+
+    Pkts Rcv/Sec   Shows the average number of packets received per second 
+        by this network devices.
+
+    Pkts Xmt/Sec   Shows the average number of packets transmitted per 
+        second by this network devices.
+
+    Tot Rcv Errs   Shows the total number of errors that this network 
+        device has encountered during receive operations since the network 
+        screen was initialized.
+
+    Tot Xmt Errs   Shows the total number of errors that this network 
+        device has encountered during transmit operations since the network 
+        screen was initialized.
+
+Detailed information is also available about the terminal concentrators. To 
+view information on a specific terminal concentrator, press l (lowercase L) and 
+type the local TC number. (Leading zeros are required in the TC number.) For 
+example, to view detailed information on terminal concentrator 001, press l and 
+type 001. (Do not press the Return key.) 
+

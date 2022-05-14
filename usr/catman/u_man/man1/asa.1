@@ -1,0 +1,47 @@
+ASA(1)                                                     ASA(1)
+
+NAME
+     asa - Interprets ASA carriage control characters
+
+SYNOPSIS
+     asa files
+
+DESCRIPTION
+   Purpose
+     The asa command interprets the output of programs that
+     utilize ASA carriage control characters.  It processes
+     either the files whose names are given as arguments or the
+     standard input if no file names are supplied.
+
+   Discussion
+     The first character of each line is assumed to be a control
+     character.  Control character meanings are:
+
+     ' '     (blank) Single newline before printing
+
+     0       Double newline before printing
+
+     1       New page before printing
+
+     +       Overprint previous line
+
+     Lines beginning with other than the above characters are
+     treated as if they began with ' '.  The first character of a
+     line is not printed.  If any such lines appear, an
+     appropriate message appears on standard error.  This program
+     forces the first line of each input file to start on a new
+     page.
+
+EXAMPLES
+     To correctly view the output of programs that use ASA
+     carriage control characters, use asa as a filter.  In this
+     example, the output, properly formatted and paginated, is
+     directed to the line printer:
+
+           a.out | asa | lp
+
+     Output sent to a file can be viewed as follows:
+
+          asa file
+
+

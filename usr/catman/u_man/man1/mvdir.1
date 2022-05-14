@@ -1,0 +1,29 @@
+MVDIR(1M)                                               MVDIR(1M)
+
+NAME
+     mvdir - Renames directories
+
+SYNOPSIS
+     mvdir dirname  name
+
+DESCRIPTION
+     The mvdir command renames directories within a file system
+     if name does not exist.  The dirname argument must be a
+     directory.  Neither dirname nor name can be a subset of the
+     other.  (/x/y cannot be moved to /x/y/z, and /x/y/z cannot
+     be moved to /x/y.)  If name is the name of an existing
+     directory, dirname is made a subdirectory of name.  If and
+     only if name does not exist, name is the new name of
+     dirname.  Only the super-user can use mvdir.
+
+PROMPTS
+   Old Directory Name:
+     Enter the name of the directory to be moved.
+
+   New Directory Name:
+     Enter the new name of the directory.
+
+SEE ALSO
+     mkdir(1).
+
+

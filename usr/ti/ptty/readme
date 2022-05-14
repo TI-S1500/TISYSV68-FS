@@ -1,0 +1,79 @@
+-------------------------------------------------------------------------------
+Patch:		os32029
+Product:	TIsysV 3.2.2
+Created:	September 27, 1990
+STR's:		NONE YET 
+OS:		3.2.2
+Summary:	Streams-based pseudo tty driver 
+-------------------------------------------------------------------------------
+Effected Hardware and Software Configurations
+---------------------------------------------
+	Any 1500 running 3.2.2.
+
+Purpose of Patch:
+-----------------
+
+	This patch contains a port of the Streams-based pseudo tty driver
+ 	required to run JSB multiview or X terminals.
+	
+Instructions for Installing Patch:
+----------------------------------
+
+	This patch will create the 257 pseudo-tty device
+	nodes, /dev/ptmx and /dev/pts000 through /dev/pts256.  This creates
+        sufficient resources for 256 pseudo-tty sessions, which could be
+    	256 terminals running JSB multiview with one window, 42 terminals
+	running JSB multiview with 6 windows, or some combination thereof.
+	This patch must be installed on 3.2.2 only.  In 3.2.2, the code
+	for the pseudo-tty device driver is in the kernel, but the
+        device nodes have not been created.  This patch will create them.
+
+	To install this patch, as super user, execute the
+	install script.  
+
+	You must use the cband utility to configure the system to run the
+	streams-based pseudo tty driver.  In particular, you must specify
+        the number of streams queues, number of streams, and max pushed
+     	streams modules for the pseudo tty driver to operate.  Other 
+	parameters may be adjusted as necessary to tune the system.  The max
+	pushed streams modules is two.  The following are suggested guidelines
+	and may need to be incremented or adjusted according to system
+	performance or the presence of other packages on the system which
+	use streams resources, for example tcp/ip.
+
+	Number of streams queues:	2048
+	Number of streams:		256 
+	Number of linked streams:	0
+	Number of streams events:	32
+	Extra event cells:		6
+	Max pushed streams modules:	2 
+	Max streams data size:		4096
+	Max streams control size:	4096
+	Low priority threshold:		80
+	Med priority threshold:		90
+	4096 byte block count:		16
+	2048 byte block count:		64
+	1024 byte block count:		64
+	512 byte block count:		64
+	256 byte block count:		512
+	128 byte block count:		512
+	64 byte block count:		512
+	16 byte block count:		128
+	4 byte block count:		128
+
+
+Instructions for Verifying that the Patch installed
+----------------------------------------------------
+	
+	Execute the command
+		"ls -al /dev/pt* | more"
+	Verify that the device nodes "/dev/pmtx" and
+		"/dev/pts00" through "/dev/pts256" exist.
+	If those are found the patch installed correctly.
+
+Instructions for removing patch from the system:
+------------------------------------------------
+
+	This patch can be removed by deleting 
+	/dev/ptmx and /dev/pts000 through /dev/pts256.
+

@@ -1,0 +1,289 @@
+PRS(1)							   PRS(1)
+
+NAME
+     prs - Prints an SCCS file
+
+SYNOPSIS
+     prs -acdelr files
+
+DESCRIPTION
+   Purpose
+     The prs command prints, on the standard output, parts or all
+     of one or more SCCS files (see sccsfile(4)) in a user-
+     supplied format.
+
+   Options
+     Options for prs, which may appear in any order, consist of
+     options and file names.  All the described options apply
+     independently to each named file.
+
+     -a 		 Requests printing of information for
+			 both removed (i.e., delta type = R; (see
+			 rmdel(1)) and existing (i.e., delta type
+			 = D) deltas.  If the -a option is not
+			 specified, information for existing
+			 deltas only is provided.
+
+     -c[date-time]	 The cutoff date-time is in the following
+			 form:
+
+			 YY[mm[DD[HH[mm[SS]]]]]
+
+			 Units omitted from the date-time will
+			 default to their maximum possible
+			 values; that is, -c7502 is equivalent to
+			 -c750228235959. Any number of non-
+			 numeric characters can separate the
+			 various two-digit pieces of the cutoff
+			 date in the form -c77/2/2 9:22:25.
+
+     -ddataspec 	 Defines the output data specification.
+			 The dataspec is a string consisting of
+			 SCCS file data keywords (see Data
+			 Keywords) interspersed with optional
+			 user-supplied text.
+
+     -e 		 Requests information for all deltas
+			 created earlier than and including the
+			 delta designated via the -r option or
+			 the date given by the -c option.
+
+     -l 		 Requests information for all deltas
+			 created later than and including the
+			 delta designated via the -r option or
+			 the date given by the -c option.
+
+     -rSID		 Specifies the SCCS ID (SID) string of a
+			 delta for which information is desired.
+			 If no SID is specified, the SID of the
+			 most recently created delta is assumed.
+
+   Arguments
+     If a directory is named, prs behaves as though each file in
+     the directory were specified as a named file, except that
+     non-SCCS files (last component of the path name does not
+     begin with s.), and unreadable files are silently ignored.
+     If a name of - is given, the standard input is read; each
+     line of the standard input is taken to be the name of an
+     SCCS file or directory to be processed; non-SCCS files and
+     unreadable files are silently ignored.
+
+   Data Keywords
+     Data keywords specify which parts of an SCCS file are to be
+     retrieved and output.  All parts of an SCCS file (see
+     sccsfile(4)) have an associated data keyword.  There is no
+     limit on the number of times a data keyword can appear in a
+     dataspec.
+
+     The information printed by prs consists of:  (1) the user-
+     supplied text; and (2) appropriate values (extracted from
+     the SCCS file) substituted for  the  recognized data
+     keywords in the order of appearance in the dataspec.  The
+     format of a data keyword value is either simple (S), in
+     which keyword substitution is direct, or multiline (M), in
+     which keyword substitution is followed by a carriage return.
+
+     User-supplied text is any text other than recognized data
+     keywords.	A tab is specified by \t and carriage
+     return/new-line is specified by \n.
+		       SCCS FILES DATA KEYWORDS
+
+KEYWORD   DATA ITEM		 FILE SECTION	    VALUE	FORMAT
+______________________________________________________________________
+ :Dt:	  Delta information	 Delta Table	 See below*	  S
+
+ :DL:	  Delta line		      "        :Li:/:Ld:/:Lu:     S
+	  statistics
+
+ :Li:	  Lines inserted by	      "             nnnnn         S
+	  delta
+
+ :Ld:	  Lines deleted by	      "             nnnnn         S
+	  delta
+
+ :Lu:	  Lines unchanged by	      "             nnnnn         S
+	  delta
+
+ :DT:	  Delta type		      "            D~or~R         S
+
+  :I:	  SCCS ID string (SID)	      "        :R:.:L:.:B:.:S:    S
+
+  :R:	  Release number	      "             nnnn          S
+
+  :L:	  Level number		      "             nnnn          S
+
+  :B:	  Branch number 	      "             nnnn          S
+
+  :S:	  Sequence number	      "             nnnn          S
+
+  :D:	  Date delta created	      "        :Dy:/:Dm:/:Dd:     S
+
+ :Dy:	  Year delta created	      "              nn           S
+
+ :Dm:	  Month delta created	      "              nn           S
+
+ :Dd:	  Day delta created	      "              nn           S
+
+  :T:	  Time delta created	      "        :Th:::Tm:::Ts:     S
+
+ :Th:	  Hour delta created	      "              nn           S
+
+ :Tm:	  Minute delta created	      "              nn           S
+
+ :Ts:	  Second delta created	      "              nn           S
+
+  :P:	  Programmer who	      "            logname        S
+	  created delta
+
+ :DS:	  Delta serial #	      "             nnnn          S
+
+ :DP:	  Predecessor delta	      "             nnnn          S
+	  serial #
+
+ :DI:	  Serial # of deltas	      "        :Dn:/:Dx:/:Dg:     S
+	  incl., excl.,
+	  ignored
+
+ :Dn:	  Deltas included	      "         :DS:~:DS:...      S
+	  (serial #)
+
+ :Dx:	  Deltas excluded	      "         :DS:~:DS:...      S
+	  (serial #)
+
+ :Dg:	  Deltas ignored	      "         :DS:~:DS:...      S
+	  (serial #)
+
+ :MR:	  MR numbers for delta	      "             text          M
+
+  :C:	  Comments for delta	      "             text          M
+
+ :UN:	  User names		  User Names	    text	  M
+
+ :FL:	  Flag list		    Flags	    text	  M
+
+  :Y:	  Module type flag	      "             text          S
+
+ :MF:	  MR validation flag	      "           yes~or~no       S
+
+ :MP:	  MR validation 	      "             text          S
+	  program name
+
+ :KF:	  Keyword error/	      "           yes~or~no       S
+	  warning flag
+
+ :BF:	  Branch flag		      "           yes~or~no       S
+
+  :J:	  Joint edit flag	      "           yes~or~no       S
+
+ :LK:	  Locked releases	      "            :R:...         S
+
+  :Q:	  User-defined keyword	      "             text          S
+
+  :M:	  Module name		      "             text          S
+
+ :FB:	  Floor boundary	      "              :R:          S
+
+ :CB:	  Ceiling boundary	      "              :R:          S
+
+ :Ds:	  Default SID		      "              :I:          S
+
+ :ND:	  Null delta flag	      "           yes~or~no       S
+
+ :FD:	  File descriptive	   Comments	    text	  M
+	  text
+
+ :BD:	  Body			     Body	    text	  M
+
+ :GB:	  Gotten body		      "             text          M
+
+  :W:	  A form of what(1)	     N/A	 :Z::M:\t:I:	  S
+	  string
+
+  :A:	  A form of what(1)	     N/A      :Z::Y:~:M:~:I::Z:   S
+	  string
+
+  :Z:	  what(1) string	     N/A	    @(#)	  S
+	  delimiter
+
+  :F:	  SCCS file name	     N/A	    text	  S
+
+ :PN:	  SCCS file path name	     N/A	    text	  S
+
+* :Dt:~=~:DT:~:I:~:D:~:T:~:P:~:DS:~:DP:
+
+EXAMPLES
+     The following command:
+
+       prs -d"Users and/or user IDs for UN:" s.file :F: are:\n:
+
+     may produce the following on the standard output:
+
+	  Users and/or user IDs for s.file are:
+	  xyz
+	  131
+	  abc
+
+     The following command:
+
+	  prs -d"Newest delta for pgm D: By :P:" -r s.file :M::
+	  :I: Created :
+
+     may produce the following on the standard output:
+
+	  Newest delta for pgm main.c: 3.7 Created 77/12/1 By cas
+
+     As a special case:
+
+	  prs s.file
+
+     may produce the following on the standard output for each
+     delta table entry of the D type:
+
+	  D 1.1 77/12/1 00:00:00 cas 1 000000/00000/00000
+	  MRs:
+	  bl78-12345
+	  bl79-54321
+	  COMMENTS:
+	  this is the comment line for s.file initial delta
+
+     Only the -a option can be used with the preceding special
+     case.
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of the SCCS file to print.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Give Delta Version Number:
+     Enter the SID number of the delta information to print.
+
+   Output Data Specifications:
+     Enter a string consisting of SCCS file data keywords to
+     define the output data specification.
+
+   Include Earlier Deltas:
+     The initial value is no.  Enter yes to print all deltas
+     created earlier than and including the delta specified with
+     the SID number in the Give Delta Version Number: prompt.
+
+   Include Later Deltas:
+     The initial value is no.  Enter yes to print all deltas
+     created later than and including the delta specified with
+     the SID number in the Give Delta Version Number: prompt.
+
+   Include Removed Deltas:
+     The initial value is no.  Enter yes to print information for
+     both removed and existing deltas.
+
+SEE ALSO
+     admin(1), delta(1), get(1), help(1), rmdel(1), sccsfile(4).
+     ``Source Code Control System'' in the TI System V Support
+     Tools Guide.
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+

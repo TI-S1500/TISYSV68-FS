@@ -1,0 +1,33 @@
+# cshf  cflow -- generates C flow graph
+#	@(#)CFLOW.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^CFLOW -- GENERATES C FLOW GRAPH"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Reverse the Caller:Callee Relationship:" rflag yesno n\
+	"^Include External/Static Data Sym:" ixflag yesno n\
+	"^Include Names With Underscore:" i_flag yesno n\
+	"^*Maximum Depth Allowed:" dflag integer\
+	"^#$*"
+
+if ($abort) goto end
+if ($rflag == "y") set ropt = -r
+if ($ixflag == "y") set ixopt = -ix
+if ($i_flag == "y") set i_opt = -i_
+if ($dflag != "") set dopt = "-d "$dflag
+
+if ($abort) goto end
+echo "=== CFLOW COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo cflow $ropt $ixopt $i_opt $dopt $_input_file
+	cflow $ropt $ixopt $i_opt $dopt $_input_file
+else
+	echo cflow $ropt $ixopt $i_opt $dopt $_input_file ">"$_output_file
+	cflow $ropt $ixopt $i_opt $dopt $_input_file >$_output_file
+endif
+
+#clean up time
+end:
+unset *flag *opt

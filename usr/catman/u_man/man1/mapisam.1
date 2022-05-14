@@ -1,0 +1,75 @@
+MAPISAM(1T)						MAPISAM(1T)
+
+NAME
+     mapisam - Produces a description of a T-ISAM file
+
+SYNOPSIS
+     mapisam -fx data_file [index_file]
+
+DESCRIPTION
+   Purpose
+     The mapisam utility produces a description of a given T-ISAM
+     file.
+
+   Discussion
+     Descriptive information includes index file name, T-ISAM
+     version number, the maximum record length, the number of
+     data records in the file, the options selected for the file,
+     and the number of keys. The following data is also produced
+     for each key: the key ID, the number of parts, the key
+     attributes and flags, and the starting offset, length and
+     type of each key part.
+
+     The output can be used as input to the mkisam utility (which
+     creates a T-ISAM file).
+
+   Options
+     -f file
+	  Writes output to file.  If this option is not
+	  specified, output is written to standard output.
+
+     -x   Provides sample output. Do not specify data_file or
+	  index_file if this option is specified. The sample
+	  output can be edited for use with mkisam.
+
+
+EXAMPLE
+     An example of mapisam is given below:
+
+     INDEX FILE:		      filename.idx
+     VERSION NUMBER:		      02.07.0
+     MAXIMUM RECORD LENGTH:	      256
+     NUMBER OF DATA RECORDS:	      0
+     FILE OPTIONS:		      compression process-integrity
+				      sleep-on-lock system-data-integrity
+				      no-exclusive system-index-integrity
+				      adv-on-lock no-freelist rewrite-integrity
+     NUMBER OF KEYS:		      1
+
+     KEY IDENTIFIER:		      1
+     NUMBER OF PARTS:		      5
+     KEY ATTRIBUTES:		      duplicates convert no-currency
+				      fast-duplicates validate pad
+       KEY TYPE: ascending character  KEY START: 0	KEY LENGTH: 10
+       KEY TYPE: ascending double     KEY START: 20	KEY LENGTH: 8
+       KEY TYPE: descending float     KEY START: 30	KEY LENGTH: 12
+       KEY TYPE: ascending integer    KEY START: 4	KEY LENGTH: 2
+       KEY TYPE: ascending long       KEY START: 6	KEY LENGTH: 4
+
+PROMPTS
+   T-ISAM Data File:
+     Enter the data portion of the T-ISAM file.
+
+   T-ISAM Index File:
+     Optional. Enter the index portion of the T-ISAM file.
+
+   Description File:
+     Optional. Enter the sequential output file that will receive
+     the text describing the T-ISAM file. If this file is
+     omitted, the description will be scrolled to the screen.
+
+SEE ALSO
+     cpisam(1T), findisam(1T), frisam(1T), mkisam(1T), mvisam(1T), 
+     toisam(1T), vfisam(1T).
+
+

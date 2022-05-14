@@ -1,0 +1,158 @@
+NETEXEC(1T)                                           NETEXEC(1T)
+
+NAME
+     netexec - Executes a background process at a remote site
+
+SYNOPSIS
+     netexec -lxy sitename execfile [options]
+
+DESCRIPTION
+   Purpose
+     The netexec command invokes a background process at a remote
+     site. The netexec command requires a server running at the
+     remote site.  The server is a daemon named tdts on a System
+     1500 or a job named TDTSM on a Business System.
+
+   Options
+     -l   This option specifies a remote file that will contain
+          the output listing and/or the diagnostic messages from
+          the remote execution.
+
+     -x   This option allows you to adjust the time-out value for
+          the requests sent to the remote server. The default
+          time-out value for each request is 3 seconds times
+          internet hop count. It is useful to specify a longer
+          time-out value to prevent netexec from abnormal
+          termination with time-out error when the remote system
+          is very busy. The value specified should be a decimal
+          number that indicates the number of seconds. For each
+          request sent to the server, the total waiting time is
+          (time-out value in seconds) x (number of retries) x
+          (internet hop count).
+
+     -y   This option allows you to specify the number of retries
+          of each request sent to the remote server. The value
+          specified should be a decimal number. The default value
+          is 3.
+
+   Arguments
+     sitename
+          The site name is a character string used to identify a
+          node on the network. The maximum length of the site
+          name is 8 characters.
+
+     execfile
+          The execfile is a remote path name that specifies the
+          file to be executed.
+
+     [options]
+          The options for the execfile can be specified after the
+          execfile in the same format required by a shell
+          command.
+
+   Discussion
+     In order to provide file access protection on the remote
+     system, netexec requires a user ID and a password that are
+     valid on the remote system.  The netexec utility scans the
+     user ID/password definition file netcp.def in the user's
+     home directory to look for the user ID/password definition
+     for the specified site name. If the user ID or the password
+     cannot be obtained from the file, netexec prompts for this
+     information. See netcp(1T) a detailed discussion of the
+     netcp.def file.
+
+     Note that the successful completion of netexec only
+     indicates that the background execution on the remote site
+     is started, not finished.
+
+     When using the netexec command to start a batch execution on
+     a remote Business System:
+
+     + The Business System must be a DNOS system with DNIO 2.1.1
+       and the job TDTSM installed.
+
+     + The execfile must be a valid input file for the SCI
+       command (eXecute Batch). The effect of netexec is the same
+       as issuing the XB command with the execfile as the INPUT
+       ACCESS NAME parameter.
+
+       The path name specified after the -l option is treated as
+       the LISTING ACCESS NAME parameter of the XB command.  The
+       LISTING ACCESS NAME is required by the XB command.  Any
+       parameters specified for the Business System computer
+       batch stream execution are ignored.
+
+     + The batch stream is executed with the privilege level code
+       associated with the user ID provided by the user.
+
+     + The Business System site name and path names can be
+       specified in either uppercase or lowercase and are
+       translated to uppercase for execution on the Business
+       System.
+
+     + Business System synonyms and logical names cannot be used
+       in the INPUT and LISTING ACCESS names. All synonyms used
+       in remote (Business System) batch files must be defined
+       within the batch file in which they are used.
+
+     When the netexec utility starts a background process on a
+     remote System 1500:
+
+     + The System 1500 has to have the tdts daemon running.
+
+     + The execution access privilege of the execfile is verified
+       by using the user ID/password information provided by the
+       user.
+
+     + The listing path name is optional.
+
+     The effect of the netexec on the remote system is the same
+     as issuing the following commands to the shell:
+
+          execfile options > listing pathname 2>&1 &
+          or
+          execfile options > /dev/null 2>&1 &
+
+EXAMPLES
+   netexec -1/usr/backup.1st s12 /usr/mydiir/backup -b
+     This command enables a backup process with parameter -b on
+     system s12 running in background and redirects the output
+     and diagnostic messages to /usr/backup.1st on system s12.
+
+   netexec -l ds01.1st.install s990 ds01.batch.install
+     This command starts the batch execution on file
+     ds01.batch.install on system s990. The output listing will
+     be put in file ds01.1st.install.
+
+PROMPTS
+   Remote Site Name:
+     Enter the site name of the remote system where the batch
+     execution will be performed.
+
+   Executable File Path Name:
+     Enter the file name of the executable file on the remote
+     site.
+
+   Listing File Path Name:
+     Enter the file name of the execution listing on the remote
+     site.
+
+   Execution Parameters:
+     Enter the parameters, if there are any, for the remote batch
+     execution.
+
+SEE ALSO
+     netcp(1T) and tdts(1T), devadm(1T).
+     "Configuring Devices" and "Network File Transfer" in the TI
+     System V Administrator's Guide.
+
+NOTE
+     The netexec command requires that at least one CCB has been
+     configured with the Xerox Network Systems(TM) (XNS) Internet
+     option, entered in response to the Define Transport Protocol
+     prompt of the devadm utility.
+
+
+     Xerox Network Systems is a trademark of Xerox Corporation.
+
+

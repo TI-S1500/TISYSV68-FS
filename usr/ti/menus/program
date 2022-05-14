@@ -1,0 +1,9 @@
+program:menu:       PROGRAMMING TOOLS MENU, Series 1000       :program.hlp
+assembly:m:Assembly Language Programming Menu:assembly.hlp
+c:m:C Progamming Tools Menu:c.hlp
+cobol:m:Cobol Programming Tools Menu:cobol.hlp
+fortran:m:Fortran Programming Tools Menu:fortran.hlp
+lexical:m:Lexical Analysis Tools Menu:lexical.hlp
+object:m:Object Commands Menu:object.hlp
+pascal:m:Pascal Programming Tools Menu:pascal.hlp
+sccs:m:Source Code Control System Menu:sccs.hlp

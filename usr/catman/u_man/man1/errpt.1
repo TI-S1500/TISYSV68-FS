@@ -1,0 +1,104 @@
+ERRPT(1M)                                               ERRPT(1M)
+
+NAME
+     errpt - Generates a report of logged errors
+
+SYNOPSIS
+     errpt -adefprs
+
+DESCRIPTION
+   Purpose
+     The errpt command generates a report of data collected by
+     the error-logging mechanism errdemon(1M).  The default
+     report is a summary of all errors posted in the error file
+     (or files) specified with the -f option.  The error file is
+     either /usr/adm/errfile or /usr/adm/errfile.old or both.
+
+   Options
+     A summary report can be limited to certain records with the
+     following options:
+
+     -a          Produces a detailed report that includes all
+                 error types.  This option overrides the other
+                 options except for page limiting and error file
+                 selection.
+
+     -d devlist  Produces a detailed report limited to data about
+                 devices given in devlist, where devlist is a
+                 list of device path names separated from one
+                 another by a space.  The errpt command is
+                 familiar with common device path names such as
+                 /dev/rqt/0h.
+
+     -e date     Produces a detailed report that ignores all
+                 records posted later than date, where date has
+                 the form mmddhhmmyy, consistent in meaning with
+                 the date (1) command.
+
+     -f b or o   Specifies which error file to use.  The default
+                 (no -f option) is /usr/adm/errfile.  The o value
+                 specifies /usr/adm/errfile.old.  The b value
+                 specifies both /usr/adm/errfile.old and
+                 /usr/adm/errfile.
+
+     -p n        Limits the size of a detailed report to n pages.
+
+     -r          In a detailed report, limits the reporting of
+                 block device errors to retried errors.
+
+     -s date     Produces a detailed report that ignores all
+                 records posted earlier than date, where date has
+                 the form mmddhhmmyy, consistent in meaning with
+                 the date(1) command.
+
+   Discussion
+     A summary report notes the options that may limit its
+     completeness and records the time stamped on the earliest
+     and latest errors encountered.  The number of times that
+     errpt has difficulty reading input data is included in the
+     number of read errors.
+
+     Any detailed report contains, in addition to specific error
+     information, all instances of the error-logging process
+     being started and stopped, and any time changes performed
+     with date(1)) that took place during the interval being
+     processed.
+
+FILES
+     /usr/adm/errfile      Default error file
+
+PROMPTS
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Report All Error Types:
+     Initial value is no. If yes is entered a detailed report is
+     produced.
+
+   Device List Name:
+     Enter the names of the devices that are to be reported.
+
+   Discard Records Posted Later:
+     Enter the date used to compare which records are to be
+     discarded.
+
+   Error File-Current,Old,Both:
+     Enter c to specify the /usr/adm/errfile.  Enter o to specify
+     the /usr/adm/errfile.o.  Enter b to specify both files.
+
+   Number of pages:
+     Enter the report page limit.
+
+   Retried Errors Only:
+     Initial value is no.  If yes is entered the report is
+     limited to retried errors.
+
+   Discard Records Posted Earlier:
+     Enter the date used in comparing which records are to be
+     discarded.
+
+SEE ALSO
+     date(1), errdemon(1M), errfile(4).
+
+

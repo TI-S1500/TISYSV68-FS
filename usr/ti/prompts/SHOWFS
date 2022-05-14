@@ -1,0 +1,13 @@
+# cshf	showfs -- look around in a file system  
+#	@(#)SHOWFS.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^SHOWFS -- DISPLAYS INFORMATION ON A FILE SYSTEM"\
+	"^File Name:"  _input_file  acnm $_input_file\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== SHOWFS COMMAND EXECUTING ==="
+showfs $_input_file
+end:

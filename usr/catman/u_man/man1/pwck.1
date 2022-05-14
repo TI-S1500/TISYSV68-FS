@@ -1,0 +1,39 @@
+PWCK(1M)                                                 PWCK(1M)
+
+NAME
+     pwck - Checks password file
+
+SYNOPSIS
+     pwck [file]
+
+DESCRIPTION
+   Purpose
+     The pwck command scans the password file and notes any
+     inconsistencies.  The checks include validation of the
+     number of fields, the login name, the user ID, and the group
+     ID.  The command also determines whether the login directory
+     and optional program name exist.  The criteria for
+     determining a valid login name is explained in User
+     Management in the TI System V Administrator's Guide.  The
+     default password file is /etc/passwd. Only super-user can
+     use this command.
+
+PROMPTS
+   Password File Name:
+     Enter the name of the password file to check if other than
+     /etc/passwd.
+
+FILES
+     /etc/group
+     /etc/passwd
+
+SEE ALSO
+     group(4), passwd(1), passwd(4), pwconv(1M), pwunconv(1M),
+     shadow(4), usradm(1T).
+     ``User Management'' in the TI System V Administrator's
+     Guide.
+
+DIAGNOSTICS
+     Group entries in /etc/group with no login names are flagged.
+
+

@@ -1,0 +1,146 @@
+XARGS(1)                                                 XARGS(1)
+
+NAME
+     xargs - Constructs argument list(s) and executes command
+
+SYNOPSIS
+     xargs -eilnpstx [command[initial-arguments]]
+
+DESCRIPTION
+   Purpose
+     The xargs command combines the fixed initial-arguments with
+     arguments read from standard input to execute the specified
+     command one or more times.  The number of arguments read for
+     each command invocation and the manner in which they are
+     combined are determined by the specified options.
+
+   Options
+     Each argument list is constructed starting with the
+     initial-arguments, followed by some number of arguments read
+     from standard input (Except for the -i option).  Options -i,
+     -l, and -n determine how arguments are selected for each
+     command invocation.  When none of these options is coded,
+     the initial-arguments are followed by arguments read
+     continuously from standard input until an internal buffer is
+     full; then command is executed with the accumulated args.
+     This process is repeated until there are no more arguments.
+     When there are option conflicts (such as when -l and -n are
+     both given), the last option has precedence.  Options and
+     their values are as follows:
+
+     -eeofstr  The eofstr value is taken as the logical end-of-
+               file string.  Underbar (_) is assumed for the
+               logical EOF string if -e is not coded.  The -e
+               option with no eofstr coded turns off the logical
+               EOF string capability The underbar is taken
+               literally.  The xargs command reads standard input
+               until either end-of-file signal or the logical EOF
+               string is encountered.
+
+     -ireplstr This option sets insert mode.  The command is
+               executed for each line from standard input, taking
+               the entire line as a single argument and inserting
+               it in initial-arguments for each occurrence of
+               replstr.  A maximum of 5 arguments in initial-
+               arguments can each contain one or more instances
+               of replstr.  Blanks and tabs at the beginning of
+               each line are thrown away.  Constructed arguments
+               cannot grow larger than 255 characters, and option
+               -x is also forced.  If not specified, {} is
+               assumed for replstr.
+
+     -lnumber  Command is executed for each nonempty number lines
+               of arguments from standard input.  The last
+               invocation of command is with fewer lines of
+               arguments if fewer than number remain.  A line is
+               considered to end with the first newline unless
+               the last character of the line is a blank or a
+               tab; a trailing blank or tab signals continuation
+               through the next nonempty line.  If number is
+               omitted, 1 is assumed.  Option -x is forced.
+
+     -nnumber  Execute command using as many standard input
+               arguments as possible, up to number arguments
+               maximum.  Fewer arguments are used if their total
+               size is greater than size characters and for the
+               last invocation if there are fewer than number
+               arguments remaining.  If option -x is also coded,
+               each number arguments must fit in the size
+               limitation; otherwise, xargs terminates execution.
+
+     -p        This option sets prompt mode. The user is asked
+               whether to execute command each invocation. Trace
+               mode (-t) is turned on to print the command
+               instance to be executed, followed by a ?...
+               prompt.  A reply of y (optionally followed by
+               anything) executes the command; anything else,
+               including just a carriage return, skips that
+               particular invocation of command.
+
+     -ssize    The maximum total size of each argument list is
+               set to size characters; size must be a positive
+               integer less than or equal to 470. If -s is not
+               coded, 470 is taken as the default.  Note that the
+               character count for size includes the count of
+               characters in the command name and one extra
+               character for each argument.
+
+     -t        This option sets trace mode. The command and each
+               constructed argument list are echoed to file
+               descriptor 2 just prior to their execution.
+
+     -x        Causes xargs to terminate if any argument list
+               would be greater than size characters; -x is
+               forced by the options -i and -l.  When none of the
+               options -i, -l, or -n is coded, the total length
+               of all arguments must be within the size limit.
+
+   Discussion
+     The xargs command accesses the user's $PATH to search for
+     command, which may be a shell file.  If command is omitted,
+     the file /bin/echo is used.
+
+     Arguments read in from standard input are defined to be
+     contiguous strings of characters delimited by one or more
+     blanks, tabs, or newlines.  Empty lines are always
+     discarded.  Blanks and tabs may be embedded as part of an
+     argument if escaped or quoted; characters enclosed in quotes
+     (single or double) are taken literally, and the delimiting
+     quotes are removed.  Outside quoted strings, a backslash (\)
+     escapes the next character.
+
+     The xargs command terminates if it receives a return code of
+     -1 from command or if it cannot execute command.  When
+     command is a shell program, it should explicitly exit (see
+     sh(1)) with an appropriate value to avoid accidentally
+     returning with -1.
+
+EXAMPLES
+     The following Bourne shell, sh(1), command moves all files
+     from directory $1 to directory $2, and echoes each move
+     command just before doing it.  To execute this command from
+     the Business shell, bsh(1), or the C shell, csh(1), braces
+     must be preceded with a backslash (\).
+
+          ls $1 | xargs -i -t mv $1/{} $2/{}
+
+     The following command combines the output of the
+     parenthesized commands onto one line, which is then echoed
+     to the end-of-file log:
+
+          (logname; date; echo $0 $*) | xargs >>log
+
+     The user is asked which files in the current directory are
+     to be archived.  They are archived into the file named arch
+     one at a time as in command line 1., or many at a time as in
+     command line 2.
+
+     1.    ls | xargs -p -l ar r arch
+     2.    ls | xargs -p -l | xargs ar r arch
+
+     The following command executes diff(1) with successive pairs
+     of arguments originally typed as shell arguments:
+
+          echo $* | xargs -n2 diff
+
+

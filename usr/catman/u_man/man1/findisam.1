@@ -1,0 +1,86 @@
+FINDISAM(1T)					       FINDISAM(1T)
+
+NAME
+     findisam - Finds T-ISAM file pairs
+
+SYNOPSIS
+     findisam -fnsv dir file
+
+DESCRIPTION
+   Purpose
+     Given a T-ISAM data (or index) file, the findisam utility finds
+     potential corresponding index (or data) files and prints these
+     files to standard output.
+
+   Discussion
+     T-ISAM files are often kept in two actual files.  One
+     contains the data and the other contains index information.
+     When a T-ISAM file is so split, the data file contains the
+     name of the associated index file in its internal data (that
+     is, not part of the data contents of the file).  When the
+     index file is moved or copied without using the mvisam or
+     cpisam utilities or the tirename function, this internal
+     name will have the wrong value.  This can result in the
+     inability of some programs to access the T-ISAM file.
+
+     When a split T-ISAM file is opened for possible output, a
+     unique usage stamp is placed in both the actual files.  This
+     utility searches the directory dir for a data (or index) file
+     that has the same usage stamp as the index (or data) file file.
+
+   Options
+     -f      Searches only until the first match is found.
+
+     -n      Checks only files whose root name (the part of the
+	     name following the last ``/'' and preceding the last
+	     period) is the same as the root name of file.
+
+     -s      Searches all subdirectories of dir.
+
+     -v      Verbose.  Includes report of errors, etc.
+
+EXAMPLES
+     The following example searches for the first T-ISAM data
+     file in the current working directory and its subdirectories
+     that contains the same unique value as the T-ISAM index file
+     f.idx.
+
+	       findisam -sf  .	f.idx
+
+     The next example reports all T-ISAM data files that have a
+     root name work and that have the same unique value as the
+     T-ISAM index file /usr/fred/isam/work.idx. Error
+     conditions will be reported.
+
+	       findisam -snv / /usr/fred/isam/work.idx
+
+
+PROMPTS
+   Directory:
+     Enter the directory to be searched.
+
+   File:
+     Enter the name of the T-ISAM data or index file for which a
+     partner is required.
+
+   First Match Only? (y/n):
+     Initial value is no.  If y, the program will stop when the
+     first match is found.
+
+   Search Subdirectories? (y/n):
+     Initial value is yes.  If y, all subdirectories of the
+     specified directory will be searched.
+
+   Files with Same Name Only? (y/n):
+     Initial value is no.  If y, only files with the same root
+     name as the specified file will be searched.
+
+   Verbose? (y/n):
+     Initial value is no.  If y, errors accessing files will be
+     reported to the screen.
+
+SEE ALSO
+     cpisam(1T), frisam(1T), mapisam(1T), mkisam(1T), mvisam(1T), 
+     toisam(1T), vfisam(1T).
+
+

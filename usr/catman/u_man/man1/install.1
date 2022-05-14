@@ -1,0 +1,125 @@
+INSTALL(1M)                                           INSTALL(1M)
+
+NAME
+     install - Installs commands and files
+
+SYNOPSIS
+     install -cfinmugos file [directories]
+
+DESCRIPTION
+   Purpose
+     The install command is most commonly used in makefiles (see
+     make(1)) to install a file (updated target file) in a
+     specific place within a file system.
+
+   Options
+     -c  dira       Installs a new command (file) in the
+                    directory specified by dira only if file is
+                    not found.  If it is found, install issues a
+                    message saying that the file already exists
+                    and exits without overwriting it.  Can be
+                    used alone or with the -s option.
+
+     -f  dirb       Forces file to be installed in a given
+                    directory, regardless of whether one already
+                    exists. If the file being installed does not
+                    already exist, the mode and owner of the new
+                    file is set to 755 and bin, respectively. If
+                    the file already exists, the mode and owner
+                    is that of the already existing file. Can be
+                    used alone or with the -o or -s options.
+
+     -i             Ignores the default directory list, searching
+                    through only the given directories (dirx
+                    ...).  Can be used alone or with options
+                    other than -c and -f.
+
+     -n  dirc       Puts file in the directory dirc if file is
+                    not found in any of the searched directories.
+                    The mode and owner of the new file is set to
+                    755 and bin, respectively.  Can be used alone
+                    or with options other than -c and -f.
+
+     -m mode        The mode of the new file is set to mode.
+                    Only available to the super-user.
+
+     -u user        The owner of the new file is set to user.
+                    Only available to the super-user.
+
+     -g group       The group ID of the new file is set to group.
+                    Only available to the super-user.
+
+     -o             Saves a found file by copying it to OLDfile
+                    in the directory in which it was found.  This
+                    option is useful when installing a normally
+                    busy file such as /bin/sh or /etc/getty,
+                    where the existing file cannot be removed.
+                    Can be used alone or with options other than
+                    -c.
+
+     -s             Suppresses printing of messages other than
+                    error messages.  Can be used alone or with
+                    any other options.
+
+   Discussion
+     Each file is installed by copying it into the appropriate
+     directory, thereby retaining the mode and owner of the
+     original command.  The program prints messages telling the
+     user exactly what files it is replacing or creating and
+     where they are going.
+
+     If no options or directories (dirx ...)  are given, install
+     searches a set of default directories (/bin, /usr/bin, /etc,
+     /lib, and /usr/lib, in that order) for a file with the same
+     name as file.  When the first occurrence is found, install
+     issues a message saying that it is overwriting that file
+     with file, and proceeds to do so.  If the file is not found,
+     the program sends a message to the user and exits without
+     further action.
+
+     If directories (dirx ...)  are specified after file, they
+     are searched before the directories specified in the default
+     list.
+
+     The options -m, -u, and -g can only be used with the options
+     -f, -c, and -n.  Otherwise, the mode, owner, or group will
+     not be changed. The options also only work when installing a
+     file that does not already exist. If a file is being
+     replaced, the owner, group, and mode will always remain the
+     same as the original file's owner, group, and mode.
+
+PROMPTS
+   Report Existing Files:
+     Initial value is no.  If you enter yes, the following
+     prompts appear:
+
+   Input File Name(s):
+     Enter the names of the files to be installed.
+
+   Installation Directory:
+     Enter the name of the target directory.
+
+   Search Other Directories:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear.
+
+   Ignore Default Directories:
+     Initial value is no.  If you enter yes, the default
+     directory will be be ignored.
+
+   Search Directories List:
+     Enter the names of the directories to search for the
+     specified files.
+
+   Rename Existing Files:
+     Initial value is no.  If you enter yes, the found file is
+     copied into the file OLDfile.
+
+   Suppress Messages:
+     Initial value is no.  If yes is entered, no messages other
+     than error messages will appear.
+
+SEE ALSO
+     make(1).
+
+

@@ -1,0 +1,41 @@
+FSTYP(1M)                                               FSTYP(1M)
+
+NAME
+     fstyp - Determines the file system identifier
+
+SYNOPSIS
+     fstyp special
+
+DESCRIPTION
+     fstyp allows the user to determine the file system
+     identifier of mounted or unmounted file systems using
+     heuristic programs. The file system type is required by
+     mount(2) and sometimes by mount(1M) to mount file systems of
+     different types.
+
+     The directory /etc/fstyp.d contains a program for each file
+     system type to be checked; each of these programs applies
+     some appropriate heuristic to determine whether the supplied
+     special file is of the type for which it checks.  If it is,
+     the program prints on standard output the usual file system
+     identifier for that type and exits with a return code of 0;
+     otherwise, it prints error messages on standard error and
+     exits with a nonzero return code.  fstyp runs the programs
+     in /etc/fstyp.d in alphabetical order, passing special as an
+     argument; if any program succeeds, its file system type
+     identifier is printed and fstyp exits immediately. If no
+     program succeeds, fstyp prints Unknown_fstyp to indicate
+     failure. If you wish to get a more informative message about
+     why each program in fstyp.d failed, you can run each program
+     in the fstyp.d directory giving special as a parameter. The
+     fstyp command will only print Unknown_fstyp and no other
+     error.
+
+WARNING
+     The use of heuristics implies that the result of fstyp is
+     not guaranteed to be accurate.
+
+SEE ALSO
+     mount(1M), mount(2), sysfs(2).
+
+

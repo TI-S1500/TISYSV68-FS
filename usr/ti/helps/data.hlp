@@ -1,0 +1,7 @@
+	data - Data Operations Menu
+		@(#)data.sh	1.1 87/03/09
+
+	This menu lists tools which allow the system user to manipulate
+           data files.  These utilities perform common operations such
+	   as data file comparison, editing, encryption, merging, printing,
+	   searching, and sorting.

@@ -1,0 +1,11 @@
+
+Use the + and - commands to display the next and previous extended disk 
+statistics screens. The "r" command resets the counters in the kernel that are 
+used to compute the extended disk statistics.
+
+The Request Block Locations screen shows the location of requests made to the 
+selected disk drive. The location is the starting location of the data 
+transfer. The bar graph displays the percentage of requests made to a 
+particular location. The number of requests used to produce the graph is shown 
+in the lower left corner of the screen.
+

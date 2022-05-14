@@ -1,0 +1,209 @@
+ansi|default for ti924, ti928, vt100, vt220 and the wyse75:\
+	:al=\E[L:am:bl=^G:bs:cd=\E[J:ce=\E[K:cl=\E[2J\E[H:\
+	:cm=%i\E[%d;%dH:co#80:cr=^M:cs=%i\E[%d;%dr:ct=\E[3g:\
+	:dl=\E[M:do=\E[B:ho=\E[H:it#8:kb=:\
+	:kd=\E[B:kh=\E[H:kl=\E[D:kr=\E[C:ku=\E[A:\
+	:le=\E[D:li#24:mb=\E[5m:md=\E[1m:me=\E[m:\
+	:mr=\E[7m:nd=\E[C:rc=\E8:\
+	:sc=\E7:se=\E[m:sf=\ED:so=\E[7m:sr=\EM:st=\EH:ta=^I:ue=\E[m:\
+	:up=\E[A:us=\E[4m:ve=\E[?25h:vi=\E[?25l:vs=\E[?31h:xn:xo:
+bpc|Business Pro console:\
+	:al=\E[L:am:bs:cd=\E[J:ce=\E[K:cl=\E[2J\E[H:cm=\E[%i%d;%dH:co#80:\
+	:dc=\E[P:dl=\E[M:do=\E[B:bt=\E[Z:ei=:ho=\E[H:ic=\E[@:im=:li#25:\
+	:nd=\E[C:pt:so=\E[7m:se=\E[m:us=\E[4m:ue=\E[m:up=\E[A:\
+	:kb=^h:ku=\E[A:kd=\E[B:kl=\E[D:kr=\E[C:eo:sf=\E[S:sr=\E[T:\
+	:k1=\E[N:k2=\E[M:k3=\E[O:k4=\E[P:k5=\E[Q:k6=\E[R:\
+	:k7=\E[S:k8=\E[T:k9=\E[U:k10=\E[V:\
+	:k11=\E[Y:k12=\E[a:KC=\E[F:\
+	:GS=\E[12m:GE=\E[10m:GV=\63:GH=D:\
+	:GC=E:GL=\64:GR=C:RT=^J:G1=?:G2=Z:G3=@:G4=Y:GU=A:GD=B:\
+	:CW=\E[M:NU=\E[N:RF=\E[O:RC=\E[P:\
+	:WL=\E[S:WR=\E[T:CL=\E[U:CR=\E[V:\
+	:HM=\E[H:EN=\E[F:PU=\E[I:PD=\E[G:
+t1|ti924|Texas Instruments 924 VDT 8859/1 7 bit CTRL:\
+	:k1=\EOP:k2=\EOQ:k3=\EOR:k4=\EOS:k5=\E[16~:\
+	:k6=\E[17~:k7=\E[18~:k8=\E[19~:k9=\E[20~:k10=\E[21~:\
+	:kD=\E[P:kI=\E[@:Kp=\E[34~:Lp=PRNT:\
+	:KC=\E[29~:LC=CMD:KE=\E[1~:\
+	:tc=ansi:
+t2|ti924-8|Texas Instruments 924 VDT 8859/1 8 bit CTRL:\
+	:8b:kd=\233B:kh=\233H:kl=\233D:kr=\233C:ku=\233A:\
+	:k1=\217P:k2=\217Q:k3=\217R:k4=\217S:k5=\23316~:\
+	:k6=\23317~:k7=\23318~:k8=\23319~:k9=\23320~:k10=\23321~:\
+	:kD=\233P:kI=\233@:Kp=\23334~:Lp=PRNT:\
+	:KC=\23329~:LC=CMD:KE=\2331~:\
+	:tc=ansi:
+t3|ti924-132|Texas Instruments 924 VDT 7 bit, 132 column mode:\
+	:co#132:tc=t1:
+t4|ti924-8-132|Texas Instruments 924 VDT 8 bit, 132 column mode:\
+	:co#132:tc=t2:
+t5|Texas Instruments 924 Emulator on the 945 in the 931 Mode:\
+	:tc=t9:
+t6|em924|Texas Instruments 924 Emulator on the 945 (924 Mode 7bit CTL):\
+	:tc=t1:
+t7|Texas Instruments 924 Emulator on the 945 (924 Mode 8 bit CTL):\
+	:tc=t2:
+t8|em931|Texas Instruments 931 Emulator:\
+	:tc=ti931:
+#
+# Texas Instruments 924 VDT in 9312 mode. NOT a real ti931 vdt
+#
+t9|T9|ti931|Texas Instruments 931 VDT:\
+	:al=\EN:am:tg:bl=^G:bs:cd=\EJ:ce=\EI:cl=\EL:cm=\EY%+\040%+\040:co#80:\
+	:cr=^M:dc=\EQ:dl=\EO:do=\EB:ho=\EH:ic=\ER\EP\EM:tg:\
+	:is=\EGB\E(@B@@\E):\
+	:kd=\EB:kl=\ED:kr=\EC:ku=\EA:\
+	:k1=\Ei1:k2=\Ei2:k3=\Ei3:k4=\Ei4:k5=\Ei5:\
+	:k6=\Ei6:k7=\Ei7:k8=\Ei8:k9=\Ei9:k10=\Ei\072:\
+	:le=\ED:li#24:mb=\E4P:me=\E4@:mk=\E4H:mr=\E4B:\
+	:nd=\EC:se=\E4@:sf=\Ea:so=\E4A:sr=\Eb:\
+	:ue=\E4@:up=\EA:us=\E4D:ve=\E4@:\
+	:Kb=\E2:Lb=BKTB:kD=\EQ:kI=\EP:\
+	:Kp=\EW:Lp=PRNT:Kr=\Eio:Lr=RFLD:KC=\Eh:LC=CMD:\
+	:kL=\EO:KE=\Eiq:LE=ENTR:kA=\EN:
+tm|Travelmate 7 bit mode:\
+	:k1=\E[17~:k2=\E[18~:k3=\E[19~:k4=\E[20~:k5=\E[21~:\
+	:k6=\E[23~:k7=\E[24~:k8=\E[25~:k9=\E[26~:k0=^[OS:l0=PF4:\
+	:kD=\E[32~:kI=\E[2~:Kp=\E[28~:Lp=HELP:\
+	:kA=\E[31~:KC=\E[29~:LC=CMD:KE=M:\
+	:tc=ansi:
+i1|ti926|Texas Instruments 926 VDT 8859/1 7 bit CTRL:\
+	:cs@:sf=\E[1S:sr=\E[1T:tc=t1:
+i2|ti926-8|Texas Instruments 926 VDT 8859/1 8 bit CTRL:\
+	:cs@:sf=\2331S:sr=\2331T:tc=t2:
+x1|ti928|Texas Instruments 928 VDT 8859/1 7 bit CTRL:\
+	:k1=\E[17~:k2=\E[18~:k3=\E[19~:k4=\E[20~:k5=\E[21~:\
+	:k6=\E[23~:k7=\E[24~:k8=\E[25~:k9=\E[26~:k10=\E[28~:\
+	:F1=\E[29~:F2=\E[31~:F3=\E[32~:F5=\E[34~:\
+	:kD=\E[P:kI=\E[@:kN=\E[S:kP=\E[T:\
+	:Kp=\E[35~:Lp=PRNT:\
+	:KC=\E[33~:LC=F14:KE=\E[8~:LE=ENTR:\
+	:tc=ansi:
+x2|ti928-8|Texas Instruments 928 VDT 8859/1 8 bit CTRL:\
+	:8b:kd=\233B:kh=\233H:kl=\233D:kr=\233C:ku=\233A:\
+	:k1=\23317~:k2=\23318~:k3=\23319~:k4=\23320~:k5=\23321~:\
+	:k6=\23323~:k7=\23324~:k8=\23325~:k9=\23326~:k10=\23328~:\
+	:F1=\23329~:F2=\23331~:F3=\23332~:F5=\23334~:\
+	:kD=\233P:kI=\233@:kN=\233S:kP=\233T:\
+	:Kp=\23335~:Lp=PRNT:\
+	:KC=\23333~:LC=CMD:KE=\2338~:LE=ENTR:\
+	:tc=ansi:
+x3|ti928-132|Texas Instruments 928 VDT 7 bit, 132 column mode:\
+	:co#132:tc=x1:
+x4|ti928-8-132|Texas Instruments 928 VDT 8 bit, 132 column mode:\
+	:co#132:tc=x2:
+#
+# Real Texas Instruments 931 VDT 
+#
+x5|X5|ti931r|Texas Instruments 931 vdt:\
+	:tc=t9:
+x6|ti928w|Texas Instruments 928 VDT 8859/1 7 bit CTRL:\
+	li#52:co#132:\
+	:tc=x1:
+d0|vt100|vt100-am|dec vt100:\
+	:al@:dl@:is=\E[1;24r\E[1;1H:k1=\EOP:k2=\EOQ:k3=\EOR:k4=\EOS:\
+	:ke=\E[?1l\E>:ks=\E[?1h\E=:nl=^J:\
+	:rf=/usr/lib/tabset/vt100:rs=\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:\
+	:pt:vs=\E[?31h\E[1;24r:vt#3:xn:\
+	:tc=ansi:
+d1|vt220|dec vt220 7 bit mode:\
+	:k1=\E[17~:k2=\E[18~:k3=\E[19~:k4=\E[20~:k5=\E[21~:\
+	:k6=\E[23~:k7=\E[24~:k8=\E[25~:k9=\E[26~:k0=^[OS:l0=PF4:\
+	:kD=\E[32~:kI=\E[2~:Kp=\E[28~:Lp=HELP:\
+	:kA=\E[31~:KC=\E[29~:LC=CMD:KE=M:\
+	:tc=ansi:
+d2|vt220-8|dec vt220 8 bit mode:\
+	:8b:ho=\233H:kd=\233B:kl=\233D:kr=\233C:ku=\233A:\
+	:k1=\23317~:k2=\23318~:k3=\23319~:k4=\23320~:k5=\23321~:\
+	:k6=\23323~:k7=\23324~:k8=\23325~:k9=\23326~:k0=\217S:l0=PF4:\
+	:kD=\23332~:kI=\2332~:Kp=\23328~:Lp=HELP:\
+	:kA=\23331~:KC=\23329~:LC=CMD:KE=^N:\
+	:tc=ansi:
+d3|vt220-132|dec vt220 7 bit, 132 column mode:\
+	:co#132:tc=d1:
+d4|vt220-8-132|dec vt220 8 bit, 132 column mode:\
+	:co#132:tc=d2:
+Mw|wyse|wy75|75|wyse75:\
+	:bf=\E[?5l:bn=100\E[?5h:dc=\E[P:ds=\E[311:\
+	:ic=\E[@:is=\E[?1;3;5l:ke=\E[?1l:ks=\E[?1h:le=\E[D:\
+	:k1=\E[?5i:k2=\E[?3i:k3=\E[2i:k4=\E[@:k5=\E[M:\
+	:k6=\E[17~:k7=\E[18~:k8=\E[19~:k9=\E[20~:\
+	:mb=\E[2p:md=\E[m:me=\E[0p:mh=\E[1p:mk=\E[4p:mr=\E[16p:\
+	:r1=\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:\
+	:tc=ansi:
+h19|H19|heath|heathkit|heathkit h19:\
+        :al=\EL:bs:cd=\EJ:ce=\EK:cl=\EE:cm=\EY%+ %+ :co#80:\
+        :dc=\EN:dl=\EM:dn=\EB:ei=\EO:ho=\EH:im=\E@:li#24:mi:\
+        :nd=\EC:pt:se=\Eq:so=\Ep:up=\EA:\
+        :vs=\Ex4\Ex1\Ej\EY8h\Ek:ve=\Ey4\Ey1:\
+        :ku=\EA:kd=\EB:kl=\ED:kr=\EC:kh=\EH:kn#8:\
+        :k1=\ES:k2=\ET:k3=\EU:k4=\EV:k5=\EW:\
+        :l6=BLUE:l7=RED:l8=WHITE:k6=\EP:k7=\EQ:k8=\ER:
+sl|lp|lpr|printer|print|printing|line printer:\
+	:bl=^G:bs:co#132:cr=^M:do=^J:hc:le=^H:nl=^J:os:
+su|dumb|un|unknown:\
+	:am:bl=^G:co#80:cr=^M:do=^J:nl=^J:
+nc|ncsa|TI's NCSA:\
+	:am:xn:mi:ms:xo:co#80:it#8:li#24:vt#3:bl=^G:cr=^M:cs=%i\E[%d;%dr:\
+	:ct=\E[3g:cl=\E[H\E[2J:ce=\E[K:cd=\E[J:cm=%i\E[%d;%dH:do=\E[B:\
+	:ho=\E[H:vi=\E[?25l:le=\E[D:ve=\E[?25h:nd=\E[C:up=\E[A:vs=\E[?31h:\
+	:dl=\E[M:as=^N:mb=\E[5m:md=\E[1m:mr=\E[7m:so=\E[7m:us=\E[4m:\
+	:ae=^O:me=\E[0m:se=\E[m:ue=\E[m:al=\E[L:kb=^H:kD=\E[3~:\
+	:kd=\E[B:k1=\EOP:k;=\E[21~:k2=\EOQ:k3=\EOR:k4=\EOS:k5=\E[16~:\
+	:k6=\E[17~:k7=\E[18~:k8=\E[19~:k9=\E[20~:kh=\E[1~:kI=\E[2~:kl=\E[D:\
+	:kH=\E[4~:kN=\E[6~:kP=\E[5~:kr=\E[C:ku=\E[A:ke=\E[?1l\E>:ks=\E[?1h\E=:\
+	:r2=\E>\E[?3l\E[?4l\E[?5l\E[?7h\E[?8h:rf=/usr/lib/tabset/vt100:\
+	:rc=\E8:sc=\E7:sf=\ED:sr=\EM:kd=\E[B:\
+	:st=^I:ta=^I:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:eA=\E(B\E)0:cb=\E[1K:\
+	:k;=\E[21~:KC=\E?i:
+vs|xterm|vs100|xterm terminal emulator (X window system):\
+	:am:bs:km:xn:pt:co#80:it#8:li#65:\
+	:AL=\E[%dL:DC=\E[%dP:DL=\E[%dM:DO=\E[%dB:F1=\E[23~:F2=\E[24~:\
+	:IC=\E[%d@:KC=\E[23~:LC=CMD:LE=\E[%dD:RI=\E[%dC:UP=\E[%dA:\
+	:ac=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~:\
+	:ae=^O:al=\E[L:as=^N:bl=^G:cb=\E[1K:cd=\E[J:ce=\E[K:\
+	:cl=\E[H\E[2J:cm=\E[%i%d;%dH:cr=\r:cs=\E[%i%d;%dr:\
+	:ct=\E[3g:dc=\E[P:dl=\E[M:do=\E[B:eA=\E(B\E)0:ho=\E[H:ic=\E[@:\
+	:is=\E>\E[?1;3;4;6l\E[?7h\E[m\E[r\E[2J\E[H:\
+	:k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~:k5=\E[15~:\
+	:k6=\E[17~:k7=\E[18~:k8=\E[19~:k9=\E[20~:k;=\E[21~:\
+	:kb=\b:kd=\E[B:ke=\E[?1l\E>:kh=\E[H:kl=\E[D:kr=\E[C:\
+	:ks=\E[?1h\E=:ku=\E[A:le=\E[D:mb=\E[1m:md=\E[5m:\
+	:me=\E[m:mr=\E[7m:nd=\E[C:\
+	:rs=\E>\E[?1;3;4;6l\E[?7h\E[m\E[r\E[2J\E[H:\
+	:rf=/usr/lib/tabset/vt100:se=\E[m:sf=\n:so=\E[7m:sr=\EM:\
+	:st=\EH:ta=\t:te=\E[2J\E[?47l\E8:ti=\E7\E[?47h:ue=\E[m:\
+	:up=\E[A:us=\E[4m:bc=\E[D:nl=\E[B:ko=le,do,nd,up,ho:
+v2|xterms|vs100s|xterm terminal emulator - small:\
+	:li#24:tc=xterm:
+# ------------------------
+#	87/11/03 @(#)termcap.src	1.12
+#	Termcap source file
+#
+# This file describes capabilities of various terminals, as needed by
+# software such as screen editors.  It does not attempt to describe
+# printing terminals very well, nor graphics terminals.
+# See termcap(5) in the Unix Programmers Manual for documentation.
+#
+# Conventions: First entry is two chars, first char is manufacturer,
+# second char is canonical name for model or mode.
+# Third entry is the one the vi editor will print with "set" command.
+# Last entry is verbose description.
+# Others are mnemonic synonyms for the terminal.
+#
+# Terminal naming conventions:
+# Terminal names look like <manufacturer> <model> - <modes/options>
+# The part to the left of the dash, if a
+# dash is present, describes the particular hardware of the terminal.
+# The part to the right can be used for flags indicating special ROM's,
+# extra memory, particular terminal modes, or user preferences.
+# All names are always in lower case, for consistency in typing.
+#
+# Comments in this file begin with # - they cannot appear in the middle
+# of a termcap entry.  Individual entries are commented out by
+# placing a period between the colon and the capability name.
+#
+#  This file is to be revised with an editor moving the most common
+#  terminals to the front of the file.
+# END OF TERMCAP

@@ -1,0 +1,72 @@
+
+
+PM uses the following commands in the interactive mode to collect and display 
+performance information on various system components:
+
+    0-9, a-f Display the CPU, CCB, or Disk Controller screen, as 
+             appropriate, for the processor in the specified system slot
+             number. (The slot numbers are in hexadecimal format; a-f 
+             refers to slot numbers 10-15.)
+
+             At the Disk Controller screen, l### displays the extended disk 
+             statistics screens for the logical disk drive specified by 
+             ### (leading zeros are required). This command is available 
+             only if the system kernel tracks the statistics presented on 
+             these screens.
+
+    r   Resets the counters on the extended disk statistics screens.
+
+    g   Displays the General Information screen.
+
+    i   Displays the BusNet I/O Activity screen.
+
+    l   Displays the Process Linear Address ID screens for the current CPU.
+        At an ID screen, enter the process ID for a particular process to 
+        display the Process Linear Address Space screen for the specified 
+        process.
+
+    m   Displays the Memory Map screens for the current CPU.
+
+    n   Displays the Network Statistics screen for the current CCB.
+
+    l   At the Network Statistics screen, l### displays the Local Terminal 
+        Concentrator (TC) screen for the TC specified by ### (leading zeros 
+        are required).
+
+    p   Displays the Configurable Parameters screens for the system.
+
+    s   Displays the NuBus Slot Configuration screen for the system.
+
+    t   Displays the System Totals screens for the current CPU.
+
+    v   Displays the Virtual Memory Subsystem screens for the current CPU.
+
+    w   Displays the System#wide Activity screen for the system.
+    
+PM uses the following commands to perform certain utility functions:
+
+    +/- Display the next/previous screen if performance information 
+        collected by a command is presented on more than one screen.
+
+    ?   Displays a general help screen that lists the foreground commands.
+        Return or q Exits the general help screen, and returns to the last 
+        performance screen displayed.
+
+    h   Displays a help screen that is specific to the information 
+        currently displayed on the screen.  F1/F2 Display the next/previous 
+        help screen if help information is presented on more than one screen.
+        Return or q Exits a help screen, and returns to the last performance 
+        screen displayed.
+
+    r   Displays the Change PM Sample Rate screen.  The up arrow or "k" 
+        increases the sample rate in increments of one second. The down
+        arrow or "j" decreases the sample rate in increments of one second.
+        Return or "q" Exits the Sample Rate screen, and returns to the last 
+        performance screen displayed.
+
+    q   Quits the interactive mode and returns to the system prompt.
+
+NOTE: If PM is sleeping (between sample times) when you press a command key, 
+there might be a delay before PM acts upon the command. PM will detect the 
+command key and carry out the command as soon as it wakes up to collect and 
+display the next sample. The maximum delay will be equal to the sample rate.

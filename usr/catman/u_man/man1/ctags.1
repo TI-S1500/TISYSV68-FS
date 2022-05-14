@@ -1,0 +1,55 @@
+CTAGS(1)                                                 CTAGS(1)
+
+NAME
+     ctags - Creates a tags file
+
+SYNOPSIS
+     ctags [-auvwx] name
+
+DESCRIPTION
+   Purpose
+     The ctags command makes a tags file for vi(1) from the
+     specified C sources.
+
+   Discussion
+     A tags file provides the locations of specified objects (in
+     this case, functions) in a group of files.  Each line of the
+     tags file contains the function name, the file in which it
+     is defined, and a scanning pattern used to find the function
+     definition.  These are located in the separate fields of the
+     line, separated by blanks or tabs.  Using the tags file, vi
+     can quickly find these function definitions.
+
+   Options
+     -x   Produces a list of function names, the line number and
+          file name in which each is defined, and the text of
+          that line, and writes the list to the standard output.
+          No tags file is created.  The list is an index that can
+          be printed and used as an offline readable function
+          index.
+
+     -w   Suppresses warning diagnostics.
+
+     -u   Causes the specified files to be updated in tags; that
+          is, all references to them are deleted, and the new
+          values are appended to the file. Note that it is
+          usually faster to rebuild the tags file than to use
+          this option.
+
+     File names that have extensions of .c or .h are assumed to
+     be C source files and are searched for C routine and macro
+     definitions.
+
+     The tag main is treated specially in C programs.  The tag
+     formed is created by prepending M to the name of the file,
+     with a trailing .c removed, if any, and leading path name
+     components removed.  This makes use of ctags practical in
+     directories with more than one program.
+
+FILES
+     tags
+
+SEE ALSO
+     ex(1), vi(1).
+
+

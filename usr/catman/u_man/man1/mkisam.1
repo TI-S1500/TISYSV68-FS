@@ -1,0 +1,211 @@
+MKISAM(1T)						 MKISAM(1T)
+
+NAME
+     mkisam - Creates a T-ISAM file
+
+SYNOPSIS
+     mkisam -fv data_file [index_file]
+
+DESCRIPTION
+   Purpose
+     The mkisam command  creates a T-ISAM file, initializes the
+     file options, and creates the indexes.
+
+   Discussion
+     A description of the T-ISAM file to be created is read from
+     the file specified by the -f command line option or from
+     standard input. This description is of the same format as
+     the output from the mapisam utility. Following is an
+     example:
+
+     # Comment lines start with #.
+
+     INDEX FILE:		       filename.idx
+     VERSION NUMBER:		       02.07.0
+     MAXIMUM RECORD LENGTH:	       256
+     NUMBER OF DATA RECORDS:	       0
+     FILE OPTIONS:		       compression process-integrity
+				       sleep-on-lock system-data-integrity
+				       no-exclusive system-index-integrity
+				       adv-on-lock no-freelist rewrite-integrity
+     NUMBER OF KEYS:		       1
+     KEY IDENTIFIER:		       1
+     NUMBER OF PARTS:		       5
+     KEY ATTRIBUTES:		       duplicates convert no-currency
+				       validate pad fast-duplicates
+       KEY TYPE: ascending character   KEY START: 0	KEY LENGTH: 10
+       KEY TYPE: ascending double      KEY START: 20	KEY LENGTH: 8
+       KEY TYPE: descending float      KEY START: 30	KEY LENGTH: 12
+       KEY TYPE: ascending integer     KEY START: 4	KEY LENGTH: 2
+       KEY TYPE: ascending long        KEY START: 6	KEY LENGTH: 4
+
+     All lines of the description must be blank, must start with
+     a # symbol (comments), or must begin with a field
+     identifier. Field identifiers are the phrases in all capital
+     letters that end in a colon (:). FILE OPTIONS and KEY
+     ATTRIBUTES fields can continue to subsequent lines without
+     new field identifiers. INDEX FILE, VERSION NUMBER, NUMBER OF
+     RECORDS, and KEY IDENTIFIER fields are optional. None of
+     them have any meaning to the utility except the INDEX FILE
+     field. If the index file name is not specified on the
+     command line, the name specified in this field will define
+     the index file. (If the index file is not specified in
+     either place, the T-ISAM file will be created with both data
+     and index information in the file specified by the data_file
+     command line parameter.) Only one field should be defined
+     per line, except for corresponding KEY TYPE/KEY START/KEY
+     LENGTH fields, which must be on the same line. There must be
+     one set of KEY TYPE/KEY START/KEY LENGTH fields for each key
+     part as defined by the NUMBER OF PARTS field, and there must
+     be a set of NUMBER OF PARTS, KEY ATTRIBUTES, and KEY
+     TYPE/KEY START/KEY LENGTH fields for each key as defined by
+     the NUMBER OF KEYS parameter.
+
+     Valid values for INDEX FILE are nothing, the word none, or a
+     path name.
+
+     Valid values to FILE OPTIONS are nothing, the word none, or
+     any combination of the following:
+
+     compression
+	  Selects the TICOMPRESS option. Causes data written to
+	  the file to be same character compressed.
+
+     process-integrity
+	  Selects the TIPROSAFE option. Causes write operations
+	  to be prelogged so that, in the event that the process
+	  is aborted before completion of the operation, the next
+	  operation by another process will back out the partial
+	  write.
+
+     system-data-integrity
+	  Selects the TISWDAT option. Causes synchronous writes
+	  to the data file; that is, all writes will immediately
+	  update the disk files. (This option is currently
+	  not implemented on the System 1500.)	The same effect can be
+	  achieved on the System 1500 by setting the forced write
+	  mode bit with the chmod utility.
+
+     system-index-integrity
+	  Selects the TISWKEY option. This is just like system-
+	  data-integrity (above) except that it affects the index
+	  file rather than the data file.
+
+     no-exclusive
+	  Selects the TINOEXCLLOCK option. This notifies T-ISAM
+	  that the file will not be opened for exclusive access.
+	  T-ISAM can perform a little more efficiently with this
+	  assurance.
+
+     adv-on-lock
+	  Selects the TIADVLOCK option. When T-ISAM reads a
+	  locked record, the record is returned to the process
+	  along with the record-locked error indication.
+	  Normally, currency will not be advanced to the next
+	  record if this or any error condition exists. This
+	  option causes currency to be advanced if a record-
+	  locked error is returned.
+
+     no-freelist
+	  Selects the TINOFREE option. With this option, T-ISAM
+	  will not keep track of more than a small amount of free
+	  space generated when a record is deleted or rewritten.
+	  This option improves performance at the cost of
+	  periodic file rebuilds to regain the lost file areas.
+
+     rewrite-integrity
+	  Sets the TIREWSAFE option. This affects rewrites in
+	  which no keys are altered. With this option, these
+	  rewrites are much slower. It ensures against loss of
+	  data if the system aborts when the data block is only
+	  partially written.
+
+     sleep-on-lock
+	  Sets the TISLEPLOCK option. When a read operation
+	  encounters a locked record, this option causes the
+	  process to sleep until the record becomes available.
+
+     Valid values to KEY ATTRIBUTES are nothing, the word none,
+     or any combination of the following:
+
+     duplicates
+	  Sets the TIKEYDUP k_flags flag for the key. With this
+	  flag, duplicate keys are allowed.
+
+     compression
+	  Sets the TIKEYCMP k_flags flag for the key. This causes
+	  key compression.  This flag has a strong negative
+	  affect on performance. It is not recommended.
+
+     convert
+	  Sets the TIKEYSTR k_flage flag for the key. This causes
+	  INTEGER and LONG key types to be stored in native
+	  machine order rather than always storing high byte
+	  first.
+
+     no-currency
+	  Sets the TIKEYNOA k_flage flag for the key. This causes
+	  duplicate keys to be retrieved not necessarily in the
+	  order written and provides a savings in disk
+	  utilization and performance. This attribute has no
+	  effect unless the duplicates attribute is also
+	  specified.
+
+     validate
+	  Sets the TIKEYVAL k_flage flag for the key. This causes
+	  records whose key consists of all spaces not to be
+	  indexed for that key.
+
+     pad  Sets the TIKEYEVN k_flage flag for the key. This causes
+	  keys to be stored on even (4-byte) boundaries for
+	  faster processing.
+
+     fast-duplicates
+	  Sets the TIKEYFAS k_flage flag for the key. This causes
+	  fast processing of duplicates. This attribute has no
+	  effect unless the duplicates attribute is also
+	  specified.
+
+     Valid values to KEY TYPE are ascending or descending
+     characters, doubles, floats, integers, or longs. If a key
+     type is ascending, reading the next or previous records
+     based upon that key will result in reading the record whose
+     key has the next higher value or next lower value,
+     respectively.  If a key type is descending, reading the next
+     or previous record based upon that key will result in
+     reading the record whose key has the next lower value or
+     next higher value, respectively.
+
+   Options
+     -f file
+	  Reads input from file. If this option is not included,
+	  standard input is used.
+
+     -v   Verbose. Writes the file description fields to standard
+	  output as they are processed. This can be helpful for
+	  diagnosing errors.
+
+PROMPTS
+   T-ISAM Data File:
+     Enter the data portion of the T-ISAM file to be created.
+
+   T-ISAM Index File:
+     Optional. Enter the index portion of the T-ISAM file. If
+     this is omitted and if an index name is supplied in the file
+     description, that name will be used. If this is omitted and
+     no index name is contained in the file description, the
+     index information will be included in the data file.
+
+   T-ISAM Description File:
+     Enter the name of the sequential file that contains the
+     description of the T-ISAM file to be created.
+
+   Verbose? (y/n)
+     If this is selected, the lines of the description will be
+     scrolled to the screen as they are processed.
+
+SEE ALSO
+     cpisam(1T), findisam(1T), frisam(1T), mapisam(1T), mvisam(1T), 
+     toisam(1T), vfisam(1T).
+
+

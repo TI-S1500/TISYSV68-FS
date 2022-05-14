@@ -1,0 +1,9 @@
+users:menu:       USER ENVIRONMENT MENU Series 1000       :users.hlp
+BSH:c:Calls the TI Business shell command interpreter:
+CSH:c:Calls Berkeley C shell command interpreter:
+ENV:c:Sets environment for command execution:
+ID:c:Prints user and group IDs and names:
+LOGNAME:c:Gets login name:
+PASSWD:c:Changes login password:
+SH:c:Invokes the Bourne shell command interpreter:
+TTY:c:Gets the terminal's name:

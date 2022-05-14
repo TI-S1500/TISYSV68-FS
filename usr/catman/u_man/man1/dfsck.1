@@ -1,0 +1,148 @@
+DFSCK(1M)                                               DFSCK(1M)
+
+NAME
+     dfsck - Provides a file system consistency check and
+     interactive repair
+
+SYNOPSIS
+     dfsck -DfnqsSty filsystems1 - -DfnqsSty filsystems2
+
+DESCRIPTION
+   Purpose
+     The dfsck command allows two file system checks on two
+     different drives simultaneously.  Options are passed to the
+     two sets of file systems.  A - is the separator between the
+     file system groups.
+
+   Options
+     -D    Checks directories for bad blocks.  This checking is
+           useful after system crashes.
+
+     -f    Provides a fast check.  Check block and sizes (Phase
+           1) and checks the free list (Phase 5).  The free list
+           is reconstructed (Phase 6) if it is necessary.
+
+     -n    Assumes a no response to all questions asked by dfsck.
+           Does not open the file system for writing.
+
+     -q    Quiets dfsck. Size-check messages are not printed in
+           Phase 1.  Unreferenced fifos are silently removed. If
+           dfsck requires it, counts in the superblock are
+           automatically fixed, and the free list is salvaged.
+
+     -sx   Ignores the actual free list and unconditionally
+           reconstructs a new one by rewriting the superblock of
+           the file system. The file system should be unmounted
+           while this rewriting is done. If the file system is
+           mounted, take care that the system is inactive and
+           that it is rebooted immediately afterwards.  This
+           precaution is necessary so that the old, core copy of
+           the superblock does not continue to be used or written
+           on the file system.
+
+           The -sx option allows for creating an optimal free-
+           list organization.  The following form of x is
+           supported:
+
+                -sBlocks-per-cylinder:Blocks-to-skip
+
+           If x is not given, the values specified when the file
+           system was created are used.  If these values were not
+           specified, then the value 400:7 is used.
+
+     -Sx   Conditionally reconstructs the free list. This option
+           is similar to -sx except that the free list is rebuilt
+           only if there were no discrepancies discovered in the
+           file system. Using -S forces a no response to all
+           questions asked by dfsck.  This option is useful for
+           forcing free-list reorganization on uncontaminated
+           file systems.
+
+     -tfile
+           Specifies a scratch file. If dfsck cannot obtain
+           enough memory to keep its tables, it uses such a
+           scratch file. If the -t option is specified, the file
+           named in the next argument is used as the scratch
+           file, if needed. Without the -t option, dfsck prompts
+           the operator for the name of the scratch file. The
+           file chosen should not be on the file system being
+           checked. If it is not a special file or did not
+           already exist, it is removed when dfsck completes.
+
+     -y    Assumes a yes response to all questions asked by
+           dfsck.
+
+   Discussion
+     The dfsck program permits an operator to interact with two
+     fsck(1M) programs at once.  The program prints the file
+     system name for each message to the operator.  When
+     answering a question from dfsck, the operator must prefix
+     the response with 1 or 2 to indicate that the answer refers
+     to the first or second file system group.
+
+     Do not use dfsck to check the root file system.
+
+     If the file system is consistent, then the number of files,
+     number of blocks used, and number of blocks free are
+     reported.  If the file system is inconsistent, the operator
+     is prompted for concurrence before each correction is
+     attempted.  The most corrective actions will result in some
+     loss of data.  The amount and severity of data lost can be
+     determined from the diagnostic output.  The default action
+     for each consistency correction is to wait for the operator
+     to respond yes or no.  If the operator does not have write
+     permission, dfsck defaults to a -n action.
+
+     If no file-systems are specified, dfsck reads a list of
+     default file systems from the file /etc/checklist.
+
+     Inconsistencies checked are as follows:
+          +  Blocks claimed by more than one inode or the free
+             list
+          +  Blocks claimed by an inode or the free list outside
+             the range of the file system
+          +  Incorrect link counts
+          +  Size checks:
+                      Incorrect number of blocks
+                      Directory size not 16-byte aligned
+          +  Bad inode format
+          +  Blocks not accounted for anywhere
+          +  Directory checks:
+                      File pointing to unallocated inode
+                      Inode number out of range
+          +  Superblock checks:
+                      More than 65536 inodes
+                      More blocks for inodes than there are in
+                      the file system.
+          +  Bad free block list format
+          +  Total free block and/or free inode count incorrect
+
+     Dfsck reconnects nonempty orphaned (allocated but
+     unreferenced) files and directories with the operator's
+     concurrence by placing them in the lost+found directory.
+     The user is notified whether or not the file or directory is
+     empty.  If the file or directory is empty, dfsck silently
+     removes it.  Dfsck forces the reconnection of nonempty
+     directories.  The name assigned is the inode number.  The
+     only restriction is that the directory lost+found must
+     preexist in the root of the file system being checked and
+     must have empty slots in which entries can be made.  To
+     ensure that these slots exist, make the lost+found
+     directory, copy a number of files to the directory, and then
+     remove them (before dfsck is executed).
+
+     Checking the raw device is almost always faster and should
+     be used with everything but the root file system.
+
+FILES
+     /etc/checklist       Contains default list of file systems
+                          to check
+
+     /etc/lost+found      Contains allocated but unreferenced
+                          files and directories
+
+SEE ALSO
+     checklist(4), clri(1M), crash(1M), fs(4), fsck(1M),
+     ncheck(1M).
+
+

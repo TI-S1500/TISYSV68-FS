@@ -1,0 +1,70 @@
+UPSSTAT(1T)                                           UPSSTAT(1T)
+
+NAME
+     upsstat - Reports the status of UPS powerfail state
+
+SYNOPSIS
+     upsstat
+     upsstat -t
+     upsstat -f mode
+     upsstat -o mode
+     upsstat -O
+
+DESCRIPTION
+   Discussion
+     If you do not specify an option, upsstat reports the current state of
+     the UPS on the standard output. If the UPS is online
+     (supplying power from the batteries), upsstat displays a 1.
+     If the UPS is not online, upsstat displays a 0.  This method
+     is typically used within shell scripts to check the state of
+     the UPS.
+
+     If you specify -t, upsstat tests for the presence of UPS
+     hardware.  If the system has built-in UPS support (for
+     example, the TI 1505), upsstat displays a 1. If the system
+     does not have internal UPS support hardware, upsstat
+     displays a 0. This method is typically used within shell
+     scripts to determine actions to take depending on the type
+     of hardware.
+
+     If you specify -f mode, upsstat is used to change the current
+     forced write state of the system. You can use this method to
+     start and stop forced write mode from the command line or
+     from within shell scripts. The mode option in this case is:
+
+     0    Turns forced write mode off
+
+     1    Turns forced write mode on
+
+     If you specify -o mode, upsstat is used to change the action
+     of the over temp handler. Normally when overtemp occurs, the
+     system enters forced write mode until the overtemp condition
+     no longer exists.  The -o option allows you to specify that
+     overtemp should be treated as a powerfail condition, and
+     start the system powerfail script.
+
+     0    Turns overtemp shutdown mode off
+
+     1    Turns overtemp shutdown mode on
+
+     If you specify -O, upsstat reports the current state of
+     overtemp on the standard output. If overtemp is active,
+     upsstat displays a 1. If overtemp is not active, upsstat
+     displays a 0. This method is typically used within shell
+     scripts to check the state of the system overtemp indicator.
+
+NOTES
+     Systems with built-in UPS hardware support cannot receive a
+     powerfail interrupt from the UPS during an overtemp
+     condition and vice versa. It is therefore advisable to
+     utilize the shutdown on overtemp capabilities on these
+     systems.
+
+FILES
+     /dev/ups
+
+SEE ALSO
+     portwait(1T), shutdown(1T), upsmon(1T), upsoff(1T),
+     upson(1T), upswait(1T).
+
+

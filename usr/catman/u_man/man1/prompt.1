@@ -1,0 +1,222 @@
+PROMPT(1T)                                             PROMPT(1T)
+
+NAME
+     prompt - Invokes interactive prompting for command entry
+
+SYNOPSIS
+     prompt ["^[*]text" [variable [type [value]]] ... ["^#args"]\
+
+DESCRIPTION
+   Purpose
+     The prompt utility is a built-in command of the TI Business
+     System shell, bsh(1T).  The command enables bsh shell
+     scripts to perform interactive prompting for command entry.
+
+   Arguments
+     *         Indicates an optional response.
+
+     text      Is the text of the prompt.
+
+     variable  Is the shell variable that receives the response.
+
+     type      Specifies the type of response allowed.  See Type
+               Specifications below.
+
+     value     Specifies the initial value displayed with the
+               prompt.
+
+     #args     Says to obtain the responses in expert mode (that
+               is, obtain responses as specified arguments from
+               args).
+
+   Overview
+     The prompt utility displays one or more prompts on the
+     screen and assigns the user's responses to specified
+     variables.  Variations include no response (heading line
+     only), required response, various type checks, initial
+     values, and expert mode input.
+
+     A prompt is specified as a text string beginning with a
+     caret (^) and enclosed in double quotes (").  An asterisk
+     (*) following the caret indicates that the user's response
+     is optional.  The prompts are all displayed at once,
+     beginning at the top of the screen.  The prompts are right-
+     justified; the longest prompt determines the justification.
+
+     The shell script can manipulate the response to form an
+     executable command when a variable is specified to receive
+     the response. These variables are shell variables.
+
+     Initial values are displayed in the response fields for
+     their associated prompts.  Unless the user erases the
+     initial value or enters a different response, the initial
+     value is automatically used (provided it satisfies any type
+     checking indicated).  The initial value does not serve as a
+     default response; that is, if the user erases the initial
+     value, the response is considered to be a null.  Unless the
+     prompt requires a response, the associated variable is set
+     to null.
+
+     The prompt utility uses field edit mode to accept responses
+     and the editing keys have their usual functions.  The ENTER
+     key has the special function of accepting all values
+     currently displayed.  When the user presses the ENTER key,
+     the utility validates all responses on the screen, even
+     those where the cursor has not arrived.  Otherwise, once the
+     cursor enters a response field, it is not allowed to proceed
+     further until the user enters a valid value or cancels the
+     command.  Pressing the COMMAND key terminates prompting and
+     returns a non-zero result as the value of the abort shell
+     variable.  The F4 key reproduces the response from the
+     previous line.
+
+     The "^#args" notation at the end of a prompt command directs
+     the command to scan the rest of the bsh command line for
+     responses before prompting the user.  In most cases, $* is
+     used for args to tell prompt to scan the entire command
+     line.  However, specific arguments can be indicated as $1,
+     $2, and so on.  The arguments on the command line are
+     associated with their prompts by way of abbreviations.  The
+     abbreviations consist of enough letters to uniquely identify
+     the prompt.  For instance, Are You Sure? could be
+     abbreviated Are and the affirmative response could be
+     entered on the command line as Are=y.  If the command line
+     does not supply valid values for all prompts, a complete
+     prompt set is displayed to the user, showing all values that
+     could be obtained.  The user can then complete the command
+     as required.
+
+   Type Specifications
+     Type specifications limit the range of valid responses.  The
+     prompt utility rejects any response that does not conform to
+     the associated type and provides an informative message that
+     describes the proper response.  The utility validates each
+     response as the user enters it.  The user cannot exit the
+     prompt until all responses satisfy their type specifications
+     or until the abort key is pressed.  The following type
+     specifications are supported:
+
+     acnm      Requires the user to enter a valid file name or
+               device name.  The utility checks only the syntax
+               of the access name, not whether the file or device
+               exists and has the correct attributes for the
+               command being formed.  The latter type of checking
+               is application-dependent and can be better
+               performed within the shell script that calls
+               prompt.  If the user enters an invalid response,
+               the message A valid file name is required is
+               displayed.  File names are allowed only if they
+               contain alphanumerics, ., and /.
+
+     element   Requires the user to enter one of several
+               predefined values.  The element list must be in
+               double quotes.  Each value can have one or more
+               abbreviations, provided the abbreviations are
+               sufficient to uniquely identify the response.
+               Otherwise the user receives the message Invalid
+               response entered. The element type specifier has
+               the following format, where the abbr_list is a
+               list of abbreviations separated by commas:
+               "element(abbr_list=value,...)"
+
+     integer   Requires the user to enter an integer value.  An
+               attempt to enter a noninteger results in the
+               message An integer value is required.
+
+     macnm     Same as acnm but allows multiple files and wild
+               cards.
+
+     string    Accepts any input from the user. This is the
+               default response type, assumed when the command
+               specifies a variable but no response type.  No
+               error message is displayed because all values are
+               accepted.
+
+     yesno     Requires a yes or no response.  Any string
+               beginning with Y or y is treated as a `y'; any
+               string beginning with N or n is treated as an `n'.
+               Any other string produces the message Enter Yes or
+               No.
+
+     range     Requires user to enter an integer value in a
+               specified range.  The range type specifier has the
+               following format:
+               "range(min, max)"
+               The parameters min and max are integers.  If an
+               invalid response is entered, the following message
+               is displayed:  Value entered out of range: MIN =
+               nn, MAX = nn.
+
+EXAMPLES
+   Example Prompt Lines
+     "^COPY DIRECTORY"
+          Displays COPY DIRECTORY header, but does not accept a
+          response.
+
+     "^Input Path Name:" inpn
+          Displays Input Path Name: prompt and sets the shell
+          variable inpn to the user's response, without type
+          checking.  A response is required.
+
+     "^*Output Path Name:" out
+          Displays Output Path Name: prompt and sets the shell
+          variable out to the user's response.  A response is
+          optional.
+
+     "^How Many" cnt integer
+          Displays How Many: prompt and sets the user's response,
+          which must be an integer, to the shell variable cnt.
+
+     "^Are You Sure:" sure yesno No
+          Displays Are You Sure: prompt.  The user must either
+          accept the initial value, No, or enter a response
+          beginning with y or n.  The variable sure is set to
+          either y or n.
+
+     "^Execution Mode:" mode "element(F,f=Foreground,B,b=Background)"
+          Displays Execution Mode: prompt with no initial value.
+          The user must enter a response beginning with F, f, B,
+          or b.  The variable mode is set to the appropriately
+          expanded value-Foreground or Background.  (Note that a
+          response is always required for an element prompt.)
+
+   Example Script
+     The following example uses prompt to create a command
+     procedure; that is, a shell script that is invoked whenever
+     the user enters a copy command, cp(1) to bsh.  In this
+     example, COPY FILE is displayed as a title line followed by
+     prompts for Source Path Name, Destination Path Name,
+     Replace, and Mode.  The "^#$* at the end of the command
+     allows the user to enter any or all responses as part of the
+     command line (that is, expert mode).  The rest of the shell
+     script echoes the === COPY FILE EXECUTING === message,
+     checks for existence of the destination file, and issues a
+     cp command with arguments obtained from the user.
+
+     # bsh
+     onintr end
+     prompt "^COPY FILE       "\
+            "^Source Path Name:" src acnm $src\
+            "^Destination Path Name:" dest acnm $dest\
+            "^Replace:" rep yesno no\
+            "^Mode F/B:" mode "element(F,f=Foreground,B,b=Background)" F\
+            "^#$*"
+
+     if (! $abort) then
+        if (($rep == "n") && (-e $dest)) then
+           echo "Output file exists and Replace not specified"
+           exit
+        endif
+        echo "COPY FILE EXECUTING"
+        if ($mode == "Foreground") then
+           cp $src $dest
+        else
+           cp $src $dest &
+        endif
+     endif
+     end:
+
+SEE ALSO
+     bsh(1T).
+
+

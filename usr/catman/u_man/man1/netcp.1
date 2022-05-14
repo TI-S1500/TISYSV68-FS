@@ -1,0 +1,395 @@
+NETCP(1T)                                               NETCP(1T)
+
+NAME
+     netcp - Copies files and directories across a network
+
+SYNOPSIS
+     netcp -abDilmrstuxy sitename:sources target
+     netcp -abDilmrstuxy source sitename:target
+
+DESCRIPTION
+   Purpose
+     The netcp command copies files and directories between your
+     local System 1500 and a remote system (System 1500 or
+     Business System computers) across a network. It uses a file
+     transfer server running on the remote system to establish a
+     session for data movement. The server is a daemon named tdts
+     on System 1500, or a job named TDTSM on Business System
+     computers.
+
+     The netcp command supports data copy in two directions - to
+     or from a remote site.  One, and only one, remote system is
+     involved in the netcp command.
+
+   Options
+     -a   This option causes the source file to be appended to
+          target files. The existing data in target files won't
+          be overwritten. If the target files exist prior to the
+          copy, specify either -a or -r, but not both.
+
+     -b   The source files are copied as binary files; that is,
+          the file contents are treated as a stream of bytes
+          without any alteration. It is important to specify a
+          proper file type when moving files between
+          heterogeneous systems.
+
+     -D   This option enables directory copy. If any directory is
+          found in the source and the -D option is not specified,
+          a warning message is generated and the directory is
+          ignored.
+
+     -i   This option sets the interactive mode and is useful
+          when transferring directories or multiple files. For
+          each single file/directory entry resolved from the
+          specified source, a prompt is displayed on the terminal
+          with the source path name and the suggested destination
+          path name. Users can choose to copy the file by
+          answering y (yes), choose not to copy by answering n
+          (no), or modify parameters before the copy starts by
+          answering c (change).  If c is chosen, netcp displays a
+          prompt for each parameter that can be modified before
+          moving data.  Parameters that can be changed are:
+
+          Destination file name - Change the leaf node of the
+          suggested destination path name by entering the new
+          leaf node. Note that the leaf node displayed can be
+          either a file or a subdirectory.
+
+          File type - Switch to text file or binary file. The
+          current file type is displayed, and you can enter n
+          (no) to switch to the other file type.
+
+          Logical record length - Change the current logical
+          record length (displayed in parentheses) by entering an
+          integer from 1 to 4096.
+
+          Record padding - When copying files from a record-
+          oriented system to a byte stream system, pad each
+          record to a fixed record length by setting the logical
+          record length (displayed in parentheses) to an integer
+          between 1 and 4096. For text files, each record is
+          padded with blanks. For binary files, each record is
+          padded with hexadecimal 0s.
+
+          At any prompt, pressing Return selects the current
+          default value.  Once the file type or the logical
+          record length is changed, it will stay the same for the
+          remaining files until it is explicitly changed again.
+
+          The -i option also displays dots on the terminal during
+          the data transfer.
+
+     -l reclen
+          Defines the logical record length (in number of bytes)
+          for the target files. If the target system is a record
+          input/output (I/O) system (such as Business System
+          computer), the destination files are created with this
+          logical record length. If the target system is System
+          1500, this option enables record padding. Padding is a
+          feature provided with netcp to convert variable length
+          records from a record-oriented I/O system to fixed-
+          length records and store them on a System 1500. The
+          default logical record length for text files is 80, and
+          for binary files it is 512. The maximum value allowed
+          for both file types is 4096. This option is normally
+          not required for text files unless record padding of
+          fixed-length record output is needed.
+
+     -m   For copies between System 1500s, this option sets
+          modification time of the target files to the time of
+          copy.
+
+     -r   This option replaces the target file if it already
+          exists. The existing data in target files will be
+          overwritten. If the target files exist prior to the
+          copy, specify either -a or -r, but not both.
+
+     -s chestr
+          Defines a character string to be appended to each
+          source path name to form the destination path name. For
+          example, the following copies a directory from a
+          Business System to System 1500:
+
+          netcp -Drs.cbl s990:ds01.src.cobol /usr/src/mycobol
+
+          If there are two files, PRG1 and PRG2 under
+          ds01.src.cobol, they are copied to the local directory
+          /usr/src/mycobol as prg1.cbl and prg2.cbl.
+
+     -t timet
+          Defines the network session time-out value in seconds.
+          The default time-out is 30 seconds. In interactive
+          mode, the default time-out value is 30 minutes. If no
+          activity occurs within the specified interval, the file
+          transfer server on the remote system terminates the
+          network session and closes any open files.
+
+     -u   Preserves uppercase names of files copied from a
+          Business System to a local System 1500. This option
+          will only take effect when copying directories, and
+          only file names will be preserved in uppercase
+          letters-directory names will be converted to lowercase
+          letters.
+
+     -x timex
+          Specifies the time-out value for the requests sent to
+          the file transfer server. The default time-out value
+          for each request is 3 seconds times the internet hop
+          count. It is useful to specify a longer time-out value
+          to prevent netcp from abnormal termination with time-
+          out error when the remote system is very busy. The
+          value specified should be a decimal number and
+          indicates the number of seconds. For each request sent
+          to the server, the total waiting time is (time-out
+          value in seconds) x (number of retries) x (internet hop
+          count).
+
+     -y nuret
+          Specifies the number of retries of each request sent to
+          the file transfer server. The value specified should be
+          a decimal number. The default value is 3.
+
+   Arguments
+     sitename
+          A site name has to be associated with either the source
+          or the target; sitename is a character string used to
+          identify a node on a network. The maximum length of the
+          sitename is eight characters.
+
+     source, target
+          The source and the target are path names of file(s) or
+          directory(s).  You can specify multiple sources in one
+          command as long as they are on the same system. If they
+          are on a remote system, only the first path name need
+          be preceded by the site name. A colon (:) separates the
+          site name and the associated remote path name. A remote
+          path name is the full name of the file on the remote
+          system.
+
+     Of the following four valid source/target relationships,
+     only the second requires the target to exist prior to the
+     data transfer:
+
+          Source                      Target
+          file                        file
+          file                        existing directory
+          directory                   directory
+          files and/or directories    directory
+
+   Discussion
+     When using netcp to access Business Systems:
+
+     + The Business System has to be a DNOS system with DNIO
+       release 2.1.1 and file transfer server TDTSM installed.
+
+     + Only sequential files and relative record files can be
+       read from the Business System. Also, files with multiple
+       end-of-files are not supported. For directory copies if
+       other file types are encountered, a warning message is
+       issued, the file is skipped, and the copy continues.
+
+     + All the files copied to the Business System are created as
+       sequential files.
+
+     + The access mode of all the files or directories copied
+       from the Business System is 0775 (octal).
+
+     + The modification time of any file or directory copied from
+       the Business System is the time of copy.
+
+     + In order to support directory copies, netcp maps System
+       1500 path names to Business System path name format as
+       follows:
+
+       -  Converts directory indicator slash (/) to a period (.).
+
+       -  Converts lowercase characters to uppercase.
+
+       -  Truncates any file name node longer than eight
+          characters. If there are dots (.) in the file name,
+          truncation starts at the first dot.  For example,
+          usr/Spread.Sheet is mapped to USR.SPREAD.
+
+       -  Displays an error message and does not copy the file if
+          an illegal Business System path name character is
+          detected. Legal Business System path name characters
+          include uppercase alphabetic characters (A through Z),
+          numbers (0 through 9), period (.), dollar sign ($),
+          left bracket ([), right bracket (]), and backslash (\).
+          The name must start with an alphabetic character.
+
+     The netcp utility maps a Business System path name to a
+     System 1500 path name by converting the directory indicator
+     period (.) to slash (/) and uppercase characters to
+     lowercase. For example, SRC.TEST is mapped to src/test. In
+     the netcp command line, you can specify Business System site
+     names and path names in either uppercase or lowercase. They
+     will be converted to lowercase by netcp.
+
+     The file name pattern matching characters defined by the
+     shell are not applied to Business System path names. For
+     example, DS03.USER * is an illegal file name.
+
+     If a directory of a given name does not exist on the target
+     Business System, netcp will automatically create a directory
+     of 128 files. If more than 128 files are to be transferred
+     to a Business System directory, you have to make sure that a
+     directory exists and has the needed number of entries
+     defined.
+
+     When using the netcp command to access a remote System 1500:
+
+     + The remote System 1500 must have the tdts server running.
+
+     + The access mode of the source file/directory is supplied
+       to the destination system.
+
+     + The modification time of the source file is supplied to
+       the target unless the -m option is specified.
+
+     + The user ID and group ID of a newly created file or a
+       replaced remote file are determined by the user ID and
+       password information provided by the user at the beginning
+       of the copy.
+
+     + The file name pattern matching characters defined by the
+       shell can be used in the remote path name. For example,
+       debug:/usr/t* is a valid path name for accessing
+       everything started with t under /usr on the system debug.
+
+     + The file type and logical record length are not used.
+
+     + The current limit on file name length is 256 characters.
+
+     When the remote path name contains any shell special
+     characters, such as *, ?, $, and !, make sure to put a \ in
+     front of the shell special character or enclose the complete
+     path name within single quotes. For example, netcp
+     `debug:/usr/t*' or netcp debug:/usr/t\*.  Otherwise, the
+     shell will try to find a match on the local system and
+     return an error.
+
+     Directory copy is recursive. All the files and the
+     subdirectories under the source directory are copied to the
+     target directory.
+
+     To provide the file access protection on the remote system,
+     netcp requires a valid user ID and a password on the remote
+     system. The netcp utility scans the user ID/password
+     definition file netcp.def under the current user's home
+     directory (as indicated by shell variable HOME) and searches
+     for a pair of user ID and password definitions for the
+     specified site name.
+
+     If this file does not exist, or the user ID and password
+     definition cannot be obtained from the file, netcp will
+     prompt for the user ID and password if netcp is running in
+     foreground.  In netcp.def, each line starting in column 1
+     defines a pair of user IDs and password for a remote system
+     in the following format:
+
+     sitename:user_id:password
+
+     For example:
+
+     bs12:tempid:temppw
+     s990:CHANG:USER
+     debug:guest
+
+     Although you can specify the site name in either lowercase
+     or uppercase in the definition file, the user ID and the
+     password have to be exactly the same character strings as
+     used for login. The netcp.def file is also used by the
+     netexec command.
+
+EXAMPLES
+   netcp -r report bs12:/usr/tmp
+     This command copies a file named "report" under the current
+     directory to a System 1500 with the site name bs12. If
+     /usr/tmp is an existing directory, the destination file is
+     /usr/tmp/report on bs12. If /usr/tmp is an existing file, it
+     will be replaced by report. If /usr/tmp does not exist, it
+     is created as a file, and report is copied to it.
+
+   netcp -Di -s.c s103:ds01.src /usr/test
+     This command copies a directory from system s103 (a Business
+     System) to local directory /usr/test. Every file or
+     subdirectory under ds01.src is copied to /usr/test with .c
+     appended to the path name. This command runs in the
+     interactive mode, so the file name and some parameters can
+     be modified for each individual file.
+
+   netcp -rbl256 /usr/bin/cp s990:ds01.savvcp
+     This command stores an executable file /usr/bin/cp onto a
+     Business System. The file is transferred as a binary file,
+     with a logical record length of 256, to DS01.SAVCP on
+     Business System S990.
+
+   netcp -r 'remote:/etc/*' .
+     This command copies everything except directories under /etc
+     on the remote system to the current directory. Single quotes
+     are used to pass the remote path name literally to the
+     netcp.
+
+PROMPTS
+   Source Path Name(s):
+     Enter the name(s) of the files/directories to be copied. A
+     remote path name is specified by preceding the path name
+     with a site name and a colon (:).
+
+   Destination Path Name:
+     Enter the name of the destination file/directory to contain
+     the copied file(s). A remote path name is specified by
+     preceding the path name with a site name and a colon (:).
+
+   Format (Binary/Text):
+     Enter the desired format of the file(s) to be copied. The
+     default value is Text.
+
+   Replace?
+     The default value is no. If you enter yes, the destination
+     file(s) are overwritten.
+
+   Logical Record Length:
+     Enter a decimal number to specify the desired logical record
+     length in number of bytes for the destination file(s).
+     Otherwise, a default value of 80 will be assigned to text
+     files and 51 to binary files.
+
+   Copy Directories?
+     The default value is no. If you enter yes, the directory
+     copy will be executed.
+
+   Interactive Mode?
+     The default value is no. If you enter yes, the netcp will be
+     running in the interactive mode and it will prompt for
+     confirmation before copying each file.
+
+   Destination Path Name Suffix:
+     Enter a character string that is to be concatenated to the
+     source file name to form the destination file name.
+
+   Restore Modification Times?
+     The default value is yes. If you enter no, the modification
+     times of the destination files will be the time of copy.
+
+SEE ALSO
+     devadm(1T), netexec(1T), tdts(1T).
+     "Configuring Devices" and "Network File Transfer" in the TI
+     System V Administrator's Guide.
+
+NOTE
+     The netcp command requires that at least one CCB has been
+     configured with the Xerox Network Systems(TM) (XNS) Internet
+     option, entered in response to the Define Transport Protocol
+     prompt of the devadm utility.
+
+DIAGNOSTICS
+     When you use the netcp command to copy directories, the
+     netcp will hang if there are any devices or named pipes in
+     the source directory.
+
+
+     Xerox Network Systems is a trademark of Xerox Corporation.
+
+

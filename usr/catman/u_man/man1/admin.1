@@ -1,0 +1,353 @@
+ADMIN(1)                                                 ADMIN(1)
+
+NAME
+     admin - Creates and administers SCCS files
+
+SYNOPSIS
+     admin -adefhimnrtyz files
+
+DESCRIPTION
+   Purpose
+     The admin command is used to create new SCCS files and
+     change parameters of existing ones.
+
+   Options
+     Options for admin can appear in any order and consist of
+     keyletter arguments, which begin with -, and named files.
+     SCCS file names must begin with the two characters s and dot
+     (.).  For example, s.file1 is a legal SCCS file name.  If a
+     named file does not exist, it is created and its parameters
+     are initialized according to the specified keyletter
+     arguments.  Parameters not initialized by a keyletter
+     argument are assigned a default value.  If a named file does
+     exist, parameters corresponding to specified keyletter
+     arguments are changed, and other parameters are left as is.
+
+     If a directory is named, admin behaves as though each file
+     in the directory were specified as a named file, except that
+     non-SCCS files (last component of the path name does not
+     begin with s.)  and unreadable files are silently ignored.
+     If a name of - is given, the standard input is read; each
+     line of the standard input is taken to be the name of an
+     SCCS file to be processed.  Again, non-SCCS files and
+     unreadable files are silently ignored.  The keyletter
+     arguments (options) are as follows.  Each is explained as
+     though only one named file is to be processed since the
+     effects of the arguments apply independently to each named
+     file.
+
+     -alogin   Causes a login name, or numerical TI System V
+               group ID, to be added to the list of users who can
+               make changes to the SCCS file.  A group ID is
+               equivalent to specifying all login names common to
+               that group ID.  Several a keyletters can be used
+               on a single admin command line.  As many logins,
+               or numerical group IDs, as desired can be on the
+               list simultaneously.  If the list of users is
+               empty, then anyone can add deltas.
+
+     -dflag    Causes deletion of the specified flag from an SCCS
+               file.  The -d keyletter can be specified only when
+               processing existing SCCS files.  Several -d
+               keyletters can be supplied on a single admin
+               command.  See the -f keyletter for allowable flag
+               names.
+
+               Note that the -l flag is used to specify a list of
+               releases to be unlocked.
+
+     -elogin   Causes a login name or numerical group ID to be
+               erased from the list of users allowed to make
+               changes to the SCCS file.  Specifying a group ID
+               is equivalent to specifying all login names common
+               to that group ID.  Several e keyletters can be
+               used on a single admin command line.
+
+     -fflag    Specifies a flag, and possibly a value for the
+               flag, to be placed in the SCCS file.  Several f
+               keyletters can be supplied on a single admin
+               command line.  The allowable flags and their
+               values are:
+
+          b         Allows use of the -b keyletter on a get(1)
+                    command to create branch deltas.
+
+          cceil     Identifies the highest release (i.e.,
+                    ``ceiling''), a number less than or equal to
+                    9999, which can be retrieved by a get(1)
+                    command for editing.  The default value for
+                    an unspecified c flag is 9999.
+
+          ffloor    Identifies the lowest release (i.e.,
+                    ``floor''), a number greater than 0 but less
+                    than 9999, that can be retrieved by a get(1)
+                    command for editing.  The default value for
+                    an unspecified f flag is 1.
+
+          dSID      Identifies the default delta number (SID) to
+                    be used by a get(1) command.
+
+          i         Causes the ``No id keywords (ge6)'' message
+                    issued by get(1) or delta(1) to be treated as
+                    a fatal error.  In the absence of this flag,
+                    the message is only a warning.  The message
+                    is issued if no SCCS identification keywords
+                    (see get(1)) are found in the text retrieved
+                    or stored in the  SCCS file.
+
+          j         Allows concurrent get(1) commands for editing
+                    on the same SID of an SCCS file.  This allows
+                    multiple concurrent updates to the same
+                    version of the SCCS file.
+
+          llist     Specifies a list of releases to which deltas
+                    can no longer be made (get -e against one of
+                    these ``locked'' releases fails).  The list
+                    has the following syntax:
+
+                    <list> ::= <range> | <list> , <range>
+                    <range> ::=         RELEASE NUMBER | a
+
+                    The character a in the list is equivalent to
+                    specifying all releases for the named SCCS
+                    file.  RELEASE NUMBER is the first component
+                    in an SCCS Identification string (SID).
+
+          n         Causes delta(1) to create a null delta in
+                    each of those releases (if any) being skipped
+                    when a delta is made in a new release (e.g.,
+                    in making delta 5.1 after delta 2.7, releases
+                    3 and 4 are skipped).  These null deltas
+                    serve as anchor points so that branch deltas
+                    can later be created from them.  The absence
+                    of this flag causes skipped releases to be
+                    non-existent in the SCCS file, preventing
+                    branch deltas from being created from them in
+                    the future.
+
+          qtext     Identifies user-definable text substituted
+                    for all occurrences of the %Q% keyword in
+                    SCCS file text retrieved by get(1).
+
+          mmod      Identifies module name of the SCCS file
+                    substituted for all occurrences of the %M%
+                    keyword in SCCS file text retrieved by
+                    get(1).  If the m flag is not specified, the
+                    value assigned is the name of the SCCS file
+                    with the leading s. removed.
+
+          ttype     Identifies Type of module in the SCCS file
+                    substituted for all occurrences of %Y%
+                    keyword in SCCS file text retrieved by
+                    get(1).
+
+          vpgm      Causes delta(1) to prompt for Modification
+                    Request (MR) numbers.  The optional value
+                    specifies the name of an MR number validity
+                    checking program (see delta(1)).  If this
+                    flag is set when creating an SCCS file, the m
+                    keyletter must also be used even if its value
+                    is null.
+
+     -h        Causes admin to check the structure of the SCCS
+               file (see sccsfile(4)), and to compare a newly
+               computed checksum (the sum of all the characters
+               in the SCCS file except those in the first line)
+               with the checksum that is stored in the first line
+               of the SCCS file.  Appropriate error diagnostics
+               are produced.
+
+               This keyletter inhibits writing on the file, so it
+               nullifies the effect of any other keyletters
+               supplied and is, therefore, only meaningful when
+               processing existing files.
+
+     -iname    The name of a file from which the text for a new
+               SCCS file is to be taken.  The text constitutes
+               the first delta of the file (see -r keyletter for
+               delta numbering scheme).  If the i keyletter is
+               used, but the file name is omitted, the text is
+               obtained by reading the standard input until an
+               end-of-file is encountered.  If this keyletter is
+               omitted, then the SCCS file is created empty.
+               Only one SCCS file can be created by an admin
+               command on which the i keyletter is supplied.  Use
+               of a single admin to create two or more SCCS files
+               requires that they be created empty (no -i
+               keyletter).  Note that the -i keyletter implies
+               the -n keyletter.
+
+     -mmrlist  Inserts the list of Modification Request (MR)
+               numbers into the SCCS file in a manner identical
+               to delta(1).  The v flag must be set and, if the v
+               flag has a value (the name of an MR) number
+               validation program), the MR numbers are validated.
+               The -m key letter is valid only if the -i and/or
+               -n keyletters are specified (i.e., a new SCCS file
+               is being created).  Diagnostic messages are
+               displayed if the v flag is not set or MR
+               validation fails.
+
+     -n        Indicates that a new SCCS file is to be created.
+
+     -rrel     Identifies the release into which the initial
+               delta is inserted.  This keyletter can be used
+               only if the -i keyletter is also used.  If the -r
+               keyletter is not used, the initial delta is
+               inserted into release 1.  The level of the initial
+               delta is always 1 (by default initial deltas are
+               named 1.1).
+
+     -tname    Identifies the name of a file from which
+               descriptive text for the SCCS file is to be taken.
+               If the -t keyletter is used and admin is creating
+               a new SCCS file (the -n and/or -i keyletters also
+               used), the descriptive text file name must also be
+               supplied.  In the case of existing SCCS files:
+               (1) a -t keyletter without a file name causes
+               removal of descriptive text (if any) currently in
+               the SCCS file, and (2) a -t keyletter with a file
+               name causes text (if any) in the named file to
+               replace the descriptive text (if any) currently in
+               the SCCS file.
+
+     -ycomment Inserts the comment text into the SCCS file as a
+               comment for the initial delta in a manner
+               identical to that of delta(1).  Omission of the -y
+               keyletter results in a default comment line being
+               inserted in the form:
+
+               date and time created YY/MM/DD HH:MM:SS by login
+
+               The -y keyletter is valid only if the -i and/or -n
+               keyletters are specified (i.e., a new SCCS file is
+               being created).
+
+     -z        Recomputes the SCCS file checksum and stores it in
+               the first line of the SCCS file (see -h, above).
+
+               Note that use of this keyletter on a truly
+               corrupted file can prevent future detection of the
+               corruption.
+
+EXAMPLE
+     The following example adds a new SCCS file named s.file2.
+     The text for the SCCS file is taken from the file called
+     file1.  The initial release number is 2.1.  A null delta is
+     created in release 1 so that branch deltas can later be
+     created from release 1.  The login names jay and ray are
+     added to the list of users who can make deltas to the SCCS
+     file s.file2.
+
+          admin -ifile1 -r2.1 -fn -ajay -arayt s.file2
+
+PROMPTS
+   Create or Modify an SCCS File (c,m):
+     Enter c to create a new SCCS file.  Enter m to modify an
+     existing SCCS file.
+
+     If c is selected, the following prompts appear.
+
+   SCCS File Name:
+     Enter the name of the SCCS file to create.
+
+   Current File Name:
+     Enter the name of the file from which text for the new SCCS
+     file will be taken.  To create an empty SCCS file, press
+     Return without responding to this prompt.
+
+   Allow Branch Deltas:
+     The initial value is yes.  Enter yes to allow the use of the
+     -b keyletter on a get command to create branch deltas.
+
+   Make Ghost for Skipped Delta:
+     The initial value is yes.  Enter yes to cause the delta
+     command to create a null delta in each of those releases
+     being skipped when a delta is made in a new release.  Enter
+     n or no to cause skipped releases to be nonexistent in the
+     SCCS file, preventing branch deltas from being created from
+     them in the future.
+
+   Specify Delta Release Number:
+     Enter the release number into which the initial delta is
+     inserted.  If you do not enter a response to this prompt,
+     the initial delta release number is 1.1.
+
+   Description Text File:
+     Response to this prompt is optional.  Enter the name of the
+     file from which descriptive text for the SCCS file is taken.
+
+   Allow Concurrent Get's:
+     The initial value is no.  Enter yes to allow concurrent get
+     commands for editing on the same SID of an SCCS file.
+
+     If m is selected, the following prompts appear.
+
+   SCCS File Name(s):
+     Enter the name of the SCCS files to modify.
+
+   Allow Branch Deltas:
+     The initial value is yes.  Enter yes to allow the use of the
+     -b keyletter on a get command to create branch deltas.
+
+   Remove the Following Flag:
+     Response to this prompt is optional.  Enter a flag to be
+     removed from the SCCS file.
+
+   Allow Concurrent Get's:
+     The initial value is no.  Enter yes to allow concurrent get
+     commands for editing on the same SID of an SCCS file.
+
+   Compute a New Checksum:
+     The initial value is no.  Enter yes to recompute the SCCS
+     file checksum and store that checksum in the first line of
+     the SCCS file.
+
+   Compute Checksum:
+     The initial value is yes.  Enter yes to cause admin to check
+     the structure of the SCCS file and to compare a newly
+     computed checksum with the checksum that is stored in the
+     first line of the SCCS file.
+
+FILES
+     All SCCS file names must be of the form s.file-name.  New
+     SCCS files are given mode 444 (see chmod(1)).  Write
+     permission in the pertinent directory is, of course,
+     required to create a file.  All writing done by admin is to
+     a temporary x-file called x.file-name (see get(1)) created
+     with mode 444 if the admin command is creating a new SCCS
+     file or with the same mode as the SCCS file if it exists.
+     After successful execution of admin, the existing SCCS file
+     is removed and the x-file is renamed with the name of the
+     SCCS file.  This ensures that changes are made to the SCCS
+     file only if no errors occurred.
+
+     It is recommended that directories containing SCCS files be
+     mode 755 and that SCCS files themselves be mode 444.  The
+     mode of the directories allows only the owner to modify SCCS
+     files contained in the directories.  The mode of the SCCS
+     files prevents any modification at all except by SCCS
+     commands.
+
+     If it should be necessary to patch an SCCS file for any
+     reason, the mode can be changed to 644 by the owner allowing
+     use of ed(1).  CAUTION: The edited file should always be
+     processed by an admin -h to check for corruption followed by
+     an admin -z to generate a proper checksum.  Another admin -h
+     is recommended to ensure the SCCS file is valid.
+
+     The admin command also makes use of a transient lock file
+     (called z.file-name), which is used to prevent simultaneous
+     updates to the SCCS file by different users.  See get(1) for
+     further information.
+
+SEE ALSO
+     delta(1), ed(1), get(1), help(1), prs(1), sccsfile(4),
+     what(1).
+     ``Source Code Control System'' in the TI System V Support
+     Tools Guide.
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+

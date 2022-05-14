@@ -1,0 +1,78 @@
+SHOWFS(1T)					       SHOWFS(1T)
+
+NAME
+     showfs - Displays information on a file system and allows
+     the user to edit a block
+
+SYNOPSIS
+     showfs filesystem
+
+DESCRIPTION
+   Purpose
+     The showfs command allows you to display information about
+     inodes or blocks and to edit blocks.
+
+   Discussion
+     When you execute the command, information on the super block
+     is displayed.  Using the commands described in the following
+     text, you can show any inode or disk block, toggle between
+     four and eight words per line while showing a disk block,
+     and edit a disk block.
+
+     Although showfs works on most ordinary files, the utility
+     assumes that it is working with a real file system and
+     extracts some constants from what should be the super block.
+     These constants can contain the block numbers and inode
+     numbers that can be displayed.  For viewing or editing an
+     ordinary file, showhex(1T) is the preferred method.
+
+   showfs Commands
+     The following keys control the display:
+
+     q or Q	       Exits to the shell
+
+     Return	       Returns from the help screen
+
+     S		       Shows the super block
+
+     Inn	       Shows inode number nn, which is expected
+		       to be a decimal number
+
+     Bxnn	       Shows disk block number xnn, which is
+		       expected to be a hex number
+
+     ?		       Shows the help screen
+
+     The following keys can be used within a hex display of a
+     block:
+
+     j or down arrow   Scrolls down one line
+
+     k or up arrow     Scrolls up one line
+
+     h or <-	       Scrolls left one character
+
+     l or ->	       Scrolls right one character
+
+     J or F-1	       Scrolls down 24 lines
+
+     K or F-2	       Scrolls up 24 lines
+
+     H or F-3	       Scrolls left four characters
+
+     L or F-4	       Scrolls right four characters
+
+     e		       Enters the edit mode (only while
+		       displaying a block; press the q key to
+		       exit the edit mode)
+
+     w		       Writes a modified block back to disk
+
+PROMPTS
+   File Name:
+     Enter the name of the file system to display.
+
+SEE ALSO
+     show(1T), showhex(1T).
+
+

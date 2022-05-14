@@ -1,0 +1,214 @@
+QSYM(1T)                                                 QSYM(1T)
+
+NAME
+     qsym - Invokes the 68020 assembler symbol report generator
+
+SYNOPSIS
+     qsym -abcefhmsvx file
+     qsym -abcefhmsvx [rpt]=file
+
+DESCRIPTION
+   Purpose
+     The qsym command processes a symbol data file created by the
+     68020 assembler source processor as(1T) or the linker text
+     dump utility ltxdump(1T).  The qsym command produces a
+     printable symbol report file that can contain symbol table,
+     cross reference, and memory map reports.
+
+   Options
+     -a     Includes an abbreviated memory map report in the
+            symbol report file.
+
+     -b     Includes a combined symbol table and cross-reference
+            report in the symbol report file.
+
+     -c     Includes a compressed memory map report in the symbol
+            report file.
+
+     -e     Excludes local symbols from reports.
+
+     -fpf   Overrides page format data in symbol data file with
+            pf, the new page format specification.  Specify pf in
+            the following format where ll is line length, pl is
+            page length in lines, tm is top margin, and bm is
+            bottom margin:
+
+            ll,pl,tm,bm
+
+     -hph   Overrides page heading data in the symbol data file
+            with ph, the new page heading specification.  Specify
+            ph as any combination of letters, numbers, and
+            periods, where the period is used to delimit
+            individual strings within the heading.  No embedded
+            spaces are allowed.
+
+     -m     Includes standard memory map report in the symbol
+            report file.
+
+     -s     Includes individual symbol table report in the symbol
+            report file.
+
+     -v     Inserts an ASCII formfeed character at the beginning
+            of the symbol report file.
+
+     -x     Includes individual cross reference report in the
+            symbol report file.
+
+   Argument
+     rpt    User-defined symbol report output file name (the
+            default file name suffix .rpt is appended to this
+            value if no suffix is specified).
+
+   Discussion
+     The qsym command appends the default file name suffix .sym
+     to the input file name if no suffix is specified.
+
+     The default output file name suffix is .rpt (symbol report).
+
+     Specify output file requirements in one of the following two
+     ways:
+
+     + If you omit the = from the command line, the output file
+       name is derived by adding the default suffix .rpt to the
+       input file name.
+
+     + If you include the = and a user-defined symbol report
+       output file name, the user-defined output file name is
+       used.  The default suffix .rpt is appended to this value
+       if no suffix is specified.  Note that if you include the =
+       and do not specify a user-defined symbol report output
+       file name, the output file name is derived as described in
+       the first case above.
+
+     The symbol table and the memory map can be generated only if
+     the symbol data file was created using the -s option (as,
+     ltxdump) or the -b option (as).  The cross reference can be
+     generated only if the symbol data file was created using the
+     -x or -b options (as).
+
+     If no qsym report selection option (a, b, c, m, s, or x) is
+     specified, individual symbol table and cross reference
+     reports are produced if the symbol data file contains the
+     necessary information.  A memory map is not produced unless
+     specifically requested.
+
+     See the TI System V 68020 Assembler manual for a detailed
+     description of the qsym report format.
+
+PROMPTS
+   Symbol Data File Name:
+     Enter the name of the symbol data file to process.
+
+   Symbol Report Output File Name:
+     Enter the name of the file to receive the output.
+
+   Exclude Local Symbols From Reports:
+     The initial value is no.  Enter yes to exclude local symbols
+     from reports.
+
+   Insert Formfeed Character:
+     The initial value is no.  Enter yes to insert an ASCII
+     formfeed character at the beginning of the symbol report
+     file.
+
+   Select Page Format Specification:
+     The initial value is no.  Enter yes to override page format
+     data in the symbol data file and to receive the following
+     four page format prompts.
+
+   Line Length:
+     Enter an integer number for the length of lines.
+
+   Page Length:
+     Enter an integer number for the length of a page.
+
+   Top Margin:
+     Enter an integer number for the number of lines for the top
+     margin.
+
+   Bottom Margin:
+     Enter an integer number for the number of lines for the
+     bottom margin.
+
+   Select a New Page Heading:
+     The initial value is no.  Enter yes to override page heading
+     data in the symbol data file and to receive the following
+     prompt.
+
+   Heading:
+     Enter any combination of letters, numbers and periods, where
+     the period delimits individual strings within the heading.
+     Do not use embedded spaces.
+
+   Select Report Options:
+     The initial value is no.  Enter yes to receive the following
+     prompts.
+
+   Include Abbreviated Memory Map:
+     The initial value is no.  Enter yes to include an
+     abbreviated memory map report in the symbol report file.
+
+   Combine Symbol Table/Cross-ref:
+     The initial value is no.  Enter yes to include a combined
+     symbol table and cross-reference report in the symbol report
+     file.
+
+   Compressed Memory Map Report:
+     The initial value is no.  Enter yes to include a compressed
+     memory map report in the symbol report file.
+
+   Select Memory Map Report:
+     The initial value is no.  Enter yes to include a standard
+     memory map report in the symbol report file.
+
+   Select Symbol Table Report:
+     The initial value is no.  Enter yes to include the symbol
+     table report in the symbol report file.
+
+   Cross-Reference Report:
+     The initial value is no.  Enter yes to include individual
+     cross reference report in the symbol report file.
+
+EXAMPLES
+     The following example processes the input file lt30.sym and
+     produces the output file lt30.rpt.  The -b option is used to
+     request a combined symbol table and cross reference report.
+     The m option is used to request a memory map report.
+
+          qsym -bm lt30
+
+     The following example processes the input file lt30.tmp and
+     produces the output file lt30.rpt.
+
+          qsym lt30.tmp
+
+     The following example processes the input file lt30.sym and
+     produces the output file out.rpt.
+
+          qsym out=lt30
+
+     The following example processes the input file lt30.sym and
+     produces the output file lt30.lst.  The -f option is used to
+     specify a page format with a right margin at column 132, a
+     page length of 66 lines, no top margin, and a bottom margin
+     of 6 lines.  The h option is used to specify the page
+     heading QSYM.TEST.FILE.1.
+
+          qsym -f132,66,0,6 -hQSYM.TEST.FILE.1 lt30.lst=lt30
+
+DIAGNOSTICS
+     Exit status values are as follows:
+
+     + 0 - Completed with no errors and no warnings
+
+     + 1 - Completed with no errors; warnings only
+
+     + 2 - Completed with error(s)
+
+     + 3 - Aborted; did not run to completion
+
+SEE ALSO
+     as(1), a68k(1T), ltxdump(1T).
+     TI System V 68020 Assembler manual.
+
+

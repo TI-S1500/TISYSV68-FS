@@ -1,0 +1,50 @@
+#	@(#)bcheckrc.sh	2.2
+
+# ***** This file has those commands necessary to check the file
+# system, date, and anything else that should be done before mounting
+# the file systems.
+
+# remove the powerfail indicator file. this is done here, so it
+# can be detected and the prompts skipped if auto startup is desired.
+# see the admin guide for more info.
+/bin/rm -f /.power_fail
+
+trap "" 2
+TZ=`cat /etc/TZ`
+export TZ
+
+# **** Check date
+
+while :
+do
+	echo "Is the date `date` correct? (y or n) \c"
+	read reply
+	if [ "$reply" = y ]
+	then
+		break
+	else
+		echo "Enter the correct date (MMDDhhmmYY):  \c"
+		read reply
+		date "$reply"
+	fi
+done
+
+# ***** Auto check, if necessary
+
+while :
+do
+	echo "Do you want to check the file systems? (y or n) \c"
+	read reply
+	case "$reply" in
+		y ) ;;
+
+		n* ) break;;
+
+		* ) echo "Invalid input. Try again."
+			continue ;;
+	esac
+	trap "echo Interrupt" 2
+	/etc/fsck 
+	trap "" 2
+	break
+done

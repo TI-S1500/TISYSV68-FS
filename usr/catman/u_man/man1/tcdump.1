@@ -1,0 +1,157 @@
+TCDUMP(1T)                                             TCDUMP(1T)
+
+NAME
+     tcdump - Enables or disables dump capability of network
+     terminal concentrators
+
+SYNOPSIS
+     tcdump -dDmnNo [tcnames]
+
+DESCRIPTION
+   Function
+     The tcdump command turns on or off the memory dump
+     capability of the network terminal concentrators (NTCs).  If
+     the dump capability of an NTC has been enabled, every time
+     the NTC is re-downloaded, a memory dump is taken by the host
+     and is saved in a dump output file for further analysis.
+     The download will not proceed until the dump completes.
+
+     Unless specially disabled by the tcdump command, each NTC
+     has the memory dump enabled.  The tcdump command also
+     provides the options to specify the output path name for
+     saving a future NTC dump and a dump map path name for a
+     customized dump.  The default dump output file for tcname is
+     /usr/adm/comlog/dumptcname.  The dump is a 532K-byte memory
+     image starting from address hex 100000.
+
+   Arguments
+     tcnames
+            An NTC global name or a list of NTC global names as
+            specified in the NTC definition file, /etc/tctab.
+
+   Options
+     -d     Enables the dump capability of the NTCs specified by
+            tcnames for future NTC memory dumps.
+
+     -D     Enables the dump capability of all the NTCs defined
+            in the NTC definition file, /etc/tctab.  The -o
+            option will not work with the -D option.  The default
+            dump output path name is /usr/adm/comlog/dumptcname.
+            For example, /usr/adm/comlog/dumptc0 contains the
+            memory dump from tc0.
+
+     -m [dump_map_pathname]
+            Specifies the path name of a dump map file that
+            contains user-provided commands that is to be used as
+            a mapping for future NTC dumps. The format of the
+            commands in the dump map file is discussed later.
+
+     -n     Disables the dump capability of the NTCs specified by
+            tcnames.
+
+     -N     Disables the dump capability of all the NTCs defined
+            in the NTC definition file, /etc/tctab.
+
+     -o [output_pathname]
+            Specifies a valid TI System V path name for saving
+            future NTC dumps.  This option is ignored if the -D
+            option is used.
+
+   Discussion
+     The dump map file contains information about the starting
+     address of the dump and number of bytes to be dumped.  The
+     format of the dump map file is as follows:
+
+          starting address(hex):length in bytes(hex):comments
+
+     Each line in the file is a command in the above format
+     starting from column one.  The following is a special
+     command to inquire about the internal registers dump of the
+     82586 chip on the NTC board:
+
+          dump 82586:comments
+
+     The following is an example of the dump map file:
+
+          100000:400:interrupt vector table
+          128000:80:a special stack
+          dump 82586:
+          0:400:dump the ROM
+
+     If the dump map file is used, the dump output is put in the
+     text format shown below.  Otherwise, the dump is 532K-bytes
+     pure memory image good for dump analyzer.
+
+     ** MEMORY DUMP OF TC0 :
+
+     ** STARTING ADDRESS = 100000, LENGTH = 400
+
+     00100000 : 0000 1B04 0000 1B04 0000 1B12 0000 1C02   ................
+     00100010 : 0000 1C1C 0000 1C16 0000 1B04 0000 1B04   ................
+     00100020 : 0000 1B04 0000 1B04 0000 1B04 0000 1B04   ................
+                    .
+                    .
+                    .
+     001003C0 : 0000 1B04 0000 1FCE 0000 1FF2 0000 2276   .............."v
+     001003D0 : 0000 228A 0000 22A6 0000 22DE 0000 2308   .."..."..."...#.
+     001003E0 : 0000 2310 0000 1B04 0000 1B04 0000 1B04   ..#.............
+     001003F0 : 0000 1B04 0000 1B04 0000 1B04 000F D156   ...............V
+
+
+     ** STARTING ADDRESS = 128000, LENGTH = 80
+
+     00128000 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00128010 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00128020 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00128030 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00128040 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00128050 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00128060 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00128070 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+
+
+     ** 82586 INTERNAL REGISTERS DUMP, LENGTH = aa
+
+     00000000 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00000010 : 0000 0000 0000 0000 0015 99CE 0000 0000   ................
+     00000020 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00000030 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00000040 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00000050 : 0000 0000 0000 0015 9A0C 0000 0000 0000   ................
+     00000060 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00000070 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00000080 : 0000 0000 0000 0000 0000 0000 0000 0000   ................
+     00000090 : 0000 0000 0015 9A4A 0000 0000 0000 0000   .......J........
+     000000A0 : 0000 0000 0000 0000 0000               ..........
+
+EXAMPLES
+     The following are example command lines for the tcdump
+     command.
+
+     tcdump    -d -m /usr/mydir/tc0map -o /usr/mydir/tc0dump tc0
+     tcdump    -D
+     tcdump    -n payroll tc0
+     tcdump    -N
+
+DIAGNOSTICS
+     One of the following messages is displayed for each
+     specified NTC upon normal tcdump completion:
+
+          Enabled dump for tcname
+          Disabled dump for tcname
+
+     The messages that follow can be displayed by the tcdump
+     utility.
+
+     usage: tcdump -[dDnN] [-m dumpmap file] [-o dump output
+     file] [tcname(s)]
+     Unable to locate shared memory segment, error = xxxx
+     Attaching shared memory segment, error = xxxx
+     tcname is not found in NTC definition file
+     File name is too long
+     Multiple NTCs cannot share a single dump output file.
+
+SEE ALSO
+     tcdl(1T), tcreset(1T), tcstat(1T).
+
+

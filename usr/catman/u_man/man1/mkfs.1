@@ -1,0 +1,137 @@
+MKFS(1M)                                                 MKFS(1M)
+
+NAME
+     mkfs - Constructs a file system
+
+SYNOPSIS
+     mkfs [-h] filsys size[:inodes] [gap blocks/cyl]
+     mkfs [-h] filsys proto [gap blocks/cyl]
+
+DESCRIPTION
+   Purpose
+     The mkfs command constructs a file system by writing on the
+     special file filsys according to the directions found in the
+     command line.
+
+   Options
+     -h   Constructs a hardened file system.  A hardened file
+          system protects file allocations across system crashes.
+
+   Arguments
+     size       If the argument following the special file is a
+                string of digits, mkfs builds a file system with
+                a single empty directory on it.  The size of the
+                file system is the value of size interpreted as a
+                decimal number. This is the number of physical
+                disk blocks the file system occupies.  The boot
+                program is left uninitialized.
+
+     :inodes    If the optional number of inodes is not given,
+                the default is the number of logical blocks
+                divided by 4.
+
+     gap blocks/cyl
+                In both command syntaxes shown in the SYNOPSIS,
+                the recommended rotational gap values and the
+                values for the number of blocks/cyl are as
+                follows:
+
+                Device                Gap Size  Blocks/Cylinder
+
+                DB140 (NUPI Maxtor)     1            120
+                DB182                   1            162
+                WD900                   1            612
+                M2351A (Fujitsu Eagle)  1            460
+                WD1200                  1            637
+                DB380                   1            270
+                DB760                   1            405
+                DB260 (Conner 200)      1            152
+
+                NOTE:  Blocks/cylinder can be calculated for
+                user-added disks by referring to the volume label
+                descriptor at the front of every partition table
+                descriptor file (PTDF).  See ptu(1T) for
+                instructions on retrieving volume label
+                descriptors.  The relevant quantities are:  bytes
+                per block, sec/blk (sectors per block), bytes/sec
+                (bytes per sector), sec/trk (sectors per track),
+                and trk/cyl (tracks per cylinder).  Divide the
+                bytes per block by the bytes/sec to find the
+                sectors per block.  Multiply the sec/trk by the
+                trk/cyl to find sec/cyl.  Divide sec/cyl by
+                sec/blk to calculate blk/cyl.
+
+     proto      If the argument following the special file is the
+                name of a file that can be opened, mkfs assumes
+                it to be a prototype file proto from which mkfs
+                takes directions to construct subdirectories,
+                create device nodes, and copy files from other
+                mounted directories.
+
+   Prototype File Format
+     The prototype file contains tokens separated by spaces or
+     newlines.
+
+     The first token is the name of a file to be copied onto
+     block zero as the bootstrap program.
+
+     The second token is a number specifying the size of the
+     created file system in physical disk blocks.  Typically, it
+     is the number of blocks on the device, perhaps diminished by
+     space for swapping.
+
+     The third token is the number of inodes in the file system.
+     The maximum number of inodes configurable is 65500.
+
+     The next set of tokens comprises the specification for the
+     root file.  File specifications consist of tokens giving the
+     mode, the user ID, the group ID, and the initial contents of
+     the file.  The syntax of the contents field depends on the
+     mode.
+
+     The mode token for a file is a 6-character string.  The
+     first character specifies the type of the file.  (The
+     characters -bcd specify regular, block special, character
+     special and directory files, respectively.) The second
+     character of the type is either u or - to specify set-user-
+     id mode or not.  The third is g or - for the set-group-id
+     mode.  The rest of the mode is a 3-digit octal number giving
+     the owner, group, and other read, write, and execute
+     permissions, as described in chmod(1).
+
+     Two decimal number tokens come after the mode; they specify
+     the user and group IDs of the owner of the file.
+
+     If the file is a regular file, the next token is a path name
+     from which the contents and size are copied.  If the file is
+     a block or character special file, two decimal number tokens
+     follow, which give the major and minor device numbers.  If
+     the file is a directory, mkfs makes the entries .  and ..
+     and reads a list of names and (recursively) file
+     specifications for the entries in the directory.  The scan
+     is terminated with the token $.
+
+     A sample prototype specification follows:
+
+          /stand/diskboot
+          4872 110
+          d--777 3 1
+          usr                     d--777 3 1
+                                  sh           ---755 3 1 /bin/sh
+                                  ken          d--755 6 1
+                                               $
+                                  b0           b--644 3 1 0 0
+                                  c0           c--644 3 1 0 0
+                                  $
+          $
+
+SEE ALSO
+     chmod(1), dir(4), fs(4).
+     ``File Systems and Pipes'' and ``Multivolume File Systems''
+     in the TI System V Administrator's Guide.
+
+NOTES
+     If a prototype is used, it is not possible to initialize a
+     file larger than 64K bytes or to specify links.
+
+

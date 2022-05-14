@@ -1,0 +1,446 @@
+MAKE(1)                                                   MAKE(1)
+
+NAME
+     make - Maintains, updates, and regenerates groups of
+     programs
+
+SYNOPSIS
+     make -bedfiknpqrst names
+
+DESCRIPTION
+   Purpose
+     The make program provides a method for maintaining up-to-
+     date versions of programs that result from many operations
+     on a number of files.
+
+   Options and Names
+     Command lines are executed one at a time, each by its own
+     shell.  The first one or two characters in a command can be
+     the following: -, @, -@, or @-.  If @ is present, printing
+     of the command is suppressed.  If - is present, make ignores
+     an error.
+
+     The names are .DEFAULT, .IGNORE, .PRECIOUS, and .SILENT, and
+     are described below.
+
+     -b           Allows old makefiles (those written for the old
+                  version of make) to run without errors.  The
+                  difference between the old version of make and
+                  this version is that this version requires all
+                  dependency lines to have a (possibly null or
+                  implicit) command associated with them.  The
+                  previous version of make assumed that if no
+                  command was specified explicitly, the command
+                  was null.
+
+     -d           Debug mode.  Print out detailed information on
+                  files and times examined.
+
+     -e           Environment variables override assignments
+                  within makefiles.
+
+     -f makefile  Description file name.  The value makefile is
+                  assumed to be the name of a description file.
+                  This description file is referred to as a
+                  makefile.  A file name of - denotes the
+                  standard input.  The contents of makefile
+                  override the built-in rules if they are
+                  present.
+
+     -i           Ignore error codes returned by invoked
+                  commands.  Commands returning non-zero status
+                  normally terminate make.  If the -i option is
+                  present or the entry .IGNORE: appears in the
+                  makefile or the initial character sequence of
+                  the command contains -, the error is ignored.
+
+     -k           Abandon work on the current entry but continue
+                  on other branches that do not depend on that
+                  entry.
+
+     -n           No-execute mode.  Print commands, but do not
+                  execute them.  Even lines beginning with an @
+                  are printed.  However, if the command line
+                  contains the string $(MAKE), the line is always
+                  executed (see discussion of the MAKEFLAGS
+                  environment variable under Environment).
+
+     -p           Print out the complete set of macro definitions
+                  and target descriptions.
+
+     -q           Question.  The make command returns a zero or
+                  non-zero status code depending on whether the
+                  target file is or is not up-to-date.
+
+     -r           Do not use the built-in rules.
+
+     -s           Silent mode.  Do not print command lines before
+                  executing.  This mode is also entered if the
+                  fake target name .SILENT appears in the
+                  makefile or if the initial command character
+                  sequence contains an @.
+
+     -t           Touch the target files (causing them to be up-
+                  to-date) rather than issue the usual commands.
+
+     .DEFAULT     If a file must be made but there are no
+                  explicit commands or relevant built-in rules,
+                  the commands associated with the name .DEFAULT
+                  are used if it exists.
+
+     .IGNORE      Same effect as the -i option.
+
+     .PRECIOUS    Dependents of this target are not removed when
+                  quit or interrupt is hit.
+
+     .SILENT      Same effect as the -s option.
+
+   Discussion
+     The make program can keep track of the sequence of commands
+     that create certain files and the list of files that require
+     other files to be current before the operations can be done.
+     Whenever a change is made in any part of a program, make
+     creates the proper files correctly.  It also provides a
+     simple macro substitution facility and the ability to
+     encapsulate commands in a single file for convenient
+     administration.
+
+     The basic operation of make is to find the name of a needed
+     target file in the description, ensure that all of the files
+     on which it depends exist and are up-to-date, and then
+     create the target file if it has not been modified since its
+     generators were modified.  The descriptor file defines the
+     graph of dependencies.
+
+     The make program operates using three sources of
+     information:  a user-supplied description file, file names
+     and last-modified times from the file system, and built-in
+     rules to bridge some of the gaps.
+
+     The make program executes commands in the makefile to update
+     one or more target names.  A name is typically a program.
+     If no -f option is present, file names makefile, Makefile,
+     s.makefile, and s.Makefile are tried in order.  If the
+     makefile is -, the standard input is taken.  More than one -
+     makefile option-value pair may appear.
+
+     The make command updates a target only if it depends on
+     files that are newer than the target.  All prerequisite
+     files of a target are added recursively to the list of
+     targets.  Missing files are deemed to be out of date.
+
+     The makefile contains a sequence of entries that specify
+     dependencies.The first line of an entry is a blank-
+     separated, non-null list of targets, then a :, then a
+     (possibly null) list of prerequisite files or dependencies.
+     Text following a ; and all following lines that begin with a
+     tab are shell commands to be executed to update the target.
+     The first line that does not begin with a tab or # begins a
+     new dependency or macro definition.  Shell commands may be
+     continued across lines by pressing \ and Return.  Everything
+     printed by make (except the initial tab) is passed directly
+     to the shell as is.  Thus, the following produces the output
+     ab exactly the same as the shell would:
+
+     echo a\
+     b
+
+     Sharp (#) and newline surround comments.
+
+     The following makefile says that the file named pgm depends
+     on two files a.o and b.o, and that they in turn depend on
+     their corresponding source files (a.c and b.c) and a common
+     file incl.h:
+
+          pgm: a.o b.o
+                 cc a.o b.o -o pgm
+          a.o: incl.h a.c
+                 cc -c a.c
+          b.o: incl.h b.c
+                 cc -c b.c
+
+   Environment
+     The environment is read by make.  All variables are assumed
+     to be macro definitions and processed as such.  The
+     environment variables are processed before any makefile and
+     after the internal rules.  Thus, macro assignments in a
+     makefile override environment variables.  The -e option
+     causes the environment to override the macro assignments in
+     a makefile.
+
+     The MAKEFLAGS environment variable is processed by make as
+     containing any legal input option (except -f, -p, and -d)
+     defined for the command line.  Further, upon invocation,
+     make invents the variable if it is not in the environment,
+     puts the current options into it, and passes it on to
+     invocations of commands.  Thus, MAKEFLAGS always contains
+     the current input options.  This proves very useful for
+     supermakes.  In fact, as noted above, when the -n option is
+     used, the command $(MAKE) is executed anyway. Hence, one can
+     perform a make -n recursively on a whole software system to
+     see what would have been executed because the -n is put in
+     MAKEFLAGS and passed to further invocations of $(MAKE).
+     This is one way of debugging all the makefiles for a
+     software project without actually doing anything.
+
+   Macros
+     Entries of the form string1 = string2 are macro definitions.
+     String2 is defined as all characters up to a comment
+     character or an unescaped newline.  Subsequent appearances
+     of $(string1[:subst1=[subst2]]) are replaced by string2.
+     The parentheses are optional if a single-character macro
+     name is used and there is no substitute sequence.  The
+     optional :subst1=subst2 is a substitute sequence.  If it is
+     specified, all non-overlapping occurrences of subst1 in the
+     named macro are replaced by subst2.  Strings (for the
+     purposes of this type of substitution) are delimited by
+     blanks, tabs, newline characters, and beginnings of lines.
+     An example of the use of the substitute sequence is shown
+     under Libraries.
+
+   Internal Macros
+     There are five internally maintained macros that are useful
+     for writing rules for building targets.
+
+     $*   The macro $* stands for the file name part of the
+          current dependent with the suffix deleted.  It is
+          evaluated only for inference rules.
+
+     $@   The $@ macro stands for the full target name of the
+          current target.  It is evaluated only for explicitly
+          named dependencies.
+
+     $<   The $< macro is only evaluated for inference rules or
+          the .DEFAULT rule.  It is the module that is out of
+          date with respect to the target (i.e., the manufactured
+          dependent file name).  Thus, in the .c.o rule, the $<
+          macro would evaluate to the .c file.  An example for
+          making optimized .o files from .c files is:
+
+               .c.o:
+                         cc -c -O $*.c
+
+          or:
+
+               .c.o:
+                         cc -c -O $<
+
+     $?   The $? macro is evaluated when explicit rules from the
+          makefile are evaluated.  It is the list of
+          prerequisites that are out of date with respect to the
+          target.  Essentially, the list is of those modules that
+          must be rebuilt.
+
+     $%   The $% macro is only evaluated when the target is an
+          archive library member of the form lib(file.o).  In
+          this case, $@ evaluates to lib and $% evaluates to the
+          library member, file.o.
+
+     Four of the five macros can have alternative forms.  When an
+     uppercase D or F is appended to any of the four macros the
+     meaning is changed to directory part for D and file part for
+     F.  Thus, $(@D) refers to the directory part of the string
+     $@.  If there is no directory part, ./ is generated.  The
+     only macro excluded from this alternative form is $?.  The
+     reasons for this are debatable.
+
+   Suffixes
+     Certain names (for instance, those ending with .o) have
+     inferable prerequisites such as .c, .s, etc. If no update
+     commands for such a file appear in the makefile and if an
+     inferable prerequisite exists, that prerequisite is compiled
+     to make the target.  In this case, make has inference rules
+     which allow building files from other files by examining the
+     suffixes and determining an appropriate inference rule to
+     use.  The current default inference rules are:
+
+     .c .c~ .sh .sh~ .c.o .c~.o .c~.c .s.o .s~.o .y.o .y~.o .l.o .l~.o
+     .y.c .y~.c .l.c .c.a .c~.a .s~.a .h~.h
+
+     The internal rules for make are contained in the source file
+     rules.c for the make program.  These rules can be locally
+     modified.  To print out the rules compiled into the make on
+     any machine in a form suitable for recompilation, the
+     following command is used:
+
+          make -fp - 2>/dev/null </dev/null
+
+     The only peculiarity in this output is the (null) string
+     that printf(3S) prints when handed a null string.
+
+     A tilde in the above rules refers to an SCCS file (see
+     sccsfile(4)).  Thus, the rule .c~.o would transform an SCCS
+     C source file into an object file (.o).  Because the s. of
+     the SCCS files is a prefix it is incompatible with make's
+     suffix point of view.  Hence, the tilde is a way of changing
+     any file reference into an SCCS file reference.
+
+     A rule with only one suffix (i.e. .c:) is the definition of
+     how to build x from x.c.  In effect, the other suffix is
+     null.  This is useful for building targets from only one
+     source file (e.g., shell procedures, simple C programs).
+
+     Additional suffixes are given as the dependency list for
+     .SUFFIXES.  Order is significant.  The first possible name
+     for which both a file and a rule exist is inferred as a
+     prerequisite.  The default list is:
+
+          .SUFFIXES: .o .c .y .l .s
+
+     Here again, the above command for printing the internal
+     rules will display the list of suffixes implemented on the
+     current machine.  Multiple suffix lists accumulate;
+     .SUFFIXES: with no dependencies clears the list of suffixes.
+
+   Inference Rules
+     The first example can be done more briefly because make has
+     a set of internal rules for building files:
+
+          pgm: a.o b.o
+                  cc a.o b.o -o pgm
+          a.o b.o: incl.h
+
+     The user may add rules to this list by simply putting them
+     in the makefile.
+
+     Certain macros are used by the default inference rules to
+     permit the inclusion of optional matter in any resulting
+     commands.  For example, CFLAGS, LFLAGS, and YFLAGS are used
+     for compiler options to cc(1), lex(1), and yacc(1)
+     respectively.  The previous method for examining the current
+     rules is recommended.
+
+     The inference of prerequisites can be controlled.  The rule
+     to create a file with suffix .o from a file with suffix .c
+     is specified as an entry with .c.o: as the target and no
+     dependents.  Shell commands associated with the target
+     define the rule for making a .o file from a .c file.  Any
+     target that has no slashes in it and starts with a dot is
+     identified as a rule and not a true target.
+
+   Libraries
+     If a target or dependency name contains parentheses, it is
+     assumed to be an archive library, the string within
+     parentheses referring to a member within the library.  Thus
+     lib(file.o) and $(LIB)(file.o) both refer to an archive
+     library that contains file.o . (This assumes the LIB macro
+     has been previously defined.)The expression $(LIB)(file1.o
+     file2.o) is not legal.  Rules pertaining to archive
+     libraries have the form .XX.a, where XX is the suffix from
+     which the archive member is to be made.  An unfortunate
+     byproduct of the current implementation requires XX to be
+     different from the suffix of the archive member. Thus, one
+     cannot have lib(file.o) depend upon file.o explicitly.  The
+     most common use of the archive interface follows.  Here, we
+     assume the source files are all C type source:
+
+          lib:    lib(file1.o) lib(file2.o) lib(file3.o)
+                  @echo lib is now up to date
+          .c.a:
+                  $(CC) -c $(CFLAGS) $<
+                  ar rv $@ $*.o
+                  rm -f $*.o
+
+     In fact, the 3.c.a rule listed above is built into make and
+     is unnecessary in this example.  A more interesting, but
+     more limited example of an archive library maintenance
+     construction follows:
+
+          lib:    lib(file1.o) lib(file2.o) lib(file3.o)
+                  $(CC) -c $(CFLAGS) $(?:.o=.c)
+                  ar rv lib $?
+                  rm $?  @echo lib is now up to date
+          .c.a:;
+
+     Here the substitution mode of the macro expansions is used.
+     The $?  list is defined to be the set of object file names
+     (inside lib) whose C source files are out of date.  The
+     substitution mode translates the .o to .c.  (Unfortunately,
+     one cannot as yet transform to .c~. However, this may become
+     possible in the future.) Note also, the disabling of the
+     .c.a: rule, which would have created each object file, one
+     by one.  This particular construct speeds up archive library
+     maintenance considerably, but becomes very cumbersome if the
+     archive library contains a mix of assembly programs and C
+     programs.
+
+PROMPTS
+   Makefile Name(s):
+     Enter the name of the description file (the makefile) to
+     process.
+
+   List of Targets:
+     Enter the names of the files that will be processed
+     (updated) according to the commands in the makefile.
+
+   Execute in No Execute Mode:
+     The initial value is no.  Enter yes to print but not execute
+     the commands in the makefile.
+
+   Touch the Target Files:
+     The initial value is no.  Enter yes to update the target
+     files without issuing the usual commands.
+
+   Execute in Background:
+     The initial value is no.  Enter yes to execute the command
+     in background.
+
+   Select Additional Options:
+     The initial value is no.  Enter yes to receive the following
+     prompts.
+
+   Execute in Debug Mode:
+     The initial value is no.  Enter yes to print detailed
+     information on files and the times they were examined.
+
+   Ignore Built in Rules:
+     The initial value is no.  Enter yes to ignore those built-in
+     rules not supplied by the makefile.
+
+   Execute in Silent Mode:
+     The initial value is no.  Enter yes to suppress printing of
+     command lines before executing.
+
+   Ignore All Error Codes:
+     The initial value is no.  Enter yes to ignore error codes
+     returned by the invoked commands.
+
+   Execute in Verbose Mode:
+     The initial value is no.  Enter yes to print the commands
+     and options executed by make.
+
+   Stop Work on Current Entry:
+     The initial value is no.  Enter yes to abandon work on the
+     current entry but continue on other branches that do not
+     depend on that entry.
+
+   Global Var. Override Assign.:
+     The initial value is no.  Enter yes to allow global
+     variables to override assignments within the makefile.
+
+   Print a Memory Map:
+     The initial value is no.  Enter yes to print the complete
+     set of macro definitions and target descriptions.
+
+   Return a Status Code:
+     The initial value is no.  Enter yes to return zero if the
+     target file is up-to-date and a nonzero value if the target
+     file is not up-to-date.
+
+FILES
+     [Mm]akefile and s.[Mm]akefile
+
+SEE ALSO
+     sh(1).
+     ``make Maintenance Program'' and ``Augmented Version of
+     make'' in the TI System V Support Tools Guide.
+
+NOTES
+     Some commands return non-zero status inappropriately.  Use
+     -i to overcome the difficulty.  Commands that are directly
+     executed by the shell, notably cd(1), are ineffectual across
+     newlines in make.  The syntax (lib(file1.o file2.o file3.o)
+     is illegal.  You cannot build lib(file.o) from file.o.  The
+     macro 3$(a:.o=.c~) does not work.
+
+

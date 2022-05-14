@@ -1,0 +1,112 @@
+PASTE(1)                                                 PASTE(1)
+
+NAME
+     paste - Merges same lines of several files or subsequent
+     lines of one file
+
+SYNOPSIS
+     paste files
+     paste -dlist files
+     paste -s [-dlist] files
+
+DESCRIPTION
+   Purpose
+     The paste command performs parallel or serial merging of
+     corresponding lines of input files.  The result is sent to
+     the standard output.
+
+   Options
+     -dlist
+          Replaces the tab character by one or more alternate
+          characters specified in list.  Without this option, the
+          newline characters of each but the last file (or last
+          line in case of the -s option) are replaced by a tab
+          character.
+
+          One or more characters immediately following -d replace
+          the default tab as the line concatenation character.
+          The list is used circularly; i.e., when exhausted, it
+          is reused.  In parallel merging (i.e., no -s option),
+          the lines from the last file are always terminated with
+          a newline character, not from the list.  The list may
+          contain the special escape sequences: \n (newline), \t
+          (tab), \\ (backslash), and \0 (empty string, not a null
+          character).  Quoting may be necessary if characters
+          have special meaning to the shell (e.g., to get one
+          backslash, use -d"\\" or -d\\\\).
+
+     -s   Merges subsequent lines rather than one from each input
+          file.  Use tab for concatenation, unless a list is
+          specified with the -d option.  Regardless of the list,
+          the last character of the file is forced to be a
+          newline.
+
+     -    Reads a line from the standard input.  May be used in
+          place of any file name.  (There is no prompting).
+
+   Discussion
+     In the first two forms shown in the SYNOPSIS, paste
+     concatenates corresponding lines of the given input files.
+     It treats each file as a column or columns of a table and
+     pastes them together horizontally (parallel merging).  The
+     paste command is the counterpart of cat(1), which
+     concatenates vertically (i.e., one file after the other).
+
+     In the third form shown in the SYNOPSIS, paste combines
+     subsequent lines of the input file (serial merging).  The -d
+     option should be used with this form.  Include a newline in
+     the list of characters.  Otherwise, all lines are pasted
+     into one long line.
+
+     In all cases, lines are glued together with the tab
+     character, or with characters from an optionally specified
+     list.  Output is to the standard output, so paste can be
+     used as the start of a pipe, or as a filter, if - is used in
+     place of a file name.  Note that the lines from a file do
+     not always start at the same position in the output line.
+     To combine the lines in strict columns, use the -m option of
+     pr(1) rather than using paste.
+
+     If one file is exhausted before the others, nothing is
+     pasted to its position in the line being built.  The
+     delimiter character is still appended, however.
+
+EXAMPLES
+     The first example lists the current working directory in one
+     column.  The second example lists the current working
+     directory in four columns.  The third example combines pairs
+     of lines into single lines.
+
+          ls | paste -d" " -
+
+          ls | paste - - - -
+
+          paste -s -d"\t\n" file
+
+PROMPTS
+   Input File Name(s):
+     Optional. Enter the names of the files to be merged.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Merge Subsequent Lines:
+     Initial value is no.  If you enter yes, subsequent lines
+     will be merged rather than one from each input file.
+
+   Alternate Character(s) List:
+     Optional. Enter the characters to be used to replace the tab
+     character.
+
+SEE ALSO
+     cut(1), grep(1), pr(1).
+
+DIAGNOSTICS
+     line too long    Output lines are restricted to 511
+                      characters.
+
+     too many files   Except for the -s option, no more than 12
+                      input files may be specified.
+
+

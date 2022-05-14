@@ -1,0 +1,77 @@
+UUTO(1C)                                                 UUTO(1C)
+
+NAME
+     uuto - Creates a public UNIX system-to-UNIX system file copy
+
+SYNOPSIS
+     uuto -mp source-files destination
+
+DESCRIPTION
+   Purpose
+     The uuto command sends source-files from the local system to
+     destination on the remote system.
+
+   Options
+     -m   Sends mail to the sender when the copy is complete.
+
+     -p   Copies the source file into the spool directory before
+          transmission.
+
+   Discussion
+     The command uses the uucp(1C) facility to send files,
+     allowing the local system to control file access.  A
+     source-filename is a path name on the user's machine.
+     Destination has the following form:
+
+     system!user
+
+     The system argument is taken from a list of system names
+     that uucp recognizes (see uuname(1C)) and user is the login
+     name of someone on the specified system.
+
+     The files (or subtrees if directories are specified) are
+     sent to PUBDIR on system, where PUBDIR is a public directory
+     defined in the uucp source.  Specifically, the files are
+     sent to the following destination:
+
+     PUBDIR/receive/user/mysystem/files
+
+     The destined recipient is notified by mail(1) of the arrival
+     of files.
+
+EXAMPLE
+     The following example sends files named filea, fileb, and
+     filec to user kk on system sys1.  A message is sent by mail
+     to the sender when the copy is complete.
+
+          uuto -pm filea fileb filec sys1!kk
+
+PROMPTS
+   Source System! Path Name(s):
+     Enter the path name you want to send. The path name can be
+     preceded by a system name or by ~ or ~/user.  You can send
+     more than one source path name at a time.
+
+   Destination System! Path Name:
+     Enter the path name of the destination. The path name can be
+     preceded by a system name or by ~ or ~/user.
+
+   Notify Sender:
+     The initial value is no.  Enter yes to send mail to the
+     requester when the copy is complete.
+
+   Copy to Spool Directory:
+     Initial value is no.  If you enter yes, the source file is
+     copied into the spool directory before transmission.
+
+     If you have problems, check the files under /usr/lib/uucp
+     and delete any /usr/spool/uucp/LCK..(tty-device) files.
+
+FILES
+     /usr/spool/uucppublic       Public directory(PUBDIR)
+
+SEE ALSO
+     mail(1), uuclean(1M), uucp(1C), uupick(1C), uustat(1C),
+     uux(1C).
+
+

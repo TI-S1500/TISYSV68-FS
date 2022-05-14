@@ -1,0 +1,14 @@
+
+#	@(#)brc.sh	2.1	
+#	@(#)brc.sh	1.3
+
+# Remove mount table if present
+
+if [ -r /etc/mnttab ]
+then
+	rm -f /etc/mnttab
+fi
+
+# Set the sitename from /etc/sitename, which is limited to 8 chars.
+#
+# /etc/setsite

@@ -1,0 +1,13 @@
+# cshf  kiftisam -- Converts KIF to T-ISAM 
+#	@(#)KIFTISAM.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^KIFTISAM -- CONVERTS KIF'S TO THEIR T-ISAM EQUIVALENTS"\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== KIFTISAM COMMAND EXECUTING ==="
+echo kiftisam 
+kiftisam 
+end:

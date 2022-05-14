@@ -1,0 +1,30 @@
+WAIT(1)                                                   WAIT(1)
+
+NAME
+     wait - Waits for the completion of processes
+
+SYNOPSIS
+     wait
+
+DESCRIPTION
+   Purpose
+     The wait command prevents further user input until all
+     processes started with & have completed.  At this point,
+     abnormal terminations are reported.
+
+     Because the wait(2) system call must be executed in the
+     parent process, the shell itself executes wait without
+     creating a new process.
+
+SEE ALSO
+     bsh(1), sh(1).
+
+NOTES
+     This command cannot wait for processes of pipelines with
+     three or more stages unless the pipelines are children of
+     the shell.
+
+     The command reports the process ID (PID) of background
+     processes when wait is interrupted.
+
+

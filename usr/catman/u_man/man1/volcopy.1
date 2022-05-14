@@ -1,0 +1,196 @@
+VOLCOPY(1M)					      VOLCOPY(1M)
+
+NAME
+     volcopy - Copies file systems with label checking
+
+SYNOPSIS
+     volcopy -as -bpi -feet -reel -buf -verify -multifs fsname
+     special1 volname1 special2 volname2
+
+DESCRIPTION
+   Purpose
+     The volcopy command makes a literal copy of the file system
+     using a block size matched to the device.
+
+   Options
+     -a   Invokes a verification sequence requiring a positive  
+	  operator response instead of the standard 10-second delay
+          before the copy is made.
+
+     -s   Invokes the DELETE if wrong verification sequence.
+	  (This option is the default.) Press Control-c within 10
+	  seconds to abort.
+
+     The following other options are used only with tapes:
+
+     -bpi density Bits-per-inch.  The density values are 800,
+		  1600, 3200, 6250, 8600, 17500, 21100, or
+		  500,000.  The value cart is the same as 8600
+		  and should be selected for a CT60 drive. The
+		  value ct150 is the same as 21100 and should be
+		  selected for a CT150 drive using a 150 MB tape.
+		  If a 120 MB cartridge (i.e., a 600A tape) is
+		  used in a CT150 drive, the proper density is
+		  17500. The value video is the same as 500,000.
+
+     -feet size   Length of tape in feet. (The size values are
+		  1-3600.)  Tape length corresponds to tape
+		  capacity only for the CT2000 tape drive as
+		  follows:
+
+		  Capacity (MB)       Size (ft)
+
+		       256		 44
+		       512		 64
+		      1024		131
+		      1536		259
+		      2048		357
+
+		  All other types of tapes specify their length
+		  in feet on the tape.
+
+
+     -reel num	  Beginning reel number for a restarted copy.
+
+     -buf	  Double-buffered I/O.
+
+     -verify	  Invokes a verify pass on each tape after the
+		  tape is copied.  This option is valid only if
+		  the destination device is a tape drive.
+
+     -multifs	  Allows user to place multiple file systems on a
+		  single tape (using the nonrewinding device). If
+		  a restore operation is desired, the user must
+		  position the tape to the correct position for
+		  the desired file system, and use the -multifs
+		  command line with the nonrewinding device. If
+		  using -multifs directive, volcopy will not
+		  check the volume header of the output tape
+		  before beginning the archive. This option is
+		  supported only on the CT2000 video tape drive.
+
+		  The program requests length and density
+		  information if it is not given on the command
+		  line or is not recorded on an input tape label.
+		  If the file system is too large to fit on one
+		  reel, volcopy prompts for additional reels.
+		  Labels of all reels are checked.  Tapes can  be
+		  mounted alternately on two or more drives.
+
+   Arguments
+     fsname  The mounted name (such as root, u1, or usr) of the
+	     file system being copied.
+
+     special1
+	     The physical disk section or tape (such as
+	     /dev/rdsk/sys:usr or /dev/rmt/0h) from which the
+	     copy of the file system is being extracted.  If you
+	     are backing up a file system, it should be
+	     unmounted.
+
+     volname1
+	     The physical volume name (such as TISysV) from which
+	     the copy of the file system is being extracted.
+	     This name should match the external label sticker.
+	     The label name is limited to six or fewer
+	     characters.  (If volname1 is specified as -, the
+	     existing volume name is used.
+
+     special2
+	     The target device.  If the file system is mounted,
+	     the copy may be inconsistent. Therefore, it is
+	     recommended to unmount it first.  When using volcopy
+	     to back up file systems to tape, the target device
+	     is usually /dev/rqt/0h or /dev/rmt/0h or
+	     /dev/rvt/0h.
+
+     volname2
+	     The target volume.
+
+     The fsname and volume arguments are recorded in the super
+     block.  The name declarations are char s_fname[6],
+     s_fpack[6];.
+
+PROMPTS
+   File System Name:
+     Enter the mounted name of the file system to copy.
+
+   From Disk Section or Tape:
+     Enter the name of the physical disk section or tape from
+     which the copy of the file system is being extracted.
+
+   Physical Volume Name:
+     Enter the physical volume name from which the copy of the
+     file system is being extracted.
+
+   Target Disk Section or Tape:
+     Enter the name of the physical disk section or tape to
+     receive the copy of the file system.
+
+   Target Volume Name:
+     Enter the physical volume name to receive the copy of the
+     file system.
+
+   Copy Verification Option:
+     The initial value is no. Enter yes to verify data after the
+     copy is made.
+
+   Invoke Positive Operator Response:
+     The initial value is no. Enter yes to invoke a verification
+     sequence requiring the operator to confirm that the
+     operation should proceed.	If you enter no, the standard
+     10-second delay occurs before the copy is made.
+
+   Invoke DEL:
+     The initial value is yes. Enter yes to invoke the DEL if
+     wrong verification sequence.
+
+   List Tape Options:
+     The initial value is no.  Enter yes to receive the following
+     four prompts.
+
+     Tape Density
+     (800,1600,3200,6250,17500,c=cart,v=video,t=ct150):
+	  Enter the tape density, which must be one of 800, 1600,
+	  3200, 6250, 17500, or c, C, v, V, t, T, or cart (for
+	  cartridge tape, which is the same as 8600), or video
+	  (for CT2000 tape, which is the same as 500000), or
+	  ct150 (for the CT150 drive 150Mb DC6150 tape, which is
+	  the same as 21100). The proper density for a DC600A
+	  tape in a CT150 drive is 17500.
+
+     Reel Size in Feet (1-3600):
+	  Enter the tape reel size, which must be an integer
+	  between 1 and 3600.
+
+     First Reel Number:
+	  Enter the beginning tape reel number for a restarted
+	  copy.
+
+     Use Double Buffered IO:
+	  The initial value is no.  Enter yes to use double
+	  buffered I/O.
+
+FILES
+     /etc/log/filesave.log
+
+SEE ALSO
+     frec(1M), fs(4), labelit(1M).
+
+NOTES
+     The file /etc/log/filesave.log contains a list of the last
+     100 volumes copied by volcopy including date and time
+     stamps. This file is shipped (empty) with the system. If the
+     system administrator does not wish to save this list, the
+     file can be removed. But if this file is removed, note that
+     volcopy will inform the system administrator that
+     /etc/log/filesave.log does not exist.  Also note that if
+     /etc/log/filesave.log is nonexistent, volcopy does not
+     automatically create it.
+
+CAUTION
+     If you use half-inch tapes, do not use tapes that are longer
+     than 2400 feet. If longer tapes are used, data may not be
+     retrieved properly and/or the tape drive may fail.
+
+

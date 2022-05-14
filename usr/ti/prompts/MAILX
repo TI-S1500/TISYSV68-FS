@@ -1,0 +1,42 @@
+# cshf  mail -- An interactive message-processing system 
+#	@(#)MAILX.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^MAILX-- INVOKES AN INTERACTIVE MESSAGE-PROCESSING SYSTEM"\
+	"^*Recipient Name(s):" names string "$names"\
+	"^Test For Presence of Mail:" eflag yesno n\
+	"^*Mail File Name:" file string "$MBOX"\
+	"^Name File After Recipient:" Fflag yesno n\
+	"^*Number of Network Hops:" hflag integer \
+	"^Print Header Summary Only:" Hflag yesno n\
+	"^Ignore Interrupts:" iflag yesno n\
+	"^Initialize Mailx.rc File:" nflag yesno y\
+	"^Print Header Summary:" Nflag yesno n\
+	"^*Address to Network:" rflag string\
+	"^*Subject Header Field:" sflag string \
+	"^*Name of User's Mailbox:" uflag string \
+	"^#$*"
+	
+if ($abort) goto end
+if ($eflag == "y") set opt = e$opt
+if ($Fflag == "y") set opt = F$opt
+if ($iflag == "y") set opt = i$opt
+if ($Hflag == "y") set opt = H$opt
+if ($nflag == "y") set opt = n$opt
+if ($Nflag == "y") set opt = N$opt
+if ($opt != "") set opt = -$opt
+if ($file != $MBOX) set fopt = -f$file
+if ($hflag != "") set hopt = -h$hflag
+if ($rflag != "") set ropt = -r$rflag
+if ($sflag != "") set sopt = -s$sflag
+if ($uflag != "") set uopt = -u$uflag
+
+if ($abort) goto end
+echo "=== MAILX COMMAND EXECUTING ==="
+echo mailx $opt $fopt $hopt $ropt $sopt $uopt $names
+mailx $opt $fopt $hopt $ropt $sopt $uopt $names
+
+#clean up time
+end:
+unset *flag *opt name file

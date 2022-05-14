@@ -1,0 +1,56 @@
+SUM(1)                                                     SUM(1)
+
+NAME
+     sum - Prints checksum and block count of a file
+
+SYNOPSIS
+     sum -r files
+
+DESCRIPTION
+   Purpose
+     The sum command calculates and prints a 16-bit checksum for
+     the named files, and also prints the number of blocks in the
+     files.  It is typically used to look for bad spots, or to
+     validate a file communicated over a transmission line.  If
+     no file is given, sum uses the standard input.
+
+   Option
+     -r   Causes an alternate algorithm to be used in computing
+          the checksum.
+
+EXAMPLES
+     To print the checksum and block count of a file named
+     tempest, type the following command:
+
+          sum tempest
+
+     The result might look like as follows:
+
+          46955 4 tempest
+
+     To print the checksum (computed with an alternate algorithm)
+     and block count of the same file tempest, type the following
+     command:
+
+          sum -r tempest
+
+     The result might look like this as follows:
+
+          28804     4 tempest
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to process.
+
+   Use an Alternate Algorithm:
+     The initial value is no.  Enter yes to cause an alternate
+     algorithm to be used in computing the checksum.
+
+SEE ALSO
+     wc(1).
+
+DIAGNOSTICS
+     A ``Read error'' message is indistinguishable from an end-
+     of-file marker on most devices. Check the block count.
+
+

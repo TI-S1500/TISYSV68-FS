@@ -1,0 +1,303 @@
+SDB(1)							   SDB(1)
+
+NAME
+     sdb - Invokes a symbolic debugger
+
+SYNOPSIS
+     sdb -w [objfil [corfil]]
+
+DESCRIPTION
+   Purpose
+     The sdb program is a symbolic debugger used to examine
+     object and core files and to provide a controlled
+     environment for the execution of object files.
+
+   Options
+     -w   While a process is running under sdb, all addresses
+	  refer to the executing program.  Otherwise, addresses
+	  refer to objfil or corfil. An initial option of -w
+	  permits overwriting locations in objfil.
+
+   objfile Argument
+     The default for objfil is a.out.  The corfil argument is
+     assumed to be a core image file produced after executing
+     objfil.  The default for corfil is the file named core.  The
+     core file need not be present.  A - in place of corfil
+     forces sdb to ignore any core image file.
+
+     At any time during execution there is a current instruction.
+     If corfil exists, the initially set instruction is that
+     which the process terminated.  Otherwise, the initial
+     instruction is the instruction at address 0.
+
+   Commands
+     The commands for examining data in the program after sdb has
+     been invoked are as follows:
+
+     t	  Prints a stack trace of the terminated or halted
+	  program.
+
+     T	  Prints the top line of the stack trace.
+
+     address / clm
+     address `t /clm
+	  Displays c data items of size l in format m, beginning
+	  at address.  All lcm fields are optional.  sdb will
+	  supply an appropriate value for omitted fields.
+	  address may be a register name with appended %.  See
+	  the x command for register names.  If c is not given, a
+	  possibly truncated portion of the 4-byte datum address
+	  is edited, depending on l. This is not the same
+	  specifying c as 1.  l is only meaningful when m is one
+	  of the integer editing editing types c, d, u, o, and x.
+	  `t is the type specifier j or k for use with the x
+	  editing code.
+
+
+	  l can have the values:
+
+	  b    One byte
+
+	  h    Two bytes (half word)
+
+	  l    Four bytes (long word)
+
+
+	  Legal values for m are as follows:
+
+	  c    Character
+
+	  d    Decimal
+
+	  u    Decimal, unsigned
+
+	  o    Octal
+
+	  x    Hexadecimal (use the `t field for extended-
+	       precision or packed-decimal floating-point)
+
+	  f    32-bit single-precision floating-point
+
+	  g    64-bit double-precision floating-point
+
+	  j    Extended-precision floating-point edited as
+	       decimal (`t field not required).
+
+	  k    Packed-decimal floating-point edited as decimal
+	       (`t field not required).
+
+	  s    Assumes variable is a string pointer and print
+	       characters starting at the address pointed to by
+	       the variable.
+
+	  a    Prints characters starting at the variable's
+	       address.  This format cannot be used with register
+	       variables.
+
+	  p    Pointer to procedure
+
+	  i    Disassembles machine-language instruction with
+	       addresses printed numerically.
+
+
+     If a count specifier is used for the s or a command, that
+     many characters are printed.  Otherwise, successive
+     characters are printed until either a null byte is reached
+     or 128 characters are printed.  The last address may be
+     redisplayed with the ./ command.  See the x command.
+
+     address:?lm
+	  Prints the value at the address from a.out given by
+	  address or variable (procedure name), according to the
+	  format lm.  The default format is i.
+
+     number=lm
+	  If no format is given, then lx is used.  This command
+	  provides a convenient way to convert between decimal,
+	  octal, and hexadecimal.
+
+     variable address!value
+     variable address `t!value
+	  Stores the value at the address.  The address target
+	  will have type int unless `t is given from the set:
+	  bhlfgjk, meaning byte, half, long(int), single-
+	  precision float, double-precision float, extended-
+	  precision float, and packed-decimal float,
+	  respectively.  The value can be a number, a character
+	  constant, or a register name with appended %.  The
+	  value must be well-defined; expressions that produce
+	  more than one value, such as structures, are not
+	  allowed.  Character constants are denoted `character.
+	  Numbers are viewed as integers unless a decimal point
+	  or exponent is used. In this case, they are treated as
+	  having the type extended-precision floating point. CPU
+	  registers are viewed as integers. Floating-point
+	  coprocessor control registers  are treated as integers.
+	  Floating-point coprocessor data registers are treated
+	  as extended-precision floating point.  value can be
+	  extended-precision or packed-decimal if `j or `k is
+	  appended to a 3 long-word hex or octal constant.  The
+	  type of the value is converted to the type of the
+	  target. The target may be a register.
+
+     x	  Prints the machine registers and the current machine-
+	  language instruction.  The f argument displays
+	  floating-point coprocessor registers, in addition.  If
+	  the floating-point unit was in progress when the last
+	  breakpoint was taken, the FPCP will be reported BUSY.
+	  The FPIAR register contains the address of the
+	  instruction being executed.
+
+     X	  Prints the current machine-language instruction.
+
+     The commands for controlling the execution of the source
+     program are as follows:
+
+     count r args
+     count R
+	  Runs the program with the given arguments.  The r
+	  command with no arguments reuses the previous arguments
+	  to the program while the R command runs the program
+	  with no arguments.  An argument beginning with < or >
+	  causes redirection for the standard input or output
+	  respectively.  If count is given, sdb stops when count
+	  breakpoints have been encountered.
+
+     address: c count
+     address: C count
+	  Continues after a breakpoint or interrupt.  If count is
+	  given, it specifies the number of breakpoints to be
+	  ignored.  C continues with the signal that caused the
+	  program to stop reactivated and c ignores it.  If an
+	  address is specified, a temporary breakpoint is placed
+	  at the address and execution is continued.  The
+	  breakpoint is deleted when the command finishes.
+
+     i
+     I	  Single-steps by one machine-language instruction.  I
+	  steps with the signal that caused the program to stop
+	  reactivated and i ignores that signal.
+
+     k	  Kills the program being debugged.
+
+     address: b commands
+	  Sets a breakpoint at the given address.  If a procedure
+	  name is given (e.g., proc:), a breakpoint is placed at
+	  the first instruction in the procedure.  If no commands
+	  are given, execution stops just before the breakpoint,
+	  and control is returned to sdb.  Otherwise, the
+	  commands are executed when the breakpoint is
+	  encountered and execution continues.	Multiple commands
+	  are specified by separating them with semicolons.  If k
+	  is used as a command to execute at a breakpoint,
+	  control returns to sdb instead of continuing execution.
+
+     B	  Prints a list of the currently active breakpoints.
+
+     address: d
+	  Deletes a breakpoint at the given address.  If no
+	  address is given, the breakpoints are deleted
+	  interactively.  Each breakpoint location is printed and
+	  a line is read from the standard input.  If the line
+	  begins with a y or d , the breakpoint is deleted.
+
+     D	  Deletes all breakpoints.
+
+     l	  Prints the next line to be executed.
+
+     address: a
+	  If address is of the form proc:, the command
+	  effectively does a proc: b T.
+
+     Miscellaneous commands are as follows:
+
+     !command
+	  The command is interpreted by sh(1).
+
+     newline (press the Return key)
+	  If the previous command displayed a memory location,
+	  display the next memory location. Likewise for
+	  instructions or registers.
+
+     CTRL-D
+	  Prints (scrolls) the next 10 lines of instructions,
+	  data, or registers, depending on which was printed
+	  last.
+
+     < file name
+	  Reads commands from file name until the end of file is
+	  reached, and then continues to accept commands from
+	  standard input.  When sdb is told to display a variable
+	  by a command in such a file, the variable name is
+	  displayed along with the value.  This command cannot be
+	  nested; < cannot appear as a command in a file.
+
+     " string
+	  Prints the given string.  The C escape sequences of the
+	  form \character are recognized, where character is a
+	  non-numeric character.
+
+     q	  Exits the debugger.
+
+     The following commands are intended only for debugging the
+     debugger:
+
+     V	  Prints the version number.
+     Q	  Prints a list of procedures being debugged.
+
+FILES
+     a.out
+     core
+
+PROMPTS
+   Directory Name:
+     Enter the name of the directory containing the source files
+     used in constructing the executable file.
+
+   Object File Name:
+     Enter the name of the executable program file that has been
+     compiled with the debug option.
+
+   Core File Name:
+     Enter the name of the core image file produced after
+     executing the object file.
+
+   Disable Warnings:
+     Initial value is no.  If you enter yes, the warning messages
+     are not printed.
+
+   Overwrite Locations:
+     Initial value is no.  If you enter yes, overwriting
+     locations in the executable file is permitted.
+
+SEE ALSO
+     a.out(4), core(4), sh(1).
+     ``Symbolic Debugging'' in the TI System V Support Tools
+     Guide.
+
+NOTES
+     If you are debugging a program compiled with an SVS
+     compiler, use the SVS debugger.  The sdb utility does not
+     support source file line options.
+
+     Data stored in text sections is indistinguishable from
+     functions.
+
+     Line number information in optimized functions is
+     unreliable, and some information may be missing.
+
+     If a procedure is called when the program is not stopped at
+     a breakpoint (such as when a core image is being debugged),
+     all variables are initialized before the procedure is
+     started.  Thus, it is impossible to use a procedure that
+     formats data from a core image.
+
+     The frame pointer is not usually modified in a procedure
+     until after the first instruction is executed.  As a result,
+     a stack trace prints the stack of the calling routine.  In
+     order to get a correct stack trace, use the i command to
+     execute the first instruction (which is a link instruction
+     for a C program) in a procedure before printing a stack
+     trace.
+
+

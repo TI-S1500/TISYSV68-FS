@@ -1,0 +1,101 @@
+CMP(1)							   CMP(1)
+
+NAME
+     cmp - Compares two files
+
+SYNOPSIS
+     cmp -ls file1 file2
+
+DESCRIPTION
+   Purpose
+     The cmp command compares two files.  If file1 is -, the
+     standard input is used.  Under default options, cmp makes no
+     comment if the files are the same.  If the files differ, the
+     command announces the byte and line number at which the
+     first difference occurred.  If one file is an initial
+     subsequence of the other (that is, if the second file was
+     created by appending data to the first file), that fact is
+     noted.
+
+   Options
+     The -l and -s options are mutually exclusive.
+
+     -l   Prints the byte number in decimal for each difference,
+	  followed by the byte in octal from file 1, then the
+	  byte in octal from file 2.
+
+     -s   Prints nothing for differing files.  Returns a 0 if the
+	  files were identical and a 1 otherwise.
+
+   Discussion
+     For many files, once the files differ, all following
+     characters in the file will also differ.  The files are not
+     resynchronized by cmp to account for missing or extra
+     characters.  The -l option might easily print one line for
+     almost every character in the file.
+
+EXAMPLE
+     The following example compares filea and fileb but does not
+     print anything.
+
+	  cmp -s filea fileb
+
+     To see the results of the command, enter the following
+     echo(1) command immediately after the cmp command.  The echo
+     command displays a 1 on the standard output if filea and
+     fileb differ or a 0 if the files are identical.
+
+	  echo $status
+
+     The previous command is useful within shell scripts.  The
+     results of cmp can be tested as follows:
+
+	  if ($status == '0') then
+		    .
+		    .
+		    .
+
+		    cmp -l a b
+
+	  The previous command produces output similar to the
+	  following:
+
+	       703  141  146
+	       738   56  124
+	       739  156  111
+	       740  141  111
+
+	  The first 702 bytes of files a and b are identical.
+	  The 703rd byte is octal 141 in file a and octal 146 in
+	  file b.  The 704th through 737th bytes are identical in
+	  files a and b.  The 738th byte is octal 56 in file a
+	  and octal 124 in file b.  The 739th byte is octal 156
+	  in file a and octal 111 in file b.  The 740th byte is
+	  octal 141 in file a and octal 111 in file b.	There are
+	  no more bytes to be compared.  One or both of files a
+	  and b are 740 bytes long.
+
+PROMPTS
+   First File:
+     Enter the name of a file to compare.
+
+   Second File:
+     Enter the name of a file to be compared with the first file.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Show Every Byte Difference:
+     The initial value is no.  Enter yes to display the byte
+     number in decimal and the differing bytes in octal.  Enter
+     no to display nothing and return exit codes.
+
+DIAGNOSTICS
+     Exit code 0 is returned for identical files, 1 for different
+     files, and 2 for an inaccessible or missing argument.
+
+SEE ALSO
+     comm(1), diff(1).
+
+

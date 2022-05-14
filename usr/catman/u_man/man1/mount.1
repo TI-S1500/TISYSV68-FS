@@ -1,0 +1,58 @@
+MOUNT(1M)                                               MOUNT(1M)
+
+NAME
+     mount - Mounts file systems and remote resources
+
+SYNOPSIS
+     /etc/mount [-r] [-f fstyp] special directory
+     /etc/mount
+
+DESCRIPTION
+     File systems other than root ( / ) are considered removable
+     in the sense that they can be either available to users or
+     unavailable.  mount announces to the system that special, a
+     block special device is available to users from the mount
+     point directory. directory must exist already; it becomes
+     the name of the root of the newly mounted special. Mutiple
+     mounts of a single special device are not permitted.
+
+     mount, when entered with arguments, adds an entry to the
+     table of mounted devices, /etc/mnttab.  umount removes the
+     entry.  If invoked with no arguments, mount prints the
+     entire mount table.  If invoked with any of the following
+     partial argument lists, mount will search /etc/fstab to fill
+     in the missing arguments:  special or directory.
+
+     The following options are available:
+
+     -r         Indicates that special is to be mounted read-only.
+                If special is write-protected, this flag must be
+                used.
+
+     -f fstyp   Indicates that fstyp is the file system type to
+                be mounted.  If this argument is omitted, it
+                defaults to the root fstyp.
+
+     special    Indicates the block special device that is to be
+                mounted on directory.
+
+     directory  Indicates the directory mount point for special.
+                (The directory must already exist.)
+
+     Only the super-user can execute the mount command.
+
+FILES
+     /etc/mnttab      Specifies the mount table
+     /etc/fstab       Specifies the file system table
+
+SEE ALSO
+     fstab(4), fuser(1M), mnttab(4), mount(2), setmnt(1M),
+     umount(2).
+
+DIAGNOSTICS
+     If the mount(2) system call fails, mount prints an
+     appropriate diagnostic.  mount issues a warning if the file
+     system to be mounted is currently labeled under another
+     name.
+
+

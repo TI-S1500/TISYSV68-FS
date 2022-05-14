@@ -1,0 +1,53 @@
+KILLALL(1M)                                           KILLALL(1M)
+
+NAME
+     killall - Kills all active processes
+
+SYNOPSIS
+     killall [-drv] [signal]
+
+DESCRIPTION
+   Purpose
+     The killall command is a procedure used by /etc/shutdown to
+     kill all active processes not directly related to the
+     shutdown procedure.
+
+     killall is chiefly used to terminate all processes with open
+     files so that the mounted file systems can be unmounted.
+
+     This command sends signal to all remaining processes not
+     belonging to the above group of exclusions.  If no signal
+     (see kill(1)) is specified, a default of 15 is used.
+
+   Options
+     With options, killall can delay the shutdown procedure,
+     allowing processes with extended cleanup needs ample time to
+     properly exit.
+
+     -d delay   The delay argument specifies the number of
+                seconds between checks for processes that are
+                still alive. This option has no effect if the -r
+                option is not specified.
+
+     -r retries The retries argument specifies the number of
+                times for killall to look for processes that are
+                still alive after being sent the specified
+                signal. The default is 0 (not to delay and
+                recheck).
+
+     -v         Causes killall to display a warning message if
+                processes still exist after the waiting period
+                has expired.
+
+PROMPTS
+   Signal Number (1,19):
+     The initial value is 15.  Enter the signal number to send to
+     all processes with open files.
+
+FILES
+     /etc/shutdown
+
+SEE ALSO
+     fuser(1M), kill(1), ps(1), shutdown(1M), signal(2).
+
+

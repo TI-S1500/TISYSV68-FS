@@ -1,0 +1,119 @@
+CAPTOINFO(1M)                                       CAPTOINFO(1M)
+
+NAME
+     captoinfo - Converts a termcap description into a
+     terminfo(4) description
+
+SYNOPSIS
+     captoinfo -Vv1 termcapfile
+
+DESCRIPTION
+   Purpose
+     captoinfo looks in file for termcap descriptions and then,
+     for each description it finds, writes to standard output an
+     equivalent terminfo description along with any comments or
+     messages.
+
+   Options
+     -V   Prints version of program in use on standard error and
+          exits.
+
+     -v[2]
+          Prints tracing information on standard error as the
+          program runs. Specifying 2 prints more detailed
+          information.
+
+     -1   Causes the fields to be printed one to a line.
+          Otherwise, several terminfo entries will be printed on
+          a line.
+
+   Discussion
+     You can redirect standard output to a file, but messages
+     will still appear on the screen. If file is not specified,
+     captoinfo uses the environment variable TERMCAP for the file
+     name. If TERMCAP is not set, captoinfo reads the file
+     /etc/termcap.
+
+     Certain termcap defaults are assumed to be true. For
+     example, the bell character (terminfo bel) is assumed to be
+     ^G. The linefeed capability (termcap nl) is assumed to be
+     the same for both cursor_down and scroll_forward (terminfo
+     cud1 and ind, respectively). Padding information is assumed
+     to belong at the end of the string.
+
+     The algorithm used to expand parameterized information for
+     termcap fields such as cursor_position (termcap cm, terminfo
+     cup) sometimes produces a string that, though technically
+     correct, may not be optimal. In particular, the rarely used
+     termcap operation %n produces strings that are especially
+     long. Most occurrences of these non-optimal strings will be
+     flagged with a warning message and may need to be recoded by
+     hand.
+
+     The short two-letter name at the beginning of the list of
+     names in a termcap entry has been removed.
+
+DIAGNOSTICS
+     tgetent failed with return code n (reason).
+          The termcap entry is not valid. In particular, check
+          for an invalid tc= entry.
+
+     unknown type given for the termcap code cc.
+          The termcap description had an entry for cc whose type
+          was not boolean, numeric, or string.
+
+     wrong type given for the boolean (numeric, string) termcap code cc.
+          The boolean termcap entry cc was entered as a numeric
+          or string capability.
+
+     the boolean (numeric, string) termcap code cc is not a valid name.
+          An unknown termcap code was specified.
+
+     tgetent failed on TERM=term.
+          The terminal type specified could not be found in the
+          termcap file.
+
+     TERM=term: cap cc (info ii) is NULL: REMOVED
+          The termcap code was specified as a null string. The
+          correct way to cancel an entry is with an '@', as in
+          ':bs@:'. Giving a null string could cause incorrect
+          assumptions to be made by the software that uses
+          termcap or terminfo.
+
+     a function key for cc was specified with the value, but it already                has the vlaue vv.
+          When parsing the ko capability, the key cc was
+          specified as having the same value as the capability
+          cc, but the key cc already had a value assigned to it.
+
+     the unknown termcap name cc was specified in the ko termcap capability.
+          A key was specified in the ko capability that could not
+          be handled.
+
+     the vi character v (info ii) has the value xx,
+          but ma gives n.  The ma capability specified a function
+          key with a value different from that specified in
+          another setting of the same key.
+
+     the unknown vi key v was specified in the ma termcap capability.
+          A vi(1) key unknown to captoinfo was specified in the
+          ma capability.
+
+     Warning: termcap sg and termcap ug had different values.
+          terminfo assumes that the sg (now xmc) and ug values
+          were the same.
+
+     Warning: the string produced for ii may be inefficient.
+          The parameterized string being created should be
+          rewritten by hand.
+
+     Null termname given.
+          The terminal type was null. This is given if the
+          environment variable TERM is not set or is null.
+
+     cannot open file for reading.
+          The specified file could not be opened.
+
+SEE ALSO
+     curses(3X), infocmp(1M), terminfo(4), tic(1M).
+
+

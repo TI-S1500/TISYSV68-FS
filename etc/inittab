@@ -1,0 +1,10 @@
+si::sysinit:/etc/sysinit
+up:s:initdefault:
+bu::bootwait:/etc/checkups < /dev/console > /dev/console 2>&1
+bl::bootwait:/etc/bcheckrc < /dev/console > /dev/console 2>&1
+bc::bootwait:/etc/brc < /dev/console > /dev/console 2>&1
+rc::wait:/etc/rc 2 1> /dev/console 2>&1
+er:2:wait:/usr/lib/errdemon -c
+cb:2:wait:/etc/download < /dev/console > /dev/console 2>&1
+pf::powerfail:/etc/shutdown -p 0 < /dev/console > /dev/console 2>&1
+ta:2:respawn:/etc/getty console 9600 x1

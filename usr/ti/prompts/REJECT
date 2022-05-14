@@ -1,0 +1,24 @@
+# cshf   reject - prevents LP requests 
+#	@(#)REJECT.sh	1.3 (TI) 87/10/13
+#
+onintr end
+set quote = '"'
+
+prompt "^REJECT -- PREVENTS LP REQUESTS"\
+	"^Printer or Class Name(s):" _printer string "$_printer"\
+	"^*Reason:" rsn string "$rsn"\
+	"^#$*"
+
+if ($abort) goto end
+
+echo "=== REJECT COMMAND EXECUTING ===" 
+if ("$rsn" == "") then
+	echo reject $_printer
+	reject $_printer
+else
+	echo reject -r$quote"$rsn"$quote $_printer
+	reject -r"$rsn" $_printer
+endif
+
+end:
+unset rsn quote

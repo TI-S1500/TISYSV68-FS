@@ -1,0 +1,121 @@
+UNIQ(1) 						  UNIQ(1)
+
+NAME
+     uniq - Reports repeated lines in a file
+
+SYNOPSIS
+     uniq -cdu +n -n [input[output]]
+
+DESCRIPTION
+   Purpose
+     The uniq command reads the input file and compares adjacent
+     lines.  Normally, the second and succeeding copies of
+     repeated lines are removed from the command output.  The
+     first copy of repeated lines is written to the output file.
+     The input and output should always be different; otherwise,
+     a zero-length file is created.  If input is omitted,
+     standard input is used.  If output is omitted, standard
+     output is used.
+
+     Note that repeated lines must be adjacent in order to be
+     found.  See sort(1).
+
+     Each line must be less than 1024 characters long.
+
+     Only one of the options c, d, or u can be used in the
+     command. The default, if no options are specified, is a
+     combination of the -d and -u options.
+
+   Options
+     -c   Overrides -u and -d, generating an output report in
+	  default style but with each line preceded by a count of
+	  the number of times it occurred.
+
+     -d   Outputs only the repeated lines.  The default if no
+	  options are specified is the output of the -u and -d
+	  options.
+
+     -u   Outputs only the lines that are not repeated in the
+	  original file.
+
+     The + and - options specify skipping an initial portion of
+     each line in the comparison:
+
+     -n   The first n fields, together with any blanks before
+	  each, are ignored.  A field is defined as a string of
+	  nonspace, nontab characters separated by tabs and
+	  spaces from its neighbors.
+
+     +n   The first n characters are ignored.  Fields are skipped
+	  before characters.
+
+EXAMPLE
+     Assume that filea contains the following lines:
+
+	  Line 1
+	  Line 1
+	  Line 11
+	  Line 2
+	  Line 3
+	  Line 3
+
+     The following command:
+
+	  uniq filea
+
+     results in the following output:
+
+	  Line 1
+	  Line 11
+	  Line 2
+	  Line 3
+
+     Assume that file xx contains the following lines:
+
+	  this is a line
+	  This is a line
+	  THis is a line
+
+     The following three examples show usage of the +n and -n
+     options with their command outputs.
+
+	  Command	       Output
+
+	  uniq -1 xx	       this is a line
+
+	  uniq +1 xx	       this is a line
+			     This is a line
+
+	  uniq +2 xx	       this is a line
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file process.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Number of Fields to Skip:
+     Optional. Enter the number of fields to ignore.
+
+   Number of Characters to Skip:
+     Optional. Enter the number of characters to ignore.
+
+   Report Only Non-Repeated Lines:
+     Initial value is no. If yes is entered only the lines that
+     are not repeated in the original file are reported.
+
+   Report Only Repeated Lines:
+     Initial value is no.  If you enter yes, only one copy of the
+     repeated lines is reported.
+
+   Count of Each Line Occurrence:
+     Initial value is no.  If you enter yes, each line in the
+     output file is preceded by a count of the number of times it
+     occurred.
+
+SEE ALSO
+     comm(1), sort(1).
+
+

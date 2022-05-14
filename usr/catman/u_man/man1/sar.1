@@ -1,0 +1,163 @@
+
+SAR(1)							   SAR(1)
+
+NAME
+     sar - Invokes the system activity reporter
+
+SYNOPSIS
+     sar [-ubdycwaqvmrA] [ -o  file] t [ n ]
+
+     sar [-ubdycwaqvmrA] [ -s  time] [ -e  time] [ -i  sec] [ -f
+     file]
+
+DESCRIPTION
+     The first usage of sar shown in the SYNOPSIS samples
+     cumulative activity counters in the operating system at n
+     intervals of t seconds.  If the -o option is specified, sar
+     saves the samples in file in binary format.  The default
+     value of n is 1.
+
+     With no sampling interval specified, as shown in the second
+     line of the SYNOPSIS, sar extracts data from a previously
+     recorded file, either the file specified by the -f option
+     or, by default, the standard system activity daily data file
+     /usr/adm/sa/sadd for the current day, dd.	The starting and
+     ending times of the report can be bounded with the -s and -e
+     time arguments of the form hh[:mm[:ss]].  The -i option
+     selects records at sec second intervals.  Otherwise, all
+     intervals found in the data file are reported.
+
+     This activity reporter is called by sa2(1M).
+
+   Options
+     Subsets of data to be printed are specified by the following
+     options.  The following list shows the option, a brief
+     description of the option, the field names of the command
+     output, and a description of those fields.
+
+     -u   Report CPU utilization (the default):
+
+	  %usr, %sys, %wio, %idle - portion of time running in
+	  user mode, running in system mode, idle with some
+	  process waiting for block I/O, and otherwise idle.
+
+     -b   Report buffer activity:
+
+	  bread/s, bwrit/s - transfers per second of data between
+	  system buffers and disk or other block devices;
+
+	  lread/s, lwrit/s - accesses of system buffers;
+
+	  %rcache, %wcache - cache hit ratios, e. g., 1 -
+	  bread/lread;
+
+	  pread/s, pwrit/s - transfers via raw (physical) device
+	  mechanism.
+
+     -d   Report activity for each block device, e. g., disk or
+	  tape drive.  When data is displayed, the device
+	  specification dsk- is generally used to represent a
+	  disk drive.  The device specification used to represent
+	  a tape drive is machine-dependent.  The activity data
+	  reported is:
+
+	  %busy, avque - portion of time device was busy
+	  servicing a transfer request, average number of
+	  requests outstanding during that time;
+
+	  r+w/s, blks/s - number of data transfers from or to
+	  device, number of blocks transferred in 1K-byte units;
+
+	  avwait, avserv - average time in ms. that transfer
+	  requests wait idly on queue, and average time to be
+	  serviced (which for disks includes seek, rotational
+	  latency, and data transfer times).
+
+     -y   Report tty device activity:
+
+	  rawch/s, canch/s, outch/s - input character rate, input
+	  character rate processed by canon, output character
+	  rate;
+
+	  rcvin/s, xmtin/s, mdmin/s - receive, transmit, and
+	  modem interrupt rates.
+
+     -c   Report system calls:
+
+	  scall/s - system calls of all types;
+
+	  sread/s, swrit/s, fork/s, exec/s - specific system
+	  calls;
+
+	  rchar/s, wchar/s - characters transferred by read and
+	  write system calls.
+
+     -w   Report system swapping, paging, and switching activity:
+
+	  swpin/s, swpot/s, bswin/s, bswot/s - number of
+	  transfers and number of bytes transferred for
+	  swapins and swapouts;
+
+	  pswch/s - process switches;
+
+	  pgin/s, pgot/s, bpgin/s, bpgot/s - number of transfers
+	  and number of bytes transferred for pageins and
+	  pageouts.
+
+     -a   Report use of file access system routines:
+	  iget/s, namei/s, dirblk/s.
+
+     -q   Report average queue length while occupied, and % of
+	  time occupied:
+
+	  runq-sz, %runocc - run queue of processes in memory and
+	  runnable;
+
+	  swpq-sz, %swpocc - swap queue of processes swapped out
+	  but ready to run.
+
+     -v   Report status of text, process, inode, and file tables:
+
+	  text-sz, proc-sz, inod-sz, file-sz - entries/size for
+	  each table, evaluated once at sampling point;
+
+	  text-ov, proc-ov, inod-ov, file-ov - overflows
+	  occurring between sampling points.
+
+     -m   Report message and semaphore activities:
+
+	  msg/s, sema/s - primitives per second.
+
+     -r   Reports RAM disk activity:
+
+	  r+w/s, blk/s - number of data transfers from or to RAM
+	  disk per second, number of 1K-byte blocks transferred
+	  from/to RAM disk.
+
+     -A   Report all data.  Equivalent to -udqbwcayvmr.
+
+EXAMPLES
+     To see today's CPU activity so far, type the following:
+
+	  sar
+
+     The next example allows you to watch CPU activity evolve for
+     10 minutes and save data:
+
+	  sar -o temp 60 10
+
+     The next example allows you to review disk and tape activity
+     from the period specified by the previous example:
+
+	  sar -d -f temp
+
+FILES
+     /usr/adm/sa/sadd daily data file, where dd are digits
+     representing the day of the month.
+
+SEE ALSO
+     sa1(1M), sa2(1M), sadsp(1T).
+     ``Monitoring System Activity'' in TI System V
+     Administrator's Guide.
+
+

@@ -1,0 +1,83 @@
+CT(1C)                                                     CT(1C)
+
+NAME
+     ct - Spawns a getty process to a remote terminal
+
+SYNOPSIS
+     ct -hsvw telnos
+
+DESCRIPTION
+   Purpose
+     The ct command dials the phone number of a modem that is
+     attached to a terminal and spawns a getty process to that
+     terminal.
+
+   Options
+     -h    Normally, ct hangs up the current line to allow that
+           line to answer the incoming call.  The -h option
+           prevents this action.
+
+     -sspeed
+           The -s option sets the data rate, where speed is
+           expressed in baud.  The default rate is 300.
+
+     -v    The -v option sends a running narrative to the
+           standard error output stream.
+
+     -wn   The -w option suppresses the prompt that asks how long
+           the command should wait for an open line.  The value n
+           is the maximum number of minutes that ct is to wait
+           for a line.
+
+   Discussion
+     The telnos argument is one or more telephone numbers with
+     equal signs (=) for secondary dial tones and minus signs (-)
+     for delays at appropriate places.  If more than one
+     telephone number is specified, ct tries each in succession
+     until one answers.  This feature is useful for specifying
+     alternate dialing paths.
+
+     The ct command tries each line listed in the file
+     /usr/lib/uucp/L-devices until it finds an available line
+     with appropriate attributes or runs out of entries.  If
+     there are no free lines, ct asks if it should wait for one,
+     and if so, for how many minutes it should wait before it
+     gives up.  The command continues to try to open the dialers
+     at one-minute intervals until the specified limit is
+     exceeded.
+
+     After the user on the destination terminal logs out, ct
+     prompts, Reconnect?.  If the response begins with the letter
+     n, the line is dropped.  Otherwise, getty is started again
+     and the login:  prompt is printed.
+
+     Of course, the destination terminal must be attached to a
+     modem that can answer the telephone.
+
+PROMPTS
+   Send Verbose to Std Error:
+     The initial value is no.  Enter yes to send a running
+     narrative to standard error.
+
+   Max Minutes to Wait for Line:
+     Response to this prompt is optional.  Enter a number that
+     indicates the maximum number of minutes to wait for a line.
+
+   Baud Rate to Use:
+     Response to this prompt is optional.  Enter the baud rate
+     that you want - 110, 150, 300, 600, 1200, 4800, or 9600. The
+     default is 300 baud.
+
+   Telephone Number to Dial:
+     Enter a telephone number. The telephone number can contain
+     equal signs (=) for secondary dial tone or minus signs
+     (-)for delays.
+
+FILES
+     /usr/lib/uucp/L-devices
+     /usr/adm/ctlog
+
+SEE ALSO
+     cu(1C), login(1), uucp(1C).
+
+

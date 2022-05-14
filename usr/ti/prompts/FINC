@@ -1,0 +1,28 @@
+# cshf  finc -- dump files to a tape 
+#	@(#)FINC.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^FINC -- PROVIDES A FAST INCREMENTAL BACKUP"\
+	"^Input File System:" filesystem string \
+	"^Raw Tape Output:" tape string\
+	"^*Accessed in (+,-) days:" aflag string\
+	"^*Modified in (+,-) days:" mflag string\
+	"^*Changed in (+,-) days:" cflag string\
+	"^*Comparison File Name:" file acnm\
+	"^#$*"
+
+if ($abort) goto end
+if ($aflag != "") set aopt = "-a "$aflag
+if ($mflag != "") set mopt = "-m "$mflag
+if ($cflag != "") set copt = "-c "$cflag
+if ($file != "") set nopt = "-n "$file
+
+if ($abort) goto end
+echo "=== FINC COMMAND EXECUTING ==="
+echo /bin/finc $aopt $mopt $copt $nopt $filesystem $tape
+/bin/finc $aopt $mopt $copt $nopt $filesystem $tape
+
+#clean up time
+end:
+unset *flag *opt filesystem tape file

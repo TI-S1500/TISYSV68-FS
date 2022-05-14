@@ -1,0 +1,37 @@
+DEVNM(1M)                                               DEVNM(1M)
+
+NAME
+     devnm - Identifies the name of the device where a file
+     resides
+
+SYNOPSIS
+     devnm [names]
+
+DESCRIPTION
+   Purpose
+     The devnm command identifies the special file associated
+     with the mounted file system where the argument name
+     resides.  If swapping occurs on the same disk section as the
+     root file system, both the block device name and the swap
+     device name are printed for the argument name /.  Argument
+     names must be full path names.
+
+   Discussion
+     This command is most commonly used by the /etc/rc shell
+     script to report a mount table entry for the root device.
+
+EXAMPLE
+     If /usr is mounted on /dev/dsk/sys:usr, the command
+     /etc/devnm /usr produces both /dev/dsk/c01u00s012 /usr and
+     /dev/dsk/sys:usr /usr.
+
+FILES
+     /dev/dsk/*
+     /etc/mnttab
+
+SEE ALSO
+     init(1M), setmnt(1M).
+     ``Configuring Devices'' in the TI System V Administrator's
+     Guide.
+
+

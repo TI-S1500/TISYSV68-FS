@@ -1,0 +1,116 @@
+OD(1)                                                       OD(1)
+
+NAME
+     od - Dumps file (octal dump)
+
+SYNOPSIS
+     od -bcdosx [file] [[+]offset[ . ][b]]
+
+DESCRIPTION
+   Purpose
+     The od command dumps file in one or more formats as selected
+     by the options.  If options are not specified, -o is
+     default.
+
+   Options
+     -b    Interprets bytes in octal.
+
+     -c    Interprets bytes in ASCII.  The following non-graphic
+           characters appear as C escapes:
+           null=\0
+           backspace=\b
+           form-feed=\f
+           newline=\n
+           return=\r
+           tab=\t
+           Other non-graphic characters appear as 3-digit octal
+           numbers.
+
+     -d    Interprets words in unsigned decimal.
+
+     -o    Interprets words in octal.
+
+     -s    Interprets 16-bit words in signed decimal.
+
+     -x    Interprets words in hex.
+
+   Arguments
+     The file argument specifies which file is to be dumped.  If
+     no file argument is specified, the standard input is used.
+
+     The offset argument specifies the offset in the file where
+     dumping is to commence.  This argument is normally
+     interpreted as octal bytes.  If . is appended, the offset is
+     interpreted in decimal.  If b is appended, the offset is
+     interpreted in blocks of 1024 bytes.  If the file argument
+     is omitted, the offset argument must be preceded by +.
+
+     Dumping continues until the end-of-file marker.
+
+     If two or more adjacent lines are identical, only the first
+     is printed.  The others are replaced by the following:
+
+          ``* same *''
+
+EXAMPLE
+     The following example dumps file1 with bytes displayed in
+     ASCII and words in hex.
+
+          od -cx file1
+
+     The following example displays the contents of file b
+     starting two blocks (2048 characters) into the file.
+
+          od -d b 2b
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to display.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Interpret Bytes in Octal:
+     Initial value is no.  If you enter yes, bytes are
+     interpreted in octal.
+
+   Interpret Bytes in ASCII:
+     Initial value is no.  If you enter yes, bytes are
+     interpreted in ASCII.
+
+   Interpret Words in Unsigned Decimal:
+     Initial value is no.  If you enter yes, the words are
+     interpreted in unsigned decimal.
+
+   Interpret Words in Octal:
+     Initial value is no.  If you enter yes, the words are
+     interpreted in octal.
+
+   Interpret 16-Bit Words/Unsigned Dec.:
+     Initial value is no.  If you enter yes, the 16-bit words are
+     interpreted in signed decimal.
+
+   Interpret Words in Hexadecimal:
+     Initial value is no.  If you enter yes, the words are
+     interpreted in hexadecimal.
+
+   Select Offset Options:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear.
+
+   Offset:
+     Enter the offset where the file dumping is to begin.
+
+   Octal or Decimal Bytes (o,d):
+     Enter o to interpret the offset in octal. Enter d to
+     interpret the offset in decimal.
+
+   Interpret Offset in Blocks:
+     Initial value is no.  If you enter yes, the offset is
+     interpreted in blocks of 1024 bytes.
+
+SEE ALSO
+     dump(1).
+
+

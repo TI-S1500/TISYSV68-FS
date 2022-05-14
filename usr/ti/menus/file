@@ -1,0 +1,41 @@
+file:menu:       FILE OPERATIONS MENU, Series 1000       :file.hlp
+CAT:c:Concatenates and prints files:
+CHGRP:c:Changes group ownership:
+CHMOD:c:Changes file access permissions:
+CHOWN:c:Changes file ownership:
+CP:c:Copies files:
+CPDIR:c:Copies a directory:
+CPIO:c:Copies file archives in and out in tape format:
+CPISAM:c:Copy T-ISAM file:
+DD:c:Converts and copies a file:
+DFM:c:Invokes the directory and file manager:
+FILE:c:Determines file type:
+FIND:c:Finds files:
+FINDISAM:c:Find ISAM file match:
+FRISAM:c:Convert T-ISAM file to a standard file:
+FRPC:c:Transfers a file from workstation to host:
+KIFTISAM:c:Converts KIF's to their T-ISAM equivalents:
+LN:c:Links files:
+LP:c:Sends requests to a line printer:
+MAPISAM:c:Produce T-ISAM file description file:
+MKISAM:c:Create T-ISAM file:
+MORE:c:Invokes the file persual filter for VDT viewing:
+MV:c:Moves files:
+MVISAM:c:Move T-ISAM file:
+OD:c:Dumps file (octal dump):
+PACK:c:Compresses files:
+PCAT:c:Expands packed files:
+PG:c:Invokes the file perusal filter for VDT's:
+PR:c:Prints files:
+RM:c:Removes files:
+RMDIR:c:Removes directories:
+SHOW:c:Produce a scrollable display:
+SHOWHEX:c:Shows and edits files in hex and ASCII format:
+SPELL:c:Check for spelling errors in a file:
+TAR:c:Provides a tape file archiver:
+TIRE:c:Performs T-ISAM file consistency check and recovery:
+TOISAM:c:Copy standard file to T-ISAM file:
+TOPC:c:Transfers a file from host to workstation:
+TOUCH:c:Updates access and modification times of a file:
+UMASK:c:Sets files-creation mode mask:
+UNPACK:c:Expands packed files:

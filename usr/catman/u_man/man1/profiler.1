@@ -1,0 +1,57 @@
+PROFILER(1M)                                         PROFILER(1M)
+
+NAME
+     profiler - Collects and reports operating system activity
+     data
+
+SYNOPSIS
+     prfdc file [ period  [ off_hour ]]
+     prfld [namelist]
+     prfpr file [ cutoff [ namelist ]]
+     prfsnap file
+     prfstat on
+     prfstat off
+
+DESCRIPTION
+   Purpose
+     These commands allow an activity study of the operating
+     system.
+
+   prfdc
+     The prfdc command performs the data collection function of
+     the operating system profiler by copying the current value
+     of all the text address counters to a file where the data
+     can be analyzed.  The counters are stored in file every
+     period minutes, and sampling discontinues at off_hour (valid
+     values for off_hour are 0 through 24).
+
+   prfld
+     The prfld command initializes the recording mechanism in the
+     system.  It generates a table containing the starting
+     address of each system subroutine found in namelist.
+
+   prfpr
+     The prfpr command formats the data collected by prfdc or
+     prfsnap.  Each text address is converted to the nearest text
+     symbol (as found in namelist) and is printed if the percent
+     activity for that range is greater than cutoff.
+
+   prfsnap
+     The prfsnap command collects data at the time of invocation
+     only, appending the counter values to file.
+
+   prfstat
+     The prfstat command enables (/etc/prfstat on) or disables
+     (/etc/prfstat off) the sampling mechanism.  Profiler
+     overhead is less than 1% as calculated for 500 text
+     addresses.  The prfstat command also reveals the number of
+     text addresses being measured.
+
+FILES
+     /dev/prf  Interface to profile data and text addresses
+     /unix     Default for namelist file
+
+SEE ALSO
+     prf(7).
+
+

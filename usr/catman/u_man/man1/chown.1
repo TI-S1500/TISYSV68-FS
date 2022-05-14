@@ -1,0 +1,41 @@
+CHOWN(1)                                                 CHOWN(1)
+
+NAME
+     chown - Changes owner
+
+SYNOPSIS
+     chown owner files
+
+DESCRIPTION
+   Purpose
+     The chown program changes the owner of the files to owner.
+     The owner may be either a decimal user ID or a login name
+     found in the password file.
+
+   Discussion
+     When ownership is changed by an ordinary user, the set-
+     user-ID bit (04000) and the set-group-ID bit (02000) are
+     cleared.  If the super-user changes ownership, these bits
+     are retained.
+
+     The new owner name or user ID must be in the /etc/passwd
+     file.
+
+     Only the current owner or the super-user can change the
+     owner of a file.
+
+PROMPTS
+   File Name(s):
+     Enter the name of the file to be processed.  Enter more than
+     one file name with a space between the names.
+
+   New owner:
+     Enter the login name of the new owner.
+
+FILES
+     /etc/passwd
+
+SEE ALSO
+     chmod(1), chown(2), passwd(4).
+
+

@@ -1,0 +1,56 @@
+BBAND(1T)                                               BBAND(1T)
+
+NAME
+     bband - Creates a bootable system
+
+SYNOPSIS
+     bband -dpt kernel
+
+DESCRIPTION
+   Purpose
+     The bband command creates a bootable system in a load
+     partition on disk or creates a bootable tape.
+
+   Options
+     -d device
+          Specifies the device path name of the load partition or
+          tape device from which the system is to be booted.  If
+          device is not specified /dev/dsk/sys:unx1 is used.
+
+     -p primitive
+          Specifies the name of the executable object file that
+          contains the System Test Boot Master (STBM) primitive.
+          This primitive performs automatic configuration, boots
+          secondary processors, and performs certain
+          initializations for TI System V.  If this option is not
+          specified, the name /primitive is used.
+
+     -t config
+          Indicates that a bootable tape is to be created.  This
+          option is required for tape and must not be specified
+          if the boot partition is on disk.  Bootable tapes must
+          be high density.  The disk device path name of the
+          configuration partition included on the tape is config.
+
+   Discussion
+     Before a system can be booted, it must be installed in a
+     load partition.  A load partition is a special kind of disk
+     partition that can exist on disk, tape, or other STBM load
+     source.  The bband command installs the operating system and
+     a loader called the STBM primitive in a load partition on
+     disk.  The load partition must already exist and must be
+     specified by a device path name.  The load partition must be
+     large enough to hold the operating system and the primitive.
+
+     The command can also create a bootable tape from the
+     operating system and the STBM primitive.  The utility builds
+     a volume label, partition table, and load partition.  Then
+     bband copies a configuration partition on the tape.  Raw
+     devices cannot be used to create bootable tapes.
+
+SEE ALSO
+     cband(1T), ptu(1T).
+     ``Linking the Kernel'' in the TI System V Administrator's
+     Guide.
+
+

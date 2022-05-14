@@ -1,0 +1,13 @@
+
+The Local TC screen displays various statistics and TC activity at each
+interrupt level for a TC attached to a particular CCB.  The local TC activity 
+graph on the left side of the screen shows the percentage of time the local 
+TC spends at the each of the seven interrupt levels. The interrupt levels 
+are shown in order of their priority (low to high). Level 0 is for code that 
+is not critical and can be executed at any time; level 6 is for critical 
+code that must be executed very quickly.
+
+The table in the upper right corner of the screen shows the same rates and 
+counts as shown on the Network screen for this terminal concentrator. Refer to 
+the previous descriptions of these statistics.
+

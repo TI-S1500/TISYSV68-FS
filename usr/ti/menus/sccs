@@ -1,0 +1,13 @@
+sccs:menu:    SOURCE CODE CONTROL SYSTEM MENU Series 1000    :sccs.hlp
+ADMIN:c:Creates and administers SCCS files:
+CDC:c:Changes the delta commentary of an SCCS delta:
+DELTA:c:Make a delta (change) to an SCCS file:
+GET:c:Gets a version of an SCCS file:
+HELP:c:Finds help for SCCS commands:
+PRS:c:Prints an SCCS file:
+RMDEL:c:Removes a delta from an SCCS file:
+SACT:c:Prints current SCCS file editing activity:
+SCCSDIFF:c:Compares two versions of an SCCS file:
+UNGET:c:Undoes a previous get of an SCCS file:
+VAL:c:Validates an SCCS file:
+WHAT:c:Identifies SCCS files:

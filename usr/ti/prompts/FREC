@@ -1,0 +1,24 @@
+# cshf  frec -- Recovers files @(#)FREC.sh	1.1 87/03/09
+#	@(#)FREC.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^FREC -- RECOVERS FILES FROM A BACKUP TAPE"\
+	"^*I-Number:Name List:" list string "$list"\
+	"^*Recovery Request File Name:" fflag acnm \
+	"^Backup Tape Name:" tape string \
+	"^*Prefixing Path:" pflag string \
+	"^#$*"
+
+if ($abort) goto end
+if ($pflag != "") set popt = "-p "$pflag
+if ($fflag != "") set fopt = "-f "$fflag
+
+if ($abort) goto end
+echo "=== FREC COMMAND EXECUTING ==="
+echo /bin/frec $popt $fopt $tape $list 
+/bin/frec $popt $fopt $tape $list 
+
+#clean up time
+end:
+unset *flag *opt tape list p

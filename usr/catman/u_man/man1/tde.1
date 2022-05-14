@@ -1,0 +1,35 @@
+TDE(1T) 						  TDE(1T)
+
+NAME
+     tde - Invokes terminal definition editor
+
+SYNOPSIS
+     tde
+
+DESCRIPTION
+     tde provides a means for the user to define the
+     characteristics of the terminal to be used with pm(1T). pm
+     acquires all knowledge of the terminal environment at run
+     time from this terminal data base indexed by the TERM
+     environmental symbol. tde maintains an ASCII file containing
+     all terminal types supported by pm. This file may be updated
+     using either tde or a standard editor such as vi(1). Each
+     terminal description contains escape codes and characters
+     required for the pm screen display.
+
+EXAMPLE
+     To start tde, type the following:
+
+	       tde
+
+FILES
+	  /usr/bin/tde		The terminal definition editor program
+	  /usr/adm/sa/tdecap	The tde terminal definition data base
+
+SEE ALSO
+     environ(5), pm(1T), stty(1), term(5), termcap(5)
+
+NOTE
+     You must have super-user privileges to execute tde.
+
+

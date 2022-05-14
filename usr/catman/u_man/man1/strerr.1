@@ -1,0 +1,71 @@
+STRERR(1M)                                             STRERR(1M)
+
+NAME
+     strerr - Specifies the STREAMS error logger daemon
+
+SYNOPSIS
+     strerr
+
+DESCRIPTION
+     strerr receives error log messages from the STREAMS log
+     driver [log(7)] and appends them to a log file.  The error
+     log files produced reside in the directory /usr/adm/streams,
+     and are named error.mm-dd, where mm is the month and dd is
+     the day of the messages contained in each log file.
+
+     The format of an error log message is:
+
+     <seq> <time> <ticks> <flags> <mid> <sid> <text>
+
+          <seq>     Error sequence number
+
+          <time>    Time of message in hh:mm:ss
+
+          <ticks>   Time of message in machine ticks since boot
+                    priority level
+
+          <flags>   T : the message was also sent to a tracing
+                    process
+                    F : indicates a fatal error
+                    N : send mail to the system administrator
+
+          <mid>     Module ID number of source
+
+          <sid>     Sub-ID number of source
+
+          <text>    Formatted text of the error message
+
+     Messages that appear in the error log are intended to report
+     exceptional conditions that require the attention of the
+     system administrator.  Those messages that indicate the
+     total failure of a STREAMS driver or module should have the
+     F flag set.  Those messages requiring the immediate
+     attention of the administrator will have the N flag set,
+     which causes the error logger to send the message to the
+     system administrator via mail(1).  The priority level
+     usually has no meaning in the error log but will have
+     meaning if the message is also sent to a tracer process.
+
+     Once initiated, strerr will continue to execute until
+     terminated by the user.  Commonly, strerr would be executed
+     asynchronously.
+
+CAVEATS
+     Only one strerr process at a time is permitted to open the
+     STREAMS log driver.
+
+     If a module or driver is generating a large number of error
+     messages, running the error logger will cause a degradation
+     in STREAMS performance.  If a large burst of messages are
+     generated in a short time, the log driver may not be able to
+     deliver some of the messages.  This situation is indicated
+     by gaps in the sequence numbering of the messages in the log
+     files.
+
+FILES
+     /usr/adm/streams/error.mm-dd
+
+SEE ALSO
+     log(7).
+
+

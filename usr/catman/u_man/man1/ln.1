@@ -1,0 +1,64 @@
+LN(1)                                                       LN(1)
+
+NAME
+     ln - Links files
+
+SYNOPSIS
+     ln -f file1 target
+     ln -f file1 [ file2 ...] targetdir
+
+DESCRIPTION
+   Purpose
+     The file is linked to the target.
+
+   Discussion
+     Under no circumstance can file1 and target be the same (take
+     care when using sh(1) metacharacters).  If target is a
+     directory, then one or more files are linked to that
+     directory.
+
+     If ln determines that the mode of target forbids writing,
+     the command prints the mode (see chmod(2)), asks for a
+     response from the user, and reads the standard input for one
+     line.  If the line begins with y, indicating yes, ln
+     executes if permissible.  If changing modes is not
+     permitted, the command exits.
+
+   Option
+     -f   Suppresses the prompt asking to change write permission
+          and the command executes if this option is specified or
+          if the standard input is not a terminal.
+
+EXAMPLE
+     Assume that the file named writeoff exists with user write
+     permission off.  You wish to link the file named dummy to
+     writeoff.  Enter the following command:
+
+          ln dummy writeoff
+
+     The following message is displayed:
+
+          writeoff is write protected (mode=466).  Override? []
+
+     Enter y and press RETURN.  The file named dummy is linked to
+     writeoff, and the mode of file writeoff is now equal to that
+     of dummy.
+
+PROMPTS
+   Input File or Directory Name(s):
+     Enter the path name of the file or directory to be linked.
+
+   Target File or Directory Name:
+     Enter the new additional path name of the file or directory.
+
+   Prompt to Change Write Permission:
+     Initial value is yes.  If you enter no, the prompt asking to
+     change write permission is suppressed.
+
+SEE ALSO
+     chmod(2), cp(1), cpio(1), mv(1), rm(1).
+
+NOTES
+     The ln program will not link across file systems.
+
+

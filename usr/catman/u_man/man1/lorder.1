@@ -1,0 +1,52 @@
+LORDER(1)                                               LORDER(1)
+
+NAME
+     lorder - Finds ordering relation for an object library
+
+SYNOPSIS
+     lorder files
+
+DESCRIPTION
+   Purpose
+     The lorder program orders object file names in pairs in
+     which the first name in the pair identifies a file that
+     refers to external identifiers defined in the second name in
+     the pair.
+
+   Discussion
+     The input is one or more object or library archive files
+     (see ar(1)).  The standard output is a list of pairs of
+     object file names.
+
+     The output may be processed by tsort(1) to find an ordering
+     of a library suitable for one-pass access by ld(1).  Note
+     that the link editor ld is capable of multiple passes over
+     an archive in the portable archive format (see ar(4)) and
+     does not require that lorder be used when building an
+     archive.  The usage of the lorder command, however, may
+     allow for slightly more efficient access of the archive
+     during the link edit process.
+
+EXAMPLE
+     The following example builds a new library from existing .o
+     files.
+
+          ar cr library 'lorder *.o | tsort'
+
+     The following simple example orders object files a.o, b.o,
+     and c.o and puts the ordered listing in a file named order:
+
+          lorder a.o b.o c.o > order
+
+FILES
+     *symref, *symdef    temporary files
+
+SEE ALSO
+     ar(1), ar(4), ld(1), tsort(1).
+
+NOTES
+     Object files whose names do not end with .o, even when
+     contained in library archives, are overlooked.  Their global
+     symbols and references are attributed to some other file.
+
+

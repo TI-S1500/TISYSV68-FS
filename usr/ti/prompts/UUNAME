@@ -1,0 +1,25 @@
+# cshf  uuname -- list uucp names of systems 
+#	@(#)UUNAME.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UUNAME -- LISTS UUCP NAMES OF SYSTEMS"\
+       "^Print System Names:" rep yesno y\
+       "^Print Local System Name:" rep1 yesno n\
+       "^#$*"
+
+if ($abort) goto end
+echo "=== UUNAME COMMAND EXECUTING ==="
+if (($rep == "y") && ($rep1 == "y")) then
+         uuname
+         echo "    The following is the local system name"
+         uuname -l
+else if ($rep == "y") then
+         uuname
+      else if ($rep1 == "y") then
+         uuname -l
+      endif
+endif
+ 
+end:
+unset rep rep1

@@ -1,0 +1,365 @@
+
+		    DNIO/1500 System V Release Notes  December, 1990
+
+	The following are bug fixes for DNIO/1500 2.0.0.  These fixes
+	are received under the /usr/ti/dnio directory as part of the
+	TI System V Release 3.2.2 media.  The standard DNIO/1500 2.0.0
+	installation script will automatically pick up these changes
+	when DNIO/1500 is installed.
+
+	CAUTION: Most DNIO/1500 kernel and CCB parts are built for a specific
+		 release of TI System V and should not be copied to other
+		 releases of TI System V.
+
+	Fix #	     Description
+
+	  1	     A kernel crash (panic: fault) may occur during output
+		     to a DNIO/1500 virtual terminal.  This condition is
+		     dependent on the data being written which must be in
+		     a large buffer containing escape sequences.  This problem
+		     was seen after quitting an edit which was started while
+		     in dfm. This is fixed in dnio1500.o.
+
+	  2	     A field edit read may terminate abnormally from a 1500
+		     virtual terminal if the read character count is greater
+		     than 1200 bytes.  This causes the virtual terminal to be
+		     logged out.  One application where this occurs is v3279.
+		     This is fixed in dnio1500.o.
+
+	  3	     A terminal that is set to 'no parity' will not be able
+		     to login as a 1500 virtual terminal. This is fixed
+		     in dnio1500.o.
+
+	  4	     Accessing an invalid 990 file type with /usr/bin/show
+		     will result in a bus error core dump.  The network
+		     library now returns an error for invalid file types
+		     (such as REL REC) and show will terminate with an
+		     appropriate error.  This is fixed in libnetc.a.
+
+	  5	     Accessing a 990 KIF file with /usr/netbin/cat will result
+		     in erroneous data being displayed.  The network library
+		     will now correctly display 990 KIF files in a sequential
+		     format.  This is fixed in libnetc.a.
+
+	  6	     Increase the maximum number of virtual terminals that can
+		     be supported by the kernel device driver from 50 to 100.
+		     Other tunable limits must also be changed in order to
+		     support larger terminal counts.  This is fixed in
+		     dnio1500.o.
+
+	  7	     Preinit process is not handling spa passwords of less
+		     than 40 characters properly, resulting in a DNIO/1500 not
+		     running.  Preinit is now using string manipulation rather
+		     than floating point arithmetic for passwords.  These are
+		     fixed in preinit.o.
+
+	  8	     New messages are included to fix preinit message that was
+		     causing a core dump when it detected there was no
+		     /dev/xport device defined.  This is fixed in messages.
+
+	  9	     The sh task shipping with DNIO/1500 is not handling
+		     commands starting with characters at the end of the
+		     alphabet correctly, resulting in the /usr/netbin/sh task
+		     causing a core dump.  This is fixed in parts.a.
+
+	 10	     Locked record errors from 990 file to 1500 application
+		     should not necessarily be a fatal error.  Instead of
+		     reporting errno errors, return tierrno with locked
+		     record indication.  This is fixed in libnettisam.a.
+
+	 11	     Rewrites to a 990 file from a 1500 application are
+		     leaving the record locked.  Take proper lock action
+		     depending on open flags and current mode flags.  This is
+		     fixed in libnettisam.a.
+
+	 12	     Error is returned to application when opening an empty
+		     kif file.	On opens, ignore no records or first record
+		     locked errors.  This is fixed in libnettisam.a.
+
+	 13	     Close is failing if previous cobol operation failed.  The
+		     tierrno status is not being cleared between operations.
+		     A leftover status may cause errors later.	This is fixed
+		     in libnetsubs.a.
+
+	 14	     Connect fail is returning ENOENT errors.  This could be
+		     fatal to cobol applications which would delete the file
+		     when presented with ENOENT error.	If the connect fail is
+		     a fluke, then subsequent operations may work resulting in
+		     a disappearing file.  The error now returned is EIO if the
+		     connect fails.  This is fixed in libnetc.a and
+		     libnetsubs.a.
+
+	 15	     CPCF of a binary file is truncating records.  The library
+		     read function for binary files was affected by a fix
+		     when reading KIF files.  The KIF read fix was changed
+		     to include a test of file types so that binary file reads
+		     was unaffected.  This is fixed in libnetc.a.
+
+	 16	     Errors are not propagated to the application when
+		     fatal tli errors occur.  Cobol applications accessing 990
+		     files were hanging on the 1500 when the 990 crashed.
+		     This is fixed in libnetsubs.a.
+
+	 17	     After a slotload, xnets and niologger are not killable.
+		     Keep global flag to determine if xnets already started
+		     before.  Test in dnio1500init to determine if niologger
+		     already started.  This is fixed in dnio1500.o and
+		     dnio1500init.
+
+	 18	     On a 1500 - 1500 virtual terminal, if there are multiple
+		     I/O's outstanding and enter a ctl-C to abort a read
+		     operation may cause the remote system to be hung. The
+		     read abortion logic needs to yield while it is waiting
+		     for the response. This is fixed in dnio1500.o.
+
+	 19	     Hitting the Up Arrow key from a 990 virtual terminal or
+		     BSA can result in a kernel system panic or have the
+		     application terminate abnormally with a BSA Heap Memory
+		     violation.  This is an error in the field edit read
+		     emulation for 990 virtual terminals.  This fix is in
+		     dnio1500.o.
+
+	 20	     Graphic characters are not supported correctly for a
+		     924 terminal in 924 mode that is running inl.  The
+		     escape sequences are fixed in fecap.inl.
+
+	 21	     Getting a locked record error on 990 kif files was not
+		     advancing to the next record properly.  It was also not
+		     passing the record to the application when the locked
+		     error was returned.  The record is now always passed to
+		     the application on locked record errors.  Currency is
+		     advanced to the next record as long as the tisam option
+		     TIADVLOCK flag was set to advance on locked record errors.
+		     This fix is in libnettisam.a.
+
+	 22	     The tioption call was not implemented for programs using
+		     990 files.  This code is now implemented in libnettisam.a.
+
+	 23	     The tiopt global variable set with tioption call must be
+		     saved at open file time for proper file access.  This was
+		     fixed in libnettisam.a.
+
+	 24	     If there are multiple 990 terminals (or BSA terminals)
+		     logging into System 1500 and using the tx editor at the
+		     same time, the cursor positioning in the insert character
+		     mode would be messed up.  This was fixed in the kernel
+		     virtual terminal driver, dnio1500.o.
+
+	 25	     Delete by key was not working for all cases when going from
+		     1500 to a 990 file.  If the file was opened with TIAUTOLOCK
+		     flag set, then an unlock operation will be issued before a
+		     delete by key operation for any records previously locked
+		     by the application.  The case of the application reading
+		     the record with lock and then deleting the record will now
+		     work properly.  Any application program doing manual
+		     locking will need to explicitly unlock the record before
+		     doing a delete operation.	This fix is in libnettisam.a.
+
+	 26	     Read by secondary keys was not working for all records.
+		     The currency was not being set properly by the 1500 before
+		     issuing a read by secondary key.  This fix is in nios990.o.
+
+	 27	     A signal happened during the virtual terminal close
+		     operation may cause system crash. The fix is in the
+		     kernel driver, dnio1500.o
+
+	 28	     If the ccb runs out of session table entries the ccb will
+		     do unpredictable things because ccb memory after the
+		     session tables will have zeros written to it.  The most
+		     common symptom is the ccb stops working.  The problem has
+		     been fixed in the module ccbxport.
+
+	 29	     In the event of a CCB crash while running DNIO/1500,
+		     an ASSERT in the operating system may fail.  This will
+		     force the system to be rebooted.  The kernel driver,
+		     dnio1500.o, has been fixed to properly handle this
+		     situation.
+
+	 30	     A field edit read or update operation to a DNIO/1500
+		     virtual terminal which issues a 1920 byte read with the
+		     starting row set to 25 will cause a system panic.	This
+		     has been fixed so that the read is issued to row 24 (like
+		     a field edit terminal) and no panic occurs.  The fix is
+		     in the kernel driver, dnio1500.o.
+
+	 31	     Multirecord writes of ascii files to 990 or BSA will
+		     sometimes result in a bad tab expansion.  This has been
+		     fixed by determining if a tab expansion will fit in the
+		     multirecord block before expansion.  The fix is in
+		     libnetc.a.
+
+	 32	     If the system resources, such as shared memory or
+		     semaphores are depleted, and somebody tried to start a
+		     "inl" session, the inl process will return a message
+		     indicates that "fork failed" and immediatly after that,
+		     all the processes running on the system seems terminated
+		     (including the shells), and all of the getty's were
+		     respawned. The fix is in the inl.
+
+	 33	     Added new code to support the new V.3.2.x read directory
+		     (readdir) system call.  This change was required to
+		     fix the /usr/netbin/ls and /usr/netbin/sh commands
+		     provided with DNIO/1500.  These fixes are in the
+		     netc library and in the nios990.o code.
+		     These changes make /usr/netbin/ls and /usr/netbin/sh
+		     incompatable over the network to older versions of
+		     of TI System V (ie 2.2 or 2.3).  All 1500's on a network
+		     should be running the same version of TI System V and
+		     DNIO/1500 for these two commands to work properly.
+		     Running ls to a 2.2 or 2.3 system may cause ls to get
+		     segmentation violation.
+
+	 34	     Fixed a problem in the dnio1500.o kernel driver where
+		     Field Edit reads of 1 byte would not work properly.
+		     This problem was incountered running BSA into a COBOL
+		     application.
+
+	 35	     Using /usr/netbin/cp to copy a file from a 990,
+		     a particular size 990 file would cause the DNIO CCB
+		     driver to hang in a loop.	This was fixed in /etc/ccbxport.
+
+	 36	     Using read primary by key from 990 to 1500 was not always
+		     returning proper status.  A tistart must be forced between
+		     reads.  This was fixed in /usr/bin/nios990.
+
+	 37	     Fixed a problem where the DNIO/1500 software gets into a
+		     state that will not allow users from other systems to
+		     connect as a virtual terminal.  The remote user is given
+		     a t_connect error every time he tries to login.  This
+		     situation remains until DNIO/1500 is restarted or the
+		     system is rebooted.
+
+	 38	     The file /usr/ti/dnio/fecap.inl has been modified to
+		     include key definitions for more terminal types.  Now
+		     terminals that do not support Field Edit are able to use
+		     inl990 linked with the combined Field Edit libraries.
+		     The ncsa entry now includes a command key, an enter key,
+		     and more function keys.
+
+	 39	     Print screen key doesn't work on a 1500 to 990 virtual 
+		     terminal. That is, from a 1500 local terminal, which 
+		     has the print screen daemon (pdmon) setup and active,
+		     log into a 990 system by using inl990 command, and try 
+		     to use Control-P key to print screen, you usually get 
+		     an error message and nothing will be printed. This problem
+		     is fixed in the inl990 utility.
+
+   *********************
+
+	Fixes above this line were shipped with TI System V release 3.2.2
+	in the /usr/ti/dnio directory.
+
+	DOCUMENTATION:
+
+	1505:  With TI System V release 3.2, DNIO/1500 is supported on the
+	1505.  DNIO/1500 may be configured to use either 1505 Communication
+	Processor (CP), however it still supports only a single CP.
+	The only option supported by DNIO/1500 is the LAN option card
+	and it may be configured to use standard Ethernet (Thick), Cheapernet
+	Ethernet (Thin RG58 cable), or the V.35 option ports.
+
+	COBOL:
+	The documentation for building a cobol run time (rts32) has changed
+	for COBOL/85 2.1.  The format of the file liblist where the network
+	libraries are specified has changed to include "s" or "c" in front of
+	the -llibrary specifing whether the library comes from the system
+	library directory or cobol library directory.  Therefore, add an "s" in
+	front of each library described in Table 6-7 of the DNIO/1500 manual.
+	For example "s-lnetc" replaces the "-lnetc" entry.  To execute the cob
+	command to actually link the rts32:
+
+		cd $COBDIR/src	    (default COBDIR=/usr/lib/cobol)
+		cob -xvo rts32 -e "" -m ixfile=tixfile ticall.o c_call.a
+
+ 	DNIO/1500 LIMITS:
+ 	The following information provides more detail on determining how
+ 	many sessions DNIO/1500 can support.  There are maximum limits built
+ 	into the software, but various CCB hardware and software configurations
+ 	may also limit the number of sessions that may be supported.
+
+ 	The maximum limits supported by DNIO/1500 are:
+
+ 	       Maximum Sessions:	     256
+ 	       Maximum Virtual Terminals:    100
+ 	       Maximum Virtual Printers :    100
+
+ 	The default number of DNIO sessions configured for the CCB is 40.
+ 	To increase this number, you must increase the default parameters
+ 	defined in the /etc/ccbdev file for the CCB that is used by DNIO.
+
+	There are three parameters that control the number of sessions
+	that DNIO may have.  These are the "Sessions=" parameter in the
+	dnio driver, the "sessions=" parameter in the XNS transport
+	protocol layer, and the "Esockets=" parameter in the XNS internet
+	driver.  These are explained below.
+
+	The "Sessions=" parameter in the /etc/ccbxport driver defines how
+	many DNIO sessions are possible.  This default is 40.  Its maximum
+	value is 256.
+
+	The "sessions=" parameter in the /etc/ccbxns driver defines how
+	many XNS transport protocol sessions are possible.  These sessions
+	are also used by the NTC, which uses three sessions per each NTC.
+	The default value is 48.  If you increase the number of DNIO
+	sessions, then you may need to increase the number of transport
+	sessions (Sessions=).  This number must be the number of DNIO
+	sessions plus (3 times the number of NTC's) on that CCB.
+
+	The "Esockets=" parameter in the /etc/ccbxns driver defines how
+	many ephemeral sockets are possible at the XNS internet protocol layer.
+	One ephemeral socket is required for each DNIO session and three are
+	required for each NTC.	Ephemeral sockets are also used by the
+	netcp and netexec utilities.  The default is 100 ephemeral sockets.
+	This parameter would need to be increased only if you make a large 
+	increase in the number of DNIO sessions.  This parameter is not 
+	supplied by devadm in the /etc/ccbdev file.  You will need to add the 
+	string "idp=(Esockets=xxx)" to the line following the /etc/ccbxns 
+	driver as shown in the example below.
+
+	The following example shows an /etc/ccbdev file with a CCB in
+	slot 03 that will support 100 DNIO sessions and 3 NTC's.
+	This requires 100 DNIO sessions, 109 transport sessions as a minimum.
+	The ephemeral sockets are set to 125 to allow support for
+	netcp and tcdl sessions.
+
+	/dev/ccb03/pu:/etc/ccbenet:enet: 0=- 1=l ethernet device
+	dsra=(FDs=25 BDs=50)
+	/dev/ccb03/pu:/etc/ccbnet:neta: 0=- 1=l net device
+	bufa=(NRBs=500 BDs=512) zero=(p0_types=5 p1_types=5)
+	/dev/ccb03/pu:/etc/ccbxns:xnsa: 0=- 1=l XNS internet
+   >	idp=(Esockets=125) inet=(Sockets=40) sppa=(stack=1000 sessions=109)
+	/dev/ccb03/pu:/etc/ccbiop:niop: tc device
+	iopa=(TCs=16)
+	/dev/ccb03/pu:/etc/ccbxport:xpta: dnio device
+   >	xpta=(Sessions = 100 Netstat_delay = 300)
+
+	See CCBDEV(4) in the Programmers Reference Manual for details on
+	the parameter keywords and format.
+
+	The number of sessions that may be supported on the CCB used by DNIO
+	may also be limitted by what other hardware and software options are
+	configured on that CCB.  The issue is the amount of free memory
+	availiable on the CCB that can be used for buffers and session tables.
+	The size of the average read/write buffers over the network will
+	also determine how much buffer space is needed and therefore how
+	many sessions can be supported.
+
+	The following table provides ESTIMATES of free memory that would
+	be useable to increase the number of sessions that could be supported.
+
+
+	CCB Configuration		Free RAM       Total DNIO/Sessions
+					 (bytes)       by message size
+						      256    1024    2048bytes
+
+      1) Ethernet LAN and 8 Channel;	 14,019        25      10      6
+	 XNS Internet, NTC, DNIO/1500,
+	 TCP/IP, and 8-channel driver
+
+      2) Dual Ethernets;		137,623       160      75     50
+	 XNS Internet, NTC, XNS Router,
+	 DNIO/1500, and TCP/IP
+
+
+
+

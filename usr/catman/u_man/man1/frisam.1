@@ -1,0 +1,141 @@
+FRISAM(1T)						 FRISAM(1T)
+
+NAME
+     frisam - Reads data from a T-ISAM file and copies to
+     standard output.
+
+SYNOPSIS
+     frisam -BeEfFknpsS data_file [index_file]
+
+DESCRIPTION
+   Purpose
+     The frisam command reads data from a T-ISAM file in physical
+     or key order and copies it to a specified sequential (flat)
+     file or to standard output.
+
+   Discussion
+     If index_file is specified, it will be used. If it is not
+     specified, the index file associated with the data file will
+     be used.
+
+   Options
+     -B      Like -F, except fills with spaces rather than nulls.
+
+     -e      Provides exclusive access while the T-ISAM file is
+	     read and returns "file locked" error if the
+	     T-ISAM file is currently open by another process.
+
+     -E rec  Ends reading at the last occurrence of the record
+	     specified. This option is not valid if -p is
+	     selected.	rec is a character string containing the
+	     record image with the desired starting key value in
+	     the correct locations within the record.  The value
+	     of characters in non-key positions is not
+	     significant.  rec must contain only printable
+	     character data-the key type must be character.
+
+     -f file Writes output to file. If this option is not
+	     specified, output is written to standard output.
+
+     -F      Fills from the end of the record to the maximum
+	     record size (as defined by the -s option or by the
+	     T-ISAM file's maximum record size) with null
+	     characters.
+
+     -k id   Reads the file ordered by key id.	An id of 1 refers
+	     to the primary key, an id of 2 refers to the next
+	     key, and so on. See the mapisam utility to determine
+	     the key ID of various keys.  -k and -p cannot both
+	     be selected. If neither -k nor -p is selected, the
+	     file will be read in primary key order.
+
+     -n      Inserts a new-line character between each record.
+
+     -p      Reads the file in physical order.	-p and -k cannot
+	     both be selected.
+
+     -s siz  Uses a (maximum) record size of siz. If this is not
+	     declared, the maximum record size of the
+	     T-ISAM file will be used. If a record is larger than
+	     this maximum size, it will be truncated.
+
+     -S rec  Starts reading at the first occurrence of the record
+	     specified. This option is not valid if -p is
+	     selected. rec is a character string with the desired
+	     starting key value in the correct locations within
+	     the record.  rec must contain only printable
+	     character data-the key type must be character.
+
+EXAMPLE
+     The following example copies all the data from the T-ISAM
+     file tismfile.dat (using the index specified by
+     tismfile.dat) in physical order to the flat file datafile.
+     All records will be truncated or null-filled to a length of
+     100 bytes.
+
+	  frisam -f datafile -p -s 100 -F tismfile.dat
+
+     The following example assumes that key 2 of the T-ISAM file
+     begins in byte 6 and is 25 bytes long. This example will
+     copy all records with key number 2 beginning "Jones". Output
+     records will be truncated to 31 characters, and a newline
+     character will be inserted between each output record.
+     Output is written to standard output and piped into the sed
+     utility, which (in this example) will remove the first 6
+     characters from each record.  The resulting data is copied
+     to the file datfile.
+
+	  frisam -k 2 -n -s 31 \
+		 -S "------Jones
+	  "\
+		 -E "------Jones~~~~~~~~~~~~~~~~~~~~~~"\
+		 tismfile.dat tismfile.idx .br | sed -e
+	  's/^......//'> datfile
+
+PROMPTS
+   T-ISAM Data File:
+     Enter the data portion of the T-ISAM file to be copied.
+
+   T-ISAM Index File:
+     Optional. Enter the index portion of the T-ISAM file to be
+     copied.
+
+   Output File:
+     Optional. Enter the sequential file into which the T-ISAM
+     data will be copied.  If this parameter is omitted, the data
+     will be scrolled on the screen.
+
+   Sort by Key Number:
+     Optional. Enter the key number by which the data should be
+     ordered. If this is omitted, key 1 (the primary key) will be
+     used.
+
+   Record Size:
+     Optional. Data larger than this size will be truncated. If
+     the "Null Fill" option (below) is selected, records will be
+     null-filled to this size.	If this is omitted, the maximum
+     record size of the T-ISAM file will be used.
+
+   Insert Newline? (y/n):
+     The default is yes.  If this is selected, a new-line
+     character (ASCII LF) will be inserted between records.
+
+   Null or Blank Fill? (n/b/):
+     The default is null fill.	If n or b is selected, null
+     characters (ASCII NUL) or spaces will be added to the end of
+     the record until the record is the Maximum Record Size, as
+     defined by the Record Size prompt (above) or, if that is not
+     defined, by the T-ISAM file. If no response is selected, the
+     record will not be padded.
+
+   Exclusive Access? (y/n):
+     The default is yes.  If this is selected, the T-ISAM file
+     will be opened for exclusive access.  If the file is already
+     opened, this utility will fail. Any attempt to open the T-ISAM
+     file while this utility is using it will fail.
+
+SEE ALSO
+     cpisam(1T), findisam(1T), mapisam(1T), mkisam(1T), mvisam(1T), 
+     toisam(1T), vfisam(1T).
+
+

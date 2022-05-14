@@ -1,0 +1,40 @@
+CCBDUMP(1T)                                           CCBDUMP(1T)
+
+NAME
+     ccbdump - Copies communication carrier board (CCB) memory to
+     a file
+
+SYNOPSIS
+     ccbdump [-c] slot [file]
+
+DESCRIPTION
+   Purpose
+     The ccbdump command copies the contents of CCB memory to a
+     file.
+
+   Options
+     -c      Crashes the CCB before copying memory.
+
+   Arguments
+     slot    The chassis slot number (base 10 zero relative) of
+             the CCB to be dumped.
+
+     [file]  The dump file name. If this argument is omitted,
+             ccbdump creates a file in the current working
+             directory named ccbxdump where x is the slot number
+             (base 16).
+
+EXAMPLE
+     To dump CCB memory from the CCB in slot 4 to a file named
+     /tmp/ccbcrsh, type:
+
+               ccbdump 4 /tmp/ccbcrsh
+
+
+     To crash the CCB in slot 10 and copy the contents of memory
+     to the default file (ccbxdump) in the current working
+     directory, type:
+
+               ccbdump -c 10
+
+

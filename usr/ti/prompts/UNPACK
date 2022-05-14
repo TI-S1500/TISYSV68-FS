@@ -1,0 +1,15 @@
+# cshf  unpack -- expands packed files 
+#	@(#)UNPACK.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UNPACK -- EXPANDS PACKED FILES"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== UNPACK COMMAND EXECUTING ==="
+echo unpack $_input_file
+unpack $_input_file
+
+end:

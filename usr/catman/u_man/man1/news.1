@@ -1,0 +1,66 @@
+NEWS(1)                                                   NEWS(1)
+
+NAME
+     news - Prints news items
+
+SYNOPSIS
+     news -ans [ items ]
+
+DESCRIPTION
+   Purpose
+     The news command is used by the system administrator to keep
+     the user informed of current events.  By convention, these
+     events are described by files in the directory /usr/news.
+
+   Options
+     -a   Causes news to print all items, regardless of currency.
+          In this case, the stored time is not changed.
+
+
+     -n   Causes news to report the names of the current items
+          without printing their contents and without changing
+          the stored time.
+
+
+     -s   Causes news to report how many current items exist
+          without printing their names or contents and without
+          changing the stored time.  It is useful to include such
+          an invocation of news in one's .profile file or in the
+          system's /etc/profile.
+
+   Arguments
+     The items are specific news items that are to be printed.
+
+     If a delete is typed during the printing of a news item,
+     printing stops and the next item is started.  Another delete
+     within one second of the first causes the program to
+     terminate.
+
+   Discussion
+     When invoked without arguments, news prints the contents of
+     all current files in /usr/news, most recent first, with each
+     preceded by an appropriate header.  The news command stores
+     the currency time as the modification date of a file named
+     .news_time in the user's home directory (the identity of
+     this directory is determined by the environment variable
+     $HOME); only files more recent than this currency time are
+     considered current.
+
+EXAMPLE
+     The following command prints system news, if any exists in
+     the directory /usr/news.
+
+          news -a
+
+PROMPTS
+   Print All Items:
+     The initial value is no.  Enter yes to print all news items,
+     regardless of currency.
+
+FILES
+     /etc/profile
+     /usr/news/*
+     $HOME/.news_time
+
+SEE ALSO
+     environ(5), profile(4).

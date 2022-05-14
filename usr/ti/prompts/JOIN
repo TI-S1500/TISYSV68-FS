@@ -1,0 +1,51 @@
+# cshf  join -- joins two files 
+#	@(#)JOIN.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^ JOIN -- DATABASE OPERATOR THAT JOINS TWO RELATIONS"\
+	"^File 1:" _input_file acnm $_input_file\
+	"^File 2:" F2 acnm $F2 \
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^*Unpairable Line File Number (0-2):" aflag\
+	"range(0,2)" 0\
+	"^*Field Line Output List:" oflag string \
+	"^*Field Replacement String:" eflag string\
+	"^*Separator Character:" tflag string \
+	"^*Number of Fields to Join:" jflag integer\
+	"^#$*"
+
+if ($abort) goto end
+if ($aflag != 0) set aopt = -a$aflag
+if ($eflag != "") set eopt = "-e "$eflag 
+if ("$oflag" != "") set oopt = "-o ""$oflag" 
+if ($tflag != "") set topt = -t$tflag 
+
+if ($jflag >= 1)  then
+	@ i = 1
+	while ( $i <= $jflag)
+		if ($abort) goto end
+		prompt "^JOIN -- JOIN FIELDS OPTION"\
+			"^*File Number (1,2):" n\
+			"element(1=1,2=2)"\
+			"^Field Number:" m integer
+		if ($abort) goto end
+		set jopt = "$jopt"" -j$n $m"
+		@ i++
+	end
+endif
+		
+if ($abort) goto end
+echo "=== JOIN COMMAND EXECUTING ==="
+if ($_output_file == "") then
+   echo join $aopt $eopt $jopt $oopt $topt $_input_file $F2 
+   join $aopt $eopt $jopt $oopt $topt $_input_file $F2 | \
+   pg -cp"Output from JOIN is being piped through pg: "
+else
+   echo join $aopt $eopt $jopt $oopt $topt $_input_file $F2 ">"$_output_file
+   join $aopt $eopt $jopt $oopt $topt $_input_file $F2 >$_output_file
+endif
+
+#clean up time
+end:
+unset *flag *opt i

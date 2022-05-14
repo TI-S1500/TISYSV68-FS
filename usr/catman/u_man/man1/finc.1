@@ -1,0 +1,80 @@
+FINC(1M)                                                 FINC(1M)
+
+NAME
+     finc - Provides a fast incremental backup
+
+SYNOPSIS
+     finc -acmn file-system raw-tape
+
+DESCRIPTION
+   Purpose
+     The finc command selectively copies the input file-system to
+     the output raw-tape. The utility runs faster on block than
+     character devices.
+
+   Options
+     The argument n in the options that follow is an optionally
+     signed decimal integer, where +n means more than n, -n means
+     less than n, and n means exactly n.  A day is defined as a
+     24-hour period.
+
+     -a n  Copies files accessed in n days.
+
+     -c n  Copies inodes changed in n days.
+
+     -m n  Copies files modified in n days.
+
+     -n file
+           Copies any file modified more recently than the
+           argument file.
+
+   Discussion
+     Mount the input file-system in read-only mode to ensure an
+     accurate backup.  Acceptable results can also be obtained in
+     read-write mode.  The tape must be previously labelled by
+     labelit, as explained in volcopy(1M).  The selection is
+     controlled by the options, accepting only those inodes/files
+     for whom the conditions are true.
+
+     It is recommended that production of a finc tape be preceded
+     by the ff(1) command. The output of ff can then be saved as
+     an index of the tape's contents.  Files on a finc tape can
+     be recovered with the frec command.
+
+EXAMPLES
+     The following command writes a tape consisting of all files
+     from file-system /usr modified in the last 48 hours:
+
+          finc -m -2 /dev/rdsk/sys:usr /dev/rqt/0h
+
+PROMPTS
+   Input File System:
+     Enter the name of the file system to copy.
+
+   Raw Tape Output:
+     Enter the name of the raw tape device to receive the output.
+
+   Accessed in (+,-) days:
+     Response to this prompt is optional.  Enter the number of
+     days.  The command copies files that were accessed in the
+     specified number of days.
+
+   Modified in (+,-) days:
+     Response to this prompt is optional.  Enter the number of
+     days.  The command copies files that were modified in the
+     specified number of days.
+
+   Changed in (+,-) days:
+     Response to this prompt is optional.  Enter the number of
+     days.  The command copies inodes that were changed in the
+     specified number of days.
+
+   Comparison File Name:
+     Response to this prompt is optional.  Enter the name of a
+     file.  The command copies files that were modified more
+     recently than the named file.
+
+SEE ALSO
+     cpio(1), ff(1M), frec(1M), labelit(1M), volcopy(1M).
+
+

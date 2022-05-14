@@ -1,0 +1,44 @@
+# cshf  nm -- prints a list of common object files 
+#	@(#)NM.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^NM -- PRINTS NAME LIST OF COMMON OBJECT FILE"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^Symbol Value/Size in Decimal:" dflag yesno y\
+	"^Symbol Value/Size in Octal:" oflag yesno n\
+	"^Symbol Value/Size in Hexdecimal:" xflag yesno n\
+	"^Display Output Header:" hflag yesno y\
+	"^Sort Symbols by Value:" vflag yesno n\
+	"^Sort Symbols by Name:" nflag yesno n\
+	"^Print Static/External Sym:" eflag yesno n\
+	"^Print Undefined Symbols Only:" uflag yesno n\
+	"^Full Output:" fflag yesno n\
+	"^Print Version Number:" Vflag yesno n\
+	"^Truncate Long Names:" Tflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($dflag == "y") set dopt = -d
+if ($oflag == "y") set oopt = -o
+if ($xflag == "y") set xopt = -x
+if ($hflag == "n") set hopt = -h
+if ($vflag == "y") set vopt = -v
+if ($nflag == "y") set nopt = -n
+if ($eflag == "y") set eopt = -e
+if ($uflag == "y") set uopt = -u
+if ($fflag == "y") set fopt = -f
+if ($Vflag == "y") set Vopt = -V
+if ($Tflag == "y") set Topt = -T
+
+if ($abort) goto end
+echo "=== NM COMMAND EXECUTING ==="
+echo nm $dopt $oopt $xopt $hopt $vopt $nopt $eopt $uopt $fopt $Vopt \
+$Topt $_input_file
+
+nm $dopt $oopt $xopt $hopt $vopt $nopt $eopt $uopt $fopt $Vopt $Topt \
+$_input_file
+
+#clean up time
+end:
+unset *flag *opt

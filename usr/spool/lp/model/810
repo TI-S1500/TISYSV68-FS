@@ -1,0 +1,176 @@
+# lp interface for the Texas Instruments 810 line printer
+#
+# COPYRIGHT (c) TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+#	@(#)810	1.13 (TI) 90/01/18
+#
+# When a lp request is made, the interface program for the printer is sent the
+# following parameters : id(1) user(2) title(3) copies(4) options(5) files(6)
+# The options parameter is a blank-separated list of class or printer dependent
+# options specified by user. Each option corresponds to a bit of code and escape
+# sequences in the case statements.
+
+# Shell killed via lpshut, output formfeed; via cancel, remove banner file
+trap 'echo "\014\c"; rm -f $temp; exit 1' 15
+# Create a temporary file to buffer escape sequences and banner information
+temp=/tmp/$$.lptemp
+# Create a file in /usr/spool/lppublic named "printername".save
+# containing values on the printer's status to print on the banner page
+save=/usr/spool/lppublic/`basename $0`.save
+x="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+i=1
+word=0
+count=0 
+sixflag=1
+options=$5
+if [ -n "$options" ]
+then
+	cat /dev/null >> $save
+	. $save
+fi
+for option in $options 
+do
+	case $option in
+		B*)
+			# Print banner page
+			echo "$x\n$x\n$x\n$x\n" >> $temp
+			banner "$2" >> $temp
+			echo "\n" >> $temp
+			user=`grep "^$2:" /etc/passwd | line | cut -d: -f5`
+			if [ -n "$user" ]
+			then
+				echo "User: $user\n" >> $temp
+			else
+				echo "\n" >> $temp
+			fi
+			echo "Request id: $1    Printer: `basename $0`\n" >> $temp
+			date >> $temp
+			echo "\n" >> $temp
+			echo "Cpi: $cpi  Lpi: $lpi \n" >> $temp
+			if [ -n "$3" ]
+			then
+				titles=$3
+				for title in $titles
+				do
+					word=`expr $word + 1`
+				done
+				banner $3 >> $temp
+				if [ $word -eq 1 ]
+				then
+					count=12
+				elif [ $word -eq 2 ]
+				then
+					count=8
+				elif [ $word -eq 3 ]
+				then
+					count=4
+				else
+					count=0
+				fi
+				while [ $count -gt 0 ]
+				do
+					echo "\n" >> $temp
+					count=`expr $count - 1`
+				done
+				echo "$x\n$x\n$x\n$x\n" >> $temp
+				echo "\014\c" >> $temp
+			else
+				echo "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" >> $temp
+				echo "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" >> $temp
+				echo "$x\n$x\n$x\n$x\n" >> $temp
+				echo "\014\c" >> $temp
+			fi
+			;;
+		C*)
+			# Characters per inch
+			case `expr $option : 'C\(.*\)'` in
+			10)
+				echo "\00336\c" >> $temp
+				cpi="10"
+				;;
+			16)
+				echo "\00337\c" >> $temp
+				cpi="16"
+				;;
+			esac
+			;;
+		L*)
+			# Lines per inch
+			case `expr $option : 'L\(.*\)'` in
+			6)
+				echo "\00334\c" >> $temp
+				lpi="6"
+				;;
+			8)
+				echo "\00335\c" >> $temp
+				lpi="8"
+				;;
+			esac
+			;;
+		P*)
+			# Number of preceding formfeeds
+			num=`expr $option : 'P\(.*\)'` 
+			while [ $num -gt 0 ]
+			do
+				num=`expr $num - 1`
+				echo "\014\c" >> $temp
+			done
+			;;
+		+*)
+			# Number of page to begin printing at
+			pagenum=`expr $option : '+\(.*\)'` 
+			;;
+esac
+done
+if [ -s $temp ]
+then
+	cat $temp 2>&1
+	rm -f $temp
+fi
+copies=$4
+shift; shift; shift; shift; shift
+files="$*"
+while [ $i -le $copies ]
+do
+	for file in $files
+	do
+		# if you need to use the -f option use the following line
+		# pr -t -f +$pagenum "$file" | /bin/cat 2>&1
+		pr -t +$pagenum "$file" 2>&1
+		echo "\014\c"
+	done
+	i=`expr $i + 1`
+done
+for option in $options 
+do
+	case $option in
+		R*)
+			# Restore default options on printer
+			echo "\00336\c" >> $temp
+			echo "\00334\c" >> $temp
+			cpi="10"
+			lpi="6"
+			;;
+		S*)
+			# Number of succeeding formfeeds
+			num=`expr $option : 'S\(.*\)'` 
+			while [ $num -gt 0 ]
+			do
+				num=`expr $num - 1`
+				echo "\014\c" >> $temp
+			done
+			;;
+	esac
+done
+if [ -s $temp ]
+then
+	cat $temp 2>&1
+	rm -f $temp
+fi
+if [ -n "$options" ]
+then
+	rm -f $save
+	echo "# Values of the printer's status for the banner page" >> $save
+	echo cpi=\"$cpi\" >> $save
+	echo lpi=\"$lpi\" >> $save
+fi

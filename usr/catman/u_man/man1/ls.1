@@ -1,0 +1,296 @@
+LS(1)                                                       LS(1)
+
+NAME
+     ls - Lists the contents of directories
+
+SYNOPSIS
+     ls -abcCdDfFgilmnopqrRstux names
+
+DESCRIPTION
+   Purpose
+     The ls command lists the contents of each named directory.
+     The command repeats the file name and any other information
+     requested for each file named.
+
+     By default, the output is sorted alphabetically.  When no
+     argument is given, the current directory is listed.  When
+     several arguments are given, the arguments are first sorted
+     appropriately, but file arguments are processed before
+     directories and their contents.
+
+     There are three major listing formats. The default format is
+     to list one entry per line, the -C and -x options enable
+     multi-column formats, and the -m option enables stream
+     output format.
+
+   Options
+     -a   Lists all entries.  In the absence of this option,
+          entries whose names begin with a period (.)  are not
+          listed.
+
+     -b   Forces the printing of non-printable characters in the
+          octal notation (\ddd).
+
+     -c   Uses time of last modification of the i-node (that is,
+          time when file was created, mode was changed, and so
+          on) instead of last modification of the file for
+          sorting (with -t option) or printing (with -l option).
+
+     -C   Arranges the output in several columns, sorted down
+          within the columns.
+
+     -d   If the argument is a directory, lists only its name and
+          not its contents.  This option is often used with -l to
+          get the status of a directory.
+
+     -D   Omits the time from the long display.
+
+     -f   Forces each argument to be interpreted as a directory
+          and lists the name found in each slot.  This option
+          turns off -l, -t, -s, and -r, and turns on -a in the
+          order in which entries appear in the directory.
+
+     -F   Puts a slash after the name of each directory and an
+          asterisk after the name of an executable file.
+
+     -g   Does not print the owner; otherwise, like -l.
+
+     -i   For each file, prints the i-number in the first column
+          of the report.
+
+     -l   Lists in long format, giving mode, number of links,
+          owner, group, size in bytes, and time of last
+          modification for each file.  If the file is a special
+          file, the size field contains the major and minor
+          device numbers, rather than a size.
+
+     -m   Lists the file names as a stream, with commas
+          separating the names.
+
+     -n   Shows owner and group ID number rather than name.
+          Otherwise, like the -l option.
+
+     -o   Does not print the group; otherwise, like -l.
+
+     -p   Puts a slash after the name of each directory.  This
+          option is especially useful for VDTs when combined with
+          the pr(1) command as follows:
+          ls -p | pr -5 -t -w80
+
+     -q   Forces the printing of non-printable characters in a
+          file name as a question mark (?).
+
+     -r   Reverses the order of sort to get reverse alphabetic or
+          oldest first, as appropriate.
+
+     -R   Recursively lists all subdirectories within names.
+
+     -s   Gives size in 1K-byte blocks (including indirect
+          blocks) for each entry.
+
+     -t   Sorts by the time of last modification (with latest
+          first) rather than by name.  The time of last
+          modification is the default time.  Can be used in
+          conjunction with -c and -u to sort by a different time.
+
+     -u   Uses time of last access instead of last modification
+          for sorting (with the -t option) and/or printing (with
+          the -l option).
+
+     -x   Arranges the output in columns, sorted left to right
+          across each line.
+
+-l Option
+     The mode printed under the -l option consists of 11
+     characters that are interpreted as follows:
+
+     The first character is:
+
+     d   If the entry is a directory
+     b   If the entry is a block special file
+     c   If the entry is a character special file
+     p   If the entry is a fifo (a.k.a. ``named pipe'') special
+         file
+     -   If the entry is an ordinary file
+
+     The next nine characters are interpreted as three sets of
+     three bits each.  The first set refers to the owner's
+     permissions, the next to permissions of others in the user
+     group of the file, and the last to all others.  Within each
+     set, the three characters indicate permission to read, to
+     write, and to execute the file as a program, respectively.
+     For a directory, execute permission is interpreted to mean
+     permission to search the directory for a specified file.
+
+     The permissions are indicated as follows:
+
+     r   If the file is readable
+     w   If the file is writable
+     x   If the file is executable
+     s   If the file is specified to set ID upon execution
+     -   If the indicated permission is not granted
+     l   If the file is locked during access (mandatory locking is
+         enabled when the set-group-ID bit is on and the group
+         execution bit is off)
+
+     The group-execute permission character is given as the s
+     permission if the file has set-group-ID mode; likewise, the
+     user-execute permission character is given as the s
+     permission if the file has set-user-ID mode.  The last
+     character of the mode (normally x or -) is the letter t if
+     the 1000 (octal) bit of the mode is on; see chmod(1) for the
+     meaning of this mode.  The indications of set-ID and 1000
+     bit of the mode are capitalized ( S and T respectively) if
+     the corresponding execute permission is not set.
+
+     The 11th character will contain an f if the file is a
+     forced-write file; otherwise, it will be blank.
+     
+     In the case of the sequence of group permissions, the letter l
+     may occupy the third position. l refers to mandatory file and
+     record locking. This permission describes a file's ability to
+     allow other files to lock its reading or writing permissions
+     during access.
+     When the sizes of the files in a directory are listed, a
+     total count of blocks, including indirect blocks, is printed
+     with the -s option.  With the -l option, the size is printed
+     in bytes.
+
+EXAMPLE
+     The following example lists the contents of directory dir1
+     and reports the permission status of each file in dir1.
+
+          ls -l dir1
+
+          -rwxrwxrwx  1  smith  dev   10876   May 16  9:42  part2
+
+     This horizontal configuration provides a good deal of
+     information.  Reading from right to left, you see that the
+     dir1 directory holds one file, named part2. Next, the last
+     time that file's contents were modified was 9:42 am on May
+     16. The file is moderately sized, containing 10,876
+     characters, or bytes. The owner of the file, or the user,
+     belongs to the group "dev" (perhaps indicating
+     "development"), and the user's login name is "smith." The
+     number, in this case "1," indicates the number of links to
+     file part2. Finally, the row of dash and letters tell you
+     that user, group, and others have permissions to read,
+     write, and execute part2.
+
+PROMPTS
+   Directory Name(s):
+     Enter the path name of the directory to list.  The default
+     directory is the current directory.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   List ALL Entries:
+     Initial value is no.  If you enter yes, all entries
+     including names beginning with a period (.).
+
+   List Long Format:
+     Initial value is no.  If you enter yes, all information
+     about that file is given.
+
+   Recursively List All Subdirectories:
+     Initial value is no.  If you enter yes,  all subdirectories
+     are listed recursively.
+
+   Accept Default Options:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear.
+
+   Sort by Time:
+     Initial value is no.  If you enter yes, the sort is by time
+     of last modification.
+
+   Use Last Time of I-node Modification:
+     Initial value is no.  If you enter yes, the command uses i-
+     node modification time for sorting or printing.
+
+   Arrange Output in Columns:
+     Initial value is no.  If you enter yes, the output is
+     arranged in columns, sorted down within the columns.  This
+     prompt does not appear if you answer y to the List Long
+     Format prompt.
+
+   List only Directory Name:
+     Initial value is no.  If you enter yes, only the names of
+     the directories is listed.
+
+   Omit Time:
+     Initial value is no.  If you enter yes, the time is not
+     displayed.  This prompt appears only if you answer y to the
+     List Long Format prompt.
+
+   Force Directory Argument Interpretationn:
+     Initial value is no.  If you enter yes, each argument is
+     interpreted as a directory, and the utility lists the name
+     found in each slot.  This prompt does not appear if you
+     answer y to the List Long Format prompt.
+
+   Mark Directories and Executable Files:
+     Initial value is no.  If you enter yes, directories and
+     executable files are specially marked.
+
+   Print Owner:
+     Initial value is yes.  If you enter no, the owners are not
+     printed in the long format.  This prompt does not appear if
+     you answer n to the List Long Format prompt.
+
+   Print I-Number:
+     Initial value is no.  If you enter yes, the I-numbers are
+     printed.
+
+   Lists File Names in a Stream:
+     Initial value is no.  If you enter yes, the names are listed
+     in a stream separated by commas. This prompt does not appear
+     if you answer y to the List Long Format prompt.
+
+   Show Owner and Group ID's:
+     Initial value is no.  If you enter yes, the owner and group
+     ids are printed instead of the names.  This prompt does not
+     appear if you answer n to the List Long Format prompt.
+
+   Print Group:
+     Initial value is yes.  If you enter no, the group names are
+     not printed in the long format.  This prompt does not appear
+     if you answer y to the List Long Format prompt.
+
+   Put Slash After Directory Names:
+     Initial value is no.  If you enter yes, a slash is printed
+     after each directory.
+
+   Print Graphics Characters:
+     Initial value is no.  If you enter yes, the graphics
+     characters in a file name are printed as ?.
+
+   Reverse Order of Sort:
+     Initial value is no.  If you enter yes, the ordering is
+     listed in reverse alphabetic order or oldest first, as
+     appropriate.
+
+   Give Size in Blocks:
+     Initial value is no.  If you enter yes, the size in blocks
+     is printed for each entry.
+
+   Use Time of Last Access:
+     Initial value is no.  If you enter yes, the time of last
+     access is used for sorting or printing.
+
+   Arrange Output Sorted Left to Right:
+     Initial value is no.  If you enter yes, the output is
+     arranged in columns, sorted left to right across each
+     line.  This prompt does not appear if you answer y to the
+     List Long Format prompt.
+
+FILES
+     /etc/passwd  To get user names for ls -l and ls -o.
+     /etc/group   To get group names for ls -l and ls -g.
+
+SEE ALSO
+     chmod(1), find(1).
+
+

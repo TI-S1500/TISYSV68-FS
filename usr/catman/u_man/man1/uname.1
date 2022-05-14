@@ -1,0 +1,72 @@
+UNAME(1)                                                 UNAME(1)
+
+NAME
+     uname - Prints name of current system
+
+SYNOPSIS
+     uname -amnrsv
+
+DESCRIPTION
+   Purpose
+     The uname command prints the current operating system name
+     on the standard output file.
+
+   Options
+     -a   Prints all the information specified by the remaining
+          options
+
+     -m   Prints the machine hardware name
+
+     -n   Prints the nodename (The nodename is a name that the
+          system is known by to a communications network.)
+
+     -r   Prints the operating system release
+
+     -s   Prints the system name (default)
+
+     -v   Prints the operating system version
+
+     Options that are not recognized cause the command to default
+     to the -s option.
+
+EXAMPLE
+     The following example prints to the standard output the
+     system name, the node name (if the system is on a network),
+     the operating system release and version, and the
+     microprocessor name:
+
+          uname -a
+
+     The following output might be printed:
+
+          TI System V   theo V/68-1.0 2.1.0 MC68020
+
+PROMPTS
+   Select Options:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear:
+
+   Print All Information:
+     Initial value is no.  If you enter yes, all information
+     specified by the remaining options.
+
+   Print Nodename:
+     Initial value is no.  If you enter yes, the nodename
+     (communications network name) is printed.
+
+   Print Operating System Release:
+     Initial value is no.  If you enter yes, the operating system
+     release number is printed.
+
+   Print Operating System Version:
+     Initial value is no.  If you enter yes, the operating system
+     version number is printed.
+
+   Print Machine Hardware Name:
+     Initial value is no.  If you enter yes, the machine hardware
+     name is printed.
+
+SEE ALSO
+     uname(2).
+
+

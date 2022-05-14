@@ -1,0 +1,53 @@
+#@(#)alpcaps	1.8 90/01/19
+t1 ti924 t3 ti924-132: bb=\E[5i eb=\E[?9i pr=\EQ sz=132 rt=0
+t2 ti924-8 t4 ti924-8-132 t7: bb=\2335i eb=\233?9i pr=\221 sz=132 rt=0
+t5 em931-9 t8 em931: bb=\EF\0011\E( eb=\E) pr=\E1 sz=132 rt=0
+t6 T6 em924: bb=\E[5i eb=\E[?9i pr=\EQ sz=132 rt=0
+t9 T9 ti931: bb=\EF\0011\E( eb=\E) pr=\E1 sz=132 rt=0
+x1 ti928 x3 ti928-132: bb=\E[5i eb=\E[?90i pr=\EQ sz=132 rt=0
+x2 ti924-8 x4 ti928-8-132: bb=\2335i eb=\233?90i pr=\221 sz=132 rt=0
+x5 X5 ti931r: bb=\EF\0011\E( eb=\E) pr=\E1 sz=132 rt=0
+d0 vt100 vt100-am: bb=\E[5i eb=\E[4i pr=\0 sz=80 rt=1000
+d1 vt220 d3 vt220-132: bb=\E[5i eb=\E[4i pr=\0 sz=80 rt=1000
+d2 vt220-8 d4 vt220-8-132: bb=\2335i eb=\2334i pr=\0 sz=80 rt=1000
+i1 ti926: bb=\E[5i eb=\E[?9i pr=\EQ sz=132 rt=0
+i2 ti926-8: bb=\2335i eb=\233?9i pr=\221 sz=132 rt=0
+Mw wyse wy75 75 wyse75: bb=\E[5i eb=\E[4i pr=\0 sz=80 rt=1000
+#SPECIAL FILE: /etc/alpcaps                                                    
+#                                                                               
+#       The file /etc/alpcaps is used to specify parameters that will be used   
+#to initialize the attached line printer driver.  These parameters define the   
+#following items:                                                               
+#
+#       1) Terminal type as defined in /etc/termcaps.                      
+#
+#       2) Printer Begin Bracket.(bb) This is the character sequence that
+#          needs to be sent to the terminal so that subsequent data is directed 
+#          to the attached printer device.                                     
+#                                                                               
+#       3) Printer End Bracket.(eb)  The character sequence that terminates the 
+#          data stream that is directed to the attached printer.                
+#                                                                               
+#       4) Pacing response.(pr)  The character sequence that is sent by the     
+#          terminal to acknowledge the previous printer directed data           
+#          stream.  The receipt of this string indicates that the terminal      
+#          is ready to receive more printer data.  Some terminals do not        
+#          support this feature, if not, the appropriate entry is a Null        
+#          string (i.e \0).  For Terminals that do not support a pacing         
+#          response, the Block Transmit Rate is used to pace the printer data.  
+#                                                                               
+#       5) Block size.(sz)  This specifies the size of the printer data block to
+#          be sent to the attached printer as a contigious stream.  Some        
+#          terminals have a defined limit while others do not (they use         
+#          XON,XOFF to pace the data).  A reasonable number is 80 to 128.       
+#                                                                               
+#       6) Block Transmit Rate.(rt)  This specifies how often a printer data   
+#          block should be sent to the terminal. This has units in 
+#          milliseconds. Actual resolution is +- 250 milliseconds. This
+#          may change to 100 milliseconds in the future. The
+#          block size and transmit rate parameters allows for customization of  
+#          how much of the terminals bandwidth can be allocated to the attached 
+#          printer.   By proper selection of these parameters, both printer     
+#          and terminal data can flow without noticable delays of either.       
+#          If the terminal supports a Pacing Response, this number is not used. 
+#                                                                               

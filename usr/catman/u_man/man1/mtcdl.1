@@ -1,0 +1,72 @@
+MTCDL(1T)                                               MTCDL(1T)
+
+NAME
+     mtcdl - Downloads multidrop terminal concentrators
+
+SYNOPSIS
+     mtcdl -dpsv
+
+DESCRIPTION
+   Function
+     The mtcdl command invokes the parent process of the
+     multidrop terminal concentrator (MTC) download utility,
+     mtcdl.
+
+   Options
+     -d   Enables the memory-dump capability in the initial mtcdl
+          process. When the initial mtcdl is running, the dump
+          capability is disabled to eliminate unnecessary memory
+          uploading and save time entering multiuser mode. After
+          the initial mtcdl process completes, the dump
+          capability is enabled until changed by the mtcdump
+          command. If multidrop terminal concentrator memory
+          dumps need to be taken during the multiuser start-up,
+          edit the /etc/download file and add this option to the
+          mtcdl command.
+
+     -p port_num
+          This option is only valid when entered in conjunction
+          with the -s option.  It starts the mtcdl daemon for the
+          specified port (port_num) only.
+
+     -s slot_num
+          Starts the mtcdl for the specified slot (slot_num) in
+          which a communications carrier board (CCB) with a
+          multidrop host adapter (MHA) option card is installed.
+          The information of the MTCs associated with the
+          indicated CCB slot is reinitialized according to
+          /etc/mtctab.  This information is saved in the shared
+          memory segment of the mtcdl. One mtcdl daemon is
+          started for each MHA option port on the CCB.  Other
+          mtcdl daemons for other CCBs on the system, if other
+          CCBs exist, are not affected.
+
+     -v   Enables the verbose mode during the mtcdl process.
+          Normally, mtcdl runs silently and logs all activities
+          to the /usr/adm/comlog/mtcdllog file.  The verbose mode
+          directs the messages to the log file and to the system
+          console. When the initial mtcdl process completes, the
+          verbose mode is turned off.
+
+   Discussion
+     The parent mtcdl creates a shared memory segment for MTC
+     information, forks a child for each existing CCB option port
+     with an MHA board installed, and terminates after all the
+     MTCs have been downloaded.  The mtcdl children stay running
+     as daemons until the corresponding CCB is re-downloaded or
+     panics.  The MTC definition file, /etc/mtctab, contains all
+     the information needed by the mtcdl.  The mtcdl logging is
+     in /usr/adm/comlog/mtcdllog.  Normally, the mtcdl is invoked
+     automatically when the system enters multiuser mode.
+
+SEE ALSO
+     mtcdump(1T), mtcreset(1T), mtcstat(1T).
+
+DIAGNOSTICS
+     The following messages are displayed when mtcdl is started
+     and when the download completes:
+
+          Mtcdl is started
+          MTC download process completed
+
+

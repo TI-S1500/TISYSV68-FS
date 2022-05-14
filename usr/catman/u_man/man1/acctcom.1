@@ -1,0 +1,157 @@
+ACCTCOM(1)					       ACCTCOM(1)
+
+NAME
+     acctcom - Searches and prints process accounting files
+
+SYNOPSIS
+     acctcom -abCeEfghHiIklmnoOqrSstuv [files]
+
+DESCRIPTION
+   Purpose
+     The acctcom command reads file, the standard input, or
+     /usr/adm/pacct, in the form described by acct(4) and writes
+     selected records to the standard output.
+
+   Options
+     -a 	 Shows average statistics about the processes
+		 selected.  The statistics are printed after the
+		 output records.
+
+     -b 	 Reads backwards, showing latest commands first.
+		 This option has no effect when the standard
+		 input is read.
+
+     -Csec	 Shows only processes with total CPU time, system
+		 time plus user time, exceeding sec seconds.
+
+     -e time	 Selects processes existing at or before time.
+
+     -E time	 Selects processes ending at or before time.
+		 Using the same time for both -S and -E shows the
+		 processes that existed at time.
+
+     -f 	 Prints the fork/exec flag and system exit status
+		 columns in the output.
+
+     -g group	 Shows only processes belonging to group. The
+		 group can be designated by either the group ID
+		 or group name.
+
+     -h 	 Shows the fraction of total available CPU time
+		 consumed by the process during its execution.
+		 (The default is to show mean memory size.)  This
+		 hog factor is computed as (total CPU time)/
+		 (elapsed time).
+
+     -H factor	 Shows only processes that exceed factor, where
+		 factor is the hog factor explained in option -h.
+
+     -i 	 Prints columns containing the I/O counts in the
+		 output.
+
+     -I chars	 Shows only processes transferring more
+		 characters than the cutoff number given by
+		 chars.
+
+     -k 	 Shows total kcore-minutes instead of memory
+		 size.
+
+     -l line	 Shows only processes belonging to terminal
+		 /dev/line.
+
+     -m 	 Shows mean core size (the default).
+
+     -n pattern  Shows only commands matching pattern that can be
+		 a regular expression as in ed(1) except that +
+		 means one or more occurrences.
+
+     -o ofile	 Copies selected process records in the input
+		 data format to ofile; supresses standard output
+		 printing.
+
+     -O sec	 Shows only processes with CPU system time
+		 exceeding sec seconds.
+
+     -q 	 Does not print any output records; prints only
+		 the average statistics (the same as the -a
+		 option).
+
+     -r 	 Shows CPU factor - user time/(system-time +
+		 user-time).
+
+     -s time	 Selects processes existing at or after time,
+		 given in the format hr[:min[:sec]].
+
+     -S time	 Selects processes starting at or after time.
+
+     -t 	 Shows separate system and user CPU times.
+
+     -u user	 Shows only processes belonging to user that can
+		 be specified by one of the following: a user ID,
+		 a login name that is then converted to a user
+		 ID, a # that designates only those processes
+		 executed with super-user privileges, or ?  which
+		 designates only those processes associated with
+		 unknown user IDs.
+
+     -v 	 Excludes column headings from the output.
+
+   Discussion
+     Each record that acctcom writes to the standard output
+     represents the execution of one process.  The output column
+     heading are as follows:
+	  COMMAND
+	  NAME
+	  USER
+	  TTYNAME
+	  START
+	  TIME
+	  END
+	  TIME
+	  REAL (SEC)
+	  CPU (SEC)
+	  MEAN
+	  SIZE(K)
+
+     The following headings appear if specified by the
+     appropriate command option:
+	  F (the fork/exec flag, a 1 indicates a fork(2)
+	    without an exec(2))
+	  STAT (the system exit status)
+	  HOG FACTOR
+	  KCORE MIN
+	  CPU FACTOR
+	  CHARS TRNSFD
+	  BLOCKS /WD (total blocks read and written)
+
+     The command name reported under the COMMAND heading is
+     prepended with a # if the command was executed with super-
+     user privileges.  If a process is not associated with a
+     known terminal, a ? is printed in the TTYNAME field.
+
+     If no files are specified and if the standard input is
+     associated with a terminal or /dev/null (as is the case when
+     using & in the shell), /usr/adm/pacct is read.  Otherwise,
+     the standard input is read.
+
+     The file arguments are read in their respective order.  Each
+     file is normally read forward (that is, in chronological
+     order) by process completion time.  The file /usr/adm/pacct
+     is usually the current file to be examined.  A busy system
+     might need several such files, of which all but the current
+     file are found in /usr/adm/pacct?.
+
+FILES
+     /etc/passwd
+     /usr/adm/pacct
+     /etc/group
+
+SEE ALSO
+     acct(2), acct(4), acct(1M), ps(1), su(1), utmp(4).
+
+NOTES
+     The acctcom command reports only on terminated processes.
+     Use ps(1) for active processes.  If time exceeds the present
+     time, time is interpreted as occurring on the previous day.
+
+

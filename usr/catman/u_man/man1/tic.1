@@ -1,0 +1,145 @@
+TIC(1M)                                                   TIC(1M)
+
+NAME
+     tic - Compiles terminfo source
+
+SYNOPSIS
+     tic -cv file
+
+DESCRIPTION
+   Purpose
+     The tic command translates terminfo files from the source
+     format into the compiled format.  The results are placed in
+     the directory /usr/lib/terminfo.
+
+     Only the super-user can use this command.
+
+   Option
+     -c   Checks file for errors, only.
+
+     -v[n]
+          Causes tic to output trace information showing the
+          progress of the command.  The optional n value is a
+          number from 1 through 4.  For n values, the trace
+          information is reported as follows:
+
+          1  Shows files linked and created
+
+          2  Shows files linked and created as well as number
+             variables
+
+          3  Shows files linked and created, number variables,
+             and Boolean variables
+
+          4  Shows files linked and created, number variables,
+             Boolean variables, and string variables
+
+     See Capabilities in terminfo(4).
+
+   Argument
+     file Name of file that contains one or more terminfo
+          descriptions in source format of the capabilities of
+          particular terminals.
+
+   Discussion
+     When tic finds a use= entry-name field in a terminal entry,
+     the utility reads in the binary from /usr/lib/terminfo to
+     complete the entry.  (tic uses entries created from file
+     first, and if the environment variable TERMINFO is set, tic
+     searches that directory instead of /usr/lib/terminfo.)
+
+     Total compiled entries cannot exceed 4096 bytes. The name
+     field cannot exceed 128 bytes.
+
+     Terminal names exceeding 14 characters will be truncated to
+     14 characters and a warning message will be printed.
+
+     When the -c option is used, duplicate terminal names will
+     not be diagnosed; however, when -c is not used, they will
+     be.
+
+FILES
+     /usr/lib/terminfo_srcSource format of terminfo files
+     /usr/lib/terminfo/*/*Compiled terminal capability data base
+
+PROMPTS
+   File Name(s):
+     Enter the name of the files to be processed.
+
+   Level of Trace (1-4):
+     Select the level of trace information showing the progress
+     of the command.
+
+SEE ALSO
+     curses(3X), terminfo(4).
+
+DIAGNOSTICS
+     Most diagnostic messages produced by tic during the
+     compilation of the source file are preceded with the
+     approximate line number and the name of the terminal
+     currently being worked on.
+
+     mkdir ... returned bad status
+          The named directory could not be created.
+
+     File does not start with terminal names in column one
+          The first thing seen in the file, after comments, must
+          be the list of terminal names.
+
+     Token after a seek(2) not NAMES
+          Somehow the file being compiled changed during the
+          compilation.
+
+     Not enough memory for use_list element
+          or
+
+     Out of memory
+          Not enough free memory was available (malloc(3)
+          failed).
+
+     Can't open...
+          The named file could not be created.
+
+     Error in writing...
+          The named file could not be written to.
+
+     Can't link ... to ...
+          A link failed.
+
+     Error in re-reading compiled file...
+          The compiled file could not be read back in.
+
+     Premature EOF
+          The current entry ended prematurely.
+
+     Backspaced off beginning of line
+          This error indicates something wrong happened within
+          tic.
+
+     Unknown Capability - "..."
+          The named invalid capability was found within the file.
+
+     "..." non-existent or permission denied
+          The given directory could not be written into.
+
+     "..." is not a directory.
+          Self-explanatory
+
+     "...": Permission denied
+          Access denied.
+
+     "...": Not a directory
+          tic wanted to use the given name as a directory, but it
+          already exists as a file.
+
+     SYSTEM ERROR!! Fork failed!!!
+          A fork(2) failed.
+
+     Error in following up use-links.
+          Either there is a loop in the links or they reference
+          non-existent terminals.  A terminfo entry with a
+          use=name capability either referred to a non-existent
+          terminal called name or name somehow referred back to
+          the given entry.
+
+

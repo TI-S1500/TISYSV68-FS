@@ -1,0 +1,146 @@
+# cshf lp -- shows LP status information 
+#	@(#)LPSTAT.sh	1.3 (TI) 87/09/30
+#
+onintr end
+set quote = '"'
+
+prompt "^LPSTAT --- SHOWS LP STATUS INFORMATION"\
+	"^Show ALL Status Information:" tflag yesno y\
+	"^#$*"
+
+if ($abort) goto end
+if ($tflag == "y") then
+	set topt = -t
+else
+   prompt "^LPSTAT -- LP STATUS OPTIONS"\
+	"^Summary:" sflag yesno n\
+	"^LP Scheduler:" rflag yesno n\
+	"^System Default Destination:" dflag yesno n\
+	"^Output Requests:" oflag yesno n\
+	"^Printers:" pflag yesno n\
+	"^Queue Acceptance:" aflag yesno n\
+	"^User's Requests:" uflag yesno n\
+	"^Class Names and Their Members:" cflag yesno n\
+	"^Printer Names and Their Devices:" vflag yesno n\
+	"^#$*"
+	#
+	# Queue Acceptance - a
+	#
+	if ($abort) goto end
+	if ($aflag == "n") then
+     	set aopt = ""
+	else
+		prompt "^LPSTAT -- QUEUE ACCEPTANCE"\
+			"^*Printer or Class Name(s):" alist string\
+			"^#$*"
+		if ($abort) goto end
+		if ("$alist" == "") then 
+			set aopt = "-a"
+		else
+
+			set aopt = `echo $alist | awk '{for(i = 2; i <= NF; i++) $1 = $1","$i ; print $1 }'`
+			set aopt = -a"$aopt"
+		endif
+	endif
+	
+	if ($abort) goto end
+	#
+	#  Class names and their members - c
+	#
+	if ($cflag == "n") then
+		set copt = ""
+	else
+		prompt "^LPSTAT - CLASS NAMES AND THEIR MEMBERS"\
+			"^*Class Name(s):" clist string\
+			"^#$*"
+		if ( $abort ) goto end
+		if ("$clist" == "") then 
+			set copt = -c
+		else
+			set copt = `echo $clist | awk '{for(i = 2; i <= NF; i++) $1 = $1","$i ; print $1 }'`
+			set copt = -c"$copt"
+		endif
+	endif
+
+	#
+	# Output requests - o
+	#
+	if ($oflag == "n") then
+     	set oopt = ""
+	else
+		prompt "^LPSTAT -- OUTPUT REQUESTS"\
+			"^*Printer or Class Name(s) or ID(s):" olist string\
+			"^#$*"
+		if ( $abort ) goto end
+		if ("$olist" == "") then
+			set oopt = -o 
+		else
+			set oopt = `echo $olist | awk '{for(i = 2; i <= NF; i++) $1 = $1","$i ; print $1 }'`
+			set oopt = -o"$oopt"
+		endif
+	endif
+	#
+	# Printers - p
+	#
+	if ($pflag == "n") then
+     		set popt = ""
+	else
+		prompt "^LPSTAT -- PRINTERS"\
+			"^*Printer Name(s):" plist string "$plist"\
+			"^#$*"
+		if ( $abort ) goto end
+		if ("$plist" == "") then
+			set popt = ""
+		else
+			set popt = `echo $plist | awk '{for(i = 2; i <= NF; i++) $1 = $1","$i ; print $1 }'`
+			set popt = -p"$popt"
+		endif
+	endif
+	#
+	# Output requests for user's - u
+	#
+	if ($uflag == "n") then
+     		set uopt = ""
+	else
+		prompt "^LPSTAT -- USER'S REQUESTS"\
+			"^*Login Name(s):" ulist string\
+			"^#$*"
+		if ( $abort ) goto end
+		if ("$ulist" == "") then 
+			set uopt = -u 
+		else
+			set uopt = `echo $ulist | awk '{for(i = 2; i <= NF; i++) $1 = $1","$i ; print $1 }'`
+			set uopt = -u"$uopt"
+		endif
+	endif
+	#
+	# Printer names and associated devices - v
+	#
+	if ($vflag == "n") then
+	     	set vopt = ""
+	else
+		prompt "^LPSTAT -- PRINTER NAMES AND THEIR DEVICES"\
+			"^*Printer Name(s):" vlist string\
+			"^#$*"
+		if ( $abort ) goto end
+		if ("$vlist" == "") then
+			set vopt = -v 
+		else
+			set vopt = `echo $vlist | awk '{for(i = 2; i <= NF; i++) $1 = $1","$i ; print $1 }'`
+			set vopt = -v"$vopt"
+		endif
+	endif
+	
+	if ($dflag == "y") set dopt = -d
+	if ($rflag == "y") set ropt = -r
+	if ($sflag == "y") set sopt = -s
+endif
+
+if ($abort) go to end 
+echo "=== LPSTAT COMMAND EXECUTING ==="
+echo lpstat $aopt $copt $dopt $oopt $popt $ropt $sopt $topt $uopt $vopt
+
+lpstat $aopt $copt $dopt $oopt $popt $ropt $sopt $topt $uopt $vopt |& pg -c
+
+end:
+unset *opt *list *flag quote

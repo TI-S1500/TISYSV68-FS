@@ -1,0 +1,193 @@
+DD(1)							    DD(1)
+
+NAME
+     dd - Converts and copies a file
+
+SYNOPSIS
+     dd option=value
+
+DESCRIPTION
+   Purpose
+     The dd program copies the specified input file to the
+     specified output with possible conversions.  The standard
+     input and output are used by default.  The input and output
+     block size may be specified to take advantage of raw
+     physical I/O.
+
+   Options
+     Option	     Value Descriptions
+
+     if=file	     Sets input file name; standard input is
+		     default
+
+     of=file	     Sets output file name; standard output is
+		     default
+
+     ibs=n	     Sets input block size n bytes (default 512)
+
+     obs=n	     Sets output block size (default 512)
+
+     bs=n	     Sets both input and output block size,
+		     superseding ibs and obs; also, if no
+		     conversion is specified, it is particularly
+		     efficient since no in-core copy need be done
+
+     cbs=n	     Sets conversion buffer size (see Discussion
+		     below)
+
+     skip=n	     Skips n input records before starting copy
+
+     seek=n	     Seeks n records from beginning of output
+		     file before copying
+
+     count=n	     Copies only n input records
+
+     conv=ascii      Converts EBCDIC to ASCII
+
+	  ebcdic     Converts ASCII to EBCDIC
+
+	  ibm	     Provides slightly different map of ASCII to
+		     EBCDIC; (there is no inverse conversion for
+		     this code.)
+
+	  lcase      Maps alphabetics to lower case
+
+	  ucase      Maps alphabetics to upper case
+
+	  swab	     Swaps every pair of bytes
+
+	  noerror    Does not stop processing on an error
+
+	  sync	     Pads every input record to ibs
+
+		     Note that multiple conversions can be
+		     specified with comma delimiters.
+
+   Discussion
+     Where sizes are specified, a number of bytes is expected.	A
+     number may end with k, b, or w to specify multiplication by
+     1024, 512, or 2 respectively; a pair of numbers may be
+     separated by x to indicate a product.
+
+     The cbs option is used only if ascii or ebcdic conversion is
+     specified.  In the former case, cbs characters are placed
+     into the conversion buffer, converted to ASCII. Trailing
+     blanks are trimmed and a newline is added before sending the
+     line to the output.  In the latter case, ASCII characters
+     are read into the conversion buffer and converted to EBCDIC,
+     and blanks are added to make up an output record of size
+     cbs.  Any line longer than cbs characters is truncated to
+     cbs characters.
+
+     After completion, dd reports the number of whole and partial
+     input and output blocks as follows:
+
+	  dd read xxx full blocks and yy partial blocks
+	  dd wrote xxx full blocks and yy partial blocks
+
+EXAMPLE
+     This command reads an EBCDIC tape blocked ten 80-byte EBCDIC
+     card images per record into the ASCII file x:
+
+	  dd  if=/dev/rqt/0h  of=x  ibs=800  cbs=80  conv=ascii,lcase
+
+     Note the use of raw magtape.  The dd program is especially
+     suited to I/O on the raw physical devices because it allows
+     reading and writing in arbitrary record sizes.
+
+PROMPTS
+   Input File Name:
+     Enter the input file name.
+
+   Input Block Size:
+     Enter the output block size in bytes.  The default is 512
+     bytes.
+
+   Output File Name:
+     Enter the output file name.
+
+   Output Block Size:
+     Enter the input block size in bytes.  The default is 512
+     bytes.
+
+   Number of Records to Skip:
+     Enter the number of input records to skip before starting to
+     copy.  The default is none.
+
+   Number of Records to Seek:
+     Enter the number of records to seek from the beginning of
+     the output file before copying.  The default is all.
+
+   Number of Input Records to Copy:
+     Enter the number of input records to be copied.  The default
+     is all.
+
+   Select Conversion Options:
+     Initial value is n.  If you select yes, the following
+     conversion prompts appear:
+
+   Output File Exists. Replace File?:
+     Enter yes to allow dd to replace an output file that already
+     exists.  The initial value is no.
+
+   Conversion Buffer Size:
+     Enter the conversion buffer size.	The default is none.
+
+   Convert EBCDIC to ASCII:
+     Initial value is no.  If you enter yes, the input file is
+     converted from EBCDIC to ASCII.
+
+   Convert ASCII to EBCDIC:
+     Initial value is no.  If you enter yes, the input file is
+     converted from ASCII to EBCDIC.
+
+   Map Alphabetics to Lower Case:
+     Initial value is no.  If you enter yes, the input file is
+     converted to lower case.
+
+   Map Alphabetics to Upper Case:
+     Initial value is no.  If you enter yes, the input file is
+     converted to upper case.
+
+   Swap Every Pair of Bytes:
+     Initial value is no.  If you enter yes, the input file bytes
+     are swapped.
+
+   Stop Processing on an Error:
+     Initial value is yes.  If you enter yes, the command is not
+     terminated on an error.
+
+   Pad Input Record to Input Block Size:
+     Initial value is no.  If you enter yes, the input file
+     records are padded to the input block size.
+
+SEE ALSO
+     cp(1).
+
+NOTES
+     The ASCII/EBCDIC conversion tables are taken from the 256-
+     character standard in the CACM Nov, 1968.	The ibm
+     conversion, while less accepted as a standard, corresponds
+     better to certain IBM(R) print train conventions.
+
+     Newlines are inserted only on conversion to ASCII, and
+     padding is done only on conversion to EBCDIC.  These should
+     be separate options.
+
+     If the output is directed to a raw 1/4-inch tape and the
+     input is a file, dd will fail because 1/4-inch tape hardware
+     writes only in multiples of 1024 bytes.
+
+     If the output file exists then the following warning is
+     given:
+
+	  DD -- REPLACE FILE OPTION
+	    Output File Exists. Replace File:
+
+     The default response to this prompt is no.
+
+
+     IBM is a registered trademark of International Business
+     Machines Corporation.
+
+

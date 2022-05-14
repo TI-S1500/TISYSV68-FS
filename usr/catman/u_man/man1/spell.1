@@ -1,0 +1,243 @@
+SPELL(1)						 SPELL(1)
+
+NAME
+     spell, hashmake, spellin, hashcheck - Finds spelling errors
+
+SYNOPSIS
+     spell -b -i -l -v -x +local_file [files]
+     /usr/lib/spell/hashmake
+     /usr/lib/spell/spellin n
+     /usr/lib/spell/hashcheck
+     /usr/lib/spell/compress
+
+DESCRIPTION
+   Purpose
+     The spell utility collects words from the named files (or
+     from standard input if you do not specify files) and
+     searches for the words in a spelling list (system
+     dictionary).  The utility prints on standard output words
+     that neither occur among nor are derivable (by applying
+     certain inflections, prefixes, and/or suffixes) from words
+     in the system dictionary.	It also appends these words to
+     the file /usr/lib/spell/spellhist.
+
+   Options
+     -b 	Imposes British spelling.  Besides preferring
+		such spellings as centre, colour, programme,
+		speciality, and travelled, this option checks
+		-ise in words like standardise.
+
+     -i 	Ignores all chains of included files.  (Chaining
+		can occur in roff source files.  The roff
+		software is not included in TI System V.)  This
+		option overides the -l option.
+
+     -l 	Follows the chains of all included files.
+		(Chaining can occur in roff source files.  The
+		roff software is not included in TI System V.  By
+		default, spell follows chains of included files
+		unless the names of such included files begin
+		with /usr/lib).
+
+     -v 	Prints all words not literally in the spelling
+		list and indicates plausible derivations from the
+		words in the spelling list.
+
+     -x 	Prints every plausible stem and places = in front
+		of each word.
+
+     +local_file
+		Removes words found in local_file from the output
+		of spell.  The local_file argument specifies the
+		name of a user-provided file that contains a
+		sorted list of words, one per line.  With this
+		option, you can specify a set of words that are
+		correct spellings (in addition to the spelling
+		list of spell) for each job.
+
+   Routines
+     You use the following routines to help maintain and check
+     the hash lists used by spell:
+
+     hashmake	Reads a list of words from the standard input and
+		writes the corresponding nine-digit hash code on
+		the standard output.
+
+     spellin n	Reads n hash codes from the standard input and
+		writes a compressed spelling list on the standard
+		output.  Prints on standard error information
+		about the hash coding.
+
+     hashcheck	Recreates the nine-digit hash codes for all the
+		words in a compressed spelling list, and writes
+		these codes on the standard output.
+
+     compress	Removes duplicate entries (words) from the
+		/usr/lib/spell/spellhist file.
+
+   Discussion
+     The spell utility ignores the common formatting macros from
+     the nroff, troff, tbl, and eqn formatting utilities.  (These
+     roff utilities are not supplied with TI System V.)  The
+     spell utility automatically invokes the deroff(1) command to
+     remove all roff formatting commands from the text file being
+     examined for spelling errors.
+
+     Customize spell as follows:
+
+     + Each user can create a local dictionary.
+
+     + All, or a group of users can share a local dictionary.
+
+     + The super-user can add words to the system dictionary.
+
+     To create and use a local dictionary, create a file
+     containing words that you do not want spell to report as
+     misspelled.  The file should contain one word per line and
+     should be sorted alphabetically (use sort(1) to sort the
+     file).  The following example shows you how to use a local
+     spell file called mywords that resides in your home
+     directory:
+
+	  spell +$HOME/mywords file
+
+     The super-user can add words to the system dictionary.  The
+     super-user should collect words, review them, and add them
+     in batches.
+
+     The process of changing words or any string of characters
+     into numbers is called hashing.  Because searching through a
+     list of words is time-consuming, spell searches a list of
+     numbers that correspond to the words.  This list is known as
+     a hashed spelling list.  The utility searches
+     /usr/lib/spell/hlista or /usr/lib/spell/hlistb (for British
+     spellings).
+
+     Use the following procedure to add words to the system
+     dictionary:
+
+     1. Use hashcheck to translate the system hashed spelling list
+	or lists (hlista and/or hlistb) found in /usr/lib/spell
+	into hash codes.  Translate the system hashed spelling
+	list or lists (hlista and/or hlistb)
+
+     2. Use hashmake to translate into hash codes the words you
+	want to add.
+
+     3. Use cat(1) and sort to combine the new hash codes with the
+	hash codes from the existing hash list.
+
+     4. Use spellin to translate the new list of hash codes which
+	contains the old words and the new words you are adding
+	back into a hashed list.
+
+EXAMPLES
+     The following sequence of commands adds words to the system
+     dictionary:
+
+     1. Translate the online hash list into hash codes as follows
+	(to change the British spelling list, substitute hlistb
+	for hlista):
+
+	cd /usr/lib/spell
+	hashcheck < hlista > hashcodesa
+
+     2. Create a sorted file that contains the words to add.  The
+	arguments local1, local2, and local3 in the following part
+	of the example are local dictionaries that contain words
+	to add:
+
+	cat local1 local2 local3 | sort -u > /tmp/goodwords
+
+     3. Translate the new words into hash codes:
+
+	cat /tmp/goodwords | ./hashmake > newhash
+
+     4. Concatenate the two sets of hash codes, the new words, and
+	the existing dictionary hash codes:
+
+	cat newhash hashcodesa | sort -u > newcodes
+
+     5. Translate the new list of hash codes (the newcodes file)
+	into a finished spelling list (the component of the
+	following command line `cat newcodes | wc -l` provides the
+	required argument to spellin, the number of codes being
+	hashed):
+
+	cat newcodes | spellin `cat newcodes | wc -l` > newhlista
+
+     6. Save the old hlista as hlista.00 and move the new hash
+	list to hlista.
+
+	mv hlista hlista.00
+	mv newhlista hlista
+
+     You can simplify all the above steps by using pipes as
+     follows:
+
+	  cd /usr/lib/spell
+	  cat local1 local2 local3 | ./hashmake > new
+	  cat hlista | ./hashcheck > old
+          cat old new | sort -u | ./spellin `cat old new | sort -u | wc -l` > 
+            newhlist
+	  mv hlista hlista.00
+	  mv newhlist hlista
+
+PROMPTS
+   File(s) to be checked:
+     Enter the names of the files to check for spelling.
+
+   British Spelling?:
+     Response is optional. The initial value is no.  Enter yes to
+     print all words not literally in the spelling list.
+
+   Print Stems?:
+     Response is optional. The initial value is no.  Enter yes to
+     print every plausible stem that has an equal sign (=) in
+     front of each word printed.
+
+   Ignore all included Files?:
+     Response is optional. The initial value is no. Enter yes to
+     ignore all chains of included files, and override the prompt
+     Follow /usr/lib included Files, described below.
+
+   Follow /usr/lib included Files?:
+     Response is optional. The initial value is no. Enter yes to
+     follow all included files.
+
+   Local Spell File:
+     Response is optional. Enter the name of the local file of
+     additional words for spell to check against.
+
+   Listing Output File:
+     Response is optional. Enter the name of the file to receive
+     the output of the command. The default is standard output.
+
+FILES
+     Pertinent auxiliary files can be specified by name
+     arguments, indicated below with their default settings.
+     Copies of all output are accumulated in the history file.
+     An auxiliary file called a stop list filters out
+     misspellings
+      (e.g., thier=thy-y+ier) that would otherwise pass.
+
+     D_SPELL=/usr/lib/spell/hlist[ab]	hashed spelling lists,
+					American & British
+     S_SPELL=/usr/lib/spell/hstop	hashed stop list
+     H_SPELL=/usr/lib/spell/spellhist	history file
+     /usr/lib/spell/spellprog		program
+
+SEE ALSO
+     deroff(1), sort(1)
+
+NOTES
+     The spelling list's coverage is uneven.  New installations
+     will probably wish to monitor the output for several months
+     to gather local additions.  Typically, these local additions
+     are kept in a separate local file that is added to the
+     hashed spelling list with spellin.
+
+     The /usr/lib/spell/spellhist file grows indefinitely unless
+     truncated.
+
+

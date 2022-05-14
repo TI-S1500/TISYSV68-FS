@@ -1,0 +1,31 @@
+# cshf  lpmove -- move lp requests 
+#	@(#)LPMOVE.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^LPMOVE -- MOVES LP REQUESTS"\
+	"^THIS COMMAND FOR USE ONLY BY LP ADMINISTRATORS"\
+	"^All Requests:" all yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($all == "n") then
+	prompt "^LPMOVE -- SINGLE MOVE REQUESTS"\
+		"^Request ID(s):" var1 string "$var1"\
+		"^Printer or Class Name:" var2 string\
+		"^#$*"
+else
+	prompt "^LPMOVE -- MOVE ALL REQUESTS"\
+		"^Original Printer or Class Name:" var1 string\
+		"^New Printer or Class Name:" var2 string\
+		"^#$*"
+endif
+
+if ($abort) goto end
+
+echo "=== LPMOVE COMMAND EXECUTING ==="
+echo /usr/lib/lpmove "$var1" "$var2"
+/usr/lib/lpmove "$var1" "$var2"
+
+end:
+unset var1 var2 all

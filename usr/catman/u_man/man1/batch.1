@@ -1,0 +1,70 @@
+BATCH(1)						 BATCH(1)
+
+NAME
+     batch - Executes commands at a later time
+
+SYNOPSIS
+     batch
+
+DESCRIPTION
+   Purpose
+     The batch command reads commands from standard input to be
+     executed at a later time.
+
+   Discussion
+     Standard output and standard error output are mailed to the
+     user unless they are redirected elsewhere.  The shell
+     environment variables, current directory, file size limits,
+     and permissions (read, write, and execute) for owner, group,
+     and others are retained when the commands are executed.
+     Open file descriptors, traps, and priority are lost.
+
+     The batch command submits a batch job.  Processes from batch
+     go into a different queue from that of at(1).  With at you
+     specify when commands are to be executed.	Commands queued
+     with batch are executed when system load level permits.  The
+     batch command writes the job number and schedule time to
+     standard error.
+
+EXAMPLES
+     The following example can be used at a terminal (the
+     notation <CTRL-D> means to press and hold the CTRL key and
+     press the d key):
+
+	  batch
+	  cp dir1/* dir2
+	  <CTRL-D>
+
+     The following example, which demonstrates redirecting
+     standard error to a pipe, is useful in shell procedures (the
+     sequence of output redirection specifications is
+     significant):
+
+	  batch <<!
+	  cp dir1/* dir2 ; ls -l dir2 | mail loginid
+	  !
+
+
+PROMPTS
+   Command File Name:
+     Enter the command file name to be input to the shell.
+
+FILES
+     /usr/lib/cron		Main cron directory
+     /usr/lib/cron/at.allow	List of allowed users
+     /usr/lib/cron/at.deny	List of denied users
+     /usr/lib/cron/queue	Scheduling information
+     /usr/spool/cron/atjobs	Directory for spooled jobs
+
+SEE ALSO
+     at(1), cron(1M), kill(1), mail(1), nice(1), ps(1), sh(1).
+
+DIAGNOSTICS
+     The utility displays messages about various syntax errors.
+
+NOTES
+     Commands that try to determine the tty name of standard
+     input (such as write(1)) may exhibit strange behavior when
+     run by batch.
+
+

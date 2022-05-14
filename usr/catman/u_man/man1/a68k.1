@@ -1,0 +1,228 @@
+A68K(1T)                                                 A68K(1T)
+
+NAME
+     a68k - Invokes the 68020 assembler source processor
+
+SYNOPSIS
+     a68k -belstvx file1[,file2 ...]
+     a68k -elt =file1[,file2 ...]
+     a68k -belstvx [ltx],[prn],[sym]=file1[,file2 ...]
+
+DESCRIPTION
+   Purpose
+     The a68k command processes one or more TI System V 68020
+     assembler source files.  The command produces an
+     intermediate linker text (ltx) file for input to the linker
+     text conversion utility, ltxcoff(1T).  The a68k command also
+     produces a printable assembly listing file as well as an
+     optional symbol data file for input to the symbol report
+     generator, qsym(1T).
+
+   Options
+     -b   Includes both symbol table and cross-reference data in
+          the symbol data file read by qsym.  Specifying -b is
+          equivalent to specifying both -s and -x on the same
+          command line.
+
+     -e   Includes local labels in the linker text file and the
+          symbol data file.
+
+     -l   Retains lowercase characters in user-defined symbols.
+          Without this option, a68k converts lowercase characters
+          to uppercase in user-defined symbols.  The program does
+          not distinguish between upper- and lowercase in
+          instruction mnemonics, directives mnemonics, and
+          register designations.
+
+     -s   Includes symbol table in the symbol data file read by
+          qsym.
+
+     -t   Truncates long symbols to 8 characters.  Without this
+          option, symbols are truncated to 31 characters.
+
+     -v   Inserts an ASCII formfeed character at the beginning of
+          the listing output file.
+
+     -x   Includes cross reference data in the symbol data file
+          read by qsym.
+
+   Arguments
+     ltx  User-defined linker text output file name.  If no
+          suffix is specified, the default file name suffix .ltx
+          is appended to this value.
+
+     prn  User-defined assembly listing output file name.  If no
+          suffix is specified, the default file name suffix .prn
+          is appended to this value.
+
+     sym  User-defined symbol data output file name.  If no
+          suffix is specified, the default file name suffix .sym
+          is appended to this value.
+
+   Discussion
+     The a68k command appends the default file name suffix .a68
+     to each listed input file name for which no suffix is
+     specified.  Input file names must be separated by commas.
+
+     The default output file name suffixes are .ltx (linker
+     text), .prn (assembly listing), and .sym (symbol data).
+     Each execution of a68k produces only one output file of each
+     type (.ltx, .prn, .sym).
+
+     Specify output file requirements in one of the following
+     three ways:
+
+     + If you omit the = from the command line, each output file
+       name is derived by adding the appropriate default suffix
+       (.ltx, .prn, .sym) to the first input file name in the
+       list.
+
+     + If you include the = and specify no user-defined output
+       file name, only the linker text file is produced and its
+       name is derived as described above.  Options related to
+       generation of the assembly listing and symbol data files
+       are ignored if specified.
+
+     + If you include the = and one or more user-defined output
+       file names, only those files corresponding to the user-
+       defined names are produced.  The appropriate default
+       suffix (.ltx, .prn, .sym) is appended to each user-defined
+       name for which no suffix is specified.
+
+     In the typical case, you can specify a single input file
+     that consists of a complete assembly language program
+     terminated by an END directive.  Specification of a list of
+     input files implies concatenation of several source files
+     that will be processed as a single program by a68k,
+     resulting in the generation of a single linker text output
+     file for the entire group of input files.  The a68k command
+     will terminate processing upon encountering an END directive
+     in an input file; therefore, only the last input file in the
+     list should contain an END directive.
+
+EXAMPLES
+     The following example processes the input file lt30.a68 and
+     produces the output files lt30.ltx and lt30.prn.
+
+          a68k lt30
+
+     The following example processes the input file lt30.a68 and
+     produces the output files lt30.ltx, lt30.prn, and lt30.sym.
+
+          a68k -s lt30
+
+     The following example processes the input file lt30.s and
+     produces the output files lt30.ltx, lt30.prn, and lt30.sym.
+
+          a68k -bel lt30.s
+
+     The following example processes the input file lt30.a68 and
+     produces the output file lt30.ltx (suppressing lt30.prn).
+
+          a68k =lt30
+
+     The following example processes the input file lt30.a68 and
+     produces the output file out.ltx (suppressing lt30.prn).
+
+          a68k out=lt30
+
+     The following example processes the input file lt30.a68 and
+     produces the output files lt30.lst and lt30.sym (suppressing
+     lt30.ltx).
+
+          a68k -s ,lt30.lst,lt30=lt30
+
+     The following example processes the input file lt30.a68 and
+     produces the output files obj.ltx and data.sym (suppressing
+     lt30.prn).
+
+          a68k -s obj,,data=lt30
+
+DIAGNOSTICS
+     Exit status values are as follows:
+
+     + 0 - Completed with no errors and no warnings
+
+     + 1 - Completed with no errors; warnings only
+
+     + 2 - Completed with error(s)
+
+     + 3 - Aborted; did not run to completion
+
+PROMPTS
+   Input File Name:
+     Enter one or more 68020 assembler source file names.
+     Separate multiple file names with commas.
+
+   Include Local Labels:
+     The initial value is no.  Enter yes to include local labels
+     in the linker text file and the symbol data file.
+
+   Retain Lowercase Char. Symbols:
+     The initial value is no.  Enter yes to retain lowercase
+     letters in user-defined symbols.
+
+   Truncate Long Symbols:
+     The initial value is no.  Enter yes to truncate long symbols
+     to 8 characters.
+
+   Select Advanced Options:
+     The initial value is no.  Enter yes to receive the prompts
+     that follow.  Select only one of the following two prompts.
+
+   Define Output File Names:
+     The initial value is no.  Enter yes to specify a user-
+     defined output file name.
+
+   Produce Only the Linker Text File:
+     The initial value is no.  Enter yes to produce the linker
+     text file and not the assembly listing or symbol data output
+     files.
+
+     If you enter yes at the Define Output File Names: prompt,
+     the following three prompts are displayed.
+
+   Linker File Name:
+     Enter a user-defined linker text output file name.
+
+   Assembly Listing File Name:
+     Enter a user-defined assembly listing output file name.
+
+   Symbol Data File Name:
+     Enter a user-defined symbol data output file name.
+
+     If you enter no or accept the no initial value at the
+     Produce Only the Linker Text File: prompt, the following
+     seven prompts are displayed.
+
+   Linker File Name
+     Enter a user-defined linker text output file name.
+
+   Assembly Listing File Name:
+     Enter a user-defined assembly listing output file name.
+
+   Symbol Data File Name:
+     Enter a user-defined symbol data output file name.
+
+   Include Symbol Table/Cross Ref. Data:
+     The initial value is no.  Enter yes to include both symbol
+     table and cross-reference data in the symbol data file.
+
+   Include Symbol Table:
+     The initial value is no.  Enter yes to include the symbol
+     table in the symbol data file.
+
+   Inserts Formfeed Character:
+     The initial value is no.  Enter yes to insert an ASCII
+     formfeed character at the beginning of the listing output
+     file.
+
+   Include Cross Reference Data:
+     The initial value is no.  Enter yes to include cross
+     reference data in the symbol data file.
+
+SEE ALSO
+     as(1), a68m(1T), ltxcoff(1T), ltxdump(1T), qsym(1T).
+     TI System V 68020 Assembler manual.
+
+

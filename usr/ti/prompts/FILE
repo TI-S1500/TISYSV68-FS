@@ -1,0 +1,48 @@
+# cshf	file -- determines file type
+#	@(#)FILE.sh	1.2  88/03/21
+#
+onintr end
+
+set done = FALSE
+while ($done == FALSE) 
+prompt "^FILE -- DETERMINES FILE TYPE"\
+	"^SELECT ONE AND ONLY ONE OF THE TOP TWO OPTIONS"\
+	"^*File Containing File Names:" f_input_file acnm $f_input_file\
+	"^*File Name(s):" _input_file macnm $_input_file\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^*Alternate Magic File:" magic acnm $magic\
+	"^Validate Magic File:" val yesno n\
+	"^#$*"
+#
+# code for _input_file
+#
+if ($abort) goto end
+if (("$_input_file" == "") && ("$f_input_file" == "")) then
+	echo ERROR:  Must enter name.
+	goto LoopHere
+else
+	if (("$_input_file" != "") && ("$f_input_file" != "")) then
+		echo ERROR:  Cannot enter two file  targets at once.
+		goto LoopHere
+	else 
+		set done = TRUE
+		if ($magic != "") set magic = -m$magic
+		if ($val == "y") set copt = -c
+		if ("$f_input_file" != "") set _input_file = -f$f_input_file
+		if ($abort) goto end
+		echo "=== FILE COMMAND EXECUTING ==="
+		if ($_output_file != "") then
+			echo file $copt $magic $_input_file ">"$_output_file
+			file $copt $magic $_input_file >$_output_file
+		else
+			echo file $copt $magic $_input_file 
+			file $copt $magic $_input_file | \
+			pg -cp"Output from FILE is being piped through pg: "
+		endif
+	endif
+endif
+LoopHere:
+end
+
+end:
+unset f_input_file magic val *opt done

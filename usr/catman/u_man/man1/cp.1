@@ -1,0 +1,59 @@
+CP(1)                                                       CP(1)
+
+NAME
+     cp - Copies files
+
+SYNOPSIS
+     cp file1 [ file2 ...] target
+
+DESCRIPTION
+   Purpose
+     The file file1 is copied to target.
+
+   Discussion
+     Under no circumstance can file1 and target be the same.  If
+     target is a directory, one or more files are copied to that
+     directory.  If target already exists, its contents are
+     destroyed.
+
+     If target is not an existing file, a new file is created
+     that has the same mode as file1 except that the sticky bit
+     is not copied.  (If you are super-user, the sticky bit is
+     copied.)  The owner and group of target are those of the
+     user.  The last access time of target is set to the time the
+     copy was made.
+
+     If target is an existing file, copying a file into target
+     does not change the mode, owner, or group of target.  The
+     last modification time of target and the last access time of
+     file1 are set to the time the copy was made.
+
+     If target is a link to a file, all links remain and the file
+     is changed.
+
+EXAMPLE
+     The following example copies file1 to a new file called
+     newfile and leaves the original file1 intact.
+
+          cp file1 newfile
+
+     The next example makes copies of files a, b, and c in the
+     directory newdir.
+
+          cp a b c newdir
+
+PROMPTS
+   Source File Name(s):
+     Enter the name of the file (or files) to be copied.
+
+   Destination File (or Dir):
+     Enter the name of the destination file, the file to contain
+     the copied file.  This destination can be a directory.  If
+     the destination does not exist, it is created.  If the
+     destination is an existing file, the previous contents of
+     the file are destroyed.
+
+SEE ALSO
+     chmod(2), cpio(1), ln(1), mv(1), rm(1).
+
+

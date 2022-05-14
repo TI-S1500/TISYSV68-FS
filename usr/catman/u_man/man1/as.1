@@ -1,0 +1,169 @@
+AS(1)							    AS(1)
+
+NAME
+     as - Invokes the 68020 assembler
+
+SYNOPSIS
+     as -o objfile -dlmsV file
+
+DESCRIPTION
+   Purpose
+     The as command processes a TI System V 68020 assembler
+     source file and produces a Common Object File Format (COFF)
+     file for input to the link editor ld(1) or the archive
+     utility ar(1).  The as command also produces an optional
+     assembly listing file.
+
+   Options
+     -o objfile
+	  Puts the assembled object file in objfile.  objfile may
+	  be a simple file name or path name and is used exactly
+	  as specified (nothing is appended).  Without this
+	  option, the object output file name is formed by
+	  removing the .s suffix, if there is one, from the input
+	  file name and appending a .o suffix.
+
+     -d   Executes the linker text dump utility ltxdump(1T) and
+	  appends the linker text dump file to the assembly
+	  listing.  If the -d option is selected and the -l
+	  option is omitted, the assembly listing will consist
+	  solely of the linker text dump file.	This option is
+	  useful for diagnosing assembler error messages produced
+	  by the linker text conversion utility ltxcoff(1T).
+
+     -l   Saves the assembly listing file (indicated by the
+	  suffix .lst).  The as command concatenates the
+	  individual listing files produced by its constituent
+	  utilities into a single assembly listing file.  The
+	  listing file name is formed by removing the .s suffix,
+	  if there is one, from the input file name and appending
+	  a .lst suffix.  Without this option, the assembly
+	  listing file is automatically deleted by as.	The
+	  symbol report generator qsym is not executed unless the
+	  -l option is selected.
+
+     -m   Executes the 68020 assembler macro preprocessor
+	  a68m(1T) and includes the a68m error listing file in
+	  the assembly listing.  This option is necessary when
+	  the input source file contains macro definitions and
+	  macro calls.
+
+     -s   Saves intermediate files created during execution of
+	  as, including:
+
+	  + The assembler source file (indicated by the suffix
+	  .a68) created by the 68020 assembler macro preprocessor
+	  a68m(1T).
+	  + The ltx file (indicated by the suffix .ltx) and
+	  symbol data file (indicated by the suffix .sym) created
+	  by the 68020 assembler source processor a68k(1T).
+
+	  Intermediate file names are formed by removing the .s
+	  suffix, if there is one, from the input file name and
+	  appending the appropriate suffix.  Without this option,
+	  intermediate files are automatically deleted by as.
+
+     -V   Writes the assembler version number to standard output.
+
+Discussion
+     The as command provides a convenient means for processing
+     assembler source via a single command.  The as utility is
+     comprised of a sequence of TI System V 68020 assembler
+     utilities, each of which accomplishes some individual step
+     in the overall assembly process.  The sequence of
+     constituent utilities executed by as is defined as follows:
+
+	  Utility      Description		       Options Used
+
+	  a68m(1T)     Assembler macro preprocessor    -l
+	  a68k(1T)     Assembler source processor      -bel
+	  qsym(1T)     Symbol report generator	       -b
+	  ltxcoff(1T)  Linker text conversion utility  (no options)
+	  ltxdump(1T)  Linker text dump utility        (no options)
+
+     Note that a68m and ltxdump are optional under as.	Also note
+     the options used for individual utilities.  These options
+     were selected for execution under as because they are the
+     most useful for the general case.	See the individual manual
+     pages for each utility for more information.
+
+     Although as should be sufficient for the great majority of
+     cases, the constituent assembler utilities are available and
+     fully documented for those who wish to use them
+     individually.
+
+     The as utility puts all output files in the current
+     directory.  The -o option can be used to specify some other
+     directory for the assembled object file.
+
+     See the TI System V 68020 Assembler manual for a more
+     detailed description of the assembler package.  See the TI
+     System V Support Tools Guide for more information about
+     COFF.
+
+EXAMPLES
+     The following example assembles the input file lt30.s and
+     produces the object output file lt30.o.
+
+	  as lt30.s
+
+     The following example assembles the input file lt30.s and
+     produces the object output file lt30.o.  The -l option
+     directs as to save the assembly listing file in lt30.lst.
+     The -m option directs as to process macro definitions and
+     calls in lt30.s by invoking a68m.	The -s option directs as
+     to save the intermediate files lt30.a68, lt30.ltx, and
+     lt30.sym.
+
+	  as -l -m -s lt30.s
+
+     The following example assembles the input file lt30 and
+     produces the object output file lt30.obj.
+
+	  as -o lt30.obj lt30
+
+PROMPTS
+   Input File Name:
+     Response to this prompt is optional.  Enter a file name to
+     be assembled.
+
+   Object File Name:
+     Response to this prompt is optional.  Enter the name of the
+     file to receive the assembled object file.  If no name is
+     given, the file name defaults to the input file name and .o
+     suffix.
+
+   Execute Linker Text Dump Utility:
+     Initial value is no.  If yes is selected, the linker text
+     dump utility is executed.
+
+   Save the Assembly Listing File:
+     Initial value is no.  If yes is selected, the listing file
+     is saved into the file suffixed by .lst.
+
+   Run Pre-processor:
+     Initial value is no.  If yes is selected, the 68020 macro
+     processor is executed.
+
+   Save Intermediate Files:
+     Initial value is no.  If yes is selected, the intermediate
+     files created during execution of as are saved.
+
+   Print Assembler Version Number:
+     Initial value is no.  If yes is selected, the as version
+     number is printed.
+
+DIAGNOSTICS
+     Exit status values are as follows:
+
+     + 0 - Completed with no errors, warnings are listed
+
+     + 1 - Completed with error(s)
+
+SEE ALSO
+     a68k(1T), a68m(1T), ar(1), ld(1), ltxcoff(1T), ltxdump(1T),
+     qsym(1T).
+     TI System V 68020 Assembler manual.
+     TI System V Support Tools Guide.
+
+

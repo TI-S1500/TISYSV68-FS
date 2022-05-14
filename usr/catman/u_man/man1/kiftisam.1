@@ -1,0 +1,52 @@
+KIFTISAM(1T)					       KIFTISAM(1T)
+
+NAME
+     kiftisam - Converts key-indexed files to their T-ISAM
+     equivalents
+
+SYNOPSIS
+     kiftisam
+
+DESCRIPTION
+   Purpose
+     The kiftisam command converts TI Business System 300, 600,
+     and 800 key-indexed files (KIFs) to TI System 1000 Series
+     indexed sequential access method (T-ISAM) files.
+
+     This command is not available as a command string.
+
+   Discussion
+     The kiftisam command builds the T-ISAM file based on the key
+     masks and the data records of the KIF.  The user provides
+     these attributes by executing the 990 commands Map Key-
+     Indexed File (MKF) and Copy KIF to Sequential File (CKS).
+     The KIF is the input file for MKF and CKS.  The output of
+     MKF and CKS is transported to the System 1000 Series
+     machine.  The kiftisam command is executed to generate a T-
+     ISAM file with characteristics similar to the KIF using the
+     MKF and CKS files as inputs.
+
+EXAMPLE
+     After the CKS and MKF files are transported to the System 1000 Series
+     machine, the user executes the following kiftisam command to produce a
+     T-ISAM file:
+
+	  kiftisam
+
+     Responses to the following prompts are indicated to the
+     right of the colons:
+
+     MKF filename: /usr/joe/mkf
+     CKS filename: /usr/joe/cks
+     T-ISAM filename: /usr/joe/data
+     Binary data?: n
+     T-ISAM maximum record length: 120
+
+     The result of these responses is a T-ISAM file pair named
+     /usr/joe/data.dat and /usr/joe/data.idx generated from the
+     KIF.
+
+SEE ALSO
+     DX10/DNOS to TI System V: System 1500 Migration Guide.
+
+

@@ -1,0 +1,56 @@
+SIZE(1)                                                   SIZE(1)
+
+NAME
+     size - Prints section sizes of common object files
+
+SYNOPSIS
+     size -doxV files
+
+DESCRIPTION
+   Purpose
+     The size command produces section size information for each
+     section in the common object files.  The size of the text,
+     data, and bss (uninitialized data) sections are printed
+     along with the total size of the object file.  If an archive
+     file is input to the size command, the information for all
+     archive members is displayed.
+
+   Options
+     -d   Prints numbers in decimal format, the default if -o or
+          -x is not specified
+
+     -o   Prints numbers in octal format instead of the default
+          decimal format
+
+     -x   Prints numbers in hexadecimal format instead of the
+          default decimal format
+
+     -V   Supplies version information on the size command
+
+PROMPTS
+   File name(s):
+     Enter the name(s) of the object file(s) to be processed.
+
+   Format (d,o,x):
+     Enter d to display size in decimal format.  Enter o to
+     display size in octal format.  Enter x to displays size in
+     hexadecimal format.  The default is d.
+
+   Print Version Number:
+     Initial value is no. If you enter yes, the version number of
+     the process is printed.
+
+EXAMPLE
+     The following command requests size information on the
+     sections of an object file:
+
+          size accept.o
+
+     The result might be similar to the following:
+
+          accept.o:  1440+24+0 = 1464b
+
+SEE ALSO
+     a.out(4), a68k(1T), ar(4), as(1T), ld(1).
+
+

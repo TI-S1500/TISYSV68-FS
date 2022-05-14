@@ -1,0 +1,252 @@
+LD(1)                                                       LD(1)
+
+NAME
+     ld - Invokes the link editor for common object files
+
+SYNOPSIS
+     ld -aeflmorsuLNV -VS files
+
+DESCRIPTION
+   Purpose
+     The ld command combines several object files into one,
+     performs relocation, resolves external symbols, and supports
+     symbol table information for symbolic debugging.
+
+   Options
+     -a   Produces an absolute file and gives warnings for
+          undefined references.  Relocation information is
+          stripped from the output object file unless the -r
+          option is given.  The -r option is needed only when an
+          absolute file should retain its relocation information
+          (not the normal case).  If neither -a nor -r is given,
+          -a is assumed.
+
+     -e epsym
+          Sets the default entry point address for the output
+          file to be that of the symbol epsym.
+
+     -f fill
+          Sets the default fill pattern for holes within an
+          output section as well as initialized bss sections.
+          The argument fill is a two-byte constant.
+
+     -lx  Searches a library libx.a, where x is up to seven
+          characters.  A library is searched when its name is
+          encountered, so the placement of a -l is significant.
+          By default, libraries are located in /lib.
+
+     -m   Produces a map or listing of the input/output sections
+          on the standard output.
+
+     -o outfile
+          Produces an output object file by the name outfile.
+          The name of the default object file is a.out.
+
+     -r   Retains relocation entries in the output object file.
+          Relocation entries must be saved if the output file is
+          to become an input file in a subsequent ld run.  Unless
+          -a is also given, the link editor does not complain
+          about unresolved references.
+
+     -s   Strips line number entries and symbol table information
+          from the output object file.
+
+     -u symname
+          Enters symname as an undefined symbol in the symbol
+          table.  This is useful for loading entirely from a
+          library, since initially the symbol table is empty and
+          an unresolved reference is needed to force the loading
+          of the first routine.
+
+     -L dir
+          Changes the algorithm of searching for libx.a to look
+          in dir before looking in /lib and /usr/lib.  This
+          option is effective only if it precedes the -l option
+          on the command line.
+
+     -N   Puts the data section immediately following the text in
+          the output file.
+
+     -V   Outputs a message giving information about the version
+          of ld being used.
+
+     -VS num
+          Uses num as a decimal version stamp identifying the
+          a.out file that is produced.  The version stamp is
+          stored in the optional header.
+
+   Discussion
+     In the simplest case, the names of several object programs
+     are given, and ld combines them, producing an object module
+     that can either be executed or used as input for a
+     subsequent ld run.  The output of ld is left in a.out.  This
+     file is executable if no errors occur during the load.  If
+     any input file, filename, is not an object file, ld assumes
+     it is either a text file containing link editor directives
+     or an archive library.
+
+     If any argument is a library, it is searched exactly once at
+     the point it is encountered in the argument list.  Only
+     those routines defining an unresolved external reference are
+     loaded.  The library (archive) symbol table (see ar(4)) is
+     searched sequentially with as many passes as are necessary
+     to resolve external references that can be satisfied by
+     library members.  Thus, the ordering of library members is
+     unimportant.
+
+   Section Alignment and MMU
+     The following information about section alignment and MMU
+     requirements should be considered at system installation.
+
+     The default section alignment action for ld on M68000
+     systems is to align the code (.text) and data (.data and
+     .bss combined) separately on 4096-byte boundaries.  Since
+     MMU requirements vary from system to system, this alignment
+     is not always desirable.  The version of ld for M68000
+     systems, therefore, provides a mechanism to allow the
+     specification of different section alignments for each
+     system.
+
+     When all input files have been processed (and if no override
+     is provided), ld searches the list of library directories
+     (as with the -l option) for a file named default.ld.  If
+     this file is found, it is processed as an ld instruction
+     file (or ifile).  The default.ld file should specify the
+     required alignment as outlined below.  If it does not exist,
+     the default alignment action will be taken.
+
+     The default.ld file should appear as follows, with
+     <alignment> replaced by the alignment requirement in bytes:
+
+     SECTIONS {
+          .text : {}
+          GROUP ALIGN(<alignment>) : {
+                       .data : {}
+                       .bss  : {}
+                       }
+          }
+
+     For example, a default.ld file of the following form would
+     provide the alignment on a 512-byte boundary:
+
+     SECTIONS {
+          .text : {}
+          GROUP ALIGN(512) : {
+                       .data : {}
+                       .bss  : {}
+                       }
+          }
+
+     To get alignment on 2K-byte boundaries, the following
+     default.ld file would be specified:
+
+     SECTIONS {
+          .text : {}
+          GROUP ALIGN(2048) : {
+                        .data : {}
+                        .bss : {}
+                        }
+           }
+
+EXAMPLE
+     The following example loads only those routines defining an
+     unresolved external reference from crtO.o and from
+     /lib/libc.a.  The command links those routines with the
+     object files file1 and file2.  The command uses the name
+     execute for the ld output (rather than the name a.out) and
+     strips line number entries and symbol table information from
+     the output file.
+
+          ld -s crtO.o file1.o file2.o -lc -o execute
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of the files to process.
+
+   Output Object File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.  Default is a.out.
+
+   Show Every Byte Difference:
+     The initial value is no.  Enter yes to display the byte
+     number in decimal and the differing bytes in octal.  Enter
+     no to display nothing and return exit codes.
+
+   Produce an Absolute File:
+     Initial value is no.  If you enter yes, an absolute file
+     which gives warnings is produced.
+
+   Produce I/O Sections Map:
+     Initial value is no.  If you enter yes, an absolute file
+     which gives warnings is produced.
+
+   Retain Relocation Entries:
+     Initial value is no.  If you enter yes, relocation entries
+     are retained in the output object file.
+
+   Strip Object File:
+     Initial value is no.  If you enter yes, the line numbers and
+     symbol table information is stripped for the output object
+     file.
+
+   Put Data Section After Text:
+     Initial value is no.  If you enter yes, the data section is
+     placed immediately following the text in the output object
+     file.
+
+   Give LD Version Number:
+     Initial value is no.  If you enter yes, the version number
+     of this process is printed.
+
+   Entry Point Address:
+     Enter the entry point address for the output file.
+
+   Fill Pattern:
+     Enter the pattern to be used to fill holes within an output
+     section.
+
+   Search Library Name:
+     Enter the name of the directory containing the libraries to
+     be used.
+
+   Symbol Table Entry:
+     Enter the name of the symbol to be entered as an undefined
+     symbol in the symbol table.
+
+   Library Directory:
+     Enter the name of the library to be searched BEFORE
+     searching in /lib1.
+
+   Version of Output File:
+     Enter a decimal version stamp to identify the output file
+     produced.
+
+FILES
+     /lib      Libraries
+     /usr/lib  Libraries
+     a.out     Output file
+
+SEE ALSO
+     a.out(4), ar(4), as(1).
+
+WARNINGS
+     Through its options and input directives, the common link
+     editor gives users great flexibility; however, those who use
+     the input directives must assume some added
+     responsibilities.  Input directives should ensure the
+     following properties for programs:
+
+     -    C defines a zero pointer as null.  A pointer to which
+          zero has been assigned must not point to any object.
+          To satisfy this, users must not place any object at
+          virtual address zero in the data space.
+
+     -    When the link editor is called through cc(1), a startup
+          routine is linked with the user's program.  This
+          routine calls exit( ) (see exit(2)) after execution of
+          the main program.  If the user calls the link editor
+          directly, then the user must ensure that the program
+          always calls exit( ) rather than falling through the
+          end of the entry routine.
+
+

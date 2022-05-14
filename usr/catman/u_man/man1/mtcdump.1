@@ -1,0 +1,62 @@
+MTCDUMP(1T)					      MTCDUMP(1T)
+
+NAME
+     mtcdump - Enables or disables the dump capability of
+     multidrop terminal concentrators
+
+SYNOPSIS
+     mtcdump -dDnN [mtcnames]
+
+DESCRIPTION
+   Function
+     The mtcdump command turns on or off the memory dump
+     capability of the multidrop terminal concentrators (MTCs).
+     If the dump capability of an MTC has been enabled, every
+     time the multidrop terminal concentrator is re-downloaded, a
+     memory dump is taken by the host and is saved in a dump
+     output file for further analysis.	The download will not
+     proceed until the dump completes.
+
+     Unless specially disabled by the mtcdump command, each MTC
+     has the memory dump enabled.  The default dump output file
+     for mtcname is /usr/adm/comlog/dumpmtcname.  The dump is a
+     532K-byte memory image.
+
+   Options
+     -d     Enables the dump capability of the MTCs specified by
+	    mtcnames for future MTC memory dumps.
+
+     -D     Enables the dump capability of all the MTCs defined
+	    in the MTC definition file, /etc/mtctab.
+
+     -n     Disables the dump capability of the MTCs specified by
+	    mtcnames.
+
+     -N     Disables the dump capability of all the MTCs defined
+	    in the MTC definition file, /etc/mtctab.
+
+   Arguments
+     mtcnames
+	    An MTC global name or a list of MTC global names as
+	    specified in the MTC definition file, /etc/mtctab.
+
+EXAMPLES
+     The following are example command lines for the mtcdump
+     command.
+
+     mtcdump  -d mtc0
+     mtcdump  -D
+     mtcdump  -n payroll mtc0
+     mtcdump  -N
+
+DIAGNOSTICS
+     One of the following messages is displayed for each specified MTC upon
+     normal mtcdump completion:
+
+	  Enabled dump for mtcname
+	  Disabled dump for mtcname
+
+SEE ALSO
+     mtcdl(1T), mtcreset(1T), mtcstat(1T).
+
+

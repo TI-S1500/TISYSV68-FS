@@ -1,0 +1,38 @@
+/*
+	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1985.  ALL
+	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+	ASSOCIATED DOCUMENTATION.
+*/
+
+#ifdef	SCCSID
+static char ipc_h[] = "@(#)ipc.h	1.3 (TI) 86/02/04";
+#endif	SCCSID
+
+/* @(#)ipc.h	1.1	UNIX System V/68 */
+/* Common IPC Access Structure */
+struct ipc_perm {
+	ushort	uid;	/* owner's user id */
+	ushort	gid;	/* owner's group id */
+	ushort	cuid;	/* creator's user id */
+	ushort	cgid;	/* creator's group id */
+	ushort	mode;	/* access modes */
+	ushort	seq;	/* slot usage sequence number */
+	key_t	key;	/* key */
+};
+
+/* Common IPC Definitions. */
+/* Mode bits. */
+#define	IPC_ALLOC	0100000		/* entry currently allocated */
+#define	IPC_CREAT	0001000		/* create entry if key doesn't exist */
+#define	IPC_EXCL	0002000		/* fail if key exists */
+#define	IPC_NOWAIT	0004000		/* error if request must wait */
+
+/* Keys. */
+#define	IPC_PRIVATE	(key_t)0	/* private key */
+
+/* Control Commands. */
+#define	IPC_RMID	0	/* remove identifier */
+#define	IPC_SET		1	/* set options */
+#define	IPC_STAT	2	/* get options */

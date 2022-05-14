@@ -1,0 +1,37 @@
+GRPCK(1M)                                               GRPCK(1M)
+
+NAME
+     grpck - Checks group files
+
+SYNOPSIS
+     grpck [file]
+
+DESCRIPTION
+   Purpose
+     The grpck command verifies all entries in the group file.
+     This verification includes a check of the number of fields,
+     group name, group ID, and whether all login names appear in
+     the password file. The default group file is /etc/group.
+
+     Command output goes to standard error.  Use >& to redirect
+     output to a file.
+
+PROMPTS
+   Group File:
+     The initial value is /etc/group.  Enter the name of the
+     group file to check.
+
+   Output File Name:
+     Enter the name of the file to receive the command output.
+
+FILES
+     /etc/group
+     /etc/passwd
+
+SEE ALSO
+     group(4), passwd(4).
+
+DIAGNOSTICS
+     Group entries in /etc/group with no login names are flagged.
+
+

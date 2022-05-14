@@ -1,0 +1,32 @@
+UPSOFF(1T)                                             UPSOFF(1T)
+
+NAME
+     upsoff - Stops the powerfail shutdown sequence
+
+SYNOPSIS
+     upsoff
+
+DESCRIPTION
+   Discussion
+     The upsoff command sets the system powerfail indicator to
+     nonpowerfail mode. If /etc/shutdown has been started and is
+     still within its grace period, the system shutdown will be
+     aborted. If the powerfail grace period in /etc/shutdown has
+     already expired when this command is run, the system
+     shutdown process will continue. When the shutdown process
+     has completed, it will monitor the system's powerfail
+     indicator waiting for it to go to into a nonpowerfail mode.
+     When this occurs, a system reset will occur.
+
+     By waiting for nonpowerfail mode and performing a system
+     reset, reboot is postponed until wall power has been
+     restored and the UPS batteries can be recharged.
+
+FILES
+     /dev/ups
+
+SEE ALSO
+     portwait(1T), shutdown(1T), upsmon(1T), upson(1T),
+     upsstat(1T), upswait(1T).
+
+

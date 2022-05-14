@@ -1,0 +1,13 @@
+	uucp - UNIX To UNIX Communications Menu
+		@(#)uucp.sh	1.1 87/03/09
+
+	This menu is a collection of tools used in communicating 
+	   between UNIX systems.
+
+	The tools contained in this menu allow the user to:
+		* Login into a system from a remote terminal
+		  or computer.
+		* To call and login to other computers.
+		* Copy files to and from remote computers.
+		* Execute remote commands, such as "mail".		
+

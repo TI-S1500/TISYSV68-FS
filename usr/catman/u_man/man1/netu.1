@@ -1,0 +1,98 @@
+NETU(1T)						 NETU(1T)
+
+NAME
+     netu - Displays the network utilization ratio
+
+SYNOPSIS
+     netu -ins
+
+DESCRIPTION
+   Purpose
+     The netu command reports the average network utilization of
+     a local area network (LAN) over the sample period.  The
+     ratio is computed by dividing the number of carrier senses
+     detected by the number of samples.  This information is
+     useful for monitoring normal operation and for
+     troubleshooting the network.
+
+   Options
+      -i interval
+	  Changes the interval between samples in units of 3.2
+	  microseconds.  The default interval is 600, (1.92
+	  milliseconds).  On the Ethernet, 10 bits require 1
+	  microsecond.	The smallest Ethernet packet is 64 bytes
+	  or 512 bits, which requires 51 microseconds.
+
+      -n samples
+	  Changes the number of samples taken.	The default is
+	  2,500 samples.  With the default interval of 1.92
+	  milliseconds, the default sample period is 4.8 seconds.
+
+      -s slot
+	  Specifies a chassis slot to be examined.  The
+	  communications carrier board (CCB) in this slot must
+	  have an 802.3/ Ethernet option installed.  With this
+	  option only the specified slot is examined.
+
+   Discussion
+     The netu command allows the user to examine the utilization
+     ratio on the Ethernet network.  If no slot is specified
+     (that is, the -s option is not specified) netu examines
+     every slot for a CCB LAN board.  If a LAN is found, the
+     command reports the utilization of the network and continues
+     searching the rest of the slots for more LANs.  Thus, netu
+     without the -s option can be used to discover the slots and
+     ports of all the 802.3/Ethernet LAN boards on the system.
+
+     Both option ports 0 and 1 of each CCB are examined,
+     regardless of whether a slot is specified.
+
+EXAMPLES
+     The following command line reports the average network
+     utilization of the LAN on chassis slot 3, with a sample
+     interval of 320 microseconds:
+
+	  netu -s 3 -i 100
+
+     The following is an example of network information returned
+     by netu upon normal completion:
+
+	    NETU - NETWORK UTILIZATION
+
+	  NETWORK CARRIER SENSE SATISTICS
+
+	  INTERVAL (sec)= 0.001920
+	  NUMBER of SAMPLES= 2500
+	  ELAPSED TIME (sec)= 4.8000
+
+		       # of CARRIERCS / SAMPLES
+	  SLOT	 PORT  SENSES (CS) (UTILIZATION)
+	  ---------------------------------------
+	  03	 0     00081	   3.24%
+
+
+SEE ALSO
+     netstat(1T), netecho(1T).
+
+DIAGNOSTICS
+     The following messages can be displayed by the NETU utility:
+
+	  usage: netu [-i <interval> -n <samples> -s<slot>]
+	  Error in retrieving NETU parameters on slot x port y, error = status
+	  Specified slot slot out of range of valid slots
+	  Error in closing device, slot x port y error = status
+	  Unable to open ccb LAN in slot x
+	  Unable to open a ccb LAN in any slot
+
+NOTES
+     The netu utility decreases the performance of the CCB
+     because of the added interrupt and sampling overhead.  With
+     the default interval setting the decrease is negligible, but
+     with shorter intervals the increased sampling tends to
+     decrease the CCB throughput.  If the CCB is using the
+     network, the network utilization will also decrease as a
+     result of the sampling overhead.  Larger sample intervals
+     and longer elapsed times are recommended rather than close
+     intervals and short elapsed times.
+
+

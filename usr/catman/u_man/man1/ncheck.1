@@ -1,0 +1,42 @@
+NCHECK(1M)                                             NCHECK(1M)
+
+NAME
+     ncheck - Generates names from inumbers
+
+SYNOPSIS
+     ncheck -ais [ filesystem ]
+
+DESCRIPTION
+     The ncheck command with no argument generates a path name
+     and inumber list of all files on a set of default file
+     systems.  Names of directory files are followed by /..
+
+     A file system must be specified as /dev/rdsk/*:*.
+
+     The report is more useful if sorted.
+
+   Options
+     -a   Allows printing of the names . and .., which are
+          ordinarily suppressed.
+
+     -i numbers
+          Reduces the report to only those files whose inumbers
+          follow.
+
+     -s   Reduces the report to special files and files with
+          set-user-ID mode.  It is intended to discover concealed
+          violations of security policy.
+
+FILES
+     /etc/checklist        For default file systems
+     /etc/mnttab
+
+SEE ALSO
+     fsck(1M), sort(1).
+
+DIAGNOSTICS
+     When the file system structure is improper, ?? denotes the
+     incorrect specification of a parent for a parentless file,
+     and a path name beginning with ... denotes a loop.
+
+

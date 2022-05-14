@@ -1,0 +1,30 @@
+UMOUNT(1M)                                             UMOUNT(1M)
+
+NAME
+     umount - Unmounts file systems and remote resources
+
+SYNOPSIS
+     /etc/umount special
+
+DESCRIPTION
+     umount announces to the system that the previously mounted
+     special is to be made unavailable.  If invoked with
+     directory, umount will search /etc/fstab to fill in the
+     missing argument(s).
+
+FILES
+     /etc/mnttab      Specifies the mount table
+     /etc/fstab       Specifies the file system table
+
+SEE ALSO
+     fstab(4), fuser(1M), mnttab(4), mount(1M), mount(2),
+     setmnt(1M), umount(2).
+
+DIAGNOSTICS
+     umount fails if special is not mounted or if it is busy.
+     special is busy if it contains an open file or some user's
+     working directory.  In such a case, you can use fuser(1M) to
+     list and kill processes that are using
+     special.
+
+

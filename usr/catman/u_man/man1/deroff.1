@@ -1,0 +1,65 @@
+DEROFF(1)                                               DEROFF(1)
+
+NAME
+     deroff - Removes nroff, troff, tbl, and eqn constructs
+
+SYNOPSIS
+     deroff -mw [files]
+
+DESCRIPTION
+   Purpose
+     The deroff utility reads each file in sequence and removes
+     all troff requests, macro calls, backslash constructs, and
+     tbl descriptions, and writes the remainder of the file on
+     standard output.  (The nroff, troff, tbl, and eqn utilities
+     and preprocessors are not supplied with TI System V.)
+
+     The utility operates on chains of included files specified
+     by the .so and .nx troff commands.  If the roff utility has
+     already included a file, deroff ignores a subsequent .so
+     construct that names the included file and terminates
+     execution if deroff encounters a .nx construct that names
+     the included file.
+
+     The utility reads standard input if you do not specify
+     files.
+
+   Options
+     -mx  Specifies the type of input file, where x can be l, m,
+          or s, meaning ml, mm, or ms macro files, respectively.
+          The -mm or -ms option causes the utility to interpret
+          macros so that only running text is output (that is,
+          text from macro lines is not output).  The -ml option
+          forces the -mm option and causes deletion of lists
+          associated the the mm macros.
+
+     -w   Causes output of a word list, one word per line, with
+          all other characters deleted.  A word is defined as any
+          string that contains at least two letters and is
+          composed of letters, digits, ampersands, and
+          apostrophes.  In a macro call, however, a word is a
+          string that begins with at least two letters and
+          contains a total of at least three letters.  Delimiters
+          are any characters other than letters, digits,
+          apostrophes, and ampersands.  The utility removes
+          trailing apostrophes and ampersands from words.
+
+SEE ALSO
+     spell(1).
+
+NOTES
+     The deroff utility is not a complete troff interpreter and
+     can make errors when encountering subtle constructs.  Most
+     such errors result in too much rather than too little
+     output.
+
+     The -ml option does not handle nested lists correctly.
+
+     An ' (apostrophe) in column one of the file will be removed
+     with the character to its right.
+
+     The deroff utility also removes words of two or fewer
+     letters in lines that begin with macro calls or troff
+     requests.
+
+

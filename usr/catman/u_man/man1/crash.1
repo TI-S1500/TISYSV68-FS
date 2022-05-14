@@ -1,0 +1,332 @@
+CRASH(1M)						CRASH(1M)
+
+NAME
+     crash - Examines system images
+
+SYNOPSIS
+     crash [system][namelist]
+
+DESCRIPTION
+   Purpose
+     The crash utility examines an operating system core image
+     interactively.   It interprets and formats system control
+     structures and miscellaneous functions useful when examining
+     a dump.
+
+   Arguments
+     system    Name of file that contains the system image.  The
+	       default value is /dev/mem.  If a system image file
+	       is given, it is assumed to be a system core dump.
+
+     namelist  Name of file to be used for symbol values.  The
+	       default value is /unix.
+
+   Commands
+     Input to crash is typically of the following form:  command
+     [options] [structures to be printed].  When allowed, options
+     modify the format of the printout.  If no specific structure
+     elements are specified, all valid entries are used.  As an
+     example, proc - 12 15 3 prints process table slots 12, 15,
+     and 3 in a long format, but proc prints the entire process
+     table in standard format.
+
+     The following list describes commands available as input to
+     crash:
+
+     !	  Escape to shell.
+
+     ?	  Print synopsis of commands.
+
+     .	  Reexecutes the last crash command.
+
+     .[history_number]
+	  Reexecutes the command specified by history_number from the
+	  history stack. For example, .1 executes history entry number 1.
+
+     buf [list of buffer headers]
+	  Aliases:  hdr, bufhdr.
+	  Formats the system buffer headers.
+
+     buffer [format] [list of buffers]
+	  Alias:  b.
+	  Prints the data in a system buffer according to format.
+	  If format is omitted, the previous format is used.
+	  Valid formats include decimal, octal, hex, character,
+	  byte, directory, inode, and write.  The previous format
+	  creates a file in the current directory (see FILES)
+	  containing the buffer data.
+
+     callout
+	  Aliases:  calls, call, c, timeout, time, tout.
+	  Prints all entries in the callout table.
+
+     ckb  Checks busnet queues for consistency.
+
+     ckcmap
+	  Checks memory management data structures (called core
+	  map entries) for the current CPU for consistency.
+	  Because this command is slow, during execution the
+	  utility periodically prints the number of core map
+	  entries it has already checked.  Use of this command on
+	  a running system can give unreliable results because
+	  core map entries reflect changes of the dynamic
+	  environment of a running system. Note that it is
+	  necessary to have the source code for the crash utility
+	  in order to understand the error messages printed by
+	  this command.
+
+     cmtonb [core map address]
+	  Formats a core map entry. The specified address is
+	  assumed to be a kernel virtual address in the current
+	  CPU.
+
+     config
+	  Prints information about each board in the chassis
+	  including the revision level and part number.
+
+     cpu [cpu number]
+	  Changes the current CPU to the specified CPU. The
+	  current CPU value is used in the processing of various
+	  commands described below. The argument value must be a
+	  number from 0 to n-1, where n is the number of CPUs in
+	  the chassis. The default CPU number is 0.
+
+     cpuloc
+	  Formats various information contained in the CPU local
+	  area of the current CPU.
+
+     ds [list of data addresses]
+	  Finds the closest data symbols to the given addresses.
+
+     errlog
+	  Prints any messages in memory that, under normal
+	  circumstances, would have been written to the system
+	  error log file.
+
+     file [list of file table entries]
+	  Aliases:  files, f.
+	  Formats the file table.
+
+     findaddr structname slot
+	  Displays the address of the specified slot within the
+	  table of specified structures. Only tables available to
+	  the size function are available to findaddr.
+
+     findslot addr ....
+	  Displays the table name, the entry slot number, and the
+	  offset within the entry for each address specified.
+	  Only tables available to the size function are
+	  available to findslot.
+
+     h	  Displays the command history list.
+
+     inode [-] [list of inode table entries]
+	  Aliases:  ino, i.
+	  Formats the inode table.  The - option prints the inode
+	  data block addresses.
+
+     kfp [stack frame pointer]
+	  Aliases:  r5, fp.
+	  Prints the program's idea of the start of the current
+	  stack frame (set initially from a fixed location in the
+	  dump) if no argument is given, or it sets the frame
+	  pointer to the supplied value.
+
+     l [filename]
+	  If you specify the optional filename, crash duplicates
+	  the data sent to standard output and writes the
+	  duplicated data to filename. Otherwise, crash
+	  duplicates the data in a default file called crashlog.
+
+     L	  Closes the last crashlog file opened using the l
+	  command.
+
+     map [list of map names]
+	  Formats the named system map structures.
+
+     mblock [n] ...
+	  Displays allocated Streams message block headers. If no
+	  arguments are given, all allocated header are displayed.
+	  Otherwise, only those mentioned in the argument list
+	  (by slot number) are displayed.
+
+     mbfree
+	  Displays free Streams message block headers.
+
+     mmu [list of mmu table entries]
+	  Formats the information in the specified mmu table
+	  entries.
+
+     mount [list of mount table entries]
+	  Aliases:  mnt, m.
+	  Formats the mount table.
+
+     nbtocm [absolute memory address]
+	  Formats a core map entry. The specified address must be
+	  an absolute memory address because no conversion will
+	  be performed.
+
+     nm [list of symbols]
+	  Prints symbol value and type as found in the namelist
+	  file.
+
+     od [symbol name or address] [count] [format]
+	  Aliases:  dump, rd.
+	  Dumps count data values starting at the symbol value or
+	  address given according to format.  Allowable formats
+	  are octal, longoct, decimal, longdec, character, hex,
+	  or byte.  If the specified address is negative, it is
+	  assumed to be an absolute memory address. Otherwise, it
+	  is assumed to be a kernel virtual address. For kernel
+	  virtual addresses, the utility runs the page tables for
+	  the current CPU to convert the address to the correct
+	  physical address.
+
+     odc [symbol name or address] [count] [format]
+	  This command is the same as the od command except that
+	  the specified address is assumed to be a click-based
+	  address, and the utility does not attempt to follow any
+	  page tables using the address. If a system image file
+	  was given on the command line, a click-based address is
+	  also the byte offset into the system image file
+	  (because a system image file contains only the memory
+	  from each CPU with no overhead information).
+
+     odo [absolute memory address] [count] [format]
+	  This command is the same as the od command except that
+	  the specified address is assumed to be an absolute
+	  physical memory address.
+
+     odp [process table entry] [address] [count] [format]
+	  Dumps count data values starting at the specified
+	  address according to format. The address is assumed to
+	  be a virtual address for the specified process.
+
+     proc [-[r]] [list of process table entries]
+	  Aliases:  ps, p.
+	  Formats the process table.  The -r option causes only
+	  processes that are running (in the run state) to be
+	  printed.  The - alone generates a longer listing.
+
+     q	  Exits from crash.
+
+     qrun
+	  Displays the list of scheduled Streams queues.
+
+     queue [n] ...
+	  Displays Streams queues. If no arguments are given, all
+	  Streams queues are displayed. Otherwise, only those
+	  mentioned in the argument list (by slot number) are
+	  displayed.
+
+     size [structname]
+	  Displays the size of the specified structure. If no
+	  argument is given, a list is printed of all the
+	  structure names for which sizes are available. The list
+	  includes both the structure name and the name of the
+	  table within the system of those structures.
+
+     stack [list of process table entries]
+	  Aliases:  stk, s, kernel, k.
+	  Formats a dump of the kernel stack of a process.  The
+	  addresses shown are virtual system data addresses
+	  rather than true physical locations.	If no entry
+	  number is given, the information from the last
+	  executing process on the current CPU is printed.
+
+     stat
+	  Prints certain statistics found in the dump.	These
+	  include the panic string (if a panic occurred), time of
+	  crash, system name, and the registers saved in low
+	  memory by the dump mechanism.
+
+     stream [-] [n] ...
+	  Displays the Streams table. If no arguments are given,
+	  the entire table is displayed. Otherwise, only those
+	  entries mentioned in the argument list (by slot number)
+	  are displayed.
+
+     strstat
+	  Displays the Streams statistics.
+
+     text [list of text table entries]
+	  Aliases:  txt, x.
+	  Formats the text table.
+
+     trace [-r] [list of process table entries]
+	  Alias:  t.
+	  Generates a kernel stack trace of the current process.
+	  If the -r option is used, the trace begins at the saved
+	  stack frame pointer specified by kfp.  Otherwise, the
+	  trace starts at the bottom of the stack and attempts to
+	  find valid stack frames deeper in the stack.	If no
+	  entry number is given, the information from the last
+	  executing process on the current CPU is printed.
+
+     ts [list of text addresses]
+	  Finds the closest text symbols to the given addresses.
+
+     user [list of process table entries]
+	  Aliases:  uarea, u_area, u.
+	  Prints the user structure of the named process as
+	  determined by the information contained in the process
+	  table entry.	If no entry number is given, the
+	  information from the last executing process on the
+	  current CPU is printed.  Swapped processes produce an
+	  error message.
+
+     var  Aliases:  tunables, tunable, tune, v.
+	  Prints the tunable system parameters.
+
+     vmmeter [string]
+	  Alias:  vm
+	  Formats various virtual memory statistics for the
+	  current CPU. Valid values for string are cnt, rate, and
+	  sum, with sum being the default.
+
+     wppt [process table entry] [address] [count] [format]
+	  This command is the same as the odp command except that
+	  it also prints the page tables entries used to
+	  translate from the specified process virtual address to
+	  the physical location.
+
+     wpt [symbol name or address] [count] [format]
+	  This command is the same as the od command except that
+	  it also prints the page tables entries used to
+	  translate from the specified kernel virtual address to
+	  the physical location.
+
+   Aliases
+     The following are built-in aliases for the formats:
+	  byte	       b.
+	  character    char, c.
+	  decimal      dec, e.
+	  directory    direct, dir, d.
+	  hexadecimal  hexadec, hex, h, x.
+	  inode        ino , i.
+	  longdec      ld, D.
+	  longoct      lo, O.
+	  octal        oct, o.
+	  write        w.
+
+FILES
+     /usr/include/sys/*.h  Header files for table and structure
+			   info
+     /dev/mem		   Default system image file
+     /unix		   Default namelist file
+     buf.#		   Files created containing buffer data
+
+SEE ALSO
+     mount(1M), nm(1), ps(1), sh(1), stty(1).
+
+NOTES
+     Because most options are abbreviated, they will have little
+     meaning to the uninitiated user. A source listing of the
+     system header files at hand would be most useful while
+     executing crash.
+
+     Stack tracing of the current process on a running system
+     does not work.
+
+     The crash utility runs under the bin user ID. The namelist
+     file must be readable by bin.

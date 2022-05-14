@@ -1,0 +1,47 @@
+#	daily system backup -- initiated by cron
+#-----------------------------------------------------------------------------
+# COPYRIGHT (c) 1986   TEXAS INSTRUMENTS INCORPORATED   ALL RIGHTS RESERVED
+#-----------------------------------------------------------------------------
+#
+#			 = "@(#)daily.usr	1.2  86/04/29 " ;
+#
+#-----------------------------------------------------------------------------
+#
+
+
+path=/bin:/etc:/usr/bin
+
+incl=/etc/backups/mwd.usr.incl
+excl=/etc/backups/mwd.usr.excl
+
+ref=/etc/backups/we.usr.toc
+toc=/etc/backups/da.usr.toc
+
+out=/dev/rqt/0h
+
+
+#
+#	This portion  will search the files mentioned in the "include" file
+#		for files/directories that meet the selection criteria.
+#	For the daily backup, the criteria is that the file has been changed
+#		since the last weekly backup.
+#	The files that meet the selection criteria are written to file $toc.
+
+rm -f $toc
+
+while 	read file
+do	find   $file  -newer $ref    -print    >>$toc
+done    <  $incl
+
+#
+#	Delete files from the list of files to be
+#	backed up.  The files to be deleted are read from $excl.
+#	File $toc contains  the raw list of files to backup.
+#	The results are left in the same file.
+
+fgrep -v  -f$excl  $toc   >${toc}xx
+mv ${toc}xx $toc
+
+
+				#####   NOW, MAKE THE BACKUP TAPE
+cpio -ocB     <$toc   >$out

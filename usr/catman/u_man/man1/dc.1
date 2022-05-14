@@ -1,0 +1,153 @@
+DC(1)                                                       DC(1)
+
+NAME
+     dc - Provides a desk calculator
+
+SYNOPSIS
+     dc [file]
+
+DESCRIPTION
+   Purpose
+     The dc utility is an arbitrary precision arithmetic package.
+     Default operands are decimal integers, but you can specify
+     an input base, output base, and the number of fractional
+     digits (scale factor) for dc to maintain.  (See bc(1), a
+     preprocessor for dc that provides a C-like syntax to
+     implement functions and control structures for programs.)
+
+   Discussion
+     The overall structure of dc is a stacking (reverse Polish)
+     calculator.  If you specify an argument, file, dc takes
+     input from the file you specified, and then from the
+     standard input.
+
+     The utility recognizes the following constructions:
+
+     ! Interprets the rest of the line as a TI System V command.
+
+     + - / * % ^
+           Adds (+), subtracts (-), multiplies (*), divides (/),
+           remainders (%), or exponentiates (^) the two top
+           values on the stack.  The utility pops two entries off
+           the stack.  The result is pushed on the stack in their
+           place.  Any fractional part of an exponent is ignored.
+
+     number
+           Pushes the value of the number on the stack.  A number
+           is an unbroken string of the digits 0-9.  You can
+           precede the number with an underscore (_) to input a
+           negative number.  Numbers can contain decimal points.
+
+     ; :   Executes array operations.
+
+     <x   >x   =x
+           Pops and compares the top two elements of the stack.
+           Register x is evaluated if the top two elements obey
+           the stated relation.
+
+     ?     Takes a line of input from the input source (usually
+           the terminal) and executes the input.
+
+     I     Pushes the input base onto the top of the stack.
+
+     Lx    Pops the top value of x, which is treated as a stack,
+           onto the main stack.
+
+     O     Pushes the output base onto the top of the stack.
+
+     P     Interprets the top of the stack as an ASCII string,
+           removes it and prints the top of the stack.
+
+     Q     Pops the top value on the stack and pops the string
+           execution level by that value.
+
+     Sx    Pops the top of the stack and pushes the value onto x,
+           which is treated as a stack.  The x can be any
+           character.
+
+     X     Replaces the number on the top of the stack with its
+           scale factor.
+
+     Z     Replaces the number on the top of the stack with its
+           length.
+
+     [ ... ]
+           Puts the bracketed ASCII string onto the top of the
+           stack.
+
+     c     Pops all values on the stack.
+
+     d     Duplicates the top value on the stack.
+
+     f     Prints all values on the stack.
+
+     i     Pops the top value on the stack and uses the result as
+           the new input base.
+
+     k     Pops the top of the stack and uses the result as a
+           non-negative scale factor.  The appropriate number of
+           places are printed on output and maintained during
+           multiplication, division, and exponentiation.  The
+           interaction of scale factor, input base, and output
+           base is reasonable if all are changed together.
+
+     lx    Pushes the value in register x onto the stack.
+           Register x is not altered.  All registers start with
+           zero value.
+
+     o     Pops the top value on the stack and uses the result as
+           the new output base.
+
+     p     Prints without changing the top value on the stack.
+
+     q     Causes the program to exit.  If executing a string,
+           the recursion level is popped by two.
+
+     sx    Pops the top of the stack and stores the value into a
+           register named x, where x can be any character.
+
+     v     Replaces the top element on the stack by its square
+           root.  Any existing fractional part of the argument is
+           taken into account, but otherwise the scale factor is
+           ignored.
+
+     x     Treats the top element of the stack as a string of
+           characters and executes the top element as a string of
+           dc commands.
+
+     z     Pushes the stack level onto the stack.
+
+EXAMPLE
+     The following example prints the first ten values of n!:
+
+        [la1+dsa*pla10>y]sy
+        0sa1
+        lyx
+
+PROMPTS
+   Input File Name:
+     Response to this prompt is optional. To respond enter an
+     input file name.
+
+SEE ALSO
+     bc(1).
+     Interactive Desk Calculator section in the Support Tools
+     Guide.
+
+DIAGNOSTICS
+     "x is unimplemented"
+                       The value x is an octal number.
+
+     "stack empty"     Not enough elements on the stack to do
+                       what was asked.
+
+     "Out of space"    Message appears when the free list is
+                       exhausted (too many digits).
+
+     "Out of headers"  Too many numbers are being stored.
+
+     "Out of pushdown" Too many items are on the stack.
+
+     "Nesting Depth"   Too many levels of nested execution exist.
+
+

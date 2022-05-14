@@ -1,0 +1,95 @@
+TCDL(1T)                                                 TCDL(1T)
+
+NAME
+     tcdl - Downloads network terminal concentrators
+
+SYNOPSIS
+     tcdl -adgsv
+
+DESCRIPTION
+   Function
+     The tcdl command invokes the parent process of the network
+     terminal concentrator (NTC) download utility, tcdl.  The NTC
+     download utility is a download server that responds to the
+     download request from the ROM of the NTC.
+
+   Options
+     -a   Enables the tcdl auto-config feature.  This option can
+          be used only when there is only one TI System V on the
+          network and all the associated NTCs are on the same
+          network.  With the auto-config option, the tcdl does
+          not require that the 48-bit address of each NTC be
+          predefined in /etc/tctab.
+
+          When the first broadcast download request from the NTC
+          arrives, the tcdl obtains the 48-bit address of the NTC
+          from the request and tries to find a match in its NTC
+          information table.  If there is no match, a dummy
+          address (all 0s, an undefined 48-bit address) is found
+          instead.  The tcdl replaces the dummy address with the
+          real 48-bit address and starts download processing.
+          This option simplifies the task of obtaining each 48-
+          bit address from each NTC.  Users can execute the
+          tcstat(1T) command to find the real 48-bit addresses of
+          the NTCs saved by the tcdl.  The -w option of tcstat
+          can be used to update the dummy addresses in /etc/tctab
+          with the real 48-bit addresses whenever the information
+          is needed.
+
+     -g   Enables the tcdl general download server option.  The
+          tcdl potentially can be a download server for any
+          equipment that can be downloaded with the same download
+          protocol as defined for NTC download.  The download
+          file path name is specified in the download request and
+          it must be a valid TI System V path name.
+
+     -s slot_num
+          Starts the tcdl for the specified slot (slot_num) in
+          which a communications carrier board (CCB) with a local
+          area network (LAN) option card is installed.  The
+          information of the NTCs associated with the indicated
+          CCB slot is reinitialized according to /etc/tctab.
+          This information is saved in the shared memory segment
+          of the tcdl. One tcdl daemon is started for the CCB.
+          Other tcdl daemons for other CCBs on the system, if
+          other CCBs exist, are not affected.
+
+     -d   Enables the memory-dump capability in the initial tcdl
+          process. When the initial tcdl is running, the dump
+          capability is disabled to eliminate unnecessary memory
+          uploading and to save time entering multiuser mode.
+          After the initial tcdl process completes, the dump
+          capability is enabled until changed by the tcdump
+          command. If external NTC memory dumps need to be taken
+          during the multiuser start-up, edit the /etc/download
+          file and add this option to the tcdl command.
+
+     -v   Enables the verbose mode during the tcdl process.
+          Normally, tcdl runs silently and logs all activities to
+          the /usr/adm/comlog/tcdllog file.  The verbose mode
+          directs the messages to the log file and to the system
+          console. When the initial tcdl process completes, the
+          verbose mode is turned off.
+
+   Discussion
+     The parent tcdl creates a shared memory segment for NTC
+     information, forks a child for each existing CCB and
+     terminates after all the NTCs that need to be downloaded at
+     that time are downloaded.  The tcdl children stay running as
+     daemons until the corresponding CCB is re-downloaded or
+     panics.  The NTC definition file, /etc/tctab, contains all
+     the information needed by the tcdl.  The tcdl logging is in
+     /usr/adm/comlog/tcdllog.  Normally, the tcdl is invoked
+     automatically when the system enters multiuser mode.
+
+SEE ALSO
+     tcdump(1T), tcreset(1T), tcstat(1T).
+
+DIAGNOSTICS
+     The following messages are displayed when tcdl is started
+     and when the download completes:
+
+          tcdl is started
+          NTC download process completed
+
+

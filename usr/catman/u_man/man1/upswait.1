@@ -1,0 +1,91 @@
+UPSWAIT(1T)					      UPSWAIT(1T)
+
+NAME
+     upswait - Waits for the UPS backup mode
+
+SYNOPSIS
+     upswait ttyXX
+     upswait -r ttyXX
+
+DESCRIPTION
+   Discussion
+     The upswait command is provided for use on TI 1500 systems
+     that do not have built-in UPS support hardware and must rely
+     on the status of a serial port to indicate the condition of
+     power to the system. On these systems, upswait will monitor
+     a tty port and set the system's internal powerfail indicator
+     accordingly.
+
+     In its default state, upswait will monitor the specified tty
+     device waiting for a successful open as in indication of
+     loss of wall power.  After starting the powerfail sequence,
+     upswait then monitors the specified tty device waiting for a
+     loss of RS232 signals.  When the signals are lost, upswait
+     unsets the systems powerfail indicator and repeats the
+     process. You can reverse the conditions that define power
+     loss and restoration by supplying the -r option. With this
+     option, upswait starts powerfail when the specified tty
+     device looses signals, and stops powerfail when the tty
+     device becomes openable.
+
+NOTES
+     This command is a Bourne shell script. You may wish to alter
+     upswait to use some other means to check the status of the
+     UPS.  There are two functions in the upswait script to
+     accomplish the UPS detection, wait_for_online() and
+     wait_for_offline(). The wait_for_online() function should
+     stop the script execution until the UPS is online (providing
+     power to the system from its batteries) and
+     wait_for_offline() should stop the script execution until
+     the UPS is no longer supplying power to the system via the
+     batteries. These two functions are preceded by large banners
+     in the script for easy location:
+
+	  #######################################################
+
+	  # wait for ups to go online				#
+
+	  #							#
+
+	  # modify code as needed to pause until the ups	#
+
+	  # goes into battery backup mode			#
+
+	  #							#
+
+	  #######################################################
+
+	  wait_for_online() {
+
+	  # commands to wait for ups online state
+
+	  }
+
+	  #######################################################
+
+	  # wait for ups to go offline				#
+
+	  #							#
+
+	  # modify code as needed to pause until the ups	#
+
+	  # goes offline, i.e., wall power is restored		#
+
+	  #							#
+
+	  #######################################################
+
+	       wait_for_offline() {
+
+		  # commands to wait for ups offline state
+
+	       }
+
+FILES
+     /dev/ups
+
+SEE ALSO
+     portwait(1T), shutdown(1T), upsmon(1T), upsoff(1T),
+     upson(1T), upsstat(1T).
+
+

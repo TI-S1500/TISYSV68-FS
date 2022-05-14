@@ -1,0 +1,26 @@
+# cshf	get -- get a version of an SCCS file.  
+#	@(#)GET.sh	1.2  87/10/13
+#
+onintr end
+prompt "^GET -- GETS A VERSION OF AN SCCS FILE"\
+	"^File Name(s):" _input_file macnm "$_input_file"\
+	"^*Give Delta (version) Number:" rflag string \
+	"^Get File for Edit or Print (e,p):" action\
+	"element(E,e=e,P,p=p)" p\
+	"^Suppress the Output:" sflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($rflag != "") set ropt = -r$rflag
+if ($action == "e") set opt = e$opt
+if ($action == "p") set opt = p$opt
+if ($sflag == "y") set opt = s$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== GET COMMAND EXECUTING ==="
+echo get $opt $ropt $_input_file
+get $opt $ropt $_input_file
+
+end:
+unset *flag *opt action

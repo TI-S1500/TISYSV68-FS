@@ -1,0 +1,47 @@
+COMM(1)                                                   COMM(1)
+
+NAME
+     comm - Selects or rejects lines common to two sorted files
+
+SYNOPSIS
+     comm -123 file1 file2
+
+DESCRIPTION
+   Purpose
+     The comm command reads two files that are ordered in ASCII
+     collating sequence (see sort(1)), and produces a three-
+     column output.  The output consists of lines only in file1,
+     lines only in file2, and lines in both files.  The file name
+     - means the standard input.
+
+     Lines longer than 255 characters are truncated after the
+     255th character.  Any additional characters are treated as
+     the next line in the file.
+
+   Options
+     Options 1, 2, or 3 suppress printing of the corresponding
+     column.  Thus comm -12 prints only the lines common to the
+     two files; comm -23 prints only lines in the first file but
+     not in the second; comm -123 produces no output.
+
+PROMPTS
+   File 1:
+     Enter the name of a file to compare.
+
+   File 2:
+     Enter the name of a file to compare with the first file.
+
+   Output File Name:
+     Response to this prompt is optional. Enter a file name to
+     receive the output of this command.
+
+   Columns to Omit (1,2,3):
+     Enter 1 to omit the display of lines only in file 1.  Enter
+     2 to omit the display of lines only in file 2.  Enter 3 to
+     omit the display of lines common to both files.  You can
+     enter any combination of 1, 2, and 3.
+
+SEE ALSO
+     cmp(1), diff(1), sort(1), uniq(1).
+
+

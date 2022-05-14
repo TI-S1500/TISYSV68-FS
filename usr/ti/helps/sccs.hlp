@@ -1,0 +1,12 @@
+	sccs - Source Code Control System Menu
+		@(#)sccs.sh	1.1 87/03/09
+
+	This menu lists tools which create, maintain, and control special 
+	   files called SCCS files.  
+
+	The SCCS commands let the user create and store multiple versions 
+	   of a program or document in a single file, instead of having 
+	   one file for each version.  They allow the user to retrieve any 
+	   version at any time, make changes to this version, and save the 
+	   changes as a new version of the file.
+

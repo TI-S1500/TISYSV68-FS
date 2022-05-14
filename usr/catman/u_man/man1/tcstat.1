@@ -1,0 +1,137 @@
+TCSTAT(1T)					       TCSTAT(1T)
+
+NAME
+     tcstat - Lists status of network terminal concentrators
+
+SYNOPSIS
+     tcstat -w [tcnames]
+
+DESCRIPTION
+   Function
+     The tcstat command lists information about the specified
+     network terminal concentrators (NTCs).  This command sends a
+     status request to each NTC to get the most recent status
+     information.  The tcstat command can be used to determine if
+     the NTC is currently operational and running with the
+     correct software and hardware versions.
+
+   Arguments
+     tcnames
+	    An NTC global name or a list of NTC global names as
+	    specified in the NTC definition file, /etc/tctab.
+	    Without tcnames specified, the command lists the
+	    status information of all the NTCs defined in the NTC
+	    definition file, /etc/tctab.
+
+   Options
+     -w     Updates the NTC definition file /etc/tctab with the
+	    current information in the NTC information table kept
+	    by the NTC download process.  If the auto-config
+	    option of the NTC download utility is used, this
+	    option replaces any unknown 48-bit host addresses in
+	    the file with the real 48-bit host addresses.  (See
+	    tcdl(1T).  The auto-config option is -a.)  Thus,
+	    possible manual editing errors are avoided.
+
+EXAMPLES
+     The following are example command lines for the tcstat
+     command:
+
+	  tcstat payroll tc0
+	  tcstat
+	  tcstat -w
+
+     The following is an example of status information returned
+     by tcstat upon normal completion:
+
+     NAME  STATUS	 ROM	 PORT15-0  CCB	NETWORK   HOST ADDR	DUMP
+     tc0   : RAM 0115*A  115.86  0000	   03	00000000  080028000801
+     tc1   : RAM 0115*A  134.86  0000	   03	00000000  0800280005D0	enabled
+     junk  : OFFLINE			   03	000124FD  080011111111
+
+     The meanings of the columns are as follows:
+
+     NAME	  NTC global name.  Maximum length is 8
+		  characters.
+
+     STATUS	  The current running state of the NTC.  There
+		  are 6 possible status conditions returned by
+		  the utility:
+
+		  WAITING - The NTC is running in the ROM
+		  download code.  A download request is sent out
+		  of the NTC every 60 seconds.	The download
+		  process, tcdl, on the download server host
+		  system has not responded to the download
+		  request yet.
+
+		  DNLDING - The NTC is running in the ROM
+		  download code.  The download is in progress.
+
+		  UPLDING - The NTC is sending the memory dump to
+		  the host.  The NTC is running in the ROM
+		  download code. The download will be started
+		  when the memory dump is finished.
+
+		  RAM version - The NTC is running in the
+		  downloaded code (RAM) and is operational.  The
+		  version number of the downloaded software is
+		  displayed.
+
+		  OFFLINE - No response has been received from
+		  the NTC.  This may indicate that the NTC is
+		  powered off or has encountered software or
+		  hardware problems.  Further investigation into
+		  the cause for the status is needed.
+
+		  UNKNOWN - The status returned from the NTC is
+		  not valid.  The NTC might need to be downloaded
+		  again.  Further investigation into the cause
+		  for the status is needed.
+
+     ROM	  The version number of the ROM in the NTC is
+		  displayed.  This is the Julian date of the ROM
+		  code.
+
+     PORT15-0	  A 16-bit hexadecimal value that indicates the
+		  self-test results of the 16 asynchronous ports
+		  on the NTC, one bit for each port.  If bit n is
+		  1, port n failed the self-test.  For example,
+		  0090 means that port 4 and port 7 failed the
+		  self-test; 0000 means that all 16 ports passed
+		  the self-test.
+
+     CCB	  The chassis slot number of the communications
+		  carrier board (CCB) that is associated with the
+		  specified NTC.
+
+     NETWORK	  The 32-bit network number of the NTC.  This
+		  number indicates the network to which the NTC
+		  is attached.	00000000 means the NTC is on the
+		  same directly connected network as the host
+		  system.
+
+     HOST ADDR	  The 48-bit host address assigned to the NTC.
+
+     DUMP	  If the memory dump capability of that NTC is
+		  enabled, the word enabled is displayed.  See
+		  tcdump(1T).
+
+DIAGNOSTICS
+     The following messages can be displayed by the tcstat
+     utility:
+
+     usage: tcstat -[w] [tcname(s)]
+     Unable to locate shared memory segment, error =
+     Attaching shared memory segment, error =
+     Can't open the INET device driver on CCB, err =
+     Error from INET device driver on CCB, err =
+     tcname is not found in NTC definition file
+     tcname has an undefined 48 bit address
+     IOCTL ext-read error from CCBx, error =
+     Cannot open /tmp/tctemp for writing, error =
+
+SEE ALSO
+     tcdl(1T), tcdump(1T), tcreset(1T).
+
+

@@ -1,0 +1,130 @@
+
+#
+# COPYRIGHT (c) 1985 TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+#
+#
+# @(#)sysboot.sh	1.7 89/11/17
+#
+#	sysboot.sh
+#
+
+sync; sync; sync
+USAGE="Usage: $0 [ seconds ]"	# seconds in range 0-999
+if [ $# -eq 0 ]
+then
+	GRACE=60
+elif [ $# -eq 1 ]
+then
+	case $1 in
+		[0-9] | \
+		[0-9][0-9] | \
+		[0-9][0-9][0-9] ) GRACE=$1;;
+
+		* ) echo $USAGE 1>&2
+			exit 1;;
+	esac
+else
+	echo $USAGE 1>&2
+	exit 1
+fi
+
+a=`pwd`
+if [ "$a" != "/" ]
+then
+	echo "$0: You must be in the root directory (/) to use $0" 1>&2
+	exit 1
+fi
+echo "\nSYSBOOT PROGRAM\n"
+date
+echo "     THIS UTILITY WILL REBOOT THE SYSTEM."
+echo "     If you are not logged on as Superuser, type q and do so - \c"
+read c
+if [ "$c" = "q" -o "$c" = "Q" ]
+then
+	exit 0
+fi
+
+a=`df "/"`
+set $a
+blk=$3
+if [ $blk -lt 50 ]
+then
+	echo
+	echo
+	echo "	The ROOT, '/', file system has less than 50 free blocks"
+	echo "	available.  The actual number of free blocks is $blk."
+	echo "	This condition may prevent you from rebooting the system"
+	echo "	or cause unpredictable results upon rebooting."
+	echo "	Do you want to continue the reboot? (y or n): \c";
+	read b
+	if [ "$b" != "y" -a "$b" != "Y" ]
+	then
+		exit 0
+	fi
+	echo
+	echo
+fi
+
+T=/tmp
+trap "rm -f $T/$$; exit 0" 0 1 2 3 15
+
+cd /
+a="`who | wc -l`"
+if [ $a -gt 1 ]
+then
+	echo "\nDo you want to send your own message? (y or n):   \c"
+	read b
+	if [ "$b" = "y" ]
+	then
+		echo "\nType your message followed by ctrl-d ...\n"
+		/etc/wall
+	else
+		/etc/wall <<!
+
+***********************************************
+         PLEASE LOG OFF NOW ! ! !
+        System reboot about to begin.
+All processes will be killed in $GRACE seconds.
+***********************************************
+!
+	fi
+	sleep $GRACE
+fi
+/etc/wall <<!
+
+***********************************
+SYSTEM BEING BROUGHT DOWN NOW ! ! !
+***********************************
+!
+if [ $GRACE -ne 0 ]
+then
+	sleep 10
+fi
+
+echo "\nKill all user processes and daemons for this system;"
+echo "               SYSTEM WILL BE REBOOTED."
+echo "Do you want to continue? (y or n):   \c";
+read b
+if [ "$b" = "y" ]
+then
+	/usr/lib/lpshut
+	echo "Line printer scheduler stopped."
+	/usr/lib/acct/shutacct
+	echo "Process accounting stopped."
+	/etc/errstop
+	echo "Error logging stopped."
+	echo "\nAll currently running processes will now be killed."
+	#	tell init not to respawn
+	/etc/init z
+	/etc/killall 15
+	sleep 15
+	/etc/killall
+mount | awk ' { x[NR] = $3 } END { for (i = NR; i > 1; --i) print "umount ", x[i] } ' > /.xx_yy_zz
+	sh < /.xx_yy_zz
+	rm /.xx_yy_zz
+	sync;sync;sync;
+	/bin/bootdvr;
+else
+	echo "For help, call your system administrator."
+fi

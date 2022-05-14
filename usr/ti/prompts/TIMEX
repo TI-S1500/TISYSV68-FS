@@ -1,0 +1,51 @@
+# cshf 	timex -- report process data and system activity 
+#	@(#)TIMEX.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^TIMEX -- TIMES A COMMAND AND REPORTS PROCESS DATA AND SYSTEM ACTIVITY"\
+	"^*Command to be Timed:" cmd string\
+	"^Total Number of Blocks:" oflag yesno n\
+	"^Report System Activity:" sflag yesno n\
+	"^Show Accounting Record Options:" pflag yesno n
+
+if ($abort) goto end
+if ($pflag == "y") then
+	prompt "^TIMEX -- ACCOUNTING RECORD OPTIONS"\
+	"^Print Fork/Exec Flag:" fflag yesno n\
+	"^Total Available CPU Time:" hflag yesno n\
+	"^Total Kcore Minutes:" kflag yesno n\
+	"^Print Mean Core Size:" mflag yesno n\
+	"^Print CPU Factor:" rflag yesno n\
+	"^Separate System/User Times:" tflag yesno n
+endif
+
+if ($abort) goto end
+ 
+# start setting up timing options
+#
+set opt
+if ($oflag == "y") set opt = o$opt
+if ($sflag == "y") set opt = s$opt
+if ($opt != "") set opt = -$opt
+
+set flgopt 
+set popt 
+if ($pflag == "y") then
+	if ($fflag == "y") set flgopt = f$flgopt
+	if ($hflag == "y") set flgopt = h$flgopt
+	if ($kflag == "y") set flgopt = k$flgopt
+	if ($mflag == "y") set flgopt = m$flgopt
+	if ($rflag == "y") set flgopt = r$flgopt
+	if ($tflag == "y") set flgopt = t$flgopt
+	set popt = -p$flgopt
+endif
+
+if ($abort) goto end
+echo === TIMEX COMMAND EXECUTING ===
+echo timex $popt $opt $cmd
+
+timex $popt $opt $cmd
+
+end:
+unset *opt *flag flagopt cmd 

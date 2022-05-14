@@ -1,0 +1,9 @@
+# cshf   id -- Prints user and group IDs and names 
+#	@(#)ID.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^ID -- PRINTS USER AND GROUP IDS AND NAMES"
+echo "=== ID COMMAND EXECUTING ==="
+id
+end: 

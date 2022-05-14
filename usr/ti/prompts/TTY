@@ -1,0 +1,20 @@
+# cshf tty - Gets the terminal name 
+#	@(#)TTY.sh	1.1  87/03/09
+#
+onintr end
+
+prompt	"^TTY -- GETS THE TERMINAL'S NAME"\
+	"^Synchronous Line Number:" lflag yesno n\
+	"^Inhibit Printing Terminal's Path Name:" sflag yesno n\
+	"^#$*"
+
+if( $abort )  goto end
+if( $lflag == "y" )  set lopt = -l
+if( $sflag == "y" )  set sopt = -s
+
+echo "=== TTY COMMAND EXECUTING ==="
+echo tty $lopt $sopt 
+tty $lopt $sopt 
+
+end:
+unset *opt *flag 

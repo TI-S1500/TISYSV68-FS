@@ -1,0 +1,216 @@
+PACKFS(1T)					       PACKFS(1T)
+
+NAME
+     packfs - Packs a file system
+
+SYNOPSIS
+     packfs [-c cntlfile] [-n] special
+
+DESCRIPTION
+   Purpose
+     The packfs command moves the data blocks of files within a
+     file system so that each file (and directory) occupies a
+     contiguous section of disk. All free blocks are placed at
+     the end of the file system. System performance can be
+     improved greatly by having files reside in contiguous disk.
+
+     A control file can be used to specify the desired order of
+     the files within the file system. A control file allows you
+     to place files that you know are accessed frequently so that
+     they are physically close to each other on the disk. If a
+     control file is not used, the files are placed in order by
+     their inode numbers.
+
+   Options
+     -c cntlfile
+	       Specifies the file named cntlfile as a control
+	       file containing a list of inode numbers. If a
+	       control file is used, the files in the file system
+	       with the specified inode numbers are placed first
+	       in the file system and in the same order as the
+	       inode numbers are found in the control file.  Any
+	       files not specified in the control file are
+	       placed, in inode number order, after those that
+	       are specified. The output produced by the ff
+	       utility and that produced by the ls utility with
+	       -i option are both acceptable for control file
+	       syntax.
+
+     -n        Do not write to the file system. If this option is
+	       used, packfs maps the files in the file system,
+	       reports on the amount of fragmentation, and then
+	       terminates.
+
+   Arguments
+     special   Specifies the physical disk section (such as
+	       /dev/rdsk/sys:usr) of the file system to be
+	       packed. The name must be for the raw device and
+	       not that of the blocked device. The file system
+	       must be unmounted if reorganization is to be done.
+
+   Discussion
+     The packfs utility works with both the standard file system
+     and with hardened file systems.
+
+     While the packfs utility does not explicitly require super-
+     user privileges to use it, most system administrators will
+     have the file system partitions set up so that super-user
+     privileges are required to read and/or write to the raw
+     devices.
+
+     The algorithm used by the packfs utility is a safe algorithm
+     in the sense that, if its operation is suddenly stopped, all
+     files are intact. This includes stoppage due to a system
+     panic, power failure, the utility being killed via the
+     interrupt character, or the utility being killed by the
+     receipt of any other signal.  Under these circumstances,
+     packfs guarantees that all files are intact, but the free
+     list is not intact.  In this case, you must rebuild the free
+     list either by using the fsck utility or by starting the
+     packfs utility again. If the packfs utility is restarted, it
+     resumes where it left off and completes the file system
+     reorganization before rebuilding the free list. You must
+     then run fsck to get the file system state field set
+     properly (to OKAY).
+
+     When packfs first starts, it maps all files on the disk to
+     determine which data blocks belong to which files. If you
+     terminate the utility while it is mapping the files, the
+     file system will be intact. Once the mapping is done, packfs
+     immediately begins the packing process. Any termination of
+     packfs after this point will require running either fsck or
+     packfs again to ensure that the free list is rebuilt.
+
+     If the file system is corrupted when packfs is started,
+     packfs may detect that corruption and terminate with a
+     message indicating that you need to use fsck first. If only
+     the free list is corrupted, packfs will run successfully and
+     rebuild the free list just before terminating.  If more than
+     the free list is corrupted but packfs fails to detect the
+     corruption, packfs will run successfully, rebuild the free
+     list, and terminate, leaving the file system in exactly the
+     same state of corruption.
+
+     If the file system does not contain at least 32 blocks of
+     free space, the packfs utility will refuse to work. The more
+     free space in the file system, the faster the utility will
+     work, even if that free space is scattered throughout the
+     file system. The time required to complete the packing
+     operation is also dependent on the size of the file system
+     and on the amount of fragmentation that exists. In general,
+     on a moderately fragmented file system, packfs works at a
+     rate of about 200 megabytes per hour. If packfs has been run
+     recently, subsequent invocations of packfs will run much
+     faster, even if the control file specifies to place the
+     files in a different order than was specified the last time.
+     For this reason and because of improved system performance
+     with contiguous files, it is recommended that you pack file
+     systems on a regular basis.
+
+     During the packing process, packfs writes a period (.) to
+     the terminal upon completion of each megabyte of disk so you
+     know it is still working and how far it has progressed. The
+     total number of periods written is dependent on the size of
+     the file system being packed.
+
+     The packfs utility accepts all of its input on the command
+     line and does not ask any questions interactively. All of
+     its output can be redirected to a file.  Thus, packfs can be
+     used in a batch mode, and you may have multiple copies of it
+     running concurrently on separate file systems. However,
+     since the utility is highly disk intensive, it does not
+     perform well if there is a lot of activity on other file
+     systems on the same disk drive. Also, packfs allocates a
+     significant amount of memory (4 bytes per block in the file
+     system). Consequently, starting several copies concurrently
+     may result in a lot of paging/swapping activity, resulting
+     in poor performance if you do not have sufficient physical
+     memory.
+
+     The syntax of the control file (cntlfile) is specified by
+     the following set of rules:
+
+     1. Each line is considered independently. That is, packfs
+	does not attempt to determine how the file was produced.
+
+     2. If a line has a pound sign (#) character as the first
+	character, the line is considered to be a comment line
+	and is ignored.
+
+     3. Any leading tabs and blanks at the beginning of a line
+	are ignored.
+
+     4. If the first character (other than tabs and blanks) is a
+	decimal digit, the character is considered to be the
+	first digit in an inode number.
+
+     5. If the line does not begin with a decimal digit, the line
+	is scanned from the first character (after any tabs and
+	blanks) to the first occurrence of a blank or tab
+	character. If there is a decimal digit found after that
+	blank or tab character, the digit is considered to be the
+	first digit in an inode number.
+
+     6. The packfs utility does a conversion from decimal ASCII
+	to binary to determine the inode number being specified.
+
+     7. If the character string files selected follows the decimal
+	number just converted, the entire line is ignored because
+	the ff utility generates a summary line at the end of its
+	output that contains a decimal number followed by that
+	character string.
+
+     8. If an inode number is detected, then it is entered into
+	the internal table that specifies the desired order of
+	the files, provided that inode number is not already in
+	the table and that the inode number is a valid inode
+	number for the file system being packed.
+
+     The preceding syntax rules allow control files to be built
+     using the output of the ff utility (with or without the -f
+     option) or the ls utility with the -i option. Other options
+     can be used as well, including the -R (recursion) option of
+     the ls utility. The output of those utilities can then be
+     sorted into whatever order is desired using sorting
+     utilities or by using a text editor.
+
+FILES
+     /etc/mnttab    Mount table
+
+SEE ALSO
+     ff(1M), fsck(1M), ls(1).
+
+DIAGNOSTICS
+     If any of the following conditions are encountered, packfs
+     issues an error message and terminates (all files are
+     intact, but you may need to run the fsck utility to clean up
+     the free list and any file system corruption that existed
+     before packfs was started):
+
+     + The name specified for special is not valid.
+
+     + The name specified for special is for a file system that
+       is currently mounted.
+
+     + The same disk block was allocated for two or more files.
+
+     + An invalid block number was found in either an inode or in
+       an indirect block.
+
+     + The file system is corrupted.
+
+     + The magic number or the file system type field indicates
+       that the special device is not a valid file system.
+
+     + An error was encountered in opening /etc/mnttab, the
+       specified device, or the control file.
+
+     + An error was encountered on any read or write operation to
+       the file system.
+
+NOTES
+     You can use the packfs utility on the root file system, but
+     you must use extreme caution.  The TI System V
+     Administrator's Guide explains this procedure in detail.
+
+

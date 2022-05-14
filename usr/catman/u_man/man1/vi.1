@@ -1,0 +1,757 @@
+VI(1)							    VI(1)
+
+NAME
+     vi - Invokes a screen-oriented display editor based on ex(1)
+
+SYNOPSIS
+     vi -lrRw+ files
+
+DESCRIPTION
+   Purpose
+     The vi (visual) program is a display-oriented text editor
+     based on an underlying line editor, ex(1).  It is possible
+     to use the command mode of ex from within vi and vice-versa.
+
+     When using vi, changes you make to the file are reflected in
+     what you see on your terminal screen.  The position of the
+     cursor on the screen indicates the position within the file.
+
+     The terminal must be defined in the terminfo database.  See
+     terminfo(4).  The environment variable TERM must be set to
+     the correct value.  The ex editor initialization scripts can
+     be placed in the environment variable EXINIT or in the .exrc
+     file in the current or home directory.
+
+     See the ex(1) manual entry for a description of options such
+     as autoindent and wrapmargin that are changed with the :set
+     command.
+
+     See the TI System V User's Guide for a vi tutorial.
+
+   Options
+     The following invocation options are interpreted by vi:
+
+     -l   Specifies LISP mode and indents appropriately for LISP
+	  code.  The () {} [[ and ]] commands in vi are modified
+	  to have meaning for LISP.
+
+     -rfile
+	  Recovers file after an editor or system crash.  If file
+	  is not specified, a list of all saved files is printed.
+
+     -R   Specifies read-only mode.  The read-only flag is set,
+	  preventing accidental overwriting of the file.
+
+     -wn  Sets the default window size to n. This is useful when
+	  using the editor over a slow-speed line.
+
+     +command
+	  Begins editing by executing the specified editor search
+	  or positioning command .
+
+   vi States
+     Command	 This is the initial state of the editor.  Other
+		 states return to command state upon completion.
+		 The Escape key (ESC) cancels a partial command.
+		 In the command state, the editor interprets
+		 keyboard instructions as editing commands.
+		 During command mode, an interrupt causes the
+		 bell to sound.  The bell also sounds when an
+		 error occurs.
+
+     Insert	 You enter this state by pressing the keys a, i,
+		 A, I, o, O, c (followed by a region
+		 specification; see Commands), C, s, S, or R.
+		 Text can then be entered.  Insert is terminated
+		 normally with ESC or abnormally with interrupt.
+
+     Last line	 When you use one of the command characters :, /,
+		 ?, or !, the last line of the screen echoes
+		 these command characters and your input to the
+		 commands.  Press RETURN to execute the specified
+		 command.  An interrupt (such as CTRL-c or ESC),
+		 entered on the bottom line of the display during
+		 the input of a command, cancels the command.
+		 The last line is also used to print error or
+		 informational messages.
+
+     Lines containing only a tilde (~) indicate that the line
+     above the first tilde line is the last line of the file.
+     Limited intelligence terminals may have lines marked with @,
+     indicating space on the screen that does not correspond with
+     lines in the file.  (The ^R command deletes these ``holes''
+     in the display.)
+
+   Commands
+     In the list of commands that follows, the ^ character
+     represents the CTRL key unless otherwise specified.  For
+     example, ^B means to press and hold the CTRL key and press
+     the B key.  Although the list that follows show uppercase
+     letters, all commands preceded by a ^ can be entered with
+     either an uppercase or a lowercase letter.
+
+     In the descriptions that follow, the phrase ``current line''
+     refers to the line where the cursor currently resides.
+
+     Many of the following commands can be, and some commands
+     must be, preceded by an integer that represents a count.
+     When this is the case, the description of the command
+     indicates what the count means and if the count is optional
+     or mandatory.  For example, the command 12| means to move
+     the cursor to column 12 of the current line and the count
+     specification is mandatory.
+
+     Unless otherwise specified, a word is defined as a sequence
+     of nonblank characters.
+
+     ^B   Scrolls backward (toward the beginning of the file) one
+	  window.  A window can be the number of lines that
+	  appear on one terminal screen or the number of lines
+	  you specify with the -w option of vi.  This command can
+	  be preceded by a count, which specifies the number of
+	  windows to scroll.  Two lines of overlap are retained,
+	  if possible.
+
+     ^D   Scrolls forward (toward the end of the file) one-half
+	  window.  A count specifies the number of lines to
+	  scroll, and is recalled for future ^D and ^U commands.
+	  During insert mode, ^D also backspaces over the indent
+	  created by the autoindent option.  This command is the
+	  only method of backspacing over an autoindent tab.
+
+     ^^D  The first ^ represents the caret key and the second ^
+	  represents the CTRL key.  During insert mode, overrides
+	  the autoindent tab on the current line and places the
+	  cursor at the left margin.  The autoindent option is
+	  enabled again for the next line.
+
+     0^D  During insert mode, overrides the autoindent tab on the
+	  current line and places the cursor at the left margin.
+	  The autoindent option is not enabled again for the
+	  following lines.
+
+     ^E   Scrolls the window forward one line.
+
+     ^F   Scrolls forward one window.  This command can be
+	  preceded by a count, which specifies the number of
+	  windows to scroll.  Two lines of overlap are retained,
+	  if possible.
+
+     ^G   Shows the name of the file you are currently editing
+	  and the line number where the cursor currently resides.
+	  This command functions the same as :f.
+
+     ^H   Moves backwards one space during insert or command
+	  mode.  This command functions the same as <- and h.
+	  This command can be preceded by a count, which
+	  specifies the number of spaces.
+
+     ^J   Positions the cursor one line forward in the same
+	  column.  This command functions the same as ^N and j.
+	  This command can be preceded by a count, which
+	  specifies the number of lines.
+
+     ^L   Reprints the screen.
+
+     ^M   Positions the cursor at the first non-white character
+	  in the next line.  This command can be preceded by a
+	  count, which specifies the number of lines.
+
+     ^N   This command functions the same as ^J and j.
+
+     ^P   Positions the cursor one line backward in the same
+	  column.  This command functions the same as k.  A count
+	  specifies the number of lines to move backward.
+
+     ^R   Reprints the screen and eliminates false lines marked
+	  with @.  This command is designed to work only on
+	  terminals where ^L cannot be used because the terminal
+	  sends the binary code for ^L when the Right Arrow key
+	  is pressed.
+
+     ^T   Inserts shiftwidth number of spaces if the editor is in
+	  insert mode and if the cursor is at the beginning of a
+	  line or the cursor is preceded only by white space.
+	  The shiftwidth option has a default value of 8 and can
+	  be changed with the :set command.  You can backspace
+	  over the indented area only by using ^D.
+
+     ^U   Scrolls toward the top of the file one-half window.
+	  This command can be preceded by a count, which
+	  specifies the number of lines to scroll.
+
+     ^V   Quotes non-printing characters.  Use this command in
+	  insert mode to insert special characters.
+
+     ^W   In insert mode, erases (backspaces) one word.  The
+	  erased word remains displayed until you press the ESC
+	  key.
+
+     ^Y   Scrolls the window backward one line.
+
+     ^[ or ESC
+	  Terminates insert mode or terminates an incomplete
+	  command.  Terminates command entry and executes the
+	  command when entering an ex command or a search pattern
+	  with / or ?.
+
+     Erase
+	  Backspaces while in insert mode.  Text remains
+	  displayed until you press ESC.  Your erase key is
+	  defined by the stty utility.	See stty(1).
+
+     Interrupt
+	  Terminates insert mode.  Your interrupt key is defined
+	  by the stty utility.
+
+     Kill Moves cursor to beginning of line or to place where
+	  insert mode was entered.  Your kill key is defined by
+	  the stty utility.
+
+     Space Bar
+	  Positions the cursor one space to the right.	This
+	  command functions the same as the l command.	This
+	  command can be preceded by a count, which specifies the
+	  number of spaces to move.
+
+     ! movement_command system_command
+	  Passes lines, specified by the movement command, from
+	  the buffer as standard input to the specified system
+	  command.  Replaces those lines with the standard output
+	  from the system command.  A count that precedes the !
+	  is passed on to the movement command.  A count that
+	  precedes a !! command causes the specified number of
+	  lines to be passed.
+
+     "    Precedes a named buffer specification.  (The editor
+	  uses buffers 1 through 9.  The user has buffers a
+	  through z available to put text back into the file.)
+	  For example, the command "ayj yanks (puts into a
+	  buffer) the line where the cursor is positioned and the
+	  following line (see the y and j commands) into buffer
+	  a.  Buffers named a through z are available for saving
+	  deleted or yanked text.
+
+     $	  Positions the cursor at the end of the current line.
+	  This command can be preceded by a count, which
+	  specifies the number of lines to move forward.
+
+     %	  Finds matching (, ), {, or }.
+
+     &	  Repeats the previous substitute command of ex that was
+	  entered on the last line of the window.
+
+     ''   Positions the cursor at the beginning of the line of
+	  the previous context.
+
+     'letter
+	  The letter can be a through z.  Positions the cursor at
+	  the first nonwhite character in the line marked with
+	  the specified letter.  See the m command.
+
+     ``   Positions the cursor at the marked character position
+	  of the previous context.
+
+     `letter
+	  The letter can be a through z.  Positions the cursor at
+	  the marked character position at the line marked with
+	  the specified letter.  See the m command.
+
+     [[   Positions the cursor at the beginning of a section.  A
+	  section is defined with the sections option.	By
+	  default, sections start at lines beginning with a brace
+	  ({).	If the lisp option is set, stops at each left
+	  parenthesis, (, at the beginning of a line.
+
+     ]]   Positions the cursor at the end of a section.  A
+	  section is defined with the sections option.
+
+     ^	  Positions the cursor at the first nonwhite character on
+	  the current line.
+
+     (	  Positions the cursor at the beginning of a sentence.	A
+	  sentence is defined as a sequence of characters ending
+	  with a period (.), question mark (?), or exclamation
+	  mark (!), followed by either two spaces or a newline.
+	  A sentence begins on the first nonwhite character
+	  following a preceding sentence.  Sentences are also
+	  delimited by paragraph and section delimiters.  This
+	  command can be preceded by a count, which specifies the
+	  number of sentences.	If the lisp option is set, the
+	  command moves to the beginning of the LISP s-
+	  expression.
+
+     )	  Positions the cursor at the beginning of the next
+	  sentence.  This command can be preceded by a count,
+	  which specifies the number of sentences.
+
+     {	  Positions the cursor at the beginning of the current or
+	  preceding paragraph.	A paragraph is defined with the
+	  paragraphs option.  By default, paragraphs begin after
+	  empty lines.	This command can be preceded by a count,
+	  which specifies the number of paragraphs.
+
+     }	  Positions the cursor at the beginning of the next
+	  paragraph.  This command can be preceded by a count,
+	  which specifies the number of paragraphs.
+
+     |	  Positions the cursor at the column specified by the
+	  count, if possible.  With no count specified, the
+	  command assumes zero and moves the cursor to the
+	  beginning of the line.
+
+     +	  Positions the cursor at the first nonwhite character in
+	  the following line.  This command can be preceded by a
+	  count, which specifies the number of lines to move
+	  forward.  Functions the same as the ^M command.
+
+     '    Reverses the direction in the current line of the
+	  preceding f, F, t, or T commands.  This command can be
+	  preceded by a count, which specifies the number of
+	  times to repeat the search.  Note: You must use a count
+	  for repeating t or T.
+
+     -	  Positions the cursor at the first nonwhite character in
+	  the previous line.  This command can be preceded by a
+	  count, which specifies the number of lines to move
+	  back.
+
+     .	  Repeats the last command that changed the buffer.  A
+	  special case exists for repeating the p and P put
+	  commands.  When these commands are preceded by the name
+	  of a delete buffer, successive . commands display the
+	  contents of the delete buffers.  This command can be
+	  preceded by a count, which is passed on to the command
+	  being repeated.
+
+     ~	  Reverses the case of the letter under the cursor; that
+	  is, converts between upper- and lowercase.
+
+     /string
+	  Searches forward for the specified string, which is
+	  interpreted as an ex regular expression.  The search
+	  begins when you press RETURN, and can be terminated
+	  with an interrupt.  This command can be used as an
+	  operator to specify a range of text.	The range extends
+	  from the current cursor position to the beginning of
+	  the matched string.  Specify entire lines with an
+	  offset from the matched line.  That is, use a closing /
+	  followed by a +n or -n.
+
+     0	  Positions the cursor at the first character on the
+	  current line.
+
+     :	  Indicates that the command following : is an ex
+	  command.  The command line appears at the last line of
+	  the window.  The command is executed when command input
+	  is terminated by pressing RETURN.
+
+     ;	  Repeats the last find command, which is one of f, F, t,
+	  or T.  This command can be preceded by a count, which
+	  specifies the number of times to repeat the search.
+	  You must use a count to repeat t or T.
+
+     <	  Shifts left by one shiftwidth.  The shiftwidth option
+	  has a default value of 8 and can be changed with the
+	  :set command.  This command must be followed by a
+	  command that moves the cursor.  This command can be
+	  preceded by a count, which is passed through to the
+	  move command.  A << command shifts the current line or
+	  counts lines beginning at the current line.
+
+     >	  Shifts right by one shiftwidth.  See <.
+
+     =	  Indents for LISP if the lisp option is set.
+
+     ?string
+	  Searches backward for the string; the reverse of
+	  /string.
+
+     A	  Appends text at the end of the current line.	This
+	  command functions the same as $a.
+
+     B	  Positions the cursor at the beginning of the previous
+	  word.  A word is any nonblank sequence.  A count
+	  specifies how many words to go back.
+
+     C	  Changes the text of the current line from the cursor
+	  position to the end of the line.  If you press ESC
+	  without entering text to be changed, the line is
+	  deleted and a blank line remains.  This command
+	  functions the same as c$.
+
+     D	  Deletes the text of the current line from the cursor
+	  position to the end of the line.  This command
+	  functions the same as d$.
+
+     E	  Positions the cursor forward to the end of the next
+	  blank-delimited word.  This command can be preceded by
+	  a count, which specifies how many words to go forward.
+
+     Fcharacter
+	  Searches backward in the current line for the specified
+	  character and positions the cursor at the character.
+	  This command can be preceded by a count, which
+	  specifies how many times to repeat the search.
+
+     G	  Positions the cursor at the end of the file.	If you
+	  precede the command with a number, the cursor is sent
+	  to the specified line number.
+
+     H	  Positions the cursor at the top line of the window.  If
+	  you precede the command with a number, the cursor is
+	  sent to the specified line number, counting from the
+	  top of the window.
+
+     I	  Inserts text at the beginning of the current line.
+
+     J	  Joins the current line with the following line,
+	  inserting appropriate white space.  One space is
+	  inserted between words, two spaces are inserted after a
+	  period, and no spaces are inserted if a right
+	  parenthesis, ), is the first character on the line to
+	  be joined to the current line.  This command can be
+	  preceded by a count which specifies how many lines to
+	  join.
+
+     L	  Positions the cursor at the bottom line of the window.
+	  If you precede the command with a number, the cursor is
+	  sent to the specified line number, counting from the
+	  bottom of the window.
+
+     M	  Positions the cursor at the middle line of the window.
+
+     N	  Searches for the next match of the last string
+	  specified with the / or ?  command, but in the opposite
+	  direction.  This is the reverse of n.
+
+     O	  Opens a line above the cursor and begins insert mode.
+
+     P	  Puts the last deleted text above the cursor.	If the
+	  last deleted text was an entire line, this command puts
+	  the text on a new line above the current line.  This
+	  command can be preceded by a named buffer specification
+	  ("character) to put the contents of the named buffer.
+
+     Q	  Quits the full screen mode of vi and enter the line
+	  editor, ex.
+
+     R	  Replaces (writes over) existing text until you
+	  terminate text input by pressing ESC.
+
+     S	  Changes the current line by first deleting the text on
+	  the line then allowing text input until you terminate
+	  the input by pressing ESC.  This command can be
+	  preceded by a count, which changes the specified number
+	  of lines.  This command functions the same as cc.
+
+     Tcharacter
+	  Searches backwards in the current line for the
+	  specified character and places the cursor after the
+	  character.  This command can be preceded by a count,
+	  which means to repeat the search the specified number
+	  of times.
+
+     U	  Restores (``undoes'') the current line to its state
+	  before the cursor was last moved to that line.
+
+     W	  Positions the cursor forward to the beginning of the
+	  next word.  This command can be preceded by a count,
+	  which specifies the number of words to move forward.	A
+	  word is delimited by blanks.
+
+     X	  Deletes the character just prior to the cursor.  This
+	  command can be preceded by a count to delete multiple
+	  characters, but only characters on the current line are
+	  deleted.
+
+     Y	  Places (``yanks'') a copy of the current line into the
+	  unnamed buffer.  This command can be preceded by a
+	  count, which copies the specified number of lines.  You
+	  can precede this command with a buffer name (a through
+	  z) to put the copied line or lines into the named
+	  buffer.  See ".
+
+     ZZ   Writes changes and quits the editor.	Functions the
+	  same as :x.
+
+     a	  Appends text after cursor.  This command can be
+	  preceded by a count, which causes the appended text to
+	  be repeated the specified number of times, but only if
+	  the inserted text is all on one line.
+
+     b	  Moves the cursor to the beginning of the previous word
+	  on the current line.	A word is defined as a sequence
+	  of alphanumerics or a sequence of special characters.
+	  This command can be preceded by a count, which repeats
+	  the command effect.
+
+     cregion
+	  Deletes and replaces the specified region of text.  The
+	  region can be, for example, w to replace a word or ) to
+	  replace a sentence.  The last character to be changed
+	  is on the same line and is marked with a $.  This
+	  command can be preceded by a count to replace the
+	  specified number of regions.
+
+     dregion
+	  Deletes the specified region of text.  If more than an
+	  entire line is affected, the text is saved in one of
+	  the buffers 1 through 9.  The region can be, for
+	  example, } to delete a paragraph.  This command can be
+	  preceded by a count to delete the specified number of
+	  regions.  For example, the command d3 deletes the
+	  current line and the three following lines.  You must
+	  press RETURN after typing the command.
+
+     e	  Moves the cursor forward to the end of the next word.
+	  A word is defined as a sequence of alphanumerics or a
+	  sequence of special characters.  This command can be
+	  preceded by a count, which repeats the command effect.
+
+     fcharacter
+	  Searches the remainder of the current line for the
+	  specified character and moves the cursor to that
+	  character.  This command can be preceded by a count,
+	  which repeats the search the specified number of times.
+
+     h or <-
+	  Moves the cursor one character to the left, the same as
+	  ^H.  This command can be preceded by a count, which
+	  repeats the command effect.
+
+     i	  Enters insert mode.  Text is inserted before the
+	  cursor.
+
+     j or down arrow
+	  Moves the cursor to the following line in the same
+	  column.  This command can be preceded by a count, which
+	  repeats the effect of the command.  Functions the same
+	  as ^J and ^N.
+
+     k or up arrow
+	  Moves the cursor to the preceding line in the same
+	  column.  This command can be preceded by a count, which
+	  repeats the effect of the command.  Functions the same
+	  as ^P.
+
+     l or ->
+	  Moves the cursor to the right one character.	This
+	  command can be preceded by a count, which repeats the
+	  effect of the command.  This command has the same
+	  function as pressing Space Bar.
+
+     mcharacter
+	  Marks the current position of the cursor with the
+	  single lowercase character, character.  After the
+	  position has been marked, you can return the cursor to
+	  the marked position with the command `character.  You
+	  can return the cursor to the beginning of the line that
+	  contains the marked character with the command
+	  'character.
+
+     n	  Repeats the last / or ? searching command.
+
+     o	  Opens a line following the current line and enters text
+	  insert mode.
+
+     p	  Puts text after or below the cursor.
+
+     rcharacter
+	  Replaces the character under the cursor with the
+	  specified character.	This command can be preceded by a
+	  count, which replaces each of the count number of
+	  characters with the specified character.
+
+     s	  Deletes the character under the cursor and enters
+	  insert mode in which the input text replaces the
+	  character deleted.  The last character to be changed is
+	  marked with a $.  This command can be preceded by a
+	  count, which specifies the number of characters from
+	  the current line to change.
+
+     tcharacter
+	  Searches the remainder of the current line for the
+	  specified character and moves the cursor to the
+	  position prior to the character.  This command can be
+	  preceded by a count, which repeats the effect of the
+	  command.
+
+     u	  Reverses (``undoes'') the last change made to the
+	  current buffer.  This command toggles; that is, the
+	  command uu leaves the text unchanged.
+
+     w	  Moves the cursor to the beginning of the next word.  A
+	  word is defined as a sequence of alphanumerics or a
+	  sequence of special characters.  This command can be
+	  preceded by a count, which repeats the effect of the
+	  command.
+
+     x	  Deletes the single character under the cursor.  This
+	  command can be preceded by a count, which deletes the
+	  specified number of characters forward from the cursor
+	  position, but only on the current line.
+
+     yregion
+	  Copies (``yanks'') the specified region of text into an
+	  unnamed temporary buffer.  The region can be, for
+	  example, y), which indicates a sentence.  You can
+	  precede this command with a named buffer specification,
+	  "x, where x is 1 through 9 or a through z.  The text is
+	  then placed in the specified buffer as well as in the
+	  unnamed buffer.
+
+     z	  Reprints the window, placing the current line at one of
+	  the following places.  If you press RETURN after
+	  pressing z, the current line is reprinted at the top of
+	  the window.  If you press the period key (.) after you
+	  press z, the current line is reprinted at the middle of
+	  the window.  If you specify a count after you press z,
+	  the count specifies the new window size.  If you
+	  specify a count before you press z, count is the line
+	  number to use, rather than using the current line.
+
+   ex File Manipulation Commands
+     Press RETURN after each of the following commands except for
+     the ZZ command.  The following commands allow you to save
+     changes to the file currently being edited and continue the
+     edit, quit the edit and save the changes, quit the edit and
+     discard the changes, or access one or more other files to
+     edit.  For more information, see ex(1).
+
+     :w [file]
+	  Writes changes, to file if specified, and does not quit
+	  the editor.
+
+     :wq  Writes changes and quits the editor.
+
+     :w! file
+	  Overwrites the specified file.
+
+     :x,zw file
+	  Writes text from line number x to line number z into a
+	  new file, file.
+
+     :x   Writes changes and quits the editor.	Same as ZZ.
+
+     :q   If you have not made changes to the file, this command
+	  lets you quit the editor.  Otherwise, the following
+	  message is displayed
+
+	  No write since last change (:quit! overrides)
+
+     :q!  Quits the editor and discards changes.
+
+     :e file
+	  Invokes the editor for the specified file.
+
+     :e!  Reedits and discards changes.
+
+     :e+ file
+	  Invokes the editor and starts at the end of the file.
+
+     :e+n file
+	  Invokes the editor and starts at line number n of the
+	  specified file.
+
+     :e # Edits an alternate file.
+
+     :sh  Runs your shell then returns to the current editing
+	  session.
+
+     :!cmd
+	  Runs the specified command, cmd, then returns to the
+	  current editing session.
+
+     :n [args]
+	  Specifies a new list of files to edit and opens the
+	  first file for editing.  Press :n to edit subsequent
+	  files from arglist.  Note that after editing the last
+	  file in the list, the editor does not return to the
+	  file you were originally editing.
+
+     :f   Shows the name of the file you are currently editing
+	  and the line number where the cursor currently resides.
+	  This command has the same effect as the ^G command.
+
+     :s/text/new text/
+	  Replaces the first occurrence of text with new text on
+	  the current line.
+
+     :s/text/new text/g
+	  Replaces all occurrences of text with new text on the
+	  current line.
+
+     :g/text/s//new text/g
+	  Replaces all occurrences of text with new text
+	  throughout the file.
+
+     :r file
+	  Inserts the contents of a file called file under the
+	  current line.
+
+     :.,$d
+	  Deletes all the lines from the current line to the last
+	  line.
+
+     :n   Moves the cursor to the beginning of the nth line of
+	  the file.
+
+     :$   Moves the cursor to the beginning of the last line in
+	  the file.
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to be edited.
+
+   Recover Files:
+     Response is optional. Initial value is no. If yes is entered
+     an attempt is made to recover the input file.
+
+   Search/Positioning Command:
+     Enter the editing command to be executed upon entering the
+     edit session.
+
+   LISP Mode:
+     Initial value is no.  If you enter yes, the text is indented
+     appropriately for LISP code.
+
+   Window Size:
+     Sets the default window size.
+
+   Readonly Mode:
+     Response is optional. Initial value is no. If yes is
+     entered, the input file can not be accidently overwritten.
+
+SEE ALSO
+     ex (1).
+     ``vi Quick Reference'' and ``Screen Editor Tutorial'' in the
+     TI System V User's Guide.
+
+NOTES
+     Software tabs using ^T work only immediately after the
+     autoindent.
+
+     Left and right shifts on intelligent terminals do not make
+     use of insert and delete character operations in the
+     terminal.
+
+     The wrapmargin option can be fooled since it looks at output
+     columns when blanks are typed.  If a long word passes
+     through the margin and onto the next line without a break,
+     then the line is not broken.
+
+     Insertions and deletions within a line can be slow if tabs
+     are present on intelligent terminals, because the terminals
+     need help in doing this correctly.
+
+     Saving text on deletes in the named buffers is inefficient.
+
+     The source command does not work when executed as :source.
+     There is no way to use the :append, :change, and :insert
+     commands, because it is not possible to give more than one
+     line of input to a : escape.  To use these with a :global
+     command, you must Q to ex command mode, execute them, and
+     then reenter the screen editor with the command vi or open.
+
+

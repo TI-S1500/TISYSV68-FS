@@ -1,0 +1,22 @@
+# cshf 	SIZE - DISPLAY SIZE OF executable FILE 
+#	@(#)SIZE.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^SIZE -- PRINTS SECTION SIZES OF COMMON OBJECT FILES"\
+	"^File Name(s):" _input_file macnm "$_input_file"\
+	"^Format (d,o,x):"  w  "element(D,d=d,O,o=o,X,x=x)" \
+	"^Print Version Number:" Vflag yesno n\
+	"^#$*"
+
+
+if ($abort) goto end
+if ($w != "") set opt = $w
+if ($Vflag == "y") set opt = $opt"V"
+if ($opt != "") set opt = -$opt
+
+echo "=== SIZE COMMAND EXECUTING ==="
+echo size $opt  $_input_file
+     size $opt  $_input_file
+end:
+unset   w *flag *opt

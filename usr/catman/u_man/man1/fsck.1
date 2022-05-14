@@ -1,0 +1,182 @@
+FSCK(1M)                                                 FSCK(1M)
+
+NAME
+     fsck - Provides a file system consistency check and
+     interactive repair
+
+SYNOPSIS
+     fsck -DfnoqsSty file-systems
+
+DESCRIPTION
+   Purpose
+     The fsck command audits and interactively repairs
+     inconsistent conditions for TI System V files. If the file
+     system is consistent, the number of files, number of blocks
+     used, and number of blocks free are reported.  If the file
+     system is inconsistent, the operator is prompted for
+     concurrence before each correction is attempted.
+
+   Options
+     -D    Checks directories for . and .. continuity.  This
+           check is useful after a system crash.
+
+     -f    Provides a fast check.  Checks blocks and sizes (Phase
+           1) and checks the free list (Phase 5).  The free list
+           is reconstructed (Phase 6) if necessary.
+
+     -n    Assumes a no response to all questions asked by fsck;
+           does not open the file system for writing.
+
+     -o    Overrides the default that will not check a file
+           system if s_state is set to OKAY. Use this option if
+           you want to check the file system even if it was
+           properly unmounted last time.
+
+     -q    Quiets fsck. Size-check messages are not printed in
+           Phase 1.  Unreferenced pipes are silently removed. If
+           fsck requires it, counts in the superblock are
+           automatically fixed, and the free list is salvaged.
+
+     -sx   Ignores the actual free list and unconditionally
+           reconstructs a new one by rewriting the super block of
+           the file system.  The file system should be unmounted
+           while this rewriting is done. If the file system is
+           mounted, care should be taken that the file system is
+           inactive.  This precaution is necessary so that the
+           old, core copy of the super block does not continue to
+           be used or written on the file system.
+
+           The -sx option allows for creating an optimal free-
+           list organization.  The following form of x is
+           supported:
+
+                -sBlocks-per-cylinder:Blocks-to-skip
+
+           If x is not given, the values specified when the file
+           system was created are used.  If these values were not
+           specified, the value 400:7 is used.
+
+     -Sx   Conditionally reconstructs the free list. This option
+           is similar to -sx except that the free list is rebuilt
+           only if there were no discrepancies discovered in the
+           file system. Using -S forces a no response to all
+           questions asked by fsck.  This option is useful for
+           forcing free list reorganization on uncontaminated
+           file systems. This option should  not be used unless
+           the file system is unmounted. Use of this option on a
+           mounted file system will cause a reboot to occur.
+
+     -t file
+           Specifies a scratch file. If fsck cannot obtain enough
+           memory to keep its tables, it uses such a scratch
+           file. If the -t option is specified, the file named in
+           the next argument is used as the scratch file, if
+           needed. Without the -t option, fsck prompts the
+           operator for the name of the scratch file.  The file
+           chosen should not be on the file system being checked.
+           If it is not a special file or did not already exist,
+           it is removed when fsck completes.
+
+     -y    Assumes a yes response to all questions asked by fsck.
+
+   Discussion
+     The fsck command will check the s_state field of any file
+     system before beginning the actual check of the file system.
+     If the s_state field is OKAY, fsck will not check the file
+     system unless the -o option is used. This will allow systems
+     that were properly shut down with no problems to come up
+     faster. Only file systems that were not unmounted and the
+     root file system will be checked.
+
+     Note that most corrective actions result in some loss of
+     data.  The amount and severity of data loss can be
+     determined from the diagnostic output.  The default action
+     for each consistency correction is to wait for the operator
+     to respond yes or no.  If the operator does not have write
+     permission, fsck defaults to a -n action.
+
+     If no file-systems are specified, fsck reads a list of
+     default file systems from the file /etc/checklist.
+
+     Inconsistencies checked are as follows:
+          +  Blocks claimed by more than one inode or the free
+             list
+          +  Blocks claimed by an inode or the free list outside
+             the range of the file system
+          +  Incorrect link counts
+          +  Size checks:
+                      Incorrect number of blocks
+                      Directory size not 16-byte aligned
+          +  Bad inode format
+          +  Blocks not accounted for anywhere
+          +  Directory checks:
+                      File pointing to unallocated inode
+                      Inode number out of range
+          +  Superblock checks:
+                      More than 65536 inodes
+                      More blocks for inodes than there are in
+                      the file system
+          +  Bad free block list format
+          +  Total free block and/or free inode count incorrect
+
+     The fsck command reconnects nonempty orphaned (allocated but
+     unreferenced) files and directories with the operator's
+     concurrence by placing them in the lost+found directory.
+     The user is notified whether the file or directory is empty.
+     If the file or directory is empty, fsck silently removes it.
+     The command forces the reconnection of directories that are
+     not empty.  The name assigned is the inode number. The only
+     restriction is that the directory lost+found must preexist
+     in the root of the file system being checked and must have
+     empty slots in which entries can be made.  To ensure that
+     these slots exist, create lost+found, copy a number of files
+     to the directory, and then remove them (before fsck is
+     executed).
+
+     Checking the raw device is almost always faster and should
+     be used with everything but the root file system.
+
+PROMPTS
+   File System Name(s):
+     Enter the name of the file systems to check.
+
+   Check Directories for Bad Blocks:
+     The initial value is no.  Enter yes to check for bad blocks.
+
+   Perform a Fast Check:
+     The initial value is no.  Enter yes to check blocks and
+     sizes in Phase 1 and check the free list in Phase 2 and
+     reconstruct the free list in Phase 6 if necessary.
+
+   Yes/No Response to All Questions (y,n):
+     The initial value is no.  Enter yes to respond yes to the
+     remaining prompts.
+
+   Silence User Messages:
+     The initial value is no.  Enter yes to suppress messages
+     from the utility to the user.
+
+   Overflow Table File:
+     Enter the name of the file to contain the overflow table.
+
+   Rebuild Free List:
+     The initial value is no.  Enter yes to rebuild the free
+     block list and receive the following prompt.
+
+   Unmount File System:
+     The initial value is no.  Enter yes to unmount the file
+     system.
+
+FILES
+     /etc/checklist       Contains default list of file systems
+                          to check
+     /etc/lost+found      Contains allocated but unreferenced
+                          files and directories
+
+SEE ALSO
+     checklist(4), clri(1M), crash(1M), dfsck(1M), fs(4),
+     ncheck(1M).
+     ``File Systems and Pipes'' in the TI System V
+     Administrator's Guide.
+
+

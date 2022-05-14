@@ -1,0 +1,79 @@
+GETOPT(1)						GETOPT(1)
+
+NAME
+     getopt - Parses command options
+
+SYNOPSIS
+     set -- `getopt optstring $*`
+
+DESCRIPTION
+   Purpose
+     The getopt command is used to break up options in command
+     lines for easy parsing by shell procedures and to check for
+     legal options.
+
+   Arguments
+     optstring
+	  A string of recognized option letters (see getopt(3C)).
+	  If a letter is followed by a colon, the option is
+	  expected to have an argument which may or may not be
+	  separated from it by white space.
+
+     --   A special argument used to delimit the end of the
+	  options.  If it is used explicitly, getopt recognizes
+	  it.  Otherwise, getopt generates this delimiter.  In
+	  either case, getopt places it at the end of the
+	  options.  The shell's positional parameters ($1 $2 ...)
+	  are reset so that each option is preceded by a - and is
+	  in its own positional parameter.  Each option argument
+	  is also parsed into its own positional parameter.
+
+   Discussion
+     The getopt command returns a string of options and option
+     values terminated by --, followed by parameters that are not
+     arguments.  The command stops processing after it encounters
+     the first parameter that is not an option. In the example
+     getopt abc -a -b frog -c, frog is the first parameter that
+     is not an option. This example returns -a -b -- frog -c.  If
+     -b had required a value, the result would have been
+     different.  For example, getopt ab:c -a -b frog -c returns
+     -a -b frog -c --.
+
+EXAMPLES
+     The following Bourne shell, sh(1), code fragment shows how
+     one might process the arguments for a command that can take
+     the options a or b, as well as the option o, which requires
+     an argument:
+
+     set -- `getopt abo: $*`
+     if [ $? != 0 ]
+     then
+	      echo $USAGE
+	      exit 2
+     fi
+     for i in $*
+     do
+	      case $i in
+	      -a | -b)	     FLAG=$i; shift;;
+	      -o)	     OARG=$2; shift 2;;
+	      --)	     shift; break;;
+	      esac
+     done
+
+
+     This code accepts any of the following as equivalent:
+
+     cmd -aoarg file file
+     cmd -a -o arg file file
+     cmd -oarg -a file file
+     cmd -a -oarg -- file file
+
+SEE ALSO
+     sh(1), getopt(3C).
+
+DIAGNOSTICS
+     The getopt command prints an error message on the standard
+     error when it encounters an option letter not included in
+     optstring.
+
+

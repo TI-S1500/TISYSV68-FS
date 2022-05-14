@@ -1,0 +1,286 @@
+FIND(1) 						  FIND(1)
+
+NAME
+     find - Finds files
+
+SYNOPSIS
+     find dir expression
+
+DESCRIPTION
+   Purpose
+     The find command recursively descends the directory
+     hierarchy for each file name in the files argument.  The
+     command seeks one or more files (multiple files are
+     separated by a blank) whose properties cause the specified
+     expression to be true.  The Boolean (true-false) expressions
+     are written in the primaries given below.
+
+   Primaries
+     In the following list of primaries, the value n is a decimal
+     integer number where +n means more than n, -n means less
+     than n, and n means exactly n.
+
+     -atime n	True if the file has not been accessed in n days.
+
+     -cpio device
+		Write the current file on device in cpio(4)
+		format.  The file is written as if cpio -oBc were
+		specified.  The tape can be read with the cpio -i
+		command using the options cB or cBt or any other
+		desired options.
+
+     -ctime n	True if the file was created n days ago.
+
+     -depth	Always true.  Causes descent of the directory
+		hierarchy to be done so that all entries in a
+		directory are acted on before the directory
+		itself.  This can be useful when find is used
+		with cpio(1) to transfer files that are contained
+		in directories without write permission.
+
+     -exec cmd	True if the executed cmd returns a zero value as
+		exit status.  The end of cmd must be punctuated
+		by an escaped semicolon (\;).  A command argument
+		{} is replaced by the current path name.
+
+     -group gname
+		True if the file belongs to the group gname.  If
+		gname is numeric and does not appear in the
+		/etc/group file, it is taken as a group ID.
+
+     -links n	True if the file has n links.
+
+     -local	True if the file physically resides on the local
+		system.
+
+     -mount	Always true; restricts the search to the file
+		system containing the directory specified, or if
+		no directory was specified, the current
+		directory.
+
+     -mtime n	True if the file has been modified in n days.
+
+     -name file
+		True if file matches the current file name.
+		Normal shell argument syntax may be used if
+		escaped.  Watch out for [, ?, and *.
+
+     -newer file
+		True if the current file has been modified more
+		recently than the argument file.
+
+     -ok cmd	Like -exec except that the generated command line
+		is printed with a question mark first, and is
+		executed only if the user responds by typing y.
+		The end of cmd must be punctuated by an escaped
+		semicolon (\;).
+
+     -perm onum
+		True if the file permission flags, see chmod(1),
+		exactly match the octal number onum; that is,
+		flags == onum.	To check specific flags
+		regardless of the state of other flags, (for
+		example, to select files with write permission
+		for group regardless of user and other
+		permissions), specify a minus sign in front of
+		onum.  In this case, the flags are compared as
+		follows: (flags&onum) == onum.	Only four octal
+		digits are compared.
+
+     -print	Always true; causes the current path name to be
+		printed.
+
+     -size n	True if the file is n blocks long (512 bytes per
+		block).
+
+     -type c	True if the type of the file is c, where c is b,
+		c, d, p, or f for block special file, character
+		special file, directory, fifo (also known as a
+		pipe), or plain file.
+
+     -user uname
+		True if the file belongs to the user uname.  If
+		uname is numeric and does not appear as a login
+		name in the /etc/passwd file, it is taken as a
+		user ID.
+
+     ( expression )
+		True if the parenthesized expression is true
+		(parentheses are special to the shell and must be
+		escaped with a \).  The parenthesized expression
+		is one or more of the primaries described in this
+		list.
+
+     The following list shows, in order of decreasing precedence,
+     how to negate or combine primaries:
+
+     + Use the unary not operator ! to negate a primary.
+
+     + Use escaped parentheses, \( and \), to concatenate or
+       juxtapose two primaries and perform an AND operation.
+
+     + Use -o to specify the OR operator (the alternation of
+       primaries).
+
+EXAMPLES
+     The following is a common use of the find command.  The
+     command searches the current directory for all files that
+     are writable by others and writes the file names to standard
+     output.
+
+	  find . -perm -2 -print
+
+     The following command searches the current directory for all
+     files that have permissions indicated by octal 766 (read,
+     write, and execute permissions for user, read and execute
+     permissions for group and others) and prints the file names
+     to standard output.
+
+	  find . -perm 766 -print
+
+     To remove all files named a.out or *.o that have not been
+     accessed for a week:
+
+        find /  \( -name a.out -o -name '*.o' \) -atime +7 -exec rm {}  \;
+
+     Note: There is a blank space between } and \.
+
+     In the previous example, the -o operator is the OR operator.
+     All files are specified by the slash, /.  The AND operator
+     is specified by the juxtaposition of the expressions in
+     parentheses and the expression beginning with -atime.  Note
+     that the parentheses are escaped with a backslash, \.
+
+     The following command searches the current directory for all
+     files that were modified 8 or more days ago.  The find
+     command executes ls -l on each of the specified files.
+
+	  find . -mtime +7 -exec ls -l {} \;
+
+     The following command searches for those files in the
+     current directory that have been modified in the last week.
+     The command removes the specified files if the user enters a
+     y in response to the question mark prompt issued by find.
+
+	  find . -mtime -8 -ok rm {}  \;
+
+     The following command searches the current directory for
+     files that have been modified more recently than the file
+     named refile.  The command writes the specified files to the
+     tape device /dev/rqt/0h in cpio format.
+
+	  find . -newer refile -cpio /dev/rqt/0h
+
+     The following command searches the directories /bin and
+     /usr/bin for all file names that include the adjacent
+     characters x, y, and z.  The command prints the path names
+     of the specified files.
+
+	  find /bin /usr/bin -name \*xyz\* -print
+
+PROMPTS
+   Directory(s) to Search:
+     Enter the name of the directory to process.
+
+   Output File Name:
+     Enter the name of the file to receive the output of the
+     utility.
+
+   Expression or Select Options(e,o):
+     Enter e to receive the following prompt and find the given
+     expression.  The expression need not be enclosed in quotes.
+
+     Enter o to receive the additional prompts.
+
+   Expression:
+     Enter an expression of the form described in the Primaries
+     part of this manual entry.  The expression need not be
+     enclosed in quotes.
+
+     The following prompts are displayed if you enter o in
+     response to the Expression or Select Options(e,o): prompt.
+
+   Print Path Names:
+     The initial value is yes.	Enter yes to print the name of
+     the found file.
+
+   File Name Pattern to Match:
+     Enter the name of a file to find.	This prompt allows
+     wildcard characters.
+
+   File Accessed in (+,-,exact) days:
+     Enter an integer decimal number, n, where +n means to find a
+     file that has been accessed in more than n days, -n means to
+     find a file that has been accessed in less than n days, and
+     exact means to find a file that has been accessed in exactly
+     exact number of days.
+
+   Device Name for CPIO Write:
+     Enter the tape device name on which to write the found file.
+
+   Descent Directory Hierarchy:
+     The initial value is yes.	Enter yes to cause the utility to
+     descend the directory hierarchy so that all entries in the
+     directory are processed before the directory itself.
+
+   Group Name:
+     Enter a group name.  The utility finds files that belong to
+     the specified group.
+
+   Number of File Links (+,-,exact):
+     Enter an integer decimal number, n, where +n means to find a
+     file that has more than n links, -n means to find a file
+     that has less than n links, and exact means to find a file
+     that has exactly exact number of links.
+
+   File Modified in (+,-,exact) days:
+     Enter an integer decimal number, n, where +n means to find a
+     file that has been modified in more than n days, -n means to
+     find a file that has been modified in less than n days, and
+     exact means to find a file that has been modified in exactly
+     exact number of days.
+
+   File Name to Match Modification Times:
+     Enter a file name.  The utility attempts to find a file that
+     has been modified more recently than the specified file.
+
+   Permission Flags to Check:
+     Enter an octal number that represents the file permissions.
+     The utility attempts to find files that exactly match the
+     specified permissions.
+
+   Size in Blocks to Check:
+     Enter an integer number that represents a file size in
+     blocks.   The utility attempts to find files that match the
+     specified file size exactly (if neither a + nor a - is
+     specified), that are larger than the specified file size (if
+     a + is specified before the file size number), or that are
+     smaller than the specified file size (if a - is specified
+     before the file size number).
+
+
+   Type of File (b,c,d,p,f):
+     Enter b to find a block special file.  Enter c to find a
+     character special file.  Enter d to find a directory.  Enter
+     p to find a pipe.	Enter f to find a plain file.
+
+   Users Name to Compare:
+     Enter the name of a user or a user ID.  The utility attempts
+     to find files that belong to the specified user.
+
+   Search All Systems:
+     The initial value is yes. Enter yes to search all network
+     file systems that are mounted.
+
+   Search All File Systems:
+     The initial value is yes. Enter yes to search all file
+     systems that are mounted.
+
+FILES
+     /etc/passwd
+     /etc/group
+
+SEE ALSO
+     cpio(1), cpio(4), fs(4), sh(1), stat(2), test(1).
+
+

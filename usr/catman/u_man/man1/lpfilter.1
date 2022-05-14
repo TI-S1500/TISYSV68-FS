@@ -1,0 +1,199 @@
+LPFILTER(1M)					     LPFILTER(1M)
+
+NAME
+     lpfilter - Administers filters used with the LP print
+     service
+
+SYNOPSIS
+     /usr/lib/lpfilter -f filter-name -F path-name
+     /usr/lib/lpfilter -f filter-name -
+     /usr/lib/lpfilter -f filter-name -i
+     /usr/lib/lpfilter -f filter-name -x
+     /usr/lib/lpfilter -f filter-name -l
+
+DESCRIPTION
+     The lpfilter command is used to add, change, delete, and
+     list filters used with the LP print service.  These filters
+     are used to convert the content type of a file to a content
+     type acceptable to a given printer.  One of the following
+     options must be used with the lpfilter command:  -F path-
+     name (or - for standard input) to add or change a filter, -i
+     to reset an original LP print service filter to its factory
+     setting, -x to delete a filter, or -l to list a filter
+     description.
+
+     The argument all can be used instead of a filter-name with
+     any of these options.  When all is specified with the -F or
+     - option, the requested change is made to all filters.
+     Using all with the -i option has the effect of restoring to
+     their original settings all filters for which predefined
+     settings were initially available.  Using the all argument
+     with the -l option produces a list of all filters, and using
+     it with the -x option results in all filters being deleted.
+
+Adding or Changing a Filter
+     The filter named in the -f option and described in the input
+     is added to the filter table.  If the filter already exists,
+     its description is changed to reflect the new information in
+     the input.  Once added, a filter is available for use.
+
+     The filter description is taken from the path-name if the -F
+     option is given, or from the standard input if the - option
+     is given.	One of the two must be given to define or change
+     a filter.	If the filter named is one originally delivered
+     with the LP print service, the -i option will restore the
+     original filter description.
+
+     When an existing filter is changed with the -F or - option,
+     items that are not specified in the new information are left
+     as they were.  When a new filter is added with this command,
+     unspecified items are given default values.
+
+     Note that a filter name and a command must be given.  A
+     filter with no input type value is assumed to work with any
+     input type; this is also true for the output type, printer
+     type, and printer values.
+
+     Filters are used to convert the content of a request into a
+     data stream acceptable to a printer.  For a given print
+     request, the LP print service will know the following:  the
+     type of content in the request, the name of the printer, the
+     type of the printer, the types of content acceptable to the
+     printer, and the modes of printing asked for by the
+     originator of the request.  It will use this information to
+     find a filter that will convert the content into a type
+     acceptable to the printer.
+
+     The following is a list of items that provide input to this
+     command, and a description of each item.  All lists are
+     comma- or space-separated.
+
+     Input types: content-type-list
+     Output types: content-type-list
+     Printer types: printer-type-list
+     Printers: printer-list
+
+     Filter type: filter-type
+     Command: shell-command
+     Options: template-list
+
+     Input types
+	  This gives the types of content that can be accepted by
+	  the filter.
+
+     Output types
+	  This gives the types of content that the filter can
+	  produce from any of the input content types.
+
+     Printer types
+	  This gives the type of printers for which the filter
+	  can be used.	The LP print service will restrict the
+	  use of the filter to these types of printers.
+
+     Printers
+	  This gives the names of the printers for which the
+	  filter can be used.  The LP print service will restrict
+	  the use of the filter to just the printers named.
+
+     Filter type
+	  This marks the filter as a slow filter or a fast
+	  filter.  Slow filters are generally those that take a
+	  long time to convert their input.  They are run
+	  unconnected to a printer, to keep the printers from
+	  being tied up while the filter is running.  Fast
+	  filters are generally those that convert their input
+	  quickly, or those that must be connected to the printer
+	  when run.  These will be given to the interface program
+	  to run connected to the physical printer.
+
+     Command
+	  This specifies the program to run to invoke the filter.
+	  The program name as well as fixed options are included
+	  in the shell-command; additional options are
+	  constructed, based on the characteristics of each print
+	  request and on the Options field.
+
+	  The command must accept a data stream as standard input
+	  and produce the converted data stream on its standard
+	  output.  This allows filter pipelines to be constructed
+	  to convert data not handled by a single filter.
+
+     Options
+	  This is a comma-separated list of templates used by the
+	  LP print service to construct options to the filter
+	  from the characteristics of each print request listed
+	  in the table later.
+
+	  In general, each template is of the following form:
+
+	     keyword pattern = replacement
+
+	  The keyword names the characteristic that the template
+	  attempts to map into a filter-specific option; each
+	  valid keyword is listed in the following table.  A
+	  pattern is either a literal pattern of one of the forms
+	  listed in the table, or a single asterisk (*); if the
+	  pattern matches the value of the characteristic, the
+	  template fits and is used to generate a filter-specific
+	  option.  A pattern of * matches any value.  The
+	  replacement is a string used as a filter-specific
+	  option; if an asterisk (*) is used, it is replaced with
+	  the value of the characteristic.
+    ___________________________________________________________________
+     lp Option	     Characteristic	    keyword  Possible patterns
+    ___________________________________________________________________
+     -T 	     Content type (input)   INPUT    content-type
+     N/A	     Content type (output)  OUTPUT   content-type
+     N/A	     Printer type	    TERM     printer-type
+     -f, -o cpi=     Character pitch CPI    integer
+     -f, -o lpi=     Line pitch 	    LPI      integer
+     -f, -o length=  Page length	    LENGTH   integer
+     -f, -o width=   Page width 	    WIDTH    integer
+     -P 	     Pages to print	    PAGES    page-list
+     -S 	     Character set/	    CHARSET  character-set-name/
+		     print wheel		     print-wheel-name
+     -f 	     Form name		    FORM     form-name
+     -y 	     Modes		    MODES    mode
+     -n 	     Number of copies	    COPIES   integer
+    ___________________________________________________________________
+
+     For example, the template
+
+       MODES landscape = -l
+
+     would show that if a print request was submitted with the -y
+     landscape option, the filter should be given the option -l.
+     As another example, the template
+
+	TERM * = -T *
+
+     would show that the filter should be given the option -T
+     printer-type for whichever printer-type is associated with a
+     print request using the filter.
+
+Deleting a Filter
+     The -x option is used to delete the filter specified in
+     filter-name from the LP filter table.
+
+Listing a Filter Description
+     The -l option is used to list the description of the filter
+     named in filter-name.  If the command is successful, the
+     following message is sent to standard output:
+
+     Input types: content-type-list
+     Output types: content-type-list
+     Printer types: printer-type-list
+     Printers: printer-list
+     Filter type: filter-type
+     Command: shell-command
+     Options: template-list
+
+     If the command fails, an error message is sent to standard error.
+     Note: Use of the ``standard'' model file is required.
+
+SEE ALSO
+     lp(1), lpadmin(1M).
+     ``Printer Spooling System'' in the TI System V
+     Administrator's Guide.
+
+

@@ -1,0 +1,30 @@
+TEE(1)                                                     TEE(1)
+
+NAME
+     tee - Writes both to standard output and to specified files
+
+SYNOPSIS
+     tee -ai [files]
+
+DESCRIPTION
+   Purpose
+     The tee command transcribes the standard input to the
+     standard output and makes copies in the files.  The files
+     are created if they do not already exist.  If the files
+     already exist, they are overwritten unless the -a option is
+     specified.
+
+   Options
+     -i   Ignores interrupts.
+
+     -a   Causes the output to be appended to the files rather
+          than overwriting them.
+
+EXAMPLE
+     The following command appends the output of the ls(1)
+     command to the file named myfile and prints the output of ls
+     to the standard output:
+
+          ls -l | tee -a myfile
+
+

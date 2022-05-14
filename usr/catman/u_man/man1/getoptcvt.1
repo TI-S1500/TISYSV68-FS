@@ -1,0 +1,24 @@
+GETOPTCVT(1)                                         GETOPTCVT(1)
+
+NAME
+     getoptcvt - Parses command options
+
+SYNOPSIS
+     /usr/lib/getoptcvt [-b] file
+
+DESCRIPTION
+     /usr/lib/getoptcvt reads the shell script in file, converts
+     it to use getopts(1) instead of getopt(1), and writes the
+     results on the standard output.
+
+     -b   the results of running /usr/lib/getoptcvt will be
+          portable to earlier releases of TI System V.
+          /usr/lib/getoptcvt modifies the shell script in file so
+          that when the resulting shell script is executed, it
+          determines at run time whether to invoke getopts(1) or
+          getopt(1).
+
+SEE ALSO
+     getopt(3C), getopts(1), sh(1).
+
+

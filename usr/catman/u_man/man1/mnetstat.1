@@ -1,0 +1,347 @@
+MNETSTAT(1T)					     MNETSTAT(1T)
+
+NAME
+     mnetstat - Displays multidrop terminal concentrator (MTC)
+     network statistics
+
+SYNOPSIS
+     mnetstat -mprs
+
+DESCRIPTION
+   Purpose
+     The mnetstat command reports the MTC network statistics for
+     either the multidrop host adapter (MHA) option board or
+     MTCs.  These statistics include number and size of messages
+     sent and received, transmit and receive errors, and transmit
+     and receive status.  This information is useful for
+     monitoring normal operation and for troubleshooting the
+     network.
+
+   Options
+     -m mtcname     Specifies that the statistics are to be
+		    obtained from the named MTC. This is the
+		    global MTC name. The /etc/mtctab file is
+		    scanned for this MTC name to obtain the
+		    addressing information for the MTC.  This
+		    option and the -s option are mutually
+		    exclusive.
+
+     -p port	    Specifies that statistics are to be obtained
+		    from a specific MHA board, which is located
+		    in CCB option port port. This option is valid
+		    only when entered in conjunction with the -s
+		    option.
+
+     -r 	    Resets the statistics counters back to 0
+		    after displaying the current statistics for
+		    the specified MHA or MTC.  Without this
+		    option, the statistics counters are not
+		    reset.
+
+     -s slot	    Specifies the slot number of the CCB that
+		    contains the MHA option board.  If this
+		    option is not selected, mnetstat defaults to
+		    reporting on every CCB/MHA defined in the
+		    /etc/mtctab file.  This option and the -m
+		    option are mutually exclusive.
+
+   Discussion
+     The mnetstat command lists the network statistics that the
+     device driver has gathered and stored since the last time
+     the statistics were reset.  You can use this information to
+     monitor the operation of the MHA option boards and MTCs.
+     While the mnetstat command is useful for judging the general
+     performance of the MTC network during normal operations,
+     this command is especially useful during troubleshooting
+     operations.
+
+     The listing of information provided by the mnetstat command
+     can be used to identify problems such as the following:
+
+     + When the listing shows that no messages are being sent or
+       received, the MHA option board might not be communicating
+       with the MTC.
+
+     + When the listing shows a high number of cyclic redundancy
+       checks (CRCs) and framing errors, the network cable and/or
+       junction boxes might be faulty, or another station might
+       be forming its transmissions incorrectly.
+
+     A careful examination of the mnetstat listing can alert you
+     to problems developing in the MTC network.
+
+EXAMPLES
+     The first example lists link statistics from the MHA device
+     in option port 0 of the CCB in slot 3. The statistical data
+     area on this device is not cleared after being read, and the
+     listing is displayed at the local terminal.
+
+	  mnetstat -s 3 -p 0
+
+     When the mnetstat procedure executes, the controller
+     statistics appear in the following format.  In the listings
+     that follow, numbers preceded by an asterisk are not part of
+     the display; these numbers refer to the notes that follow
+     the second example.
+
+     MTC NETWORK STATISTICS FOR SLOT 3 PORT 0
+
+     LINK STATISTICS:
+     ---  RECEIVE STATUS  --- *1	  --- RECEIVE ERRORS  ---  *2
+     FRAMES RCVD       :        75905	  CRC ERRORS		       :   0
+     BYTES RCVD        :      4000618	  RECEIVER OVERRUN	       :   0
+					  INACTIVE ADDRESS	       :   0
+					  INVALID ADDRESS	       :   0
+					  SHORT FRAMES		       :   0
+					  ABORT FRAMES		       :   0
+					  DISCARDED FRAMES	       :   0
+
+
+     --- TRANSMIT STATUS  --- *3	  --- TRANSMIT ERRORS --- *4
+     FRAMES SENT       :	20910	  CTS TIMEOUTS		       :   0
+     BYTES SENT        :      9008922	  TRANSMIT UNDERRUN	       :   0
+
+     The second mnetstat example lists MTC statistics for the MTC
+     named mtc0.
+
+	  mnetstat -m mtc0
+
+     The following is the display:
+
+     MTC NETWORK STATISTICS FOR MTC mtc0
+
+     LOCAL MTC STATISTICS:
+     MTC STATE : CONNECTED
+     ---  RECEIVE STATUS  --- *5	  --- RECEIVE ERRORS --- *6
+     FRAMES RCVD       :        76123	  NO RCV BUFFERS	       :   0
+     BYTES RCVD        :      4011954
+     FRAME REJECTS     :            0
+     RNR	       :            0
+
+     ---  TRANSMIT STATUS  --- *7	  --- TRANSMIT ERRORS --- *8
+     FRAMES SENT	:	20967	  RETRANSMIT EXCEEDED	       :   0
+     BYTES SENT 	:     9034556
+     FRAME REJECTS	:	    0
+     RNR		:	    0
+
+     ---  TRANSMIT FRAME SIZE AND COUNT  ---   *9
+     0 to 63		:	  140  320 to 383		       :   0
+     64 to 127		:	  191  384 to 447		       :   0
+     128 to 191 	:	 1427  448 to 511		       :   2
+     192 to 255 	:	   23  512			       :   4
+     256 to 319 	:	   95
+
+
+     MTC STATISTICS:
+     ---  RECEIVE STATUS  --- *10	  --- RECEIVE ERRORS --- *11
+     FRAMES RCVD       :	 0	  CRC ERRORS		       :   0
+     BYTES RCVD        :	 0	  SEQUENCE ERRORS	       :   0
+     FRAME REJECTS     :	 0	  OVERRUN ERRORS	       :   1
+     RNR	       :	 0	  NONOCTET ERRORS	       :   0
+     POLLS RCVD        :      386561
+
+     ---  TRANSMIT STATUS  --- *12	  --- TRANSMIT ERRORS --- *13
+     FRAMES SENT	:	 0
+     BYTES SENT 	:	 0
+     FRAME REJECTS	:	 0
+     RNR		:	 0
+
+     ---  TRANSMIT FRAME SIZE AND COUNT  --- *14
+     0 to  63	  :	    0 320 to  383			       :   0
+     64 to 127	  :	    0 384 to  447			       :   0
+     128 to 191   :	    0 448 to  511			       :   0
+     192 to 255   :	    0 512				       :   0
+     256 to 319   :	    0
+
+NOTES
+   Link Statistics
+     *1 Receive status statistics are those counted since the
+     last time the MHA counters were initialized or cleared.  The
+     following list explains the fields and conditions counted by
+     the MHA for link receive status:
+
+	  + FRAMES RCVD - Number of frames received.
+
+	  + BYTES RCVD - Number of bytes received.
+
+     *2 Receive error statistics are those counted since the last
+     time the MHA counters were initialized or cleared.  A small
+     percentage of any of these errors is normal. A large
+     percentage of errors relative to the total number of
+     received frames indicates a problem. All frames received
+     with errors are discarded. The following list explains the
+     fields and conditions counted by the MHA for link receive
+     errors:
+
+	  + CRC ERRORS - Number of frames received with a
+	    cyclical redundancy check (CRC) error. Each frame has
+	    a CRC value that is validated to ensure the frame is
+	    received correctly.
+
+	  + RECEIVER OVERRUN - Number of frames discarded because
+	    the MHA could not move data into onboard memory fast
+	    enough.
+
+	  + INACTIVE ADDRESS - Number of frames received with an
+	    inactive address.
+
+	  + INVALID ADDRESS - Number of frames received with an
+	    invalid address.
+
+	  + SHORT FRAMES - Number of frames received with the
+	    frame size less than 5 bytes.
+
+	  + ABORT FRAMES - Number of aborted frames received.
+
+	  + DISCARDED FRAMES -	Number of frames discarded due to
+	    the lack of receive buffers.
+
+     *3 Transmit status statistics are those counted since the
+     last time the MHA counters were initialized or cleared. The
+     following list explains the fields and conditions counted by
+     the MHA for link transmit status:
+
+	  + FRAMES SENT - Number of frames transmitted.
+
+	  + BYTES SENT - Number of bytes transmitted.
+
+     *4 Transmit error statistics are those counted since the
+     last time the MHA counters were initialized or cleared. A
+     small percentage of any of these errors is normal. A large
+     percentage of errors relative to the total number of
+     transmitted frames indicates a problem. The following list
+     explains the fields and conditions counted by the MHA for
+     link transmit errors:
+
+	  + CTS TIMEOUTS - Number of times that Clear-To-Send
+	    (CTS) was not asserted following assertion of
+	    Request-To-Send (RTS).
+
+	  + TRANSMIT UNDERRUN - Number of frames aborted because
+	    the MHA could not move data from onboard memory fast
+	    enough.
+
+   Local MTC Statistics
+     *5 Receive status statistics are those counted since the
+     last time the MHA counters were initialized or cleared. The
+     following list explains the fields and conditions counted by
+     the MHA for receive status from the specified MTC:
+
+	  + FRAMES RCVD - Number of frames received.
+
+	  + BYTES RCVD - Number of bytes received.
+
+	  + FRAME REJECTS - Number of Reject (REJ) frames
+	    received.
+
+	  + RNR - Number of Receiver-Not-Ready (RNR) frames
+	    received.
+
+     *6 Receive error statistics are those counted since the last
+     time the MHA counters were initialized or cleared. A small
+     percentage of these errors is normal. A large percentage of
+     errors relative to the total number of received frames
+     indicates a problem. All frames received with errors are
+     discarded. The following list explains the fields and
+     conditions counted by the MHA for receive errors from the
+     specified MTC:
+
+	  + NO RCV BUFFERS - Number of frames discarded due to
+	    the lack of receive buffers.
+
+     *7 Transmit status statistics counted since the last time
+     the MHA counters were initialized or cleared. The following
+     list explains the fields and conditions counted by the MHA
+     for transmit status to the specified MTC:
+
+	  + FRAMES SENT - Number of frames transmitted.
+
+	  + BYTES SENT - Number of bytes transmitted.
+
+	  + FRAME REJECTS - Number of Reject (REJ) frames
+	    transmitted.
+
+	  + RNR - Number of Receiver-Not-Ready (RNR) frames
+	    transmitted.
+
+     *8 Transmit error statistics are those counted since the
+     last time the MHA counters were initialized or cleared. A
+     small percentage of these errors is normal. A large
+     percentage of errors relative to the total number of
+     transmitted frames indicates a problem. The following list
+     explains the fields and conditions counted by the MHA for
+     transmit errors to the the specified MTC:
+
+	  + RETRANSMIT EXCEEDED - Number of times frames have
+	    been retransmitted.
+
+     *9 Transmit frame size and count is a histogram of the size
+     and number of transmitted frames since the last time the MHA
+     counters were initialized or cleared.
+
+   MTC Statistics
+     *10 Receive status statistics are those counted since the
+     last time the MTC counters were initialized or cleared. The
+     following list explains the fields and conditions counted by
+     the MTC for receive status:
+
+	  + FRAMES RCVD - Number of frames received.
+
+	  + BYTES RCVD - Number of bytes received.
+
+	  + FRAME REJECTS - Number of Reject (REJ) frames
+	    received.
+
+	  + RNR - Number of Receiver-Not-Ready (RNR) frames
+	    received.
+
+	  + POLLS RCVD - Number of poll frames received.
+
+     *11 Receive error statistics are those counted since the
+     last time the MTC counters were initialized or cleared.  A
+     small percentage of any of these errors is normal. A large
+     percentage of errors relative to the total number of
+     received frames indicates a problem. All frames received
+     with errors are discarded. The following list explains the
+     fields and conditions counted by the MTC for receive errors:
+
+	  + CRC ERRORS - Number of frames received with a
+	    cyclical redundancy check (CRC) error. Each frame has
+	    a CRC value that is validated to ensure the frame is
+	    received correctly.
+
+	  + SEQUENCE ERRORS - Number of frames received with an
+	    invalid sequence number.
+
+	  + OVERRUN ERRORS - Number of frames discarded because
+	    the MTC could not move data into onboard memory fast
+	    enough.
+
+	  + NONOCTET ERRORS - Number of frames received with the
+	    frame size less than 5 bytes.
+
+     *12 Transmit status statistics are those counted since the
+     last time the MTC counters were initialized or cleared.  The
+     following list explains the fields and conditions counted by
+     the MTC for transmit status:
+
+	  + FRAMES SENT - Number of frames transmitted.
+
+	  + BYTES SENT - Number of bytes transmitted.
+
+	  + FRAME REJECTS - Number of Reject (REJ) frames
+	    transmitted.
+
+	  + RNR - Number of Receiver-Not-Ready (RNR) frames
+	    transmitted.
+
+     *13 MTCs do not monitor transmit error statistics.
+
+     *14 Transmit frame size and count is a histogram of the size
+     and number of transmitted frames since the last time the MTC
+     counters were initialized or cleared.
+
+SEE ALSO
+     ddinq(1T), mtcstat(1T).
+
+

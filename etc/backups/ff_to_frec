@@ -1,0 +1,17 @@
+# /bin/sh  @(#)fftofrec.sh	1.1 (TI) 88/04/26
+# converts ff output to frec num:file input
+if test $# -lt 2; then
+	echo "Usage: ff_to_frec ff_filein frec_fileout"
+	exit
+fi
+# get rid of the "./" at start of each line
+echo " sed of $1 taking place"
+sed -e "s/\.\///" $1 > temp1
+# switch places of inode and filename
+echo " switching order of inode and filename"
+while read file inumber
+do
+	echo "$inumber:$file" >> $2
+done < temp1
+rm temp1
+echo "All done."

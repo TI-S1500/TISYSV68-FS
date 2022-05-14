@@ -1,0 +1,38 @@
+SETMNT(1M)                                             SETMNT(1M)
+
+NAME
+     setmnt - Establishes the mount table
+
+SYNOPSIS
+     setmnt
+
+DESCRIPTION
+   Purpose
+     The setmnt command creates the /etc/mnttab table (see
+     mnttab(4)), which is needed for both the mount(1M) and
+     umount(1M) commands.
+
+   Discussion
+     The setmnt command reads standard input and creates an
+     mnttab entry for each line.  Input lines have the following
+     format:
+
+          filesys node
+
+     where filesys is the name of the file system's special file
+     and node is the root name of that file system.  Thus,
+     filesys and node become the first two strings in the
+     mnttab(4) entry.
+
+FILES
+     /etc/mnttab
+
+SEE ALSO
+     mnttab(4).
+
+NOTES
+     filesys or node cannot be longer than 32 characters.  The
+     setmnt command silently enforces an upper limit on the
+     maximum number of mnttab entries.
+
+

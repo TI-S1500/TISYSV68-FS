@@ -1,0 +1,61 @@
+MC68AS(1)                                               MC68AS(1)
+
+NAME
+     mc68as - Invokes the 68010 portable assembler
+
+SYNOPSIS
+     mc68as -nmoRV file
+
+DESCRIPTION
+   Purpose
+     The mc68as command assembles the named file.
+
+   Options
+     The following options may be specified in any order:
+
+     -o objfile  Puts the output of the assembly in objfile.  By
+                 default, the output file name is formed by
+                 removing the .s suffix, if there is one, from
+                 the input file name and appending a .o suffix.
+
+     -n          Turns off long/short address optimization.  By
+                 default, address optimization takes place.
+
+     -m          Runs the m4 macro preprocessor on the input to
+                 the assembler.
+
+     -R          Removes (unlinks) the input file after assembly
+                 is completed.
+
+     -V          Writes the version number of the assembler being
+                 run on the standard error output.
+
+FILES
+     /usr/tmp/as[1-6]XXXXXX temporary files
+
+SEE ALSO
+     a.out(4), ld(1), m4(1), nm(1), strip(1).
+
+WARNING
+     If the -m (m4 macro preprocessor invocation) option is used,
+     keywords for m4 cannot be used as symbols (variables,
+     functions, labels) in the input file since m4 cannot
+     determine which are assembler symbols and which are real m4
+     macros.  See m4(1).
+
+     Use the -b or -w option only when undefined symbols are
+     known to refer to locations representable by the specified
+     default displacement.  Use of either option when assembling
+     a file containing a reference to a symbol that is to be
+     resolved by the loader can lead to unpredictable results,
+     since the loader may be unable to place the address of the
+     symbol into the space provided.
+
+NOTES
+     The .align assembler directive is not guaranteed to work in
+     the .text section when optimization is performed.
+
+     Arithmetic expressions may only have one forward referenced
+     symbol per expression.
+
+

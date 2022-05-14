@@ -1,0 +1,8 @@
+	c - C Programming Menu
+		@(#)c.sh	1.1 87/03/09
+
+	This menu lists commands which help the user design and develop
+	   C applications and system software.  The commands enable the 
+	   user to create C and (assembly language programs) for execution
+	   on UNIX systems, and to automate and maintain different versions 
+	   of C programs being developed.

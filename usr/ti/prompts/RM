@@ -1,0 +1,35 @@
+# cshf 	RM - remove files and directories  
+#	@(#)RM.sh	1.1  87/03/09
+#
+onintr end
+
+prompt	"^RM -- REMOVES FILES"\
+	"^File Name(s):" _input_file macnm $_input_file  \
+	"^Ask questions on Each File:" fiflag yesno y\
+	"^Recursively Delete the Entire Contents:" rflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ("$_input_file" != "") then
+	prompt	"^RM -- REMOVES FILES AND DIRECTORIES"\
+		"^Are you sure:" go yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($go == "y") then
+		if ($fiflag == "y") then
+			set opt = i$opt
+		else
+			set opt = f$opt
+		endif
+		if ($rflag == "y") set opt = r$opt
+		if ($opt != "") set opt = -$opt
+		echo "=== RM COMMAND EXECUTING ==="
+		echo rm $opt $_input_file 
+		rm $opt $_input_file 
+	else    echo $_input_file is unchanged
+	endif
+endif
+
+end:
+unset go *flag opt

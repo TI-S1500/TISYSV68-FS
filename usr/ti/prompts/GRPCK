@@ -1,0 +1,24 @@
+# cshf   grpck -- checks group files 
+#	@(#)GRPCK.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^GRPCK -- CHECKS GROUP FILES"\
+	"^Group File:" grfile acnm /etc/group\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^#$*"
+
+if ($abort) goto end
+
+echo "=== GRPCK COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo /etc/grpck $grfile 
+	/etc/grpck $grfile |& \
+	pg -cp"Output from GRPCK is being piped through pg: "
+else
+	echo /etc/grpck $grfile ">&"$_output_file
+	/etc/grpck $grfile >&$_output_file
+endif
+
+end:
+unset grfile 

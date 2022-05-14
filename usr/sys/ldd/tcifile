@@ -1,0 +1,13 @@
+MEMORY
+{
+	valid:org=0x100000,len=0x80000
+}
+SECTIONS
+{
+	.text:{}
+	GROUP ALIGN(4):
+	{
+		.data:{}
+		.bss:{}
+	}
+}

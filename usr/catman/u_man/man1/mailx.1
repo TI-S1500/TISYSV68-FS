@@ -1,0 +1,909 @@
+MAILX(1)                                                 MAILX(1)
+
+NAME
+     mailx - Invokes an interactive message-processing system
+
+SYNOPSIS
+     mailx -efFhHinNrsuU [names]
+
+DESCRIPTION
+   Purpose
+     The mailx command sends and receives messages
+     electronically.  When reading mail, mailx provides commands
+     to facilitate saving, deleting, and responding to messages.
+     When sending mail, mailx allows editing, reviewing, and
+     other modification of the message as it is entered.
+
+   Options
+     See the Environment Variables section that follows in this
+     manual page for further information on the environment
+     variables discussed in this section.  Command line options
+     are as follows:
+
+     -e            Tests for presence of mail.  The mailx command
+                   prints nothing and exits with a successful
+                   return code if there is mail to read.
+
+     -f [file]     Reads messages from file instead of from the
+                   file named mailbox.  If no file is specified,
+                   the command reads from the file named mbox.
+
+     -F            Records the mail in a file named after the
+                   first recipient.  Overrides the record
+                   environment variable.
+
+     -h number     Specifies the number of network hops made so
+                   far.  This is provided for network software to
+                   avoid infinite delivery loops.
+
+     -H            Prints header summary only.
+
+     -i            Ignores interrupts.
+
+     -n            Does not initialize from the system default
+                   mailx.rc file.
+
+     -N            Does not print initial header summary.
+
+     -r address    Passes address to network delivery software
+                   and disables all tilde commands.
+
+     -s subject    Sets the Subject header field to subject.
+
+     -u user       Read user's mailbox file.  This option is only
+                   effective if user's mailbox file is not read-
+                   protected.
+
+     -U            Converts uucp style addresses to internet
+                   standards. Overrides the conv environment
+                   variable.
+
+   Discussion
+     Incoming mail is stored in a standard file for each user,
+     called the mailbox for that user.  When mailx is called to
+     read messages, the command reads from the mailbox file
+     unless the -f option is specified.  As messages are read,
+     they are marked to be moved to a secondary file for storage
+     unless specific action is taken.  This secondary file is
+     called the mbox and is normally located in the user's HOME
+     directory (see MBOX in the Environment Variables section for
+     a description of this file).  Messages remain in this file
+     until removed by the user.
+
+     Options begin with a minus (-) and any other arguments are
+     interpreted as destinations (mail recipients).  If no
+     recipients are specified, mailx attempts to read messages
+     from the mailbox.
+
+     When reading mail, mailx is in command mode.  A header
+     summary of the first several messages is displayed, followed
+     by a prompt indicating that mailx can accept regular
+     commands (see the Command section).  When sending mail,
+     mailx is in input mode.  If no subject is specified on the
+     command line, a prompt for the subject is printed.  As the
+     mail message is typed, mailx reads the message and stores it
+     in a temporary file.  Commands can be entered by beginning a
+     line with the tilde (~) escape character followed by a
+     single command letter and optional arguments.  See Tilde
+     Escapes for a summary of these commands.
+
+     At any time, the behavior of mailx is governed by a set of
+     environment variables.  These are flags and valued
+     parameters that are set and cleared via the set and unset
+     commands.  See Environment Variables for a summary of these
+     parameters.
+
+     Recipients listed on the command line can be of three types:
+     login names, shell commands, or alias groups.  Login names
+     can be any network address, including mixed network
+     addressing.  If the recipient name begins with a pipe symbol
+     ( | ), the rest of the name is taken to be a shell command
+     through which to pipe the message.  This feature provides an
+     automatic interface with any program that reads the standard
+     input, (such as lp(1)) for recording outgoing mail on paper.
+     Alias groups are set by the alias command (see Commands) and
+     are lists of recipients of any type.
+
+   Commands
+     Regular commands are of the form
+
+          [command] [msglist] [arguments]
+
+     If no command is specified in command mode, print is
+     assumed.  In input mode, commands are recognized by the
+     escape character, and lines not treated as commands are
+     taken as input for the message.
+
+     Each message is assigned a sequential number, and there is
+     at any time the notion of a current message, marked by a >
+     in the header summary.  Many commands take an optional list
+     of messages (indicated in the list of commands that follows
+     as msglist) to operate on, which defaults to the current
+     message.  A msglist is a list of message specifications
+     separated by spaces.  These specifications are as follows:
+
+          n        Message number n
+          .        The current message
+          ^        The first undeleted message
+          $        The last message
+          *        All messages
+          n-m      An inclusive range of message numbers
+          user     All messages from user
+          /string  All messages with string in the subject line
+                   (case is ignored)
+          :c       All messages of type c, where c is one of the
+                   following:
+                       d    Deleted messages
+                       n    New messages
+                       o    Old messages
+                       r    Read messages
+                       u    Unread messages
+
+     Other arguments are usually arbitrary strings whose usage
+     depends on the command involved.  File names, where
+     expected, are expanded via the normal shell conventions (see
+     sh(1)).  Special characters are recognized by certain
+     commands.  These characters are documented in the list of
+     commands that follows.
+
+     At start-up time, mailx reads commands from a systemwide
+     file (/usr/lib/mailx/mailx.rc) to initialize certain
+     parameters, and then from a private start-up file
+     ($HOME/.mailrc, HOME is a variable set to your home
+     directory as defined in the /etc/passwd file) for
+     personalized variables.  Most regular commands are legal
+     inside start-up files.  Commands inside start-up files are
+     commonly used to set up initial display options and alias
+     lists.  The following commands are not legal in the start-up
+     file:
+          !
+          Copy
+          edit
+          followup
+          Followup
+          hold
+          mail
+          preserve
+          reply
+          Reply
+          shell
+          visual
+
+     Any errors in the start-up file cause the remaining lines in
+     the file to be ignored.
+
+     For each message, the user is prompted with a ?, and a line
+     is read from the standard input.  The following is a complete
+     list of mailx commands:
+
+     !shell-command
+          Escapes to the shell.  See SHELL in the Environment
+          Variables section.
+
+     # comment
+          Specifies a comment.  This may be useful in .mailrc
+          files.
+
+     =
+          Prints the current message number.
+
+     ?
+          Prints a summary of commands.
+
+     alias alias name ...
+     group alias name ...
+          Declares an alias for the given names.  The names are
+          substituted when alias is used as a recipient.  Useful
+          in the .mailrc file.
+
+
+     alternates name ...
+          Declares a list of alternate names for login.  When
+          responding to a message, these names are removed from
+          the list of recipients for the response.  With no
+          arguments, alternates prints the current list of
+          alternate names.  See also allnet in the Environment
+          Variables section.
+
+     cd [directory]
+     chdir [directory]
+          Changes directory.  If directory is not specified,
+          $HOME is used.
+
+     copy [filename]
+     copy [msglist] filename
+          Copies messages to the file without marking the
+          messages as saved.  Otherwise, it is equivalent to the
+          save command.
+
+     Copy [msglist]
+          Saves the specified messages in a file whose name is
+          derived from the author of the message to be saved.
+          Does not mark the messages as saved.  Otherwise, it is
+          equivalent to the Save command.
+
+     delete [msglist]
+          Deletes messages from the mailbox file.  If autoprint
+          is set, the next message after the last one deleted is
+          printed (see Environment Variables).
+
+     discard [header-field ...]
+     ignore [header-field ...]
+          Suppresses printing of the specified header fields when
+          displaying messages on the screen.  Examples of header
+          fields to ignore are "status" and "cc".  The fields are
+          included when the message is saved.  The Print and Type
+          commands override this command.
+
+     dp [msglist]
+     dt [msglist]
+          Deletes the specified messages from the mailbox file
+          and prints the next message after the last one is
+          deleted.  Is roughly equivalent to a delete command
+          followed by a print command.
+
+     echo string ...
+          Echoes the given strings (like echo(1)).
+
+     edit [msglist]
+          Edits the given messages.  The messages are placed in a
+          temporary file and the EDITOR variable is used to get
+          the name of the editor (see Environment Variables).
+          Default editor is ed(1).
+
+     exit
+     xit
+          Exits from mailx without changing the mailbox file.  No
+          messages are saved in the mbox file (see also quit).
+
+     file [filename]
+     folder [filename]
+          Quits from the current file of messages and reads in
+          the specified file.  Several special characters are
+          recognized when used as file names, with the following
+          substitutions:
+               %      The current mailbox file
+               %user  The mailbox for user
+               #      The previous file
+               &      The current mbox file
+          Default file is the current mailbox file.
+
+     folders
+          Prints the names of the files in the directory set by
+          the folder environment variable.
+
+     followup [message]
+          Responds to a message, recording the response in a file
+          whose name is derived from the author of the message.
+          Overrides the record variable, if set.  See also the
+          Followup, Save, and Copy commands and the outfolder
+          environment variable.
+
+     Followup [msglist]
+          Responds to the first message in the msglist, sending
+          the message to the author of each message in the
+          msglist.  The subject line is taken from the first
+          message and the response is recorded in a file whose
+          name is derived from the author of the first message.
+          See also the followup, Save, and Copy commands and the
+          outfolder environment variable.
+
+     from [msglist]
+          Prints the header summary for the specified messages.
+
+     group alias name ...
+     alias alias name ...
+          Declares an alias for the given names.  The names are
+          substituted when alias is used as a recipient.  Useful
+          in the .mailrc file.
+
+     headers [message]
+          Prints the page of headers that includes the message
+          specified.  The screen environment variable sets the
+          number of headers per page.  See also the z command.
+
+     help
+          Prints a summary of commands.
+
+     hold [msglist]
+     preserve [msglist]
+          Holds the specified messages in the mailbox file.
+
+     if s|r
+     mail-commands
+     else
+     mail-commands
+     endif
+          Executes conditionally, where s executes following
+          mail-commands, up to an else or endif, if the program
+          is in send mode, and r causes the mail-commands to be
+          executed only in receive mode.  Useful in the .mailrc
+          file.
+
+     ignore header-field ...
+     discard header-field ...
+          Suppresses printing of the specified header fields when
+          displaying messages on the screen.  Examples of header
+          fields to ignore are "status" and "cc".  All fields are
+          included when the message is saved.  The Print and Type
+          commands override this command.
+
+
+     list
+          Prints all commands available.  No explanation is
+          given.
+
+     mail name ...
+          Mails a message to the specified users.
+
+     Mail name
+          Mails a message to the specified user and records a
+          copy of it in a file named after that user.
+
+     mbox [msglist]
+          Arranges for the given messages to end up in the
+          standard mbox save file when mailx terminates normally.
+          See MBOX in the Environment Variables section for a
+          description of this file.  See also the exit and quit
+          commands.
+
+     next [message]
+          Goes to next message matching message.  A msglist can
+          be specified, but in this case the first valid message
+          in the list is the only one used.  This command is
+          useful for jumping to the next message from a specific
+          user, because the name is taken as a command in the
+          absence of a real command.  See the discussion of
+          msglists at the beginning of the Commands section for a
+          description of possible message specifications.
+
+     pipe [msglist] [shell-command]
+     | [msglist] [shell-command]
+          Pipes the message through the given shell-command.  The
+          message is treated as if it were read.  If no arguments
+          are given, the current message is piped through the
+          command specified by the value of the cmd environment
+          variable.  If the page environment variable is set, a
+          form-feed character is inserted after each message (see
+          Environment Variables).
+
+     preserve [msglist]
+     hold [msglist]
+          Preserves the specified messages in the mailbox file.
+
+     Print [msglist]
+     Type [msglist]
+          Prints the specified messages on the screen, including
+          all header fields.  Overrides suppression of fields by
+          the ignore command.
+
+     print [msglist]
+     type [msglist]
+          Prints the specified messages.  If the message "crt" is
+          set, the messages longer than the number of lines
+          specified by the crt environment variable are paged
+          through the command specified by the PAGER variable.
+          The default command is pg(1).
+
+     quit
+          Exits from mailx, storing messages that were read in
+          the mbox file and storing unread messages in the
+          mailbox file.  Deletes messages that have been
+          explicitly saved in a file.
+
+     Reply [msglist]
+     Respond [msglist]
+          Sends a response to the author of each message in the
+          msglist.  The subject line is taken from the first
+          message.  If the record environment variable is set to
+          a file name, the response is saved at the end of that
+          file.
+
+     reply [message]
+     respond [message]
+          Replies to the specified message, including all other
+          recipients of the message.  If the record environment
+          variable is set to a file name, the response is saved
+          at the end of that file.
+
+     Save [msglist]
+          Saves the specified messages in a file whose name is
+          derived from the author of the first message.  The name
+          of the file is taken to be the author's name with all
+          network addressing deleted.  See also the Copy,
+          followup, and Followup commands and the outfolder
+          environment variable.
+
+     save [filename]
+     save [msglist] filename
+          Saves the specified messages in the given file.  The
+          file is created if it does not exist.  The message is
+          deleted from the mailbox file when mailx terminates,
+          unless the keepsave environment variable is set (see
+          also the exit and quit commands).
+
+     set
+     set name
+     set name=string
+     set name=number
+          Defines a variable called name.  The variable can be
+          given a null, string, or numeric value.  Set by itself
+          prints all defined variables and their values.  See
+          Environment Variables for detailed descriptions of the
+          mailx variables.
+
+     shell
+          Invokes an interactive shell (see also the SHELL
+          environment variable).
+
+     size [msglist]
+          Prints the size in characters of the specified
+          messages.
+
+     source filename
+          Reads commands from the given file and return to
+          command mode.
+
+     top [msglist]
+          Prints the top few lines of the specified messages.  If
+          the toplines environment variable is set, this variable
+          is taken as the number of lines to print.  The default
+          is 5.
+
+     touch [msglist]
+          Touches the specified messages.  If any message in
+          msglist is not specifically saved in a file, the
+          message is placed in the mbox file upon normal
+          termination.  See exit and quit.
+
+     Type [msglist]
+     Print [msglist]
+          Prints the specified messages on the screen, including
+          all header fields.  Overrides suppression of fields by
+          the ignore command.
+
+     type [msglist]
+     print [msglist]
+          Prints the specified messages.  If the crt environment
+          variable is set, the messages longer than the number of
+          lines specified by the crt variable are paged through
+          the command specified by the PAGER variable.  The
+          default command is pg.
+
+     undelete [msglist]
+          Restores the specified deleted messages.  Restores only
+          messages deleted in the current mail session.  If the
+          autoprint environment variable is set, the last message
+          of those restored is printed.
+
+     unset name ...
+          Causes the specified variables to be erased.  If the
+          variable was imported from the execution environment
+          (i.e., a shell variable), the variable cannot be
+          erased.
+
+     version
+          Prints the current version and release date.
+
+     visual [msglist]
+          Edits the given messages with a screen editor.  The
+          messages are placed in a temporary file and the VISUAL
+          environment variable is used to get the name of the
+          editor.
+
+     write [msglist] filename
+          Writes the given messages on the specified file, minus
+          the header and trailing blank line.  Otherwise, is
+          equivalent to the save command.
+
+     xit
+     exit
+          Exits from mailx, without changing the mailbox file.
+          No messages are saved in the mbox file (see also quit).
+
+     z[+|-]
+          Scrolls the header display forward or backward one
+          screen.  The number of headers displayed is set by the
+          screen environment variable.
+
+   Tilde Escapes
+     The following commands can be entered only from input mode
+     and are specified by beginning a line with the tilde escape
+     character (~).  See the description of the escape
+     environment variable to change this special character.
+
+     ~! shell-command
+          Escapes to the shell.
+
+     ~.
+          Simulates end-of-file (terminates message input).
+
+     ~: mail-command
+     ~_ mail-command
+          Performs the command-level request.  Valid only when
+          sending a message while reading mail.
+
+     ~?
+          Prints a summary of tilde escapes.
+
+
+     ~A
+          Inserts the autograph string specified by the Sign
+          environment variable into the message.
+
+     ~a
+          Inserts the autograph string specified by the sign
+          environment variable into the message.
+
+     ~b name ...
+          Adds the names to the blind carbon copy (Bcc) list.
+
+     ~c name ...
+          Adds the names to the carbon copy (Cc) list.
+
+     ~d
+          Reads in the dead.letter file.  See the environment
+          variable DEAD for a description of this file.
+
+     ~e
+          Invokes the editor on the partial message.  See also
+          the EDITOR environment variable.
+
+     ~f [msglist]
+          Forwards the specified messages.  The messages are
+          inserted into the message, without alteration.
+
+     ~h
+          Prompts for Subject line and To, Cc, and Bcc lists.  If
+          the field is displayed with an initial value, the field
+          can be edited as if you had just typed it.
+
+     ~i string
+          Inserts the value of the named variable into the text
+          of the message.  For example, ~A is equivalent to
+          '~i Sign.'  Environment variables set and exported in
+          the shell are also accessible by ~i.
+
+     ~m [msglist]
+          Inserts the specified messages into the letter,
+          shifting the new text to the right one tab stop.  Valid
+          only when sending a message while reading mail.
+
+     ~p
+          Prints the message being entered.
+
+     ~q
+          Quits from input mode by simulating an interrupt.  If
+          the body of the message is not null, the partial
+          message is saved in the file dead.letter.  See the DEAD
+          environment variable for a description of this file.
+
+     ~r filename
+     ~~<  filename
+     ~~<  !shell-command
+          Reads in the specified file.  If the argument begins
+          with an exclamation point (!), the rest of the string
+          is taken as an arbitrary shell command and is executed,
+          with the standard output inserted into the message.
+
+     ~s string ...
+          Sets the subject line to string.
+
+     ~t name ...
+          Adds the given names to the To list.
+
+
+     ~v
+          Invokes a preferred screen editor on the partial
+          message.  See also the VISUAL environment variable.
+
+     ~w filename
+          Writes the partial message onto the given file, without
+          the header.
+
+     ~x
+          Exits as with ~q except the message is not saved in
+          dead.letter.
+
+     ~| shell-command
+          Pipes the body of the message through the given shell-
+          command.  If the shell-command returns a successful
+          exit status, the output of the command replaces the
+          message.
+
+   Environment Variables
+     The following are environment variables taken from the
+     execution environment and are not alterable within mailx.
+
+     HOME=directory
+          The user's home directory.
+
+     MAILRC=filename
+          The name of the start-up file.  Default is
+          $HOME/.mailrc.
+
+     The following variables are internal mailx variables.  They
+     can be imported from the execution environment or set via
+     the set command at any time.  The unset command can be used
+     to erase variables.
+
+     addsopt
+          Enabled by default. If /bin/mail is not being used as
+          the deliverer, noaddsopt should be specified.
+
+     allnet
+          Treats all network names whose last component (login
+          name) match as identical.  This causes the msglist
+          message specifications to behave similarly.  Default is
+          noallnet.  See also the alternates command and the
+          metoo environment variable.
+
+     append
+          Appends messages, upon termination, to the end of the
+          mbox file instead of prepending them.  Default is
+          noappend.
+
+     askcc
+          Prompts for the Cc list after message is entered.
+          Default is noaskcc.
+
+     asksub
+          Prompts for subject if it is not specified on the
+          command line with the -s option.  Enabled by default.
+
+     autoprint
+          Enables automatic printing of messages after delete and
+          undelete commands.  Default is
+          noautoprint.
+
+     bang
+          Enables exclamation points (!) to be treated as special
+          cases in shell escape command lines, as in vi(1).
+          Default is nobang.
+
+     cmd=shell-command
+          Sets the default command for the pipe command.  No
+          default value.
+
+     conv=conversion
+          Converts uucp addresses to the specified address style.
+          The only valid conversion now is internet, which
+          requires a mail delivery program conforming to the
+          RFC822 standard for electronic mail addressing.
+          Conversion is disabled by default.  See also the
+          sendmail environment variable and the -U command line
+          option.
+
+     crt=number
+          Pipes messages having more than number lines through
+          the command specified by the value of the PAGER
+          variable (pg(1) by default).  Disabled by default.
+
+     DEAD=filename
+          Saves partial letters in this file in case of untimely
+          interrupt or delivery errors.  Default is
+          $HOME/dead.letter.
+
+     debug
+          Enables verbose diagnostics for debugging.  Messages
+          are not delivered.  Default is nodebug.
+
+     dot
+          Takes a period on a line by itself during input from a
+          terminal as the end-of-file marker.  Default is nodot.
+
+     EDITOR=shell-command
+          Specifies the command to run when the edit or ~e
+          command is used.  Default is ed(1).
+
+     escape=c
+          Substitutes c for the ~ escape character. Takes effect
+          with the next message sent.
+
+     folder=directory
+          Specifies the directory for saving standard mail files.
+          User-specified file names beginning with a plus (+) are
+          expanded by preceding the file name with this directory
+          name to obtain the real file name.  If directory does
+          not start with a slash (/), $HOME is prepended to it.
+          In order to use the plus (+) construct on a mailx
+          command line, the folder environment variable must be
+          an exported sh environment variable.  There is no
+          default for the folder variable.  See also the
+          outfolder environment variable.
+
+     header
+          Enables printing of the header summary when entering
+          mailx.  Enabled by default.
+
+     hold
+          Preserves all messages that are read in the mailbox
+          file instead of putting them in the standard mbox save
+          file.  Default is nohold.
+
+     ignore
+          Ignores interrupts while entering messages.  Handy for
+          noisy dial-up lines.  Default is noignore.
+
+     ignoreeof
+          Ignores end-of-file during message input.  Input must
+          be terminated by a period (.) on a line by itself or by
+          the ~. command.  Default is noignoreeof.  See also the
+          dot environment variable.
+
+     keep
+          Truncates the mailbox file to zero length when it is
+          empty, instead of removing the mailbox file.  Disabled
+          by default.
+
+     keepsave
+          Keeps messages that have been saved in other files in
+          the mailbox file instead of deleting them.  Default is
+          nokeepsave.
+
+     MBOX=filename
+          Specifies the name of the file to save messages that
+          have been read.  The xit command overrides this
+          function, as does saving the message explicitly in
+          another file.  Default is $HOME/mbox.
+
+     metoo
+          Does not delete your login if your login appears as a
+          recipient.  Default is nometoo.
+
+     LISTER=shell-command
+          Specifies the command and options to use when listing
+          the contents of the folder directory.  The default is
+          ls(1).
+
+     onehop
+          Disables alteration of the recipients' addresses,
+          improving efficiency in a network where all machines
+          can send directly to all other machines (i.e., one hop
+          away).  (When responding to a message that was
+          originally sent to several recipients, the other
+          recipient addresses are normally forced to be relative
+          to the originating author's machine for the response.)
+
+     outfolder
+          Causes the files used to record outgoing messages to be
+          located in the directory specified by the folder
+          environment variable unless the path name is absolute.
+          Default is nooutfolder.  See the folder environment
+          variable and the Save, Copy, followup, and Followup
+          commands.
+
+     page
+          Inserts a form-feed after each message sent through the
+          pipe when used with the pipe command.  Default is
+          nopage.
+
+     PAGER=shell-command
+          Specifies a filter for paginating output.  This can
+          also be used to specify the options to be used.
+          Default is pg(1).
+
+     prompt=string
+          Sets the command mode prompt to string.  Default is "?".
+
+     quiet
+          Refrains from printing the opening message and version
+          when entering mailx.  Default is noquiet.
+
+     record=filename
+          Records all outgoing mail in filename.  Disabled by
+          default.  See also the outfolder environment variable.
+
+     save
+          Enables saving of messages in dead.letter on interrupt
+          or delivery error.  See the DEAD environment variable
+          for a description of this file.  Enabled by default.
+
+     screen=number
+          Sets the number of lines in a screen of headers for the
+          headers command.
+
+     sendmail=shell-command
+          Specifies an alternate command for delivering messages.
+          Default is /bin/rmail(1).
+
+     sendwait
+          Waits for background mailer to finish before returning.
+          Default is nosendwait.
+
+     SHELL=shell-command
+          Specifies the name of a preferred command interpreter.
+          Default is sh(1).
+
+     showto
+          Prints the recipient's name instead of the author's
+          name when displaying the header summary and the message
+          is from the user.
+
+     sign=string
+          Specifies the variable inserted into the text of a
+          message when the ~a (autograph) command is given.  No
+          default.  (See also ~i in Tilde Escapes.)
+
+     Sign=string
+          Specifies the variable inserted into the text of a
+          message when the ~A command is given.  No default.
+          (See also ~i in Tilde Escapes.)
+
+     toplines=number
+          Specifies the number of lines of header to print with
+          the top command.  Default is 5.
+
+     VISUAL=shell-command
+          Specifies the name of a preferred screen editor.
+          Default is vi(1).
+
+FILES
+     $HOME/.mailrc                Personal start-up file
+     $HOME/mbox                   Secondary storage file
+     /usr/mail/*                  Post office directory
+     /usr/lib/mailx/mailx.help*   Help message files
+     /usr/lib/mailx/mailx.rc      Global start-up file
+     /tmp/R[emqsx]*               Temporary files
+
+PROMPTS
+   Recipient Name(s):
+     Optional. Enter the names of the persons to be receiving
+     mail.
+
+   Test For Presence of Mail:
+     Initial value is no.  If you enter yes, the following
+     prompts will appear.
+
+   Mail File Name:
+     Optional. Enter the name of the file to be read instead of
+     the file named mailbox.
+
+   Name File After Recipient:
+     Initial value is no.  If you enter yes, the mail in a file
+     is named after the first recipient.
+
+   Number of Network Hops:
+     Optional. Enter the number of network hops made so far.
+
+   Print Header Summary Only:
+     Initial value is no.  If you enter yes, only the header
+     summaries are printed.
+
+   Ignore Interrupts:
+     Initial value is no.  If you enter yes, interrupts are
+     ignored.
+
+   Initialize Mailx.rc File:
+     Initial value is yes.  If you enter yes, the system default
+     mailx.rc file is not initialized.
+
+   Print Header Summary:
+     Initial value is no.  If you enter yes, the header summary
+     is not printed.
+
+   Address to Network:
+     Optional.  Enter the address to be passed to the network
+     delivery software.
+
+   Subject Header Field:
+     Optional.  Enter the Subject Header field.
+
+   Name of User's Mailbox:
+     Optional. Enter the name of the file to be used as a
+     mailbox.
+
+SEE ALSO
+     ls(1), mail(1), pg(1).
+
+NOTES
+     The -h, -r, and -U options can only be used if mailx is
+     using a delivery program other than /bin/mail.
+
+     The full internet addressing is not fully supported by
+     mailx.  Attempts to send a message having a line consisting
+     only of a "." are treated as the end of the message by
+     mail(1) (the standard mail delivery program).
+
+     mailx uses the TCP/IP sendmail utility if TCP/IP is installed.
+

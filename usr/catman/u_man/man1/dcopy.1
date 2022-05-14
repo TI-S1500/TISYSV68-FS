@@ -1,0 +1,60 @@
+DCOPY(1M)                                               DCOPY(1M)
+
+NAME
+     dcopy - Copies file systems for optimal access time
+
+SYNOPSIS
+     dcopy -adfsv inputfs outputfs
+
+DESCRIPTION
+   Purpose
+     The dcopy copies file system inputfs to outputfs.  inputfs
+     is the existing file system.  outputfs is an appropriately
+     sized file system to hold the reorganized result.
+
+   Options
+     -an       Places the files not accessed in n days after the
+               free blocks of the destination file system.  (The
+               default for n is 7).  If no n is specified, no
+               movement occurs.
+
+     -d        Leaves order of directory entries as is.  The
+               default is to move subdirectories to the beginning
+               of directories.
+
+     -f size[:isize]
+               Specifies the outputfs file system and inode list
+               sizes (in blocks).  If not given, the values from
+               the inputfs are used.
+
+     -sx       Supplies device information for creating an
+               optimal organization of blocks in a file.  The
+               following form of x is supported:
+
+               -sBlocks-per-cylinder:Blocks-to-skip
+
+               If x is not given, the values specified when the
+               file system was created are used.  If these values
+               were not specified, the value 400:7 is used.
+
+     -v        Reports the number of files processed and the size
+               of the source and destination freelists.
+
+   Discussion
+     For best results, inputfs should be the raw device and
+     outputfs should be the block device.  Run dcopy on unmounted
+     file systems only.  With no arguments, dcopy copies files
+     from inputfs, compressing directories by removing vacant
+     entries and spacing consecutive blocks in a file by the
+     optimal rotational gap.
+
+     The dcopy command catches interrupts and quits and reports
+     on its progress.  To terminate dcopy, send a quit signal,
+     and dcopy will no longer catch interrupts or quits.  The
+     command also attempts to modify its command line arguments
+     so that its progress can be monitored with ps(1).
+
+SEE ALSO
+     fsck(1M), labelit(1M), mkfs(1M), ps(1).
+
+

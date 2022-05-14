@@ -1,0 +1,38 @@
+PORTWAIT(1T)                                         PORTWAIT(1T)
+
+NAME
+     portwait - Waits for a tty device to open or close
+
+SYNOPSIS
+     portwait ttyXX
+     portwait -c ttyXX
+
+DESCRIPTION
+   Discussion
+     The portwait command is provided for use on TI 1500 systems
+     that do not have built-in UPS support hardware and must
+     reply on the status of a serial port to indicate the
+     condition of power to the system. On these systems, portwait
+     will monitor a tty port for an open or a close.
+
+     If you specify ttyXX, portwait will attempt to open the
+     specified tty device. When proper signals are applied to the
+     tty device, the port will become openable. portwait will
+     then exit.
+
+     If you specify -c ttyXX, portwait will open the specified tty
+     device and wait for a loss of signals to the port (causing
+     SIGHUP to be sent to portwait). When signals are lost,
+     portwait will exit.
+
+     This command is designed for use within shell scripts to
+     stop their execution until the state of a tty port changes.
+
+FILES
+     /dev/tty*
+
+SEE ALSO
+     shutdown(1T), upsmon(1T), upsoff(1T), upson(1T),
+     upsstat(1T).
+
+

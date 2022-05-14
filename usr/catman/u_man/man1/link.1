@@ -1,0 +1,21 @@
+LINK(1M)                                                 LINK(1M)
+
+NAME
+     link - Performs a link system call
+
+SYNOPSIS
+     link file1 file2
+
+DESCRIPTION
+     Link performs a link(2) system call on its arguments without
+     error checking.  This command can only be executed by the
+     super-user.
+
+     File1 is the path name of an existing file.  File2 is the
+     path name of the new directory entry to be created.  Link
+     creates a new link (directory entry) for the existing file.
+
+SEE ALSO
+     rm(1), link(2), unlink(1M), unlink(2).
+
+

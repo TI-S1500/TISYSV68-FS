@@ -1,0 +1,28 @@
+# cshf	uux -- unix to unix command execution 
+#	@(#)UUX.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UUX -- EXECUTES UNIX TO UNIX COMMANDS"\
+	"^Command string:" cmd string "$cmd"\
+	"^*Status File Name:" mflag acnm\
+	"^Stnd Input to UUX is Stnd Input to Cmd:" flag yesno n\
+	"^Suppress Output of Job Number:" jflag yesno n\
+	"^Notify Sender:" nflag yesno y\
+	"^Queue Jobs But Don't Start Transfer:" rflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($jflag == "y") set opt = j$opt
+if ($rflag == "y") set opt = r$opt
+if ($nflag == "n") set opt = n$opt
+if ($flag == "y") set opt = -$opt
+
+if ($mflag != "") set mopt = -m$mflag
+
+echo "=== UUX COMMAND EXECUTING ==="
+echo uux $opt $mopt $cmd
+uux $opt $mopt $cmd
+
+end:
+unset *opt *flag cmd

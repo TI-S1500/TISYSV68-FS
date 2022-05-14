@@ -1,0 +1,34 @@
+# cshf   env - Set Environment for Command Execution 
+#	@(#)ENV.sh	1.2  88/03/21
+#
+onintr end
+
+prompt "^ENV -- SETS ENVIRONMNENT FOR COMMAND EXECUTION"\
+	"^*Name:" name string\
+	"^*Value:" value string\
+	"^*Command and Arguments:" cmd string "$cmd"\
+	"^Ignore Inherited Environment:" ignore yesno n\
+	"^#$*"
+
+if ($abort) goto end
+
+# Set default options
+set opt = ""
+
+# set "ignore" 
+if ($ignore == "y") then
+	set ignore = "-"
+else 
+	set ignore = ""
+endif
+ 
+#setup value/name string
+if (("$name" != "") && ("$value" != "")) set name = "$name""=""$value"
+
+echo "=== ENV COMMAND EXECUTING ==="
+echo env $ignore "$name" $cmd
+
+env $ignore "$name" $cmd
+
+end:
+unset ignore name value cmd

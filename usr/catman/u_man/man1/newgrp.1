@@ -1,0 +1,61 @@
+NEWGRP(1)                                               NEWGRP(1)
+
+NAME
+     newgrp - Logs in to a new group
+
+SYNOPSIS
+     newgrp [-[group]]
+
+DESCRIPTION
+   Purpose
+     The newgrp command changes the group identification of its
+     caller.  The same person remains logged in and the current
+     directory is unchanged, but calculations of access
+     permissions to files are performed with respect to the new
+     group ID.
+
+     A password is demanded if the group has a password and the
+     user does not or if the group has a password and the user is
+     not listed in /etc/group as being a member of that group.
+
+   Arguments
+     The newgrp command without an argument changes the group
+     identification to the group in the password file. In effect,
+     it changes the group identification back to the caller's
+     original group.
+
+     An initial - argument causes the environment to be changed
+     to the one that would be expected if the user actually
+     logged in again.
+
+EXAMPLE
+     The following example changes the user's group ID to that of
+     the group named mygroup.
+
+          newgrp mygroup
+
+PROMPTS
+   New Group Name:
+     Enter the name of the new group.
+
+   Change Environment:
+     The initial value is no.  Enter yes to change the
+     environment to the environment expected if the user actually
+     logged in again.
+
+FILES
+     /etc/group
+     /etc/passwd
+
+SEE ALSO
+     login(1), group(4).
+
+NOTES
+     There is no convenient way to enter a password into
+     /etc/group.
+
+     The Bourne (sh) shell traps newgrp as an internal command.
+     To get the full functionality described here, execute newgrp
+     directly out of /bin/newgrp.
+
+

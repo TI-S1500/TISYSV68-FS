@@ -1,0 +1,103 @@
+TAIL(1)                                                   TAIL(1)
+
+NAME
+     tail - Delivers the last part of a file
+
+SYNOPSIS
+     tail +numberbcl -numberbcl -f [file]
+
+DESCRIPTION
+   Purpose
+     The tail command copies the named file to the standard
+     output, beginning at a designated place.  If no file is
+     named, the standard input is used.  If no options are
+     specified, tail copies the last ten lines of the file.
+
+   Options
+     The options b, c, and l must be appended to the + or -
+     number option.
+
+     +number
+          Begins copying at location +number of the input.  (If
+          number is null, the value 10 is assumed.)
+
+     -number
+          Begins copying at distance -number from the end of the
+          input.  (If number is null, the value 10 is assumed.)
+
+     -b   Counts number by blocks.
+
+     -c   Counts number by characters.
+
+     -f   If the input file is not from a pipe, the program will
+          not terminate after a line of the input file has been
+          copied but will enter an endless loop, wherein it
+          sleeps for a second and then attempts to read and copy
+          further records from the input file.
+
+     -l   Counts number by lines.
+
+   Discussion
+     The -f (follow) option can be used to monitor the growth of
+     a file being written by some other process.  For example,
+     the following command prints the last ten lines of the file
+     fred, followed by any lines that are appended to fred
+     between the time tail is initiated and killed:
+
+          tail -f fred
+
+     As another example, the following command prints the last 15
+     characters of the file fred, followed by any lines that are
+     appended to fred between the time tail is initiated and
+     killed:
+
+          tail -15cf fred
+
+     Note that the options c and f are appended to the count, 15.
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to be viewed.
+
+   Continuous Update:
+     Initial value is no.
+
+   Copying Distance:
+     Default is 10.  Enter the number of the line from which to
+     begin copying the input file.
+
+   From Beginning or End of Input (b,e):
+     Enter b to begin copying from the beginning of a file.
+     Enter e to begin copying from the end of a file.
+
+   Count by Blocks, Char, Lines(b,c,l):
+     Enter b to count units of blocks.  Enter c to count
+     characters.  Enter l to count lines.
+
+   Listing Access Name:
+     Enter the name of a file to contain the output (listing) of
+     this command.
+
+SEE ALSO
+     show(1T).
+
+NOTES
+     Tails relative to the end of the file are saved in a 10K
+     byte buffer, and thus are limited in length.  Various kinds
+     of anomalous behavior may happen with character special
+     files.
+
+     If the output of a program is piped to tail, tail will not
+     output the request until the program is complete.  Thus, the
+     command that follows might tie up the terminal several
+     minutes with no output until tar(1) completes.  Even the -f
+     option does not help.
+
+          tar cf . | tail
+
+     You can accomplish the task with two commands:
+
+          tar cbf 10 . > taroutput &
+          tail -f taroutput
+
+

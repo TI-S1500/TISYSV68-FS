@@ -1,0 +1,32 @@
+FACTOR(1)						FACTOR(1)
+
+NAME
+     factor - Factors a number
+
+SYNOPSIS
+     factor [number]
+
+DESCRIPTION
+     When factor is invoked without an argument, it waits for a
+     number to be typed in.  If you type in a positive number
+     less than 2E56 (about 7.2x10E16) it will factor the number and
+     print its prime factors. Each factor is printed the proper
+     number of times.  The utility then waits for another number,
+     and exits if it encounters a zero or any nonnumeric
+     character.
+
+     If factor is invoked with an argument, it factors the number
+     as above and then exits.
+
+     Maximum time to factor is proportional to the square root of n and occurs
+     when n is prime or the square of a prime.
+
+PROMPTS
+   Number to be Factored:
+     Enter the number to be factored.
+
+DIAGNOSTICS
+     The utility displays the message ``Ouch!'' when it
+     encounters input out of range or garbage input.
+
+

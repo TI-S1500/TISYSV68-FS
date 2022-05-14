@@ -1,0 +1,53 @@
+LPMOVE(1M)                                             LPMOVE(1M)
+
+NAME
+     lpmove - Moves requests
+
+SYNOPSIS
+     /usr/lib/lpmove requests dest
+     /usr/lib/lpmove dest1 dest2
+
+DESCRIPTION
+     lpmove moves requests that were queued by lp (1) between LP
+     destinations. The first form of the lpmove command shown
+     above (under Synopsis) moves the named requests to the LP
+     destination dest. requests are request IDs as returned by
+     lp(1). The second form of the lpmove command moves all
+     requests for destination dest1 to destination dest2; lp(1)
+     will then reject any new requests for dest1.
+
+     Note that when moving request, lpmove never checks the
+     acceptance status (see accept(1M)) of the new destination.
+     Also, the request IDs of the moved request are not changed,
+     so that users can still find their requests. The lpmove
+     command will not move requests that have options (content
+     type, form required, and so on) that cannot be handled by
+     the new destination.
+
+     If a request was originally queued for a class or the
+     special destination any, its destination will be changed to
+     new-destination. A request thus affected will be printable
+     only on new-destination and not on other members of the
+     class or other acceptable printers if the original
+     destination was any.
+
+NOTE
+     By default, the directory /usr/spool/lp is used to hold all
+     the files used by the LP print service. This can be changed
+     by setting the SPOOLDIR environment variable to another
+     directory before running lpsched. If you do this, you should
+     populate the directory with the same files and directories
+     found under /usr/spool/lp; the LP print service will not
+     automatically create them. Also, the SPOOLDIR variable must
+     the be set before any of the other LP print service commands
+     are run.
+
+FILES
+     /usr/spool/lp/*
+
+SEE ALSO
+     accept(1M), enable(1), lp(1), lpadmin(1M), lpstat(1).
+     ``Printer Spooling System" in the TI System V
+     Administrator's Guide.
+
+

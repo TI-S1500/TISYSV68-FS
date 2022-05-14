@@ -1,0 +1,31 @@
+WALL(1M)                                                 WALL(1M)
+
+NAME
+     wall - Writes to all users
+
+SYNOPSIS
+     wall
+
+DESCRIPTION
+     The wall command reads its standard input until an end-of-
+     file marker.  It then sends the message to all currently
+     logged in users preceded by the following introduction:
+
+          Broadcast Message from ...
+
+     It is used to warn all users, typically prior to shutting
+     down the system.
+
+     The sender must be the super-user.
+
+FILES
+     /dev/tty*
+
+SEE ALSO
+     mesg(1), write(1).
+
+DIAGNOSTICS
+     When an open on a user's tty file fails, the program sends
+     the message Cannot send to ...
+
+

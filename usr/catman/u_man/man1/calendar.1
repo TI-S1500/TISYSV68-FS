@@ -1,0 +1,44 @@
+CALENDAR(1)                                           CALENDAR(1)
+
+NAME
+     calendar - Invokes a reminder service
+
+SYNOPSIS
+     calendar [-]
+
+DESCRIPTION
+   Purpose
+     The calendar command consults the file named calendar in the
+     current directory and prints out lines that contain today's
+     or tomorrow's date.  Most month-day dates such as Aug. 24,
+     august 24, 8/24 are recognized.  calendar checks the DATE
+     environment variable to determine whether to check for
+     month-day or day-month dates. The DATE environment variable
+     has the form "DD-MM-YY hh:mm:ss" where DD means day; MM
+     means month; YY means year;  hh means hours; mm, minutes;
+     and ss, seconds. This DATE setting would match dates such as
+     24 Aug., 24 august, and 24-8. If DATE is not set, it
+     defaults to "MM/DD/YY hh:mm:ss".  When the command is
+     executed on weekends, lines that contain any date through
+     Monday are printed.
+
+     When the - option is specified, calendar executes for every
+     user with a calendar file in the login directory and sends
+     them the calendar file by mail(1).  Normally this is done
+     daily by facilities such as cron(1M) in the TI System V
+     operating system.
+
+FILES
+     /usr/lib/calprog    Program that determines today's and
+                         tomorrow's dates
+     /etc/passwd
+     /tmp/cal*
+
+SEE ALSO
+     mail(1).
+
+NOTES
+     Your calendar must be public information for you to get
+     reminder service.
+
+

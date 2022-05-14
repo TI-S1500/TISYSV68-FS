@@ -1,0 +1,48 @@
+# cshf  ipcs -- Reports IPC status 
+#	@(#)IPCS.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^IPCS -- REPORTS INTER-PROCESS COMMUNICATION FACILITIES STATUS"\
+	"^Print Active Message Queues:" qflag yesno n\
+	"^Print Shared Memory Segments:" mflag yesno n\
+	"^Print Active Semaphores:" sflag yesno n\
+	"^Invoke All Print Options:" aflag yesno y\
+	"^*Corefile:" core string "/dev/kmem"\
+	"^*Name List:" name string "/unix"\
+	"^#$*"
+
+if ($aflag == "n") then
+	if ($abort) goto end
+	prompt "^IPCS -- Select Print Options"\
+		"^Allowable Sizes:" bflag yesno n\
+		"^Creator's Login/Group Names:" cflag yesno n\
+		"^Outstanding Usage:" oflag yesno n\
+		"^Process Numbers:" pflag yesno n\
+		"^Time Information:" tflag yesno n\
+		"^#$*"
+	if ($bflag == "y") set opt = b$opt
+	if ($cflag == "y") set opt = c$opt
+	if ($oflag == "y") set opt = o$opt
+	if ($pflag == "y") set opt = p$opt
+	if ($tflag == "y") set opt = t$opt
+endif
+
+if ($abort) goto end
+if ($qflag == "y") set opt = q$opt
+if ($mflag == "y") set opt = m$opt
+if ($sflag == "y") set opt = s$opt
+if ($aflag == "y") set opt = a$opt
+if ($opt != "") set opt = -$opt
+
+if ($core != "/dev/kmem") set Copt = "-C "$core
+if ($name != "/unix") set Nopt = "-N "$name
+
+if ($abort) goto end
+echo "=== IPCS COMMAND EXECUTING ==="
+echo ipcs $opt $Copt $Nopt
+ipcs $opt $Copt $Nopt
+
+#clean up time
+end:
+unset *flag *opt core name

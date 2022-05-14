@@ -1,0 +1,31 @@
+# cshf  STTY - set/display terminal settings 
+#	@(#)STTY.sh	1.2  88/01/13
+#
+onintr end
+
+prompt	"^STTY -- SETS THE MODES FOR A TERMINAL"\
+	"^Display or Set (d,s):"  dors "element(D,d=d,S,s=s)" d\
+	"^#$*"
+
+if( $abort )  goto end
+if( $dors == "d" )  then
+	prompt	"^STTY -- DISPLAY TERMINAL SETTINGS" \
+		"^Report All Mode Settings: "  aflag yesno n \
+		"^#$*"
+		if( $abort ) goto end
+		if( $aflag == "y" ) set opt = -a
+		echo "=== STTY COMMAND EXECUTING ==="
+		echo stty $opt
+		stty $opt
+else	
+	prompt	"^STTY -- SET TERMINAL SETTINGS" \
+		"^Settings:" st string\
+		"^#$*"
+		if( $abort ) goto end
+		echo "=== STTY COMMAND EXECUTING ==="
+		echo stty "$st"
+		stty $st
+endif
+
+end:
+unset dors st opt aflag

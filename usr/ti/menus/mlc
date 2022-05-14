@@ -1,0 +1,19 @@
+mlc:menu:      MASTER MENU Series 1000, Model 1500           :mlc.hlp
+accounts:m:User Account Management Menu:accounts.hlp
+activity:m:System Activity Reporting Menu:activity.hlp
+data:m:Data Operations Menu:data.hlp
+dir:m:Directory Operations Menu:dir.hlp
+disk:m:Disk Operations Menu:disk.hlp
+file:m:File Operations Menu:file.hlp
+mail:m:Mail and Message System Menu:mail.hlp
+MAN:c:Prints Online Reference Manual:
+network:m:Network Operations Menu:network.hlp
+personal:m:Personal Productivity Tools Menu:personal.hlp
+process:m:Process Management Menu:process.hlp
+program:m:Programming Tools Menu:program.hlp
+software:m:Software Management Menu:software.hlp
+spooler:m:Spooler Commands Menu:spooler.hlp
+support:m:System Support Menu:support.hlp
+terminal:m:Terminal Operations Menu:terminal.hlp
+users:m:User Environment Menu:users.hlp
+uucp:m:UNIX To UNIX Communications Menu:uucp.hlp

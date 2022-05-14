@@ -1,0 +1,128 @@
+PTU(1T)                                                   PTU(1T)
+
+NAME
+     ptu - Displays and updates volume label and partition table
+
+SYNOPSIS
+     ptu -abpswnf -f file device
+
+DESCRIPTION
+   Purpose
+     The ptu command displays and updates the volume label and
+     partition table located on each disk.
+
+   Display Mode
+     With no options specified, the output can be redirected to a
+     disk file, modified, and used as input to the update mode.
+
+   Update Mode
+     In the update mode, ptu accesses the partition table
+     definition file (PTDF) for input.  The command uses the PTDF
+     to control which fields are to be modified.
+
+     Every field has an associated keyword.  Some fields, such as
+     the number of sectors per track, have keywords and arguments
+     but cannot be updated.  This arrangement allows the output
+     of ptu display mode to be used as the input to the update
+     mode without deleting those lines.
+
+   Options
+     -a   Displays partition information from the partition table
+          in ascending order.  The option displays the partition
+          number, partition starting and ending blocks, and the
+          length of each partition.  The information is displayed
+          in the same order as that of the partitions on the disk
+          and is sorted by the starting block number.  At the end
+          of the partition table ptu displays any area of the
+          disk not allocated and indicates the last user block on
+          the device.  This displayed partition information is
+          formatted as:
+
+          Unallocated area of device found
+               Starting block - xxxxxxxx  Ending block - yyyyyyyy 
+               Length - zzzzzzzz
+          Last user block on device is aaaaaaaa
+
+          xxxxxxxx and yyyyyyyy are both inclusive. If the user
+          allocates a partition starting at xxxxxxxx for zzzzzzzz
+          blocks the entire area is allocated.
+
+          aaaaaaaa is the last block the user can use on the
+          device.
+
+     -b   Builds a modified volume label and partition table that
+          reports all detected errors.  This option puts ptu in
+          the update mode. After the partition table has been
+          updated with the new information, ptu scans the
+          partition table for unallocated areas and reports all
+          information about the partition table in the same
+          format as described above in the -a option.  If the -w
+          option is specified with the -b option, the scan for
+          unallocated areas of the device is skipped.
+
+     -f file
+          Specifies the file name of the PTDF to use for updating
+          volume label and partition table.  This option must be
+          the last specified on the command line before the file
+          name it specifies.  The default file name is /etc/PTDF.
+
+     -n   Creates a new volume label and partition table. Certain
+          fields are not created and cannot be modified by ptu.
+          See ptdf(4) for more details on these fields.
+
+          When the -n option is used the following fields are set
+          up with default values:
+
+          vol identifier - LABL
+          vol PT identifier - PTBL
+          vol SS identifier - SAVE
+          vol bytes per block - 1024
+          vol PT starting blk - 2
+          vol PT length - 3
+          PT identifier - PRTN
+          PT pte length - 12
+          PT comment offset - 4
+
+     -p   Prevents aborting an update if a partition overlap is
+          detected.
+
+     -s   Saves the new volume label and partition table to
+          device if no errors are detected or they are being
+          ignored by the -p option.
+
+     -w   Does not write nonfatal error messages to the standard
+          output.  Also, this option inhibits the display of
+          unallocated areas of the disk when partition table
+          information is displayed using the -a in conjunction
+          with the -b option (described above).
+
+   Checks
+     The ptu program performs the following checks as it builds
+     the new volume label and partition table:
+
+     Partition overlap (more than one partition claiming the same
+     area of the disk - partitions with the same name, same
+     starting block, same length, and same function type are
+     logically equivalent and no overlap is reported.)
+
+     Partition extending past the physical end of a device
+
+     New partition table fitting in the allocated space
+
+FILES
+     /etc/PTDF   Default name of the partition table definition
+                 file
+
+SEE ALSO
+     PTDF(4), sys(5).
+     ``Disk and Tape Management'' in the TI System V
+     Administrator's Guide.
+
+NOTES
+     Output from the -a option cannot be used as input to the
+     update mode.
+
+     Reboot the system after changing the partition table on the
+     system disk.
+
+

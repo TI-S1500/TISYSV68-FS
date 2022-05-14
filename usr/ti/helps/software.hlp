@@ -1,0 +1,6 @@
+	software - Software Management Menu
+		@(#)software.sh	1.1 87/03/09
+
+	This menu lists tools to  help the system administrator 
+	   maintain system software and documentation.
+

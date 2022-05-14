@@ -1,0 +1,24 @@
+LPSHUT(1M)                                             LPSHUT(1M)
+
+NAME
+     lpshut - Stops the LP scheduler
+
+SYNOPSIS
+     /usr/lib/lpshut
+
+DESCRIPTION
+     lpshut shuts down the printer service. All printers that are
+     printing at the time lpshut is invoked will stop printing.
+     When lpsched is started again, requests that were printing
+     at the time a printer was shut down will be reprinted from
+     the beginning.
+
+FILES
+     /usr/spool/lp/*
+
+SEE ALSO
+     accept(1M), enable(1), lp(1), lpadmin(1M), lpstat(1).
+     ``Printer Spooling System" in the TI System V
+     Administrator's Guide.
+
+

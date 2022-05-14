@@ -1,0 +1,79 @@
+FILE(1)                                                   FILE(1)
+
+NAME
+     file - Determines file type
+
+SYNOPSIS
+     file -c [-m]
+     file -fm files
+
+DESCRIPTION
+   Purpose
+     The file command performs a series of tests on each argument
+     files in an attempt to classify it.
+
+     If an argument appears to be ASCII, file examines the first
+     512 bytes and tries to guess its language.
+
+     The file command uses the file /etc/magic to identify files
+     that have a magic number, that is, any file containing a
+     numeric or string constant that indicates its type.
+     Commentary at the beginning of /etc/magic explains the
+     format of /etc/magic.
+
+   Options
+     -c   Causes file to check the magic file for format errors.
+          For reasons of efficiency, this validation is not
+          normally carried out.  If this option is used, no file
+          typing is done; that is, any specified file names are
+          ignored except for the name of an alternate magic file.
+          When the -c option is used, file's output consists of
+          error messages and status information about the
+          contents of the magic file. The format and meaning of
+          this status information is purposely not documented and
+          is subject to change in future revisions.
+
+     -ffile
+          The next argument is taken to be a file containing the
+          names of the files to be examined.
+
+     -mfile
+          The next argument is taken to be an alternate magic
+          file.
+
+EXAMPLES
+     The following example determines the type of file prog3.
+
+          file prog3
+
+     The output of the command might be similar to the following:
+
+          prog3:       V/68 object not stripped
+
+PROMPTS
+   File Containing File Names:
+     File name.  Enter the name of a file that contains the names
+     of files to be processed.
+
+   File Name(s):
+     Enter the name of the file to process.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Alternate Magic File:
+     Enter the name of the file that contains magic numbers.
+     This file rather than /etc/magic is used by the command.
+
+   Validate Magic File:
+     The initial value is no.  Enter yes to check the magic file
+     for format errors.
+
+FILES
+     /etc/magic
+
+SEE ALSO
+     ld(1).
+
+

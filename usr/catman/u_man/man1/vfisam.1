@@ -1,0 +1,183 @@
+VFISAM(1T)						 VFISAM(1T)
+
+NAME
+     vfisam - Verifies and/or fixes a T-ISAM file
+
+SYNOPSIS
+     vfisam -cfrtvx data_file [index_file]
+
+DESCRIPTION
+   Purpose
+     The vfisam command scans a T-ISAM file or file pair,
+     checking data, indexes, free space lists, and internal
+     structures for consistency. The command will optionally
+     correct inconsistencies, recover unused file space not
+     listed in the free space lists, and compact the files.
+
+   Options
+     -c   Compacts the file. Data file free space will be moved
+	  to the end of the file, where it will be allocated in
+	  the exact amounts needed.  This will relieve
+	  fragmentation of the data file.  Indexes will be
+	  rebuilt and the index file will be shortened if
+	  necessary to remove free space.
+
+	  If this option is selected, the -x option is
+	  unnecessary.
+
+     -f mapfile
+	  File attributes are defined in mapfile. The format for
+	  mapfile is the same as the output of the mapisam()
+	  command and the same as the input to the mkisam()
+	  command.
+
+	  This option can be used for files that have been
+	  corrupted in the areas that define the file options or
+	  key attributes.
+
+	  If file options or key definitions differ between the
+	  T-ISAM file, and the mapfile and the -x or -c option is
+	  selected, the T-ISAM file will be changed to agree with
+	  the mapfile.
+
+     -r   Recovers dead space. File space that is not in use and
+	  not already in the free list will be added to the free
+	  list. This will make the space available for use by
+	  future write operations to the file.
+
+	  Dead space can be created by a process termination
+	  (normal or abnormal) when the open T-ISAM files have
+	  not been closed.
+
+     -t   Thorough verification. In addition to separately
+	  verifying the integrity of the data and indexes,
+	  verifies agreement between index entries and the
+	  referenced data record. Selecting this option can
+	  significantly increase the processing time of this
+	  command.
+
+     -v   Verbose output listing. Gives information about the
+	  specific locations of file inconsistencies.
+
+     -x   Fixes inconsistencies. If invalid indexes are found,
+	  they will be rebuilt. If invalid data areas are found,
+	  they will be marked as free. This option provides the
+	  quickest way to remove internal inconsistencies.
+
+	  If an invalid data area is marked as free by this
+	  command, it will normally not be added to the free
+	  list. This means that the space will not be available
+	  for use by programs writing data to the file. If the -r
+	  option is selected, invalid data areas will be added to
+	  the free list and can be consumed when data is written
+	  to the file. If the -c option is selected, the contents
+	  of invalid data areas will be moved to the end of the file.
+
+   Arguments
+     For dual file mode T-ISAM files (i.e., separate files for
+     the T-ISAM file data and indexes), the data_file argument is
+     the name of the T-ISAM data file and the index_file argument
+     is the name of the index file. If no index_file argument is
+     supplied, the index file normally associated with the
+     T-ISAM file will be used.
+
+     For single file mode T-ISAM files (i.e., the same file for
+     both data and indexes), the data_file argument is the name
+     of that file.
+
+   Discussion
+     The vfisam command will not verify indexes that use key
+     compression (i.e., keys built with the TIKEYCMP bit set in
+     the k_flage field of the key descriptor), nor will it fix or
+     compact files containing such indexes. (All users are
+     encouraged not to use key compression. This option greatly
+     degrades performance.)
+
+     Note that while key compression is not supported, the Data
+     Compression file option is supported.
+
+     When rebuilding an index, it is possible for vfisam to
+     encounter illegal duplicate key values or records that are
+     too short to contain the key. In the event of either of
+     these occurrences, vfisam will exclude the item from the
+     index and it will report the location of the data item in
+     question.
+
+     Upon completion, vfisam will return the number of
+     inconsistencies in the file. Repaired inconsistencies (e.g.,
+     as a result of the -x option) will not be reported in the
+     return code. If a fatal error occurred, the negative of the
+     number of inconsistencies will be returned.
+
+     When you execute vfisam with the -x (fix) or -c (compact)
+     option, ensure that the T-ISAM data and index files are in
+     fact the intended files. If a non-T-ISAM file or mismatched
+     data and index files are inadvertently entered, modification
+     of one or both of the files can occur.
+
+EXAMPLES
+     The following causes vfisam to verify the file integrity of
+     the T-ISAM file with its data in file.dat and its indexes in
+     file.idx:
+
+	  vfisam file.dat file.idx
+
+     The following causes vfisam to examine the T-ISAM file whose
+     data is in file.dat and whose indexes are in the file
+     indicated by the internal information in file.dat. If
+     internal inconsistencies are found, or if differences are
+     found between the file and the specification in file.map,
+     they will be corrected.
+
+	  vfisam -x -f file.map file.dat
+
+     The following will cause vfisam to compact the T-ISAM file
+     contained in t.dt and t.ix. Any internal inconsistencies
+     will be removed.
+
+	  vfisam -c t.dt t.ix
+
+     The following will cause vfisam to fix any  internal
+     inconsistencies and to recover any dead space (i.e., space
+     not containing accessible indexes or data and not currently
+     marked as free) and mark it as free. Free space is available
+     for future file growth. (This form of vfisam will usually
+     complete much more quickly than the preceding -c form.)
+
+	  vfisam -rxf mapfile file.dat file.idx
+
+PROMPTS
+   T-ISAM Data File:
+     Enter the data portion of the T-ISAM file to be checked or
+     recovered.
+
+   T-ISAM Index File:
+     Optional. Enter the index portion of the T-ISAM file to be
+     checked or recovered.
+
+   T-ISAM Definition File:
+     Optional. A file in mapisam format that defines the file
+     options, maximum record length, keys, etc. of the T-ISAM
+     file.
+
+   Verbose Output? (y/n):
+     If selected, error listings will contain more details.
+
+   Thorough Verification? (y/n):
+     If selected, correspondence between key entries and data
+     records will be verified.
+
+   Fix Inconsistencies? (y/n):
+     If selected, file inconsistencies will be corrected.
+
+   Recover Dead Space? (y/n):
+     If selected, unused space will be added to the free list.
+
+   Compact File? (y/n):
+     If selected, data and index information will be compacted.
+
+SEE ALSO
+     cpisam(1T), findisam(1T), frisam(1T), mapisam(1T), mkisam(1T), 
+     mvisam(1T), toisam(1T).
+
+

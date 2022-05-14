@@ -1,0 +1,19 @@
+# cshf  netecho - Echo messages to a network attached site
+#	@(#)NETECHO.sh	1.1 87/10/13
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1985.  ALL
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+#	ASSOCIATED DOCUMENTATION.
+# 
+
+prompt  "^NETECHO -- ECHOES NETWORK MESSAGES"    \
+	"^TC name:"  TN  string "$TN"   \
+	"^Number of Messages:"  count  integer 10\
+	"^#$*"
+
+if(  $abort ) exit
+
+/usr/bin/netecho -t$TN -c$count
+

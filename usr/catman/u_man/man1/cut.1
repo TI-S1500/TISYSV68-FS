@@ -1,0 +1,132 @@
+CUT(1)                                                     CUT(1)
+
+NAME
+     cut - Cuts out selected fields of each line of a file
+
+SYNOPSIS
+     cut -c files
+     cut -fds files
+
+DESCRIPTION
+   Purpose
+     Use cut to remove columns from a table or fields from each
+     line of a file.  The cut and paste(1) commands are useful in
+     database applications.  In database parlance, cut implements
+     the projection of a relation.
+
+     The cut command can be used as a filter.  If no file
+     arguments are specified, the standard input is used.
+
+   Options
+     Two options, -c and -f, require the value list. This value
+     is a comma-separated list of integers that indicate the
+     portions of the input line that will be retained.  A - can
+     be used to indicate a range (1-4 means 1,2,3,4). If the
+     first value in the range is 1, the 1 can be omitted (-3 is
+     the same as 1-3).  If the last value is to be the last field
+     or last character, it can be omitted (4- is the same as 4-
+     80).
+
+     Examples of valid lists are:
+
+     *  1-7,8,10,17-42,45-
+
+     *  -7,9,45-
+
+     *  -22,24-
+
+     The list - is legal, but causes everything to be retained.
+     It has the same effect as the cat(1) command.
+
+     Two different field types can be specified by list. Fields
+     can be fixed length, i.e., character positions as on a
+     punched card (-c option). Field length can vary from line to
+     line and can be marked with a field delimiter character such
+     as a tab (-f option).  The -c and -f options are mutually
+     exclusive.
+
+     The information specified by the list is output to the
+     standard output.
+
+     -clist
+          The value is a list that specifies fixed-length fields.
+          For example, -c1-72 passes the first 72 characters of
+          each line.
+
+     -flist
+          The value is a list of fields assumed to be separated
+          in the line by a delimiter character (see -d).  This
+          feature allows the selection of variable-length fields.
+          For example, -f1,7 copies the first and seventh fields
+          only.  Lines with no field delimiters are passed
+          through intact (useful for table subheadings), unless
+          -s is specified.  The same delimiter character
+          separates the fields on the output line.
+
+     -dchar
+          The value char is a character used by the -f option to
+          break each input line into fields.  Default is a tab if
+          -d is not specified.  Space or other characters with
+          special meaning to the shell must be quoted.
+
+     -s   Suppresses lines with no delimiter characters in case
+          of -f option.  Unless specified, lines with no
+          delimiters are passed through untouched.
+
+     The maximum line length in the input file is 1023
+     characters.
+
+EXAMPLES
+     The following command maps user IDs to names.
+
+          cut -d: -f1,5 /etc/passwd
+
+     The following command sets name to the current login name.
+
+          name=`who am i | cut -f1 -d" "`
+
+PROMPTS
+   Input File Name(s):
+     The names of the files to process.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Character/Field List (c,f):
+     The initial value is f.  Select field types.  Enter c for
+     character fields and f to specify a delimiter character.
+
+     If you enter a c, the following prompt appears.
+
+   List of Character Fields:
+     Enter a list that specifies fixed-length fields.
+
+     If you entered an f at the Character/Field List (c,f):
+     prompt, the following prompts appear.
+
+   List of Delimiter Fields:
+     Enter a list of fields assumed to be separated in the line
+     by a delimiter character.
+
+   Field Delimiter:
+     Response to this prompt is optional.  Enter the character to
+     break each input line into fields.
+
+   Suppress non-Delimiter Lines:
+     Initial value is no.  Enter yes to suppress lines that
+     contain a delimiter or no to leave the lines untouched.
+
+SEE ALSO
+     csplit(1), join(1), paste(1).
+
+HINTS
+     Use csplit(1) to make horizontal cuts (by context) through a
+     file.  Use paste(1) to put files together by columns (i.e.,
+     horizontally).  To reorder columns in a table, use cut and
+     paste(1).
+
+NOTES
+     If the last line does not end with a newline character, it
+     is not processed.
+

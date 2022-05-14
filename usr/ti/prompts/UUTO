@@ -1,0 +1,21 @@
+# cshf	uuto -- public unix to unix file copy 
+#	 @(#)UUTO.sh	1.2  87/10/15
+#
+onintr end
+prompt "^UUTO -- CREATES A PUBLIC UNIX SYSTEM-TO-UNIX SYSTEM FILE COPY"\
+       "^Source System! Path Name(s):" src macnm "$src"\
+       "^Destination System! Path Name:" dest string $dest\
+       "^Notify Sender:" mflag yesno n\
+       "^Copy to Spool Directory:" pflag yesno n\
+       "^#$*"
+
+if ($abort) goto end
+if ($mflag == "y") set mopt = m$opt
+if ($pflag == "y") set popt = p$opt
+
+echo "=== UUTO COMMAND EXECUTING ==="
+echo uuto $mopt $popt $src $dest
+uuto $mopt $popt $src $dest
+
+end:
+unset src dest *opt *flag

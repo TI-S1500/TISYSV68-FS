@@ -1,0 +1,43 @@
+# cshf   cpdir -- Copy Directory 
+#	@(#)CPDIR.sh	1.4  90/02/23
+#
+onintr end
+set curdir=`pwd`
+if ("$_input_dir" == "") set _input_dir = `pwd`
+if ("$curdir" != "/") then 
+	set curdir_lst = $curdir/lst
+else
+	set curdir_lst = /lst
+endif
+
+prompt "^CPDIR -- COPIES A DIRECTORY"\
+ 	"^FULL PATH NAMES ARE NEEDED FOR THE FOLLOWING:"\
+	"^Source Directory:" _input_dir acnm $_input_dir\
+	"^Destination Directory:" _output_dir acnm $_output_dir\
+	"^*Full Listing File Name:" _listing_file acnm $curdir_lst \
+	"^#$*"
+
+if ($abort) goto end
+#check to see if directory exists and that it is a directory
+if ((-r "$_input_dir") && (-d "$_input_dir")) then
+	echo "=== CPDIR COMMAND EXECUTING ==="
+	#make the destination directory if it is not already there
+	if (!((-w "$_output_dir") && (-d "$_output_dir"))) then
+		echo "CREATING DIRECTORY: $_output_dir"
+		mkdir $_output_dir
+	endif
+  echo "COPYING FILES FROM $_input_dir TO $_output_dir"
+  if ("$_listing_file" != "") then
+   cd $_input_dir; 
+   find . -depth -print | cpio -pduv $_output_dir >$_listing_file
+  else 
+     cd $_input_dir; 
+     find . -depth -print | cpio -pduv $_output_dir
+  endif
+  cd $curdir
+else
+	echo ERROR: Source directory $_input_dir does not exist or has invalid permissions
+endif
+
+end:
+unset curdir*

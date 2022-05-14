@@ -1,0 +1,40 @@
+HEAD(1)                                                   HEAD(1)
+
+NAME
+     head - Displays the beginning of a file
+
+SYNOPSIS
+     head [-n][files]
+
+DESCRIPTION
+   Purpose
+     The head command copies lines 1 through n of the listed
+     files to the standard output.  If no files are entered, the
+     first n lines of the standard input are copied.  The default
+     value of n is 10.
+
+     If several files are named, the outputs of each file are
+     separated by the following:
+
+          ==> file name <==
+
+     A nonexistent file name results in command abort (no more
+     files are processed).
+
+PROMPTS
+   File Name(s):
+     Enter the name of the file to display.
+
+   Lines to display:
+     Enter the number of lines to display.  The response to this
+     prompt is optional.  The default is to display lines 1
+     through 10.
+
+   Listing Access Name:
+     Enter the name of a file to receive the output of this
+     command. Response to this prompt is optional.
+
+SEE ALSO
+     cat(1), show(1), tail(1).
+
+

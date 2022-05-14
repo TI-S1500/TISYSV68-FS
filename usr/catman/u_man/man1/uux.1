@@ -1,0 +1,132 @@
+UUX(1C)                                                   UUX(1C)
+
+NAME
+     uux - Executes UNIX to UNIX commands
+
+SYNOPSIS
+     uux -jmnr command-string
+
+DESCRIPTION
+   Purpose
+     The uux command gathers zero or more files from various
+     systems, executes a command on a specified system, and then
+     sends standard output to a file on a specified system.
+
+   Options
+     -    Makes the standard input to uux the standard input to
+          the command-string.
+
+     -j   Outputs the job identification ASCII string on the
+          standard output.  This job identification can be used
+          by uustat(1C) to obtain the status of or to terminate a
+          job.
+
+     -mfile
+          Reports status of the transfer in file. If file is
+          omitted, send mail to the requester when the copy is
+          completed.
+
+     -n   Sends no notification to user.
+
+     -r   Queues job but does not start the command execution
+          process.
+
+   Discussion
+     Note that, for security reasons many installations limit the
+     list of commands executable on behalf of an incoming request
+     from uux.  Many sites permit little more than the receipt of
+     mail (see mail(1)) via uux.
+
+     The command-string is made up of one or more arguments that
+     look like a shell command line, except that the command
+     names and file names may be prefixed by system-name!.  A
+     null system-name is interpreted as the local system.
+
+     File names can be one of the following:
+
+     + A full path name
+
+     + A path name preceded by ~xxx where xxx is a login name on
+       the specified system and is replaced by that user's login
+       directory
+
+     + Prefixed by the current directory
+
+     Any special shell characters (such as <, >, ;, or | should
+     be quoted either by quoting the entire command-string or by
+     quoting the special characters as individual arguments.
+
+     The uux command attempts to get all files to the execution
+     system.  For output files, the file name must be escaped
+     using parentheses.
+
+     The command notifies you if the requested command on the
+     remote system is disallowed.  The response comes by remote
+     mail from the remote machine.
+
+EXAMPLE
+     In the following example, uux gets the f1 files from the
+     machines named usg and pwba, executes a diff command, and
+     puts the results in f1.diff in the local directory:
+
+          uux "!diff usg!/usr/dan/f1 pwba!/a4/dan/f1 > !f1.diff"
+
+     In the next example, the command sends a uucp command to
+     system "a" to get /usr/file from system "b" and send it to
+     system "c":
+
+          uux a!uucp b!/usr/file \(c!/usr/file\)
+
+PROMPTS
+   Command string:
+     Enter a command string. A command string is one or more
+     arguments that look similar to a shell command line except
+     that command names and file names can be prefixed by the
+     system name followed by an exclamation point.
+
+   Status File Name:
+     Optional. Enter the name of the file to receive status
+     reports of the transfer process.
+
+   Stnd Input to UUX is Stnd Input to Cmd:
+     Initial value is no.  If you enter yes, the standard input
+     to uux becomes the standard input to the command-string.
+
+   Suppress Output of Job Number:
+     Initial value is no.  If you enter yes, the job number is
+     written to standard output.
+
+   Notify sender:
+     The initial value is yes.  Enter yes to send mail to the
+     requester when the copy is completed.
+
+   Queue Jobs But Don't Start Transfer:
+     The initial value is no.  Enter yes to queue the job but not
+     to start the command execution process.
+
+     The following line is an example of a command string:
+
+          a!uucp b!/usr/file (c!/usr/file)
+
+     The previous example sends a uucp(1) command to system a to
+     get /usr/file from system b; this file is then sent to
+     system c.
+
+     Any special shell characters, such as <, >, ;, or |, should
+     be quoted either by quoting the entire command string or by
+     quoting the special characters as individual arguments.
+
+FILES
+     /usr/spool/uucp       Spool directory
+     /usr/lib/uucp/*       Other data and programs
+
+SEE ALSO
+     uuclean(1M), uucp(1C).
+
+NOTES
+     Only the first command of a shell pipeline can have a
+     system-name!.  All other commands are executed on the system
+     of the first command.
+
+     The shell metacharacter * will probably not do what you want
+     it to do.  The shell tokens << and >> are not implemented.

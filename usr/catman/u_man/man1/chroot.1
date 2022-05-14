@@ -1,0 +1,37 @@
+CHROOT(1M)                                             CHROOT(1M)
+
+NAME
+     chroot - Changes the root directory for a command
+
+SYNOPSIS
+     chroot newroot command
+
+DESCRIPTION
+   Purpose
+     The chroot command is restricted to the super-user.  The
+     specified command is executed relative to the new root,
+     newroot.
+
+   Discussion
+     The meaning of initial slashes (/) in path names is changed
+     for a command and all its children to newroot.  Furthermore,
+     the initial working directory is newroot.
+
+     The following command creates the file x relative to the
+     original root, not the new one:
+
+          chroot newroot command >x
+
+     The new root path name is always relative to the current
+     root.  Even if a chroot is currently in effect, the newroot
+     argument is relative to the current root of the running
+     process.
+
+SEE ALSO
+     chdir(2).
+
+NOTES
+     One should exercise extreme caution when referencing special
+     files in the new root file system.
+
+

@@ -1,0 +1,116 @@
+EXPR(1) 						  EXPR(1)
+
+NAME
+     expr - Evaluates arguments as an expression
+
+SYNOPSIS
+     expr arguments
+
+DESCRIPTION
+   Purpose
+     The expr command takes arguments as expressions, evaluates
+     the expressions, and writes the result on the standard
+     output.  This command is used primarily in shell scripts.
+
+     Terms of the expression must be separated by blanks.
+     Characters special to the shell must be escaped.  Note that
+     0, rather than the null string, is returned to indicate a
+     zero value.  Strings containing blanks or other special
+     characters should be quoted.  Integer-valued arguments may
+     be preceded by a unary minus sign.  Internally, integers are
+     treated as 32-bit, 2's complement numbers.
+
+   Arguments
+     The expr arguments (operators and keywords) are listed
+     below.  Characters that need to be escaped are preceded by
+     \.  The list is in order of increasing precedence, with
+     equal precedence operators grouped within {} symbols.  The
+     word express below indicates arguments to the expr command.
+     These arguments can include the expr command.
+
+     express \| express
+	  Returns the first express if it is neither null nor 0.
+	  Otherwise, returns the second express.
+
+     express \& express
+	  Returns the first express if neither express is null or
+	  0.  Otherwise, returns 0.
+
+     express { =, \>, \>=, \<, \<=, != } express
+	  Returns the result of an integer comparison if both
+	  arguments are integers.  Otherwise, returns the result
+	  of a lexical comparison.
+
+     express { +, - } express
+	  Addition or subtraction of integer-valued arguments.
+
+     express { \*, /, % } express
+	  Multiplication, division, or remainder of the integer-
+	  valued arguments.
+
+     express : express
+	  The matching operator : compares the first argument
+	  with the second argument, which must be a regular
+	  expression.  Regular expression syntax is the same as
+	  that of ed(1), except that all patterns are anchored
+	  (i.e., begin with ^); therefore, ^ is not a special
+	  character, in that context.  Normally, the matching
+	  operator returns the number of characters matched (0 on
+	  failure).  Alternatively, the \(...\) pattern symbols
+	  can be used to return a portion of the first argument.
+
+EXAMPLES
+     The following examples are Bourne shell sh(1) examples.
+
+     The following example adds 1 to the Bourne shell variable a.
+
+	  a=`expr $a + 1`
+
+     The next example returns the last segment of a path name
+     (i.e., file).  Watch out for / alone as an argument:  expr
+     will take it as the division operator.
+
+	  #  'For $a equal to either "/usr/abc/file" or just "file"'
+	  expr	$a  :  '.*/\(.*\)'  \|  $a
+
+     The addition of the // characters eliminates any ambiguity
+     about the division operator and simplifies the whole
+     expression, as shown below.
+
+	  expr	//$a  :'.*/\(.*\)'
+
+     The next example returns the number of characters in $VAR:
+
+	  expr	$VAR  :  '.*'
+
+SEE ALSO
+     ed(1), sh(1).
+
+EXIT CODE
+     As a side effect of expression evaluation, expr returns the
+     following exit values:
+	  0    if the expression is neither null nor 0
+	  1    if the expression is null or 0
+	  2    for invalid expressions.
+
+DIAGNOSTICS
+     syntax error	    For operator/operand errors
+     non-numeric argument   If arithmetic is attempted on such a string
+
+NOTES
+     After argument processing by the shell, expr cannot tell the
+     difference between an operator and an operand except by the
+     value.  If $a is an =, the command:
+
+	  expr	$a  =  '='
+
+     looks like the following as the arguments are passed to expr
+     (and they will all be taken as the = operator):
+
+	  expr	=  =  =
+
+     The following works:
+
+	  expr	X$a  =	X=
+
+

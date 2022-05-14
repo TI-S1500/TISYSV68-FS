@@ -1,0 +1,436 @@
+LP(1)                                                       LP(1)
+
+NAME
+     lp - Sends requests to an LP print service
+
+SYNOPSIS
+     lp  [printing-options] files
+
+     lp -i request-ids printing-options
+
+DESCRIPTION
+     The first form of the lp command arranges for the named
+     files and associated information (collectively called a
+     request) to be printed.  If no file names are specified on
+     the command line, the standard input is assumed.  The
+     standard input can be specified along with named files on
+     the shell command line by using the file name(s) and - for
+     the standard input.  The files will be printed in the order
+     they appear on the command line.
+
+     The second form of lp is used to change the options for a
+     request.  The print request identified by the request-id is
+     changed according to the printing options specified with
+     this command.  The printing options available are the same
+     as those with the first form of the lp command.  If the
+     request has finished printing, the change is rejected.  If
+     the request is already printing, it will be stopped and
+     restarted from the beginning (unless the -P option has been
+     given).
+
+     lp associates a unique request-id with each request and
+     prints it on the standard output.  This request-id can be
+     used later to cancel, change, or find the status of the
+     request.  (See cancel(1) for details about canceling a
+     request, the previous paragraph for an explanation of how to
+     change a request, and lpstat(1) for information about
+     checking the status of a print request.)
+
+Sending a Print Request
+     The first form of the lp command is used to send a print
+     request to a particular printer or group of printers.
+
+     Options to lp must always precede file names, but can be
+     listed in any order.  The following options are available
+     for lp:
+
+     -c        Make copies of the files to be printed immediately
+               when lp is invoked.  Normally, files will not be
+               copied.  If the -c option is not given, then the
+               user should be careful not to remove any of the
+               files before the request has been printed in its
+               entirety.  It should also be noted that in the
+               absence of the -c option, any changes made to the
+               named files after the request is made but before
+               it is printed will be reflected in the printed
+               output.
+
+     -d dest   Print this request using dest as the printer or
+               class of printers.  Under certain conditions (lack
+               of printer availability, capabilities of printers,
+               and so on), requests for specific destinations may
+               not be accepted (see accept(1M) and lpstat(1)).
+               By default, dest is taken from the environment
+               variable LPDEST (if it is set).  Otherwise, a
+               default destination (if one exists) for the
+               computer system is used.  Destination names vary
+               from system to system (see lpstat(1)).
+
+     -f form-name [-d any]
+               Print the request on the form form-name.  The LP
+               print service ensures that the form is mounted on
+               the printer.  If form-name is requested with a
+               printer destination that cannot support the form,
+               the request is rejected.  If form-name has not
+               been defined for the system or if the user is not
+               allowed to use the form, the request is rejected
+               (see lpforms(1M)).  When the -d any option is
+               given, the request is printed on any printer that
+               has the requested form mounted and can handle any
+               other needs of the print request.
+
+     -H special-handling
+               Print the request according to the value of
+               special-handling.  Acceptable values for special-
+               handling are hold, resume, and immediate, defined
+               as follows:
+
+             hold    Do not print the request until notified.  If
+                     printing has already begun, stop it.  Other
+                     print requests will go ahead of a held
+                     request until it is resumed.
+
+             resume  Resume a held request.  If it had been
+                     printing when held, it will be the next
+                     request printed, unless subsequently bumped
+                     by an immediate request.
+
+             immediate
+                     (Available only to LP administrators)
+                     Print the request next.  If more than one
+                     request is assigned immediate, the requests
+                     are printed in the reverse order queued.  If
+                     a request is currently printing on the
+                     desired printer, you have to put it on hold
+                     to allow the immediate request to print.
+
+     -m        Send mail (see mail(1)) after the files have been
+               printed.  By default, no mail is sent upon normal
+               completion of the print request.
+
+     -n number Print number copies of the output.  (Default is
+               1.)
+
+     -o option Specify printer-dependent or class-dependent
+               option variables.  Several such options can be
+               specified on a single command line either by using
+               the -o keyletter more than once (i.e., -o $option
+               sub 1$ -o $option sub 2$ ... -o $option sub n$),
+               or by specifying a list of options with one -o
+               keyletter (i.e., -o $option sub 1$, $option
+               sub 2$, ... $option sub n$).  The standard
+               interface recognizes the following options:
+
+             nobanner
+                   Do not print a banner page with this request.
+                   (The administrator can disallow this option at
+                   any time.) This option requires the use of the
+                   /usr/spool/lp/model/standard interface.
+
+             nofilebreak
+                   Do not insert a form feed between the files
+                   given, if submitting a job to print more than
+                   one file. This option requires the use of the
+                   /usr/spool/lp/model/standard interface.
+
+             length=scaled-decimal-number
+                   Print this request with pages scaled-decimal-
+                   number lines long.  A scaled-decimal-number is
+                   an optionally scaled decimal number that gives
+                   a size in lines, columns, inches, or
+                   centimeters, as appropriate.  The scale is
+                   indicated by appending the letter i for
+                   inches, or the letter c for centimeters.  For
+                   length or width settings, an unscaled number
+                   indicates lines or columns; for line pitch or
+                   character pitch settings, an unscaled number
+                   indicates lines per inch or characters per
+                   inch (the same as a number scaled with i).
+                   For example, length=66 indicates a page length
+                   of 66 lines, length=11i indicates a page
+                   length of 11 inches, and length=27.94c
+                   indicates a page length of 27.94 centimeters.
+                   This option requires the use of the
+                   /usr/spool/lp/model/standard interface.
+
+                   This option cannot be used with the -f option.
+
+             width=scaled-decimal-number
+                   Print this request with page-width set to
+                   scaled-decimal-number columns wide.  (See the
+                   explanation of scaled-decimal-numbers in the
+                   preceding discussion of length.)  This option
+                   cannot be used with the -f option. This option
+                   requires the use of the
+                   /usr/spool/lp/model/standard interface.
+
+             lpi=scaled-decimal-number
+                   Print this request with the line pitch set to
+                   scaled-decimal-number lines per inch.  This
+                   option cannot be used with the -f option. This
+                   option requires the use of the
+                   /usr/spool/lp/model/standard interface.
+
+             cpi=scaled-decimal-number
+                   Print this request with the character pitch
+                   set to scaled-decimal-number characters per
+                   inch.  Character pitch can also be set to pica
+                   (representing 10 columns per inch) or elite
+                   (representing 12 columns per inch), or it can
+                   be compressed (representing as many columns as
+                   a printer can handle).  There is no standard
+                   number of columns per inch for all printers;
+                   see the Terminfo database (terminfo(4)) for
+                   the default character pitch for your printer.
+                   This option cannot be used with the -f option.
+                   This option requires the use of the
+                   /usr/spool/lp/model/standard interface.
+
+             stty=stty-option-list
+                   A list of options valid for the stty command;
+                   enclose the list with quotes if it contains
+                   blanks. This option requires the use of the
+                   /usr/spool/lp/model/standard interface.
+
+             Note: Do not specify any stty options when printing
+                   to terminal-attached printers.
+
+     -P page-list
+               Print the pages specified in page-list.  This
+               option can be used only if there is a filter
+               available to handle it; otherwise, the print
+               request will be rejected.  The page-list can
+               consist of range(s) of numbers, single page
+               numbers, or a combination of both.  The pages will
+               be printed in ascending order. This option
+               requires the use of the
+               /usr/spool/lp/model/standard interface.
+
+     -q priority-level
+               Assign this request priority-level in the printing
+               queue.  The values of priority-level range from 0,
+               the highest priority, to 39, the lowest priority.
+               If a priority is not specified, the default for
+               the print service is used, as assigned by the
+               system administrator.
+
+     -s        Suppress messages from the print service such as
+               request id is request-id.
+
+     -S character-set [-d any]
+
+     -S print-wheel [-d any]
+             Print this request using the specified character-set
+             or print-wheel.  If a form was requested and it
+             requires a character set or print wheel other than
+             the one specified with the -S option, the request is
+             rejected.  For printers that take print wheels:  if
+             the print wheel specified is not one listed by the
+             administrator as acceptable for the printer
+             specified in this request, the request is rejected
+             unless the print wheel is already mounted on the
+             printer.  For printers that use selectable or
+             programmable character sets:  if the character-set
+             specified is not one defined in the terminfo
+             database for the printer (see terminfo(4)), or is
+             not an alias defined by the administrator, the
+             request is rejected.  When the -d any option is
+             used, the request is printed on any printer that has
+             the print wheel mounted or any printer that can
+             select the character set, and that can handle any
+             other needs of the request.
+
+     -t title
+             Print title on the banner page of the output.  The
+             default is no title.
+
+     -T content-type [-r]
+             Print the request on a printer that can support the
+             specified content-type.  If no printer accepts this
+             type directly, a filter will be used to convert the
+             content into an acceptable type.  If the -r option
+             is specified, a filter will not be used.  If -r is
+             specified, but no printer accepts the content-type
+             directly, the request is rejected.  If the content-
+             type is not acceptable to any printer, either
+             directly or with a filter, the request is rejected.
+
+     -w      Write a message on the user's terminal after the
+             files have been printed.  If the user is not logged
+             in, mail will be sent instead.
+
+     -y mode-list
+             Print this request according to the printing modes
+             listed in mode-list.  The allowed values for mode-
+             list are locally defined.  This option can be used
+             only if there is a filter available to handle it;
+             otherwise, the print request will be rejected.
+
+PROMPTS
+     Modify Existing Request:
+          Modify an existing print request. Initial value is no.
+
+     Request IDs:
+          If you answered yes to Modify Existing Request, enter
+          the request IDs here.
+
+     Input File Name(s):
+          Enter the names of the files to print.
+
+     Printer/Class Name(skip for default):
+          Enter the name of the printer or class to print to.
+
+     Number of Copies(skip for 1):
+          Enter the number of copies to print.
+
+     Select Additional Options:
+          Enter yes if you would like to specify other print
+          options.
+
+     Immediate Copies:
+          Enter yes if you would like the LP print service to
+          make copies of the files before they are printed.
+
+     Select A Form:
+          Enter yes if you would like to specify a form for your
+          output.
+
+     Special Handling:
+          Enter yes if you would like to specify special output
+          condition options.
+
+     Send Mail:
+          Enter yes if you would like to receive mail after the
+          files have printed.
+
+     Specify Page Range:
+          Enter yes if you would like to specify a particular
+          range of pages to print. Using this option requires a
+          filter that can support this.
+
+     Display LP Messages:
+          Enter no if you would like to suppress print request
+          messages.
+
+     Specify Request Priority:
+          Enter yes if you would like to specify a request
+          priority for your print request.
+
+     Specify Character Set/Printwheel:
+          Enter yes if you would like to specify a specific
+          character set or print wheel.
+
+     Specify Request Content Type:
+          Enter yes if you need to specify a content type other
+          than simple.
+
+     Send a Message After:
+          Enter yes if you would like to receive a message on
+          your screen when the print  request has completed.
+
+     Specify Filter Modes Options:
+          Enter yes if you would like to pass special flags to
+          the filter that will process this request.
+
+     Other Output Options:
+          Enter yes if you would like to specify other request
+          output options.
+
+     Print Banner Page:
+          Enter yes if you would like to print a banner page
+          before your files are printed.
+
+     Specify Banner Title:
+          Enter yes if you would like to specify a title for the
+          banner page.
+
+     Formfeed Between Files:
+          Enter yes if you would like the LP print service to
+          execute a form feed between each of the files to be
+          printed.
+
+     Lines Per Inch:
+          Enter the lines per inch to be used when the request is
+          printed.
+
+     Characters Per Inch:
+          Enter the characters per inch to be used when the
+          request is printed.
+
+     Page Length:
+          Enter the page length to be used when the request is
+          printed.
+
+     Page Width:
+          Enter the page width to be used when the request is
+          printed.
+
+     stty Options:
+          Enter any tty port settings that need to be set for
+          this print request.
+
+     The following prompts can appear at different times
+     depending upon the responses to previous prompts.
+
+     Form Name:
+          Enter the name of the form to print the request on.
+
+     First Available Printer:
+          Enter yes to have the request printed on the first
+          available printer.
+
+     Special Handling:
+          Enter the type of special handling to be applied to the
+          request. Legal values are hold, resume, and immediate.
+
+     Page Range:
+          Enter the range of pages to print.
+
+     Priority:
+          Enter the request priority code (0 to 39).
+
+     Character Set/Printwheel:
+          Enter the character set or print wheel to use with this
+          request.
+
+     Request Content Type:
+          Enter the content type of the request.
+
+     Modes:
+          Enter the modes to be passed to the filter that will
+          process this request.
+
+     Banner Title:
+          Enter the title to be used on the banner page.
+
+NOTES
+     Printers for which requests are not being accepted will not
+     be considered when the destination is any.  (Use the lpstat
+     -a command to see which printers are accepting requests.)
+     On the other hand, if a request is destined for a class of
+     printers and the class itself is accepting requests, all
+     printers in the class will be considered, regardless of
+     their acceptance status, as long as the printer class is
+     accepting requests.
+
+WARNING
+     For printers that take mountable print wheels or font
+     cartridges, if you do not specify a particular print wheel
+     or font with the -S option, whichever one happens to be
+     mounted at the time your request is printed will be used.
+     Use the lpstat -p printer -l command to see which print
+     wheels are available on a particular printer, or the lpstat
+     -S -l command to find out what print wheels are available
+     and on which printers.  For printers that have selectable
+     character sets, you will get the standard character set if
+     you do not use the -S option.
+
+FILES
+     /usr/spool/lp/*
+
+SEE ALSO
+     accept(1M), cancel(1), enable(1), lpadmin(1M), lpfilter(1M),
+     lpforms(1M), lpsched(1M), lpstat(1), lpusers(1M), mail(1),
+     terminfo(4).
+
+

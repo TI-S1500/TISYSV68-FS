@@ -1,0 +1,54 @@
+NICE(1)                                                   NICE(1)
+
+NAME
+     nice - Runs a command at low priority
+
+SYNOPSIS
+     nice - increment command [ arguments ]
+     nice + increment command [arguments]
+
+DESCRIPTION
+     The nice command executes command with a lower CPU
+     scheduling priority.  The increment option is in the range
+     1-19.  If increment is not used, an increment of 10 is
+     assumed.
+
+     The super-user can run commands with priority higher than
+     normal by using a negative increment,
+     e.g., - -10.
+
+     The first usage of the Synopsis applies to the Bourne shell.
+     The second usage applies to the TI Business shell.
+
+EXAMPLE
+     The following two examples run the du command in background
+     at low priority.  The first example is executed from the
+     Bourne shell; the second from the TI Business shell.
+
+          nice -10 du > du.lst &
+          nice +10 du > du.lst &
+
+PROMPTS
+   Priority Number (1-19):
+     The initial value is 10.  Enter a number from 1 to 19.  The
+     priority for the specified command will be lowered by this
+     increment.
+
+   Command to be Executed:
+     Enter the command, with neither options nor arguments, to
+     execute at the specified lower priority.
+
+   Command Arguments:
+     Enter the options and arguments for the specified command.
+
+SEE ALSO
+     nice(2), nohup(1).
+
+DIAGNOSTICS
+     The nice command returns the exit status of the subject
+     command.
+
+NOTES
+     An increment larger than 19 is equivalent to 19.
+
+

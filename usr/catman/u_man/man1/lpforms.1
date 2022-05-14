@@ -1,0 +1,361 @@
+LPFORMS(1M)					      LPFORMS(1M)
+
+NAME
+     lpforms - Administers forms used with the LP print service
+
+SYNOPSIS
+     /usr/lib/lpforms -f form-name options
+
+     /usr/lib/lpforms -f form-name -A alert-type [-Q integer1 ]
+			[-W integer2 ]
+
+     /usr/lib/lpforms -f form-name -A list
+
+     /usr/lib/lpforms -f form-name -A quiet
+
+     /usr/lib/lpforms -f form-name -A none
+
+DESCRIPTION
+     The lpforms command is used to administer the use of
+     preprinted forms, such as company letterhead paper, with the
+     LP print service.	A form is specified by the form-name
+     given with the lpforms command.  Users can request a form by
+     form-name (see lp(1)).  The argument all can be used instead
+     of form-name with any of the five lpforms command lines
+     shown above.  The first command line allows the
+     administrator to add, change, and delete forms, to list the
+     attributes of an existing form, and to allow and deny users
+     access to particular forms.  The second command line is used
+     to establish the method by which the administrator is
+     alerted that a form must be mounted on a printer.	By using
+     the third command line, an administrator can list the
+     current alerting methods assigned to forms.  The fourth
+     lpforms command line is used to terminate an active alert,
+     and the fifth command line is used to remove an alert
+     definition.
+
+     With the first lpforms command line, one of the following
+     options must be used:
+
+     -F path-name
+		Adds or changes a form as specified by the
+		information in path-name
+
+     -		Adds or changes a form and supplies information
+		from standard input
+
+     -x 	Deletes a form (this option must be used
+		separately; it cannot be used with any other
+		option)
+
+     -l 	Lists the attributes of a form
+
+     -u allow:user-list
+		Allows users to request a form (this option can
+		be used with the -F or - option)
+
+     -u deny:user-list
+		Denies users access to a form (this option can be
+		used with the -F or - option)
+
+     Each option is explained in the following text.
+
+Adding or Changing a Form
+     The -F path-name option is used to add a new form to the LP
+     print service or to change the attributes of an existing
+     form.  The form description is taken from path-name if the
+     -F option is given, or the standard input if the - option is
+     used.  One of the two options must be used to define or
+     change a form.  path-name is the path name of a file that
+     contains all or any subset of the following information
+     about the form.
+
+     Page length: scaled-decimal-number1
+     Page width: scaled-decimal-number2
+     Number of pages: integer
+     Line pitch: scaled-decimal-number3
+
+     Character pitch: scaled-decimal-number4
+     Character set choice: character-set/print-wheel,[mandatory]
+     Ribbon color: ribbon-color
+
+     Comment:
+     comment
+
+     Alignment pattern: [content-type]
+     content
+
+     Except for the last two lines, the preceding lines can
+     appear in any order.  The Comment: and comment items must
+     appear in consecutive order but can appear before the other
+     items, and the Alignment pattern:	and the content items
+     must appear in consecutive order at the end of the file.
+     Also, the comment item cannot contain a line that begins
+     with any of the key phrases above, unless the key phrase is
+     preceded with a > sign.  Any leading > sign found in the
+     comment will be removed when the comment is displayed.  Case
+     distinctions in the key phrases are ignored.
+
+     When this command is issued, the form specified by form-name
+     is added to the list of forms.  If the form already exists,
+     its description is changed to reflect the new information in
+     the input.  Once added, a form is available for use in a
+     print request, except where access to the form has been
+     restricted, as described under the -u allow: option.  A form
+     can also be allowed to be used on certain printers only.
+
+     A description of each form attribute follows:
+
+     Page length and Page width
+	  Before printing the content of a print request needing
+	  this form, the generic interface program provided with
+	  the LP print service will initialize the physical
+	  printer to handle pages scaled-decimal-number1 long,
+	  and scaled-decimal-number2 wide using the printer type
+	  as a key into the terminfo(4) database.  A scaled-
+	  decimal-number is an optionally scaled decimal number
+	  that gives a size in lines, columns, inches, or
+	  centimeters, as appropriate.	The scale is indicated by
+	  appending the letter i for inches, or the letter c for
+	  centimeters.	For length or width settings, an unscaled
+	  number indicates lines or columns; for line pitch or
+	  character pitch settings, an unscaled number indicates
+	  lines per inch or characters per inch (the same as a
+	  number scaled with i).  For example, length=66
+	  indicates a page length of 66 lines, length=11i
+	  indicates a page length of 11 inches, and length=27.94c
+	  indicates a page length of 27.94 centimeters.
+
+	  The page length and page width will also be passed, if
+	  possible, to each filter used in a request needing this
+	  form.
+
+     Number of pages
+	  Each time the alignment pattern is printed, the LP
+	  print service will attempt to truncate the content to a
+	  single form by, if possible, passing to each filter the
+	  page subset of 1-integer.
+
+     Line pitch and
+     Character pitch
+	     Before printing the content of a print request
+	     needing this form, the interface programs provided
+	     with the LP print service will initialize the
+	     physical printer to handle these pitches, using the
+	     printer type as a key into the terminfo(4) database.
+	     Also, the pitches will be passed, if possible, to
+	     each filter used in a request needing this form.
+	     scaled-decimal-number3 is in lines per centimeter if
+	     a c is appended, and lines per inch otherwise;
+	     similarly, scaled-decimal-number4 is in columns per
+	     centimeter if a c is appended, and columns per inch
+	     otherwise.  The character pitch can also be given as
+	     elite (12 characters per inch), pica (10 characters
+	     per inch), or compressed (as many characters per
+	     inch as possible).
+
+     Character set choice
+	     When the LP print service alerts an administrator to
+	     mount this form, it will also mention that the print
+	     wheel specified by print-wheel should be used on
+	     those printers that take print wheels.  If printing
+	     with this form is to be done on a printer that has
+	     selectable or loadable character sets instead of
+	     print wheels, the interface programs provided with
+	     the LP print service will automatically select or
+	     load the correct character set.  If mandatory is
+	     appended, a user is not allowed to select a
+	     different character set for use with the form;
+	     otherwise, the character set or print wheel named is
+	     a suggestion and a default only.
+
+     Ribbon color
+	     When the LP print service alerts an administrator to
+	     mount this form, it will also mention that the color
+	     of the ribbon should be ribbon-color.
+
+     Comment The LP print service will display the comment
+	     unaltered when a user asks about this form (see
+	     lpstat(1)).
+
+     Alignment pattern
+	     When mounting this form an administrator can ask for
+	     the content to be printed repeatedly, as an aid in
+	     correctly positioning the preprinted form.  The
+	     optional content-type defines the type of printer
+	     for which content had been generated.  If content-
+	     type is not given, simple is assumed.  Note that the
+	     content is stored as given, and will be readable
+	     only by the user lp.
+
+     When an existing form is changed with this command, items
+     missing in the new information are left as they were.  When
+     a new form is added with this command, missing items will
+     get the following defaults:
+
+     Page length: 66
+     Page width: 80
+     Number of pages: 1
+     Line pitch: 6
+     Character pitch: 10
+     Character set choice: any
+     Ribbon color: any
+     Comment: (no default)
+     Alignment pattern: (no default)
+
+Deleting a Form
+     The -x option is used to delete the form specified in form-
+     name from the LP print service.
+
+Listing Form Attributes
+     The -l option is used to list the attributes of the existing
+     form specified by form-name.  The attributes listed are
+     those described in "Adding and Changing a Form" previously.
+     Because of the potentially sensitive nature of the alignment
+     pattern, only the administrator can examine the form with
+     this command.  Other people can use the lpstat(1) command to
+     examine the non-sensitive part of the form description.
+
+Allowing and Denying Access to a Form
+     The LP print service keeps two lists of users for each form:
+     an allow list of people allowed to use the form, and a deny
+     list of people denied access to the form.	With the
+     -u allow: option, the users listed are added to the allow
+     list and removed from the deny list.  With the -u deny:
+     option, the users listed are removed from the allow list and
+     added to the deny list.
+
+     If the allow list is not empty, the users in the list are
+     allowed access to the form and all others are denied access,
+     regardless of the content of the deny list.  If the allow
+     list is empty, but the deny list is not, the users in the
+     deny list are denied access and all others are allowed.  If
+     both lists are empty, all users are allowed access.  Access
+     can be denied to all users, except the LP print service
+     administrator, by putting any in the deny list.  To
+     effectively empty both lists, allowing access for everyone,
+     put any in the allow list.
+
+Alerting to Mount Forms
+     The second lpforms command line (shown under Synopsis) is
+     used to arrange for alerts to be sent to the administrator
+     when forms need to be mounted on a printer.
+
+     When integer1 print requests needing the preprinted form
+     form-name become queued up because no printer satisfying all
+     the needs of the requests has the form mounted (and for as
+     long as this condition remains), an alert is sent to the
+     administrator every integer2 minutes until the form is
+     mounted on a qualifying printer.  If the form-name is all,
+     the alerting defined in this command applies to all existing
+     forms.  No alerting is done for a backlog of print requests
+     needing a form if the administrator does not use this
+     command.
+
+     The method by which the alert is sent depends on the value
+     of the -A option.
+
+     write
+	  The message is sent via write(1) to the terminal on
+	  which the administrator is logged in when the alert
+	  arises.  If the administrator is logged in on several
+	  terminals, one is arbitrarily chosen.
+
+     mail The message is sent via mail(1) to the administrator
+	  who issues this command.  The message appears as
+	  follows:
+
+	The form form-name needs to be mounted on the printer(s)
+	printer (integer5 requests).
+	integer4 print requests await this form.
+	Use the ribbon-color ribbon.
+	Use the print-wheel print wheel, if appropriate.
+
+     The printers listed are those that the administrator had
+     earlier specified were candidates for this form.  The number
+     (integer3) listed next to each printer is the number of
+     requests eligible for the printer.  The number (integer4)
+     shown after the list of printers is the total number of
+     requests awaiting the form.  It will be less than the sum of
+     the other numbers if some requests can be handled by more
+     than one printer.	The ribbon-color and print-wheel are
+     those specified in the form description.  The last line in
+     the message is always sent, even if none of the printers
+     listed use print wheels, because the administrator can
+     choose to mount the form on a printer that does use a print
+     wheel.
+
+     Where any color ribbon or any print wheel can be used, the
+     preceding statements will read:
+
+     Use any ribbon.
+     Use any print-wheel.
+
+     shell-command
+	  The shell-command is run each time the alert needs to
+	  be sent.  The shell command should expect the message
+	  as standard input.  Note that the mail and write values
+	  for the -A command are equivalent to the values mail
+	  user-name and write user-name, respectively, where
+	  user-name is the current name for the administrator.
+	  This will be the log-in name of the person submitting
+	  this command unless the person has used the su command
+	  to change to another user ID.  If the su command has
+	  been used to change the user ID, the user-name for the
+	  new ID is used.
+
+     If the -Q option is not given or integer1 is 1 or the word
+     any (which are both the default), a message is sent as soon
+     as anyone submits a print request for the form when it is
+     not mounted.
+
+     If the -W option is not given or integer2 is 0 or the word
+     once (which are both the default), only one message is sent
+     when the queue size exceeds integer1.  If integer2 is a
+     nonzero number, an alert will be sent every integer2
+     minute(s).
+
+Listing the Current Alert
+     The third lpforms command line (shown under Synopsis) is
+     used to list the type of the alert for the specified form.
+     No change is made to the alert.  If form-name is recognized
+     by the LP print service, one of the following lines is sent
+     to the standard output, depending on the type of alert for
+     the form.
+
+
+     +	 When integer1 are queued:  alert with "shell-command"
+	 every integer2 minutes
+
+     +	 When integer1 are queued:  write to user-name every
+	 integer2 minutes
+
+     +	 When integer1 are queued: mail to user-name every
+	 integer2 minutes
+
+     +	 No alert
+
+     The phrase every integer minutes is replaced with once if
+     integer2 (-W integer2) is 0.
+
+Terminating an Active Alert
+     The -A quiet option is used to stop messages for the current
+     condition.  An administrator can use this option to
+     temporarily stop receiving further messages about a known
+     problem.  Once the form has been mounted and unmounted,
+     messages will again be sent when the queue size reaches
+     integer1 pending requests.
+
+Removing an Alert Definition
+     No messages will be sent after the -A none option is used
+     until the -A  option is given again with a different alert-
+     type.  This can be used to permanently stop further messages
+     from being sent as any existing alert definition for the
+     form will be removed.
+
+SEE ALSO
+     lp(1), lpadmin(1M), terminfo(4).
+     ``Printer Spooling System'' in the TI System V
+     Administrator's Guide.
+
+

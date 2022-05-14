@@ -1,0 +1,106 @@
+CPISAM(1T)						 CPISAM(1T)
+
+NAME
+     cpisam - Copies T-ISAM files
+
+SYNOPSIS
+     cpisam -v src_data [+src_index] ... dest_data [+dest_index]
+
+DESCRIPTION
+   Purpose
+     The cpisam utility copies source T-ISAM files to destination
+     T-ISAM files.  The path name of the index file is kept in
+     the data file's internal information. In some cases, T-ISAM
+     uses this internal name to locate the index file. Because
+     cpisam updates this internal path name, it should be used
+     whenever a T-ISAM file is copied.	Usage of the cp command
+     does not update this internal information of the destination
+     file, sometimes resulting in the association of the wrong
+     index file with the given data file.
+
+   Discussion
+     Except for the last parameter, which can be a directory,
+     parameters beginning with a + character are taken to be
+     names of index files associated with the preceding data file
+     name.  In cases where index files are not specified for a
+     given data file, the index file normally associated with the
+     data file (according to the internal information in the data
+     file) is used.  If dest_index is not specified, the index
+     file(s) is copied to the same file name as the source index
+     file within the dest_data directory, or the directory
+     portion of the dest_data path name.
+
+     If dest_data and dest_index (if present) are directories,
+     there can be multiple src_data files.  This implies that the
+     src_data files copied to the dest_data directory and
+     corresponding src_index files are copied to the dest_index
+     directory, if it is present. If the dest_index is not
+     present, the corresponding src_index files are copied to the
+     dest_data directory.  If dest_data is not a directory, there
+     can only be one src_data file.
+
+     Copying data and index files to the same location is not
+     permitted.
+
+   Options
+     -v      Verbose.  Lists to standard output exactly which
+	     files are copied where.
+
+EXAMPLES
+     The following example copies file1.dat, with its index file to
+     the directory dir2.
+
+	       cpisam file1.dat dir2
+
+
+     The next example copies the T-ISAM file contained in
+     file1.dat and file1.idx to file2.dat and file2.idx.
+
+	       cpisam file1.dat +file1.idx file2.dat +file2.idx
+
+
+     The next example copies the T-ISAM file contained in
+     file1.dat and file1.idx to the directory dir2.
+
+	       cpisam file1.dat +file1.idx dir2
+
+
+     To copy the files f1.dat, f2.dat, and f3.dat, with
+     corresponding indexes f1.idx, f2.idx, and f3.idx, to
+     directory dir4, type the following command:
+
+	       cpisam f1.dat +f1.idx f2.dat +f2.idx f3.dat +f3.idx dir4
+
+
+     You must use either of the following forms to ensure that
+     the .idx file is copied correctly:
+
+	       cpisam file1.dat file2.dat +file2.idx
+
+			  or
+
+	       cpisam file1.dat +file1.idx file2.dat +file2.idx
+
+
+PROMPTS
+   Source Data File:
+     Enter the data portion of the source T-ISAM file.
+
+   Source Index File:
+     Optional. Enter the index portion of the source T-ISAM file.
+
+   Destination Data File:
+     Enter the data portion of the destination T-ISAM file.
+
+   Destination Index File:
+     Optional. Enter the index portion of the destination T-ISAM
+     file.
+
+   Verbose? (y/n):
+     Enter y to print a list of copied files to the screen.
+
+SEE ALSO
+     findisam(1T), frisam(1T), mapisam(1T), mkisam(1T), mvisam(1T), 
+     toisam(1T), vfisam(1T).
+
+

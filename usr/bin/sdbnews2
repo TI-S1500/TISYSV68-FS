@@ -1,0 +1,119 @@
+			    SYMBOLIC SDB
+
+As the name of the debugger implies, "sdb" stands for "symbolic debugger".
+Sdb provides a full symbolic debugging capability on systems which support
+sdb compatible compilers.  However, the standard C compiling environment
+supplied with TI System V provides an alternate symbolic debugging capability.
+This alternate capability is not completely compatible with sdb.  Sdb can still
+be very useful:  Function names are always available as symbols in an sdb de-
+bugging session.  And, sdb provides a machine level debugging environment,
+complete with instruction disassembly and register access, including floating
+point.
+
+Since TI System V does not normally support an sdb compatible C compiler,
+the sdb "man" page which comes with the system does not document the full
+range of sdb capability.  Most of the commands relating to symbolic debugging
+would not be usable.
+
+TI has, however, provided an "sdb compatible" compiler to certain selected
+customers.  You are one of these, if you are reading this news file via the
+'h' command in sdb.  This news exists to provide you with usability notes
+for TI's version of the full symbolic sdb debugging capability.
+
+You will need to refer to sdb documentation which describes the full range
+of commands in sdb for symbolic debugging.  This information is not available
+in the standard TI System V "man" page for sdb.  You will have to obtain this
+information from non-TI sdb documentation.
+
+
+		     ACCESS TO REGISTER VARIABLES
+
+The C compiler may place variables declared as "register" in actual machine
+registers.  If it does so, these variables may still be accessed by name.
+This works even if the register is in the floating point unit.  In the latter
+case, extended precision access is automatic, even though the actual variable
+is declared 'float' or 'double'.  Also, the "addresses" of variables in
+registers may be printed using the '=' command:  The register name will be
+printed.  NOTE:  If the register has been pushed on the stack by a called
+function, the variable address and value are not currently available to sdb,
+by name.  However, they may be accessed by absolute address, on the stack.
+
+
+		CALLING FUNCTIONS FROM SDB COMMAND LINE
+
+Normally, the -g flag is used at compilation and link time to enable full
+symbolic debugging support from sdb.  This flag causes the compiler to provide
+a symbol table with information on all internal symbols in the source file.
+The linker uses the -g flag to automatically include the library 'libg'.
+
+On the TI special "sdb compatible" compiling system, however, the -g flag
+does NOT cause inclusion of the library 'libg'.  This means that ONE of the
+commands available in symbolic sdb is not available.  This is the command to
+execute a function in the program being debugged by calling it with arguments
+from the sdb command line.
+
+For example (* is the sdb prompt):
+
+	*procname(arg1,arg2,...)/editcode
+
+The function is called with the given arguments, and the value of the function
+is edited according to the given editcode (or according to the type of the
+function, if the editcode is not given).
+
+This is all described in any man page which describes sdb's full symbolic
+debugging capabilities (not the TI man page for sdb).
+
+If you want to use the capability to call a function from the sdb command
+line, you must perform the following steps:
+
+1.  Modify the main program to contain the following source line:
+
+	extern int  _dbargs;
+
+    This is an external reference to a symbol defined in library 'libg'.
+
+2.  Put the following executable statement in the main program:
+
+	_dbargs = 0;
+
+    This forces the compiler to respect the external declaration made in
+    step 1.  Else, the compiler will ignore the 'extern' since it is unused.
+
+3.  Compile the C source files you wish to debug with the -g flag to get all
+    the information on internal symbols.  You may compile your entire program
+    with the -g flag.
+
+4.  Link the program together, including the -lg flag in the link line.
+    This causes the library 'libg' to be included as part of your program.
+    You may now use sdb to call any function in your program from the sdb
+    command line.
+
+In TI sdb, the capability to call functions from the sdb command line has been
+significantly corrected and enhanced, as described in the following paragraphs:
+
+An argument to a function called from the sdb command line will be taken as
+a floating point type if it is specified as a floating point variable, if a
+floating point register is specified (with trailing %), or if a numeric
+argument is given containing a decimal point or exponent.  Any floating point
+values given are converted to double precision to make the function call.
+(C always does this).
+
+In regular "sdb compatible" systems, the symbol tables from functions compiled
+with the -g flag will properly specify the type of the function return value.
+This allows sdb to pick up the return value from the proper machine register,
+and edit the return value according to its implied type.
+
+However, the special "sdb compatible" compiling system from TI that we are
+describing here does not produce a symbol table correctly typing the function.
+Therefore, you must override any function typing in the symbol table by
+specifying the editcode explicitly for those functions which return floating
+point values.
+
+When the function return value is edited by sdb, two values will be given.
+The first is a printout of the double precision floating point number in
+registers d0-d1.  This is in case your code is using the floating point
+emulator code in the library.  The second printout is of the triple precision
+result in register fp0.  This is in case your code is using the floating
+point coprocessor.  Since TI S1500 hardware contains a floating point
+coprocessor, and compilers distributed by TI generate code to use it, it
+is likely that your result will be the second number printed.

@@ -1,0 +1,55 @@
+WHAT(1)                                                   WHAT(1)
+
+NAME
+     what - Identifies SCCS files
+
+SYNOPSIS
+     what -s files
+
+DESCRIPTION
+   Purpose
+     The what command searches the given files for all
+     occurrences of the pattern that get(1) substitutes for %Z%
+     and prints out what follows until the first ", >, new-line,
+     \, or null character.  Currently, @(#) is the pattern that
+     get substitutes for %Z%.
+
+     The what command is intended to be used in conjunction with
+     the  command get(1), which automatically inserts identifying
+     information, but it can also be used where the information
+     is inserted manually.
+
+   Option
+          -s   Quits after finding the first occurrence of the
+               pattern in each file.
+
+EXAMPLE
+     A C program in file f.c contains the following line where
+     identification information is information such as version
+     number and date:
+
+     char ident[] = "@(#)identification information";
+
+     If f.c is compiled to yield the files f.o and a.out, the
+     command what f.c f.o a.out prints the following output:
+
+          f.c:
+                  identification information
+
+          f.o:
+                  identification information
+
+          a.out:
+                  identification information
+
+PROMPTS
+   File Name(s):
+     Enter the names of the files to process.
+
+SEE ALSO
+     get(1), help(1).
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+

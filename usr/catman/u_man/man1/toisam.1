@@ -1,0 +1,119 @@
+TOISAM(1T)						 TOISAM(1T)
+
+NAME
+     toisam - Copies sequential data to an existing T-ISAM file
+
+SYNOPSIS
+     toisam -BefFns data_file [index_file]
+
+DESCRIPTION
+   Purpose
+     The toisam command writes data from a specified sequential
+     (flat) file to a T-ISAM file.
+
+   Discussion
+     If index_file is specified, it will be used. If it is not
+     specified, the index file associated with the data file will
+     be used.
+
+   Options
+     -B      Like -F, except fills with spaces rather than nulls.
+
+     -e      Provides exclusive access while the T-ISAM file is
+	     written and returns a file locked error if the T-
+	     ISAM file is currently open by another process.
+
+     -f file Reads input from file.  If this option is not
+	     specified, input is read from standard input.
+
+     -F      Fills record to siz (if -s is specified) or to
+	     maximum record size for the file with nulls. This is
+	     meaningful only if -n is selected.
+
+     -n      Uses new-line characters to separate records. When a
+	     new-line character is encountered in the input, the
+	     existing data will be written to the T-ISAM file as
+	     a complete record. The data following the new-line
+	     character will be the beginning of the next record
+	     to be written.
+
+	     If a new-line character is not encountered and
+	     enough data has been read to fill a maximum sized
+	     record (as defined by the -s option or, in the
+	     absence of a -s option, the maximum record size for
+	     the T-ISAM file), the existing data will be written
+	     as a record and subsequent data up to the next new-
+	     line character will be discarded.
+
+	     If -n is not specified, input data is assumed to
+	     consist of records that are the maximum record size.
+
+	     In all cases, any data not written to the T-ISAM
+	     file when end of file is reached on the input will
+	     be written as a final T-ISAM record.
+
+     -s siz  Uses a (maximum) record size of siz. If this is not
+	     declared, the maximum record size of the T-ISAM file
+	     will be used.
+
+EXAMPLE
+     The following example copies data from the file datafile to
+     the T-ISAM file tismfile.dat (using the index specified by
+     tismfile.dat). Each 100 bytes of input (and any data
+     remaining after end of file is reached on the input file)
+     will constitute a T-ISAM record. If the input data contains
+     new-line characters, they will be regarded as data.
+
+	  toisam -f datafile -s 100 tismfile.dat
+
+     In the following example, data is read from datfile and
+     written to the T-ISAM file with data in tismfile.dat and
+     index in tismfile.idx. New-line characters constitute data
+     separators.
+
+	  toisam -n tismfile.dat tismfile.idx < datfile
+
+PROMPTS
+   T-ISAM Data File:
+     Enter the data portion of the T-ISAM file.
+
+   T-ISAM Index File:
+     Optional. Enter the index portion of the T-ISAM file. If
+     this is omitted, the index associated with the T-ISAM data
+     file will be used.
+
+   Input File:
+     Identify the sequential file to be copied to the T-ISAM
+     file.
+
+   Record Size:
+     Optional. This is the (maximum) size of input records. If
+     Newline Record Separators (below) is selected, records
+     larger than this size will be truncated. If Newline Record
+     Separators is not selected, toisam will assume that a new
+     record begins at each multiple of this number. If this entry
+     is omitted, the Maximum Record Size for the T-ISAM file will
+     be used.
+
+   Newline Record Separators? (y/n):
+     If this is selected, new-line characters (ASCII CR) will
+     always be interpreted as record separators.
+
+   Null or Blank Fill (n/b/):
+     The default is no response (indicating no fill). If n or b
+     is selected and Newline Record Separators (above) is
+     selected, records will be padded with nulls or spaces until
+     the Record Size (as defined above) or the file's maximum
+     record size is reached.
+
+   Exclusive Access? (y/n):
+     If this is selected, the T-ISAM file will be opened for
+     exclusive access.	If the file is already opened, this
+     utility will fail. Any attempt to open the T-ISAM file while
+     this utility is using it will fail.
+
+SEE ALSO
+     cpisam(1T), findisam(1T), frisam(1T), mapisam(1T), mkisam(1T), 
+     mvisam(1T), vfisam(1T).
+
+

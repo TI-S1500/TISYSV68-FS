@@ -1,0 +1,338 @@
+TAR(1)							   TAR(1)
+
+NAME
+     tar - Provides a tape file archiver
+
+SYNOPSIS
+     tar crtuxkbfFlmopvw[0,...,7[mlh]] [files] --C newdir file
+
+DESCRIPTION
+   Purpose
+     The tar command saves and restores files on magnetic tape.
+
+   Arguments
+     The files argument specifies names of files or directories
+     to be dumped or restored.	A directory name refers to the
+     files and (recursively) subdirectories of that directory.
+
+   Options
+     The actions of tar are controlled by the key arguments
+     (options).  The key is a string of characters containing at
+     most one function letter and possibly one or more function
+     modifiers.
+
+   Key Functions
+     The function portion of the key is specified by one of the
+     following letters:
+
+     c	     Creates a new tape.  Begins writing at the beginning
+	     of the tape instead of after the last file.  Use the
+	     t option to read the tape as a test of media errors.
+
+     k	     Verifies data on tape. This option reads the table
+	     of contents and performs a path-relative search of
+	     the files it finds. It then does a byte-by-byte
+	     comparison of the data on the tape and the data on
+	     the disk.	So the following restrictions apply to
+	     this option:
+
+	     It should be used immediately after the tar tape has
+	     been created.
+
+	     The destination device must be a tape drive.
+
+	     The original tar command may use the -F option only
+	     if the -C option was not used in the command line or
+	     in the control file.
+
+	     The verify operation must be issued while in the
+	     same directory as the original command if any files
+	     on the tape are path-relative.
+
+	     EXAMPLES:
+
+		 (Non-path relative)
+		 tar cvbf 20 /dev/rqt/0h /usr/src/me.c
+		 /usr/sys/my.c /usr/bin/mo
+		 cd /etc
+		 tar vkbf 20 /dev/rqt/0h
+
+		 (Path relative)
+		 tar cvbf 20 /dev/rqt/0h ./me.c ./my.c ./mo.c
+		 tar vkbf 20 /dev/rqt/0h
+
+     r	     Writes the named files on the end of the tape after
+	     any existing files already on the tape.  This option
+	     does not work with the quarter-inch cartridge tape
+	     drive, /dev/rqt/0h.  This option works with the
+	     half-inch tape drive. This option does not work with
+	     the CT2000 tape drive, /dev/{r}vt/0h.
+
+     t	     Lists the names of the specified files each time the
+	     files occur on the tape.  If no files argument is
+	     given, all the names on the tape are listed.  This
+	     listing provides a table of contents for the tape.
+	     The t option also serves as a means of checking that
+	     a tape can be read.
+
+     u	     Adds the named files to the tape if they are not
+	     already there or if they have been modified since
+	     last written on that tape.  This option does not
+	     work with the quarter-inch cartridge tape drive,
+	     /dev/{r}qt/0h.  This option works with the half-inch
+	     tape drive /dev/{r}mt/0h. This option does not work
+	     with the CT2000 tape drive, /dev/{r}vt/0h.
+
+     x	     Extracts the named files from the tape.  If a named
+	     file matches a directory whose contents had been
+	     written onto the tape, this directory is
+	     (recursively) extracted.  The owner, modification
+	     time, and mode are restored (if possible).  If no
+	     files argument is given, the entire content of the
+	     tape is extracted.  If several files with the same
+	     name are on the tape, the last file overwrites all
+	     earlier ones.  The files must exactly match what is
+	     on tape.
+
+   Key Function Modifiers
+     The following characters can be used in addition to the
+     letter that selects the desired function:
+
+     0,...,7 Selects the drive on which the tape is mounted.  The
+	     default is 0.  The drive number can be followed by
+	     nothing or by m or h to indicate medium or high
+	     density, respectively.  The default is h if m or h
+	     is not specified. Tar will append the number and the
+	     density to the name /dev/rqt.
+
+     -C newdir file
+	     Changes current directory while archiving and
+	     archives the specified file from the new directory,
+	     newdir.  This enables the user to create a path-
+	     relative archive from multiple directories.  The -C
+	     option applies only to the single file specified by
+	     the argument file. You can use this option in a
+	     control file.
+
+     -F cntlfile
+	     Specifies the file named cntlfile as a control file
+	     containing names of all files to restore or archive.
+	     The control file contains one object per line. No
+	     blanks are allowed, and no blank lines are allowed.
+	     Expansion of shell meta-characters is not supported
+	     in the control file.
+
+     b bfactor
+	     Causes tar to use the argument bfactor as the
+	     blocking factor for tape records.	The default is
+	     20.  The maximum for half-inch tape is 64 for
+	     /dev/rmt/?h?, /dev/rmt/?m?, and /dev/rmt/?s?.  The
+	     maximum for CT2000 tapes, /dev/rvt/?h?, is also 64.
+	     The block size is determined automatically when
+	     reading tapes.  The b value must be an even number
+	     if tar is writing to quarter-inch drives.	If b is
+	     used with r or u, the b option is ignored and
+	     automatic block size detect is in effect.
+
+	     The b option is required when you use tar on
+	     multiple tapes-it must be used with c to back up
+	     data, and it must be used with x to restore tapes.
+
+     f device
+	     Causes tar to use the argument device as the name of
+	     the archive instead of the default /dev/rqt/0h. If
+	     the file /etc/tar.default exists, the content of
+	     this file is used as the default device name.  If
+	     the name of the file is -, tar writes to the
+	     standard output or reads from the standard input,
+	     whichever is appropriate.	Thus, tar can be used as
+	     the head or tail of a pipe. The tar command can also
+	     be used to move hierarchies with the following
+	     command:
+
+	     (cd fromdir; tar cbf 10 - .) | (cd todir; tar xbf 10
+	     -)
+
+     l	     Causes tar to display a message if it cannot resolve
+	     all links.
+
+     m	     Causes tar to override the existing modification time
+	     and reset it to the current time and date.
+
+     o	     Allows the user to restore all files with owner set
+	     to the ID of the current user.
+
+     p	     Creates an archive in POSIX(TM) format.  Directories
+	     are archived and, when restored, are set to original
+	     owner and permissions.  This option also allows
+	     devices, pipes, and FIFOs to be archived and
+	     restored. If used to archive files, this option
+	     also must be used when the files are extracted
+	     from the tape.
+	     POSIX is a trademark of IEEE
+
+     v	     Causes tar to display names of files being acted
+	     upon.
+
+     w	     Causes tar to wait for user confirmation on actions.
+
+EXAMPLE
+     The following example saves the entire current directory to
+     quarter-inch tape, using a blocking factor of 40:
+
+	  tar cvbf 40 /dev/rqt/0h .
+
+     The following example extracts files from the device
+     /dev/rqt/1h using a blocking factor of 20:
+
+	  tar xvfb /dev/rqt/1h 20
+
+PROMPTS
+   File Name(s):
+     Enter the name(s) of the file(s) to be copied.
+
+   Archive Name or Drive Number (a,d):
+     Initial value is a.  Enter the archive name or drive number
+     to be copied.
+
+   Listing File Name:
+     Enter the name of the file to receive the process progress
+     reports.
+
+   Select Modifiers:
+     Initial value is no.  If you enter yes, the menu for the
+     selection of key function modifiers will be displayed.
+
+   Create a New Tape:
+     Initial value is no.  If you enter yes, a new tape is
+     created.
+
+   List Files on Tape:
+     Initial value is no.  If you enter yes, the names of the
+     specified files are listed each time they occur on the tape.
+
+   Extract Files From Tape:
+     Initial value is no.  If you enter yes, the specified files
+     are extracted from the tape.
+
+   Archive Name:
+     Initial value is /dev/rqt/0h.  Enter the name of the archive
+     to be used.
+
+   Tape Drive Number (0-7):
+     Integer range 0-7.  Enter the number of the drive on which
+     the tape is mounted.
+
+   Tape Density (l, m, h):
+     Enter l for low density, m for medium density, h for high
+     density.
+
+   Blocking Factor (1-200):
+     Initial value is 20.  Enter the blocking factor to be used.
+
+   Create With User's Owner:
+     Initial value is no.  If yes is entered the owner and group
+     of the user rather than that associated with the file on
+     tape is used.
+
+   Verbose Listings:
+     Initial value is no.  If you enter yes, the name of each
+     file transaction is reported.
+
+   Confirm User's Action:
+     Initial value is no.  If you enter yes, the action followed
+     by the name of the file is printed and then the process
+     waits for the user's confirmation.
+
+   List Unresolved Links:
+     Initial value is no. If you enter yes, the messages about
+     unresolved links are suppressed.
+
+   Restore Modification Times:
+     Initial value is yes. If you enter no, the modification
+     times are not restored.
+
+FILES
+     /dev/{r}[m,q,v,s]t/0[m,h,s]
+
+SEE ALSO
+     tar(4).
+
+DIAGNOSTICS
+     The program reports bad key characters and tape read/write
+     errors.  It also produces a message if enough memory is not
+     available to hold the link tables.
+
+     If an attempt is made to write to an empty drive or if the
+     tape is not fully rewound or if the tape is write protected,
+     tar prints the following message:
+
+	  tar: can't open file xxx (HALT 1000501)
+	  the device or address does not exist
+
+NOTES
+     The b, f, and F options require arguments. If more than one
+     of these options are used, the accompanying arguments must
+     appear in the same order as the options.
+
+     The following problems and restrictions exist:
+
+     + There is no way to ask for the nth occurrence of a file
+       when reading the tape.  The last copy on the tape is the
+       final version.
+
+     + Tape error messages are sometimes uninformative.
+
+     + The u option can be slow.
+
+     + The b option should not be used with archives that are
+       going to be updated.  The current magnetic tape driver
+       cannot backspace raw magnetic tape.  If the archive is on
+       a disk file, the b option should be set to 1 .The b option
+       is required when you use tar on multiple tapes-it must be
+       used with c to back up data, and it must be used with x to
+       restore tapes.
+
+     + The current limit on file name length is 100 characters.
+
+     + In some cases, the order of the options is important.  For
+       example, tar c0m is different from tar cm0.
+
+     + There is no checksum on the body of the file.
+
+     The following restrictions are imposed by the tape hardware:
+
+     + Quarter-inch tape cartridges:
+       - The b option value must be a multiple of 2.
+       - The -u and -r options do not work.
+       - If the tape is written with one value of b and read with
+       a different value, multivolume tar will not work
+       correctly.
+
+     + Half-inch tape:
+       - The maximum value of b for high, medium, and 6250
+       density is 64 (32K-byte blocks).
+
+     + CT2000 tape devices:
+       - The -u and -r options do not work.
+       - The maximum value of b for this tape device is 64.
+
+     + The tar utility permits writing file trees that require
+       more than one tape.  When the end of the tape is detected,
+       the user is prompted to mount the next tape.  Press the
+       Return key to continue.
+
+       When reading multitape archives, tar checks that the tapes
+       are mounted in order and that the run time is the same for
+       all tapes.
+
+       It is very important that the same value of b is used when
+       reading tapes as when writing tapes.  Be sure to record
+       the blocking value used to create the tapes.
+
+CAUTION
+     If you use half-inch tapes, do not use tapes that are longer
+     than 2400 feet. If longer tapes are used, data may not be
+     retrieved properly and/or the tape drive may fail.
+
+

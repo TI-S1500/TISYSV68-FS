@@ -1,0 +1,17 @@
+# cshf  write -- write to another user 
+#	@(#)WRITE.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^WRITE -- WRITES TO ANOTHER USER"\
+	"^User's Name:" user string\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== WRITE COMMAND EXECUTING ==="
+echo write $user
+write $user
+
+#clean up time
+end:
+unset user

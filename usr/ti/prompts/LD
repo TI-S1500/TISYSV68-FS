@@ -1,0 +1,47 @@
+# cshf  ld -- Link editor for common object files 
+#	@(#)LD.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^LD -- INVOKES THE LINK EDITOR FOR COMMON OBJECT FILES"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output Object File Name:" _object_file acnm "$_object_file"\
+	"^Produce an Absolute File:" aflag yesno n\
+	"^Produce an I/O Sections Map:" mflag yesno n\
+	"^Retain Relocation Entries:" rflag yesno n\
+	"^Strip Object File:" sflag yesno n\
+	"^Put Data Section After Text:" Nflag yesno n\
+	"^Give LD Version Number:" Vflag yesno n\
+	"^*Entry Point Address:" eflag string \
+	"^*Fill Pattern:" fflg string \
+	"^*Search Library Name:" lflag acnm \
+	"^*Symbol Table Entry:" uflag sting \
+	"^*Library Directory:" Lflag acnm\
+	"^*Version of Output File:" VSflag integer\
+	"^#$*"
+
+if ($abort) goto end
+if ($aflag == "y") set opt = a$opt
+if ($mflag == "y") set opt = m$opt
+if ($rflag == "y") set opt = r$opt
+if ($sflag == "y") set opt = s$opt
+if ($Nflag == "y") set opt = N$opt
+if ($Vflag == "y") set opt = V$opt
+if ($opt != "") set opt = -$opt
+
+if ($eflag != "") set eopt = "-e "$eflag
+if ($fflag != "") set fopt = "-f "$fflag
+if ($xflag != "") set xopt = "-x "$xflag
+if ($uflag != "") set uopt = "-u "$uflag
+if ($Lflag != "") set Lopt = "-L "$Lflag
+if ($VSflag != "") set VSopt = "-VS "$VSflag
+if ($_object_file != "") set oopt = -o$_object_file
+
+if ($abort) goto end
+echo "=== LD COMMAND EXECUTING ==="
+echo ld $opt $oopt $eopt $fopt $xopt $uopt $Lopt $VSopt
+ld $opt $eopt $oopt $fopt $xopt $uopt $Lopt $VSopt
+
+#clean up time
+end:
+unset *flag *opt

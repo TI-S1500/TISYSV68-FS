@@ -1,0 +1,25 @@
+# cshf	cmp - compare two files 
+# @(#)CMP.sh	1.2 87/10/19
+onintr end
+prompt  "^CMP -- COMPARES TWO FILES"\
+	"^File 1:"    _input_file acnm  $_input_file\
+	"^File 2:"   F2   acnm $F2\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Show Every Byte Difference:"  lflag  yesno  n\
+	"^#$*"
+
+if( $abort )  goto end
+if( $lflag == "y" ) set lopt = "-l"
+
+echo "=== CMP COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo cmp $lopt $_input_file $F2
+	cmp $lopt $_input_file $F2 |\
+	pg -cp"Output from CMP is being piped through pg: "
+else
+	echo cmp $lopt $_input_file $F2 ">"$_output_file
+	cmp $lopt $_input_file $F2 >$_output_file
+endif
+
+end:
+unset *opt *lflag 

@@ -1,0 +1,85 @@
+SU(1)                                                       SU(1)
+
+NAME
+     su - Changes user identity to super-user or another user
+
+SYNOPSIS
+     su [-] [name[arguments]]
+
+DESCRIPTION
+   Purpose
+     The su command allows one user to take the identity of
+     another user without logging off.
+
+   Discussion
+     The default user name is root (the super-user name).
+
+     To use su, the appropriate password must be supplied if one
+     exists (unless one is already super-user).  If the password
+     is correct, su will execute a new shell with the user ID set
+     to that of the specified user.  To restore normal user ID
+     privileges, type an EOF (CTRL-d) to the new shell.
+
+     Any additional arguments are passed to the shell, permitting
+     the super-user to run shell procedures with restricted
+     privileges (an arg of the form -c string executes string via
+     the shell).  When additional arguments are passed, /bin/sh
+     is always used.  When no additional arguments are passed, su
+     uses the shell specified in the password file.
+
+     An initial - flag causes the environment to be changed to
+     the one that would be expected if the user actually logged
+     in again except that the variable TERM is not set.  That is,
+     the former environment is not passed to the new shell.  This
+     is done by invoking the shell with an arg0 of -su, causing
+     the .profile in the home directory of the new user ID to be
+     executed, provided the user's default shell is sh(1).  If an
+     initial - flag is not used, the environment is passed along
+     with the possible exception of $PATH, which is set to
+     /bin:/etc:/usr/bin for root.  Note that the /etc/profile
+     file can check arg0 for -sh or -su to determine how it was
+     invoked.
+
+EXAMPLES
+     To become user bin while retaining your previously exported
+     environment, execute the following command:
+
+          su bin
+
+     To become user bin but change the environment to what would
+     be expected if bin actually logged in, execute the
+     following:
+
+          su - bin
+
+     To execute command with the temporary environment and
+     permissions of user bin, type:
+
+          su - bin -c command args
+
+PROMPTS
+   User's Name:
+     Initial value is root.  Enter the login name.
+
+   Change Environment:
+     The initial value is no.  Enter yes to change the
+     environment to the one that would be expected if the user
+     actually logged in again.
+
+   Command and Arguments:
+     Enter the command to execute under the specified login name,
+     if any.
+
+FILES
+     /usr/adm/sulog
+     /etc/profile        system (root) profile for Bourne shell
+     /etc/passwd         system's password file
+     /etc/.bshlogin
+     $HOME/.profile      user's profile
+     $HOME/.login
+     $HOME/.cshrc
+
+SEE ALSO
+     env(1), environ(5), login(1), sh(1), super-user(5).
+
+

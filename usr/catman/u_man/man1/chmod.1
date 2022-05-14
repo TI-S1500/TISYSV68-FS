@@ -1,0 +1,167 @@
+CHMOD(1)                                                 CHMOD(1)
+
+NAME
+     chmod - Changes mode
+
+SYNOPSIS
+     chmod absolute_mode files
+     chmod ugoa +-= flrwxst files
+
+DESCRIPTION
+   Purpose
+     The chmod command changes the permissions of the named files
+     according to the mode, which may be absolute or symbolic.
+
+   Options
+     absolute_mode
+          An absolute mode is an octal number constructed from
+          the OR of the following modes:
+
+           04000    Set user ID on execution to the user ID of
+                    the owner of the file
+
+           02000    Set group ID on execution to the group ID of
+                    the owner of the file
+
+           01000    Set sticky bit, executable code remains
+                    resident in memory.  Only the super-user can
+                    set this mode, see chmod(2).  This bit will
+                    always be set to 0 unless specifically set to
+                    1.
+
+          200000    Forced write
+
+           00700    Read, write, execute (search) by owner
+
+           00400    Read by owner
+
+           00200    Write by owner
+
+           00100    Execute (search in directory) by owner
+
+           00070    Read, write, execute (search) by group
+
+           00040    Read by group
+
+           00020    Write by group
+
+           00010    Execute (search in directory) by group
+
+           00007    Read, write, execute (search) by others
+
+           00004    Read by others
+
+           00002    Write by others
+
+           00001    Execute (search in directory) by others
+
+     Symbolic mode
+
+          ugoa      The letter u means user's (owner's)
+                    permissions, g means group's permissions, and
+                    o means other's permissions.  The letter a
+                    stands for ugo and is the default if u, g, o,
+                    or a is omitted.
+
+          +-=       The + means to add a permission to the file's
+                    mode, - means to take away a permission, and
+                    = means to assign a permission absolutely
+                    (all other bits will be reset).
+
+          flrwxst   The f means make the file forced-write, r
+                    means make the file readable, w means make
+                    the file writeable, x means make the file
+                    executable, s means to set owner or group ID,
+                    t means to save text (the executable code of
+                    the program, not the data or stack), and l
+                    means that mandatory locking will occur
+                    during file access.  Omitting f, l, r, w, x,
+                    s, or t is useful only with = to take away
+                    all permissions.
+
+                    You must use chmod -f file to turn off forced
+                    write.
+
+                    Mandatory file and record blocking (l)
+                    refers to a file's ability to have its
+                    reading or writing permissions locked while a
+                    program is accessing that file.  It is not
+                    possible to permit group execution and enable
+                    a file to be locked on execution at the same
+                    time.  In addition, it is not possible to
+                    turn on the set-group-ID and enable a file to
+                    be locked on execution at the same time.  The
+                    following examples,
+
+                         chmod g+x,+1 file
+                         chmod g+s,+1 file
+
+                    are, therefore, illegal usages and will
+                    elicit error messages.
+
+   Discussion
+     Multiple symbolic modes separated by commas can be given.
+     Operations are performed in the order specified.  The letter
+     s is only useful with u or g.  The letter t only works with
+     u.
+
+     Only the owner of a file (or the super-user) can change its
+     mode.
+
+EXAMPLES
+          chmod 755 file1
+
+     The previous command changes the mode of a file you own to:
+
+     + Read, write, execute (400+200+100) by owner
+
+     + Read, execute (40+10) by group
+
+     + Read, execute (4+1) by others
+
+     Running the ls -l command on file1 displays the following,
+     showing that the requested mode is in effect:
+
+          -rwxr-xr-x
+
+     The following command deletes all rwx permissions from the
+     file named file1 but leaves existing s or t
+     permissions:
+
+          chmod = file1
+
+     The following example denies write permission for the file
+     named file2 to others and grants write permission to the
+     group:
+
+          chmod o-w,g+w file2
+
+     The following example makes the files named a, b, and c
+     executable:
+
+          chmod +x a b c
+
+     The following example causes a file to be locked during
+     access:
+
+          chmod +l file1
+
+     The following two command lines are equivalent:
+
+          chmod go+r file3
+
+          chmod g+r,o+r file3
+
+PROMPTS
+   File Name(s):
+     Enter the name of the file or files to be processed.  Enter
+     more than one file with a space between file names.
+
+   New mode:
+     Enter the octal number that specifies the desired absolute
+     mode.
+
+SEE ALSO
+     chmod(2), ls(1).
+
+

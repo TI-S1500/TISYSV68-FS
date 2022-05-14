@@ -1,0 +1,44 @@
+# cshf  errpt -- Reports kernel errors 
+#	@(#)ERRPT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^ERRPT -- GENERATES A REPORT OF LOGGED ERRORS"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Report All Error Types:" aflag yesno n\
+	"^*Device List Name:" dflag macnm "$dflag"\
+	"^*Discard Records Posted Later:" eflag integer \
+	"^*Error File-Current,Old,Both:" fflag \
+	"element (c,C=c,o,O=o,b,B=b)" c\
+	"^*Number of Pages:" pflag integer\
+	"^Retried Errors Only:" rflag yesno n\
+	"^*Discard Records Posted Earlier:" sflag integer \
+	"^#$*"
+
+if ($abort) goto end
+if ($aflag == "y") set aopt = -a
+if ($rflag == "y") set ropt = -r
+
+if ("$dflag" != "") set dopt = "-d ""$dflag"
+if ($eflag != "") set eopt = "-e "$eflag
+if ($sflag != "") set sopt = "-s "$sflag
+if ($pflag != "") set popt = "-p "$pflag
+if ($fflag != "c") then
+	if ($fflag == "o") set fopt = "-f o"
+	if ($fflag == "b") set fopt = "-f b"
+endif
+
+if ($abort) goto end
+echo "=== ERRPT COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo errpt $aopt $dopt $eopt $fopt $popt $ropt $sopt
+	errpt $aopt $dopt $eopt $fopt $popt $ropt $sopt | \
+	pg -cp"Output from CRYPT is being piped through pg: "
+else
+	echo errpt $aopt $dopt $eopt $fopt $popt $ropt $sopt ">"$_output_file
+	errpt $aopt $dopt $eopt $fopt $popt $ropt $sopt >$_output_file
+endif
+
+#clean up time
+end:
+unset *flag *opt 

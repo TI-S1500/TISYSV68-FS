@@ -1,0 +1,153 @@
+BC(1)							    BC(1)
+
+NAME
+     bc - Provides arbitrary-precision arithmetic
+
+SYNOPSIS
+     bc -cl [files]
+
+DESCRIPTION
+   Purpose
+     The bc utility is an interactive processor for a language
+     that resembles C, but it provides unlimited precision
+     arithmetic.  The utility takes input from files specified by
+     the files argument, and then reads the standard input.
+
+   Options
+     -c   Directs the utility to compile only.
+
+     -l   Specifies the name of an arbitrary precision math
+	  library.
+
+   Discussion
+     The list that follows explains the syntax for bc programs.
+     The abbreviation L means any letter from a to z, E means an
+     expression, and S means a statement.
+
+     Comments
+	   Comments are enclosed in /* and */.
+
+     Names can be any of the following:
+	   Simple variables (such as L)
+	   Array elements (such as L [ E ])
+	   The words ibase, obase, and scale
+
+     Other operands are as follows:
+	   Numbers of arbitrary length with optional sign and
+	   decimal point
+	   ( E )
+	   sqrt ( E )
+	   length ( E )      (which specifies the number of significant
+			       decimal digits)
+	   scale ( E )	     (which specifies the number of digits to the
+			       right of decimal point)
+	   L ( E , ... , E )
+
+     Operators include:
+	   +  -  *  /  %  ^  (where % is remainder and ^ is exponentiation)
+	   ++  --   (indicate prefix and postfix and apply to names)
+	   == <= >= != < >
+	   = =+ =- =* =/ =% =^
+
+     Statements include the following:
+	   E
+	   { S ; ... ; S }
+	   if ( E ) S
+	   while ( E ) S
+	   for ( E ; E ; E ) S
+	   null statement
+	   break
+	   quit
+
+     Function definitions are as follows:
+	   define L ( L ,..., L ) {
+		    auto L, ... , L
+		    S; ... S
+		    return ( E )
+	   }
+
+     Functions in the math library specified by the l option are:
+	   s(x)      sine (measured in radians)
+	   c(x)      cosine (measured in radians)
+	   e(x)      exponential
+	   l(x)      log (base 10)
+	   a(x)      arctangent (measured in radians)
+	   j(n,x)    Bessel function
+
+     where x and n are arguments to the functions.  All function
+     arguments are passed by value.
+
+     The value of an expression is displayed unless the main
+     operator is an assignment.  Either semicolons or newlines
+     can separate statements.  Assignment of the scale operand
+     determines the number of digits to be retained in
+     arithmetical operations in the same manner as dc(1).
+     Assignments of the names ibase or obase set the respective
+     input and output number radix.
+
+     The same letter can be used as an array, a function, and a
+     simple variable simultaneously.  All variables are global to
+     the program.  Automatic variables are pushed down during
+     function calls.  When using arrays as function arguments or
+     defining them as automatic variables, empty square brackets
+     must follow the array name.
+
+     The bc utility is actually a preprocessor for dc, which it
+     invokes automatically unless the -c option is present.  When
+     you specify -c, dc input is sent to the standard output.
+
+EXAMPLE
+     The following example defines a function for computing an
+     approximate value of the exponential function, and the for
+     statement
+
+	  for(i=1; i<=10; i++) e(i)
+
+     prints approximate values of the exponential function of the
+     first ten integers:
+
+     scale = 20
+     define e(x){
+	      auto a, b, c, i, s
+	      a = 1
+	      b = 1
+	      s = 1
+	      for(i=1; 1==1; i++){
+		       a = a*x
+		       b = b*i
+		       c = a/b
+		       if(c==0) return(s)
+		       s = s+c
+	      }
+     }
+
+PROMPTS
+   Input File Name:
+     Response is optional. Enter an input file name. If no file
+     name is entered, then input is standard input (keyboard).
+
+   Arbitrary precision math library:
+     Response is optional. The initial value is no. Enter yes to
+     load the math library /usr/lib/lib.b. See the TI System V
+     Support Tools Guide for a list of library functions.
+
+   Compile only:
+     Response is optional. The initial value is no. Enter yes to
+     direct the output of bc to standard output. The output is
+     normally input to the command dc.
+
+FILES
+     /usr/lib/lib.b   math library
+     /usr/bin/dc      desk calculator proper
+
+SEE ALSO
+     dc(1)
+     Interactive Desk Calculator section in TI System V Support
+     Tools Guide.
+
+NOTES
+     No && and || operators are defined.  The argument list for a
+     for statement must have all three expressions.  The quit
+     statement is interpreted when read, not when executed.
+
+

@@ -1,0 +1,160 @@
+PDMON(1T)                                               PDMON(1T)
+
+NAME
+     pdmon - Reads and prints the contents of an ANSI terminal
+     screen
+
+SYNOPSIS
+     pdmon -p
+
+DESCRIPTION
+   Purpose
+     The pdmon utility reads the screen contents of an ANSI
+     terminal, saves the contents in a temporary file, and issues
+     a spooler command to print the temporary file. The system
+     terminal does not support the pdmon utility.
+
+   Options
+     -p C   Assigns the single control-character key sequence to
+            initiate pdmon.  The default is Ctrl-p (0x10).
+
+   Discussion
+     To assign another character to invoke pdmon, set C to an
+     ASCII character in the control ranges 0x00 through 0x1f or
+     0x80 through 0x9f. Precede the character you assign with a
+     caret (^).  Do not use characters 0x00, 0x05, 0x07 through
+     0x0f, 0x11, 0x13, 0x1b, and 0x9b for the value of C.  All
+     these characters are used for special ANSI terminal
+     functions.
+
+     When you press the C sequence, the terminal driver signals
+     the pdmon utility, which:
+
+     1. Places the terminal driver in read-screen mode
+
+     2. Places the cursor at the lower right-hand corner of the
+        screen
+
+     3. Places the keyboard in the lock condition
+
+     4. Stops printing to attached printer (if currently active)
+
+     5. Suspends further writes to the screen
+
+     6. Sends the read-screen-escape sequence to the screen
+
+     7. Transfers screen data to a temporary file (Transfer speed
+        is a function of the terminal speed; to read a screen of
+        data requires two seconds at 19.2k Baud.)
+
+     Screen data can consist of both text and attribute
+     information.  The pdmon utility does not strip any attribute
+     information.  A special spooler can be created (see example)
+     to transfer data from the temporary file to the specified
+     file for editing. You can delete nonprintable characters or
+     character sequences from the specified file.
+
+     If the spooler cannot print the screen image, it writes the
+     screen image to a file in the directory /usr/spool/pscrn.
+     The last five characters of the file name are the ID of the
+     process placing the file in the directory.  Use the process
+     IDs to select your files for deletion.
+
+     The screen does not need to be stationary to be copied. For
+     active screens, pdmon stops the screen, takes a "snapshot"
+     of the current contents, and releases the screen.
+
+     Terminals stopped by using Ctrl-s (DC3) require special
+     handling to print the screen. To print the screen, first
+     enter the C sequence followed by Ctrl-q (DC1). (The read
+     screen is not started without the Ctrl-q sequence.)
+
+     Each pdmon process has an associated environment variable
+     (PSCRN). This variable defines the printer name and the
+     printer options. Change the lp options defined by the PSCRN
+     variable to utilize printer options.
+
+     To make the pdmon utility transparent to the user, insert a
+     PSCRN variable and pdmon command in each user .login file.
+     The PSCRN entry must precede the pdmon command.
+
+     After logging in to the system, you can change the C
+     sequence or PSCRN variable. Changes to the PSCRN variable
+     require that the pdmon be executed again. Use the setenv
+     command of bsh(1T) to change the PSCRN variable.
+
+     Errors generated due to pdmon execution are saved in
+     /usr/spool/prscrn/logfile.
+
+     The format of pdmon errors is:
+
+          error = 22, set parms: login name, PPID = XX
+
+     The error number corresponds to the error description in
+     /usr/include/sys/errno.h. The terminal and task encountering
+     an error are identified by the login or user name along with
+     the parent ID (PPID).
+
+EXAMPLES
+     The following is an example of sending output from the pdmon
+     utility to an attached printer named alp03. (The default
+     Ctrl-p key is used in this example.)
+
+          setenv PSCRN alp03
+          pdmon &
+
+     The following is an example of a partial .login file showing
+     how to add a spooler option through the PSCRN environment
+     variable.  Two copies of the file are to be printed on a
+     parallel printer named plp01.
+
+          setenv PSCRN "plp01 n2"
+          pdmon &
+
+     The following example shows a screen image being sent to a
+     file instead of a printer. The file to receive the screen
+     image must be defined and have write-by-other permission
+     before executing pdmon.
+
+          # touch /usr/dan/screen_image
+          # chmod +rw /usr/dan/screen_image
+          # /usr/lib/lpshut
+          # /usr/lib/lpadmin -pfake -mdumb -v/usr/dan/screen_image
+          # accept fake
+          # enable fake
+          # /usr/lib/lpsched
+
+     The following example shows a call to pdmon added to the
+     .login file.
+
+          setenv PSCRN "fake"
+          pdmon &
+
+SEE ALSO
+     bsh(1T), lp(1), lpadmin(1M)
+
+NOTES
+     A terminal must support the following ANSI control sequences
+     for pdmon to work:
+
+     ESC[2h - Lock keyboard
+     ESC[2i - Read entire screen
+     ESC[2l - Unlock keyboard
+     ESC7 - Save cursor position
+     ESC8 - Restore cursor position
+     ESCrr;ccH - Position cursor (rr = row, cc = column)
+
+     Terminals that support these sequences include the TI Model
+     924 in 924 mode, and the Wyse 75 and 85 models.
+
+     The following TI terminals do not support the above listed
+     control sequences: TI Model 931, TI Professional Computer
+     (TIPC) running the 931 Emulator, and the TI Model 924 in 931
+     emulation mode.
+
+     The pdmon utility does not work with the system console.
+
+     Any characters typed on the command line before the C
+     sequence are not executed or collected by bsh shell history.
+
+

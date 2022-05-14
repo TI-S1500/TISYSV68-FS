@@ -1,0 +1,22 @@
+# cshf  cal -- Prints a calendar 
+#	@(#)CAL.sh	1.1  87/03/09
+#
+onintr end
+
+set month = `date '+%m'`
+set year = "19"`date '+%y'`
+prompt "^CAL -- PRINTS A CALENDAR"\
+	"^*Month (1 - 12):" month \
+	"range(1,12)" $month\
+	"^Year (1 - 9999):" year \
+	"range(1,9999)" $year\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== CAL COMMAND EXECUTING ==="
+echo cal $month $year
+cal $month $year
+
+#clean up time
+end:
+unset month year

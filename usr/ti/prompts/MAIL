@@ -1,0 +1,50 @@
+# cshf  mail -- sends and shows electronic mail 
+#	@(#)MAIL.sh	1.1  87/03/09
+#
+onintr end
+unset opt
+
+prompt "^MAIL -- SENDS MAIL TO USERS OR RETRIEVES MAIL"\
+	"^*Read or Send Mail:" action\
+	"element (r,R=r,s,S=s)" r\
+	"^#$*"
+
+if ($abort) goto end
+if ($action == "r") then
+	prompt "^MAIL -- OPTIONS TO READ MAIL"\
+		"^*Mail File Name:" file acnm "$MAIL"\
+		"^Print Mail:" eflag yesno y\
+		"^Prompt For Dispostion:" pflag yesno y\
+		"^First-in/First-out Order:" rflag yesno n\
+		"^Terminate After Interrupts:" qflag yesno n\
+		"^#$*"
+	
+	if ($abort) goto end
+	if ($pflag == "n") set opt = p$opt
+	if ($eflag == "n") set opt = e$opt
+	if ($qflag == "y") set opt = q$opt
+	if ($rflag == "y") set opt = r$opt
+	if ($opt != "") set opt = -$opt
+	if ($file != $MAIL) set fopt = -f$file
+
+	if ($abort) goto end
+	echo "=== MAIL COMMAND EXECUTING ==="
+	echo mail $opt $fopt 
+	mail $opt $fopt 
+else
+	prompt "^MAIL -- OPTIONS TO SEND MAIL"\
+		"^Receivers Names:" name string "$name"\
+		"^#$*"
+
+	if ($abort) goto end
+	if ("$name" != "") set  opt = "-t ""$name"
+	echo "=== MAIL COMMAND EXECUTING ==="
+	echo mail $opt
+	echo Enter mail text now, and hit \<CTRL\> d when finished
+	mail $opt
+endif
+
+
+#clean up time
+end:
+unset *flag *opt action name 

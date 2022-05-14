@@ -1,0 +1,14 @@
+
+
+
+Use the + and - commands to display the next and previous extended disk 
+statistics screens. The "r" command resets the counters in the kernel that are 
+used to compute the extended disk statistics.
+
+The Distance Between Requests screen shows the distance between requests made 
+to the selected disk drive. The distance between requests is the difference 
+between the ending location of one request and the starting location of the 
+next request. The bar graph displays the percentage of distances that have a 
+particular size. All sizes shown are in bytes. The number of requests used to 
+produce the graph is shown in the lower left corner of the screen.
+

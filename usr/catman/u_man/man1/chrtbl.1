@@ -1,0 +1,166 @@
+()							       ()
+CHRTBL(1M)					       CHRTBL(1M)
+
+NAME
+     chrtbl - Generates character classification and conversion
+     tables
+
+SYNOPSIS
+     chrtbl [file]
+
+DESCRIPTION
+     The chrtbl command creates a character classification table
+     and an uppercase/lowercase conversion table.  The tables are
+     contained in a byte-sized array encoded such that a table
+     lookup can be used to determine the character classification
+     of a character or to convert a character (see ctype(3C)).
+     The size of the array is 257*2 bytes:  257 bytes are
+     required for the 8-bit code set character classification
+     table and 257 bytes for the uppercase to lowercase and
+     lowercase to uppercase conversion table.
+
+     chrtbl reads the user-defined character classification and
+     conversion information from file and creates two output
+     files in the current directory.  One output file, ctype.c (a
+     C-language source file), contains the 257*2-byte array
+     generated from processing the information from file.  You
+     should review the content of ctype.c to verify that the
+     array is set up as you had planned. (In addition, an
+     application program could use ctype.c .)  The first 257
+     bytes of the array in ctype.c are used for character
+     classification.  The characters used for initializing these
+     bytes of the array represent character classifications that
+     are defined in /usr/include/ctype.h ; for example, _L means
+     a character is lowercase and _S|_B means the character is
+     both a spacing character and a blank.  The last 257 bytes of
+     the array are used for character conversion.  These bytes of
+     the array are initialized so that characters for which you
+     do not provide conversion information will be converted to
+     themselves.  When you do provide conversion information, the
+     first value of the pair is stored where the second one would
+     be stored normally, and vice versa; for example, if you
+     provide <0x41 0x61>, 0x61 is stored where 0x41 would be
+     stored normally, and 0x61 is stored where 0x41 would be
+     stored normally.
+
+     The second output file (a data file) contains the same
+     information, but is structured for efficient use by the
+     character classification and conversion routines (see
+     ctype(3C)).  The name of this output file is the value of
+     the character classification chrclass read in from file.
+     This output file must be installed in the /lib/chrclass
+     directory under this name by someone who is super-user or a
+     member of group bin.  This file must be readable by user,
+     group, and other; no other permissions should be set.  To
+     use the character classification and conversion tables on
+     this file, set the environmental variable CHRCLASS (see
+     environ(5)) to the name of this file and export the
+     variable; for example, if the name of this file (and
+     character class) is xyz, you should issue the commands:
+     CHRCLASS=xyz ; export CHRCLASS .
+
+     If no input file is given, or if the argument - is
+     encountered, chrtbl reads from the standard input file.
+
+     The syntax of file allows the user to define the name of the
+     data file created by chrtbl, the assignment of characters to
+     character classifications and the relationship between
+     uppercase and lowercase letters.  The character
+     classifications recognized by chrtbl are:
+
+	  chrclass    Name of the data file to be created by
+		      chrtbl
+
+	  isupper     Character codes to be classified as
+		      uppercase letters
+
+	  islower     Character codes to be classified as
+		      lowercase letters
+
+	  isdigit     Character codes to be classified as numeric
+
+	  isspace     Character codes to be classified as a
+		      spacing (delimiter) character
+
+	  ispunct     Character codes to be classified as a
+		      punctuation character
+
+	  iscntrl     Character codes to be classified as a
+		      control character
+
+	  isblank     Character code for the space character
+
+	  isxdigit    Character codes to be classified as
+		      hexadecimal digits
+
+	  ul	      Relationship between uppercase and
+		      lowercase characters
+
+     Any lines with the number sign (#) in the first column are
+     treated as comments and are ignored.  Blank lines are also
+     ignored.
+
+     A character can be represented as a hexadecimal or octal
+     constant (for example, the letter a can be represented as
+     0x61 in hexadecimal or 0141 in octal).  Hexadecimal and
+     octal constants can be separated by one or more space and
+     tab characters.
+
+     The dash character (-) can be used to indicate a range of
+     consecutive numbers.  Zero or more space characters can be
+     used for separating the dash character from the numbers.
+
+     The backslash character (\) is used for line continuation.
+     Only a carriage return is permitted after the backslash
+     character.
+
+     The relationship between uppercase and lowercase letters
+     (ul) is expressed as ordered pairs of octal or hexadecimal
+     constants:  <uppercase_character lowercase_character>.
+     These two constants can be separated by one or more space
+     characters.  Zero or more space characters can be used for
+     separating the angle brackets (< >) from the numbers.
+
+EXAMPLE
+     The following is an example of an input file used to create
+     the ASCII code set definition table on a file named ascii.
+	  chrclass  ascii
+	  isupper   0x41 - 0x5a
+	  islower   0x61 - 0x7a
+	  isdigit   0x30 - 0x39
+	  isspace   0x20 0x9 - 0xd
+	  ispunct   0x21 - 0x2f    0x3a - 0x40	  \
+		    0x5b - 0x60    0x7b - 0x7e
+	  iscntrl   0x0 - 0x1f	   0x7f
+	  isblank   0x20
+	  isxdigit  0x30 - 0x39    0x61 - 0x66	  \
+		   0x41 - 0x46
+	  ul	   <0x41 0x61> <0x42 0x62> <0x43 0x63>	\
+		   <0x44 0x64> <0x45 0x65> <0x46 0x66>	\
+		   <0x47 0x67> <0x48 0x68> <0x49 0x69>	\
+		   <0x4a 0x6a> <0x4b 0x6b> <0x4c 0x6c>	\
+		   <0x4d 0x6d> <0x4e 0x6e> <0x4f 0x6f>	\
+		   <0x50 0x70> <0x51 0x71> <0x52 0x72>	\
+		   <0x53 0x73> <0x54 0x74> <0x55 0x75>	\
+		   <0x56 0x76> <0x57 0x77> <0x58 0x78>	\
+		   <0x59 0x79> <0x5a 0x7a>
+
+FILES
+     /lib/chrclass/*
+		     Data file containing character
+		     classification and conversion tables created
+		     by chrtbl
+     /usr/include/ctype.h
+		     Header file containing information used by
+		     character classification and conversion
+		     routines
+
+SEE ALSO
+     ctype(3C), environ(5).
+
+DIAGNOSTICS
+     The error messages produced by chrtbl are intended to be
+     self-explanatory.	They indicate errors in the command line
+     or syntactic errors encountered within the input file.
+
+

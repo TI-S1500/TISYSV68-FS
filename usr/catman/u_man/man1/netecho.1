@@ -1,0 +1,352 @@
+NETECHO(1T)                                           NETECHO(1T)
+
+NAME
+     netecho - Echoes network messages
+
+SYNOPSIS
+     netecho -acdeflmMnpst
+
+DESCRIPTION
+   Purpose
+     The netecho command verifies network communication
+     capabilities between the machine that issues the command and
+     another site on the network.  This command is supported for
+     CCB devices that have been configured with the Xerox Network
+     Systems(TM) (XNS) Internet option, entered in response to the
+     Define Transport Protocol prompt of the devadm utility.  A
+     site may be any of the following:
+
+     + System 1000 Series network terminal concentrator (NTC)
+
+     + Another System 1000 Series machine
+
+     + Any machine that supports the XNS Echo protocol, such as
+       Business System 300, 600, 800, or Texas Instruments
+       Professional Computer (TIPC), or BUSINESS-PRO(TM) with BSA
+       or EtherSeries(TM)
+
+     In a limited sense, the user can determine where a
+     communication failure exists by executing netecho.  The
+     command verifies that the two systems and the network
+     between them are operational by transmitting known messages
+     to the specified site on the network and receiving the
+     echoes of those same messages from that site.
+
+   Options
+     -a address
+               Allows the specification of a 48-bit physical
+               address to receive the echo.  This allows echoing
+               to any site on the network.  Use the -s option to
+               specify the NuBus(TM) slot of the communications
+               carrier board (CCB).  Use the -n option to specify
+               the network number of the target site.
+
+     -c count  Transmit count number of packets.  The default is
+               10.  This option is valid for all variations of
+               netecho.
+
+     -d        Disables the realtime status display.  This allows
+               disabling updates to the screen to allow maximum
+               performance testing with netecho.  The -d option
+               must be used when executing netecho from a
+               hardcopy terminal.  This option is valid for all
+               variations of netecho.
+
+     -e        Overrides errors and continues to transmit packets
+               even if no response is heard.  Use CTRL-C to kill
+               the command.  A three-second receive timeout is
+               used.  This option is valid for all variations of
+               netecho.
+
+     -f altfile
+               Searches the specified file, altfile, rather than
+               the /etc/tctab file for the global NTC name (the
+               name argument for the -t option).  See the
+               description of the -t option.  This option is
+               valid only when used in conjunction with the -t
+               option.  See Discussion for the format of altfile,
+               the alternate name file.
+
+     -l        Echoes packets via the CCB in the slot (0-15)
+               specified with the -s option and via the option
+               card in the port (0 or 1) specified with the -p
+               option.  This is the local loopback option.  The
+               netecho utility determines the 48-bit address of
+               the CCB in slot and the network number of port.
+               This test echoes packets to itself to verify
+               proper operation of the CCB, option card and
+               network software.
+
+
+     Xerox Network Systems is a trademark of Xerox Corporation.
+     BUSINESS-PRO and NuBus are trademarks of Texas Instruments
+       Incorporated.
+     EtherSeries is a trademark of 3Com Corporation.
+
+     -m msize  Specifies the minimum echo data size.  The default
+               is 1 byte of echo data.  The netecho command
+               varies the echo data size by increasing the size
+               by one byte and wraps between the minimum and
+               maximum echo data size.  This option is valid for
+               all variations of netecho.
+
+     -M Msize  Specifies the maximum echo data size.  The default
+               is 512 bytes of echo data.  The netecho command
+               varies the echo data size by increasing the size
+               by one byte and wraps between the minimum and
+               maximum echo data size.  This option is valid for
+               all variations of netecho.
+
+     -n [number]
+               Specifies the 32-bit network number.  The default
+               network number is 0, which implies the network(s)
+               directly attached to the CCB in the slot
+               specified.  The -n option is valid only in
+               conjunction with the -a (physical address) option.
+
+     -p [port] Specifies the port number (0 or 1) for which the
+               XNS Internet Transport protocol is configured on a
+               CCB.  If the -p option is not used to specify a
+               particular port, netecho will attempt to locate
+               and use an operational port on the specified CCB.
+               If an option card is installed in both ports, only
+               port 0 is tested.  If an option card is in the
+               specified port, the utility echoes through that
+               option port. If an option card is not installed in
+               the specified port, an error message is returned.
+               The -p option is valid only in conjunction with
+               the -l (local loopback) option.
+
+     -s slot   Defines the NuBus slot (0-6) of the CCB.  If slot
+               is omitted, the first slot found containing a CCB
+               with a Local area network (LAN) option card
+               installed is used.  If slot does not contain a CCB
+               with a LAN option card installed, an error is
+               reported.  The -s option is not valid in
+               conjunction with the -t option.
+
+     -t tcname Scans the /etc/tctab file for tcname and obtains
+               the physical address (slot, network, and host
+               address) of the NTC.  The tcname is the global
+               name of a NTC, not the NTC number.  This option
+               echoes packets to a NTC and verifies proper
+               operation of the CCB, NTC, option card and network
+               software.  The -t option is not valid in
+               conjunction with the -a (address) or -l (local
+               loopback) options.  Also see the discussion of the
+               -f (alternate name file) option.
+
+   Discussion
+     The netecho command performs limited verification that your
+     machine can successfully communicate with other sites on
+     your network.  During the execution of netecho, a series of
+     messages is sent to the network site you specify.  That
+     network site then returns those same messages to your
+     system.  The netecho command verifies that the messages
+     returned are exact echoes of the messages sent.  By
+     determining the sites with which you can communicate,
+     network problems can be isolated to the local or remote
+     site.
+
+     If errors are encountered when you enter a NTC name in
+     response to the NTC name: prompt, it is likely that problems
+     exist at that NTC.  You should verify that netecho
+     successfully completes communication to at least one remote
+     site before deciding that your site is operating properly.
+
+     If netecho does not echo successfully to any site, you
+     should verify the status of your system using the -l (local
+     loopback) option (as described in Options) before reporting
+     problems to your network administrator.
+
+     If you execute the netecho command from a hard-copy data
+     terminal, use the -d option to disable the real-time screen
+     updates.
+
+     The following is the format of the alternate name file used
+     with the -f option:
+
+          name:type:slot:port:network:host:socket:comment
+
+     The following two character codes are valid entries for the
+     type field:
+
+          na - network address property
+          la - local loopback address property
+
+     When adding entries with the na property, omit the port
+     number.  This value is ignored for entries with the na
+     property.  The format for entries with the na property is as
+     follows:
+
+          name:type:slot::network:host:socket:comment
+
+     When adding entries with the la property, omit the network
+     number and host address fields.  If these fields are not
+     omitted, netecho verifies the correctness of both.  If
+     either the network number or the host address is not
+     correct, an error is reported.  The format for entries with
+     the la property is as follows:
+
+          name:type:slot:port:::socket:comment
+
+     The following are examples:
+
+       s104:na:05::0124fd:080028000001::Reach site s104 through CCB05
+       loop1:la:03:00::::Loopback through option port 0 of CCB03
+
+PROMPTS
+   TC name:
+     Eight character name.  Respond to this prompt with the
+     global name of a NTC defined in the file /etc/tctab.
+
+   Number of Messages:
+     Integer.  Enter an integer value specifying the number of
+     messages to be sent to and echoed from the specified NTC.
+     The initial value is 10.
+
+EXAMPLES
+     The following example illustrates the correct prompt
+     responses to verify communication with the NTC whose global
+     name is ENGttys.  In this example, netecho sends out a total
+     of ten messages.
+
+          NETECHO
+
+          NETECHO: NETWORK ECHO MESSAGES
+                TC name: ENGttys
+          Number of Messages: 10
+
+     While netecho executes, the counts displayed are dynamically
+     updated, unless the -d option is used.  Note that the -d
+     option is valid only when netecho is executed from a command
+     line rather than from prompts.  When netecho completes
+     successfully, the total errors field displayed is 0.
+
+     The following are netecho command line variations.  In the
+     formats shown, miscellaneous options refers to the following
+     options:
+
+       [miscellaneous options] = [-c count] [-m min size] 
+                                 [-M max size] [-d] [-e]
+
+     The following format specifies the named echo:
+
+       netecho -t tcname [-f altfile][miscellaneous options]
+
+     The following are examples of this format:
+
+       netecho -t corpttys
+       netecho -t yourtc -c 10000 -m 512 -M 512 -d -e
+       netecho -t mytc -f /usr/tim/mynames -c 100 -m 512 -M 756 -e
+
+     The following format specifies an address to receive the echo:
+
+       netecho -a 48-bit-address -s slot [-n 32bit-network- number] 
+                                         [miscellaneous options]
+
+     The following are examples of this format:
+
+       netecho  -a 080028000001 -s 03 -n 000124f8
+       netecho  -a 080028000001 -s 05 -c 10000 -d -e -m 256 -M 512
+
+     The following format specifies local loopback echo:
+
+       netecho -l -s slot [-p port] [miscellaneous options]
+
+     The following are examples of this format:
+
+       netecho  -l -s 03 -p 00
+       netecho  -l -s 03
+       netecho  -l -s 05 -c 1000 -d -e -m 256 -M 512
+
+     The following is output from netecho:
+
+     netecho to name:     tc0  slot:03  network:00000000  address:080028000001
+     echos: 100      min size:   1     max size:  900
+     sending packet #  of  size:  received packet #  of size:  total errors
+                   100        164                         100   164    0
+     Echo complete for 100 packets
+
+     If errors are detected, the following is output on completion:
+
+          Total errors            = xx
+          Total transmit errors   = xx
+          Total receive errors    = xx
+          Total size errors       = xx
+          Total data errors       = xx
+
+     Transmit errors indicate problems with the CCB or network
+     software.  Receive errors include timeouts and dropped
+     packets.  A few receive errors may be normal.  However, if
+     the proportion of receive errors to messages sent is high,
+     further investigation is warranted.
+
+     Size errors result when the echo response is not the same
+     size as the original message.  Further investigation may be
+     warranted.
+
+     Data errors result when the contents of the echo response is
+     not the same as the original message.  Further investigation
+     is warranted.
+
+     When the -a (address) or -l (local loopback) options are
+     used, the name field in the above display example appears as
+     follows:
+
+          netecho to name: ________
+
+SEE ALSO
+     netstat(1T), tcdump(1T), tcreset(1T), tcstatus(1T).
+
+DIAGNOSTICS
+     If netecho encounters an error, the total errors field in
+     the real time display is incremented.  Following completion
+     of the netecho command, an error summary is displayed if
+     errors were encountered.  When an error occurs, make note of
+     any information that appears in the statistics fields:
+     total transmit errors, receive errors, data errors, and size
+     errors.  Usually, netecho reports receive errors or transmit
+     errors when communication hardware problems exist.
+
+     The following error messages can be received with the
+     netecho utility:
+
+     Usage: -m: minimum echo data size must be in the range 1..900
+     Usage: -M: maximum echo data size must be in the range 1..900
+     Usage: -s: slot number must be in the range 0..15
+     Usage: -p: port number must be 0 or 1
+     Usage: -n: invalid 32bit network number
+     Usage: -<x>: unsupported option
+     Usage: -m: minimum packet size cannot exceed the maximum packet size
+     Required option omitted: must use -t -l or -a options
+     Invalid option combination
+     Usage: cannot open alternate name file: <file name>, error = <x>
+     Usage: -a: invalid 48bit address
+     Usage: -f: 48bit host address must be specified for na type
+     Usage: -f: invalid 16bit socket number
+     Usage: -t -f: <name> not defined in alternate name file <file name>
+     Usage: -t: <name> not defined in /etc/tctab
+     Usage: -s: cannot find a CCB configured with the XNS
+            Internet transport protocol
+     Usage: -s: cannot open the inet device /dev/ccb<xx>/inet, error = <x>
+     Usage: -s: No XNS Internet transport protocol defined for
+            specified slot
+     Usage: -f: host address in alternate name file is not correct
+     Usage: -p: no XNS Internet transport protocol defined in Port <x>
+     Usage: -f: network number in alternate name file is not correct
+     Usage: -f: invalid alternate name file format
+     Socket allocation failed, status = <x>
+     Socket open failed, status = <x>
+     Socket close failed, status = <x>
+     Echo complete for <x> packets
+     Total errors            = <x>
+     Total transmit errors  = <x>
+     Total receive errors   = <x>
+     Total size errors      = <x>
+     Total data errors      = <x>
+     Could not get P0 and P1 net, status = <x>
+     Illegal hardware configuration: LAN option cards in Port 0
+       and Port 1 cannot be on the same network
+
+

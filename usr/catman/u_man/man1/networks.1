@@ -1,0 +1,115 @@
+NETWORKS(1T)                                         NETWORKS(1T)
+
+NAME
+     networks - Displays Xerox Network Systems(TM) (XNS) network
+     numbers and routers
+
+SYNOPSIS
+     networks -s
+
+DESCRIPTION
+   Purpose
+     The networks command retrieves information on all the XNS
+     networks in the internet.
+
+     Each entry contains a network number, the 48 bit address of
+     the network router, the hop count to reach that network, the
+     communications carrier board (CCB) option port through which
+     the network is reached, and the time in seconds since the
+     router's last update.  This information is useful for
+     monitoring normal operation and for troubleshooting the
+     network.
+
+   Options
+      -s slot
+          Specifies a chassis slot to be examined.  With this
+          option, networks attempts only to open the given slot.
+          The CCB in this slot must be configured and downloaded
+          with the XNS Internet option, entered in response to
+          the Define Transport Protocol prompt of the devadm
+          utility.
+
+   Discussion
+     The networks command allows the user to display the network
+     numbers of the networks in the XNS internet and the router
+     addresses.  A maximum of 256 network entries can be returned
+     using the networks command.  If no slot is specified (that
+     is, the -s option is not specified), networks examines every
+     slot for a CCB defined with the XNS internet protocol
+     option.  If the option is found, networks reports the
+     network information and continues searching the rest of the
+     slots.
+
+     If the examined CCB also functions as an XNS internet
+     router, networks reports this additional capability before
+     printing the routing entries.
+
+     The following list explains the fields in the display
+     returned by networks:
+
+     Network Number
+          The XNS network number of each network in the internet.
+
+     Router Address
+          The 48-bit address of the internet router through which
+          the network may be reached.
+
+     Hop Count
+          The number of hops (routers) through which packets must
+          pass to reach this network.  A hop count of 00 means
+          the network is directly attached to the system.  A hop
+          count of 16 means the network is unreachable at this
+          time.
+
+     Time Since Last Update
+          The time since the router last sent a routing table
+          update, where xx:yy is minutes:seconds.
+
+EXAMPLES
+     The following command line requests information on all the
+     XNS networks on chassis slot 3:
+
+          networks -s 3
+
+
+      Xerox Network Systems is a trademark of Xerox Corporation.
+
+     The following is an example of router information returned
+     by networks upon normal completion:
+
+                       NETWORKS - NETWORK CONNECTION STATISTICS
+
+              Number of networks linked to ccb on slot 03 = 3
+
+                                              TIME SINCE LAST UPDATE
+          NETWORK #  ADDRESS         HOP COUNT  PORT       min:sec
+          ----------------------------------------------------------
+          0001251f     direct        00         0          00:00
+          00012520   0800280001a5    01         0          00:28
+          00012521   080028000554    02         1          00:15
+
+
+SEE ALSO
+     netstat(1T), netecho(1T), netu(1T), devadm(1T).
+     "Configuring Devices" and "Network File Transfer" in the TI
+     System V Administrator's Guide.
+
+DIAGNOSTICS
+     The following messages can be displayed by the networks
+     utility:
+
+       usage: netu [-s <slot>]
+       This system also functions as a network router.
+       Error in opening device on slot x for networks.  Error
+         = errno
+       Error in retrieving NETWORKS parameters on slot x.
+       Error = errno
+       Error in closing device on slot x for NETWORKS.  Error
+         = <status
+       Error in -s slot; Invalid ccb slot.
+       Unable to open a ccb configured with the XNS Internet
+         Transport Protocol option on any slot.
+       Unable to open a ccb configured with the XNS Internet
+         Transport Protocol option on slot xx.
+
+

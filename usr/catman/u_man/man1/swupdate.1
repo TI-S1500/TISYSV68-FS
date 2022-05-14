@@ -1,0 +1,138 @@
+SWUPDATE(1T)					     SWUPDATE(1T)
+
+NAME
+     swupdate - Performs software updates
+
+SYNOPSIS
+     swupdate [tape]
+
+DESCRIPTION
+   Purpose
+     The swupdate utility is used to update system software to
+     the current revision levels.
+
+   Arguments
+     The optional argument tape, is the device path name of the
+     tape device that contains the updated software tape. The
+     default tape device is /dev/rqt/0hn. If another tape device
+     is used, the no-rewind flag must be specified.
+
+   Discussion
+     The swupdate utility provides a consistent means for
+     updating system software to current revision levels.  The
+     utility is interactive and provides feedback to the
+     administrator during execution. The release notes that
+     accompany the software update provide detailed instructions
+     for installing the software update.
+
+EXAMPLES
+     The following procedure illustrates the use of the swupdate
+     utility.
+
+     1. Ensure that the sytem is in single-user mode by issuing
+	the shutdown command as the super-user.
+
+     2. Mount the user file system by typing:
+	mount /dev/dsk/sys:usr /usr
+
+     3. Execute the swupdate utility from the system console
+	terminal.
+
+     4. Insert the software-update tape cartridge in the proper
+	tape device unit. Wait for the tape to properly position
+	itself, and then enter the following commands at the
+	system console:
+
+	     TERM = t9
+	     export TERM
+	     swupdate
+
+     5. The following messages are displayed on the console:
+
+	     Ensure that the system is in single user mode.
+	     Ensure that the software update tape is inserted in
+	      the tape unit
+	     whose device name is /dev/rqt/0hn
+	     Type c to continue or CTRL C to exit.
+
+     6. If you type Ctrl-C at this point, the software update
+	procedure terminates.  If you type c (for continue), the
+	following menu is displayed:
+
+		       Software Update Menu
+	     1 - Backup the files that are about to be replaced
+		 by the update process.
+	     2 - Apply the updates to the system disk.
+	     3 - Quit the update process.
+	     Select an option-->
+
+     7. Enter the desired number specified by the software update
+	menu.  When a specified  number is entered, the
+	corresponding operation (described below) is performed.
+
+   Software Update Menu Options
+     1	If option 1 is selected, swupdate provides instructions
+	to back up the files that it replaces. The backup tape
+	has the same format as the software update tape, except
+	that a dummy record is written in the position occupied
+	by the boot partition on the update tape.  To restore the
+	files backed up in this manner, run swupdate with the
+	backup tape installed and select option 2.  Be sure to
+	label the backup tape properly. Once the backup phase
+	completes, instructions are provided to apply the update
+	procedure to the system disk.
+
+     2	If option 2 is selected, swupdate immediately begins to
+	apply the update procedure to the system disk.
+
+     3	If option 3 is selected, swupdate terminates.
+
+FILES
+     /usr/ti/patch	     The swupdate working directory
+     /usr/ti/patch/sw_log    Logfile used by swupdate and written
+			     to backup tape
+     /usr/ti/patch/sw_toc    Table of contents file read from
+			     tape and written to backup tape
+     /usr/ti/patch/sw_apply  The apply script read from tape and
+			     written to backup tape
+     /usr/ti/patch/sw_backup The backup script read from tape and
+			     written to backup tape
+     /usr/ti/patch/sw_begin  Preprocessing script read from tape
+			     and written to backup tape
+     /usr/ti/patch/sw_end    Postprocessing script read from tape
+			     and written to backup tape
+
+DIAGNOSTICS
+   Usage: swupdate tape-unit-name
+     This message is displayed if the tape device path name is
+     not entered as an argument.
+
+   This device does not exist
+     This message is displayed if the argument entered for the
+     tape device path name does not exist.
+
+   The sw_backup script was not restored.
+     This message is displayed if the sw_backup file is not
+     restored from the software update tape.
+
+   The sw_apply script was not restored.
+     This message is displayed if the sw_apply file is not
+     restored from the software update tape.
+
+   The sw_begin script was not restored.
+     This message is displayed if the sw_begin file is not
+     restored from the software update tape.
+
+   The sw_end script was not restored.
+     This message is displayed if the sw_end file is not restored
+     from the software update tape.
+
+   The sw_toc file was not restored.
+     This message is displayed if the sw_toc file is not restored
+     from the software update tape.
+
+   Enter 1 2 or 3 only
+     This message is displayed if a number other than 1, 2, or 3
+     is entered at the menu prompt.
+
+

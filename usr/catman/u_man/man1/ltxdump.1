@@ -1,0 +1,141 @@
+LTXDUMP(1T)                                           LTXDUMP(1T)
+
+NAME
+     ltxdump - Invokes the 68020 assembler linker text dump
+     utility
+
+SYNOPSIS
+     ltxdump -s file
+     ltxdump -s =file
+     ltxdump -s [dmp],[sym]=file
+
+DESCRIPTION
+   Purpose
+     The ltxdump command processes an intermediate linker text
+     (ltx) file created by the 68020 assembler source processor
+     as(1T) and produces a printable dump file.  The ltxdump
+     command also produces an optional symbol data file for input
+     to the symbol report generator qsym(1T).
+
+   Option
+     -s   Includes symbol table in the symbol data file read by
+          qsym.
+
+   Arguments
+     dmp  User-defined linker text dump output file name.  If no
+          suffix is specified, the default file name suffix .dmp
+          is appended to this value.
+
+     sym  User-defined symbol data output file name.  If no
+          suffix is specified, the default file name suffix .sym
+          is appended to this value.
+
+   Discussion
+     The ltxdump command appends the default file name suffix
+     .ltx to the input file name if no suffix is specified.
+
+     The default output file name suffixes are .dmp (linker text
+     dump) and .sym (symbol data).
+
+     Specify output file requirements in one of the following
+     three ways:
+
+     + If you omit the = from the command line, each output file
+       name is derived by adding the appropriate default suffix
+       (.dmp, .sym) to the input file name.
+
+     + If you include the = and do not specify a user-defined
+       output file name, only the linker text dump file is
+       produced (its name is derived as described above).
+       Options related to generation of the symbol data file are
+       ignored if specified.
+
+     + If you include the = and one or more user-defined output
+       file names, only those files corresponding to the user-
+       defined names are produced.  The appropriate default
+       suffix (.dmp, .sym) is appended to each user-defined name
+       for which no suffix is specified.
+
+     Object data in the ltx file is interpreted by ltxdump
+     according to ltx file formatting conventions and organized
+     into a list of formatted ASCII object records, one per line.
+     See the TI System V 68020 Assembler manual for a detailed
+     description of the ltxdump report format.
+
+     Many of the error messages produced by the linker text
+     conversion utility ltxcoff(1T) contain a record number that
+     may be used as an index into the ltxdump report file
+     listing.  This record number indicates the sequential
+     position within the linker text file of the object record
+     that caused the error.  Object records are listed by ltxdump
+     in the same order that they appear in the linker text file.
+     The first object record listed is record 0, the next is
+     record 1, and so on.  By counting the object records listed
+     in the ltxdump report in this way, you can locate a record
+     number given in an ltxcoff error message and examine the
+     object record that caused the error.
+
+EXAMPLES
+     The following example processes the input file lt30.ltx and
+     produces the output file lt30.dmp.
+
+          ltxdump lt30
+
+     The following example processes the input file lt30.ltx and
+     produces the output files lt30.dmp and lt30.sym.
+
+          ltxdump -s lt30
+
+     The following example processes the input file lt30.ltx and
+     produces the output file ltx.lst.
+
+          ltxdump ltx.lst=lt30
+
+     The following example processes the input file lt30.ltx and
+     produces the output file lt30.sym (suppressing lt30.dmp).
+
+          ltxdump -s ,lt30=lt30
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to process.
+
+   Append Symbol Table to Error Listing:
+     The initial value is no.  Enter yes to include the symbol
+     table in the symbol data file.
+
+     Select only one or none of the following prompts:
+
+   Define Output File Names:
+     The initial value is no.  Enter yes to specify user-defined
+     output text dump and symbol data file names.
+
+   Produce Only the Dump File:
+     The initial value is no.  Enter yes to produce the dump file
+     only.
+
+     If you enter yes at the Define Output File Names: prompt,
+     the following two prompts are displayed.
+
+   Linker Text Dump File Name:
+     Enter a user-defined name for the linker text dump file.
+
+   Symbol Table File Name:
+     Enter a user-defined name for the symbol table file.
+
+DIAGNOSTICS
+     Exit status values are as follows:
+
+     + 0 - Completed with no errors and no warnings
+
+     + 1 - Completed with no errors; warnings only
+
+     + 2 - Completed with error(s)
+
+     + 3 - Aborted; did not run to completion
+
+SEE ALSO
+     as(1), a68k(1T), ltxcoff(1T), qsym(1T).
+     TI System V 68020 Assembler manual.
+
+

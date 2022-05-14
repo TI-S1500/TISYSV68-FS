@@ -1,0 +1,48 @@
+:
+# An example interface program named "810l" shows how to utilize the
+# following code to translate from national ISO 8859 to 7-bit ISO
+#
+# COPYRIGHT (c) 1986 TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+#	@(#)tr87	1.2 87/03/27
+case $# in
+0 ) xl="us";;
+1 ) xl=$1;;
+esac
+ 
+case $xl in
+"us" )
+tr "[\177-\377]" "[ *34]!c[ *28]?AAAAAA CEEEEIIII NOOOOO*OUUUUY  \
+aaaaaa ceeeeiiii nooooo:ouuuuy y" ;;
+"nd"|"dn" )
+# 8859-1 to 7 bit ISO for NORWAY and DENMARK
+tr "[\177-\377]" "[ *34]!c    @[ *23]?AAAAA]\[CEEEEIIII NOOOOO*\134UUUUY  \
+aaaaa}{ceeeeiiii nooooo:|uuuuy y" ;;
+"fr" )
+# ISO-8859/1 to FRENCH 7-bit ISO
+tr "[\177-\377]" "[ *34]!c#   ]~       \[[ *14]?AAAAAA CEEEEIIII NOOOOO*OUUUU\
+Y  @aaaaa \134}{eeiiii nooooo:o|uuuy y" ;;
+"gr" )
+# 8859/1 to GERMAN 7-bit ISO translation
+tr "[\177-\377]" "[ *34]!c    @[ *23]?AAAA\[A CEEEEIIII NOOOO\134*OUUUUY ~\
+aaaa{a ceeeeiiii noooo|:ouuu}y y" ;;
+ "sp" )
+# 8859/1 to Spanish 7-bit ISO translation
+tr "[\177-\377]" "[ *34]\133c[ *13]{[ *14]]AAAAAA CEEEEIIII \134OOOOO*OUUUUY  \
+aaaaaa }eeeeiiii |ooooo:ouuuuy y" ;;
+ "sv" )
+# 8859/1 to Swedish 7-bit ISO translation
+tr "[\177-\377]" "[ *34]!c $[ *26]?AAAA\[] CE@EEIIII NOOOO\134*OUUU^Y  \
+aaaa{} ce\140eeiiii noooo|:ouuu~y y" ;;
+ "sw" )
+# 8859/1 to Swiss 7-bit ISO translation
+tr "[\177-\377]" "[ *34]!c#    ~[ *22]?AAAAAA CEEEEIIII NOOOOO*OUUUUY  \
+@aaa{a \134]\[eeiiii noooo|:ouuu}y y";;
+ "uk" )
+# 8859/1 to  U.K. 7-bit ISO translation
+tr "[\177-\377]" "[ *34]!c#[ *27]?AAAAAA CEEEEIIII NOOOOO*OUUUUY  \
+aaaaaa ceeeeiiii nooooo:ouuuuy y" ;;
+* )
+echo /usr/spool/lp/model/tr87 : $1 not in the option list ;;
+esac
+:                                                                               

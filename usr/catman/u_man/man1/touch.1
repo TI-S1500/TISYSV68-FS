@@ -1,0 +1,76 @@
+TOUCH(1)                                                 TOUCH(1)
+
+NAME
+     touch - Updates access and modification times of a file
+
+SYNOPSIS
+     touch -acm [mmddhhmm[yy] ] files
+
+DESCRIPTION
+   Purpose
+     The touch command causes the access and modification times
+     of each argument to be updated.
+
+   Options
+     -a   Updates only the access times (The default is -am.)
+
+     -c   Silently prevents touch from creating the file if it
+          did not previously exist
+
+     -m   Updates only the modification times
+
+   Discussion
+     The first mm is the month number, dd is the day number in
+     the month, hh is the hour number (24-hour system), the
+     second mm is the minute number, and yy is the last two
+     digits of the year number and is optional.
+
+     The return code from touch is the number of files for which
+     the times could not be successfully modified (including
+     files that did not exist and were not created).
+
+     If no time is specified (see date(1)) the current time is
+     used.
+
+EXAMPLE
+     The following example causes the modification time of file1
+     to be changed to 08:15 October 3 of the current year:
+
+          touch -m 10030815 file1
+
+PROMPTS
+   File Name(s):
+     Enter the names of the files to process.
+
+   Update Access Time:
+     The initial value is no.  Enter yes to update only the
+     access time.
+
+   Update Modification Time:
+     The initial value is no.  Enter yes to update only the
+     modification time.
+
+   Create File if Nonexistent:
+     The initial value is no.  Enter no or accept the default to
+     silently prevent touch from creating the specified file if
+     it did not previously exist.
+
+   Month (1-12):
+     Enter the month number.
+
+   Day (1-31):
+     Enter the day number in the month.
+
+   Year:
+     Enter the last two digits of the year number.
+
+   Hour (1-24):
+     Enter the hour number in the 24-hour system.
+
+   Minute (1-60):
+     Enter the minute number.
+
+SEE ALSO
+     date(1), utime(2).
+
+

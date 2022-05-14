@@ -1,0 +1,96 @@
+RM(1)                                                       RM(1)
+
+NAME
+     rm - Removes files
+
+SYNOPSIS
+     rm -fir files
+
+DESCRIPTION
+   Purpose
+     The rm command removes the entries for one or more files
+     from a directory.  If an entry was the last link to the
+     file, the file is destroyed.
+
+   Discussion
+     Removal of a file requires write permission in its
+     directory, but neither read nor write permission on the file
+     itself.
+
+     If a file has no write permission, its permissions are
+     printed and a line is read from the standard input.  If that
+     line begins with y the file is deleted, otherwise the file
+     remains.  If the standard input is not a terminal, the file
+     is deleted without asking the user (that is, as if the -f
+     option were specified).
+
+   Options
+     -f   Asks no questions.  All files, even those that are
+          write-protected, are removed.
+
+     -i   Asks whether to delete each file.  When -r is used,
+          also asks whether to examine each directory.
+
+     -r   Recursively deletes the entire contents of the
+          specified directory, and the directory itself.  An
+          error comment is printed if the designated file is a
+          directory unless this option is used.
+
+PROMPTS
+   File name(s):
+     Enter the name of the file (or files) to remove.
+
+   Ask questions on Each File:
+     Initial value is yes.  If you enter yes, the utility prompts
+     you with each file name to determine whether or not to
+     delete.  If you enter no, all files, including write
+     protected files, are deleted.
+
+   Recursively Delete the Entire Contents:
+     Initial value is no.  If you enter yes, the entire contents
+     and then the directory itself is deleted.
+
+   Are you sure:
+     The initial value is no.  Enter yes to verify that you want
+     the file removed.  Enter no to abort the command.
+
+EXAMPLE
+     The following example removes all files beginning with let
+     without asking any questions:
+
+          rm -f let*
+
+     The next example removes all files and any subdirectories in
+     the directory corresp, including the directory itself,
+     asking for confirmation for each file:
+
+          rm -ir corresp
+
+     The next example removes files a, b, and c:
+
+          rm a b c
+
+     If file x is write protected (mode 432, for example), the
+     following command:
+
+          rm x
+
+     displays the following message and waits for input from the
+     keyboard:
+
+          x is write protected (mode=432).  Override?
+
+     If the first character read is a y, the file is removed.
+
+SEE ALSO
+     rmdir(1), unlink(2).
+
+DIAGNOSTICS
+     Generally self-explanatory.  The rm command will not remove
+     the file .. (the parent of the current working directory).
+     This feature avoids the consequences of inadvertently
+     removing .. with the following command:
+
+          rm -r .*
+
+

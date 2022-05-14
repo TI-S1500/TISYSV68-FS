@@ -1,0 +1,49 @@
+UMOUNTALL(1M)                                       UMOUNTALL(1M)
+
+NAME
+     umountall - Unmounts multiple file systems
+
+SYNOPSIS
+     /etc/umountall [ -k ]
+
+DESCRIPTION
+     This command can be executed only by the super-user.
+
+     umountall causes all mounted file systems except root to be
+     unmounted.  The -k option sends a SIGKILL signal, via
+     fuser(1M), to processes that have files open.
+
+FILES
+     file-system-table format:
+
+	     parameter 1   Block special file name of file system
+
+	     parameter 2   Mount-point directory
+
+	     parameter 3   -r if to be mounted read-only
+
+	     parameter 4   File system type string (optional)
+
+	     parameter 5+  Ignored
+
+     White space separates parameters.  Lines beginning with # are
+     comments.  Empty lines are ignored.
+
+     A typical file-system-table might read as follows:
+
+          /dev/dsk/sys:usr /usr -r S51K
+
+          /dev/disk/sys:pipe/pipe
+
+SEE ALSO
+     fsck(1M), fsstat(1M), fstab(4), fuser(1M), mount(1M),
+     mountall(1M), signal(2).
+
+DIAGNOSTICS
+     No messages are printed if the file systems are mountable
+     and clean.
+
+     Error and warning messages come from fsck(1M), fsstat(1M),
+     and mount(1M).
+
+

@@ -1,0 +1,610 @@
+ED(1)                                                       ED(1)
+
+NAME
+     ed - Invokes the text editor
+
+SYNOPSIS
+     ed - -p file
+
+DESCRIPTION
+   Purpose
+     The ed program is the standard line-oriented text editor.
+
+   Discussion
+     If the file argument is given, ed simulates an e command
+     (see below) on the named file; i.e., the file is read into
+     the ed buffer so that the file can be edited.
+
+     The ed program operates on a copy of the file it is editing.
+     Changes made to the copy have no affect on the file until a
+     w (write) command is given.  The copy of the text being
+     edited resides in a temporary file called the buffer.  There
+     is only one buffer.
+
+   Options
+     -    Suppresses the printing of character counts by e, r,
+          and w commands, of diagnostics from e and q commands,
+          and of the ! prompt after a !shell command.
+
+     -p string
+          Allows the user to specify a prompt string.
+
+Formatting
+     The ed command supports the fspec(4) formatting capability.
+     After including a format specification as the first line of
+     file and invoking ed with your terminal in stty -tabs or
+     stty tab3 mode (see stty(1)), the specified tab stops are
+     used automatically when scanning file.  For example, if the
+     first line of a file contains:
+
+          <:t5,10,15 s72:>
+
+     tab stops are set at columns 5, 10, and 15, and a maximum
+     line length of 72 is imposed.  NOTE:  While inputting text,
+     typed tab characters are expanded to every eighth column, as
+     is the default.
+
+Command Structure
+     Commands to ed have a simple and regular structure: zero,
+     one, or two addresses followed by a single-character
+     command, and possibly followed by parameters to the command.
+     The addresses specify one or more lines in the buffer.
+     Every command that requires addresses has default addresses,
+     so that the addresses can often be omitted.
+
+     In general, only one command may appear on a line.  Certain
+     commands allow the input of text. This text is placed in the
+     appropriate place in the buffer.  While ed is accepting
+     text, it is said to be in input mode.  In this mode, no
+     commands are recognized.  All input is merely collected.
+     Input mode is left by typing a period (.) alone at the
+     beginning of a line.
+
+Regular Expressions
+     The ed program supports a limited form of regular expression
+     (RE) notation.  Regular expressions are used in addresses to
+     specify lines and in some commands (e.g., s) to specify
+     portions of a line that are to be substituted.  A regular
+     expression specifies a set of character strings.  A member
+     of this set of strings is said to be "matched" by the RE.
+     The REs allowed by ed are constructed as follows:
+
+     The following one-character REs match a single character:
+
+     1.1    An ordinary character (not one of those discussed in
+            1.2 below) is a one-character RE that matches itself.
+
+     1.2    A backslash (\) followed by any special character is
+            a one-character RE that matches the special character
+            itself.  The special characters are:
+
+            a.    ., *, [, and \ (period, asterisk, left square
+                  bracket, and backslash, respectively), which
+                  are always special, except when they appear
+                  within square brackets ([]; see 1.4 below).
+
+            b.    ^ (caret or circumflex), which is special at
+                  the beginning of an entire RE (see 3.1 below),
+                  or when it immediately follows the left of a
+                  pair of square brackets ([]) (see 1.4 below).
+
+            c.    $ (currency symbol), which is special at the
+                  end of an entire RE (see 3.2 below).
+
+            d.    The character used to bind (i.e., delimit) an
+                  entire RE, which is special for that RE (for
+                  example, see below how slash (/) is used in the
+                  g command.)
+
+     1.3    A period (.) is a one-character RE that matches any
+            character except newline.
+
+     1.4    A non-empty string of characters enclosed in square
+            brackets ([]) is a one-character RE that matches any
+            single character in that string.  If, however, the
+            first character of the string is a circumflex (^),
+            the one-character RE matches any character except
+            newline and the remaining characters in the string.
+            The ^ has this special meaning only if it occurs
+            first in the string.  The minus (-) may be used to
+            indicate a range of consecutive ASCII characters; for
+            example, [0-9] is equivalent to [0123456789].  The -
+            loses this special meaning if it occurs first (after
+            an initial ^, if any) or last in the string.  The
+            right square bracket (]) does not terminate such a
+            string when it is the first character within it
+            (after an initial ^, if any); e.g., []a-f] matches
+            either a right square bracket (]) or one of the
+            letters a through f, inclusive.  The four characters
+            listed in 1.2.a above stand for themselves within
+            such a string of characters.
+
+     The following rules may be used to construct REs from one-
+     character REs:
+
+     2.1    A one-character RE that matches itself.
+
+     2.2    A one-character RE followed by an asterisk (*) that
+            matches zero or more occurrences of itself. If there
+            is any choice, the longest leftmost string that
+            permits a match is chosen.
+
+     2.3    A one-character RE followed by \{m\}; \{m,\}; or
+            \{m,n\} that matches a range of occurrences of the
+            one-character RE.  The values of m and n must be
+            non-negative integers less than 256; \{m\} matches
+            exactly m occurrences; \{m,\} matches at least m
+            occurrences; \{m,n\} matches any number of
+            occurrences between m and n inclusive.  Whenever a
+            choice exists, the RE matches as many occurrences as
+            possible.
+
+     2.4    The concatenation of REs that matches the
+            concatenation of the strings matched by each
+            component of the RE.
+
+     2.5    An RE enclosed between the character sequences \( and
+            \) that matches whatever the unadorned RE matches.
+
+     2.6    The expression \n matches the same string of
+            characters as was matched by an expression enclosed
+            between \( and \) earlier in the same RE.  Here, n is
+            a digit; the sub-expression specified begins with the
+            n-th occurrence of \( counting from the left.  For
+            example, the expression ^\(.*\)\1$ matches a line
+            consisting of two repeated appearances of the same
+            string.
+
+     Finally, an entire RE may be constrained to match only an
+     initial segment or final segment of a line (or both):
+
+     3.1    A circumflex (^) at the beginning of an entire RE
+            constrains that RE to match an initial segment of a
+            line.
+
+     3.2    A currency symbol ($) at the end of an entire RE
+            constrains that RE to match a final segment of a
+            line.
+
+     3.3    The construction ^entire RE$ constrains the entire RE
+            to match the entire line.
+
+     3.4    The null RE (e.g., //) is equivalent to the last RE
+            encountered.  See also the last paragraph before
+            FILES.
+
+   Addressing
+     To understand addressing in ed it is necessary to know what
+     the current line is at any given time.  Generally speaking,
+     the current line is the last line affected by a command; the
+     exact effect on the current line is discussed under the
+     description of each command.  Addresses are constructed as
+     follows:
+
+      1.    The character . addresses the current line.
+
+      2.    The character $ addresses the last line of the
+            buffer.
+
+      3.    A decimal number n addresses the n-th line of the
+            buffer.
+
+      4.    'x addresses the line marked with character x, in
+            lower case. Lines marked with the k command are
+            described below.
+
+      5.    An RE enclosed by slashes (/) addresses the first
+            line containing a matching RE found by searching
+            forward from the line following the current line.  If
+            necessary, the search wraps around to the beginning
+            of the buffer and continues up to and including the
+            current line, so that the entire buffer is searched.
+            See also the last paragraph before FILES.
+
+      6.    An RE enclosed in question marks (?) addresses the
+            first line containing a matching RE found by
+            searching backward from the line preceding the
+            current line.  If necessary, the search wraps around
+            to the end of the buffer and continues up to and
+            including the current line.  See also the last
+            paragraph before FILES.
+
+      7.    An address followed by a plus sign (+) or minus sign
+            (-) and a decimal number specifies that address plus
+            (or minus) the indicated number of lines. The plus
+            sign may be omitted.
+
+      8.    If an address begins with + or -, the addition or
+            subtraction is taken with respect to the current
+            line; e.g, -5 is understood to mean .-5.
+
+      9.    If an address ends with + or -, then 1 is added to or
+            subtracted from the address, respectively.  As a
+            consequence of this rule and of rule 8 immediately
+            above, the address - refers to the line preceding the
+            current line.  (To maintain compatibility with
+            earlier versions of the editor, the character ^ in
+            addresses is entirely equivalent to -.)  Moreover,
+            trailing + and - characters have a cumulative effect,
+            so - - refers to the current line less 2.
+
+     10.    For convenience, a comma (,) stands for the address
+            pair 1,$, while a semicolon (;) stands for the pair
+            .,$.
+
+     Commands may require zero, one, or two addresses.  Commands
+     that require no addresses regard the presence of an address
+     as an error.  Commands that accept one or two addresses
+     assume default addresses when an insufficient number of
+     addresses is given; if more addresses are given than such a
+     command requires, the last one(s) are used.
+
+     Typically, addresses are separated from each other by a
+     comma (,).  They may also be separated by a semicolon (;).
+     In the latter case, the current line (.) is set to the first
+     address, and only then is the second address calculated.
+     This feature can be used to determine the starting line for
+     forward and backward searches (see rules 5 and 6 above).
+     The second address of any two-address sequence must
+     correspond to a line that follows, in the buffer, the line
+     corresponding to the first address.
+
+Commands
+     In the following list of ed commands, the default addresses
+     are shown in parentheses.  The parentheses are not part of
+     the address. They show that the given addresses are the
+     default.
+
+     It is generally illegal for more than one command to appear
+     on a line.  However, any command (except e, f, r, or w) may
+     be suffixed by l, n or p, in which case the current line is
+     either listed, numbered, or printed, respectively, as
+     discussed below under the l, n, and p commands.
+
+     (.)a
+     <text>
+     .
+          The append command reads the given text and appends it
+          after the addressed line; . is left at the last
+          inserted line, or, if there were none, at the addressed
+          line.  Address 0 is legal for this command: it causes
+          the "appended" text to be placed at the beginning of
+          the buffer.  The maximum number of characters that may
+          be entered from a terminal is 256 per line (including
+          the newline character).
+
+     (.)c
+     <text>
+     .
+          The change command deletes the addressed lines, then
+          accepts input text that replaces these lines; . is left
+          at the last line input, or, if there were none, at the
+          first line that was not deleted.
+
+     (.,.)d
+          The delete command deletes the addressed lines from the
+          buffer.  The line after the last line deleted becomes
+          the current line; if the lines deleted were originally
+          at the end of the buffer, the new last line becomes the
+          current line.
+
+     e file
+          The edit command causes the entire contents of the
+          buffer to be deleted, and then the named file to be
+          read in; . is set to the last line of the buffer.  If
+          no file name is given, the currently remembered file
+          name, if any, is used (see the f command).  The number
+          of characters read is typed, and file is remembered for
+          possible use as a default file name in subsequent e, r,
+          and w commands.  If file is replaced by !, the rest of
+          the line is taken to be a shell (sh(1)) command whose
+          output is to be read.  Such a shell command is not
+          remembered as the current file name.  See also
+          DIAGNOSTICS.
+
+     E file
+          The Edit command is like e, except that the editor does
+          not check to see if any changes have been made to the
+          buffer since the last w command.
+
+     f file
+          If file is given, the file-name command changes the
+          currently remembered file name to file.  Otherwise, it
+          prints the currently remembered file name.
+
+     (1,$)g/RE/command_list
+          In the global command, the first step is to mark every
+          line that matches the given RE.  Then, for every such
+          line, the given command_list is executed with .
+          initially set to that line.  A single command or the
+          first of a list of commands appears on the same line as
+          the global command.  All lines (except the last line)
+          of a multi-line list must end with a \; a, i, and c
+          commands and associated input are permitted; and the .
+          terminating input mode may be omitted if it would be
+          the last line of the command list.  An empty command
+          list is equivalent to the p command.  The g, G, v, and
+          V commands are not permitted in the command list.  See
+          also NOTES.
+
+     (1,$)G/RE/
+          In the interactive Global command, the first step is to
+          mark every line that matches the given RE.  Then, for
+          every such line, that line is printed, . is changed to
+          that line, and any one command (other than one of the
+          a, c, i, g, G, v, and V commands) may be input and
+          executed.  After the execution of that command, the
+          next marked line is printed, and so on.  A newline acts
+          as a null command.  An & causes the re-execution of the
+          most recent command executed within the current
+          invocation of G.  Note that the commands input as part
+          of the execution of the G command may address and
+          affect any lines in the buffer.  The G command can be
+          terminated by an interrupt signal, ASCII DEL or BREAK.
+
+     h
+          The help command gives a short error message that
+          explains the reason for the most recent ? diagnostic.
+
+     H
+          The Help command causes ed to enter a mode in which
+          error messages are printed for all subsequent ?
+          diagnostics.  It also explains the previous ? if there
+          was one.  The H command alternately turns this mode on
+          and off.  It is off initially.
+
+     (.)i
+     <text>
+     .
+          The insert command inserts the given text before the
+          addressed line; . is left at the last inserted line,
+          or, if there were none, at the addressed line. This
+          command differs from the a command only in the
+          placement of the input text.  Address 0 is not legal
+          for this command.  The maximum number of characters
+          that may be entered from a terminal is 256 per line
+          (including the newline character).
+
+     (.,.+1)j
+          The join command joins contiguous lines by removing the
+          appropriate newline characters.  If exactly one address
+          is given, this command does nothing.
+
+     (.)kx
+          The mark command marks the addressed line with name x,
+          which must be a lower-case letter.  The address 'x then
+          addresses this line; . is unchanged.
+
+     (.,.)l
+          The list command prints the addressed lines in an
+          unambiguous way:  a few non-printing characters (e.g.,
+          tab, backspace) are represented by mnemonic
+          overstrikes; all other non-printing characters are
+          printed in octal and long lines are folded.  The l
+          command may be appended to any other command except e,
+          f, r, or w.
+
+     (.,.)ma
+          The move command repositions the addressed line(s)
+          after the line addressed by a.  Address 0 is legal for
+          a and causes the addressed line(s) to be moved to the
+          beginning of the file; it is an error if address a
+          falls within the range of moved lines; . is left at the
+          last line moved.
+
+     (.,.)n
+          The number command prints the addressed lines,
+          preceding each line by its line number and a tab
+          character; . is left at the last line printed.  The n
+          command may be appended to any other command other than
+          e, f, r, or w.
+
+     (.,.)p
+          The print command prints the addressed lines; . is left
+          at the last line printed.  The p command may be
+          appended to any other command other than e, f, r, or w.
+          For example, dp deletes the current line and prints the
+          new current line.
+
+     P
+          The editor prompts with a * for all subsequent
+          commands.  The P command alternately turns this mode on
+          and off; it is off initially.
+
+     q
+          The quit command causes ed to exit.  No automatic write
+          of a file is done (but see DIAGNOSTICS below).
+
+     Q
+          The editor exits without checking for changes made in
+          the buffer since the last w command.
+
+     ($)r file
+          The read command reads in the given file after the
+          addressed line.  If no file name is given, the
+          currently remembered file name, if any, is used (see e
+          and f commands).  The currently remembered file name is
+          not changed unless file is the very first file name
+          mentioned since ed was invoked.  Address 0 is legal for
+          r and causes the file to be read at the beginning of
+          the buffer.  If the file is read successfully, the
+          number of characters read is typed; . is set to the
+          last line read in.  If file is replaced by !, the rest
+          of the line is taken to be a shell (sh(1)) command
+          whose output is to be read.  For example, "$r !ls"
+          appends a file list of the current directory to the end
+          of the file being edited.  Such a shell command is not
+          remembered as the current file name.
+
+     (.,.)s/RE/replacement/         or
+     (.,.)s/RE/replacement/g
+          The substitute command searches each addressed line for
+          an occurrence of the specified RE.  In each line where
+          a match is found, all (non-overlapped) matched strings
+          are replaced by the replacement if the global
+          replacement indicator g appears after the command. If
+          the global indicator does not appear, only the first
+          occurrence of the matched string is replaced.  It is an
+          error for the substitution to fail on all addressed
+          lines.  Any character other than space or newline may
+          be used instead of / to delimit the RE and the
+          replacement; . is left at the last line on which a
+          substitution occurred.  See also the last paragraph
+          before PROMPTS.
+
+          An ampersand (&) appearing in the replacement is
+          replaced by the string matching the RE on the current
+          line.   The special meaning of & in this context may be
+          suppressed by preceding it by \.  As a more general
+          feature, the characters \n, where n is a digit, are
+          replaced by the text matched by the n-th regular
+          subexpression of the specified RE enclosed between \(
+          and \).  When nested parenthesized subexpressions are
+          present, n is determined by counting occurrences of \(
+          starting from the left.  When the character % is the
+          only character in the replacement, the replacement used
+          in the most recent substitute command is used as the
+          replacement in the current substitute command.  The %
+          loses its special meaning when it is in a replacement
+          string of more than one character or is preceded by a
+          \.
+
+          A line may be split by substituting a newline character
+          into it.  The newline in the replacement must be
+          escaped by preceding it by \.  Such substitution cannot
+          be done as part of a g or v command list.
+
+     (.,.)ta
+          This command acts just like the m command, except that
+          a copy of the addressed lines is placed after address a
+          (which may be 0); . is left at the last line of the
+          copy.
+
+     u
+          The undo command nullifies the effect of the most
+          recent command that modified anything in the buffer
+          (i.e., the most recent a, c, d, g, i, j, m, r, s, t, v,
+          G, or V command).
+
+     (1,$)v/RE/command list
+          This command is the same as the global command g except
+          that the command list is executed with . initially set
+          to every line that does not match the RE.
+
+     (1,$)V/RE/
+          This command is the same as the interactive global
+          command G except that the lines marked during the first
+          step are those that do not match the RE.
+
+     (1,$)w file
+          The write command writes the addressed lines into the
+          named file.  If the file does not exist, it is created
+          with mode 666 (readable and writable by everyone),
+          unless your umask setting (see sh(1)) dictates
+          otherwise.  The currently remembered file name is not
+          changed unless file is the very first file name
+          mentioned since ed was invoked.  If no file name is
+          given, the currently remembered file name, if any, is
+          used (see e and f commands); . is unchanged.  If the
+          command is successful, the number of characters written
+          is typed.  If file is replaced by !, the rest of the
+          line is taken to be a shell (sh(1)) command whose
+          standard input is the addressed lines.  Such a shell
+          command is not remembered as the current file name.
+
+     ($)=
+          The line number of the addressed line is typed; . is
+          unchanged by this command.
+
+     !shell command
+          The remainder of the line after the ! is sent to the
+          system shell (sh(1)) to be interpreted as a command.
+          Within the text of that command, the unescaped
+          character % is replaced with the remembered file name;
+          if a ! appears as the first character of the shell
+          command, it is replaced with the text of the previous
+          shell command.  Thus, !! repeats the last shell
+          command.  If any expansion is performed, the expanded
+          line is echoed, and . is unchanged.
+
+     (.+1)<newline>
+          A sole address on a line causes the addressed line to
+          be printed.  A newline alone is equivalent to .+1p; it
+          is useful for stepping forward through the buffer.
+
+     If an interrupt signal (ASCII DEL or BREAK) is sent, ed
+     prints a ? and returns to the command level.
+
+     Some size limitations: 512 characters per line, 256
+     characters per global command list, 64 characters per file
+     name, and 128K characters in the buffer.  The limit on the
+     number of lines depends on the amount of user memory.  Each
+     line takes 1 word.
+
+     When reading a file, ed discards ASCII NUL characters and
+     all characters after the last newline.  Files (e.g., a.out)
+     that contain characters not in the ASCII set (bit 8 on)
+     cannot be edited by ed.
+
+     If the closing delimiter of an RE or of a replacement string
+     (e.g., /) would be the last character before a newline, that
+     delimiter may be omitted, and the addressed line is printed.
+     The following pairs of commands are equivalent:
+     s/s1/s2   s/s1/s2/p
+     g/s1      g/s1/p
+     ?s1       ?s1?
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file to be edited.
+
+   Suppress Character Counts:
+     Initial value is no.  If yes is entered, character counts
+     from the e, r, and w commands, are suppressed; diagnostics
+     from the e, q, commands; and the !prompt is suppressed from
+     the !command.
+
+   Prompt String:
+     Enter a character string to be used as the prompt.
+
+FILES
+     /tmp/e#   Temporary; # is the process number.
+     ed.hup    Work is saved here if the terminal is hung up.
+
+SEE ALSO
+     crypt(1), fspec(1), grep(1), regexp(5), sed(1), sh(1),
+     stty(1).
+     ``Line Editor Tutorial'' in the TI System V User's Guide.
+
+DIAGNOSTICS
+     ?         command errors
+
+     ?file     inaccessible file
+               (use the help and Help commands for detailed
+               explanations).
+
+     If changes have been made in the buffer since the last w
+     command that wrote the entire buffer, and the user attempts
+     an e or q command (which would destroy ed's buffer), a ? is
+     displayed as a warning. Editing may continue.  It requires a
+     second e or q command to destroy the buffer.  The -
+     command-line option inhibits this feature.
+
+NOTES
+     + A ! command cannot be subject to a g or a v command.
+
+     + The ! command and the ! escape from the e, r, and w
+       commands cannot be used if the the editor is invoked from
+       a restricted shell.  See sh(1).
+
+     + The sequence \n in a RE does not match a newline
+       character.
+
+     + The l command mishandles DEL.
+
+     + Files encrypted directly with the crypt(1) command with
+       the null key cannot be edited.
+
+     + Characters are masked to 7 bits on input.
+
+

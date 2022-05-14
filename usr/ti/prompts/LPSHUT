@@ -1,0 +1,9 @@
+# cshf   lpshut - stops the lp request scheduler 
+#	@(#)LPSHUT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^LPSHUT -- STOPS THE LP REQUEST SCHEDULER"\
+	"^THIS COMMAND FOR USE ONLY BY LP ADMINISTRATORS"
+echo "=== LPSHUT COMMAND EXECUTING ==="
+/usr/lib/lpshut

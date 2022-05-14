@@ -1,0 +1,126 @@
+BACKUP(1T)                                             BACKUP(1T)
+
+NAME
+     backup - Creates or restores files from backup tape
+
+SYNOPSIS
+     backup -cin tape
+     backup -r tape [patterns]
+
+DESCRIPTION
+   Purpose
+     The backup command creates a backup tape or restores files
+     (or groups of files or entire file systems) from a backup
+     tape.
+
+   Options
+     -c age inc [exc]
+          Creates a new backup based on the age in days of the
+          files.  Specify the limit in the age argument.  The
+          argument inc stands for the include file, and the
+          argument exc stands for the exclude file.  Each of
+          these files contains a list of file or directory names
+          to include (or exclude) from the backup.  For example,
+          if you specify 5 for age, all directories or files that
+          you specify in the argument inc that are five days old
+          or less are put in a preliminary backup list.  This
+          preliminary list is then compared against the exclude
+          file, and any directories or files that appear in the
+          exclude file are taken off the final backup list.
+          (Thus, a file name mentioned in both the inc and exc
+          arguments is not included in the backup.)  The device
+          you specify in the tape argument determines where the
+          files are written.
+
+     -i   Indexes the files on the backup tape.  The protection
+          mode, owner name, group name, size, and name for each
+          file on the backup tape are displayed.  Since each
+          backup tape must be scanned, execution may be slow.
+
+     -n ref inc [exc]
+          Performs a new backup in relation to a reference file
+          that you specify in the ref argument.  All files in the
+          include file that are younger than the reference file
+          are marked for inclusion.  All other arguments are the
+          same as those for the -c option.
+
+     -r   Restore files from the backup device named in the tape
+          argument.  If you do not want all the files on the
+          tape, include an argument to patterns.  Only those
+          files on the tape that match the patterns are then
+          restored.  Patterns are given in the name-generating
+          notation of sh(1).  Enclose patterns that include the
+          metacharacters ?, *, and [...]  in double quotes (" ").
+          You may specify multiple patterns.  If you do not
+          include an argument to patterns, the default is *
+          (select all files).
+
+   Discussion
+     The list of names and directories contained in the exclude
+     file is treated as a list of patterns.  If a pattern matches
+     any part of a line in the list of files marked to back up,
+     then that line in the list is removed.  Therefore, be
+     careful not to enter a file or directory name in the exclude
+     file in a manner that causes it to accidentally match names
+     of files or directories that you do want to back up.  Again,
+     using absolute file names with the -c option is safest.
+
+PROMPTS
+   Create, Restore or Index (c,r,i):
+     Enter c to create a new backup tape based on the age of the
+     file.  Enter r to restore files from a tape.  Enter i to
+     print an index of the files on the backup tape.
+
+     If c is entered, the follow prompts appear:
+
+   Include File Name:
+     This prompt and the next two prompts are displayed if you
+     enter c in response to the Create, Index, New, or Restore:
+     prompt.  Enter the name of a file containing a list of the
+     files to include in the backup.
+
+   Exclude File Name:
+     Enter the name of a file containing a list of files to
+     exclude from the backup.
+
+   Name of Tape:
+     This and the next prompt are displayed if you enter r in
+     response to the Create, Restore or Index:  prompt.  Enter
+     the name of the device on which the files are to be written.
+
+   Select by Age:
+     Initial value is yes.  If yes is entered, the following
+     prompt appears.
+
+   Number of Days Old:
+     Enter the maximum age in days of the files you wish to back
+     up.
+
+     If you enter no, the following prompt appears.
+
+   File Name Used for Comparison:
+     Enter the name of the file containing the list of files to
+     be backed up.
+
+     If the restore option is selected, the following prompts
+     appear.
+
+   Name of Tape:
+     Enter the name of the device from which you wish to restore
+     your files.
+
+   File Name Patterns:
+     Enter pattern(s) to be used to determine which files are
+     restored from the backup device.
+
+     If the Index option is selected, the following prompt
+     appears.
+
+   Name of Tape:
+     Enter the name of the device from which you wish to display
+     your files.
+
+SEE ALSO
+     cpio(1), ff(1M), finc(1M), frec(1M), tar(1), volcopy(1M).
+
+

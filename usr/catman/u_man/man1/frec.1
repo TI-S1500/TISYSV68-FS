@@ -1,0 +1,84 @@
+FREC(1M)                                                 FREC(1M)
+
+NAME
+     frec - Recovers files from a backup tape
+
+SYNOPSIS
+     frec -fpm raw-tape [inumbers:names]
+
+DESCRIPTION
+   Purpose
+     The frec command uses inumbers to recover files from the
+     specified raw-tape backup tape written by volcopy(1M) or
+     finc(1M).  The data for each recovery request is written
+     into the file given by name.
+
+   Options
+     -f reqfile
+             Specifies a file containing recovery
+             requests.    The file format is inumber:newname,
+             with one entry per line.
+
+     -p path Allows specification of a default prefixing path
+             different from the current working directory.  This
+             path name is prefixed to any names that are not
+             fully qualified that do not begin with / or ./.  If
+             any directories are missing in recovery path names,
+             they are created.
+
+     -m      Specifies that frec is being used to recover a file
+             from a multiple file system tape.
+
+EXAMPLES
+     The following command recovers file inumber 1216, which is
+     backed-up into a file named junk in the current working
+     directory:
+
+          frec /dev/rqt/0h 1216:junk
+
+     The following command recovers files with inumbers 14156,
+     1232, and 3141 into files /usr/src/cmd/a, /usr/src/cmd/b,
+     and /usr/src/cmd/a.c:
+
+          frec -p /usr/src/cmd /dev/rqt/0h 14156:a 1232:b
+          3141:a.c
+
+     The following command recovers the file junk (inumber 1216)
+     from the second file system on a multiple file system
+     volcopy tape, and creates a file named junk in the current
+     working directory:
+
+          dd  if=/dev/rvt/0hn of=/dev/null bs=16k
+
+          frec -m /dev/rvt/0hn 1216:junk
+
+PROMPTS
+   I-Number:Name List:
+     Response to this prompt is optional.  Enter the file inumber
+     and file names to be recovered from the tape.
+
+   Recovery Request File:
+     Enter the name of the file contain the list of inumbers and
+     file names to be recovered.
+
+   Backup Tape Name:
+     Enter the name of the device named containing the backup
+     tape.
+
+   Prefixing Path:
+     Enter the name of the prefixing directory if different from
+     the current working directory.
+
+SEE ALSO
+     cpio(1), ff(1M), finc(1M), labelit(1M), volcopy(1M).
+
+NOTES
+     While creating the intermediate directories contained in a
+     path name, frec can recover inode fields only for those
+     directories contained on the tape and requested for
+     recovery.
+
+     For files that frec recovers, the access date is the date of
+     the recovery.
+
+

@@ -1,0 +1,65 @@
+# cshf	fsck -- file system checker 
+#	@(#)FSCK.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^FSCK -- PROVIDES A FILE SYSTEM CONSISTENCY CHECK"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^*File System Name(s):" file_system macnm "$file_system"\
+	"^Check Directories for Bad Blocks:" Dflag yesno n\
+	"^Perform a Fast Check:" fflag yesno n\
+	"^*Yes/No Response to All Questions (y,n):" ynflags\
+	"element(Y,y=y,N,n=n)" n\
+	"^Silence User Messages:" qflag yesno n\
+	"^*Overflow Table File:" tflag  acnm $tflag\
+	"^Rebuild Free List:" free yesno n\
+	"^Unmount File System:" umnt yesno n\
+	"^#$*"
+
+#
+# code for prompts to rebuild the free list
+#
+if ($abort) goto end
+if ($free == "y") then
+	prompt "^FSCK -- REBUILD FREE LIST OPTIONS"\
+		"^Uncond or Cond Build Free List (u,c):" action\
+		"element(U,u=u,C,c=c)" \
+		"^Blocks-Per-Cylinder:" bcyl integer 400\
+		"^Blocks-to-Skip:" bskip integer 7\
+		"^#$*"
+
+	if ($abort) goto end
+	 if ($action == "u") set sopt = "-s"$bcyl":"$bskip
+	 if ($action == "c") set sopt = "-S"$bcyl":"$bskip
+endif
+#
+# option to unmount the file systems
+#
+if ($abort) goto end
+	prompt "^UMOUNT -- UNMOUNT A FILE SYSTEM"\
+		"^Unmount File System(s):" dir macnm "$dir"\
+		"^#$*"
+	
+	if ($abort) goto end
+	echo "=== UNMOUNT COMMAND EXECUTING ==="
+	echo umount $dir 
+	umount $dir 
+	unset dir
+endif
+#
+# fsck portion
+#
+if ($abort) goto end
+if ($Dflag == "y") set opt = D$opt
+if ($fflag == "y") set opt = f$opt
+if ($ynflags != "") set opt = $ynflags$opt
+if ($qflag == "y") set opt = q$opt
+if ($opt != "") set opt = -$opt
+
+if ($tflag != "") set topt = -t$tflag
+echo === FSCK COMMAND EXECUTING ===
+echo /etc/fsck $opt $sopt $topt $file_system
+/etc/fsck $opt $sopt $topt $file_system
+
+end:
+unset *opt *flag free umnt action bcyl bskip ynflags

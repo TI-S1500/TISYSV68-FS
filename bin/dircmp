@@ -1,0 +1,95 @@
+#
+#   COPYRIGHT (c) 1985   TEXAS INSTRUMENTS INCORPORATED   ALL RIGHTS RESERVED
+#
+#		static char *sccs_id = "@(#)dircmp.sh	1.3  86/03/27 " ;
+
+T="/usr/tmp/dc$$"
+trap "rm -f ${T}*;exit" 1 2 3 15
+
+#---------------------------------------------------------------------------
+#				collect options & arguments and error check
+while [ $# -gt 2 ] 
+do
+	case $1 in
+	-d)	Dflag="yes"; shift;;
+	-s)	Sflag="yes"; shift;;
+	 *)	prmsg "dircmp" 1000517 0 5 0 0 "$1"		#  illegal option
+                prmsg "dircmp" 1001270 0 5 0 0  ;  exit 1	#  usage message
+	esac
+done
+D1=$1
+D2=$2
+if [ $# -lt 2 ]
+then              prmsg "dircmp" 1001270 0 5 0 0 " "  ; exit 1	#  usage message
+elif [ ! -d "$D1" ]
+then              prmsg "dircmp" 1001251 0 5 0 0 "$D1"; exit 2	#  not a dir
+elif [ ! -d "$D2" ]
+then              prmsg "dircmp "dircmp"" 1001251 0 5 0 0 "$D2"; exit 2	#  not a dir
+fi
+D0=`pwd`
+#
+#---------------------------------------------------------------------------
+#				generate list of everything in the two
+#				directory trees.
+cd $D1  ;  find . -print | sort > ${T}a
+cd $D0
+cd $D2  ;  find . -print | sort > ${T}b
+cd $D0
+
+#---------------------------------------------------------------------------
+#		now make separate files out of the info comm determines:
+#			file c is stuff in both directories
+#			file d is stuff in D2 only
+#			file e is stuff in D1 only
+comm ${T}a ${T}b  |  \
+sed -n  -e "/^		/s@./@@w ${T}c" \
+	-e "/^	[^	]/s@./@@w ${T}d" \
+	-e "/^[^	]/s@./@@w ${T}e"
+
+
+#			print the files which are unique to each dir
+#
+prmsg "dircmp" 1001272 0 5 0 0 "$D1"  ; cat ${T}e
+
+echo  ; echo
+prmsg "dircmp" 1001272 0 5 0 0 "$D2"  ; cat ${T}d
+
+
+sed -e s/..// < ${T}c     > ${T}f	#  wipe off the two tabs
+
+
+#-------------------------------------------------------------------------
+#			create a file to hold the differences for -d option
+> ${T}g
+
+echo ; echo ; prmsg "dircmp" 1001278 0 5 0 0 " " 
+while read a		#	read file names from ${T}f into a
+do
+	x=$D1/"$a"
+	y=$D2/"$a"
+	if [ -d $x ]
+	then if [ "$Sflag" != "yes" ]
+	     then prmsg "dircmp" 1001194 0 5 0 0 "$a"		# found a directory
+	     fi
+	elif [ -f $x ]
+	then cmp -s $x $y
+	     if [ $? = 0 ]
+	     then if [ "$Sflag" != "yes" ]
+		  then prmsg "dircmp" 1001273 0 5 0 0 "$x" "$y"  # files are the same
+		  fi
+	     else      prmsg "dircmp" 1001274 0 5 0 0 "$x" "$y"  # files are different
+		  if [ "$Dflag" = "yes" ]
+		  then prmsg "dircmp" 1001277 0 5 0 0 "$x" "$y" >> ${T}g
+		       diff $x $y    >> ${T}g
+		  fi
+	     fi
+	elif [ "$Sflag" != "yes" ]
+	then prmsg "dircmp" 1001276 0 5 0 0 $a  			# special file
+	fi
+done < ${T}f 
+
+
+if [ "$Dflag" = "yes" ]		#  the -d option runs 'diff' on non-equal files
+then cat ${T}g
+fi
+rm -f ${T}*

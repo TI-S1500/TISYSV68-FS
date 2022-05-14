@@ -1,0 +1,60 @@
+INITTERM(1T)					     INITTERM(1T)
+
+NAME
+     initterm - Initializes the terminal driver
+
+SYNOPSIS
+     initterm p
+
+DESCRIPTION
+   Purpose
+     The initterm process initializes the terminal driver with
+     the VDT-attached printer parameters specified by the file
+     /etc/alpdefs.  See alpdefs(4).
+
+   Discussion
+     Usually the initterm process is executed as part of the
+     init(1M) process from /etc/download. The following are
+     situations where the initialization of the terminal VDT-
+     attached printer parameters must be executed by an operator:
+
+     + After the first system definition takes place and before
+       the next reboot
+
+     + If VDT-attached printers are added at some later time
+
+     + If the terminal type is changed
+
+     + If a need exists to change the parameters associated with
+       a particular terminal
+
+     For terminals that do not support a pacing response as
+     described in alpdefs(4), it may be necessary to fine-tune
+     the terminal and VDT-attached printer interaction. To do
+     this the user should modify the block transmit rate in the
+     file /etc/alpdefs. A higher rate means data is sent to the
+     printer less frequently and thus the terminal is faster. A
+     lower rate means data is sent to the printer more frequently,
+     and thus the terminal is less responsive.	After modifying
+     the block transmit rate, execute the initterm process.
+
+FILES
+     /etc/alpdefs
+     /etc/alpcaps
+
+SEE ALSO
+     alpcaps(4), alpdefs(4).
+
+EXAMPLE
+     The following example initializes the terminal driver for
+     all VDT-attached printers defined to the system.
+
+	  initterm p
+
+DIAGNOSTICS
+     Errors on open of device path name are ignored.
+
+     Error on ioctl(2) causes message with errno to be written to
+     the operator's terminal.
+
+

@@ -1,0 +1,472 @@
+# @(#)install.scr	1.62 90/09/28
+#
+# Determine which version of TI System V is running.
+#
+ver=`uname -v`
+if [ $ver != "3.2.2" ] ; then
+	 echo "Is this system running TI System V 3.2.2 OS release? (y,n)"
+	 read item
+	 if [ "X$item" != "Xy" -a "X$item" != "XY" ] ; then
+   	 	exit 1
+	 fi
+else 
+# Release notes go here:
+#
+echo " "
+echo "*******************************************************************"
+echo "* Please note:                                                    *"
+echo "*                                                                 *"
+echo "*  The devadm utility for TI System V  has changed to allow	*"
+echo "*  more flexibility for selecting what is downloaded to the 	*"
+echo "*  CCB.  The documentation for DNIO/1500 Version 2.0 does not     *"
+echo "*  comprehend these changes.                                      *"
+echo "*                                                                 *"
+echo "*  The CCB running DNIO/1500 must have the XNS Internet Transport *"
+echo "*  Protocol selected.  This is selected when defining the CCB     *"
+echo "*  with the LAN option port that runs the Transport Device.       *"
+echo "*                                                                 *"
+echo "*******************************************************************"
+echo " "
+echo " "
+fi
+#
+echo "Is the system in single-user mode (y,n) ? \c"
+read item
+if [ "$item" != "y" -a "$item" != "Y" ]
+then 
+   exit 1
+fi
+/bin/sh -xv ./inst.spapw 
+#
+# Remove the portable C libraries from the install directory to free
+# up some space.
+#
+cd /usr/tmp
+rm -f libpnetc.a libpnetsubs.a libpnettisam.a
+#
+# Install and set mode of NIOP libraries.
+#
+echo "Installing DNIO libraries:"
+cd /usr/tmp
+# Copy standard libc.a and update it with network parts
+/bin/cp /lib/libc.a .
+#
+# pull niop libraries from /usr/ti/dnio directory for 3.2.2 build
+# and for 2.0.1/2.0.2 updates 
+#
+/bin/cp /usr/ti/dnio/libnetc.a /usr/tmp
+/bin/cp /usr/ti/dnio/libnetsubs.a /usr/tmp
+/bin/cp /usr/ti/dnio/libnettisam.a /usr/tmp
+ar x libnetc.a `ar t libnetc.a`
+ar ru libc.a `ar t libnetc.a`
+/bin/mv libc.a /usr/lib/libnetc.a
+rm libnetc.a
+/bin/mv libxport.a libnetsubs.a libnettisam.a /usr/lib
+chmod 644 /usr/lib/libxport.a /usr/lib/libnetc.a /usr/lib/libnetsubs.a \
+    /usr/lib/libnettisam.a
+#
+# Extract ISAM modules from TISAM library and archive them in
+# a new library, libisam.a.
+#
+echo "Building /usr/lib/libisam.a:"
+ar x /usr/lib/libtisam.a \
+		isaddindex.o isaudit.o isbuild.o isclose.o isdelcurr.o \
+		isdelete.o isdelindex.o isdelrec.o iserase.o isflush.o \
+		isindexinf.o islock.o isopen.o ispath.o isread.o \
+		isrelease.o isrename.o isrewcurr.o isrewrec.o isrewrite.o \
+		issetuniqu.o isstart.o isuniqueid.o isunlock.o iswrcurr.o \
+		iswrite.o
+ar ru /usr/lib/libisam.a \
+		isaddindex.o isaudit.o isbuild.o isclose.o isdelcurr.o \
+		isdelete.o isdelindex.o isdelrec.o iserase.o isflush.o \
+		isindexinf.o islock.o isopen.o ispath.o isread.o \
+		isrelease.o isrename.o isrewcurr.o isrewrec.o isrewrite.o \
+		issetuniqu.o isstart.o isuniqueid.o isunlock.o iswrcurr.o \
+		iswrite.o
+rm  isaddindex.o isaudit.o isbuild.o isclose.o isdelcurr.o \
+    isdelete.o isdelindex.o isdelrec.o iserase.o isflush.o \
+    isindexinf.o islock.o isopen.o ispath.o isread.o \
+    isrelease.o isrename.o isrewcurr.o isrewrec.o isrewrite.o \
+    issetuniqu.o isstart.o isuniqueid.o isunlock.o iswrcurr.o \
+    iswrite.o
+#
+# pull nios990 from /usr/ti/dnio directory for 2.0.2 updates
+#
+cp /usr/ti/dnio/nios990.o /usr/tmp
+#
+# Link, install, and set mode of nios990
+# now requires security library for shadow password support
+#
+echo "Building and installing nios990:"
+cd /usr/tmp
+ld -o nios990 nios990.o -lxport -ltisam -lsec -lc
+/bin/mv nios990 /usr/bin
+chmod 700 /usr/bin/nios990
+rm -f nios990.o
+#
+# Link, install, and set mode of niologger
+#
+echo "Building and installing niologger:"
+cd /usr/tmp
+ld -o niologger niologger.o -lc
+/bin/mv niologger /usr/bin
+chmod 700 /usr/bin/niologger
+rm -f niologger.o
+#
+# pull inl990 from /usr/ti/dnio for 3.2.2 build updates
+# Link, install, and set mode of inl990
+#
+/bin/cp /usr/ti/dnio/inl990.o .
+echo "Building and installing inl990:"
+cd /usr/tmp
+ld -o inl990 inl990.o -lxport -lfe -lc
+/bin/mv inl990 /usr/bin
+chmod 4711 /usr/bin/inl990
+rm -f inl990.o
+#
+# pull inl from /usr/ti/dnio for 3.2.2 build updates
+# Link, install, and set mode of inl
+#
+/bin/cp /usr/ti/dnio/inl.o .
+    echo "Building and installing inl:"
+    cd /usr/tmp
+    ld -o inl inl.o -lxport -lc
+    /bin/mv inl /usr/bin
+    chmod 4711 /usr/bin/inl
+rm -f inl.o
+#
+# Link, install, and set mode of xnets
+#
+echo "Building and installing xnets:"
+cd /usr/tmp
+#
+# pull xnets.o from /usr/ti/dnio directory for 3.2.2.2 build
+#
+/bin/cp /usr/ti/dnio/xnets.o /usr/tmp
+ld -o xnets xnets.o -lxport -lc
+/bin/mv xnets /usr/bin
+chmod 700 /usr/bin/xnets
+rm -f xnets.o
+#
+# Link, install, and set mode of preinit
+#
+echo "Building and installing preinit:"
+cd /usr/tmp
+#
+# pull preinit.o from /usr/ti/dnio directory for 3.2.2 build
+#
+/bin/cp /usr/ti/dnio/preinit.o /usr/tmp
+ld -o preinit preinit.o -lxport -lc
+/bin/mv preinit /usr/bin
+chmod 700 /usr/bin/preinit
+rm -f preinit.o
+#
+# Link, install, and set mode of rin and rout utilities
+#
+echo "Building and installing rin and rout utilities:"
+cd /usr/tmp
+ld -o rin rin.o -lnetc -lnetsubs -lxport -lc
+ld -o rout rout.o -lnetc -lnetsubs -lxport -lc
+/bin/mv rin rout /usr/bin
+chmod 711 /usr/bin/rin
+chmod 711 /usr/bin/rout
+rm -f rin.o rout.o
+#
+# Link, install, and set mode of name management utilities.
+#
+echo "Building and installing name manager utilities:"
+cd /usr/tmp
+ld -o nmclr nmclr.o -lxport -lc
+ld -o nmset nmset.o -lxport -lc
+ld -o nmsia nmsia.o -lxport -lc
+ld -o nmsdn nmsdn.o -lxport -lc
+/bin/mv nmclr nmset nmsia nmsdn /usr/bin
+chmod 700 /usr/bin/nmclr /usr/bin/nmset
+chmod 4711 /usr/bin/nmsdn /usr/bin/nmsia
+rm -f nmclr.o nmset.o nmsia.o nmsdn.o
+#
+# Link, install, and set mode of cpcf
+#
+echo "Building and installing cpcf:"
+cd /usr/tmp
+ld -o cpcf cpcf.o -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv cpcf /usr/bin
+chmod 711 /usr/bin/cpcf
+rm -f cpcf.o
+#
+# Link, install, and set mode of networking utilities
+#
+echo "Building and installing networking utilities in /usr/netbin:"
+if test ! -d /usr/netbin
+    then mkdir /usr/netbin
+fi
+cd /usr/tmp
+#
+# pull parts.a from /usr/ti/dnio directory for 3.2.2 build
+#
+/bin/cp /usr/ti/dnio/parts.a /usr/tmp
+ar -x parts.a cat.O
+ld -o cat /lib/crt0.o cat.O -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv cat /usr/netbin
+chmod 711 /usr/netbin/cat
+rm -f cat.O
+ar -x parts.a diff.O
+ld -o diff /lib/crt0.o diff.O -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv diff /usr/netbin
+chmod 711 /usr/netbin/diff
+rm -f diff.O
+ar -x parts.a diffh.O
+ld -o diffh /lib/crt0.o diffh.O -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv diffh /usr/netbin
+chmod 711 /usr/netbin/diffh
+rm -f diffh.O
+ar -x parts.a dfm.O
+ld -o dfm /lib/crt0.o dfm.O -ltermcap -lfe -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv dfm /usr/netbin
+chmod 711 /usr/netbin/dfm
+rm -f dfm.O
+ar -x parts.a more.O
+ld -o more /lib/crt0.o more.O -ltermcap -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv more /usr/netbin
+chmod 711 /usr/netbin/more
+rm -f more.O
+ar -x parts.a mv.O
+ld -o mv /lib/crt0.o mv.O -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv mv /usr/netbin/ln
+chmod 711 /usr/netbin/ln
+rm -f mv.O
+ar -x parts.a ls.O
+ld -o ls /lib/crt0.o ls.O -u getdents -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv ls /usr/netbin
+chmod 711 /usr/netbin/ls
+rm -f ls.O
+ar -x parts.a sh.O
+ld -o sh /lib/crt0.o sh.O -u getdents -lnetc -lnetsubs -lxport -lc
+/bin/mv sh /usr/netbin
+chmod 711 /usr/netbin/sh
+rm -f sh.O
+ar -x parts.a show.O
+ld -o show /lib/crt0.o show.O -ltermcap -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv show /usr/netbin
+chmod 711 /usr/netbin/show
+rm -f show.O
+ar -x parts.a tx.O
+ld -o tx /lib/crt0.o tx.O -ltermcap -lfe -lmalloc -lnetc -lnetsubs -lxport -ltermcap -lc
+/bin/mv tx /usr/netbin
+chmod 711 /usr/netbin/tx
+rm -f tx.O
+rm parts.a
+cd /usr/netbin
+/bin/ln ln mv
+/bin/ln ln cp
+#
+# Install and set mode of prompt script for inl990 and inl.
+#
+echo "Installing INL990 prompt script:"
+/bin/mv /usr/tmp/INL990 /usr/ti/prompts
+chmod 777 /usr/ti/prompts/INL990
+#
+	echo "Installing INL prompt script:"
+	/bin/mv /usr/tmp/INL /usr/ti/prompts
+	chmod 777 /usr/ti/prompts/INL
+#
+# 
+# Install and set mode of transport download driver, ccbxport.
+#
+echo "Installing /etc/ccbxport:"
+#
+# pull ccbxport from /usr/ti/dnio directory for 3.2.2 build and 2.0.2 updates
+#
+/bin/cp /usr/ti/dnio/ccbxport /usr/tmp
+/bin/cp /usr/tmp/ccbxport /etc
+rm -f /usr/tmp/ccbxport
+chmod 644 /etc/ccbxport
+#
+# pull dnio initialization batch stream from /usr/ti/dnio directory 
+# for 2.0.1 update
+#
+/bin/cp /usr/ti/dnio/dnio1500init /usr/tmp
+#
+# Install the dnio/1500 initialization batch stream.
+#
+/bin/cp /usr/tmp/dnio1500init /etc
+rm -f /usr/tmp/dnio1500init
+chmod 744 /etc/dnio1500init
+#
+# Create dnio directory.
+#
+if test ! -d /usr/ti/dnio
+    then mkdir /usr/ti/dnio
+fi
+#
+# Install transport and virtual terminal kernel device drivers into
+# io.lib, from which the OS kernel will be built.
+#
+echo "Installing transport and virtual terminal device drivers:"
+cd /usr/tmp
+if test ! -f /usr/ti/dnio/dnio1500.dmy
+then 
+    cd /usr/sys
+    ar x io.lib dnio1500.o
+    /bin/cp dnio1500.o /usr/ti/dnio/dnio1500.dmy
+    rm dnio1500.o
+    chmod 644 /usr/ti/dnio/dnio1500.dmy
+    cd /usr/tmp
+fi    
+#
+# pull dnio1500.o from /usr/ti/dnio directory for 3.2.2 build
+# and for 2.0.1/2.0.2 updates
+#
+/bin/cp /usr/ti/dnio/dnio1500.o /usr/tmp
+ar r /usr/sys/io.lib dnio1500.o
+rm -f dnio1500.o
+#
+# Copy man pages to /usr/catman/u_man/man1 directory.
+#
+echo "Copying man page files to /usr/catman/u_man/man1:"
+/bin/mv /usr/tmp/cpcf.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/cpcf.1
+chown bin /usr/catman/u_man/man1/cpcf.1
+chgrp bin /usr/catman/u_man/man1/cpcf.1
+/bin/mv /usr/tmp/inl.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/inl.1
+chown bin /usr/catman/u_man/man1/inl.1
+chgrp bin /usr/catman/u_man/man1/inl.1
+/bin/mv /usr/tmp/inl990.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/inl990.1
+chown bin /usr/catman/u_man/man1/inl990.1
+chgrp bin /usr/catman/u_man/man1/inl990.1
+/bin/mv /usr/tmp/nmclr.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/nmclr.1
+chown bin /usr/catman/u_man/man1/nmclr.1
+chgrp bin /usr/catman/u_man/man1/nmclr.1
+/bin/mv /usr/tmp/nmsdn.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/nmsdn.1
+chown bin /usr/catman/u_man/man1/nmsdn.1
+chgrp bin /usr/catman/u_man/man1/nmsdn.1
+/bin/mv /usr/tmp/nmset.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/nmset.1
+chown bin /usr/catman/u_man/man1/nmset.1
+chgrp bin /usr/catman/u_man/man1/nmset.1
+/bin/mv /usr/tmp/nmsia.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/nmsia.1
+chown bin /usr/catman/u_man/man1/nmsia.1
+chgrp bin /usr/catman/u_man/man1/nmsia.1
+/bin/mv /usr/tmp/rin.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/rin.1
+chown bin /usr/catman/u_man/man1/rin.1
+chgrp bin /usr/catman/u_man/man1/rin.1
+/bin/mv /usr/tmp/rout.1 /usr/catman/u_man/man1
+chmod 644 /usr/catman/u_man/man1/rout.1
+chown bin /usr/catman/u_man/man1/rout.1
+chgrp bin /usr/catman/u_man/man1/rout.1
+#
+# Copy DNIO and BSA patches to dnio directory.
+#
+echo "Storing DNIO/990 patches in /usr/ti/dnio:"
+if test ! -d /usr/ti/dnio/bsa22
+    then mkdir /usr/ti/dnio/bsa22
+fi
+if test ! -d /usr/ti/dnio/bsa30
+    then mkdir /usr/ti/dnio/bsa30
+fi
+/bin/mv /usr/tmp/dnpatch /usr/ti/dnio/dnpatch
+chmod 644 /usr/ti/dnio/dnpatch 
+#
+# Copy example files.
+#
+echo "Copying example files to /usr/ti/examples:"
+/bin/mv /usr/tmp/ipccli.990 /usr/ti/examples/ipcclient.990
+/bin/mv /usr/tmp/ipccli.BSA /usr/ti/examples/ipcclient.BSA
+/bin/mv /usr/tmp/ipcowner /usr/ti/examples/ipcowner
+#
+# Use new fecap.inl provided in /usr/ti/dnio for 2.0.1 update
+#
+#/bin/mv /usr/tmp/fecap.inl /usr/ti/dnio/fecap.inl
+chmod 644 /usr/ti/examples/ipcclient.990 /usr/ti/examples/ipcclient.BSA \
+	/usr/ti/examples/ipcowner
+chmod 664 /usr/ti/dnio/fecap.inl
+#
+# Create named pipe for logger process.
+#
+if test ! -p /usr/ti/dnio/niopipe
+then 
+    mknod /usr/ti/dnio/niopipe p
+    chmod 666 /usr/ti/dnio/niopipe
+fi
+#
+#
+# Edit /etc/download to start DNIO/1500.
+#
+cd /etc
+if fgrep 'dnio1500init' download > /dev/null
+then
+    echo 'junk' > /dev/null
+else
+    echo 'dnio1500init' >> download
+fi
+#
+# Insert the DNIO messages into the master message file
+#
+echo "Adding DNIO messages to the master message file:"
+#
+# pull messages from /usr/ti/dnio directory for 3.2.2 build
+#
+/bin/cp /usr/ti/dnio/messages /usr/tmp
+cd /usr/ti
+if test ! -f master.nodnio
+    then /bin/cp master master.nodnio
+fi
+if fgrep '<%%> Inserted DNIO messages start' master > /dev/null
+then
+        csplit -s -f dntmp master '/<%%> Inserted DNIO messages start/' \
+	                         '/<\*\*> DNIO\/1500 messages end here/'
+        /bin/cat dntmp00 /usr/tmp/messages dntmp02 > master.tmp
+        /bin/mv master.tmp master
+        rm dntmp00 dntmp01 dntmp02
+else
+        csplit -s -f dntmp master '/<\*\*> DNIO\/1500 messages end here/'
+        /bin/cat dntmp00 /usr/tmp/messages dntmp01 > master.tmp
+        /bin/mv master.tmp master
+        rm dntmp00 dntmp01 
+fi
+echo "Building the new ptext and stext files:"
+mkmsg master ptext stext 
+/bin/cp ptext /ti/ptext/USA 
+/bin/cp stext /ti/stext/USA
+rm -f ptext stext
+#
+# Copy the BSA updates 
+#
+echo "Copying the BSA updates:"
+cd /usr/tmp
+/bin/mv kbdsp.com.i /usr/ti/dnio/bsa30/kbdsp.com
+/bin/mv bsa.com.i /usr/ti/dnio/bsa30/bsa.com
+/bin/mv keybrd.com.i /usr/ti/dnio/bsa30/keybrd.com
+/bin/mv nios.com.i /usr/ti/dnio/bsa30/nios.com
+/bin/mv bsadriv.com.i /usr/ti/dnio/bsa30/bsadriv.com
+/bin/mv xnetp.com.i /usr/ti/dnio/bsa30/xnetp.com
+/bin/mv niopdrvr.dev.i /usr/ti/dnio/bsa30/niopdrvr.dev
+/bin/mv kbdsp.com.t /usr/ti/dnio/bsa22/kbdsp.com
+/bin/mv bsa.com.t /usr/ti/dnio/bsa22/bsa.com
+/bin/mv keybrd.com.t /usr/ti/dnio/bsa22/keybrd.com
+/bin/mv nios.com.t /usr/ti/dnio/bsa22/nios.com
+/bin/mv bsadriv.com.t /usr/ti/dnio/bsa22/bsadriv.com
+/bin/mv xnetp.com.t /usr/ti/dnio/bsa22/xnetp.com
+/bin/mv niopdrvr.dev.t /usr/ti/dnio/bsa22/niopdrvr.dev
+/bin/cp to.exe /usr/ti/dnio/bsa30/to.exe
+/bin/mv to.exe /usr/ti/dnio/bsa22/to.exe
+/bin/cp from.exe /usr/ti/dnio/bsa30/from.exe
+/bin/mv from.exe /usr/ti/dnio/bsa22/from.exe
+chmod 644 /usr/ti/dnio/bsa30/* /usr/ti/dnio/bsa22/*
+/bin/cp updatebsa /usr/ti/dnio/bsa30/updatebsa
+/bin/mv updatebsa /usr/ti/dnio/bsa22/updatebsa
+chmod 777 /usr/ti/dnio/bsa30/updatebsa /usr/ti/dnio/bsa22/updatebsa
+#
+echo "Normal completion" > /usr/tmp/normcomp
+echo "\n\nDNIO/1500 System V installation completed normally.  The
+installation listing is in /usr/ti/dnio/install.lst.  
+Continue the installation according to the instructions 
+in the DNIO/1500 System V installation guide."
+echo "\n\nRelease information for DNIO/1500 update modules provided with"
+   echo "TI System V $ver may be found in the file, /usr/ti/dnio/relinfo.\n\n"

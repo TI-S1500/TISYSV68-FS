@@ -1,0 +1,23 @@
+SLOTLOAD(1T)                                         SLOTLOAD(1T)
+
+NAME
+     slotload - Restart the CCB in a specified slot
+
+SYNOPSIS
+     slotload slot
+
+DESCRIPTION
+   Purpose
+     The slotload command restarts a single CCB.  The slot
+     argument is the slot number of the chassis slot containing
+     the CCB to be restarted.  It is used in the case of a
+     failure of a single CCB in a multiple CCB system.  In many
+     cases, it is not necessary to reboot the entire system if a
+     CCB software failure has occurred.  This command executes
+     that portion of the boot time activity which is directed at
+     the specified CCB.
+
+SEE ALSO
+     tcdl(1T).
+
+

@@ -1,0 +1,156 @@
+SPOOLADM(1T)					     SPOOLADM(1T)
+
+NAME
+     spooladm - Manages the LP spooler system
+
+SYNOPSIS
+     spooladm
+
+DESCRIPTION
+   Purpose
+     The spooladm utility is an interactive tool that does the
+     following:
+
+     + Allows the LP administrator to perform some LP spooler
+       operations
+     + Allows owners of terminal-attached printers to manage
+       their own printers
+     + Allows general users to view the activity of the LP
+       spooler system
+
+     You access spooladm commands through two displays:  the Main
+     menu and the Request menu.
+
+   spooladm Invocation
+     To invoke spooladm, enter the following in response to the
+     shell prompt.
+
+	  spooladm
+
+     A printer display similar to the following appears:
+
+     Main Menu							  5 Printers
+     Scheduler: Running 					       10:52
+
+     Printer	 Device 	  Questat	Prtstat      Class Member
+     ---------------------------------------------------------------------------
+     printer	 /dev/printer	  accepting	enabled      fast	   $
+     alp01	 /dev/alp01	  accepting	disabled
+     alp02	 /dev/alp02	  rejecting	enabled
+     alp03	 /dev/alp03	  accepting	disabled
+     alp04	 /dev/alp04	  accepting	enabled      slow
+     ---------------------------------------------------------------------------
+     F1-Down  F2-Up  F3-Acc/Rej  F4-En/Dis  F6-Move  F7-Admin  F8-Log  F9-On/Off
+
+
+     $	  Indicates that the printer is the default destination.
+
+     The screen columns contain the following information:
+
+     Printer	   Printer or class name
+     Device	   Device name
+     Questat	   Status of print request queue (accepting or
+		   rejecting requests for queueing)
+     Prtstat	   Status of printing (printer enabled or
+		   disabled)
+     Class Member  Name of printer class
+
+   Screen Display Commands
+     You can use the following commands with spooladm :
+
+     q	  Quits the current display.
+
+     a	  Aborts the utility.
+
+     s	  Displays print request screen for a specified printer
+	  or class of printers.
+
+     m	  Displays members of a class.
+
+     t	  Displays print requests for all printers and classes.
+
+     j	  Moves the cursor down to the next screen entry.
+
+     k	  Moves the cursor up to the next screen entry.
+
+   Function Keys
+     You can use the following function keys with the Main menu
+     spooladm display:
+
+     F1   Scrolls the display to show the next page of printers
+	  or requests.
+
+     F2   Scrolls the display to show the previous page of
+	  printers or requests.
+
+     F3   Changes acceptance status for a printer or class of
+	  printers (accepts or rejects print requests).
+
+     F4   Changes the status of a printer (disables or enables a
+	  printer).
+
+     F6   Moves all requests for the printer to a new
+	  destination.
+
+     F7   Executes the LPADMIN Business shell menu prompt.
+
+     F8   Displays the contents of the spooler log files. A
+	  window appears on the screen allowing you to select the
+	  log file to show.
+
+     F9   Toggles the scheduler on and off.
+
+   Print Request Screen
+     The following is an example of a print request screen that
+     you invoke when you press the s key (the s command) from the
+     Main menu on any printer:
+
+     Printer Menu				  2 Requests
+     Scheduler: Running 			  10:52
+     Request	    User     Size	       When
+     --------------------------------------------------------
+     printer-43     joe       4306	       Oct 12 12:54
+     printer-44     bill     17034	       Oct 12 12:57
+     ---------------------------------------------------------
+     F1-Down	F2-Up	 F5-Cancel	    F6-Move	F7-Pri
+
+
+     The screen columns contain the following information:
+
+     Request	 ID of the print request
+
+     User	 Log-in name of the owner of the print request
+
+     Size	 Size in bytes of the print request
+
+     When	 Date and time the print request was issued
+
+   Function Keys
+     You can use the following function keys with the Request
+     menu spooladm display:
+
+     F1   Scrolls the display to show the next page of requests
+	  (same as pressing the j key).
+
+     F2   Scrolls the display to show the previous page of
+	  requests (same as pressing the k key).
+
+     F5   Cancels the current request (same as pressing the c
+	  key).
+
+     F6   Moves the current request to another printer (same as
+	  pressing the m key).
+
+     F7   Changes the priority of the current request (same as
+	  pressing the p key).	If the request is already
+	  printing, it will be stopped and restarted from the
+	  beginning.
+
+SEE ALSO
+     accept(1M), cancel(1), disable(1M), enable(1M), lp(1),
+     lpadmin(1M), lpforms(1M), lpfilter(1M), lpmove(1M),
+     lpsched(1M), lpshut(1M), lpstat(1), lpusers(1M), reject(1M).
+     Printer Spooling System in the TI System V Administrator's
+     Guide.
+
+

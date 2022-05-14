@@ -1,0 +1,46 @@
+#----------------------------------------------------------------------------
+#  COPYRIGHT (c) 1985   TEXAS INSTRUMENTS INCORPORATED   ALL RIGHTS RESERVED
+#----------------------------------------------------------------------------
+#
+#		@(#)mvdir.sh	1.4  86/10/21
+#
+#
+#
+if [ $# != 2 ]; then  prmsg "mvdir" 1002380  0 5 0 0 old new  ; exit 2; fi
+if [ $1 = .  ]; then  prmsg "mvdir" 1002381  0 5 0 0          ; exit 2; fi
+if [ ! -x $1 ]; then  prmsg "mvdir" 1001200  0 5 0 0 $1       ; exit 2; fi
+if [ ! -d $1 ]; then  prmsg "mvdir" 1002383  0 5 0 0 $1       ; exit 2; fi
+
+
+f=`basename $1`
+t=$2
+if [ -d $2 ]		#  is the new name a directory?
+then
+	t=$t/$f 	#  append the basename to the new dir
+fi
+
+
+#-------------------------------------The new name must not already exist
+if [ -f $t  -o -d $t ]
+		then  prmsg "mvdir"  1002382  0 5 0 0 $t    ;  exit 1
+		fi
+
+
+#--------------------------Neither file can be a part of the path of the other
+a=`expr $t : $1/`
+if [ $a != 0 ]
+		then  prmsg "mvdir" 1002384  0 5 0 0 $1  $t        ;  exit 1
+		fi
+
+
+
+########################################  Now, try to do the move
+
+T=`expr $t : '\(.*\)/' \| .`
+if /etc/link $1 $t ; 
+		then :
+		else prmsg "mvdir" 1002385  2 2 0 1  $1  $t    ; exit 2
+		fi
+/etc/unlink  $1
+/etc/unlink  $t/..
+/etc/link $T $t/..

@@ -1,0 +1,52 @@
+# cshf DIFF - COMPARE TWO FILES 
+#	@(#)DIFF.sh	1.2  88/01/20
+#
+onintr end
+
+prompt  "^DIFF -- COMPARES TWO FILES"\
+	"^File 1:"  _input_file  acnm $_input_file\
+	"^File 2:"  F2  acnm $F2  \
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Huge files:"  hflag  yesno  n\
+	"^Ignore Trailing Blanks:" bflag  yesno n\
+	"^Produce Script for Editor:" eflag yesno n\
+	"^Produce Script for Reproduction:" fflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== DIFF COMMAND EXECUTING ==="
+if ("$_input_file" != "-")  then
+  if (!(-e $_input_file)) then
+	echo ERROR: $_input_file does not exist
+	set abort = "1"
+  endif
+endif
+if ("$F2" != "-") then 
+  if (!(-e $F2)) then
+	echo ERROR: $F2 does not exist
+	set abort = "1"
+  endif
+endif
+if (("$_input_file" == "-") && ("$F2" == "-")) then
+	echo ERROR: Both files are standard input
+	set abort = "1"
+endif
+ 
+if ($abort) goto end
+if ($hflag == "y") set opt = h$opt
+if ($bflag == "y") set opt = b$opt
+if ($eflag == "y") set opt = e$opt
+if ($fflag == "y") set opt = f$opt
+if ($opt != "") set opt = -$opt
+
+if ($_output_file != "") then
+	echo diff $opt  $_input_file  $F2 ">"$_output_file
+	diff $opt  $_input_file  $F2 >$_output_file
+else
+	echo diff $opt  $_input_file  $F2 
+	diff $opt  $_input_file  $F2 | \
+	pg -cp"Output from DIFF is being piped through pg: "
+endif
+
+end:
+unset opt *flag 

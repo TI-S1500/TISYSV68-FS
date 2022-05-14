@@ -1,0 +1,3 @@
+59 23 * * * /usr/lib/cron/start.new.log
+0,30 18-7 * * 1-5 /etc/movhd > /dev/null 2>&1
+0,30 * * * 0,6 /etc/movhd > /dev/null 2>&1

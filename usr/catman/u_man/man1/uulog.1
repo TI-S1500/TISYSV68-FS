@@ -1,0 +1,78 @@
+UULOG(1C)                                               UULOG(1C)
+
+NAME
+     uulog - Accesses uucp(1C) and uux(1C) log file
+
+SYNOPSIS
+     uulog -su
+
+DESCRIPTION
+   Purpose
+     The uulog command queries a summary log of uucp(1C) and
+     uux(1C) transactions in the file named
+     /usr/spool/uucp/LOGFILE.
+
+   Options
+     -ssys
+          Prints information about work involving system sys.  If
+          sys is not specified, logging information for all
+          systems is printed.
+
+     -uuser
+          Prints information about work done for the specified
+          user.  If user is not specified, logging information
+          for all users is printed.
+
+EXAMPLE
+     The following example displays the bottom of the LOGFILE for
+     system hal:
+
+          uulog -shal | tail
+
+     The output might be as follows:
+
+     hal!root (9/3-12:23:16) (U,901,0) QUE'D (C.halnA0001)
+     hal!uucp (9/3-12:23:19) (C,903,0) FAILED (DIALUP LINE open
+     tty0e Patd2507013
+     hal!uucp (9/3-12:26:30) (C,918,0) C.dwarf (bldfl)
+     hal!uucp (9/3-12:26:31) (C,918,0) OK (DIAL tty0e Patd2507013
+     hal!uucp (9/3-12:26:55) (C,918,0) SUCCEEDED (call to hal)
+     hal!uucp (9/3-12:28:25) (C,918,0) BAD LOGIN/PASSWORD (call
+     to hal)
+     hal!uucp (9/3-12:30:45) (C,925,0) TIMEOUT (LOGIN)
+     hal!uucp (9/3-12:30:45) (C,925,0) FAILED (LOGIN (tty0e,
+     Patd2507013
+     hal!root (9/3-12:35:17) (U,942,0) QUE'D (C.halnA0002)
+     hal!uucp (9/3-12:35:19) (C,944,0) OK (DIAL tty0e Patd2507013
+     hal!uucp (9/3-12:35:47) (C,944,0) SUCCEEDED (call to hal)
+     hal!uucp (9/3-12:36:01) (C,944,0) OK (startup)
+     hal!root (9/3-12:36:01) (C,944,0) REQUEST (R
+     /usr/spool/uucppublic/swupdates/ questions
+     /usr/spool/uucppublic/questions root)
+     hal!root (9/3-12:36:06) (C,944,1) COPY (SUCCEEDED)
+     hal!uucp (9/3-12:36:09) (C,944,1) OK (conversation complete
+     tty0e 50)
+
+PROMPTS
+   Output Log on System, User, Both (s,u,b):
+     Enter s or u or b to request information a specified system,
+     a specified user, or both, respectively.
+
+   System Name:
+     Enter the name of the system for which uucp logging
+     information will be printed.
+
+   User Name:
+     Enter the name of the user for which uucp logging
+     information will be printed.
+
+FILES
+     /usr/spool/uucp        spool directory
+     /usr/spool/uucppublic  public directory for receiving and
+                            sending (PUBDIR)
+     /usr/lib/uucp/*        other data and program files
+
+SEE ALSO
+     mail(1), uucp(1C), uuname(1C), uux(1C).
+
+

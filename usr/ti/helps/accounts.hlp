@@ -1,0 +1,7 @@
+	accounts - Account Management Menu
+		@(#)accounts.sh	1.1 87/03/09
+
+	This Menu lists tools to help the system administrator monitor 
+	  and limit the activity of system users.  These utilities also 
+	  facilitate the addition, deletion, and modification of user 
+	  accounts.

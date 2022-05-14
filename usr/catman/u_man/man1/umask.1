@@ -1,0 +1,39 @@
+UMASK(1)                                                 UMASK(1)
+
+NAME
+     umask - Sets file-creation mode mask
+
+SYNOPSIS
+     umask [ooo]
+
+DESCRIPTION
+   Purpose
+     The user file-creation mode mask is set to the octal digits
+     ooo, which refer to read/write/execute permissions for
+     owner, group, and others, respectively (see chmod(2) and
+     umask(2)).  The value of each specified digit is subtracted
+     from the corresponding "digit" specified by the system for
+     the creation of a file (see creat(2)).
+
+   Discussion
+     If ooo is omitted, the current value of the mask is printed.
+     The umask command is recognized and executed by the shell.
+
+EXAMPLE
+     The command umask 022 removes group and others write
+     permission.  Files normally created with mode 777 become
+     mode 755; files created with mode 666 become mode 644.
+
+PROMPTS
+   Set or Read Mode (s,r):
+     Enter s to set the file creation mode.  Enter r to print the
+     current file creation mode.
+
+   Creation Mode (000,777):
+     Enter the creation mode to be used when a new file is
+     created.
+
+SEE ALSO
+     chmod(1), chmod(2), creat(2), sh(1), umask(2).
+
+

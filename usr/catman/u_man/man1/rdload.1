@@ -1,0 +1,95 @@
+RDLOAD(1T)                                             RDLOAD(1T)
+
+NAME
+     rdload - Fills the RAM disk with files the user chooses, and
+     reports the size of the RAM disk
+
+SYNOPSIS
+     rdload -s
+     rdload -df
+
+DESCRIPTION
+   Purpose
+     The rdload utility performs two separate functions for the
+     RAM disk.  It provides the total size of the RAM disk for
+     input to mkfs(1), and it fills the RAM disk with the files
+     that the user identifies in the /etc/rdlist file or an
+     alternate file. This utility is usually executed from the
+     /etc/rc script when going to multiuser mode if a RAM disk is
+     on the system.
+
+   Options
+     -ddir
+          Specifies the directory that is the mount point of the
+          RAM disk. The default directory used to mount the RAM
+          disk is /ram. If it is mounted on a different
+          directory, the directory name must be given to rdload.
+
+     -ffile
+          Specifies a file that contains a list of files to be
+          copied to RAM disk.  The default file is /etc/rdlist.
+
+     -s   Reports the size of the RAM disk and writes the size to
+          stdout.
+
+   Discussion
+     The rdload -s command opens the RAM disk device and does an
+     ioctl system call to obtain the total size, in 1K-byte
+     blocks, of the RAM disk. The rdload utility, then, writes
+     the size to standard output and terminates. If no RAM disk
+     is on the system, the size returned will be 0.
+
+     If the rdload utility is not executed with the -s option, it
+     initializes the RAM disk and fills it with files that the
+     user specifies.  The user can either place the file names in
+     the /etc/rdlist file, or a different file if the -f option
+     to rdload is used.  The file used as input to rdload must be
+     in a particular format. (See rdlist(4) for information on
+     the proper format of the file.)  If the RAM disk is not
+     mounted on the default directory /ram, the -d option must be
+     used to tell rdload where to copy the files so that they are
+     copied to the RAM disk.
+
+     The RAM disk must be mounted read/write before rdload is
+     executed.  The /etc/rc script will normally do this for the
+     user. The rdload utility will open the rdlist file. For
+     every line in the rdlist file, rdload will execute the
+     rdscript shell script to copy the file or files from hard
+     disk to RAM disk. All necessary directories on the RAM disk
+     will be created as needed. For example, if the file
+     /usr/bin/vi is to be copied to RAM disk, the file will then
+     reside in the directory /ram/usr/bin and its name will still
+     be vi. The directories /ram/usr and /ram/usr/bin will be
+     created.
+
+     As all the files listed in the rdlist file are copied to
+     RAM, all directories on RAM are read and the proper owner,
+     group, and permissions are given to the directories. The
+     directories in RAM will have the same owner, group, and
+     permissions as the original directories on disk. The rdload
+     utility terminates after all the files have been copied and
+     all the directories have the correct permissions.
+
+FILES
+     /etc/rdlist
+     /etc/rc
+     /etc/rdscript
+
+SEE ALSO
+     rdflush(1T), rdlist(4), ramdsk(7).
+     "External Memory Boards and RAM Disk" in the TI System V
+     Administrator's Guide.
+
+DIAGNOSTICS
+     An error will be returned if the rdlist file does not exist
+     or is in an incorrect format. Errors will be returned for
+     files or directories that are not found. An error will also
+     be returned if the RAM disk becomes full.
+
+NOTES
+     You must be super-user to execute this command in order to
+     properly set the owners and permissions of the directories.
+     The rdload utility is usually run from /etc/rc after the RAM
+     disk file system is made, labeled, and mounted.
+
+

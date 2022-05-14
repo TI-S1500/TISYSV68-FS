@@ -1,0 +1,12 @@
+# cshf	EDIT -- variant of ex for casual users 
+#	@(#)EDIT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^EDIT -- INVOKES A VARIANT OF EX FOR CASUAL USERS"\
+       "^File Name:" _input_file acnm $_input_file\
+	"^#$*"
+if ($abort) goto end
+echo "===  EDIT COMMAND EXECUTING ==="
+edit $_input_file
+end:

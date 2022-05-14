@@ -1,0 +1,586 @@
+ACCT(1M)						 ACCT(1M)
+
+NAME
+     acctcms, acctcon1, acctcon2, acctdisk, acctdusg, acctmerg,
+     accton, acctprc1, acctprc2, acctwtmp, chargefee, ckpacct,
+     dodisk, fwtmp, lastlogin, monacct, nulladm, prctmp, prdaily,
+     prtacct, remove, runacct, shutacct, startup, turnacct,
+     wtmpfix - Invokes accounting utilities and shell scripts
+
+SYNOPSIS
+     acctcms -acjnops files
+     acctcon1 -lopt
+     acctcon2
+     acctdisk
+     acctdusg -ipsuv
+     acctmerg -aiptuv [files]
+     accton [file]
+     acctprc1 [ctmp]
+     acctprc2
+     acctwtmp "reason"
+     chargefee login-name number
+     ckpacct [blocks]
+     dodisk [filesystems]
+     fwtmp -ic
+     lastlogin
+     monacct number
+     nulladm file
+     prctmp
+     prdaily -l [mmdd]
+     prdaily -c [mmdd]
+     prtacct file ["heading"]
+     remove
+     runacct [mmdd] [mmdd state]
+     shutacct ["reason"]
+     startup
+     turnacct on
+     turnacct off
+     turnacct switch
+     wtmpfix [files]
+
+DESCRIPTION
+     This manual entry describes the accounting utilities and
+     shell scripts.  All utilities except wtmpfix are called by
+     runacct via the crontab file.  (The utilities are the
+     commands acctcms through acctprc2, fwtmp, and wtmpfix in the
+     preceding SYNOPSIS section.  The remainder of the commands
+     are shell scripts.)
+
+   Utilities
+     acctcms	 Reads one or more files, normally in the form
+		 described in acct(4).	It adds all records for
+		 processes that executed identically named
+		 commands, sorts them, and writes them to the
+		 standard output.  The command normally uses an
+		 internal summary format.
+
+
+		 The following are options to acctcms:
+
+		 -a   Prints output in ASCII rather than in the
+		      internal summary format.	The output
+		      includes command name, number of times
+		      executed, total kcore-minutes, total CPU
+		      minutes, total real minutes, mean size (in
+		      K), mean CPU minutes per invocation, and
+		      ``hog factor'', as in acctcom.  Output is
+		      normally sorted by total kcore-minutes.
+
+		 -c   Sorts by total CPU time rather than total
+		      kcore-minutes.
+
+		 -j   Combines all commands invoked only once and
+		      prints these commands under the heading
+		      ***other.
+
+		 -n   Sorts by number of command invocations.
+
+		 -o   Output a nonprime (offshift) time only
+		      command summary.
+
+		 -p   Output a prime time only command summary.
+		      Can be used only with the -a option.
+
+		 -s   Specifies that any subsequent file names
+		      are in internal summary format.
+
+		 The following is a typical sequence of commands
+		 for performing daily command accounting and for
+		 maintaining a running total:
+
+		 acctcms file1 file2 >today
+		 cp total previoustotal
+		 acctcms -s today previoustotal >total
+		 acctcms -a -s today
+
+     acctcon1	 Converts a sequence of login/logoff records read
+		 from its standard input to a sequence of
+		 records, one per login session.  Its input
+		 should normally be redirected from the /etc/wtmp
+		 file.	Its output is ASCII and gives device,
+		 user ID, login name, prime connect time (in
+		 seconds), nonprime connect time (in seconds),
+		 session starting time (numeric), and starting
+		 date and time.
+
+
+		 The options to acctcon1 are as follows:
+
+		 -l file
+		      Creates the specified file that contains a
+		      summary of line usage showing line name,
+		      number of minutes used, percentage of total
+		      elapsed time used, number of sessions
+		      charged, number of logins, and number of
+		      logoffs.	This file helps track line usage,
+		      identify bad lines, and find software and
+		      hardware oddities.  Hang-up, termination of
+		      login(1) and termination of the login shell
+		      generate logoff records so that the number
+		      of logoffs is often three to four times the
+		      number of sessions.  See init(1M) and
+		      utmp(4).
+
+		 -o file
+		      Fills the specified file with an overall
+		      record for the accounting period, giving
+		      starting time, ending time, number of
+		      reboots, and number of date changes.
+
+		 -p   Prints input only, showing line name, login
+		      name, and time (in both numeric and
+		      date/time formats).
+
+		 -t   Causes the command to use the last time
+		      found in its input, thus assuring
+		      reasonable and repeatable numbers for
+		      noncurrent files.  The acctcon1 command
+		      maintains a list of lines on which users
+		      are logged in.  When it reaches the end of
+		      its input, the command emits a session
+		      record for each line that still appears to
+		      be active.  If the -t option is not
+		      specified, the command assumes that its
+		      input is a current file, so that it uses
+		      the current time as the ending time for
+		      each session still in progress.
+
+		 In the following example, the file named ctmp is
+		 created only for the use of acctprc commands:
+
+		 acctcon1 -t -l lineuse -o reboots < /etc/wtmp |
+		 sort +1n +2 > ctmp
+		 acctcon2 < ctmp | acctmerg > ctacct
+
+		 The line usage report is confused by date
+		 changes.  Use wtmpfix to correct this situation.
+
+     acctcon2	 Similar to the acctcon1 command but expects as
+		 input a sequence of login session records.  The
+		 command converts the login session records into
+		 total accounting records as described in the
+		 tacct format in acct(4).
+
+     acctdisk	 Reads lines that contain user ID, login name and
+		 number of disk blocks and converts them to total
+		 accounting records that can be merged with other
+		 accounting records.
+
+     acctdusg	 Reads its standard input (usually from find /
+		 -print) and computes disk resource consumption
+		 (including indirect blocks) by login.
+
+
+		 The following are options for acctdusg:
+
+		 -i fnmlist
+		      Ignores the data on those file systems
+		      whose file system name is in fnmlist.  The
+		      fnmlist value is a list of file system
+		      names separated by commas or enclosed
+		      within quotes.  The command compares each
+		      name in this list with the file system name
+		      stored in the volume ID.	See labelit(1M).
+
+		 -p file
+		      Uses file as the name of the password file
+		      to generate login names.	The password file
+		      is /etc/passwd by default.
+
+		 -s   Causes the command to combine all lines for
+		      a single user into a single line if the
+		      input data is already in diskusg output
+		      format.
+
+		 -u file
+		      Places in file records consisting of those
+		      file names for which acctdusg does not
+		      charge.  This feature provides a potential
+		      source for finding users trying to avoid
+		      disk charges.
+
+		 -v (Verbose)
+		      Prints a list on standard error of all
+		      files that are charged to no one.
+
+     acctmerg	 Reads its standard input and up to nine
+		 additional files in the tacct format, as
+		 described in acct(4), or in an ASCII version.
+		 The command merges these inputs by adding
+		 records whose keys (normally user ID and name)
+		 are identical.  The command expects the inputs
+		 to be sorted on those keys.
+
+
+		 The following are options for acctmerg:
+
+		 -a   Produces output in ASCII version of tacct.
+
+		 -i   Specifies that input files are in ASCII
+		      version of tacct.
+
+		 -p   Prints input with no processing.
+
+		 -t   Produces a single record that totals all
+		      input.
+
+		 -u   Summarizes by user ID, rather than user ID
+		      and name.
+
+		 -v   Produces output in verbose ASCII format,
+		      with more precise notation for floating-
+		      point numbers.
+
+		 The following sequence of commands is useful for
+		 making repairs to any file kept in this format:
+
+		 acctmerg -v <file1 >file2
+
+		 The ouput file named file2 can be edited and the
+		 following command executed:
+
+		 acctmerg -a <file2 >file1
+
+     accton	 Turns process accounting off.	If file is given,
+		 it must be the name of an existing file.  The TI
+		 System V kernel appends process accounting
+		 records to this file.	See acct(2) and acct(4).
+
+     acctprc1	 Reads input in the form described by acct(4),
+		 adds login names corresponding to user IDs, then
+		 writes an ASCII line for each process.  Each
+		 line includes the following information:
+
+		 + User ID, login name
+		 + Prime CPU time (tics)
+		 + Nonprime CPU time (tics)
+		 + Mean memory size (in 64-byte units)
+
+		 If ctmp is specified, the ctmp file is expected
+		 to contain a list of login sessions in the form
+		 described in acctcon1, sorted by user ID and
+		 login name.  If this file is not specified, the
+		 command obtains login names from the password
+		 file /etc/passwd.  The information in the ctmp
+		 file helps the acctprc1 command distinguish
+		 among different login names that share the same
+		 user ID.
+
+		 The acctprc2 command reads records in the form
+		 written by acctprc1, summarizes these records by
+		 user ID and name, and then writes the sorted
+		 summaries to the standard output as total
+		 accounting records.  These accounting commands
+		 can be used as follows:
+
+		 acctprc1 ctmp </usr/adm/pacct | acctprc2 >ptacct
+
+		 Although it is possible to distinguish among
+		 login names that share user IDs for commands run
+		 normally, it is difficult to do this for
+		 commands run from cron(1M).  More precise
+		 conversion can be done by faking login sessions
+		 on the console via the acctwtmp program.
+
+     acctprc2	 Reads records in the form written by acctprc1,
+		 summarizes these records by user ID and name,
+		 and then writes the sorted summaries to the
+		 standard output as total accounting records.
+
+     acctwtmp	 Writes a utmp(4) record to its standard output.
+		 The record contains the current time and a
+		 string of characters that describes the reason.
+		 A record type of ACCOUNTING is assigned (see
+		 utmp(4)).  reason must be a string protected by
+		 double quotes (``'') and consisting of 11 or
+		 less characters, numbers, $, or spaces.
+
+		 The following command is a suggestion for use in
+		 shutdown procedures:
+
+		 acctwtmp "file save" >> /etc/wtmp
+
+     fwtmp	 Reads from the standard input and writes to the
+		 standard output, converting binary records of
+		 the type found in the file /etc/wtmp to
+		 formatted ASCII records.  The ASCII version
+		 enables a user to edit a file with tx(1T),
+		 vi(1), or ed(1), or to perform general purpose
+		 maintenance.
+
+		 The option -ic is used to denote that input is
+		 in ASCII form and output is in binary form.
+
+     wtmpfix	 Examines the standard input (with a - argument)
+		 or named files in /etc/wtmp format, corrects the
+		 time/date stamps to make the entries consistent,
+		 and writes to the standard output.  If time or
+		 date corrections are not performed, the acctcon1
+		 command faults when it encounters certain date
+		 change records.
+
+		 Each time the date is set, a pair of date change
+		 records are written to /etc/wtmp.  The first
+		 record is the old date denoted by the string
+		 ``old time'' placed in the line field and the
+		 flag OLD_TIME placed in the type field of the
+		 <utmp.h> structure.  The second record specifies
+		 the new date and is denoted by the string ``new
+		 time'' placed in the line field and the flag
+		 NEW_TIME placed in the type field.  The wtmpfix
+		 command uses these records to synchronize all
+		 time stamps in the file.
+
+		 In addition to correcting time/date stamps,
+		 wtmpfix checks the validity of the name field to
+		 ensure that it consists solely of alphanumeric
+		 characters, a $, or spaces.  If it encounters a
+		 name that is considered invalid, it changes the
+		 login name to INVALID and writes a diagnostic
+		 message to the standard error. In this way,
+		 wtmpfix reduces the chance of acctcon1 failure,
+		 when processing connect accounting records.
+
+   Shell Scripts
+     chargefee	 Charges a number of units to login-name.  A
+		 record is written to /usr/adm/fee and is merged
+		 with other accounting records.  This script is
+		 run manually for special charges.
+
+     ckpacct	 Periodically checks the size of /usr/adm/pacct.
+		 If the size exceeds blocks, 1000 by default,
+		 turnacct is invoked with argument switch.  If
+		 the number of free disk blocks in the /usr file
+		 system falls below 500, ckpacct automatically
+		 turns off the collection of process accounting
+		 records with the off argument to turnacct.  When
+		 at least 500 blocks are restored, accounting is
+		 reactivated.  This feature is sensitive to the
+		 frequency at which ckpacct is executed, usually
+		 by cron.  This shell script should be initiated
+		 via a crontab(1) file.
+
+     dodisk	 Performs the disk accounting functions.  This
+		 script should be invoked by cron.  The command
+		 does disk accounting on /etc/checklist if
+		 filesystems is not specified.
+
+     lastlogin	 Updates /usr/adm/acct/sum/loginlog, which shows
+		 the last date when each person logged in.  This
+		 script is invoked by runacct.
+
+     monacct	 Creates summary files in /usr/adm/acct/fiscal
+		 and restarts summary files in /usr/adm/acct/sum.
+		 This script should be invoked once each month or
+		 each accounting period.  The frequency (month or
+		 accounting period) is specified by the number
+		 argument.  If number is not given, it defaults
+		 to the current month (01 through 12).	This
+		 default is useful if monacct is executed via
+		 cron(1M) on the first day of each month.
+
+     nulladm	 Creates file with mode 664 and ensures that the
+		 owner and group names are adm.  The script is
+		 called by various accounting shell procedures.
+
+     prctmp	 Prints the session record file (normally
+		 /usr/adm/acct/nite/ctmp created by acctcon1).
+
+     prdaily	 Formats a report of the previous day's
+		 accounting data.  The report resides in
+		 /usr/adm/acct/sum/rprtmmdd where mmdd is the
+		 month and day of the report.  The current daily
+		 accounting reports can be printed by typing
+		 prdaily.  Previous days' accounting reports can
+		 be printed by using the mmdd option and
+		 specifying the exact report date desired.
+		 Specify the -l option to print a report of
+		 exceptional resource usage, sorted by login ID.
+		 Previous daily reports are deleted and therefore
+		 inaccessible after each invocation of monacct.
+		 The -c option prints a report of exceptional
+		 resource usage, sorted by command.  This option
+		 can be used on the current day's accounting data
+		 only.	This script is invoked by runacct.
+
+     prtacct	 Formats and prints any total accounting (tacct)
+		 file.	The optional heading must be protected on
+		 the command line with double quotes (``'').
+
+     remove	 Removes the previous day's accounting files.  It
+		 is located in /usr/lib/acct and called by
+		 startup when the system is brought up each day.
+		 This should be invoked only by /usr/lib/acct/startup
+		 and never by a user or an administrator.
+
+     runacct	 Performs the accumulation of connect, process,
+		 fee, and disk accounting on a daily basis.  It
+		 also creates summaries of command usage.  This
+		 command is the main daily accounting shell
+		 procedure.  The command should be executed by
+		 the super-user.  It is normally initiated via
+		 cron(1M).
+
+		 The runacct command processes connect, fee,
+		 disk, and process accounting files.  It also
+		 prepares summary files for prdaily or billing
+		 purposes.
+
+		 The runacct command does not damage active
+		 accounting files or summary files in the event
+		 of errors.  It records its progress by writing
+		 descriptive diagnostic messages into active.
+		 When an error is detected, a message is written
+		 to /dev/console, mail is sent to root and /adm
+		 as described in mail(1), and runacct terminates.
+		 The command uses a series of lock files to
+		 protect against re-invocation.  The files lock
+		 and lock1 are used to prevent simultaneous
+		 invocation, and lastdate is used to prevent more
+		 than one invocation per day.
+
+		 The runacct program breaks its processing into
+		 separate, restartable states.	It writes each
+		 completed state name into the statefile file.
+		 States are executed in the following order:
+
+
+		 SETUP Moves active accounting files into working
+		 files
+
+		 WTMPFIX
+		      Verifies integrity of wtmp file, correcting
+		      date changes if necessary
+
+		 CONNECT1
+		      Produces connect session records in ctmp.h
+		      format
+
+		 CONNECT2
+		      Converts ctmp.h records into tacct.h format
+
+		 PROCESS
+		      Converts process accounting records into
+		      tacct.h format
+
+		 MERGE
+		      Merges the connect and process accounting
+		      records
+
+		 FEES Converts output of chargefee into tacct.h
+		      format and merges with connect and process
+		      accounting records
+
+		 DISK Merges disk accounting records with
+		      connect, process, and fee accounting
+		      records
+
+		 MERGETACCT
+		      Merges the daily total accounting records
+		      in daytacct with the summary total
+		      accounting records in
+		      /usr/adm/acct/sum/tacct
+
+		 CMS  Produces command summaries
+
+		 USEREXIT
+		      Includes any installation-dependent
+		      accounting programs
+
+		 CLEANUP
+		      Cleans up temporary files and exits
+
+		 To restart runacct after a failure, first check
+		 the file named active for diagnostics, and then
+		 fix any corrupted data files such as pacct or
+		 wtmp.	The lock files and lastdate file must be
+		 removed before runacct can be restarted.  The
+		 argument mmdd is necessary if runacct is being
+		 restarted; it specifies the month and day for
+		 which runacct reruns the accounting.  Entry
+		 point for processing is based on the contents of
+		 statefile; to specify a different entry point,
+		 include the desired state on the command line.
+
+		 The following example starts runacct:
+
+		 nohup runacct 2> /usr/adm/acct/nite/fd2log &
+
+		 The following command restarts runacct:
+
+		 nohup runacct 0601 2>> /usr/adm/acct/nite/fd2log &
+
+		 The following command restarts runacct at a
+		 specific state:
+
+		 nohup runacct 0601 MERGE 2>> /usr/adm/acct/nite/fd2log&
+
+		 The accounting system sends the message
+		 ***RECOMPILE pnpsplit WITH NEW HOLIDAYS*** after
+		 the last holiday of the year.	See ``System
+		 Accounting'' in TI System V Administrator's
+		 Guide for more on how to correct this condition.
+		 Other diagnostics are placed in various error
+		 and log files.
+
+		 Normally it is not a good idea to restart
+		 runacct in the SETUP state.  Run SETUP manually
+		 and restart with the following command:
+
+		 runacct mmdd WTMPFIX
+
+		 If runacct fails in the PROCESS state, remove
+		 the last ptacct file because it is not complete.
+
+     shutacct	 Turns process accounting off and appends a
+		 reason record to the /etc/wtmp file.  The reason
+		 text must be protected with double quotes (``'')
+		 on the command line.  This script should be
+		 invoked during a system shutdown (usually in
+		 /etc/shutdown(1M)).
+
+     startup	 Turns the accounting on whenever the system is
+		 brought up.  This script should be called by
+		 init(1M).
+
+     turnacct	 Turns process accounting on or off.  The switch
+		 argument turns accounting off, moves the current
+		 /usr/adm/pacct to the next free name in
+		 /usr/adm/pacctincr (where incr is a number
+		 starting with 1 and incrementing by one for each
+		 additional pacct file), then turns accounting
+		 back on again.  This procedure is called by
+		 ckpacct and thus can be run by cron and used to
+		 keep the pacct file to a reasonable size.  This
+		 script is an interface to accton, as described
+		 in acct(1M).
+
+FILES
+     /etc/passwd	 Contains conversions from login name to
+			 user ID
+     /usr/lib/acct	 Holds all accounting commands
+     /usr/adm/pacct	 Contains process accounting data
+     /usr/adm/pacct*	 File that is used for per-process
+			 accounting if the pacct file gets large,
+			 and during execution of daily accounting
+			 procedure
+     /etc/wtmp		 Contains login/logoff history
+     /usr/adm/acct/nite  Working directory
+     /usr/adm/fee	 Accumulator for fees
+     /usr/adm/acct/sum	 Summary directory, should be saved
+     /usr/src/cmd/acct/tacct.h
+     /usr/src/cmd/acct/ctmp.h
+     /usr/adm/acct/nite/active
+     /usr/adm/acct/nite/daytacct
+     /usr/adm/acct/nite/lock
+     /usr/adm/acct/nite/lock1
+     /usr/adm/acct/nite/lastdate
+     /usr/adm/acct/nite/statefile
+     /usr/adm/acct/nite/ptacct*.mmdd
+
+SEE ALSO
+     acct(2), acct(4), acctcom(1), utmp(4).
+     ``System Accounting'' in the TI System V Administrator's
+     Guide.
+
+

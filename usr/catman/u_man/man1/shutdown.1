@@ -1,0 +1,60 @@
+SHUTDOWN(1M)                                         SHUTDOWN(1M)
+
+NAME
+     shutdown - Terminates all processing
+
+SYNOPSIS
+     shutdown [-p] [seconds]
+
+DESCRIPTION
+   Purpose
+     The shutdown command is part of the TI System V operation
+     procedures.  Its primary function is to terminate all
+     currently running processes in an orderly and cautious
+     manner.
+
+   Options
+     -p      Specifies powerfail mode. See the UPS section of The
+             TI System V Administrator's Guide for more
+             information on the powerfail mode of shutdown.
+
+   Arguments
+     The optional seconds argument specifies the number of
+     seconds (the default is 60 seconds) to wait after the
+     command sends a message to all users on the system.  The
+     system then terminates 10 seconds after
+     shutdown sends a second message to users.
+
+   Discussion
+     The procedure is designed to interact with the person who
+     invoked shutdown.  The shutdown command might instruct the
+     operator to perform specific tasks or to supply certain
+     responses before execution can resume.  The program consists
+     of the following steps:
+
+     1. All users logged on the system are notified to log off
+        the system by a broadcasted message.  The operator can
+        provide a message at this time; otherwise, the standard
+        file-save message is displayed.  The shutdown command
+        then waits either 60 seconds or the number of seconds
+        specified on the shutdown command line, then sends a
+        second message, waits 10 seconds, and terminates the
+        system.
+
+     2. If the operator wishes to run the file-save procedure,
+        shutdown unmounts all file systems.
+
+     3. The super blocks for all file systems are updated before
+        the system is stopped (see sync(1)).  To ensure file
+        system integrity, this update must be completed before
+        the system is rebooted.
+
+DIAGNOSTICS
+     The most common error message that occurs is Device busy.
+     This message appears when a particular file system cannot be
+     unmounted.
+
+SEE ALSO
+     mount(1M), sync(1).
+
+

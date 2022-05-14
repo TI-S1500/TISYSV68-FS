@@ -1,0 +1,7 @@
+	process - Process Management Menu
+		@(#)process.sh	1.1 87/03/09
+
+	This menu lists tools which help the system administrator
+	   schedule and kill processes, monitor user activity, and
+	   start up the system.
+

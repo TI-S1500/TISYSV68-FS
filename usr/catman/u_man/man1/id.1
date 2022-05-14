@@ -1,0 +1,37 @@
+ID(1)                                                       ID(1)
+
+NAME
+     id - Prints user and group IDs and names
+
+SYNOPSIS
+     id
+
+DESCRIPTION
+   Purpose
+     The id command writes a message on the standard output
+     giving the user and group IDs and the corresponding names of
+     the invoking process.
+
+     If the effective and real IDs do not match, both are
+     printed.
+
+EXAMPLE
+     The following example returns a message to the standard
+     output giving the user and group IDs and the user and group
+     names in parentheses.
+
+          id
+
+     Output similar to the following is returned:
+
+          uid=300(myid)  gid=510(grpid)
+
+PROMPTS
+     This utility prints the following header:
+
+          ID -- PRINTS USER AND GROUP IDS AND NAMES
+
+SEE ALSO
+     getuid(2), logname(1).
+
+

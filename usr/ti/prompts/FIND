@@ -1,0 +1,91 @@
+# cshf  find -- Finds files 
+#	@(#)FIND.sh	1.6  89/12/05
+#
+onintr end
+
+prompt "^FIND -- FINDS FILES"\
+	"^Directory(s) to Search:" list macnm $CWD\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Expression or Select Options(e,o):" action \
+	"element(E,e=e,O,o=o)" o\
+	"^#$*"
+
+if ($abort) goto end
+if ($action == "e") then
+	prompt "^FIND -- INPUT EXPRESSION"\
+		"^Expression:" exp string "$exp"\
+		"^#$*"
+
+	if ($abort) goto end
+	echo "=== FIND COMMAND EXECUTING ==="
+	if ($_output_file != "") then
+		echo find $list $exp ">"$_output_file
+		find $list $exp >$_output_file
+	else
+		echo find $list $exp
+		find $list $exp
+ 	endif
+endif
+if ($action == "o") then
+	prompt "^FIND -- SELECT OPTIONS"\
+		"^*Print Path Names:" printflag yesno y\
+		"^*File Name Pattern to Match:" nameflag macnm\
+		"^*File Accessed in (+,-,exact) days:" atimeflag string\
+		"^*Device Name for CPIO Write:" cpioflag acnm\
+		"^*Descent Directory Hierarchy:" depthflag  yesno y\
+		"^*Group Name:" groupflag string\
+		"^*Number of File Links (+,-,exact):" linksflag string\
+		"^*File Modified in (+,-,exact) days:" mtimeflag string\
+		"^*File Name to Match Modification Times:" newerflag acnm\
+		"^*Permission Flags to Check:" permflag integer\
+		"^*Size in Blocks to Check:" sizeflag string\
+		"^*Type of File (b,c,d,p,f):" typeflag \
+		"element(B,b=b,C,c=c,D,d=d,P,p=p,F,f=f)" \
+		"^*Users Name to Compare:" userflag string\
+		"^*Search All Systems:" localflag yesno y\
+		"^*Search All FileSystems:" mountflag yesno y\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($nameflag != "")   set name  = "-name "$nameflag
+	if ($printflag == "y") set print = -print
+	if ($depthflag == "y") set depth = -depth
+	if ($atimeflag != "")  set atime = "-atime "$atimeflag
+	if ($cpioflag != "")   set cpio  = "-cpio "$cpioflag
+	if ($ctimeflag != "")  set ctime = "-ctime "$ctimeflag
+	if ($groupflag != "")  set group = "-group "$groupflag
+	if ($linksflag != "")  set links = "-links "$linksflag
+	if ($mtimeflag != "")  set mtime = "-mtime "$mtimeflag
+	if ($newerflag != "")  set newer = "-newer "$newerflag
+	if ($permflag != "")   set perm  = "-perm "$permflag
+	if ($sizeflag != "")   set size  = "-size "$sizeflag
+	if ($typeflag != "")   set type  = "-type "$typeflag
+	if ($userflag != "")   set user  = "-user "$userflag
+	if ($localflag != "y") set local = -local
+	if ($mountflag != "y") set mount = -mount
+
+	if ($abort) goto end
+	echo "=== FIND COMMAND EXECUTING ==="
+	if ($_output_file != "") then
+		echo find $list $atime $cpio $ctime $depth $group $links \
+		$mtime $name $newer $perm $size $type $user $print $local \
+		$mount ">"$_output_file
+	
+		find $list $atime $cpio $ctime $depth $group $links \
+		$mtime $name $newer $perm $size $type $user $print $local \
+		$mount >$_output_file
+	else
+		echo find $list $atime $cpio $ctime $depth $group $links \
+		$mtime $name $newer $perm $size $type $user $print \
+		$local $mount
+	
+		find $list $atime $cpio $ctime $depth $group $links \
+		$mtime $name $newer $perm $size $type $user $print \
+		$local $mount
+	endif
+endif
+
+#clean up time
+end:
+unset exp list* atime* cpio* ctime* depth* group* links* mtime* name* newer*\
+perm* print* size* type* user* local* mount* action

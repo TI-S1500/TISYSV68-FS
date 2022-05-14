@@ -1,0 +1,61 @@
+CSH(1)                                                     CSH(1)
+
+NAME
+     csh - Calls the Berkeley C shell (a command interpreter)
+
+SYNOPSIS
+     csh -cefinstvVxX arguments
+
+DESCRIPTION
+   Purpose
+     The csh command executes the Berkeley C shell, a command
+     language interpreter.  Its functions are identical to those
+     of the TI Business shell, bsh(1), including the enhanced
+     features, the prompt and menu built-in commands.
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file from which to read commands.
+
+   Accept Default Options:
+     The initial value is yes.  Enter yes to receive the
+     following options.
+
+   Exit on Abnormal Termination:
+     The initial value is no.  Enter yes to specify shell
+     termination if any invoked command terminates abnormally or
+     returns a nonzero exit status.
+
+   Search/Execute .cshrc:
+     The initial value is no.  Enter no to cause faster execution
+     of the shell by preventing searching and executing commands
+     from the file .cshrc.
+
+   Parse Commands:
+     The initial value is no.  Enter yes to parse but not execute
+     commands.
+
+   Read/Execute One Command:
+     The initial value is no.  Enter yes to read and execute a
+     single line of input.
+
+   Set Verbose Variable:
+     The initial value is no.  Enter yes to cause the command
+     input to be echoed after history substitution.
+
+   Set Echo Variable:
+     The initial value is no.  Enter yes to cause commands to be
+     echoed immediately before execution.
+
+   Set Echo Before .cshrc:
+     The initial value is no.  Enter yes to set the echo variable
+     before .cshrc is executed.
+
+   Set Verbose Before .cshrc:
+     The initial value is no.  Enter yes to set the verbose
+     variable before .cshrc is executed.
+
+SEE ALSO
+     bsh(1).
+
+

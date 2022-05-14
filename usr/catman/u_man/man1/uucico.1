@@ -1,0 +1,230 @@
+UUCICO(1C)					       UUCICO(1C)
+
+NAME
+     uucico - Executes the work files for UNIX to UNIX data
+     transmission
+
+SYNOPSIS
+     uucico -dr1sx command-string
+
+DESCRIPTION
+   Purpose
+     The uucico command calls a remote system and executes work
+     requests.
+
+   Options
+     -d dir  Uses dir rather than /usr/spool as the spool
+	     directory.
+
+     -r1     Starts uucico execution in master mode.  See
+	     Discussion below.
+
+     -s sys  Executes the command for only system sys.	The
+	     command calls sys even if there is no work for sys
+	     in the spool directory.
+
+     -x num  Specifies the debugging level.
+
+   Discussion
+     The uucico command is in master mode when started by one of
+     the following methods:
+
+     + Started by a system daemon
+
+     + Started by uucp(1C), uux(1C), or uucico with -r1 option
+
+     + Started by the user
+
+     If the -s option is specified, the command calls the named
+     system and executes work for that system.	If the -s option
+     is not specified, the command accesses the spool directory
+     for systems to call.
+
+     If uucico is started by a remote system, execution is in
+     slave mode.
+
+     The uucico command does the following:
+
+     + Accesses the spool directory for work files
+
+     + Calls the remote system
+
+     + Selects the line protocol
+
+     + Executes the work requests from the remote and the host
+       systems
+
+     + Logs work status
+
+   Accessing the Spool Directory
+     Work file names in /usr/spool/uucp have the following
+     format:
+
+	  type.sys_name grade number
+
+     The name component meanings are as follows:
+
+     type      C for copy command file, or D for data file, or X
+	       for execute file
+
+     sys_name  Name of the remote system
+
+     grade     A character.
+
+     number    A four-digit (leading zeroes if necessary)
+	       sequence number
+
+     The following file name specifies a work file for a file
+     transfer between the local system and the remote system
+     named sys1:
+
+	  C.sys1n0026
+
+   Calling the Remote System
+     At the beginning of the call to the remote system, the
+     uucico command sets a lock to disallow multiple
+     conversations between the same two systems.  The command
+     reads the /usr/lib/uucp/L.sys file.  This file contains the
+     following fields:
+
+     + Remote system name
+
+     + Times to call (The command checks this time field against
+       the current time to determine whether to make a call.)
+
+     + Device or device type the command uses for the call
+
+     + Line speed
+
+       The command uses the device field and the line speed field
+       to scan the /usr/lib/uucp/L-devices file for an available
+       device.	All devices are tried until the call is made or
+       until the list of devices is exhausted.	If a device is
+       opened, a lock file is created so that another uucico
+       execution cannot use the device.
+
+     + Phone number if device field is prefixed by ACU or device
+       name (same as device field) if device field is not
+       prefixed by ACU
+
+       The phone number field can include abbreviations (These
+       abbreviations are translated into dial sequences using the
+       /usr/lib/uucp/L-dialcodes file).  Hayes Smartmodems(TM)
+       require a carriage return for an end-of-number (EON)
+       signal.	The character < after the phone number provides
+       this feature.
+
+     + Login information fields (These fields are used to log in
+       to the remote system if the call is successful).
+
+     The called (slave) system sends a message to the calling
+     (master) system to let the master know that the slave is
+     ready to receive the system identification and conversation
+     sequence number.  Protocol selection begins after the slave
+     verifies the response from the master.  The slave can reply
+     with a ``call-back required'' message.  In this case, the
+     current conversation is terminated and the called system
+     will return the call.
+
+   Selecting Line Protocol
+     The remote system sends a message, in which pro_list is a
+     string of characters.  Each character represents a line
+     protocol in the following message:
+
+	  P pro_list
+
+     The calling system scans the pro_list for a character that
+     corresponds to an available line protocol.  The calling
+     system returns the following message, in which code is
+     either the matching protocol character or N (for no matching
+     protocol).
+
+	  U code
+
+   Executing the Work Requests
+     Five message codes are used during the execution of the work
+     requests.	These codes and their meanings are as follows:
+
+     S	Sends a file
+
+     R	Receives a file
+
+     C	Copies complete
+
+     X	Executes a uucp command
+
+     H	Hangs up
+
+     Smartmodem is a trademark of Hayes Microcomputer Products,
+     Inc.
+
+     The master sends R, S, or X until all work specified in the
+     spool directory is complete.  When all work is complete, the
+     master sends H.
+
+
+     The slave signifies a yes or a no for each request by
+     sending one of the following messages:  SY, SN, RY, RN, HY,
+     HN, XY, or XN.
+
+     Send and receive replies depend upon permission to access
+     the requested file or directory using the
+     /usr/lib/uucp/USERFILE and upon read/write permissions of
+     the file or directory.  After a file is copied into
+     /usr/spool, the receiving system sends a ``copy complete''
+     message.  The receiving system then sends a CY message if
+     the file is copied into the destination from the spool
+     directory.  If the file cannot be copied into the
+     destination, a CN message is sent.
+
+     A file that cannot be copied from the spool directory to the
+     requested destination remains in the spool directory.  This
+     file has the prefix TM.
+
+   Logging Work Status
+     Work requests and their results are logged on both the local
+     and remote systems.
+
+   Terminating the Session
+     An HY message received by the master is echoed to the slave
+     and the protocols are turned off.	Each system sends a final
+     OO message (over-and-out) to the other.  The slave
+     terminates.  The master terminates if -s was specified.
+     Otherwise, the master calls the next system.
+
+EXAMPLE
+     The example that follows verifies that the system named sys1
+     can be contacted.	The requested job is to copy a file named
+     file1 to system sys1.  The uucp command is first executed
+     with the -r option to queue but not process the job.  Then
+     the uucico command is executed with the -r1 option to
+     process the job in master mode.  The commands used are as
+     follows:
+
+	  uucp -r file1 sys1!~/file1_copy
+	  /usr/lib/uucp/uucico -r1 -x4 -ssys1
+
+PROMPTS
+   Master or slave mode(s,m):
+     Enter s to start uucico in slave mode.  Enter m to start
+     uucico in master mode.
+
+   Spool Directory:
+     Initial value is /usr/spool.  Enter a directory name to be
+     used as the spool directory.
+
+   System Name:
+     Optional. Enter a system name that tells uucico to do work
+     only for that system.
+
+   Debug Level:
+     Optional. Enter a number that specifies the debugging level.
+
+FILES
+     /usr/spool 	   Spool directory
+     /usr/lib/uucp/*	   Other data and programs
+
+SEE ALSO
+     uuclean(1M), uucp(1C), uux(1C).
+
+

@@ -1,0 +1,46 @@
+SETSITE(1M)                                           SETSITE(1M)
+
+NAME
+     setsite - Sets the site name of a TI System V machine
+
+SYNOPSIS
+     setsite [filename] [sitename]
+
+DESCRIPTION
+   Purpose
+     The setsite command sets the site name for a TI System V
+     machine.  The command reads the file specified by filename
+     and assigns the name found in filename as the name of the
+     site.  If no file name is given, the name /etc/sitename is
+     assumed.
+
+   Arguments
+     filename  File that contains the name of the site.
+
+     sitename  Name of the site that is currently in memory.  The
+               default name is sitename.
+
+   Errors
+     Error messages are returned to the terminal executing the
+     setsite command.
+
+PROMPTS
+   File Name:
+     Enter the name of the file containing the site name.
+
+   Current Site Name:
+     Enter the name of the site that is currently in memory.
+
+FILES
+     /etc/sitename
+
+SEE ALSO
+     init(1M).
+
+NOTES
+     Although it is possible to put a slash (/), shell metacharacters
+     such as an asterisk (*), or other special characters in the 
+     sitename, it is strongly discouraged since it will result in
+     user confusion and cause various utilities to fail.
+
+

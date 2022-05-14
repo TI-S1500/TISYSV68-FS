@@ -1,0 +1,285 @@
+SORT(1)                                                   SORT(1)
+
+NAME
+     sort - Sorts and/or merges files
+
+SYNOPSIS
+     sort -bcdfimMnortuyz [+ pos1 [- pos2]] [files]
+
+DESCRIPTION
+   Purpose
+     The sort command sorts lines of all named files together and
+     writes the result on the standard output.  The standard
+     input is read if - is used as a file name or if no input
+     files are named.
+
+   Options
+     Comparisons are based on one or more sort keys extracted
+     from each line of input.  By default, there is one sort key,
+     the entire input line.  Ordering is lexicographic by bytes.
+
+     The environment variable LANG specifies the name of the file
+     used to determine the collating sequence.  If no variable is
+     specified, the value USA is used by default and the file
+     /usr/ti/collate/USA specifies the collating sequence.  The
+     position of a character within the file that specifies the
+     collating sequence determines that character's position in
+     the collating sequence.  For example, if the environment
+     variable LANG were set to SPECSRT and if the character A
+     were the fourth byte in the file /usr/ti/collate/SPECSRT,
+     then A would be the fourth character in the collating
+     sequence.
+
+     The collating sequence file contains two collating
+     sequences.  The second sequence is used when the f option is
+     specified.
+
+     The following options alter the default behavior:
+
+     -c   Checks that the input file is sorted according to the
+          ordering rules.  Give no output unless the file is not
+          sorted.  This option checks one file only.
+
+     -m   Merges only; the input files are already sorted.
+
+     -ooutput
+          The value is the name of an output file to use instead
+          of the standard output.  This file may be the same as
+          one of the inputs.  There can be optional blanks
+          between the option and its value.
+
+     -u   Prints only one line (unique) for each set of equal
+          lines.
+
+     -ykmem
+          The amount of main memory used by the sort
+          significantly affects its performance.  Sorting a small
+          file in a large amount of memory is a waste.  If this
+          option is omitted, sort begins using a system default
+          memory size and continues to use more space as needed.
+          If this option is presented with a value, kmem, sort
+          starts using that number of kilobytes of memory, unless
+          the administrative minimum or maximum is violated, in
+          which case the corresponding limit is used.  Thus, -y0
+          is guaranteed to start with minimum memory.  By
+          convention, -y (with no argument) starts with maximum
+          memory.
+
+     -zrecsz
+          The size of the longest line read is recorded in the
+          sort phase so that buffers can be allocated during the
+          merge phase.  If the sort phase is omitted via the -c
+          or -m options, 512 is the default.  Lines longer than
+          the buffer size cause sort to terminate abnormally.
+          Supplying the actual number of bytes in the longest
+          line to be merged (or some larger value ) prevents
+          abnormal termination.
+
+     The following options override the default ordering rules:
+
+     -d   Dictionary order: only letters, digits, and blanks are
+          significant in comparisons.
+
+     -f   Folds lowercase letters into uppercase.
+
+     -i   Ignores characters outside the ASCII range 040-0176 in
+          nonnumeric comparisons.
+
+     -M   Compares as months.  The first three nonblank
+          characters of the field are folded to uppercase and
+          compared so that JAN < FEB < ... < DEC.  Invalid fields
+          compare low to JAN.  The -M option implies the -b
+          option  (explained in this section).  If the month
+          compares equal, the other fields (or the entire line)
+          determine the order.
+
+     -n   Sorts by arithmetic value an initial numeric string,
+          consisting of optional blanks, optional minus sign, and
+          zero or more digits with optional decimal point.
+          Option -n implies option -b.  Note that the -b option
+          is effective only when restricted sort key
+          specifications are in effect.  Any other nonnumeric
+          characters are treated like end of string delimiters.
+
+     -r   Reverses the sense of comparisons.
+
+     When ordering options appear before restricted sort key
+     specifications, the requested ordering rules are applied
+     globally to all sort keys.  When attached to a specific sort
+     key, the specified ordering options override all global
+     ordering options for that key.
+
+     The notation +pos1  -pos2 restricts a sort key to one
+     beginning at pos1 and ending at pos2.  The characters at
+     positions pos1 and pos2 are included in the sort key
+     (provided that pos2 does not precede pos1).  A missing -pos2
+     means the end of the line.  A maximum of ten keys can be
+     specified.
+
+     Specifying pos1 and pos2 involves the notion of a field, a
+     minimal sequence of characters followed by a field separator
+     or a newline.  By default, the first blank (space or tab) of
+     a sequence of blanks acts as the field separator.  All
+     blanks in a sequence of blanks are considered to be part of
+     the next field; for example, all blanks at the beginning of
+     a line are considered to be part of the first field.  The
+     treatment of field separators can be altered using the
+     following options:
+
+     -tx  Uses x as the field separator character; x is not
+          considered to be part of a field (although it may be
+          included in a sort key).  Each occurrence of x is
+          significant (e.g., xx delimits an empty field).
+
+     -b   Ignores leading blanks when determining the starting
+          and ending positions of a restricted sort key.  If the
+          -b option is specified before the first +pos1 argument,
+          it will be applied to all +pos1 arguments.  Otherwise,
+          the b flag may be attached independently to each +pos1
+          or -pos2 argument (as explained in the next section).
+
+   pos Arguments
+     Pos1 and pos2 each have the form m.n optionally followed by
+     one or more of the options bdfinr.  A starting position
+     specified by +m.n is interpreted to mean the n+1st character
+     in the m+1st field.  A missing .n means .0, indicating the
+     first character of the m+1st field.  If the b option is in
+     effect, n is counted from the first nonblank character in
+     the m+1st field; +m.0b refers to the first nonblank
+     character in the m+1st field.
+
+     A last position specified by -m.n is interpreted to mean the
+     nth character (including separators) after the last
+     character of the mth field.  A missing .n means .0,
+     indicating the last character of the mth field.  If the b
+     option is in effect, n is counted from the last leading
+     blank in the m+1st field; -m.1b refers to the first nonblank
+     character in the m+1st field.
+
+     When there are multiple sort keys, later keys are compared
+     only after all earlier keys compare equal.  Lines that
+     otherwise compare equal are ordered with all bytes
+     significant.
+
+EXAMPLES
+     The following example sorts the contents of infile with the
+     second field as the sort key:
+
+          sort +1 -2 infile
+
+     The next example sorts, in reverse order, the contents of
+     infile1 and infile2, placing the output in outfile and using
+     the first character of the second field as the sort key:
+
+          sort -r -o outfile +1.0 -1.2 infile1 infile2
+
+     The next example sorts, in reverse order, the contents of
+     infile1 and infile2 using the first non-blank character of
+     the second field as the sort key:
+
+          sort -r +1.0b -1.1b infile1 infile2
+
+     The next example prints the password file (passwd(4)) sorted
+     by user ID (the third colon-separated field):
+
+          sort -t: +2n -3 /etc/passwd
+
+     The next example prints the lines of the already sorted file
+     infile, suppressing all but the first occurrence of lines
+     having the same third field.  (The options -um with just one
+     input file make the choice of a unique representative from a
+     set of equal lines predictable.)
+
+          sort -um +2 -3 infile
+
+PROMPTS
+   Input File Name(s):
+     Enter the names of the files to process.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter the name of the
+     file to receive the output.
+
+   Only Check Ordering:
+     The initial value is no.  Enter yes to check that the input
+     file is sorted according to the ordering rules.
+
+   Merge Only:
+     The initial value is no.  Enter yes to merge the sorted
+     input files.
+
+   Print Only Unique Lines:
+     The initial value is no.  Enter yes to print only one unique
+     line when two or more equal lines exist.
+
+   Compare as Months:
+     The initial value is no.  Enter yes to convert the first
+     three nonblank characters of a line (first field) to
+     uppercase and compare lines as months (JAN < FEB < ... <
+     DEC).  Invalid fields compare low to JAN.
+
+   Field Separator:
+     Response to this prompt is optional.  Enter a character or
+     characters to be used as a field separator.  This character
+     will not be considered part of the field.
+
+   Select Ordering Rules:
+     The initial value is no.  Enter yes to receive the following
+     ordering rules prompts.
+
+     The following five prompts are dictionary order prompts.
+
+   Dictionary Order:
+     The initial value is no.  Enter yes to consider only
+     letters, digits, and blanks significant in comparisons.
+
+   Starting Position/Field:
+     Response to this prompt is optional.  Enter a string that
+     indicates the position or field from which to start the
+     sort.
+
+   Ending Position/Field:
+     Response to this prompt is optional.  Enter a string that
+     indicates the position or field from which to end the sort.
+
+   Ignore Leading Blanks:
+     The initial value is no.  Enter yes to ignore leading blanks
+     when determining the starting and ending positions of a
+     sort.
+
+   Fold Lower/Upper Case:
+     The initial value is no.  Enter yes to convert lowercase
+     letters into uppercase letters.
+
+     The remaining prompts are prompts for alternative ordering
+     rules.
+
+   Ignore Outside ASCII Range:
+     The initial value is yes.  Enter yes or accept the initial
+     value to ignore characters outside the ASCII range 040 -
+     0176 in nonnumeric comparisons.
+
+   Sort by Arithmetic Value:
+     The initial value is no.  Enter yes to sort an initial
+     numeric string by arithmetic value.  The string consists of
+     optional blanks, optional minus sign, and zero or more
+     digits with optional decimal point.
+
+   Reverse Comparison Sense:
+     The initial value is no.  Enter yes to reverse the sense of
+     comparisons.
+
+FILES
+     /usr/tmp/stm???
+
+SEE ALSO
+     comm(1), join(1), uniq(1).
+
+DIAGNOSTICS
+     This program comments and exits with nonzero status for
+     various trouble conditions (such as when input lines are too
+     long) and for disorder discovered under option -c.  When the
+     last line of an input file is missing a newline character,
+     sort appends one, prints a warning message, and continues.
+
+

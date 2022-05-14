@@ -1,0 +1,106 @@
+# cshf 	cu -- call unix system 
+#	@(#)CU.sh	1.2  87/09/18
+#
+onintr end
+
+@ count = 0
+while ($count != 1) 
+  prompt "^CU -- CALLS ANOTHER UNIX SYSTEM"\
+	"^Specify System Name:" sys yesno n\
+	"^Dial Into a System:" dial yesno n\
+	"^Specify a Direct Communications Line:" line yesno n\
+	"^#$*"
+
+  if ($abort) goto end
+  if ($sys == "y") @ count++
+  if ($dial == "y") @ count++
+  if ($line == "y") @ count++
+  if ($count != 1) @ count = 0
+end
+
+if ($sys == "y") then
+  prompt "^CU -- SPECIFY SYSTEM NAME OPTIONS"\
+	"^System Name:" sysname acnm\
+	"^Print Diagnostic Traces:" dflag yesno n\
+	"^Even, Odd, or No Parity (e,o,n):" parity "element(E,e=e,O,o=o,N,n=n)" o\
+	"^Emulate Local Echo:" hflag yesno n\
+	"^#$*"
+
+  if ( $abort) goto end
+  if ($parity == "o") set opt = o$opt
+  if ($hflag == "y") set opt = h$opt
+  if ($parity == "e") set opt = e$opt
+  if ($dflag == "y") set opt = d$opt
+  if ($opt != "") set opt = -$opt
+  echo === CU COMMAND EXECUTING ===
+  echo cu $opt $sysname
+  cu $opt $sysname
+endif
+ 
+if ($dial == "y") then
+  prompt "^CU -- DIAL INTO A SYSTEM OPTIONS"\
+	"^*Line Device to Use:" lflag acnm\
+	"^Print Diagnostic Traces:" dflag yesno n\
+	"^Even, Odd, or No Parity (e,o,n):" parity "element(E,e=e,O,o=o,N,n=n)" o\
+	"^Emulate Local Echo:" hflag yesno n\
+	"^Modem Control With Direct Line:" mflag yesno n\
+	"^Prompt for Telephone Number:" nflag yesno n\
+	"^*Baud Rate:" sflag\
+	"element(110=110,150=150,300=300,600=600,1200=1200,2400=2400,4800=4800,9600=9600,19200=19200)" \
+	"^Dial Terminal With Auto Ans:" tflag yesno n\
+	"^Direct Connect or Telephone # (d,t):" choice "element(D,d=d,T,t=t)" t\
+	"^#$*"
+
+  if ( $abort) goto end
+  if ($choice == "d") then
+	set $action = "dir"
+  else
+   if ($nflag == "n") then
+  	prompt "^CU -- TELEPHONE NUMBER"\
+		"^Telephone Number:" action string\
+		"^#$*"
+        if ( $abort) goto end
+   endif
+  endif
+  if ( $abort) goto end
+  if ($tflag == "y") set opt = t$opt
+  if ($parity == "o") set opt = o$opt
+  if ($nflag == "y") set opt = n$opt
+  if ($mflag == "y") set opt = m$opt
+  if ($hflag == "y") set opt = h$opt
+  if ($parity == "e") set opt = e$opt
+  if ($dflag == "y") set opt = d$opt
+  if ($opt != "") set opt = -$opt
+
+  if ($sflag != "") set sopt = -s$sflag
+  if ($lflag != "") set lopt = -l$lflag
+  echo === CU COMMAND EXECUTING ===
+  echo cu $opt $lopt $sopt $action
+  cu $opt $lopt $sopt $action
+endif
+ 
+if ($line == "y") then
+  prompt "^CU -- SPECIFY A DIRECT COMMUNICATIONS LINE OPTIONS"\
+	"^*Line Device to Use:" lflag acnm\
+	"^Print Diagnostic Traces:" dflag yesno n\
+	"^Even, Odd, or No Parity (e,o,n):" parity "element(E,e=e,O,o=o,N,n=n)" o\
+	"^Emulate Local Echo:" hflag yesno n\
+	"^*Baud Rate:" sflag\
+	"element(110=110,150=150,300=300,600=600,1200=1200,2400=2400,4800=4800,9600=9600,19200=19200)" \
+	"^#$*"
+
+  if ( $abort) goto end
+  if ($parity == "o") set opt = o$opt
+  if ($hflag == "y") set opt = h$opt
+  if ($parity == "e") set opt = e$opt
+  if ($dflag == "y") set opt = d$opt
+  if ($opt != "") set opt = -$opt
+  if ($lflag != "") set lopt = -l$lflag
+  if ($sflag != "") set sopt = -s$sflag
+  echo === CU COMMAND EXECUTING ===
+  echo cu $opt $sopt $lopt 
+  cu $opt $sopt $lopt 
+endif
+
+end:
+unset *opt *flag tel sys line action choice count dial sysname parity

@@ -1,0 +1,4 @@
+/dev/dsk/sys:root
+/dev/rdsk/sys:pipe
+/dev/rdsk/sys:usr
+/dev/rdsk/sys:src

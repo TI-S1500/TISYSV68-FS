@@ -1,0 +1,45 @@
+MKDIR(1M)                                               MKDIR(1M)
+
+NAME
+     mkdir - Makes directories
+
+SYNOPSIS
+     mkdir [ -m mode ]  [ -p] dirname ...
+
+DESCRIPTION
+     mkdir creates the named directories in mode 777 (possibly
+     altered by umask (1)).
+
+     Standard entries in a directory (e.g., the files ., for the
+     directory itself, and .., for its parent) are made
+     automatically.  mkdir cannot create these entries by name.
+     Creation of a directory requires write permission in the
+     parent directory.
+
+     The owner ID and group ID of the new directories are set to
+     the process's real user ID and group ID, respectively.
+
+     Two options apply to mkdir:
+
+     -m   This option allows users to specify the mode to be used
+          for new directories.  Choices for modes can be found in
+          chmod (1).
+
+     -p   With this option, mkdir creates dirname by creating all
+          the non-existing parent directories first.
+
+EXAMPLE
+     To create the subdirectory structure a/next/sub, type:
+
+          mkdir -p a/next/sub
+
+SEE ALSO
+     intro(2), mkdir(2), rm(1), sh(1), umask(1).
+
+DIAGNOSTICS
+     mkdir returns exit code 0 if all directories given in the
+     command line were made successfully.  Otherwise, it prints a
+     diagnostic and returns nonzero.  An error code is stored in
+     errno.
+
+

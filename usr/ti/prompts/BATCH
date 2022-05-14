@@ -1,0 +1,21 @@
+# cshf  batch -- execute batches at a later time 
+#	@(#)BATCH.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^BATCH -- EXECUTES BATCHES AT A LATER TIME"\
+	"^*Command File Name:" _input_file acnm $_input_file\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== BATCH COMMAND EXECUTING ==="
+if ($_input_file == "") then
+	echo batch 
+	batch 
+else 
+	echo batch "<"$_input_file
+	batch <$_input_file
+endif
+
+#clean up time
+end:

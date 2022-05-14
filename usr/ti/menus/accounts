@@ -1,0 +1,7 @@
+accounts:menu:ACCOUNT MANAGEMENT MENU Series 1000, Model 1500:accounts.hlp
+GRPCK:c:Checks group files:
+NEWGRP:c:Logs into a new group:
+PWCK:c:Checks password file:
+SU:c:Changes user identity to super-user or another user:
+USRADM:c:Manages user accounts:
+WHO:c:Provides information about users and system activity:

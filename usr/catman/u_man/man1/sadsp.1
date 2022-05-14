@@ -1,0 +1,158 @@
+SADSP(1T)						SADSP(1T)
+
+NAME
+     sadsp - Invokes a system activity display
+
+SYNOPSIS
+     sadsp
+
+DESCRIPTION
+   Purpose
+     The sadsp command displays system performance statistics.
+     The environment variable TERM must be set to reflect the
+     current terminal type because the command uses the termcap
+     library to control the screen.
+
+   Discussion
+     When sadsp is invoked the screen is cleared and a display
+     similar to the following is shown:
+
+     CPUs: 2  CCBs: 1	    Ram disk reads:	10  Ave. size:1
+     Ticks:      1080    Ram disk writes:	 5  Ave. size:1
+     Swap Avail: 29850
+     Swap Free:  18730  Pct.  Mem.  Mem.  # of  # of  # of     Paging	Swapping
+     Proc Swapped:   7  idle  avail free  proc  clns  proc sw. disk I/O disk I/O
+     Proc Migr:      9  0  67  3396 2146  91    4	  668	    45	     9
+     Proc Forks:    12  1  84  3839 2603  41    1	  309	    15	     3
+     Logical IO:   599  2   0	           0    0	    0	     0	     0
+     Actual IO:    772  3   0	           0    0	    0	     0	     0
+     Phys IO:	   319  4   0	           0    0	    0	     0	     0
+       CCB  CCB    Ave.  CCB	 Ave.  CCB    |  Disk	Ave.  Disk    Ave.  Pct.
+       ops  reads  size  writes  size  ioctls |  reads	size  writes  size  busy
+     0	  0	0     0       0      0	    0 |     98	   1	  43   1    7
+     1	  0	0     0       0      0	    0 |     10	   1	  2    1    1
+     2	  0	0     0       0      0	    0 |    484	   1	  22   1   23
+     3	  0	0     0       0      0	    0 |      0	   0	  0    0    0
+     4	107    31    69      67    690	    9 |      0	   0	  0    0    0
+     5	  0	0     0       0      0	    0 |      0	   0	  0    0    0
+     6	  0	0     0       0      0	    0 |      0	   0	  0    0    0
+     7	  0	0     0       0      0	    0 |      0	   0	  0    0    0
+     8	  0	0     0       0      0	    0 |      0	   0	  0    0    0
+     9	  0	0     0       0      0	    0 |      0	   0	  0    0    0
+     A	  0	0     0       0      0	    0 |      0	   0	  0    0    0
+
+
+     The display is updated every two seconds.	Press the F1
+     (function key 1) key to reinitialize the display.	Press the
+     F2 (function key 2) key to terminate the display.	Because
+     the counters are sampled at specific intervals, the
+     percentages in the display are estimates.
+
+     The following list describes the meanings of the field
+     descriptors.
+
+     CPUs
+	  Number of CPUs currently active in the system.
+
+     CCBs
+	  Number of communication carrier boards (CCBs) currently
+	  active in the system.
+
+     Ticks
+	  Number of clock ticks that have elapsed since the
+	  display was initialized.
+
+     Swap Avail
+	  Amount of swap space (in K bytes) available to the system.
+
+     Swap Free
+	  Amount of swap space (in K bytes) that is currently free of use.
+
+     Proc Swapped
+	  Number of processes currently swapped.
+
+     Proc Migr
+	  Number of processes that have been migrated to an
+	  alternate CPU.
+
+     Proc Forks
+	  Number of process forks.
+
+     Logical I/O
+	  Number of disk block requests issued to the file
+	  management subsystem.
+
+     Actual I/O
+	  Number of disk I/O requests issued by the file
+	  management subsystem.
+
+     Phys I/O
+	  Number of raw device I/O requests issued.
+
+     Ram disk reads
+	  Number of read requests issued to the RAM disk.
+
+     Ram disk writes
+	  Number of write requests issued to the RAM disk.
+
+     Ave. size
+	  Average size (in K bytes) of the read or write requests to RAM disk.
+
+     Pct. idle
+	  Percent of time a particular CPU is idle.
+
+     Mem avail
+	  Amount of memory (in pages) available on the particular CPU.
+
+     Mem free
+	  Amount of memory (in pages) currently free on the particular CPU.
+
+     # of proc
+	  Number of processes currently executing on this CPU.
+
+     # of clns
+	  Number of clones (in memory copies) currently executing
+	  on this CPU.
+
+     # of proc sw.
+	  Number of process switches by this CPU.
+
+     Paging disk I/O
+	  Number of disk I/O requests issued by the virtual
+	  memory subsystem to facilitate paging for this CPU.
+
+     Swapping disk I/O
+	  Number of disk I/O requests issued to perform swapping
+	  for this CPU.
+
+     CCB ops
+	  Number of operation that have occurred on this CCB.
+
+     CCB reads
+	  Number of reads issued to this CCB.
+
+     CCB writes
+	  Number of writes issued to this CCB.
+
+     CCB ioctls
+	  Number of ioctl(2) calls issued to this CCB.
+
+     Disk reads
+	  Number of reads issued to this disk.
+
+     Disk writes
+	  Number of writes issued to this disk.
+
+     Ave. size
+	  Average size (in K bytes) of the read or write requests.
+
+     Pct. busy
+	  Percent of time this disk was busy.
+
+FILES
+     /dev/kmem
+
+SEE ALSO
+     timex(1), sar(1).
+
+

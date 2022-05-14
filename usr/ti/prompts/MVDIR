@@ -1,0 +1,19 @@
+# cshf  mvdir -- Moves a directory 
+#	@(#)MVDIR.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^MVDIR -- RENAMES DIRECTORIES"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^Old Directory Name:" dirname acnm \
+	"^New Directory Name:" name acnm\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== MVDIR COMMAND EXECUTING ==="
+echo /etc/mvdir $dirname $name
+/etc/mvdir $dirname $name
+
+#clean up time
+end:
+unset dirname name

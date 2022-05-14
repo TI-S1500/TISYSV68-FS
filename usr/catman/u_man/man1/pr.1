@@ -1,0 +1,204 @@
+PR(1)                                                       PR(1)
+
+NAME
+     pr - Prints files
+
+SYNOPSIS
+     pr +k -k -adefhilmnoprstw files
+
+DESCRIPTION
+     The pr command prints the named files on the standard
+     output.
+
+   Options
+     The options can appear singly or be combined in any order.
+
+     +k    Begins printing with page k (default is 1).
+
+     -k    Produces k-column output (default is 1).  The options
+           -e and -i are assumed for multicolumn output.
+
+           Multicolumn output truncates lines if necessary to fit
+           the specified number of columns on the screen.  At
+           least one blank space is inserted between columns.
+
+     -a    Prints multicolumn output across the page.
+
+     -d    Double-spaces the output.
+
+     -eck  Expands input tabs to character positions k+1, 2*k+1,
+           3*k+1, etc.  If k is 0 or is omitted, default tab
+           settings at every eighth position are assumed.  Tab
+           characters in the input are expanded into the
+           appropriate number of spaces.  If c (any non-digit
+           character) is given, it is treated as the input tab
+           character (default for c is the tab character).
+
+     -f    Uses form-feed character for new pages (default is to
+           use a sequence of line-feeds).  Pause before beginning
+           the first page if the standard output is associated
+           with a terminal.
+
+     -h    Uses the next argument as the header to be printed
+           instead of the file name.
+
+     -ick  In output, replaces white space wherever possible by
+           inserting tabs to character positions k+1, 2*k+1,
+           3*k+1, etc.  If k is 0 or is omitted, default tab
+           settings at every eighth position are assumed.  If c
+           (any non-digit character) is given, it is treated as
+           the output tab character (default for c is the tab
+           character).
+
+     -lk   Sets the length of a page to k lines (default is 66).
+           Note that the header and the trailer together use a
+           total of 10 of the lines.  Do not specify k less than
+           10.
+
+     -m    Merges and prints all files simultaneously, one per
+           column (overrides the -k, and -a options).
+
+     -nck  Provides k-digit line numbering (default for k is 5).
+           The number occupies the first k character positions of
+           each column of normal output or each line of -m
+           output.  If c (any non-digit character) is given, it
+           is appended to the line number to separate it from
+           whatever follows (default for c is a tab).
+
+     -ok   Offsets each line by k character positions (default is
+           0).  The number of character positions per line is the
+           sum of the width and offset.
+
+     -p    Pauses before beginning each page, including the first
+           page, if the output is directed to a terminal.  The
+           program rings the bell at the terminal and waits for
+           the user to press RETURN.
+
+     -r    Prints no diagnostic reports on failure to open files.
+
+     -sc   Separates columns by the single character c instead of
+           by the appropriate number of spaces (default for c is
+           a tab).
+
+     -t    Prints neither the 5-line identifying header nor the
+           5-line trailer normally supplied for each page and
+           quits printing after the last line of each file
+           without spacing to the end of the page.
+
+     -wk   Sets the width of a line to k character positions
+           (default is 72 for equal-width multicolumn output, no
+           limit otherwise).
+
+   Discussion
+     If file is -, or if no files are specified, the standard
+     input is assumed.  By default, the listing is separated into
+     pages, each headed by the page number, a date and time, and
+     the name of the file.
+
+     By default, columns are of equal width, separated by at
+     least one space; lines that do not fit are truncated. If the
+     -s option is used, lines are not truncated and columns are
+     separated by the separation character.
+
+     If the standard output is associated with a terminal, error
+     messages are withheld until pr has completed printing.
+
+EXAMPLES
+     The following example formats a C program source file with
+     numbered lines and pipes the file to a printer:
+
+          pr -n prog1.c | lp
+
+     The following example prints file1 and file2 as a double-
+     spaced, three-column listing headed by "file list":
+
+          pr -3dh "file list" file1 file2
+
+     The following example writes file1 on file2, expanding tabs
+     to columns 10, 19, 28, 37, ... :
+
+          pr -e9 -t <file1 >file2
+
+PROMPTS
+   Name of File(s) to Output:
+     Enter the names of the files to be printed.
+
+   Output File or Device Name:
+     Response to this prompt is optional.  Enter a file name or
+     device to receive the output of the command.
+
+   Line Width:
+     Enter the desired line width.  The default is 72 characters.
+
+   Page Length:
+     Enter the desired page length.  The default is 66 lines.
+
+   Accept Advanced Options:
+     The initial value is yes.  Enter yes to receive the
+     following prompts.
+
+   First Page Number in Output:
+     Enter the number of the page to begin displaying.
+
+   Number of Columns in Output:
+     Enter the number of columns to print.
+
+   Multiple Columns:
+     The initial value is no.  Enter yes to print multiple
+     columns.
+
+   Double Space Output:
+     The initial value is no.  Enter yes to double-space the
+     output.
+
+   Input Tab Expansion Size:
+     See the description of the -e option.
+
+   Form Feed For New Pages:
+     The initial value is yes.  Enter yes to use the form feed
+     character for new pages.
+
+   Supply Custom Header:
+     The initial value is no.  Enter yes to specify your own
+     header and to receive the following prompt.
+
+   Output Tab Expansion Size:
+     See the description of the -i option.
+
+   Digits for Line Numbering:
+     See the description of the -n option.
+
+   Merge and Print all Files:
+     The initial value is no.  Enter yes to merge and print all
+     files simultaneously, one file per column.
+
+   Indent Each Line:
+     Enter the number of character positions to indent.
+
+   Pause After Each Page:
+     The initial value is no.  Enter yes to pause before
+     beginning each page, including the first page.  Press RETURN
+     to turn a page.
+
+   Print Diagnostic Messages:
+     The initial value is yes.  Enter yes to print diagnostic
+     messages on failure to open files.
+
+   Column Separation Character:
+     Enter a single character that will separate columns.
+
+   Header/Trailer:
+     The initial value is yes.  Enter yes to print the 5-line
+     identifying header and the 5-line trailer for each page.
+
+   Header Line:
+     Enter the text that will be printed as the header for each
+     page.
+
+FILES
+     /dev/tty* To suspend messages
+
+SEE ALSO
+     cat(1).
+
+

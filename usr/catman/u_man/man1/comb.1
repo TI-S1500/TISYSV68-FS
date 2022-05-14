@@ -1,0 +1,100 @@
+COMB(1) 						  COMB(1)
+
+NAME
+     comb - Combines SCCS deltas
+
+SYNOPSIS
+     comb -cops files
+
+DESCRIPTION
+   Purpose
+     The comb command generates a shell procedure (see sh(1))
+     that, when run, reconstructs the given SCCS files.  The
+     reconstructed files should be smaller than the original
+     files. Only super-user can use this command.
+
+   Options
+     Each option is explained as though only one named file is to
+     be processed, but the effects of any option apply
+     independently to each named file.
+
+     -clist
+	  A list (see get(1) for the syntax of a list) of deltas
+	  to be preserved.  All other deltas are discarded.
+
+     -o   For each get -e generated, this argument causes the
+	  reconstructed file to be accessed at the release of the
+	  delta to be created instead of at the most recent
+	  ancestor.  Use of the -o option may decrease the size
+	  of the reconstructed SCCS file.  It may also alter the
+	  shape of the delta tree of the original file.
+
+     -pSID
+	  The SCCS IDentification string (SID) of the oldest
+	  delta to be preserved.  All older deltas are
+	  discarded in the reconstructed file.
+
+     -s   This argument causes comb to generate a shell procedure
+	  which, when run, produces a report giving, for each file:
+	  the filename, size (in blocks) after combining, original
+	  size (also in blocks), and percentage change computed by:
+
+	  100 * (original - combined) / original
+
+	  Before any SCCS files are actually combined, use this
+	  option to determine exactly how much space is saved by
+	  the combining process.
+
+     If no options arguments are specified, comb preserves only
+     leaf deltas and the minimal number of ancestors needed to
+     preserve the tree.
+
+   Discussion
+     The arguments can be specified in any order, but all options
+     apply to all named SCCS files.  If a directory is named,
+     comb behaves as though each file in the directory were
+     specified as a named file, except that non-SCCS files (last
+     component of the path name does not begin with s.)  and
+     unreadable files are silently ignored.  If a name of - is
+     given, the standard input is read; each line of the standard
+     input is taken to be the name of an SCCS file to be
+     processed; non-SCCS files and unreadable files are silently
+     ignored.
+
+     The generated shell procedure is written on the standard
+     output.
+
+EXAMPLE
+     Assume that you have an SCCS file named file1 with the
+     following structure:
+
+		     1.3.1.2
+		      /
+		   1.3.1.1---1.3.2.1---1.3.2.2.
+		    /
+		   /
+     1.1--1.2---1.3---1.4---2.1---2.2---2.3---2.4
+
+     The following example reconstructs the file by discarding
+     SIDs 1.2, 1.4, 2.1, 2.3, 2.4, and 1.3.2.1.
+
+	  comb -p2.2 file1
+
+FILES
+     comb?????	  Temporary file
+
+SEE ALSO
+     admin(1), delta(1), get(1), help(1), prs(1), sccsfile(4),
+     ``Source Code Control System'' in the TI System V Support
+     Tools Guide.
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+NOTES
+     The comb command might rearrange the shape of the tree of
+     deltas.  It might not save any space; in fact, it is
+     possible for the reconstructed file to actually be larger
+     than the original.
+
+

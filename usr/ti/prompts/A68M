@@ -1,0 +1,60 @@
+# cshf  a68m -- Invokes the Quelo 68020 assembler macro  processor 
+#	@(#)A68M.sh	1.1  87/03/09
+#
+onintr end
+set comma = ','
+
+@ count = 0
+while ($count == 0)
+  prompt "^A68M -- INVOKES THE QUELO 68020 ASSEMBLER MACRO PROCESSOR"\
+	"^Input File Name:"  _input_file string $_input_file\
+	"^*Argument List (a0,a1,...,a9):" aflag string "$aflag"\
+	"^Retain Lowercase Char. Symbols:" lflag yesno n\
+	"^Append Symbol Table to Error Listing:" sflag yesno n\
+	"^Truncate Long Symbols:" tflag yesno n\
+	"^Inserts Formfeed Character:" vflag yesno n\
+	"^Select Advanced Options:" options yesno n\
+	"^SELECT ONLY ONE OR NONE OF THE FOLLOWING:"\
+	"^Define Output File Names:" exten yesno n\
+	"^Produce Only the Source File:" source yesno n\
+	"^#$*"
+
+  if ($abort) goto end
+  @ count++
+  if (($exten == "y") && ($source == "y")) @ count = 0
+end
+
+if ($exten == "y") then
+	prompt "^A68M -- OPTIONS"\
+ 		"^*Linker Text File Name:" _source_file acnm $_source_file\
+ 		"^*Assembly Listing File Name:" _errlst_file acnm $_errlst_file\
+
+	if ($abort) goto end
+	set a68 = $_source_file$comma
+	set err = $_errlst_file$comma
+endif
+
+if ($abort) goto end
+if ("$aflag" != "") set aopt = -a"$aflag"
+if ($vflag == "y") set opt = v$opt
+if ($tflag == "y") set opt = t$opt
+if ($sflag == "y") set opt = s$opt
+if ($lflag == "y") set opt = l$opt
+if ($opt != "") set opt = -$opt
+
+echo "=== AS COMMAND EXECUTING ==="
+if ($exten == "y") then
+	echo a68m $opt $aopt $a68$err=$_input_file
+	a68m $opt $aopt $a68$err=$_input_file
+else if ($source == "y") then
+	echo a68m $opt $aopt =$_input_file
+	a68m $opt $aopt =$_input_file
+else
+	echo a68m $opt $aopt $_input_file
+	a68m $opt $aopt $_input_file
+endif
+endif
+
+#clean up time
+end:
+unset *flag *opt sym ltx prn options exten comma file source

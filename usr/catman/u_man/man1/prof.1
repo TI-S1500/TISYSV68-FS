@@ -1,0 +1,84 @@
+PROF(1)                                                   PROF(1)
+
+NAME
+     prof - Displays profile data
+
+SYNOPSIS
+     prof -acghmnostxz [prog]
+
+DESCRIPTION
+   Purpose
+     The prof command interprets the profile file produced by the
+     monitor(3C) function.  The symbol table in the object file
+     prog (a.out by default) is read and correlated with the
+     profile file (mon.out by default).  For each external text
+     symbol the percentage of time spent executing between the
+     address of that symbol and the address of the next is
+     printed, together with the number of times that function was
+     called and the average number of milliseconds per call.
+
+   Options
+     The mutually exclusive options a, c, n, and t determine the
+     type of sorting of the output lines:
+
+     -a   Sorts by increasing symbol address.
+
+     -c   Sorts by decreasing number of calls.
+
+     -n   Sorts lexically by symbol name.
+
+     -t   Sorts by decreasing percentage of total time (default).
+
+     The mutually exclusive options o and x specify the printing
+     of the address of each symbol monitored:
+
+     -o   Prints each symbol address (in octal) along with the
+          symbol name.
+
+     -x   Prints each symbol address (in hexadecimal) along with
+          the symbol name.
+
+     The following options may be used in any combination:
+
+     -g   Includes non-global symbols (static functions).
+
+     -h   Suppresses the heading normally printed on the report.
+          (This is useful if the report is to be processed
+          further.)
+
+     -m mdata
+          Uses file mdata instead of mon.out for profiling data.
+
+     -s   Prints a summary of several of the monitoring
+          parameters and statistics on the standard error output.
+
+     -z   Includes all symbols in the profile range (see
+          monitor(3C)), even if associated with zero number of
+          calls and zero time.
+
+     For the number of calls to a function to be tallied, the -p
+     option of cc(1) must have been given when the file
+     containing the function was compiled.  This option to the cc
+     command also arranges for the object file to include a
+     special profiling start-up function that calls monitor(3C)
+     at the beginning and end of execution.  It is the call to
+     monitor at the end of execution that causes the mon.out file
+     to be written.  Thus, only programs that call exit(2) or
+     return from main cause the mon.out file to be produced.
+
+FILES
+     mon.out  for profile
+     a.out    for namelist
+
+SEE ALSO
+     exit(2), monitor(3C), nm(1), profil(2).
+
+NOTES
+     A maximum of 600 functions can have call counters
+     established during program execution.  If this limit is
+     exceeded, other data is overwritten and the mon.out file is
+     corrupted.  The number of call counters used is reported
+     automatically by the prof command whenever the number
+     exceeds 250.
+
+

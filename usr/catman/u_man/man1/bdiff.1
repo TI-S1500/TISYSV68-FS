@@ -1,0 +1,72 @@
+BDIFF(1)                                                 BDIFF(1)
+
+NAME
+     bdiff - Compares files too large for diff
+
+SYNOPSIS
+     bdiff file1 file2 n -s
+
+DESCRIPTION
+   Purpose
+     The bdiff command is used in a manner analogous to diff(1)
+     to find which lines must be changed in two files to bring
+     them into agreement.  Its purpose is to allow processing of
+     files that are too large for diff.
+
+   Options
+     If you specify both options, they must appear in the order
+     shown in the Synopsis.
+
+     n    The bdiff command ignores lines common to the beginning
+          of both files, splits the remainder of each file into
+          n-line segments, and invokes diff upon corresponding
+          segments.  The value of n is 3500 by default.  If the
+          optional third argument is given, and it is numeric, it
+          is used as the value for n.  This is useful in those
+          cases in which 3500-line segments are too large for
+          diff, causing it to fail.
+
+     -s   Specifies that no diagnostic messages are to be printed
+          by bdiff.  Note, however, that this does not suppress
+          possible messages from diff.
+
+   Discussion
+     If file1 or file2 is -, the standard input is read.
+
+     The output of bdiff is exactly that of diff, with line
+     numbers adjusted to account for the segmenting of the files
+     (that is, to make it look as if the files had been processed
+     whole).  Note that because of the segmenting of the files,
+     bdiff does not necessarily find a smallest sufficient set of
+     file differences.
+
+PROMPTS
+   File 1:
+     Enter the name of the first file to compare.
+
+   File 2:
+     Enter the name of the second file to compare.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+   Segment Length:
+     The initial value is 3500.  Enter the number of lines into
+     which the command divides the files for processing by the
+     diff command.
+
+   Print Diagnostics:
+     The initial value is yes.  Enter yes to allow the command to
+     print diagnostic messages.
+
+SEE ALSO
+     diff(1).
+
+FILES
+     /tmp/bd?????
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+

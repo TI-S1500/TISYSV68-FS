@@ -1,0 +1,114 @@
+UUSUB(1M)                                               UUSUB(1M)
+
+NAME
+     uusub - Monitors uucp(1C) network
+
+SYNOPSIS
+     /usr/lib/uucp/uusub -acdflru
+
+DESCRIPTION
+   Purpose
+     The uusub command defines a uucp(1) subnetwork and monitors
+     the connection and traffic among the members of the
+     subnetwork.  The following command is typically started by
+     cron(1M) once a day:
+
+          uusub -c all -u 24
+
+     If you have problems, check the system log file
+     /usr/spool/uucp/SYSLOG.  You can also use the command uustat
+     (1) .
+
+     This command can only be executed by the super-user or the
+     uucp administrator.
+
+   Options
+     -asys   Adds the system sys to the subnetwork.
+
+     -csys   Exercises the connection to the system sys.  If sys
+             is specified as all, then exercises the connection
+             to all the systems in the subnetwork.
+
+     -dsys   Deletes the system sys from the subnetwork.
+
+     -f      Flushes the connection statistics.
+
+     -l      Reports the statistics on connections.
+
+     -r      Reports the statistics on traffic amount.
+
+     -uhr    Gathers the traffic statistics over the past hr
+             hours.
+
+   Connections and Traffic Reports
+     The connection report format is as follows:
+
+          sys #call #ok time #latest-oktime #noacu #login #nack
+          #other
+
+     The meanings of the connection statistics are as follows:
+
+     sys       Remote system name
+
+     #call     Number of times the local system has tried to call
+               sys since the last flush was done
+
+     #ok       Number of successful connections with time as the
+               latest successful connect time
+
+     #latest-oktime
+               Date and time of last successful connection.
+
+     #noacu    Number of unsuccessful connections because of no
+               available device (such as ACU)
+
+     #login    Number of unsuccessful connections because of
+               login failure
+
+     #nack     Number of unsuccessful connections because of no
+               response (caused by line busy or system down)
+
+     #other    Number of unsuccessful connections because of
+               other reasons
+
+     The format of the traffic statistics is as follows:
+
+          sfile sbyte rfile rbyte
+
+     The meanings of the traffic statistics are as follows:
+
+     sfile     Number of files sent
+
+     sbyte     Number of bytes sent over the period of time
+               indicated in the latest uusub command with the
+               -uhr option
+
+     rfile     Number of files received
+
+     rbyte     Number of bytes received
+
+PROMPTS
+   Report connection statistics:
+     Initial value is yes. Enter a yes to report the statistics
+     on connections.
+
+   Report Traffic Statistics:
+     Initial value is no. Enter a yes to report the statistics on
+     traffic amount.
+
+   Sys to Add to Subnetwork:
+     Optional. Enter a system name to be added to the subnetwork.
+
+   Sys to Del from Subnetwork:
+     Optional. Enter a system name to be deleted from the
+     subnetwork.
+
+FILES
+     /usr/spool/uucp/SYSLOG   System log file
+     /usr/lib/uucp/L_sub      Connection statistics
+     /usr/lib/uucp/R_sub      Traffic statistics
+
+SEE ALSO
+     uucp(1C), uustat(1C).
+
+

@@ -1,0 +1,780 @@
+{%%                                    ; Start terminal definition
+bpc                                    ; Business Pro console
+0x1b 0x5b 0x31 0x32 0x6d 0             ; Graph on sequence
+0x3a 0                                 ; Vertical line character
+0x4d 0                                 ; Horizontal line character
+0x49 0                                 ; Northwest corner character
+0x48 0                                 ; Southwest corner character
+0x3b 0                                 ; Northeast corner character
+0x3c 0                                 ; Southeast corner character
+0x2a 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x4b 0                                 ; North indentation character
+0x4a 0                                 ; South indentation character
+0x39 0                                 ; East indentation character
+0x4c 0                                 ; West indentation character
+0x1b 0x5b 0x31 0x30 0x6d 0             ; Graph off sequence
+0x0                                    ; Cursor on sequence
+0x0                                    ; Cursor off sequence
+0x0                                    ; Set terminal attribute sequence
+0x1b 0x5b 0x31 0x37 0x6d 0             ; Enable reverse video
+0x1b 0x5b 0x31 0x6d 0                  ; Disable reverse video
+0x0                                    ; Enable underline attribute
+0x0                                    ; Disable underline attribute
+0x0                                    ; No display
+0x0                                    ; Enable blinking attribute
+0x0                                    ; Disable blinking attribute
+0x1b 0x5b 0x31 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+d0                                     ; DEC VT100 terminal
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0                                      ; Enable underline attribute
+0                                      ; Disable underline attribute
+0                                      ; No display
+0                                      ; Enable blinking attribute
+0                                      ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+h19                                    ; Heathkit H19 terminal
+0x1b 0x46 0                            ; Graph on sequence
+0x60 0                                 ; Vertical line character
+0x61 0                                 ; Horizontal line character
+0x66 0                                 ; Northwest corner character
+0x65 0                                 ; Southwest corner character
+0x63 0                                 ; Northeast corner character
+0x64 0                                 ; Southeast corner character
+0x1b 0x46 0x69 0x1b 0x47 0             ; Block character
+0x20 0                                 ; Erase character
+0x73 0                                 ; North indentation character
+0x75 0                                 ; South indentation character
+0x74 0                                 ; East indentation character
+0x76 0                                 ; West indentation character
+0x1b 0x47 0                            ; Graph off sequence
+0x1b 0x79 0x5 0                        ; Cursor on sequence
+0x1b 0x78 0x5 0                        ; Cursor off sequence
+0                                      ; Set terminal attribute sequence
+0x1b 0x70 0                            ; Enable reverse video
+0x1b 0x71 0                            ; Disable reverse video
+0                                      ; Enable underline attribute
+0                                      ; Disable underline attribute
+0                                      ; No display
+0                                      ; Enable blinking attribute
+0                                      ; Disable blinking attribute
+0                                      ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+i2                                     ; TI 926 terminal
+0x1b 0x2b 0x31 0x1b 0x6f 0             ; Graph on sequence
+0x29 0                                 ; Vertical line character
+0x36 0                                 ; Horizontal line character
+0x2a 0                                 ; Northwest corner character
+0x2d 0                                 ; Southwest corner character
+0x3a 0                                 ; Northeast corner character
+0x3d 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x2c 0                                 ; North indentation character
+0x3c 0                                 ; South indentation character
+0x2b 0                                 ; East indentation character
+0x3b 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0x34 0x6d 0                            ; Enable underline attribute
+0x32 0x34 0x6d 0                       ; Disable underline attribute
+0x30 0x6d 0                            ; No display
+0x35 0x6d 0                            ; Enable blinking attribute
+0x32 0x35 0x6d 0                       ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+Mw                                     ; Wyse 75 terminal
+0x1b 0x28 0x42 0x1b 0x29 0x30 0x1b 0x5b 0x3f 0x37 0x6c 0xe 0; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0x1b 0x5b 0x3f 0x37 0x68 0xf 0         ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x31 0x74 0x1b 0x5b 0x31 0x6d 0        ; Enable reverse video
+0x1b 0x5b 0x30 0x6d 0                  ; Disable reverse video
+0x30 0x6d 0                            ; Enable underline attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Disable underline attribute
+0x30 0x6d 0                            ; No display
+0x30 0x6d 0                            ; Enable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+nc                                     ; NCSA terminal definition
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0xe 0x61 0xf 0                 	       ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0x0f 0x0                               ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x30 0x6d 0                            ; Disable reverse video
+0x34 0x6d 0                	       ; Enable underline attribute
+0x30 0x6d 0                            ; Disable underline attribute
+0                                      ; No display
+0x35 0x6d 0                	       ; Enable blinking attribute
+0x30 0x6d 0                            ; Disable blinking attribute
+0x30 0x6d 0                            ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+vt100                                  ; DEC VT100 terminal
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0                                      ; Enable underline attribute
+0                                      ; Disable underline attribute
+0                                      ; No display
+0                                      ; Enable blinking attribute
+0                                      ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+t1                                     ; TI 924/VT100/VT220 terminal
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0x34 0x6d 0                            ; Enable underline attribute
+0x32 0x34 0x6d 0                       ; Disable underline attribute
+0x30 0x6d 0                            ; No display
+0x35 0x6d 0                            ; Enable blinking attribute
+0x32 0x35 0x6d 0                       ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+t5                                     ; 924 emulator 931 mode on 945 
+0x1b 0x79 0x32 0                       ; Graph on sequence
+0x29 0                                 ; Vertical line character
+0x36 0                                 ; Horizontal line character
+0x2a 0                                 ; Northwest corner character
+0x2d 0                                 ; Southwest corner character
+0x3a 0                                 ; Northeast corner character
+0x3d 0                                 ; Southeast corner character
+0xe 0x39 0xf 0                         ; Block character
+0x20 0                                 ; Erase character
+0x2c 0                                 ; North indentation character
+0x3c 0                                 ; South indentation character
+0x2b 0                                 ; East indentation character
+0x3b 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x4d 0                            ; Cursor on sequence
+0x1b 0x52 0                            ; Cursor off sequence
+0x1b 0x5d 0x30 0x1b 0x34 0             ; Set terminal attribute sequence
+0x40 0                                 ; Enable reverse video
+0x40 0                                 ; Disable reverse video
+0x40 0                                 ; Enable underline attribute
+0x40 0                                 ; Disable underline attribute
+0x48 0                                 ; No display
+0x50 0                                 ; Enable blinking attribute
+0x40 0                                 ; Disable blinking attribute
+0x40 0                                 ; Reset terminal attributes off
+0x1b 0x5d 0x31 0x1b 0x34 0             ; Set color sequence
+0x40 0                                 ; Set white color
+0x42 0                                 ; Set yellow color
+0x44 0                                 ; Set cyan color
+0x46 0                                 ; Set green color
+0x50 0                                 ; Set magenta color
+0x52 0                                 ; Set red color
+0x54 0                                 ; Set blue color
+0x56 0                                 ; Set black color
+0x1b 0x5d 0x32 0                       ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+t6                                     ; 924 emulator 924 mode on 945 7-bit
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0                                      ; Enable underline attribute
+0                                      ; Disable underline attribute
+0x30 0x6d 0                            ; No display
+0                                      ; Enable blinking attribute
+0                                      ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+t7                                     ; 924 emulator 924 mode on 945 8-bit
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0                                      ; Enable underline attribute
+0                                      ; Disable underline attribute
+0x30 0x6d 0                            ; No display
+0x35 0x6d 0                            ; Enable blinking attribute
+0x32 0x35 0x6d 0                       ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0x1b 0x5b 0                            ; Set color sequence
+0x33 0x37 0x6d 0                       ; Set white color
+0x33 0x33 0x6d 0                       ; Set yellow color
+0x33 0x36 0x6d 0                       ; Set cyan color
+0x33 0x32 0x6d 0                       ; Set green color
+0x33 0x35 0x6d 0                       ; Set magenta color
+0x33 0x31 0x6d 0                       ; Set red color
+0x33 0x34 0x6d 0                       ; Set blue color
+0x33 0x30 0x6d 0                       ; Set black color
+0x1b 0x5b 0x30 0x6d 0                  ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+t8                                     ; 931 emulator on TIPC
+0x1b 0x79 0x32 0                       ; Graph on sequence
+0x29 0                                 ; Vertical line character
+0x36 0                                 ; Horizontal line character
+0x2a 0                                 ; Northwest corner character
+0x2d 0                                 ; Southwest corner character
+0x3a 0                                 ; Northeast corner character
+0x3d 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x2c 0                                 ; North indentation character
+0x3c 0                                 ; South indentation character
+0x2b 0                                 ; East indentation character
+0x3b 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x4d 0                            ; Cursor on sequence
+0x1b 0x52 0                            ; Cursor off sequence
+0x1b 0x5d 0x30 0x1b 0x34 0             ; Set terminal attribute sequence
+0x42 0                                 ; Enable reverse video
+0x40 0                                 ; Disable reverse video
+0x44 0                                 ; Enable underline attribute
+0x40 0                                 ; Disable underline attribute
+0x48 0                                 ; No display
+0x50 0                                 ; Enable blinking attribute
+0x40 0                                 ; Disable blinking attribute
+0x40 0                                 ; Reset terminal attributes off
+0x1b 0x5d 0x31 0x1b 0x34 0             ; Set color sequence
+0x40 0                                 ; Set white color
+0x42 0                                 ; Set yellow color
+0x44 0                                 ; Set cyan color
+0x46 0                                 ; Set green color
+0x50 0                                 ; Set magenta color
+0x52 0                                 ; Set red color
+0x54 0                                 ; Set blue color
+0x56 0                                 ; Set black color
+0x1b 0x5d 0x32 0                       ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+t9                                     ; TI 931 terminal
+0x1b 0x79 0x32 0                       ; Graph on sequence
+0x29 0                                 ; Vertical line character
+0x36 0                                 ; Horizontal line character
+0x2a 0                                 ; Northwest corner character
+0x2d 0                                 ; Southwest corner character
+0x3a 0                                 ; Northeast corner character
+0x3d 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x2c 0                                 ; North indentation character
+0x3c 0                                 ; South indentation character
+0x2b 0                                 ; East indentation character
+0x3b 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x4d 0                            ; Cursor on sequence
+0x1b 0x52 0                            ; Cursor off sequence
+0x1b 0x34 0                            ; Set terminal attribute sequence
+0x42 0                                 ; Enable reverse video
+0x40 0                                 ; Disable reverse video
+0x44 0                                 ; Enable underline attribute
+0x40 0                                 ; Disable underline attribute
+0x48 0                                 ; No display
+0x50 0                                 ; Enable blinking attribute
+0x40 0                                 ; Disable blinking attribute
+0x40 0                                 ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+tm                                     ; Travelmate
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0x34 0x6d 0                            ; Enable underline attribute
+0x32 0x34 0x6d 0                       ; Disable underline attribute
+0x30 0x6d 0                            ; No display
+0x35 0x6d 0                            ; Enable blinking attribute
+0x32 0x35 0x6d 0                       ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+x1                                     ; TI 928 terminal
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0x34 0x6d 0                            ; Enable underline attribute
+0x32 0x34 0x6d 0                       ; Disable underline attribute
+0x30 0x6d 0                            ; No display
+0x35 0x6d 0                            ; Enable blinking attribute
+0x32 0x35 0x6d 0                       ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+x5                                     ; TI 924 in 931 mode
+0x1b 0x79 0x32 0                       ; Graph on sequence
+0x29 0                                 ; Vertical line character
+0x36 0                                 ; Horizontal line character
+0x2a 0                                 ; Northwest corner character
+0x2d 0                                 ; Southwest corner character
+0x3a 0                                 ; Northeast corner character
+0x3d 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x2c 0                                 ; North indentation character
+0x3c 0                                 ; South indentation character
+0x2b 0                                 ; East indentation character
+0x3b 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x4d 0                            ; Cursor on sequence
+0x1b 0x52 0                            ; Cursor off sequence
+0x1b 0x34 0                            ; Set terminal attribute sequence
+0x42 0                                 ; Enable reverse video
+0x40 0                                 ; Disable reverse video
+0x44 0                                 ; Enable underline attribute
+0x40 0                                 ; Disable underline attribute
+0x48 0                                 ; No display
+0x50 0                                 ; Enable blinking attribute
+0x40 0                                 ; Disable blinking attribute
+0x40 0                                 ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+x6                                     ; TI 928 terminal 132/52
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x32 0x37 0x6d 0                       ; Disable reverse video
+0x34 0x6d 0                            ; Enable underline attribute
+0x32 0x34 0x6d 0                       ; Disable underline attribute
+0x30 0x6d 0                            ; No display
+0x35 0x6d 0                            ; Enable blinking attribute
+0x32 0x35 0x6d 0                       ; Disable blinking attribute
+0x1b 0x5b 0x30 0x6d 0                  ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+xterm                                  ; Mit xterm terminal
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x68 0        ; Cursor on sequence
+0x1b 0x5b 0x3f 0x32 0x35 0x6c 0        ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x6d 0                                 ; Disable reverse video
+0x34 0x6d 0                            ; Enable underline attribute
+0x6d 0                                 ; Disable underline attribute
+0                                      ; No display
+0                                      ; Enable blinking attribute
+0                                      ; Disable blinking attribute
+0x1b 0x5b 0x6d 0xf                     ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+xterms                                 ; Mit xterm terminal
+0x1b 0x28 0x42 0x1b 0x29 0x30 0xe 0    ; Graph on sequence
+0x78 0                                 ; Vertical line character
+0x71 0                                 ; Horizontal line character
+0x6c 0                                 ; Northwest corner character
+0x6d 0                                 ; Southwest corner character
+0x6b 0                                 ; Northeast corner character
+0x6a 0                                 ; Southeast corner character
+0x20 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x77 0                                 ; North indentation character
+0x76 0                                 ; South indentation character
+0x75 0                                 ; East indentation character
+0x74 0                                 ; West indentation character
+0xf 0                                  ; Graph off sequence
+0x0                                    ; Cursor on sequence
+0x0                                    ; Cursor off sequence
+0x1b 0x5b 0                            ; Set terminal attribute sequence
+0x37 0x6d 0                            ; Enable reverse video
+0x6d 0                                 ; Disable reverse video
+0x34 0x6d 0                            ; Enable underline attribute
+0x6d 0                                 ; Disable underline attribute
+0                                      ; No display
+0                                      ; Enable blinking attribute
+0                                      ; Disable blinking attribute
+0x1b 0x5b 0x6d 0xf                     ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+
+{%%                                    ; Start terminal definition
+default                                ; Default dumb terminal
+0                                      ; Graph on sequence
+0x7c 0                                 ; Vertical line character
+0x2d 0                                 ; Horizontal line character
+0x2b 0                                 ; Northwest corner character
+0x2b 0                                 ; Southwest corner character
+0x2b 0                                 ; Northeast corner character
+0x2b 0                                 ; Southeast corner character
+0x2a 0                                 ; Block character
+0x20 0                                 ; Erase character
+0x2b 0                                 ; North indentation character
+0x2b 0                                 ; South indentation character
+0x2b 0                                 ; East indentation character
+0x2b 0                                 ; West indentation character
+0                                      ; Graph off sequence
+0                                      ; Cursor on sequence
+0                                      ; Cursor off sequence
+0                                      ; Set terminal attribute sequence
+0                                      ; Enable reverse video
+0                                      ; Disable reverse video
+0                                      ; Enable underline attribute
+0                                      ; Disable underline attribute
+0                                      ; No display
+0                                      ; Enable blinking attribute
+0                                      ; Disable blinking attribute
+0                                      ; Reset terminal attributes off
+0                                      ; Set color sequence
+0                                      ; Set white color
+0                                      ; Set yellow color
+0                                      ; Set cyan color
+0                                      ; Set green color
+0                                      ; Set magenta color
+0                                      ; Set red color
+0                                      ; Set blue color
+0                                      ; Set black color
+0                                      ; Reset to normal emulation
+%%}                                    ; End terminal definition
+

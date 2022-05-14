@@ -1,0 +1,1398 @@
+BSH(1T) 						  BSH(1T)
+
+NAME
+     bsh - Calls the TI Business shell (a command interpreter
+     based on the Berkeley C shell)
+
+SYNOPSIS
+     bsh -cefinstvVxX arguments
+
+DESCRIPTION
+   Purpose
+     The bsh command executes the TI Business shell, a command
+     language interpreter suited for business systems.	Its
+     functions include those of the C shell, csh(1), as well
+     as a number of enhancements.
+
+     As a superset of the C shell, bsh honors all of the C shell
+     command options and executes all C shell commands and
+     scripts.  The primary enhancements of the bsh over the C
+     shell are prompts and menus.  These built-in shell commands
+     enable the System 1000 Series computers to provide a
+     familiar command entry system for Business System 300, 600,
+     and 800 series users without sacrificing the benefits of
+     using a standard shell.
+
+   Options
+     See Argument List Processing.
+
+   Invocation
+     In general, the user invokes the TI Business shell by
+     executing the bsh command or by specifying bsh as the
+     default shell for login.  If this shell is chosen as the
+     login shell for a user, the commands in the /etc/.bshlogin
+     file, if any, are executed during the login process.  The
+     commands in /etc/.bshlogout are executed during the logout
+     process.
+
+     When the menu(1T) command is issued, the user is shown a
+     menu that lists the most common commands, displays, and
+     submenus.	The user can either select an item from the menu
+     or press the designated attention (or command) key to obtain
+     the bsh prompt.
+
+     Menu entries are classified c, m, or d.  The meanings of
+     these classifications are as follows:
+
+     + c - Command.  The appropriate prompts for completing the
+       command are displayed.
+
+     + m - Menu.  A submenu that replaces the current menu on the
+       screen.
+
+     + d - Display.  The indicated help file is shown on the
+       screen.
+
+     When a login shell terminates, it executes commands from the
+     file .logout in the user's home directory.
+
+   Usage
+     The following are methods of invoking a program via bsh:
+
+     Command Line
+	  One method is to type the name of the file containing
+	  the program, followed by a list of options and
+	  arguments.  If the file's execute permission flag is
+	  set, the program is loaded into memory and executed.
+
+     Shell Scripts
+	  Another method of invoking a program is to access bsh
+	  from a shell script.	When the user enters the name of
+	  a file containing a shell script, the shell commands
+	  are executed in order.  Some shell scripts are powerful
+	  enough to do useful work without having to invoke an
+	  external program, but most are used for executing or
+	  chaining programs.
+
+     Menu A third method, made possible by the integration of the
+	  prompt, menu, and show utilities into the bsh,
+	  resembles the Business System 300, 600, and 800 series
+	  System Command Interpreter (SCI).  The user navigates
+	  through the menu system, moving from menu to menu until
+	  the needed command is located.  When the user selects
+	  the command, its prompts are displayed - just as if the
+	  user had entered the command name after the bsh prompt
+	  (%).	The user can press the C key to display both the
+	  menu and the following prompt:
+
+	       Command:
+
+	  The user types a menu entry at the prompt to receive
+	  prompts for the specified command.  The user types the
+	  word menu to return to the cursor-driven menu.
+
+     Batch File
+	  The fourth method of invoking a program through bsh is
+	  to use the batch(1) utility to execute a program at a
+	  later time when system load level permits.
+
+   Shell Scripts
+     Shell scripts that use bsh commands must start with # csh,
+     or # cshf, or # bsh, or # bshf on the first line.	If one of
+     these is not specified on the first line, Bourne shell
+     commands will be executed.
+
+     If cshf or bshf is used, the .cshrc file is not executed
+     when the shell is forked.	This causes faster execution of
+     the shell script.
+
+     This line is ignored during sourcing.  See the source
+     command under Commands in this manual entry.
+
+   Lexical Structure
+     The shell splits input lines into words at blanks and tabs
+     with the following exceptions: the characters &, |, ;, <, >,
+     (, and ) form separate words.  If doubled in &&, ||, << or
+     >>, these pairs form single words.  These parser
+     metacharacters may be made part of other words, or prevented
+     their special meaning, by preceding them with \.  A newline
+     preceded by a \ is equivalent to a blank.
+
+     In addition, strings enclosed in matched pairs of
+     quotations, including blanks and tabs, do not form separate
+     words. These quotations have semantics to be described
+     subsequently.  Within pairs of \ or ", characters a newline
+     preceded by a \ gives a true newline character.
+
+   Comments
+     When the shell's input is not a terminal, the character #
+     introduces a comment that continues to the end of the input
+     line.  An exception is the following first line in a shell
+     script:  # csh, or # cshf, or # bsh, or # bshf.  See Shell
+     Scripts in this manual entry for the meanings of these
+     constructions.
+
+     This line indicates that the shell script is for TI Business
+     shell rather than Bourne shell commands.	The # sign can be
+     protected by preceding # with a backslash (\) and by quoting
+     with single ('...') or double ("...") quotes.  The # sign
+     does not indicate a comment when it is protected.
+
+   Commands
+     A simple command is a sequence of words, the first of which
+     specifies the command to be executed.  A simple command or a
+     sequence of simple commands separated by | characters forms
+     a pipeline.  The output of each command in a pipeline is
+     connected to the input of the next.  Sequences of pipelines
+     may be separated by a semicolon (;) and are then executed
+     sequentially.  A sequence of pipelines can be executed
+     without waiting for the sequence to terminate by following
+     the command line with an & to specify background execution.
+     Because such a sequence is automatically prevented from
+     being terminated by a hangup signal, the nohup command need
+     not be used.
+
+     Any of the above can be placed in parentheses to form a
+     simple command (which can be a component of a pipeline).  It
+     is also possible to separate pipelines with || or &&
+     indicating, as in the C language, that the second is to be
+     executed only if the first fails or succeeds respectively.
+     (See Expressions.)
+
+   History Substitutions
+     History substitutions can be used to reintroduce sequences
+     of words from previous commands, possibly performing
+     modifications on these words.  Thus history substitutions
+     provide a generalization of a redo function.  History
+     substitutions begin with the character ! and can begin
+     anywhere in the input stream if a history substitution is
+     not already in progress.  This ! can be preceded by a \ to
+     prevent its special meaning. An ! is passed unchanged when
+     it is followed by a blank, tab, newline, = or (.  History
+     substitutions also occur when an input line begins with ^.
+
+     Any input line that contains history substitution is echoed
+     on the terminal before it is executed as it could have been
+     typed without history substitution.
+
+     Commands input from the terminal that consist of one or more
+     words are saved on the history list, the size of which is
+     controlled by the history variable.  The previous command is
+     always retained. Commands are numbered sequentially from 1.
+     For example, consider the following output from the history
+     command:
+
+	   9  write michael
+	  10  ex write.c
+	  11  cat oldwrite.c
+	  12  diff *write.c
+
+     The commands are shown with their event numbers.  Event
+     numbers indicate the number of command lines entered from
+     the shell prompt since the beginning of the current login
+     session. It is not usually necessary to use event numbers,
+     but the current event number can be made part of the shell
+     prompt by placing an ! in the prompt string.
+
+     These forms, without further modification, simply
+     reintroduce the words of the specified events, each
+     separated by a single blank.  As a special case, !!  refers
+     to the previous command. Thus !! alone means to redo the
+     previous command.
+
+     With the current event 13, refer to previous events several
+     ways:
+
+     + By event number, such as !11.
+
+     + Relatively, as in !-2 (referring to the same event).
+
+     + By a prefix of a command word, as in !d for event 12 or !w
+       for event 9.
+
+     + By a string contained in a word in the command, as in
+       !?mic? also referring to event 9.
+
+     The form !# references the current command (the one being
+     typed).  It allows a word to be selected from further left
+     in the line to avoid retyping a long name.  For example,
+     rather than typing the long command string shown in the
+     first example, you can type the shorter version shown in the
+     second example.
+
+	  ls -l /usr/spool /usr/spool/uucp /usr/spool/uucppublic
+
+	  ls -l /usr/spool !#:2/uucp !#:2/uucppublic
+
+     To select words from an event, we can follow the event
+     specification by a : and a designator for the desired words.
+     The words of a input line are numbered from 0.  The first
+     word (usually command) is 0, the second word (usually the
+     first argument) is 1, and so forth.  The : separating the
+     event specification from the word designator can be omitted
+     if the argument selector begins with a ^, $, *, -, or %.
+     The basic word designators are:
+
+     0	  First word (usually  command)
+
+     n	  n'th argument
+
+     ^	  Usually first argument,  i.e., 1
+
+     $	  Last argument
+
+     %	  Word matched by (immediately preceding) ?s? search
+
+     x-y  Range of words
+
+     -y   Abbreviation for 0-y
+
+     *	  Abbreviation for ^-$, or nothing if only one word in
+	  event
+
+     x*   Abbreviation for x-$
+
+     x-   Like x* but omitting word $
+
+     A sequence of modifiers can be placed after the optional
+     word designator, with each modifier preceded by a :.  Unless
+     preceded by a g, the modification is applied only to the
+     first modifiable word.  In any case, no applicable word is
+     an error.	The following modifiers are defined:
+
+     h	    Removes a trailing path name component, leaving the
+	    head
+
+     r	    Removes a trailing .xxx component, leaving the root
+	    name
+
+     s/l/r/ Substitutes l for r
+
+     t	    Removes all leading path name components, leaving the
+	    tail
+
+     &	    Repeats the previous substitution
+
+     g	    Applies the change globally, prefixing the above,
+	    e.g., g&
+
+     p	    Prints the new command but does not execute it
+
+     q	    Quotes the substituted words, preventing further
+	    substitutions
+
+     x	    Like q, but breaks into words at blanks, tabs, and
+	    newlines
+
+     The lefthand side of substitutions contain strings rather
+     than regular expressions in the sense of the editors.  Any
+     character may be used as the delimiter in place of /.  A \
+     quotes the delimiter into the l and r strings.  The
+     character & in the righthand side is replaced by the text
+     from the left.  A \ quotes & also. A null l uses the
+     previous string either from a l or from a contextual scan
+     string s in !?s?.	The trailing delimiter in the
+     substitution can be omitted if a newline follows immediately
+     as may the trailing ? in a contextual scan.
+
+     A history reference may be given without an event
+     specification, e.g. !$.  In this case, the reference is to
+     the previous command unless a previous history reference
+     occurred on the same line, in which case this form repeats
+     the previous reference.  Thus !?foo?^ !$ gives the first and
+     last arguments from the command matching ?foo?.
+
+     A special abbreviation of a history reference occurs when
+     the first non-blank character of an input line is a ^.  This
+     is equivalent to !:s^ providing a convenient shorthand for
+     substitutions on the text of the previous line.  Thus
+     ^lb^lib fixes the spelling of lib in the previous command.
+     Finally, a history substitution can be surrounded with { and
+     } if necessary to insulate it from the characters which
+     follow.  Thus, after ls -ld ~/paul, we might do !{l}a to do
+     ls -ld  ~/paula, while !la would look for a command starting
+     la.
+
+   Quotations with ' and "
+     The quotation of strings by ' and " can be used to prevent
+     all or some of the remaining substitutions.  Strings
+     enclosed in ' are prevented any further interpretation.
+     Strings enclosed in " are variable- and command-expanded.
+
+     In both cases, the resulting text becomes all or part of a
+     single word.  Only in one special case (see Command and File
+     Name Substitution) does a " quoted string yield parts of
+     more than one word; quoted strings never do.
+
+   Alias Substitution
+     The shell maintains a list of aliases that can be
+     established, displayed, and modified by the alias and
+     unalias commands.	After a command line is scanned, it is
+     parsed into distinct commands and the first word of each
+     command is checked left to right to see if it has an alias.
+     If it does, then the text that is the alias for that command
+     is reread with the history mechanism available as though
+     that command were the previous input line.  The resulting
+     words replace the command and argument list.  If no
+     reference is made to the history list, then the argument
+     list is left unchanged.
+
+     Thus, if the alias for ls is ls -l, the command ls /usr
+     would map to ls -l /usr, the argument list here being
+     undisturbed.  Similarly if the alias for lookup was grep !^
+     /etc/passwd then lookup bill would map to grep bill
+     /etc/passwd.
+
+     If an alias is found, the word transformation of the input
+     text is performed and the aliasing process begins again on
+     the reformed input line.  Looping is prevented if the first
+     word of the new text is the same as the old by flagging the
+     word to prevent further aliasing.	Other loops are detected
+     and cause an error.
+
+     Note that the mechanism allows aliases to introduce parser
+     metasyntax.  Thus we can define the alias for print as alias
+     print 'pr \!* | lp' to make a command which pipes the output
+     of pr(1) to the line printer.
+
+   Variable Substitution
+     The shell maintains a set of variables, each of which has as
+     value a list of zero or more words. Some of these variables
+     are set by the shell or referred to by it.  For instance,
+     the argv variable is an image of the shell's argument list,
+     and words of this variable's value are referred to in
+     special ways.
+
+     The values of variables can be displayed and changed by
+     using the set and unset commands.	A number of the variables
+     referred to by the shell are toggles.  The shell does not
+     care what their value is, only whether they are set or not.
+     For instance, the verbose variable is a toggle that causes
+     command input to be echoed.  This variable is set with the
+     -v command line option.
+
+     Other operations treat variables numerically.  The @ command
+     permits numeric calculations to be performed and the result
+     assigned to a variable.  Variable values are, however,
+     always represented as zero or more strings.  For the
+     purposes of numeric operations, the null string is
+     considered to be zero, and the second and subsequent words
+     of multiword values are ignored.
+
+     After the input line is aliased and parsed and before each
+     command is executed, variable substitution, indicated by $
+     characters, is performed.	This expansion can be prevented
+     by preceding the $ with a \, except within double quotes (")
+     where it always occurs, and within single quotes (') where
+     it never occurs.  Strings quoted by ` are interpreted later
+     (see Command and File Name Substitution), so $ substitution
+     does not occur there until later, if at all.  A $ is passed
+     unchanged if followed by a blank, tab, or end-of-line.
+
+     Input/output redirections are recognized before variable
+     expansion and are variable-expanded separately.  Otherwise,
+     the command name and entire argument list are expanded
+     together.	It is thus possible for the first command word to
+     this point to generate more than one word, the first of
+     which becomes the command name and the rest become
+     arguments.
+
+     Unless enclosed in " or given the :q modifier, the results
+     of variable substitution can eventually be command and file
+     name substituted.	Within ", a variable whose value consists
+     of multiple words expands to a portion of a single word,
+     with the words of the variable's value separated by blanks.
+     When the :q modifier is applied to a substitution, the
+     variable expands to multiple words with each word separated
+     by a blank and quoted to prevent later command or file name
+     substitution.
+
+     The following metasequences are provided for introducing
+     variable values into the shell input.  Except as noted, it
+     is an error to reference a variable that is not set.
+
+     $name
+     ${name}
+	  Are replaced by the words of the value of variable
+	  name, each separated by a blank.  Braces insulate name
+	  from following characters, which would otherwise be
+	  part of it.  Shell variables have names consisting of
+	  up to 20 letters, digits, and underscores.
+
+	  If name is not a shell variable but is set in the
+	  environment, then that value is returned (but :
+	  modifiers and the other forms given below are not
+	  available in this case).
+
+     $name[selector]
+     ${name[selector]}
+	  Can be used to select only some of the words from the
+	  value of name. The selector is subjected to $
+	  substitution and may consist of a single number or two
+	  numbers separated by a -.  The first word of a
+	  variable's value is numbered 1. If the first number of
+	  a range is omitted it defaults to 1.	If the last
+	  member of a range is omitted it defaults to $#name.
+	  The selector * selects all words.  It is not an error
+	  for a range to be empty if the second argument is
+	  omitted or in range.
+
+     $#name
+     ${#name}
+	  Give the number of words in the variable.  This is
+	  useful for later use in a [selector].
+
+     $0
+	  Substitutes the name of the file from which command
+	  input is being read.	An error occurs if the name is
+	  not known.
+
+     $number
+     ${number}
+	  Equivalent to $argv[number].
+
+     $*
+	  Equivalent to $argv[*].
+
+     The modifiers :h, :t, :r, :q and :x can be applied to the
+     substitutions above as can :gh, :gt and :gr.  If braces ({,
+     }) appear in the command form, then the modifiers must
+     appear within the braces.	The current implementation allows
+     only one : modifier on each $ expansion.
+
+     The following substitutions cannot be modified with : modifiers.
+
+     $?name
+     ${?name}
+	  Substitute the string 1 if name is set, 0 if it is not.
+
+     $?0
+	  Substitutes 1 if the current input file name is known,
+	  0 if it is not.
+
+     $$
+	  Substitutes the (decimal) process number of the
+	  (parent) shell.
+
+   Command and File Name Substitution
+     The remaining substitutions, command and file name substitution,
+     are applied selectively to the arguments of built-in commands.
+     This means that portions of expressions that are not evaluated
+     are not subjected to these expansions.  For commands external
+     to the shell, the command name is substituted separately from
+     the argument list. Substitution occurs after input-output
+     redirection is performed and in a child of the main shell.
+
+   Command Substitution with `
+     Command substitution is indicated by a command enclosed in
+     `.  The output from such a command is normally broken into
+     separate words at blanks, tabs and newlines, with null words
+     being discarded.  This text then is replaces the original
+     string.  Within double quotes ("), only newlines force new
+     words; blanks and tabs are preserved.
+
+     In any case, the single final newline does not force a new
+     word, so it is possible for a command substitution to yield
+     only part of a word even if the command outputs a complete
+     line.
+
+   File Name Substitution
+     If a word contains any of the characters *, ?, [, or { or
+     begins with the character ~, then that word is a candidate
+     for file name substitution, also known as globbing.  The
+     word that contains one of these characters is then regarded
+     as a pattern and is replaced with an alphabetically sorted
+     list of file names that match the pattern.  In a list of
+     words specifying file name substitution, it is an error for
+     no pattern to match an existing file name but it is not
+     required for each pattern to match.  Only the metacharacters
+     *, ?, and [ imply pattern matching.  The characters ~ and {
+     are more akin to abbreviations.
+
+     In matching file names, the character dot (.) at the
+     beginning of a file name or immediately following a /, as
+     well as the character /, must be matched explicitly.  The
+     character * matches any string of characters, including the
+     null string.  The character ? matches any single character.
+     The sequence [...]  matches any one of the characters
+     enclosed.	Within [...], a pair of characters separated by -
+     matches any character lexically between the two.
+
+     The character ~ at the beginning of a file name is used to
+     refer to home directories.  When used alone, ~ expands to
+     the invoker's home directory as reflected in the value of
+     the variable home.  When ~ is followed by a name consisting
+     of letters, digits, and - characters, the shell searches for
+     a user with that name and substitutes his home directory.
+     Thus ~ken might expand to /usr/ken and ~ken/chmach to
+     /usr/ken/chmach.  If the character ~ is followed by a
+     character other than a letter or / or does not appear at the
+     beginning of a word, it is left undisturbed.
+
+     The metanotation a{b,c,d}e is a shorthand for abe ace ade.
+     Left to right order is preserved. Results of matches are
+     sorted separately at a low level to preserve this order.
+     This construct can be nested.  Thus ~source/s1/{oldls,ls}.c
+     expands to /usr/source/s1/oldls.c /usr/source/s1/ls.c,
+     whether or not these files exist, if the home directory for
+     source is /usr/source. Similarly ../{memo,*box} might expand
+     to ../memo ../box ../mbox.  (Note that memo was not sorted
+     with the results of matching *box.) As a special case {, },
+     and {} are passed undisturbed.
+
+   Input/Output
+     The standard input and standard output of a command can be
+     redirected with the following syntax:
+
+     < name
+	  Opens file name (which is first variable, command and
+	  file name expanded) as the standard input.
+
+     << word
+	  Reads the shell input up to a line that is identical to
+	  word. Word is not subjected to variable, file name, or
+	  command substitution, and each input line is compared
+	  to word before any substitutions are done on this input
+	  line.  If a quoting \, ", ' or ` appears in word,
+	  variable and command substitution is performed on the
+	  intervening lines, allowing \ to quote $, \, and ` and
+	  preventing comparison to word.  Commands that are
+	  substituted have all blanks, tabs, and newlines
+	  preserved, except for the final newline, which is
+	  dropped.  The resulting text is placed in an anonymous
+	  temporary file, which is given to the command as
+	  standard input.
+
+     > name
+     >! name
+     >& name
+     >&! name
+	  The file name is used as standard output.  If the file
+	  does not exist, it is created.  If the file exists, it
+	  is truncated and its previous contents are lost.
+
+	  If the variable noclobber is set, the file must not
+	  exist or be a character special file (e.g. a terminal
+	  or /dev/null) or an error results.  This helps prevent
+	  accidental destruction of files.  However, the ! forms
+	  can be used to suppress this check.
+
+	  The forms involving & route the diagnostic output into
+	  the specified file as well as the standard output.
+	  Name is expanded in the same way as < input file names.
+
+     >> name
+     >>& name
+     >>! name
+     >>&! name
+	  Uses file name as standard output like > but places
+	  output at the end of the file.  If the variable
+	  noclobber is set, then it is an error for the file not
+	  to exist unless one of the ! forms is given.	Otherwise
+	  it is similar to >.
+
+     If a command is executed in background with a &, the default
+     standard input for the command is the empty file /dev/null.
+     Otherwise, the command receives the environment in which the
+     shell was invoked as modified by the input-output parameters
+     and the presence of the command in a pipeline.Thus, unlike
+     some previous shells, commands run from a file of shell
+     commands have no access to the text of the commands by
+     default; rather, they receive the original standard input of
+     the shell.  The << mechanism should be used to present
+     inline data.  This permits shell command scripts to function
+     as components of pipelines and allows the shell to block
+     read its input.
+
+     Diagnostic output may be directed through a pipe with the
+     standard output.  Simply use the form |& rather than just |.
+
+   Expressions
+     A number of the built-in commands take expressions, in which
+     the operators are similar to those of C, with the same
+     precedence.  These expressions appear in the @, exit, if,
+     and while commands.  The following operators are available:
+
+	  ||  &&  |  ^ &
+	  ==  !=
+	  <=  >= <  >
+	  <<  >>
+	  +  -
+	  *  /	%
+	  !  ~	(  )
+
+     Operators that are on the same line have the same precedence
+     relative to operators on the other lines.	Within lines the
+     precedence increases from left to right, The == and !=
+     operators compare their arguments as strings; all others
+     operate on numbers. Strings that begin with 0 are considered
+     octal numbers.  Null or missing arguments are considered 0.
+     The result of all expressions are strings, which represent
+     decimal numbers.  No two components of an expression can
+     appear in the same word.  Except when adjacent to components
+     of expressions that are syntactically significant to the
+     parser (&, |, <, >, (, and )), two components of the same
+     word should be surrounded by spaces.
+
+     Also available in expressions as primitive operands are
+     command executions enclosed in { and } and file enquiries of
+     the form -l name where l is one of:
+
+	  r    read access
+	  w    write access
+	  x    execute access
+	  e    existence
+	  o    ownership
+	  z    zero size
+	  f    plain file
+	  d    directory
+
+     The specified name undergoes command and file name
+     substitution and then is tested to see if it has the
+     specified relationship to the real user.  If the file does
+     not exist or is inaccessible, all enquiries return false,
+     i.e. 0. Command executions succeed, returning true, i.e. 1,
+     if the command exits with status 0; otherwise they fail,
+     returning false, i.e. 0. If more detailed status information
+     is required, the command should be executed outside of an
+     expression and the variable status examined.
+
+   Control Flow
+     The shell contains a number of commands that can be used to
+     regulate the flow of control in command files (shell
+     scripts) and from terminal input.	These commands all
+     operate by forcing the shell to reread or skip in its input
+     and, due to the implementation, restrict the placement of
+     some of the commands.
+
+     The foreach, switch, and while statements, as well as the
+     if-then-else form of the if statement require that the major
+     keywords appear in a single simple command on an input line
+     as shown below.
+
+     If the shell's input is not seekable, the shell stores input
+     in a buffer whenever a loop is being read and performs seeks
+     in this internal buffer to accomplish the rereading implied
+     by the loop.  (To the extent that this allows, a backward
+     goto will succeed on non-seekable inputs.)
+
+   Commands
+     Built-in commands are executed within the shell.  If a
+     built-in command occurs as any component of a pipeline
+     except the last, the built-in command is executed in a
+     subshell.
+
+     alias
+     alias name
+     alias name wordlist
+	  The first form prints all aliases.  The second form
+	  prints the alias for name. The final form assigns the
+	  specified wordlist as the alias of name; wordlist is
+	  command and file name substituted.  Name is not allowed
+	  to be alias or unalias.
+
+     break
+	  Causes execution to resume after the end of the nearest
+	  enclosing forall or while. The remaining commands on
+	  the current line are executed.  Multilevel breaks are
+	  thus possible by writing the multiple break commands on
+	  one line.
+
+     breaksw
+	  Causes a break from a switch, resuming after the endsw.
+
+     case label:
+	  A label in a switch statement.
+
+     cd
+     cd name
+     chdir
+     chdir name
+	  Changes the shell's working directory to directory
+	  name. If no argument is given, change to the home
+	  directory of the user.
+
+	  If name is not found as a subdirectory of the current
+	  directory and does not begin with /, ./, or ../, each
+	  component of the variable cdpath is checked to see if
+	  it has a subdirectory name.  Finally, if all else fails
+	  but name is a shell variable whose value begins with /,
+	  this shell variable is tried to see if it is a
+	  directory.
+
+     continue
+	  Continues execution of the nearest enclosing while or
+	  foreach. The rest of the commands on the current line
+	  are executed.
+
+     default:
+	  Labels the default case in a switch statement.  The
+	  default should come after all case labels.
+
+     echo wordlist
+	  The specified words are written to the shell's standard
+	  output.  A \c causes the echo to complete without
+	  printing a newline.  A \n in wordlist causes a newline
+	  to be printed.  Otherwise the words are echoed,
+	  separated by spaces.
+
+     else
+     end
+     endif
+     endsw
+	  See the description of the foreach, if, switch, and
+	  while statements below.
+
+     exec command
+	  The specified command is executed in place of the
+	  current shell.
+
+     exit
+     exit(expression)
+	  The shell exits either with the value of the status
+	  variable (first form) or with the value of the
+	  specified expression (second form).
+
+     foreach name (wordlist)
+	 ...
+     end
+	  The variable name is successively set to each member of
+	  wordlist and the sequence of commands between this
+	  command and the matching end are executed.  (Both
+	  foreach and end must appear alone on separate lines.)
+
+	  The built-in command continue may be used to continue
+	  the loop prematurely and the built-in command break to
+	  terminate it prematurely.  When this command is read
+	  from the terminal, the loop is read once prompting with
+	  ? before any statements in the loop are executed.  If
+	  you make a mistake typing in a loop at the terminal,
+	  you can rub it out.
+
+     glob wordlist
+	  Like echo but no \ escapes are recognized and words are
+	  delimited by null characters in the output.  Useful for
+	  programs that wish to use the shell to file name-expand
+	  a list of words.
+
+     goto word
+	  The specified word is file name and command expanded to
+	  yield a string of the form label.  The shell rewinds
+	  its input as much as possible and searches for a line
+	  of the form label: possibly preceded by blanks or tabs.
+	  Execution continues after the specified line.
+
+     history
+     history -b
+     history number
+     history -h number
+	  The first form displays the entire history event list.
+	  The second form displays the entire history event list
+	  without the event numbers. The third form displays the
+	  last number of history events. The fourth form displays
+	  the last number of events without event numbers. The -h
+	  option allows you to save history in a form that can be
+	  used with the source -h option to recall history from a
+	  previous login.
+
+     if (expression) command
+	  If the specified expression evaluates true, then the
+	  single command with arguments is executed.  Variable
+	  substitution on command happens at the same time it
+	  does for the rest of the if command.	Command must be a
+	  simple command, not a pipeline, a command list, or a
+	  parenthesized command list.  Input/output redirection
+	  occurs even if expression is false when command is not
+	  executed.
+
+     if (expression) then
+	 ...
+     else if (expression2) then
+	 ...
+     else
+	 ...
+     endif
+	  If the specified expression is true, the commands to
+	  the first else are executed; else if expression2 is
+	  true, the commands to the second else are executed.
+	  Any number of else-if pairs are possible. Only one
+	  endif is needed.  The else part is likewise optional.
+	  (The words else and endif must appear at the beginning
+	  of input lines.  The if must appear alone on its input
+	  line or after an else.)
+
+     login
+	  Terminate a login shell, replacing it with an instance
+	  of /bin/login.  This is one way to log off, included
+	  for compatibility with the Bourne shell.
+
+     logout
+	  Terminate a login shell.  Especially useful if the
+	  variable ignoreeof is set.
+
+     menu
+	  Displays a group of related commands and submenus.
+	  Using the arrow keys to position the cursor over the
+	  desired element, the user can either select the element
+	  or obtain a brief explanation of the menu element.
+
+     nice
+     nice +number
+     nice command
+     nice +number command
+	  The first form sets the nice number for this shell to
+	  4.  The second form sets the nice number to the given
+	  number.  The final two forms run command at priority 4
+	  and number respectively.  The super-user may specify
+	  negative niceness by using 'nice -number ...'.  Command
+	  is always executed in a subshell, and the restrictions
+	  placed on commands in simple if statements apply.
+
+     nohup
+     nohup command
+	  The first form can be used in shell scripts to cause
+	  hangups to be ignored for the remainder of the script.
+	  The second form causes the specified command to be run
+	  with hangups ignored.  Unless the shell is running in
+	  background, nohup has no effect. All processes running
+	  in background with & are automatically treated by
+	  nohup, thus, nohup is not really needed.
+
+     onintr
+     onintr -
+     onintr label
+	  Controls the action of the shell on interrupts.   The
+	  first form restores the default action of the shell on
+	  interrupts.  The default action is to terminate shell
+	  scripts or to return to the terminal command input
+	  level.  The second form causes all interrupts to be
+	  ignored.  The final form causes the shell to execute a
+	  goto label when an interrupt is received or when a
+	  child process terminates because it was interrupted.
+
+	  If the shell is running in background and interrupts
+	  are being ignored, all forms of onintr have no meaning
+	  and interrupts continue to be ignored by the shell and
+	  all invoked commands.
+
+     prompt
+	  Enables bsh shell scripts to perform interactive
+	  prompting for command entry.
+
+     rehash
+	  Causes the internal hash table of the contents of the
+	  directories in the path variable to be recomputed.
+	  This is needed if new commands are added to directories
+	  in the path while you are logged in.	This should only
+	  be necessary if you add commands to one of your own
+	  directories or if a systems programmer changes the
+	  contents of one of the system directories.
+
+     repeat count command
+	  The specified command, which is subject to the same
+	  restrictions as the command in the one-line if
+	  statement above, is executed count times.  I/O
+	  redirections occurs exactly once, even if count is 0.
+
+     set
+     set name
+     set name=word
+     set name[index]=word
+     set name=(wordlist)
+	  The first form of the command shows the value of all
+	  shell variables.  Variables that have other than a
+	  single word as value print as a parenthesized word
+	  list.  The second form sets name to the null string.
+	  The third form sets name to the single word. The fourth
+	  form sets the index'th component of name to word; this
+	  component must already exist.  The final form sets name
+	  to the list of words in wordlist. In all cases the
+	  value is command and file name-expanded.
+
+	  These arguments may be repeated to set multiple values
+	  in a single set command.  Note however, that variable
+	  expansion happens for all arguments before any setting
+	  occurs.
+
+     setenv name value
+	  Sets the value of environment variable name to be
+	  value, a single string.  Useful environment variables
+	  are TERM, the type of your terminal and SHELL, the
+	  shell you are using.
+
+     shift
+     shift variable
+	  The members of argv are shifted to the left, discarding
+	  argv[1].  It is an error for argv not to be set or to
+	  have less than one word as value.  The second form
+	  performs the same function on the specified variable.
+
+     source name
+     source -h name
+	  The first form reads commands from name. The user can
+	  change the .cshrc and/or the .login file and then
+	  execute the command source  ~/.cshrc and/or source
+	  ~/.login to apply the changes immediately.  The first
+	  form of source commands may be nested, but if the
+	  commands are nested too deeply, the shell may run out
+	  of file descriptors.	An error in a source command at
+	  any level terminates all nested source commands.  Input
+	  during source is not placed on the history list.
+
+	  The second form reads commands from name and puts them
+	  in the history list without executing the commands. The
+	  second form may not be nested because no commands are
+	  executed. No errors will be detected in the second form
+	  of source. If during a previous login, history had been
+	  saved using the command history -h > kepthist, then the
+	  command source -h kepthist would restore the current
+	  history to that of the previous login at the time of
+	  the command.
+
+     switch (string)
+     case label:
+	 ...
+     breaksw
+     ...
+     default:
+	 ...
+     breaksw
+     endsw
+	  Each case label is successively matched, against the
+	  specified string, which is first command and file
+	  name-expanded.  The file metacharacters *, ? and [...]
+	  can be used in the case labels, which are variable
+	  expanded.  If none of the labels match before a default
+	  label is found, the execution begins after the default
+	  label.  Each case label and the default label must
+	  appear at the beginning of a line.  The command breaksw
+	  causes execution to continue after the endsw.
+	  Otherwise, control may fall through case labels and
+	  default labels as in C.  If no label matches and there
+	  is no default, execution continues after the endsw.
+
+     time
+     time command
+	  With no argument, a summary of time used by this shell
+	  and its children is printed.	If arguments are given,
+	  the specified simple command is timed and a time
+	  summary as described under the time variable is
+	  printed.  If necessary, an extra shell is created to
+	  print the time statistic when the command completes.
+
+     umask
+     umask value
+	  The file creation mask is displayed (first form) or set
+	  to the specified value (second form).  The mask is
+	  given in octal.  Common values for the mask are 002,
+	  giving all access to the group and read and execute
+	  access to others, or 022, giving all access except no
+	  write access for users in the group or
+	  others.
+
+     unalias pattern
+	  All aliases whose names match the specified pattern are
+	  discarded.  Thus all aliases are removed by unalias *.
+	  It is not an error for nothing to be unaliased.
+
+     unhash
+	  Use of the internal hash table to speed location of
+	  executed programs is disabled.
+
+     unset pattern
+	  All variables whose names match the specified pattern
+	  are removed.	Thus all variables are removed by unset
+	  *; this has noticeably undesirable side-effects.  It is
+	  not an error for nothing to be unset.
+
+     unsetenv name
+	  Removes the environment variable name and its
+	  definition.
+
+     wait
+	  All child processes are waited for.  If the shell is
+	  interactive, an interrupt can disrupt the wait, at
+	  which time the shell prints names and process numbers
+	  of all children known to be outstanding.
+
+     while (expression)
+	 ...
+     end
+	  While the specified expression evaluates non-zero, the
+	  commands between the while and the matching end are
+	  evaluated.  Break and continue may be used to terminate
+	  or continue the loop prematurely.  (The while and end
+	  must appear alone on their input lines.)  Prompting
+	  occurs here the first time through the loop as for the
+	  foreach statement if the input is a terminal.
+
+     @
+     @ name = expression
+     @ name[index] = expression
+	  The first form prints the values of all the shell
+	  variables.  The second form sets the specified name to
+	  the value of expression. If the expression contains <,
+	  >, & or |, at least this part of the expression must be
+	  placed within parentheses.  The third form assigns the
+	  value of expr to the index'th argument of name. Both
+	  name and its index'th component must already exist.
+
+	  Operators like *= and += are available as in C.  The
+	  space separating the name from the assignment operator
+	  is optional.	Spaces are, however, mandatory in
+	  separating components of expression that would
+	  otherwise be single words.
+
+	  Special postfix ++ and -- operators increment and
+	  decrement name respectively, i.e. @  i++.
+
+   Pre-Defined Variables
+     The following variables have special meaning to the shell.
+     Of these, argv, child, home, path, prompt, shell, and status
+     are always set by the shell.  Except for child and status,
+     this setting occurs only at initialization.  These variables
+     (child and status) will not then be modified unless this is
+     done explicitly by the user.
+
+     The shell copies the environment variable PATH into the
+     variable path and copies the value back into the environment
+     whenever path is set.  Thus, it must be set only in the file
+     .cshrc because inferior shell processes will import the
+     definition of path from the environment.
+
+     abort	Set by the built-in command prompt.  Returns a
+		nonzero value when a command executed with prompt
+		is aborted (the user aborts the command or a
+		syntax error occurs).
+
+     argv	Sets the arguments to the shell. It is from this
+		variable that positional parameters are
+		substituted (i.e., $1 is replaced by $argv[1]
+		etc.).
+
+     cdpath	Gives a list of alternate directories searched to
+		find subdirectories in chdir commands. If an
+		error occurs when the shell changes to a
+		subdirectory specified in cdpath and if a
+		subsequent directory in cdpath has a subdirectory
+		of the same name, the shell attempts to change to
+		the latter subdirectory. For example, assume that
+		a subdirectory named test exists in more than one
+		directory specified with cdpath. If an error
+		occurs when changing to test, the shell continues
+		to search until it finds a subdirectory named
+		test or until the shell exhausts the search
+		paths.
+
+     child	The process number printed when the last command
+		was forked with &.  This variable is unset when
+		this process terminates.
+
+     cmd	If set, causes the menu to start up as though the
+		command key had been pressed.
+
+     echo	Set when the -x command line option is given.
+		Causes each command and its arguments to be
+		echoed just before it is executed.  For non-
+		built-in commands, all expansions occur before
+		echoing.  Built-in commands are echoed before
+		command and file name-substitution, since these
+		substitutions are then done selectively.
+
+     histchars	Can be assigned a two character string.  The
+		first character is used as a history character in
+		place of ! and the second character is used in
+		place of the ^ substitution mechanism.	For
+		example, set histchars=",;" will cause the
+		history characters to be comma and semicolon.
+
+     history	Can be given a numeric value to control the size
+		of the history list.  Any command that has been
+		referenced in this many events will not be
+		discarded.  Too large values of history may run
+		the shell out of memory.  The last executed
+		command is always saved on the history list.
+
+     home	The home directory of the invoker, initialized
+		from the environment.  The file name expansion of
+		~ refers to this variable.
+
+     ignoreeof	If set the shell ignores end-of-file from input
+		devices that are terminals.  This prevents shells
+		from accidentally being killed by CTRL-d's.
+
+     mail	The files where the shell checks for mail.  This
+		is done after each command completion that will
+		result in a prompt, if a specified interval has
+		elapsed.  The shell says ``You have new mail.''
+		if the file exists with an access time not
+		greater than its modify time.
+
+		If the first word of the value of mail is
+		numeric, it specifies a different mail checking
+		interval, in seconds, than the default, which is
+		10 minutes.
+
+		If multiple mail files are specified, then the
+		shell says ``New mail in name'' when there is
+		mail in the file name.
+
+     menu	May be set to the name of any menu in the path of
+		the environment variable MLC. When this is set,
+		the shell will automatically go into menu mode.
+		This allows the variable menu to be set in the
+		.login file in place of the menu command. This
+		will save one file descriptor per
+		terminal.
+
+     noclobber	Restrictions are placed on output redirection to
+		ensure that files are not accidentally destroyed,
+		and that >> redirections refer to existing files.
+
+     noexclam	If set, prevents shell escape at the menu. Thus,
+		the user can be restricted to the commands
+		available via the menus and the environment
+		variable MLC.
+
+     noglob	If set, file name expansion is inhibited.  This
+		is most useful in shell scripts which are not
+		dealing with file names, or after a list of file
+		names has been obtained and further expansions
+		are not desirable.
+
+     nonomatch	If set, it is not an error for a file name
+		expansion to not match any existing files; rather
+		the primitive pattern is returned.  It is still
+		an error for the primitive pattern to be
+		malformed, i.e.  'echo [' still gives an error.
+
+     path	Each word of the path variable specifies a
+		directory in which commands are to be sought for
+		execution.  A null word specifies the current
+		directory.  If there is no path variable, then
+		only full path names will execute.  The usual
+		search path is ., /bin and /usr/bin, but this may
+		vary from system to system.  For the super-user,
+		the default search path is /etc, /bin and
+		/usr/bin.  A shell which is given neither the -c
+		nor the -t option will normally hash the contents
+		of the directories in the path variable after
+		reading .cshrc, and each time the path variable
+		is reset.  If new commands are added to these
+		directories while the shell is active, it may be
+		necessary to give the rehash or the commands may
+		not be found.  The maximum length for all path
+		names and separators is 1024 characters.
+
+     prompt	The string that is printed before each command is
+		read from an interactive terminal input.  If a !
+		appears in the string it will be replaced by the
+		current event number unless a preceding \ is
+		given.	Default is %, or # for the super-user.
+
+     savehist	Can be given a value that controls the number of
+		history events to be saved when the shell
+		terminates. The events are saved in the file
+		~/.history.  When a shell starts, history will be
+		loaded with the events from ~/.history.
+
+     shell	The file in which the shell resides.  This is
+		used in forking shells to interpret files that
+		have execute bits set, but that are not
+		executable by the system.  (See the description
+		of Non-built-in Command Execution).  Initialized
+		to the (system-dependent) home of the shell.
+
+     status	The status returned by the last command.  If it
+		terminated abnormally, then 0200 is added to the
+		status.  Built-in commands that fail return exit
+		status 1; all other built-in commands set status
+		0.
+
+     time	Controls automatic timing of commands. If set,
+		any command that takes more than this many cpu
+		seconds will print, upon termination, a line
+		reporting user, system, and real times and a
+		utilization percentage.  The utilization
+		percentage is the ratio of user plus system times
+		to real time.
+
+     verbose	Set by the -v command line option, causes the
+		words of each command to be printed after history
+		substitution.
+
+   Non-built-in Command Execution
+     When a command to be executed is not a built-in command, the
+     shell attempts to execute the command via exec(2).  Each
+     word in the path variable names a directory from which the
+     shell will attempt to execute the command.  If it is given
+     neither a -c nor a -t option, the shell will hash the names
+     in these directories into an internal table so that the
+     shell will only try an exec in a directory if there is a
+     possibility that the command resides there.  This greatly
+     speeds command location when a large number of directories
+     are present in the search path.  If this mechanism has been
+     turned off (via unhash), or if the shell was given a -c or
+     -t argument (and in any case for each directory component of
+     path that does not begin with a /) the shell concatenates
+     with the given command name to form a path name of a file
+     which it then attempts to execute.
+
+     Parenthesized commands are always executed in a subshell.
+     Thus (cd ; pwd) ; pwd prints the home directory and leaves
+     you where you were (printing this after the home directory),
+     while cd ; pwd leaves you in the home directory.
+     Parenthesized commands are used most often to prevent cd
+     (chdir) from affecting the current shell.
+
+     If the file has execute permissions but is not an executable
+     binary to the system, then it is assumed to be a file
+     containing shell commands and a new shell is spawned to read
+     it.
+
+     If there is an alias for shell, then the words of the alias
+     will be prepended to the argument list to form the shell
+     command.  The first word of the alias should be the full
+     path name of the shell (e.g. $shell).  Note that this is a
+     special, late occurring, case of alias substitution, and
+     only allows words to be prepended to the argument list
+     without modification.
+
+   Argument List Processing
+     If argument 0 to the shell is -, the shell is a login shell.
+     The options are interpreted as follows:
+
+     -c string
+	  Commands are read from the single argument string . Any
+	  remaining arguments are placed in argv.
+
+     -e   The shell exits if any invoked command terminates
+	  abnormally or yields a non-zero exit status.
+
+     -f   The shell will start faster because it will neither
+	  search for nor execute commands from the file .cshrc in
+	  the invoker's home directory.
+
+     -i   The shell is interactive and prompts for its top-level
+	  input even if it appears to not be a terminal.  Shells
+	  are interactive without this option if their inputs and
+	  outputs are terminals.
+
+     -n   Commands are parsed but not executed.  This may aid in
+	  syntactic checking of shell scripts.
+
+     -s   Command input is taken from the standard input.
+
+     -t   A single line of input is read and executed.	A \ may
+	  be used to escape the newline at the end of this line
+	  and continue onto another line.
+
+     -v   Causes the verbose variable to be set, with the effect
+	  that command input is echoed after history
+	  substitution.
+
+     -x   Causes the echo variable to be set, so that commands
+	  are echoed immediately before execution.
+
+     -V   Causes the verbose variable to be set even before
+	  .cshrc is executed.
+
+     -X   Causes the echo variable to be set even before .cshrc
+	  is executed.
+
+     After processing of options, if arguments remain but none of
+     the -c, -i, -s, or -t options was given, the first argument
+     is taken as the name of a file of commands to be executed.
+     The shell opens this file, and saves its name for possible
+     resubstitution by $0.  Remaining arguments initialize the
+     variable argv.
+
+   Signal Handling
+     The shell normally ignores quit signals.  The interrupt and
+     quit signals are ignored for an invoked command if the
+     command is followed by &; otherwise, the signals have the
+     values that the shell inherited from its parent.  The
+     shell's handling of interrupts can be controlled by onintr.
+     Login shells catch the terminate signal; otherwise, this
+     signal is passed on to children from the state in the
+     shell's parent.  In no case are interrupts allowed when a
+     login shell is reading the file .logout.
+
+PROMPTS
+   Input File Name:
+     Enter the name of the file from which to read commands.
+
+   Accept Default Options:
+     The initial value is yes.	Enter yes to receive the
+     following options.
+
+   Exit on Abnormal Termination:
+     The initial value is no.  Enter yes to specify shell
+     termination if any invoked command terminates abnormally or
+     returns a nonzero exit status.
+
+   Search/Execute .cshrc:
+     The initial value is no.  Enter no to cause faster execution
+     of the shell by preventing searching and executing commands
+     from the .cshrc file.
+
+   Parse Commands:
+     The initial value is no.  Enter yes to parse but not execute
+     commands.
+
+   Read/Execute One Command:
+     The initial value is no.  Enter yes to read and execute a
+     single line of input.
+
+   Set Verbose Variable:
+     The initial value is no.  Enter yes to cause the command
+     input to be echoed after history substitution.
+
+   Set Echo Variable:
+     The initial value is no.  Enter yes to cause commands to be
+     echoed immediately before execution.
+
+   Set Echo Before .cshrc:
+     The initial value is no.  Enter yes to set the echo variable
+     before .cshrc is executed.
+
+   Set Verbose Before .cshrc:
+     The initial value is no.  Enter yes to set the verbose
+     variable before .cshrc is executed.
+
+FILES
+     In the list that follows, ~ indicates the user's home
+     directory that is specified in the /etc/passwd file.  The
+     first four files in the list are shown in the order in which
+     they are executed.
+
+     /etc/.bshlogin    First file read by login shell
+     ~/.cshrc	       Read at beginning of execution by each
+		       shell
+     ~/.history        Command to be put into history event list
+     ~/.login	       Read at login
+     ~/.logout	       Read at logout
+     /etc/.bshlogout   Read by login shell, at logout
+     /bin/sh	       Bourne shell, for shell scripts without #
+		       csh or # bsh on the first line
+     /tmp/sh*	       Temporary file for <<
+     /dev/null	       Source of empty file
+     /etc/passwd       Specifies users' home directories
+SEE ALSO
+     a.out(5), access(2), csh(1), environ(5), exec(2), fork(2),
+     menu(1T), pipe(2), prompt(1T), sh(1), signal(2), umask(2),
+     wait(2).
+NOTES
+     Words can be no longer than 512 characters.  The number of
+     characters in an argument varies from system to system.  The
+     number of arguments to a command that involves file name
+     expansion is limited to one-sixth the number of characters
+     allowed in an argument list.  Also, command substitutions
+     can substitute no more characters than are allowed in an
+     argument list.
+     Path names entered in shell scripts or on command lines are
+     seven-bit characters only.
+     To detect looping, the shell restricts the number of alias
+     substitutions on a single line to 20.
+
+

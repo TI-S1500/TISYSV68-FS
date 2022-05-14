@@ -1,0 +1,28 @@
+# bshf mkisam - create tisam file
+#	@(#)MKISAM.sh	1.3 88/01/20
+#
+onintr end
+
+if ($vopt == "") set vopt=n
+
+prompt	"^MKISAM -- CREATE T-ISAM FILE "\
+	"^T-ISAM Data File:"         dfile acnm $dfile\
+	"^*T-ISAM Index File:"       ifile acnm $ifile\
+	"^T-ISAM Description File:"  ofile acnm $ofile\
+	"^Verbose? (y/n):"           vopt yesno $vopt\
+	"^#$*"
+
+if ($abort) goto end
+
+set vop=""
+set fop=""
+
+if ($vopt == "y") set vop="-v "
+if ($ofile != "") set fop="-f "$ofile" "
+
+echo mkisam $vop$fop$dfile $ifile
+mkisam $vop$fop$dfile $ifile
+
+unset vop fop
+
+end:

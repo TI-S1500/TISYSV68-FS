@@ -1,0 +1,101 @@
+MTCSTAT(1T)					      MTCSTAT(1T)
+
+NAME
+     mtcstat - Lists status of multidrop terminal concentrators
+
+SYNOPSIS
+     mtcstat -ps [mtcnames]
+
+DESCRIPTION
+   Function
+     The mtcstat command lists information about the specified
+     multidrop terminal concentrators (MTCs).  The mtcstat
+     command can be used to determine if the MTC is currently
+     operational and running with the correct software and
+     hardware versions.
+
+   Options
+     -p port
+	  Displays status of all MTCs defined on this
+	  communications carrier board (CCB) option port.  This
+	  option is only valid when entered along with the -s
+	  option.
+
+     -s slot
+	  Displays status of all MTCs defined on this CCB slot.
+
+   Arguments
+     mtcnames
+	    An MTC global name or a list of MTC global names as
+	    specified in the MTC definition file, /etc/mtctab.
+	    Without mtcnames specified, the command lists the
+	    status information of all the MTCs defined in the MTC
+	    definition file, /etc/mtctab.
+
+EXAMPLES
+     The following are example command lines for the mtcstat
+     command:
+
+	  mtcstat payroll mtc0
+	  mtcstat
+
+     The following is an example of status information returned
+     by mtcstat upon normal completion:
+
+     NAME  STATUS		 ROM		     CCB  PORT ADDR  DUMP
+     mtc0  mtcload 1.0 10/31/89  1.04 CK802 10/24/89 03   0    1     disabled
+     tc1   mtcload 1.0 10/31/89  1.04 CK802 10/24/89 03   1    0     enabled
+     junk  OFFLINE				     03   1    1     disabled
+
+     The meanings of the columns are as follows:
+
+     NAME	  MTC global name.  Maximum length is 8
+		  characters.
+
+     STATUS	  The current running state of the MTC.  There
+		  are 5 possible status conditions returned by
+		  the utility:
+
+		  RAM version - The MTC is running in the
+		  downloaded code (RAM) and is operational.  The
+		  RAM version number and date of the downloaded
+		  software is displayed.
+
+		  WAITING - The MTC is running in the ROM
+		  download code.  The download process, mtcdl,
+		  has not started the download process yet.
+
+		  DNLDING - The MTC is running in the ROM
+		  download code.  The download is in progress.
+
+		  UPLDING - The MTC is sending the memory dump to
+		  the host.  The MTC is running in the ROM
+		  download code. The download will be started
+		  when the memory dump is finished.
+
+		  OFFLINE - No response has been received from
+		  the MTC.  This may indicate that the MTC is
+		  powered off or has encountered software or
+		  hardware problems.  Further investigation into
+		  the cause for the status is needed.
+
+     ROM	  The version number and date of the ROM in the
+		  MTC is displayed.
+
+     CCB	  The chassis slot number of the communications
+		  carrier board (CCB) that is associated with the
+		  specified MTC.
+
+     PORT	  The CCB port number that is associated with the
+		  specified MTC.
+
+     ADDR	  The address of the MTC.
+
+     DUMP	  If the memory dump capability of that MTC is
+		  enabled, the word enabled is displayed.  See
+		  mtcdump(1T).
+
+SEE ALSO
+     mtcdl(1T), mtcdump(1T), mtcreset(1T).
+
+

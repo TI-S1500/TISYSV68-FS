@@ -1,0 +1,28 @@
+# cshf   disable - disables line printers
+#	@(#)DISABLE.sh	1.4 (TI) 87/10/13
+#
+onintr end
+set quote = '"'
+
+prompt "^DISABLE -- DISABLES LINE PRINTERS"\
+	"^Printer Name(s):" _printer string "$_printer"\
+	"^*Reason:" rsn string "$rsn"\
+	"^Cancel Requests:" cancel yesno n\
+	"^Wait for current request to finish:" wait yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ( $cancel == "y" ) set copt = -c
+if ( $wait == "y" ) set wopt = -w
+
+echo "=== DISABLE COMMAND EXECUTING ===" 
+if ("$rsn" == "") then
+	echo disable $copt $wopt $_printer
+	disable $copt $wopt $_printer
+else
+	echo disable $copt -r$quote"$rsn"$quote $wopt $_printer
+	disable $copt -r"$rsn" $wopt $_printer
+endif
+
+end:
+unset rsn cancel copt quote wait wopt

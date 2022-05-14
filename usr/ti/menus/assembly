@@ -1,0 +1,15 @@
+assembly:menu: ASSEMBLY LANGUAGE MENU Series 1000, Model 1500 :assembly.hlp
+A68K:c:Invokes the Quelo 68020 assembly source processor:
+A68M:c:Invokes the assembler macro preprocessor:
+AR:c:Invokes the archive and library maintainer:
+AS:c:Invokes the Quelo 68020 assembler:
+DFM:c:Directory/file manager:
+LD:c:Invokes the links editor for common object files:
+LTXCOFF:c:Invokes the 68020 assembler linker conversion utility:
+LTXDUMP:c:Invokes the 68020 assembler linker text dump utility:
+MAKE:c:Maintains and regenerates programs:
+QSYM:c:Invokes the 68020 assembler symbol report generator:
+SDB:c:Invokes a symbolic debugger:
+SHOW:c:Multi-featured show file:
+TSORT:c:Performs a topological sort:
+TX:c:Full screen editor:

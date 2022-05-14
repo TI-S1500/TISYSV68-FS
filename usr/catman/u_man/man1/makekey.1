@@ -1,0 +1,51 @@
+MAKEKEY(1)                                             MAKEKEY(1)
+
+NAME
+     makekey - Generates encryption keys
+
+SYNOPSIS
+     makekey
+
+DESCRIPTION
+   Purpose
+     The makekey command improves the usefulness of key-dependent
+     encryption schemes by increasing the amount of time required
+     to search the key space.
+
+   Discussion
+     The makekey command reads 10 bytes from its standard input
+     and writes 13 bytes on its standard output.  The output
+     depends on the input in a way intended to be difficult to
+     compute (i.e., intended to require a substantial fraction of
+     a second).
+
+     The first eight input bytes (the input key) can be arbitrary
+     ASCII characters.  The last two input bytes (the salt) are
+     best chosen from the set of digits, ., /, and upper- and
+     lower-case letters.  The salt characters are repeated as the
+     first two characters of the output.  The remaining 11 output
+     characters are chosen from the same set as the salt and
+     constitute the output key.
+
+     The transformation performed is essentially the following:
+     the salt is used to select one of 4,096 cryptographic
+     machines all based on the National Bureau of Standards DES
+     algorithm, but broken in 4,096 different ways.  Using the
+     input key as key, a constant string is fed into the machine
+     and recirculated a number of times.  The 64 bits that come
+     out are distributed into the 66 output key bits in the
+     result.
+
+     The makekey command is intended for programs that perform
+     encryption, like ed(1) and crypt(1).  Usually, the input and
+     output are pipes.
+
+PROMPTS
+   Output File Name:
+     Response to this prompt is optional.  Enter a file name to
+     receive the output of the command.
+
+SEE ALSO
+     crypt(1), ed(1), passwd(4).
+
+

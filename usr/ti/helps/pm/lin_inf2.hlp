@@ -1,0 +1,87 @@
+
+The Process Linear Address Space screen displays a virtual memory map and
+various statistics about a the memory usage of particular process.  The left 
+side of the screen contains the following text, data, and stack statistics 
+for the selected process on the current CPU:
+
+    Text Pages   Shows the total number of pages of address space used 
+        for text by the selected process.
+
+    Text Pages in Memory   Shows the number of text pages that are 
+        currently in memory for the selected process and the percentage 
+        of such pages in use.
+
+    Text Pages FOD   Shows the number of text pages filled on demand for 
+        the selected process and the percentage of such pages in use.
+
+    Text Pages Accessed   Shows the number of text pages accessed for the 
+        selected process and the percentage of such pages in use.
+
+    Text Pages Accessed   Shows the number of text pages accessed for the 
+        selected process and the percentage of such pages in use.
+
+    Text Pages Modified   Shows the number of text pages modified for the 
+        selected process and the percentage of such pages in use.
+
+    Text on Free List   Shows the number of text pages on the free list 
+        for the selected process and the percentage of such pages in use.
+
+    Data Pages   Shows the total number of pages of address space used 
+        for data by the selected process.
+
+    Data Pages in Memory   Shows the number of data pages that are 
+        currently in memory for the selected process and the percentage
+         of such pages in use.
+
+    Data Pages FOD   Shows the number of data pages filled on demand for 
+        the selected process and the percentage of such pages in use.
+
+    Data Pages Accessed   Shows the number of data pages accessed for the 
+        selected process and the percentage of such pages in use.
+
+    Data Pages Accessed   Shows the number of data pages accessed for the 
+        selected process and the percentage of such pages in use.
+
+    Data Pages Modified   Shows the number of data pages modified for the 
+        selected process and the percentage of such pages in use.
+
+    Data on Free List   Shows the number of data pages on the free list for 
+        the selected process and the percentage of such pages in use.
+
+    Stack Pages   Shows the total number of pages of address space used 
+        for stack by the selected process.
+
+    Stack Pages in Memory   Shows the number of stack pages that are 
+        currently in memory for the selected process and the percentage 
+        of such pages in use.
+
+    Stack Pages FOD   Shows the number of stack pages filled on demand for 
+        the selected process and the percentage of such pages in use.
+
+    Stack Pages Accessed   Shows the number of stack pages accessed for the 
+        selected process and the percentage of such pages in use.
+
+    Stack Pages Accessed   Shows the number of stack pages accessed for the 
+        selected process and the percentage of such pages in use.
+
+    Stack Pages Modified   Shows the number of stack pages modified for the 
+        selected process and the percentage of such pages in use.
+
+    Stack on Free List   Shows the number of stack pages on the free list 
+        for the selected process and the percentage of such pages in use.
+
+This right side of the Process Linear Address Space screen contains a map of 
+the virtual memory layout for the selected process on the current CPU. Memory 
+on the map is broken into pages of 4096 bytes (4 K-bytes). Each line on the 
+memory map contains a virtual address followed by the status and usage of each 
+of page beginning at that address. The following symbols are used to indicate 
+the usage of each memory page:
+
+    .    - Free page
+
+    D    - Data page
+
+    S    - Stack page
+
+    T    - Text page
+

@@ -1,0 +1,123 @@
+LOGIN(1)                                                 LOGIN(1)
+
+NAME
+     login - Signs on
+
+SYNOPSIS
+     login name [env-var ...]
+
+DESCRIPTION
+   Purpose
+     The login command is used to identify you to the system at
+     the beginning of each terminal session.
+
+   Discussion
+     The login command can be invoked as a command or by the
+     system when a connection is first established.  It is
+     invoked by the system when a previous user has terminated
+     the initial shell by typing a CTRL-D to indicate an end-of-
+     file.
+
+     If login is invoked as a command it must replace the initial
+     command interpreter.  This is accomplished by typing:
+
+          exec login
+
+     from the initial shell.
+
+     The login command asks for your user name (if not supplied
+     as an argument) and, if appropriate, your password.  Echoing
+     is turned off (where possible) during the typing of your
+     password, so it does not appear on the written record of the
+     session.
+
+     At some installations, an option may be invoked that
+     requires you to enter a second dialup password.  This occurs
+     only for dial-up connections, and is prompted by the message
+     dialup password:.  Both passwords are required for a
+     successful login.
+
+     If you do not complete the login successfully within a
+     certain period of time (e.g., one minute), you are likely to
+     be silently disconnected.
+
+     After a successful login, accounting files are updated, the
+     procedure /etc/profile is performed, the message-of-the-day,
+     if any, is printed, the user-ID, the group-ID, the working
+     directory, and the command interpreter, usually sh(1) or
+     bsh(1T), are initialized, and the file .profile in the
+     working directory is executed, if it exists.  These
+     specifications are found in the /etc/passwd file entry for
+     the user.  The name of the command interpreter is -,
+     followed by the last component of the interpreter's path
+     name (i.e., -sh).  If this field in the password file is
+     empty, then the default command interpreter, /bin/sh is
+     used.
+
+   Environment
+     The basic environment (see environ(5)) is initialized to:
+
+          HOME=your-login-directory
+          PATH=:/bin:/usr/bin
+          SHELL=last-field-of-passwd-entry
+          MAIL=/usr/mail/your-login-name
+          TZ=timezone-specification
+
+     The environment may be expanded or modified by supplying
+     additional arguments to login, either at execution time or
+     when login requests your login name.  The arguments may take
+     either the form xxx or xxx=yyy. Arguments without an equal
+     sign are placed in the environment as
+          Ln=xxx
+     where n is a number starting at 0 and is incremented each
+     time a new variable name is required.  Variables containing
+     an = are placed into the environment without modification.
+     If they already appear in the environment, then they replace
+     the older value.  There are two exceptions.  The variables
+     PATH and SHELL cannot be changed.  This prevents people,
+     logging into restricted shell environments, from spawning
+     secondary shells that are not restricted.  Both login and
+     getty(1) understand simple single-character quoting
+     conventions.  Typing a backslash in front of a character
+     quotes it and allows the inclusion of such things as spaces
+     and tabs.
+
+EXAMPLE
+     In the following example the user types the command login
+     and the following prompt is displayed:
+
+          login:
+
+     The user responds to this prompt with a login name.
+
+FILES
+     /etc/utmp            accounting
+     /etc/wtmp            accounting
+     /usr/mail/your-name  mailbox for user your-name
+     /etc/motd            message-of-the-day
+     /etc/passwd          password file
+     /etc/profile         system profile
+     .profile             user's login profile
+
+SEE ALSO
+     bsh(1), environ(5), mail(1), newgrp(1), passwd(4),
+     profile(4), sh(1), su(1).
+
+DIAGNOSTICS
+     Login incorrect    The user name or password cannot be
+                        matched.
+
+     No shell           Consult a system programming counselor.
+
+     cannot open password file
+                        Consult a system programming counselor.
+
+     no directory       Consult a system programming counselor.
+
+     Not login shell.   You must exec ``login'' from the lowest
+                        level ``sh''.  You attempted to execute
+                        login as a command without using the
+                        shell's exec internal command or from
+                        other than the initial shell.
+
+

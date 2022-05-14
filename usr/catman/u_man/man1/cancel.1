@@ -1,0 +1,27 @@
+CANCEL(1)                                               CANCEL(1)
+
+NAME
+     cancel - Cancels requests to an LP print service
+
+SYNOPSIS
+     cancel [request-ids] [printers]
+
+DESCRIPTION
+     The cancel command cancels printer requests that were made
+     by the lp(1) command.  The command line arguments can be
+     either request-ids (as returned by lp(1)) or printer names
+     (for a complete list, use lpstat(1)).  Specifying a
+     request-id cancels the associated request even if it is
+     currently printing.  Specifying a printer cancels the
+     request that is currently printing on that printer.  In
+     either case, the cancellation of a request that is currently
+     printing frees the printer to print its next available
+     request.
+
+FILES
+     /usr/spool/lp/*
+
+SEE ALSO
+     accept(1M), diasble(1), enable(1), lp(1), reject(1M).
+
+

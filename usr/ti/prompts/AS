@@ -1,0 +1,32 @@
+# cshf  as -- Invokes the 68020 assembler 
+#	@(#)AS.sh	1.1  87/03/09
+#
+onintr end
+if ($_input_file != "") set _object_file = $_input_file:r.o
+
+prompt "^AS -- INVOKES THE 68020 ASSEMBLER"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+ 	"^*Object File Name:" _object_file acnm $_object_file\
+	"^Execute Linker Text Dump Utility:" dflag yesno n\
+	"^Save the Assembly Listing File:" lflag yesno n\
+	"^Run Pre-processor:" mflag yesno n\
+	"^Save Intermediate Files:" sflag yesno n\
+	"^Print Assembler Version Number:" Vflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($_object_file != "") set oopt = "-o "$_object_file
+if ($Vflag == "y") set Vopt = -V$opt
+if ($sflag == "y") set sopt = -s$opt
+if ($mflag == "y") set mopt = -m$opt
+if ($lflag == "y") set lopt = -l$opt
+if ($dflag == "y") set dopt = -d$opt
+
+if ($abort) goto end
+echo "=== AS COMMAND EXECUTING ==="
+echo as $oopt $Vopt $sopt $mopt $lopt $dopt $_input_file
+as $oopt $Vopt $sopt $mopt $lopt $dopt $_input_file
+
+#clean up time
+end:
+unset *flag *opt

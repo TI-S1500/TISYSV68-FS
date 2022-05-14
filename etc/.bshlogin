@@ -1,0 +1,19 @@
+# /etc/.bshlogin  script for bsh and csh login
+
+onintr -		# Ignore all interrupts
+# Set preferred control characters
+stty erase '^H' intr '^C' kill '^U' quit '^\' eof '^D' echoe echok tab3
+umask 002		# Set file creation mask
+set path=( /bin /usr/bin /etc )         # Set search path
+setenv TZ `cat /etc/TZ` #local time zone
+setenv LANG USA		# Set country code
+setenv DATE "MM/DD/YY hh:mm:ss"		# Set date format
+cat /etc/motd		# Display message of the day
+if { mail -e } then	# Check for new mail
+	echo 'you have mail'
+endif
+
+if ( $LOGNAME != "root" ) then 		# Display news
+	news -n
+endif
+onintr			# Restore interrupts

@@ -1,0 +1,214 @@
+DUMP(1)                                                   DUMP(1)
+
+NAME
+     dump - Dumps selected parts of an object file
+
+SYNOPSIS
+     dump -acfghlorstz files
+
+DESCRIPTION
+   Purpose
+     The dump command dumps selected parts of each of its object
+     file arguments.
+
+     This command accepts both object files and archives of
+     object files.  Do not use dump on archives that contain
+     files other than object (executable) files.
+
+   Options
+     -a   Dumps archive header of each member of the archive.
+
+     -c   Dumps the string table.
+
+     -f   Dumps each file header.
+
+     -g   Dumps global symbols in archive symbol table.
+
+     -h   Dumps section headers.
+
+     -l   Dumps line number information.  Does not work on object
+          files created with SVS compilers.
+
+     -o   Dumps each optional header.
+
+     -r   Dumps relocation information.
+
+     -s   Dumps section contents.
+
+     -t   Dumps symbol table entries.
+
+     -z name
+          Dumps line number entries for the named function.  Does
+          not work on object files created with SVS compilers.
+
+   Modifiers
+     The following modifiers are used in conjunction with the
+     options listed above to modify their capabilities.
+
+     -d num
+          Dumps the section number or range of sections starting
+          at the given number and ending either at the last
+          section number or the number specified by +d.
+
+     +d num
+          Dumps sections in the range either beginning with first
+          section or beginning with section specified by -d.
+
+          The +d and -d options work with the -h, -l, -r, and -s
+          options.
+
+     -n name
+          Dumps information pertaining only to the named entity.
+          This modifier applies to options -h, -s, -r, -l, and
+          -t.
+
+     -p   Suppresses printing of the headers.
+
+     -t index
+          Dumps only the indexed symbol table entry.  When the -t
+          is used in conjunction with +t, it specifies a range of
+          symbol table entries.
+
+     +t index
+          Dumps the symbol table entries in the range ending with
+          the indexed entry.  The range begins at the first
+          symbol table entry or at the entry specified by the -t
+          option.
+
+     -u   Underlines the name of the file for emphasis.  Do not
+          use this modifier when dumping to a VDT.
+
+     -v   Dumps information in symbolic representation rather
+          than numeric (e.g., C_STATIC instead of 0X02).  This
+          modifier can be used with all the above options except
+          -s, -o, and -z.
+
+     -z name,num
+          Dumps line number entry or range of line numbers
+          starting at the given number for the named function.
+          Does not work on object files created with SVS
+          compilers.
+
+     +z num
+          Dumps line numbers starting at either function name or
+          number specified by -z, up to the number specified by
+          +z.  Does not work on object files created with SVS
+          compilers.
+
+   Discussion
+     Blanks separating an option and its modifier are optional.
+     The comma separating the name from the number modifying the
+     -z option may be replaced by a blank.
+
+     The dump command attempts to format the information it dumps
+     in a meaningful way, printing certain information in
+     character, hex, octal, or decimal representation, as
+     appropriate.
+
+EXAMPLES
+     The following example prints section headers of the object
+     file named a to standard output.
+
+          dump -h a
+
+     The following command prints to standard output the section
+     headers of file a for sections 2 and 3.
+
+          dump -h -d2 +d3 a
+
+     The following command prints to standard output the indexed
+     symbol table entries from 200 to 220.
+
+          dump -t200 +t220 a
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of the object file to process.
+
+   Output File Name:
+     Enter the name of the file to receive the output.
+
+   Dump String Table:
+     The initial value is no.  Enter yes to dump the string
+     table.
+
+   Dump File Header:
+     The initial value is no.  Enter yes to dump each file
+     header.
+
+   Dump Optional Header:
+     The initial value is no.  Enter yes to dump each optional
+     file header.
+
+   Dump Relocation Info:
+     The initial value is no.  Enter yes to dump relocation
+     information.
+
+   Dump Line Number Info:
+     The initial value is no.  Enter yes to dump line number
+     information.
+
+   Suppress Headers:
+     The initial value is no.  Enter yes to suppress printing of
+     the headers.
+
+   Underline File Names:
+     The initial value is no.  Enter yes to underline the file
+     name for emphasis.  Do not use this feature when dumping to
+     a VDT.
+
+   Symbolic Representation:
+     The initial value is no.  Enter yes to dump information in
+     symbolic rather than numeric representation.
+
+   Select Symbol Table Options:
+     The initial value is no.  Enter yes to receive the following
+     three symbol table prompts.
+
+   Dump Symbol Table Entries:
+     The initial value is no.  Enter yes to dump symbol table
+     entries.
+
+   Starting Symbol Table Entry:
+     Enter the index of the symbol table from which to begin
+     dumping.
+
+   Ending Symbol Table Entry:
+     Enter the index of the symbol table from which to end
+     dumping.
+
+   Select Section Options:
+     The initial value is no.  Enter yes to receive the following
+     four prompts.
+
+   Dump Section Headers:
+     The initial value is no.  Enter yes to dump section headers.
+
+   Dump Section Contents:
+     The initial value is no.  Enter yes dump section contents.
+
+   Starting Section Number:
+     Enter the number of the section from which to begin dumping.
+
+   Ending Section Number:
+     Enter the number of the section from which to end dumping.
+
+   Select Function Options:
+     The initial value is no.  Enter yes to receive the following
+     three prompts.
+
+   Function Name:
+     Enter a function name.
+
+   Starting Line Number:
+     Enter the line number from which to begin dumping the named
+     function.
+
+   Ending Line Number:
+     Enter the line number from which to end dumping the named
+     function.
+
+SEE ALSO
+     a.out(4), ar(4).
+
+

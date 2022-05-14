@@ -1,0 +1,70 @@
+SCCSDIFF(1)                                           SCCSDIFF(1)
+
+NAME
+     sccsdiff - Compares two versions of an SCCS file
+
+SYNOPSIS
+     sccsdiff -prs files
+
+DESCRIPTION
+   Purpose
+     The sccsdiff command compares two versions of an SCCS file
+     and generates the differences between the two versions.
+
+     Any number of SCCS files can be specified in this command,
+     but arguments apply to all files.
+
+   Options
+     -p   Pipe output for each file through pr(1).
+
+     -rSID1 and -rSID2
+          SID1 and SID2 specify the deltas of an SCCS file that
+          are to be compared.  Versions are passed to bdiff(1) in
+          the order given.
+
+     -sn  n is the file segment size that bdiff will pass to
+          diff(1).  This is useful when diff fails due to a high
+          system load.
+
+EXAMPLE
+     The following command reports the difference between
+     versions 1.2 and 1.3 of the SCCS file named s.file1:
+
+          sccsdiff -r1.2 -r1.3 s.file1
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of the SCCS file to process.
+
+   Output File Name:
+     Response to this file is optional.  Enter a file name to
+     receive the output of the command.
+
+   Give First Delta Version Number:
+     Enter the SID of the first version.
+
+   Give Second Delta Version Number:
+     Enter the SID of the second version.
+
+   Pipe Output Through pr(1):
+     The initial value is no.  Enter yes to pipe the output
+     through the pr command.
+
+   File Segment Size:
+     Response to this prompt is optional.  Enter the number of
+     lines per file segment that the bdiff command passes to the
+     diff command.
+
+FILES
+     /tmp/get?????  Temporary files
+
+SEE ALSO
+     bdiff(1), get(1), help(1), pr(1).
+     ``Source Code Control System'' in the TI System V Support
+     Tools Guide.
+
+DIAGNOSTICS
+     file: No differences     If the two versions are the same.
+     Use help(1) for explanations.
+
+

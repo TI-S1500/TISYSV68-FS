@@ -1,0 +1,142 @@
+STRNSTAT(1T)					     STRNSTAT(1T)
+
+NAME
+     strnstat - Displays StreamsNet statistics
+
+SYNOPSIS
+     strnstat -cIi [mem] [namelist]
+
+DESCRIPTION
+   Purpose
+     The strnstat utility displays the StreamsNet statistics for
+     one or all network interfaces.  This information is useful
+     for a system analyst to monitor normal StreamsNet operations
+     or to troubleshoot the StreamsNet interfaces.
+
+   Arguments
+     mem     Name of file that contains the system image. The
+	     default value is /dev/kmem.  A hyphen (-) can be
+	     specified in this field to indicate default system
+	     image file.
+
+     namelist
+	     Name of file to be used for symbol values. The
+	     default value is /unix.
+
+   Options
+     -c      Resets the statistics back to 0 after displaying the
+	     current statistics. This option should only be used
+	     when you are monitoring the current running system.
+	     The counters and the elapsed time for the specified
+	     interfaces will both be reset after the display.
+
+     -I      Displays the statistics of all of the StreamsNet
+	     interfaces. A summary of the usage of the StreamsNet
+	     heap pool is also displayed.
+
+     -i ifname
+	     Displays the statistics of the specified StreamsNet
+	     interface. The ifname is the interface name assigned
+	     by the system administrator when the StreamsNet
+	     interface is initialized.
+
+EXAMPLE
+     The following command line reports the statistics of all of
+     the StreamsNet interfaces on the current running system:
+
+	  strnstat -I
+
+     The following is an example of the information returned by
+     the preceding command upon normal completion:
+
+	  -------------------------- strnstat -----------------------
+
+	  Interface name: en040
+
+	  Elapsed time: 1: 0: 9:31
+
+	  No. of links: 2
+
+		 Outbound		     Inbound
+	      Messages No. of bytes	Messages  No. of bytes
+	       60034   40166522 	 56772	  46136614
+
+	  ********************* STRNET STATISTICS *******************
+
+	  Current no. of STRNET elements allocated: 42
+
+	  Max. no. of STRNET elements allocated: 54
+
+	  No. of failed allocation: 0
+
+	  Current used size of the STRNET pool: 3144
+
+	  Max. used size of the STRNET pool: 4344
+
+	  Total size of the STRNET pool: 20480
+
+NOTES
+      1.    Interface name - The name assigned to the StreamsNet
+	    interface at the initialization time.
+
+      2.    Elapsed time - The elapsed time since the last time
+	    the statistics were initialized or cleared. The
+	    format is day:hour:minute:second.
+
+      3.    No. of links - Number of links established through
+	    this interface to the CCB streams driver.
+
+      4.    Outbound/lnbound messages - Number of Streams
+	    messages sent or received through this interface
+	    during the elapsed time.
+
+      5.    Outbound/Inbound no. of bytes - Number of bytes sent
+	    or received through this interface during the elapsed
+	    time.
+
+      6.    STRNET STATISTICS - A summary of the StreamsNet
+	    (STRNET) heap pool usage. The STRNET heap pool is an
+	    array of bytes reserved by the StreamsNet for dynamic
+	    allocation/deallocation of the STRNET elements.  The
+	    STRNET elements are variable sized buffers used by
+	    the StreamsNet to communicate with the CCB Streams
+	    driver. The size of the STRNET heap pool is a system
+	    configuration (cband) parameter.
+
+      7.    Current no. of STRNET elements allocated - Total
+	    Number of STRNET elements currently allocated on the
+	    system for transmitting or receiving messages.
+
+      8.    Max. no. of STRNET elements allocated - The maximum
+	    number of STRNET elements that has ever been
+	    allocated on the system for transmitting or receiving
+	    messages.
+
+      9.    No. of failed allocation - Number of times that a
+	    STRNET element cannot be allocated right away.
+
+     10.    Current used size of the STRNET pool - Total number
+	    of bytes currently allocated for the STRNET elements
+	    out of the STRNET pool.
+
+     11.    Max. used size of the STRNET pool - The maximum
+	    number of bytes in the STRNET pool that has ever been
+	    allocated for the STRNET elements.
+
+     12.    Total size of the STRNET pool - Total number of bytes
+	    reserved for the STRNET heap pool on the system. This
+	    number can be tuned by changing the cband parameter
+	    "Streams net heapsize".
+
+PROMPTS
+   Interface Name:
+     Enter the name of the specific interface whose statistics is
+     desired. The default is to get the statistics from all of
+     the StreamsNet interfaces.
+
+   Clear After Display:
+     The default value is no. If you enter yes, the statistics of
+     the specified interface will be reset internally after the
+     display.
+
+

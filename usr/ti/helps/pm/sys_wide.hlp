@@ -1,0 +1,72 @@
+
+The System-Wide Activity screen displays various statistics about the system,
+including the percentage of buffer cache hits, various file I/O counters, and
+system call activity.  The graph in the upper left corner of the screen shows 
+the percentage of read, write, and total buffer cache hits. A cache hit occurs 
+when a file read or write operation finds the appropriate information in the 
+buffer cache and, therefore, does not have to retrieve the information from 
+disk. The cache hit ratio is computed as follows:
+
+%Hits = (# of Logical I/O -   of Block I/O) /   of Logical I/O * 100
+
+The table in the upper right corner of the screen shows the following file I/O 
+counters:
+
+    Logical Reads/Sec   Shows the average number of logical reads per 
+        second. A logical read is a system request to a block device.
+
+    Block Reads/Sec   Shows the average number of blocks transferred from 
+        disk per second. These actual data transfers are caused by logical 
+        operations that cannot be be satisfied by the current contents of 
+        the buffer cache.
+
+    Raw Reads/Sec   Shows the average number of raw reads per second. A raw 
+        read is a request issued to a raw device.
+
+    Logical Writes/Sec   Shows the average number of logical writes per 
+        second. A logical write is a system request to a block device.
+
+    Block Writes/Sec   Shows the average number of blocks transferred to 
+        disk per second. These actual data transfers are caused by logical 
+        operations that cannot be be satisfied by the current contents of 
+        the buffer cache.
+
+    Raw Writes/Sec   Shows the average number of raw writes per second. A 
+        raw write is a request issued to a raw device.
+
+The table at  the bottom of the screen shows the following system call and 
+activity information:
+
+    System Calls/Sec   Shows the average number of all system calls issued 
+        to the operating system per second. 
+
+    System Forks/Sec   Shows the average number of fork(2) system calls 
+        issued to the operating system per second. A fork is a procedure 
+        in which a process creates a copy of itself. A TI System V fork 
+        creates a logical copy (clone) that is not physically copied 
+        unless necessary.
+
+    System Execs/Sec   Shows the average number of all forms of exec(2) 
+        system calls issued to the operating system per second. An exec 
+        is system call by a process that transforms it into a new process. 
+        Almost all forks are followed by an exec.
+
+    Message Calls/Sec   Shows the average number of msgop(2) system calls, 
+        including msgsnd() and msgrcv() calls, issued to the operating 
+        system per second. 
+
+    Semaphore Calls/Sec   Shows the average number of semop4(2) system 
+        calls issued to the operating system per second. 
+
+    System Reads/Sec   Shows the average number of read4(2) system calls 
+        issued to the operating system per second. 
+
+    Chars Read/Sec   Shows the average number of characters transferred to 
+        the operating system per second by the read(2) system call. 
+
+    System Writes/Sec   Shows the average number of write(2) system calls 
+        issued to the operating system per second. 
+
+    Chars Written/Sec   Shows the average number of characters transferred 
+        to the operating system per second by the write(2) system call. 
+

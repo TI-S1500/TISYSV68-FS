@@ -1,0 +1,87 @@
+SHOW(1T)						 SHOW(1T)
+
+NAME
+     show - Produces a scrollable display
+
+SYNOPSIS
+     show file
+
+DESCRIPTION
+   Purpose
+     The show utility uses the terminal-local-file (TLF) as the
+     presentation space for command results and other displays.
+     Function keys enable the user to page back and forth through
+     the TLF without loss of data, using familiar, single-key
+     commands to control the part of the file that is shown.
+
+   Discussion
+     If show is used on the end of a pipe, the output of the pipe
+     is stored in a file named TLF and is then scrolled to the
+     screen.  If a subsequent show command uses TLF as the file
+     name, show retrieves this pipe output.  The show command
+     also interprets the file name SEL as the system error log.
+
+     When the user enters show at the command line or selects a
+     display from a menu, the utility responds by displaying the
+     first screen of lines from the file.  (A line is assumed to
+     be a string of characters terminated by \n.)  At that point,
+     show accepts the following commands and gives the indicated
+     responses:
+
+     F1 or J	       Moves to next screen (23 lines)
+
+     F2 or K	       Moves back to previous screen
+
+     F3 or H	       Moves left 10 characters
+
+     F4 or L	       Moves right 10 characters
+
+     k or up arrow     Moves up one line
+
+     j or down arrow   Moves down one line
+
+     h or <-	       Moves left one character
+
+     l or ->	       Moves right one character
+
+     n		       Toggles line numbers
+
+     q or Q	       Exits the utility
+
+     ?		       Displays help screen
+
+     t		       Moves to the top of the file
+
+     b		       Moves to the bottom of the file
+
+     /string	       Searches forward for string (the line
+		       containing string is displayed as the
+		       second line)
+
+     \string	       Searches backward for string (the line
+		       containing string is displayed as the
+		       second line)
+
+     #n 	       Goes to line n
+
+     +n 	       Goes n lines toward end
+
+     -n 	       Goes n lines toward beginning
+
+     E		       If an error message exists in the
+		       displayed file, this command interprets
+		       error messages on the screen.
+
+PROMPTS
+   File name:
+     Enter the name of the file to display.
+
+NOTES
+     If a command is piped to show, and the output of the command
+     is slow, show waits until it has a full screen of data (or
+     the pipe is closed) before continuing.
+
+SEE ALSO
+     more(1), pg(1), showfs(1T), showhex(1T).
+
+

@@ -1,0 +1,32 @@
+LINE(1)                                                   LINE(1)
+
+NAME
+     line - Reads one line
+
+SYNOPSIS
+     line
+
+DESCRIPTION
+     The line command copies one line (up to a newline) from the
+     standard input and writes it on the standard output.
+
+     It returns an exit code of 1 on EOF and always prints at
+     least a newline.  It is often used within shell files to
+     read from the user's terminal.
+
+EXAMPLE
+     The following shell script fragment prompts the user for a
+     file name, reads the user's response with the line command,
+     assigns the response to a variable, and executes the file(1)
+     command with that variable as the command argument.
+
+          echo Enter a file name
+          name=`line`
+          file $name
+
+SEE ALSO
+     read(2), sh(1).
+     ``TI Business Shell Programming'' in the TI System V User's
+     Guide.
+
+

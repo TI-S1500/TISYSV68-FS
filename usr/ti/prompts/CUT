@@ -1,0 +1,45 @@
+# cshf  cut -- cuts out selected fields 
+#	@(#)CUT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^ CUT -- CUTS OUT SELECTED FIELDS OF EACH LINE OF A FILE"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Character/Field List (c,f):" type\
+	"element (C,c=c,F,f=f)" f\
+	"^#$*"
+
+if ($abort) goto end
+if ($type == c) then
+	prompt "^CUT -- LIST OF CHARACTER FIELDS OPTION"\
+		"^List of Character Fields:" cflag string "$cflag"\
+		"^#$*"
+	if ($abort) goto end
+	set list = -c"$cflag"
+else
+	prompt "^CUT -- LIST OF FIELDS OPTION"\
+		"^List of Delimiter Fields:" fflag string "$fflag"\
+		"^*Field Delimiter:" dflag string \
+		"^Suppress non-Delimiter Lines:" sflag yesno n\
+		"^#$*"
+	if ($abort) goto end
+	set list = -f"$fflag"
+	if ("$dflag" != "") set dopt = -d$dflag
+	if ($sflag == "y") set sopt = -s
+endif
+
+if ($abort) goto end
+echo "=== CUT COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo cut $dopt $sopt $list $_input_file 
+	cut $dopt $sopt $list $_input_file | \
+	pg -cp"Output from CUT is being piped through pg: "
+else
+	echo cut $list $dopt $sopt $_input_file ">"$_output_file
+	cut $list $dopt $sopt $_input_file >$_output_file
+endif
+
+#clean up time
+end:
+unset *flag *opt 

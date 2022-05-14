@@ -1,0 +1,24 @@
+# cshf		uucb -- monitor uucp subnetwork 
+#	@(#)UUSUB.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^UUSUB -- MONITORS UUCP NETWORK"\
+       "^*Report Connection Statistics:" rep yesno y\
+       "^*Report Traffic Statistics:" rep1 yesno n\
+       "^*Sys to Add to Subnetwork:" add string $add\
+       "^*Sys to Del from Subnetwork:" del string $del\
+       "^#$*"
+
+if ($abort) goto end
+if ($rep == "y") set lopt = -l
+if ($rep1 == "y") set ropt = -r
+if ($add != "") set aopt = -a$add
+if ($del != "") set dopt = -d$del
+
+echo "=== UUSUB COMMAND EXECUTING ==="
+echo "/usr/lib/uucp/uusub $lopt $ropt $aopt $dopt"
+/usr/lib/uucp/uusub $lopt $ropt $aopt $dopt
+
+end:
+unset *opt add del rep rep1

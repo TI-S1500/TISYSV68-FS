@@ -1,0 +1,79 @@
+UUCLEAN(1M)                                           UUCLEAN(1M)
+
+NAME
+     uuclean - Provides maintenance on the uucp(1C) spool
+     directory
+
+SYNOPSIS
+     uuclean -dmnpsw
+
+DESCRIPTION
+   Purpose
+     The uuclean command scans the spool directory for files with
+     the specified prefix and deletes all those older than the
+     specified number of hours.  This command is typically
+     started by cron(1M).
+
+   Options
+     -ddirectory  Cleans directory instead of the spool
+                  directory.
+
+     -mfile       Sends mail to the owner of each file when it is
+                  deleted.  If file is specified, then an entry
+                  is placed in file.
+
+     -ntime       Deletes files whose age is more than time
+                  hours, if the prefix test specified with the -p
+                  option is satisfied.  The default time is 72
+                  hours.
+
+     -ppre        Scans for files with pre as the file prefix.
+                  Up to 10 -p arguments can be specified.  A -p
+                  without any pre causes all files older than the
+                  time specified with the -n option to be
+                  deleted.
+
+     -ssys        Examines only files destined for system sys.
+                  Up to 10 -s arguments can be specified.
+
+     -wfile       Finds files older than time hours and prints a
+                  warning message. The files are not deleted.  If
+                  the argument file is present, the warning is
+                  placed in file.  Otherwise, the warnings go to
+                  the standard output.
+
+EXAMPLE
+     The following example will remove lock files (LCK..)  and
+     status file (ST.) which are older than 2 hours.
+
+     /usr/lib/uucp/uuclean -pLCK -pST -n2
+
+     Lock files and status files left in the /usr/spool/uucp
+     directory are usually the result of a uucp(1C) or CU(1C)
+     session failure.
+
+PROMPTS
+   Scan for files with prefix:
+     Enter a file prefix. The uuclean command scans the spool
+     directory for files with this file prefix.
+
+   Delete files older than hour:
+     Response to this prompt is optional.  Enter a number for
+     hours. The default is 72 hours.  If the prefix test
+     specified with the previous prompt is satisfied, the command
+     deletes files whose age is greater than the specified hours.
+
+   Notify owner of deleted file:
+     Initial value is yes.  Enter a yes to send mail to the owner
+     of the file when the file is deleted.  Enter no to prevent
+     sending mail when the file is deleted.
+
+FILES
+     /usr/lib/uucp    Directory with commands used by uuclean
+                      internally
+     /usr/spool/uucp  Spool directory
+
+SEE ALSO
+     cron(1M), uucp(1C), uux(1C).
+
+

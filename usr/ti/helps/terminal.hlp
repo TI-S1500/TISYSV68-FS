@@ -1,0 +1,7 @@
+	terminal - Terminal Operations Menu
+		@(#)terminal.sh	1.1 87/03/09
+
+	This menu is a collection of tools to be used by the
+	   system administrator to properly setup/configure
+	   the user's terminal to the system.
+

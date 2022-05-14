@@ -1,0 +1,66 @@
+#cshf
+#	@(#)NETSTAT.sh	1.1 87/10/13
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1985.  ALL
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+#	ASSOCIATED DOCUMENTATION.
+# 
+onintr end
+prompt "^NETSTAT -- DISPLAYS NETWORK STATISTICS "\
+       "^*CCB Slot or TC Name:" slot string\
+       "^Read and Clear:" reset yesno no\
+       "^*Output Path Name:" out acnm\
+       "^#$*"
+
+if (($slot == "" ||\
+   $slot == 0 || $slot == 1 ||\
+   $slot == 2 || $slot == 3 ||\
+   $slot == 4 || $slot == 5 ||\
+   $slot == 6 || $slot == 7 ||\
+   $slot == 8 || $slot == 9 ||\
+   $slot == 10 || $slot == 11 ||\
+   $slot == 12) && (! $abort)) then
+
+   if (($out == "") && ($reset == "n") && ($slot == "")) then
+            netstat | more
+   endif
+   if (($out == "") && ($reset == "n") && ($slot != "")) then
+            netstat -s$slot | more
+   endif
+   if (($out != "") && ($reset == "n") && ($slot == "")) then
+            netstat > $out
+   endif
+   if (($out != "") && ($reset == "n") && ($slot != "")) then
+            netstat -s$slot > $out
+   endif
+   if (($out == "") && ($reset == "y") && ($slot == "")) then
+            netstat -r | more
+   endif
+   if (($out == "") && ($reset == "y") && ($slot != "")) then
+            netstat -s$slot -r | more
+   endif
+   if (($out != "") && ($reset == "y") && ($slot == "")) then
+            netstat -r > $out
+   endif
+   if (($out != "") && ($reset == "y") && ($slot != "")) then
+            netstat -s$slot -r > $out
+   endif
+else
+ if (! $abort) then 
+   if (($out == "") && ($reset == "n")) then
+             netstat -t $slot | more
+   endif
+   if (($out != "") && ($reset == "n")) then
+             netstat -t $slot > $out
+   endif
+   if (($out == "") && ($reset == "y")) then
+             netstat -r  -t $slot | more
+   endif
+   if (($out != "") && ($reset == "y")) then
+             netstat -r -t $slot > $out
+   endif
+ endif
+endif
+end:

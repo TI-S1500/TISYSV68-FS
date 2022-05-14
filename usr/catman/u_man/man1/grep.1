@@ -1,0 +1,108 @@
+GREP(1)                                                   GREP(1)
+
+NAME
+     grep - Searches a file for a pattern
+
+SYNOPSIS
+     grep -bcilnsv expression files
+
+DESCRIPTION
+   Purpose
+     The grep command searches the input files (standard input is
+     the default) for lines matching a regular expression.  See
+     Regular Expressions in ed(1) for a definition of regular
+     expressions.  Normally, each line found is copied to the
+     standard output.
+
+   Options
+     -b   Each line is preceded by the block number on which it
+          was found.  This is sometimes useful in locating disk
+          block numbers by context.
+
+     -c   A total count of matching lines is printed.
+
+     -i   Ignores uppercase and lowercase distinction in
+          comparison.
+
+     -l   The names of files with matching lines are listed
+          (once), separated by newlines.
+
+     -n   Each line is preceded by its relative line number in
+          the file.
+
+     -s   The error messages produced for nonexistent or
+          unreadable files are suppressed.
+
+     -v   All lines but those matching are printed.
+
+   Discussion
+     The grep command cannot find a string in an executable file.
+
+     In all cases, the file name is output if there is more than
+     one input file.  Be careful when using the characters $, *,
+     [, ^, |, (, ), and \ in expression because they are also
+     meaningful to the shell.  It is safest to enclose the entire
+     expression argument in single quotes '...'.
+
+EXAMPLE
+     The following example searches file1, file2, and file3 for
+     the words 'program name'.  Line numbers where the words
+     occur are reported.  Error messages, if any, are not
+     printed.  The file name is printed for each input file that
+     contains the specified pattern.
+
+          grep -ns 'program name' file1 file2 file3
+
+PROMPTS
+   Input File Name(s):
+     Enter the names of the files to search.
+
+   Output File Name:
+     Response to this prompt is optional.  Enter the name of the
+     file to receive the command output.
+
+   Pattern for Search:
+     Enter the pattern to match. The expression should not be
+     enclosed in quotes.
+
+   Print All But Matching Lines:
+     The initial value is no.  Enter yes to print all lines
+     except those that match the pattern.
+
+   Count Matching Lines:
+     The initial value is no.  Enter yes to print a count of the
+     matching lines.
+
+   Ignore Upper/Lower Case:
+     Initial value is no. Enter yes to make no distinction
+     between upper and lowercase letters.
+
+   File Names Only:
+     The initial value is no.  Enter yes to print the names of
+     the files with matching lines.
+
+   Print File Line Numbers:
+     The initial value is no.  Enter yes to precede the matching
+     lines by their relative line numbers.
+
+   Print Block Numbers:
+     The initial value is no.  Enter yes to print the block
+     numbers as well as the lines that match.
+
+   Suppress Error messages:
+     The initial value is no.  Enter yes to suppress printing of
+     error messages.
+
+SEE ALSO
+     ed(1), egrep(1), fgrep(1), sed(1), sh(1).
+
+DIAGNOSTICS
+     Exit status is 0 if any matches are found, 1 if none, 2 for
+     syntax errors or inaccessible files (even if matches were
+     found).
+
+NOTES
+     Lines are limited to 512 characters.  Longer lines are
+     broken into separate lines.
+
+

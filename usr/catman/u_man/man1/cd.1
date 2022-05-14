@@ -1,0 +1,46 @@
+CD(1)                                                       CD(1)
+
+NAME
+     cd - Changes working directory
+
+SYNOPSIS
+     cd directory
+
+DESCRIPTION
+   Purpose
+     The cd command changes the working directory to either the
+     home directory (if no directory argument is specified) or to
+     the specified directory.
+
+   Discussion
+     If directory is not specified, the value of shell parameter
+     $HOME is used as the new working directory.  If directory
+     specifies a complete path starting with /, ., or ..,
+     directory becomes the new working directory.  If neither
+     case applies, cd tries to find the designated directory
+     relative to one of the paths specified by the $CDPATH shell
+     variable.  $CDPATH has the same syntax as, and similar
+     semantics to the $PATH shell variable.  The cd command must
+     have execute (search) permission in directory.  Because a
+     new process is created to execute each command, cd would be
+     ineffective if it were written as a normal command.
+     Therefore, cd is recognized and internal to the shell.
+
+EXAMPLE
+     Assume your current working directory is /usr/home/me.  The
+     following command changes the working directory to
+     /usr/home/me/accounts/national.
+
+          cd accounts/national
+
+     The following commands change the working directory to
+     /usr/home/me/accounts.
+
+          cd ../
+          or
+          cd ..
+
+SEE ALSO
+     bsh(1), chdir(2), pwd(1), sh(1).
+
+

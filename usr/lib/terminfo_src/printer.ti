@@ -1,0 +1,358 @@
+#
+#
+# printer specific terminfo fields
+#
+# boolean flags:
+# "xhpa"	Only positive motion for hpa/mhpa caps
+# "crxm"	Using cr turns off micro mode
+# "daisy"	Printer needs operator to change character set
+# "xvpa"	Only positive motion for vpa/mvpa caps
+# "sam"		Printing in last column causes cr
+# "cpix"	Changing char. pitch changes resolution
+# "lpix"	Changing line pitch changes resolution
+#
+#
+# numeric options
+#
+# "bufsz"	Number of bytes buffered before printing
+# "spinv"	Spacing of pins vertically in pins per inch
+# "spinh"	Spacing of dots horizontally in dots per inch
+# "maddr"	Maximum value in micro_..._address
+# "mjump"	Maximum value in parm_..._micro
+# "mcs"		Character step size when in micro mode
+# "mls"		Line step size when in micro mode
+# "npins"	Number of pins in print-head
+# "orc"		Horizontal resolution in units per character
+# "orl"		Vertical resolution in units per line
+# "orhi"	Horizontal resolution in units per inch
+# "orvi"	Vertical resolution in units per inch
+# "cps"		Print rate in characters per second
+# "widcs"	Character step size when in double wide mode
+#
+# string settings
+#
+# "cpi"		Change no. characters per inch
+# "lpi"		Change no. lines per inch
+# "chr"		Change horizontal resolution
+# "cvr"		Change vertical resolution
+# "defc"	Define a character in a character set
+# "swidm"	Enable double wide printing
+# "sdrfq"	Set draft quality print
+# "sitm"	Enable italics
+# "slm"		Enable leftward carriage motion
+# "smicm"	Enable micro motion capabilities
+# "snlq"	Set near-letter quality print
+# "snrmq"	Set normal quality print
+# "sshm"	Enable shadow printing
+# "ssubm"	Enable subscript printing
+# "ssupm"	Enable superscript printing
+# "sum"		Enable upward carriage motion
+# "rwidm"	Disable double wide printing
+# "ritm"	Disable italics
+# "rlm"		Enable rightward (normal) carriage motion
+# "rmicm"	Disable micro motion capabilities
+# "rshm"	Disable shadow printing
+# "rsubm"	Disable subscript printing
+# "rsupm"	Disable superscript printing
+# "rum"		Enable downward (normal) carriage motion
+# "mhpa"	Like column_address for micro adjustment
+# "mcud1"	Like cursor_down for micro adjustment
+# "mcub1"	Like cursor_left for micro adjustment
+# "mcuf1"	Like cursor_right for micro adjustment
+# "mvpa"	Like row_address for micro adjustment
+# "mcuu1"	Like cursor_up for micro adjustment
+# "porder"	Matches software bits to print-head pins
+# "mcud"	Like parm_down_cursor for micro adjust.
+# "mcub"	Like parm_left_cursor for micro adjust.
+# "mcuf"	Like parm_right_cursor for micro adjust.
+# "mcuu"	Like parm_up_cursor for micro adjust.
+# "scs"		Select character set
+# "smgb"	Set soft bottom margin at current line
+# "smgbp"	Set soft bottom margin
+# "smglp"	Set soft left margin
+# "smgrp"	Set soft right margin
+# "smgt"	Set soft top margin at current line
+# "smgtp"	Set soft top margin
+# "sbim"	Start printing bit image graphics
+# "scsd"	Start definition of a character set
+# "rbim"	End printing bit image graphics
+# "rcsd"	End definition of a character set
+# "subcs"	List of ``subscript-able'' characters
+# "supcs"	List of ``superscript-able'' characters
+# "docr"	Printing any of these chars causes cr
+# "zerom"	No motion for the subsequent character
+# "csnm"	List of character set names
+
+unknown,
+	am, gn,
+	cols#80,
+	bel=^G, cr=\r, cud1=\n, ind=\n,
+
+ti850|Texas Instruments 850 Printer,
+	is2=\E@\ECB\EQ\Ed\EF\EH\E2,
+	am,
+	bufsz#256,
+	cols#80,
+	it#8,
+	lines#66,
+	cps#150,
+	cr=\r,
+	cpi=%?%p1%{10}%=%t\EQ%e%p1%{17}%=%t\EP%;,
+	lpi=%?%p1%{6}%=%t\E2%e%p1%{8}%=%t\E0%e%p1%{10}%=%t\E1%;,
+	ff=^L,
+	ht=^I,
+	sdrfq=\Ed,
+	snrmq=\Ee,
+	rs1=\Ed\EQ\ET\EF\EH,
+	swidm=\016,
+	rwidm=\24,
+	sshm=\EE,
+	rshm=\EF,
+	sitm=\EG,
+	ritm=\EH,
+	u9=%?%p1%{0}%>%p1%{128}%<%A%t\EC%p1%c%;,
+
+ti860|Texas Instruments 860 Printer,
+	is2=\E@\ECB\Ey\Ed\E2,
+	cols#132,
+	use=ti850,
+
+ti2015-855wp|Texas Instruments 2015 Printer in 855wp Mode,
+	lines#63,
+	use=ti855wp,
+
+ti855|Texas Instruments 855 Printer,
+	use=ti855wp,
+
+ti865|Texas Instruments 865 Printer,
+	is1=\E@\Ed\E2\Ey,
+	cols#132,
+	use=ti855,
+
+ti855wp|Texas Instruments 855 Printer in WP mode,
+	is2=\E@\Ey\E2\E\rP,
+	am,
+	cps#150,
+	bufsz#4096,
+	cols#80,
+	it#8,
+	lines#66,
+	orc#12,
+	orhi#120,
+	orl#8,
+	orvi#48,
+	ff=^L,
+	ht=^I,
+	cr=\r,
+	cpi=%?%p1%{10}%=%t\Ey%e%p1%{12}%=%t\Ez%e%p1%{17}%=%t\017%;,
+	chr=%?%p1%{0}%>%p1%{256}%<%A%t\E\037%p1%{1}%+%c%;,
+	cud1=^J,
+	cuf1=\s,
+	cvr=%?%p1%{0}%>%p1%{86}%<%A%t\E\036%p1%{1}%+%c%;,
+	lpi=%?%p1%{6}%=%t\E\036\011%e%p1%{8}%=%t\E\036\007%;,
+	hts=\E1,
+	is2=\E\rP,
+	sdrfq=\Ed,
+	snrmq=\Ed,
+	snlq=\Eq,
+	smul=\EI,
+	rmul=\EJ,
+	sshm=\EQ,
+	rshm=\ER,
+	smso=\EK2,
+	rmso=\EM,
+	smgb=\E-,
+	smgl=\E9,
+	smgr=\E0,
+	smgt=\E+,
+	swidm=\016,
+	rwidm=\022,
+	csnm=%?%p1%{0}%=%tfm0%e%p1%{1}%=%tfm1%e%p1%{2}%=%tfm2%e%p1%{3}%=%tfm3%;,
+	scs=%?%p1%{0}%=%t\Ef\200%e%p1%{1}%=%t\Ef\001%e%p1%{2}%=%t\Ef\002%e%p1%{3}%=%t\Ef\003%;,
+	u9=%?%p1%{0}%>%p1%{100}%<%A%t\EF%p1%02d%;
+	   %?%p1%{99}%>%p1%{110}%<%A%t\EF\012%p1%{100}%-%d%;
+	   %?%p1%{109}%>%p1%{120}%<%A%t\EF\013%p1%{110}%-%d%;
+	   %?%p1%{119}%>%p1%{128}%<%A%t\EF\014%p1%{120}%-%d%;,
+
+ti865wp|Texas Instruments 865 Printer in WP mode,
+	cols#132,
+	use=ti855wp,
+
+ti2015-855dp|Texas Instruments 2015 Printer in 855dp Mode,
+	lines#63,
+	use=ti855dp,
+
+ti855dp|Texas Instruments 855 Printer in DP mode,
+	is2=\E@\Ey\E2,
+	am,
+	cps#150,
+	bufsz#4096,
+	cols#80,
+	it#8,
+	lines#66,
+	orc#1,
+	orhi#10,
+	orl#36,
+	orvi#216,
+
+	ff=^L,
+	ht=^I,
+	cr=\r,
+	cpi=%?%p1%{10}%=%t\Ey%e%p1%{12}%=%t\Ez%e%p1%{17}%=%t\EP%;,
+	cvr=%?%p1%{0}%>%p1%{256}%<%A%t\E3%p1%c%;,
+	cuf1=\s,
+
+	is2=\E@,
+	lpi=%?%p1%{6}%=%t\E2%e%p1%{8}%=%t\E0%e%p1%{10}%=%t\E1%;,
+	smso=\EG,
+	rmso=\EH,
+	sdrfq=\Ed,
+	snrmq=\Ed,
+	snlq=\Eq,
+	sshm=\EE,
+	rshm=\EF,
+	swidm=\016,
+	rwidm=\024,
+
+	csnm=%?%p1%{0}%=%tfm0%e%p1%{1}%=%tfm1%e%p1%{2}%=%tfm2%e%p1%{3}%=%tfm3%;,
+	scs=%?%p1%{0}%=%t\Ef\200%e%p1%{1}%=%t\Ef\001%e%p1%{2}%=%t\Ef\002%e%p1%{3}%=%t\Ef\003%;,
+	u9=%?%p1%{0}%=%t\EC\200%;
+	   %?%p1%{0}%>%t\EC%p1%c%;,
+
+ti865dp|Texas Instruments 865 Printer in DP mode,
+	is2=\E@\ECB\Ey\E2\Ed,
+	cols#132,
+	use=ti855dp,
+
+# set default form params, set default line width, clear all tabs, 
+# 10 cpi, 6 lpi cancel double line spacing, cancel expand print, 
+# cancel LQ print
+ti880-at|Texas Instruments 880 AT Printer,
+	is2=\Eb\Ez\Ed\Ey,
+	use=ti880,
+
+ti880|Texas Instruments 880 Printer,
+	is2=\E@,
+	am,
+	bufsz#2048,
+	cols#132,
+	it#8,
+	lines#66,
+	cps#300,
+	orc#1,
+	orhi#10,
+	orl#24,
+	orvi#144,
+	cr=\r,
+	ff=^L,
+	ht=^I,
+	cuf1=\s,
+	cpi=%?%p1%{5}%=%t\EPI\E\\%e%p1%{8}%=%t\EPJ\E\\%e%p1%{10}%=%t\E6%e%p1%{12}%=%t\EPK\E\\%e%p1%{17}%=%t\E7%;,
+	cvr=%?%p1%{0}%>%p1%{256}%<%A%t\E[%p1%d#q%;,
+	lpi=%?%p1%{3}%=%t\EPB\E\\%e%p1%{4}%=%t\EPG\E\\%e%p1%{6}%=%t\E4%e%p1%{8}%=%t\E5%;,
+	swidm=\EPM\E\\,
+	rwidm=\EPN\E\\,
+	snlq=\EPO\E\\,
+	sdrfq=\EPP\E\\,
+	snrmq=\EPP\E\\,
+	smgtp=\E[%p1%{1}%+%02dr%;,
+	smgbp=\E[;%p1%{1}%+%02dr%;,
+	smglp=\E[%p1%{1}%+%02ds%;,
+	smgrp=\E[;%p1%{1}%+%02ds%;,
+	u9=%?%p1%{0}%=%t\E[0%e%p1%{0}%>%p1%{114}%<%A%t\E[%p1%dt%;,
+
+ti885|Texas Instruments 885 Printer,
+	cols#80,
+	use=ti880,
+
+ti8930|Texas Instruments 8930 Printer TI 880 emulation,
+	is1=\E\020ETI880\003,
+	use=ti880,
+
+ti8930-880|Texas Instruments 8930 Printer TI 880 emulation,
+	use=ti8930,
+
+ti8930-855wp| Texas Instruments 8930 Printer TI 855WP emulation,
+	is1=\E\020ETI855\003,
+	cols#132,
+	use=ti855wp,
+
+ti8930-855dp|Texas Instruments 8930 Printer TI 855DP emulation,
+	is1=\E\020ETI855\003,
+	cols#132,
+	use=ti855dp,
+
+ti830|Texas Instruments 830 Printer TI 855WP emulation,
+	use=ti855wp,
+
+ti830-855wp|Texas Instruments 830 Printer TI 855WP emulation,
+	use=ti830,
+
+ti830-855dp|Texas Instruments 830 Printer TI 855DP emulation,
+	use=ti855dp,
+
+ti835|Texas Instruments 835 Printer TI 855WP emulation,
+	cols#132,
+	use=ti855wp,
+
+ti835-855wp|Texas Instruments 835 Printer TI 855WP emulation,
+	cols#132,
+	use=ti835,
+
+ti835-855dp|Texas Instruments 835 Printer TI 855DP emulation,
+	cols#132,
+	use=ti855dp,
+
+ti810|Texas Instruments 810 Printer without Line Buffer Option,
+	bufsz#132,
+	cols#132,
+	lines#66,
+	ff=^L,
+	cr=\r,
+	lpi=%?%p1%{8}%=%t\E\005%e%p1%{6}%=%t\E\004%;,
+	cpi=%?%p1%{10}%=%t\E\006%e\E\007%;,
+
+# Printronics printers
+
+p300|Printronics P-300 Printer,
+	cpi=%?%p1%{15}%=%t\001%;,
+	use=pbase,
+
+p600|Printronics P-600 Printer,
+	cpi=%?%p1%{15}%=%t\001%;,
+	use=pbase,
+
+pbase|Printronics P-300/600 Base Definitions,
+	bufsz#132,
+	cols#132,
+	lines#66,
+	ff=^L,
+	cr=\r,
+	lpi=%?%p1%{8}%=%t\006%;,
+	sdrfq=\002,
+	smacs=\016,
+	rmacs=\017,
+
+#HP LaserJet Printers
+
+ti2015-hpjet|Texas Instruments 2015 in HP LaserJet Mode,
+	is1=\E\020\066\E(s10H\E&16D\E&l66P\E&a80M,
+	cols#80,
+	lines#63,
+	is2=\EE,
+	cud1=\012,
+	ff=\014,
+	cr=\015,
+	cpi=%?%p1%{10}%=%t\E(s10H%e%p1%{12}%=%t\E(s12H%e%p1%{17}%=%t\E(s16.7H%e%p1%{P}%=%t\E(s1P%;,
+	lpi=%?%p1%{6}%=%t\E&l6D%e%p1%{8}%=%t\E&l8D%;,
+
+ti210-hpjet|Texas Instruments microLaser in HP LaserJet Mode,
+	is1=\E\020\066\E(s10H\E&16D\E&l66P\E&a80M,
+	cols#80,
+	lines#63,
+	is2=\EE,
+	cud1=\012,
+	ff=\014,
+	cr=\015,
+	cpi=%?%p1%{10}%=%t\E(s10H%e%p1%{12}%=%t\E(s12H%e%p1%{17}%=%t\E(s16.7H%e%p1%{P}%=%t\E(s1P%;,
+	lpi=%?%p1%{6}%=%t\E&l6D%e%p1%{8}%=%t\E&l8D%;,

@@ -1,0 +1,59 @@
+KILL(1)                                                   KILL(1)
+
+NAME
+     kill - Terminates a process
+
+SYNOPSIS
+     kill -signo PIDs
+
+DESCRIPTION
+   Purpose
+     The kill command sends the specified signal number (signo)
+     to the process whose process ID is PID.  This command is
+     normally used to terminate processes.
+
+   Options
+     Options for kill consist of signal numbers.  See the
+     signal(2) command for signal numbers and their descriptions.
+
+     The default option is -15, which is the terminate-process
+     signal.
+
+   Discussion
+     The process number of each asynchronous process started in
+     background (with &) is reported by the shell (unless more
+     than one process is started in a pipeline, in which case the
+     number of the last process in the pipeline is reported).
+     Process numbers can also be found by using ps(1).
+
+     The details of the termination process are described in
+     kill(2).  For example, if process number 0 is specified, all
+     processes in the process group are signaled.
+
+     The killed process must belong to the current user unless
+     that person is the super-user.
+
+EXAMPLE
+     In the following example, the user's terminal is hung; the
+     user needs to kill the process that is hanging or kill the
+     shell process.  The user logs on to a different terminal
+     using his or her login name.  The user executes a ps command
+     to find his or her shell process ID (PID).  His or her shell
+     PID is 1007.  The user then enters the following command:
+
+          kill -9 1007
+
+     The user now must login again.
+
+PROMPTS
+   Signal Number (1-19):
+     The initial value is 15.  Enter the signal number to send to
+     the specified process.
+
+   Process ID Number(s):
+     Enter the ID of the process to signal.
+
+SEE ALSO
+     bsh(1), kill(2), ps(1), sh(1), signal(2).
+
+

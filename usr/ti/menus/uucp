@@ -1,0 +1,11 @@
+uucp:menu:   UNIX TO UNIX COMMUNICATIONS MENU Series 1000   :uucp.hlp
+CT:c:Spawns a getty process to a remote terminal:
+CU:c:Calls another UNIX system:
+UUCP:c:Copies files from UNIX system to UNIX system:
+UULOG:c:Accesses uucp and uux log file:
+UUNAME:c:Lists uucp names of systems:
+UUPICK:c:Picks uuto files:
+UUSTAT:c:Performs a uucp status inquiry and job control:
+UUSUB:c:Monitors uucp network:
+UUTO:c:Creates a public UNIX to UNIX file copy:
+UUX:c:Executes UNIX to UNIX commands:

@@ -1,0 +1,474 @@
+GET(1)							   GET(1)
+
+NAME
+     get - Gets a version of an SCCS file
+
+SYNOPSIS
+     get -abcegiklmnprstx -lp files
+
+DESCRIPTION
+   Purpose
+     The get command generates an ASCII text file from each named
+     SCCS file.
+
+   Options
+     See details on the usage of the following options in Options
+     Usage.
+
+     -aser-no.	The delta serial number of the SCCS file delta
+		(version) to be retrieved (see sccsfile(4)).
+
+     -b 	Used with the -e option to indicate that the new
+		delta should have an SID in a new branch as shown
+		in Table 1.  This option is ignored if the b flag
+		is not present in the file (see admin(1)) and if
+		the retrieved delta is a leaf delta.  (A leaf
+		delta is one that has no successors on the SCCS
+		file tree.)
+		Note: A branch delta can always be created from a
+		non-leaf delta.
+
+     -ccutoff	Cutoff date-time, in the form:
+
+		     YY[MM[DD[HH[MM[SS]]]]]
+
+		No SCCS file changes (deltas) that occurred after
+		the specified cutoff date-time are included in
+		the generated ASCII text file.
+
+     -e 	Indicates that the get is for the purpose of
+		editing or making a change (delta) to the SCCS
+		file via a subsequent use of the delta(1)
+		command.
+
+     -g 	Suppresses the actual retrieval of text from the
+		SCCS file.  It is primarily used when generating
+		an l-file, or to verify the existence of a
+		particular SID.
+
+     -ilist	A list of deltas to be included (forced to be
+		applied) in the creation of the generated file.
+
+     -k 	Suppresses replacement of identification keywords
+		in the retrieved text by their value.  The -k
+		option is implied by the -e option.
+
+     -l[p]	Causes a delta summary to be written into an l-
+		file.  If -lp is used then an l-file is not
+		created.  The delta summary is written on the
+		standard output instead.  See FILES for the
+		format of the l-file.
+
+     -m 	Causes each text line retrieved from the SCCS
+		file to be preceded by the SID of the delta that
+		inserted the text line in the SCCS file.  The
+		format is:  SID, followed by a horizontal tab,
+		followed by the text line.
+
+     -n 	Causes each generated text line to be preceded
+		with the %M% identification keyword value.
+
+     -p 	Causes the text retrieved from the SCCS file to
+		be written on the standard output.  No g-file is
+		created.  All output that normally goes to the
+		standard output goes to file descriptor 2
+		instead, unless the -s option is used, in which
+		case it disappears.
+
+     -rSID	Retrieves SCCS IDentification string (SID) of the
+		version (delta) of an SCCS file.  When you
+		specify an SID that skips a version (creating one
+		or more null deltas), use the format -rR.0.
+
+     -s 	Suppresses all output normally written on the
+		standard output.  However, fatal error messages
+		(which always go to file descriptor 2) remain
+		unaffected.
+
+     -t 	Used to access the most recently created (top)
+		delta in a given release (e.g., 1), or release
+		and level (e.g., 1.2).
+
+     -xlist	A list of deltas to be excluded (forced not to be
+		applied) in the creation of the generated file.
+		See the -i option under Options Usage for the
+		list format.
+
+   Discussion
+     The arguments may be specified in any order, but all options
+     apply to all named SCCS files.  If a directory is named, get
+     behaves as though each file in the directory were specified
+     as a named file, except that non-SCCS files (last component
+     of the path name does not begin with s.)  and unreadable
+     files are silently ignored.  If a name of - is given, the
+     standard input is read; each line of the standard input is
+     taken to be the name of an SCCS file to be processed.
+     Again, non-SCCS files and unreadable files are silently
+     ignored.
+
+     The generated text is normally written into a file called
+     the g-file whose name is derived from the SCCS file name by
+     simply removing the leading s..  See also FILES.
+
+     Each of the options is explained in Options as though only
+     one SCCS file is to be processed, but the effects of any
+     option apply independently to each named file.
+
+     For each file processed, get responds (on the standard
+     output) with the SID being accessed and with the number of
+     lines retrieved from the SCCS file.
+
+     If the -e option is used, the SID of the delta to be made
+     appears after the SID accessed and before the number of
+     lines generated.  If there is more than one named file or if
+     a directory or standard input is named, each file name is
+     printed (preceded by a newline) before it is processed.  If
+     the -i option is used, included deltas are listed following
+     the notation ``Included''; if the -x option is used,
+     excluded deltas are listed following the notation
+     ``Excluded''.
+
+   Option Usage
+     The following are further discussions of the options listed
+     in Options.
+
+     -aser-no.	This option is used by the comb(1) command.  It
+		is not a generally useful option and users should
+		not use it.  If both the -r and -a options are
+		specified, the -a option is used.  Care should be
+		taken when using the -a option in conjunction
+		with the -e option, as the SID of the delta to be
+		created may not be what one expects.  The -r
+		option can be used with the -a and -e options to
+		control the naming of the SID of the delta to be
+		created.
+
+     -ccutoff	Units omitted from the date-time default to their
+		maximum possible values; that is, -c7502 is
+		equivalent to -c750228235959.  Any number of
+		non-numeric characters may separate the various
+		2-digit pieces of the cutoff date-time.  This
+		feature allows one to specify a cutoff date in
+		the form:  -c77/2/2 9:22:25.  Note that this
+		implies that one may use the %E% and %U%
+		identification keywords for nested gets within,
+		say the input to a send(1C) command:
+
+		     ~!get  "-c%E%  %U%"  s.file
+
+     -e 	The -e option used in a get for a particular
+		version (SID) of the SCCS file prevents further
+		gets for editing on the same SID until delta is
+		executed or the j (joint edit) flag is set in the
+		SCCS file (see admin(1)).  Concurrent use of get
+		-e for different SIDs is always allowed.
+
+		If the g-file generated by get with an -e option
+		is accidentally ruined in the process of editing
+		it, it may be regenerated by re-executing the get
+		command with the -k option in place of the -e
+		option.
+
+		SCCS file protection specified via the ceiling,
+		floor, and authorized user list stored in the
+		SCCS file (see admin(1)) is enforced when the -e
+		option is used.
+
+     -ilist	The list has the following syntax:
+
+		     <list> ::= <range> | <list> , <range>
+		     <range> ::= SID | SID - SID
+
+		SID, the SCCS Identification of a delta, may be
+		in any form shown in the "SID Specified" column
+		of Table 1.  Partial SIDs are interpreted as
+		shown in the "SID Retrieved" column of Table 1.
+
+     -l[p]	See FILES for the format of the l-file.
+
+     -n 	The format is:	%M% value, followed by a
+		horizontal tab, followed by the text line.  When
+		both the -m and -n options are used, the format
+		is:  %M% value, followed by a horizontal tab,
+		followed by the -m option generated format.
+
+     -rSID	Table 1 shows, for the most useful cases, what
+		version of an SCCS file is retrieved (as well as
+		the SID of the version to be eventually created
+		by delta(1) if the -e option is also used), as a
+		function of the SID specified.
+
+      TABLE 1. Determination of SCCS Identification String
+_________________________________________________________________
+  SID*	  -b Option	    Other	    SID     SID of Delta
+Specified    Used##	  Conditions	 Retrieved to Be Created
+_________________________________________________________________
+none###        no      R defaults to mR  mR.mL	   mR.(mL+1)
+_________________________________________________________________
+none###       yes      R defaults to mR  mR.mL	   mR.mL.(mB+1).1
+_________________________________________________________________
+R	       no      R > mR		 mR.mL	   R.1***
+_________________________________________________________________
+R	       no      R = mR		 mR.mL	   mR.(mL+1)
+_________________________________________________________________
+R	      yes      R > mR		 mR.mL	   mR.mL.(mB+1).1
+_________________________________________________________________
+R	      yes      R = mR		 mR.mL	   mR.mL.(mB+1).1
+_________________________________________________________________
+		       R < mR and
+R	       -       R does not exist  hR.mL**   hR.mL.(mB+1).1
+
+
+_________________________________________________________________
+		       Trunk succ.#
+		       in release > R
+
+R	       -
+		       and R exists
+					 R.mL	   R.mL.(mB+1).1
+
+_________________________________________________________________
+R.L	       no      No trunk succ.	 R.L	   R.(L+1)
+_________________________________________________________________
+R.L	      yes      No trunk succ.	 R.L	   R.L.(mB+1).1
+_________________________________________________________________
+		       Trunk succ.
+R.L	       -       in release = R	 R.L	   R.L.(mB+1).1
+
+
+_________________________________________________________________
+R.L.B	       no      No branch succ.	 R.L.B.mS  R.L.B.(mS+1)
+_________________________________________________________________
+R.L.B	      yes      No branch succ.	 R.L.B.mS  R.L.(mB+1).1
+_________________________________________________________________
+R.L.B.S        no      No branch succ.	 R.L.B.S   R.L.B.(S+1)
+_________________________________________________________________
+R.L.B.S       yes      No branch succ.	 R.L.B.S   R.L.(mB+1).1
+_________________________________________________________________
+R.L.B.S        -       Branch succ.	 R.L.B.S   R.L.(mB+1).1
+_________________________________________________________________
+
+     *	   R, L, B, and S are the release, level, branch, and
+	   sequence components of the SID, respectively; m means
+	   maximum.  Thus, for example, R.mL means the maximum
+	   level number within release R; R.L.(mB+1).1 means the
+	   first sequence number on the new branch (i.e., maximum
+	   branch number plus one) of level L within release R.
+	   Note that if the SID specified is of the form R.L,
+	   R.L.B, or R.L.B.S, each of the specified components
+	   must exist.
+
+     **    hR is the highest existing release that is lower than
+	   the specified, nonexistent, release R.
+
+     ***   This is used to force creation of the first delta in a
+	   new release.
+
+     #	   Successor.
+
+     ##    The -b option is effective only if the b flag (see
+	   admin(1)) is present in the file.  An entry of - means
+	   irrelevant.
+
+     ###   This case applies if the d (default SID) flag is not
+	   present in the file.  If the d flag is present in the
+	   file, then the SID obtained from the d flag is
+	   interpreted as if it had been specified on the command
+	   line.  Thus, one of the other cases in this table
+	   applies.
+
+IDENTIFICATION KEYWORDS
+     Identifying information is inserted into the text retrieved
+     from the SCCS file by replacing identification keywords with
+     their value wherever they occur.  The following keywords may
+     be used in the text stored in an SCCS file:
+
+     Keyword	    Value
+
+
+     %M%	    Module name:  either the value of the m flag
+		    in the file (see admin(1)), or if absent, the
+		    name of the SCCS file with the leading s.
+		    removed
+
+     %I%	    SCCS identification (SID) (%R%.%L%.%B%.%S%)
+		    of the retrieved text
+
+     %R%	    Release
+
+     %L%	    Level
+
+     %B%	    Branch
+
+     %S%	    Sequence
+
+     %D%	    Current date (YY/MM/DD)
+
+     %H%	    Current date (MM/DD/YY)
+
+     %T%	    Current time (HH:MM:SS)
+
+     %E%	    Date newest applied delta was created
+		    (YY/MM/DD)
+
+     %G%	    Date newest applied delta was created
+		    (MM/DD/YY)
+
+     %U%	    Time newest applied delta was created
+		    (HH:MM:SS)
+
+     %Y%	    Module type:  value of the t flag in the SCCS
+		    file (see admin(1))
+
+     %F%	    SCCS file name
+
+     %P%	    Fully qualified SCCS file name
+
+     %Q%	    The value of the q flag in the file (see
+		    admin(1))
+
+     %C%	    Current line number (This keyword is intended
+		    for identifying messages output by the
+		    program, such as ``this should not have
+		    happened''.  It is not intended to be used on
+		    every line to provide sequence numbers.)
+
+     %Z%	    The 4-character string @(#) recognizable by
+		    what(1)
+
+     %W%	    A shorthand notation for constructing what(1)
+		    strings for the  program files
+		    (%W% = %Z%%M%<horizontal-tab>%I%)
+
+     %A%	    Another shorthand notation for constructing
+		    what(1) strings for non- program files
+		    (%A% = %Z%%Y% %M% %I%%Z%)
+
+EXAMPLES
+     The first of the following two examples indicates that you
+     will change s.file1 by executing a subsequent delta command.
+
+     The second get command suppresses the retrieval of the SCCS
+     file s.file2 and prints the SID 3.3 if it exists.	This
+     command allows you to verify the existence of SID 3.3 in the
+     SCCS file s.file2.
+
+	  get -e s.file1
+	  get -g -r3.3 s.file2
+
+PROMPTS
+   File Name(s):
+     Enter the name(s) of the SCCS file(s) to be processed.
+
+   Give Delta (version) Number:
+     Enter the SID number of the specified file.
+
+   Get File for Edit or Print (e,p):
+     Enter e if you intend to edit the file with the delta
+     command or p to print it.
+
+   Suppress the Output:
+     The initial value is no.  Enter yes to suppress messages to
+     the standard output.
+
+FILES
+     Several auxiliary files may be created by get.  These files
+     are known generically as the g-file, l-file, p-file, and z-
+     file.  The letter before the hyphen is called the tag.  An
+     auxiliary file name is formed from the SCCS file name:  all
+     SCCS file names must be of the form s.module-name; the
+     auxiliary files are named by replacing the leading s with
+     the tag.  The g-file is an exception to this scheme:  the
+     g-file is named by removing the s. prefix.  For example, for
+     file s.xyz.c, the auxiliary file names would be xyz.c,
+     l.xyz.c, p.xyz.c, and z.xyz.c, respectively.
+
+     The g-file, which contains the generated text, is created in
+     the current directory (unless the -p option is used).  A g-
+     file is created in all cases, whether or not any lines of
+     text were generated by the get.  It is owned by the real
+     user.  If the -k option is used or implied by the -e option,
+     its mode is 644; otherwise its mode is 444.  Only the real
+     user need have write permission in the current directory.
+
+     The l-file contains a table showing which deltas were
+     applied in generating the retrieved text.	The l-file is
+     created in the current directory if the -l option is used;
+     its mode is 444 and it is owned by the real user.	Only the
+     real user need have write permission in the current
+     directory.
+
+     Lines in the l-file have the following format:
+
+	  a.   A blank character if the delta was applied;
+	       * otherwise
+
+	  b.   A blank character if the delta was applied or was
+	       not applied and ignored;
+	       * if the delta was not applied and was not ignored
+
+	  c.   A code indicating a special reason why the delta
+	       was or was not applied:
+		    I:	Included
+		    X:	Excluded
+		    C:	Cut off (by a -c option)
+
+	  d.   Blank
+
+	  e.   SCCS identification (SID)
+
+	  f.   Tab character
+
+	  g.   Date and time (in the form YY/MM/DD HH:MM:SS) of
+	       creation
+
+	  h.   Blank
+
+	  i.   Login name of person who created delta
+
+	  The comments and MR data follow on subsequent lines,
+	  indented one horizontal tab character.  A blank line
+	  terminates each entry.
+
+     The p-file is used to pass information resulting from a get
+     with the -e option along to delta.  Its contents are also
+     used to prevent a subsequent execution of get with the -e
+     option for the same SID until delta is executed or the joint
+     edit flag, j, (see admin(1)) is set in the SCCS file.  The
+     p-file is created in the directory containing the SCCS file
+     and the effective user must have write permission in that
+     directory.  Its mode is 644 and it is owned by the effective
+     user.  The format of the p-file is:  the gotten SID,
+     followed by a blank, followed by the SID that the new delta
+     will have when it is made, followed by a blank, followed by
+     the login name of the real user, followed by a blank,
+     followed by the date-time the get was executed, followed by
+     a blank and the -i option argument if it was present,
+     followed by a blank and the -x option if it was present,
+     followed by a newline.  There can be an arbitrary number of
+     lines in the p-file at any time; no two lines can have the
+     same new delta SID.
+
+     The z-file serves as a lock-out mechanism against
+     simultaneous updates.  Its contents are the binary (2 bytes)
+     process ID of the command (i.e., get) that created it.  The
+     z-file is created in the directory containing the SCCS file
+     for the duration of get.  The same protection restrictions
+     as those for the p-file apply for the z-file.  The z-file is
+     created mode 444.
+
+SEE ALSO
+     admin(1), delta(1), help(1), prs(1), what(1), sccsfile(4).
+     ``Source Code Control System'' in the TI System V Support
+     Tools Guide.
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+NOTES
+     If the effective user has write permission (either
+     explicitly or implicitly) in the directory containing the
+     SCCS files, but the real user does not, then only one file
+     may be named when the -e option is used.
+
+

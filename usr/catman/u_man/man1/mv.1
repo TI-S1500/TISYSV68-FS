@@ -1,0 +1,98 @@
+MV(1)                                                       MV(1)
+
+NAME
+     mv - Moves files
+
+SYNOPSIS
+     mv -f file1 target
+     mv -f file1 [ file2 ...]  target_directory
+     mv -f directory1 target_directory
+
+DESCRIPTION
+   Purpose
+     The mv command moves or renames files and renames
+     directories.
+
+   Discussion
+     In the first form, file1 is renamed target.  Under no
+     circumstance can file1 and target be the same (take care
+     when using shell metacharacters).  If target is a file, its
+     contents are destroyed.
+
+     In the second form, file1 through filen are moved from their
+     current location to a new directory.  The move occurs even
+     if the target is owned by another user or group.
+
+     In the third form, a directory is given a new name.  The
+     following conditions apply:
+
+     + The target name must not already exist.
+
+     + The new name must have the same parent as the existing
+       name.
+
+     + Write access to the parent is required.
+
+     + You must have super-user privileges.
+
+     If target is a link to another file with links, the other
+     links remain and target becomes a new file.
+
+   Options
+     -f   If mv determines that the mode of target forbids
+          writing, prints the mode (see chmod(2)), asks for a
+          response from the user, and reads the standard input
+          for one line.  If the line begins with y, indicating
+          yes, mv executes if permissible.  If changing modes is
+          not permitted, the command exits.
+
+          If the -f option is specified or if the standard input
+          is not a terminal, the prompt asking to change write
+          permission is suppressed and the command executes.
+
+EXAMPLE
+     Assume that the file named writeoff exists with owner write
+     permission off.  You wish to move the file named dummy (with
+     mode 666) to writeoff.  Enter the following command:
+
+          mv dummy writeoff
+
+     The following message is displayed:
+
+          writeoff is write protected (mode= 466).  Override?
+
+     Enter y and press RETURN.  Dummy is moved to writeoff and
+     the mode of file writeoff is now 666.
+
+PROMPTS
+   File or Directory Name(s):
+     Enter the name(s) of the file(s) or directory to be moved or
+     renamed.
+
+   Target Name:
+     Enter the new name of the file or directory.
+
+   Override Write Protect:
+     Initial value is no.  If you enter yes, the prompt asking to
+     change write permission is suppressed and the command
+     executes.
+
+     If the target file or directory exists the following warning
+     will be given:
+
+          TARGET FILE OR DIRECTORY EXISTS AND WILL BE ALTERED
+
+   Execute Command:
+     Initial value is no.  If you enter yes, the process will be
+     executed.  If you enter no, the process will abort.
+
+SEE ALSO
+     chmod(2), cp(1), cpio(1), mvdir(1M), ln(1), rm(1).
+
+NOTES
+     If file1 and target exist on different file systems, mv must
+     copy the file and delete the original.  In this case, any
+     linking relationship with other files is lost.  Files . and
+     .. cannot be renamed.
+
+

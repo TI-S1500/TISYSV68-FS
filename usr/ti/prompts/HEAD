@@ -1,0 +1,25 @@
+# cshf 	head -- display the start of a file 
+#	@(#)HEAD.sh	1.1  87/03/09
+#
+onintr end
+
+prompt	"^HEAD - DISPLAYS THE BEGINNING OF A FILE"\
+	"^File Name(s):"  _input_file   macnm  "$_input_file"\
+	"^*Lines to display:"  n  integer     \
+	"^*Listing Access Name:" lname acnm $lname\
+	"^#$*"
+
+if(  $abort ) goto end
+if( $n != "" ) set n="-$n"
+
+echo "=== HEAD COMMAND EXECUTING ==="
+if ($lname == "") then
+   echo head  $n    $_input_file
+   head  $n    $_input_file | \
+   pg -cp"Output from HEAD is being piped through pg: "
+else
+   echo head  $n    $_input_file ">" $lname
+   head  $n    $_input_file > $lname
+endif
+end:
+unset n lname

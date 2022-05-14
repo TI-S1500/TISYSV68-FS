@@ -1,0 +1,65 @@
+CRYPT(1)                                                 CRYPT(1)
+
+NAME
+     crypt - Encodes and decodes files
+
+SYNOPSIS
+     crypt [password]
+
+DESCRIPTION
+   Purpose
+     The crypt utility reads from the standard input and writes
+     on the standard output.  The password is a key that selects
+     a particular transformation.  If no password is given, crypt
+     demands a key from the terminal and turns off printing while
+     the key is being typed in.  The crypt utility encrypts and
+     decrypts with the same key.  The second of the following
+     commands prints the clear.
+
+          crypt key <clear >cypher
+          crypt key <cypher | pr
+
+     Files encrypted by crypt are compatible with those treated
+     by the editor ed in encryption mode.
+
+     The security of encrypted files depends on the following
+     three factors:
+
+     + The fundamental method must be hard to solve.
+
+     + Direct search of the key space must be infeasible.
+
+     + ``Sneak paths'' by which keys or clear text can become
+       visible must be minimized.
+
+     The utility implements a one-rotor machine designed along
+     the lines of the German Enigma, but with a 256-element
+     rotor.  Methods of attack on such machines are known, but
+     not widely.  Moreover, the amount of work required is likely
+     to be large.
+
+     The transformation of a key into the internal settings of
+     the machine is deliberately designed to be expensive; i.e.,
+     to take a substantial fraction of a second to compute.
+     However, if keys are restricted to, for example, three
+     lowercase letters, encrypted files can be read by expending
+     only a substantial fraction of five minutes of machine time.
+
+     Since the key is an argument to the crypt command, it is
+     potentially visible to users executing ps(1) or a
+     derivative.  The choice of keys and key security are the
+     most vulnerable aspect of crypt.
+
+FILES
+     /dev/tty  for typed key
+
+SEE ALSO
+     ed(1), makekey(1), stty(1).
+
+NOTES
+     If two or more files encrypted with the same key are
+     concatenated and an attempt is made to decrypt the result,
+     only the contents of the first of the original files will be
+     decrypted correctly.
+
+

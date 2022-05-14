@@ -1,0 +1,38 @@
+# cshf	touch -- update access and modification times 
+#	@(#)TOUCH.sh	1.2  88/04/07
+#
+onintr end
+
+prompt "^TOUCH -- UPDATES ACCESS AND MODIFICATION TIMES OF A FILE"\
+	"^File Name(s):" _input_file macnm "$_input_file"\
+	"^Update Access Time:" aflag yesno y\
+	"^Create File if Nonexistent:" cflag yesno y\
+	"^Update Modification Time:" mflag yesno y\
+	"^Change Modification Time:" mod yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($mod == "y") then
+	prompt "^TOUCH -- ENTER MODIFICATION TIME"\
+		"^Minute(1-60):" min "range(1,60)"\
+		"^Hour(1-24):" hour "range(1,24)"\
+		"^Day(1-31):" day "range(1,31)"\
+		"^Month(1-12):" month "range(1,12)"\
+		"^*Year:" year string\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+if ($abort) goto end
+if ($mflag == "y") set opt = m$opt
+if ($cflag == "n") set opt = c$opt
+if ($aflag == "y") set opt = a$opt
+if ($opt != "") set opt = -$opt
+
+echo === TOUCH COMMAND EXECUTING ===
+echo touch $opt $month$day$hour$min$year $_input_file
+touch $opt $month$day$hour$min$year $_input_file
+
+
+end:
+unset *flag opt month day hour min year 

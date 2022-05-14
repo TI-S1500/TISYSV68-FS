@@ -1,0 +1,39 @@
+UPSMON(1T)                                             UPSMON(1T)
+
+NAME
+     upsmon - Monitors the UPS state
+
+SYNOPSIS
+     upsmon
+
+DESCRIPTION
+   Discussion
+     The upsmon command monitors the state of the UPS and stops
+     the powerful shutdown process (like upsoff(1T)).  upsmon is
+     invoked from /etc/shutdown just before the powerfail grace
+     period.  Upon expiration of the grace period, if upsmon has
+     set the system powerfail indicator off, shutdown will abort
+     the powerfail process.
+
+NOTES
+     upsmon assumes that a powerfail condition exists before it
+     is started.  When it detects the UPS is no longer online, it
+     sets the system powerfail indicator off, turns off forced
+     write mode, and exits.
+
+     upsmon functions only on systems with built-in UPS support
+     hardware.  The functionality provided by upsmon is provided
+     by the upswait(1T) command on systems that do not have UPS
+     support hardware.
+
+     upsmon will automatically go into background operation so
+     the user need not manually place upsmon in background.
+
+FILES
+     /dev/ups
+
+SEE ALSO
+     portwait(1T), shutdown(1T), upsoff(1T), upson(1T),
+     upsstat(1T), upswait(1T).
+
+

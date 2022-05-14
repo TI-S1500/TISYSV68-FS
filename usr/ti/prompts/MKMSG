@@ -1,0 +1,19 @@
+# cshf  mkmsg -- Builds message file 
+#	@(#)MKMSG.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^MKMSG -- CREATES THE PTEXT AND STEXT FILES FOR PRINTM(3T) TO USE"\
+	"^Master File Name:" master acnm $master \
+	"^Problem Description File:" ptext acnm \
+	"^Solution Text File Name:" stext acnm \
+	"^#$*"
+
+if ($abort) goto end
+echo "=== MKMSG COMMAND EXECUTING ==="
+echo mkmsg $master $ptext $stext
+mkmsg $master $ptext $stext
+
+#clean up time
+end:
+unset master ptext stext

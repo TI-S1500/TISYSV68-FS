@@ -1,0 +1,12 @@
+# cshf   usradm - user Administrator 
+#	@(#)USRADM.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^USRADM -- INVOKES THE USER ACCOUNT ADMINISTRATION TOOL"\
+	"^THIS IS A SUPER USER COMMAND"
+
+if ($abort) goto end
+echo "=== USRADM COMMAND EXECUTING ==="
+usradm
+end:

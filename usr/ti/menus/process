@@ -1,0 +1,12 @@
+process:menu:PROCESS MANAGEMENT COMMANDS MENU, Series 1000:process.hlp
+AT:c:Executes commands at a later time:
+BATCH:c:Executes batches at a later time:
+CRONTAB:c:Submits, replaces, or removes a user crontab file:
+DATE:c:Prints and sets the date:
+KILL:c:Terminates a process:
+NICE:c:Run a command at low priority:
+PS:c:Reports process status:
+TIME:c:Times a command:
+TIMEX:c:Times a command and reports system activiity:
+WHO:c:Provides information about users and system activity:
+WHODO:c:Tells who is doing what on the system:

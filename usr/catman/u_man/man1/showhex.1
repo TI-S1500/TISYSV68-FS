@@ -1,0 +1,96 @@
+SHOWHEX(1T)                                           SHOWHEX(1T)
+
+NAME
+     showhex - Shows and edits files in hex and ASCII format
+
+SYNOPSIS
+     showhex file
+
+DESCRIPTION
+   Purpose
+     The showhex command displays files in hex format only or in
+     both hex and ASCII format.  Press e to enter edit mode and
+     change characters in the displayed portion of the file.
+
+   Discussion
+     The  leftmost column of the display produced by showhex
+     consists of decimal integers indicating the number of the
+     first byte in each row.  The remainder of the display
+     consists of eight columns of hex numbers or five columns of
+     hex numbers and one column of ASCII text.  Press x to toggle
+     between hex-only and hex-ASCII format.
+
+     No cursor appears when the file is displayed.  During edit,
+     the cursor does not land in gaps between columns.  In edit
+     mode, the utility accepts only hex characters (0-9 and a-f)
+     while the cursor is in the hex portion of the display.  You
+     can enter either uppercase or lowercase hex characters.
+     Only the arrow keys move the cursor in edit mode.  The other
+     keys, including backspace and control characters, are
+     interpreted as new characters to put into the file.
+
+     You must edit files one page at a time.  When showhex enters
+     edit mode, the cursor appears approximately in the center of
+     the display.  If you abort the edit and do not write the
+     changes to disk (that is, you do not press the w key), a
+     buffer retains the changes.  You can flush the buffer by
+     paging several pages toward the bottom of the file.
+
+   Commands
+     After you execute showhex, the following commands are
+     available:
+
+     q or Q            Exits to the shell or exit the edit mode
+                       back to display mode
+
+     ?                 Shows a help screen
+
+     Return            Returns to the previous display
+
+     j or down arrow   Scrolls down (toward the end of the file)
+                       one line
+
+     k or up arrow     Scrolls up one line
+
+     h or left arrow   Scrolls left one character
+
+     l or right arrow  Scrolls right one character
+
+     F1 or J           Scrolls down 24 lines (one page toward the
+                       end of the file)
+
+     F2 or K           Scrolls up 24 lines
+
+     F3 or H           Scrolls left 4 characters
+
+     F4 or L           Scrolls right 4 characters
+
+     x                 Toggles between 5 and 8 words per line
+
+     e                 Enters edit mode
+
+     w                 Writes changes to disk in edit mode
+
+   Edit Mode
+     The showhex command has a very simple edit mode; it will
+     substitute new characters for existing ones.  Inserting or
+     deleting characters is not supported. Press the e key to
+     enter the edit mode.  In edit mode, only the arrow keys will
+     move the cursor. All other keys, including the backspace,
+     return, line feed, and control characters, are interpreted
+     as substitutes for the character that is under the prompt.
+
+     Terminals that do not have arrow keys cannot use the edit
+     function.  Function keys whose generated character sequence
+     begins with the same character as the arrow keys will be
+     ignored.
+
+PROMPT
+   File Name:
+     Enter the name of the file whose contents you want displayed
+     in hexadecimal format.
+
+SEE ALSO
+     od(1), show(1T), showfs(1T).
+
+

@@ -1,0 +1,37 @@
+# cshf   banner -- make poster 
+#	@(#)BANNER.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^BANNER -- MAKE POSTERS"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Number of Lines (1 - 9):" cnt \
+	  "range(1,9)" \
+	"^#$*"
+ 
+if ($abort) goto end
+set str=(1 2 3 4 5 6 7 8 9)  
+@ i = 1
+while ( $i <= $cnt)
+	if ($abort) goto end
+	prompt "^Text for Line [$i]:" numln string
+	if ($abort) exit 
+	set str[$i] = "$numln"
+	@ i++
+end
+ 
+ 
+echo "=== BANNER COMMAND EXECUTING ==="
+@ i = 1
+if (("$_output_file" != "") && (-e "$_output_file")) rm $_output_file
+while ( $i <= $cnt)
+	if ("$_output_file" == "") then
+		banner "$str[$i]"
+	else 
+		banner "$str[$i]" >>$_output_file
+	endif
+	@ i++ 
+end 
+
+end:
+unset i str cnt numln 

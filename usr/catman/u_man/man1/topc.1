@@ -1,0 +1,122 @@
+TOPC(1T)						 TOPC(1T)
+
+NAME
+     topc - Transfers a file to a destination computer from a
+     System 1000 Series computer
+
+SYNOPSIS
+     topc -bdrtx unixfile pcfile
+
+DESCRIPTION
+     The topc command transfers a file to a destination computer
+     from a System 1000 Series computer.  The destination
+     computer can be a Texas Instruments Professional computer
+     (TIPC) running the 931 terminal emulator package, version
+     2.0 or higher, or a TI BUSINESS-PRO(TM) running the 924
+     terminal emulator package, or any IBM(R)-compatible computer
+     running the 924 emulator.
+
+     To abort a file transfer, press the Command key of the 931
+     or 924 emulator.
+
+   Options
+     -b   Sends the data as binary and does not insert carriage
+	  returns.   Without this option, each newline character
+	  has a carriage return inserted prior to it (the format
+	  for MS(R)-DOS text files).
+
+     -d dev
+	  Allows the file transfer to be initiated from one
+	  terminal with the actual transfer occurring from a
+	  terminal attached to the device specified by dev.  Only
+	  the super-user can specify this option.  The device dev
+	  cannot be in use by any other process, including getty
+	  and the shell.  The devadm(1T) utility should be used
+	  to turn off the device.    Use devadm to specify off in
+	  the action field of the devadm display, and set Auto
+	  Init to no.
+
+     -r   Replaces the destination file if it already exists.
+
+     -t nn
+	  Set time-out to nn seconds to receive characters from
+	  the emulator.  The allowed range for nn is 5 to 256.
+	  If this option is not specified, the default value is
+	  10 seconds.
+
+     -x filename
+	  Creates a file named filename and places in the file a
+	  trace of the file transfer.  This option should be used
+	  when a file transfer problem is encountered and should
+	  be reported to Texas Instruments.
+
+   Arguments
+     unixfile  The name of the file to transfer from the System
+	       1000 Series computer.  This name can be a path
+	       name.
+
+     pcfile    The name that the transferred file will have on
+	       the destination computer.  The file name and path
+	       name combined cannot exceed 40 characters in
+	       length.	To enter a backslash, \, in a destination
+	       file path name, enter either two backslashes, \\,
+	       or a single forward slash, /.
+
+EXAMPLES
+     The following command transfers a System 1000 Series binary
+     file named binfile in the current working directory to a
+     destination file named \scratch\binfile.  The -b option
+     prevents carriage returns from being inserted prior to
+     newline characters.
+
+	  topc -b -r binfile \\scratch\\binfile
+
+PROMPTS
+   UNIX File Name:
+     Enter the name of the file to be transferred.
+
+   PC File Name:
+     Enter the destination file name.  To enter a \ use only one
+     \ or one /.
+
+
+     BUSINESS-PRO is a trademark of Texas Instruments
+     Incorporated.
+     IBM is a registered trademark of International Business
+     Machines.
+     MS is a registered trademark trademark of Microsoft
+     Corporation.
+
+   Replace PC File:
+     Initial value is no.  If you enter yes, the file is copied
+     unconditionally.
+
+   Select Binary or Text (b,t):
+     If you enter b, the file is transferred in binary and
+     carriage returns are removed.  If you enter t, the file is
+     transferred with carriage returns.
+
+   Accept Default Options:
+     Initial value is no.  If you enter yes, the following
+     options are displayed.
+
+   Timeout in seconds (5-256):
+     Initial value is 10.  Enter the number of seconds allowed
+     for the emulator to receive a character.
+
+   Device Name of Attached Terminal:
+     Enter the name of the terminal that will actually do the
+     transfer.
+
+   Trace File Name:
+     Enter the file name used to record and trace the transfer
+     procedure.
+
+NOTES
+     The System 1000 Series console is not designed for file
+     transfer. Do not use topc at the console.
+
+SEE ALSO
+     frpc(1T).
+
+

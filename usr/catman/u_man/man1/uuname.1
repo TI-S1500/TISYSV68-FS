@@ -1,0 +1,34 @@
+UUNAME(1C)                                             UUNAME(1C)
+
+NAME
+     uuname - Lists uucp(1) names of systems
+
+SYNOPSIS
+     uuname -l
+
+DESCRIPTION
+   Purpose
+     The uuname command lists the uucp names of known systems.
+
+   Option
+     -l   Returns the local uucp(1) system name.
+
+PROMPTS
+   Print System Names:
+     The initial value is yes.  Enter a yes to print the uucp
+     names of known systems.
+
+   Print Local System Name:
+     The initial value is no.  Enter a yes to print the local
+     uucp system name.
+
+FILES
+     /usr/spool/uucp        Spool directory
+     /usr/spool/uucppublic  Public directory for receiving and
+                            sending (PUBDIR)
+     /usr/lib/uucp/*        Other data and program files
+
+SEE ALSO
+     mail(1), uname(1), uucp(1C), uulog(1C), uux(1C).
+
+

@@ -1,0 +1,130 @@
+EGREP(1)                                                 EGREP(1)
+
+NAME
+     egrep - Searches a file for a pattern
+
+SYNOPSIS
+     egrep -bcfilnve expression files
+
+DESCRIPTION
+   Purpose
+     The egrep command searches the input files (standard input
+     is the default) for lines matching a full regular
+     expression.  See Regular Expressions in ed(1) for a
+     definition of regular expressions.
+
+     The egrep command cannot find a string in an executable
+     file.
+
+   Options
+     -b        Each line is preceded by the block number on which
+               it was found.  This is sometimes useful in
+               locating disk block numbers by context (blocks are
+               1024 bytes long).
+
+     -c        Only a count of matching lines is printed.
+
+     -e        Finds an expression that begins with a -.  If used
+               with another, the e option must be the last option
+               specified.
+
+     -f file   The regular expression is taken from the file.
+
+     -i        Ignores uppercase and lowercase distinction during
+               comparison.
+
+     -l        Only the names of files with matching lines are
+               listed (once), separated by newlines.
+
+     -n        Each line is preceded by its relative line number
+               in the file.
+
+     -v        All lines except those matching are printed.
+
+   Discussion
+     Normally, each line found is copied to the standard output.
+     The egrep command uses a fast deterministic algorithm that
+     sometimes needs exponential space.  In all cases, the file
+     name is output if there is more than one input file.  Be
+     careful when using the characters $, *, [, ^, |, (, ), and \
+     in expression, because they are also meaningful to the
+     shell.  It is safest to enclose the entire expression
+     argument in single quotes '....'.
+
+     The order of precedence of operators is [], then *?+, then
+     concatenation, then | and newline.
+
+     The egrep command accepts regular expressions as in ed(1),
+     except for \( and \), with the addition of:
+
+     1. A regular expression followed by + matches one or more
+        occurrences of the regular expression.
+
+     2. A regular expression followed by ? matches 0 or 1
+        occurrences of the regular expression.
+
+     3. Two regular expressions separated by | or by a newline
+        match strings that are matched by either.
+
+     4. A regular expression may be enclosed in parentheses ()
+        for grouping.
+
+PROMPTS
+   Input File Name(s):
+     Enter one or more names of files to process.
+
+   Output File Name:
+     Enter the name of the file to receive the command output.
+
+   Print All But Matching Lines:
+     The initial value is no.  Enter yes to print all lines in
+     the input file except those that match the pattern.
+
+   Find an Expression Beginning With '-':
+     The initial value is no.  Enter yes to find all expressions
+     beginning with -.
+
+   Count Matching Lines:
+     The initial value is no.  Enter yes to print only a count of
+     the matching lines.
+
+   Ignore Upper/Lower Case:
+     The initial value is no.  Enter yes to ignore uppercase and
+     lowercase distinction.
+
+   File Names Only:
+     The initial value is no.  Enter yes to print only the names
+     of the files that contain matching lines.
+
+   Print File Line Numbers:
+     The initial value is no.  Enter yes to print the number of
+     the line that contains a matching pattern.
+
+   Print Block Numbers:
+     The initial value is no.  Enter yes to print the block
+     number of the line that contains a matching pattern.
+
+   Expression:
+     Enter the expression to match. Expression should not be in
+     quotes.  If the expression is one beginning with -, it
+     should be entered as such.
+
+   File Containing Pattern:
+     Enter the name of a file that contains the pattern to match.
+
+SEE ALSO
+     ed(1), fgrep(1), grep(1) sed(1), sh(1).
+
+DIAGNOSTICS
+     Exit status is 0 if any matches are found, 1 if none, 2 for
+     syntax errors or inaccessible files (even if matches were
+     found).
+
+NOTES
+     Lines are limited to 256 characters; longer lines are
+     truncated.
+
+     The egrep command does not recognize ranges, such as [a-z],
+     in character classes.
+
+

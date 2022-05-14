@@ -1,0 +1,15 @@
+# cshf   time - time a command 
+#	@(#)TIME.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^TIME -- TIMES A COMMAND"\
+	"^*Command To Be Timed:" cmd string "$cmd"
+
+if ($abort) goto end
+echo "=== TIME COMMAND EXECUTING ==="
+echo "time $cmd"
+time $cmd
+
+end:
+unset cmd

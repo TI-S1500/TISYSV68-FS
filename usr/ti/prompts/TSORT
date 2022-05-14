@@ -1,0 +1,21 @@
+# cshf  tsort -- Performs a topological sort 
+#	@(#)TSORT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^TSORT -- PERFORMS A TOPOLOGICAL SORT"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== TSORT COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo tsort $_input_file
+	tsort $_input_file
+else 
+	echo tsort $_input_file ">"$_output_file
+	tsort $_input_file >$_output_file
+endif
+
+end:

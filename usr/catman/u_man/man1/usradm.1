@@ -1,0 +1,156 @@
+USRADM(1T)					       USRADM(1T)
+
+NAME
+     usradm - Manages user accounts
+
+SYNOPSIS
+     usradm
+
+DESCRIPTION
+   Purpose
+     The usradm command allows the system administrator to alter
+     the password file and to add or delete user accounts and
+     user files.  This command is interactive.	After entering
+     usradm, the user responds to screen menus and prompts.  This
+     command requires invocation by the super-user.  See the TI
+     System V Administrator's Guide for a detailed discussion of
+     the menus and prompts.
+
+   Discussion
+     The first screen displayed by usradm is as follows:
+
+     sitename User Administration Utility	 Users: 21
+     User, No., Comment, Group, home Directory, Help, Quit, Remove user
+     USER    NO.  COMMENT		GROUP	  HOME DIRECTORY
+     ____    ___  _______		_____	  ______________
+     root      0  The Super User	root	  /
+     super     0  Another Super User	root	  /
+     daemon    1  Daemon user id and g	daemon	  /
+     bin       2  Owner of Commands	bin	  /bin
+     sys       3  Owner of link kit	sys	  /usr/sys
+     adm       4  System Administratio	adm	  /usr/adm
+     uucp      5  uucp Account		uucp	  /usr/spool/uucppublic
+     uucpadm   5  uucp Administration	uucp	  /usr/lib/uucp
+     mail      6  Mailman		mail	  /usr/mail
+     sync      7  The Disk sync'er      daemon    /
+     lp        8  The lp Spooler Daemo	bin	  /usr/spool/lp
+     lpadm     8  lp Administration Ac	bin	  /usr/spool/lp
+     news      9  System News Administ	news	  /usr/news
+     guest    10  A casual user 	guest	  /usr/guest
+
+     F1-dn F2-up F3-top F4-btm F5-user F6-no. F7-cmnt F8-grp F9-more CMD-cmd
+
+     The HOME DIRECTORY column shows the users' home directories.
+     Other screens are available via use of the F9 key.
+
+     One of the usradm screen displays allows you to configure
+     the utility.  To configure the utility means to set up
+     default values for adding new users.  The /etc/group file
+     must be edited to add a new group.  This must be done prior
+     to adding user accounts to the new group with usradm.
+
+   Commands
+     The command line of the first display consists of words that
+     indicate the operations available.  Each different screen
+     type has a different list of available commands.  Use the F9
+     key to see all the displays and available commands.  Select
+     the user information to alter by positioning the cursor by
+     the desired user ID.  Select an operation by pressing the
+     key that corresponds to the a boldface letter on the command
+     line.
+
+     Min age
+	  Allows you to change minimum time that must elapse
+	  before a user can change his or her password.
+
+     Max age
+	  Allows you to change the maximum time after which a
+	  user must change his or her password.
+
+     Comment
+	  Allows you to alter the Comment column entry that
+	  describes the user.
+
+     Group
+	  Allows you to alter the Group column that identifies
+	  the user's group ID.
+
+     home Directory
+	  Allows you to alter the user's home directory.
+
+     Help
+	  Accesses a help display for usradm.
+
+     No.  Allows you to alter the user number.
+
+     Password
+	  Allows you to alter the password.
+
+     Quit
+	  Quits the utility.
+
+     Remove
+	  Removes the selected user ID.
+
+     login Shell
+	  Allows you to change the user's login shell.
+
+     User
+	  Allows you to change the user name.
+
+     In addition to these operations, the utility recognizes the
+     following function keys:
+
+     F1   Scrolls the display forward.
+
+     F2   Scrolls the display backward.
+
+     F3   Moves the display to the beginning and positions the
+	  cursor at the first entry.
+
+     F4   Moves the display to the end and positions the cursor
+	  at the last entry.
+
+     F5   Sorts the display by user ID.
+
+     F6   Sorts the display by user number. (Default)
+
+     F7   Sorts the display by the comment field.
+
+     F8   Sorts the display by the group ID.
+
+     F9   Toggles the utility to display the three possible
+	  screens.
+
+     CMD  Invokes command mode, which allows the administrator to
+	  create a new user or to configure the utility.
+
+     If you press the command key (CMD), the following operations
+     are available:
+
+     !)bsh
+	  Enters a shell command.
+
+     Configure
+	  Invokes the configure mode, which allows you to alter
+	  the defaults for making new users.
+
+     Make
+	  Allows you to make a new user.
+
+     Dups
+	  Shows a list of duplicate user names or numbers in the
+	  password file entries.
+
+     <ret>
+	  Returns to usradm display.
+
+FILES
+     /etc/passwd
+     /etc/group
+
+SEE ALSO
+     bsh(1T), files(4), passwd(1).
+     "User Management" in the TI System V Administrator's Guide.
+
+

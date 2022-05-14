@@ -1,0 +1,66 @@
+ECHO(1)                                                   ECHO(1)
+
+NAME
+     echo - Echoes arguments
+
+SYNOPSIS
+     echo arguments
+
+DESCRIPTION
+   Purpose
+     The echo command writes its arguments on the standard
+     output.  The arguments are separated by blanks and
+     terminated by a newline.
+
+   Discussion
+     This command understands C-like escape conventions.  To
+     force echo to interpret the following characters, use single
+     or double quotes around the characters or around the entire
+     echo argument.
+
+     \b   Backspaces
+
+     \c   Suppresses newline (This is useful in a shell script to
+          print a prompt and leave the cursor at the end of the
+          prompt.)
+
+     \f   Formfeed
+
+     \n   Inserts a newline
+
+     \r   Inserts a carriage return
+
+     \t   Inserts a tab
+
+     \\   Inserts a backslash
+
+     \n   Inserts the 8-bit character whose ASCII code is the 1-,
+          2- or 3-digit octal number n, which must start with a
+          zero (Hexadecimal format is not supported.)
+
+     The echo command is useful for producing diagnostic messages
+     in command files and for sending known data into a pipe.
+
+EXAMPLE
+     The following example creates a directory called
+     testresults.  Text is placed into the file named test1 using
+     the echo command.  Text that normally appears on the
+     standard output is redirected to the file.
+
+          mkdir testresults
+          cd testresults
+          echo April 30, 1986 '\n'Results of test 1: > test1
+
+     File test1 is created with the following lines:
+
+          April 30, 1986
+          Results of test 1
+
+SEE ALSO
+     sh(1).
+
+NOTES
+     This is not the same echo command as the built-in echo of
+     the bsh(1).
+
+

@@ -1,0 +1,114 @@
+# cshf	 cpio - copy files to/from tape 
+#	@(#)CPIO.sh	1.2  88/02/10
+#
+onintr end
+set tape="/dev/rqt/0h"				#  default to cartridge tape
+
+prompt	"^CPIO -- COPIES FILE ARCHIVES IN AND OUT IN TAPE FORMAT"\
+	"^Read, Write, Copy, or Index (r,w,c,i):" what\
+	"element(R,r=r,W,w=w,C,c=c,I,i=i)"\
+	"^#$*"
+
+if ($abort) goto end
+if ($what == "r") then
+	prompt	"^CPIO -- READ FILES FROM TAPE"\
+		"^Name of Tape:"  tape  acnm  $tape\
+		"^*Name Patterns:" pat   string "$pat"\
+		"^Ascii Header:"  form yesno y\
+		"^Blocked:"  blok yesno y\
+		"^Create Directory:"  dir yesno y\
+		"^Retain Mod Time:"  mod   yesno  y      \
+		"^Replace Newer Files:"  newr  yesno  n      \
+		"^Verbose:"  say   yesno  y  \
+		"^#$*"
+
+	if ($abort) goto end
+	if( $form == "y" )  set opt=c$opt
+	if( $blok == "y" )  set opt=B$opt
+	if( $dir  == "y" )  set opt=d$opt
+	if( $mod  == "y" )  set opt=m$opt
+	if( $newr == "y" )  set opt=u$opt
+	if( $say  == "y" )  set opt=v$opt
+
+	echo "=== CPIO COMMAND EXECUTING ==="
+	echo cpio "-i$opt"  "$pat"  "<" $tape
+	cpio "-i$opt"  "$pat"  < $tape
+	unset *opt form blok dir mod newr say what tape pat 
+endif
+
+if ($what == "w") then
+	prompt	"^CPIO -- WRITE A NEW TAPE"\
+		"^Name of Tape:"  tape  acnm $tape\
+		"^*Name List File:" all   acnm   $all\
+		"^Ascii Header:"  form  yesno  y\
+		"^Blocked:"  blok  yesno  y\
+		"^Verbose:"  say   yesno  y\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($form == "y")  set opt=c$opt
+	if ($blok == "y")  set opt=B$opt
+	if ($say == "y")  set opt=v$opt
+
+	echo "=== CPIO COMMAND EXECUTING ==="
+	if ($all == "") then
+		echo cpio -o$opt ">"$tape
+		cpio -o$opt >$tape
+	else
+  		if (!(-e $all)) then
+			echo "$all"": No such file or directory"
+			set abort = "1"
+  		else
+		   echo cpio -o$opt  "<"$all  ">"$tape
+		   cpio -o$opt  <$all  >$tape
+		endif
+	endif
+	if ($abort) goto end
+	unset *opt form blok say what tape all 
+endif
+
+if ($what == "c") then
+	if ($_input_dir == "") set _input_dir = `pwd`
+	prompt	"^CPIO -- COPY FILES TO A NEW DIRECTORY"\
+		"^*Name List File:" all   acnm  $all\
+		"^Put in Directory:"  _input_dir acnm $_input_dir\
+		"^Create Directory:"  dir   yesno  y\
+		"^Link if Possible:"  lin   yesno  y\
+		"^Replace Newer Files:"  newr  yesno  n\
+		"^Retain Mod Time:"  mod   yesno  y\
+		"^Verbose:"  say   yesno y\
+		"^#$*"
+	if ($abort) goto end
+	if ($dir == "y") set opt=d$opt
+	if ($lin == "y") set opt=l$opt
+	if ($newr == "y") set opt=u$opt
+	if ($mod == "y") set opt=m$opt
+	if ($say == "y") set opt=v$opt
+	echo "=== CPIO COMMAND EXECUTING ==="
+	if ($all != "") then
+			echo cpio -p$opt $_input_dir "<" $all
+			cpio -p$opt $_input_dir   < $all
+		else	
+			echo cpio -p$opt $_input_dir          
+			cpio -p$opt $_input_dir          
+		endif
+	unset *opt dir mod newr say what tape lin all 
+endif
+if ($what == "i") then
+	prompt	"^CPIO -- LIST THE CONTENTS"  \
+		"^Name of Tape:"  tape  acnm  $tape \
+		"^Ascii Header:"  form  yesno  y    \
+		"^Blocked:"  blok  yesno  y\
+		"^#$*"
+	if ($abort) goto end
+	if ($form == "y") set opt=c$opt
+	if ($blok == "y") set opt=B$opt
+
+	echo "=== CPIO COMMAND EXECUTING ==="
+	echo cpio "-itv$opt"  "<"$tape
+	cpio "-itv$opt"  <$tape
+	unset *opt form blok what tape say
+endif
+
+end:
+unset *opt form blok dir mod newr say what tape pat lin all 

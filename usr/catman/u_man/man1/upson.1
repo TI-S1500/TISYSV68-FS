@@ -1,0 +1,23 @@
+UPSON(1T)                                               UPSON(1T)
+
+NAME
+     upson - Starts powerfail shutdown sequence
+
+SYNOPSIS
+     upson
+
+DESCRIPTION
+   Discussion
+     The upson command starts the system powerfail procedure via
+     a write to /dev/ups. The init process is sent SIGPWR, a
+     warning message is written to the system log, and forced
+     write mode is enabled.
+
+FILES
+     /dev/ups
+
+SEE ALSO
+     portwait(1T), shutdown(1T), upsmon(1T), upsoff(1T),
+     upsstat(1T), upswait(1T).
+
+

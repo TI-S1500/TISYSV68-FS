@@ -1,0 +1,158 @@
+PASSWD(1)                                               PASSWD(1)
+
+NAME
+     passwd - Changes login password and password attributes
+
+SYNOPSIS
+     passwd [ name ]
+
+     passwd [ -l | -d ] [ -n min ] [ -f ] [ -x max ] name
+
+     passwd -s [ -a ]
+
+     passwd -s [ name ]
+
+DESCRIPTION
+     The passwd command changes the password or lists password
+     attributes associated with the user's login name.
+     Additionally, super-users may use passwd to install or
+     change passwords and attributes associated with any login
+     name.
+
+     When used to change a password, passwd prompts ordinary
+     users for their old password, if any.  It then prompts for
+     the new password twice.  When the old password is entered,
+     passwd checks to see if it has aged sufficiently.  If aging
+     is insufficient, passwd terminates; see passwd(4).
+
+     Assuming aging is sufficient, a check is made to ensure that
+     the new password meets construction requirements. When the
+     new password is entered a second time, the two copies of the
+     new password are compared.  If the two copies are not
+     identical the cycle of prompting for the new password is
+     repeated for at most two more times.
+
+     Passwords must be constructed to meet the following
+     requirements:
+
+          Each password must have at least six characters.  Only
+          the first eight characters are significant.
+
+          Each password must contain at least two alphabetic
+          characters and at least one numeric or special
+          character.  In this case, "alphabetic" refers to all
+          uppercase or lowercase letters.
+
+          Each password must differ from the user's login name
+          and any reverse or circular shift of that login name.
+          For comparison purposes, an uppercase letter and its
+          corresponding lowercase letter are equivalent.
+
+          New passwords must differ from the old by at least
+          three characters.  For comparison purposes, an
+          uppercase letter and its corresponding lowercase letter
+          are equivalent.
+
+     Super-users (e.g., real and effective uid equal to 0, see
+     id(1M) and su(1M)) may change any password; hence, passwd
+     does not prompt super-users for the old password.  Super-
+     users are not forced to comply with password aging and
+     password construction requirements.  A super-user can create
+     a null password by entering a carriage return in response to
+     the prompt for a new password.  (This differs from passwd -d
+     because the password prompt will still be displayed.)
+
+     Any user may use the -s option to show password attributes
+     for his or her own login name.
+
+     The format of the display will be:
+
+          name status mm/dd/yy min max
+
+     or, if password aging information is not present,
+
+          name status
+
+     where
+
+     name        The login ID of the user.
+
+     status      The password status of name: PS stands for
+                 passworded or locked, LK stands for locked, and
+                 NP stands for no password.
+
+     mm/dd/yy    The date password was last changed for name.
+                 (Note that all password aging dates are
+                 determined using Greenwich mean time (GMT) and,
+                 therefore, may differ by as much as a day in
+                 other time zones.)
+
+     min         The minimum number of days required between
+                 password changes for name.
+
+     max         The maximum number of days the password is valid
+                 for name.
+
+     Only a super-user can use the following options:
+
+     -l        Locks password entry for name.
+
+     -d        Deletes password for name.  The login name will
+               not be prompted for password.
+
+     -n        Set minimum field for name.  The min field
+               contains the minimum number of days between
+               password changes for name.  If min is greater than
+               max, the user may not change the password.  Always
+               use this option with the -x option, unless max is
+               set to -1 (aging turned off).  In that case, min
+               need not be set.
+
+     -x        Set maximum field for name.  The max field
+               contains the number of days that the password is
+               valid for name.  The aging for name will be turned
+               off immediately if max is set to -1.  If it is set
+               to 0, the user is forced to change the password at
+               the next login session and aging is turned off.
+
+     -a        Show password attributes for all entries.  Use
+               only with -s option; name must not be provided.
+
+     -f        Force the user to change password at the next
+               login by expiring the password for name.
+
+FILES
+     /etc/passwd, /etc/shadow, /etc/opasswd, /etc/oshadow
+
+SEE ALSO
+     crypt(3C), id(1), login(1), passwd(4), pwconv(1M),
+     pwunconv(1M), shadow(4), su(1M), usradm(1T).
+     ``User Management'' in the TI System V Administrator's
+     Guide.
+
+WARNING
+     If the optional /etc/shadow file feature is used, the
+     passwd(1) command will use that, instead of the /etc/passwd
+     file, to obtain password information.  Since the way
+     password aging information is stored in the two files is
+     slightly different, the output from passwd options that use
+     this information may also be different.
+
+DIAGNOSTICS
+     The passwd command exits with one of the following values:
+
+     0         Success.
+
+     1         Permission denied.
+
+     2         Invalid combination of options.
+
+     3         Unexpected failure.  Password file unchanged.
+
+     4         Unexpected failure.  Password file(s) missing.
+
+     5         Password file(s) busy. Try again later.
+
+     6         Invalid argument to option.
+
+

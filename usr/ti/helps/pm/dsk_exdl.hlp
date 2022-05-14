@@ -1,0 +1,14 @@
+
+
+Use the + and - commands to display the next and previous extended disk 
+statistics screens. The "r" command resets the counters in the kernel that are 
+used to compute the extended disk statistics.
+
+The Request List Lengths screen shows the number of requests that have grouped 
+together in a linked list of two or more requests and made to the selected disk 
+drive. The list length is the number of requests that are in the linked list 
+that is passed to the disk drive. The bar graph displays the percentage of 
+linked lists that have a particular size. All sizes are shown in bytes. The 
+number of requests used to produce the graph is shown in the lower left corner 
+of the screen.
+

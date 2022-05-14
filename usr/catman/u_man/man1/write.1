@@ -1,0 +1,76 @@
+WRITE(1)                                                 WRITE(1)
+
+NAME
+     write - Writes to another user
+
+SYNOPSIS
+     write user [line]
+
+DESCRIPTION
+   Purpose
+     The write command copies lines from your terminal to that of
+     another user.
+
+   Discussion
+     When first called, write sends to the intended recipient the
+     following message:
+
+     Message from yourname (tty??)  [ date ]...
+
+     When the command has successfully completed the connection,
+     it sends a bell to your terminal to indicate that what you
+     are typing is being sent.
+
+     The recipient of the message can write back at this point.
+     Communication continues until an end-of-file signal is read
+     from the terminal or an interrupt is sent.  At that point
+     write writes EOT on the other terminal and exits.
+
+     If you want to write to a user who is logged in on more than
+     one line, the line argument can be used to indicate which
+     line or terminal is to be connected; otherwise, the first
+     instance of the user found in the file /etc/utmp is assumed,
+     and the following message is posted:
+
+     user is logged on more than one place.
+      You are connected to terminal.
+      Other locations are:
+     terminal
+
+     Permission to write can be denied or granted by use of the
+     mesg(1) command.  Writing to others is normally allowed by
+     default.  Certain commands, in particular pr(1), disallow
+     messages in order to prevent interference with their output.
+     However, if the user has super-user permissions, messages
+     can be forced onto a write-inhibited terminal.
+
+     If the character ! is found at the beginning of a line,
+     write calls the shell to execute the rest of the line as a
+     command.
+
+     The following protocol is suggested for using write:  when
+     you first write to another user, wait for the recipient to
+     write back before starting to send.  Each person should end
+     a message with a distinctive signal (such as (o) for over)
+     so that the other person knows when to reply.  The signal
+     (oo) (for over and out) is suggested when conversation is
+     finished.
+
+PROMPTS
+   User's Name:
+     Enter the name of the user to receive your message.  You may
+     also enter the line or terminal that the user is connected
+     to.
+
+FILES
+     /etc/utmp  To find user
+     /bin/sh    To execute !
+
+SEE ALSO
+     mail(1), mesg(1), pr(1), sh(1), who(1).
+
+DIAGNOSTICS
+     user not logged in       Means the person you are trying to
+                              write to is not logged in.
+
+

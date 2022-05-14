@@ -1,0 +1,205 @@
+# cshf lp -- sends requests to a line printer 
+#	@(#)LP.sh	1.8 90/02/28
+#
+onintr end
+
+# set up defaults
+set quote = '"'
+set defpri = 20
+set _printer = ""
+# determine default priority level
+if (-r /usr/spool/lp/users && $defpri == "") then
+	set defpri = `/usr/lib/lpusers -l | cut -d: -f2`
+endif
+if ($icopies == "") set icopies = "n"
+if ($reqtype == "") set reqtype = "simple"
+if ($bpage == "") set bpage = "y"
+if ($needform == "") set needform = "n"
+if ($formfirst == "") set formfirst = "n"
+if ($fontfirst == "") set fontfirst = "n"
+if ($specialhand == "") set specialhand = "n"
+if ($sttyopts == "") set sttyopts = ""
+if ($sendmail == "") set sendmail = "n"
+if ($ncopies == "") set ncopies = ""
+if ($outputopts == "") set outputopts = "n"
+if ($pagelist == "") set pagelist = "n"
+if ($needpri == "") set needpri = "n"
+if ($priority == "") set priority = $defpri
+if ($silent == "") set silent = "n"
+if ($charset == "") set charset = "n"
+if ($title == "") set title = "n"
+if ($content == "") set content = "n"
+if ($writeafter == "") set writeafter = "n"
+if ($modes == "") set modes = "n"
+if ($filebreak == "") set filebreak = "y"
+if ($pagelen == "") set pagelen = 66
+if ($pagewid == "") set pagewid = 80
+if ($lpi == "") set lpi = 6
+if ($cpi == "") set cpi = 10
+if ($startpage == "") set startpage = 0
+if ($endpage == "") set endpage = 999
+
+prompt "^LP -- SENDS REQUESTS TO A LINE PRINTER"\
+	"^Modify Existing Request:" modexist yesno "n"\
+	"^#$*"
+
+if ($modexist == "y") then
+	set optns = "y"
+	prompt "^LP -- SPECIFY REQUEST(S) TO ALTER"\
+		"^Request ID's:" req_ids string ""\
+		"^#$*"
+else
+	prompt "^LP -- SENDS REQUESTS TO A LINE PRINTER"\
+		"^Input File Name(s):" _input_file macnm $_input_file\
+		"^*Printer/Class Name(skip for default):" _printer acnm $_printer\
+		"^*Number of Copies(skip for 1):" ncopies string $ncopies\
+		"^Select Additional Options:" optns yesno n\
+		"^#$*"
+endif
+
+if ($abort) goto end
+
+if ($optns == "y") then
+   prompt "^LP -- LINE PRINTER REQUEST OPTIONS"\
+	"^Immediate Copies:" icopies yesno $icopies\
+	"^Select A Form:" needform yesno $needform\
+	"^Special Handling:" specialhand yesno $specialhand\
+	"^Send Mail:" sendmail yesno $sendmail\
+	"^Specify Page Range:" pagelist yesno $pagelist\
+	"^Display LP Messages:" silent yesno $silent\
+	"^Specify Request Priority:" needpri yesno $needpri\
+	"^Specify Character Set/Printwheel:" charset yesno $charset\
+	"^Specify Request Content Type:" content yesno $content\
+	"^Send a Message After:" writeafter yesno $writeafter\
+	"^Specify Filter Modes Options:" modes yesno $modes\
+	"^Other Output Options:" outputopts yesno $outputopts\
+	"^#$*"
+endif
+
+if ($abort) goto end
+    
+#
+# prompt for other output options
+if ($outputopts == "y") then
+   prompt "^LP -- LINE PRINTER OUTPUT OPTIONS"\
+	"^Print Banner Page:" bpage yesno $bpage\
+	"^Specify Banner Title:" title yesno $title\
+	"^Formfeed Between Files:" filebreak yesno $filebreak\
+	"^Lines Per Inch:" lpi string $lpi\
+	"^Characters Per Inch:" cpi string $cpi\
+	"^Page Length:" pagelen string $pagelen\
+	"^Page Width:" pagewid string $pagewid\
+	"^*stty Options:" sttyopts string $sttyopts\
+	"^#$*"
+endif
+if ($abort) goto end
+
+#
+# start setting up printer options
+
+# input form name
+if ($needform == "y") then
+	prompt "^LP -- SELECT FORM"\
+		"^Form Name:" formname string "$formname"\
+		"^First Available Printer:" formfirst yesno "$formfirst"\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+# input special handling options
+if ($specialhand == "y") then
+	prompt "^LP -- SPECIAL HANDLING"\
+		"^Special Handling:" spechand string hold\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+# page ranges
+if ($pagelist == "y") then
+	prompt "^LP -- SPECIFY PAGE RANGE"\
+		"^Page Range:" pagerange string "0-999"\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+# priority 
+if ($needpri == "y") then
+	prompt "^LP -- SPECIFY REQUEST PRIORITY"\
+		"^Priority:" priority "range(0,39)" $priority\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+# charset 
+if ($charset == "y") then
+	prompt "^LP -- SPECIFY CHARACTER SET OR PRINTWHEEL"\
+		"^Character Set/Printwheel:" printfont string $printfont\
+		"^First Available Printer:" fontfirst yesno $fontfirst\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+# content type
+if ($content == "y") then
+	prompt "^LP -- SPECIFY REQUEST CONTENT TYPE"\
+		"^Request Content Type:" reqtype string $reqtype\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+# modes
+if ($modes == "y") then
+	prompt "^LP -- SPECIFY FILTER MODES"\
+		"^Modes:" modeval string $modeval\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+if ($title == "y") then
+	set bpage = "y"
+	prompt "^LP -- BANNER TITLE"\
+		"^Banner Title:" bline string "$bline"\
+		"^#$*"
+	if ($abort) goto end
+endif
+
+
+#
+# begin command line build
+
+set args = ""
+
+
+if ($_printer != "")		set args = "-d $_printer"
+if ($modexist == "y") 		set args = "-i $req_ids $args"
+if ($icopies == "y") 		set args = "$args -c"
+if ($needform == "y") 		set args = "$args -f $formname"
+if ($formfirst == "y") 		set args = "$args -d any"
+if ($specialhand == "y") 	set args = "$args -H $spechand"
+if ($sendmail == "y") 		set args = "$args -m"
+if ($ncopies != "")		set args = "$args -n $ncopies"
+if ($outputopts == "y")		then
+	if ($bpage == "n")	set args = "$args -o nobanner"
+	if ($filebreak == "n")	set args = "$args -o nofilebreak"
+	if ($lpi != "6")	set args = "$args -o lpi=$lpi"
+	if ($cpi != "10")	set args = "$args -o cpi=$cpi"
+	if ($pagelen != "66")	set args = "$args -o length=$pagelen"
+	if ($pagewid != "80")	set args = "$args -o width=$pagewid"
+	if ($sttyopts != "")	set args = "$args -o 'stty=$sttyopts'"
+endif
+if ($pagelist == "y") 		set args = "$args -P $pagerange"
+if ($needpri == "y") 		set args = "$args -q $priority"
+if ($charset == "y") 		set args = "$args -S $printfont"
+if ($fontfirst == "y") 		set args = "$args -d any"
+if ($title == "y") 		set args = "$args -t '$bline'"
+if ($content == "y")		set args = "$args -T $reqtype"
+if ($writeafter == "y")		set args = "$args -w"
+if ($modes == "y")		set args = "$args -y '$modeval'"
+
+echo "=== LP COMMAND EXECUTING ==="
+
+echo lp $args $_input_file
+echo lp $args $_input_file | /bin/sh -
+
+end:
+

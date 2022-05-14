@@ -1,0 +1,187 @@
+
+UUCP(1C)                                                 UUCP(1C)
+
+NAME
+     uucp - Copies files from UNIX system to UNIX system
+
+SYNOPSIS
+     uucp -cCdefjmnr source-files destination-file
+
+DESCRIPTION
+   Purpose
+     The uucp command copies files named by the source-file
+     arguments to the files named by the destination-file
+     argument.
+
+   Options
+     -c   Does not queue the source file to /usr/spool/uucp, the
+          spool directory.  This is the default.
+
+     -C   Copies the source file to the spool directory.
+
+     -d   Makes all necessary directories for the file copy
+          (default).
+
+     -esys
+          Sends the uucp command to system sys to be executed
+          there.  (This option is successful only if the remote
+          machine allows the uucp command to be executed by
+          /usr/lib/uucp/uuxqt.)
+
+     -f   Does not make intermediate directories for the file
+          copy.
+
+     -j   Outputs the job identification ASCII string on the
+          standard output.  This job identification can be used
+          by uustat(1C) to obtain the status of or to terminate a
+          job.
+
+     -mfile
+          Reports status of the transfer in file. If file is
+          omitted, uucp sends mail to the requester when the copy
+          is completed.
+
+     -nuser
+          Notifies user on the remote system that a file was
+          sent.
+
+     -r   Queues job but does not start the file transfer
+          process.  By default, a file transfer process is
+          started each time uucp is evoked.
+
+   Discussion
+     A file name may be a path name, or may have the following
+     form:
+
+     system-name!path-name
+
+     The system-name is taken from a list of system names
+     recognizable to uucp.  The system-name can also be a list of
+     names in the following form:
+
+     system-name!system-name!...!system-name!path-name
+
+     In this case, an attempt is made to send the file via the
+     specified route, and only to a destination in PUBDIR (as
+     explained in this section).  The user must ensure that
+     intermediate nodes in the route are willing to forward
+     information.
+
+     The shell metacharacters ?, *, and [...] appearing in path-
+     name are expanded on the appropriate system.
+
+     Path names may be one of the following:
+
+     + A full path name
+
+     + A path name preceded by ~user, where ~user is a login name
+       on the specified system and is replaced by that user's
+       login directory
+
+     + A path name preceded by ~/user where user is a login name
+       on the specified system and is replaced by that user's
+       directory under PUBDIR
+
+     + Anything else is prefixed by the current directory.
+
+     If the result is an erroneous path name for the remote
+     system, the copy fails.  If the destination-file is a
+     directory, the last part of the source-file name is used.
+
+     If a simple ~user destination is inaccessible to uucp, data
+     is copied to a spool directory and the user is notified by
+     mail(1).
+
+     The uucp command preserves execute permissions across the
+     transmission and gives 0666 read and write permissions.  See
+     chmod (2).
+
+     The ! must be preceded by a \ if your shell is the TI
+     Business shell or the C shell.
+
+EXAMPLE
+     The following example sends the file named afile from the
+     local TI System V system to the system named park, saves
+     afile as /usr/home/run/bfile, and notifies the user named
+     sluggo that the file is sent.
+
+          uucp -nsluggo afile park!/usr/home/run/bfile
+
+PROMPTS
+   Source System Path Name:
+     Enter the path name of the file to send. The path name can
+     be preceded by a system name.
+
+   Destination System Path Name:
+     Enter the path name of the destination. The path name can be
+     preceded by a system name.
+
+   Copy the Source File to Spool
+     Initial value is no.  If you enter yes, the input file is
+     copied into the spooler directory.
+
+   System to Execute UUCP Command:
+     Optional. Enter the system name where the uucp command will
+     be executed.
+
+   Make Intermediate Directories:
+     Initial value is yes.  If you enter no, the intermediate
+     directories are not created.
+
+   Suppress Output of Job Number:
+     Initial value is no.  If you enter yes, the job number is
+     not written to the standard output.
+
+   Status File Name:
+     Optional. Enter the name of the file to receive the status
+     reports.
+
+   User to Notify on Remote:
+     Optional. Enter a remote user name.  This user is notified
+     on the remote system that a file has been sent.
+
+   Queue Jobs But Don't Start Transfer:
+     Initial value is no.  If yes is entered the job will be
+     queued but will not be executed.
+
+     In responding to prompts, keep in mind the following:
+
+     + A path name can be preceded by ~ or ~/user.
+
+     + You can enter system name!system name!...system
+       name!pathname.
+
+     + You can send more than one source path name at a time.
+
+     + If you have problems, check the files under /usr/lib/uucp
+       and delete any /usr/spool/uucp/LCK..(tty-device) files.
+
+FILES
+     /usr/spool/uucp        Spool directory
+     /usr/spool/uucppublic  Public directory for receiving and
+                            sending (PUBDIR)
+     /usr/lib/uucp/*        Other data and program files
+
+SEE ALSO
+     mail(1), uulog(1C), uuname(1C), uux(1C).
+
+NOTES
+     The domain of remotely accessible files can (and for obvious
+     security reasons, usually should) be severely restricted.
+
+     If you are unable to retrieve files by path name ask an
+     authorized person on the remote system to send the files to
+     you.
+
+     As distributed, the remotely accessible files are those
+     whose names begin with /usr/spool/uucppublic (equivalent to
+     ~uucp or just ~).
+
+     All files received by uucp are then owned by uucp.
+
+     The -m option works only for sending files or receiving a
+     single file.  Receiving multiple files specified by the
+     special shell characters ?, *, and [...] does not activate
+     the -m option.
+
+

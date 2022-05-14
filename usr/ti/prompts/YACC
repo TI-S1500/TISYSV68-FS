@@ -1,0 +1,30 @@
+# cshf  yacc -- compiler generator 
+#	@(#)YACC.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^YACC -- AIDS USER IN GENERATING PARSERS"\
+	"^Prepare y.output:" vflag yesno n\
+ 	"^Generate y.tab.h:" dflag yesno n\
+	"^Generate Runtime Code:" tflag yesno n\
+	"^Line Constructs in y.tab.c:" lflag yesno n\
+	"^*Grammer:" grammer string \
+	"^#$*"
+
+
+if ($abort) goto end
+set opt = ""
+if ($tflag == "y") set opt = t$opt
+if ($lflag == "y") set opt = l$opt
+if ($dflag == "y") set opt = d$opt
+if ($vflag == "y") set opt = v$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== YACC COMMAND EXECUTING ==="
+echo yacc $opt $grammer
+yacc $opt $grammer
+
+#clean up time
+end:
+unset *flag *opt grammer

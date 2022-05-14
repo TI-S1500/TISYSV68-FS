@@ -1,0 +1,83 @@
+SA1(1M)                                                   SA1(1M)
+
+NAME
+     sa1 - Produces a system activity report
+
+SYNOPSIS
+     sa1 [t n]
+
+DESCRIPTION
+   Purpose
+     The shell script sa1 calls sadc(1M) and collects and stores
+     data in the binary file /usr/adm/sa/sadd, where dd is the
+     current day.
+
+   Discussion
+     System activity data can be accessed at the special request
+     of a user, as described in sar(1).  It can also be accessed
+     automatically on a routine basis as described here.  The
+     operating system contains counters that are incremented as
+     various system actions occur.  These include CPU utilization
+     counters, buffer usage counters, disk and tape I/O activity
+     counters, tty device activity counters, switching and
+     system-call counters, file-access counters, queue activity
+     counters, and counters for interprocess communications.
+
+   Arguments
+     The arguments t and n cause records to be written n times at
+     an interval of t seconds.  Records are written once if t and
+     n are omitted.
+
+   Binary Data File Structure
+     The structure of the binary daily data file is as follows:
+
+     struct sa {
+        int num_cpu;        /* number of cpus in chassis */
+        struct sysinfo si;  /* see /usr/include/sys/sysinfo.h */
+        int  szinode;       /* current size of inode table  */
+        int  szfile;        /* current size of file table  */
+        int  sztext;        /* current size of text table  */
+        int  szproc;        /* current size of proc table  */
+        int  mszinode;      /* maximum size of inode table  */
+        int  mszfile;       /* maximum size of file table  */
+        int  msztext;       /* maximum size of text table  */
+        int  mszproc;       /* maximum size of proc table  */
+        long  inodeovf;     /* cumul. overflows of inode table since boot  */
+        long  inodeovf;     /* cumul. overflows of file table since boot  */
+        long  textovf;      /* cumul. overflows of text table since boot */
+        long  procovf;      /* cumul. overflows of proc table since boot */
+        time_t  ts;         /* time stamp, seconds  */
+        long  ramio;        /* I/O requests to/from ram disk */
+        long  ramcnt;       /* number of blocks transferred from/to ram disk */
+        long  devio[NDEVS][4];  /* device info for up to NDEVS units  */
+     #define IO_OPS         0   /* cumul. I/O requests  */
+     #define IO_BCNT        1   /* cumul. blocks transferred */
+     #define IO_ACT         2   /* cumul. drive busy time in ticks  */
+     #define IO_RESP        3   /* cumul. I/O resp time in ticks  */
+     };
+
+EXAMPLE
+     The following entries in crontab, as described in cron(1M)
+     produce records every 20 minutes during working hours and
+     hourly during nonworking hours:
+
+        0 * * * 0,6 "/usr/lib/sa/sa1"
+        0 8-17 * * 1-5 "/usr/lib/sa/sa1 1200 3"
+        0 18-7 * * 1-5 "/usr/lib/sa/sa1"
+
+
+FILES
+     /usr/adm/sa/sadd        Daily data file, where dd is the
+                             current day
+
+     /usr/adm/sa/sardd       Daily report file, where dd is the
+                             current day
+
+     /tmp/sa.adrfl           Address file
+
+SEE ALSO
+     sa2(1M), sadc(1M), sadsp(1T), sar(1), timex(1).
+     ``System Activity Package'' in TI System V Administrator's
+     Guide.
+
+

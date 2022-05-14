@@ -1,0 +1,148 @@
+PATCH(1T)						PATCH(1T)
+
+NAME
+     patch - Invokes the common object file format (COFF) file
+     editor
+
+SYNOPSIS
+     patch -cpt
+
+DESCRIPTION
+   Purpose
+     The patch command reads the standard input or the cmdfile to
+     obtain a list of file names and editing directives.  The
+     command then applies the edits to the specified files.
+
+   Options
+     -c cmdfile  Read the file specified by cmdfile rather than
+		 the standard input.
+
+     -p /path/	 Prefixes each COFF file name or archive file
+		 name with /path/.
+
+     -t char	 Recognizes char as a flag indicating the end of
+		 the editing directives for a file when char
+		 appears as the first character on a line of that
+		 file.
+
+   Input to patch
+     The list that follows defines the format for input to the
+     patch command.  Each entry indicates one line from either
+     the standard input or cmdfile.
+
+     + Archive file name.  This line is optional.
+     + File name (member of archive) on which patch executes.
+     + Number of patches to apply to this file.
+     + Section name (.text, .data, .patch).
+     + Offset relative to beginning of section.
+     + Length of old data (0 indicates patch regardless).
+     + Old data in hexadecimal pairs.
+     + Checksum for old data.
+     + Length of new data (0 indicates validate old patch).
+     + New data in hexadecimal pairs.
+     + Checksum for new data.
+     + Additional patch data.
+     + A single period (.) that indicates the end of the file or
+       archive directives.
+
+     The field separator for the directives is the newline
+     character.
+
+     Text to the right of a @ character is comment text.
+
+     A # character indicates a hexadecimal value.  The default is
+     a decimal value except for the patch data values.
+
+     The field separator for the patch data values is a space.
+
+     The checksum for data can be obtained by using the sum(1)
+     utility with input from the terminal. The data should be
+     input to the sum(1) utility as it is going to appear to the
+     patch utility with exactly one blank between the bytes of
+     data and with no trailing blanks--just a carriage return
+     after the last byte of data.
+
+EXAMPLES
+     The following is an example of a cmdfile for patching a
+     single COFF file.
+
+     @
+     @ Example for single file
+     @
+     abs.o	      @  File name
+     1		      @  Number of patches
+     abs+2	      @  Old data   Offset from start of section
+     6		      @  |	    Number of bytes to check
+     aa bb cc dd ee   @  |	    Hex values to be compared
+     ff 	      @  |
+     1342	      @  |	    Checksum from sum(1) utility
+     #a + abs1	      @  New data   Offset from start of section
+     8		      @  |	    Number of bytes to patch
+     0 0 0 0 0 0 0 0  @  |	    Hex values to patch
+     618	      @  |	    Checksum
+     .		      @  End of directives for this file
+
+     The next example is a cmdfile for patching COFF files that
+     are members of an archive.
+
+     @
+     @ Example for archive
+     @
+     libc.a	      @  Archive file name
+     bsearch.o	      @  Member of archive
+     1		      @  Number of patches to this member
+     .text	      @  Section to be patched
+     10 	      @  Old data  Offset from start of section
+     3		      @  |	   Number of bytes to check
+     11 22 33	      @  |	   Hex values to compare
+     374	      @  |	   Checksum from sum(1) utility
+     10 	      @  New data  Offset from start of section
+     3		      @  |	   Number of bytes to patch
+     33 22 11	      @  |	   Hex values to patch
+     374	      @  |	   Checksum
+     a64l.o	      @  Member of archive
+     1		      @  Number of patches to this member
+     .text	      @  Section to be patched
+     #a + #a0	      @  Old data  Offset from start of section;
+		      @  |	   offset uses hex values in an expression
+     4		      @  |	   Number of bytes to check
+     1 2 3 8	      @  |	   Hex values to compare
+     312	      @  |	   Checksum from sum(1) utility
+     0 + #aa	      @  New data  Offset from start of section
+     4		      @  |	   Number of bytes to patch
+     8 3 2 1	      @  |	   Hex values to patch
+     312	      @  |	   Checksum
+     abs.o	      @  Member of archive
+     1		      @  Number of patches to this member
+     .text	      @  Section to be patched
+     abs + 2	      @  Old data  Offset from start of section;
+		      @  |	   offset uses a label in an expression
+     6		      @  |	   Number of bytes to check
+     "THE BIG dog     @  |         An example of patch data on more than one
+     ff 	      @  |	   line; a mix of text and hex values
+     1071	      @  |	   Checksum from sum(1) utility
+     #a + abs1	      @  New data  Offset from start of section;
+		      @  |	   offset uses hex value and a label
+     8		      @  |	   Number of bytes to patch
+     0 0 0 0 0 0 0 0  @  |Hex values to patch
+     618	      @  |	   Checksum
+     .		      @  End of directives for this archive
+
+PROMPTS
+   Command File Name:
+     Enter the name of the file containing a list of file names
+     and editing directives.  If no name is given, standard input
+     is assumed.
+
+   Prefix Path Name:
+     Enter the prefix of each COFF file name or archive file
+     name.
+
+   Character Flag:
+     Enter the character to be recognized as a flag indicating
+     the end of the editing directives.
+
+SEE ALSO
+     ar(1).
+
+

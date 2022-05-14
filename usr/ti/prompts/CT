@@ -1,0 +1,25 @@
+# cshf         ct -- call terminal and start login process 
+#	@(#)CT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^CT -- SPAWNS A GETTY PROCESS TO A REMOTE TERMINAL"\
+       "^Send Verbose to Std Error:" vflag yesno n\
+       "^*Max Minutes to Wait for Line:" min integer $min\
+       "^*Baud Rate to Use:" baud integer $baud\
+       "^Telephone Number to Dial:" tel string $tel\
+       "^#$*"
+
+if ($abort) goto end
+if ($vflag == "y") set  vopt = "-v"
+if ($min != "") set  wnopt = -wn$min
+if ($baud != "") set sopt = -s$baud
+
+echo "=== CT COMMAND EXECUTING ==="
+echo ct $vopt $wnopt $sopt $tel
+ct $vopt $wnopt $sopt $tel
+
+# cleanup time
+end:
+unset baud min tel *opt *flag
+

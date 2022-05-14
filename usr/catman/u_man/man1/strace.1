@@ -1,0 +1,82 @@
+STRACE(1M)                                             STRACE(1M)
+
+NAME
+     strace - Prints STREAMS trace messages
+
+SYNOPSIS
+     strace [ mid sid level ] ...
+
+DESCRIPTION
+     strace without arguments writes all STREAMS event trace
+     messages from all drivers and modules to its standard
+     output.  These messages are obtained from the STREAMS log
+     driver [log(7)].  If arguments are provided, they must be in
+     triplets of the form mid, sid, level, where mid is a STREAMS
+     module ID number, sid is a sub-ID number, and level is a
+     tracing priority level.  Each triplet indicates that tracing
+     messages are to be received from the given module/driver,
+     sub-ID (usually indicating minor device), and priority level
+     equal to or less than the given level.  The token all can be
+     used for any member to indicate no restriction for that
+     attribute.
+
+     The format of each trace message output is:
+
+     <seq> <time> <ticks> <level> <flags> <mid> <sid> <text>
+
+          <seq>     Trace sequence number
+
+          <time>    Time of message in hh:mm:ss
+
+          <ticks>   Time of message in machine ticks since boot
+
+          <level>   Tracing priority level
+
+          <flags>   E : message is also in the error log
+                    F : indicates a fatal error
+                    N : mail was sent to the system administrator
+
+          <mid>     Module ID number of source
+
+          <sid>     Sub-ID number of source
+
+          <text>    Formatted text of the trace message
+
+     Once initiated, strace will continue to execute until
+     terminated by the user.
+
+EXAMPLES
+     Output all trace messages from the module or driver whose
+     module ID is 41:
+
+          strace  41 all all
+
+     Output those trace messages from driver/module ID 41 with
+     sub-IDs 0, 1, or 2:
+
+          strace  41 0 1  41 1 1  41 2 0
+
+     Messages from sub-IDs 0 and 1 must have a tracing level less
+     than or equal to 1.  Those from sub-ID 2 must have a tracing
+     level of 0.
+
+CAVEATS
+     Due to performance considerations, only one strace process
+     is permitted to open the STREAMS log driver at a time.  The
+     log driver has a list of the triplets specified in the
+     command invocation, and compares each potential trace
+     message against this list to decide if it should be
+     formatted and sent up to the strace process.  Hence, long
+     lists of triplets will have a greater impact on overall
+     STREAMS performance.  Running strace will have the most
+     impact on the timing of the modules and drivers generating
+     the trace messages that are sent to the strace process.  If
+     trace messages are generated faster than the strace process
+     can handle them, some of the messages will be lost.  This
+     last case can be determined by examining the sequence
+     numbers on the trace messages output.
+
+SEE ALSO
+     log(7).
+
+

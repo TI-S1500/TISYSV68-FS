@@ -1,0 +1,66 @@
+LABELIT(1M)                                           LABELIT(1M)
+
+NAME
+     labelit - Provides labels for disk or tape file system
+
+SYNOPSIS
+     labelit special [fsname volume[-n]]
+
+DESCRIPTION
+   Purpose
+     The labelit command can be used to provide initial labels
+     for unmounted disk or tape file systems.  With the optional
+     arguments omitted, labelit prints current label values.
+
+   Option
+     -n   Provides for initial labeling of new tapes only.  This
+          option destroys previous contents.
+
+   Arguments
+     fsname   The mounted name (such as root, u1, or usr) of the
+              file system to be labeled.  The name length is
+              limited to four characters.
+
+     special  The physical disk section or tape (such as
+              /dev/rqt/0h or /dev/rmt/0h) to label.
+
+     volname  The physical volume name (such as pk3 or t0122) to
+              label.  The label name is limited to six or fewer
+              characters.  If volname is specified as -, the
+              existing volume name is used.
+
+     The fsname and volume arguments are recorded in the the
+     super block.  The name declarations are char s_fname[6],
+     s_fpack[6];.
+
+PROMPTS
+   Create or Read Labels (c,r):
+     Initial value is r.  If you enter c, the following prompts
+     will appear:
+
+   Disk Section or Tape:
+     Enter the name of the physical disk section or tape (such as
+     /dev/rqt/0h or /dev/rmt/0h) to label.
+
+   Mounted Name:
+     Enter the mounted name (such as root, u1, or usr) of the
+     file system to be labelled.
+
+   Volume Name:
+     Enter the physical volume name (such as pk3 or t0122) to
+     label.
+
+   Initial Tape Label:
+     The initial value is no.  Enter yes to specify initial
+     labeling of new tapes only.
+
+FILES
+     /etc/log/filesave.log      Record of file systems/volumes
+                                copied
+
+SEE ALSO
+     finc(1M), frec(1M), fs(4), ptdf(4), volcopy(1M).
+     ``File Systems and Pipes'' in the TI System V
+     Administrator's Guide.
+
+

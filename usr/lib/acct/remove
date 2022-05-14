@@ -1,0 +1,8 @@
+#
+# COPYRIGHT (c) 1985 TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+# @(#)remove.sh	1.2 86/03/20
+#
+rm -f /usr/adm/acct/sum/wtmp*
+rm -f /usr/adm/acct/sum/pacct*
+rm -f /usr/adm/acct/nite/lock*

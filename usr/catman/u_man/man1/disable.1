@@ -1,0 +1,40 @@
+DISABLE(1M)                                           DISABLE(1M)
+
+NAME
+     disable - Disables LP printers
+
+SYNOPSIS
+     disable [options] printers
+
+DESCRIPTION
+     The disable command deactivates the named printers,
+     disabling them from printing requests taken by lp(1).  By
+     default, any requests that are currently printing on the
+     designated printers will be reprinted in their entirety
+     either on the same printer or on another member of the same
+     class.  Use lpstat(1) to find the status of printers.
+     Options for use with disable are:
+
+     -c          Cancels any requests that are currently printing
+                 on any of the designated printers.  This option
+                 cannot be used with the -W option.
+
+     -r reason   Assigns a reason for the disabling of the
+                 printers.  This reason applies to all printers
+                 mentioned up to the next -r option.  This reason
+                 is reported by lpstat(1).  If the -r option is
+                 not present, a default reason will be used. If
+                 reason contains embedded blanks, you must enclose 
+                 reason in double quotes. 
+
+     -W          Disables the specified printers when the print
+                 requests currently printing have finished.  This
+                 option cannot be used with the -c option.
+
+FILES
+     /usr/spool/lp/*
+
+SEE ALSO
+     enable(1M), lp(1), lpstat(1).
+
+

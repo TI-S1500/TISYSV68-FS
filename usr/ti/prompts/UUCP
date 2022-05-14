@@ -1,0 +1,32 @@
+# cshf 	uucp -- unix to unix copy 
+#	 @(#)UUCP.sh	1.2  87/10/15
+#
+onintr end
+prompt "^UUCP -- INVOKES THE UNIX TO UNIX FILE COPY"\
+	"^Source System Path Name:" src string "$src"\
+	"^Destination System Path Name:" dest string $dest\
+	"^Copy the Source File to Spool Dir:"  Cflag yesno n\
+	"^*System to Execute UUCP Command:" eflag acnm\
+	"^Make Intermediate Directories:" fflag yesno y\
+	"^Suppress Output of Job Number:" jflag yesno n\
+	"^*Status File Name:" mflag acnm\
+	"^*User to Notify on Remote:" nflag string\
+	"^Queue Jobs But Don't Start Transfer:" rflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($Cflag == "y") set Copt = -C$opt
+if ($fflag == "n") set fopt = -f$opt
+if ($jflag == "y") set jopt = -j$opt
+if ($rflag == "y") set ropt = -r$opt
+
+if ($eflag != "") set eopt = -e$eflag
+if ($mflag != "") set mopt = -m$mflag
+if ($nflag != "") set nopt = -n$nflag
+
+echo "=== UUCP COMMAND EXECUTING ==="
+echo uucp $Copt $fopt $jopt $ropt $eopt $mopt $nopt $src $dest
+uucp $Copt $fopt $jopt $ropt $eopt $mopt $nopt $src $dest
+
+end:
+unset *opt *flag src dest

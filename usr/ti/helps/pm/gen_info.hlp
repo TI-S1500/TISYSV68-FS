@@ -1,0 +1,21 @@
+
+The General Information screen includes a bar graph showing the current 
+utilization (Percent Busy) for each of the processor boards in the system, 
+which are identified by type and by slot number. The PM software can monitor as 
+many as 16 system board slots. The slot numbers appear in hexadecimal format 
+(0-f) on this screen. These graphs are described as follows:
+
+    CPU n   Shows the percentage of time the central processing unit (CPU) 
+            in slot n is busy executing code in a user process or in the 
+            TI System V kernel.
+
+    MSC n   Shows the percentage of time the mass storage controller (MSC) 
+            in slot n is busy servicing requests on its queue.
+
+    NPI n   Shows the percentage of time the NuBus peripheral interface 
+            (NUPI) in slot n is busy servicing requests on its queue.
+
+    CCB n   Shows the percentage of time the communications carrier board 
+            (CCB) in slot n is busy servicing interrupts or has requests 
+            outstanding.
+

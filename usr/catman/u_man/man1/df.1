@@ -1,0 +1,48 @@
+DF(1M)                                                     DF(1M)
+
+NAME
+     df - Report the number of free disk blocks and inodes
+
+SYNOPSIS
+     df [-lt] [-f] [file-system | directory]
+
+DESCRIPTION
+     The df command prints out the number of free 1K-byte blocks
+     and free inodes in mounted file systems or directories by
+     examining the counts kept in the super-blocks.
+
+     file-system can be specified either by device name (e.g.,
+     /dev/dsk/sys:usr) or by mount point directory name (e.g.,
+     /usr).
+
+     directory can be a directory name.  The report presents
+     information for the device that contains the directory.
+
+     If no arguments are used, the free space on all locally and
+     remotely mounted file systems is printed.
+
+     The df command uses the following options:
+
+     -l   Reports only on local file systems.
+
+     -t   Causes the figures for total allocated blocks and
+          inodes to be reported as well as the free blocks and
+          inodes.
+
+     -f   Makes an actual count of the blocks in the free list
+          rather than taking the figure from the super-block
+          (free inodes are not reported).
+
+NOTE
+     If multiple remote resources are listed that reside on the
+     same file system on a remote machine, each listing after the
+     first one will be marked with an asterisk.
+
+FILES
+     /dev/dsk/*
+     /etc/mnttab
+
+SEE ALSO
+     fs(4), mnttab(4), mount(1M).
+
+

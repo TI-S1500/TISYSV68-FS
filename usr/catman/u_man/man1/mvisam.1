@@ -1,0 +1,100 @@
+MVISAM(1T)						 MVISAM(1T)
+
+NAME
+     mvisam - Moves T-ISAM files
+
+SYNOPSIS
+     mvisam -v src_data [+src_index] ... dest_data [+dest_index]
+
+DESCRIPTION
+   Purpose
+     The mvisam command moves or renames T-ISAM files, updating
+     the internal information so that the new index file location
+     is associated with the data file.	Usage of the mv command
+     would not update this internal information, sometimes
+     resulting in the association of the wrong index file for a
+     given data file by T-ISAM.
+
+   Discussion
+     Except for the last parameter, which can be a directory,
+     parameters beginning with a + character are taken to be T-
+     ISAM index file names identified with the preceding T-ISAM
+     data file name. In cases where index files are not specified
+     for a given data file, the index file normally associated
+     with the data file (according to the internal information in
+     the data file) will be used. If dest_index is not specified,
+     the src_ index file will be moved to the dest_data
+     directory, or the directory portion of the dest_data path
+     name.
+
+     If dest_data and dest_index (if present) are directories,
+     there can be multiple src_data files.  The data files are
+     moved to dest_data, and the corresponding index files are
+     moved to the dest_index directory if present, otherwise, to
+     the dest_data directory.  If dest_data is not a directory,
+     there can be only one src_data file .
+
+     It is permissible for src_data and dest_data to be the same
+     or for src_index and dest_index to be the same.  This will
+     result in the moving of only one part of the whole T-ISAM
+     file.
+
+     Each destination data file must be in the same file system
+     as the corresponding source data file and each destination
+     index file must be in the same file system as the
+     corresponding source index file.
+
+   Options
+     -v      Verbose.  Lists to standard output exactly which
+	     files are moved and where they are moved.
+
+EXAMPLES
+     The following example moves file1.dat, along with its index file
+     to the directory dir2.
+
+	  mvisam file1.dat dir2
+
+     The next example moves the T-ISAM file contained in
+     file1.dat and file1.idx to file2.dat and file2.idx.
+
+	  mvisam file1.dat +file1.idx file2.dat +file2.idx
+
+     The next example moves the T-ISAM file contained in
+     file1.dat and file1.idx to the directory dir2.
+
+	  mvisam file1.dat +file1.idx dir2
+
+     To move the files f1.dat, f2.dat, and f3.dat, with
+     corresponding indexes f1.idx, f2.idx, and f3.idx, to
+     directory dir4, type the following command:
+
+	  mvisam f1.dat +f1.idx f2.dat +f2.idx f3.dat +f3.idx dir4
+
+     The command
+
+	  mvisam file1.dat file2.dat
+
+     will move the file1.dat to file2.dat but will leave file1.idx in its
+     original location with its original name.
+
+PROMPTS
+   Source Data File:
+     The data portion of the source T-ISAM file.
+
+   Source Index File:
+     Optional. The index portion of the source T-ISAM file.
+
+   Destination Data File:
+     The data portion of the destination T-ISAM file.
+
+   Destination Index File:
+     Optional. The index portion of the destination T-ISAM file.
+
+   Verbose? (y/n):
+     If selected, a list of which files are copied is printed.
+
+SEE ALSO
+     cpisam(1T), findisam(1T), frisam(1T), mapisam(1T), mkisam(1T), 
+     toisam(1T), vfisam(1T).
+
+

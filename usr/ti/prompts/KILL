@@ -1,0 +1,18 @@
+# cshf  kill -- terminate a process 
+#	@(#)KILL.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^KILL -- TERMINATES A PROCESS"\
+	"^Signal Number (1-19):" signo\
+	"range(1,19)" 15\
+	"^Process ID Number(s):" PID integer "$PID"\
+	"^#$*"
+
+if ($abort) goto end
+
+echo "=== KILL COMMAND EXECUTING ==="
+kill -$signo $PID
+ 
+end:
+unset signo PID

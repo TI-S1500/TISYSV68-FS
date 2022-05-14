@@ -1,0 +1,228 @@
+CBAND(1T)                                               CBAND(1T)
+
+NAME
+     cband - Initializes, displays, or modifies a disk
+     configuration partition
+
+SYNOPSIS
+     cband -acdilmprsu args
+
+DESCRIPTION
+   Purpose
+     The cband command initializes, displays, or modifies the
+     contents of a configuration partition.
+
+   Configuration Partition
+     A disk device path name (for example, /dev/dsk/sys:cfg1)
+     specifies the configuration partition.  The partition must
+     exist and be large enough to hold all configuration modules.
+     The configuration partition is designed to be used in a
+     heterogeneous or homogeneous multiprocessor environment.
+
+     The partition contains information that the STBM primitive
+     uses to boot processors and slave devices.  A slave device
+     is a smart peripheral, such as the storage-module-drive
+     (SMD)/SCSI mass storage controller (MSC).  The partition
+     consists of a configuration module for each processor or
+     slave device to be booted.
+
+     The configuration module describes the load source and
+     provides the load partition name.  It also gives operating
+     system-specific configuration parameters for all processors
+     in the system.  In order to save disk space and simplify
+     modifications, TI System V uses the same configuration
+     module for each secondary processor in a multiprocessor
+     configuration.
+
+     A configuration partition contains up to 16 configuration
+     modules.  For purposes of display or modification, a
+     configuration module is specified by its entry number.
+     Entry numbers are 0 through 9 and A through F.  Any
+     configuration module that is used for more than one board
+     type uses more than one entry number. Because the TI System
+     V configuration module is used for more than one board type,
+     it uses more than one entry number. For purposes of display
+     or modification, either entry number can be used.  Each
+     module can be associated with all slots, specific slots, or
+     no slots.  A configuration module may be associated with a
+     slot regardless whether there is a processor in that slot.
+     The module will be used only in the event that a processor
+     is in that slot when the system is booted.
+
+     No two configuration modules for the same processor can be
+     associated with the same slot.
+
+     It is the responsibility of the user to ensure that two
+     users are not using cband at the same time on the same
+     configuration partition.
+
+     See the appendix entitled Configurable System Parameters in
+     the TI System V Administrator's Guide for a description,
+     including minimum and default values, of all system
+     parameters that you can change with cband.
+
+   Options
+     One and only one option can be specified.
+
+     -a config_part src_entry parameter_name
+          Adds the configurable parameter name and value
+          specified by parameter_name to the configuration module
+          specified by src_entry in the configuration partition
+          specified by config_part.  This option should be used
+          only by the installation scripts for add-on packages.
+
+     -c src_config src_entry dest_config dest_entry
+          Copies a configuration module from one configuration
+          partition to another.
+
+          The device path name of the configuration partition
+          src_config contains the configuration module to be
+          copied.  The argument src_entry specifies which module
+          is to be copied.  The name dest_config is the device
+          path name of the configuration partition to which the
+          configuration module is copied.  The term dest_entry
+          identifies the entry in which the module will be placed
+          in the destination configuration partition.
+
+          The source and destination configuration partitions can
+          be the same.  The destination partition must contain
+          sufficient space to hold the new configuration module.
+          If the destination entry previously contained a
+          configuration module, this module is lost.
+
+          The src_config path name may be that of a labeled tape
+          (that is, a distribution tape).  The first
+          configuration partition on the tape will be used as the
+          configuration partition.
+
+     -d config_part [entry]
+          Provides a detailed display of the contents of the
+          configuration partition.
+
+          The value config_part is the device path name of the
+          configuration partition.  If entry is specified, only
+          the configuration module in that entry is displayed.
+          If entry is not specified, all configuration modules
+          are displayed.  Valid entry identifications are the
+          numerals 0 through 9 and letters A through F.
+
+     -i config_part
+          Initializes the specified configuration partition to
+          contain a single TI System V configuration module
+          associated with all possible slots.  The value
+          config_part is the device path name of the
+          configuration partition.
+
+          After executing cband with the -i option, the utility
+          can be executed again with the -m (modify) option.
+          This second execution is necessary to modify the
+          operating system configuration parameter values to
+          those appropriate for the actual configuration.
+
+     -l config_part entry slot[,slot...]
+          Links a configuration module to another slot.
+
+          The option value config_part is the device path name of
+          the configuration partition.  The value entry is the
+          identification of a configuration module.  The value
+          slot is the identification, or list of slot
+          identifications separated by blanks, for the new slot
+          to be associated with the configuration module.
+
+     -m config_part [entry]
+          Allows interactive verification and modification of
+          each changeable parameter with the configuration
+          partition.
+
+          Extreme caution should be used in the modification of
+          configuration parameters because parameters are not
+          verified thoroughly.  Incorrect values are detected at
+          boot time and may be modified interactively from the
+          boot terminal.
+
+          The option value config_part is the device path name of
+          the configuration partition.  If entry is specified,
+          only the configuration module in that entry is
+          modified.  If entry is not specified, all configuration
+          modules are modified.  Valid entry identifications are
+          the numerals 0 through 9 and letters A through F.
+
+          Each parameter is displayed with its current value.  If
+          the user presses the Return key and enters no other
+          characters, the value remains unchanged.  If the user
+          enters any characters other than a carriage return or
+          *, the old parameter value is replaced by the new
+          value.  If an asterisk (*) is entered for any value,
+          the default value is used.
+
+     -p config_part src_entry parameter_name
+          Specifies that the value of the configurable parameter
+          specified by parameter_name is to be examined and/or
+          modified.  The utility determines the current value for
+          the specified parameter in the configuration module
+          specified by src_entry and the configuration partition
+          specified by config_part. The configuration module name
+          specified by src_entry must be enclosed in double
+          quotes and be exactly 32 characters long.  The
+          parameter name specified by parameter_name must also be
+          enclosed in double quotes, must end with a colon
+          character, and must match exactly with the name of an
+          existing parameter in the configuration module.  This
+          option allows shell scripts to be developed that prompt
+          the user to modify only certain parameters instead of
+          using the more general, but time-consuming, -m option,
+          which prompts the user for every parameter.
+
+     -r config_part entry
+          Removes a configuration module from the configuration
+          entry.
+
+          The option value config_part is the device path name of
+          the configuration partition.  Valid entry
+          identifications are the numerals 0 through 9 and
+          letters A through F.
+
+     -s config_part
+          Provides a summary of the configuration partition.
+          This summary identifies the configuration module
+          associated with each slot.  See the EXAMPLE part of
+          this manual entry for a sample of the output that the
+          -s option produces.
+
+          The option value config_part is the device path name of
+          the configuration partition.  The config_part path name
+          may be that of a labeled tape (that is, a distribution
+          tape).  The first configuration partition on the tape
+          will be used as the configuration partition.
+
+     -u config_part entry slot[,slot...]
+          Unlinks a configuration module from the specified
+          slot(s).  The config_part argument is the device path
+          name entry.  The entry argument is the entry
+          identification of the configuration module.  The slot
+          argument is a slot (or list of slots) from which the
+          module is to be unlinked.
+
+          Valid slot identifications are the numerals 0 through 9
+          and the letters A through F.  It is not necessary to
+          unlink configuration modules from slots that do not
+          contain processor boards.  The module is only used in
+          the event that a board is actually present in the slot.
+
+EXAMPLE
+     The following is a sample output for the command cband -s
+     /dev/dsk/sys:cfg2:
+
+          Entry 0
+          Configuration module for TI System V
+          Hardware: MC68020/MC680X0 CPU in any slot
+
+SEE ALSO
+     bband(1T), ptu(1T).
+
+     ``Configurable System Parameters'' and ``Linking the
+     Kernel'' in the TI System V Administrator's Guide.
+
+     TI System V Release Information.
+
+

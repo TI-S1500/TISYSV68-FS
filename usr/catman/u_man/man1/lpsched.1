@@ -1,0 +1,32 @@
+LPSCHED(1M)                                           LPSCHED(1M)
+
+NAME
+     lpsched - Starts the LP scheduler
+
+SYNOPSIS
+     /usr/lib/lpsched
+
+DESCRIPTION
+     lpsched starts the LP print service; this can be done only
+     by root or lp.
+
+NOTES
+     By default, the directory /usr/spool/lp is used to hold all
+     the files used by the LP print service. This can be changed
+     by setting the SPOOLDIR environment variable to another
+     directory before running lpsched. If you do this, you should
+     populate the directory with the same files and directories
+     found under /usr/spool/lp; the LP print service will not
+     automatically create them. Also, the SPOOLDIR variable must
+     the be set before any of the other LP print service commands
+     are run.
+
+FILES
+     /usr/spool/lp/*
+
+SEE ALSO
+     accept(1M), enable(1), lp(1), lpadmin(1M), lpstat(1).
+     ``Printer Spooling System" in the TI System V
+     Administrator's Guide.
+
+

@@ -1,0 +1,17 @@
+# cshf	dc--desk calculator 
+#	@(#)DC.sh	1.2  87/07/15
+#
+onintr end
+
+prompt "^DC -- DESK CALCULATOR"\
+       "^*Input File Name:" _input_file acnm "$_input_file"\
+       "^#$*"
+
+if ($abort) goto end
+echo "=== DC COMMAND EXECUTING ==="
+echo dc $_input_file
+dc $_input_file
+endif
+
+end:
+unset *opt

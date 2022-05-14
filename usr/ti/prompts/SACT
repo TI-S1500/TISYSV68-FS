@@ -1,0 +1,20 @@
+# cshf  sact -- print current SCCS file editing activity  
+#	@(#)SACT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^SACT -- PRINTS CURRENT SCCS FILE EDITING ACTIVITY"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^Output File Name:" _output_file acnm "/usr/tmp/sact"\
+	"^#$*"
+
+if ($abort) goto end
+if ("$_input_file" == "") set _input_file = "-"
+echo "=== SACT COMMAND EXECUTING ==="
+echo sact $_input_file ">"$_output_file
+sact $_input_file >$_output_file
+echo SACT: Waiting for command to complete
+wait 
+pg -cp"Output from SACT is being piped through pg: " $_output_file
+
+end:

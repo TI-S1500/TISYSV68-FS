@@ -1,0 +1,58 @@
+CPDIR(1T)                                               CPDIR(1T)
+
+NAME
+     CPDIR - Copies complete directories
+
+SYNOPSIS
+     CPDIR
+
+DESCRIPTION
+   Purpose
+     The CPDIR utility copies a source directory to a destination
+     directory.
+
+   Discussion
+     CPDIR is a TI Business shell script (accessible through the
+     menu) that uses the cpio(1) utility to copy a directory to
+     another directory.  The source directory must exist and be
+     readable.  If the destination directory exists, it must be
+     writable.  If the destination directory does not exist, it
+     is created.
+
+     All readable files and subdirectories within the source
+     directory are copied to the destination directory.  If a
+     file already exists in the destination directory with the
+     same name as a file in the source directory, the source
+     contents overwrites the destination file contents.
+     Subdirectories are created as needed in the destination
+     directory.
+
+PROMPTS
+   Source Directory:
+     Enter the full path name of the directory to be copied.
+
+   Destination Directory
+     Enter the full path name of the directory to receive the
+     copy.  If the directory does not exist, it is created.  If
+     the directory already exists, the files and subdirectories
+     of the source directory are copied into it.  Existing files
+     of the same name are overwritten.  Any unique files in the
+     destination directory will remain.
+
+   Full Listing File Name:
+     Enter the full path name of the file to contain the printed
+     list of files that are copied.  If no pathname is provided
+     to this prompt, the printed list of files go to /dev/null.
+     Whether or not a pathname is provided to this prompt does
+     not affect the printing of error messages.  All error
+     messages are printed on the terminal screen.
+
+SEE ALSO
+     cpio(1).
+
+NOTES
+     When logged on as root, cpio changes the owner, group, and
+     permissions of the destination directory to match the owner,
+     group, and permissions of the source directory.
+
+

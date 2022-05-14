@@ -1,0 +1,176 @@
+VC(1)                                                       VC(1)
+
+NAME
+     vc - Provides version control
+
+SYNOPSIS
+     vc -acst [keyword=value ... keyword=value]
+
+DESCRIPTION
+   Purpose
+     The vc command copies lines from the standard input to the
+     standard output under control of its options and control
+     statements in the standard input.
+
+   Options
+     -a     Forces replacement of keywords surrounded by control
+            characters with their assigned value in all text
+            lines and not just in vc statements.
+
+     -cchar Specifies a control character to be used in place of
+            a colon (:).
+
+     -s     Silences warning (not error) messages that are
+            normally printed on the diagnostic output.
+
+     -t     Ignores characters from the beginning of a line up to
+            and including the first tab character in order to
+            detect a control statement.  If one is found, all
+            characters up to and including the tab are discarded.
+
+   Discussion
+     In the process of performing the copy operation, user-
+     declared keywords can be replaced by their string value when
+     they appear in plain text and/or in control statements.
+
+     The copying of lines from the standard input to the standard
+     output is conditional, based on tests (in control
+     statements) of keyword values specified in control
+     statements or as vc command arguments.
+
+     A control statement is a single line beginning with a
+     control character, except as modified by the -t option.  The
+     default control character is colon (:), except as modified
+     by the -c option.  Input lines beginning with a backslash
+     (\) followed by a control character are not control lines
+     and are copied to the standard output with the backslash
+     removed.  Lines beginning with a backslash followed by a
+     noncontrol character are copied in their entirety.
+
+     A keyword is composed of 9 or fewer alphanumerics; the first
+     must be alphabetic.  A value is any ASCII string that can be
+     created with ed(1).  A numeric value is an unsigned string
+     of digits.  Keyword values cannot contain blanks or tabs.
+
+     Replacement of keywords by values is done whenever a keyword
+     surrounded by control characters is encountered on a version
+     control statement.  The -a option forces replacement of
+     keywords in all lines of text.  An uninterpreted control
+     character can be included in a value by preceding it with \.
+     If a literal \ is desired, it too must be preceded by \.
+
+   Version Control Statements
+     :dcl keyword[, ..., keyword]
+          Used to declare keywords.  (All keywords must be
+          declared.)
+
+     :asg keyword=value
+          Used to assign values to keywords.  An asg statement
+          overrides the assignment for the corresponding keyword
+          on the vc command line and all previous asg statements
+          for that keyword.  Keywords declared without assigned
+          values have null values.
+
+     :if condition
+               .
+               .
+               .
+          :end
+          Used to skip lines of the standard input. If the
+          condition is true, all lines between the if statement
+          and the matching end statement are copied to the
+          standard output.  If the condition is false, all
+          intervening lines including control statements are
+          discarded. Note that intervening if statements and
+          matching end statements are recognized solely for the
+          purpose of maintaining the proper if-end matching.
+          The syntax of a condition is as follows:
+
+          <cond>  ::= [ "not" ] <or>
+          <or>    ::= <and> | <and> "|" <or>
+          <and>   ::= <exp> | <exp> "&" <and>
+          <exp>   ::= "(" <or> ")" | <value> <op> <value>
+          <op>    ::= "=" | "!=" | "<" | ">"
+          <value> ::= <arbitrary ASCII string> | <numeric string>
+
+          The available operators and their meanings are as
+          follows:
+
+          =      Equal
+          !=     Not equal
+          &      And
+          |      Or
+          >      Greater than
+          <      Less than
+          ( )    Used for logical groupings
+          not    May occur only immediately after the if, and
+                 when present, inverts the value of the
+                 entire condition
+
+          The operators > and < work only on unsigned integer
+          values (for example, : 012 > 12 is false).  All other
+          operators take strings as arguments (for example, : 012
+          != 12 is true).  The precedence of the operators (from
+          highest to lowest) is as follows:
+
+          = != > <      All of equal precedence
+          &
+          |
+
+          Parentheses may be used to alter the order of
+          precedence.
+          Values must be separated from operators or parentheses
+          by at least one blank or tab.
+
+     ::text
+          Replaces keywords on lines that are copied to the
+          standard output.  The two leading control characters
+          are removed, and each keyword is surrounded by control
+          characters in text is replaced by its value before the
+          line is copied to the output file.  This action is
+          independent of the -a option.
+
+     :on
+
+     :off
+          Turns on or off keyword replacement on all lines.
+
+     :ctl char
+          Changes the control character to char.
+
+     :msg message
+          Prints the given message on the diagnostic output.
+
+     :err message
+          Prints the given message on the diagnostic output
+          followed by:
+               ERROR: err statement on line ... (915)
+          The vc program halts execution, and returns an exit
+          code of 1.
+
+EXAMPLE
+     The following example uses the file named remind as input.
+     The input file contains the following lines:
+
+          :dcl NAME,PLACE
+               :NAME:,
+               This is a reminder of the regularly
+               scheduled meeting today at :PLACE:.  Be there.
+
+     The output of the vc command is accessed by the user named
+     Rick when Rick logs on to the system (which invokes the mail
+     command).
+
+          From ed Mon Oct   7 08:45 CDT 1985
+                 Rick,
+                 This is a reminder of the regularly scheduled
+                 meeting today at Q41.  Be there.
+
+DIAGNOSTICS
+     Use help(1) for explanations.
+
+EXIT CODES
+     0 - Normal
+     1 - Any error
+
+

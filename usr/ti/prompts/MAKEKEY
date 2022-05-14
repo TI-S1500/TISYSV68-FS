@@ -1,0 +1,23 @@
+# cshf  makekey -- Generates encryption key  
+#	@(#)MAKEKEY.sh	1.2  87/10/15
+#
+onintr end
+
+prompt "^MAKEKEY -- GENERATES ENCRYPTION KEYS"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== MAKEKEY COMMAND EXECUTING ==="
+echo "Enter a 10 character string and hit RETURN "
+if ($_output_file == "") then
+	echo makekey 
+	makekey |\
+	pg -cp"Output from MAKEKEY is being piped through pg: "
+else 
+	echo makekey ">"$_output_file
+	makekey >$_output_file
+endif
+
+#clean up time
+end:

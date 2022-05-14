@@ -1,0 +1,60 @@
+CB(1)                                                       CB(1)
+
+NAME
+     cb - Reformats C programs (C beautifier)
+
+SYNOPSIS
+     cb -jls files
+
+DESCRIPTION
+   Purpose
+     The cb command reads C programs and writes them on the
+     standard output with spacing and indentation that displays
+     the structure of the code.  The command reads the C programs
+     either from the command arguments or from the standard
+     input.
+
+   Options
+     Under default options, cb preserves all user newlines.
+
+     -j   Causes split lines to be put back together.
+
+     -l leng
+          The value leng is a number that specifies a line
+          length.  The argument causes cb to split lines that are
+          longer than this length.
+
+     -s   Alters the code to conform to the style of Kernighan
+          and Ritchie in The C Programming Language.
+
+PROMPTS
+   Input File Name(s):
+     Enter the name of the file to process.
+
+   Output File Name:
+     Enter the name of the file to receive the output of the
+     command.  The default is standard output.
+
+   Kernighan and Ritchie Style:
+     The initial value is no.  Enter yes to alter the C code to
+     the style of Kernighan and Ritchie in The C Programming
+     Language.
+
+   Join Split Lines:
+     The initial value is no.  Enter yes to cause split lines to
+     be joined.
+
+   Line Length:
+     Enter a number that specifies a line length.  The command
+     will split lines longer than this number.
+
+SEE ALSO
+     cc(1).
+     The C Programming Language by B. W. Kernighan and D. M.
+     Ritchie, Prentice-Hall, 1978.
+
+NOTES
+     Punctuation that is hidden in preprocessor statements causes
+     indentation errors.
+
+

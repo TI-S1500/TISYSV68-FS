@@ -1,0 +1,21 @@
+# bshf mapisam - generate tisam description file
+#	@(#)MAPISAM.sh	1.2 87/10/16
+#
+onintr end
+
+prompt	"^MAPISAM -- PRODUCE T-ISAM FILE DESCRIPTION"\
+	"^T-ISAM Data File:"    dfile acnm $dfile\
+	"^*T-ISAM Index File:"  ifile acnm $ifile\
+	"^*Description File:"  ofile acnm $ofile\
+	"^#$*"
+
+if ($abort) goto end
+
+set fopt=""
+if ($ofile != "") set fopt="-f "$ofile" "
+
+echo mapisam $fopt$dfile $ifile
+mapisam $fopt$dfile $ifile
+
+end:
+unset fopt

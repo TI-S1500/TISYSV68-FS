@@ -1,0 +1,227 @@
+DEVADM(1T)					       DEVADM(1T)
+
+NAME
+     devadm - Manages peripheral devices
+
+SYNOPSIS
+     devadm -i
+     devadm -abcnptv
+     devadm -almrs keyword arguments [options]
+
+DESCRIPTION
+   Purpose
+     The devadm command allows the user to add, list, modify, and
+     remove devices on the system.  Adding, modifying, and
+     removing devices require command invocation by the super-
+     user.  Any user can list devices with devadm.
+
+     The utility can be used in the following three ways:
+
+     + Interactive mode - Alters system configuration
+       interactively using a full-screen display.
+
+     + Auto-config mode - Attempts to define the system
+       configuration.
+
+     + Command line mode - Creates configuration files in shell
+       scripts.
+
+     Each of the three modes requires different arguments to the
+     devadm command.
+
+     For a discussion of the capabilities and usage of devadm,
+     see ``Configuring Devices'' in the TI System V
+     Administrator's Guide.
+
+   Options
+     The following option applies to the interactive mode.
+
+     -i        Specifies interactive mode.
+
+     The following options apply to the auto-config mode.
+
+     -a        Specifies the action field in the inittab file as
+	       respawn.  The default for the action field of tty
+	       entries in inittab is off.
+
+     -b [baud] Specifies the most common baud rate for system
+	       terminals.  The default rate is 9600 baud.
+
+     -c        Specifies the auto-config mode.
+
+     -n [num]  Number of NTCs or MTCs to define
+
+     -p        Creates attached printers for all ttys.
+
+     -t [type] Specifies the most common terminal type on your
+	       system.	The terminal type is defined in the
+	       termcap file.  The default terminal type is t1 (TI
+	       924).
+
+     -v vol    Sets the disk volume name to vol.
+
+     The following options apply to the command line mode.
+
+     -a        Adds a new device.
+
+     -l        Lists a group of devices.
+
+     -m        Modifies an existing device.
+
+     -r        Removes an existing device.
+
+     -s        Stripes a multivolume file system.
+
+   Discussion
+     When TI System V is first booted, you must invoke the auto-
+     config mode of devadm.  This allows you to make the first
+     attempt at system configuration with one simple command.
+
+     In this mode, the command searches for small-computer-
+     system-interface (SCSI) controller (NUPI), storage-module-
+     drive (MSC)/SCSI and communications carrier boards (CCBs) in
+     the chassis slots.  When the command finds a NUPI or MSC
+     board, it attempts to determine the location of disk and
+     tape devices.  When the command finds a CCB board, it
+     attempts to define that CCB.
+
+     The auto-config mode of devadm creates all tty devices with
+     the same baud and type.  The command creates two network
+     terminal concentrators for each LAN board.
+
+     After running the auto-config mode, run the interactive mode
+     of devadm to complete the system configuration.
+
+     The interactive mode invokes a full-screen display that
+     allows you to modify the configuration.  Prompts and
+     defaults are provided when additional device information is
+     required.
+
+     The environment variable TERM must be correctly set because
+     the interactive mode of devadm uses the termcap library to
+     manipulate the tty screen.  The utility requires the cm
+     (cursor motion) and cl (clear screen) capabilities.
+
+     The command line mode is a terse, keyword-driven mode for
+     use in shell scripts or with terminals that do not support
+     an interactive display.  The form of the command line is
+     shown in the third line of the Synopsis.
+
+     The keywords are as follows:
+
+     ccb       CCB
+
+     ccbasync  Asynchronous option board on the CCB
+
+     ccbopt    Option boards on the CCB
+
+     disk      Disk devices
+
+     lan       LAN option board on the CCB
+
+     lp        Line printer (lp) device
+
+     mha       Multidrop host adapter (MHA) board on the CCB
+
+     msc       MSC controllers
+
+     mtc       Multidrop terminal concentrator on an MHA board
+
+     mult      Multifunction synchronous option board on the CCB
+
+     mvfs      Multivolume file system anchor entries
+
+     ntc       Network terminal concentrator on a LAN board
+
+     nupi      NUPI controllers
+
+     slot      Chassis slots
+
+     tape      Tape devices
+
+     tc        Terminal concentrator (generic for NTC or MTC)
+
+     tty       Terminal (tty) device
+
+     sys       System resources
+
+
+     The arguments uniquely identify devices.  The options add
+     command information (other than add, list, modify, or remove
+     information specified by the arguments a, l, m, and r).  For
+     example, the following command line format defines the CCB
+     and the boards in the option ports of the CCB:
+
+	devadm -a ccb slot_no. option0 option1 [[prot0][prot1][net0][net1]]
+
+     The command line argument is slot_no.  The option0 and
+     option1 arguments are the two option boards on the CCB.  The
+     prot0 and prot1 arguments are the transfer protocols if the
+     boards are LAN or token ring option boards. The net0 and
+     net1 arguments are network numbers if both option boards are
+     LAN or token ring, and Xerox Network Systems(TM) (XNS)
+     internet is the transfer protocol for both boards.  The
+     command line that follows specifies the option ports on CCB
+     3.  Option port 0 contains an 8-channel asynchronous board
+     and option port 1 contains a multifunction board.
+
+	  devadm -a ccb 3 8 m
+
+     See ``Configuring Devices'' in the TI System V
+     Administrator's Guide for further information on command
+     line mode parameters and options.
+
+     The devadm utility relies on data that it finds on hardware
+     to define CCB option boards and has no knowledge of previous
+     configurations.  Use the procedure that follows to add or
+     change CCB option boards.	(Use the procedure, for example,
+     when you add a board to a port that was previously empty or
+     when you change boards on a previously defined port.)
+
+     1. Be sure to perform this first step prior to making any
+	hardware changes.  Use the REMOVE option of devadm to
+	remove all device nodes and download file entries for the
+	target CCB.
+
+     2. Make the necessary hardware changes.
+
+     3. Use devadm to define the new CCB configuration.  Define
+	all new devices on the CCB, as well as any old devices
+	remaining from the previous configuration.
+
+     If you fail to follow this procedure, devadm can recognize
+     the new CCB hardware but might not be able to change the
+     disk files required to download the CCB.
+
+PROMPTS
+   Interactive Mode:
+     Initial value is no.  Enter yes to configure the system
+     interactively.
+
+   Command Line Mode:
+     Initial value is no.  Enter yes to enter into a devadm
+     command shell, which causes the following prompt to appear:
+
+     Command:
+	  Enter the devadm command exactly as it should be
+	  entered from the TI Business shell.
+
+FILES
+     /etc/inittab
+     /etc/ccbdev
+     /etc/tctab
+
+SEE ALSO
+     mknod(1M).
+     ``Configuring Devices'' in the TI System V Administrator's
+     Guide.
+
+NOTES
+     If you reconfigure disks or controllers, you must execute
+     devadm to remove the device names before you physically
+     remove the hardware.
+
+
+Xerox Network Systems is a trademark of Xerox Corporation.
+
+

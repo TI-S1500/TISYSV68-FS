@@ -1,0 +1,117 @@
+#
+# @(#)upswait.sh	1.2 (TI) 89/11/10
+#
+# upswait: monitor the tty used to check the ups status.
+#
+#     when the ups goes online, execute /bin/upson to tell the
+# kernel to go into powerail mode.
+# when the wall power comes back, execute /bin/upsoff. this script
+# should never exit. it will be killed, however, after a powerfail
+# mode shutdown has completed. make sure that /etc/shutdown has the
+# proper modifications to check for wall power restoration (near the
+# end of the script).
+#
+#    you should only need to modify the two functions:
+#
+#            wait_for_online()
+#            wait_for_offline()
+#
+#    these functions should halt the script execution until the
+# appropriate conditions are met. the default condition is to
+# wait for the specified tty device to become openable to indicate
+# that the ups is in battery backup mode, and for the specified tty
+# device to close when wall power has been restored. you can reverse
+# these conditions with the "-r" option to this script.
+
+# remember functions
+set -h
+
+#
+# drop into /dev so the user can enter
+# "upswait ttyXX" or "upswait /dev/ttyXX"
+#
+cd /dev
+
+#
+# set up the conditional variables
+# wait_online and wait_offline get the wait for open or
+# close options sent to portwait
+#
+wait_online=""
+wait_offline="-c"
+
+#
+# parse the arguments. order is not important
+#
+if [ $# -gt 0 ]
+then
+	for arg
+	do
+		case $arg in
+	
+			# reverse the conditions
+			-r ) wait_online="-c"
+			     wait_offline="" ;;
+
+			#
+			# add other options here
+			#
+	
+			# set the tty device
+			* ) ttydev=$arg ;;
+		esac
+	done
+else
+	echo "usage: $0 [-r] tty_name"
+	exit 1
+fi
+
+#
+# make sure we can open/close the port
+#
+if [ ! -r "$ttydev" ]
+then
+	echo "$0: cannot access \"$ttydev\""
+	exit 1
+fi
+
+
+
+####################################################
+# wait for ups to go online                        #
+#                                                  #
+# modify code as needed to pause until the ups     #
+# goes into battery backup mode                    #
+#                                                  #
+####################################################
+wait_for_online() {
+
+	/bin/portwait $wait_online $ttydev
+}
+
+
+
+####################################################
+# wait for ups to go offline                       #
+#                                                  #
+# modify code as needed to pause until the ups     #
+# goes offline, i.e. wall power is restored        #
+#                                                  #
+####################################################
+wait_for_offline() {
+
+	/bin/portwait $wait_offline $ttydev
+}
+
+#
+# go into an infinate loop, running upson/upsoff as the state of
+# the ups changes
+#
+while :
+do
+	wait_for_online
+	/bin/upson
+
+	wait_for_offline
+	/bin/upsoff
+done

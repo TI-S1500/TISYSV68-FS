@@ -1,0 +1,38 @@
+CRON(1M)						 CRON(1M)
+
+NAME
+     cron - Provides a clock daemon
+
+SYNOPSIS
+     cron
+
+DESCRIPTION
+     The cron command executes commands at specified dates and
+     times according to the instructions in files in the
+     directory /usr/spool/cron/crontabs.  See crontab(1) for the
+     format of the crontabs file.
+
+     Because cron never exits, it should be executed only once.
+     The best way to execute cron is to run it from the
+     initialization process through the file /etc/rc.  See
+     init(1M).
+
+     cron only examines crontab files and at command files during
+     process initialization and when a file changes via crontab
+     or at. This reduces the overhead of checking for new or
+     changed files at regularly scheduled intervals.
+
+SEE ALSO
+     at(1), batch(1), crontab(1), init(1M), nice(1), sh(1).
+
+DIAGNOSTICS
+     A history of all actions by cron is recorded in
+     /usr/lib/cron/log.
+
+FILES
+     /usr/lib/cron	   Main cron directory
+     /usr/lib/cron/FIFO    Used as a lock file
+     /usr/lib/cron/log	   Accounting information
+     /usr/spool/cron	   Spool area
+
+

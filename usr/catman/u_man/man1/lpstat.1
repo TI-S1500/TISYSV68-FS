@@ -1,0 +1,113 @@
+LPSTAT(1)                                               LPSTAT(1)
+
+NAME
+     lpstat - Prints information about the status of the LP print
+     service
+
+SYNOPSIS
+     lpstat [options]
+
+DESCRIPTION
+     lpstat prints information about the current status of the LP
+     print service.
+
+     If no options are given, lpstat prints the status of all
+     requests made to lp(1) by users.  Any arguments that are not
+     options are assumed to be request IDs (as returned by lp),
+     printers, or printer classes.  lpstat prints the status of
+     such requests, printers, or printer classes.  Options can
+     appear in any order and can be repeated and intermixed with
+     other arguments.  Some of the keyletters that follow can be
+     followed by an optional list that can be in one of two
+     forms:  a list of items separated from one another by a
+     comma, or a list of items enclosed in double quotes and
+     separated from one another by a comma and/or one or more
+     spaces.  For example:
+
+          -u user1, user2, user3
+
+     Specifying all after any keyletters that take list as an
+     argument causes all information relevant to the keyletter to
+     be printed.  For example, the command
+
+          lpstat -o all
+
+     prints the status of all output requests.
+
+     -a [list]    Displays acceptance status (with respect to lp)
+                  of destinations for requests (see accept(1M)).
+                  list is a list of intermixed printer names and
+                  class names; the default is all.
+
+     -c [list]    Displays class names and their members.  list
+                  is a list of class names; the default is all.
+
+     -d           Display the system default destination for lp.
+
+     -f [list] [-l]
+                  Displays a verification that the forms in list
+                  are recognized by the LP print service.  list
+                  is a list of forms; the default is all.  The -l
+                  option will list the form descriptions.
+
+     -o [list] [-l]
+                  Displays the status of output requests.  list
+                  is a list of intermixed printer names, class
+                  names, and request IDs; the default is all.
+                  The -l option gives a more detailed status of
+                  the request.
+
+     -p [list] [-D] [-l]
+                  Displays the status of printers named in list.
+                  list is a list of printers; the default is all.
+                  If the -D option is given, a brief description
+                  is printed for each printer in list.  If the -l
+                  option is given, a full description of each
+                  printer's configuration is given, including the
+                  form mounted, the acceptable content and
+                  printer types, a printer description, the
+                  interface used, and so on.
+
+     -r           Displays the status of the LP request
+                  scheduler.
+
+     -s           Displays a status summary, including the system
+                  default destination, a list of class names and
+                  their members, a list of printers and their
+                  associated devices, a list of all forms
+                  currently mounted, and a list of all recognized
+                  character sets and print wheels.
+
+     -S [list] [-l]
+                  Displays a verification that the character sets
+                  or the print wheels specified in list are
+                  recognized by the LP print service.  Items in
+                  list can be character sets or print wheels; the
+                  default for the list is all.  If the -l option
+                  is given, each line is appended by a list of
+                  printers that can handle the print wheel or
+                  character set.  The list also shows whether the
+                  print wheel or character set is mounted or
+                  specifies the built-in character set into which
+                  it maps.
+
+     -t           Displays all status information.
+
+     -u [list]    Displays the status of output requests for
+                  users.  list is a list of log-in names; the
+                  default is all.
+
+     -v [list]    Displays the names of printers and the path
+                  names of the devices associated with them.
+                  list is a list of printer names; the default is
+                  all.
+
+FILES
+     /usr/spool/lp/*
+
+SEE ALSO
+     enable(1), lp(1).
+     ``Printer Spooling System'' in the TI System V
+     Administrator's Guide.
+
+

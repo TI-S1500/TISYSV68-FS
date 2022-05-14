@@ -1,0 +1,271 @@
+DFM(1T) 						  DFM(1T)
+
+NAME
+     dfm - Invokes the directory and file manager
+
+SYNOPSIS
+     dfm dir
+
+DESCRIPTION
+   Purpose
+     The dfm utility is an interactive tool that allows the user
+     to perform many common operations on files and directories.
+
+   dfm Invocation
+     To invoke dfm, enter the following in response to the shell
+     prompt:
+
+	  dfm
+
+     A menu showing a page of files and file characteristics is
+     displayed.  The files are those in the current working
+     directory when the command was issued.  To access files in
+     another directory, enter the following command:
+
+	  dfm directory
+
+     A list of commands is displayed at the top of the dfm
+     screen.  The last command shown is space.	If a space
+     character is entered, an additional set of commands is
+     displayed.  The space character toggles the list of
+     available commands shown on the command line.  At the bottom
+     of the screen a list of functions and corresponding function
+     keys is displayed.
+
+     A command is executed by entering the character to the left
+     of the right parenthesis. With the exception of the q)uit
+     command, the character entered can be uppercase or
+     lowercase.  For example, entering an h or H character to
+     select the h)elp command shows an expanded list of the
+     available commands and functions. This same method invokes
+     the other commands shown below.  Functions are executed by
+     pressing the corresponding function key shown to the left of
+     the function name.
+
+     The name of the directory that contains the files shown on
+     the screen is shown on the second line of the display.  The
+     number of entries in the directory is also shown on this
+     line.
+
+     The center section of the screen shows the file names
+     followed by the type, size, protection, and date for each
+     file.  The cursor starts out next to the first entry in the
+     directory.  When a command is issued, operations are
+     performed on the file whose name is adjacent to the cursor.
+
+     Several keys move the cursor to select different files in
+     the directory.  The cursor can be moved from file to file
+     with the up and down arrow keys and with the `j' (down) and
+     `k' (up) keys.  The RETURN key also moves the cursor down.
+     If the cursor is at the bottom of the screen and there are
+     still more files to display, moving the cursor down causes
+     another page of files to be displayed.  To page forward and
+     back, use the F1 and F2 keys or the `J' and `K' keys.
+
+     When entering responses to prompts for additional
+     information, you can abort any command by pressing the
+     Command key.
+
+   Single File Commands
+     The following single file commands are listed in the order
+     in which they appear on the display.
+
+     s)how
+	  Displays the file using the show(1T) utility.  See
+	  show(1T) in this manual.  To end the show, press `q'
+	  and then RETURN.  The environment variable SHOW can be
+	  set to the file name of an alternate show file utility
+	  prior to entering dfm.
+
+     e)dit
+	  Edits the file using the tx(1T) editor. See tx(1T) in
+	  this manual.	The environment variable EDIT can be set
+	  prior to entering dfm to invoke an editor other than
+	  tx.  Assign EDIT the value of the file name containing
+	  the editor that is desired.
+
+     h)elp
+	  Shows an expanded list of commands and functions.
+
+     d)elete
+	  Deletes the file whose name is adjacent to the cursor.
+	  The user is prompted again to verify that the file
+	  should be deleted.
+
+     a)bort
+	  Aborts dfm and returns to the shell.
+
+     c)opy
+	  Copies the file to a new location.  The command prompts
+	  for an output file name.  If the response does not
+	  begin with a slash (/), the file is copied to a
+	  location relative to the currently shown directory.  If
+	  the response is a directory name, the file is copied to
+	  that directory with the original file name.  To make
+	  another copy of the file in the currently shown
+	  directory, enter only the new file name; typing the
+	  complete path name is unneccessary.  Files in the
+	  destination directory with the same names as the files
+	  to be copied are overwritten.
+
+     r)ename
+	  Renames or moves the file to a new location.	The same
+	  prompt as that for the c)opy command is displayed.  The
+	  results are also the same as in c)opy except that the
+	  original file no longer exists if the rename succeeds.
+
+     q)uit
+	  Returns to the directory. Entering Q quits the utility.
+
+     f)ull stat
+	  Displays all status information available for an entry.
+	  The following are displayed on the right side of the
+	  display:
+
+	       Links to file
+	       Inode number
+	       Dates for last access, modification, and status
+	       change
+	       File flags (see stat(5))
+	       Device numbers
+	       Owner and group ID's
+
+     m)odify protect
+	  Changes the protection flags for the file.  Enter a
+	  three-digit octal value describing the new protection
+	  to be assigned to the file.  See chmod(1) in this
+	  manual for an explanation of protection flag values.
+
+     i)nclude
+	  Marks a file for use with multifile operations.  Once
+	  the desired files have been marked, press the Command
+	  key and enter a multifile command.
+
+     ex)clude
+	  Unmarks a file for use with multifile operations.
+
+     p)rint
+	  Prints the file on a line printer using the lp(1)
+	  utility.  See lp(1) in this manual.  The PRNT
+	  environment variable can be set to invoke an alternate
+	  print utility.
+
+	  The following example C program called PRINT allows you
+	  to use an attached printer rather than the default
+	  printer when you print through dfm:
+
+
+	  main(argc,argv)
+	  char **argv;
+	  {
+	  char command[80];
+	  sprintf(command,"lp -dalp05 %s", argv[1]);
+	  system(command);
+	  exit(0);
+	  }
+
+	  To use this program, set the environment variable to
+	  PRINT as follows:
+
+	  setenv PRNT PRINT
+
+	  The -d option to lp within the sprintf statement
+	  specifies VDT-attached line printer alp05.  Specify
+	  your printer with alpxx, where xx is the designation
+	  for your attached printer.
+
+   Function Keys
+     F1   Scrolls the display to show the next page of files in
+	  the directory.  This function can also be performed by
+	  entering the `J' character.
+
+     F2   Scrolls the display to show the previous page of files.
+	  The `K' key also performs this function.
+
+     F3   Scrolls the display to show the first page of files.
+
+     F4   Scrolls the display to show the last file.
+
+     F5   Prompts the user for the name of the file to find.  If
+	  the specified file name does not exist, the file with
+	  the best name match is displayed.
+
+     F6   Marks all files for use in multi-file commands.  If all
+	  files have been i)ncluded, pressing the F6 key unmarks
+	  all files.
+
+     F7   Omits date listing from the display. For slow terminals
+	  that might be on dial-up lines or at slow speeds, this
+	  function reduces the amount of data being sent to the
+	  screen.  If the date on a particular function is
+	  desired, the f)ull status command can be used to show
+	  additional file information.
+
+     F8   Rereads the current directory to show any updates in
+	  file status or to show files that have been added or
+	  changed since the last read.
+
+     CMD  Enters command mode.	From command mode, options can be
+	  selected to show a different directory, execute a shell
+	  command, make a file or directory, or perform
+	  operations for a group of selected (marked) files. See
+	  Special and MultiFile Commands.
+
+   Special and Multifile Commands
+     The special and multifile commands are accessed by pressing
+     the Command key and entering one of the following options:
+
+     !)bsh
+	  Enters a shell command then return to dfm.  If many
+	  commands need to be entered, enter the bsh(1T) command
+	  to invoke a new shell.  To return to dfm, enter the
+	  exit shell command.
+
+     s)how dir
+	  Shows another directory or file.  Enter the name of the
+	  directory.  Press the `q' key to return to command mode
+	  in the original directory.
+
+     mak)e
+	  Creates a file or a directory.  To create a file, press
+	  `k'; then press `f'. To create a directory, press `k';
+	  then press `d'.  Enter the name of the file or
+	  directory to create. Enter the absolute or relative
+	  path name of the file or directory.
+
+     The following are multifile operations. These command names
+     appear on the command line of the display after the word
+     Multi:.  If a multifile command fails on a file, you may
+     exclude that file and try again to complete the multifile
+     command.
+
+     d)elete
+	  Delete all files that are marked, if possible.
+
+     p)rint
+	  Print all marked files.
+
+     m)od prot
+	  Modify the protection of all marked files.
+
+     c)opy
+	  Enter the name of an existing directory that is to
+	  receive a copy of all marked files.  Files in the
+	  destination directory with the same names as the files
+	  to be copied are overwritten.
+
+     r)ename
+	  Enter the name of an existing directory that is to
+	  receive the moved files.  Files in the destination
+	  directory with the same names as the files to be moved
+	  are overwritten.
+
+PROMPTS
+   Directory Path Name:
+     Enter the path name of a directory to be displayed with dfm.
+
+SEE ALSO
+     bsh(1T), chmod(1), show(1T), stat(5), tx(1T).
+     TI System V User's Guide.
+
+

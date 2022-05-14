@@ -1,0 +1,191 @@
+INFOCMP(1M)					      INFOCMP(1M)
+
+NAME
+     infocmp - Compares or prints terminfo(4) descriptions in
+     alphabetical order
+
+SYNOPSIS
+     infocmp -ABCcdILnrsuVvw1 termname
+
+DESCRIPTION
+   Purpose
+     infocmp can be used to compare a compiled terminfo entry
+     with other compiled terminfo entries, to rewrite a terminfo
+     description to take advantage of the use= terminfo field, or
+     to print a terminfo description from the file in a variety
+     of formats. In all cases, the boolean fields are printed
+     first, followed by numeric fields, followed by the string
+     fields.
+
+   Options
+     -A directory
+	  Sets the TERMINFO variable for the first termname.
+
+     -B directory
+	  Sets the TERMINFO variable for the second and
+	  subsequent termname.
+
+     -C   Uses termcap names to produce a source listing.
+
+     -c   Produces a list of capabilities common to two termname
+	  entries.
+
+     -d   Produces a list of capabilities that are different for
+	  two termname entries.
+
+     -I   Uses the terminfo names to produce a source listing.
+
+     -L   Uses the long C variable name listed in term.h to
+	  produce a source listing.
+
+     -n   Produces a list of capabilities that are in neither of
+	  two tername entries. If no termname is specified, the
+	  environment variable TERM is used for both termnames.
+	  (This can be used as a quick check to see if anything
+	  was left out of the description.)
+
+     -r   When used with -C, prints all capabilities in termcap
+	  form.
+
+     -s   Sorts the fields within each type according to the
+	  following arguments:
+
+	  c    Sorts by the termcap name
+
+	  d    Leaves fields in the order that they are stored in
+	       the terminfo database
+
+	  n    Sorts by terminfo name
+
+	  l    Sorts by the long C variable name
+
+	  If -s is not specified, the fields printed are sorted
+	  alphabetically by the terminfo name within each type,
+	  except for the -C or -L options, which cause sorting to
+	  be done by the termcap name or the long C variable
+	  name, respectively.
+
+     -u   Produces a terminfo source description of the first
+	  terminal termname that is relative to the sum of the
+	  descriptions given by the entries for other terminals
+	  termnames. It does this by producing a description with
+	  use= fields for other terminals.
+
+     -V   Prints the version of the program in use on standard
+	  error and exits.
+
+     -v   Prints tracing information on standard error as the
+	  program runs.
+
+     -wn  Changes the output to width of n columns.
+
+     -1   Causes the fields to be printed one to a line.
+	  Otherwise, the fields are printed several to a line to
+	  a maximum width of 60 characters.
+
+   Discussion
+     If no options are specified, the -I option is assumed. If
+     more than one termname is specified, the -d option is
+     assumed.  If no termname is specified, the environment
+     variable TERM is used for the terminal name.
+
+     + Comparison options (-cdn) - infocmp compares the terminfo
+       description of the first terminal termname with each
+       description given by the entries for the other terminal's
+       termnames. If a capability is defined for only one of the
+       terminals, the value returned depends on the capability: F
+       for boolean variables, -1 for integer variables, and NULL
+       for strings.
+
+       The source produced by the -C option may be used directly
+       as a termcap entry, but not all of the parameterized
+       strings may be changed to the termcap format. infocmp will
+       attempt to convert most of the parameterized information;
+       the rest will be plainly marked in the output and
+       commented out. These should be edited by hand.
+
+       All padding information for strings will be collected and
+       placed at the beginning of the string (where termcap
+       expects it). Mandatory padding (padding information with a
+       trailing '/') will become optional.
+
+       All termcap variables no longer supported by terminfo but
+       derivable from other terminfo variables will be output.
+       Not all terminfo capabilities will be translated; only
+       those variables that were part of termcap will normally be
+       output. Specifying the -r option will take off this
+       restriction, allowing all capabilities to be output in
+       termcap form.
+
+       It is not always possible to convert a terminfo string
+       capability into an equivalent termcap format.  A
+       subsequent conversion of the termcap file back into
+       terminfo format will not necessarily reproduce the
+       original terminfo source.  Because padding is collected to
+       the beginning of the capability, not all capabilities are
+       output, mandatory padding is not supported, and termcap
+       strings are not as flexible.
+
+       Some common terminfo parameter sequences, their termcap
+       equivalents, and some terminal types that commonly have
+       such sequences are:
+
+					     Representative
+       Terminfo 		   Termcap   Terminals
+
+       %p1%c			   %.	     adm
+       %p1%d			   %d	     hp, ANSI standard, vt100
+       %p1%'x'%+%c                 %+x       concept
+       %i			   %i	     ANSI standard, vt100
+       %p1%?%'x%>%t%p1%'y'%+%;     %>xy      concept
+       %p2 is printed before %p1   %r	     hp
+
+     + Use= option (-u) - A capability will get printed with an
+       at sign (@) if it no longer exists in the first termname
+       but if one of the other termname entries contains a value
+       for it. A capability's value gets printed if the value in
+       the first termname is not found in any of the other
+       termname entries, or if the first of the other termname
+       entries that has this capability gives a different value
+       for the capability than that in the first termname.
+
+       The order of the other termname entries is significant.
+       Because the terminfo compiler tic(1M) does a left-to-right
+       scan of the capabilities, specifying two use= entries that
+       contain differing entries for the same capabilities will
+       produce different results depending on the order that the
+       entries are given in. infocmp will flag any such
+       inconsistencies between the other termname entries as they
+       are found.
+
+       Alternatively, specifying a capability after a use= entry
+       that contains that capability will cause the second
+       specification to be ignored.  Using infocmp to recreate a
+       description can be a useful check to make sure that
+       everything was specified correctly in the original source
+       description.
+
+       Another error that does not cause incorrect compiled files
+       but will slow down the compilation time is specifying
+       extra use= fields that are superfluous. infocmp will flag
+       any other termname use= fields that were not needed.
+
+     + Changing database options (-AB) - The location of the
+       compiled terminfo database is taken from the environment
+       variable TERMINFO. If the variable is not defined or the
+       terminal is not found in that location, the system
+       terminfo data, usually in /usr/lib/terminfo, will be used.
+       The options -A and -B may be used to override this
+       location, making it possible to compare descriptions for a
+       terminal with the same name located in two different
+       databases. This is useful for comparing descriptions for
+       the same terminal created by different people.
+
+FILE
+     /usr/lib/terminfo/?/* (compiled terminal description
+     database)
+
+SEE ALSO
+     tic(1M), captoinfo(1M), curses(3X), term(4), terminfo(4).
+
+

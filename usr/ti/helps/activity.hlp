@@ -1,0 +1,6 @@
+	activity - System Activity Reporting Menu
+		@(#)activity.sh	1.1 87/03/09
+
+	This menu lists tools to provide the system administrator with
+	   information about system activity.
+

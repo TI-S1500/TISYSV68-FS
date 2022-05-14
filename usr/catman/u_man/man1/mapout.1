@@ -1,0 +1,198 @@
+MAPOUT(1T)                                             MAPOUT(1T)
+
+NAME
+     mapout - Maps output characters to one or more different
+     characters
+
+SYNOPSIS
+     mapout -cdfr
+
+DESCRIPTION
+   Purpose
+     The mapout utility maps an output character to an
+     alternative output character or characters. Use the mapout
+     utility with an serial terminal, serial line printer, or
+     printer attached to a terminal. Parallel printers are not
+     supported.
+
+   Options
+     -c   Clears the mapping for the device specified with -ddev.
+          You must be root or super-user to clear the mapping.
+          The mapout -c option clears /dev/tty when a device
+          (dev) is not specified with the -d option. The mapout
+          -c option returns an error when the device (dev)
+          specified or the default has no mapping assigned.
+
+     -ddev
+          Specifies the device (dev) that mapout is to map
+          characters for. The complete device name (/dev/ttyxx)
+          is required. The mapout utility assigns mapping to
+          /dev/tty if the -ddev option is not specified.
+
+     -fpath
+          Specifies the pathname (path) of the file that mapout
+          assigns to the device (-ddev) driver mapout table.
+          After editing a mapout file, run mapout -df to reload
+          the device-driver mapout table. You must be root or
+          super-user to change a device-driver mapout table.
+
+     -r   Reads the mapping for a specified device. The -r option
+          returns the path name (path) for the device (dev)
+          specified if mapping is assigned. The -r option returns
+          the path name, if mapping is assigned, for /dev/tty if
+          the device (dev) is not specified. An error message is
+          returned if mapping is not assigned to either device.
+
+   Discussion
+     The mapout utility maps 8-bit output data to 7-bit output
+     data for devices, especially printers, that do not support
+     8-bit data. The mapout utility also provides a transparent
+     method of mapping the TI Model 931 line drawing characters
+     for the TI Model 931 and TI Model 924 video terminals.
+
+     The mapout utility sets the map flag in the device driver.
+     All output characters (writes) are compared to the device-
+     driver mapout table when the map flag is set. Before being
+     written to the device, output characters that compare to
+     entries in the device-driver mapout table are converted to
+     the corresponding character or character string. An output
+     character that does not compare to an entry in the device-
+     driver mapout table is output to the device as received.
+
+     The mapout utility provides a mechanism for converting a
+     single character to a string of characters. For example, a
+     string of characters replaces a single character in the
+     range >a0 through >c0 (TI Model 931 line-drawing graphics
+     characters) that changes the terminal character set,
+     specifies the mapped character, and reassigns the initial
+     character set.
+
+     Mapping for a device is not cleared when a user logs out.
+     The mapout utility must be used with the -c option. Since
+     mapping remains assigned to a device, a user must know the
+     conversion sequences. Otherwise, incorrect output characters
+     can be generated causing unknown side effects.
+
+     CAUTION: Turn mapping off (mapout -cddev) for a device
+     before executing the uucp, cu or any file transfer
+     utilities. Unknown results can occur when uucp, cu, or
+     file-transfer utilities are mapped.
+
+     The mapout utility runs as a temporary process, sets flags,
+     and creates the device-driver mapout table. The mapout
+     utility terminates when the flags and values are set. At
+     this point, all characters to the device are mapped. Each
+     write (character output) must complete before the next can
+     begin.
+
+     The mapout data file has the following format:
+
+     #
+     # 931 graphics mapped between range of 0xA0 - 0xC0.
+     #
+     0xCI 0x0e 0xC0 0x0f ...
+
+     CI is the character (in hexadecimal, decimal, or octal) to
+     be mapped. (It cannot be a quoted value.) Start each line-a
+     separate line is required for each character to be mapped-
+     with a unique character. Characters not mapped are output as
+     entered.  The mapout utility returns an error message with a
+     line number when an invalid or duplicate character is
+     encountered.
+
+     0e, C0, 0f are the mapping characters. Enter up to 80
+     mapping characters. Separate each character with a space.
+     The 80-character mapping sequence can, if needed, cross line
+     boundaries, but does not use the continuation character if
+     this occurs. An error and line number are displayed when an
+     invalid character is encountered or a character string
+     exceeds 80 characters.
+
+     Two mapout files are provided with TI System V, release 2.2.
+     One file (/usr/lib/mapout/vdt931grph) contains the Model 931
+     line-drawing characters (>a0 through >c0) and maps the
+     characters for terminal output. Use this file to output
+     Model 931 line-drawing characters to the TI Model 931 or TI
+     Model 924 in 931 mode.
+
+     The other file (/usr/lib/mapout/prt931grph) uses the same
+     character range (>a0 through >c0) to map Model 931 line-
+     drawing characters to printer output. To use this mapping
+     you must have the 931 Graphics printer font module, TI part
+     number 2230202-0001 installed as font module 3.  This file
+     changes the font module from font 1 to font 3 for each
+     character mapped and then returns the font to module 1.
+
+     You can create additional mapout files. For example, if you
+     have the ISO 8859/1 printer font module, TI part number
+     2230201-0001, you can create a mapout file where the 8859
+     characters >a0 through >ff are mapped to characters >20
+     through >7f. This converts 8859 8-bit characters to 8859 7-
+     bit characters for output to a 7-bit printer.  Up to 15
+     different mapout files, depending on the size of the files,
+     can reside in the system. A device can use only one mapout
+     file at a time.
+
+     The mapout utility uses three cband parameters. Use the
+     cband -m command to modify these parameters. The parameters
+     are:
+
+     + Number of mapout devices: - The default is one; the
+       maximum is 512.
+
+     + Number of TTY mapout tables: - The default is one; the
+       maximum is 15.
+
+     + TTY mapout table size: - The default is 1024 characters
+       (maximum is 20486 bytes).
+
+          To find the size of a tty mapout table:
+
+            Number of characters to be mapped
+          + Number of replacement characters (1 to 80)
+          ____________________________________________
+          Total size of mapout table (all tables take the size of
+          the largest table)
+
+          If you plan to add characters to a tty mapout file at
+          some later date, make the initial file large enough to
+          hold the additional characters.  When the total number
+          of characters for all tty mapout files reaches 20468,
+          you must reduce the number of tables. Remember that
+          when you increase the size of one tty mapout table, all
+          tty mapout tables assume that size.
+
+     Initialize mapping, if it is used, when you perform the
+     initial program load (IPL). Create a shell script that is
+     called by an entry in the /etc/inittab file. Place the
+     shell-script entry after the /etc/download entry in the
+     /etc/inittab file.
+
+EXAMPLES
+     The following command reads the mapping for the default
+     device /dev/tty.
+
+     mapout -r
+
+     The output from the previous command is either mapout: no
+     map file present, or mapout: map file = /usr/lib/mapout/XXXX
+     where XXXX is the last node in the file name.
+
+     The following command sets mapping for the device
+     /dev/tty00. TI Model 931 line-drawing characters are
+     displayed whenever a character in the range >a0 through >c0
+     is output to the terminal. You must be logged in as root or
+     super-user to execute this command.
+
+     mapout -d/dev/tty01 -f/usr/lib/mapout/vdt931grph
+
+     The following command clears mapping for device /dev/tty01.
+     You must be logged in as root or super-user to execute this
+     command.
+
+     mapout -c -d/dev/tty01
+
+SEE ALSO
+     cband(1T), init(1M)
+
+
