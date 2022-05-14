@@ -1,0 +1,34 @@
+# bshf	findisam - find isam file mate
+#	@(#)FINDISAM.sh	1.2 87/11/23
+#
+onintr end
+
+if ($fifflag == "") set fifflag=n
+if ($fisflag == "") set fisflag=y
+if ($finflag == "") set finflag=n
+if ($vopt == "") set vopt=n
+
+prompt	"^FINDISAM -- FIND ISAM FILE MATCH"\
+	"^Directory:"                                fidname  acnm $fidname\
+	"^File:"                                     fifname  acnm $fifname\
+	"^First Match Only? (y/n):"                   fifflag yesno $fifflag\
+	"^Search Subdirectories? (y/n):"              fisflag yesno $fisflag\
+	"^Files with Same Name Only? (y/n):"          finflag yesno $finflag\
+	"^Verbose? (y/n):"                            vopt yesno $vopt\
+	"^#$*"
+
+if ($abort) goto end
+
+set flag=""
+
+if ($fifflag == "y") set flag=$flag'f'
+if ($fisflag == "y") set flag=$flag's'
+if ($finflag == "y") set flag=$flag'n'
+if ($vopt == "y") set flag=$flag'v'
+if ($flag != "") set flag="-"$flag" "
+
+echo findisam ${flag}$fidname $fifname
+findisam ${flag}$fidname $fifname
+
+end:
+unset flag

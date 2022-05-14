@@ -1,0 +1,121 @@
+###############################################################################
+# @(#)install	1.14 91/10/21			                              #
+# This template is to be used to construct patches for both the bulletin      #
+# board and for the patch update tape.  The template provides statements      #
+# that allow it to work correctly when called from the "patchmenu" script     #
+# as well as when running alone.				              #
+#									      #
+# If the script is called from the "patchmenu" script, $1 will be the         #
+# top-level directory.  In this directory is where the "link.kernel" file     #
+# should be created if this patch requires that a new kernel be linked.       #
+# This is also the directory where the file "important" will be created.      #
+# If your patch requires that the user perform some operation that can not    #
+# be accomplished during the installation, then this is the file that         #
+# will contain instructions for the user.  A line is provided for the text    #
+# that you wish appended to the file after your patch is installed.           #
+#                                                                             #
+# Be sure to provide the information for the variables at the top of this     #
+# script.  This information is used to update the patch log for your product. #
+#                                                                             #
+# If your patch is only valid for certain versions and releases of the        #
+# operating system then be sure to check the version/release before you       #
+# install your patch.                                                         #
+#                                                                             #
+# Have your patch check to see if it is already applied or no longer valid    #
+# before you install it.  This may avoid errors and save time.                #
+# If your patch is not valid for the system, the system is already patched    #
+# or the system is newer than your patch, exit with status code 100.  This    #
+# will cause the patchmenu script to print a message to notify the user.      #
+#                                                                             #
+# You will also want your patch to check the return status of major commands  #
+# in your script.  For example, after a cp, ld or ar if the return status ($?)#
+# is not zero exit with 255.                                                  #
+#                                                                             #
+###############################################################################
+patch=pnw0001		   		# enter PATCH NAME here (ie, tcp32001)
+product=pnw             	# enter your PRODUCT NAME here (ie. tcp)
+osv=`uname -v | cut -c1-3`	# use this for the OS VERSION number (ie. 3.2)
+osr=`uname -v | cut -c5`	# use this for the OS RELEASE number (ie. 0)
+mydir=`pwd`			# use this as the reference directory
+
+if [ X$1 = X ]; then
+	installdir=`pwd`
+else
+	installdir=$1			# the top-level install directory 
+fi
+					
+
+#-------------PUT THE ACTUAL PATCH INSTALLATION SCRIPT HERE------------------#
+if [ $osv != "3.3" ]; then
+	echo "This patch is for Netware 3.11 on a 3.3.2 system."
+	exit 0
+fi
+
+if [ $osr != "2" ]; then
+	echo "This patch is for Netware 3.11 on a 3.3.2 system."
+	exit 0
+fi
+
+if [ ! -w /usr/sys/pnw.lib ]; then
+	echo "ERROR in $patch"
+	exit 255
+fi
+
+pnwneeded=0
+
+what=`what /usr/sys/pnw.lib | grep ncp.c | grep Novell`
+which=`echo $what | cut -d" " -f2 | cut -d"." -f2`
+if [ "X$which" != X ]; then
+	result=`expr $which \< 43`
+	if [ X$result = X1 ]; then
+		pnwneeded=1
+	fi
+else
+	pnwneeded=0
+fi
+
+if [ $pnwneeded = 0 ]; then
+	echo "System does not need $patch."
+	exit 0
+fi
+
+if [ $pnwneeded = 1 ]; then
+	echo "replacing pnw.lib in /usr/sys."
+	cp pnw.lib.332 /usr/sys/pnw.lib
+	if [ $? != 0 ]; then
+		echo "ERROR in $patch"
+		exit 255
+	fi
+	sync
+fi
+
+echo
+echo "Verifying that the patch installed correctly..."
+verify=`what /usr/sys/pnw.lib | grep ncp.c | grep Hewlett | grep 1.43`
+if [ "X$verify" = X ]; then
+	echo "ERROR:	pnw.lib in /usr/sys is not correct!"
+	exit 255
+fi
+
+echo "Patch installed correctly."
+
+if [ $installdir = `pwd` ]; then  		# not called from patchmenu
+	echo
+	echo "The patch is now installed.  RELINK, INSTALL AND BOOT THE NEW KERNEL"
+fi
+#----------------------------------------------------------------------------#
+	# If you want the "patchmenu" script to link a new kernel for your
+	# patch, uncomment the following line.
+touch $installdir/link.kernel
+
+	# if you have special instructions for the user, uncomment the next two
+	# lines and add your comment between them.
+#echo " $patch:
+#"  >> $installdir/important
+
+			# log an entry into the log for this product
+if [ ! -d /usr/ti/patch ]; then 
+	echo
+	mkdir /usr/ti/patch
+fi
+echo "INSTALLED:	$patch	`date` " >> /usr/ti/patch/$product

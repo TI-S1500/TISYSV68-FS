@@ -1,0 +1,37 @@
+
+JRNLPRT          06-07-93   STATION ALL       TRANSACTION EDIT REPORT AS ENTERED                                           PAGE    1
+ACCOUNT NO               DESCRIPTION             REFERENCE      CONTROL NO       DATE      STC   SM/SW  TECHNICIAN   AMOUNT     SJ
+
+
+
+
+   105-00-00       SERVICE N F BOWER                    2        00000002       6 07 93              1                83.50     41
+   399-05-42       *LABOR* N F BOWER                    2        00000002       6 07 93    N001      1                83.50-    41
+   105-00-00       SERVICE N F BOWER                    2        00000005       6 07 93              1                58.00     41
+   383-01-40       *LABOR* N F BOWER                    2        00000005       6 07 93    N001      1    100         15.00-    41
+   399-05-42       *LABOR* N F BOWER                    2        00000005       6 07 93    N001      1                43.00-    41
+   105-00-00       SERVICE N F BOWER                    2        00000002       6 07 93              1                80.00     41
+   399-05-42       *LABOR* N F BOWER                    2        00000002       6 07 93    N001      1                80.00-    41
+   105-00-00       SERVICE N F BOWER                    2        00000002       6 07 93              1                 9.00     41
+99 999-99-99       *LABOR* N F BOWER                    2        00000002       6 07 93              1                 9.00-    41
+   105-00-00       SERVICE JOHN DOE                     4        00000004       6 07 93              1                63.00     41
+   399-05-42       *LABOR* JOHN DOE                     4        00000004       6 07 93    N001      1                45.00-    41
+   399-06-42       *LABOR* JOHN DOE                     4        00000004       6 07 93    N001      1                18.00-    41
+   105-00-00       SERVICE MIKE KING FARMS              5        00000005       6 07 93              1             1,227.74     41
+   166-01-00       *INV*   MIKE KING FARMS              5        00000005       6 07 93              1               729.70-    41
+   230-00-00       *TAX*   MIKE KING FARMS              5        00000005       6 07 93    0101      1                69.49-    41
+   366-03-30       *PARTS* MIKE KING FARMS              5        00000005       6 07 93    0101      1             1,158.25-    41
+   466-03-30       *COST*  MIKE KING FARMS              5        00000005       6 07 93              1               729.70     41
+   105-00-00       SERVICE MIKE KING FARMS              5        00000005       6 07 93              1             1,200.75-    41
+   166-01-00       *INV*   MIKE KING FARMS              5        00000005       6 07 93              1               729.70     41
+   230-00-00       *TAX*   MIKE KING FARMS              5        00000005       6 07 93    0101      1                69.50     41
+   366-03-30       *PARTS* MIKE KING FARMS              5        00000005       6 07 93    0101      1             1,158.25     41
+   399-03-40       *LABOR* MIKE KING FARMS              5        00000005       6 07 93    N001      1                27.00-    41
+   466-03-30       *COST*  MIKE KING FARMS              5        00000005       6 07 93              1               729.70-    41
+
+
+ DEBIT  TRANSACTIONS =        10    TOTAL DEBIT  =       4,208.39
+
+CREDIT  TRANSACTIONS =        13    TOTAL CREDIT =       4,208.39-
+
+ TOTAL  TRANSACTIONS =        23    TOTAL        =            .00

@@ -1,0 +1,60 @@
+
+The CCB screen displays statistics for a particular CCB, including rates of
+system calls to the CCB, general I/O activity through the CCB, and CCB activity
+at each interrupt level.  The CCB activity graph on the left side of the 
+screen shows the percentage of time the CCB spends at the each of the seven 
+interrupt levels. The interrupt levels are shown in order of their priority 
+(low to high). Level 0 is for code that is not critical and can be executed 
+at any time; level 6 is for critical code that must be executed very quickly.
+
+The table in the upper right corner of the screen shows the rate of various 
+system calls to the CCB exec code, which is responsible for performing 
+operations on the CCB. These rates include all devices that are communicating 
+through the CCB hardware. This table includes the following rates for the 
+specified CCB:
+
+    Operations/Sec   Shows the average number of operations per second 
+        performed by this CCB.
+
+    Ioctls/Sec   Shows the average number per second of ioctl(2) operations 
+        issued to this CCB.
+
+    Reads/Sec   Shows the average number per second of read(2) operations 
+        issued to this CCB.
+
+    Writes/Sec   Shows the average number per second of write(2) operations 
+        issued to this CCB.
+
+    Chars Read/Sec   Shows the average number of characters per second read 
+        by this CCB as a result of a read(2) operation.
+
+    Chars Written/Sec   Shows the average number of characters per second 
+        written by this CCB as a result of a write(2) operation.
+
+    Avg Chars/Read   Shows the average number of characters read during a 
+        read(2) operation for this CCB.
+
+    Avg Chars/Write   Shows the average number of characters written during 
+        a write(2) operation for this CCB.
+
+The table in the lower right corner of the screen displays the following 
+statistics about the CCB exec code:
+
+    Requests Received   Shows the number of requests this CCB has received 
+        from the host processor.
+
+    Requests Sent   Shows the number of requests this CCB has sent to the 
+        host processor.
+
+    Free-list Accesses   Shows the number of times this CCB has run out of 
+        elements on its local queue and has had to get elements from the 
+        global free list.
+
+    Log Requests   Shows the number of times this CCB has logged a message 
+        to the host processor.
+
+If a local area network (LAN) board is installed on this CCB, detailed 
+information is also available about the network and all terminal concentrators 
+connected to it. A message in the lower right corner of the screen indicates 
+the availability of network statistics. 
+

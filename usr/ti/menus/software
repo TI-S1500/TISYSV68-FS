@@ -1,0 +1,8 @@
+software:menu:SOFTWARE MANAGEMENT MENU Series 1000, Model 1500:software.hlp
+INSTALL:c:Installs commands and files:
+MAKE:c:Maintains, updates, and regenerates groups of programs:
+MAN:c:Prints entries in the TI System V Reference manuals:
+MKMSG:c:Creates the ptext and stext files for printm(3T) to use:
+PATCH:c:Invokes the common object file format (COFF) file editor:
+SETSITE:c:Sets the site name of a TI System V machine:
+UNAME:c:Prints name of current system:

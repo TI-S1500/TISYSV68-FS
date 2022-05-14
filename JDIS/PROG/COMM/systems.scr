@@ -1,0 +1,1786 @@
+#INDEX
+>AOS     00001213 000040
+>CEO     00005182 000195
+>DEMO    00010601 000372
+>HP1000  00014986 000542
+>HP3000  00018728 000688
+>MVS/TSO 00023085 000854
+>PC      00026918 001010
+>PRIMOS  00027456 001042
+>SATELLIT00031573 001192
+>UNIX    00035044 001306
+>VMS     00039138 001461
+>VM/CMS  00042720 001600
+>WANG    00046463 001754
+:
+#       Rev 1.0.2
+#       SYSTEMS.S - BLAST II Systems script file
+#
+#       06/10/87 - 8.0.5 - jgc
+#       03/11/88 - 8.1.0 - kca - modified
+#       02-22-89 - 8.4.0 - gdb - changed DEMO section to reflect prompts
+#       07-18-89 - 8.4.0 - gdb - fixed DG upload
+#       09-25-89 - 9.0.1 - gdb - added access section
+#       10-17-89 - 9.0.1 - jdm - added CEO login, logoff
+#       10-23-89 - 9.0.1 - bw  - modified access section
+#       11-07-89 - 9.0.1 R/C - gdb - Release
+#       12-27-89 - 9.0.1 - lsr - changed access to satellit
+#       12-27-89 - 9.0.1 - lsr - added "run blast" to PRIMOS .TRANS
+#
+# Make sure that you read the BLAST concepts and reference for the
+# correct way to change or edit a system script before attempting
+# to make any modifications.
+#
+#########################################################
+#
+#    Data General AOS & AOS/VS systems
+#
+#
+:AOS
+#
+.LOGON
+#
+#    Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter account", @userid
+        if null @userid
+        return 0                                # return ok no error
+end
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#    Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend cr                                # get response from remote
+        ttrap 5 "name:"
+        if 1 goto .LOG30
+        if reps goto .LOG20
+#
+#    Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        tsend @userid, cr                       # enter userid
+        ttrap 10 "word:",")"                    # wait for password prompt
+        if 1 goto .LOG40
+        if 2  return 0                  # no password for username
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        tsend @password,cr                      # enter password
+        ttrap 20 ")"                            # trap for AOS prompt
+        if 1 return 0                           # got a system prompt
+#
+#    Incorrect userid/password - perhaps it was garbaged.
+#    If we've only tried once, try again, otherwise exit.
+#
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend cr                                # get system prompt
+        ttrap 10 ")"
+        if 1 goto .LGF20                        # AOS sys prompt
+#
+        if reps goto .LGF10
+#
+#    Unable to get anything recognizable - abort
+#
+        return 1
+#
+.LGF20                                          # AOS logout
+        tsend  "BYE",cr
+        return 0
+#
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend cr
+        ttrap 5 ")"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+        tsend "CHAR/NAS",cr
+        ttrap 5 ")"
+        if 1 goto .UPL20
+        ttrap 2
+        return 1
+.UPL20
+        tsend "CRE/I ", @remotefn,cr                    # create file w/insert
+        ttrap 10 "))","EXISTS"
+        if 0 or 2
+                tsend "CHAR/OFF/NAS",cr
+                return 1
+        end
+#
+        tupload @filename
+        wait 2 idle
+#
+        if null @remotefn return 0
+        tsend cr
+        ttrap 5 "))"
+        if 1
+                tsend ")",cr
+                ttrap 5 ")"
+                if 1
+                        tsend "CHAR/OFF/NAS",cr
+                        return 0
+                end
+                return 0
+        end
+#else error
+        return 1
+end
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend cr
+        ttrap 5 ")","protocol","ppp"            # see what's happening
+        if 1 goto .TRANS20                      # we need to invoke BLAST
+        if 2 or 3 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#
+#    Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "X BLAST /H",cr                   # invoke BLAST in host mode
+#
+        ttrap 10 "ppp", "protocol",")"
+        if 1 or 2 return 0                      # BLAST started!
+#
+        if reps goto .TRANS20
+#
+#
+        return 1
+.END
+:
+########################################
+#
+#    Data General CEO AOS & AOS/VS systems
+#
+:CEO
+#
+.LOGON
+#
+#    Initialize flag, get necessary information
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter account", @userid
+        if null @userid return 0                # return ok no error
+.LOG10                                          # ask for password
+        if null @password ask noecho "enter password", @password
+#    Try to log in to the remote computer
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+.LOG20
+        tsend cr                                # get response from remote
+        ttrap 5 "name:","FS01","word:"
+        if 1 goto .LOG30
+        if 2 return 0                   # already logged on
+        if 3 goto .LOG20
+        if reps goto .LOG20
+#
+#    Can't log in, inform user and exit
+        return 1
+#
+.LOG30
+        tsend @userid, cr                       # enter userid
+        ttrap 10 "word:","FS01"                    # wait for password prompt
+        if 1 goto .LOG40
+        if 2  return 0                  # no password for username
+        if reps goto .LOG20
+        return 1
+.LOG40
+        tsend @password,cr      # enter password
+        ttrap 20 "FS01",")"             # trap for CEO prompt
+        if 1 return 0           # got a system prompt
+                if 2
+                        tsend "CEO", CR
+                        ttrap 20 "FS01"
+                        if 1 return 0
+                end
+#    Incorrect userid/password - perhaps it was garbaged.
+#    If we've only tried once, try again, otherwise exit.
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+.LOGOFF
+#       set reps higher if you nest deeper than 9 levels
+        reps 10                                  # try 10 times
+.LGF10
+        tsend "\021\036\173"            # get logoff prompt
+        ttrap 5,"exit?","\136\136{","menu? (Y/N)","Execute? (Y/N)","choice:","Pick one","name:",")"
+        if 0
+                wait 2 idle
+                if reps goto .LGF10
+                return 1
+        end
+        if 1                                    # CEO logoff prompt
+                tsend  "Y", CR
+                ttrap 10,"NEW-LINE",")"
+                if 0 goto .LGF10
+                if 2 tsend "BYE",cr
+                return 0
+        end
+        if 2
+                tsend cr,cr
+                wait 2 idle
+                goto .LGF10
+        end
+        if 3
+                tsend "Y",cr                    # sending mail, exit
+                wait 2 idle
+                goto .LGF10
+        end
+        if 4
+                tsend "N",cr                    # sending mail, exit
+                wait 2 idle
+                goto .LGF10
+        end
+        if 5
+                goto .LGF10
+        end
+        if 6
+                goto .LGF10
+        end
+        if 7
+                return 0                                # logon prompt
+        end
+        if 8
+                tsend "BYE", cr
+                return 0
+        end
+        if 9
+                goto .LGF10
+        end
+        return 99
+#       UPLOAD a file to the remote system
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend cr
+        ttrap 5 ")"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+        tsend "CHAR/NAS",cr
+        ttrap 5 ")"
+        if 1 goto .UPL20
+        ttrap 2
+        return 1
+.UPL20
+        tsend "CRE/I ", @remotefn,cr                    # create file w/insert
+        ttrap 10 "))","EXISTS"
+        if 0 or 2
+                tsend "CHAR/OFF/NAS",cr
+                return 1
+        end
+        tupload @filename
+        wait 2 idle
+        if null @remotefn return 0
+        tsend cr
+        ttrap 5 "))"
+        if 1
+                tsend ")",cr
+                ttrap 5 ")"
+                if 1
+                        tsend "CHAR/OFF/NAS",cr
+                        return 0
+                end
+                return 0
+        end
+#else error
+        return 1
+end
+#
+#       START file transfer on remote system
+.TRANSFER
+        reps 3
+.TRANS10
+        tsend "\036\162"
+        ttrap 10 "What command"
+        if 0
+                if reps goto .TRANS10
+                return 1
+        end
+        tsend "CLI", CR
+        ttrap 5 ")","protocol","ppp"            # see what's happening
+        if 1 goto .TRANS20                      # we need to invoke BLAST
+        if 2 or 3 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#    Unable to get anything recognizable on remote computer - abort
+        return 1
+#
+.TRANS20
+#       tsend "X BLAST /H ; BYE",cr             # invoke BLAST in host mode
+# Use previous line for generic CEO systems, next line for CRG system
+#
+        tsend "BLAST /H ; BYE",cr               # invoke BLAST in host mode
+        ttrap 10 "ppp", "protocol",")"
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+        return 1
+.END
+####################################################
+#
+#
+#       CRG BLAST Demonstration Account
+#
+##################################
+#
+:DEMO
+#
+.LOGON
+#
+#       Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter userid", @userid
+        if null @userid
+        return 0                                # return ok no error
+end
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#       Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend "\017\010"
+        tsend cr,cr,cr,cr                       # get response from remote
+        ttrap 5 "in:"
+        if 1 goto .LOG30
+        if reps goto .LOG20
+#
+#       Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        lower @userid
+        tsend @userid, cr                       # enter userid
+        ttrap 10 "word:","$","#"                # wait for password prompt
+        if 1 goto .LOG40
+        if 2 or 3 return 0                      # no password for username
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        lower @password
+        tsend @password,cr                      # enter password
+        ttrap 20 "$","#","incorrect","name"     # get a prompt
+        if 1 or 2 return 0                      # got a system prompt
+        if 3 goto .LOG70
+        if 4 goto .LOG50
+#
+#
+.LOG50
+        ask "Please enter your name" @name
+        if null @name goto .LOG50
+        tsend @name,cr
+#
+        ttrap 10 "$","#","me"
+        if 1 or 2 return 0
+        if 3 goto .LOG60
+        goto .LOG50
+#
+.LOG60
+        ask "Please enter your company name" @compname
+        if null @compname goto .LOG60
+        tsend @compname,cr
+#
+        ttrap 20 "$","#","incorrect",     # get a prompt
+        if 1 or 2 return 0
+#
+
+#    Incorrect userid/password - perhaps it was garbaged.
+#    If we've only tried once, try again, otherwise exit.
+#
+.LOG70
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend cr,cr                             # get system prompt
+        ttrap 10 "$","#"
+        if @status not = "0" goto .LGF20        # if we got a prompt - Logoff
+#
+        if reps goto .LGF10                     # else try again
+#
+#    Unable to get anything recognizable - abort
+#
+        return 1
+#
+.LGF20                                          # unix logout
+        tsend "\004"
+        return 0
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend cr
+        ttrap 5 "$","#"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+        tsend "ed ", @remotefn, cr      # start the ed
+        ttrap 2
+        tsend "a", cr           # put it into append mode
+.UPL20
+        tupload @filename
+        wait 2 idle
+#
+        if null @remotefn return 0
+        tsend cr, ".", cr
+        ttrap 2
+        tsend "w", cr
+        ttrap 2
+        tsend "q", cr
+        ttrap 8 "$","#"
+        if 1 or 2 return 0
+        return 1
+end
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend cr,cr
+        ttrap 5 "$","#","protocol","ppp"        # see what's happening
+        if 1 or 2 goto .TRANS20                 # we need to invoke BLAST
+        if 3 or 4 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#
+#    Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "blast -h",cr                     # invoke BLAST in host mode
+        ttrap 10 "ppp", "protocol","$","#"
+#
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+#
+#
+        return 1
+.END
+:
+#
+########################################
+#
+#       HP 1000 RTE
+#
+#       NOTE:  This script assumes you are using the
+#       standard prompt.  Problems may occur
+#       otherwise.
+#
+:HP1000
+#
+.LOGON
+#
+#       Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter account",@userid
+        if null @userid
+        return 0                                # return ok no error
+end
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#    Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend cr                                # get response from remote
+        ttrap 5 ":"
+        if 1 goto .LOG30
+        if reps goto .LOG20
+#
+#    Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        tsend @userid,cr                        # enter userid
+        ttrap 10 "WORD",">"                     # wait for password prompt
+        if 1 goto .LOG40
+        if 2 return 0                           # no password for username
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        tsend @password,cr                      # enter password
+        ttrap 20 ">"                            # trap for HP prompt
+        if 1 return 0                           # got a system prompt
+#
+#    Incorrect userid/password - perhaps it was garbaged.
+#    If we've only tried once, try again, otherwise exit.
+#
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend cr                                # get system prompt
+        ttrap 10 ">"
+        if 1 goto .LGF20                        # OK log off
+#
+        if reps goto .LGF10
+#
+#    Unable to get anything recognizable - abort
+#
+        return 1
+#
+.LGF20                                          # hp logout
+        tsend "ex,sp",cr
+        return 0
+#
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend cr
+        ttrap 5 ">"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+        tsend "CO 1 ",@remotefn,cr
+        ttrap 5 "..."
+        if 1 goto .UPL20
+        return 1
+.UPL20
+        ttrap 2
+        set @HLINDLY = @LINEDLY
+        set @LINEDLY = "3"
+        tupload @filename
+        set @LINEDLY = @HLINDLY
+        wait 2 idle
+#
+        if null @remotefn return 0
+        tsend "^D"
+        ttrap 5 ">"
+        if 1 return 0
+        return 1
+end
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend cr
+        ttrap 5 ">","protocol","ppp"            # see what's happening
+        if 1 or 2 goto .TRANS20                 # we need to invoke BLAST
+        if 3 return 0                           # BLAST is already started
+        if reps goto .TRANS10
+#
+#    Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "BLAST",cr                     # invoke BLAST in host mode
+        ttrap 10 "ppp", "protocol",">"
+#
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+#
+#
+        return 1
+.END
+:
+#
+########################################
+#
+#    HP3000 MPE
+#
+#    NOTE:  This script assumes you are using the
+#           standard prompt.  Problems may occur
+#           otherwise.
+#
+:HP3000
+#
+.LOGON
+#
+#    Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter USER.ACCT",@userid
+        if null @userid
+        return 0                                # return ok no error
+end
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#    Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend cr,"\006",cr,cr                   # get response from remote
+        ttrap 5 ":"
+        if 1 goto .LOG30
+        if reps goto .LOG20
+#
+#    Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        tsend "HELLO ",@userid,";TERM=18",cr                    # enter userid
+        ttrap 10 "WORD","HP3000"                # wait for password prompt
+        if 1 goto .LOG40
+        if 2 return 0                           # no password for username
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        tsend @password,cr                      # enter password
+        ttrap 20 "HP3000"                       # trap for HP prompt
+        if 1 return 0                           # got a system prompt
+#
+#    Incorrect userid/password - perhaps it was garbaged.
+#    If we've only tried once, try again, otherwise exit.
+#
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend BREAK,cr                          # get system prompt
+        ttrap 10 ":"
+        if 1 goto .LGF20                        # OK log off
+#
+        if reps goto .LGF10
+#
+#    Unable to get anything recognizable - abort
+#
+        return 1
+#
+.LGF20                                          # hp logout
+        tsend "BYE",cr
+        return 0
+#
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend cr
+        ttrap 5 ":"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+        tsend "EDITOR",cr
+        ttrap 10 "/","CIERR"
+        if 1 goto .UPL15
+        return 1
+.UPL15
+        tsend "A",cr
+        ttrap 4
+.UPL20
+        set @HLINDLY = @LINEDLY
+        set @LINEDLY = "10"
+        tupload @filename
+        set @LINEDLY = @HLINDLY
+        wait 2 idle
+        tsend "\031"
+        ttrap 5 "/"
+        if 1
+                tsend "K ",@remotefn,",UNN",cr
+                ttrap 10 "/","OLD"
+                if 1
+                        tsend "EXIT",cr
+                        return 0
+                end
+                if 2
+                        tsend "no"
+                        ttrap  10 "/"
+                        if 1 tsend "exit",cr
+                        ttrap 10 "CLEAR"
+                        if 1 tsend "Y",cr
+                        return 1
+                end
+                return 1
+#
+        if null @remotefn return 0
+        tsend "\031"
+        ttrap 5 ":"
+        if 1 return 0
+        return 1
+end
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend BREAK,cr
+        ttrap 5 ":","protocol","ppp"            # see what's happening
+        if 1 goto .TRANS20                      # we need to invoke BLAST
+        if 2 or 3 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#
+#    Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "RUN BLAST",cr                     # invoke BLAST in host mode
+        ttrap 10 "ppp", "protocol","$","%"
+#
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+#
+#
+        return 1
+.END
+:
+#
+########################################
+#
+#       IBM MVS/TSO routines
+#
+#       NOTE:  This script assumes you are using the
+#       standard prompt.  Problems may occur
+#       otherwise.
+#
+:MVS/TSO
+#
+.LOGON
+#
+#       Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter Login ID", @userid
+        if null @userid  return 0               # return ok no error
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#       Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend cr                                # get response from remote
+        ttrap 10 "LOGON","ID","WORD"
+        if 1
+                ttrap 3
+                tsend "LOGON",cr
+                ttrap 5 "ID"
+                if 1 goto .LOG30
+        end
+        if 2 goto .LOG30
+        if 3 goto .LOG40
+        if reps goto .LOG20
+#
+#       Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        ttrap 4
+        tsend @userid, cr                       # enter userid
+        ttrap 10 "WORD"                         # wait for password prompt
+        if 1 goto .LOG40
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        ttrap 4
+        tsend @password,cr                      # enter password
+        ttrap 20 "READY","INCORRECT"            # trap for unix xenix prompt
+        if 1 return 0                           # got a system prompt
+#
+#       Incorrect userid/password - perhaps it was garbaged.
+#       If we've only tried once, try again, otherwise exit.
+#
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend cr                                # get system prompt
+        ttrap 10 "READY"
+        if 1 goto .LGF20
+#
+        if reps goto .LGF10
+#
+#       Unable to get anything recognizable - abort
+#
+        return 1
+#
+.LGF20                                          # TSO logout
+        tsend "LOGOFF",cr
+        return 0
+#
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend cr
+        ttrap 5 "READY"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+reps 2
+        ttrap 2
+        tsend "EDIT '",@userid,".",@remotefn,"' TEXT NONUM",cr
+        ttrap 10 "INPUT","EDIT"
+        if 1 goto .UPL20
+        if 2 tsend cr
+        if 0 return 1
+.UPL20
+        ttrap 2
+        set @HLINDLY = @LINEDLY
+        set @LINEDLY = "15"
+        tupload @filename
+        set @LINEDLY = @HLINDLY
+        wait 2 idle
+echo off
+#
+        if null @remotefn return 0
+#
+.UPL25
+        tsend cr
+        ttrap 10 "EDIT","INPUT","READY"
+        if 1 goto .UPL30
+        if 0 or 3 return 1
+        if reps goto .UPL25
+.UPL30
+        tsend "END S",cr
+        ttrap 10 "READY"
+        if 1 return 0
+        return 1
+end
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend cr
+        ttrap 5 "READY","protocol","ppp"        # see what's happening
+        if 1 goto .TRANS20                      # we need to invoke BLAST
+        if 2 or 3 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#
+#    Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "BLAST",cr                        # invoke BLAST in host mode
+        ttrap 20 "ppp", "protocol","READY"
+#
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+#
+#
+        return 1
+.END
+:
+#
+########################################
+#
+#       IBM PC AND COMPATABLES
+#
+#
+:PC
+#
+.LOGON
+        return 0
+#
+.LOGOFF
+        return 0
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+.UPL10
+        tupload @filename
+        return 0
+#
+.TRANSFER
+        return 0
+#
+.END
+:
+#
+########################################
+#
+#       PRIME PRIMOS
+#
+#       NOTE:  This script assumes you are using the
+#       standard brief (OK) prompt.  Problems may occur
+#       otherwise.
+#
+:PRIMOS
+#
+.LOGON
+#
+#       Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter login", @userid
+        if null @userid
+        return 0                                # return ok no error
+end
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#    Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend cr,"H",cr                         # get response from remote
+        ttrap 5 "ER","LOGIN","Login"
+        if not 0 goto .LOG30
+        if reps goto .LOG20
+#
+#       Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        tsend cr,"login ",@userid, cr           # enter userid
+        ttrap 10 "WORD","word","OK"             # wait for password prompt
+        if 1 or 2 goto .LOG40
+        if 3 return 0                           # no password for username
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        tsend @password,cr                      # enter password
+        ttrap 30 "OK"                           # trap for prime prompt
+        if 1 return 0                           # got a system prompt
+#
+#       Incorrect userid/password - perhaps it was garbaged.
+#       If we've only tried once, try again, otherwise exit.
+#
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend "rdy",cr                          # get system prompt
+        ttrap 10 "OK"
+        if 1 goto .LGF20
+#
+        if reps goto .LGF10
+#
+#    Unable to get anything recognizable - abort
+#
+        return 1
+#
+.LGF20                                          # prime logout
+        tsend "log",cr
+        return 0
+#
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend "rdy",cr
+        ttrap 5 "OK"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+        tsend "ED",cr
+        ttrap 2
+.UPL20
+        tupload @filename
+        wait 2 idle
+#
+        if null @remotefn return 0
+        tsend cr
+        ttrap 5 "EDIT"
+                if 0 return 1
+        tsend "FILE ",@remotefn,cr
+        ttrap 10 "OK"
+        if 1 return 0
+        return 1
+end
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend "rdy",cr
+        ttrap 5 "OK","protocol","ppp"           # see what's happening
+        if 1 goto .TRANS20                      # we need to invoke BLAST
+        if 2 or 3 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#
+#       Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "RESUME BLAST -H ",cr           # invoke BLAST in host mode
+        ttrap 30 "ppp", "protocol","OK","ER"
+        if 1 or 2 return 0                      # BLAST started!
+#
+        tsend "SEG BLAST -H ",@BAUDRATE,cr      # invoke BLAST in host mode
+        ttrap 30 "ppp", "protocol","OK","ER"
+#
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+#
+#
+        return 1
+.END
+:
+#
+########################################
+#
+#    SATELLITE PC Remote Control
+#
+#
+#  Note : The SATELLIT system script is very general and tests for cases
+# that may not be appropriate for everyone.  This causes the script to run
+# slower when connecting to the satellite.  If you wish to improve speed and
+# efficiency, you may remove the test cases or change the script to tailor
+# the access system script to your needs.
+#
+:SATELLIT
+#
+.LOGON
+#        echo on        # for debugging
+        menu on
+        set @paktsz = "128"     #optimal for access
+        cursor 1,1
+        reps 3
+.LOG05
+        tsend cr, cr
+        ttrap 5 "in:","tocol",">" # get prompt or logged in if no id's on Satellite
+        if 1 goto .LOG20                #this srcipt assumes that the pc prompt is ">"
+        if 2 return 0                   #this can be modifies for other pc prompts
+                if 3 return 0
+        if reps goto .LOG05
+        reps 5          # try to log on 5 times
+.LOG10
+        tsend cr                # trap for login prompt
+        ttrap 5 "in:","tocol"
+        if 1 goto .LOG20
+        if 2 return 0
+.LOG15
+        if reps goto .LOG10
+        clear                   # unable to log on, print message
+        cursor 8,25
+        put "*****************************"
+        cursor 9,25
+        put " Unable to log on. Check"
+        cursor 10,25
+        put " your logon id and password"
+        cursor 11,25
+        put " or try logging on manually"
+        cursor 12,25
+        put " from terminal mode"
+        cursor 13,25
+        put "*****************************"
+        return 1
+#
+.LOG20
+        if not null @userid goto .LOG30 # if no logon id, prompt for one
+        ask "enter logon id ", @userid
+#
+.LOG30
+        tsend @userid,cr        # send satellite the logon id
+        ttrap 5 "word:","tocol"
+        if 1 goto .LOG40        # password found
+        if 2 return 0
+        goto .LOG15
+#
+.LOG40
+        if not null @password goto .LOG50
+        ask noecho "enter password ", @password # prompt for password if none
+#
+.LOG50
+        tsend @password,cr      # send password to satellite
+        ttrap 10 "tocol",">"    # see if logged onto satellite
+        if 1  return 0
+                if 2 return 0           # Y: logged on
+        goto .LOG15             # N: repeat log on attempt
+#
+.LOGOFF
+        reps 3
+        tsend ";DISC.",cr       # send disconnect blocks
+.LGF10
+        tsend ";DISC.",cr
+        ttrap 20 "ogout", ">",";0"        # check for logout response. NOTE, if the
+        if 1 return 0
+                if 2 or 3
+                        tsend "\033\014"
+                        return 0
+                end
+                if reps goto .LGF10     # logout response and it will cycle through
+        return 1                # the loop continuing in an attempt to log off
+.TRANSFER                       # even after it has logged out.
+        clear
+        reps 3
+.TRANS10
+        tsend cr
+                ttrap 5 "tocol",">"
+        if 1 return 0
+                if 2
+                        tsend "\033\030"
+                        ttrap 10 "tocol"
+                        if 1 return 0
+                        return 1
+                end
+                if reps goto .TRANS10
+        return 1
+.UPLOAD
+                clear                   # unable to log on, print message
+        cursor 8,25
+        put "*****************************"
+        cursor 9,25
+        put " Upload is unsupported due to"
+        cursor 10,25
+        put " buffering problems.  Please"
+        cursor 11,25
+        put " use FILETRANSFER"
+        cursor 12,25
+        put " "
+        cursor 13,25
+        put "*****************************"
+        return 1
+.END
+:
+#
+########################################
+#
+#       UNIX/XENIX and look-a-likes
+#
+#       NOTE:  This script assumes you are using the
+#       standard prompt.  Problems may occur
+#       otherwise.
+#
+:UNIX
+#
+.LOGON
+#
+#       Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter userid", @userid
+        if null @userid
+        return 0                                # return ok no error
+end
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#       Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend cr,cr,cr,cr                       # get response from remote
+        ttrap 5 "in:"
+        if 1 goto .LOG30
+        if reps goto .LOG20
+#
+#       Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        tsend @userid, cr                       # enter userid
+        ttrap 10 "word:","$","#","%"            # wait for password prompt
+        if 1 goto .LOG40
+        if 2 or 3 return 0                      # no password for username
+        if 4 return 0
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        tsend @password,cr                      # enter password
+        ttrap 20 "$","#","%","incorrect"        # trap for unix xenix prompt
+        if 1 or 2 return 0                      # got a system prompt
+        if 3 return 0
+#
+#    Incorrect userid/password - perhaps it was garbaged.
+#    If we've only tried once, try again, otherwise exit.
+#
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend cr,cr                             # get system prompt
+        ttrap 10 "$","%","#"
+        if 1 goto .LGF20                        # unix system
+        if 2 goto .LGF30                        # xenix like system
+        if 3 goto .LGF20
+#
+        if reps goto .LGF10
+#
+#    Unable to get anything recognizable - abort
+#
+        return 1
+#
+.LGF20                                          # unix logout
+        tsend "\004"
+        return 0
+#
+.LGF30                                          # xenix logout
+        tsend "logout",cr
+        return 0
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend cr
+        ttrap 5 "$","#","%"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+        tsend "ed ", @remotefn, cr      # start the ed
+        ttrap 2
+        tsend "a", cr           # put it into append mode
+.UPL20
+        tupload @filename
+        wait 2 idle
+#
+        if null @remotefn return 0
+        tsend cr, ".", cr
+        ttrap 2
+        tsend "w", cr
+        ttrap 2
+        tsend "q", cr
+        ttrap 8 "$","%","#"
+        if 1 or 2 return 0
+        if 3 return 0
+        return 1
+end
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend cr,cr
+        ttrap 5 "$","%","#","protocol","ppp"    # see what's happening
+        if 1 or 2 goto .TRANS20                 # we need to invoke BLAST
+        if 3 goto .TRANS20
+        if 4 or 5 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#
+#    Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "blast -h",cr                     # invoke BLAST in host mode
+        ttrap 10 "ppp", "protocol","$","%","#"
+#
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+#
+#
+        return 1
+.END
+:
+#
+#
+########################################
+#
+#    VAX VMS
+#
+#    NOTE:  This script assumes you are using the
+#           standard prompt.  Problems may occur
+#           otherwise.
+#
+:VMS
+#
+.LOGON
+#
+#    Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter username", @userid
+        if null @userid
+        return 0                                # return ok no error
+end
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#    Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend cr,cr,cr,cr                       # get response from remote
+        ttrap 5 "name:"
+        if 1 goto .LOG30
+        if reps goto .LOG20
+#
+#    Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        tsend @userid, cr                       # enter userid
+        ttrap 10 "word:","$"                    # wait for password prompt
+        if 1 goto .LOG40
+        if 2 return 0                           # no password for username
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        tsend @password,cr                      # enter password
+        ttrap 20 "$","failure"                  # trap for VMS prompt
+        if 1 return 0                           # got a system prompt
+#
+#    Incorrect userid/password - perhaps it was garbaged.
+#    If we've only tried once, try again, otherwise exit.
+#
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend "\031",cr                         # get VMS system prompt
+        ttrap 10 "$"
+        if 1
+           tsend "LOGOFF",cr
+           return 0
+        end
+#
+if reps goto .LGF10
+#
+#    Unable to get anything recognizable - abort
+#
+        return 1
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend "\031",cr
+        ttrap 5 "$"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+        tsend "create ",@remotefn,cr
+        ttrap 2
+.UPL20
+        tupload @filename
+        wait 2 idle
+#
+        if null @remotefn return 0
+        tsend "\032"
+        ttrap 5 "$"
+        if 1 return 0
+        return 1
+end
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend "\031",cr
+        ttrap 5 "$","protocol","ppp"            # see what's happening
+        if 1 goto .TRANS20                      # we need to invoke BLAST
+        if 2 or 3 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#
+#    Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "BLAST /H",cr                     # invoke BLAST in host mode
+        ttrap 10 "ppp", "protocol","$"
+#
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+#
+#    IF 3 then shell prompt returned.  Inform user and exit
+#
+        return 1
+.END
+:
+#
+########################################
+#
+#       IBM VM/CMS routines
+#
+#       NOTE:  This script assumes you are using the
+#       standard prompt.  Problems may occur
+#       otherwise.
+#
+:VM/CMS
+#
+.LOGON
+#
+#       Initialize flag, get necessary information
+#
+#
+        if not null @userid goto .LOG10         # verify existence of userid
+        ask "enter login", @userid
+        if null @userid  return 0               # return ok no error
+#
+.LOG10                                          # ask for password
+        if null @password
+           ask noecho "enter password", @password
+        end
+#
+#       Try to log in to the remote computer
+#
+        reps 5                                  # repeat login procedure up to
+                                                # 5 times
+#
+.LOG20
+        tsend "h",cr                            # get response from remote
+        ttrap 10 "restart"
+        if 1 goto .LOG30
+        if reps goto .LOG20
+#
+#       Can't log in, inform user and exit
+#
+        return 1
+#
+.LOG30
+        ttrap 4
+        tsend "l ",@userid, cr                  # enter userid
+        ttrap 10 "word:"                        # wait for password prompt
+        if 1 goto .LOG40
+        if reps goto .LOG20
+        return 1
+#
+.LOG40
+        ttrap 4
+        tsend @password,cr                      # enter password
+        ttrap 20 "."                            # trap for system prompt
+        if 1 return 0                           # got a system prompt
+#
+#       Incorrect userid/password - perhaps it was garbaged.
+#       If we've only tried once, try again, otherwise exit.
+#
+        if reps goto .LOG20
+        return 1
+#
+#       LOGOFF the remote system
+#
+.LOGOFF
+        reps 4                                  # try 4 times
+#
+.LGF10
+        tsend cr                                # get system prompt
+        ttrap 10 "CMS"
+        if 1 goto .LGF20
+#
+        if reps goto .LGF10
+#
+#       Unable to get anything recognizable - abort
+#
+        return 1
+#
+.LGF20                                          # TSO logout
+        tsend "LOGOFF",cr
+        return 0
+#
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+#
+.UPL10
+        ask "enter remote filename or <RETURN> to upload to system", @remotefn
+        if null @remotefn goto .UPL20
+        tsend cr
+        ttrap 5 "cms","CMS"
+        if 0 return 1
+#
+#    If no remote filename given, assume file already open on receiving system
+#
+reps 2
+        ttrap 2
+        tsend "EDIT ",@remotefn," TEXT",cr
+        ttrap 10 "NEW FILE"
+        if 1 goto .UPL20
+        if 0 return 1
+.UPL20
+        ttrap 2
+        tsend "INPUT",cr
+        ttrap 10 "INPUT"
+        if 1 goto .UPL25
+        return 1
+.UPL25
+        ttrap 4
+        set @HLINDLY = @LINEDLY
+        set @LINEDLY = "5"
+        tupload @filename
+        set @LINEDLY = @HLINDLY
+        wait 2 idle
+echo off
+#
+        if null @remotefn return 0
+#
+        tsend cr
+        ttrap 2
+        tsend "SAVE",cr
+        ttrap 2
+        tsend "QUIT",cr
+        return 0
+#
+#       START file transfer on remote system
+#
+.TRANSFER
+        reps 3
+#
+.TRANS10
+        tsend cr
+        ttrap 5 "CMS",";start","ppp"            # see what's happening
+        if 1 goto .TRANS20                      # we need to invoke BLAST
+        if 2 or 3 return 0                      # BLAST is already started
+        if reps goto .TRANS10
+#
+#    Unable to get anything recognizable on remote computer - abort
+#
+        return 1
+#
+.TRANS20
+        tsend "BLAST",cr                        # invoke BLAST in host mode
+        ttrap 20 "ppp", ";start","CMS"
+#
+        if 1 or 2 return 0                      # BLAST started!
+        if reps goto .TRANS20
+#
+#
+        return 1
+.END
+:
+#
+##############################
+#
+#
+#       WANG VS
+#
+#
+:WANG
+#
+.LOGON
+#
+        return 0
+#
+#
+#
+.LOGOFF
+#
+        return 0
+#
+#
+#
+#       UPLOAD a file to the remote system
+#
+.UPLOAD
+        ask "enter filename to upload", @filename
+        if null @filename return 0
+        if exist @filename goto .UPL10
+        werror "can't open ", @filename
+        return 1
+.UPL10
+        tupload @filename
+        wait 2 idle
+        return 0
+#
+#
+.TRANSFER
+#
+        return 0
+#
+.END
+:

@@ -1,0 +1,34 @@
+#BLAST V8.0 System Setup
+      Description: DPOLL setup (Version 94-2 unix  platform)
+     Phone Number: 
+      System Type: 
+ Originate/Answer: ANSWER
+           Userid: 
+         Password:
+        Comm Port: /dev/tty00
+       Modem Type: RVHAYES
+        Baud Rate: 2400
+           Parity: NONE
+   Data/Stop Bits: 8/1
+  XON/XOFF Pacing: YES
+   RTS/CTS Pacing: NO
+  Transfer Passwd: DUMMY
+      Script File: DPOLLMST
+         Log File: DPOLL.LOG
+   Translate File: 
+    Keyboard File: 
+        Emulation: TTY
+    Attention Key: ^K
+      Full Screen: NO
+       Local Echo: NO
+        AutoLF In: NO
+       AutoLF Out: NO
+    Wait for Echo: NO
+      Prompt Char: NONE
+       Char Delay: 0
+       Line Delay: 0
+         Protocol: BLAST
+    Logon Timeout: 120
+  Connect Timeout: 120
+    7 Bit Channel: NO
+      Packet Size: 128

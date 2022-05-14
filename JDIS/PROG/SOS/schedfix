@@ -1,0 +1,32 @@
+:
+# revised 07/01/96
+#
+#
+# Utility to rm SCHEDLOCK,FIFO files, stop/start/start scheduler #
+# Martin Meier, JDIS Research 04/15/96 #
+# for HP systems only
+#
+# 4/9/97 - SPM - made changes to be executed from STATUS menu
+
+# trap command 'traps' ctrl-c, ctrl-break etc to prevent escape to root shell
+trap "exit" 1 2 15
+
+echo "Stopping Scheduler..."
+/usr/lib/lpshut
+sleep 2
+
+if test -s /usr/spool/lp/SCHEDLOCK
+then
+      echo "Removing /usr/spool/lp/SCHEDLOCK ..."
+      rm -f /usr/spool/lp/SCHEDLOCK
+fi
+
+if test -s /usr/spool/lp/FIFO
+then
+      echo"Removing /usr/spool/lp/FIFO ..."
+      rm -f /usr/spool/lp/FIFO
+fi
+
+echo "Starting Scheduler..."
+/usr/lib/lpsched
+sleep 2

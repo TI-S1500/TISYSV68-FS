@@ -1,0 +1,26 @@
+ISUNIQUEID(3T)                                     ISUNIQUEID(3T)
+
+NAME
+     isuniqueid - Gets a unique ID for the T-ISAM file
+
+SYNOPSIS
+     #include <isam.h>
+
+     int isuniqueid(tifd, uidp)
+     int tifd;
+     unsigned long *uidp;
+
+DESCRIPTION
+     The isuniquid is the C-ISAM 2.1 interface to tiuniquid(3T).
+
+     The current unique ID is automatically incremented and
+     returned.  The unique ID can be set with issetunique(3T).
+
+DIAGNOSTICS
+     On error, -1 is returned and iserrno, iserrio, isstat1, and
+     isstat2 are set.
+
+SEE ALSO
+     issetunique(3T), tisam(4), tiuniqueid(3T).
+
+

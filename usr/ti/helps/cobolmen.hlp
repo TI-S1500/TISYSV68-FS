@@ -1,0 +1,10 @@
+	cobol - Cobol Programming Tools
+		@(#)cobolmen.sh	1.1 87/03/09
+
+	This menu lists commands which help the user design and develop 
+	   Cobol applications and system software.  The commands enable 
+	   the user to create Cobol language programs for execution on 
+	   UNIX systems, and to automate and maintain different versions 
+	   of Cobol programs in development.
+
+

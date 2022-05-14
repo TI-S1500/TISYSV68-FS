@@ -1,0 +1,30 @@
+# cshf   strip -- strips symbol table from object file 
+#	@(#)STRIP.sh	1.2  89/02/10
+#
+onintr end
+
+prompt "^STRIP -- STRIPS SYMBOL TABLE INFORMATION FROM OBJECT FILE"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^No Line Number Information:" lflag yesno n\
+	"^Not Strip Scoping Information:" bflag yesno n\
+	"^Reset the Relocation Indexes:" rflag yesno n\
+	"^Report Version Number:" Vflag yesno n\
+	"^Retain Static/External Info:" xflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($lflag == "y") set opt = l$opt
+if ($bflag == "y") set opt = b$opt
+if ($rflag == "y") set opt = r$opt
+if ($Vflag == "y") set opt = V$opt
+if ($xflag == "y") set opt = x$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== STRIP COMMAND EXECUTING ==="
+echo strip $opt $_input_file
+strip $opt $_input_file
+
+#clean up time
+end:
+unset *flag *opt

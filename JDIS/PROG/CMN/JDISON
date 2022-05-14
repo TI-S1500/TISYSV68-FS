@@ -1,0 +1,95 @@
+:
+# JDISON - HIGHSPEED MODEM PROJECT - TI UNIX VERSION ONLY
+# 11/21/95 - R96-3 - remove sys000
+# 02/02/96         - add OFFTTY, sedoff, sedcfg, sedon, init q
+# 03/25/97 - R97-2 - C.G.KOLWEY - CHECK TO SEE IF COMM PORT IS IN USE
+#                                 STOLEN FROM BARRYW - REMOVE -e IN grep
+#
+tput clear
+/bin/echo "                      *** J D I S O N ***
+
+    JDISON will check to see if the communications port is in use:
+
+      1st test: is someone already running blast?\c"
+# find out what jobs are running; use grep to count any references to blast.
+# if only 1 reference, then that would be this grep command; otherwise blast
+# is being used by someone else
+case `ps -ef | grep -c blast` in
+  1 ) /bin/echo "\n                NO Blast POLL USERS FOUND \n" ;;
+  * ) /bin/echo "\n                Blast POLL IN USE BY: \c"
+#   determine who's using blast: 1)use grep to get all blast process, 2)sort
+#   by earliest start-time, 3)use awk to extract key info, 4)use head to
+#   print 1st line only
+      ps -ef | grep blast | sort -k5 \
+             | awk '{print "--->"$1"<--- ( "$5" )"}' \
+             | head -n 1
+      /bin/echo "\n                TRY AGAIN LATER."
+      /bin/echo "\n\n    Hit any key to terminate...\c"
+      read AAA
+      exit                                  ;;
+esac
+
+/bin/echo "\n\n      2nd test: has JDISON already been issued?\c"
+# /JDIS/PROG/CMN/JDISON has been modified to echo the LOGNAME to
+# /JDIS/tmp/JDISON.WHO   (JDISOFF removes this file)
+# If /JDIS/tmp/JDISON.WHO exists, inform user
+if [ -f /JDIS/tmp/JDISON.WHO ];then
+   /bin/echo "\n                JDISON WAS ISSUED BY"
+   /bin/echo "                \c"
+   cat /JDIS/tmp/JDISON.WHO
+   /bin/echo "\n                TRY AGAIN LATER."
+   /bin/echo "\n\n    Hit any key to terminate...\c"
+   read AAA
+   exit
+else
+   /bin/echo "\n                JDISON NOT IN USE \n"
+   /bin/echo "\n    --->the port will now be initialized ...\c"
+   sleep 2
+fi
+/bin/echo "
+                       Starting JDISON"
+tput clear
+echo "\nThis will enable the modem for dial in support."
+chmod 766 /etc/inittab
+OFFTTY=tty00
+export OFFTTY
+/JDIS/PROG/CMN/sedoff
+kill -9 `ps -t 00 | awk 'NR > 1 {print $1}'`
+
+loop=0
+while (test "$loop" -lt "9")
+do
+        sleep 5
+        lines=`ps -t 00 | wc -l`
+        if (test $lines = "1")
+        then
+                break
+        fi
+        loop=`expr $loop + 1`
+done
+if (test "$loop" = "9")
+then
+        echo "\nJDISON: Error while disabling the line.\n"
+        exit 1
+fi
+
+/JDIS/PROG/CMN/sedcfg
+
+echo "\nTurn your A/B box to A."
+echo "\nThen press return to continue."
+read return
+
+/JDIS/PROG/COMM/modemset
+if (test $? != 0)
+then
+        echo "\nmodemset: blast error while optioning the modem.\n"
+        exit 1
+fi
+
+/JDIS/PROG/CMN/sedon
+init q
+rm -f /JDIS/tmp/JDISON.WHO > /dev/null 2> /dev/null
+echo "--->"${LOGNAME}"<--- (" `date` ")" > /JDIS/tmp/JDISON.WHO
+echo "Remember to run JDISOFF after the support person disconnects."
+echo "\nProcess Complete.\n"
+exit 0

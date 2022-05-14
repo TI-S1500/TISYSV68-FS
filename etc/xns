@@ -1,0 +1,69 @@
+#	@(#)xns	1.1 92/01/31 Texas Instruments XNS System V
+############################################################################
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1990.  ALL	   #
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	   #
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	   #
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	   #
+#	ASSOCIATED DOCUMENTATION.					   #
+############################################################################
+
+##
+# XNS start/stop script
+##
+
+PATH=/etc:/bin:/usr/bin
+#
+#
+#
+XPROCS="/xnsd/"
+TPROCS="/tdts/"
+
+case "$1" in
+'start')
+#	make sure xnsd daemon is not running
+	ps -e | grep xnsd > /dev/null 2>&1
+	if [ $? -eq 0 ]
+	then
+		echo "XNSD already running.  XNSD start aborted."
+		exit 0
+	fi
+
+#	make sure tdts daemons are killed before starting xnsd
+	ps -e | awk "$TPROCS { print \"kill \" \$1 }" | sh
+
+	echo "Starting XNSD: \c"
+
+	/etc/xnsd
+	echo " XNSD\c"
+
+	echo ""
+
+
+	echo "Starting TDTS: \c"
+
+	/etc/tdts
+	echo " TDTS\c"
+
+	echo ""
+	;;
+
+'stop')
+	echo "XNSD Shutdown... "
+
+#	kill tdts daemons
+	ps -e | awk "$TPROCS { print \"kill \" \$1 }" | sh
+
+#	kill xnsd daemon
+	ps -e | awk "$XPROCS { print \"kill \" \$1 }" | sh
+
+
+	echo "XNSD Shutdown Complete."
+	;;
+
+*)
+	echo "Usage: $0 [ start | stop ]"
+	exit 1
+	;;
+esac
+
+exit 0

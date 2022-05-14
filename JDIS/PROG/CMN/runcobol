@@ -1,0 +1,4 @@
+:
+TERMINFO=/JDIS/PROG/CMN/terminfo
+export TERMINFO
+/JDIS/PROG/CMN/runcobol.971 $*

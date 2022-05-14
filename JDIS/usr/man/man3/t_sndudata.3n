@@ -1,0 +1,73 @@
+T_SNDUDATA(3N)                                     T_SNDUDATA(3N)
+
+NAME
+     t_sndudata - Sends a data unit
+
+SYNOPSIS
+     #include <tiuser.h>
+
+     int t_sndudata(fd, unitdata)
+     int fd;
+     struct t_unitdata *unitdata;
+
+DESCRIPTION
+     This function is used in connectionless mode to send a data
+     unit to another transport user.  fd identifies the local
+     transport endpoint through which data will be sent, and
+     unitdata points to a t_unitdata structure containing the
+     following members:
+
+          struct netbuf addr;
+          struct netbuf opt;
+          struct netbuf udata;
+
+
+     netbuf is described in intro(3).  In unitdata, addr
+     specifies the protocol address of the destination user, opt
+     identifies protocol-specific options that the user wants
+     associated with this request, and udata specifies the user
+     data to be sent.  The user can choose not to specify what
+     protocol options are associated with the transfer by setting
+     the len field of opt to 0.  In this case, the provider can
+     use default options.
+
+     If the len field of udata is 0, no data unit will be passed
+     to the transport provider; t_sndudata will not send zero-
+     length data units.
+
+     By default, t_sndudata operates in synchronous mode and may
+     wait if flow control restrictions prevent the data from
+     being accepted by the local transport provider at the time
+     the call is made.  However, if O_NDELAY is set (via t_open
+     or fcntl), t_sndudata will execute in asynchronous mode and
+     will fail under such conditions.
+
+     If t_sndudata is issued from an invalid state, or if the
+     amount of data specified in udata exceeds the TSDU size as
+     returned by t_open or t_getinfo, the provider will generate
+     an EPROTO protocol error.  (See TSYSERR that follows.)
+
+     On failure, t_errno can be set to one of the following:
+
+     [TBADF]           The specified file descriptor does not
+                       refer to a transport endpoint.
+
+     [TFLOW]           O_NDELAY was set, but the flow control
+                       mechanism prevented the transport provider
+                       from accepting data at this time.
+
+     [TNOTSUPPORT]     This function is not supported by the
+                       underlying transport provider.
+
+     [TSYSERR]         A system error has occurred during
+                       execution of this function.
+
+SEE ALSO
+     intro(3), t_rcvudata(3N), t_rcvuderr(3N).
+     TI System V Network Programmer's Guide.
+
+DIAGNOSTICS
+     t_sndudata returns 0 on successful completion and -1 on
+     failure; t_errno is set to indicate the error.
+
+

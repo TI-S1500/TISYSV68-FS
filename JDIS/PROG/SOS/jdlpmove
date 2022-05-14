@@ -1,0 +1,11 @@
+:
+from_prt=$1
+to_prt=$2
+tmpfile=/tmp/lp.$$
+/usr/lib/lpshut 2>/dev/null
+lpstat -o | grep $from_prt | awk '{print "/usr/lib/lpmove "$1" '${to_prt}'"}' >$tmpfile
+chmod 777 $tmpfile >/dev/null 2>/dev/null
+sh $tmpfile
+/usr/lib/lpsched 2>/dev/null
+rm $tmpfile >/dev/null 2>/dev/null
+exit 0

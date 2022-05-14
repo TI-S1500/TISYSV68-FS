@@ -1,0 +1,7 @@
+T,C,PROMPT25,WORK ORDER FILEMAIN.(PW05)
+F,Work Order Number,6,11,1,,2,0,0,1
+F,Maintenance Code,12,13,1,,0, ,0,2
+A,Reversal Code,17,17,1,- R,1, ,0,0
+F,Change Data,18,33,0,,1, ,0,0
+C,Card Code,1,1,1,,0,Z,0,2
+C,Transaction Code,2,5,1,,0,PW05,0,2

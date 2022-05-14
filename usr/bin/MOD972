@@ -1,0 +1,16 @@
+:
+# RELEASE 97-2 -
+#-----------------------------------------------------------------------
+# chmod for 'SOS/jdkill'
+#-----------------------------------------------------------------------
+if (test -r /usr/spool/lp/model/lpps) then
+chmod 666 /usr/spool/lp/model/lpps 2>>/dev/null
+chown root:sys /usr/spool/lp/model/lpps 2>>/dev/null
+fi
+chmod 5555 /JDIS/PROG/SOS/jdkill 2>>/dev/null
+chown root /JDIS/PROG/SOS/jdkill 2>>/dev/null
+/bin/echo "%%> MOD972 chmod complete for 97-2" >>/usr/adm/JDISRLSE.log
+/bin/echo "\n\n
+		      **********************
+		      * MOD972 is Complete *
+		      **********************\n\n"

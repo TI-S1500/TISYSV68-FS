@@ -1,0 +1,40 @@
+# cshf   cancel - cancel requests to a line printer 
+#	@(#)CANCEL.sh	1.6 (TI) 91/07/09
+#
+onintr end
+
+@ count = 0
+while ($count == 0)
+  prompt  "^CANCEL -- CANCEL REQUESTS TO A LINE PRINTER"\
+	"^*Request ID(s):" id string\
+	"^*Printer Name(s):" _printer string $_printer\
+	"^#$*"
+  if ($abort) goto end
+  if ("$id" != "") @ count++
+  if ("$_printer" != "") @ count++
+end
+
+  set who = ` id | cut -f2 -d'(' | cut -f1 -d')' `
+  if ("$_printer" != "" && "$id" == "" && ("$who" == "root" || "$who" == "lp") ) then
+
+	  prompt  "^CANCEL -- CANCEL REQUESTS TO A LINE PRINTER"\
+		"^Cancel ALL requests queued for printer:" all yesno n\
+		"^#$*"
+
+	  if ( "$all" == "y" ) then
+		set id = `lpstat $_printer | cut -f1 -d" "`
+		if ( "$id" != "" ) set _printer = ""
+	  endif
+
+  endif
+
+if ($abort) goto end
+echo === CANCEL COMMAND EXECUTING ===
+
+echo cancel $id $_printer
+
+cancel $id $_printer
+
+#turn on interrupts
+end:  
+unset id all aopt

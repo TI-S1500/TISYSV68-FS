@@ -1,0 +1,150 @@
+:
+#----------------------------------------------------------------
+# Name: 3270fixup
+# Desc: Cleans up the 3270 environments (pgms, ipcs, etc.)
+# Vers: 3.0
+# Date: 1 April 1991
+#----------------------------------------------------------------
+domsg() {
+	if (test $quiet -eq 0) then
+		echo $msg
+	fi
+	return 0
+}
+#----------------------------------------------------------------
+#   main starts here
+#----------------------------------------------------------------
+rm -f /tmp/3270fx.*
+#----------------------------------------------------------------
+#   findout what arguments are present
+#----------------------------------------------------------------
+killpu=0
+quiet=0
+check=1
+while case $1 in
+	"")		break ;;
+	"-kill") killpu=1 ;;
+	"-quiet") quiet=1 ;;
+	"-nocheck") check=0 ;;
+	*) echo "Invalid argument --- usage:    3270fixup [-kill] [-quiet] [-nocheck]"
+	   exit 9
+	   ;;
+   esac
+do	
+	shift
+done
+
+msg="3270fixup starting"
+domsg
+echo `date`',3270fixup starting' >>/JDIS/3270LOG
+#----------------------------------------------------------------
+#   kill all the v3279 & p3287 sessions
+#----------------------------------------------------------------
+ps -ef|egrep "v3279|p3287"|grep -v grep >/tmp/3270fx.kill1
+if (test `cat /tmp/3270fx.kill1|wc -l` -ne 0) then
+	awk '{print "kill -15 " $2}' /tmp/3270fx.kill1 >/tmp/3270fx.kill2
+	chmod +x /tmp/3270fx.kill2
+	/tmp/3270fx.kill2
+fi
+sleep 1
+msg="v3279/p3287 kills done"
+domsg
+#----------------------------------------------------------------
+#   clean up the ipcs
+#----------------------------------------------------------------
+ipcs|egrep "^q|^m"|grep -v 3274|egrep "327|328" >/tmp/3270fx.ipcrm1
+touch /tmp/3270fx.ipcrm2
+awk '$1 ~ /q/{print "ipcrm -q " $2}' /tmp/3270fx.ipcrm1 >>/tmp/3270fx.ipcrm2
+awk '$1 ~ /m/{print "ipcrm -m " $2}' /tmp/3270fx.ipcrm1 >>/tmp/3270fx.ipcrm2
+chmod +x /tmp/3270fx.ipcrm2
+/tmp/3270fx.ipcrm2
+sleep 1
+#
+msg="The ipcs kills are done"
+domsg
+#----------------------------------------------------------------
+#   remove 3270 files from /tmp directory
+#----------------------------------------------------------------
+rm -f /tmp/3270*
+rm -f /tmp/SNA*
+rm -f /JDIS/tmp/3270*
+rm -f /JDIS/tmp/SNA*
+#----------------------------------------------------------------
+#   do snaadm disc command
+#----------------------------------------------------------------
+cat >/tmp/3270fx.disc <<'!'
+disc
+q
+!
+/JDIS/PROG/CMN/JDISSNAADM -w 10 /usr/ucs/snaadm </tmp/3270fx.disc >/dev/null
+sleep 1
+msg="The snaadm disc is done"
+domsg
+#----------------------------------------------------------------
+#   stop the current pu
+#----------------------------------------------------------------
+if (test $killpu -eq 1) then
+cat >/tmp/3270fx.stoppu <<'!'
+stop pu
+q
+!
+/JDIS/PROG/CMN/JDISSNAADM -w 10 /usr/ucs/snaadm </tmp/3270fx.stoppu >/dev/null
+sleep 1
+msg="The pu kill is done"
+domsg
+fi
+#
+#----------------------------------------------------------------
+#   we're all done if check is false
+#----------------------------------------------------------------
+if (test $check -eq 0) then
+	msg="3270fixup complete"
+	domsg
+	exit 0
+fi
+#
+#----------------------------------------------------------------
+#   check to see that we were successful in our cleanup
+#----------------------------------------------------------------
+# did all v3279 & p3287 sessions end???
+msg="Check num 1 starting"
+domsg
+ps -ef|egrep "v3279|p3287"|grep -v grep >/tmp/3270fx.ck1
+if (test `cat /tmp/3270fx.ck1|wc -l` -ne 0) then
+	msg="Unable to remove all v3279/p3287 sessions"
+	domsg
+fi
+
+# did all ipcs entries leave???
+msg="Check num 2 starting"
+domsg
+ipcs|egrep "^q|^m"|grep -v 3274|egrep "327|328" >/tmp/3270fx.ck2
+if (test `cat /tmp/3270fx.ck2|wc -l` -ne 0) then
+	msg="Unable to remove all ipcs entries"
+	domsg
+fi
+
+# did the pu leave???
+msg="Check num 3 starting"
+domsg
+if (test $killpu -eq 1) then
+	ps -ef|grep pu|grep -v grep >/tmp/3270fx.ck3
+	if (test `cat /tmp/3270fx.ck3|wc -l` -ne 0) then
+		msg="Unable to remove the pu session"
+		domsg
+	fi
+	ipcs|grep 3274 >/tmp/3270fx.ck4
+	if (test `cat /tmp/3270fx.ck4|wc -l` -ne 0) then
+		msg="Unable to remove the pu ipcs entry"
+		domsg
+	fi
+fi
+#----------------------------------------------------------------
+#   we're all done
+#----------------------------------------------------------------
+msg="3270fixup complete"
+domsg
+echo `date`',3270fixup ending' >>/JDIS/3270LOG
+#
+#
+rm -f /tmp/3270fx.*

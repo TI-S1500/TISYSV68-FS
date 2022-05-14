@@ -1,0 +1,161 @@
+*********************************************************************
+* This proc is executed out of /JDIS/PROG/CMN/INIT_CTRL. If the port*
+* being logged onto is not a JDPS dialin port and the ID is not a   *
+* JDPS customer ID, login is allowed to continue. If the port is a  *
+* JDPS port or the ID is a JDPS Customer ID, the program PSCHK is   *
+* run to further check the validity of the login. The PSCHK return  *
+* code values and how they are set is ...                           *
+*                                                                   *
+*    JDPS Customer ID - No JDPS Port Assigned   = 2 (abort)         *
+*    JDPS Customer ID - Not on JDPS Port        = 2 (abort)         *
+*    On JDPS Port     - ID Not in JDPS          = 2 (abort)         *
+*    On JDPS Port     - ID in JDPS (Customer)   = 0 (run JDPS)      *
+*    On JDPS Port     - ID in JDPS (Dealer)     = 1 (run JDIS)      *
+*                                                                   *
+*  21 MAR 95 - BMB - Disallowed the <F10> key usage during check    *
+*                    for DAYEND running.                            *
+*                                                                   *
+*  16 MAY 95 - BLB - Added two USERTERM tests to prevent 1) tty00   *
+*                    from accessing JDPS, and 2) non-tty addresses  *
+*                    (ending in 00) from accessing JDPS.  Also      *
+*                    added "(R,2)" qualifiers in USERTERM checks to *
+*                    accomodate its new value in Aspen 6.0          *
+*                                                                   *
+*  22 MAY 95 - BLB - changed method of checking USERTERM value      *
+*                    against DIALTERM values.                       *
+*                                                                   *
+*********************************************************************
+*
+*
+* If PSPORT file does not exist, dealer is not on JDPS program, so go to
+* ENDINIT label. 
+F EX @ASPEN_HOME"/PSPORT" [ENDINIT]
+*
+* ************* Remove the following two statements after you have*********
+*               cleaned up PSCHK.COB for Release 95-2.                    *
+*               Also, S DS DIALTERM1 at the bottom of this PROC.          *
+***************************************************************************
+S AS DIALTERM1 @USERTERM(R,2)
+S AS PS_TERM_TAIL @USERTERM(R,2)
+*
+S AS PSLOG @D1"MF/"@USERID".LOG"
+S AS PSCUST @D1"MF/PSCUST.INX"
+*
+? @IPADDR EQ "" (GO_ON)
+? @IDTYPE EQ "C" (FAIL1) [ENDINIT]
+:GO_ON
+*
+* This will make sure @ST_DIR./pstemp file does not exist, 
+* and 2>/dev/null directs possible error message to /dev/null.
+*
+#rm @ST_DIR.pstemp 2>/dev/null
+*
+* Assign PS_GO syn value null.
+*
+S AS PS_GO ""
+********************************************************************************
+* Create the file @ST_DIR./psexec, to include awk logic on 
+* the next line - the $$ will end the file. Look in the PSPORT file for 
+* pattern of right two positions of USERTERM syn in the fourth field of 
+* each line, and if found, print fourth field value after the quoted 
+* S AS statement, and feed this string into the file @ST_DIR./pstemp. 
+* Multiple carats preceding double quotes are to protect the quotes as 
+* they are read once and then again by ASPEN when statement executed. 
+********************************************************************************
+$ @ST_DIR.psexec
+#awk '^^^"@USERTERM(R,2).^^^"==$4 { print "^"^^^"S AS PS_GO ^^^"^""$4 }' @ASPEN_HOME.^^^"/PSPORT^^^" >@ST_DIR.pstemp
+$$
+*
+* Execute @ST_DIR./psexec.
+*
+& $@ST_DIR.psexec
+*
+* Execute @ST_DIR.pstemp
+*
+& $@ST_DIR.pstemp
+********************************************************************************
+* If PS_GO syn still has a value of null, then match for tty number was not     
+* found by awk statement.  If this is so, then test to see if the user is
+* a customer ( IDTYPE=C ).
+********************************************************************************
+? @PS_GO NE "" (CHKPS1)
+*
+? @IDTYPE EQ "C" (FAIL1)
+{ENDINIT}
+*
+:CHKPS1
+*
+#cd @RUN_PROG"/REP"
+!@RUN_PROG"/REP/PSCHK"
+#cd @ASPEN_HOME
+*
+S DS  PSCUST
+*
+? @PSRC EQ 0 (CHKPS2)
+? @PSRC EQ 1 (CHKPS2)
+:FAIL1
+S AS START STOP
+S AS NO_HALT YES
+*
+$ @PSLOG A
+------------------ @USERID @USERTERM --------------------
+JDPS  DENIED        @DATE  @TIME
+$$
+/ CS
+/ DI (10,15) "*--------------- Access Denied ---------------------*"
+/ DI (11,15) "  "@USERID" is not allowed computer access on this port"
+/ DI (12,15) "  Logon will not continue!  Press RETURN: "
+/ DI (13,15) "*---------------------------------------------------*"
+/ RD (12,57) ANS
+/ CS
+S DS ANS
+S DS PSLOG
+# kill "-9 `ps | grep sh | awk '{print $1}'`"
+# kill "-9 `ps | grep csh | awk '{print $1}'`"
+# kill "-9 `ps | grep bsh | awk '{print $1}'`"
+{EXIT}
+*
+:CHKPS2
+* IF @665:1G NE " ", THEN DAYEND IS RUNNING
+* IF @666:1G NE " ", THEN BACKUP IS RUNNING
+*
+? @665:1G NE " " (CONT2)
+? @666:1G NE " " (CONT2)
+*
+? @PSRC EQ 0 (RUNPS)
+? @PSRC EQ 1 (ENDINIT)
+*
+:CONT2
+S AS START STOP
+$ @PSLOG A
+------------------ @USERID @USERTERM --------------------
+JDPS  DENIED-BKUP   @DATE  @TIME
+$$
+/ CS
+:CONT2A
+/ DI (10,15) "*--------------- Access Denied ---------------------*"
+/ DI (11,15) "  The DAYEND processing is currently running. Please "
+/ DI (12,15) "  try again later. Press RETURN:                     "
+/ DI (13,15) "*---------------------------------------------------*"
+/ RD (12,48) ANS [,CONT2A]
+/ CS
+S DS ANS
+S DS PSLOG
+*
+# kill "-9 `ps | grep sh | awk '{print $1}'`"
+# kill "-9 `ps | grep csh | awk '{print $1}'`"
+# kill "-9 `ps | grep bsh | awk '{print $1}'`"
+{EXIT}
+*
+:RUNPS
+S AS RUN_TYPE LOGIN
+S AS NO_HALT YES
+& JDPS
+/ CS
+S AS START STOP
+*
+:ENDINIT
+S DS PS_GO
+S DS PSRC
+S DS PSLOG
+S DS DIALTERM1

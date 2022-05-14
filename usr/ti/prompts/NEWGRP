@@ -1,0 +1,21 @@
+# cshf  newgrp -- logs into a new group 
+#	@(#)NEWGRP.sh	1.2  87/10/15
+#
+onintr end
+
+prompt "^NEWGRP -- LOGS INTO A NEW GROUP"\
+	"^*New Group Name:" group string\
+	"^Change Environment:" orgin yesno n\
+	"^#$*"
+
+if ($abort) goto end
+
+echo "=== NEWGRP COMMAND EXECUTING ==="
+if ($orgin == "n") then
+	newgrp -$group
+else
+	newgrp $group
+endif
+ 
+end:
+unset orgin group 

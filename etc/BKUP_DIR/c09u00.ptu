@@ -1,0 +1,336 @@
+vol identifier                ,LABL;
+vol revision number           ,2;
+vol device name               ,CONN-500;
+vol storage type              ,disk,fixed,logicaladdr;
+vol bytes per block           ,1024;
+vol disk bytes/sec            ,512;
+vol disk sec/trk              ,49;
+vol disk trk/cyl              ,12;
+vol disk number cyl           ,1807;
+vol disk reservd sec          ,0;
+vol name                      ,sys;
+vol PT identifier             ,PTBL;
+vol PT starting blk           ,2;
+vol PT length                 ,3;
+vol SS identifier             ,SAVE;
+vol SS starting blk           ,5;
+vol SS length                 ,3;
+vol comments                  ,comment;
+#----------**********----------
+PT identifier                 ,PRTN;
+PT revision number            ,1;
+PT num partitions             ,26;
+PT pte length                 ,12;
+PT comment offset             ,4;
+#----------**********----------
+PTE slice number              ,0;
+PTE partition name            ,LABL;
+PTE starting blk              ,0;
+PTE partition length          ,2;
+PTE function type             ,volume label;
+PTE user type                 ,ffff;
+PTE property bits             ,not expandable,not contractable,
+                              delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,;
+#----------**********----------
+PTE slice number              ,1;
+PTE partition name            ,PTBL;
+PTE starting blk              ,2;
+PTE partition length          ,3;
+PTE function type             ,partition band;
+PTE user type                 ,ffff;
+PTE property bits             ,not expandable,not contractable,
+                              delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,;
+#----------**********----------
+PTE slice number              ,2;
+PTE partition name            ,SAVE;
+PTE starting blk              ,5;
+PTE partition length          ,3;
+PTE function type             ,save band;
+PTE user type                 ,ffff;
+PTE property bits             ,not expandable,not contractable,
+                              delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,;
+#----------**********----------
+PTE slice number              ,3;
+PTE partition name            ,FMT ;
+PTE starting blk              ,8;
+PTE partition length          ,9;
+PTE function type             ,format parameter band;
+PTE user type                 ,ffff;
+PTE property bits             ,expandable,not contractable,
+                              delete protected,not logical partition,
+                              copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,;
+#----------**********----------
+PTE slice number              ,4;
+PTE partition name            ,TZON;
+PTE starting blk              ,17;
+PTE partition length          ,296;
+PTE function type             ,test zone band;
+PTE user type                 ,ffff;
+PTE property bits             ,not expandable,not contractable,
+                              delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              diagnostic use;
+PTE comment                   ,;
+#----------**********----------
+PTE slice number              ,5;
+PTE partition name            ,unx1;
+PTE starting blk              ,313;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,2;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,6;
+PTE partition name            ,unx1;
+PTE starting blk              ,313;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,a;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,7;
+PTE partition name            ,unx1;
+PTE starting blk              ,313;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,13;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,8;
+PTE partition name            ,unx1;
+PTE starting blk              ,313;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,14;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,9;
+PTE partition name            ,unx2;
+PTE starting blk              ,1337;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,2;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,10;
+PTE partition name            ,unx2;
+PTE starting blk              ,1337;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,a;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,11;
+PTE partition name            ,unx2;
+PTE starting blk              ,1337;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,13;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,12;
+PTE partition name            ,unx2;
+PTE starting blk              ,1337;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,14;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,13;
+PTE partition name            ,unx3;
+PTE starting blk              ,2361;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,2;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,14;
+PTE partition name            ,unx3;
+PTE starting blk              ,2361;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,a;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,15;
+PTE partition name            ,unx3;
+PTE starting blk              ,2361;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,13;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,16;
+PTE partition name            ,unx3;
+PTE starting blk              ,2361;
+PTE partition length          ,1024;
+PTE function type             ,load band;
+PTE user type                 ,14;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,17;
+PTE partition name            ,cfg1;
+PTE starting blk              ,3385;
+PTE partition length          ,17;
+PTE function type             ,configuration band;
+PTE user type                 ,ffff;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,18;
+PTE partition name            ,cfg2;
+PTE starting blk              ,3402;
+PTE partition length          ,17;
+PTE function type             ,configuration band;
+PTE user type                 ,ffff;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,19;
+PTE partition name            ,cfg3;
+PTE starting blk              ,3419;
+PTE partition length          ,17;
+PTE function type             ,configuration band;
+PTE user type                 ,ffff;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,20;
+PTE partition name            ,root;
+PTE starting blk              ,3436;
+PTE partition length          ,12288;
+PTE function type             ,file band;
+PTE user type                 ,fc02;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,21;
+PTE partition name            ,usr ;
+PTE starting blk              ,15724;
+PTE partition length          ,32768;
+PTE function type             ,file band;
+PTE user type                 ,fc02;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,TI Sys V 3.3.2;
+#----------**********----------
+PTE slice number              ,22;
+PTE partition name            ,jdis;
+PTE starting blk              ,48492;
+PTE partition length          ,2;
+PTE function type             ,anchor band;
+PTE user type                 ,ffff;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,multi-volume file system anchor;
+#----------**********----------
+PTE slice number              ,23;
+PTE partition name            ,pipe;
+PTE starting blk              ,48494;
+PTE partition length          ,1024;
+PTE function type             ,file band;
+PTE user type                 ,fc02;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,pipe file system partition;
+#----------**********----------
+PTE slice number              ,24;
+PTE partition name            ,swap;
+PTE starting blk              ,49518;
+PTE partition length          ,32768;
+PTE function type             ,page band;
+PTE user type                 ,2;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,not logical partition,
+                              not copy protected,default partition,
+                              normal partition;
+PTE comment                   ,;
+#----------**********----------
+PTE slice number              ,25;
+PTE partition name            ,prt1;
+PTE starting blk              ,82286;
+PTE partition length          ,448972;
+PTE function type             ,file band;
+PTE user type                 ,fc02;
+PTE property bits             ,not expandable,not contractable,
+                              not delete protected,logical partition,
+                              not copy protected,not default partition,
+                              normal partition;
+PTE comment                   ,part of jdis multi-volume;

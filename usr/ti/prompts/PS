@@ -1,0 +1,52 @@
+#  cshf ps -- process status    
+#	@(#)PS.sh	1.1  87/03/09
+#
+onintr end
+set opt = ""
+
+prompt "^PS -- REPORTS PROCESS STATUS"\
+       "^Full Listing:" fflag yesno n\
+       "^Long Listing:" lflag yesno n\
+       "^Accept Advanced Options:" advan yesno y
+
+if ($abort) goto end
+if ($advan == "n") then
+  prompt "^PS -- ADVANCED OPTIONS"\
+	"^Omit Process Group Leaders:" dflag yesno n\
+	"^Omit Non-Terminal Processes:" aflag yesno n\
+	"^*Name List:" nfilename acnm /unix\
+	"^*Specify Terminal List:" tlist string "$tlist"\
+	"^*Specify Process List:" plist string "$plist"\
+	"^*Specify User(s) List:" ulist string "$ulist"\
+	"^*Specify Group Leader(s) List:" glist string"$glist" 
+
+	if ($abort) goto end
+	if ($dflag == "y") set opt = d$opt
+	if ($aflag == "y") set opt = a$opt
+
+	if ($nfilename != "/unix") set nopt = -n$nfilename 
+
+	if ("$ulist" != "") set uopt = -u"$ulist"
+	if ("$tlist" != "") set topt = -t"$tlist"
+	if ("$plist" != "") set popt = -p"$plist"
+	if ("$glist" != "") set gopt = -g"$glist"
+
+endif
+
+if ($abort) goto end
+# Build options string
+#
+
+if ($eflag == "y") set opt = e$opt
+if ($fflag == "y") set opt = f$opt
+if ($lflag == "y") set opt = l$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== PS COMMAND EXECUTING ===" 
+echo ps $opt $nopt "$topt" "$popt" "$uopt" "$gopt"
+ps $opt $nopt $topt $popt $uopt $gopt|\
+pg -cp"Output from PS is being piped through pg: "
+
+end:
+unset *opt *filename *list 

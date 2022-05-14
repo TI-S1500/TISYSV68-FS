@@ -1,0 +1,41 @@
+#	monthly system backup -- initiated by cron
+#-----------------------------------------------------------------------------
+# COPYRIGHT (c) 1986   TEXAS INSTRUMENTS INCORPORATED   ALL RIGHTS RESERVED
+#-----------------------------------------------------------------------------
+#
+#			 = "@(#)monthly.usr	1.3  86/04/29 " ;
+#
+#-----------------------------------------------------------------------------
+#
+
+path=/bin:/etc:/usr/bin
+incl=/etc/backups/mwd.usr.incl
+excl=/etc/backups/mwd.usr.excl
+toc=/etc/backups/mo.usr.toc
+out=/dev/rqt/0h
+
+
+#
+#	This portion  will search the files mentioned in the "include" file
+#		for files/directories that meet the selection criteria.
+#	For the monthly backup, the criteria is that the file exists.
+#	The files that meet the selection criteria are written to file $toc.
+
+rm -f $toc
+
+while 	read file
+do	find   $file  -depth  -print    >>$toc
+done    <  $incl
+
+#
+#	Delete files from the list of files to be
+#	backed up.  The files to be deleted are read from $excl.
+#	File $toc contains  the raw list of files to backup.
+#	The results are left in the same file.
+
+fgrep -v  -f$excl  $toc   >${toc}xx
+mv ${toc}xx $toc
+
+
+				#####   NOW, MAKE THE BACKUP TAPE
+cpio -ocB     <$toc   >$out

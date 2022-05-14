@@ -1,0 +1,37 @@
+# cshf	tail -- prints the last part of a file
+#	@(#)TAIL.sh	1.4 88/01/14
+#
+onintr end
+
+prompt "^TAIL -- DELIVERS THE LAST PART OF A FILE"\
+	"^Input File Name:" _input_file acnm $_input_file\
+	"^Continuous Update:" fflag yesno n\
+	"^Copying Distance:" num integer 10\
+	"^From Beginning or End of Input(b,e):" action\
+	"element(B,b=b,E,e=e)" b\
+	"^*Counts of Blocks, Char, Lines(b,c,l):" units\
+	"element(B,b=b,C,c=c,L,l=l)" c\
+	"^*Listing Access Name:" lname acnm $lname\
+	"^#$*"
+
+if ($abort) goto end
+if ($fflag == "y" ) set opt = f$opt
+if ($units == "b" ) set opt = b$opt
+if ($units == "c" ) set opt = c$opt
+if ($units == "l" ) set opt = l$opt
+if ($num != ""    ) set opt = $num$opt
+if ($action == "b") set opt = "+"$opt
+if ($action == "e") set opt = "-"$opt
+
+if ($abort) goto end
+echo "=== TAIL COMMAND EXECUTING ==="
+if ($lname == "" ) then
+   echo tail $opt $_input_file
+   tail $opt $_input_file
+else
+   echo tail $opt $_input_file ">" $lname
+   tail $opt $_input_file > $lname
+endif
+#clean up time
+end:
+unset lname *flag *opt num action units

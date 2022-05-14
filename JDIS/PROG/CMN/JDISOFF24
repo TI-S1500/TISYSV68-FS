@@ -1,0 +1,32 @@
+:
+echo "\nThis will disable the modem for dial in support."
+
+su sys000 -c 'line_speed tty00 off' > /dev/null
+su sys000 -c "kill -9 `ps -t 00 | awk 'NR > 1 {print $1}'`"
+
+loop=0
+while (test "$loop" -lt "9")
+do
+	sleep 5
+	lines=`ps -t 00 | wc -l`
+	if (test $lines = "1")
+	then
+		break
+	fi
+	loop=`expr $loop + 1`
+done
+if (test "$loop" = "9")
+then
+	echo "\nJDISOFF: Error while disabling the line.\n"
+	exit 1
+fi
+
+su sys000 -c 'line_config tty00 unknown' > /dev/null
+if (test $? != 0)
+then
+	exit 1
+fi
+
+echo "\nReturn your A/B box to the appropriate position."
+echo "\nProcess Complete.\n"
+exit 0

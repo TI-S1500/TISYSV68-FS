@@ -1,0 +1,62 @@
+FE_SAVESCREEN(3T)                               FE_SAVESCREEN(3T)
+
+NAME
+     FE_savescreen - Saves field edit screen image
+
+SYNOPSIS
+     #include <vdtrdwrt.h>
+
+     extern int errno;
+     int status, fd;
+     status = FE_savescreen(fd);
+
+DESCRIPTION
+     The FE_savescreen function causes field edit to save the
+     screen image.  Subsequent read and write requests are not
+     processed through field edit until an FE_restorescreen(3T)
+     call is issued.  If the no_raw_writes optimization is on,
+     the terminal is restored to cooked mode (the opost flag is
+     set) in order to properly process UNIX-mode write
+     requests.   The fd parameter is the TI System V file
+     descriptor used in the current field edit session.  The
+     status and errno parameters return error information.
+
+     Use the FE_savescreen function in conjunction with
+     FE_restorescreen(3T) to implement help screens and similar
+     tasks.  An application can call FE_savescreen, issue any
+     number of read or write requests using the desired terminal
+     access method, and then issue the FE_restorescreen call.
+     The terminal screen is restored to the same state it was in
+     prior to the FE_savescreen call.
+
+     Only one screen image per terminal can be saved at any one
+     time.  If one FE_savescreen call has been issued for a
+     terminal and an FE_restorescreen call has not been issued,
+     subsequent FE_savescreen calls have no effect and return no
+     error.  If multiple screen images must be saved (for nested
+     help screens, for example), you must use
+     FE_exportscreen(3T).
+
+RETURN VALUES
+     The function can return the following values in status:
+
+      0 - No errors.
+     -1 - Error.  The errno variable contains one of the
+     following error codes:
+          EFE_BADFD - An invalid file descriptor was used; that
+          is, a file descriptor different from the file
+          descriptor used in the FE_open call.
+          EFE_NOIMAGE - Field edit is not keeping a screen image
+          for this terminal.
+          See the /usr/include/sys/errno.h file for other system
+          error codes.
+
+SEE ALSO
+     FE_abort(3T), FE_close(3T), FE_exportscreen(3T),
+     FE_flush(3T), FE_getparm(3T), FE_importscreen(3T),
+     FE_open(3T), FE_printscreen(3T), FE_putchar(3T),
+     FE_read(3T), FE_restorescreen(3T), FE_setvbits(3T),
+     FE_write(3T), fecap(4), vdtrdwrt.h(4).
+     ``Terminal Input/Output'' in TI System V Programmer's Guide.
+
+

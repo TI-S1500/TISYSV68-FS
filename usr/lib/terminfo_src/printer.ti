@@ -1,0 +1,835 @@
+#
+# <<The following should be updated manually with each patch update.>>
+# @(#)printer.ti version 3.3.004"
+#
+# printer specific terminfo fields
+#
+# boolean flags:
+# "xhpa"	Only positive motion for hpa/mhpa caps
+# "crxm"	Using cr turns off micro mode
+# "daisy"	Printer needs operator to change character set
+# "xvpa"	Only positive motion for vpa/mvpa caps
+# "sam"		Printing in last column causes cr
+# "cpix"	Changing char. pitch changes resolution
+# "lpix"	Changing line pitch changes resolution
+#
+#
+# numeric options
+#
+# "bufsz"	Number of bytes buffered before printing
+# "spinv"	Spacing of pins vertically in pins per inch
+# "spinh"	Spacing of dots horizontally in dots per inch
+# "maddr"	Maximum value in micro_..._address
+# "mjump"	Maximum value in parm_..._micro
+# "mcs"		Character step size when in micro mode
+# "mls"		Line step size when in micro mode
+# "npins"	Number of pins in print-head
+# "orc"		Horizontal resolution in units per character
+# "orl"		Vertical resolution in units per line
+# "orhi"	Horizontal resolution in units per inch
+# "orvi"	Vertical resolution in units per inch
+# "cps"		Print rate in characters per second
+# "widcs"	Character step size when in double wide mode
+#
+# string settings
+#
+# "cpi"		Change no. characters per inch
+# "lpi"		Change no. lines per inch
+# "chr"		Change horizontal resolution
+# "cvr"		Change vertical resolution
+# "defc"	Define a character in a character set
+# "swidm"	Enable double wide printing
+# "sdrfq"	Set draft quality print
+# "sitm"	Enable italics
+# "slm"		Enable leftward carriage motion
+# "smicm"	Enable micro motion capabilities
+# "snlq"	Set near-letter quality print
+# "snrmq"	Set normal quality print
+# "sshm"	Enable shadow printing
+# "ssubm"	Enable subscript printing
+# "ssupm"	Enable superscript printing
+# "sum"		Enable upward carriage motion
+# "rwidm"	Disable double wide printing
+# "ritm"	Disable italics
+# "rlm"		Enable rightward (normal) carriage motion
+# "rmicm"	Disable micro motion capabilities
+# "rshm"	Disable shadow printing
+# "rsubm"	Disable subscript printing
+# "rsupm"	Disable superscript printing
+# "rum"		Enable downward (normal) carriage motion
+# "mhpa"	Like column_address for micro adjustment
+# "mcud1"	Like cursor_down for micro adjustment
+# "mcub1"	Like cursor_left for micro adjustment
+# "mcuf1"	Like cursor_right for micro adjustment
+# "mvpa"	Like row_address for micro adjustment
+# "mcuu1"	Like cursor_up for micro adjustment
+# "porder"	Matches software bits to print-head pins
+# "mcud"	Like parm_down_cursor for micro adjust.
+# "mcub"	Like parm_left_cursor for micro adjust.
+# "mcuf"	Like parm_right_cursor for micro adjust.
+# "mcuu"	Like parm_up_cursor for micro adjust.
+# "scs"		Select character set
+# "smgb"	Set soft bottom margin at current line
+# "smgbp"	Set soft bottom margin
+# "smglp"	Set soft left margin
+# "smgrp"	Set soft right margin
+# "smgt"	Set soft top margin at current line
+# "smgtp"	Set soft top margin
+# "sbim"	Start printing bit image graphics
+# "scsd"	Start definition of a character set
+# "rbim"	End printing bit image graphics
+# "rcsd"	End definition of a character set
+# "subcs"	List of ``subscript-able'' characters
+# "supcs"	List of ``superscript-able'' characters
+# "docr"	Printing any of these chars causes cr
+# "zerom"	No motion for the subsequent character
+# "csnm"	List of character set names
+
+#------------------------------------------------------------------------------
+#
+#   PRINTER NAME(S)
+# 	unknown
+#
+#   INITIALIZATION:
+#	none
+#
+#   PRINTER CHARACTERISTICS:
+#	automatic right margin, generic line type, 80 columns, ASCII cr,
+#	ASCII lf
+#
+#------------------------------------------------------------------------------
+unknown,
+	am, gn,
+	cols#80,
+	cr=\r, cud1=\n,
+
+#------------------------------------------------------------------------------
+#
+#   TI850-GENERIC
+#
+#   PRINTER NAME(S)
+# 	ti830-855dp
+#	ti835-855dp
+#	ti850
+#	ti855dp
+#	ti860
+#	ti865dp
+#	ti880-at
+#	ti8930-855dp
+#	ti2015-855dp
+#
+#   GENERIC INITIALIZATION:
+#	software reset, 66 lines/page, no compression, draft mode, no shadow,
+#	no double-strike, 6 lines/inch, 10 char/inch, no double-wide
+#
+#   GENERIC PRINTER CHARACTERISTICS:
+#	80 col/line, 66 lines/page, automatic right margin
+#	cursor-down-1=LF, cursor-right-1=space
+#	form-feed=FF, carriage-return=CR, horizontal-tab=HT
+#	escape sequences provided to set:
+#		quality (draft/normal/letter),
+#		wide mode, shadow mode, standout mode, subscript, superscript,
+#		characters/inch (10/12/17),
+#		lines/inch (6/8/10)
+#	non-standard escape sequence to set:
+#		lines/page (1-255): u9
+#	1 horiz resolution unit/char, 10 horiz resolution units/inch
+#	1 vert resolution unit/line, 6 vert resolution units/inch
+#
+#   SPECIFIC PRINTER INFORMATION:
+#
+# 	ti830-855dp
+#		initialize margins at columns 1 and 80,
+#		buffer-size=4096
+#
+#	ti835-855dp
+#		initialize margins at columns 1 and 132,
+#		132 columns/page,
+#		buffer-size=4096
+#		
+#	ti850
+#		initialize margins at columns 1 and 80,
+#		initialize paper-out sensor enabled,
+#		150 characters/second,
+#		buffer-size=256
+#		
+#	ti855dp
+#		initialize margins at columns 1 and 80,
+#		initialize bidirectional printing enable,
+#		initialize character set 0,
+#		150 characters/second,
+#		buffer-size=4096,
+#		character set names (0-3),
+#		escape sequences to set character set (0-3),
+#		escape sequences to set vertical resolution
+#			- 216 units/inch (1-255)
+#
+#	ti860
+#		initialize margins at columns 1 and 132,
+#		132 columns/page,
+#		buffer-size=256
+#		
+#	ti865dp
+#		initialize margins at columns 1 and 132,
+#		132 columns/page,
+#		buffer-size=4096
+#		
+#	ti880-at
+#		initialize select TI-XL mode,
+#		initialize margins at columns 1 and 132,
+#		132 columns/page,
+#		buffer-size=2048,
+#		escape sequences to set underline mode
+#		
+#	ti8930
+#		initialize select TI 855,
+#		initialize margins at columns 1 and 132,
+#		132 columns/page,
+#		buffer-size=4096
+#
+#	ti2015-855dp
+#		initialize select TI 855 DP,
+#		initialize margins at columns 1 and 80,
+#		63 lines/page,
+#		alternate escape seq for select upper/lower paper tray
+#		buffer-size=4096
+#
+#------------------------------------------------------------------------------
+ti850-generic,
+	is1=\E@,
+	is2=\Ey\E2\ECB\Ed\EQ\EF\EH\ET,
+	cols#80,lines#66,
+	cud1=\012,cuf1=\040,ff=\014,cr=\015,ht=\011,
+	am,
+	sdrfq=\Ed,snrmq=\Ed,snlq=\Ee,
+	sshm=\EE,rshm=\EF, smso=\EG,rmso=\EH,
+	ssubm=\Ev,rsubm=\E^, ssupm=\E^,rsupm=\Ev,
+	u9=%?%p1%{0}%>%p1%{128}%<%A%t\EC%p1%c%;,
+	cpi=%?%p1%{10}%=%t\Ey
+	    %e%p1%{12}%=%t\Ez
+	    %e%p1%{17}%=%t\EP%;,
+	lpi=%?%p1%{6}%=%t\E2
+	    %e%p1%{8}%=%t\E0
+	    %e%p1%{10}%=%t\E1%;,
+	orc#1,orhi#10,
+	orl#1,orvi#6,
+
+ti830-855dp|Texas Instruments 830 Printer TI 855DP emulation,
+	cpi=%?%p1%{10}%=%t\Ey
+	    %e%p1%{12}%=%t\Ez
+	    %e%p1%{17}%=%t\EP
+	    %e%p1%{20}%=%t\Ez\EP%;,
+	bufsz#4096,
+	swidm=\ES,rwidm=\ET,
+	use=ti850-generic,
+
+ti835-855dp|Texas Instruments 835 Printer TI 855DP emulation,
+	cols#132,
+	use=ti830-855dp,
+
+ti850|Texas Instruments 850 Printer,
+	is2=\E2\ECB\Ed\EQ\EF\EH\ET,
+	is3=\E8\E9,
+	smgrp=%?%p1%{0}%>%p1%{255}%<%A%t\Em\001%p1%c%;,
+	bufsz#256,cps#150,
+	use=ti850-generic,
+
+ti855dp|Texas Instruments 855 Printer in DP mode,
+	bufsz#4096,cps#150,
+	is3=\Eb\Ef\200,
+	swidm=\ES,rwidm=\ET,
+	csnm=%?%p1%{0}%=%tfm0
+	     %e%p1%{1}%=%tfm1
+	     %e%p1%{2}%=%tfm2
+	     %e%p1%{3}%=%tfm3%;,
+	scs=%?%p1%{0}%=%t\Ef\200
+	    %e%p1%{1}%=%t\Ef\001
+	    %e%p1%{2}%=%t\Ef\002
+	    %e%p1%{3}%=%t\Ef\003%;,
+	orvi#216,
+	orl#36,
+	cvr=%?%p1%{0}%>%p1%{256}%<%A%t\E3%p1%c%;,
+	use=ti850-generic,
+
+ti860|Texas Instruments 860 Printer,
+	bufsz#256,
+	cols#132,
+	swidm=\ES,rwidm=\ET,
+	use=ti850-generic,
+
+ti865dp|Texas Instruments 865 Printer in DP mode,
+	bufsz#256,
+	cols#132,
+	swidm=\ES,rwidm=\ET,
+	use=ti850-generic,
+
+ti880-at|Texas Instruments 880 AT Printer,
+	bufsz#2048,
+	is1=\E\E?\0\Eb,
+	smul=\Ei,rmul=\Ej,
+	swidm=\ES,rwidm=\ET,
+	cols#132,
+	use=ti850-generic,
+
+ti8930-855dp|Texas Instruments 8930 Printer TI 855DP emulation,
+	bufsz#4096,
+	is1=\E\020ETI855\003\E@,
+	cols#132,
+	swidm=\ES,rwidm=\ET,
+	use=ti850-generic,
+
+ti2015-855dp|Texas Instruments 2015 Printer in 855dp Mode,
+	bufsz#4096,
+	is1=\E\0203,
+	lines#63,
+	swidm=\ES,rwidm=\ET,
+	u1=\E\020T1,u2=\E\020T2,
+	use=ti850-generic,
+
+#------------------------------------------------------------------------------
+#
+#   TIWP-GENERIC
+#
+#   PRINTER NAME(S)
+#	ti830
+#	ti830-855wp
+#	ti835
+#	ti835-855wp
+#	ti855
+#	ti855wp
+#	ti865
+#	ti865wp
+#	ti2015-855wp
+#	ti8930-855wp
+#
+#   GENERIC INITIALIZATION:
+#	software reset, 66 lines/page, 6 lines/inch, 10 char/inch,
+#	no compress, no shadow, no double-strike, no double-wide,
+#	paper-out enabled, bidirectional print enabled
+#
+#   GENERIC PRINTER CHARACTERISTICS:
+#	80 col/line, 66 lines/page, automatic right margin
+#	cursor-down-1=LF, cursor-right-1=space
+#	form-feed=FF, carriage-return=CR, horizontal-tab=HT
+#	escape sequences provided to set:
+#		quality (draft/normal/letter),
+#		underline mode, wide mode, shadow mode, standout mode,
+#		subscript, superscript,
+#		set horizontal tab,
+#		set top margin,	set bottom margin,
+#		set left margin, set right margin,
+#		characters/inch (10/12/17),
+#		lines/inch (6/8),
+#		horizontal resolution - 120 units/inch (1-255),
+#		vertical resolution - 48 units/inch (1-85)
+#		character set (0-3),
+#	non-standard escape sequence to set:
+#		lines/page (1-127): u9
+#
+#   SPECIFIC PRINTER INFORMATION:
+#
+#	ti830
+# 	ti830-855wp
+#	ti855
+#	ti855wp
+#		150 char/sec,
+#		buffer-size=4096
+#
+#	ti835
+#	ti835-855wp
+#	ti865
+#	ti865wp
+#		132 col/line,
+#		150 char/sec,
+#		buffer-size=4096
+#		
+#	ti8930-855wp
+#		initialize select TO 855 WP mode,
+#		132 col/line,
+#		150 char/sec,
+#		buffer-size=4096
+#		
+#	ti2015-855wp
+#		initialize select TO 855 WP mode,
+#		63 lines/page,
+#		150 char/sec,
+#		alternate escape seq for select upper/lower paper tray
+#		buffer-size=4096
+#
+#------------------------------------------------------------------------------
+tiwp-generic,
+	is1=\E@\Ey\E2\E\015P,
+	is2=\EF66\Ed\022\ER\EM\Et\E<,
+	cols#80,lines#66,
+	cud1=\012,cuf1=\040,ff=\014,cr=\015,ht=\011,
+	am,
+	sdrfq=\Ed,snrmq=\Ed,snlq=\Ee,
+	smul=\EI,rmul=\EJ, sshm=\EQ,rshm=\ER,
+	smso=\EK3,rmso=\EM, ssubm=\EU,rsubm=\ED, ssupm=\ED,rsupm=\EU,
+	hts=\E1,
+	u9=%?%p1%{0}%>%p1%{100}%<%A%t\EF%p1%02d
+	   %e%p1%{99}%>%p1%{110}%<%A%t\EF\012%p1%{100}%-%d
+	   %e%p1%{109}%>%p1%{120}%<%A%t\EF\013%p1%{110}%-%d
+	   %e%p1%{119}%>%p1%{128}%<%A%t\EF\014%p1%{120}%-%d%;,
+	smgt=\E+,smgb=\E-,smgl=\E9,smgr=\E0,
+	cpi=%?%p1%{10}%=%t\Ey
+	    %e%p1%{12}%=%t\Ez
+	    %e%p1%{17}%=%t\017%;,
+	lpi=%?%p1%{6}%=%t\E\036\011
+	    %e%p1%{8}%=%t\E\036\007%;,
+	orc#12,orhi#120,
+	chr=%?%p1%{0}%>%p1%{256}%<%A%t\E\037%p1%{1}%+%c%;,
+	orl#8,orvi#48,
+	cvr=%?%p1%{0}%>%p1%{86}%<%A%t\E\036%p1%{1}%+%c%;,
+	csnm=%?%p1%{0}%=%tfm0
+	     %e%p1%{1}%=%tfm1
+	     %e%p1%{2}%=%tfm2
+	     %e%p1%{3}%=%tfm3%;,
+	scs=%?%p1%{0}%=%t\Ef\200
+	    %e%p1%{1}%=%t\Ef\001
+	    %e%p1%{2}%=%t\Ef\002
+	    %e%p1%{3}%=%t\Ef\003%;,
+
+ti830|Texas Instruments 830 Printer TI 855WP emulation,
+	cpi=%?%p1%{10}%=%t\Ey
+	    %e%p1%{12}%=%t\Ez
+	    %e%p1%{17}%=%t\017
+	    %e%p1%{20}%=%t\Ez\017%;,
+	bufsz#4096,cps#150,
+	use=tiwp-generic,
+
+ti830-855wp|Texas Instruments 830 Printer TI 855WP emulation,
+	use=ti830,
+
+ti835|Texas Instruments 835 Printer TI 855WP emulation,
+	cols#132,
+	use=ti830,
+
+ti835-855wp|Texas Instruments 835 Printer TI 855WP emulation,
+	use=ti835,
+
+ti855|Texas Instruments 855 Printer,
+	bufsz#4096,cps#150,
+	is3=\Ef\200,
+	use=tiwp-generic,
+
+ti855wp|Texas Instruments 855 Printer in WP mode,
+	use=ti855,
+
+ti865|Texas Instruments 865 Printer,
+	bufsz#4096,cps#150,
+	cols#132,
+	use=tiwp-generic,
+
+ti865wp|Texas Instruments 865 Printer in WP mode,
+	use=ti865,
+
+ti2015-855wp|Texas Instruments 2015 Printer in 855wp Mode,
+	bufsz#4096,cps#150,
+	is1=\E\0202,
+	lines#63,
+	u1=\E\020T1,u2=\E\020T2,
+	use=tiwp-generic,
+
+ti8930-855wp| Texas Instruments 8930 Printer TI 855WP emulation,
+	bufsz#4096,cps#150,
+	is1=\E\020ETI855\003\E@\Ey\E2\E\015P,
+	cols#132,
+	use=tiwp-generic,
+#------------------------------------------------------------------------------
+#
+#   TI880-GENERIC
+#
+#   PRINTER NAME(S)
+#	ti880
+#	ti885
+#	ti8930
+#	ti8930-wp
+#
+#   GENERIC INITIALIZATION:
+#	software reset, no compression, draft mode, no double-strike,
+#	no double-wide, 6 lines/inch, 10 char/inch, bidirectional print enabled
+#	margins at columns 1 and 123.
+#
+#   GENERIC PRINTER CHARACTERISTICS:
+#	123 columns/line, 66 lines/page, automatic right margin
+#	cursor-down-1=LF, cursor-right-1=space
+#	form-feed=FF, carriage-return=CR, horizontal-tab=HT, bell=BEL,
+#	300 char/sec,
+#	escape sequences provided to set:
+#		quality (draft/normal/letter),
+#		wide mode, horizontal tab,
+#		set top margin (parm), set bottom margin (parm),
+#		set left margin (parm), set right margin (parm),
+#		characters/inch (5,8,10/12/17),
+#		lines/inch (3/4/6/8)
+#	non-standard escape sequence to set:
+#		lines/page (1-113): u9
+#	1 horiz resolution unit/char, 10 horiz resolution units/inch
+#	1 vert resolution unit/line, 6 vert resolution units/inch
+#
+#   SPECIFIC PRINTER INFORMATION:
+#
+# 	ti880
+#		buffer-size=2048
+#
+# 	ti885
+#		80 columns/line,
+#		init margins at columns 1 and 80
+#
+#	ti8930
+#	ti8930-880
+#		initialize select TI 880 mode,
+#		buffer-size=2048
+#
+#------------------------------------------------------------------------------
+ti880-generic,
+	is1=\E@,
+	is2=\EPP\E\\\EPN\E\\\Eb,
+	is3=\E[1;132s,
+	cols#132,lines#66,
+	cud1=\012,cuf1=\040,ff=\014,cr=\015,ht=\011,bel=\007,
+	am,
+	sdrfq=\EPP\E\\,snrmq=\EPP\E\\,snlq=\EPO\E\\,
+	swidm=\EPM\E\\,rwidm=\EPN\E\\,
+	hts=\EH,
+	u9=%?%p1%{0}%>%p1%{113}%<%A%t\E[%p1%dt%;,
+	smgtp=\E[%p1%{1}%+%dr, smgbp=\E[;%p1%{1}%+%dr,
+	smglp=\E[%p1%{1}%+%ds, smgrp=\E[;%p1%{1}%+%ds,
+	cpi=%?%p1%{5}%=%t\EPI\E\\
+	    %e%p1%{8}%=%t\EPJ\E\\
+	    %e%p1%{10}%=%t\E6
+	    %e%p1%{12}%=%t\EPK\E\\
+	    %e%p1%{17}%=%t\E7%;,
+	lpi=%?%p1%{3}%=%t\EPB\E\\
+	    %e%p1%{4}%=%t\EPG\E\\
+	    %e%p1%{6}%=%t\E4
+	    %e%p1%{8}%=%t\E5%;,
+	orc#1, orhi#10,
+	orl#1, orvi#6,
+
+ti880|Texas Instruments 880 Printer,
+	bufsz#2048,cps#300,
+	use=ti880-generic,
+
+ti885|Texas Instruments 885 Printer,
+	bufsz#2048,cps#300,
+	cols#80,
+	is3=\E[1;80s,
+	use=ti880-generic,
+
+ti8930|Texas Instruments 8930 Printer TI 880 emulation,
+	is1=\E\020ETI880\003\EPL0\E\\,
+	bufsz#2048,cps#300,
+	use=ti880-generic,
+
+ti8930-880|Texas Instruments 8930 Printer TI 880 emulation,
+	is1=\E\020ETI880\003\EPL0\E\\,
+	bufsz#2048,cps#300,
+	use=ti880-generic,
+
+#------------------------------------------------------------------------------
+#
+#   TI875-GENERIC
+#
+#   PRINTER NAME(S)
+#	ti875
+#	ti875dp
+#	ti875lq
+#	ti877
+#	ti877dp
+#	ti877lq
+#
+#   GENERIC INITIALIZATION:
+#	software reset
+#
+#   GENERIC PRINTER CHARACTERISTICS:
+#	80 columns/line, 66 lines/page
+#	cursor-down-1=LF form-feed=FF, carriage-return=CR, bell=BEL
+#	escape sequences provided to set:
+#		quality (draft/normal/letter),
+#		wide mode
+#		character set (0-8)
+#		characters/inch (10/12/17/P),
+#		lines/inch (6/8)
+#	1 horiz resolution unit/char, 10 horiz resolution units/inch
+#	30 vert resolution unit/line, 180 vert resolution units/inch
+#
+#   SPECIFIC PRINTER INFORMATION:
+#
+# 	ti875
+#		240 characters/second,
+#		buffer-size=7168
+#
+# 	ti875dp
+#		initialize select dp mode,
+#		200 characters/second,
+#		buffer-size=7168
+#
+# 	ti875wp
+#		initialize select wp mode,
+#		100 characters/second,
+#		buffer-size=7168
+#
+# 	ti877
+#		132 columns/page,
+#		240 characters/second,
+#		buffer-size=7168
+#
+# 	ti877dp
+#		132 columns/page,
+#		initialize select dp mode,
+#		200 characters/second,
+#		buffer-size=7168
+#
+# 	ti877wp
+#		132 columns/page,
+#		initialize select wp mode,
+#		100 characters/second,
+#		buffer-size=7168
+#
+#------------------------------------------------------------------------------
+ti875-generic,
+	is1=\E@\EP,
+	cols#80,lines#66,
+	cud1=\012,cuf1=\040,ff=\014,cr=\015,bel=\007,
+	sdrfq=\Ex0,snrmq=\Ex0,snlq=\Ex1,
+	swidm=\E!\040,rwidm=\E!\200, sshm=\EE,rshm=\EF, sitm=\E4,ritm=\E5,
+	ssubm=\ES1,rsubm=\ET, ssupm=\ES0,rsupm=\ET,
+	cpi=%?%p1%{10}%=%t\EP
+	    %e%p1%{12}%=%t\EM
+	    %e%p1%{17}%=%t\E\017
+	    %e%p1%{P}%=%t\Ep1%;,
+	lpi=%?%p1%{6}%=%t\E2
+	    %e%p1%{8}%=%t\E0%;,
+	orl#30,
+	orvi#180,
+	csnm=%?%p1%{0}%=%p1%{0}%>%O%p1%{9}%<%A%tcs%p1%d%;,
+	scs=%?%p1%{0}%=%t\ER\200
+	    %e%p1%{0}%>%p1%{9}%<%A%t\ER%p1%c%;,
+	orc#1,
+	orhi#10,
+
+ti875|Texas Instruments 875 printer,
+	bufsz#7168,cps#240,
+	use=ti875-generic,
+
+ti875dp|Texas Instruments 875 in Draft Mode,
+	is2=\Ex0,
+	bufsz#7168,cps#200,
+	use=ti875-generic,
+
+ti875lq|Texas Instruments 875 in LQ Mode,
+	is2=\Ex1,
+	bufsz#7168,cps#100,
+	use=ti875-generic,
+
+ti877|Texas Instruments 877 printer,
+	cols#132,
+	bufsz#7168,cps#240,
+	use=ti875-generic,
+
+ti877dp|Texas Instruments 877 in Draft Mode,
+	cols#132,
+	is2=\Ex0,
+	bufsz#7168,cps#200,
+	use=ti875-generic,
+
+ti877lq|Texas Instruments 877 in LQ Mode,
+	cps#100,
+	is2=\Ex1,
+	bufsz#7168,cps#100,
+	use=ti875-generic,
+
+#------------------------------------------------------------------------------
+#
+#   HPJET-GENERIC
+#
+#   PRINTER NAME(S)
+#	ti210-hpjet
+#	ti2015-hpjet
+#	ti2108-hpjet
+#	ti2115-hpjet
+#
+#   GENERIC INITIALIZATION:
+#	software reset, 63 lines/page,
+#	left margin position 1, right margin position 80,
+#	6 lines/inch, 10 char/inch
+#	select char set 0
+#
+#   GENERIC PRINTER CHARACTERISTICS:
+#	80 columns/page, 63 lines/page
+#	cursor-down-1=LF, cursor-right-1=space
+#	form-feed=FF, carriage-return=CR
+#	select portrait mode
+#	1 horiz resolution unit/char, 10 horiz resolution units/inch
+#	8 vert resolution unit/line, 48 vert resolution units/inch
+#	escape sequences provided to set:
+#		underline mode, shadow mode, standout mode, italics mode,
+#		set top margin (parameter),
+#		set left margin (parameter), set right margin (parameter),
+#		characters/inch (10/12/17/P),
+#		lines/inch (1-4/6/8/12/16/24),
+#		vertical resolution - 48 units/inch,
+#		character set (0-8)
+#	non-standard escape sequence to set:
+#		select upper tray: u1
+#		select lower tray: u2
+#		landscape mode: u4
+#		job offset: u5
+#		lines/page (1-255): u9
+#
+#   SPECIFIC PRINTER INFORMATION:
+#
+#	ti2108-hpjet
+#	ti2115-hpjet
+#		<none>
+#
+# 	ti210-hpjet
+#		initialize select HP LaserJet mode
+#		exclude set page size from is2 and u9.
+#		allow 24 lpi
+#		only 2 character sets.
+#
+#	ti2015-hpjet
+#		initialize select HP LaserJet mode
+#		alternate escape seq for select upper/lower paper tray
+#
+#------------------------------------------------------------------------------
+hpjet-generic,
+	is1=\EE,
+	is2=\E(s10H\E&l6D\E&l63P\E&a1l80M\E&l0O\E(s0T,
+	cols#80,
+	cud1=\012,cuf1=\040,ff=\014,cr=\015,
+	smul=\E&dD,rmul=\E&d@, sshm=\E(s\055B,rshm=\Es0B,
+	smso=\E(s3B,rmso=\E(s0B, sitm=\E(s1S,ritm=\E(s0S,
+	u9=\E&l%p1%dP,
+	smgtp=\E&l%p1%dE, smglp=\E&a%p1%dL,smgrp=\E&a%p1%dM,
+	cpi=%?%p1%{10}%=%t\E(s10H
+	    %e%p1%{12}%=%t\E(s12H
+	    %e%p1%{17}%=%t\E(s16.7H
+	    %e%p1%{P}%=%t\E(s1P%;,
+	lpi=%?%p1%{0}%>%p1%{5}%<%A%t\E&l%p1%dD
+	    %e%p1%{6}%=%t\E&l6D
+	    %e%p1%{8}%=%t\E&l8D
+	    %e%p1%{12}%=%t\E&l12D
+	    %e%p1%{16}%=%t\E&l16D
+	    %e%p1%{24}%=%t\E&l24D%;,
+	orl#8,orvi#48,
+	orc#1,orhi#10,
+	cvr=\E&l%p1%dC,
+	csnm=%?%p1%{0}%=%tLinePrinter
+	     %e%p1%{1}%=%tPica
+	     %e%p1%{2}%=%tElite
+	     %e%p1%{3}%=%tCourier
+	     %e%p1%{4}%=%tHelvetica
+	     %e%p1%{5}%=%tTimesRoman
+	     %e%p1%{6}%=%tGothic
+	     %e%p1%{7}%=%tScript
+	     %e%p1%{8}%=%tPrestige%;,
+	scs=%?%p1%{0}%=%p1%{0}%>%O%p1%{9}%<%A%t\E(s%p1%dT%;,
+	u1=\E&l1H,u2=\E&l4H, u4=\E&l1O, u5=\E&l1T,
+
+ti210-hpjet|Texas Instruments microLaser in HP LaserJet Mode,
+	is1=\E\0206\EE,
+	is2=\E(s10H\E&l6D\E&l0P\E&a1l80M\E&l0O\E(s0T,
+	lpi=%?%p1%{0}%>%p1%{5}%<%A%t\E&l%p1%dD
+	    %e%p1%{6}%=%t\E&l6D
+	    %e%p1%{8}%=%t\E&l8D
+	    %e%p1%{12}%=%t\E&l12D
+	    %e%p1%{16}%=%t\E&l16D
+	    %e%p1%{24}%=%t\E&l24D
+	    %e%p1%{48}%=%t\E&l48D%;,
+	csnm=%?%p1%{0}%=%tLinePrinter
+	     %e%p1%{1}%=%tCourier%;,
+	scs=%?%p1%{0}%=%t\E(s0T%e%p1%{1}%=%t\E(s3T%;,
+	use=hpjet-generic,
+
+ti2015-hpjet|Texas Instruments 2015 in HP LaserJet Mode,
+	is1=\E\0206,
+	u1=\E\020T1,u2=\E\020T2,
+	lines#63,
+	use=hpjet-generic,
+
+ti2108-hpjet|Texas Instruments 2108 in HP LaserJet Mode,
+	lines#63,
+	use=hpjet-generic,
+
+ti2115-hpjet|Texas Instruments 2115 in HP LaserJet Mode,
+	lines#63,
+	use=hpjet-generic,
+
+#------------------------------------------------------------------------------
+#
+#   TI810
+#
+#   PRINTER NAME(S)
+#	ti810
+#
+#   INITIALIZATION:
+#	6 lines/inch, 80 columns/page
+#
+#   PRINTER CHARACTERISTICS:
+#	132 columns/page, 66 lines/page, automatic right margin
+#	cursor-down-1=LF, cursor-right-1=space
+#	form-feed=FF, carriage-return=CR
+#	buffer size=132
+#	1 horiz resolution unit/char, 10 horiz resolution units/inch
+#	1 vert resolution unit/line, 6 vert resolution units/inch
+#	escape sequences provided to set:
+#		characters/inch (10/17)
+#		lines/inch (6/8)
+#		lines/page (4-112): u9
+#
+#------------------------------------------------------------------------------
+
+ti810|Texas Instruments 810 Printer without Line Buffer Option,
+	is2=\E6\E4\E2B,
+	cols#132,lines#66,
+	cud1=\012,cuf1=\040,ff=\014,cr=\015,
+	am,
+	cpi=%?%p1%{10}%=%t\E6
+	    %e%p1%{17}%=%t\E7%;,
+	lpi=%?%p1%{6}%=%t\E4
+	    %e%p1%{8}%=%t\E5%;,
+	u9=%?%p1%{3}%>%p1%{113}%<%A%t\E2%p1%c%;,
+	bufsz#132,
+	orc#1,orhi#10,
+	orl#1,orvi#6,
+
+#------------------------------------------------------------------------------
+#
+#   PRINTRONICS-GENERIC
+#
+#   PRINTER NAME(S)
+#	p300
+#	p600
+#
+#   INITIALIZATION:
+#	<none>
+#
+#   PRINTER CHARACTERISTICS:
+#	132 columns/line, 66 lines/page
+#	form-feed=FF, carriage-return=CR
+#	buffer size=132
+#	escape sequences provided to set:
+#		quality (draft),
+#		alternate char set
+#		characters/inch (15)
+#		lines/inch (8)
+#
+#------------------------------------------------------------------------------
+ptronics-gnrc,
+	cols#132,lines#66,
+	ff=\014,cr=\015,
+	sdrfq=\002,
+	smacs=\016,rmacs=\017,
+	cpi=%?%p1%{15}%=%t\001%;,
+	lpi=%?%p1%{8}%=%t\006%;,
+	bufsz#132,
+
+p300|Printronics P-300 Printer,
+	use=ptronics-gnrc,
+
+p600|Printronics P-600 Printer,
+	use=ptronics-gnrc,

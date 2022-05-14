@@ -1,0 +1,173 @@
+##################################################################
+#
+#  GOPOLL.scr
+#
+#      Release 8.2
+#        This is the GOHOME version of the original DPOLL.scr.
+#        All PUT statements (screen I/O) have been removed because
+#        GOHOME runs POLL in the background.
+#        14 Feb - Added wait 2 before filetransfers per CRG
+#
+#  Script variables:
+#   @RTNCODE   - the return code I will pass back to aspen
+#      0 - the call ended with no errors
+#      1 - operator aborted while waiting for a call
+#      2 - operator aborted during the first error-free session
+#      3 - operator aborted during the second error-free session
+#      4 - error occurred during the first error-free session
+#      5 - error occurred during the second error-free session
+#      9 - did not receive HOSTID.DAT and/or HOST.EFF files
+#   @ANSRC     - the return code from the modem script
+#      0 - successfully connected with the host
+#      1 - operator aborted while waiting for a connect
+#
+##################################################################
+# 10/23/95 - R96-1 - C.G.KOLWEY - ADD SET @LOGFILE = @LOGFILE
+##################################################################
+        display "******************************************************"
+        display "GOPOLL.scr starting"
+#
+        SET @LOGFILE = @LOGFILE
+        set @RTNCODE = "0"
+        SET @SCRLREG = "0"
+#-----------------------------------------------------------------
+#  Check to see if the Blast poll init script exists
+#  If yes, execute it
+#-----------------------------------------------------------------
+        if EXIST "/JDIS/PROG/COMM/DPOLLINT.scr"
+                CALL "/JDIS/PROG/COMM/DPOLLINT.scr"
+        end
+#-----------------------------------------------------------------
+#  Get the dealer answerback from the TRPASSWD.DAT file
+#-----------------------------------------------------------------
+        fopenr 1,"TRPASSWD.DAT"
+        fread  1,@REC
+        fclose 1
+        display "@REC: ",@REC
+        set @TRPASSWD = @REC
+        STRTRIM @TRPASSWD,11,18
+        display "TRPASSWD:  >>>",@TRPASSWD,"<<<"
+#-----------------------------------------------------------------
+#  Do CONNECT to wait for the host to call us
+#-----------------------------------------------------------------
+.WTCONN
+        CONNECT
+#
+#-----------------------------------------------------------------
+#  Ck to see if the operator aborted the session
+#   . @ANSRC = 0 connected ok
+#   . @ANSRC = 1 means operator aborted the session
+#-----------------------------------------------------------------
+#
+        display "connect return status: " @ANSRC
+        if @ANSRC = "0" goto .GOTCONN
+        display "Operator aborted the session.  rtn code:" @ANSRC
+# 
+        set @RTNCODE = "1"
+        goto .EXIT
+#-----------------------------------------------------------------
+#  Do the first eff_free transfer to send & receive the id files
+#-----------------------------------------------------------------
+.GOTCONN
+        display "First eff starting"
+        SET @LOGFILE = @LOGFILE
+#
+        wait 2 idle
+        FILETRANSFER
+        if @EFERROR NOT = "0" goto .EFF1ERR
+        FILE
+        TRPASSWD.DAT
+        FILE
+        EFF1.EFF
+        ESC
+        SET @LOGFILE = @LOGFILE
+        if @EFERROR = "0" goto .EFF1OK
+#-----------------------------------------------------------------
+#  An error occurred during the error-free session
+#-----------------------------------------------------------------
+.EFF1ERR
+        display "FIRST ERROR-FREE SESSION ENDED WITH ERROR - code " @EFERROR
+#  ck for operator cancel during the eff session
+        if @EFERROR = "-2"
+                display "Session cancelled by the operator"
+                set @RTNCODE = "2"
+                goto .DROP
+        end
+#  some other error occurred - go drop the line and leave
+        set @RTNCODE = "4"
+        goto .DROP
+#-----------------------------------------------------------------
+#  First error-free transfer completed without error
+#-----------------------------------------------------------------
+.EFF1OK
+        display "First eff complete"
+#-----------------------------------------------------------------
+#  Ck to make sure we got a HOSTID & HOSTEFF file
+#-----------------------------------------------------------------
+        if not exist HOSTID.DAT OR not exist HOST.EFF
+                set @RTNCODE = "9"
+                goto .DROP
+        end
+#
+        display "The host id file was received ok"
+        ltype "HOSTID.DAT"
+#-----------------------------------------------------------------
+#  Do the second err_free mode to send the actual data files
+#-----------------------------------------------------------------
+.EFF2
+        display "Starting error-free file transfer"
+        SET @LOGFILE = @LOGFILE
+#
+        wait 2 idle
+        FILETRANSFER
+        if @EFERROR NOT = "0" goto .EFF2ERR
+        FILE
+        TRPASSWD.DAT
+        FILE
+        EFF2.EFF
+        ESC
+        SET @LOGFILE = @LOGFILE
+        if @EFERROR = "0" goto .EFF2OK
+#-----------------------------------------------------------------
+#  An error occurred during the error-free session
+#-----------------------------------------------------------------
+.EFF2ERR
+   display "SECOND ERROR-FREE SESSION ENDED WITH ERROR - code " @EFERROR
+#  ck for operator cancel during the eff session
+        if @EFERROR = "-2"
+                display "Session cancelled by the operator"
+                set @RTNCODE = "3"
+                goto .DROP
+        end
+#  some other error occurred - drop the line and leave
+        set @RTNCODE = "5"
+        goto .DROP
+#-----------------------------------------------------------------
+#  Second error-free transfer completed without error
+#-----------------------------------------------------------------
+.EFF2OK
+        display "File transfer is complete"
+#-----------------------------------------------------------------
+#  Drop the modem connection
+#-----------------------------------------------------------------
+.DROP
+#
+        SET @LOGFILE = @LOGFILE
+        DISCONNECT
+        SET @LOGFILE = @LOGFILE
+        display "modem disconnect complete"
+#-----------------------------------------------------------------
+#  We exit blast here - RTNCODE must be set before coming here
+#-----------------------------------------------------------------
+.EXIT
+# send back the return code
+        fopena 1,"/JDIS/PROG/COMM/DPOLLSYN"
+        fwrite 1,"S AS BLASTRC " @RTNCODE
+        fwrite 1,"*****endfile******"
+        fclose 1
+#
+        display "Exiting blast"
+        display "Exit code = " @RTNCODE
+#
+        quit
+#

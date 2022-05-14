@@ -1,0 +1,15 @@
+IDTYPE=C
+export IDTYPE
+TERM=x1
+export TERM
+#
+# set preferred control characters
+stty erase '^H' intr '^C' kill '^U' quit '^\' eof '^D' echoe echok tab3
+stty -clocal
+#
+# set up search path
+PATH=:~/bin:/JDIS/PROG/CMN:/usr/bin:/bin:/etc:/util:/opt/sna/bin
+export PATH
+#
+cd /JDIS/PROG/CMN
+aspen

@@ -1,0 +1,36 @@
+GETUPSFLAGS(3T) 				  GETUPSFLAGS(3T)
+
+NAME
+     getupsflags - Queries the current state of the UPS device
+     driver
+
+SYNOPSIS
+     #include <sys/ups.h>
+
+     int getupsflags(ups)
+     struct UPS *ups;
+
+DESCRIPTION
+     getupsflags allows an application to query the state of the
+     UPS device driver. When successful, this function will fill
+     in the following structure:
+
+     struct UPS   {
+	    char  otemp_on;	   /* 1 = currently overtemp*/
+	    int   cpu_type;	   /* processor type flag*/
+	    char  got_irq;	   /* processor received IRQ3*/
+	    char  fw_on;	   /* forced write mode on*/
+	    char  otemp_shutdown;  /* treat OT as powerfail*/
+	    char  on_batteries;    /* currently on batteries*/
+	    int   gpio; 	   /* interrupt status register*/
+     };
+
+     The program must be linked with /usr/lib/libups.a.
+
+RETURN VALUE
+     getupsflags returns 0 upon successful completion with the
+     argument filled in with the device driver status
+     information, or -1 if an error occurred while accessing the
+     UPS device driver /dev/ups.
+
+

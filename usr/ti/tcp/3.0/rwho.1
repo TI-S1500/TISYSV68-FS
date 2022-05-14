@@ -1,0 +1,58 @@
+RWHO(1)                                                   RWHO(1)
+
+NAME
+     rwho - who is logged in on local network or network users 
+            logged in to the local machine
+
+SYNOPSIS
+     rwho [ -atl ]
+
+DESCRIPTION
+     Rwho lists users logged in on machines on the local network.
+     The format is similar to that of who(1).  Without options,
+     only network users who have typed in the last hour are listed.  
+     For each user listed, rwho displays the user name; the host 
+     name; and the date and time the user logged in.  If the user has 
+     not typed in the last minute, rwho also displays the user's idle 
+     time in hours and minutes.
+
+     Rwho understands the following option:
+
+          -a   List all users on active nodes (users idle for
+               more than an hour are listed).
+
+	  -l   List network users who are logged in to the local
+               machine and display the hostname of the machine they
+	       are logged in from (If the name is not known then the
+	       internet address will be displayed).
+
+          -t   List a trace of network (rlogin/telnet) connections
+               to the local machine and what machine they came from.
+               The time listed in the entry is the time the connection
+               was initiated.  The entries are not added to the accounting
+               file (/etc/rwtmp) until the connection is closed.  An
+               entry containing "logon attempt" denotes that an unsuccesful
+	       network login attempt was made. 
+
+     If information from a host is more than five minutes old,
+     the host is assumed to be down and its users are not listed.
+
+REQUIREMENTS
+     Each host to be listed must be running the rwhod(1M) server,
+     which broadcasts a status packet once every 1 - 3 minutes.
+     The local host must also be running this server to maintain
+     the /usr/spool/rwho/whod.* files.  Since broadcasts do not 
+     cross gateways, hosts on other networks will not be listed.
+
+FILES
+     /usr/spool/rwho/whod.*   information about other nodes
+     /etc/rutmp	              information about current network sessions
+     /etc/rwtmp	              information about past network sessions
+
+SEE ALSO
+     ruptime(1), rwhod(1M).
+
+WARNINGS
+     The /etc/rwtmp file is similar to the /etc/wtmp file in that it will
+     continue to grow and could potentially fill up your root file system.
+

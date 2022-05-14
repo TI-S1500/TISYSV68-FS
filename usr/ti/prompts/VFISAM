@@ -1,0 +1,38 @@
+# cshf	vfisam -- T-ISAM file verify/fix
+#	@(#)VFISAM	2.7 89/12/20
+#
+onintr end
+
+prompt "^VFISAM -- VERIFIES T-ISAM FILE CONSISTENCY AND FIXES ERRORS"\
+	"^T-ISAM Data File:"                    dfile  acnm   $dfile\
+	"^*T-ISAM Index File:"                  ifile  acnm   $ifile\
+	"^*T-ISAM Map File:"                    mfile  acnm   $mfile\
+	"^Verbose Output? (y/n):"               vflag  yesno  $bflag\
+	"^Do Thorough Key Verification? (y/n):" tflag  yesno  $tflag\
+	"^Fix Inconsistencies? (y/n):"          xflag  yesno  $xflag\
+	"^Recover Dead Space? (y/n):"           rflag  yesno  $rflag\
+	"^Compact File? (y/n):"                 cflag  yesno  $cflag\
+	"^#$*"
+
+if ($abort) goto end
+
+
+if ($mfile != "") then
+	set opt="f"${mfile}
+else
+	set opt=""
+endif
+
+if ($vflag == "y") set opt="v"$opt
+if ($tflag == "y") set opt="t"$opt
+if ($xflag == "y") set opt="x"$opt
+if ($rflag == "y") set opt="r"$opt
+if ($cflag == "y") set opt="c"$opt
+
+if ($opt != "") set opt="-"${opt}" "
+
+echo vfisam $opt$dfile $ifile
+vfisam $opt$dfile $ifile
+
+end:
+unset opt

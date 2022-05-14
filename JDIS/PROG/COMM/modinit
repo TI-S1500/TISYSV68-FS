@@ -1,0 +1,62 @@
+#	usage modinit -[e/d] ttyxx tmp.fil
+#
+#	This unix shell script takes its command line arguments and
+#	performs the following functions:
+#	
+#	1) first, determines if the device 'ttyxx' exists as a character dev.
+#		if not then a value of ENODEV (19) is returned.
+#	2) second, determines whether the device is going to be turned
+#		off or on by looking at the 1st argument.
+#	3) Third, makes a copy of /etc/inittab into the tmpfile specified
+#		as the 3rd argument. If there was an error in copying the
+#		file then a value of EPERM (1) is returned.
+#	4) Lastly, the tmp copy if the inittab file is edited to either
+#		change the 'respawn' to an 'off' (if disabling the line)
+#					or
+#		change the 'off' to an 'respawn' (if enabling the line)
+#		If there is an error while trying to edit the file then
+#		a value of ENOENT (2) is returned.
+#
+#
+#
+#
+OK=0		#	all went as planed, no errors
+EPERM=1		#	Don't have permission to create file 
+ENOENT=2	#	File dosen't exist to edit
+ENODEV=19	#	device either doesn't exist or not a character dev.
+#
+#
+EN_DIS_FLAG=$1	#	Enable/Disable flag
+TTY=$2		#	The 
+INITFILE=$3
+#
+
+if [ ! -c /dev/$TTY ]
+then
+	exit $ENODEV	
+fi
+
+if [ $1 = "-e" ]
+then
+	B="off"		#Note:  Berkeley uses c = 0
+	C="respawn"	#Note:  Berkeley uses c = 1
+else
+	C="off"		#Note:  Berkeley uses c = 0
+	B="respawn"	#Note:  Berkeley uses c = 1
+fi
+cp /etc/inittab /etc/inittab.blast >/dev/null 2>/dev/null
+cp /etc/inittab $INITFILE >/dev/null 2>/dev/null
+if [ $? != 0 ]
+then
+	exit $EPERM
+fi
+ed $INITFILE <<-! >/dev/null 2>/dev/null
+g/$TTY/s/:$B:/:$C:/
+w
+!
+if [ $? != 0 ]
+then
+	echo can\'t edit file
+	exit $ENOENT
+fi
+exit $OK

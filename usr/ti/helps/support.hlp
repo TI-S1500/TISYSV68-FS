@@ -1,0 +1,14 @@
+	support - System Support Menu
+		@(#)support.sh	1.1 87/03/09
+
+        This menu lists utilities to help the system administrator 
+	   monitor and analyze system performance.  Further administrative
+	   commands are listed on two sub-menus.
+
+	It is the system administrator's duty to ensure the smooth operation 
+	   of the system and to perform tasks that require special privileges.
+	   Although some of these tasks may be accomplished by ordinary users,
+	   some of the tasks dramatically change the system's operation.
+	   Whenever possible, the system administrator should perform these 
+	   tasks.
+

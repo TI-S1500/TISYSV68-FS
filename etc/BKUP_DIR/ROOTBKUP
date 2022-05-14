@@ -1,0 +1,60 @@
+:
+# ROOTBKUP for unix and xenix.
+
+# 07mar90 dwm rlf
+# 07jun90 dwm rlf
+
+trap "" 1
+trap "" 2
+trap "" 3
+trap "" 15
+
+# Create file for /etc/BKUP_DIR/RBKUPCK
+
+touch /ROOTBKUP.FLAG
+
+SYS=`uname`
+
+if (test \( "$SYS" != "XENIX" -o "`tty`" != "/dev/tty1a" \) -a \
+      "`tty`" != "/dev/console")
+then
+   echo "\n\n You MUST be at the Master terminal to run ROOTBKUP."
+   exit 1
+fi
+
+if (test `id | awk 'BEGIN {FS="="; RS="("} NR==1 {print $2}'` != 0)
+then
+   echo "\n\n You MUST have root priviledge to run ROOTBKUP."
+   exit 1
+fi
+
+if (test "$SYS" = "XENIX")
+then
+
+   wall <<!
+
+***********************************************
+        PLEASE LOG OFF NOW ! ! !
+        System reboot about to begin.
+All processes will be killed in 30 seconds.
+***********************************************
+!
+sleep 30
+
+/etc/wall <<!
+
+***********************************
+SYSTEM BEING BROUGHT DOWN NOW ! ! !
+***********************************
+!
+fi
+sleep 10
+
+echo "\07\07\07\n System entering maintenance mode."
+echo "\n Please wait for the \"continue with ROOTBKUP?\" prompt.\n"
+if (test "$SYS" = "XENIX")
+then
+   reboot
+else
+   sysboot 30
+fi

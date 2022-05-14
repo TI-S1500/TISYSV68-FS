@@ -1,0 +1,6 @@
+T,C,PROMPT37,SURPLUS RETURNS
+F,Part Numer,14,25,0,,1, ,0,1
+F,Return Quantity,4,10,0,,2,0,1,1
+F,Bin Location,26,31,0,,1, ,0,0
+C,Card Code,1,3,1,,0,Z5K,0,2
+C,Filler,11,13,1,,0,   ,0,2

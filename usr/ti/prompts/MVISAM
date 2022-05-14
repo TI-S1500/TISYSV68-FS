@@ -1,0 +1,34 @@
+# bshf	mvisam - move isam file
+#	@(#)CPISAM.sh	1.2 87/11/23
+#
+onintr end
+
+if ($vopt == "") set vopt=n
+if ($topt == "") set topt=n
+
+prompt	"^MVISAM -- MOVE T-ISAM FILE"\
+	"^Source Data File:"         sdfile acnm $sdfile\
+	"^*Source Index File:"       sifile acnm $sifile\
+	"^Destination Data File:"    ddfile acnm $ddfile\
+	"^*Destination Index File:"  difile acnm $difile\
+	"^Truncate? (y/n):"	     topt  yesno $topt\
+	"^Verbose? (y/n):"           vopt  yesno $vopt\
+	"^#$*"
+
+if ($abort) goto end
+
+set sifl=""
+set difl=""
+set opt="-"
+
+if ($sifile != "") set sifl="+"$sifile" "
+if ($difile != "") set difl="+"$difile" "
+if ($vopt == "y") set opt=${opt}"v"
+if ($topt == "y") set opt=${opt}"t"
+if ("$opt"  == "-") set opt=""
+
+echo mvisam $opt $sdfile $sifl$ddfile $difl
+mvisam $opt $sdfile $sifl$ddfile $difl
+
+end:
+unset sifl difl opt

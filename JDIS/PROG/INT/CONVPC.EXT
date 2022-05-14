@@ -1,0 +1,28 @@
+* TRANFILE TO PC TO CONVERT 93-1 DATA FILES TO 93-2 MULTI-USER FORMAT
+* 14 JUL 93 - JJS
+* 20 JUL 93 - JJS (ADDED CPMISC.COB,CPRM.COB,CPREGNO.COB)
+* 05 APR 94 - JJS (CORRECTED PATHNAME FOR CPRM & CPREGNO)
+*
+/ CS
+/ CC 1 5
+/ DI "TRANFILE TO PC TO CONVERT 93-1 DATA FILES TO 93-2 MULTI-USER FORMAT"
+*
+:DRV
+/ CC 5 1
+/ DI "WHAT TYPE OF PC ARE YOU USING? (TI OR IBM) "
+/ RD PC
+S AS DRIVE C
+? @PC EQ IBM  (TRANSFER)
+? @PC EQ TI   [DRV]
+S AS DRIVE E
+*
+:TRANSFER
+# "topc -br /JDIS/PROG/INT/ASPENPRC.932 "@drive"/prog/cmn/aspenprc.932"
+# "topc -r  /JDIS/PROG/INT/START932.BAT "@drive"/start932.bat"
+# "topc -r  /JDIS/PROG/INT/DONE932.BAT "@drive"/done932.bat"
+# "topc -br /JDIS/PROG/INT/CPMISC.COB.PC "@drive"/prog/mf/cpmisc.cob"
+# "topc -br  /JDIS/PROG/INT/CPRM.COB.PC  "@drive"/prog/mf/cprm.cob"
+# "topc -br  /JDIS/PROG/INT/CPREGNO.COB.PC "@drive"/prog/mf/cpregno.cob"
+S DS @PC
+S DS @DRIVE
+:END

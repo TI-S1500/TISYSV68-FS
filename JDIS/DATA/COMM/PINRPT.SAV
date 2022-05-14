@@ -1,0 +1,145 @@
+*90530 24JUN98 08-00-0709-0709   08-00-0709-0709-WF1RS WF101175 MISC. DEBITS/CREDITS  080709
+1  DEBIT/CREDIT MEMO                       PAYABLE TO:              PAGE    1
+   DOCUMENT NUMBER:  D46677                JOHN DEERE COMPANY
+   DOCUMENT DATE:    19JUN98               MINNEAPOLIS, MN 554400855
+0  CHARGE/CREDIT TO:
+0  MEYER IMPLEMENT, INC.
+   RT 2  806 HWY 63N
+   BALDWIN        WI 54002
+0  ACCT NUMBER: 0709   DIV/TERR: 14
+   DESCRIPTION           QTY     SERIAL NBR      DUE DATE         AMOUNT DUE
++_______________________________________________________________________________
+-  OIL SCAN TEST FEE       1                                           54.25
+      CHARGE FOR LAB OIL TEST PER OIL SCAN DIRECT MAIL KIT:
+         7    @ $7.75 = $54.25
+      DEERE CONTACT: SOWER, NANCY   X395
+      DEERE REFERENCE NUMBERS:
+      G/L # 410129003           INTERNAL RECORD #     050349
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0                              NON-TAXABLE          54.25
+                               TAXABLE (*)            .00
+                                                                       54.25
+0                                              TAX CHARGE                .00
+0
+                                               TOTAL                   54.25
+*90530 26JUN98 08-00-0709-0709   08-00-0709-0709-WF1RS WF101177 MISC. DEBITS/CREDITS  080709
+1  DEBIT/CREDIT MEMO                       PAYABLE TO:              PAGE    1
+   DOCUMENT NUMBER:   JDS06                JOHN DEERE COMPANY
+   DOCUMENT DATE:    25JUN98               MINNEAPOLIS, MN 554400855
+0  CHARGE/CREDIT TO:
+0  MEYER IMPLEMENT, INC.
+   RT 2  806 HWY 63N
+   BALDWIN        WI 54002
+0  ACCT NUMBER: 0709   DIV/TERR: 14
+   DESCRIPTION           QTY     SERIAL NBR      DUE DATE         AMOUNT DUE
++_______________________________________________________________________________
+-  JDIS BASE SERVICE FEE FOR JUN 98                                   425.00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  JDIS MODEM RENTAL FOR JUN 98                                        40.00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  JDIS JDPTS FEE FOR JUN 98                                           10.00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  JDIS BASE/CALL SUPPORT TAX FOR JUN 98                               23.38
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  JDIS MODEM RENTAL TAX FOR JUN 98                                     2.20
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  JDIS JDPTS TAX FOR JUN 98                                             .55
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP 26MAY98      3.8 MIN                                     .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP 28MAY98      9.6 MIN                                     .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP 29MAY98      4.1 MIN                                     .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+1  DEBIT/CREDIT MEMO                       PAYABLE TO:              PAGE    2
+   DOCUMENT NUMBER:   JDS06                JOHN DEERE COMPANY
+   DOCUMENT DATE:    25JUN98               MINNEAPOLIS, MN 554400855
+0  CHARGE/CREDIT TO:
+0  MEYER IMPLEMENT, INC.
+   RT 2  806 HWY 63N
+   BALDWIN        WI 54002
+0  ACCT NUMBER: 0709   DIV/TERR: 14
+   DESCRIPTION           QTY     SERIAL NBR      DUE DATE         AMOUNT DUE
++_______________________________________________________________________________
+-  MEMO: DIALUP 03JUN98      5.4 MIN                                     .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP 04JUN98      4.5 MIN                                     .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP 05JUN98      5.7 MIN                                     .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP 08JUN98      1.1 MIN                                     .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP 12JUN98      3.1 MIN                                     .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  DIALUP TOTAL   JUN98     37.3 MIN 100.0%                            60.00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: RATE FOR 280 MINUTES OR LESS:  $60                              .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP CHG MIN FOR XXM0709     4.3                              .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+-  MEMO: DIALUP CHG MIN FOR X2M0709    20.9                              .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+1  DEBIT/CREDIT MEMO                       PAYABLE TO:              PAGE    3
+   DOCUMENT NUMBER:   JDS06                JOHN DEERE COMPANY
+   DOCUMENT DATE:    25JUN98               MINNEAPOLIS, MN 554400855
+0  CHARGE/CREDIT TO:
+0  MEYER IMPLEMENT, INC.
+   RT 2  806 HWY 63N
+   BALDWIN        WI 54002
+0  ACCT NUMBER: 0709   DIV/TERR: 14
+   DESCRIPTION           QTY     SERIAL NBR      DUE DATE         AMOUNT DUE
++_______________________________________________________________________________
+-  MEMO: DIALUP CHG MIN FOR X4M0709    12.1                              .00
+      DEERE REFERENCE NUMBERS:
+      G/L # 68911300
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+                                               TOTAL                  561.13

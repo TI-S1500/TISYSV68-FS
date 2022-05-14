@@ -1,0 +1,39 @@
+# cshf  paste -- Merges lines of several files 
+#	@(#)PASTE.sh	1.1  87/03/09
+#
+onintr end
+set quote = '"'
+
+prompt "^PASTE -- MERGES LINES OF SEVERAL FILES OR ONE FILE"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Merge Subsequent Lines:" sflag yesno n\
+	"^*Alternate Character(s) List:" dflag string "$dflag"\
+	"^#$*"
+
+if ($abort) goto end
+if ("$dflag" != "") set dopt = -d"$dflag"
+if ($sflag == "y") set sopt = -s
+
+if ($abort) goto end
+echo "=== PASTE COMMAND EXECUTING ==="
+if (($_output_file != "") && ("$dflag" != "")) then 
+	echo paste $sopt $quote"$dopt"$quote $_input_file ">"$_output_file
+	paste $sopt "$dopt" $_input_file >$_output_file
+endif
+if (($_output_file == "") && ("$dflag" != "")) then 
+	echo paste $sopt $quote"$dopt"$quote $_input_file
+	paste $sopt "$dopt" $_input_file 
+endif 
+if (($_output_file != "") && ("$dflag" == "")) then 
+	echo paste $sopt $_input_file ">"$_output_file
+	paste $sopt $_input_file >$_output_file
+endif
+if (($_output_file == "") && ("$dflag" == "")) then 
+	echo paste $sopt $_input_file
+	paste $sopt $_input_file 
+endif
+
+#clean up time
+end:
+unset *opt *flag quote

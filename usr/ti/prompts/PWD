@@ -1,0 +1,11 @@
+# cshf  PWD -- print the working directory  
+#	@(#)PWD.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^PWD -- PRINTS WORKING DIRECTORY NAME"
+
+if ($abort) goto end
+echo "=== PWD COMMAND EXECUTING ==="
+pwd
+end:

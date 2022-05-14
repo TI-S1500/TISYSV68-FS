@@ -1,0 +1,57 @@
+FE_PUTCHAR(3T)					   FE_PUTCHAR(3T)
+
+NAME
+     FE_putchar - Requests single-character field edit writes
+
+SYNOPSIS
+     #include <vdtrdwrt.h>
+
+     extern int errno;
+     int status, fd;
+     char c ;
+
+     status = FE_putchar(fd, c);
+
+DESCRIPTION
+     The FE_putchar function places a single character into the
+     field edit output blocking buffer.  The fd parameter is the
+     TI System V file descriptor used in the FE_open(3T) call.
+     The c parameter is the character to be written.  The errno
+     and status variables are used for error return information.
+
+     If the no_buf_wrts optimization is turned off, the character
+     is not written to the terminal until any of the following
+     occurs:
+
+     + An FE_read(3T) call is issued
+
+     + An FE_flush(3T) call is issued
+
+     + An FE_close(3T) call is issued
+
+     + The output blocking buffer is filled (contains about 1,000
+       characters).
+
+     No display attributes or cursor positioning sequence is
+     written to the terminal.  The current terminal state remains
+     unchanged.
+
+RETURN VALUES
+     A status value of 0 means that no errors occurred.  A status
+     value of -1 means that an error occurred. In this case, the
+     errno variable contains either EFE_BADFD or other system
+     error codes, which are found in /usr/include/sys/errno.h.
+     The EFE_BADFD code means that an invalid file descriptor was
+     used; that is, a file descriptor different from the file
+     descriptor used in the FE_open call.
+
+SEE ALSO
+     FE_abort(3T), FE_close(3T), FE_exportscreen(3T),
+     FE_flush(3T), FE_getparm(3T), FE_importscreen(3T),
+     FE_open(3T), FE_printscreen(3T), FE_read(3T),
+     FE_restorescreen(3T), FE_savescreen(3T), FE_setvbits(3T),
+     FE_write(3T), fecap(4), vdtrdwrt.h(4).
+     ``Terminal Input/Output'' in the TI System V Programmer's
+     Guide.
+
+

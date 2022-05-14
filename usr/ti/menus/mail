@@ -1,0 +1,8 @@
+mail:menu:     MAIL AND MESSAGE SYSTEM MENU, Series 1000     :mail.hlp
+MAIL:c:Sends mail to users or retrieves mail:
+MAILX:c:Invokes an interactive message-processing system:
+MESG:c:Permits or denies messages:
+NEWS:c:Prints news items:
+SHOWMSG:c:Prints the expanded message for a given error:
+WALL:c:Writes to all users:
+WRITE:c:Writes to another user:

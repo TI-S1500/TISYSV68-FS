@@ -1,0 +1,4 @@
+:
+cp /etc/inittab /etc/initcgk
+chmod 777 /etc/initcgk
+sed /$OFFTTY/s/respawn/off/ /etc/initcgk >/etc/inittab

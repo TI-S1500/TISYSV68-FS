@@ -1,0 +1,6 @@
+sna:menu:3270 SNA System V Commands:
+V3279:c:3279 Terminal Emulation:
+P3287:c:3287 Printer Emulation:
+GENPU:c:SNA System Generation:
+SNAADM:c:SNA Administration:
+MAPSNA:c:Key Mapping Utility:

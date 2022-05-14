@@ -1,0 +1,638 @@
+#@(#)chkccb	4.38 93/01/20
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1989.  ALL	
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	
+#	ASSOCIATED DOCUMENTATION.					
+
+# usage: $0 [actual-terminal-tty]
+# arg1 is the terminal device. This is normally `tty` unless
+# standard-input is redirected in which case the terminal
+# is the terminal attached to the keyboard.
+
+# NOTE: chkccb is only meant to be run from install.scr as some files
+# must be setup there and information passed back to install.scr. It
+# cannot be run standalone.
+
+# Source the forceread function
+if [ -s forceread ]; then
+	. forceread
+else
+	echo "The forceread file is not in the `pwd`."
+fi
+
+# the note below is for certain conditions 
+note="You will need to correct your configuration \
+with devadm after the installation."
+
+ECHO() {
+	echo "$BOLD$*$NORM"
+}
+
+#closed=0 # defined above in forceread
+readslot() { 
+# usage: description [min 0] [max 15] [radix 10] [number of digits 2]
+# NOTE: all input args nust be entered in base 10.
+# $1 is description of slot desired
+# Returns $slot
+# Example: readslot "Enter slot number (0 - 15): "
+#	   above allows ONLY values from 0 - 15
+# Example: readslot "Enter the number of the tty to be used for SLIP" 0 127 16
+#	   above allows ONLY hex values from 0 - 0x7f
+# In both examples, 2-digits also forces $slot to be "00" when "0" is entered
+rsdesc=$1
+rsmin=${2:-0} ; rsmin2=$rsmin
+rsmax=${3:-15}; rsmax2=$rsmax
+rsradix=${4:-10}
+rsdigits=${5:-2}
+rsmaxch=`echo "$rsradix o $rsradix 1 - p" | dc`	# max digit in radix desired
+if [ $rsradix -gt 10 ]; then	# convert max and min to radix for display
+	rsmax2=`echo "$rsradix o $rsmax p" | dc` # convert base 10 to radix
+	rsmin2=`echo "$rsradix o $rsmin p" | dc` # convert base 10 to radix
+fi
+while true; do # prompt-and-read loop - accept only valid inputs
+	echo "$rsdesc ($rsmin2 - $rsmax2) : \c"
+	# if standard input is a file that does not have enough inputs
+	# to handle reads, then read will loop forever. In this case we
+	# must close it and redirect all reads to $realtty
+	if [ $closed = 0 ]; then
+		read slot # returns 1 if EOF on standard input
+		if [ $? = 1 ]; then # EOF - close standard input 
+			flushist silently # close standard input
+			read slot < $realtty
+		fi
+	else
+		read slot < $realtty
+	fi
+	
+	if [ $rsradix -gt 10 ]; then # uppercase $slot for use in dc
+		slot="`echo $slot | tr -s '[a-z]' '[A-Z]'`"
+	fi
+	# determine if any invalid chs entered
+	rsvalid=`expr ${slot}X : "[$rsmin-$rsmaxch]*X"` 
+	rsvalid=`expr $rsvalid - 1`
+	rstotal=`expr ${slot}X : '.*'`
+	rstotal=`expr $rstotal - 1`
+	if [ $rstotal = 0 ]; then
+		ECHO "\nNothing entered\n"
+		continue
+	fi
+	if [ $rsvalid != $rstotal ]; then
+		ECHO "\nNon-Numeric characters entered\n"
+		continue
+	fi
+	# use decimal version of slot for if [] test below
+	rslot2=`echo "$rsradix i $slot p" | dc` # convert radix to base 10
+	if [ $rslot2 -gt $rsmax -o $rstotal -gt $rsdigits ]; then
+		ECHO "\nNumber is not in range ($rsmin2 - $rsmax2)\n"
+		continue
+	fi
+	if [ $rsvalid -lt $rsdigits ]; then # add leading zero
+		# below only works for rsdigits = 2
+		slot="0$slot"
+	fi
+	break # input is accepted
+done
+if [ $rsradix -gt 10 ]; then # lowercase $slot for use in tty arg for SLIP
+	slot="`echo $slot | tr -s '[A-F]' '[a-f]'`"
+fi
+# log a history of input responses
+loganswer $slot # loganswer is defined in forceread file ...
+}
+
+
+chkslot() { 
+# $1 arg is slot, $2 arg is etherlan or ccb, returns 0 if NOT found
+# finds: if $2 is ccb and $1 slot is a CPO,CCB, or CP2 and has a LAN option
+# else finds: if $2 is ethernet and $1 slot is an ETHERNET LAN
+case $2 in
+ ccb)		temp="`grep -c ccb$1 /etc/ccbdev`"
+		return "${temp:-0}" # return number found
+	;;
+ etherlan)	devadm -l etherlan $1 > /dev/null # returns 0 if found
+		if [ $? = 0 ]; then
+			return 1 # found
+		else
+			return 0 # failed
+		fi
+	;;
+esac
+}
+
+chknet() { # $1 arg is slot, returns number found
+	temp="`grep ccbnet /etc/ccbdev | grep -c ccb$1`"
+	return "${temp:-0}" # return number found
+}
+
+chkllien() { # $1 arg is slot, returns number found
+	temp="`grep ccbllien /etc/ccbdev | grep -c ccb$1`"
+	return "${temp:-0}"
+}
+
+showENTRIES() {
+	if [ -s $1 ]; then
+		echo "$BOLD"
+		cat $1
+		echo $NORM
+	else
+		echo
+		ECHO "No entries have been entered."
+		echo
+	fi
+}
+
+configLAN() {
+what="CCB, CPO, or CP2"
+savewind # remember current READHIST lines in case user quits in while below
+while true; do
+   while true; do # just for "q" break 1 below
+	quit=n
+	unwindslot=n
+	readslot "\nEnter the slot of the $what"
+	cando=yes
+	chkslot $slot ccb
+	if [ $? = 0 ]; then
+		cando=no
+		echo
+		ECHO "WARNING: no $what is currently defined in slot $slot."
+		echo
+		echo "Do you want still want to configure this $what? [y/n/q]: \c"
+		FAKEread "[y/n/q]" "" "ynq" ;ok=$answer
+		case $ok in
+			y) ECHO $note ;;
+			n) unwind; unwindslot=y; flushist;
+			   continue ;; # forget slot just read
+			q) unwind; unwindslot=y; flushist;
+			   quit=y; break 1  ;;
+		esac
+	fi
+	chknet $slot
+	if [ $? = "0" ]; then
+		cando=no
+		echo
+		ECHO "WARNING: $what in slot $slot does not have the proper network option for TCP/IP."
+		echo
+		echo "Do you want still want to configure this $what? [y/n/q]: \c"
+		FAKEread "[y/n/q]" "" "ynq" ;ok=$answer
+		case $ok in
+			y) ECHO $note ;;
+			n) if [ $unwindslot = n ]; then
+				unwind # else already unwind in above case
+			   fi
+			   flushist; continue ;; # forget slot just read
+			q) if [ $unwindslot = n ]; then
+				unwind # else already unwind in above case
+			   fi
+			   flushist; quit=y; break 1  ;;
+		esac
+	fi
+
+	echo
+	echo Is port 0 of slot $slot to be configured for TCP/IP? [y/n]:" \c"
+	forceread "[y/n]" "" "yn" ; conf=$answer
+	if [ X$conf = Xy ]; then
+		zero=l # l means lan
+		echo
+		echo Enter Internet address in dotted decimal notation:" \c"
+		forceread "IP address"; addr0=$answer
+		echo '\t'ifconfig en$slot'0 '$addr0' -trailers' >> tcpt$$
+		echo '\t'tienet ip /dev/strnet en$slot'0' '10 10 10 2'>>strcft$$
+		echo '\t\t'slot:'\t'$slot'\t'port:'\t'0'\t'address:'\t'$addr0 >>slotp$$
+	else
+		zero=-
+	fi
+	echo
+	echo Is port 1 of slot $slot to be configured for TCP/IP? [y/n]:" \c"
+	forceread "[y/n]" "" "yn" ; conf=$answer
+	if [ X$conf = Xy ]; then
+		one=l # l means lan
+		echo
+		echo Enter Internet address in dotted decimal notation:" \c"
+		forceread "IP address"; addr1=$answer
+		echo '\t'ifconfig en$slot'1 '$addr1' -trailers' >> tcpt$$
+		echo '\t'tienet ip /dev/strnet en$slot'1' '10 10 10 2'>>strcft$$
+		echo '\t\t'slot:'\t'$slot'\t'port:'\t'1'\t'address:'\t'$addr1 >>slotp$$
+	else
+		one=-
+	fi
+
+	chkllien $slot
+	if [ $? = "1" ]; then
+		cando=no
+	fi
+
+	if [ $cando = "yes" ]; then
+		chknet $slot
+		if [ $? = "1" ]; then
+			comment="`grep ccbnet /etc/ccbdev | grep ccb$slot | cut -f4 -d:`"
+			echo /dev/ccb$slot/pu:/etc/ccbllien:lien: $comment >> llient$$
+		else
+			echo /dev/ccb$slot/pu:/etc/ccbllien:lien: 0=$zero 1=$one >> llient$$
+		fi
+		echo "lien=(hold=20)" >> llient$$
+	else
+		echo "NOTE: $what slot $slot already defined for TCP/IP, no change." >> ccb.temp 
+	fi
+	break
+    done # break 1 continues below ...
+
+	echo
+	echo "Do you need to configure an additional $what? [y/n]: \c"
+	forceread "[y/n]" "" "yn" ; ok=$answer
+	if [ $ok = y ]; then
+		if [ $quit = y ]; then
+			# No response kept,might just "q" quit whole function
+			unwind; # remove this response ...
+		fi
+		continue
+	fi
+	echo 
+	echo These are your entries.  They should have the same format as the 
+	echo following example: 
+	echo ------------------------------------------------------------------------------ 
+	echo "example:\tslot:\t03\tport:\t1\taddress:\t128.247.31.245"
+	echo ------------------------------------------------------------------------------ 
+	showENTRIES slotp$$
+
+	echo Are these entries correct? [y/n/q]:" \c"
+	forceread "[y/n/q]" "" "ynq" ; ok=$answer
+	if [ $quit = y ]; then
+		# No response kept. We might just "q" quit the whole function
+		unwind; # remove this response ...
+		if [ $ok = y -a ! -s slotp$$ ]; then # force to q in case below
+			ok=q
+		fi
+	fi
+	case $ok in
+		y) break ;;
+		n) unwind $windsaved
+		   flushist
+		   cp /dev/null slotp$$
+		   cp /dev/null tcpt$$
+		   cp /dev/null strcft$$ 
+		   cp /dev/null llient$$
+		   continue ;;
+		q) unwind $windsaved
+		   flushist
+		   # Replace original "y" prompt to configLAN with "n"
+		   # so READHIST will reflect NEVER even coming into
+		   # the configLAN function ...
+		   unwind # y
+		   loganswer n
+		   break ;;
+	esac
+done
+}
+
+configETHERNET() {
+what="ethernet lan"
+savewind # remember current READHIST lines in case user quits in while below
+while true; do
+   while true; do # just for "q" break 1 below
+	quit=n
+	readslot "\nEnter the slot of the $what"
+	chkslot $slot etherlan
+	if [ $? = "0" ]; then
+		echo
+		ECHO "WARNING: no $what currently exists in slot $slot."
+		echo
+		echo "Do you want still want to use this slot? [y/n/q]: \c"
+		FAKEread "[y/n/q]" "" "ynq" ;ok=$answer
+		case $ok in
+			y) ECHO "You MUST install the correct hardware later.";;
+			n) unwind; flushist; continue ;; # forget slot just read
+			q) unwind; flushist; quit=y; break 1  ;;
+		esac
+	fi
+	echo
+	echo Enter Internet address in dotted decimal notation:" \c"
+	forceread "IP address"; addr1=$answer
+	echo "\tifconfig en${slot}0 $addr1 -trailers"    >>tcpt2$$
+	echo "\ttienet ip /dev/senet en${slot}0 10 10 10 2">>strcft2$$
+	echo "\t\tslot:\t$slot\taddress:\t$addr1" >>slotp2$$
+	break 
+    done # break 1 continues below ...
+
+	echo
+	echo "Do you need to configure an additional $what? [y/n]: \c"
+	forceread "[y/n]" "" "yn" ; ok=$answer
+	if [ $ok = y ]; then
+		if [ $quit = y ]; then
+			# No response kept,might just "q" quit whole function
+			unwind; # remove this response ...
+		fi
+		continue
+	fi
+	echo 
+	echo These are your entries.  They should have the same format as the 
+	echo following example: 
+	echo ------------------------------------------------------------------------------ 
+	echo example:"\tslot:\t03\taddress:\t128.247.31.245"
+	echo ------------------------------------------------------------------------------ 
+	showENTRIES slotp2$$
+
+	echo Are these correct? [y/n/q]:" \c"
+	forceread "[y/n/q]" "" "ynq" ; ok=$answer
+	if [ $quit = y ]; then
+		# No response kept. We might just "q" quit the whole function
+		unwind; # remove this response ...
+		if [ $ok = y -a ! -s slotp2$$ ]; then # force to q in case below
+			ok=q
+		fi
+	fi
+	case $ok in
+		y) break ;;
+		n) unwind $windsaved
+		   flushist
+		   cp /dev/null slotp2$$ 
+		   cp /dev/null tcpt2$$
+		   cp /dev/null strcft2$$
+		   continue ;;
+		q) unwind $windsaved
+		   flushist
+		   # No response kept. We just "q" quit the whole function
+		   # Replace original "y" prompt to configLAN with "n"
+		   # so READHIST will reflect NEVER even coming into
+		   # the configETHERNET function ...
+		   unwind # y
+		   loganswer n
+		   break ;;
+	esac
+done
+}
+
+chkbaud() {
+case $1 in
+ 50)    return 0  ;;
+ 75)    return 0  ;;
+ 110)   return 0  ;;
+ 150)   return 0  ;;
+ 200)   return 0  ;;
+ 300)   return 0  ;;
+ 600)   return 0  ;;
+ 1200)  return 0  ;;
+ 2400)  return 0  ;;
+ 4800)  return 0  ;;
+ 9600)  return 0  ;;
+ 19200) return 0  ;;
+ 38400) return 0  ;;
+ *) 
+	ECHO "Error: invalid baud rate."
+	return 1
+  ;;
+esac
+}
+
+configSLIP()
+{
+what="SLIP interface"
+savewind # remember current READHIST lines in case user quits in while below
+while true; do 
+   while true; do # just for "q" break 1 below
+	quit=n
+	readslot "\nEnter the number of the tty to be used for SLIP" 0 127 16
+	tty=$slot
+	greptty="`grep tty$tty /etc/inittab`"
+	if [ -z "$greptty" ]; then
+		echo
+		ECHO "WARNING: tty$tty is not currently defined."
+		echo
+		echo "Do you want still want to use this tty? [y/n/q]: \c"
+		FAKEread "[y/n/q]" "" "ynq" ;ok=$answer
+		case $ok in
+			y) ECHO $note ;;
+			n) unwind; flushist; continue ;; # forget tty just read
+			q) unwind; flushist; quit=y; break 1  ;;
+		esac
+	fi
+	echo
+	echo Enter SOURCE Internet Address or hostname for tty$tty :"      \c"
+	forceread "source IP address"; source=$answer
+	echo
+	echo Enter DESTINATION Internet Address or hostname for tty$tty :" \c"
+	forceread "destination IP address"; dest=$answer
+	echo
+	while true; do
+		baud=9600
+		echo
+		echo "baudrates : 50 75 110 150 200 300 600 1200 1800 2400 4800 9600 19200 38400."
+		echo "Enter baudrate (default=$baud) : \c"
+		forceread "baudrate" "" "#" $baud; baud=$answer
+		chkbaud $baud
+		if [ $? = 0 ]; then
+			break
+		fi
+	done
+	echo "\tslattach /dev/tty$tty $source $dest $baud &" >> slipt$$
+	echo "\ttty: $tty  src: $source\tdest: $dest\tbaud: $baud" >> slipd$$
+	break
+    done # break 1 continues below ...
+
+	echo
+	echo "Do you need to configure an additional $what ? [y/n]: \c"
+	forceread "[y/n]" "" "yn" ; ok=$answer
+	if [ $ok = y ]; then
+		if [ $quit = y ]; then
+			# No response kept,might just "q" quit whole function
+			unwind; # remove this response ...
+		fi
+		continue
+	fi
+	echo 
+	echo These are your entries.  They should be similar to one of the following examples:
+	echo ------------------------------------------------------------------------------ 
+	echo "example tty: 01  src: 128.247.31.250\tdest: 128.247.31.250\tbaud: 9600" 
+	echo "example tty: 02  src: srchostname\tdest: desthostname\tbaud: 19200" 
+	echo ------------------------------------------------------------------------------ 
+	showENTRIES slipd$$
+	
+	echo Are these correct? [y/n/q]:" \c"
+	forceread "[y/n/q]" "" "ynq" ; ok=$answer
+	if [ $quit = y ]; then
+		# No response kept. We might just "q" quit the whole function
+		unwind; # remove this response ...
+		if [ $ok = y -a ! -s slipd$$ ]; then # force to q for case below
+			ok=q
+		fi
+	fi
+	case $ok in
+		y) # Be sure getty for each tty is turned off
+		   cat slipd$$ | while read line; do
+			thetty=`echo $line | cut -f2 -d' '`
+			# typical inittab entry: ( may not be defined, yet )
+			#t000:2:respawn:/etc/getty tty00 9600 t1
+			echo "Turning off getty for tty$thetty in /etc/inittab"
+			echo ",s/^t0$thetty:2:respawn/t0$thetty:2:off/g
+w
+q" | ed - /etc/inittab > /dev/null
+		   done
+		   break ;;
+		n) unwind $windsaved
+		   flushist
+		   cp /dev/null slipd$$
+		   cp /dev/null slipt$$ 
+		   continue ;;
+		q) unwind $windsaved
+		   flushist
+		   # No response kept. We just "q" quit the whole function
+		   # Replace original "y" prompt to configLAN with "n"
+		   # so READHIST will reflect NEVER even coming into
+		   # the configLAN function ...
+		   unwind # y
+		   loganswer n
+		   break ;;
+	esac
+done
+}
+
+# INTERNAL function of showadm
+# get each line from $lines and print it
+# then do equivalent of a "s" in devadm -i and indent this info
+rdfile() {
+while read line; do
+	slot="`echo $line | cut -f1 -d' '`" # tab delimiter
+	what="`echo $line | cut -f2 -d' '`" # tab delimiter
+	echo "  $slot\t$what\c"
+	case $what in
+	  ccb)	 devadm -l ccbopt $slot | sed '1s/^/	/'| sed '2,$s/^/		/'
+		;;
+	  lan)	 devadm -l lan $slot | sed '1s/^/	/'| sed '2,$s/^/		/'
+		;;
+	  Ethernet) temp="`devadm -l etherlan $slot | grep -v 'ETHERNET'`"
+		    echo " 48-bit ADDRESS : \c"
+		    echo $temp | cut -f2 -d' '
+		;;
+	esac
+done
+}
+
+showadm() {
+	echo "\nShown below are existing hardware possibilities that"
+	echo "may help you to install everything except SLIP which"
+	echo "can be installed in a wide variety of possible ways."
+	echo
+	echo "SLOT\tBOARD"
+	devadm -l slot | egrep "CHASSIS|ccb|LAN|Ethernet" > showadm1$$
+	grep -v "CHASSIS" showadm1$$ | rdfile
+	rm -f showadm1$$
+}
+
+echo $clr
+echo "********************************************************************"
+echo "*            I N T E R F A C E   C O N F I G U R A T I O N         *"
+echo "********************************************************************"
+echo
+echo "The interfaces to the network must be initially configured when you"
+echo "go from single user mode to multi user mode."
+echo "In this section you will specify those interfaces and how they are to"
+echo "be configured for TCP/IP. There are 3 types of interfaces :"
+echo
+echo "*   LAN OPTION interface on a CPO, CCB or CP2."
+echo "*   ETHERNET LAN (High Performance Ethernet) interface."
+echo "*   SLIP interface."
+
+echo "\nPress return to continue :\c" ; forceread "" "" "#"
+showadm | tee showadm2$$
+
+cp /dev/null slotp$$
+cp /dev/null tcpt$$
+cp /dev/null strcft$$ 
+cp /dev/null llient$$
+sync
+echo "\nDo you want to configure any LAN OPTION interfaces ? [y/n]: \c "
+forceread "[y/n]" "" "yn" ; ok=$answer
+if [ X$ok = Xy ]; then
+	configLAN
+	cat showadm2$$
+fi
+rm showadm2$$
+
+cp /dev/null slotp2$$
+cp /dev/null tcpt2$$
+cp /dev/null strcft2$$
+sync
+echo "\nDo you want to configure any ETHERNET LAN interfaces ? [y/n]: \c "
+forceread "[y/n]" "" "yn" ; ok=$answer
+if [ X$ok = Xy ]; then
+	configETHERNET
+fi
+
+cp /dev/null slipd$$ # slip info for display
+cp /dev/null slipt$$ # slip temp file for inclusion in /etc/tcp
+sync
+echo "\nDo you want to configure any SLIP interfaces? [y/n]: \c "
+forceread "[y/n]" "" "yn"  ; ok=$answer
+if [ X$ok = Xy ]; then
+	configSLIP
+fi
+cat slotp$$ slotp2$$ slipd$$ >> ccb.temp
+
+#
+#  SLIP cband parameter computations
+#
+slip1x=`wc -l slipt$$` # number of slip connections requested
+slip1x=`echo $slip1x | cut -f1 -d' '` # also squeezes whitespace out
+slipMAX=64 # mas number os slip conns permitted (cband parm maximum)
+if [ $slip1x -gt $slipMAX ]; then
+	echo "A maximum of $slipMAX SLIP connections are permitted."
+	echo "You have requested $slip1x connections."
+	echo "Only the first $slipMAX will be installed."
+	FAKEread "not used" "\nPress return to continue :" "#" 0
+	head -$slipMAX slipt$$ > temp; mv temp slipt$$
+	head -$slipMAX slipd$$ > temp; mv temp slipd$$
+	slip1x=$slipMAX
+fi
+
+# Edit settings to settings.slip in this directory
+# (which should be the installdir)
+# and then install.scr will copy the modifed settings file
+# to /usr/ti/tcp/settings
+cp settings /usr/ti/tcp
+cp slipcband /usr/ti/tcp
+chmod 744 /usr/ti/tcp/slipcband
+/usr/ti/tcp/slipcband $slip1x `cat tcpt$$ tcpt2$$ | wc -l` settings.slip
+# END of SLIP cband parameter computations
+
+echo
+echo Modifying /etc/ccbdev...
+cat llient$$ >> /etc/ccbdev
+rm llient$$
+
+echo
+echo Modifying /etc/tcp...
+echo "g/^	ifconfig/d
+/%% ifconfigs precede this line %%/i
+	ifconfig lo0 127.0.0.1
+.
+. r tcpt$$
+. r tcpt2$$
+g/^	slattach/d
+/%% slattach precede this line %%/
+.- r slipt$$
+w
+q" | ed - tunetcp > /dev/null
+# install.scr STILL needs to modify tunetcp - let it install it. 
+rm -f slotp$$ tcpt$$ tcpt2$$ slipt$$ slipd$$
+# note: slip sldetach calls are handled automatically by /etc/tcp stop
+
+# (LAN) should be shipped with OS - but make sure it is there
+# if any LAN's are installed. Don't just make it either way since
+# it requires cband parms to support it and some users may try to
+# remove the device (using 68040 board for mem+cpu, NOT embedded LAN)
+#
+temp="`grep -c /dev/senet strcft2$$`"
+if [ $temp != 0 ]; then
+	mknod /dev/senet c 54 74 2>/dev/null
+fi
+
+echo
+echo Creating /etc/strcf
+echo "g/^	tienet/d
+\$- r strcft$$
+. r strcft2$$
+w strcf$$
+q" | ed - strcf > /dev/null
+install -s -f /etc -m 0644 -u root strcf$$
+mv /etc/strcf$$ /etc/strcf
+echo '}' >> /etc/strcf # add final delimiter
+rm -f strcf$$ slotp2$$ strcft$$ strcft2$$

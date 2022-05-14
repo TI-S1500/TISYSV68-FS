@@ -1,0 +1,66 @@
+# cshf  lint -- Invokes a C program checker
+#	@(#)LINT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^LINT -- INVOKES A C PROGRAM CHECKER"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _coutput_file acnm "$_coutput_file"\
+	"^*Library Files (i.e. m, curses):" lflag macnm "$lflag"\
+	"^Check Compatibility Against Other Libs:" nflag yesno y\
+	"^Check Portability to Other Dialects:" pflag yesno n\
+	"^*Produce .ln files:" cflag yesno n\
+	"^*Define a Symbol:" Dflag string \
+	"^*Undefine a Symbol:" Uflag string \
+	"^*Include Search Path:" Iflag macnm "$Iflag"\
+	"^Select Complaint Options:" complaint yesno n\
+	"^#$*"
+
+if ($complaint == "y") then
+	prompt "^LINT -- COMPLAINT SUPPRESSION OPTIONS"\
+		"^Report Non-Long Variable Assignments:" aflag yesno y\
+		"^Report Non Reachable Break Statements:" bflag yesno y\
+		"^Apply Heuristic Tests:" hflag yesno y\
+		"^Report Unused Functions/External Var:" uflag yesno y\
+		"^Report Unused Arguments in Functions:" vflag yesno y\
+		"^Report Referred/Unused External Var:" xflag yesno y\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($xflag == "n") set opt = x$opt
+	if ($vflag == "n") set opt = v$opt
+	if ($uflag == "n") set opt = u$opt
+	if ($hflag == "n") set opt = h$opt
+	if ($bflag == "n") set opt = b$opt
+	if ($aflag == "n") set opt = a$opt
+endif
+
+if ($abort) goto end
+if ($cflag == "y") set opt = c$opt
+if ($nflag == "n") set opt = n$opt
+if ($pflag == "y") set opt = p$opt
+if ($opt != "") set opt = -$opt
+
+#the following four lines of code places a list of inputs into the following
+#form:  -VAR element1 -VAR element2 ......
+if ("$Dflag" != "") set Dopt = `echo "$Dflag" | sed -e "s/\([^ ]*\)[ ]*/-D\1 /g"`
+if ("$Uflag" != "") set Uopt = `echo "$Uflag" | sed -e "s/\([^ ]*\)[ ]*/-U\1 /g"`
+if ("$lflag" != "") set lopt = `echo "$lflag" | sed -e "s/\([^ ]*\)[ ]*/-l\1 /g"`
+if ("$Iflag" != "") set Iopt = `echo "$Iflag" | sed -e "s/\([^ ]*\)[ ]*/-I\1 /g"`
+
+if ($abort) goto end
+echo "=== LINT COMMAND EXECUTING ==="
+if ($_coutput_file == "") then
+	echo lint $opt $Dopt $Uopt\
+	$Iopt $lopt $_input_file
+	lint $opt $Dopt $Uopt $Iopt $lopt $_input_file
+else
+	echo lint $opt $Dopt $Uopt $Iopt $lopt \
+	$_input_file\ ">" $_coutput_file
+	lint $opt $Dopt $Uopt $Iopt $lopt $_input_file\
+	> $_coutput_file
+endif
+
+#clean up time
+end:
+unset *flag *opt complaint 

@@ -1,0 +1,15 @@
+# cshf   enable - enables line printers 
+#	@(#)ENABLE.sh	1.2 (TI) 87/10/13
+#
+onintr end
+
+prompt "^ENABLE -- ENABLES LINE PRINTERS"\
+	"^Printer Name(s):" _printer macnm "$_printer"\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== ENABLE COMMAND EXECUTING ==="
+echo enable $_printer
+enable $_printer
+
+end:

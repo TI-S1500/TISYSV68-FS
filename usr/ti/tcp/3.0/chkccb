@@ -1,0 +1,222 @@
+
+#@(#)chkccb	1.22 92/01/31
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1989.  ALL	
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	
+#	ASSOCIATED DOCUMENTATION.					
+
+chkslot() { 
+	# $1 is slot, returns 1="CCB" or 2="LAN" or 0 if neither is in $1 slot
+	temp="`grep -c ccb$1 /etc/ccbdev`"
+	if [ $temp != 0 ]; then
+		temp=1 # = "CCB"
+	else
+	 	devadm -l etherlan $1 > /dev/null # return 0 if found
+		if [ $? = 0 ]; then
+			temp=2 # = "LAN"
+		else
+			temp=0 # failed to find either CCB or LAN
+		fi
+	fi
+	echo $temp
+	return $temp
+}
+
+chknet() {
+case `grep ccbnet /etc/ccbdev | grep -c ccb$1` in
+ 0) 
+	return 0
+  ;;
+ *) 
+	return 1
+  ;;
+esac
+}
+
+chkllien() {
+case `grep ccbllien /etc/ccbdev | grep -c ccb$1` in
+ 0) 
+	return 0
+  ;;
+ *) 
+	return 1
+  ;;
+esac
+}
+
+BOLD="`tput rev`"
+PLAIN="`tput sgr0`"
+
+tput clear
+echo "********************************************************************"
+echo "*      C C B   I N T E R F A C E   C O N F I G U R A T I O N       *"
+echo "********************************************************************"
+echo
+echo "The interfaces to the network must be initially configured when you"
+echo "go from single user mode to multi user mode."
+echo "In this section you will specify the slots of those CCBs that will"
+echo "be configured for TCP/IP.  You will also need to specify which port(s)"
+echo "on those CCBs will be running TCP/IP."
+echo 
+echo "You may also configure a LAN, a \"high performance Ethernet interface\""
+echo "if you have the appropriate hardware."
+echo
+while true; do
+	echo
+	echo "Enter the slot of the CCB or LAN (00 - 15) "
+	echo "${BOLD}This must be a two digit number, use a leading zero if needed:$PLAIN \c$"
+	read slot
+	extra=Z
+	lets=`expr $slot$extra : '.*'` 
+	if [ $lets != 3 ]; then
+		echo
+		echo "This must be a two digit number!"
+		echo
+		continue
+	fi
+	cando=yes
+	ccb_or_lan="`chkslot $slot`"
+	if [ $ccb_or_lan = "0" ]; then
+		cando=no
+		echo
+		echo "WARNING: no CCB or LAN is currently defined slot $slot."
+		echo
+		echo "Do you want still want to configure this slot? [y/n]: \c"
+		read ok
+		if [ X$ok != Xy -a X$ok != XY ]; then
+			continue
+		else
+			echo "You will need to correct your configuration with devadm after the installation."
+		fi
+	fi
+	if [ "$ccb_or_lan" = 1 ]; then
+	  chknet $slot
+	  if [ $? = "0" ]; then
+	  	cando=no
+	  	echo
+	  	echo "WARNING: CCB in slot $slot does not have the proper network option for TCP/IP."
+	  	echo
+	  	echo "Do you want still want to configure this slot? [y/n]: \c"
+	  	read ok
+	  	if [ X$ok != Xy -a X$ok != XY ]; then
+	  		continue
+	  	else
+	  		echo "You will need to correct your configuration with devadm after the installation."
+	  	fi
+	  fi
+
+	  echo
+	  echo Is port 0 of slot $slot to be configured for TCP/IP? [y/n]:" \c"
+	  read conf
+	  if [ X$conf = Xy -o X$conf = XY -o X$conf = Xyes ]; then
+	  	zero=l
+	  	echo
+	  	echo Enter Internet address in dotted decimal notation:" \c"
+	  	read addr0
+	  	echo '\t'ifconfig en$slot'0 '$addr0' -trailers' >> ./tcptemp$$
+	  	echo '\t'tienet ip /dev/strnet en$slot'0' '10 10 10 2'>>strcftemp$$
+	  	echo '\t\t'slot:'\t'$slot'\t'port:'\t'0'\t'address:'\t'$addr0 >>slotport$$
+	  else
+	  	zero=?
+	  fi
+	  echo
+	  echo Is port 1 of slot $slot to be configured for TCP/IP? [y/n]:" \c"
+	  read conf
+	  if [ X$conf = Xy -o X$conf = XY -o X$conf = Xyes ]; then
+	  	one=l
+	  	echo
+	  	echo Enter Internet address in dotted decimal notation:" \c"
+	  	read addr1
+	  	echo '\t'ifconfig en$slot'1 '$addr1' -trailers' >> ./tcptemp$$
+	  	echo '\t'tienet ip /dev/strnet en$slot'1' '10 10 10 2'>>strcftemp$$
+	  	echo '\t\t'slot:'\t'$slot'\t'port:'\t'1'\t'address:'\t'$addr1 >>slotport$$
+	  else
+	  	one=?
+	  fi
+
+	  chkllien $slot
+	  if [ $? = "1" ]; then
+	  	cando=no
+	  fi
+
+	  if [ $cando = "yes" ]; then
+	  	chknet $slot
+	  	if [ $? = "1" ]; then
+	  		set `grep ccbnet /etc/ccbdev | grep ccb$slot | cut -f4 -d:`
+	  		comment=$@
+	  		echo /dev/ccb$slot/pu:/etc/ccbllien:lien: $comment >> llientemp$$
+	  		echo "llien=(hold=20)" >> llientemp$$
+	  	else
+	  		echo /dev/ccb$slot/pu:/etc/ccbllien:lien: 0=$zero 1=$one >> llientemp$$
+	  		echo "llien=(hold=20)" >> llientemp$$
+	  	fi
+	  else
+	  	echo "NOTE: CCB slot $slot already defined for TCP/IP, no change." >>ccb.temp 
+	  fi
+
+	else # is a LAN
+	  echo
+	  echo Enter Internet address in dotted decimal notation:" \c"
+	  read addr0
+	  echo '\t'ifconfig en$slot'0 '$addr0' -trailers' >> ./tcptemp$$
+
+	  # LAN uses "senet" instead of "strnet"
+	  echo '\t'tienet ip /dev/senet en$slot'0' '10 10 10 2'>>strcftemp$$
+	  echo '\t\t'slot:'\t'$slot'\t'port:'\t'0'\t'address:'\t'$addr0 >>slotport$$
+	fi # end of ccb_or_lan if
+	echo
+	echo "Do you need to configure an additional CCB or LAN? [y/n]: \c"
+	read ok
+	if [ X$ok = Xy -o X$ok = XY -o X$ok = Xyes ]; then
+		continue
+	fi
+	echo 
+	echo These are your entries.  They should have the same format as the 
+	echo 'following example: '
+	echo ------------------------------------------------------------------------------ 
+	echo example:'\t'slot:'\t'03'\t'port:'\t'1'\t'address:'\t'128.247.31.245 
+	echo ------------------------------------------------------------------------------ 
+	echo >> ./slotport$$
+	cat ./slotport$$
+	echo
+	echo Are these correct? [y/n]:" \c"
+	read ok
+	if [ X$ok = Xn -o X$ok = XN -o X$ok = XNO ]; then
+		rm -f ./slotport$$ ./tcptemp$$ ./strcftemp$$ ./llientemp$$
+		continue
+	else
+		break
+	fi
+done
+
+cat slotport$$ >>ccb.temp
+echo
+echo modifying /etc/ccbdev...
+touch llientemp$$
+cat llientemp$$ >> /etc/ccbdev
+
+echo
+echo creating /etc/tcp...
+csplit -s -f csplittmp tcp '/%% ifconfigs precede this line %%/'
+cat csplittmp00 tcptemp$$ csplittmp01 >tcp
+install -s -f /etc -m 0744 -u root tcp
+
+echo
+echo creating /etc/strcf
+cat strcf strcftemp$$ >almost$$
+echo '}' >>almost$$
+mv almost$$ strcf
+install -s -f /etc -m 0644 -u root strcf
+
+# /dev/senet device node for high performance Ethernet interface
+# (LAN) should be shipped with OS - but make sure it is there
+# if any LAN's are installed. Don't just make it either way since
+# it requires cband parms to support it and some users may try to
+# remove the device (using 68040 board for mem+cpu, NOT embedded LAN)
+#
+temp="`grep -c /dev/senet strcftemp$$`"
+if [ $temp != 0 ]; then
+	mknod /dev/senet c 54 74 2>/dev/null
+fi
+

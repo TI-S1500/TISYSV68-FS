@@ -1,0 +1,106 @@
+******************************************************************************
+* JSDF0122.INT- INSTALL OF PATCH 0122 -  TI1500 FILES FOR JDVISION II FILES
+* 03JUN98  DHB
+******************************************************************************
+* 6-03-98 DB Created Batch
+/ CS
+/ DI (1,5) " JDIS SOFTWARE DISTRIBUTION FACILITY - # 0122"
+:CHKID
+? @USERID EQ "sys999" (CHKPLAT)
+/ DI (5,15) "YOU MUST BE LOGGED ON AS sys999 TO DO THIS UPDATE"
+/ PS
+{END}
+*
+:CHKPLAT
+S AS PLATFILE @ST_DIR"PLATFILE"
+# uname -s|awk '{print ^"S AS PLATFORM ^" $0}' >@PLATFILE
+& $@PLATFILE
+? @PLATFORM EQ "TI" (PTAR)
+/ DI (5,15) "THIS PATCH DOES NOT APPLY TO HP MACHINES"
+S AS INTGOOD "Y"
+#rm /JDIS/JDSDF/JSDF0122.DAT
+/ PS
+{END}
+*
+:PTAR
+#cd /JDIS/JDSDF
+$ JSDF0122.LOG A
+JSDF0122.DAT INSTALL START
+JSDF0122.DAT	*****	 SOFTWARE PATCH INSTALL - @DATE @TIME @USERID
+JSDF0122.DAT	*****	 Using tar to extract all patch members
+$$
+#mkdir /once 2>>/dev/null
+#mkdir /once/init2 2>>/dev/null
+#tar xf JSDF0122.DAT 2>>/dev/null
+F EX /once/init2/mntcfg (COPYPGM)
+S AS SDERR "tar extract failed"
+{SDFERR}
+*
+:COPYPGM
+S AS SDERR "error copying jdv2updt to /JDIS/PROG/SOS"
+#cp /once/init2/jdv2updt /JDIS/PROG/SOS/jdv2updt
+? @SYSRC EQ 0 [SOFERR]
+S AS SDERR "error copying mntcfg to /JDIS/PROG/SOS"
+#cp /once/init2/mntcfg /JDIS/PROG/SOS/mntcfg
+? @SYSRC EQ 0 [SOFERR]
+S AS SDERR "error copying auto_config.ti to /JDIS/PROG/SOS"
+#cp /once/init2/auto_config.ti /JDIS/PROG/SOS/auto_config
+? @SYSRC EQ 0 [SOFERR]
+S AS SDERR "error copying tiparts to /JDIS/PROG/SOS"
+#cp /once/init2/tiparts /JDIS/PROG/SOS/tiparts
+? @SYSRC EQ 0 [SOFERR]
+*
+:FINI
+#chmod 777 /JDIS/PROG/SOS/auto_config 2>>/dev/null
+#chmod 777 /JDIS/PROG/SOS/mntcfg 2>>/dev/null
+#chmod 777 /JDIS/PROG/SOS/jdv2updt 2>>/dev/null
+#chmod 777 /JDIS/PROG/SOS/tiparts 2>>/dev/null
+#cd /JDIS/JDSDF
+$ JSDF0122.LOG A
+JSDF0122.DAT	***** TI jdv 10. SCRIPTS
+$$
+*
+#rm -r /once/init2
+#rm /JDIS/JDSDF/JSDF0122.DAT
+:LOG
+$ JSDF0122.LOG A
+JSDF0122.DAT	*****	 cleanup complete
+JSDF0122.DAT INSTALL COMPLETE-NO ERRORS
+$$
+/ DI (12,5) "The JDSDF Installation of # 0122 is Complete"
+/ PS
+$ /usr/adm/JDISRLSE.log A
+%%>Dealer has Installed JDSDF Patch JSDF0122 JDUPDATE
+$$
+$ @D1"COMM/JDISINFO" A
+********** PATCH0122 INSTALLED ***********************************************
+$$
+S AS INTGOOD "Y"
+#echo "PATCH 0122 COMPLETE-NO ERRORS" >> /JDIS/PROG/CMN/SHOWSDF
+# { date; } >> /JDIS/currlse.log
+#echo "PATCH 0122 COMPLETE-NO ERRORS" >> /JDIS/currlse.log
+{END}
+*
+:SDFERR
+# {date; } >> /JDIS/currlse.log
+#echo "PATCH 0122 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/currlse.log
+#echo "PATCH 0122 HAD ERRORS-DID NOT COMPLETE-" >> /JDIS/PROG/CMN/SHOWSDF
+/ DI (5,5) "The JDSDF Software Installation FAILED With the Following Error:"
+/ DI (7,10) @SDERR
+/ DI (9,5) "Contact JDIS Support"
+/ DI "DO NOT Attempt to Setup for POLL Until the Problem is Resolved"
+/ DI "ALL Other Jobs/Processing Can Be Run as Normal"
+#echo @SDERR >> /JDIS/PROG/CMN/SHOWSDF
+/ PS
+{END}
+:SOFERR
+# {date; } >> /JDIS/currlse.log
+#echo "PATCH 0122 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/currlse.log
+#echo "PATCH 0122 HAD ERRORS-DID NOT COMPLETE-" >> /JDIS/PROG/CMN/SHOWSDF
+/ DI (5,5) "The JDSDF Software Installation was INCOMPLETE:"
+/ DI (7,10) @SDERR
+#echo @SDERR >> /JDIS/PROG/CMN/SHOWSDF
+/ PS
+:END
+S DS SDERR
+S DS RLSE

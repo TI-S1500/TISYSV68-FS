@@ -1,0 +1,11 @@
+# cshf	SNA Administration Process
+# @(#)SNAADM	1.1 87/04/25
+onintr end
+prompt "^SNAADM -- SNA System V Administration Process" \
+	"^#$*"
+if ($abort) goto end
+sleep 2
+echo "=== SNAADM COMMAND EXECUTING ==="
+echo "/usr/ucs/snaadm"
+/usr/ucs/snaadm
+end:

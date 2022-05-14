@@ -1,0 +1,9 @@
+cd /JDIS/CBT/PAY
+echo "*********************************************************************"
+echo "*                                                                   *"
+echo "*                Loading the PAYROLL CBT Program now.               *"
+echo "*                                                                   *"
+echo "*                Please wait .............                          *"
+echo "*                                                                   *"
+echo "*********************************************************************"
+interp01 -big

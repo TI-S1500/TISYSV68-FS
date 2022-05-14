@@ -1,0 +1,30 @@
+
+Date:  23 APR 98                                    MEYER IMPLEMENT, INC.                                                Page:    1
+Time:  00:56                               MIM Invoice Records Received Via Nightly Poll                                  (CGPOLREP)
+
+
+
+
+  Contract: 8376          Order ID: 197540            Desc: REAR GRASS BAG (STEEL DECKS)                       Model:
+
+      Order Code   Alter Code     Description              Prior Cost    Current Cost  Attach Qty   New APF  Used APF    Vendor
+
+ **        BG10085                REAR GRASS BAG (STEE          0.00            39.20         2      IN22     IN60            2
+           FRT DISC  M 18900      FREIGHT DISCOUNT              0.00             6.20-               MC01                     0
+           FREIGHT   M 18900      FREIGHT                       0.00             6.20                MC01                     0
+                                                   Total Invoice Cost:         78.40           MDP:        78.40
+
+
+
+  Contract: 8376          Order ID: 197541            Desc: SIDE DISCHARGE ATTACHMENT                          Model:
+
+      Order Code   Alter Code     Description              Prior Cost    Current Cost  Attach Qty   New APF  Used APF    Vendor
+
+ **        BG10106                SIDE DISCHARGE ATTAC          0.00            14.40         4      IN22     IN60            2
+           FRT DISC  M 18900      FREIGHT DISCOUNT              0.00             3.00-               MC01                     0
+           FREIGHT   M 18900      FREIGHT                       0.00             3.00                MC01                     0
+                                        Total Cost:         57.60
+
+
+                                                          (End of Report)
+

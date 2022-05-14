@@ -1,0 +1,21 @@
+*   SAVE_PERMITS - RUN BY HARDWARE BUILD GROUP AFTER "Z" IS ENABLED
+* 5-15-92 DHB - RELEASE 8.2
+*-------------------------------------------------------------------------
+*
+S AS ANS "Y"
+/ CS
+/ CC 6 10
+/ DI "ENTER  Y  TO CONTINUE IF Z HAS BEEN ENABLED"
+/ CC 8 10
+/ DI "CONTINUE? (Y,N)"
+/ RD ANS @ANS
+/ CS
+? @ANS EQ "Y" (COPY)
+? @ANS EQ "N" (END)
+:COPY
+# su sys000 -c ^"cp /permits /etc/BKUP_DIR/permits^"
+# su sys000 -c ^"ls -i /permits > /etc/BKUP_DIR/permits.inode^"
+/ DI "Maintenance on permits files complete"
+/ PS
+:END
+S DS ANS

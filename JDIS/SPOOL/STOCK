@@ -1,0 +1,41 @@
+
+Date: 28FEB1998                                        MEYER IMPLEMENT, INC.                                             Page:    1
+Time: 14:06                                           STKSTAT - 1D ON HAND PARTS                                        (STKSTATM-1)
+
+                                                      Report Selection Criteria
+
+Logic: AND LOGIC
+
+Warehouses Selected: 1D
+Print Substitutions: No
+Print Comments:      No
+
+Basic Criteria:
+  On Hand:                   (Include) greater than      1
+
+Sort Sequence: Warehouse, Part Number
+Report:        Summary report
+
+
+                                                     (End of Selection Criteria)
+
+Date: 28FEB1998                                        MEYER IMPLEMENT, INC.                                             Page:    2
+Time: 14:06                                           STKSTAT - 1D ON HAND PARTS                                        (STKSTATM-1)
+
+                                                           Summary Report
+
+
+                                                                                                YTD Sale $     Lst12 $
+                                                                                                YTD Cost $     Prv12 $
+                                                                                                Current Inv    % Inc
+                                                                                                YTD Ave Inv
+
+Totals for Warehouse 1D:                                                                         24414.16    271402.02
+                                                                                                 22270.54    315379.63
+                                                                                                170107.60        14-
+                                                                                                172929.66
+
+** Inventory Aged By Last Sale Year
+    At Current Cost: 98    52,656.73  97    87,021.87  96    16,607.22  95     3,820.64  94     1,263.96  Other     8,737.18
+    At Average Cost: 98    51,757.43  97    87,116.09  96    15,925.24  95     3,562.38  94     1,098.77  Other     7,136.38
+ At Constant $ Cost: 98    41,730.74  97    69,076.22  96    13,287.30  95     3,428.17  94     1,021.80  Other     6,656.97

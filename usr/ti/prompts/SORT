@@ -1,0 +1,107 @@
+# cshf  sort -- Sorts and merges files 
+#	@(#)SORT.sh	1.4  91/05/31
+#
+onintr end
+
+prompt "^SORT -- SORTS AND/OR MERGES FILES"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Only Check Ordering:" cflag yesno n\
+	"^Merge Only:" mflag yesno n\
+	"^Print Only Unique Lines:" uflag yesno n\
+	"^Compare as Months:" Mflag yesno n\
+	"^*Field Separator:" tflag string\
+	"^Select Ordering Rules:" rules yesno n\
+	"^*Temporary File Directory:" _tmpfile_dir acnm $_tmpfile_dir\
+	"^#$*"
+
+if ($abort) goto end
+if ($rules == "y") then
+	if ($abort) goto end
+	prompt "^SORT -- ORDERING RULES OPTIONS"\
+		"^DICTIONARY ORDER OPTIONS"\
+		"^*Dictionary Order:" dflag yesno n\
+		"^*Starting Position/Field:" dstart string \
+		"^*Ending Position/Field:" dend string \
+		"^IGNORING LEADING BLANKS"\
+		"^*Ignore Leading Blanks:" bflag yesno n\
+		"^*Starting Position/Field:" bstart string \
+		"^*Ending Position/Field:" bend string \
+		"^UPPER TO LOWER CASE CONVERSION"\
+		"^*Fold Lower/Upper Case:" fflag yesno n\
+		"^*Starting Position/Field:" fstart string \
+		"^*Ending Position/Field:" fend string \
+		"^#$*"
+	if ($abort) goto end
+	prompt "^SORT -- ORDERING RULES OPTIONS"\
+		"^IGNORING CHARACTERS OUTSIDE THE ASCII RANGE"\
+		"^*Ignore Outside ASCII Range:" iflag yesno y\
+		"^*Starting Position/Field:" istart string \
+		"^*Ending Position/Field:" iend string \
+		"^SORT BY ARITHMETIC VALUE"\
+		"^*Sort by Arithmetic Value:" nflag yesno n\
+		"^*Starting Position/Field:" nstart string \
+		"^*Ending Position/Field:" nend string \
+		"^REVERSE SENSE OF COMPARISION"\
+		"^*Reverse Comparision Sense:" rflag yesno n\
+		"^*Starting Position/Field:" rstart string \
+		"^*Ending Position/Field:" rend string \
+
+	if ($abort) goto end
+	if ($dflag == "y") then
+		if ($dstart != "") set dsopt = "+"$dstart"d"
+		if ($dend != "") set deopt = "-"$dend"d"
+		if (("$dend" == "") && ("$dstart" == "")) set dopt = -d
+
+	endif
+	if ($bflag == "y") then
+		if ($bstart != "") set beopt = "+"$bstart"b"
+		if ($bend != "") set beopt = "-"$bend"b"
+		if (("$bend" == "") && ("$bstart" == "")) set bopt = -b
+	endif
+	if ($fflag == "y") then
+		if ($fstart != "") set fsopt = "+"$fstart"f"
+		if ($fend != "") set feopt = "-"$fend"f"
+		if (("$fend" == "") && ("$fstart" == "")) set fopt = -f
+	endif
+	if ($iflag == "n") then
+		if ($istart != "") set isopt = "+"$istart"i"
+		if ($iend != "") set ieopt = "-"$ieni"i"
+		if (("$iend" == "") && ("$istart" == "")) set iopt = -i
+	endif
+	if ($nflag == "y") then
+		if ($nstart != "") set nsopt = "+"$nstart"n"
+		if ($nend != "") set neopt = "-"$nend"n"
+		if (("$nend" == "") && ("$nstart" == "")) set nopt = -n
+	endif
+	if ($rflag == "y") then
+		if ($rstart != "") set rsopt = "+"$rstart"r"
+		if ($rend != "") set reopt = "-"$rend"r"
+		if (("$rend" == "") && ("$rstart" == "")) set ropt = -r
+	endif
+endif
+
+if ($cflag == "y") set copt = -c
+if ($mflag == "y") set mopt = -m
+if ($uflag == "y") set uopt = -u
+if ($Mflag == "y") set Mopt = -M
+if ("$tflag" != "") set topt = -t$tflag
+if ($_output_file != "") set oopt = "-o "$_output_file 
+if ($_tmpfile_dir != "") set Topt = "-T "$_tmpfile_dir
+
+
+if ($abort) goto end
+echo "=== SORT COMMAND EXECUTING ==="
+echo sort $copt $mopt $uopt $Mopt $topt\
+$dsopt $deopt $dopt $bsopt $beopt $bopt $isopt $ieopt $iopt\
+$fsopt $feopt $fopt $nsopt $neopt $nopt $rsopt $reopt $ropt\
+$oopt $Topt $_input_file 
+
+sort $copt $mopt $uopt $Mopt $topt \
+$dsopt $deopt $dopt $bsopt $beopt $bopt $isopt $ieopt $iopt\
+$fsopt $feopt $fopt $nsopt $neopt $nopt $rsopt $reopt $ropt\
+$oopt $Topt $_input_file 
+
+#clean up time
+end:
+unset *flag *opt *start *end rules

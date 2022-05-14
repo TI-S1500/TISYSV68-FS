@@ -1,0 +1,30 @@
+# bshf	cpisam - copy isam file
+#	@(#)CPISAM.sh	1.2 87/11/23
+#
+onintr end
+
+if ($vopt == "") set vopt=n
+
+prompt	"^CPISAM -- COPY T-ISAM FILE"\
+	"^Source Data File:"         sdfile acnm $sdfile\
+	"^*Source Index File:"       sifile acnm $sifile\
+	"^Destination Data File:"    ddfile acnm $ddfile\
+	"^*Destination Index File:"  difile acnm $difile\
+	"^Verbose? (y/n):"           vopt  yesno $vopt\
+	"^#$*"
+
+if ($abort) goto end
+
+set sifl=""
+set difl=""
+set vb=""
+
+if ($sifile != "") set sifl="+"$sifile" "
+if ($difile != "") set difl="+"$difile" "
+if ($vopt == "y") set vb="-v "
+
+echo cpisam $vb$sdfile $sifl$ddfile $difl
+cpisam $vb$sdfile $sifl$ddfile $difl
+
+end:
+unset sifl difl vb

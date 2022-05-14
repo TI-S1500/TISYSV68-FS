@@ -1,0 +1,28 @@
+# cshf 3270 Mapsna Utility
+# @(#)MAPSNA	1.1 87/08/12
+onintr end
+prompt "^ MAPSNA -- 3270 SNA System V Key Mapping Utility" \
+	"^*Read from HOME Directory?: " sna_h yesno n \
+	"^*Read from SNA_HOME Directory?: " sna_s yesno n \
+	"^*Write to SNA_HOME Directory?: " sna_w yesno n \
+	"^#$*"
+if ($sna_h == "y") then
+	if ($sna_s == "y") then
+		set sna_i = "-ix"
+	else
+		set sna_i = "-ih"
+	endif
+else
+	if ($sna_s == "y") set sna_i = "-is"
+endif
+if ($sna_w == "y") set sna_o = "-os"
+if ($abort) goto end
+if($sna_i == "-ix") then
+	echo "Cannot read from both the HOME and SNA_HOME directories"
+else
+	echo "=== MAPSNA COMMAND EXECUTING ==="
+	echo "/usr/bin/mapsna $sna_i $sna_o"
+	/usr/bin/mapsna $sna_i $sna_o
+endif
+end:
+unset sna_h sna_s sna_w sna_i sna_o

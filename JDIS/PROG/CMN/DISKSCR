@@ -1,0 +1,15 @@
+/bin/echo "**************************" >> /JDIS/PROG/CMN/DISKUSE
+/bin/echo "DISK USAGE BEFORE INSTALL:" >> /JDIS/PROG/CMN/DISKUSE
+du /JDIS/PROG >> /JDIS/PROG/CMN/DISKUSE
+du /JDIS/DATA >> /JDIS/PROG/CMN/DISKUSE
+ls -l $D2"MS/MSWOH.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D3"MI/PMMPUR.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D3"MI/PRTMST.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D3"MI/ORDER.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D1"CG/SEC.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D1"CG/CGINVC.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D1"AP/APHIST.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D1"AP/APTRAN.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D1"AP/APREC.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D1"AP/APVEND.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null
+ls -l $D1"MF/BUDGET.INX" >> /JDIS/PROG/CMN/DISKUSE 2>>/dev/null

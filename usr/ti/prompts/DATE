@@ -1,0 +1,33 @@
+# cshf   date -- set the date     
+#	@(#)DATE.sh	1.2  88/01/20
+#
+#  This script can only be run as super user, due to the fact that
+# it changes the system date on the computer, which, if run in a state
+# other than single user mode, can wreak havoc.
+onintr end
+
+prompt "^DATE -- PRINTS AND SETS THE DATE"\
+	"^Set Date Option:" opts yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($opts == "y") then
+	prompt "^DATE -- ADVANCED OPTIONS"\
+		"^THIS IS A SUPER USER COMMAND"\
+		"^*Year:" year string\
+		"^Month(01-12):" month "range(1,12)"\
+		"^Day(01-31):" day "range(1,31)"\
+		"^Hour(01-24):" hour "range(1,24)"\
+		"^Minute(01-60):" min "range(1,60)"\
+		"^#$*"
+
+	if ($abort) goto end
+endif
+
+
+echo "=== DATE COMMAND EXECUTING ==="
+echo date $month$day$hour$min$year
+date $month$day$hour$min$year
+#
+end:
+unset opts month day hour min year 

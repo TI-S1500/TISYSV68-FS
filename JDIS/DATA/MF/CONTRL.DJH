@@ -1,0 +1,1458 @@
+*********************************************|***************|***************** 
+*SINGLE STORE - FIS FORMAT - MASK.S01  (03/10/94-MAB)                           
+*                            04/14/94-MAB-MOVED DEFERRED CREDITS AFTER TOTAL    
+*                                     CURRENT LIABILITIES                       
+*                                                                               
+* 03/28/95-MAB-CONTROL FILE REBUILT FOR BALDWIN, WI - SVC UPGRADE               
+*********************************************|***************|***************** 
+*  BALANCE SHEET                                                                
+*                                                                               
+*                                                                               
+*********************************************|***************|***************** 
+STOP PRINT                                                                      
+COMPANY 00 CONSOLIDATE N:   +  +  +  +  +  +  +  +                              
+HF1 BALANCE SHEET FORMAT                                                        
+H1                                                 MEYER IMPLEMENT, INC.        
+H2                                                                              
+B            ASSETS                                                             
+P                                                                               
+B            CURRENT ASSETS                                                     
+P                                                                               
+*  001000000 - 001029900                         28 Mar 95 MASK                 
+P+ 001010000-CASH ON HAND                           *                           
+P+ 001020100-CHECKING ACCOUNT                       *                           
+P+ 001020200-SAVINGS ACCOUNT                        *                           
+P                                                                               
+B=T000100200 TOTAL CASH                                                         
+P                                                                               
+P                                                                               
+*  001030000 - 001039900                         28 Mar 95 MASK                 
+P+ 001030000-MARKETABLE SECURITIES                  *                           
+P                                                                               
+B=T000100300 MARKETABLE SECURITIES                                              
+P                                                                               
+P                                                                               
+*  001040000 - 001049900                         28 Mar 95 MASK                 
+P+ 001040000-A/R CUSTOMER                           *                           
+*  001190000 - 001199900                         28 Mar 95 MASK                 
+P+ 001190000-ALLOWANCE FOR BAD DEBTS                *                           
+P                                                                               
+B>T000100400 NET ACCTS RECEIVABLE                                               
+P                                                                               
+P                                                                               
+*  001050000 - 001189900                         28 Mar 95 MASK                 
+P+ 001050000-A/R WARRANTY                           *                           
+P+ 001090100-MASTER CARD/VISA                       *                           
+P+ 001090200-JD CREDIT CARD                         *                           
+P+ 001090300-A/R FINANCE                            *                           
+P+ 001120000-NOTES RECEIVABLE                       *                           
+P+ 001150000-VOLUME DISC RECEIVABLE                 *                           
+P+ 001180000-CP PERF BONUS RCVBL                    *                           
+P                                                                               
+B>T000100500 TOTAL OTHER REC.                                                   
+P                                                                               
+B=T000100600 TOTAL RECEIVABLES                                                  
+P                                                                               
+P                                                                               
+B             COMPLETE GOODS INVENTORY                                          
+P                                                                               
+*  001200000 - 001269900                         28 Mar 95 MASK                 
+P+ 001200000-JD FARM EQUIPMENT                      *                           
+P+ 001220000-JD CONSUMER PRODUCTS                   *                           
+P                                                                               
+B>T000101000 TOTAL NEW JD INVENTORY                                             
+P                                                                               
+P                                                                               
+*  001270000 - 001659900                         28 Mar 95 MASK                 
+P+ 001420000-OTHER EQUIPMENT                        *                           
+P+ 001600000-USED EQUIPMENT                         *                           
+P+ 001620000-RENT & LEASE EQUIPMENT                 *                           
+P                                                                               
+B>T000101100 TOTAL OTHER INVENTORY                                              
+P                                                                               
+B=T000101200 TOTAL COMPL GOODS INV                                              
+P                                                                               
+P                                                                               
+B            PARTS INVENTORY                                                    
+P                                                                               
+*  001660000 - 001769900                         28 Mar 95 MASK                 
+P+ 001660000-JD SERVICE PARTS                       *                           
+P+ 001720000-OTHER SERVICE PARTS                    *                           
+P+ 001740000-OTHER MERCHANDISE                      *                           
+P                                                                               
+B=T000101300 TOTAL PARTS INVENTORY                                              
+P                                                                               
+P                                                                               
+B            OTHER INVENTORY                                                    
+P                                                                               
+*  001770000 - 001799900                         28 Mar 95 MASK                 
+P+ 001780000-WORK IN PROCESS                        *                           
+P                                                                               
+B=T000101400 TOTAL OTHER INVENTORY                                              
+P                                                                               
+P                                                                               
+ +T000101200-TOTAL COMPL GOODS INV                                              
+ +T000101300-TOTAL PARTS INVENTORY                                              
+ +T000101400 TOTAL OTHER INVENTORY                                              
+B=T000101700 TOTAL INVENTORIES                                                  
+P                                                                               
+P                                                                               
+ +T000100200-TOTAL CASH                                                         
+ +T000100300-MARKETABLE SECURITIES                                              
+ +T000100600-TOTAL RECEIVABLES                                                  
+ +T000101700-TOTAL INVENTORIES                                                  
+B=T000101800 TOTAL CURRENT ASSETS                                               
+P                                                                               
+P                                                                               
+B            FIXED ASSETS                                                       
+P                                                                               
+*  001800000 - 001889900                         28 Mar 95 MASK                 
+P+ 001810000-LAND                                   *                           
+P+ 001820000-BUILDING & EQUIPMENT                   *                           
+P+ 001830000-SERVICE EQUIP & TOOLS                  *                           
+P+ 001840000-FURNITURE & FIXTURES                   *                           
+P+ 001850000-VEHICLES                               *                           
+P+ 001870000-OTHER PROPERTY                         *                           
+P+ 001880000-LEASEHOLD IMPROVEMENTS                 *                           
+P                                                                               
+B=T000102400 TOTAL PROPERTY & EQUIP                                             
+P                                                                               
+P                                                                               
+*  001890000 - 001899900                         28 Mar 95 MASK                 
+P+ 001890100-DEPREC BLDG & EQUIP                    *                           
+P+ 001890200-DEPREC SERV EQ & TOOLS                 *                           
+P+ 001890300-DEPREC FURN & FIXTURES                 *                           
+P+ 001890400-DEPREC VEHICLES                        *                           
+P+ 001890500-DEPREC OTHER PROPERTY                  *                           
+P+ 001890600-DEPREC LEASEHOLD IMPROV                *                           
+P                                                                               
+B>T000102500 TOTAL ACCUM. DEPR.                                                 
+ +T000102400 TOTAL PROPERTY & EQUIP                                             
+P                                                                               
+P                                                                               
+B=T000102600 TOTAL FIXED ASSETS                                                 
+P                                                                               
+P                                                                               
+P                                                                               
+P                                                                               
+P                                                                               
+P                                                                               
+B            OTHER ASSETS                                                       
+P                                                                               
+*  001900000 - 001999900                         28 Mar 95 MASK                 
+P+ 001900000-RETAIL FINANCE RESERVE                 *                           
+P+ 001920000-CONTINGENT EARNINGS                    *                           
+P+ 001930000-PREPAID EXPENSES                       *                           
+P+ 001990000-OTHER ASSETS                           *                           
+P                                                                               
+B>T000102700 TOTAL OTHER ASSETS                                                 
+ +T000102600 TOTAL FIXED ASSETS                                                 
+ +T000101800 TOTAL CURRENT ASSETS                                               
+P                                                                               
+P                                                                               
+B=T000102999 TOTAL ASSETS                                                       
+B            ============                                                       
+*********************************************|***************|***************** 
+H                                                                               
+P                                                                               
+B            LIABILITIES                                                        
+P                                                                               
+B            ACCOUNTS AND NOTES PAYABLE                                         
+P                                                                               
+*  002000000 - 002299900                         28 Mar 95 MASK                 
+P+ 002000000-A/P DEERE                              *                           
+P+ 002020000-A/P DEERE CP                           *                           
+P+ 002150000-A/P OTHER                              *                           
+P+ 002220000-SHORT TERM N/P BANK                    *                           
+P+ 002240000-SHORT TERM N/P STKHLDRS                *                           
+P+ 002260000-SHORT TERM N/P OTHER                   *                           
+P                                                                               
+B>T000200300 TOTAL A/P & S/T NOTES                                              
+P                                                                               
+B            OTHER PAYABLES                                                     
+P                                                                               
+*  002300000 - 002499900                         28 Mar 95 MASK                 
+P+ 002300000-SALES TAX PAYABLE                      *                           
+P+ 002300100-SALES TAX STATE & COUNT                *                           
+P+ 002300200-SALES TAX STATE                        *                           
+P+ 002350100-FICA WITHHOLDING                       *                           
+P+ 002350200-STATE WITHHOLDING                      *                           
+P+ 002350300-FEDERAL WITHHOLDING                    *                           
+P+ 002350400-OTHER PAYROLL WITHHLDNG                *                           
+P+ 002390000-CUSTOMER ADVANCE DEPSTS                *                           
+P+ 002490100-TRADE-IN CLEARING                      *                           
+P+ 002490200-JD AG CLEARING                         *                           
+P+ 002490300-JD CP CLEARING                         *                           
+P+ 002490400-VENDOR CLEARING                        *                           
+P+ 002499900-PAYROLL CLEARING*******                *                           
+P                                                                               
+B>T000200500 TOTAL OTHER PAYABLES                                               
+P                                                                               
+B            ACCRUED LIABILITIES                                                
+P                                                                               
+*  002500000 - 002669900                         28 Mar 95 MASK                 
+P+ 002550000-ACCR INTEREST PAYABLE                  *                           
+P+ 002580000-ACCR TAXES PAYABLE                     *                           
+P+ 002600000-ACCR FED INCOME TAX                    *                           
+P+ 002620000-ACCR STATE INCOME TAX                  *                           
+P+ 002660000-OTHER ACCR LIABILITIES                 *                           
+P                                                                               
+B>T000201200 TOTAL ACCRUED LIAB.                                                
+P                                                                               
+B=T000201800 TOTAL CURRENT LIAB.                                                
+P                                                                               
+B            DEFERRED CREDITS                                                   
+P                                                                               
+*  002670000 - 002719900                         28 Mar 95 MASK                 
+P+ 002690000-UNEARNED INTEREST                      *                           
+P                                                                               
+B>T000201400 TOTAL DEFERRED CRED.                                               
+P                                                                               
+P                                                                               
+B            LONG TERM DEBT                                                     
+P                                                                               
+*  002720000 - 002799900                         28 Mar 95 MASK                 
+P+ 002730000-LONG TERM DEBT/BANK                    *                           
+P+ 002740000-LONG TERM DEBT/STKHLDRS                *                           
+P+ 002770000-LONG TERM DEBT/OTHER                   *                           
+P+ 002780000-LONG TERM DEBT/MORTGAGE                *                           
+P                                                                               
+B>T000202000 TOTAL LONG TERM DEBT                                               
+ +T000201800-TOTAL CURRENT LIAB.                                                
+P                                                                               
+P                                                                               
+B=T000202500 TOTAL LIABILITIES                                                  
+P                                                                               
+P                                                                               
+B            STOCKHOLDER'S EQUITY                                               
+P                                                                               
+*  002800000 - 002999900                         28 Mar 95 MASK                 
+P+ 002800000-CAPITAL STOCK                          *                           
+P+ 002820000-PAID IN CAPITAL                        *                           
+P+ 002840000-TREASURY STOCK                         *                           
+P+ 002860000-RETAINED EARNINGS                      *                           
+P+ 002890000-DIVIDENDS                              *                           
+P+ 002900000-CAPITAL INVESTMENT                     *                           
+P+ 002960000-UNDISTRIBUTED PROFITS                  *                           
+P+ 002990000-WITHDRAWALS                            *                           
+ =T000202600-TOTAL EQUITY LESS PROFIT                                           
+*********************************************|***************|***************** 
+* Compute Year-to-Date Profit                                                   
+*                                                                               
+ +T000102999-TOTAL ASSETS                                                       
+ -T000202500-TOTAL LIABILITIES                                                  
+ -T000202600-TOTAL EQUITY LESS PROFIT                                           
+P=T000205000 YEAR-TO-DATE PROFIT                                                
+*********************************************|***************|***************** 
+ +T000202600-TOTAL EQUITY LESS PROFIT                                           
+ +T000205000-YEAR TO DATE PROFIT                                                
+P                                                                               
+P=T000202700 TOTAL EQUITY                                                       
+P                                                                               
+P                                                                               
+ +T000202500-TOTAL LIABILITIES                                                  
+ +T000202700-TOTAL EQUITY                                                       
+B=T000202999 TOTAL LIAB. & EQUITY                                               
+B            ====================                                               
+*********************************************|***************|***************** 
+*  SHORT BALANCE SHEET                                                          
+*                                                                               
+*                                                                               
+*********************************************|***************|***************** 
+START PRINT                                                                     
+COMPANY 00 CONSOLIDATE N:   +  +  +  +  +  +  +  +                              
+HF1 BALANCE SHEET FORMAT                                                        
+H1                                                 MEYER IMPLEMENT, INC.        
+H2                                                                              
+B            ASSETS                                                             
+P                                                                               
+B            CURRENT ASSETS                                                     
+P                                                                               
+B T000100200 TOTAL CASH                                                         
+B T000100300 MARKETABLE SECURITIES                                              
+P                                                                               
+B T000100400 NET ACCTS RECEIVABLE                                               
+B T000100500 TOTAL OTHER REC.                                                   
+P                                                                               
+B T000100600 TOTAL RECEIVABLES                                                  
+P                                                                               
+P                                                                               
+B             INVENTORY                                                         
+P                                                                               
+B T000101000 TOTAL NEW JD INVENTORY                                             
+B T000101100 TOTAL OTHER INVENTORY                                              
+P                                                                               
+B T000101200 TOTAL COMPL GOODS INV                                              
+P                                                                               
+P                                                                               
+B T000101300 TOTAL PARTS INVENTORY                                              
+P                                                                               
+B T000101400 TOTAL OTHER INVENTORY                                              
+P                                                                               
+P                                                                               
+B T000101700 TOTAL INVENTORIES                                                  
+P                                                                               
+P                                                                               
+B T000101800 TOTAL CURRENT ASSETS                                               
+P                                                                               
+P                                                                               
+B            FIXED ASSETS                                                       
+P                                                                               
+B T000102400 TOTAL PROPERTY & EQUIP                                             
+P                                                                               
+B T000102500 TOTAL ACCUM. DEPR.                                                 
+P                                                                               
+B T000102600 TOTAL FIXED ASSETS                                                 
+P                                                                               
+P                                                                               
+B T000102700 TOTAL OTHER ASSETS                                                 
+P                                                                               
+P                                                                               
+B T000102999 TOTAL ASSETS                                                       
+B            ============                                                       
+H                                                                               
+P                                                                               
+B            LIABILITIES                                                        
+P                                                                               
+B T000200300 TOTAL A/P & S/T NOTES                                              
+B T000200500 TOTAL OTHER PAYABLES                                               
+B T000201200 TOTAL ACCRUED LIAB.                                                
+P                                                                               
+B T000201800 TOTAL CURRENT LIAB.                                                
+P                                                                               
+P                                                                               
+B T000201400 TOTAL DEFERRED CRED.                                               
+P                                                                               
+B T000202000 TOTAL LONG TERM DEBT                                               
+P                                                                               
+P                                                                               
+B T000202500 TOTAL LIABILITIES                                                  
+P                                                                               
+P                                                                               
+B            STOCKHOLDER'S EQUITY                                               
+P                                                                               
+*  002800000 - 002999900                         28 Mar 95 MASK                 
+P  002800000-CAPITAL STOCK                          *                           
+P  002820000-PAID IN CAPITAL                        *                           
+P  002840000-TREASURY STOCK                         *                           
+P  002860000-RETAINED EARNINGS                      *                           
+P  002890000-DIVIDENDS                              *                           
+P  002900000-CAPITAL INVESTMENT                     *                           
+P  002960000-UNDISTRIBUTED PROFITS                  *                           
+P  002990000-WITHDRAWALS                            *                           
+P T000205000 YEAR-TO-DATE PROFIT                                                
+P T000202700 TOTAL EQUITY                                                       
+B T000202999 TOTAL LIAB. & EQUITY                                               
+B            ====================                                               
+*********************************************|***************|***************** 
+*  RATIOS                                                                       
+*                                                                               
+*                                                                               
+*********************************************|***************|***************** 
+H2                                                                              
+HF4 RATIOS                                                                      
+P                                                                               
+ +T000101800-CURRENT ASSETS                                                     
+ /T000201800-CURRENT LIABILITIES                                                
+P=T000000010 QUICK RATIO                                                        
+*############################################################################## 
+* END OF BALANCE SHEET                                                          
+*############################################################################## 
+*                                                                               
+*********************************************|***************|***************** 
+*  INCOME STATEMENT                                                             
+*                                                                               
+*  DEPARTMENT 10 ADMIN DEPARTMENT - BALDWIN                                     
+*********************************************|***************|***************** 
+STOP PRINT                                                                      
+HF2 INCOME STATEMENT WITH BUDGET                                                
+H1                                                        BALDWIN               
+H2                                               ADMINISTRATION DEPARTMENT      
+P                                                                               
+B            VARIABLE EXPENSES                                                  
+P                                                                               
+*  005070010 - 005079910            / T000309999 28 Mar 95 MASK                 
+*  005120010 - 005149910            / T000309999 28 Mar 95 MASK                 
+P+ 005120010-BONUSES                / T000309999    *                           
+P+ 005140610-TRAINING               / T000309999    *                           
+*  005200010 - 005349910            / T000309999 28 Mar 95 MASK                 
+P+ 005220010-TRAVEL                 / T000309999    *                           
+P+ 005240010-ENTERTAINMENT          / T000309999    *                           
+P+ 005260010-ADVERTISING & PROMOTION/ T000309999    *                           
+P+ 005280110-WARRANTY               / T000309999    *                           
+*  005660010 - 005669910            / T000309999 28 Mar 95 MASK                 
+*  005720010 - 005759910            / T000309999 28 Mar 95 MASK                 
+P+ 005720010-CREDIT & COLLECTION EXP/ T000309999    *                           
+P+ 005730010-PROVISION FOR BAD DEBTS/ T000309999    *                           
+P                                                                               
+B=T000511099 TOTAL VAR EXP     ADMIN/ T000309999                                
+P                                                                               
+P                                                                               
+B              ADDITIONS TO INCOME                                              
+P                                                                               
+*  006000010 - 006999910            / T000309999 28 Mar 95 MASK                 
+P+ 006000010-CASH DISCOUNTS EARNED  / T000309999    *                           
+P+ 006120010-GAIN ON DSPL OF PROPRTY/ T000309999    *                           
+P+ 006140010-BAD DEBT RECOVERY      / T000309999    *                           
+P+ 006690010-INTEREST INCOME        / T000309999    *                           
+P+ 006990010-OTHER ADDITIONS        / T000309999    *                           
+P                                                                               
+B=T000601099 TOTAL ADDITIONS   ADMIN/ T000309999                                
+P                                                                               
+P                                                                               
+B              DEDUCTIONS FROM INCOME                                           
+P                                                                               
+*  007000010 - 007999910            / T000309999 28 Mar 95 MASK                 
+P+ 007120010-LOSS ON DSPL OF PROPRTY/ T000309999    *                           
+P+ 007990010-OTHER DEDUCTIONS       / T000309999    *                           
+P                                                                               
+B=T000701099 TOTAL DEDUCTIONS  ADMIN/ T000309999                                
+P                                                                               
+P                                                                               
+B            FIXED EXPENSES                                                     
+P                                                                               
+*  005000010 - 005069910            / T000309999 28 Mar 95 MASK                 
+P+ 005000010-SALARIES/OFFS,OWNS,GMS / T000309999    *                           
+P+ 005040010-SALARY/CONTROLLER      / T000309999    *                           
+*  005080010 - 005099910            / T000309999 28 Mar 95 MASK                 
+P+ 005080010-SALARIES & COMM/OTHER  / T000309999    *                           
+*  005160010 - 005169910            / T000309999 28 Mar 95 MASK                 
+P+ 005160110-EMPLOYEE BENEFITS      / T000309999    *                           
+*  005400010 - 005649910            / T000309999 28 Mar 95 MASK                 
+P+ 005400010-VEHICLE EXPENSE        / T000309999    *                           
+P+ 005440010-SUPPLIES EXPENSE       / T000309999    *                           
+P+ 005460010-POSTAGE & SHIPPING     / T000309999    *                           
+P+ 005480010-TELEPHONE              / T000309999    *                           
+P+ 005500010-DATA PROCESSING        / T000309999    *                           
+P+ 005520010-DUES & SUBSCRIPTIONS   / T000309999    *                           
+P+ 005540010-CONTRIBUTIONS          / T000309999    *                           
+P+ 005560010-UTILITIES              / T000309999    *                           
+P+ 005580010-RENT & LEASE           / T000309999    *                           
+P+ 005600010-INSURANCE              / T000309999    *                           
+P+ 005620010-TAX OTH THAN INCOME TAX/ T000309999    *                           
+P+ 005640510-REPAIR & MAINTENANCE   / T000309999    *                           
+*  005680010 - 005709910            / T000309999 28 Mar 95 MASK                 
+P+ 005680010-DEPRECIATION           / T000309999    *                           
+P+ 005700010-AMORTIZATION           / T000309999    *                           
+*  005800010 - 005999910            / T000309999 28 Mar 95 MASK                 
+P+ 005800010-LEGAL EXPENSE          / T000309999    *                           
+P+ 005820010-AUDITING EXPENSE       / T000309999    *                           
+P+ 005840010-BANK CHARGES           / T000309999    *                           
+P+ 005880010-PROFESSIONAL FEES      / T000309999    *                           
+P+ 005990210-OTHER EXPENSE          / T000309999    *                           
+P                                                                               
+B=T000521099 TOTAL FIXED EXP   ADMIN/ T000309999                                
+P                                                                               
+ +T000511099 TOTAL VAR EXP                                                      
+ +T000521099 TOTAL FIXED EXP                                                    
+B=T000501099 TOTAL FIX/VAR EXP ADMIN/ T000309999                                
+P                                                                               
+ +T000601099-TOTAL ADDITIONS   ADMIN                                            
+ -T000701099-TOTAL DEDUCTIONS  ADMIN                                            
+ -T000501099 TOTAL EXPENSES                                                     
+B=T000551099 NET OP. INCOME    ADMIN/ T000309999                                
+P                                                                               
+P                                                                               
+B                INTEREST EXPENSE                                               
+P                                                                               
+*  008550010 - 008559910            / T000309999 28 Mar 95 MASK                 
+P+ 008550010-INTEREST EXPENSE       / T000309999    *                           
+P                                                                               
+B=T000851099 TOTAL INT. EXP.   ADMIN/ T000309999                                
+P                                                                               
+P                                                                               
+ +T000551099-NET OP. INCOME    ADMIN                                            
+ -T000851099-TOTAL INT. EXP.   ADMIN                                            
+B=T000901099 PRE-TAX INCOME    ADMIN/ T000309999                                
+P                                                                               
+P                                                                               
+B              ADJUSTMENTS TO INCOME                                            
+P                                                                               
+*  008000010 - 008549910            / T000309999 28 Mar 95 MASK                 
+*  008600010 - 008999910            / T000309999 28 Mar 95 MASK                 
+P+ 008600010-PROV FOR FED INCOME TAX/ T000309999    *                           
+P+ 008620010-PROV FOR STATE INC TAX / T000309999    *                           
+P+ 008640010-PROV FOR OTH INCOME TAX/ T000309999    *                           
+P+ 008990010-OTHER ADJUSTMENTS      / T000309999    *                           
+P+ 008999910-PAYROLL DEFAULT ACC'T  / T000309999    *                           
+P                                                                               
+B=T000801099 TOTAL ADJUSTMENTS ADMIN/ T000309999                                
+P                                                                               
+P                                                                               
+ +T000901099-PRE-TAX INCOME    ADMIN                                            
+ -T000801099-TOTAL ADJUSTMENTS ADMIN                                            
+B=T000991099 AFTER-TAX INCOME  ADMIN/ T000309999                                
+*********************************************|***************|***************** 
+*  INCOME STATEMENT                                                             
+*                                                                               
+*  DEPARTMENT 20 SALES DEPARTMENT - BALDWIN                                     
+*********************************************|***************|***************** 
+STOP PRINT                                                                      
+HF2 INCOME STATEMENT WITH BUDGET                                                
+H1                                                        BALDWIN               
+H2                                                   SALES DEPARTMENT           
+P                                                                               
+B                 EQUIPMENT SALES                                               
+P                                                                               
+*  003000020 - 003999920            / T000302099 28 Mar 95 MASK                 
+P+ 003200020-JD FARM EQUIPMENT      / T000302099    *                           
+P+ 003220020-JD CONSUMER PRODUCTS   / T000302099    *                           
+P+ 003420020-OTHER EQUIPMENT        / T000302099    *                           
+P+ 003600020-USED EQUIPMENT         / T000302099    *                           
+P+ 003620020-RENT & LEASE EQUIPMENT / T000302099    *                           
+P+ 003290020-OVERALLOWANCE          / T000302099    *                           
+P                                                                               
+B=T000302099 TOTAL SALES       EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+B                 EQUIPMENT COST                                                
+P                                                                               
+*  004000020 - 004999920            / T000302099 28 Mar 95 MASK                 
+P+ 004200020-JD FARM EQUIPMENT      /  003200020    *                           
+P+ 004220020-JD CONSUMER PRODUCTS   /  003220020    *                           
+P+ 004420020-OTHER EQUIPMENT        /  003420020    *                           
+P+ 004590020-INV VALUATION ADJ-CG   / T000302099    *                           
+P+ 004600020-USED EQUIPMENT         /  003600020    *                           
+P+ 004620020-RENT & LEASE EQUIPMENT /  003620020    *                           
+P                                                                               
+B=T000402099 TOTAL COSTOF SALE EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+B                  GROSS MARGIN                                                 
+P                                                                               
+ + 003200020-JD FARM EQUIPMENT                      *                           
+ - 004200020-JD FARM EQUIPMENT      /  003200020    *                           
+P>T007200020-JD FARM EQUIPMENT      /  003200020                                
+ + 003220020-JD CONSUMER PRODUCTS                   *                           
+ - 004220020-JD CONSUMER PRODUCTS   /  003220020    *                           
+P>T007220020-JD CONSUMER PRODUCTS   /  003220020    *                           
+ + 003420020-OTHER EQUIPMENT                        *                           
+ - 004420020-OTHER EQUIPMENT        /  003420020    *                           
+P>T007420020-OTHER EQUIPMENT        /  003420020    *                           
+ - 004590020-INV VALUATION ADJ-CG                   *                           
+P>T007590020-INV VALUATION ADJ-CG   / T000302099    *                           
+ + 003600020-USED EQUIPMENT                         *                           
+ - 004600020-USED EQUIPMENT         /  003600020    *                           
+P>T007600020-USED EQUIPMENT         /  003600020    *                           
+ + 003620020-RENT & LEASE EQUIPMENT                 *                           
+ - 004620020-RENT & LEASE EQUIPMENT /  003620020    *                           
+P>T007620020-RENT & LEASE EQUIPMENT /  003620020    *                           
+ + 003290020-OVERALLOWANCE                          *                           
+P>T007290020-OVERALLOWANCE          / T000302099    *                           
+P                                                                               
+B=T000452099 TOTAL GROSS MARGN EQUIP/ T000302099                                
+H                                                                               
+B             VARIABLE EXPENSES                                                 
+P                                                                               
+*  005070020 - 005079920            / T000302099 28 Mar 95 MASK                 
+*  005120020 - 005149920            / T000302099 28 Mar 95 MASK                 
+P+ 005120020-BONUSES                / T000302099    *                           
+P+ 005140620-TRAINING               / T000302099    *                           
+*  005200020 - 005349920            / T000302099 28 Mar 95 MASK                 
+P+ 005200020-DEMONSTRATION          / T000302099    *                           
+P+ 005220020-TRAVEL                 / T000302099    *                           
+P+ 005240020-ENTERTAINMENT          / T000302099    *                           
+P+ 005260020-ADVERTISING & PROMOTION/ T000302099    *                           
+P+ 005280120-WARRANTY               / T000302099    *                           
+P+ 005300020-AFTER SALES            / T000302099    *                           
+P+ 005320020-POLICY ADJUSTMENT      / T000302099    *                           
+P+ 005340020-CASH DISCOUNTS ALLOWED / T000302099    *                           
+*  005660020 - 005669920            / T000302099 28 Mar 95 MASK                 
+*  005720020 - 005759920            / T000302099 28 Mar 95 MASK                 
+P                                                                               
+B=T000512099 TOTAL VAR EXP     EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+B              ADDITIONS TO INCOME                                              
+P                                                                               
+*  006000020 - 006999920            / T000302099 28 Mar 95 MASK                 
+P+ 006070020-COMM & SALES BONUSES   / T000302099    *                           
+P+ 006150020-VOLUME DISCOUNT EARNED / T000302099    *                           
+P+ 006180020-CP PERF BONUS EARNED   / T000302099    *                           
+P+ 006990020-OTHER ADDITIONS        / T000302099    *                           
+P                                                                               
+B=T000602099 TOTAL ADDITIONS   EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+B             DEDUCTIONS FROM INCOME                                            
+P                                                                               
+*  007000020 - 007999920            / T000302099 28 Mar 95 MASK                 
+P+ 007990020-OTHER DEDUCTIONS       / T000302099    *                           
+P                                                                               
+B=T000702099 TOTAL DEDUCTIONS  EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+ +T000452099 TOTAL GROSS MARGN EQUIP                                            
+ -T000512099 TOTAL VAR EXP     EQUIP                                            
+ +T000602099-TOTAL ADDITIONS   EQUIP                                            
+ -T000702099-TOTAL DEDUCTIONS  EQUIP                                            
+B=T000532099 CONTRIBUTION MGN  EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+B            FIXED EXPENSES                                                     
+P                                                                               
+*  005000020 - 005069920            / T000302099 28 Mar 95 MASK                 
+P+ 005020120-SALARIES/DEPT MANAGERS / T000302099    *                           
+P+ 005060020-SALARIES/SALESPERSONS  / T000302099    *                           
+*  005080020 - 005099920            / T000302099 28 Mar 95 MASK                 
+P+ 005080020-SALARIES & COMM/OTHER  / T000302099    *                           
+*  005160020 - 005169920            / T000302099 28 Mar 95 MASK                 
+P+ 005160120-EMPLOYEE BENEFITS      / T000302099    *                           
+*  005400020 - 005649920            / T000302099 28 Mar 95 MASK                 
+P+ 005400020-VEHICLE EXPENSE        / T000302099    *                           
+P+ 005440020-SUPPLIES EXPENSE       / T000302099    *                           
+P+ 005460020-POSTAGE & SHIPPING     / T000302099    *                           
+P+ 005480020-TELEPHONE              / T000302099    *                           
+P+ 005500020-DATA PROCESSING        / T000302099    *                           
+P+ 005560020-UTILITIES              / T000302099    *                           
+P+ 005580020-RENT & LEASE           / T000302099    *                           
+P+ 005600020-INSURANCE              / T000302099    *                           
+P+ 005640520-REPAIR & MAINTENANCE   / T000302099    *                           
+*  005680020 - 005709920            / T000302099 28 Mar 95 MASK                 
+*  005800020 - 005999920            / T000302099 28 Mar 95 MASK                 
+P+ 005990220-OTHER EXPENSE          / T000302099    *                           
+P                                                                               
+B=T000522099 TOTAL FIXED EXP   EQUIP/ T000302099                                
+P                                                                               
+ +T000512099 TOTAL VAR EXP                                                      
+ +T000522099 TOTAL FIXED EXP                                                    
+B=T000502099 TOTAL FIX/VAR EXP EQUIP/ T000302099                                
+P                                                                               
+ +T000532099 CONTRIBUTION MGN  EQUIP                                            
+ -T000522099 TOTAL FIXED EXP   EQUIP                                            
+B=T000552099 NET OP. INCOME    EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+B                INTEREST EXPENSE                                               
+P                                                                               
+*  008550020 - 008559920            / T000302099 28 Mar 95 MASK                 
+P+ 008550020-INTEREST EXPENSE       / T000302099    *                           
+P                                                                               
+B=T000852099 TOTAL INT. EXP.   EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+ +T000552099-NET OP. INCOME    EQUIP                                            
+ -T000852099-TOTAL INT. EXP.   EQUIP                                            
+B=T000902099 PRE-TAX INCOME    EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+B             ADJUSTMENTS TO INCOME                                             
+P                                                                               
+*  008000020 - 008549920            / T000302099 28 Mar 95 MASK                 
+*  008600020 - 008999920            / T000302099 28 Mar 95 MASK                 
+P+ 008990020-OTHER ADJUSTMENTS      / T000302099    *                           
+P                                                                               
+B=T000802099 TOTAL ADJUSTMENTS EQUIP/ T000302099                                
+P                                                                               
+P                                                                               
+ +T000902099 PRE-TAX INCOME    EQUIP                                            
+ -T000802099 TOTAL ADJUSTMENTS EQUIP                                            
+B=T000992099 AFTER-TAX INCOME  EQUIP/ T000302099                                
+*********************************************|***************|***************** 
+*  INCOME STATEMENT                                                             
+*                                                                               
+*  DEPARTMENT 30 PARTS DEPARTMENT - BALDWIN                                     
+*********************************************|***************|***************** 
+STOP PRINT                                                                      
+HF2 INCOME STATEMENT WITH BUDGET                                                
+H2                                                   PARTS DEPARTMENT           
+P                                                                               
+B                 PARTS SALES                                                   
+P                                                                               
+*  003000030 - 003999930            / T000303099 28 Mar 95 MASK                 
+P+ 003660130-JD PARTS CUSTOMER      / T000303099    *                           
+P+ 003660230-JD PARTS INTERNAL      / T000303099    *                           
+P+ 003660330-JD PARTS WARRANTY      / T000303099    *                           
+P+ 003720130-OTHER PARTS CUSTOMER   / T000303099    *                           
+P+ 003720230-OTHER PARTS INTERNAL   / T000303099    *                           
+P+ 003720330-OTHER PARTS WARRANTY   / T000303099    *                           
+P+ 003740030-OTHER MERCHANDISE      / T000303099    *                           
+P+ 003750030-PARTS SPECIAL HANDLING / T000303099    *                           
+P+ 003790030-PARTS DISCOUNTS ALLOWED/ T000303099    *                           
+P                                                                               
+B=T000303099 TOTAL SALES       PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+B                  PARTS COST                                                   
+P                                                                               
+*  004000030 - 004999930            / T000303099 28 Mar 95 MASK                 
+P+ 004660130-JD PARTS CUSTOMER      /  003660130    *                           
+P+ 004660230-JD PARTS INTERNAL      /  003660230    *                           
+P+ 004660330-JD PARTS WARRANTY      /  003660330    *                           
+P+ 004720130-OTHER PARTS CUSTOMER   /  003720130    *                           
+P+ 004720230-OTHER PARTS INTERNAL   /  003720230    *                           
+P+ 004720330-OTHER PARTS WARRANTY   /  003720330    *                           
+P+ 004740030-OTHER MERCHANDISE      /  003740030    *                           
+P+ 004750030-INBOUND FREIGHT - PARTS/  003750030    *                           
+P+ 004780030-PARTS ORDER DISC EARNED/ T000303099    *                           
+P+ 004800030-INV VALUATION ADJ-PARTS/ T000303099    *                           
+P                                                                               
+B=T000403099 TOTAL COSTOF SALE PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+B                 GROSS MARGIN                                                  
+P                                                                               
+ + 003660130-JD PARTS CUSTOMER                      *                           
+ - 004660130-JD PARTS CUSTOMER      /  003660130    *                           
+P>T007660130-JD PARTS CUSTOMER      /  003660130    *                           
+ + 003660230-JD PARTS INTERNAL                      *                           
+ - 004660230-JD PARTS INTERNAL      /  003660230    *                           
+P>T007660230-JD PARTS INTERNAL      /  003660230    *                           
+ + 003660330-JD PARTS WARRANTY                      *                           
+ - 004660330-JD PARTS WARRANTY      /  003660330    *                           
+P>T007660330-JD PARTS WARRANTY      /  003660330    *                           
+ + 003720130-OTHER PARTS CUSTOMER                   *                           
+ - 004720130-OTHER PARTS CUSTOMER   /  003720130    *                           
+P>T007720130-OTHER PARTS CUSTOMER   /  003720130    *                           
+ + 003720230-OTHER PARTS INTERNAL                   *                           
+ - 004720230-OTHER PARTS INTERNAL   /  003720230    *                           
+P>T007720230-OTHER PARTS INTERNAL   /  003720230    *                           
+ + 003720330-OTHER PARTS WARRANTY                   *                           
+ - 004720330-OTHER PARTS WARRANTY   /  003720330    *                           
+P>T007720330-OTHER PARTS WARRANTY   /  003720330    *                           
+ + 003740030-OTHER MERCHANDISE                      *                           
+ - 004740030-OTHER MERCHANDISE      /  003740030    *                           
+P>T007740030-OTHER MERCHANDISE      /  003740030    *                           
+ + 003750030-PARTS SPECIAL HANDLING                 *                           
+ - 004750030-INBOUND FREIGHT - PARTS/  003750030    *                           
+P>T007750030-PARTS SPECIAL HANDLING /  003750030    *                           
+ - 004780030-PARTS ORDER DISC EARNED                *                           
+P>T007780030-PARTS ORDER DISC EARNED/ T000303099    *                           
+ + 003790030-PARTS DISCOUNTS ALLOWED                *                           
+P>T007790030-PARTS DISCOUNTS ALLOWED/ T000303099    *                           
+ - 004800030-INV VALUATION ADJ-PARTS                *                           
+P>T007800030-INV VALUATION ADJ-PARTS/ T000303099    *                           
+P                                                                               
+B=T000453099 TOTAL GROSS MARGN PARTS/ T000303099                                
+H                                                                               
+B             VARIABLE EXPENSES                                                 
+P                                                                               
+*  005070030 - 005079930            / T000303099 28 Mar 95 MASK                 
+*  005120030 - 005149930            / T000303099 28 Mar 95 MASK                 
+P+ 005120030-BONUSES                / T000303099    *                           
+P+ 005140630-TRAINING               / T000303099    *                           
+*  005200030 - 005349930            / T000303099 28 Mar 95 MASK                 
+P+ 005220030-TRAVEL                 / T000303099    *                           
+P+ 005260030-ADVERTISING & PROMOTION/ T000303099    *                           
+P+ 005280130-WARRANTY-MFG WARR DIFF / T000303099    *                           
+P+ 005340030-CASH DISCOUNTS ALLOWED / T000303099    *                           
+*  005660030 - 005669930            / T000303099 28 Mar 95 MASK                 
+*  005720030 - 005759930            / T000303099 28 Mar 95 MASK                 
+P                                                                               
+B=T000513099 TOTAL VAR EXP     PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+B              ADDITIONS TO INCOME                                              
+P                                                                               
+*  006000030 - 006999930            / T000303099 28 Mar 95 MASK                 
+P+ 006070030-COMM & SALES BONUSES   / T000303099    *                           
+P+ 006150030-VOLUME DISCOUNT EARNED / T000303099    *                           
+P+ 006990030-OTHER ADDITIONS        / T000303099    *                           
+P                                                                               
+B=T000603099 TOTAL ADDITIONS   PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+B             DEDUCTIONS FROM INCOME                                            
+P                                                                               
+*  007000030 - 007999930            / T000303099 28 Mar 95 MASK                 
+P+ 007990030-OTHER DEDUCTIONS       / T000303099    *                           
+P                                                                               
+B=T000703099 TOTAL DEDUCTIONS  PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+ +T000453099 TOTAL GROSS MARGN PARTS                                            
+ -T000513099 TOTAL VAR EXP     PARTS                                            
+ +T000603099-TOTAL ADDITIONS   PARTS                                            
+ -T000703099-TOTAL DEDUCTIONS  PARTS                                            
+B=T000533099 CONTRIBUTION MGN  PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+B            FIXED EXPENSES                                                     
+P                                                                               
+*  005000030 - 005069930            / T000303099 28 Mar 95 MASK                 
+P+ 005020130-SALARIES/DEPT MANAGERS / T000303099    *                           
+P+ 005060030-SALARIES/SALESPERSONS  / T000303099    *                           
+*  005080030 - 005099930            / T000303099 28 Mar 95 MASK                 
+P+ 005080030-SALARIES & COMM/OTHER  / T000303099    *                           
+*  005160030 - 005169930            / T000303099 28 Mar 95 MASK                 
+P+ 005160130-EMPLOYEE BENEFITS      / T000303099    *                           
+*  005400030 - 005649930            / T000303099 28 Mar 95 MASK                 
+P+ 005400030-VEHICLE EXPENSE        / T000303099    *                           
+P+ 005440030-SUPPLIES EXPENSE       / T000303099    *                           
+P+ 005460030-POSTAGE & SHIPPING     / T000303099    *                           
+P+ 005480030-TELEPHONE              / T000303099    *                           
+P+ 005500030-DATA PROCESSING        / T000303099    *                           
+P+ 005560030-UTILITIES              / T000303099    *                           
+P+ 005580030-RENT & LEASE           / T000303099    *                           
+P+ 005600030-INSURANCE              / T000303099    *                           
+P+ 005640530-REPAIR & MAINTENANCE   / T000303099    *                           
+*  005680030 - 005709930            / T000303099 28 Mar 95 MASK                 
+*  005800030 - 005999930            / T000303099 28 Mar 95 MASK                 
+P+ 005990230-OTHER EXPENSE          / T000303099    *                           
+P                                                                               
+B=T000523099 TOTAL FIXED EXP   PARTS/ T000303099                                
+P                                                                               
+ +T000513099 TOTAL VAR EXP                                                      
+ +T000523099 TOTAL FIXED EXP                                                    
+B=T000503099 TOTAL FIX/VAR EXP PARTS/ T000303099                                
+P                                                                               
+ +T000533099 CONTRIBUTION MGN  PARTS                                            
+ -T000523099 TOTAL FIXED EXP   PARTS                                            
+B=T000553099 NET OP. INCOME    PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+B                INTEREST EXPENSE                                               
+P                                                                               
+*  008550030 - 008559930            / T000303099 28 Mar 95 MASK                 
+P                                                                               
+B=T000853099 TOTAL INT. EXP.   PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+ +T000553099-NET OP. INCOME    PARTS                                            
+ -T000853099-TOTAL INT. EXP.   PARTS                                            
+B=T000903099 PRE-TAX INCOME    PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+B             ADJUSTMENTS TO INCOME                                             
+P                                                                               
+*  008000030 - 008549930            / T000303099 28 Mar 95 MASK                 
+*  008600030 - 008999930            / T000303099 28 Mar 95 MASK                 
+P+ 008990030-OTHER ADJUSTMENTS      / T000303099    *                           
+P                                                                               
+B=T000803099 TOTAL ADJUSTMENTS PARTS/ T000303099                                
+P                                                                               
+P                                                                               
+ +T000903099-PRE-TAX INCOME    PARTS                                            
+ -T000803099-TOTAL ADJUSTMENTS PARTS                                            
+B=T000993099 AFTER-TAX INCOME  PARTS/ T000303099                                
+*********************************************|***************|***************** 
+*  INCOME STATEMENT                                                             
+*                                                                               
+*  DEPARTMENT 40 SERVICE DEPARTMENT - BALDWIN                                   
+*********************************************|***************|***************** 
+STOP PRINT                                                                      
+HF2 INCOME STATEMENT WITH BUDGET                                                
+H2                                                  SERVICE DEPARTMENT          
+P                                                                               
+B               SERVICE SALES                                                   
+P                                                                               
+*  003000040 - 003999940            / T000304099 28 Mar 95 MASK                 
+P= 003770040-SERVICE ACCESSORIES    / T000304099    *                           
+P                                                                               
+P+ 003810140-CUST LABOR-REPAIR      / T000304099    *                           
+P+ 003810240-CUST LABOR-FIELD       / T000304099    *                           
+P+ 003810340-CUST LABOR-OTHER       / T000304099    *                           
+P>T006810340- NET CUSTOMER LABOR    / T000304099                                
+P                                                                               
+P+ 003820140-INTL LABOR-REPAIR      / T000304099    *                           
+P+ 003820240-INTL LABOR-RECONDITION / T000304099    *                           
+P+ 003820340-INTL LABOR-SETUP/PREDEL/ T000304099    *                           
+P+ 003820440-INTL LABOR-OTHER       / T000304099    *                           
+P>T006820440- NET INTERNAL LABOR    / T000304099    *                           
+P                                                                               
+P+ 003830140-WARR LABOR-REPAIR      / T000304099    *                           
+P+ 003830240-WARR LABOR-FIELD       / T000304099    *                           
+P+ 003830340-WARR LABOR-OTHER       / T000304099    *                           
+P>T006830340- NET WARRANTY LABOR    / T000304099                                
+P                                                                               
+P+ 003840140-PIP LABOR-REPAIR       / T000304099    *                           
+P+ 003840240-PIP LABOR-FIELD        / T000304099    *                           
+P+ 003840340-PIP LABOR-OTHER        / T000304099    *                           
+P>T006840340- NET PIP LABOR         / T000304099                                
+P=T009840340-  NET LABOR SALES      / T000304099                                
+P                                                                               
+P+ 003900140-DELIVERY VEH-MILEAGE   / T000304099    *                           
+P+ 003900240-DELIVERY VEH-LABOR     / T000304099    *                           
+P+ 003920040-SERVICE VEHICLE INCOME / T000304099    *                           
+P+ 003940040-OUTSIDE LBR & MATERIAL / T000304099    *                           
+P+ 003950140-SPCL SVC EQ-DYNO       / T000304099    *                           
+P+ 003950240-SPCL SVC EQ-REFRIGERANT/ T000304099    *                           
+P+ 003950340-SPCL SVC EQ-OTHER      / T000304099    *                           
+P+ 003970040-SVC LABOR DISC ALLOWED / T000304099    *                           
+P+ 003980040-SVC NON-LBR DISC ALLOW / T000304099    *                           
+P+ 003990140-SVC LBR ALLOWANCE-CUST / T000304099    *                           
+P+ 003990240-SVC LBR ALLOWANCE-INTL / T000304099    *                           
+P+ 003990340-SVC LBR ALLOWANCE-WARR / T000304099    *                           
+P+ 003990440-SVC LBR ALLOWANCE-PIP  / T000304099    *                           
+P                                                                               
+ + 003770040                                                                    
+ +T009840340                                                                    
+B=T000304099 TOTAL SALES       SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+B                SERVICE COST                                                   
+P                                                                               
+*  004000040 - 004999940            / T000304099 28 Mar 95 MASK                 
+P+ 004770040-SERVICE ACCESSORIES    /  003770040    *                           
+P+ 004860040-SERVICEPERSONS SALARIES/ T009840340    *                           
+P+ 004870140-NR TECH SALARIES-WORKED/ T009840340    *                           
+P+ 004870240-NR TECH SALARIES-ABSENT/ T009840340    *                           
+P+ 004900140-DELIVERY VEH-MILEAGE   /  003900140    *                           
+P+ 004900240-DELIVERY VEH-LABOR     /  003900240    *                           
+P+ 004920040-SERVICE VEHICLE        /  003920040    *                           
+P+ 004940040-OUTSIDE LBR & MATERIAL /  003940040    *                           
+P+ 004950140-SPCL SVC EQ-DYNO       /  003950140    *                           
+P+ 004950240-SPCL SVC EQ-REFRIGERANT/  003950240    *                           
+P+ 004950340-SPCL SVC EQ-OTHER      /  003950340    *                           
+P                                                                               
+B=T000404099 TOTAL COSTOF SALE SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+B                GROSS MARGIN                                                   
+P                                                                               
+ + 003770040-SERVICE ACCESSORIES                    *                           
+ - 004770040-SERVICE ACCESSORIES    /  003770040    *                           
+P>T007770040-SERVICE ACCESSORIES    /  003770040    *                           
+ +T009840340-NET LABOR SALES                                                    
+ - 004860040-SERVICEPERSONS SALARIES/ T009840340    *                           
+ - 004870140-NR TECH SALARIES-WORKED/ T009840340    *                           
+ - 004870240-NR TECH SALARIES-ABSENT/ T009840340    *                           
+P>T007870240-LABOR SALES            / T009840340    *                           
+ + 003900140-DELIVERY VEH-MILEAGE                   *                           
+ - 004900140-DELIVERY VEH-MILEAGE   /  003900140    *                           
+P>T007900140-DELIVERY VEH-MILEAGE   /  003900140    *                           
+ + 003900240-DELIVERY VEH-LABOR                     *                           
+ - 004900240-DELIVERY VEH-LABOR     /  003900240    *                           
+P>T007900240-DELIVERY VEH-LABOR     /  003900240    *                           
+ + 003920040-SERVICE VEHICLE INCOME                 *                           
+ - 004920040-SERVICE VEHICLE        /  003920040    *                           
+P>T007920040-SERVICE VEHICLE        /  003920040                                
+ + 003940040-OUTSIDE LBR & MATERIAL                 *                           
+ - 004940040-OUTSIDE LBR & MATERIAL /  003940040    *                           
+P>T007940040-OUTSIDE LBR & MATERIAL /  003940040    *                           
+ + 003950140-SPCL SVC EQ-DYNO                       *                           
+ - 004950140-SPCL SVC EQ-DYNO       /  003950140    *                           
+P>T007950140-SPCL SVC EQ-DYNO       /  003950140    *                           
+ + 003950240-SPCL SVC EQ-REFRIGERANT                *                           
+ - 004950240-SPCL SVC EQ-REFRIGERANT/  003950240    *                           
+P>T007950240-SPCL SVC EQ-REFRIGERANT/  003950240    *                           
+ + 003950340-SPCL SVC EQ-OTHER                      *                           
+ - 004950340-SPCL SVC EQ-OTHER      /  003950340    *                           
+P>T007950340-SPCL SVC EQ-OTHER      /  003950340    *                           
+ + 003970040-SVC LABOR DISC ALLOWED                 *                           
+P>T007970040-SVC LABOR DISC ALLOWED / T000304099    *                           
+ + 003980040-SVC NON-LBR DISC ALLOW                 *                           
+P>T007980040-SVC NON-LBR DISC ALLOW / T000304099                                
+ + 003990140-SVC LBR ALLOWANCE-CUST                 *                           
+P>T007990140-SVC LBR ALLOWANCE-CUST / T000304099    *                           
+ + 003990240-SVC LBR ALLOWANCE-INTL                 *                           
+P>T007990240-SVC LBR ALLOWANCE-INTL / T000304099    *                           
+ + 003990340-SVC LBR ALLOWANCE-WARR                 *                           
+P>T007990340-SVC LBR ALLOWANCE-WARR / T000304099    *                           
+ + 003990440-SVC LBR ALLOWANCE-PIP                  *                           
+P>T007990440-SVC LBR ALLOWANCE-PIP  / T000304099    *                           
+P                                                                               
+B=T000454099 TOTAL GROSS MARGN SERVC/ T000304099                                
+H                                                                               
+B             VARIABLE EXPENSES                                                 
+P                                                                               
+*  005070040 - 005079940            / T000304099 28 Mar 95 MASK                 
+*  005120040 - 005149940            / T000304099 28 Mar 95 MASK                 
+P+ 005120040-BONUSES                / T000304099    *                           
+P+ 005140140-TRAINING-PATHFINDER    / T000304099    *                           
+P+ 005140240-TRAINING-BRANCH        / T000304099    *                           
+P+ 005140340-TRAINING-TERRITORY     / T000304099    *                           
+P+ 005140440-TRAINING-ON-THE-JOB    / T000304099    *                           
+P+ 005140540-TRAINING-IN-HOUSE      / T000304099    *                           
+*  005200040 - 005349940            / T000304099 28 Mar 95 MASK                 
+P+ 005220040-TRAVEL                 / T000304099    *                           
+P+ 005260040-ADVERTISING & PROMOTION/ T000304099    *                           
+P+ 005280140-WARRANTY-MFG WARR DIFF / T000304099    *                           
+P+ 005280240-WARRANTY-REWORK        / T000304099    *                           
+P+ 005300040-AFTER SALES            / T000304099    *                           
+P+ 005320040-POLICY ADJUSTMENT      / T000304099    *                           
+P+ 005340040-CASH DISCOUNTS ALLOWED / T000304099    *                           
+*  005660040 - 005669940            / T000304099 28 Mar 95 MASK                 
+*  005720040 - 005759940            / T000304099 28 Mar 95 MASK                 
+P                                                                               
+B=T000514099 TOTAL VAR EXP     SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+B              ADDITIONS TO INCOME                                              
+P                                                                               
+*  006000040 - 006999940            / T000304099 28 Mar 95 MASK                 
+P+ 006990040-OTHER ADDITIONS        / T000304099    *                           
+P                                                                               
+B=T000604099 TOTAL ADDITIONS   SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+B             DEDUCTIONS FROM INCOME                                            
+P                                                                               
+*  007000040 - 007999940            / T000304099 28 Mar 95 MASK                 
+P+ 007990040-OTHER DEDUCTIONS       / T000304099    *                           
+P                                                                               
+B=T000704099 TOTAL DEDUCTIONS  SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+ +T000454099 TOTAL GROSS MARGN SERVC                                            
+ -T000514099 TOTAL VAR EXP     SERVC                                            
+ +T000604099-TOTAL ADDITIONS   SERVC                                            
+ -T000704099-TOTAL DEDUCTIONS  SERVC                                            
+B=T000534099 CONTRIBUTION MGN  SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+B            FIXED EXPENSES                                                     
+P                                                                               
+*  005000040 - 005069940            / T000304099 28 Mar 95 MASK                 
+P+ 005020140-SALARIES/DEPT MANAGERS / T000304099    *                           
+P+ 005020240-TECHNICIAN AS SVC MGR  / T000304099    *                           
+*  005080040 - 005099940            / T000304099 28 Mar 95 MASK                 
+P+ 005080040-SALARIES & COMM/OTHER  / T000304099    *                           
+*  005160040 - 005169940            / T000304099 28 Mar 95 MASK                 
+P+ 005160140-EMPLOYEE BENEFITS      / T000304099    *                           
+P+ 005160740-EMP BEN-BREAKS         / T000304099    *                           
+P+ 005160840-EMP BEN-VAC/HOLID/SICK / T000304099    *                           
+*  005400040 - 005649940            / T000304099 28 Mar 95 MASK                 
+P+ 005400040-VEHICLE EXPENSE        / T000304099    *                           
+P+ 005420040-EXPENDABLE TOOLS       / T000304099    *                           
+P+ 005440040-SUPPLIES EXPENSE       / T000304099    *                           
+P+ 005460040-POSTAGE & SHIPPING     / T000304099    *                           
+P+ 005480040-TELEPHONE              / T000304099    *                           
+P+ 005500040-DATA PROCESSING        / T000304099    *                           
+P+ 005560040-UTILITIES              / T000304099    *                           
+P+ 005580040-RENT & LEASE           / T000304099    *                           
+P+ 005600040-INSURANCE              / T000304099    *                           
+P+ 005640140-REP & MNT-SWEEP/CLEAN  / T000304099    *                           
+P+ 005640240-REP & MNT-BUILDINGS    / T000304099    *                           
+P+ 005640340-REP & MNT-GROUNDS      / T000304099    *                           
+P+ 005640440-REP & MNT-OTHER        / T000304099    *                           
+*  005680040 - 005709940            / T000304099 28 Mar 95 MASK                 
+*  005800040 - 005999940            / T000304099 28 Mar 95 MASK                 
+P+ 005990140-DOWNTIME DELAYS        / T000304099    *                           
+P+ 005990240-OTHER EXPENSE          / T000304099    *                           
+P                                                                               
+B=T000524099 TOTAL FIXED EXP   SERVC/ T000304099                                
+P                                                                               
+ +T000514099 TOTAL VAR EXP                                                      
+ +T000524099 TOTAL FIXED EXP                                                    
+B=T000504099 TOTAL FIX/VAR EXP SERVC/ T000304099                                
+P                                                                               
+ +T000534099 CONTRIBUTION MGN  SERVC                                            
+ -T000524099 TOTAL FIXED EXP   SERVC                                            
+B=T000554099 NET OP. INCOME    SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+B                INTEREST EXPENSE                                               
+P                                                                               
+*  008550040 - 008559940            / T000304099 28 Mar 95 MASK                 
+P                                                                               
+B=T000854099 TOTAL INT. EXP.   SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+ +T000554099-NET OP. INCOME    SERVC                                            
+ -T000854099-TOTAL INT. EXP.   SERVC                                            
+B=T000904099 PRE-TAX INCOME    SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+B             ADJUSTMENTS TO INCOME                                             
+P                                                                               
+*  008000040 - 008549940            / T000304099 28 Mar 95 MASK                 
+*  008600040 - 008999940            / T000304099 28 Mar 95 MASK                 
+P+ 008990040-OTHER ADJUSTMENTS      / T000304099    *                           
+P                                                                               
+B=T000804099 TOTAL ADJUSTMENTS SERVC/ T000304099                                
+P                                                                               
+P                                                                               
+ +T000904099 PRE-TAX INCOME    SERVC                                            
+ -T000804099-TOTAL ADJUSTMENTS SERVC                                            
+B=T000994099 AFTER-TAX INCOME  SERVC/ T000304099                                
+*###############################################################################
+*END OF INCOME STATEMENT FOR ONE STORE (BALDWIN) WITH FIVE DEPARTMENTS          
+*###############################################################################
+*                                                                               
+*********************************************|***************|***************** 
+*  DEPARTMENT 99 - TOTAL COMPANY RECAP                                          
+*                                                                               
+*                                                                               
+*********************************************|***************|***************** 
+H2                                            RECAP OF TOTAL COMPANY EXPENSES   
+B            VARIABLE EXPENSES                                                  
+P                                                                               
+*  005070000 - 005079999 = T0015199 / T000309999 28 Mar 95 MASK                 
+*  005120000 - 005149999 = T0025199 / T000309999 28 Mar 95 MASK                 
+ + 005120010-BONUSES                                *                           
+ + 005120020-BONUSES                                *                           
+ + 005120030-BONUSES                                *                           
+ + 005120040-BONUSES                                *                           
+P>T002519902 BONUSES                / T000309999    *                           
+ + 005140140-TRAINING-PATHFINDER                    *                           
+ + 005140240-TRAINING-BRANCH                        *                           
+ + 005140340-TRAINING-TERRITORY                     *                           
+ + 005140440-TRAINING-ON-THE-JOB                    *                           
+ + 005140540-TRAINING-IN-HOUSE                      *                           
+ + 005140610-TRAINING                               *                           
+ + 005140620-TRAINING                               *                           
+ + 005140630-TRAINING                               *                           
+P>T002519914 TRAINING               / T000309999    *                           
+*  005200000 - 005349999 = T0035199 / T000309999 28 Mar 95 MASK                 
+ + 005200020-DEMONSTRATION                          *                           
+P>T003519902 DEMONSTRATION          / T000309999    *                           
+ + 005220010-TRAVEL                                 *                           
+ + 005220020-TRAVEL                                 *                           
+ + 005220030-TRAVEL                                 *                           
+ + 005220040-TRAVEL                                 *                           
+P>T003519904 TRAVEL                 / T000309999    *                           
+ + 005240010-ENTERTAINMENT                          *                           
+ + 005240020-ENTERTAINMENT                          *                           
+P>T003519906 ENTERTAINMENT          / T000309999    *                           
+ + 005260010-ADVERTISING & PROMOTION                *                           
+ + 005260020-ADVERTISING & PROMOTION                *                           
+ + 005260030-ADVERTISING & PROMOTION                *                           
+ + 005260040-ADVERTISING & PROMOTION                *                           
+P>T003519908 ADVERTISING & PROMOTION/ T000309999    *                           
+ + 005280110-WARRANTY                               *                           
+ + 005280120-WARRANTY                               *                           
+ + 005280130-WARRANTY-MFG WARR DIFF                 *                           
+ + 005280140-WARRANTY-MFG WARR DIFF                 *                           
+P>T003519910 WARRANTY-MFG WARR DIFF / T000309999    *                           
+ + 005280240-WARRANTY-REWORK                        *                           
+P>T003519912 WARRANTY-REWORK        / T000309999    *                           
+ + 005300020-AFTER SALES                            *                           
+ + 005300040-AFTER SALES                            *                           
+P>T003519914 AFTER SALES            / T000309999    *                           
+ + 005320020-POLICY ADJUSTMENT                      *                           
+ + 005320040-POLICY ADJUSTMENT                      *                           
+P>T003519916 POLICY ADJUSTMENT      / T000309999    *                           
+ + 005340020-CASH DISCOUNTS ALLOWED                 *                           
+ + 005340030-CASH DISCOUNTS ALLOWED                 *                           
+ + 005340040-CASH DISCOUNTS ALLOWED                 *                           
+P>T003519918 CASH DISCOUNTS ALLOWED / T000309999    *                           
+*  005660000 - 005669999 = T0045199 / T000309999 28 Mar 95 MASK                 
+*  005720000 - 005759999 = T0055199 / T000309999 28 Mar 95 MASK                 
+ + 005720010-CREDIT & COLLECTION EXP                *                           
+P>T005519902 CREDIT & COLLECTION EXP/ T000309999    *                           
+ + 005730010-PROVISION FOR BAD DEBTS                *                           
+P>T005519904 PROVISION FOR BAD DEBTS/ T000309999    *                           
+P                                                                               
+B=T005519999 TOTAL VARIABLE EXPENSES/ T000309999                                
+P                                                                               
+P                                                                               
+B              ADDITIONS TO INCOME                                              
+P                                                                               
+*  006000000 - 006999999 = T0006099 / T000309999 28 Mar 95 MASK                 
+ + 006000010-CASH DISCOUNTS EARNED                  *                           
+P>T000609902 CASH DISCOUNTS EARNED  / T000309999    *                           
+ + 006070020-COMM & SALES BONUSES                   *                           
+ + 006070030-COMM & SALES BONUSES                   *                           
+P>T000609904 COMM & SALES BONUSES   / T000309999    *                           
+ + 006120010-GAIN ON DSPL OF PROPRTY                *                           
+P>T000609906 GAIN ON DSPL OF PROPRTY/ T000309999    *                           
+ + 006140010-BAD DEBT RECOVERY                      *                           
+P>T000609908 BAD DEBT RECOVERY      / T000309999    *                           
+ + 006150020-VOLUME DISCOUNT EARNED                 *                           
+ + 006150030-VOLUME DISCOUNT EARNED                 *                           
+P>T000609910 VOLUME DISCOUNT EARNED / T000309999    *                           
+ + 006180020-CP PERF BONUS EARNED                   *                           
+P>T000609912 CP PERF BONUS EARNED   / T000309999    *                           
+ + 006690010-INTEREST INCOME                        *                           
+P>T000609914 INTEREST INCOME        / T000309999    *                           
+ + 006990010-OTHER ADDITIONS                        *                           
+ + 006990020-OTHER ADDITIONS                        *                           
+ + 006990030-OTHER ADDITIONS                        *                           
+ + 006990040-OTHER ADDITIONS                        *                           
+P>T000609916 OTHER ADDITIONS        / T000309999    *                           
+P                                                                               
+B=T000609999 TOTAL ADDITIONS        / T000309999                                
+P                                                                               
+P                                                                               
+B              DEDUCTIONS FROM INCOME                                           
+P                                                                               
+*  007000000 - 007999999 = T0007099 / T000309999 28 Mar 95 MASK                 
+ + 007120010-LOSS ON DSPL OF PROPRTY                *                           
+P>T000709902 LOSS ON DSPL OF PROPRTY/ T000309999    *                           
+ + 007990010-OTHER DEDUCTIONS                       *                           
+ + 007990020-OTHER DEDUCTIONS                       *                           
+ + 007990030-OTHER DEDUCTIONS                       *                           
+ + 007990040-OTHER DEDUCTIONS                       *                           
+P>T000709904 OTHER DEDUCTIONS       / T000309999    *                           
+P                                                                               
+B=T000709999 TOTAL DEDUCTIONS       / T000309999                                
+P                                                                               
+P                                                                               
+B            FIXED EXPENSES                                                     
+P                                                                               
+*  005000000 - 005069999 = T0015299 / T000309999 28 Mar 95 MASK                 
+ + 005000010-SALARIES/OFFS,OWNS,GMS                 *                           
+P>T001529902 SALARIES/OFFS,OWNS,GMS / T000309999    *                           
+ + 005020120-SALARIES/DEPT MANAGERS                 *                           
+ + 005020130-SALARIES/DEPT MANAGERS                 *                           
+ + 005020140-SALARIES/DEPT MANAGERS                 *                           
+P>T001529904 SALARIES/DEPT MANAGERS / T000309999    *                           
+ + 005020240-TECHNICIAN AS SVC MGR                  *                           
+P>T001529906 TECHNICIAN AS SVC MGR  / T000309999    *                           
+ + 005040010-SALARY/CONTROLLER                      *                           
+P>T001529908 SALARY/CONTROLLER      / T000309999    *                           
+ + 005060020-SALARIES/SALESPERSONS                  *                           
+ + 005060030-SALARIES/SALESPERSONS                  *                           
+P>T001529910 SALARIES/SALESPERSONS  / T000309999    *                           
+*  005080000 - 005099999 = T0025299 / T000309999 28 Mar 95 MASK                 
+ + 005080010-SALARIES & COMM/OTHER                  *                           
+ + 005080020-SALARIES & COMM/OTHER                  *                           
+ + 005080030-SALARIES & COMM/OTHER                  *                           
+ + 005080040-SALARIES & COMM/OTHER                  *                           
+P>T002529902 SALARIES & COMM/OTHER  / T000309999    *                           
+*  005160000 - 005169999 = T0035299 / T000309999 28 Mar 95 MASK                 
+ + 005160110-EMPLOYEE BENEFITS                      *                           
+ + 005160120-EMPLOYEE BENEFITS                      *                           
+ + 005160130-EMPLOYEE BENEFITS                      *                           
+ + 005160140-EMPLOYEE BENEFITS                      *                           
+P>T003529902 EMPLOYEE BENEFITS      / T000309999    *                           
+ + 005160740-EMP BEN-BREAKS                         *                           
+P>T003529904 EMP BEN-BREAKS         / T000309999    *                           
+ + 005160840-EMP BEN-VAC/HOLID/SICK                 *                           
+P>T003529906 EMP BEN-VAC/HOLID/SICK / T000309999    *                           
+*  005400000 - 005649999 = T0045299 / T000309999 28 Mar 95 MASK                 
+ + 005400010-VEHICLE EXPENSE                        *                           
+ + 005400020-VEHICLE EXPENSE                        *                           
+ + 005400030-VEHICLE EXPENSE                        *                           
+ + 005400040-VEHICLE EXPENSE                        *                           
+P>T004529902 VEHICLE EXPENSE        / T000309999    *                           
+ + 005420040-EXPENDABLE TOOLS                       *                           
+P>T004529904 EXPENDABLE TOOLS       / T000309999    *                           
+ + 005440010-SUPPLIES EXPENSE                       *                           
+ + 005440020-SUPPLIES EXPENSE                       *                           
+ + 005440030-SUPPLIES EXPENSE                       *                           
+ + 005440040-SUPPLIES EXPENSE                       *                           
+P>T004529906 SUPPLIES EXPENSE       / T000309999    *                           
+ + 005460010-POSTAGE & SHIPPING                     *                           
+ + 005460020-POSTAGE & SHIPPING                     *                           
+ + 005460030-POSTAGE & SHIPPING                     *                           
+ + 005460040-POSTAGE & SHIPPING                     *                           
+P>T004529908 POSTAGE & SHIPPING     / T000309999    *                           
+ + 005480010-TELEPHONE                              *                           
+ + 005480020-TELEPHONE                              *                           
+ + 005480030-TELEPHONE                              *                           
+ + 005480040-TELEPHONE                              *                           
+P>T004529910 TELEPHONE              / T000309999    *                           
+ + 005500010-DATA PROCESSING                        *                           
+ + 005500020-DATA PROCESSING                        *                           
+ + 005500030-DATA PROCESSING                        *                           
+ + 005500040-DATA PROCESSING                        *                           
+P>T004529912 DATA PROCESSING        / T000309999    *                           
+ + 005520010-DUES & SUBSCRIPTIONS                   *                           
+P>T004529914 DUES & SUBSCRIPTIONS   / T000309999    *                           
+ + 005540010-CONTRIBUTIONS                          *                           
+P>T004529916 CONTRIBUTIONS          / T000309999    *                           
+ + 005560010-UTILITIES                              *                           
+ + 005560020-UTILITIES                              *                           
+ + 005560030-UTILITIES                              *                           
+ + 005560040-UTILITIES                              *                           
+P>T004529918 UTILITIES              / T000309999    *                           
+ + 005580010-RENT & LEASE                           *                           
+ + 005580020-RENT & LEASE                           *                           
+ + 005580030-RENT & LEASE                           *                           
+ + 005580040-RENT & LEASE                           *                           
+P>T004529920 RENT & LEASE           / T000309999    *                           
+ + 005600010-INSURANCE                              *                           
+ + 005600020-INSURANCE                              *                           
+ + 005600030-INSURANCE                              *                           
+ + 005600040-INSURANCE                              *                           
+P>T004529922 INSURANCE              / T000309999    *                           
+ + 005620010-TAX OTH THAN INCOME TAX                *                           
+P>T004529924 TAX OTH THAN INCOME TAX/ T000309999    *                           
+ + 005640140-REP & MNT-SWEEP/CLEAN                  *                           
+ + 005640240-REP & MNT-BUILDINGS                    *                           
+ + 005640340-REP & MNT-GROUNDS                      *                           
+ + 005640440-REP & MNT-OTHER                        *                           
+ + 005640510-REPAIR & MAINTENANCE                   *                           
+ + 005640520-REPAIR & MAINTENANCE                   *                           
+ + 005640530-REPAIR & MAINTENANCE                   *                           
+P>T004529934 REPAIR & MAINTENANCE   / T000309999    *                           
+*  005680000 - 005709999 = T0055299 / T000309999 28 Mar 95 MASK                 
+ + 005680010-DEPRECIATION                           *                           
+P>T005529902 DEPRECIATION           / T000309999    *                           
+ + 005700010-AMORTIZATION                           *                           
+P>T005529904 AMORTIZATION           / T000309999    *                           
+*  005800000 - 005999999 = T0065299 / T000309999 28 Mar 95 MASK                 
+ + 005800010-LEGAL EXPENSE                          *                           
+P>T006529902 LEGAL EXPENSE          / T000309999    *                           
+ + 005820010-AUDITING EXPENSE                       *                           
+P>T006529904 AUDITING EXPENSE       / T000309999    *                           
+ + 005840010-BANK CHARGES                           *                           
+P>T006529906 BANK CHARGES           / T000309999    *                           
+ + 005880010-PROFESSIONAL FEES                      *                           
+P>T006529908 PROFESSIONAL FEES      / T000309999    *                           
+ + 005990140-DOWNTIME DELAYS                        *                           
+P>T006529910 DOWNTIME DELAYS        / T000309999    *                           
+ + 005990210-OTHER EXPENSE                          *                           
+ + 005990220-OTHER EXPENSE                          *                           
+ + 005990230-OTHER EXPENSE                          *                           
+ + 005990240-OTHER EXPENSE                          *                           
+P>T006529912 OTHER EXPENSE          / T000309999    *                           
+P                                                                               
+B=T005529999 TOTAL FIXED EXPENSES   / T000309999                                
+P                                                                               
+ +T005519999 TOTAL VAR EXP                                                      
+ +T005529999 TOTAL FIXED EXP                                                    
+B=T005509999 TOTAL FIXED & VAR EXP  / T000309999                                
+ +T000609999-TOTAL ADDITIONS                                                    
+ -T000709999-TOTAL DEDUCTIONS                                                   
+ -T005509999 TOTAL EXPENSES                                                     
+P                                                                               
+B=T000549999 TOTL EXP, ADD, DED     / T000309999                                
+P                                                                               
+P                                                                               
+B                INTEREST EXPENSE                                               
+P                                                                               
+*  008550000 - 008559999 = T0008599 / T000309999 28 Mar 95 MASK                 
+ + 008550010-INTEREST EXPENSE                       *                           
+ + 008550020-INTEREST EXPENSE                       *                           
+P>T000859902 INTEREST EXPENSE       / T000309999    *                           
+P                                                                               
+B=T005859999 TOTAL INT. EXP.        / T000309999                                
+P                                                                               
+P                                                                               
+B              ADJUSTMENTS TO INCOME                                            
+P                                                                               
+*  008000000 - 008549999 = T0008099 / T000309999 28 Mar 95 MASK                 
+*  008600000 - 008999999 = T0008099 / T000309999 28 Mar 95 MASK                 
+ + 008600010-PROV FOR FED INCOME TAX                *                           
+P>T000809902 PROV FOR FED INCOME TAX/ T000309999    *                           
+ + 008620010-PROV FOR STATE INC TAX                 *                           
+P>T000809904 PROV FOR STATE INC TAX / T000309999    *                           
+ + 008640010-PROV FOR OTH INCOME TAX                *                           
+P>T000809906 PROV FOR OTH INCOME TAX/ T000309999    *                           
+ + 008990010-OTHER ADJUSTMENTS                      *                           
+ + 008990020-OTHER ADJUSTMENTS                      *                           
+ + 008990030-OTHER ADJUSTMENTS                      *                           
+ + 008990040-OTHER ADJUSTMENTS                      *                           
+P>T000809908 OTHER ADJUSTMENTS      / T000309999    *                           
+P                                                                               
+B=T000809999 TOTAL ADJUSTMENTS      / T000309999                                
+P                                                                               
+P                                                                               
+ +T000549999-TOTL EXP, ADD, DED                                                 
+ -T005859999-TOTAL INTEREST EXPENSE                                             
+ -T000809999-TOTAL ADJUSTMENTS                                                  
+B=T000899999 TOT EXP,ADD,DED,INT,ADJ/ T000309999                                
+*********************************************|***************|***************** 
+* COMPANY RECAP                                                                 
+*                                                                               
+*********************************************|***************|***************** 
+START PRINT                                                                     
+H2                                                     COMPANY RECAP            
+P                                                                               
+P+T000302099-TOTAL SALES       EQUIP/ T000309999                                
+P+T000303099-TOTAL SALES       PARTS/ T000309999                                
+P+T000304099-TOTAL SALES       SERVC/ T000309999                                
+P                                                                               
+B=T000309999 TOTAL SALES            / T000309999                                
+P                                                                               
+P                                                                               
+P+T000402099-TOTAL COSTOF SALE EQUIP/ T000302099                                
+P+T000403099-TOTAL COSTOF SALE PARTS/ T000303099                                
+P+T000404099-TOTAL COSTOF SALE SERVC/ T000304099                                
+P                                                                               
+B=T000409999 TOTAL COST OF SALE     / T000309999                                
+P                                                                               
+P                                                                               
+P+T000452099-TOTAL GROSS MARGN EQUIP/ T000302099                                
+P+T000453099-TOTAL GROSS MARGN PARTS/ T000303099                                
+P+T000454099-TOTAL GROSS MARGN SERVC/ T000304099                                
+P                                                                               
+B=T000459999 TOTAL GROSS MARGIN     / T000309999                                
+P                                                                               
+P                                                                               
+ +T000511099-TOTAL VAR EXP     ADMIN                                            
+ +T000512099-TOTAL VAR EXP     EQUIP                                            
+ +T000513099-TOTAL VAR EXP     PARTS                                            
+ +T000514099-TOTAL VAR EXP     SERVC                                            
+B=T000519999 TOTAL VAR EXP          / T000309999                                
+P                                                                               
+ +T000601099-TOTAL ADDITIONS   ADMIN                                            
+ +T000602099-TOTAL ADDITIONS   EQUIP                                            
+ +T000603099-TOTAL ADDITIONS   PARTS                                            
+ +T000604099-TOTAL ADDITIONS   SERVC                                            
+B=T000619999 TOTAL ADDITIONS        / T000309999                                
+P                                                                               
+ +T000701099-TOTAL DEDUCTIONS  ADMIN                                            
+ +T000702099-TOTAL DEDUCTIONS  EQUIP                                            
+ +T000703099-TOTAL DEDUCTIONS  PARTS                                            
+ +T000704099-TOTAL DEDUCTIONS  SERVC                                            
+B=T000719999 TOTAL DEDUCTIONS       / T000309999                                
+P                                                                               
+P                                                                               
+ +T000459999 TOTAL GROSS MARGIN     / T000309999                                
+ -T000519999 TOTAL VAR EXP          / T000309999                                
+ +T000619999 TOTAL ADDITIONS        / T000309999                                
+ -T000719999 TOTAL DEDUCTIONS       / T000309999                                
+B=T000539999 CONTRIBUTION MARGIN    / T000309999                                
+P                                                                               
+ +T000521099-TOTAL FIXED EXP   ADMIN                                            
+ +T000522099-TOTAL FIXED EXP   EQUIP                                            
+ +T000523099-TOTAL FIXED EXP   PARTS                                            
+ +T000524099-TOTAL FIXED EXP   SERVC                                            
+B=T000529999 TOTAL FIXED EXP        / T000309999                                
+P                                                                               
+ +T000501099-TOTAL EXPENSES    ADMIN                                            
+ +T000502099-TOTAL EXPENSES    EQUIP                                            
+ +T000503099-TOTAL EXPENSES    PARTS                                            
+ +T000504099-TOTAL EXPENSES    SERVC                                            
+B=T000509999 TOTAL FIXED & VAR EXP  / T000309999                                
+P                                                                               
+P                                                                               
+ +T000539999 CONTRIBUTION MARGIN                                                
+ -T000529999 TOTAL FIXED EXP                                                    
+B=T000559999 NET OPERATING INCOME   / T000309999                                
+B            =======================                                            
+P                                                                               
+ +T000851099-TOTAL INTEREST    ADMIN                                            
+ +T000852099-TOTAL INTEREST    EQUIP                                            
+ +T000853099-TOTAL INTEREST    PARTS                                            
+ +T000854099-TOTAL INTEREST    SERVC                                            
+B=T000859999 TOTAL INTEREST         / T000309999                                
+ +T000559999 NET OPERATING INCOME                                               
+ -T000859999 TOTAL INTEREST                                                     
+P                                                                               
+P                                                                               
+B=T000909999 PRE-TAX INCOME         / T000309999                                
+P                                                                               
+ +T000801099-TOTAL ADJUSTMENTS ADMIN                                            
+ +T000802099-TOTAL ADJUSTMENTS EQUIP                                            
+ +T000803099-TOTAL ADJUSTMENTS PARTS                                            
+ +T000804099-TOTAL ADJUSTMENTS SERVC                                            
+B=T000819999 TOTAL ADJUSTMENTS      / T000309999                                
+P                                                                               
+P                                                                               
+ +T000909999-PRE-TAX INCOME                                                     
+ -T000819999 TOTAL ADJUSTMENTS                                                  
+B=T000999999 AFTER-TAX INCOME       / T000309999                                
+B            =======================                                            
+*############################################################################## 
+*END OF COMPANY RECAP SECTION                                                   
+*############################################################################## 
+*********************************************|***************|***************** 
+*  CHECK BALANCE ROUTINE                                                        
+*                                                                               
+*                                                                               
+*********************************************|***************|***************** 
+H2                                                    CHECK BALANCE             
+HF2  INCOME STATEMENT WITH BUDGET                                               
+P                                                                               
+P+T000999999-AFTER-TAX INCOME                                                   
+P-T000205000-YEAR TO DATE PROFIT                                                
+P                                                                               
+P            THE FOLLOWING AMOUNT IS THE AMOUNT THE BALANCE SHEET               
+P            DISAGREES WITH THE INCOME STATEMENT FOR YEAR TO DATE PROFIT.       
+P                                                                               
+P=T000990000 DIFFERENCE                                                         
+P                                                                               
+P            DEFAULTS                                                           
+P                                                                               
+P+ 008999910-PAYROLL DEFAULT ACC'T                  *                           
+P+ 009888888 MI&MW INTERNAL SALE DEF                                            
+P+ 009990100-MI PARTS DEFAULT ACCT                  *                           
+P+ 009990200-MI JD PARTS DEFAULT ACT                *                           
+P+ 009990300-MI VENDOR PARTS DEF ACT                *                           
+P+ 009990400-MI TAX DEFAULT ACCOUNT                 *                           
+P+ 009991000-DUMMY C/S ACCOUNT                      *                           
+P+ 009991100-DUMMY INVENTORY ACCOUNT                *                           
+P+ 009992000-MW LABOR DEFAULT ACCT                  *                           
+P+ 009992100-MW PARTS DEFAULT ACCT                  *                           
+P+ 009992200-MW JD PARTS DEFAULT A/C                *                           
+P+ 009992300-MW VENDOR PARTS DEF A/C                *                           
+P+ 009992400-MW TAX DEFAULT ACCOUNT                 *                           
+P+ 999999988 INVREG DEFAULT ACCT                                                
+P+ 999999999 SYSTEM DEFAULT ACCT                                                
+P                                                                               
+P=T009999999 TOTAL DEFAULTS                                                     

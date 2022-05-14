@@ -1,0 +1,22 @@
+# cshf	 bc--arbitrary precision desk calculator language 
+#	@(#)BC.sh	1.2  87/07/15
+#
+onintr end
+
+prompt "^BC -- ARBITRARY PRECISION ARITHMETIC LANGUAGE"\
+       "^*Input File Name(s):" _input_file macnm "$_input_file"\
+       "^*Arbitrary precision math library:" lflag yesno n\
+       "^*Compile only:" cflag yesno n\
+       "^#$*"
+
+if ($abort) goto end
+if ($lflag == "y") set opt = "-l $opt"
+if ($cflag == "y") set opt = "-c $opt"
+
+if ($abort) goto end
+echo "=== BC COMMAND EXECUTING ==="
+echo bc $opt $_input_file
+bc $opt $_input_file
+
+end:
+unset *flag *opt

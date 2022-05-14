@@ -1,0 +1,30 @@
+# cshf  ipcrm -- Removes IPCs 
+#	@(#)IPCRM.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^IPCRM -- REMOVES A MESSAGE QUEUE, SEMAPHORE SET OR SHARED MEMORY"\
+	"^*Message Queue Identifier:" qflag integer \
+	"^*Shared Memory Identifier:" mflag integer \
+	"^*Semaphore Identifier:" sflag integer \
+	"^*Message Queue Key:" Qflag string \
+	"^*Shared Memory Key:" Mflag string \
+	"^*Semaphore Key:" Sflag string \
+	"^#$*"
+
+if ($abort) goto end
+if ($Sflag != "") set Sopt = "-S "$Sflag
+if ($Mflag != "") set Mopt = "-M "$Mflag
+if ($Qflag != "") set Qopt = "-Q "$Qflag
+if ($sflag != "") set sopt = "-s "$sflag
+if ($mflag != "") set mopt = "-m "$mflag
+if ($qflag != "") set qopt = "-q "$qflag
+
+if ($abort) goto end
+echo "=== IPCRM COMMAND EXECUTING ==="
+echo ipcrm $qopt $mopt $sopt $Qopt $Mopt $Sopt
+ipcrm $qopt $mopt $sopt $Qopt $Mopt $Sopt
+
+#clean up time
+end:
+unset *flag *opt

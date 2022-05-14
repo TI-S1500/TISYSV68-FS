@@ -1,0 +1,116 @@
+
+The Virtual Memory Subsystem screens displsy various statistics that relate
+to the virtual memory subsystem for a particular CPU.  The virtual memory 
+statistics include total counts and operations per second for several 
+components of the virtual memory subsystem. These statistics are presented 
+on two screens. The table on the first screen shows the following information 
+about the virtual memory subsystem of the current CPU:
+
+    Context Switches   Shows the total number of context switches since the 
+        system was booted and the average number of context switch operations 
+        per second.
+
+    Calls to Trap   Shows the total number of calls to the trap made since 
+        the system was booted and the average number of call-to-trap 
+        operations per second.
+
+    Calls to Syscall   Shows the total number of calls to syscall made 
+        since the system was booted and the average number of call-to-syscall 
+        operations per second.
+
+    Pages Swapped In   Shows the total number of pages swapped in since the 
+        system was booted and the average number of page swap-in operations 
+        per second.
+
+    Pages Swapped Out   Shows the total number of pages swapped out since 
+        the system was booted and the average number of page swap-out 
+        operations per second.
+
+    Page-Ins   Shows the total number of page-ins made since the system was 
+        booted and the average number of page-in operations per second.
+	These are page-ins from the swap partition and does not include 
+        page-ins in from the file system.
+
+    Page-Outs   Shows the total number of page-outs made since the system 
+        was booted and the average number of page-out operations per second.
+
+    Pages Paged In   Shows the total number of pages that have been paged 
+        in since the system was booted and the average number of pages 
+        paged-in per second.  These are pages brought in from the swap 
+        partition and does not include pages brought in from the file
+	system.
+
+    Pages Paged Out   Shows the total number of pages that have been paged 
+        out since the system was booted and the average number of pages 
+        paged-out per second.
+
+    Page Faults   Shows the total number of page faults since the system 
+        was booted and the average number of page faults per second.
+
+    Page Duplications   Shows the total number of page duplications since 
+        the system was booted and the average number of page duplications 
+        per second.
+
+    Page-In Operations   Shows the total number of page-in operations since
+	the system was booted and the average number of page-in operations
+	per second. Page-in operations is the count of times that the page-in
+	handler was called.  These operations may result in the pages being 
+	found on the free list, pages that are zeroed filled on demand, pages
+	filled on demand with text, pages brought in from the swap partition,
+	pages recovered	from the buffer cache, or the pages being brought in
+	from the file system.
+
+    Page Found in Free List   Shows the total number of pages found 
+        in the free list since the system was booted and the average 
+        number of pages found in the free list per second.
+
+    Page Filled on Demand   Shows the total number of pages filled with 
+        text on demand since the system was booted and the average number 
+        of pages filled on demand per second.
+
+    Page Zero Filled on Demand   Shows the total number of pages initialized 
+        with zeros since the system was booted and the average number of 
+        pages zero filled on demand per second.
+
+Use the + command to display the second screen. The table on the second screen 
+shows the following system information for the current CPU:
+
+    Intransit Blocking Page Faults   Shows the total number of faults on 
+        pages in the process of being paged in or out since the system was 
+        booted and the average number of intransit blocking page faults 
+        per second.
+
+    Number of Exfod's Created   Shows the total number of executable (pages) 
+        filled on demand operations created since the system was booted and 
+        the average number of exfods created per second.
+
+    Number of Zfod's Created   Shows the total number of (pages) zero filled 
+        on demand operations created since the system was booted and the 
+        average number of zfods created per second.
+
+    Scans in Page Out Daemon   Shows the total number of scans in the page-out 
+        daemon since the system was booted and the average number of scans in 
+        the page out daemon operations per second. The page daemon tells the
+        system when to allocate memory to another process and marks the pages
+        that need to be freed.
+
+    Revolutions of the Hand   Shows the total number of revolutions of the 
+        hand since the system was booted and the average number of revolution 
+        of the hand operations per second.
+
+    Pages Freed by Daemon   Shows the total number of pages freed by the 
+        daemon since the system was booted and the average number of pages 
+        freed by the daemon per second.
+
+    Swap-Ins   Shows the total number of swap-ins since the system was 
+        booted and the average number of swap-in operations per second.
+
+    Swap-Outs   Shows the total number of swap-outs since the system was 
+        booted and the average number of swap-out operations per second.
+
+Use the - (minus sign) command to return to the first screen, or use another
+PM command to access other performance data. To view the virtual memory 
+statistics for a different CPU, first access the CPU screen by slot number 
+(0-f), then use the v command to display the virtual memory statistics for 
+that CPU.
+

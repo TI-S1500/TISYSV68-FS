@@ -1,0 +1,63 @@
+#	usage: get_pid ttyxx tmp.fil
+#
+#	This unix shell script takes its command line arguments and
+#	performs the following functions:
+#	
+#	1) First, determines if the device 'ttyxx' exists as a character dev.
+#		if not then a value of ENODEV (19) is returned.
+#	2) Second, clears out the temp file by copying the null device
+#		into the file and checks the return code. If an error
+#		occured then a value of ENOENT (2) is returned.
+#	4) Lastly, the output of a 'ps -e' command is piped into 'awk'.
+#		awk looks through this list of currently executing processes
+#		and takes the first line containing the specified tty port 
+#		and places it into the tmp file. If there isn't a process
+#		tied to the tty port then the tmp file will be null.
+#		At this point the return code of awk is returned to the calling
+#		process, ie. 0 means OK any other value then an error occured.
+#
+#
+#
+#
+OK=0		#	all went as planed, no errors
+EPERM=1		#	Don't have permission to create file 
+ENOENT=2	#	File dosen't exist to edit
+ENODEV=19	#	device either doesn't exist or not a character dev.
+#
+#
+#
+#
+TTY=$1		#	First argument is a tty device
+FILE=$2		#	Second file is where to place output
+#
+#
+#
+if [ ! -c /dev/$TTY ]
+then
+	exit $ENODEV	
+fi
+#
+#	need to assign ttynum for sco
+#
+#TTYNUM=`echo $TTY | awk '{print substr( $1, 4, 2 )}'`
+#
+#
+cp /dev/null $FILE >/dev/null 2>/dev/null
+if [ $? != 0 ]
+then
+	exit $EPERM
+fi
+#
+#
+INOD=`ls -i /dev/$TTY | awk '{print $1}'`
+ps -t `ls -i /dev | grep $INOD | awk 'BEGIN {ORS = ","} {print $2}'` | awk 'NR==2 {print $1,$2,$3,$4" #" }' > $FILE
+#
+#ps -e | awk "BEGIN { }
+#	"'$2'"~/$TTYNUM/ {
+#	   print \$TTY \" #\" >\"$FILE\"
+#	}
+#END {}" >/dev/null 2>/dev/null 
+#
+#
+#
+exit $?		#	Yes I know this is redundant

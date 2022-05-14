@@ -1,0 +1,21 @@
+:
+#faxfirst - UNIX version - High speed modem
+# 01/23/96 - R96-3 - remove sys000 for phase 2 security,echo error to modemset.log
+#
+chmod 666 /dev/tty00
+rm -f /JDIS/PROG/COMM/modemset.log
+rm -f /JDIS/PROG/COMM/modemset.out
+cd /JDIS/PROG/COMM
+BLASTDIR=/JDIS/PROG/COMM
+export BLASTDIR
+SETUPDIR=/JDIS/PROG/COMM
+export SETUPDIR
+./blast faxfirst -n
+if test $? != 0
+then
+        echo "\nfaxfirst: blast error while optioning the modem.\n">>modemset.log
+        exit 1
+else
+        echo "\nfaxfirst options successfully set \n" >>modemset.log
+fi
+exit 0

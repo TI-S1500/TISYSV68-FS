@@ -1,0 +1,75 @@
+#@(#)alpdefs	1.3 86/10/15
+#SPECIAL FILE: /etc/alpdefs                                                    
+# /dev/alpxx bb=___ eb=___ pr=___ sz=___ rt=___
+#                                                                               
+#       The file /etc/alpdefs is used to specify parameters that will be used   
+#to initialize the vdt attached line printer driver. The Device Adminstrator
+#will provide entries in this file for the terminals defined in the file
+#/etc/alpcaps. These are a best guess estimate of how the vdt attached 
+#printing should be done. 
+#       To add a new terminal type edit the file /etc/alpcaps.
+#To change the parameters associated with a particular vdt attached printer 
+#edit this file.
+#       The parameters define the following items:
+#                                                                               
+#       1) Printer Pathname. (/dev/alpxx assigned by devadm(1T)) The pathname
+#          of the attached printer device.     
+#                                                                               
+#       2) Printer Begin Bracket. (bb)  This is the character sequence that
+#          needs to be sent to the terminal so that subsequent data is directed
+#          to the attached printer device.                                   
+#                                                                               
+#       3) Printer End Bracket. (eb) The character sequence that terminates the 
+#          data stream that is directed to the attached printer.                
+#                                                                               
+#       4) Pacing response. (pr) The character sequence that is sent by the     
+#          terminal to acknowledge the previous printer directed data           
+#          stream.  The receipt of this string indicates that the terminal      
+#          is ready to receive more printer data.  Some terminals do not        
+#          support this feature, if not, the appropriate entry is a Null        
+#          string (i.e \0).  For Terminals that do not support a pacing         
+#          response, the Block Transmit Rate is used to pace the printer data.  
+#                                                                               
+#       5) Block size. (sz) This specifies the size of the printer data block  
+#          to be sent to the attached printer as a contigious stream.  Some     
+#          terminals have a defined limit while others do not (they use         
+#          XON,XOFF to pace the data).  A reasonable number is 80 to 128.       
+#                                                                               
+#       6) Block Transmit Rate. (rt) This specifies how often a printer data   
+#          block should be sent to the terminal. This has units in milliseconds.
+#          The actual resolution is in units of 250 milliseconds. This may
+#          be changed to 100 milliseconds at some point in  the future. 
+#          The block size and transmit rate parameters allows for customization
+#          of how much of the terminals bandwidth can be allocated to the vdt 
+#          atached printer. By proper selection of these parameters, both 
+#          printer and terminal data can flow without noticable delays of 
+#          either. If the terminal supports a Pacing Response, this number 
+#          is not used. 
+#                                                                               
+#                                                                               
+#       The following are some examples of /etc/alpdefs file entries.
+#An escape character can be specified using the \E macro (or using the
+#standard octal representation \033). '\' are represented by a '\\' sequence. 
+#The # character before the VDT-attached printer pathname implies that the
+#entire line be treated as a comment.
+#
+#       Attached printer paramters                                              
+#
+#    for 931 using positive acknowledgement                                   
+#
+#
+#     for vt220 with no pacing response and 7 bit controls
+#
+#    for other examples see the file /etc/alpcaps.
+#
+#        The alpdefs file is read by the initterm process, which initializes
+# the terminal driver with the VDT-attached printer parameters. If you change
+# a parameter in this file you must execute the following:
+#                                                                              
+#              /etc/initterm p                                                 
+#                                                                               
+#        This program will be executed as part of the init process.
+#
+/dev/alp01  bb=\E[5i eb=\E[?9i pr=\EQ sz=132 rt=0
+/dev/alp04  bb=\E[5i eb=\E[?9i pr=\EQ sz=132 rt=0
+/dev/alp03  bb=\EF\0011\E( eb=\E) pr=\E1 sz=132 rt=0

@@ -1,0 +1,15 @@
+disk:menu:  DISK OPERATIONS MENU, Series 1000, Model 1500  :disk.hlp
+BACKUP:c:Creates or restores files from backup tape:
+DF:c:Reports number of free disk blocks:
+DU:c:Summarizes disk usage:
+FF:c:Lists statistics for a file system:
+FINC:c:Provides a fast incremental backup:
+FREC:c:Recovers files from a backup tape:
+FSCK:c:Provides a file system consistency check:
+FUSER:c:Identifies processes using a file or file structure:
+LABELIT:c:Provides labels for disk or tape file system:
+MVDIR:c:Renames directories:
+SHOWFS:c:Displays information on a file system:
+SUM:c:Prints checksum and block count of a file:
+UNAME:c:Prints name of current system:
+VOLCOPY:c:Copies file systems with label checking:

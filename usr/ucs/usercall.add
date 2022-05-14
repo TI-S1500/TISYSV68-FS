@@ -1,0 +1,49 @@
+/*
+ *  The following declarations are for the VPSC COBOL Interface
+ */
+extern int icsopn();
+extern int icsfil();
+extern int icsget();
+extern int icsatr();
+extern int icsxmt();
+extern int icstmo();
+extern int icscls();
+/*
+ *  The above declarations are for the VPSC COBOL Interface
+ */
+
+
+/*
+ *  The following case statements are for the VPSC COBOL Interface
+ */
+
+	case 81:icsopn(calargv[0], get2ws(calargv[1]),
+		       get2ws(calargv[2]), get2ws(calargv[3]));
+		break;
+	case 82:icsfil(calargv[0], calargv[1],
+		       get2ws(calargv[2]), get2ws(calargv[3]),
+		       get2ws(calargv[4]), get2ws(calargv[5]),
+		       get2ws(calargv[6]), calargv[7]);
+		break;
+	case 83:icsget(calargv[0], calargv[1],
+		       get2ws(calargv[2]), get2ws(calargv[3]),
+		       get2ws(calargv[4]), get2ws(calargv[5]),
+		       get2ws(calargv[6]), calargv[7]);
+		break;
+	case 84:icsatr(calargv[0], calargv[1],
+		       get2ws(calargv[2]), get2ws(calargv[3]),
+		       get2ws(calargv[4]), get2ws(calargv[5]),
+		       get2ws(calargv[6]));
+		break;
+	case 85:icsxmt(calargv[0], get2ws(calargv[1]),
+		       get2ws(calargv[2]));
+		break;
+	case 86:icstmo(calargv[0], get2ws(calargv[1]),
+		       get2ws(calargv[2]));
+		break;
+	case 87:icscls(calargv[0], get2ws(calargv[1]),
+		       get2ws(calargv[2]));
+		break;
+/*
+ *  The above case statements are for the VPSC COBOL Interface
+ */

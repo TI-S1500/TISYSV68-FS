@@ -1,0 +1,35 @@
+# csh - @(#)domonthly.sh	1.1 (TI) 88/04/26
+#
+# This is a sample script to do 'volcopy' backups of 3 mythical filesystems.
+# It calls another script named 'monthly'.  It prompts for tapes and
+# keeps the operator informed.  It saves the inode catalogs on a 'tar'
+# format tape created as the last step in the backup scenario.
+
+echo "     Automated monthly backup system."
+echo " Make sure that you are in the /etc/backups directory. "
+echo '\n'
+echo " You should only have to press return and change tapes when prompted."
+echo '\n'
+echo "Backing up sys:user. Insert 1/2 inch tape and press return to continue."
+echo ::\\c
+set key=`line`
+csh monthly user TISysV sys:user 1h
+echo "sys:user now saved."
+echo '\n'
+echo "Backing up sec:u. Insert 1/2 inch tape and Press return to continue."
+echo ::\\c
+set key=`line`
+csh monthly u TISysV sec:u 1h
+echo "sec:u now saved."
+echo '\n'
+echo "Backing up sec:v. Insert 1/2 inch tape and press return to continue."
+echo ::\\c
+set key=`line`
+csh monthly v TISysV sec:v 1h
+echo "sec:v now saved."
+echo '\n'
+echo "Backing up Inode table Insert 1/2 inch tape and press return to continue."
+echo ::\\c
+set key=`line`
+tar cvbf 40 /dev/rmt/1h .
+echo "Monthly backups finished."

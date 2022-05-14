@@ -1,0 +1,303 @@
+#
+# BLAST
+# Terminal Definition File
+#
+# Please see the end of this file for instructions and comments.
+#
+
+BLASTKBD:
+#
+# Blast keys - remappable BLAST keys for the BLAST user interface and editor.
+# The following is the same as the BLAST default. The default is for a vt100
+#
+:ku=\E\133\101:     # <up> move cursor up 1 line in BLAST and EDITOR
+:kd=\E\133\102:     # <down> move cursor down 1 line in BLAST and EDITOR
+:kr=\E\133\103:     # <right> move cursor right 1 char. in BLAST and EDITOR
+:kl=\E\133\104:     # <left> move cursor right 1 char. in BLAST and EDITOR
+:kq=^q:             # <quick> EDITOR quick key.
+:kb=^k:             # <block> EDITOR block mode key.
+:bk=^b:             # <altbreak> alternate break key for TERMINAL mode
+:dc=^g:             # <DEL> EDITOR del. char. left and BLAST menu left
+                    # ^G is the delete current charcter key default
+:dl=^y:             # <del line> delete line in EDITOR
+:ES=^z:             # <exit> ends function for BLAST and EDITOR
+:f1=^?:              # <help> invokes help BLAST and EDITOR
+:ho=^r:             # <home> move cursor to top of MODIFY screen and EDITOR
+:ic=^v:             # <insert> EDITOR insert/overwrite toggle key
+:ll=^c:             # <pg down> go to last field or bottom of Setup and EDITOR
+:rp=^w:             # <repaint> repaint key for BLAST menus
+
+
+BLASTGR:
+:go=:
+:gc=:
+:tl=:
+:tr=:
+:bl=:
+:br=:
+:lh=:
+:lv=:
+
+VT100:
+#DEC VT100
+:ce=3\E[K:
+:cl=40\E[;H\E[2J:
+:cm=\E[%i%d;%dH:
+:cs=\E[%i%d;%dr:
+:me=2\E[m:
+:se=\E[m:
+:so=2\E[7m:
+
+D200:
+#Data General 6052/6053 D200/D210/D211
+:cl=\014:
+:ce=\013:
+:cm=\020%r%.%.:
+:so=\026:
+:se=\022\025\002\017\004\035:
+:me=\016:
+:mh=\034:
+:us=\024:
+
+ADM3A:
+#Lear Siegler ADM3A
+:ce=\ET:
+:cl=\E;:
+:cm=\E=%+ %+ :
+
+TV900:
+#Televideo 900 series
+:ce=\ET:
+:cl=^Z:
+:cm=\E=%+ %+ :
+
+D80:
+#Ampex Dialogue 80
+:ce=\Et:
+:cl=40\E*:
+:cm=\E=%+ %+ :
+
+5410:
+#5410 terminal 80 columns
+:ce=10\E[K:
+:cl=10\E[H\E[J:
+:cm=10\E[%i%d;%dH:
+:cs=\E[%i%d;%dr:
+:dl=\E[M:
+:me=\E[0m^O:
+:mh=\E[2m:
+:se=\E[m:
+:so=\E[7m:
+
+4420:
+#Teletype 4420
+:ce=\Ez:
+:cl=\EH\EJ:
+:cm=\EY%+ %+ :\
+
+4424:
+#Teletype 4424
+:ce=\Ez:
+:cl=\E[H\E[2J:
+:cm=\E[%i%3;%3H:
+
+c100:
+#concept|c104|c100-4p|concept100|concept 100:\
+:ce=16\E^U:
+:cl=2*^L:
+:cm=\Ea%+ %+ :
+
+vt52:
+#dec vt52
+:ce=\EK:
+:cl=\EH\EJ:
+:cm=\EY%+ %+ :
+
+h19:
+#heath|h19-b|heathkit|heath-19|z19|zenith|heathkit h19:\
+:ce=\EK:
+:cl=\EE:
+:cm=\EY%+ %+ :
+
+bantam:
+#550|perkin elmer 550
+:ce=\EI:
+:cl=20\EK:
+:cm=\EX%+ \EY%+ :
+
+dtc:
+#ps|dtc382|382:
+:ce=^P^U:
+:cl=20^P^]:
+:cm=%r^P^Q%.%.:
+
+#
+# BLAST Terminal Definitions File Instructions
+#
+# This file is used to supply information to the BLAST program regarding
+# the terminal screen control codes and the mapping of the  keys
+# used within BLAST.
+#
+# All versions of UNIX BLAST use this file to get BLAST key
+# mapping  information  such  as help key, escape key, cursor control keys
+# etc. Some versions of UNIX BLAST also use this file for screen control
+# code information if  it  cannot  be  extracted  from  the  UNIX  terminal
+# information  database.  See your BLAST REFERENCE MANUAL for a list of these
+# machines and for further information on the use of the BLAST.TDF file for
+# specifying BLAST keys and terminal screen codes.
+#
+# The BLAST key mapping information is found under the label BLASTKBD:. The
+# screen control code information is found under the labels which are the
+# same as the terminal name (ex: VT100:).
+#
+# Each BLAST  key has a two character nemonic associated with it.
+# The keys are defined by placing the required character sequence on the
+# line with the key nemonic. (ex: ku=^u:). Whenever that character sequence
+# is received by BLAST, the defined function will be executed.
+# See below for the specific syntax rules for these sequences.
+#
+# Each screen control operation also has a two character nemonic associated
+# with it. These codes are also defined by similar character sequences
+# placed on the associated nemonic line. (ex: cl=\040:). Whenever BLAST
+# must perform a screen function it will output the defined character
+# sequence if BLAST cannot get the information from the UNIX terminal
+# information database.
+#
+#
+# BLAST Special Key Definitions.
+#
+# The character sequences appearing under the label BLASTKBD: define the
+# keys that must be hit in order to execute the associated BLAST function.
+# All  default  key  sequences  are  still  in effect along with the newly
+# defined sequences. The following is the correct format for the BLAST
+# key definition entries.
+#
+#       BLASTKBD:
+#       :ku=\033\133\101:     # cursor up 1 line in BLAST and EDITOR
+#       :kd=\033\133\102:     # cursor down 1 line in BLAST and EDITOR
+#       :kr=\033\133\103:     # cursor left 1 char. in BLAST and EDITOR
+#       :kl=\033\133\104:     # cursor right 1 char. in BLAST and EDITOR
+#       :ho=^r:               # go to top in BLAST MODIFY screen and EDITOR
+#       :ll=^c:               # go to end in BLAST MODIFY screen and EDITOR
+#       :dl=^y:               # delete line in EDITOR
+#       :ES=Z:                # exit key for BLAST and EDITOR
+#       :f1=?:                # help key for BLAST and EDITOR
+#       :rp=^w:               # repaint key for BLAST menus
+#       :bk=^b:               # alternate break key for TTRAPS
+#       :dc=^g:               # EDITOR del. char. left and BLAST menu left
+#       :ic=^v:               # EDITOR insert/overwrite toggle key
+#       :kq=^q:               # EDITOR quick key.
+#       :kb=^k:               # EDITOR block mode key.
+#
+# Any functions which you do not wish to define may be omitted.
+# See below for specific syntax rules for these sequences.
+#
+#
+# BLAST Graphics Characters Definition
+#
+# The character sequences appearing under the label BLASTGR: define the
+# graphics sequences that BLAST will output to the terminal.  These are
+# used to override any default graphics characters.  There are six graphics
+# sequences that BLAST uses.  There are also sequences which are prefixed or
+# postfixed to each of the six graphics characters.  The following is an
+# example which would duplicate the default settings for a VT100 terminal.
+#
+#	BLASTGR:
+#	:go=\016:	# Prefixed to each of the six graphics characters.
+#	:gc=\017:	# Postfixed to each.
+#	:tl=l:		# \016l\017 is the sequence for a top left corner.
+#	:tr=k:		# \016k\017 is for the top right corner.
+#	:bl=m:		# \016m\017 is for the bottom left corner.
+#	:br=j:		# \016j\017 is for the bottom right.
+#	:lh=q:		# \016q\017 is for a horizontal line.
+#	:lv=x:		# \016x\017 is for a vertical line.
+#
+# Entries such as :tr=: are ignored.  See below for syntax rules.
+# The graphics characters are used by BLAST to draw boxes and lines.
+#
+#
+# Terminal Screen Control Code Definitions.
+#
+# The character sequences appearing under the screen control code labels
+# define the sequences which will be output to the terminal to perform
+# necessary screen control functions. The following is the correct
+# format for terminal screen control entries:
+#
+# 	terminal_name:
+# 	:bc=backspace_character:	(optional)
+# 	:ld=line_delete_character:	(optional)
+# 	:pc=pad_character:		(optional)
+# 	:cl=clear_screen_sequence:
+# 	:ce=clear_to_end_of_line_sequence:
+# 	:cm=cursor_control_template:
+# 	:cs=scrolling_region_sequence:
+# 	:al=line_insert_sequence:
+# 	:dl=line_delete_sequence:
+# 	:me=bold_video_sequence:
+# 	:mh=dim_video_sequence:
+# 	:so=reverse_video_sequence:
+# 	:se=normal_video_sequence:
+#
+# Any functions which you do not wish to define may be omitted.
+# Below is a list of specific syntax rules for these control sequences.
+#
+# Control Sequence Format
+#
+#      Leading  spaces  on each line are ignored.  Blank lines may not
+#      appear within a terminal screen definition entry (a  blank line
+#      terminates the entry).
+#
+#      If  padding  is  required,  the number of pads to be sent after
+#      the control sequence must immediately  follow  the  equal  sign
+#      (=).
+#
+#      If  a  pad character other than the default (00) is to be used,
+#      the pad character must be defined  before  the  first  sequence
+#      requiring  padding.  Otherwise,  the  definitions can be in any
+#      sequence.
+#
+#      Control sequences may not span lines.
+#
+#      Lines beginning with a '#' are ignored  and  may  be  used  for
+#      comments.  Comments  may  also  be placed after the terminating
+#      colon on a line.
+#
+#      If '\E' is found in a control sequence, it is converted  to  an
+#      escape  character  (octal  33).  For any character 'x', '^x' is
+#      converted to control-x.  Characters may also  be  expressed  as
+#      three  octal  digits  after a '\' (e.g., '\177' = DEL).  If any
+#      character other than 'E', '0',...,'7' follow a '\', the '\'  is
+#      ignored  and  the  following  character  is  output (e.g., '\\'
+#      yields a single '\' and '\^' yields '^').
+#
+#
+#  In the cursor movement sequence (cm), the current cursor line and column
+#  position can be encoded in a variety of ways for output to various
+#  terminals.  The percent sign (%) followed by one or more characters
+#  is used to specify the desired encoding:
+#
+# Output codes.
+#
+#  %d	output the current line or current column value as 1-3 decimal digits.
+#  %2	output the current line or current column value as 2 decimal digits.
+#  %3	output the current line or current column value as 3 decimal digits.
+#  %.	output the current line or current column value in binary.
+#  %+x	add x to current value then output current row or column in binary.
+#  %i	increment line and column values and output in binary.
+#
+# Format codes.
+#
+#	%r	reverses order of line and column output (no output).
+#	%n	exclusive OR line and column with octal 140 (no output).
+#	%B	convert line or column to BCD (no output).
+#	%D	reverse coding (x - 2(x mod 16)) (no output).
+#
+#
+# The above codes which output row or column values, work  like  this.
+# The first occurrence of any of the output codes in a control sequence
+# will  output  the  current  row  value and the second occurrence will
+# output the current column value.  If the output codes  are  preceded
+# by  any  of  the  format  codes  the  row  and column output will be
+# affected as described.
+#
+#

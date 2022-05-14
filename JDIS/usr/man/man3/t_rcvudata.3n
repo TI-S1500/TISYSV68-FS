@@ -1,0 +1,84 @@
+T_RCVUDATA(3N)                                     T_RCVUDATA(3N)
+
+NAME
+     t_rcvudata - Receives a data unit
+
+SYNOPSIS
+     #include <tiuser.h>
+
+     int t_rcvudata(fd, unitdata, flags)
+     int fd;
+     struct t_unitdata *unitdata;
+     int *flags;
+
+DESCRIPTION
+     This function is used in connectionless mode to receive a
+     data unit from another transport user.  fd identifies the
+     local transport endpoint through which data will be
+     received, unitdata holds information associated with the
+     received data unit, and flags is set on return to indicate
+     that the complete data unit was not received.  unitdata
+     points to a t_unitdata structure containing the following
+     members:
+
+          struct netbuf addr;
+          struct netbuf opt;
+          struct netbuf udata;
+
+     The maxlen [see netbuf in intro(3)] field of addr, opt, and
+     udata must be set before issuing this function to indicate
+     the maximum size of the buffer for each.
+
+     On return from this call, addr specifies the protocol
+     address of the sending user, opt identifies protocol-
+     specific options that were associated with this data unit,
+     and udata specifies the user data that was received.
+
+     By default, t_rcvudata operates in synchronous mode and will
+     wait for a data unit to arrive if none is currently
+     available.  However, if O_NDELAY is set (via t_open or
+     fcntl), t_rcvudata will execute in asynchronous mode and
+     will fail if no data units are available.
+
+     If the buffer defined in the udata field of unitdata is not
+     large enough to hold the current data unit, the buffer will
+     be filled and T_MORE will be set in flags on return to
+     indicate that another t_rcvudata should be issued to
+     retrieve the rest of the data unit.  Subsequent t_rcvudata
+     call(s) will return 0 for the length of the address and
+     options until the full data unit has been received.
+
+     On failure, t_errno can be set to one of the following:
+
+     [TBADF]             The specified file descriptor does not
+                         refer to a transport endpoint.
+
+     [TNODATA]           O_NDELAY was set, but no data units are
+                         currently available from the transport
+                         provider.
+
+     [TBUFOVFLW]         The number of bytes allocated for the
+                         incoming protocol address or options is
+                         not sufficient to store the information.
+                         The unit data information to be returned
+                         in unitdata will be discarded.
+
+     [TLOOK]             An asynchronous event has occurred on
+                         this transport endpoint and requires
+                         immediate attention.
+
+     [TNOTSUPPORT]       This function is not supported by the
+                         underlying transport provider.
+
+     [TSYSERR]           A system error has occurred during
+                         execution of this function.
+
+SEE ALSO
+     intro(3), t_rcvuderr(3N), t_sndudata(3N).
+     TI System V Network Programmer's Guide.
+
+DIAGNOSTICS
+     t_rcvudata returns 0 on successful completion and -1 on
+     failure; t_errno is set to indicate the error.
+
+

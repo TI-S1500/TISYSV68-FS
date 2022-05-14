@@ -1,0 +1,6 @@
+object:menu:         OBJECT COMMANDS MENU Series 1000         :object.hlp
+DUMP:c:Dumps selected parts of an object file:
+LD:c:Invokes the links editor for common object files:
+NM:c:Prints name list of common object file:
+SIZE:c:Prints section sizes of common object files:
+STRIP:c:Strips symbol table information from object file:

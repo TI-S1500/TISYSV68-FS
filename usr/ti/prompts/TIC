@@ -1,0 +1,19 @@
+# cshf  TIC - compile terminfo entries 
+#	@(#)TIC.sh	1.1  87/03/09
+#
+onintr end
+
+prompt	"^TIC -- COMPILES TERMINFO" \
+	"^File Name(s):"  _input_file macnm  "$_input_file"\
+	"^Level of Trace (1-4):" lev "range(1,4)" 1\
+	"^#$*"
+
+if( $abort )  goto end
+if ($lev != "") set opt = -v$lev
+
+echo "=== TIC COMMAND EXECUTING ==="
+echo tic $opt $_input_file
+tic $opt $_input_file
+
+end:
+unset opt lev 

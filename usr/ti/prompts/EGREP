@@ -1,0 +1,69 @@
+# cshf   egrep -- search a file for a pattern 
+#	@(#)EGREP.sh	1.2  87/10/15
+#
+onintr end
+set quote = \'
+
+prompt "^EGREP -- SEARCH A FILE FOR A PATTERN"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Print All But Matching Lines:" vflag yesno n\
+	"^Find an Expression Beginning With '-':" eflag yesno n\
+	"^Count Matching Lines:" cflag yesno n\
+	"^Ignore Upper/Lower Case:" iflag yesno n\
+	"^File Names Only:" lflag yesno n\
+	"^Print File Line Numbers:" nflag yesno n\
+	"^Print Block Numbers:" bflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+set strng = ""
+set fflag = ""
+while (("$strng" == "") && ($fflag == ""))
+	prompt "^EGREP -- PATTERN FOR SEARCH OPTIONS"\
+		"^SELECT ONLY ONE."\
+		"^*Expression:" strng string "$strng"\
+		"^*File Containing Pattern:" fflag acnm\
+		"^#$*"
+	if ($abort) goto end
+	if (("$strng" != "") && ($fflag != "")) then
+	  set strng = ""
+	  set fflag = ""
+	endif
+end
+
+if ($abort) goto end
+# for file containing pattern
+if ($fflag != "") set fopt = -f$fflag
+
+if ($eflag == "y") set opt = e$opt
+if ($cflag == "y") set opt = c$opt
+if ($vflag == "y") set opt = v$opt
+if ($lflag == "y") set opt = l$opt
+if ($nflag == "y") set opt = n$opt
+if ($iflag == "y") set opt = i$opt
+if ($bflag == "y") set opt = b$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== EGREP COMMAND EXECUTING ==="
+if (($_output_file != "") && ("$strng" != "")) then 
+	echo egrep $opt $quote"$strng"$quote $_input_file ">"$_output_file
+	egrep $opt "$strng" $_input_file >$_output_file
+else if (($_output_file == "") && ("$strng" != "")) then 
+	echo egrep $opt $quote"$strng"$quote $_input_file
+	egrep $opt "$strng" $_input_file
+else if (($_output_file == "") && ("$strng" == "")) then 
+	echo egrep $opt $fopt $_input_file
+	egrep $opt $fopt $_input_file | \
+	pg -cp"Output from EGREP is being piped through pg: "
+else 
+	echo egrep $opt $fopt $_input_file ">$_output_file"
+	egrep $opt  $fopt $_input_file >$_output_file
+endif
+endif
+endif
+
+#clean up time
+end:
+unset *opt  *flag quote strng

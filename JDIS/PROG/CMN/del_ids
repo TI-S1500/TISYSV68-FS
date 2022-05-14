@@ -1,0 +1,4 @@
+:
+cd /etc
+cp passwd passwd.del
+sed '/50:/ s/:,A..:/:*,A..:/' passwd.del > passwd

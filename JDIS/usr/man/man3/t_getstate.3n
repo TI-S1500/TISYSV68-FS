@@ -1,0 +1,56 @@
+T_GETSTATE(3N)                                     T_GETSTATE(3N)
+
+NAME
+     t_getstate - Gets the current state
+
+SYNOPSIS
+     #include <tiuser.h>
+
+     int t_getstate(fd)
+     int fd;
+
+DESCRIPTION
+     The t_getstate function returns the current state of the
+     provider associated with the transport endpoint specified by
+     fd.
+
+     On failure, t_errno can be set to one of the following:
+
+     [TBADF]           The specified file descriptor does not
+                       refer to a transport endpoint.
+
+     [TSTATECHNG]      The transport provider is undergoing a
+                       state change.
+
+     [TSYSERR]         A system error has occurred during
+                       execution of this function.
+
+SEE ALSO
+     t_open(3N).
+     TI System V Network Programmer's Guide.
+
+DIAGNOSTICS
+     t_getstate returns the current state on successful
+     completion and -1 on failure and t_errno is set to indicate
+     the error.  The current state can be one of the following:
+
+     T_UNBND        Unbound
+
+     T_IDLE         Idle
+
+     T_OUTCON       Outgoing connection pending
+
+     T_INCON        Incoming connection pending
+
+     T_DATAXFER     Data transfer
+
+     T_OUTREL       Outgoing orderly release (waiting for an
+                    orderly release indication)
+
+     T_INREL        Incoming orderly release (waiting for an
+                    orderly release request)
+
+     If the provider is undergoing a state transition when
+     t_getstate is called, the function will fail.
+
+

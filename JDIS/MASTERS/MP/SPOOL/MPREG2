@@ -1,0 +1,26 @@
+Date: 04JUN93                                          JDIS DEMO COMPANY                                                  Page:    1
+Time: 16:49                                          Final Payroll Check Register                                         (MPREG2-1)
+                                                     Period Ending Date:  04JUN93
+
+Employee                         Cash   Non-Cash  Taxable  Non-Tax Fed. Tax State Tx Other Tx FICA Tax    Total              Check
+No.    N a m e                 Earnings Earnings  Earnings  Earn.  Withheld Withheld Withheld Withheld  Deductions   Net Pay   No.
+
+0310 HAROLD WAGE                340.00             340.00             19.59     9.05             26.01      32.00     253.35   12345
+0315 PAM WAGE                   340.00             340.00             17.34     8.60             26.01      32.00     256.05   12346
+
+Department   30 Totals:         680.00             680.00             36.93                                 64.00
+                                                                               17.65             52.02                509.40
+
+0400 DON WAGE                   430.00             430.00             31.59    11.45             32.90      34.00     320.06   12347
+
+Department   40 Totals:         430.00             430.00             31.59                                 34.00
+                                                                               11.45             32.90                320.06
+
+
+Division     00 Totals:       1,110.00           1,110.00             68.52                                 98.00
+                                                                               29.10             84.92                829.46
+
+
+Company      01 Totals:       1,110.00           1,110.00             68.52                                 98.00
+                                                                               29.10             84.92                829.46
+

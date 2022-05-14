@@ -1,0 +1,47 @@
+# cshf DIFF3 - COMPARE TWO FILES 
+#	@(#)DIFF3.sh	1.2  88/01/20
+#
+onintr end
+
+prompt  "^DIFF3 -- COMPARES THREE FILES"\
+	"^File 1:"  _input_file   acnm  $_input_file\
+	"^File 2:"  F2   acnm  $F2  \
+	"^File 3:"  F3   acnm  $F3  \
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Produce Script for ED Editor:" eflag yesno n\
+	"^Select Changes Flagged ====:" xflag yesno n\
+	"^Select Changes Flagged ====3:" x3flag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== DIFF3 COMMAND EXECUTING ==="
+if (!(-e "$_input_file")) then
+	echo ERROR: $_input_file does not exist
+	set abort = "1"
+endif
+if (!(-e "$F2")) then
+	echo ERROR: $F2 does not exist
+	set abort = "1"
+endif
+if (!(-e "$F3")) then
+	echo ERROR: $F3 does not exist
+	set abort = "1"
+endif
+ 
+if ($abort) goto end
+if ($x3flag == "y" ) set opt = "3"$opt
+if ($xflag == "y" ) set opt = x$opt
+if ($eflag == "y" ) set opt = e$opt
+if ($opt != "" ) set opt = -$opt
+
+if ($_output_file != "") then
+	echo diff3 $opt $_input_file $F2 $F3 ">"$_output_file
+	diff3 $opt $_input_file $F2 $F3 >$_output_file
+else
+	echo diff3 $opt $_input_file $F2 $F3 
+	diff3 $opt $_input_file $F2 $F3 | \
+	pg -cp"Output from DIFF3 is being piped through pg: "
+endif
+
+end:
+unset opt *flag 

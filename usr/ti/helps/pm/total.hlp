@@ -1,0 +1,112 @@
+
+The System Totals screen displays various operating system statistics for a
+particular CPU, including memory totals and process information. The system 
+totals tables are presented on two screens. The table on the first screen 
+shows the following system information for the current CPU:
+
+    Length of Process Run Queue   Shows the number of processes waiting to 
+        be run.
+
+    Processes in Page Wait   Shows the number of processes that are asleep  
+        and waiting for a page-in to occur.
+
+    Processes Sleeping in Core   Shows the number of processes that are 
+        waiting in memory.
+
+    Processes Swapped Out Runnable   Shows the number of processes with a 
+        low CPU priority that are swapped out.
+
+    Free Memory   Shows the amount of physical memory (in Kbytes) that is 
+        free on this CPU. 
+
+    Total Virtual Memory   Shows the total amount of virtual memory (in 
+        Kbytes) that the system is currently trying to sustain. Virtual 
+        memory refers to the sum of the logical address space for processes
+        on this CPU.
+
+    Real Memory in Use   Shows the total amount of physical memory (in 
+        K-bytes) that is currently in use for text, stack and data segments
+        for this CPU.  This shows the amount of the total virtual memory
+        that is in physical memory for this CPU.
+
+    Virtual Memory in Use by Text  Shows the total amount of virtual memory 
+        (in Kbytes) of the text segments that is currently in use by an 
+        executing program on this CPU.
+
+    Real Memory in Use by Text   Shows the total amount of physical memory 
+        (in K-bytes) for text segments that is currently in use by an
+        executing program on this CPU.
+
+    Total Physical Memory   Shows the total amount of physical on-board 
+        memory (in Kbytes) for this CPU.
+
+    Available User Memory   Shows the total amount of physical memory 
+        (in Kbytes) that is not required for system memory use and is 
+        available for executing user programs on this CPU.  This includes 
+        all memory for the dynamic file buffer cache, memory being used by 
+        programs, and free memory. 
+
+Use the + command to display the second screen. The tables on the second 
+screen show the following system information for the current CPU:
+
+    Available User Memory Pages   Shows the total amount of physical memory 
+        (in 4K pages) that is not required for system memory use and is 
+        available for executing user programs.  This includes all memory 
+        for the dynamic file buffer cache, memory being used by programs, 
+        and free memory. This also shows the percentage of the total physical
+        memory that is user physical memory.
+
+    Total Data Pages   Shows the total amount (in 4K pages) and percentage
+        of utilization of physical memory currently allocated for use as data.
+
+    Shared Data Pages   Shows the total amount (in 4K pages) and percentage 
+        of utilization of physical memory currently allocated for 
+        use as shared data.
+
+    Text Pages Loaded   Shows the total amount (in 4K pages) and percentage 
+        of utilization of physical memory currently allocated for use as text.
+
+    Shared Text Pages Loaded   Shows the total amount (in 4K pages) and 
+        percentage of utilization of physical memory currently allocated for
+        use as shared text.
+
+    Shared Memory Pages   Shows the total amount (in 4K pages) and percentage
+        of utilization of physical memory currently allocated for use
+        as shared memory by the inter-process communication (IPC) mechanisms.
+
+    Stack Pages   Shows the total amount (in 4K pages) and percentage of 
+        utilization of physical memory currently allocated for use as stack
+        memory.
+
+    Shared Stack Pages   Shows the total amount (in 4K pages) and percentage
+        of utilization of physical memory currently allocated for use as
+        shared stack.
+
+    Free Pages   Shows the total amount of memory (in 4k pages) currently 
+        free and available for data processes in the system. This also shows 
+        the percentage of physical memory that is free.
+
+    System Pages   Shows the total amount (in 4K pages) and percentage of 
+        utilization of physical memory that is used for system memory and
+        is not available for user processes. 
+
+    File Buffer Cache Pages   Shows the amount (in 4K pages) and percentage 
+        of utilization of physical memory that is currently being used for 
+        the dynamic file buffer cache. The file buffer cache shrinks and
+        grows as memory is needed or not needed.
+
+    Maximum Shared Memory Pages   Shows the maximum amount (in 4K pages) of
+        shared memory in the system and percentage of utilization of physical
+        memory as set up in the system configuration band. 
+
+    Record Locks   Shows the total number of record locks allowed in the 
+        system (maximum), the current number of record locks, the highest 
+        number of record locks since the system was booted (high), and 
+        the total number of record locks since the system was booted. 
+        Record locks are typical of COBOL database environments.
+
+Use the - (minus sign) command to return to the first screen, or use another
+PM command to access other performance data. To view the system totals for a 
+different CPU, first access the CPU screen by slot number (0-f), then use the
+t command to display the system totals for that CPU.
+

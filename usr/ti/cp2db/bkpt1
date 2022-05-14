@@ -1,0 +1,8 @@
+clrdu1
+sd1 amtc $1
+sd1 amsk 0xffffffff
+sd1 icnt 1
+sd1 tbrk on
+sd1 uprd on
+sd1 spgm on
+sd1 enb on

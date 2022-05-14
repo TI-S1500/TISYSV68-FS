@@ -1,0 +1,30 @@
+# csh  @(#)monthly.sh	1.2 (TI) 88/04/26
+
+# This is a sample script to do 'volcopy' backups of a filesystem.
+# It is called by the script named 'do_monthly'.  It prompts the operator 
+# for a verify option, labels the tape, creates an inode catalog, and
+# finally starts volcopy to backup the filesystem.
+#
+# Refer to the volcopy man page for an explaination of the volcopy
+# options.
+
+if ($#argv != 4) then
+echo "Needs a filesystem name, a volume, a device and an output device. "
+exit
+endif
+
+echo "Do you wish the Verify option?"
+echo "[enter y or n]::"
+set key=`line`
+echo Labeling tape
+labelit /dev/rmt/$4 $1 $2 -n
+echo Making inode catalogue titled mcat$3
+ff /dev/rdsk/$3 > mcat$3
+sleep 5
+echo Making volcopy
+if ( $key == y ) then
+  volcopy -bpi 3200 -feet 2300 -buf -verify $1 /dev/rdsk/$3 $2 /dev/rmt/$4 $2
+else
+  volcopy -bpi 3200 -feet 2300 -buf $1 /dev/rdsk/$3 $2 /dev/rmt/$4 $2
+endif
+echo Volcopy finished

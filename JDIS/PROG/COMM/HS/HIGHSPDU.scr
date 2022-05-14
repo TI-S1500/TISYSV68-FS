@@ -1,0 +1,111 @@
+######################################################################
+#  AT&T PARADYNE - HIGH SPEED MODEM - UNIX
+#  5/11/94 - R95-1 - C.G.KOLWEY - disable autoanswer in HANG - S0=0
+#  5/09/95 - R95-2 - C.G.KOLWEY - DELETE ATEQ1 IN HANG
+#  8/18/95 - R96-1 - C.G.KOLWEY - ADD A " ", REMOVE "," ON DISPLAY LINES
+#  9/28/95 - R96-1 - C.G.KOLWEY - TAKE OUT ALL DISPLAY LINES
+# 10/23/95                      - REWRITE .HANG
+# 03/01/96 - R96-2 - C.G.KOLWEY - TCAPTURE ON
+# 09/06/96 - R97-1 - C.G.KOLWEY - TTRAP CONNECT, BLAST
+######################################################################
+.DIAL
+#       ECHO ON
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno
+                        return 0                # if still no number quit
+                end
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        goto .INIT                              # force modem to known state
+.DIAL11
+        reps 3
+.DIAL20
+        tsend CR,"ATDT",@phoneno,CR             # dial the phone
+        ttrap 45, "CONNECT", "BUSY", "NO CARRIER"
+        if 0 or 2 or 3
+                if reps
+                    goto .DIAL20
+                    return 1
+                end
+        end     
+        goto .AUTOBD
+.HANGUP
+        reps 2
+.HANG11
+        wait 2
+        tsend "+++"                     # break into cmd mode if online
+        ttrap 7, "OK"                   # awake yet ?
+        if @status = "0" goto .HANG20
+        wait 2
+        tsend "ATH", cr
+        ttrap 10, "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG11
+                     return 1
+                end
+.HANG12
+        reps 2
+.HANG20
+        wait 2
+        tsend CR, "AT&F3\\Q1S0=0&W0", CR
+        ttrap 5, "OK"
+        if @status = "0"
+                tsend "+++"
+                wait 3
+                if reps goto .HANG20
+                     return 1
+                end
+        wait 2 idle
+        return 0
+.ANSWER
+#       ECHO ON
+        set @ANSRC = "1"                        # set answer rtncode to error
+        set @retlbl = "ANSWER"                  # setup for return from init
+        goto .INIT                              # force modem to known state
+.ANSW11
+        TCAPTURE ON APPEND TCAP.FIL
+        set @logfile = @logfile
+        ttrap, "CONNECT", "BLAST"
+        if @status = "1" goto .AUTOBD
+        if @status = "2" goto .AUTOBD
+        set @ANSRC = "1"
+        return 1
+.INIT
+.INIT10
+        tsend CR, "AT&F3\\Q1&W0", CR
+        ttrap 7, "OK"                    # Flow Control - XON/XOFF
+        wait 2
+        fopenr 1,"HSINIT.COM"
+        if @status not = "0"
+            set @input = "ATQ0\\G1\\X1"
+            goto .EXEC
+        end
+        fread 1, @input
+        if @status not = "0"
+            return 1
+        end
+        fclose 1
+.EXEC
+        tsend @input, CR
+        ttrap 7, "OK"                            # is modem awake ?
+        wait 2
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 7, "OK", "NO CARRIER"      # awake yet ?
+                wait 2
+                tsend @input, CR
+                ttrap 7, "OK"                    # is modem awake ?
+                wait 2
+                if @status not = "1"
+                   return 1
+                end
+        end
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.AUTOBD
+        set @ANSRC = "0"                        # set answer rtncode to OK
+        return 0                                # give up, wrong label set
+.END

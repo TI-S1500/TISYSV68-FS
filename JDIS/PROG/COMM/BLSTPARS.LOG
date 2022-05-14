@@ -1,0 +1,14 @@
+****************************************************************
+blastpasre starting: Tue Jun 30 00:02:05 1998
+blastparse args: :/JDIS/PROG/COMM/BLSTPARS:DPOLL.LOG:DEALER.EFF:DEALER.NEW:HOST.EFF:SDF.FIL:BPARSE.FIL
+MATCH: 06/30/98 00:01:34 * LOG * /JDIS/PROG/COMM/DLR2JD.DAT/T=TXT DLR2JD.DAT/T=TXT ... send completed
+
+MATCH: 06/30/98 00:01:40 * LOG * JD2DLR.DAT/T=TXT/OVW ... receive completed
+
+The new eff-file:
+;BEGINNING FILE TRANSFER FROM DEALER
+;DLRPOLL COMPLETE
+JDSDF PROCESSING STARTING
+BEGINNING PATCHES not found in host.eff file
+blastparse: return code = 0
+sdf:        return code = 99

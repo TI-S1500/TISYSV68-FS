@@ -1,0 +1,40 @@
+:
+# "PRUNE" off the top of a file.
+#  Optional command line usage: "PRUNE filename #records saveY/N "
+#
+# 9 Oct 91 D. Lestor
+#
+if (test $# != 0)
+then
+   if (test -r $1)
+   then
+      tail -$2 $1 > /tmp/PRUNE
+      if( test $3 = y -o $3 = Y)
+      then
+	 cp $1 $1.prune-sav
+	 mv /tmp/PRUNE $1
+      else
+	 mv /tmp/PRUNE $1
+      fi
+   exit
+   fi
+else
+   /bin/echo "\nEnter file name...\c"
+   read file
+   rec=`wc -l $file | awk '{print $1}' `
+   /bin/echo "\n $file has $rec records"
+   /bin/echo "\nEnter number of records to keep in file...\c"
+   read newrec
+   tail -$newrec $file > /tmp/PRUNE
+   /bin/echo "\nDo you want to save the old file? (Y/N)...\c"
+   read YORN
+   if( test $YORN = y -o $YORN = Y)
+   then
+      /bin/echo "Saving to $file.prune-sav"
+      cp $file $file.prune-sav
+      mv /tmp/PRUNE $file
+   else
+      mv /tmp/PRUNE $file
+   fi
+fi
+/bin/echo "Done ! \007"

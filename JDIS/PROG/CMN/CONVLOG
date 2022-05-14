@@ -1,0 +1,84 @@
+Fri Nov 28 17:01:11 CST 1997
+**** CURRENT DATA DIRECTORY: ****
+/JDIS/DATA/
+CGTRAN created
+RMTRAN created
+ASPLOGCV - Aspen Config File updated successfully @DATE @TIME
+MFFPB972 - FPBTCH file conversion successful
+MFFPB972 - Completed successfully
+MSWIP972: Start conversion  17:03:34
+MSWIP972: Successfully Completed  17:25:37
+MSWOH972 - Conversion started  17:25:45
+MSWOH972 - Successfully Completed  17:34:20
+PMUSE972 - USER file processed successful 11/28/97 17:34:32
+MSPIP972: Starting conversion  17:34:33
+MSPIP972: Successfully completed  17:34:42
+MSCLM972: Starting conversion  17:34:43
+MSCLM972: Successfully completed  17:35:31
+CPEQP972 - Successfully Converted CPEQUP File
+ARINV972 - AROINV file conversion successful
+ARINV972 - Completed successfully
+ARHPM972 - OARHPM file conversion successful
+ARHPM972 - Completed successfully
+ARHST972 - OARHST file conversion successful
+ARHST972 - Completed successfully
+APVEN972 - APVEND file conversion successful
+APVEN972 - Completed successfully
+MFSHD972 - MFSCHD file conversion successful
+MFSHD972 - Completed successfully
+MFFPB972 - FPBTCH file conversion successful
+MFFPB972 - Completed successfully
+ARHD972 - NOHEAD file conversion successful
+ARHD972 - Completed successfully
+ARHIS972 - ARHIST file conversion successful
+ARHIS972 - Completed successfully
+ARATR972 - ATRANR file conversion successful
+ARATR972 - Completed successfully
+ARCPT972 - ARRCPT file conversion successful
+ARCPT972 - Completed successfully
+ARAGE972 - ARAGE file conversion successful
+ARAGE972 - Completed successfully
+ARPMT972 - AROPMT file conversion successful
+ARPMT972 - Completed successfully
+MFWRK972 - PROWK file conversion successful
+MFWRK972 - Completed successfully
+MFTRN972 - FPTRAN file conversion successful
+MFTRN972 - Completed successfully
+MFREC972 - FPRECN file conversion successful
+MFREC972 - Completed successfully
+MFMTR972 - MTRANR file conversion successful
+MFMTR972 - Completed successfully
+MFYTD972 - YTDSRC file conversion successful
+MFYTD972 - Completed successfully
+MFCON972 - Build of ADJTRN file successful
+MFCON972 - Build of TRANS file successful
+CGADD972 - Successfully Completed
+CGEQP972 - Successfully Completed
+CGHIS972 - Successfully Completed
+CGPRM972 - Successfully Completed
+CGINV972 - Successfully Completed
+CPPMT972 - Successfully Converted CPPRMT
+PMAUD972 - AUDIT file processed successful 11/28/97 21:05:27
+PMSPA972 - completed successfully -- STPART file
+PMPSM972 - PSMSG file does not exist
+PMCST972 - CSTSL file is empty 11/28/97 21:13:47
+PMINV972 - INV file is empty 11/28/97 21:13:50
+PMMIY972 - MIYEND file processed successful 11/28/97 21:13:54
+PMMST972 - PRTMST file processed successful 11/28/97 21:48:47
+PMORD972 - PMORDER file processed successful 11/28/97 21:49:26
+PMORN972 - ORDEN file processed successful 11/28/97 21:49:48
+PMPMM972 - PMMNTH file processed successful 11/28/97 21:49:53
+PMPRT972 - PRTEOM file processed successful 11/28/97 21:53:08
+PMRCO972 - RCPTO file processed successful 11/28/97 21:53:17
+PMSAL972 - SALEAN file is empty 11/28/97 21:53:20
+PMSIM972 - PMSIMORD file is empty 11/28/97 21:53:23
+PMSKT972 - SKSTAT file processed successful 11/28/97 21:53:28
+PMSTK972 - SKSTAT file processed successful 11/28/97 21:53:33
+PMSTP972 - STPROG file processed successful 11/28/97 21:53:40
+MSSAD972: Conversion started  21:53:41
+MSSAD972: Successfully completed  21:53:43
+MSEOM972: Conversion started  21:53:45
+MSEOM972: Successfully Completed  21:53:51
+MSINV972 - Conversion started  21:53:53
+MSINV972 - Successfully Completed  21:54:40
+Fri Nov 28 21:54:42 CST 1997

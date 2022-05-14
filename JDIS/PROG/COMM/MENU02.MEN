@@ -1,0 +1,14 @@
+T,T,TRACE MENU SELECTION
+H,02,/07
+E,P22,Open Work Order             (PW01)
+E,P23,Close Work Orders           (PW02)
+E,P24,Flat Rate Job Number Chg.   (PW04)
+E,P25,Work Order File Maintenance (PW05)
+E,P26,Repair File Maintenance     (PW06)
+E,P27,Key Part Identifier         (ZPW98)
+E,P28,Description Of Problem      (ZPW99)
+E,P29,Over The Counter Part Sale  (CODE X)
+E,G04,Shop Part Sale              (CODE Y)
+E,0,"      "
+E,0,"    ****NOTE****                 Codes X and Y are for TRACE parts file"
+E,0,"                                 maintenance or dealers not using DPARTS"

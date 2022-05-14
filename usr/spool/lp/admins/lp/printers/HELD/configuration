@@ -1,0 +1,4 @@
+Banner: on:Always
+Device: /dev/null
+Interface: /usr/spool/lp/admins/lp/interfaces/HELD
+Printer type: unknown

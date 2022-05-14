@@ -1,0 +1,32 @@
+TIADDINDEX(3T)                                     TIADDINDEX(3T)
+
+NAME
+     tiaddindex - Adds an index to a T-ISAM file
+
+SYNOPSIS
+     #include <tisam.h>
+
+     int tiaddindex(tifd, tikd)
+     int tifd;
+     struct tikeydesc *tikd;
+
+DESCRIPTION
+     The tiaddindex function adds the index defined by tikd to
+     the T-ISAM file indicated by tifd.  The file must be opened
+     with exclusive access.  The index id assigned is the lowest
+     positive number not already assigned to an existing index.
+     If the primary index (id 1) has been deleted, the next index
+     added will become the primary index.
+
+     The global variables tiflgs, tiflgse, tiflgds, and tiflgde
+     are used to modify tikd.k_flags and tikd.k_flage.
+
+DIAGNOSTICS
+     On error, -1 is returned and tierrno, tierrio, tistat1, and
+     tistat2 are set.  If no errors occur, tikd.k_kdid is set to
+     the unique key ID assigned to tikd.
+
+SEE ALSO
+     isaddindex(3T), tidelindex(3T), tiopen(3T), tisam(4).
+
+

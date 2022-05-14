@@ -1,0 +1,7 @@
+#Extended Dial Process
+# Sample hayes2400 dial commands file
+# @(#)hayes2400	1.1 87/04/25
+DIALPARMS=CR,2400,7,1,ODD,10
+ATZ<>0
+AT&F&W<>0
+AT&F&M0S25=0E&CQ&M1DT18008261155<>0

@@ -1,0 +1,14 @@
+:
+PATH=/bin:/etc
+export PATH
+echo 'Killing all processes.  Please wait.'
+killall 2
+killall -d 10 -r 6 15
+killall -d 10 -r 5 9
+sleep 10
+sync; sync; sync
+mount | awk ' { x[NR] = $3 } END { for (i = NR; i > 1; --i) print "umount ", x[i] } ' > /.xx_yy_zz
+sh < /.xx_yy_zz
+rm /.xx_yy_zz
+sync; sync; sync
+bootdvr -q

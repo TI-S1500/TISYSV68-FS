@@ -1,0 +1,378 @@
+
+#		sccsid @(#)commands	1.31 92/02/24
+#
+# command makefile/install for Texas Instruments TCP/IP ship library
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1989.  ALL	
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	
+#	ASSOCIATED DOCUMENTATION.					
+#
+# NOTE: inetd1 target is special target for update.os script
+
+SHELL	=	/bin/sh
+GFLAGS	=	-s
+LDLIB   =       $(TCP)/usr/lib
+INS	=	install -s -f
+mytty = `tty`
+
+
+#
+#
+
+OBJS1 =	tcpwhat		arpcom.o	finger.o	fingerd.o	\
+	ftp.o		ftpd.o		hostname.o			\
+	ifconfig.o	inetd.o		ipcheck		ldsocket.o	\
+	lmail.o		logger.o	mkhosts		named.o		\
+	netlogin.o	tcpstat.o	node.cf		nslookup.hlp	\
+	nslookup.o	ping.o		rcmd.o		rcp.o		\
+	rdate.o		relay.cf	mconnect.o 	mailstats.o
+
+OBJS2 =	rexecd.o	         	rlogin.o	rlogind.o	\
+	rmail.o		route.o		routed.o	rshd.o		\
+	ruptime.o	rwho.o		rwhod.o		sendmail.hf	\
+	sendmail.o	setslip.o	sink.o		sinkd.o		\
+	slattach	sldetach	slink.o		sockcf		\
+	query.o		talk.o		talkd.o		trace.o		\
+	telnet.o	telnetd.o	tftp.o		tftpd.o		\
+	timed.o		timedc.o	trpt.o	
+
+
+all:		EXECUTS SCRIPTS
+
+EXECS =	tcpwhat		arp		finger		fingerd		\
+	ftp		ftpd		hostname	ifconfig	\
+	inetd		ipcheck		ldsocket	lmail		\
+	logger		mailstats	mconnect	named		\
+	netlogin	nslookup	ping		rcmd		\
+	query		rcp		rdate		rexecd		\
+	rlogin		rlogind		rmail		route		\
+	routed		rshd		ruptime		rwho		\
+	rwhod		sendmail	setslip		sink		\
+	sinkd		slink		talk		talkd		\
+	tcpstat		telnet		telnetd		tftp		\
+	tftpd		timed		timedc		trace		\
+	trpt		
+
+SRCPTS = tcpwhat mkhosts slattach sldetach tcp node.cf relay.cf sendmail.hf
+
+EXECUTS:	$(OBJS1) $(OBJS2) $(EXECS)
+
+arp:
+	$(LD) arpcom.o $(LDLIB)/TIsockvers.o -o arp -L$(LDLIB) -lsocket -lc  
+	$(INS) /usr/bin -m 04755 -u root -g root arp
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+finger:
+	$(LD) finger.o $(LDLIB)/TIsockvers.o -o finger -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin finger
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+fingerd:
+	$(LD) fingerd.o $(LDLIB)/TIsockvers.o -o fingerd -L$(LDLIB) -lsocket -lc
+	$(INS) /usr/etc -m 0755 -u bin -g bin fingerd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+ftp:
+	$(LD) ftp.o $(LDLIB)/TIsockvers.o -o ftp -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin ftp
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+ftpd:
+	$(LD) ftpd.o $(LDLIB)/TIsockvers.o -o ftpd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin ftpd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+hostname:
+	$(LD) hostname.o $(LDLIB)/TIsockvers.o -o hostname -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin hostname
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+ifconfig:
+	$(LD) ifconfig.o $(LDLIB)/TIsockvers.o -o ifconfig -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin ifconfig
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+inetd1:
+	$(LD) inetd.o $(LDLIB)/TIsockvers.o -o inetd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin inetd
+	echo inetd >$(mytty)
+	rm -f inetd
+inetd:
+	$(LD) inetd.o $(LDLIB)/TIsockvers.o -o inetd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin inetd
+	$(INS) /etc -m 0644 -u bin -g bin inetd.conf
+	$(INS) /etc -m 0644 -u bin -g bin services
+	$(INS) /etc -m 0644 -u bin -g bin protocols
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+ipcheck: ipchkflag
+	echo ipcheck >$(mytty)
+ipchkflag:
+	$(INS) /usr/bin -m 0755 -u bin -g bin ipcheck
+	touch ipchkflag
+	rm -f ipcheck
+	sync
+ldsocket:
+	$(LD) ldsocket.o $(LDLIB)/TIsockvers.o -o ldsocket -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin ldsocket
+	$(INS) /etc -m 0644 -u bin -g bin sockcf
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+lmail:
+	$(LD) lmail.o $(LDLIB)/TIsockvers.o -o lmail -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 02711 -u bin -g mail lmail
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+logger:
+	$(LD) logger.o $(LDLIB)/TIsockvers.o -o logger -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin logger
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+mailstats:
+	$(LD) mailstats.o $(LDLIB)/TIsockvers.o -o mailstats -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin mailstats
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+mconnect:
+	$(LD) mconnect.o $(LDLIB)/TIsockvers.o -o mconnect -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin mconnect
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+named:
+	$(LD) named.o $(LDLIB)/TIsockvers.o -o named -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin named
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+nslookup:
+	$(LD) nslookup.o $(LDLIB)/TIsockvers.o -o nslookup -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin nslookup
+	$(INS) /usr/lib -m 0644 -u bin -g bin nslookup.hlp
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+netlogin:
+	$(LD) netlogin.o $(LDLIB)/TIsockvers.o -o netlogin -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 04555 -u root netlogin
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+ping:
+	$(LD) ping.o $(LDLIB)/TIsockvers.o -o ping -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 04755 -u root -g bin ping
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+query:
+	$(LD) query.o $(LDLIB)/TIsockvers.o -o query -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 04755 -u root -g bin query
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rcmd:
+	$(LD) rcmd.o $(LDLIB)/TIsockvers.o -o rcmd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 04755 -u root -g bin rcmd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rcp:
+	$(LD) rcp.o $(LDLIB)/TIsockvers.o -o rcp -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 04755 -u root -g bin rcp
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rexecd:
+	$(LD) rexecd.o $(LDLIB)/TIsockvers.o -o rexecd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin rexecd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rlogin:
+	$(LD) rlogin.o $(LDLIB)/TIsockvers.o -o rlogin -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 04755 -u root -g bin rlogin
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rlogind:
+	$(LD) rlogind.o $(LDLIB)/TIsockvers.o -o rlogind -L$(LDLIB) -lsocket -lc
+	$(INS) /usr/etc -m 0755 -u bin -g bin rlogind
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rmail:
+	$(LD) rmail.o $(LDLIB)/TIsockvers.o -o rmail -L$(LDLIB) -lsocket -lc 
+	$(INS) /bin -m 02755 -u bin -g mail rmail
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+route:
+	$(LD) route.o $(LDLIB)/TIsockvers.o -o route -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin route
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+routed:
+	$(LD) routed.o $(LDLIB)/TIsockvers.o -o routed -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin routed
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rshd:
+	$(LD) rshd.o $(LDLIB)/TIsockvers.o -o rshd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin rshd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rdate:
+	$(LD) rdate.o $(LDLIB)/TIsockvers.o -o rdate -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin rdate
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+ruptime:
+	$(LD) ruptime.o $(LDLIB)/TIsockvers.o -o ruptime -L$(LDLIB) -lsocket -lc
+	$(INS) /usr/bin -m 0755 -u bin -g bin ruptime
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rwho:
+	$(LD) rwho.o $(LDLIB)/TIsockvers.o -o rwho -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin rwho
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+rwhod:
+	$(LD) rwhod.o $(LDLIB)/TIsockvers.o -o rwhod -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin rwhod
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+sendmail:
+	$(LD) sendmail.o $(LDLIB)/TIsockvers.o -o sendmail -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/lib -m 04755 -u root -g sys sendmail
+	$(INS) /usr/lib -m 0644 -u root sendmail.hf
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+setslip:
+	$(LD) setslip.o $(LDLIB)/TIsockvers.o -o setslip -L$(LDLIB) -lsocket -lc
+	$(INS) /usr/etc -m 0755 -u bin -g bin setslip
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+sink:
+	$(LD) sink.o $(LDLIB)/TIsockvers.o -o sink -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin sink
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+sinkd:
+	$(LD) sinkd.o $(LDLIB)/TIsockvers.o -o sinkd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin sinkd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+slink:
+	$(LD) slink.o $(LDLIB)/TIsockvers.o -o slink -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin slink
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+talk:
+	$(LD) talk.o $(LDLIB)/TIsockvers.o -o talk -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin talk
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+talkd:
+	$(LD) talkd.o $(LDLIB)/TIsockvers.o -o talkd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin talkd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+tcpstat:
+	$(LD) tcpstat.o $(LDLIB)/TIsockvers.o -o tcpstat -L$(LDLIB) -lsocket -lc
+	$(INS) /usr/bin -m 04755 -u bin -g sys tcpstat
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+telnet:
+	$(LD) telnet.o $(LDLIB)/TIsockvers.o -o telnet -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin telnet
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+telnetd:
+	$(LD) telnetd.o $(LDLIB)/TIsockvers.o -o telnetd -L$(LDLIB) -lsocket -lc
+	$(INS) /usr/etc -m 0755 -u bin -g bin telnetd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+tftp:
+	$(LD) tftp.o $(LDLIB)/TIsockvers.o -o tftp -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 0755 -u bin -g bin tftp
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+tftpd:
+	$(LD) tftpd.o $(LDLIB)/TIsockvers.o -o tftpd -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin tftpd
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+timed:
+	$(LD) timed.o $(LDLIB)/TIsockvers.o -o timed -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 0755 -u bin -g bin timed
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+timedc:
+	$(LD) timedc.o $(LDLIB)/TIsockvers.o -o timedc -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/etc -m 04511 -u root -g bin timedc
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+trace:
+	$(LD) trace.o $(LDLIB)/TIsockvers.o -o trace -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 02755 -u bin -g sys trace
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+trpt:
+	$(LD) trpt.o $(LDLIB)/TIsockvers.o -o trpt -L$(LDLIB) -lsocket -lc 
+	$(INS) /usr/bin -m 02755 -u bin -g sys trpt
+	echo $@ >$(mytty)
+	rm -f $@
+	sync
+
+SCRIPTS:	
+	$(INS) /usr/etc -m 04755 -u bin -g bin tcpwhat
+	$(INS) /usr/etc -m 0755 -u bin -g bin mkhosts
+	$(INS) /usr/etc -m 0755 -u bin -g bin slattach
+	$(INS) /usr/etc -m 0755 -u bin -g bin sldetach
+	sync
+
+clean:
+		-rm -f *.o
+		-rm -f tcp mkhosts slattach sldetach tcpwhat sendmail.hf 
+		-rm -f node.cf relay.cf nslookup.hlp
+		-rm -f tcp_lib1 tcp_lib2 io_lib libsocket.a
+		-rm -f sockcf strcf hosts
+
+clobber:	clean
+		-rm -f $(EXECS)

@@ -1,0 +1,15 @@
+JSDF0102.DAT UNLOAD START
+JSDF0102.DAT    *****   JDSDFUNL STARTED         10/07/97 00:56:49 DLR001   *****
+JSDF0102.DAT            JDSDF ID = JSDF0102.DAT
+JSDF0102.DAT            Copying JDSDF file from COMM to JDSDF
+JSDF0102.DAT            Tar extracting info and init files
+JSDF0102.DAT    *****   JDSDFUNL ENDED           10/07/97 00:56:51 DLR001   *****
+JSDF0102.DAT UNLOAD COMPLETE
+JSDF0102.DAT INSTALL START
+JSDF0102.DAT	*****	 SOFTWARE PATCH INSTALL - 10/07/97 08:28:02 sys999
+JSDF0102.DAT	*****	 Using tar to extract all patch members
+JSDF0102.DAT	***** 972 checkspace
+		   ** jdisload
+		   ** RSTRPB hp - frecover
+JSDF0102.DAT	*****	 cleanup complete
+JSDF0102.DAT INSTALL COMPLETE-NO ERRORS

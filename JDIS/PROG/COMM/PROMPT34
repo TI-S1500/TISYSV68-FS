@@ -1,0 +1,8 @@
+T,C,PROMPT34,KEY PART IDENTIFIER RECORD
+F,Sequence Number(01-99),6,7,0,,2,0,1,1
+F,Work Order Number,8,13,1,,2,0,0,1
+F,Part Number,14,25,0,,1, ,0,0
+A,Failure Cause,26,26,0,ABCD EFGZ,1, ,0,0
+F,Failure Type,27,28,0,,2,0,1,9
+F,Part Description,29,44,0,,1, ,0,0
+C,Control Data,1,5,1,,0,ZPS98,0,2

@@ -1,0 +1,10 @@
+	users - User Environment Menu
+		@(#)users.sh	1.1 87/03/09
+
+	This menu is a collection of tools for setting up the user's 
+	   environment.  All variables and their associated values 
+	   (ex:variable = tty, value = 02) that are known to a command 
+	   (ex: shell) at the beginning of its execution make up the 
+	   environment. The tools on this menu help the user set up 
+	   particular environment variables and values.
+

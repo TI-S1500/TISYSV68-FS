@@ -1,0 +1,5 @@
+# rdflush sh script. Used to copy the files in the /etc/rdlist (or alternate
+# file) from the /ram (or alternate directory) to their original directories.
+#
+#	(cd $1; tar cvbf 10 - $2) | (cd /; tar xvbf 10 -)
+	(cd $1; tar cbfo 10 - $2) | (cd /; tar xbfo 10 -)

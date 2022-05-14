@@ -1,0 +1,88 @@
+:
+echo '\nThis procedure will rebuild the JDIS file system, and should only be'
+echo 'used under the direction of JDIS support personel.'
+echo "\nDo you want to continue? (y/n): \c"
+read CHECK
+if (test "$CHECK" != "y" -a "$CHECK" != "Y")
+then
+        echo '\nProcedure aborted by user.\n'
+        exit
+fi
+
+cd /etc/BKUP_DIR
+sync
+
+mount /usr
+sync
+
+echo '\nGetting sizes of JDIS partitions.'
+rm -f size.tmp
+awk '{print "sed -n -f addup_pt.sed "$0".ptu >> size.tmp"}' disk_list | sh
+echo '0' >> size.tmp
+sync
+
+echo '\nMaking JDIS file system.'
+mkfs /dev/dsk/sys:jdis `bc < size.tmp`
+sync
+
+echo '\nLabeling JDIS file system.'
+labelit /dev/dsk/sys:jdis JDIS TiSysV
+sync
+
+rm *.tmp
+sync
+
+mount /JDIS
+cd /JDIS
+chmod +rwx /JDIS
+sync
+
+echo '\nCreating various directories not included in backups.'
+mkdir SPOOL
+chmod +rwx SPOOL
+mkdir lost+found
+mkdir tmp
+chmod +rwx tmp
+mkdir station
+chmod +rwx station
+sync
+
+cd /JDIS/station
+sync
+
+echo '\nCreating station directories.'
+i=1
+while (test $i -le 9)
+do
+        mkdir st0$i
+        i=`expr $i + 1`
+done
+while (test $i -le 128)
+do
+        mkdir st$i
+        i=`expr $i + 1`
+done
+chmod +rwx /JDIS/station/*
+sync
+
+echo '\nSetting up JDIS lp directories.'
+mkdir /JDIS/lp
+chmod 777 /JDIS/lp
+chown lp /JDIS/lp
+chgrp bin /JDIS/lp
+mkdir /JDIS/lp/temp
+chown lp /JDIS/lp/temp
+chgrp bin /JDIS/lp/temp
+rm -r /usr/spool/lp/temp 2>>/dev/null
+rm /usr/spool/lp/temp 2>>/dev/null
+ln -s /JDIS/lp/temp /usr/spool/lp
+sync
+
+cd /
+umount /JDIS
+sync
+
+umount /usr
+sync
+
+echo '\nJDIS file system rebuild complete.'

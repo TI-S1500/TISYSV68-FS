@@ -1,0 +1,3752 @@
+total 1101
+
+drwxr-xr-x  14 root     root         320 May 18 19:14 .
+drwx------  13 root     root         240 Apr 19 14:40 ..
+-rw-------   1 root     root         230 May 18 19:13 .cshrc
+-rw-------   1 root     root          12 May 18 19:13 .exrc
+-rw-------   1 root     root         311 May 18 19:13 .login
+-rw-------   1 root     root         216 May 18 19:13 .profile
+drwxr-xr-x   2 bin      bin         2192 May 18 19:29 bin
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 dev
+drwxr-xr-x   5 bin      bin         2400 May 18 19:29 etc
+drwxr-xr-x   3 bin      bin          224 May 18 19:17 lib
+drwx------   2 bin      bin           32 May 18 19:11 lost+found
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 pipe
+-r--r--r--   1 root     root      154512 May 18 19:14 primitive
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 ram
+drwxrwxrwt   2 bin      bin           80 May 18 19:15 shlib
+drwxr-xr-x   4 bin      bin           64 May 18 19:11 ti
+drwxrwxrwx   2 bin      bin           32 May 18 19:11 tmp
+-r--r--r--   1 sys      bin       933185 May 18 19:14 unix
+drwxr-xr-x  24 root     root         384 May 18 19:20 usr
+drwxr-xr-x   2 bin      bin           80 May 18 19:18 util
+
+/bin:
+total 4001
+
+drwxr-xr-x   2 bin      bin         2192 May 18 19:29 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+-rwxr-xr-x   1 bin      adm        32700 May 18 19:16 acctcom
+-rwxr-xr-x   1 bin      bin        30684 May 18 19:16 ar
+-rwxr-xr-x   1 bin      bin         4188 May 18 19:16 as
+-rwxr-xr-x   1 bin      bin         2036 May 18 19:16 backup
+-rwxr-xr-x   1 bin      bin          335 May 18 19:16 basename
+-rwx------   1 root     root       33776 May 18 19:26 bootdvr
+-rwx--x--x   2 bin      bin       131696 May 18 19:27 bsh
+-rwx------   1 root     root       52124 May 18 19:16 btape_utility
+-rwxr-xr-x   1 bin      bin        21708 May 18 19:16 cat
+-rwxr-xr-x   1 bin      bin       123308 May 18 19:28 ccbda
+-rwxr-xr-x   1 bin      bin        21688 May 18 19:16 chgrp
+-rwxr-xr-x   1 bin      bin        16592 May 18 19:16 chkshlib
+-rwxr-xr-x   1 bin      bin        18436 May 18 19:16 chmod
+-rwxr-xr-x   1 bin      bin        20500 May 18 19:17 chown
+-rwxr-xr-x   1 bin      bin        17360 May 18 19:17 cmp
+-rwxr-xr-x   1 bin      bin        18360 May 18 19:17 comm
+-rwxr-xr-x   3 bin      bin        23880 May 18 19:22 cp
+-r-xr-x---   1 bin      bin       152140 May 18 19:28 cp2db
+-rwxr-xr-x   1 bin      bin        60828 May 18 19:17 cpio
+-rwxr-xr-x   1 bin      bin        11632 May 18 19:17 crypt
+-rwx--x--x   2 bin      bin       131696 May 18 19:27 csh
+-rwxr-xr-x   1 bin      bin        12308 May 18 19:17 csplit
+-rwxr-xr-x   2 bin      bin         3292 May 18 19:17 ctc
+-rwxr-xr-x   2 bin      bin         3292 May 18 19:17 ctcr
+-rwxr-xr-x   1 bin      bin        39844 May 18 19:17 ctrace
+-rwxr-xr-x   1 bin      bin        18676 May 18 19:17 cut
+-rwxr-xr-x   1 bin      bin        21816 May 18 19:17 date
+-rwxr-xr-x   1 bin      bin        22636 May 18 19:17 dd
+-rws--x--x   1 root     bin        14548 May 18 19:17 df
+-rwxr-xr-x   1 bin      bin        22056 May 18 19:18 diff
+-rwxr-xr-x   1 bin      bin         1069 May 18 19:18 diff3
+-rwxr-xr-x   1 bin      bin         8732 May 18 19:18 diff3prog
+-rwxr-xr-x   1 bin      bin        19436 May 18 19:18 diffh
+-rwxr-xr-x   1 bin      bin         2692 May 18 19:18 dircmp
+-rwxr-xr-x   1 bin      bin          359 May 18 19:18 dirname
+-rwx--x--x   1 bin      bin        19540 May 18 19:18 du
+-rwxr-xr-x   1 bin      bin        39824 May 18 19:18 dump
+-rwx--x--x   1 bin      bin         5664 May 18 19:18 echo
+-rwx--x--x   2 bin      bin        31412 May 18 19:18 ed
+-rwx--x--x   1 bin      bin        21120 May 18 19:18 env
+-rwx------   1 bin      bin        22640 May 18 19:18 errpt
+-rwx--x--x   1 bin      bin        21508 May 18 19:18 expr
+-rwxr-xr-x   1 bin      bin         8932 May 18 19:18 factor
+-rwxr-xr-x   1 bin      bin           38 May 18 19:18 false
+-rwx--x--x   1 bin      bin        22376 May 18 19:18 file
+-rwxr-xr-x   1 bin      bin        30592 May 18 19:18 finc
+-rwxr-xr-x   1 bin      bin        31512 May 18 19:18 find
+-rwxr-xr-x   1 bin      bin        45424 May 18 19:18 frec
+-rwx--x--x   1 bin      bin        17448 May 18 19:18 getopt
+-rwx--x--x   1 bin      bin        20680 May 18 19:18 grep
+-rwxr-xr-x   1 bin      bin        17412 May 18 19:19 head
+-rwx--x--x   1 bin      bin         8552 May 18 19:19 id
+-rwxr-xr-x   1 bin      bin        18488 May 18 19:19 join
+-rwx--x--x   1 bin      bin         6412 May 18 19:19 kill
+-rwxr-xr-x   1 bin      bin        93336 May 18 19:19 ld
+-rwx--x--x   1 bin      bin         4124 May 18 19:19 line
+-rwxr-xr-x   3 bin      bin        23880 May 18 19:22 ln
+-rwx--x--x   1 bin      bin        38080 May 18 19:19 login
+-rwxr-xr-x   1 bin      bin         2250 May 18 19:19 lorder
+-rwxr-xr-x   1 bin      bin        30476 May 18 19:20 ls
+-rwx--s--x   2 bin      mail       44200 May 18 19:20 mail
+-rwx--x--x   1 bin      bin        36144 May 18 19:21 make
+-rwxr-xr-x   1 bin      bin         5176 May 18 19:21 makekey
+-rwxr-xr-x   1 bin      bin       308652 May 18 19:21 mc68as
+-rwsr-xr-x   1 root     root       18956 May 18 19:21 mkdir
+-rwx------   1 root     root       19932 May 18 19:22 mkmirr
+-rwxr-xr-x   1 bin      bin        33664 May 18 19:22 mkmsg
+-rwx--x--x   1 bin      bin        48092 May 18 19:22 mkshlib
+-rwxr-xr-x   1 bin      bin        64668 May 18 19:22 more
+-rwxr-xr-x   1 bin      bin        20492 May 18 19:29 mtcda
+-rwxr-xr-x   1 bin      bin        49592 May 18 19:29 mtcda.lo
+-rwxr-xr-x   1 bin      bin        87360 May 18 19:29 mtcda.rm
+-rwxr-xr-x   3 bin      bin        23880 May 18 19:22 mv
+-rwx------   1 bin      bin        19588 May 18 19:22 ncheck
+-rwxr-xr-x   1 bin      bin        13776 May 18 19:22 newform
+-rws--x--x   1 root     bin        12164 May 18 19:22 newgrp
+-rwx--x--x   1 bin      bin        10152 May 18 19:22 nice
+-rwxr-xr-x   1 bin      bin        10804 May 18 19:22 nl
+-rwxr-xr-x   1 bin      bin        21488 May 18 19:22 nm
+-rwx--x--x   1 bin      bin        11280 May 18 19:22 nohup
+-rwxr-xr-x   1 bin      bin        19384 May 18 19:22 od
+-rwxr-xr-x   1 bin      bin         9996 May 18 19:23 pack
+-rws--s--x   1 root     bin        24632 May 18 19:23 passwd
+-rwxr-xr-x   1 bin      bin        18440 May 18 19:23 paste
+-rwxr-xr-x   1 bin      bin         7340 May 18 19:23 pcat
+-rwxr-xr-x   1 bin      bin        35508 May 18 19:23 pg
+-rwx------   1 root     bin         6840 May 18 19:27 portwait
+-rwxr-xr-x   1 bin      bin        17516 May 18 19:23 prmsg
+-rwsr-xr-x   1 bin      bin        26348 May 18 19:23 ps
+-rwxr-xr-x   1 bin      bin        30532 May 18 19:23 pwd
+-rwx--x--x   2 bin      bin        31412 May 18 19:18 red
+-rwxr-xr-x   1 bin      bin        20504 May 18 19:23 rm
+-rwx--s--x   2 bin      mail       44200 May 18 19:20 rmail
+-rwsr-xr-x   1 root     bin        18752 May 18 19:23 rmdir
+-r-xr-xr-x   2 bin      bin        50048 May 18 19:24 rsh
+-rwxr-xr-x   1 bin      bin        22416 May 18 19:24 sdiff
+-rwx--x--x   1 bin      bin        18844 May 18 19:24 sed
+-r-xr-xr-x   2 bin      bin        50048 May 18 19:24 sh
+-rwxr-xr-x   1 bin      bin        99989 May 18 19:24 show
+-rwxr-xr-x   1 bin      bin        33176 May 18 19:24 showfs
+-rwxr-xr-x   1 bin      bin        62900 May 18 19:24 showhex
+-rwxr-xr-x   1 bin      bin        17336 May 18 19:24 showmsg
+-rwxr-xr-x   1 bin      bin        20240 May 18 19:24 size
+-rwx--x--x   1 bin      bin         6660 May 18 19:24 sleep
+-rwx--x--x   1 bin      bin        30636 May 18 19:24 slog
+-rwxr-xr-x   1 bin      bin        29148 May 18 19:24 sort
+-rwxr-xr-x   1 bin      bin         6604 May 18 19:25 split
+-rwxr-xr-x   1 bin      bin        45650 May 18 19:25 strip
+-rwx--x--x   1 bin      bin        29232 May 18 19:26 stty
+-rws--x--x   1 root     root       36420 May 18 19:26 su
+-rwx--x--x   1 bin      bin        17336 May 18 19:26 sum
+-rwx--x--x   1 bin      bin         4040 May 18 19:26 sync
+-rwx------   1 root     root        8748 May 18 19:26 sysboot
+-rwx------   1 root     root       20492 May 18 19:29 sysdump
+-rwx------   1 root     root       34632 May 18 19:26 sysdump.lo
+-rwx------   1 root     root       29788 May 18 19:26 sysdump.rm
+-rwxr-xr-x   1 bin      bin        18784 May 18 19:26 tail
+-rwxr-xr-x   1 bin      bin        57924 May 18 19:26 tar
+-rwx--x--x   1 bin      bin        11172 May 18 19:26 time
+-rwx--x--x   1 bin      bin        18676 May 18 19:26 touch
+-rwxr-xr-x   1 bin      bin           29 May 18 19:26 true
+-rwxr-xr-x   1 bin      bin         8072 May 18 19:26 tsort
+-rwx--x--x   1 bin      bin        17448 May 18 19:26 tty
+-rwxr-xr-x   1 bin      bin         6528 May 18 19:27 uname
+-rwxr-xr-x   1 bin      bin        18564 May 18 19:27 uniq
+-rwxr-xr-x   1 bin      bin         9996 May 18 19:27 unpack
+-rwx------   4 root     bin        13904 May 18 19:27 upsmon
+-rwx------   4 root     bin        13904 May 18 19:27 upsoff
+-rwx------   4 root     bin        13904 May 18 19:27 upson
+-rwx------   4 root     bin        13904 May 18 19:27 upsstat
+-rwx------   1 root     bin         2767 May 18 19:27 upswait
+-rwxr-xr-x   1 bin      bin         7804 May 18 19:27 usradm
+-rwxr-xr-x   1 bin      bin        89848 May 18 19:27 usradm1
+-rwxr-xr-x   1 bin      bin        17448 May 18 19:27 wc
+-rwx--x--x   1 bin      bin        23004 May 18 19:27 who
+
+/dev:
+total 15
+
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+drwxr-xr-x   2 bin      bin           96 May 18 19:12 appletalk
+crw-------   1 bin      bin       14,  0 May 18 19:11 boot
+crw-rw-r--   1 root     root      79,384 May 18 19:11 ck802.exceptio
+crw-rw-rw-   1 bin      bin       54,  0 May 18 19:11 clone
+crw-rw----   1 root     root      95,  0 May 18 19:11 conlog
+crw-------   1 bin      bin        0,  0 May 18 19:11 console
+crw-rw-r--   1 root     root      54, 92 May 18 19:12 ddp
+crw-rw-r--   1 root     root      92,  0 May 18 19:12 ddp0
+drwxr-xr-x   2 bin      bin           48 May 18 19:11 dsk
+crw-rw-r--   1 root     root      54, 93 May 18 19:12 elap
+crw-rw-r--   1 root     root      93,  0 May 18 19:12 elap0
+crw-rw----   1 bin      bin       16,  0 May 18 19:11 error
+crw-rw-r--   1 root     root      22,  0 May 18 19:11 hot
+crw-rw-r--   1 root     root      54, 88 May 18 19:12 ipx
+crw-rw-r--   1 root     root      88,  0 May 18 19:12 ipx0
+crw-------   1 bin      bin        4,  1 May 18 19:11 kmem
+crw-rw-rw-   1 bin      bin       54, 53 May 18 19:11 log
+crw-------   1 bin      bin        4,  0 May 18 19:11 mem
+crw-------   1 root     root      76,1048576 May 18 19:11 mirror
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 mt
+crw-rw-r--   1 root     root      54, 94 May 18 19:12 nbio
+crw-rw-r--   1 root     root      54, 90 May 18 19:12 ncp
+crw-rw-r--   1 root     root      90,  0 May 18 19:12 ncp0
+crw-rw-r--   1 root     root      54, 89 May 18 19:12 nspx
+crw-rw-r--   1 root     root      89,  0 May 18 19:12 nspxd
+crw-rw-rw-   1 bin      bin        4,  2 May 18 19:11 null
+crw-rw-r--   1 root     root      91,  0 May 18 19:12 nvt
+crw-------   1 bin      bin       36,  0 May 18 19:11 opctl
+crw-rw-r--   1 root     root      79,320 May 18 19:11 pad_srvc
+crw-------   1 bin      bin       13,  0 May 18 19:11 phys0
+crw-------   1 bin      bin       13,  1 May 18 19:11 phys1
+crw-------   1 bin      bin       13,  2 May 18 19:11 phys2
+crw-------   1 bin      bin       13,  3 May 18 19:11 phys3
+crw-------   1 bin      bin       13,  4 May 18 19:11 phys4
+crw-------   1 bin      bin       13,  5 May 18 19:11 phys5
+crw-------   1 bin      bin       13,  6 May 18 19:11 phys6
+crw-------   1 bin      bin       13,  7 May 18 19:11 phys7
+crw-rw-rw-   1 bin      bin       54, 77 May 18 19:11 pipe
+crw-------   1 bin      bin        4,  3 May 18 19:11 pmem
+crw-r--r--   1 bin      bin       31,  0 May 18 19:11 prf
+crw-rw-r--   1 root     root      54, 72 May 18 19:11 ptmx
+crw--w--w-   1 root     root      73,  0 May 18 19:11 pts000
+crw--w--w-   1 root     root      73,  1 May 18 19:11 pts001
+crw--w--w-   1 root     root      73,  2 May 18 19:11 pts002
+crw--w--w-   1 root     root      73,  3 May 18 19:11 pts003
+crw--w--w-   1 root     root      73,  4 May 18 19:11 pts004
+crw--w--w-   1 root     root      73,  5 May 18 19:11 pts005
+crw--w--w-   1 root     root      73,  6 May 18 19:11 pts006
+crw--w--w-   1 root     root      73,  7 May 18 19:11 pts007
+crw--w--w-   1 root     root      73,  8 May 18 19:11 pts008
+crw--w--w-   1 root     root      73,  9 May 18 19:11 pts009
+crw--w--w-   1 root     root      73, 10 May 18 19:11 pts010
+crw--w--w-   1 root     root      73, 11 May 18 19:11 pts011
+crw--w--w-   1 root     root      73, 12 May 18 19:11 pts012
+crw--w--w-   1 root     root      73, 13 May 18 19:11 pts013
+crw--w--w-   1 root     root      73, 14 May 18 19:11 pts014
+crw--w--w-   1 root     root      73, 15 May 18 19:11 pts015
+crw--w--w-   1 root     root      73, 16 May 18 19:11 pts016
+crw--w--w-   1 root     root      73, 17 May 18 19:11 pts017
+crw--w--w-   1 root     root      73, 18 May 18 19:11 pts018
+crw--w--w-   1 root     root      73, 19 May 18 19:11 pts019
+crw--w--w-   1 root     root      73, 20 May 18 19:11 pts020
+crw--w--w-   1 root     root      73, 21 May 18 19:11 pts021
+crw--w--w-   1 root     root      73, 22 May 18 19:11 pts022
+crw--w--w-   1 root     root      73, 23 May 18 19:11 pts023
+crw--w--w-   1 root     root      73, 24 May 18 19:11 pts024
+crw--w--w-   1 root     root      73, 25 May 18 19:11 pts025
+crw--w--w-   1 root     root      73, 26 May 18 19:11 pts026
+crw--w--w-   1 root     root      73, 27 May 18 19:11 pts027
+crw--w--w-   1 root     root      73, 28 May 18 19:11 pts028
+crw--w--w-   1 root     root      73, 29 May 18 19:11 pts029
+crw--w--w-   1 root     root      73, 30 May 18 19:11 pts030
+crw--w--w-   1 root     root      73, 31 May 18 19:11 pts031
+crw--w--w-   1 root     root      73, 32 May 18 19:11 pts032
+crw--w--w-   1 root     root      73, 33 May 18 19:11 pts033
+crw--w--w-   1 root     root      73, 34 May 18 19:11 pts034
+crw--w--w-   1 root     root      73, 35 May 18 19:11 pts035
+crw--w--w-   1 root     root      73, 36 May 18 19:11 pts036
+crw--w--w-   1 root     root      73, 37 May 18 19:11 pts037
+crw--w--w-   1 root     root      73, 38 May 18 19:11 pts038
+crw--w--w-   1 root     root      73, 39 May 18 19:11 pts039
+crw--w--w-   1 root     root      73, 40 May 18 19:11 pts040
+crw--w--w-   1 root     root      73, 41 May 18 19:11 pts041
+crw--w--w-   1 root     root      73, 42 May 18 19:11 pts042
+crw--w--w-   1 root     root      73, 43 May 18 19:11 pts043
+crw--w--w-   1 root     root      73, 44 May 18 19:11 pts044
+crw--w--w-   1 root     root      73, 45 May 18 19:11 pts045
+crw--w--w-   1 root     root      73, 46 May 18 19:11 pts046
+crw--w--w-   1 root     root      73, 47 May 18 19:11 pts047
+crw--w--w-   1 root     root      73, 48 May 18 19:11 pts048
+crw--w--w-   1 root     root      73, 49 May 18 19:11 pts049
+crw--w--w-   1 root     root      73, 50 May 18 19:11 pts050
+crw--w--w-   1 root     root      73, 51 May 18 19:11 pts051
+crw--w--w-   1 root     root      73, 52 May 18 19:11 pts052
+crw--w--w-   1 root     root      73, 53 May 18 19:11 pts053
+crw--w--w-   1 root     root      73, 54 May 18 19:11 pts054
+crw--w--w-   1 root     root      73, 55 May 18 19:11 pts055
+crw--w--w-   1 root     root      73, 56 May 18 19:11 pts056
+crw--w--w-   1 root     root      73, 57 May 18 19:11 pts057
+crw--w--w-   1 root     root      73, 58 May 18 19:11 pts058
+crw--w--w-   1 root     root      73, 59 May 18 19:11 pts059
+crw--w--w-   1 root     root      73, 60 May 18 19:11 pts060
+crw--w--w-   1 root     root      73, 61 May 18 19:11 pts061
+crw--w--w-   1 root     root      73, 62 May 18 19:11 pts062
+crw--w--w-   1 root     root      73, 63 May 18 19:11 pts063
+crw--w--w-   1 root     root      73, 64 May 18 19:11 pts064
+crw--w--w-   1 root     root      73, 65 May 18 19:11 pts065
+crw--w--w-   1 root     root      73, 66 May 18 19:11 pts066
+crw--w--w-   1 root     root      73, 67 May 18 19:11 pts067
+crw--w--w-   1 root     root      73, 68 May 18 19:11 pts068
+crw--w--w-   1 root     root      73, 69 May 18 19:11 pts069
+crw--w--w-   1 root     root      73, 70 May 18 19:11 pts070
+crw--w--w-   1 root     root      73, 71 May 18 19:11 pts071
+crw--w--w-   1 root     root      73, 72 May 18 19:11 pts072
+crw--w--w-   1 root     root      73, 73 May 18 19:11 pts073
+crw--w--w-   1 root     root      73, 74 May 18 19:11 pts074
+crw--w--w-   1 root     root      73, 75 May 18 19:11 pts075
+crw--w--w-   1 root     root      73, 76 May 18 19:11 pts076
+crw--w--w-   1 root     root      73, 77 May 18 19:11 pts077
+crw--w--w-   1 root     root      73, 78 May 18 19:11 pts078
+crw--w--w-   1 root     root      73, 79 May 18 19:11 pts079
+crw--w--w-   1 root     root      73, 80 May 18 19:11 pts080
+crw--w--w-   1 root     root      73, 81 May 18 19:11 pts081
+crw--w--w-   1 root     root      73, 82 May 18 19:11 pts082
+crw--w--w-   1 root     root      73, 83 May 18 19:11 pts083
+crw--w--w-   1 root     root      73, 84 May 18 19:11 pts084
+crw--w--w-   1 root     root      73, 85 May 18 19:11 pts085
+crw--w--w-   1 root     root      73, 86 May 18 19:11 pts086
+crw--w--w-   1 root     root      73, 87 May 18 19:11 pts087
+crw--w--w-   1 root     root      73, 88 May 18 19:11 pts088
+crw--w--w-   1 root     root      73, 89 May 18 19:11 pts089
+crw--w--w-   1 root     root      73, 90 May 18 19:11 pts090
+crw--w--w-   1 root     root      73, 91 May 18 19:11 pts091
+crw--w--w-   1 root     root      73, 92 May 18 19:11 pts092
+crw--w--w-   1 root     root      73, 93 May 18 19:11 pts093
+crw--w--w-   1 root     root      73, 94 May 18 19:11 pts094
+crw--w--w-   1 root     root      73, 95 May 18 19:11 pts095
+crw--w--w-   1 root     root      73, 96 May 18 19:11 pts096
+crw--w--w-   1 root     root      73, 97 May 18 19:11 pts097
+crw--w--w-   1 root     root      73, 98 May 18 19:11 pts098
+crw--w--w-   1 root     root      73, 99 May 18 19:11 pts099
+crw--w--w-   1 root     root      73,100 May 18 19:11 pts100
+crw--w--w-   1 root     root      73,101 May 18 19:11 pts101
+crw--w--w-   1 root     root      73,102 May 18 19:11 pts102
+crw--w--w-   1 root     root      73,103 May 18 19:11 pts103
+crw--w--w-   1 root     root      73,104 May 18 19:11 pts104
+crw--w--w-   1 root     root      73,105 May 18 19:11 pts105
+crw--w--w-   1 root     root      73,106 May 18 19:11 pts106
+crw--w--w-   1 root     root      73,107 May 18 19:11 pts107
+crw--w--w-   1 root     root      73,108 May 18 19:11 pts108
+crw--w--w-   1 root     root      73,109 May 18 19:11 pts109
+crw--w--w-   1 root     root      73,110 May 18 19:11 pts110
+crw--w--w-   1 root     root      73,111 May 18 19:11 pts111
+crw--w--w-   1 root     root      73,112 May 18 19:11 pts112
+crw--w--w-   1 root     root      73,113 May 18 19:11 pts113
+crw--w--w-   1 root     root      73,114 May 18 19:11 pts114
+crw--w--w-   1 root     root      73,115 May 18 19:11 pts115
+crw--w--w-   1 root     root      73,116 May 18 19:11 pts116
+crw--w--w-   1 root     root      73,117 May 18 19:11 pts117
+crw--w--w-   1 root     root      73,118 May 18 19:11 pts118
+crw--w--w-   1 root     root      73,119 May 18 19:11 pts119
+crw--w--w-   1 root     root      73,120 May 18 19:11 pts120
+crw--w--w-   1 root     root      73,121 May 18 19:11 pts121
+crw--w--w-   1 root     root      73,122 May 18 19:11 pts122
+crw--w--w-   1 root     root      73,123 May 18 19:11 pts123
+crw--w--w-   1 root     root      73,124 May 18 19:11 pts124
+crw--w--w-   1 root     root      73,125 May 18 19:11 pts125
+crw--w--w-   1 root     root      73,126 May 18 19:11 pts126
+crw--w--w-   1 root     root      73,127 May 18 19:11 pts127
+crw--w--w-   1 root     root      73,128 May 18 19:11 pts128
+crw--w--w-   1 root     root      73,129 May 18 19:11 pts129
+crw--w--w-   1 root     root      73,130 May 18 19:11 pts130
+crw--w--w-   1 root     root      73,131 May 18 19:11 pts131
+crw--w--w-   1 root     root      73,132 May 18 19:11 pts132
+crw--w--w-   1 root     root      73,133 May 18 19:11 pts133
+crw--w--w-   1 root     root      73,134 May 18 19:11 pts134
+crw--w--w-   1 root     root      73,135 May 18 19:11 pts135
+crw--w--w-   1 root     root      73,136 May 18 19:11 pts136
+crw--w--w-   1 root     root      73,137 May 18 19:12 pts137
+crw--w--w-   1 root     root      73,138 May 18 19:12 pts138
+crw--w--w-   1 root     root      73,139 May 18 19:12 pts139
+crw--w--w-   1 root     root      73,140 May 18 19:12 pts140
+crw--w--w-   1 root     root      73,141 May 18 19:12 pts141
+crw--w--w-   1 root     root      73,142 May 18 19:12 pts142
+crw--w--w-   1 root     root      73,143 May 18 19:12 pts143
+crw--w--w-   1 root     root      73,144 May 18 19:12 pts144
+crw--w--w-   1 root     root      73,145 May 18 19:12 pts145
+crw--w--w-   1 root     root      73,146 May 18 19:12 pts146
+crw--w--w-   1 root     root      73,147 May 18 19:12 pts147
+crw--w--w-   1 root     root      73,148 May 18 19:12 pts148
+crw--w--w-   1 root     root      73,149 May 18 19:12 pts149
+crw--w--w-   1 root     root      73,150 May 18 19:12 pts150
+crw--w--w-   1 root     root      73,151 May 18 19:12 pts151
+crw--w--w-   1 root     root      73,152 May 18 19:12 pts152
+crw--w--w-   1 root     root      73,153 May 18 19:12 pts153
+crw--w--w-   1 root     root      73,154 May 18 19:12 pts154
+crw--w--w-   1 root     root      73,155 May 18 19:12 pts155
+crw--w--w-   1 root     root      73,156 May 18 19:12 pts156
+crw--w--w-   1 root     root      73,157 May 18 19:12 pts157
+crw--w--w-   1 root     root      73,158 May 18 19:12 pts158
+crw--w--w-   1 root     root      73,159 May 18 19:12 pts159
+crw--w--w-   1 root     root      73,160 May 18 19:12 pts160
+crw--w--w-   1 root     root      73,161 May 18 19:12 pts161
+crw--w--w-   1 root     root      73,162 May 18 19:12 pts162
+crw--w--w-   1 root     root      73,163 May 18 19:12 pts163
+crw--w--w-   1 root     root      73,164 May 18 19:12 pts164
+crw--w--w-   1 root     root      73,165 May 18 19:12 pts165
+crw--w--w-   1 root     root      73,166 May 18 19:12 pts166
+crw--w--w-   1 root     root      73,167 May 18 19:12 pts167
+crw--w--w-   1 root     root      73,168 May 18 19:12 pts168
+crw--w--w-   1 root     root      73,169 May 18 19:12 pts169
+crw--w--w-   1 root     root      73,170 May 18 19:12 pts170
+crw--w--w-   1 root     root      73,171 May 18 19:12 pts171
+crw--w--w-   1 root     root      73,172 May 18 19:12 pts172
+crw--w--w-   1 root     root      73,173 May 18 19:12 pts173
+crw--w--w-   1 root     root      73,174 May 18 19:12 pts174
+crw--w--w-   1 root     root      73,175 May 18 19:12 pts175
+crw--w--w-   1 root     root      73,176 May 18 19:12 pts176
+crw--w--w-   1 root     root      73,177 May 18 19:12 pts177
+crw--w--w-   1 root     root      73,178 May 18 19:12 pts178
+crw--w--w-   1 root     root      73,179 May 18 19:12 pts179
+crw--w--w-   1 root     root      73,180 May 18 19:12 pts180
+crw--w--w-   1 root     root      73,181 May 18 19:12 pts181
+crw--w--w-   1 root     root      73,182 May 18 19:12 pts182
+crw--w--w-   1 root     root      73,183 May 18 19:12 pts183
+crw--w--w-   1 root     root      73,184 May 18 19:12 pts184
+crw--w--w-   1 root     root      73,185 May 18 19:12 pts185
+crw--w--w-   1 root     root      73,186 May 18 19:12 pts186
+crw--w--w-   1 root     root      73,187 May 18 19:12 pts187
+crw--w--w-   1 root     root      73,188 May 18 19:12 pts188
+crw--w--w-   1 root     root      73,189 May 18 19:12 pts189
+crw--w--w-   1 root     root      73,190 May 18 19:12 pts190
+crw--w--w-   1 root     root      73,191 May 18 19:12 pts191
+crw--w--w-   1 root     root      73,192 May 18 19:12 pts192
+crw--w--w-   1 root     root      73,193 May 18 19:12 pts193
+crw--w--w-   1 root     root      73,194 May 18 19:12 pts194
+crw--w--w-   1 root     root      73,195 May 18 19:12 pts195
+crw--w--w-   1 root     root      73,196 May 18 19:12 pts196
+crw--w--w-   1 root     root      73,197 May 18 19:12 pts197
+crw--w--w-   1 root     root      73,198 May 18 19:12 pts198
+crw--w--w-   1 root     root      73,199 May 18 19:12 pts199
+crw--w--w-   1 root     root      73,200 May 18 19:12 pts200
+crw--w--w-   1 root     root      73,201 May 18 19:12 pts201
+crw--w--w-   1 root     root      73,202 May 18 19:12 pts202
+crw--w--w-   1 root     root      73,203 May 18 19:12 pts203
+crw--w--w-   1 root     root      73,204 May 18 19:12 pts204
+crw--w--w-   1 root     root      73,205 May 18 19:12 pts205
+crw--w--w-   1 root     root      73,206 May 18 19:12 pts206
+crw--w--w-   1 root     root      73,207 May 18 19:12 pts207
+crw--w--w-   1 root     root      73,208 May 18 19:12 pts208
+crw--w--w-   1 root     root      73,209 May 18 19:12 pts209
+crw--w--w-   1 root     root      73,210 May 18 19:12 pts210
+crw--w--w-   1 root     root      73,211 May 18 19:12 pts211
+crw--w--w-   1 root     root      73,212 May 18 19:12 pts212
+crw--w--w-   1 root     root      73,213 May 18 19:12 pts213
+crw--w--w-   1 root     root      73,214 May 18 19:12 pts214
+crw--w--w-   1 root     root      73,215 May 18 19:12 pts215
+crw--w--w-   1 root     root      73,216 May 18 19:12 pts216
+crw--w--w-   1 root     root      73,217 May 18 19:12 pts217
+crw--w--w-   1 root     root      73,218 May 18 19:12 pts218
+crw--w--w-   1 root     root      73,219 May 18 19:12 pts219
+crw--w--w-   1 root     root      73,220 May 18 19:12 pts220
+crw--w--w-   1 root     root      73,221 May 18 19:12 pts221
+crw--w--w-   1 root     root      73,222 May 18 19:12 pts222
+crw--w--w-   1 root     root      73,223 May 18 19:12 pts223
+crw--w--w-   1 root     root      73,224 May 18 19:12 pts224
+crw--w--w-   1 root     root      73,225 May 18 19:12 pts225
+crw--w--w-   1 root     root      73,226 May 18 19:12 pts226
+crw--w--w-   1 root     root      73,227 May 18 19:12 pts227
+crw--w--w-   1 root     root      73,228 May 18 19:12 pts228
+crw--w--w-   1 root     root      73,229 May 18 19:12 pts229
+crw--w--w-   1 root     root      73,230 May 18 19:12 pts230
+crw--w--w-   1 root     root      73,231 May 18 19:12 pts231
+crw--w--w-   1 root     root      73,232 May 18 19:12 pts232
+crw--w--w-   1 root     root      73,233 May 18 19:12 pts233
+crw--w--w-   1 root     root      73,234 May 18 19:12 pts234
+crw--w--w-   1 root     root      73,235 May 18 19:12 pts235
+crw--w--w-   1 root     root      73,236 May 18 19:12 pts236
+crw--w--w-   1 root     root      73,237 May 18 19:12 pts237
+crw--w--w-   1 root     root      73,238 May 18 19:12 pts238
+crw--w--w-   1 root     root      73,239 May 18 19:12 pts239
+crw--w--w-   1 root     root      73,240 May 18 19:12 pts240
+crw--w--w-   1 root     root      73,241 May 18 19:12 pts241
+crw--w--w-   1 root     root      73,242 May 18 19:12 pts242
+crw--w--w-   1 root     root      73,243 May 18 19:12 pts243
+crw--w--w-   1 root     root      73,244 May 18 19:12 pts244
+crw--w--w-   1 root     root      73,245 May 18 19:12 pts245
+crw--w--w-   1 root     root      73,246 May 18 19:12 pts246
+crw--w--w-   1 root     root      73,247 May 18 19:12 pts247
+crw--w--w-   1 root     root      73,248 May 18 19:12 pts248
+crw--w--w-   1 root     root      73,249 May 18 19:12 pts249
+crw--w--w-   1 root     root      73,250 May 18 19:12 pts250
+crw--w--w-   1 root     root      73,251 May 18 19:12 pts251
+crw--w--w-   1 root     root      73,252 May 18 19:12 pts252
+crw--w--w-   1 root     root      73,253 May 18 19:12 pts253
+crw--w--w-   1 root     root      73,254 May 18 19:12 pts254
+crw--w--w-   1 root     root      73,255 May 18 19:12 pts255
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 qt
+drwxr-xr-x   2 bin      bin           48 May 18 19:11 rdsk
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 rmt
+brw-------   1 bin      bin        0,  0 May 18 19:11 root
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 rqt
+crw-------   1 bin      bin       78,  0 May 18 19:11 rswap
+crw-------   1 bin      bin       28,  0 May 18 19:11 rtc
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 rvt
+crw-rw-rw-   1 bin      bin       54, 74 May 18 19:11 senet
+crw-rw-rw-   1 bin      bin       23,  0 May 18 19:11 spa
+crw-rw-r--   1 root     root      54,  4 May 18 19:12 spx
+crw-rw-rw-   1 bin      bin       54, 66 May 18 19:11 strnet
+brw-------   1 bin      bin        0,  1 May 18 19:11 swap
+crw-------   1 bin      bin        0,  0 May 18 19:11 syscon
+crw-------   1 bin      bin       12,  0 May 18 19:11 systty
+crw-rw-rw-   1 bin      bin        3,  0 May 18 19:11 tty
+crw-------   1 root     root      69, 13 May 18 19:11 ups
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 vt
+crw-rw-rw-   1 bin      bin       54, 86 May 18 19:11 xnsidp
+
+/dev/appletalk:
+total 6
+
+drwxr-xr-x   2 bin      bin           96 May 18 19:12 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+crw-rw-r--   1 root     root      54, 92 May 18 19:12 ddp
+crw-rw-r--   1 root     root      92,  0 May 18 19:12 ddp0
+crw-rw-r--   1 root     root      54, 93 May 18 19:12 elap
+crw-rw-r--   1 root     root      93,  0 May 18 19:12 elap0
+
+/dev/dsk:
+total 6
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:11 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+brw-------   1 bin      bin        9,  0 May 18 19:11 ram
+
+/dev/mt:
+total 6
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+
+/dev/qt:
+total 6
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+
+/dev/rdsk:
+total 6
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:11 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+crw-------   1 bin      bin       49,  0 May 18 19:11 ram
+
+/dev/rmt:
+total 6
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+
+/dev/rqt:
+total 6
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+
+/dev/rvt:
+total 6
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+
+/dev/vt:
+total 6
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  11 bin      bin         5088 May 18 19:12 ..
+
+/etc:
+total 3289
+
+drwxr-xr-x   5 bin      bin         2400 May 18 19:29 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+-rw-r--r--   1 root     root         618 May 18 19:13 .bshlogin
+-rw-r--r--   1 root     root          54 May 18 19:13 .bshlogout
+-rw-r--r--   1 root     root          43 May 18 19:13 TIMEZONE
+-rw-r--r--   1 root     root           8 May 18 19:13 TZ
+-rw-rw-r--   1 root     root        3051 May 18 19:29 alpcaps
+-rw-rw-r--   1 root     root        4824 May 18 19:29 alpdefs
+drwxr-xr-x   2 bin      bin          128 May 18 19:16 backups
+-rwxr-x---   1 root     root       62506 May 18 19:16 bband
+-rwxr-x---   1 root     root        1264 May 18 19:13 bcheckrc
+-rwx--x--x   1 root     root       12044 May 18 19:16 bdcast
+-rwxr-x---   1 root     root         205 May 18 19:13 brc
+-rwxr-x---   1 root     root       48432 May 18 19:16 cband
+-rw-r--r--   1 root     root        7883 May 18 19:28 ccbacu
+-rw-r--r--   1 root     root           0 May 18 19:29 ccbdev
+-rwx------   1 root     root       37632 May 18 19:28 ccbdump
+-rw-r--r--   1 root     root       27820 May 18 19:28 ccbenet
+-rw-r--r--   1 root     root       59714 May 18 19:28 ccbexec.0
+-rw-r--r--   1 root     root       57521 May 18 19:28 ccbexec.1
+-rw-r--r--   1 root     root       55129 May 18 19:28 ccbexec.2
+-rw-r--r--   1 root     root       36821 May 18 19:28 ccbiop
+-rw-r--r--   1 root     root       17498 May 18 19:28 ccbllien
+-rw-rw-r--   1 root     root       43796 May 18 19:29 ccbmtc.lo
+-rw-rw-r--   1 root     root       64469 May 18 19:29 ccbmtc.rm
+-rw-r--r--   1 root     root       30202 May 18 19:28 ccbnet
+-rw-r--r--   1 root     root       11008 May 18 19:28 ccbplp
+-rw-r--r--   1 root     root       11308 May 18 19:28 ccbplp202
+-rw-r--r--   1 root     root        5928 May 18 19:28 ccbrout
+-rw-r--r--   1 root     root      102610 May 18 19:28 ccbtty
+-rw-r--r--   1 root     root       52070 May 18 19:28 ccbxns
+-rw-rw-r--   1 root     root          73 May 18 19:13 checklist
+-rwxr-x---   1 root     root        1764 May 18 19:13 checkups
+-rwx------   1 root     root       20748 May 18 19:17 chroot
+-rwx------   1 root     root       51660 May 18 19:28 cload
+-rwx--x--x   1 bin      bin        17412 May 18 19:17 clri
+-rwx------   1 bin      bin        20560 May 18 19:17 conlogd
+-rwx------   1 root     sys        37916 May 18 19:17 cron
+-rwx--x--x   1 bin      bin        16720 May 18 19:17 dcopy
+-rwxr-xr-x   1 bin      bin        30436 May 18 19:28 ddinq
+-rwx------   1 root     root       39968 May 18 19:28 ddload
+-rwx--x--x   1 bin      bin        18952 May 18 19:17 ddtell
+-rwx------   1 root     root       30360 May 18 19:28 ddunload
+-rwsr-xr-x   1 root     root      134896 May 18 19:17 devadinter
+-rwsr-xr-x   1 root     root      161096 May 18 19:17 devadm
+-rw-r--r--   1 root     root          66 May 18 19:17 devadm.init
+-rwsr-xr-x   1 root     root       30668 May 18 19:17 devadslot
+-rwx------   1 bin      bin        17412 May 18 19:17 devnm
+-rwxrwx---   1 root     root        2127 May 18 19:29 download
+-rwxrwxr-x   1 bin      bin          224 May 18 19:18 errstop
+-rwxr-x---   1 root     root         336 May 18 19:13 expresrv
+-rw-rw-r--   1 root     root       16069 May 18 19:29 fecap
+-rwxr--r--   1 root     root       33348 May 18 19:18 ff
+-rwx------   1 root     root       53744 May 18 19:18 fsck
+-rwx------   1 root     adm        25288 May 18 19:18 fsfmon
+-rwxr-xr-x   1 bin      bin        12720 May 18 19:18 fsstat
+-rw-rw-r--   1 root     root         408 May 18 19:13 fstab
+-r-xr-xr-x   1 root     sys          758 May 18 19:18 fstyp
+drwxr-xr-x   2 bin      bin           64 May 18 19:18 fstyp.d
+-rwx------   1 bin      bin        18664 May 18 19:18 fuser
+-rwx--x--x   1 bin      bin         6364 May 18 19:18 getgid
+-rwx------   1 bin      bin        36876 May 18 19:18 getty
+-rw-rw-r--   1 bin      bin         2699 May 18 19:13 gettydefs
+-rw-rw-r--   1 bin      bin          112 May 18 19:13 group
+-rwx--x--x   1 bin      bin         9036 May 18 19:18 grpck
+-rwxr-xr-x   1 bin      bin        46048 May 18 19:19 init
+-rw-r-----   1 root     root         607 May 18 19:13 inittab
+-rwxr-xr-x   1 root     root       21280 May 18 19:28 initterm
+-rwxr-xr-x   1 bin      bin         5576 May 18 19:19 install
+-rw-r-----   1 root     root          41 May 18 19:13 ioctl.syscon
+-rw-rw-r--   1 bin      bin           55 May 18 19:13 issue
+-rwx------   1 root     root       12872 May 18 19:19 killall
+-rwx------   1 bin      bin        25656 May 18 19:19 labelit
+-rwxr-xr-x   1 root     root       17412 May 18 19:19 link
+drwxr-xr-x   2 bin      bin           48 May 18 19:27 log
+-rwx------   1 root     root       31536 May 18 19:28 logdmon
+-rw-r--r--   1 root     root         886 May 18 19:24 logfiles
+-rw-r--r--   1 bin      bin         2037 May 18 19:18 magic
+-rwxr-xr-x   1 bin      bin        25976 May 18 19:28 mapout
+-rwx------   1 root     root        4828 May 18 19:21 mirupdate
+-rwx------   1 root     root       14792 May 18 19:22 mkfs
+-rwx------   1 root     root        9076 May 18 19:22 mklg
+-rwx--x--x   1 bin      bin        20696 May 18 19:22 mknod
+-rw-r--r--   1 root     root           0 May 18 19:22 mnttab
+-rw-rw-r--   1 bin      bin          216 May 18 19:13 motd
+-rwx--x--x   1 bin      bin        70388 May 18 19:22 mount
+-rwx------   1 root     root        2114 May 18 19:13 mountall
+-rws--x---   1 bin      adm         9912 May 18 19:22 movhd
+-rw-rw-r--   1 root     root          19 May 18 19:29 mtc.config
+-rwx------   1 root     root       20492 May 18 19:29 mtcdl
+-rwx------   1 root     root       74660 May 18 19:29 mtcdl.lo
+-rwx------   1 root     root       77710 May 18 19:29 mtcdl.rm
+-rwx------   1 bin      bin        21676 May 18 19:22 mtcdt
+-rw-rw-r--   1 root     root       51525 May 18 19:29 mtcload.lo
+-rw-rw-r--   1 root     root      166628 May 18 19:29 mtcload.rm
+-rwx------   1 bin      bin         1598 May 18 19:22 mvdir
+-rwx------   1 root     bin        15836 May 18 19:22 opctl
+-rwx--x--x   1 root     root       25220 May 18 19:23 packfs
+-rwxr-xr-x   1 root     root       16768 May 18 19:23 pad_srvc
+-rwxr-xr-x   1 root     root          61 May 18 19:23 padsrvc
+-rw-rw-r--   1 root     root         676 May 18 19:13 passwd
+-rwx------   1 bin      bin        14384 May 18 19:23 patch
+-rwxr-xr-x   1 root     root       36804 May 18 19:28 pdmon
+-rwxr-xr-x   1 bin      bin        17824 May 18 19:23 prfdc
+-rwxr-xr-x   1 bin      bin        10528 May 18 19:23 prfld
+-rwxr-xr-x   1 bin      bin        20208 May 18 19:23 prfpr
+-rwxr-xr-x   1 bin      bin         4504 May 18 19:23 prfsnap
+-rwxr-xr-x   1 bin      bin         6336 May 18 19:23 prfstat
+-rw-rw-r--   1 bin      bin          689 May 18 19:13 profile
+-rwxr-x---   1 root     root       21428 May 18 19:23 ptu
+-rwx------   1 bin      bin         8760 May 18 19:23 pwck
+-rwxr-x---   1 root     root        2041 May 18 19:13 rc
+-rwxr-x---   1 root     root         260 May 18 19:13 rdflscr
+-rwx------   1 bin      bin        12252 May 18 19:23 rdflush
+-rw-r--r--   1 root     root           0 May 18 19:23 rdlist
+-rwx------   1 bin      bin        19908 May 18 19:23 rdload
+-rwxr-x---   1 root     root         397 May 18 19:13 rdscript
+-rwx------   1 bin      bin         6788 May 18 19:23 rmtcon
+-rw-rw-r--   1 bin      bin           13 May 18 19:13 rootlogin
+-rwx------   1 root     root        4304 May 18 19:24 setmnt
+-rwx------   1 root     root       12576 May 18 19:24 setsite
+-rwxr-xr-x   1 bin      bin         8927 May 18 19:24 shutdown
+-rw-rw-r--   1 bin      bin            9 May 18 19:13 sitename
+-rwxrwx---   1 root     root         157 May 18 19:29 slotload
+-rw-rw-r--   1 bin      bin          250 May 18 19:13 softpwd
+-rwxr-xr-x   1 bin      bin        17420 May 18 19:24 spaid
+-rwx------   1 root     root        2135 May 18 19:26 swupdate
+-rwxr-xr-x   1 bin      bin        33040 May 18 19:26 sysinit
+-rwx------   1 root     root       41688 May 18 19:28 tcdl
+-rwx------   1 root     root       19600 May 18 19:28 tcdump
+-rw-r--r--   1 root     root      137224 May 18 19:28 tcload
+-rw-r--r--   1 root     root       38294 May 18 19:28 tcload.sym
+-rwx------   1 root     root       22976 May 18 19:28 tcreset
+-rwx------   1 root     root       41180 May 18 19:28 tdts
+-rw-rw-r--   1 bin      bin        10551 May 18 19:15 termcap
+-rwx--x--x   1 bin      bin         6816 May 18 19:26 ttyname
+-rwx------   1 bin      bin        49584 May 18 19:27 umount
+-rwx------   1 root     root         922 May 18 19:13 umountall
+-rwx------   1 root     root       17412 May 18 19:27 unlink
+-rwx------   1 root     root        6656 May 18 19:27 update
+-rw-rw-r--   1 root     root         155 May 18 19:13 update.open
+-rwx--x--x   1 root     bin        53004 May 18 19:24 ush
+-rw-rw-rw-   1 adm      adm            0 May 18 19:13 utmp
+-rwxr-xr-x   1 bin      bin        47940 May 18 19:27 volcopy
+-rwx------   1 bin      bin        24172 May 18 19:27 wall
+-rwxr-xr-x   1 bin      bin          605 May 18 19:27 whodo
+-rw-rw-rw-   1 adm      adm            0 May 18 19:13 wtmp
+-rwxrwx---   1 root     root        1328 May 18 19:29 xns
+-rw-r--r--   1 root     root         145 May 18 19:29 xnscf
+-rwx------   1 root     root       11860 May 18 19:28 xnsd
+
+/etc/backups:
+total 14
+
+drwxr-xr-x   2 bin      bin          128 May 18 19:16 .
+drwxr-xr-x   5 bin      bin         2400 May 18 19:29 ..
+-rwxr-xr-x   1 bin      bin         1293 May 18 19:16 daily.usr
+-rwxr-xr-x   1 bin      bin         1207 May 18 19:16 do_monthly
+-rwxr-xr-x   1 bin      bin          453 May 18 19:16 ff_to_frec
+-rwxr-xr-x   1 bin      bin          916 May 18 19:16 monthly
+-rwxr-xr-x   1 bin      bin         1218 May 18 19:16 monthly.usr
+-rwxr-xr-x   1 bin      bin         1298 May 18 19:16 weekly.usr
+
+/etc/fstyp.d:
+total 19
+
+drwxr-xr-x   2 bin      bin           64 May 18 19:18 .
+drwxr-xr-x   5 bin      bin         2400 May 18 19:29 ..
+-r-xr-xr-x   1 root     sys         6444 May 18 19:18 hsfstyp
+-r-xr-xr-x   1 root     sys         7440 May 18 19:18 s5fstyp
+
+/etc/log:
+total 4
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:27 .
+drwxr-xr-x   5 bin      bin         2400 May 18 19:29 ..
+-rwxrw-rw-   1 root     root           0 May 18 19:27 filesave.log
+
+/lib:
+total 549
+
+drwxr-xr-x   3 bin      bin          224 May 18 19:17 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+drwxr-xr-x   2 bin      bin           48 May 18 19:17 chrclass
+-rwxr-xr-x   1 bin      bin        25464 May 18 19:17 cpp
+-rw-r--r--   1 bin      bin          454 May 18 19:15 crt0.o
+-rw-r--r--   1 bin      bin          770 May 18 19:15 crt1.o
+-rw-r--r--   1 bin      bin          516 May 18 19:15 crtn.o
+-rw-r--r--   1 bin      bin          762 May 18 19:15 fcrt1.o
+-rw-r--r--   1 bin      bin       256946 May 18 19:14 libc.a
+-rw-r--r--   1 bin      bin       251142 May 18 19:14 libc_s.a
+-rw-r--r--   1 bin      bin          552 May 18 19:15 libg.a
+-rw-r--r--   1 bin      bin          919 May 18 19:15 mcrt0.o
+-rw-r--r--   1 bin      bin         1231 May 18 19:15 mcrt1.o
+-rwxr-xr-x   1 bin      bin         8227 May 18 19:17 runtime.c
+
+/lib/chrclass:
+total 3
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:17 .
+drwxr-xr-x   3 bin      bin          224 May 18 19:17 ..
+-rw-r--r--   1 bin      bin          514 May 18 19:17 ascii
+
+/lost+found:
+total 2
+
+drwx------   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+
+/pipe:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+
+/ram:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+
+/shlib:
+total 219
+
+drwxrwxrwt   2 bin      bin           80 May 18 19:15 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+-rwxr-xr-x   1 bin      bin        70038 May 18 19:14 libc_s
+-rwxr-xr-x   1 bin      bin        36395 May 18 19:15 libnsl_s
+-rwxr-xr-x   1 bin      bin       110888 May 18 19:15 libtisam_s
+
+/ti:
+total 4
+
+drwxr-xr-x   4 bin      bin           64 May 18 19:11 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+drwxr-xr-x   2 bin      bin           48 May 18 19:22 ptext
+drwxr-xr-x   2 bin      bin           48 May 18 19:22 stext
+
+/ti/ptext:
+total 146
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:22 .
+drwxr-xr-x   4 bin      bin           64 May 18 19:11 ..
+-rw-r--r--   1 root     root      144087 May 18 19:22 USA
+
+/ti/stext:
+total 329
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:22 .
+drwxr-xr-x   4 bin      bin           64 May 18 19:11 ..
+-rw-r--r--   1 root     root      329885 May 18 19:22 USA
+
+/tmp:
+total 2
+
+drwxrwxrwx   2 bin      bin           32 May 18 19:11 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+
+/usr:
+total 28
+
+drwxr-xr-x  24 root     root         384 May 18 19:20 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+drwxr-xr-x   7 adm      adm          176 May 18 19:24 adm
+drwxr-xr-x   2 bin      bin         2224 May 18 19:29 bin
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 catman
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 etc
+drwxr-xr-x   2 guest    guest         32 May 18 19:13 guest
+drwxr-xr-x   3 bin      bin         1280 May 18 19:13 include
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 lib
+drwxr-xr-x   2 bin      bin           48 May 18 19:17 local
+drwx------   2 bin      bin           32 May 18 19:13 lost+found
+drwxrwxr-x   3 bin      mail          48 May 18 19:13 mail
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 man
+drwxrwx---   3 root     sys           48 May 18 19:20 net
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 news
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 plib
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 preserve
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 pub
+drwxr-xr-x   2 bin      bin           96 May 18 19:27 skel
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 spool
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 src
+drwxrwx---   4 sys      sys          336 May 18 19:14 sys
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ti
+drwxrwxrwx   2 bin      bin           32 May 18 19:13 tmp
+
+/usr/adm:
+total 109
+
+drwxr-xr-x   7 adm      adm          176 May 18 19:24 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+-rwx------   1 adm      adm          321 May 18 19:16 .cshrc
+-rwx------   1 adm      adm           47 May 18 19:16 .login
+drwxr-xr-x   5 adm      adm           80 May 18 19:13 acct
+drwxr-xr-x   2 adm      adm           64 May 18 19:16 active
+drwxr-xr-x   2 adm      adm           80 May 18 19:18 fs
+drwxr-xr-x   2 adm      adm           48 May 18 19:23 sa
+-rwx--x--x   1 bin      bin        49896 May 18 19:24 sh.bck
+-rwx--x--x   1 bin      bin        50048 May 18 19:24 sh.sec
+drwxr-xr-x   2 adm      adm           32 May 18 19:13 streams
+
+/usr/adm/acct:
+total 5
+
+drwxr-xr-x   5 adm      adm           80 May 18 19:13 .
+drwxr-xr-x   7 adm      adm          176 May 18 19:24 ..
+drwxr-xr-x   2 adm      adm           32 May 18 19:13 fiscal
+drwxr-xr-x   2 adm      adm           32 May 18 19:13 nite
+drwxr-xr-x   2 adm      adm           32 May 18 19:13 sum
+
+/usr/adm/acct/fiscal:
+total 2
+
+drwxr-xr-x   2 adm      adm           32 May 18 19:13 .
+drwxr-xr-x   5 adm      adm           80 May 18 19:13 ..
+
+/usr/adm/acct/nite:
+total 2
+
+drwxr-xr-x   2 adm      adm           32 May 18 19:13 .
+drwxr-xr-x   5 adm      adm           80 May 18 19:13 ..
+
+/usr/adm/acct/sum:
+total 2
+
+drwxr-xr-x   2 adm      adm           32 May 18 19:13 .
+drwxr-xr-x   5 adm      adm           80 May 18 19:13 ..
+
+/usr/adm/active:
+total 2
+
+drwxr-xr-x   2 adm      adm           64 May 18 19:16 .
+drwxr-xr-x   7 adm      adm          176 May 18 19:24 ..
+-rw-r--r--   1 bin      bin            0 May 18 19:16 cmds
+-rw-r--r--   1 bin      bin            0 May 18 19:16 imap
+
+/usr/adm/fs:
+total 5
+
+drwxr-xr-x   2 adm      adm           80 May 18 19:18 .
+drwxr-xr-x   7 adm      adm          176 May 18 19:24 ..
+-rwx------   1 adm      adm          176 May 18 19:18 fsfull
+-rw-------   1 adm      adm          167 May 18 19:18 fslist
+-rwx------   1 adm      adm          184 May 18 19:18 fswarn
+
+/usr/adm/sa:
+total 59
+
+drwxr-xr-x   2 adm      adm           48 May 18 19:23 .
+drwxr-xr-x   7 adm      adm          176 May 18 19:24 ..
+-rw-r--r--   1 bin      bin        56835 May 18 19:23 tdecap
+
+/usr/adm/streams:
+total 2
+
+drwxr-xr-x   2 adm      adm           32 May 18 19:13 .
+drwxr-xr-x   7 adm      adm          176 May 18 19:24 ..
+
+/usr/bin:
+total 5278
+
+drwxr-xr-x   2 bin      bin         2224 May 18 19:29 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+-rwx--x--x   1 bin      bin       121124 May 18 19:16 a68k
+-rwx--x--x   1 bin      bin        63780 May 18 19:16 a68m
+-rwx--x--x   1 root     bin       101388 May 18 19:16 active
+-rwx--x--x   1 bin      bin        40636 May 18 19:23 admin
+-rwx--x--x   1 bin      bin         7524 May 18 19:16 asa
+-rwsr-xr-x   1 root     sys        34712 May 18 19:17 at
+-rwx--x--x   1 bin      bin        56404 May 18 19:16 awk
+-rwx--x--x   1 bin      bin         7284 May 18 19:16 banner
+-rwsr-xr-x   1 root     sys          116 May 18 19:17 batch
+-rwx--x--x   1 bin      bin        21404 May 18 19:16 bc
+-rwx--x--x   1 bin      bin        12224 May 18 19:23 bdiff
+-rwx--x--x   1 bin      bin        18360 May 18 19:16 cal
+-rwxr-xr-x   1 bin      bin         1183 May 18 19:16 calendar
+-r-xr-xr-x   1 lp       bin        25352 May 18 19:19 cancel
+-r-xr-xr-x   1 bin      bin        51684 May 18 19:15 captoinfo
+-rwx--x--x   1 bin      bin        16920 May 18 19:16 cb
+-rwx--x--x   1 bin      bin        39976 May 18 19:23 cdc
+-rwxr-xr-x   1 bin      bin         1686 May 18 19:16 cflow
+-rwxr-xr-x   1 bin      bin        28968 May 18 19:17 chrtbl
+-rwxr-xr-x   1 bin      bin         9440 May 18 19:17 col
+-rwx--x--x   1 bin      bin        30388 May 18 19:23 comb
+-rwxr-xr-x   1 bin      bin        18652 May 18 19:19 cpisam
+-rws--x--x   1 root     sys        13060 May 18 19:17 crontab
+---s--s--x   1 root     uucp       67888 May 18 19:19 ct
+-rwx--x--x   1 bin      bin        15828 May 18 19:27 ctags
+---s--x--x   1 uucp     uucp       69216 May 18 19:19 cu
+-rwxr-xr-x   1 bin      bin        16716 May 18 19:17 cxref
+-rwx--x--x   1 bin      bin        25448 May 18 19:17 dc
+-rwx--x--x   1 bin      bin        49312 May 18 19:23 delta
+-rwx--x--x   1 bin      bin        20312 May 18 19:17 deroff
+-rwx--x--x   1 bin      bin        78856 May 18 19:18 dfm
+-rwx------   1 bin      bin        14476 May 18 19:18 dfsck
+-r-sr-xr-x   1 lp       bin        35848 May 18 19:20 disable
+-rwx--x--x   4 bin      bin       134456 May 18 19:27 edit
+-rwxr-xr-x   1 bin      bin        14172 May 18 19:18 egrep
+-r-sr-xr-x   1 lp       bin        35848 May 18 19:20 enable
+-rwx--x--x   4 bin      bin       134456 May 18 19:27 ex
+-rwxr-xr-x   1 bin      bin         8868 May 18 19:18 fgrep
+-rwxr-xr-x   1 bin      bin        12812 May 18 19:19 findisam
+-rwx--x--x   1 bin      bin         9704 May 18 19:27 fold
+-rwxr-xr-x   1 bin      bin        17100 May 18 19:19 frisam
+-rwx--x--x   1 bin      bin        25776 May 18 19:18 frpc
+-rwx--x--x   1 bin      bin        44056 May 18 19:23 get
+-rwx--x--x   1 bin      bin        15188 May 18 19:18 graph
+-rwx--x--x   1 bin      bin         6392 May 18 19:23 help
+-r-xr-xr-x   1 bin      bin        60424 May 18 19:15 infocmp
+-rwx--x--x   1 bin      bin        18784 May 18 19:19 ipcrm
+-rws--x--x   1 bin      bin        25052 May 18 19:19 ipcs
+-rwxr-xr-x   1 bin      bin        15128 May 18 19:19 kiftisam
+-rwxr-xr-x   1 bin      bin        36588 May 18 19:19 lex
+-rwxr-xr-x   1 bin      bin         3610 May 18 19:20 lint
+-rwx--x--x   1 bin      bin         7060 May 18 19:19 logname
+-r-xr-xr-x   1 lp       bin        53892 May 18 19:19 lp
+-r-xr-xr-x   1 lp       bin       113696 May 18 19:20 lpstat
+-rwx--x--x   1 bin      bin        50468 May 18 19:16 ltxcoff
+-rwx--x--x   1 bin      bin        51492 May 18 19:16 ltxdump
+-rwx--x--x   1 bin      bin        23164 May 18 19:20 m4
+-rwx--s--x   1 bin      mail       93596 May 18 19:21 mailx
+-rwxr-xr-x   1 bin      bin         1763 May 18 19:21 man
+-rwxr-xr-x   1 bin      bin        18792 May 18 19:19 mapisam
+-rwx--x--x   1 bin      bin         7088 May 18 19:21 mesg
+-rwxr-xr-x   1 bin      bin        20308 May 18 19:19 mkisam
+-rws--x--x   1 root     root       20492 May 18 19:29 mnetecho
+-rws--x--x   1 root     root       64766 May 18 19:29 mnetecho.lo
+-rws--x--x   1 root     root       61015 May 18 19:29 mnetecho.rm
+-rws--x--x   1 root     root       20492 May 18 19:29 mnetstat
+-rwx------   1 root     root       75134 May 18 19:29 mnetstat.lo
+-rws--x--x   1 root     root       64839 May 18 19:29 mnetstat.rm
+-rwx------   1 root     root       20492 May 18 19:29 mtcdump
+-rwx------   1 root     root       54703 May 18 19:29 mtcdump.lo
+-rwx------   1 root     root       48659 May 18 19:29 mtcdump.rm
+-rwx------   1 root     root       20492 May 18 19:29 mtcreset
+-rwx------   1 root     root       66381 May 18 19:29 mtcreset.lo
+-rwx------   1 root     root       60369 May 18 19:29 mtcreset.rm
+-rwx------   1 root     root       20492 May 18 19:29 mtcshmd
+-rwx------   1 root     root       54764 May 18 19:29 mtcshmd.lo
+-rwx------   1 root     root       48587 May 18 19:29 mtcshmd.rm
+-rws--x--x   1 root     root       20492 May 18 19:29 mtcstat
+-rws--x--x   1 root     root       61128 May 18 19:29 mtcstat.lo
+-rws--x--x   1 root     root       55084 May 18 19:29 mtcstat.rm
+-rwxr-xr-x   1 bin      bin        20000 May 18 19:19 mvisam
+-rwx--x--x   1 bin      bin        96324 May 18 19:22 nawk
+-rwx--x--x   1 root     root       47816 May 18 19:28 netcp
+-rws--x--x   1 root     root       29520 May 18 19:28 netecho
+-rws--x--x   1 root     root       31848 May 18 19:28 netexec
+-rws--x--x   1 root     root       35768 May 18 19:28 netstat
+-rws--x--x   1 root     root       14392 May 18 19:28 netu
+-rws--x--x   1 root     root       14392 May 18 19:28 networks
+-rwx--x--x   1 bin      bin        20348 May 18 19:22 news
+-rwx--x--x   1 root     sys        31692 May 18 19:22 nlsadmin
+-rws--x--x   1 root     root      184864 May 18 19:23 pm
+-rwx--x--x   1 bin      bin        25004 May 18 19:23 pr
+-rwx--x--x   1 bin      bin        15608 May 18 19:23 prof
+-rwx--x--x   1 bin      bin        35568 May 18 19:23 prs
+-r-x------   1 root     sys        12028 May 18 19:23 pwconv
+-r-x------   1 root     sys        12056 May 18 19:23 pwunconv
+-rwx--x--x   1 bin      bin        59684 May 18 19:16 qsym
+-rwx--x--x   1 bin      bin         8620 May 18 19:23 regcmp
+-rwx--x--x   1 bin      bin        39976 May 18 19:23 rmdel
+-rwx--x--x   1 bin      bin        28904 May 18 19:23 sact
+-rwsr-xr-x   1 root     bin        65316 May 18 19:23 sadsp
+-rwxr-xr-x   1 bin      bin        35572 May 18 19:23 sar
+-rwxr-xr-x   1 bin      bin         1217 May 18 19:23 sccsdiff
+-rwx--x--x   1 bin      bin        99588 May 18 19:24 sdb
+-rwxr-xr-x   1 bin      bin         1564 May 18 19:25 spell
+-rwxr-xr-x   1 bin      bin        89080 May 18 19:25 spooladm
+-rwxr-xr-x   1 bin      bin        18512 May 18 19:27 strace
+-rwxr-xr-x   1 bin      bin         9916 May 18 19:27 strclean
+-rwxr-xr-x   1 bin      bin        19032 May 18 19:27 strerr
+-rwx--x--x   1 bin      bin         9768 May 18 19:27 strings
+-rwsr-xr-x   1 root     root       10804 May 18 19:27 strnstat
+-rws--x--x   1 root     root       25104 May 18 19:28 tcstat
+-rws--x--x   1 root     root       33512 May 18 19:23 tde
+-rwx--x--x   1 bin      bin        17532 May 18 19:26 tee
+-r-xr-xr-x   1 bin      bin        51280 May 18 19:15 tic
+-rwxr-xr-x   1 bin      bin        24544 May 18 19:23 timex
+-rwxr-xr-x   1 bin      bin        16076 May 18 19:19 toisam
+-rwx--x--x   1 bin      bin        24780 May 18 19:26 topc
+-rwxr-xr-x   1 bin      bin          529 May 18 19:26 tplot
+-r-xr-xr-x   1 bin      bin        42636 May 18 19:15 tput
+-rwx--x--x   1 bin      bin        18388 May 18 19:26 tr
+-rwx--x--x   1 bin      bin       148752 May 18 19:26 tx
+-rwx--x--x   1 bin      bin        28904 May 18 19:23 unget
+-rwxr-xr-x   1 bin      bin         9652 May 18 19:27 units
+---s--x--x   1 uucp     uucp       59412 May 18 19:19 uucp
+---s--x--x   1 uucp     uucp       16460 May 18 19:19 uuname
+---s--x--x   1 uucp     uucp       45112 May 18 19:19 uustat
+---s--x--x   1 uucp     uucp       61272 May 18 19:19 uux
+-rwx--x--x   1 bin      bin        11956 May 18 19:23 val
+-rwx--x--x   1 bin      bin        14016 May 18 19:23 vc
+-rwxr-xr-x   1 bin      bin        76788 May 18 19:19 vfisam
+-rwx--x--x   4 bin      bin       134456 May 18 19:27 vi
+-rwx--x--x   4 bin      bin       134456 May 18 19:27 view
+-rwx--x--x   1 bin      bin         6680 May 18 19:23 what
+-rwx--x--x   1 bin      bin        19956 May 18 19:27 write
+-rwx--x--x   1 bin      bin        10216 May 18 19:27 xargs
+-rwx--x--x   1 bin      bin        31472 May 18 19:27 yacc
+
+/usr/catman:
+total 4
+
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+drwxr-xr-x   3 bin      bin           48 May 18 19:13 a_man
+drwxr-xr-x   3 bin      bin           48 May 18 19:13 u_man
+
+/usr/catman/a_man:
+total 3
+
+drwxr-xr-x   3 bin      bin           48 May 18 19:13 .
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 ..
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 man1
+
+/usr/catman/a_man/man1:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x   3 bin      bin           48 May 18 19:13 ..
+
+/usr/catman/u_man:
+total 3
+
+drwxr-xr-x   3 bin      bin           48 May 18 19:13 .
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 ..
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 man1
+
+/usr/catman/u_man/man1:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x   3 bin      bin           48 May 18 19:13 ..
+
+/usr/etc:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+
+/usr/guest:
+total 2
+
+drwxr-xr-x   2 guest    guest         32 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+
+/usr/include:
+total 275
+
+drwxr-xr-x   3 bin      bin         1280 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+-r--r--r--   1 bin      bin         1759 May 18 19:13 M_DEFS.h
+-r--r--r--   1 bin      bin         7378 May 18 19:13 a.out.h
+-r--r--r--   1 bin      bin         1121 May 18 19:13 alarm.h
+-r--r--r--   1 bin      bin          653 May 18 19:13 aouthdr.h
+-r--r--r--   1 bin      bin         1856 May 18 19:13 ar.h
+-r--r--r--   1 bin      bin          300 May 18 19:13 assert.h
+-r--r--r--   1 bin      bin          954 May 18 19:13 core.h
+-r--r--r--   1 bin      bin          822 May 18 19:13 cpio.h
+-r--r--r--   1 bin      bin         1520 May 18 19:13 ctype.h
+-r--r--r--   1 bin      bin        23717 May 18 19:15 curses.h
+-r--r--r--   1 bin      bin         1102 May 18 19:13 decimal.h
+-r--r--r--   1 bin      bin         1044 May 18 19:13 dial.h
+-r--r--r--   1 bin      bin          163 May 18 19:13 dialio.h
+-r--r--r--   1 bin      bin          672 May 18 19:13 dirent.h
+-r--r--r--   1 bin      bin          707 May 18 19:13 dumprestor.h
+-r--r--r--   1 bin      bin          245 May 18 19:13 errno.h
+-r--r--r--   1 bin      bin          522 May 18 19:13 execargs.h
+-r--r--r--   1 bin      bin          612 May 18 19:13 fatal.h
+-r--r--r--   1 bin      bin          293 May 18 19:13 fcntl.h
+-r--r--r--   1 bin      bin         5528 May 18 19:13 filehdr.h
+-r--r--r--   1 bin      bin          442 May 18 19:13 ftw.h
+-r--r--r--   1 bin      bin          280 May 18 19:13 grp.h
+-r--r--r--   1 bin      bin         8718 May 18 19:13 isam.h
+-r--r--r--   1 bin      bin         5011 May 18 19:13 lan.h
+-r--r--r--   1 bin      bin         2548 May 18 19:13 ldfcn.h
+-r--r--r--   1 bin      bin          773 May 18 19:13 linenum.h
+-r--r--r--   1 bin      bin         2347 May 18 19:13 macros.h
+-r--r--r--   1 bin      bin         4701 May 18 19:13 mallint.h
+-r--r--r--   1 bin      bin         1338 May 18 19:13 malloc.h
+-r--r--r--   1 bin      bin         2243 May 18 19:13 math.h
+-r--r--r--   1 bin      bin          300 May 18 19:13 memory.h
+-r--r--r--   1 bin      bin          372 May 18 19:13 mnttab.h
+-r--r--r--   1 bin      bin          497 May 18 19:13 mon.h
+-r--r--r--   1 bin      bin         1954 May 18 19:13 nan.h
+-r--r--r--   1 bin      bin          246 May 18 19:13 netstat.h
+-r--r--r--   1 bin      bin          751 May 18 19:13 nlist.h
+-r--r--r--   1 bin      bin          957 May 18 19:13 nsaddr.h
+-r--r--r--   1 bin      bin         5179 May 18 19:13 nserve.h
+-r--r--r--   1 bin      bin         1913 May 18 19:13 pn.h
+-r--r--r--   1 bin      bin          232 May 18 19:13 poll.h
+-r--r--r--   1 bin      bin          360 May 18 19:13 printm.h
+-r--r--r--   1 bin      bin         1530 May 18 19:13 prmode.h
+-r--r--r--   1 bin      bin          812 May 18 19:13 prof.h
+-r--r--r--   1 bin      bin          419 May 18 19:13 pwd.h
+-r--r--r--   1 bin      bin         8141 May 18 19:13 regexp.h
+-r--r--r--   1 bin      bin         1887 May 18 19:13 reloc.h
+-r--r--r--   1 bin      bin         2743 May 18 19:13 rje.h
+-r--r--r--   1 bin      bin         3042 May 18 19:13 scnhdr.h
+-r--r--r--   1 bin      bin          347 May 18 19:13 search.h
+-r--r--r--   1 bin      bin          441 May 18 19:13 setjmp.h
+-r--r--r--   1 bin      bin         1546 May 18 19:13 sgtty.h
+-r--r--r--   1 bin      bin         1258 May 18 19:13 shadow.h
+-r--r--r--   1 bin      bin          260 May 18 19:13 signal.h
+-r--r--r--   1 bin      bin         2180 May 18 19:13 stand.h
+-r--r--r--   1 bin      bin         2042 May 18 19:13 stdio.h
+-r--r--r--   1 bin      bin         1213 May 18 19:13 stermio.h
+-r--r--r--   1 bin      bin         1758 May 18 19:13 storclass.h
+-r--r--r--   1 bin      bin          411 May 18 19:13 string.h
+-r--r--r--   1 bin      bin          365 May 18 19:13 stropts.h
+-r--r--r--   1 bin      bin          295 May 18 19:13 symbol.h
+-r--r--r--   1 bin      bin         5093 May 18 19:13 syms.h
+drwxr-xr-x   3 bin      bin         2288 May 18 19:23 sys
+-r--r--r--   1 bin      bin         1060 May 18 19:13 sys.m68k
+-r--r--r--   1 bin      bin        47826 May 18 19:15 term.h
+-r--r--r--   1 bin      bin          207 May 18 19:13 termio.h
+-r--r--r--   1 bin      bin          689 May 18 19:13 time.h
+-r--r--r--   1 bin      bin        14722 May 18 19:13 tisam.h
+-r--r--r--   1 bin      bin          442 May 18 19:13 tiuser.h
+-r--r--r--   1 bin      bin          323 May 18 19:13 tp_defs.h
+-r--r--r--   1 bin      bin          480 May 18 19:15 unctrl.h
+-r--r--r--   1 bin      bin         1052 May 18 19:13 unistd.h
+-r--r--r--   1 bin      bin          353 May 18 19:13 ustat.h
+-r--r--r--   1 bin      bin         1573 May 18 19:13 utmp.h
+-r--r--r--   1 bin      bin         7039 May 18 19:13 values.h
+-r--r--r--   1 bin      bin          487 May 18 19:13 varargs.h
+-r--r--r--   1 bin      bin        22442 May 18 19:13 vdtrdwrt.h
+-r--r--r--   1 bin      bin            0 May 18 19:13 x25lib.h
+-r--r--r--   1 bin      bin         4147 May 18 19:13 xns.h
+
+/usr/include/sys:
+total 598
+
+drwxr-xr-x   3 bin      bin         2288 May 18 19:23 .
+drwxr-xr-x   3 bin      bin         1280 May 18 19:13 ..
+-r--r--r--   1 bin      bin         1388 May 18 19:13 acct.h
+-r--r--r--   1 bin      bin         1595 May 18 19:13 alloc.h
+-r--r--r--   1 bin      bin         1261 May 18 19:13 anchor.h
+-r--r--r--   1 bin      bin         5821 May 18 19:13 boot.h
+-r--r--r--   1 bin      bin          258 May 18 19:14 bread.h
+-r--r--r--   1 bin      bin         1113 May 18 19:13 bswap.h
+-r--r--r--   1 bin      bin        13365 May 18 19:13 buf.h
+-r--r--r--   1 bin      bin         9249 May 18 19:13 busnet.h
+-r--r--r--   1 bin      bin          868 May 18 19:13 callo.h
+-r--r--r--   1 bin      bin         2029 May 18 19:13 cirmgr.h
+-r--r--r--   1 bin      bin         2197 May 18 19:13 cmap.h
+-r--r--r--   1 bin      bin         7571 May 18 19:13 comm.h
+-r--r--r--   1 bin      bin         5386 May 18 19:13 conf.h
+-r--r--r--   1 bin      bin         3327 May 18 19:13 confrom.h
+-r--r--r--   1 bin      bin         1621 May 18 19:13 conlog.h
+-r--r--r--   1 bin      bin        15436 May 18 19:13 cpu.h
+-r--r--r--   1 bin      bin         5422 May 18 19:14 cpuloc.h
+-r--r--r--   1 bin      bin         2438 May 18 19:13 crtctl.h
+-r--r--r--   1 bin      bin         1911 May 18 19:14 device.h
+-r--r--r--   1 bin      bin          735 May 18 19:13 devinfo.h
+-r--r--r--   1 bin      bin         5654 May 18 19:13 devmap.h
+-r--r--r--   1 bin      bin         2637 May 18 19:13 dialio.h
+-r--r--r--   1 bin      bin          489 May 18 19:13 dir.h
+-r--r--r--   1 bin      bin          699 May 18 19:13 dirent.h
+-r--r--r--   1 bin      bin         1645 May 18 19:13 elog.h
+-r--r--r--   1 bin      bin        15472 May 18 19:13 enc.h
+-r--r--r--   1 bin      bin         4903 May 18 19:13 erec.h
+-r--r--r--   1 bin      bin          968 May 18 19:13 err.h
+-r--r--r--   1 bin      bin         7346 May 18 19:13 errno.h
+-r--r--r--   1 bin      bin         1011 May 18 19:13 fault.h
+-r--r--r--   1 bin      bin          492 May 18 19:13 fblk.h
+-r--r--r--   1 bin      bin         1675 May 18 19:13 fcntl.h
+-r--r--r--   1 bin      bin         1339 May 18 19:13 file.h
+-r--r--r--   1 bin      bin          498 May 18 19:13 filsys.h
+-r--r--r--   1 bin      bin         2853 May 18 19:13 flock.h
+-r--r--r--   1 bin      bin         1264 May 18 19:13 fp.h
+drwxr-xr-x   2 bin      bin          240 May 18 19:14 fs
+-r--r--r--   1 bin      bin          735 May 18 19:13 fsid.h
+-r--r--r--   1 bin      bin         4069 May 18 19:13 fstyp.h
+-r--r--r--   1 bin      bin         2867 May 18 19:14 fuword.h
+-r--r--r--   1 bin      bin         4316 May 18 19:14 idphdr.h
+-r--r--r--   1 bin      bin         2150 May 18 19:14 incdec.h
+-r--r--r--   1 bin      bin         1101 May 18 19:13 init.h
+-r--r--r--   1 bin      bin         1403 May 18 19:13 ino.h
+-r--r--r--   1 bin      bin         7810 May 18 19:13 inode.h
+-r--r--r--   1 bin      bin         2088 May 18 19:13 iobuf.h
+-r--r--r--   1 bin      bin         1223 May 18 19:13 ioctl.h
+-r--r--r--   1 bin      bin         1196 May 18 19:13 ipc.h
+-r--r--r--   1 bin      bin         1922 May 18 19:14 jioctl.h
+-r--r--r--   1 bin      bin         2414 May 18 19:13 kdb.h
+-r--r--r--   1 bin      bin         2915 May 18 19:13 kerrf.h
+-r--r--r--   1 bin      bin         3332 May 18 19:14 ldterm.h
+-r--r--r--   1 bin      bin         5440 May 18 19:13 lihdr.h
+-r--r--r--   1 bin      bin          526 May 18 19:13 lock.h
+-r--r--r--   1 bin      bin         1712 May 18 19:13 log.h
+-r--r--r--   1 bin      bin          837 May 18 19:13 map.h
+-r--r--r--   1 bin      bin         1389 May 18 19:13 mapout.h
+-r--r--r--   1 bin      bin         1946 May 18 19:13 mirror.h
+-r--r--r--   1 bin      bin         2264 May 18 19:13 mmu.h
+-r--r--r--   1 bin      bin         2427 May 18 19:13 mount.h
+-r--r--r--   1 bin      bin        11297 May 18 19:13 msc.h
+-r--r--r--   1 bin      bin         3052 May 18 19:13 msg.h
+-r--r--r--   1 bin      bin         1931 May 18 19:13 mtio.h
+-r--r--r--   1 bin      bin         1988 May 18 19:13 multivol.h
+-r--r--r--   1 bin      bin         4204 May 18 19:14 nami.h
+-r--r--r--   1 bin      bin         7727 May 18 19:14 netstat.h
+-r--r--r--   1 bin      bin        13930 May 18 19:14 np.h
+-r--r--r--   1 bin      bin         2063 May 18 19:14 nserve.h
+-r--r--r--   1 bin      bin         1151 May 18 19:14 nubus.h
+-r--r--r--   1 bin      bin         4834 May 18 19:14 nvram.h
+-r--r--r--   1 bin      bin         3888 May 18 19:14 opc.h
+-r--r--r--   1 bin      bin         2019 May 18 19:14 open.h
+-r--r--r--   1 bin      bin          616 May 18 19:14 opt.h
+-r--r--r--   1 bin      bin        10776 May 18 19:14 param.h
+-r--r--r--   1 bin      bin         2827 May 18 19:14 partab.h
+-r--r--r--   1 bin      bin          642 May 18 19:14 phys.h
+-r--r--r--   1 bin      bin         2835 May 18 19:14 pmapinfo.h
+-r--r--r--   1 bin      bin         1264 May 18 19:14 poll.h
+-r--r--r--   1 bin      bin         9503 May 18 19:14 proc.h
+-r--r--r--   1 bin      bin         2028 May 18 19:14 psl.h
+-r--r--r--   1 bin      bin         6407 May 18 19:14 pte.h
+-r--r--r--   1 bin      bin         1363 May 18 19:14 ptem.h
+-r--r--r--   1 bin      bin         1873 May 18 19:14 ptms.h
+-r--r--r--   1 bin      bin         3912 May 18 19:14 qtrio.h
+-r--r--r--   1 bin      bin         5966 May 18 19:14 queue.h
+-r--r--r--   1 bin      bin          517 May 18 19:14 rd.h
+-r--r--r--   1 bin      bin          871 May 18 19:14 reg.h
+-r--r--r--   1 bin      bin         1384 May 18 19:14 rfsys.h
+-r--r--r--   1 bin      bin          531 May 18 19:14 rtc.h
+-r--r--r--   1 bin      bin          686 May 18 19:14 runq.h
+-r--r--r--   1 bin      bin         4092 May 18 19:23 sa.h
+-r--r--r--   1 bin      bin         1319 May 18 19:14 sat.h
+-r--r--r--   1 bin      bin         1615 May 18 19:14 sdma.h
+-r--r--r--   1 bin      bin         3449 May 18 19:14 seg.h
+-r--r--r--   1 bin      bin         3409 May 18 19:14 sem.h
+-r--r--r--   1 bin      bin         1510 May 18 19:14 sema.h
+-r--r--r--   1 bin      bin         1610 May 18 19:14 senetif.h
+-r--r--r--   1 bin      bin         3750 May 18 19:14 shm.h
+-r--r--r--   1 bin      bin         2410 May 18 19:14 signal.h
+-r--r--r--   1 bin      bin         2250 May 18 19:14 sky.h
+-r--r--r--   1 bin      bin         1179 May 18 19:14 smap.h
+-r--r--r--   1 bin      bin        12779 May 18 19:14 socket.h
+-r--r--r--   1 bin      bin         1203 May 18 19:14 sockvars.h
+-r--r--r--   1 bin      bin         2892 May 18 19:14 spa.h
+-r--r--r--   1 bin      bin         8914 May 18 19:14 space.h
+-r--r--r--   1 bin      bin         2697 May 18 19:14 splx.h
+-r--r--r--   1 bin      bin         7377 May 18 19:14 stack.h
+-r--r--r--   1 bin      bin         2070 May 18 19:14 stat.h
+-r--r--r--   1 bin      bin          861 May 18 19:14 statfs.h
+-r--r--r--   1 bin      bin        43680 May 18 19:14 stbm.h
+-r--r--r--   1 bin      bin         2934 May 18 19:14 strcom.h
+-r--r--r--   1 bin      bin        16992 May 18 19:14 stream.h
+-r--r--r--   1 bin      bin         1324 May 18 19:14 strlog.h
+-r--r--r--   1 bin      bin         6600 May 18 19:14 strnet.h
+-r--r--r--   1 bin      bin         2715 May 18 19:14 stropts.h
+-r--r--r--   1 bin      bin         1532 May 18 19:14 strstat.h
+-r--r--r--   1 bin      bin         4676 May 18 19:14 sysinfo.h
+-r--r--r--   1 bin      bin         1180 May 18 19:14 sysm68k.h
+-r--r--r--   1 bin      bin         5309 May 18 19:14 sysmacros.h
+-r--r--r--   1 bin      bin         3410 May 18 19:14 systm.h
+-r--r--r--   1 bin      bin         7105 May 18 19:14 termio.h
+-r--r--r--   1 bin      bin         1913 May 18 19:14 text.h
+-r--r--r--   1 bin      bin        11766 May 18 19:14 tihdr.h
+-r--r--r--   1 bin      bin          679 May 18 19:14 times.h
+-r--r--r--   1 bin      bin         2215 May 18 19:14 timod.h
+-r--r--r--   1 bin      bin         6705 May 18 19:14 tiuser.h
+-r--r--r--   1 bin      bin         1150 May 18 19:14 tmrinfo.h
+-r--r--r--   1 bin      bin          596 May 18 19:14 trace.h
+-r--r--r--   1 bin      bin         3012 May 18 19:14 trap.h
+-r--r--r--   1 bin      bin          984 May 18 19:14 ttold.h
+-r--r--r--   1 bin      bin         7418 May 18 19:14 tty.h
+-r--r--r--   1 bin      bin         2540 May 18 19:14 types.h
+-r--r--r--   1 bin      bin          734 May 18 19:14 ups.h
+-r--r--r--   1 bin      bin         7594 May 18 19:14 user.h
+-r--r--r--   1 bin      bin          558 May 18 19:14 utsname.h
+-r--r--r--   1 bin      bin         1703 May 18 19:14 var.h
+-r--r--r--   1 bin      bin         2777 May 18 19:14 vlabel.h
+-r--r--r--   1 bin      bin          622 May 18 19:14 vm.h
+-r--r--r--   1 bin      bin         3251 May 18 19:14 vmmacros.h
+-r--r--r--   1 bin      bin         2338 May 18 19:14 vmmeter.h
+-r--r--r--   1 bin      bin         3366 May 18 19:14 vmparams.h
+
+/usr/include/sys/fs:
+total 36
+
+drwxr-xr-x   2 bin      bin          240 May 18 19:14 .
+drwxr-xr-x   3 bin      bin         2288 May 18 19:23 ..
+-r--r--r--   1 bin      bin         3463 May 18 19:14 hsdir.h
+-r--r--r--   1 bin      bin         1163 May 18 19:14 hsfcntl.h
+-r--r--r--   1 bin      bin         1543 May 18 19:14 hsfilsys.h
+-r--r--r--   1 bin      bin         1324 May 18 19:14 hsinode.h
+-r--r--r--   1 bin      bin         1908 May 18 19:14 hsmacros.h
+-r--r--r--   1 bin      bin          474 May 18 19:14 hsparam.h
+-r--r--r--   1 bin      bin         4351 May 18 19:14 hsvolume.h
+-r--r--r--   1 bin      bin          467 May 18 19:14 s5dir.h
+-r--r--r--   1 bin      bin          432 May 18 19:14 s5fblk.h
+-r--r--r--   1 bin      bin         2794 May 18 19:14 s5filsys.h
+-r--r--r--   1 bin      bin         2393 May 18 19:14 s5inode.h
+-r--r--r--   1 bin      bin         2827 May 18 19:14 s5macros.h
+-r--r--r--   1 bin      bin         2819 May 18 19:14 s5param.h
+
+/usr/lib:
+total 2496
+
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+-r-xr-xr-x   1 lp       bin        35848 May 18 19:19 accept
+drwxr-xr-x   2 bin      bin          480 May 18 19:16 acct
+-rwxr-xr-x   1 bin      bin        17336 May 18 19:16 calprog
+drwxr-xr-x   2 bin      bin          128 May 18 19:17 cron
+-rwxr-xr-x   1 bin      bin         7740 May 18 19:16 dag
+-rwx------   1 bin      bin        23796 May 18 19:18 errdemon
+-rwxrwxr-x   1 bin      bin        15704 May 18 19:27 expreserve
+-rwxrwxr-x   1 bin      bin        30380 May 18 19:27 exrecover
+-rwxr-xr-x   1 bin      bin         6444 May 18 19:16 flip
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 font
+-rwxr-xr-x   1 bin      bin         1857 May 18 19:18 getoptcvt
+drwxr-xr-x   3 bin      bin          288 May 18 19:23 help
+drwxr-xr-x   2 bin      bin           64 May 18 19:15 lex
+-rw-r--r--   1 bin      bin         1632 May 18 19:16 lib.b
+-rw-r--r--   1 bin      bin        12232 May 18 19:15 lib300.a
+-rw-r--r--   1 bin      bin        12124 May 18 19:15 lib300s.a
+-rw-r--r--   1 bin      bin        10336 May 18 19:15 lib4014.a
+-rw-r--r--   1 bin      bin        12254 May 18 19:15 lib450.a
+-rw-r--r--   1 bin      bin        33672 May 18 19:15 libPW.a
+-rw-r--r--   1 bin      bin         9776 May 18 19:15 libcrypt.a
+-rw-rw-r--   1 bin      bin       333852 May 18 19:15 libcurses.a
+-rw-r--r--   1 bin      bin        87120 May 18 19:15 libfe.a
+-rw-r--r--   1 bin      bin        92052 May 18 19:15 libgen.a
+-rw-r--r--   1 bin      bin         4112 May 18 19:15 libl.a
+-rw-r--r--   1 bin      bin        20228 May 18 19:15 libld.a
+-rw-r--r--   1 bin      bin        25790 May 18 19:15 libm.a
+-rw-r--r--   1 bin      bin         9006 May 18 19:15 libm881.a
+-rw-r--r--   1 bin      bin         6774 May 18 19:15 libmalloc.a
+-rw-r--r--   1 bin      bin         3858 May 18 19:20 libnls.a
+-rw-r--r--   1 bin      bin        37158 May 18 19:15 libnsl.a
+-rw-r--r--   1 bin      bin        28954 May 18 19:15 libnsl_s.a
+drwxr-xr-x   2 bin      bin           64 May 18 19:15 libp
+-rw-r--r--   1 bin      bin         2722 May 18 19:15 libphys.a
+-rw-r--r--   1 bin      bin         8512 May 18 19:15 libplot.a
+-rw-rw-r--   1 bin      bin         1206 May 18 19:15 libpt.a
+-rw-rw-r--   1 bin      bin         3348 May 18 19:15 libsec.a
+-rw-rw-r--   2 bin      bin         5074 May 18 19:15 libtermcap.a
+-rw-rw-r--   2 bin      bin         5074 May 18 19:15 libtermlib.a
+-rw-r--r--   1 bin      bin       195544 May 18 19:15 libtisam.a
+-rw-r--r--   1 bin      bin       180948 May 18 19:15 libtisam_s.a
+-rw-r--r--   1 bin      bin         3830 May 18 19:15 libups.a
+-rw-r--r--   1 bin      bin         9966 May 18 19:15 libvt0.a
+-rw-r--r--   1 bin      bin         1088 May 18 19:15 liby.a
+-rwxr-xr-x   1 bin      bin        83596 May 18 19:20 lint1
+-rwxr-xr-x   1 bin      bin        17592 May 18 19:20 lint2
+-rw-r--r--   1 bin      bin        15099 May 18 19:20 llib-lc
+-rw-r--r--   1 bin      bin        13724 May 18 19:20 llib-lc.ln
+-rw-r--r--   1 bin      bin         1757 May 18 19:20 llib-lm
+-rw-r--r--   1 bin      bin         1502 May 18 19:20 llib-lm.ln
+-rw-r--r--   1 bin      bin         7291 May 18 19:20 llib-port
+-rw-r--r--   1 bin      bin         6894 May 18 19:20 llib-port.ln
+-r-xr-xr-x   1 lp       bin       162964 May 18 19:20 lpadmin
+-r-xr-xr-x   1 lp       bin        70120 May 18 19:20 lpfilter
+-r-xr-xr-x   1 lp       bin        85344 May 18 19:20 lpforms
+-rwxr-xr-x   1 bin      bin        11980 May 18 19:16 lpfx
+-r-xr-xr-x   1 lp       bin        34772 May 18 19:20 lpmove
+-r-sr-xr-x   1 root     bin       315310 May 18 19:20 lpsched
+-r-xr-xr-x   1 lp       bin        26340 May 18 19:19 lpshut
+-r-xr-xr-x   1 lp       bin        55444 May 18 19:20 lpusers
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 macros
+drwxr-xr-x   3 bin      bin           96 May 18 19:21 mailx
+drwxr-xr-x   2 bin      bin           64 May 18 19:29 mapout
+-rws--x--x   1 root     root       17912 May 18 19:22 mv_dir
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 news
+-rwxr-xr-x   1 bin      bin         6628 May 18 19:16 nmf
+---s--x--x   1 root     bin         6972 May 18 19:23 pt_chmod
+-r-xr-xr-x   1 lp       bin        35848 May 18 19:20 reject
+drwxr-xr-x   2 bin      bin           80 May 18 19:23 sa
+drwxrwxrwx   2 bin      bin          176 May 18 19:25 spell
+-rw-r--r--   1 bin      bin        11040 May 18 19:26 t300
+-rw-r--r--   1 bin      bin        11040 May 18 19:26 t300s
+-rw-r--r--   1 bin      bin        10276 May 18 19:26 t4014
+-rw-r--r--   1 bin      bin        11096 May 18 19:26 t450
+drwxr-xr-x   2 bin      bin           64 May 18 19:15 tabset
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 term
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 terminfo
+drwxr-xr-x   2 bin      bin          640 May 18 19:20 terminfo_src
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 tmac
+-rw-rw-r--   1 bin      bin         7905 May 18 19:27 unittab
+drwxr-xr-x   2 uucp     uucp         512 May 18 19:19 uucp
+-rwx--x--x   1 bin      bin        23116 May 18 19:26 vplot
+-rwxr-xr-x   1 bin      bin        26488 May 18 19:17 xcpp
+-rwxr-xr-x   1 bin      bin        64800 May 18 19:17 xpass
+-rw-r--r--   1 bin      bin         9331 May 18 19:27 yaccpar
+
+/usr/lib/acct:
+total 232
+
+drwxr-xr-x   2 bin      bin          480 May 18 19:16 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rwx--x---   1 bin      adm        31424 May 18 19:16 acctcms
+-rwx--x---   1 bin      adm        26196 May 18 19:16 acctcon1
+-rwx--x---   1 bin      adm         6472 May 18 19:16 acctcon2
+-rwx--x---   1 bin      adm         6472 May 18 19:16 acctdisk
+-rwx--x---   1 bin      adm         8464 May 18 19:16 acctdusg
+-rwx--x---   1 bin      adm         9204 May 18 19:16 acctmerg
+-rws--x---   1 root     adm        10924 May 18 19:16 accton
+-rwx--x---   1 bin      adm        23012 May 18 19:16 acctprc1
+-rwx--x---   1 bin      adm         7920 May 18 19:16 acctprc2
+-rwx--x---   1 bin      adm         6496 May 18 19:16 acctwtmp
+-rwxrwx---   1 bin      adm          644 May 18 19:16 chargefee
+-rwxrwx---   1 bin      adm         1735 May 18 19:16 ckpacct
+-rws--x---   1 bin      adm        10752 May 18 19:16 diskusg
+-rwxrwx---   1 bin      adm         1801 May 18 19:16 dodisk
+-rwx--x---   1 bin      adm        17832 May 18 19:16 fwtmp
+-rw-rw----   1 bin      adm          565 May 18 19:16 holidays
+-rwxrwx---   1 bin      adm         1645 May 18 19:16 lastlogin
+-rwxrwx---   1 bin      adm         1154 May 18 19:16 monacct
+-rwxrwx---   1 bin      adm          314 May 18 19:16 nulladm
+-rwxrwx---   1 bin      adm          399 May 18 19:16 prctmp
+-rwxrwx---   1 bin      adm         1622 May 18 19:16 prdaily
+-rwxrwx---   1 bin      adm          515 May 18 19:16 prtacct
+-rwxrwx---   1 bin      adm          202 May 18 19:16 remove
+-rwxrwx---   1 bin      adm        12472 May 18 19:16 runacct
+-rwxrwx---   1 bin      adm          385 May 18 19:16 shutacct
+-rwxrwx---   1 bin      adm          326 May 18 19:16 startup
+-rwxrwx---   1 bin      adm          850 May 18 19:16 turnacct
+-rwx--x---   1 bin      adm        21940 May 18 19:16 wtmpfix
+
+/usr/lib/cron:
+total 7
+
+drwxr-xr-x   2 bin      bin          128 May 18 19:17 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rw-rw-r--   1 root     sys           22 May 18 19:17 .proto
+-rw-r--r--   1 root     sys            0 May 18 19:17 at.deny
+-rw-r--r--   1 root     sys            0 May 18 19:17 cron.deny
+-rw-rw-rw-   1 root     root           0 May 18 19:17 log
+-rw-r--r--   1 root     sys           24 May 18 19:17 queuedefs
+-rwx------   1 adm      adm         1983 May 18 19:17 start.new.log
+
+/usr/lib/font:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+
+/usr/lib/help:
+total 46
+
+drwxr-xr-x   3 bin      bin          288 May 18 19:23 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rw-rw-r--   1 bin      bin         4167 May 18 19:23 ad
+-rw-rw-r--   1 bin      bin         1262 May 18 19:23 bd
+-rw-rw-r--   1 bin      bin          671 May 18 19:23 cb
+-rw-rw-r--   1 bin      bin         2824 May 18 19:23 cm
+-rw-rw-r--   1 bin      bin         5437 May 18 19:23 cmds
+-rw-rw-r--   1 bin      bin         4158 May 18 19:23 co
+-rw-rw-r--   1 bin      bin         3362 May 18 19:23 de
+-rw-rw-r--   1 bin      bin          178 May 18 19:23 default
+-rw-rw-r--   1 bin      bin         2260 May 18 19:23 ge
+-rw-rw-r--   1 bin      bin          332 May 18 19:23 he
+drwxr-xr-x   2 bin      bin           48 May 18 19:23 lib
+-rw-rw-r--   1 bin      bin          835 May 18 19:23 prs
+-rw-rw-r--   1 bin      bin         2284 May 18 19:23 rc
+-rw-rw-r--   1 bin      bin          648 May 18 19:23 un
+-rw-rw-r--   1 bin      bin         2324 May 18 19:23 ut
+-rw-rw-r--   1 bin      bin         2440 May 18 19:23 vc
+
+/usr/lib/help/lib:
+total 10
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:23 .
+drwxr-xr-x   3 bin      bin          288 May 18 19:23 ..
+-rwxrwxr-x   1 bin      bin         7944 May 18 19:23 help2
+
+/usr/lib/lex:
+total 11
+
+drwxr-xr-x   2 bin      bin           64 May 18 19:15 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rw-r--r--   1 bin      bin         3986 May 18 19:15 ncform
+-rw-r--r--   1 bin      bin         3115 May 18 19:15 nrform
+
+/usr/lib/libp:
+total 308
+
+drwxr-xr-x   2 bin      bin           64 May 18 19:15 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rw-r--r--   1 bin      bin       278744 May 18 19:15 libc.a
+-rw-r--r--   1 bin      bin        27534 May 18 19:15 libm.a
+
+/usr/lib/macros:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+
+/usr/lib/mailx:
+total 14
+
+drwxr-xr-x   3 bin      bin           96 May 18 19:21 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 help
+-rw-rw-r--   1 bin      bin          943 May 18 19:21 mailx.help
+-rw-rw-r--   1 bin      bin         1042 May 18 19:21 mailx.help.~
+-rwx--s--x   1 bin      mail        6568 May 18 19:21 rmmail
+
+/usr/lib/mailx/help:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x   3 bin      bin           96 May 18 19:21 ..
+
+/usr/lib/mapout:
+total 6
+
+drwxr-xr-x   2 bin      bin           64 May 18 19:29 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rw-rw-r--   1 bin      bin         1576 May 18 19:29 prt931grph
+-rw-rw-r--   1 bin      bin          810 May 18 19:29 vdt931grph
+
+/usr/lib/news:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+
+/usr/lib/sa:
+total 18
+
+drwxr-xr-x   2 bin      bin           80 May 18 19:23 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rwxr-xr-x   1 bin      bin          457 May 18 19:23 sa1
+-rwxr-xr-x   1 bin      bin          512 May 18 19:23 sa2
+-rwsr-xr-x   1 root     bin        12240 May 18 19:23 sadc
+
+/usr/lib/spell:
+total 202
+
+drwxrwxrwx   2 bin      bin          176 May 18 19:25 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rwxr-xr-x   1 bin      bin          307 May 18 19:25 compress
+-rwx------   1 root     root       16532 May 18 19:25 hashcheck
+-rwx------   1 root     root       15420 May 18 19:25 hashmake
+-rw-r--r--   1 bin      bin        53872 May 18 19:25 hlista
+-rw-r--r--   1 bin      bin        53840 May 18 19:25 hlistb
+-rw-r--r--   1 bin      bin         6336 May 18 19:25 hstop
+-rw-rw-rw-   1 bin      bin            0 May 18 19:25 spellhist
+-rwx------   1 root     root       22072 May 18 19:25 spellin
+-rwx--x--x   1 bin      bin        23944 May 18 19:25 spellprog
+
+/usr/lib/tabset:
+total 5
+
+drwxr-xr-x   2 bin      bin           64 May 18 19:15 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rw-rw-r--   1 bin      bin          135 May 18 19:15 std
+-rw-rw-r--   1 bin      bin          159 May 18 19:15 vt100
+
+/usr/lib/term:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+
+/usr/lib/terminfo:
+total 22
+
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+drwxr-xr-x   2 root     root          48 May 18 19:15 7
+drwxr-xr-x   2 root     root          48 May 18 19:15 M
+drwxr-xr-x   2 root     root          48 May 18 19:15 T
+drwxr-xr-x   2 root     root          48 May 18 19:15 X
+drwxr-xr-x   2 root     root          48 May 18 19:15 a
+drwxr-xr-x   2 root     root          48 May 18 19:15 b
+drwxr-xr-x   2 root     root         128 May 18 19:15 d
+drwxr-xr-x   2 root     root          64 May 18 19:15 e
+drwxr-xr-x   2 root     root          48 May 18 19:20 h
+drwxr-xr-x   2 root     root          64 May 18 19:15 i
+drwxr-xr-x   2 root     root          64 May 18 19:15 n
+drwxr-xr-x   2 root     root          80 May 18 19:20 p
+drwxr-xr-x   2 root     root          96 May 18 19:15 q
+drwxr-xr-x   2 root     root        1056 May 18 19:20 t
+drwxr-xr-x   2 root     root          48 May 18 19:20 u
+drwxr-xr-x   2 root     root         192 May 18 19:15 v
+drwxr-xr-x   2 root     root         208 May 18 19:15 w
+drwxr-xr-x   2 root     root         160 May 18 19:15 x
+
+/usr/lib/terminfo/7:
+total 4
+
+drwxr-xr-x   2 root     root          48 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   5 root     root        1912 May 18 19:15 75
+
+/usr/lib/terminfo/M:
+total 4
+
+drwxr-xr-x   2 root     root          48 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   5 root     root        1912 May 18 19:15 Mw
+
+/usr/lib/terminfo/T:
+total 4
+
+drwxr-xr-x   2 root     root          48 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   3 root     root        1345 May 18 19:15 T9
+
+/usr/lib/terminfo/X:
+total 4
+
+drwxr-xr-x   2 root     root          48 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   3 root     root        1217 May 18 19:15 X5
+
+/usr/lib/terminfo/a:
+total 4
+
+drwxr-xr-x   2 root     root          48 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   1 root     root        1113 May 18 19:15 ansi
+
+/usr/lib/terminfo/b:
+total 4
+
+drwxr-xr-x   2 root     root          48 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   1 root     root        1156 May 18 19:15 bpc
+
+/usr/lib/terminfo/d:
+total 13
+
+drwxr-xr-x   2 root     root         128 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   3 root     root        1266 May 18 19:15 d0
+-rw-r--r--   2 root     root        1324 May 18 19:15 d1
+-rw-r--r--   2 root     root        1303 May 18 19:15 d2
+-rw-r--r--   2 root     root        1332 May 18 19:15 d3
+-rw-r--r--   2 root     root        1311 May 18 19:15 d4
+-rw-r--r--   1 root     root         843 May 18 19:15 dumb
+
+/usr/lib/terminfo/e:
+total 6
+
+drwxr-xr-x   2 root     root          64 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   2 root     root        1250 May 18 19:15 em924
+-rw-r--r--   2 root     root        1218 May 18 19:15 em931
+
+/usr/lib/terminfo/h:
+total 4
+
+drwxr-xr-x   2 root     root          48 May 18 19:20 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   1 root     root        1466 May 18 19:20 hpjet-generic
+
+/usr/lib/terminfo/i:
+total 6
+
+drwxr-xr-x   2 root     root          64 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   2 root     root        1238 May 18 19:15 i1
+-rw-r--r--   2 root     root        1220 May 18 19:15 i2
+
+/usr/lib/terminfo/n:
+total 6
+
+drwxr-xr-x   2 root     root          64 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   2 root     root        1295 May 18 19:15 nc
+-rw-r--r--   2 root     root        1295 May 18 19:15 ncsa
+
+/usr/lib/terminfo/p:
+total 5
+
+drwxr-xr-x   2 root     root          80 May 18 19:20 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   1 root     root         932 May 18 19:20 p300
+-rw-r--r--   1 root     root         932 May 18 19:20 p600
+-rw-r--r--   1 root     root         897 May 18 19:20 ptronics-gnrc
+
+/usr/lib/terminfo/q:
+total 10
+
+drwxr-xr-x   2 root     root          96 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   2 root     root        1285 May 18 19:15 q1
+-rw-r--r--   2 root     root        1266 May 18 19:15 q2
+-rw-r--r--   2 root     root        1280 May 18 19:15 q3
+-rw-r--r--   2 root     root        1261 May 18 19:15 q4
+
+/usr/lib/terminfo/t:
+total 131
+
+drwxr-xr-x   2 root     root        1056 May 18 19:20 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   2 root     root        1253 May 18 19:15 t1
+-rw-r--r--   2 root     root        1237 May 18 19:15 t2
+-rw-r--r--   2 root     root        1248 May 18 19:15 t3
+-rw-r--r--   2 root     root        1232 May 18 19:15 t4
+-rw-r--r--   1 root     root        1245 May 18 19:15 t5
+-rw-r--r--   2 root     root        1250 May 18 19:15 t6
+-rw-r--r--   1 root     root        1217 May 18 19:15 t7
+-rw-r--r--   2 root     root        1218 May 18 19:15 t8
+-rw-r--r--   3 root     root        1345 May 18 19:15 t9
+-rw-r--r--   1 root     root        1168 May 18 19:20 ti2015-855dp
+-rw-r--r--   1 root     root        1506 May 18 19:20 ti2015-855wp
+-rw-r--r--   1 root     root        1549 May 18 19:20 ti2015-hpjet
+-rw-r--r--   1 root     root        1436 May 18 19:20 ti210-hpjet
+-rw-r--r--   1 root     root        1550 May 18 19:20 ti2108-hpjet
+-rw-r--r--   1 root     root        1550 May 18 19:20 ti2115-hpjet
+-rw-r--r--   1 root     root        1071 May 18 19:20 ti810
+-rw-r--r--   1 root     root        1514 May 18 19:20 ti830
+-rw-r--r--   1 root     root        1182 May 18 19:20 ti830-855dp
+-rw-r--r--   1 root     root        1526 May 18 19:20 ti830-855wp
+-rw-r--r--   1 root     root        1514 May 18 19:20 ti835
+-rw-r--r--   1 root     root        1183 May 18 19:20 ti835-855dp
+-rw-r--r--   1 root     root        1526 May 18 19:20 ti835-855wp
+-rw-r--r--   1 root     root        1148 May 18 19:20 ti850
+-rw-r--r--   1 root     root        1063 May 18 19:20 ti850-generic
+-rw-r--r--   1 root     root        1462 May 18 19:20 ti855
+-rw-r--r--   1 root     root        1316 May 18 19:20 ti855dp
+-rw-r--r--   1 root     root        1489 May 18 19:20 ti855wp
+-rw-r--r--   1 root     root        1113 May 18 19:20 ti860
+-rw-r--r--   1 root     root        1458 May 18 19:20 ti865
+-rw-r--r--   1 root     root        1140 May 18 19:20 ti865dp
+-rw-r--r--   1 root     root        1485 May 18 19:20 ti865wp
+-rw-r--r--   1 root     root        1152 May 18 19:20 ti875
+-rw-r--r--   1 root     root        1108 May 18 19:20 ti875-generic
+-rw-r--r--   1 root     root        1172 May 18 19:20 ti875dp
+-rw-r--r--   1 root     root        1167 May 18 19:20 ti875lq
+-rw-r--r--   1 root     root        1152 May 18 19:20 ti877
+-rw-r--r--   1 root     root        1172 May 18 19:20 ti877dp
+-rw-r--r--   1 root     root        1167 May 18 19:20 ti877lq
+-rw-r--r--   1 root     root        1224 May 18 19:20 ti880
+-rw-r--r--   1 root     root        1135 May 18 19:20 ti880-at
+-rw-r--r--   1 root     root        1180 May 18 19:20 ti880-generic
+-rw-r--r--   1 root     root        1223 May 18 19:20 ti885
+-rw-r--r--   1 root     root        1276 May 18 19:20 ti8930
+-rw-r--r--   1 root     root        1177 May 18 19:20 ti8930-855dp
+-rw-r--r--   1 root     root        1523 May 18 19:20 ti8930-855wp
+-rw-r--r--   1 root     root        1284 May 18 19:20 ti8930-880
+-rw-r--r--   2 root     root        1285 May 18 19:15 ti916
+-rw-r--r--   2 root     root        1280 May 18 19:15 ti916-132
+-rw-r--r--   2 root     root        1266 May 18 19:15 ti916-8
+-rw-r--r--   2 root     root        1261 May 18 19:15 ti916-8-132
+-rw-r--r--   2 root     root        1253 May 18 19:15 ti924
+-rw-r--r--   2 root     root        1248 May 18 19:15 ti924-132
+-rw-r--r--   2 root     root        1237 May 18 19:15 ti924-8
+-rw-r--r--   2 root     root        1232 May 18 19:15 ti924-8-132
+-rw-r--r--   2 root     root        1238 May 18 19:15 ti926
+-rw-r--r--   2 root     root        1220 May 18 19:15 ti926-8
+-rw-r--r--   2 root     root        1310 May 18 19:15 ti928
+-rw-r--r--   2 root     root        1305 May 18 19:15 ti928-132
+-rw-r--r--   2 root     root        1286 May 18 19:15 ti928-8
+-rw-r--r--   2 root     root        1281 May 18 19:15 ti928-8-132
+-rw-r--r--   3 root     root        1345 May 18 19:15 ti931
+-rw-r--r--   3 root     root        1217 May 18 19:15 ti931r
+-rw-r--r--   1 root     root        1413 May 18 19:20 tiwp-generic
+-rw-r--r--   1 root     root        1363 May 18 19:15 tm
+
+/usr/lib/terminfo/u:
+total 3
+
+drwxr-xr-x   2 root     root          48 May 18 19:20 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   1 root     root         844 May 18 19:20 unknown
+
+/usr/lib/terminfo/v:
+total 22
+
+drwxr-xr-x   2 root     root         192 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   3 root     root        1472 May 18 19:15 v2
+-rw-r--r--   3 root     root        1488 May 18 19:15 vs
+-rw-r--r--   3 root     root        1488 May 18 19:15 vs100
+-rw-r--r--   3 root     root        1472 May 18 19:15 vs100s
+-rw-r--r--   3 root     root        1266 May 18 19:15 vt100
+-rw-r--r--   3 root     root        1266 May 18 19:15 vt100-am
+-rw-r--r--   2 root     root        1324 May 18 19:15 vt220
+-rw-r--r--   2 root     root        1332 May 18 19:15 vt220-132
+-rw-r--r--   2 root     root        1303 May 18 19:15 vt220-8
+-rw-r--r--   2 root     root        1311 May 18 19:15 vt220-8-132
+
+/usr/lib/terminfo/w:
+total 24
+
+drwxr-xr-x   2 root     root         208 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   3 root     root        1294 May 18 19:15 w7
+-rw-r--r--   5 root     root        1344 May 18 19:15 w8
+-rw-r--r--   3 root     root        1294 May 18 19:15 wy60
+-rw-r--r--   5 root     root        1344 May 18 19:15 wy60-132
+-rw-r--r--   5 root     root        1344 May 18 19:15 wy60-w
+-rw-r--r--   5 root     root        1912 May 18 19:15 wy75
+-rw-r--r--   5 root     root        1912 May 18 19:15 wyse
+-rw-r--r--   3 root     root        1294 May 18 19:15 wyse60
+-rw-r--r--   5 root     root        1344 May 18 19:15 wyse60-132
+-rw-r--r--   5 root     root        1344 May 18 19:15 wyse60-w
+-rw-r--r--   5 root     root        1912 May 18 19:15 wyse75
+
+/usr/lib/terminfo/x:
+total 18
+
+drwxr-xr-x   2 root     root         160 May 18 19:15 .
+drwxr-xr-x  20 bin      bin          320 May 18 19:20 ..
+-rw-r--r--   2 root     root        1310 May 18 19:15 x1
+-rw-r--r--   2 root     root        1286 May 18 19:15 x2
+-rw-r--r--   2 root     root        1305 May 18 19:15 x3
+-rw-r--r--   2 root     root        1281 May 18 19:15 x4
+-rw-r--r--   3 root     root        1217 May 18 19:15 x5
+-rw-r--r--   1 root     root        1261 May 18 19:15 x6
+-rw-r--r--   3 root     root        1488 May 18 19:15 xterm
+-rw-r--r--   3 root     root        1472 May 18 19:15 xterms
+
+/usr/lib/terminfo_src:
+total 211
+
+drwxr-xr-x   2 bin      bin          640 May 18 19:20 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rw-rw----   1 root     root        2594 May 18 19:15 adds.ti
+-rw-rw----   1 root     root        5694 May 18 19:15 annarbor.ti
+-rw-rw----   1 root     root        4778 May 18 19:15 ansi.ti
+-rw-rw----   1 root     root       33792 May 18 19:15 att.ti
+-rw-rw----   1 root     root        4166 May 18 19:15 beehive.ti
+-rw-rw----   1 root     root         408 May 18 19:15 cdc.ti
+-rw-rw----   1 root     root         752 May 18 19:15 colorscan.ti
+-rw-rw----   1 root     root        5502 May 18 19:15 concept.ti
+-rw-rw----   1 root     root        2254 May 18 19:15 datamedia.ti
+-rw-rw----   1 root     root        6598 May 18 19:15 dec.ti
+-rw-rw----   1 root     root        2822 May 18 19:15 diablo.ti
+-rw-rw----   1 root     root        1551 May 18 19:15 fortune.ti
+-rw-rw----   1 root     root        1303 May 18 19:15 general.ti
+-rw-rw----   1 root     root         742 May 18 19:15 hardcopy.ti
+-rw-rw----   1 root     root        3410 May 18 19:15 hazeltine.ti
+-rw-rw----   1 root     root        2058 May 18 19:15 heath.ti
+-rw-rw----   1 root     root        2937 May 18 19:15 homebrew.ti
+-rw-rw----   1 root     root        7726 May 18 19:15 hp.ti
+-rw-rw----   1 root     root        3218 May 18 19:15 ibm.ti
+-rw-rw----   1 root     root        3215 May 18 19:15 lsi.ti
+-rw-rw----   1 root     root        2704 May 18 19:15 microterm.ti
+-rw-rw----   1 root     root       17359 May 18 19:15 misc.ti
+-rw-rw----   1 root     root        3975 May 18 19:15 pc.ti
+-rw-rw----   1 root     root        1013 May 18 19:15 perkinelm.ti
+-rw-rw----   1 root     root        1509 May 18 19:15 print.ti
+-rw-rw-r--   1 root     root       21691 May 18 19:20 printer.ti
+-rw-rw----   1 root     root       17045 May 18 19:15 s32.ti
+-rw-rw----   1 root     root         596 May 18 19:15 special.ti
+-rw-rw----   1 root     root        1683 May 18 19:15 sperry.ti
+-rw-rw----   1 root     root        3756 May 18 19:15 tektronix.ti
+-rw-rw----   1 root     root        2145 May 18 19:15 teleray.ti
+-rw-rw----   1 root     root        4573 May 18 19:15 teletype.ti
+-rw-rw----   1 root     root        6565 May 18 19:15 televideo.ti
+-rw-rw----   1 root     root         234 May 18 19:15 ti.ti
+-rw-rw----   1 root     root        1882 May 18 19:15 trailer.ti
+-rw-rw----   1 root     root         698 May 18 19:15 tymshare.ti
+-rw-rw----   1 root     root        3671 May 18 19:15 virtual.ti
+-rw-rw----   1 root     root        3801 May 18 19:15 visual.ti
+
+/usr/lib/tmac:
+total 3
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+
+/usr/lib/uucp:
+total 464
+
+drwxr-xr-x   2 uucp     uucp         512 May 18 19:19 .
+drwxr-xr-x  20 bin      bin         1376 May 18 19:27 ..
+-rw-r-----   1 uucp     uucp         447 May 18 19:18 Devconfig
+-rw-r-----   1 uucp     uucp        1410 May 18 19:18 Devices
+-rw-r-----   1 uucp     uucp         213 May 18 19:18 Dialcodes
+-rw-r-----   1 uucp     uucp       12433 May 18 19:18 Dialers
+-r--r--r--   1 uucp     uucp           2 May 18 19:18 Maxuuscheds
+-r--r--r--   1 uucp     uucp           2 May 18 19:18 Maxuuxqts
+-rw-r-----   1 uucp     uucp         184 May 18 19:18 Permissions
+-rw-r-----   1 uucp     uucp         327 May 18 19:18 Poll
+-r-xr-xr-x   1 uucp     uucp        1977 May 18 19:18 SetUp
+-rw-r-----   1 uucp     uucp        1739 May 18 19:18 Sysfiles
+-rw-r-----   1 uucp     uucp         709 May 18 19:18 Systems
+-r-xr-xr-x   1 uucp     uucp        1484 May 18 19:18 Uutry
+---s--x--x   1 root     sys        21328 May 18 19:19 nttysrv
+---s--x--x   1 uucp     uucp       43208 May 18 19:19 remote.unknown
+---x--x---   1 uucp     uucp       19824 May 18 19:19 uucheck
+---s--x--x   1 uucp     uucp      103824 May 18 19:19 uucico
+---x--x---   1 uucp     uucp       42652 May 18 19:19 uucleanup
+-r-xr--r--   1 uucp     uucp       29908 May 18 19:19 uucpd
+---x--x--x   1 uucp     uucp       12784 May 18 19:19 uudecode
+-r-xr-xr-x   1 uucp     uucp         628 May 18 19:18 uudemon.admin
+-r-xr-xr-x   1 uucp     uucp        4579 May 18 19:18 uudemon.cleanu
+-r-xr-xr-x   1 uucp     uucp          81 May 18 19:18 uudemon.hour
+-r-xr-xr-x   1 uucp     uucp         918 May 18 19:18 uudemon.poll
+---x--x--x   1 uucp     uucp       10772 May 18 19:19 uuencode
+-r-xr--r--   1 uucp     uucp       24780 May 18 19:19 uugetty
+-r-xr-xr-x   1 uucp     uucp        1561 May 18 19:18 uulog
+-r-xr-xr-x   1 uucp     uucp        3653 May 18 19:18 uupick
+---s--x--x   1 uucp     uucp       34176 May 18 19:19 uusched
+-r-xr-xr-x   1 uucp     uucp        1501 May 18 19:18 uuto
+---s--x--x   1 uucp     uucp       64580 May 18 19:19 uuxqt
+
+/usr/local:
+total 162
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:17 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+-rwsr-x---   1 bin      sys       160205 May 18 19:17 crash
+
+/usr/lost+found:
+total 2
+
+drwx------   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+
+/usr/mail:
+total 3
+
+drwxrwxr-x   3 bin      mail          48 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+drwxrwxr-x   2 bin      mail          32 May 18 19:13 :saved
+
+/usr/mail/:saved:
+total 2
+
+drwxrwxr-x   2 bin      mail          32 May 18 19:13 .
+drwxrwxr-x   3 bin      mail          48 May 18 19:13 ..
+
+/usr/man:
+total 23
+
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+drwxr-xr-x   2 bin      bin         5568 May 18 19:21 man1
+drwxr-xr-x   2 bin      bin         1136 May 18 19:21 man2
+drwxr-xr-x   2 bin      bin         3824 May 18 19:21 man3
+drwxr-xr-x   2 bin      bin          896 May 18 19:21 man4
+drwxr-xr-x   2 bin      bin          208 May 18 19:21 man5
+drwxr-xr-x   2 bin      bin           48 May 18 19:21 man6
+drwxr-xr-x   2 bin      bin          288 May 18 19:21 man7
+drwxr-xr-x   2 bin      bin           48 May 18 19:21 man8
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 manl
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 mann
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 mano
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 manx
+
+/usr/man/man1:
+total 1111
+
+drwxr-xr-x   2 bin      bin         5568 May 18 19:21 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+-r--r--r--   1 bin      bin         5217 May 18 19:21 a68k.1t.z
+-r--r--r--   1 bin      bin         4872 May 18 19:21 a68m.1t.z
+-r--r--r--   1 bin      bin          398 May 18 19:21 accept.1m.z
+-r--r--r--   1 bin      bin        11861 May 18 19:21 acct.1m.z
+-r--r--r--   1 bin      bin         2844 May 18 19:21 acctcom.1.z
+-r--r--r--   1 bin      bin         5764 May 18 19:21 active.1t.z
+-r--r--r--   1 bin      bin         8363 May 18 19:21 admin.1.z
+-r--r--r--   1 bin      bin         4134 May 18 19:21 ar.1.z
+-r--r--r--   1 bin      bin         4255 May 18 19:21 as.1.z
+-r--r--r--   1 bin      bin          794 May 18 19:21 asa.1.z
+-r--r--r--   1 bin      bin         2824 May 18 19:21 at.1.z
+-r--r--r--   1 bin      bin         4199 May 18 19:21 awk.1.z
+-r--r--r--   1 bin      bin         2628 May 18 19:21 backup.1t.z
+-r--r--r--   1 bin      bin          544 May 18 19:21 banner.1.z
+-r--r--r--   1 bin      bin          539 May 18 19:21 basename.1.z
+-r--r--r--   1 bin      bin         1286 May 18 19:21 batch.1.z
+-r--r--r--   1 bin      bin         1226 May 18 19:21 bband.1t.z
+-r--r--r--   1 bin      bin         2651 May 18 19:21 bc.1.z
+-r--r--r--   1 bin      bin         1284 May 18 19:21 bdiff.1.z
+-r--r--r--   1 bin      bin          629 May 18 19:21 bootdvr.1t.z
+-r--r--r--   1 bin      bin        31383 May 18 19:21 bsh.1t.z
+-r--r--r--   1 bin      bin         4978 May 18 19:21 btape.1t.z
+-r--r--r--   1 bin      bin          549 May 18 19:21 cal.1.z
+-r--r--r--   1 bin      bin          924 May 18 19:21 calendar.1.z
+-r--r--r--   1 bin      bin         1021 May 18 19:21 cancel.1.z
+-r--r--r--   1 bin      bin         2600 May 18 19:21 captoinfo.1m.z
+-r--r--r--   1 bin      bin         1544 May 18 19:21 cat.1.z
+-r--r--r--   1 bin      bin          977 May 18 19:21 cb.1.z
+-r--r--r--   1 bin      bin         5478 May 18 19:21 cband.1t.z
+-r--r--r--   1 bin      bin          616 May 18 19:21 ccbdump.1t.z
+-r--r--r--   1 bin      bin          880 May 18 19:21 cd.1.z
+-r--r--r--   1 bin      bin         2905 May 18 19:21 cdc.1.z
+-r--r--r--   1 bin      bin         2683 May 18 19:21 cflow.1.z
+-r--r--r--   1 bin      bin          591 May 18 19:21 chgrp.1.z
+-r--r--r--   1 bin      bin         2113 May 18 19:21 chkshlib.1.z
+-r--r--r--   1 bin      bin         3002 May 18 19:21 chmod.1.z
+-r--r--r--   1 bin      bin          818 May 18 19:21 chown.1.z
+-r--r--r--   1 bin      bin          730 May 18 19:21 chroot.1m.z
+-r--r--r--   1 bin      bin         3909 May 18 19:21 chrtbl.1m.z
+-r--r--r--   1 bin      bin          886 May 18 19:21 clri.1m.z
+-r--r--r--   1 bin      bin         1802 May 18 19:21 cmp.1.z
+-r--r--r--   1 bin      bin         1908 May 18 19:21 col.1.z
+-r--r--r--   1 bin      bin         1940 May 18 19:21 comb.1.z
+-r--r--r--   1 bin      bin          881 May 18 19:21 comm.1.z
+-r--r--r--   1 bin      bin         3578 May 18 19:21 conlogd.1m.z
+-r--r--r--   1 bin      bin         1042 May 18 19:21 cp.1.z
+-r--r--r--   1 bin      bin         1174 May 18 19:21 cpdir.1t.z
+-r--r--r--   1 bin      bin         8945 May 18 19:21 cpio.1.z
+-r--r--r--   1 bin      bin         2226 May 18 19:21 cpisam.1t.z
+-r--r--r--   1 bin      bin         4139 May 18 19:21 cpp.1.z
+-r--r--r--   1 bin      bin         7080 May 18 19:21 crash.1m.z
+-r--r--r--   1 bin      bin          705 May 18 19:21 cron.1m.z
+-r--r--r--   1 bin      bin         2645 May 18 19:21 crontab.1.z
+-r--r--r--   1 bin      bin         1303 May 18 19:21 crypt.1.z
+-r--r--r--   1 bin      bin         1054 May 18 19:21 csh.1.z
+-r--r--r--   1 bin      bin         2359 May 18 19:21 csplit.1.z
+-r--r--r--   1 bin      bin         2827 May 18 19:21 ct.1c.z
+-r--r--r--   1 bin      bin         1092 May 18 19:21 ctags.1.z
+-r--r--r--   1 bin      bin         5434 May 18 19:21 ctrace.1.z
+-r--r--r--   1 bin      bin         4884 May 18 19:21 cu.1c.z
+-r--r--r--   1 bin      bin         2471 May 18 19:21 cut.1.z
+-r--r--r--   1 bin      bin         1820 May 18 19:21 cxref.1.z
+-r--r--r--   1 bin      bin         2471 May 18 19:21 date.1.z
+-r--r--r--   1 bin      bin         2738 May 18 19:21 dc.1.z
+-r--r--r--   1 bin      bin         1247 May 18 19:21 dcopy.1m.z
+-r--r--r--   1 bin      bin         3407 May 18 19:21 dd.1.z
+-r--r--r--   1 bin      bin          651 May 18 19:21 ddinq.1t.z
+-r--r--r--   1 bin      bin          752 May 18 19:21 ddtell.1c.z
+-r--r--r--   1 bin      bin         3915 May 18 19:21 delta.1.z
+-r--r--r--   1 bin      bin         1385 May 18 19:21 deroff.1.z
+-r--r--r--   1 bin      bin         4620 May 18 19:21 devadm.1t.z
+-r--r--r--   1 bin      bin          641 May 18 19:21 devnm.1m.z
+-r--r--r--   1 bin      bin         1131 May 18 19:21 df.1m.z
+-r--r--r--   1 bin      bin         5358 May 18 19:21 dfm.1t.z
+-r--r--r--   1 bin      bin         3390 May 18 19:21 dfsck.1m.z
+-r--r--r--   1 bin      bin         2304 May 18 19:21 diff.1.z
+-r--r--r--   1 bin      bin         2361 May 18 19:21 diff3.1.z
+-r--r--r--   1 bin      bin         1055 May 18 19:21 dircmp.1.z
+-r--r--r--   1 bin      bin          341 May 18 19:21 dirname.1.z
+-r--r--r--   1 bin      bin         1169 May 18 19:21 disable.1m.z
+-r--r--r--   1 bin      bin         1081 May 18 19:21 du.1.z
+-r--r--r--   1 bin      bin         3549 May 18 19:21 dump.1.z
+-r--r--r--   1 bin      bin         1011 May 18 19:21 echo.1.z
+-r--r--r--   1 bin      bin        14186 May 18 19:21 ed.1.z
+-r--r--r--   1 bin      bin         4648 May 18 19:21 edit.1.z
+-r--r--r--   1 bin      bin         2382 May 18 19:21 egrep.1.z
+-r--r--r--   1 bin      bin          329 May 18 19:21 enable.1m.z
+-r--r--r--   1 bin      bin          976 May 18 19:21 env.1.z
+-r--r--r--   1 bin      bin         1146 May 18 19:21 errdemon.1m.z
+-r--r--r--   1 bin      bin         2181 May 18 19:21 errpt.1m.z
+-r--r--r--   1 bin      bin          397 May 18 19:21 errstop.1m.z
+-r--r--r--   1 bin      bin        13854 May 18 19:21 ex.1.z
+-r--r--r--   1 bin      bin         2267 May 18 19:21 expr.1.z
+-r--r--r--   1 bin      bin          613 May 18 19:21 factor.1.z
+-r--r--r--   1 bin      bin          302 May 18 19:21 false.1.z
+-r--r--r--   1 bin      bin         2734 May 18 19:21 ff.1m.z
+-r--r--r--   1 bin      bin         1921 May 18 19:21 fgrep.1.z
+-r--r--r--   1 bin      bin         1387 May 18 19:21 file.1.z
+-r--r--r--   1 bin      bin         1498 May 18 19:21 finc.1m.z
+-r--r--r--   1 bin      bin         6358 May 18 19:21 find.1.z
+-r--r--r--   1 bin      bin         1671 May 18 19:21 findisam.1t.z
+-r--r--r--   1 bin      bin          314 May 18 19:21 fold.1.z
+-r--r--r--   1 bin      bin         1551 May 18 19:21 frec.1m.z
+-r--r--r--   1 bin      bin         3137 May 18 19:21 frisam.1t.z
+-r--r--r--   1 bin      bin         2228 May 18 19:21 frpc.1t.z
+-r--r--r--   1 bin      bin         4082 May 18 19:21 fsck.1m.z
+-r--r--r--   1 bin      bin         3889 May 18 19:21 fsfmon.1t.z
+-r--r--r--   1 bin      bin          550 May 18 19:21 fsstat.1m.z
+-r--r--r--   1 bin      bin          967 May 18 19:21 fstyp.1m.z
+-r--r--r--   1 bin      bin         1484 May 18 19:21 fuser.1m.z
+-r--r--r--   1 bin      bin        10454 May 18 19:21 get.1.z
+-r--r--r--   1 bin      bin          256 May 18 19:21 getgid.1t.z
+-r--r--r--   1 bin      bin         1427 May 18 19:21 getopt.1.z
+-r--r--r--   1 bin      bin          464 May 18 19:21 getoptcvt.1.z
+-r--r--r--   1 bin      bin         2907 May 18 19:21 getopts.1.z
+-r--r--r--   1 bin      bin         2944 May 18 19:21 getty.1m.z
+-r--r--r--   1 bin      bin         1916 May 18 19:21 grep.1.z
+-r--r--r--   1 bin      bin          557 May 18 19:21 grpck.1m.z
+-r--r--r--   1 bin      bin          628 May 18 19:21 head.1.z
+-r--r--r--   1 bin      bin         1188 May 18 19:21 help.1.z
+-r--r--r--   1 bin      bin          438 May 18 19:21 id.1.z
+-r--r--r--   1 bin      bin         4277 May 18 19:21 infocmp.1m.z
+-r--r--r--   1 bin      bin         5792 May 18 19:21 init.1m.z
+-r--r--r--   1 bin      bin         1093 May 18 19:21 initterm.1t.z
+-r--r--r--   1 bin      bin         2568 May 18 19:21 install.1m.z
+-r--r--r--   1 bin      bin         5325 May 18 19:21 intro.1.z
+-r--r--r--   1 bin      bin         1385 May 18 19:21 ipcrm.1m.z
+-r--r--r--   1 bin      bin         4662 May 18 19:21 ipcs.1m.z
+-r--r--r--   1 bin      bin         2202 May 18 19:21 join.1.z
+-r--r--r--   1 bin      bin         1039 May 18 19:21 kiftisam.1t.z
+-r--r--r--   1 bin      bin         1106 May 18 19:21 kill.1.z
+-r--r--r--   1 bin      bin          898 May 18 19:21 killall.1m.z
+-r--r--r--   1 bin      bin         1418 May 18 19:21 labelit.1m.z
+-r--r--r--   1 bin      bin         3984 May 18 19:21 ld.1.z
+-r--r--r--   1 bin      bin         3149 May 18 19:21 lex.1.z
+-r--r--r--   1 bin      bin          541 May 18 19:21 line.1.z
+-r--r--r--   1 bin      bin          402 May 18 19:21 link.1m.z
+-r--r--r--   1 bin      bin         4872 May 18 19:21 lint.1.z
+-r--r--r--   1 bin      bin         1923 May 18 19:21 ln.1.z
+-r--r--r--   1 bin      bin         2831 May 18 19:21 login.1.z
+-r--r--r--   1 bin      bin          393 May 18 19:21 logname.1.z
+-r--r--r--   1 bin      bin          902 May 18 19:21 lorder.1.z
+-r--r--r--   1 bin      bin         9879 May 18 19:21 lp.1.z
+-r--r--r--   1 bin      bin        18245 May 18 19:21 lpadmin.1m.z
+-r--r--r--   1 bin      bin         4563 May 18 19:21 lpfilter.1m.z
+-r--r--r--   1 bin      bin         8949 May 18 19:21 lpforms.1m.z
+-r--r--r--   1 bin      bin         1573 May 18 19:21 lpmove.1m.z
+-r--r--r--   1 bin      bin          614 May 18 19:21 lpsched.1m.z
+-r--r--r--   1 bin      bin          452 May 18 19:21 lpshut.1m.z
+-r--r--r--   1 bin      bin         4065 May 18 19:21 lpstat.1.z
+-r--r--r--   1 bin      bin         1852 May 18 19:21 lpusers.1m.z
+-r--r--r--   1 bin      bin         6249 May 18 19:21 ls.1.z
+-r--r--r--   1 bin      bin         1691 May 18 19:21 ltxcoff.1t.z
+-r--r--r--   1 bin      bin         3432 May 18 19:21 ltxdump.1t.z
+-r--r--r--   1 bin      bin         4763 May 18 19:21 m4.1.z
+-r--r--r--   1 bin      bin         5562 May 18 19:21 mail.1.z
+-r--r--r--   1 bin      bin        17316 May 18 19:21 mailx.1.z
+-r--r--r--   1 bin      bin        10226 May 18 19:21 make.1.z
+-r--r--r--   1 bin      bin         1080 May 18 19:21 makekey.1.z
+-r--r--r--   1 bin      bin         1627 May 18 19:21 man.1.z
+-r--r--r--   1 bin      bin         1815 May 18 19:21 mapisam.1t.z
+-r--r--r--   1 bin      bin         4766 May 18 19:21 mapout.1t.z
+-r--r--r--   1 bin      bin         2254 May 18 19:21 mc68as.1.z
+-r--r--r--   1 bin      bin         4270 May 18 19:21 menu.1t.z
+-r--r--r--   1 bin      bin          710 May 18 19:21 mesg.1.z
+-r--r--r--   1 bin      bin          899 May 18 19:21 mirupdate.1m.z
+-r--r--r--   1 bin      bin          871 May 18 19:21 mkdir.1m.z
+-r--r--r--   1 bin      bin         3264 May 18 19:21 mkfs.1m.z
+-r--r--r--   1 bin      bin         5318 May 18 19:21 mkisam.1t.z
+-r--r--r--   1 bin      bin          812 May 18 19:21 mklg.1t.z
+-r--r--r--   1 bin      bin         2137 May 18 19:21 mkmirr.1m.z
+-r--r--r--   1 bin      bin         2703 May 18 19:21 mkmsg.1t.z
+-r--r--r--   1 bin      bin          836 May 18 19:21 mknod.1m.z
+-r--r--r--   1 bin      bin         6405 May 18 19:21 mkshlib.1.z
+-r--r--r--   1 bin      bin         2306 May 18 19:21 mnetecho.1t.z
+-r--r--r--   1 bin      bin         7482 May 18 19:21 mnetstat.1t.z
+-r--r--r--   1 bin      bin         3378 May 18 19:21 more.1.z
+-r--r--r--   1 bin      bin         1323 May 18 19:21 mount.1m.z
+-r--r--r--   1 bin      bin          925 May 18 19:21 mountall.1m.z
+-r--r--r--   1 bin      bin         1632 May 18 19:21 mtcdl.1t.z
+-r--r--r--   1 bin      bin          562 May 18 19:21 mtcdt.1t.z
+-r--r--r--   1 bin      bin         1112 May 18 19:21 mtcdump.1t.z
+-r--r--r--   1 bin      bin         1068 May 18 19:21 mtcreset.1t.z
+-r--r--r--   1 bin      bin         1878 May 18 19:21 mtcstat.1t.z
+-r--r--r--   1 bin      bin         1782 May 18 19:21 mv.1.z
+-r--r--r--   1 bin      bin          748 May 18 19:21 mvdir.1m.z
+-r--r--r--   1 bin      bin         2114 May 18 19:21 mvisam.1t.z
+-r--r--r--   1 bin      bin         6003 May 18 19:21 nawk.1.z
+-r--r--r--   1 bin      bin          725 May 18 19:21 ncheck.1m.z
+-r--r--r--   1 bin      bin         9719 May 18 19:21 netcp.1t.z
+-r--r--r--   1 bin      bin        12687 May 18 19:21 netecho.1t.z
+-r--r--r--   1 bin      bin         3834 May 18 19:21 netexec.1t.z
+-r--r--r--   1 bin      bin        11915 May 18 19:21 netstat.1t.z
+-r--r--r--   1 bin      bin         2286 May 18 19:21 netu.1t.z
+-r--r--r--   1 bin      bin          937 May 18 19:21 netwhat.1t.z
+-r--r--r--   1 bin      bin         3858 May 18 19:21 networks.1t.z
+-r--r--r--   1 bin      bin         4863 May 18 19:21 newform.1.z
+-r--r--r--   1 bin      bin         1002 May 18 19:21 newgrp.1.z
+-r--r--r--   1 bin      bin         1179 May 18 19:21 news.1.z
+-r--r--r--   1 bin      bin         1145 May 18 19:21 nice.1.z
+-r--r--r--   1 bin      bin         2171 May 18 19:21 nl.1.z
+-r--r--r--   1 bin      bin         5795 May 18 19:21 nlsadmin.1m.z
+-r--r--r--   1 bin      bin         3492 May 18 19:21 nm.1.z
+-r--r--r--   1 bin      bin          657 May 18 19:21 nohup.1.z
+-r--r--r--   1 bin      bin         1866 May 18 19:21 od.1.z
+-r--r--r--   1 bin      bin         6114 May 18 19:21 opctl.1t.z
+-r--r--r--   1 bin      bin         1910 May 18 19:21 pack.1.z
+-r--r--r--   1 bin      bin         5160 May 18 19:21 packfs.1t.z
+-r--r--r--   1 bin      bin         3155 May 18 19:21 passwd.1.z
+-r--r--r--   1 bin      bin         2305 May 18 19:21 paste.1.z
+-r--r--r--   1 bin      bin         3023 May 18 19:21 patch.1t.z
+-r--r--r--   1 bin      bin          748 May 18 19:21 pcat.1.z
+-r--r--r--   1 bin      bin         3185 May 18 19:21 pdmon.1t.z
+-r--r--r--   1 bin      bin         4465 May 18 19:21 pg.1.z
+-r--r--r--   1 bin      bin         3959 May 18 19:21 pm.1t.z
+-r--r--r--   1 bin      bin          724 May 18 19:21 portwait.1t.z
+-r--r--r--   1 bin      bin         3777 May 18 19:21 pr.1.z
+-r--r--r--   1 bin      bin         2644 May 18 19:21 prmsg.1t.z
+-r--r--r--   1 bin      bin         1656 May 18 19:21 prof.1.z
+-r--r--r--   1 bin      bin         1046 May 18 19:21 profiler.1m.z
+-r--r--r--   1 bin      bin         5223 May 18 19:21 prompt.1t.z
+-r--r--r--   1 bin      bin         4967 May 18 19:21 prs.1.z
+-r--r--r--   1 bin      bin         4945 May 18 19:21 ps.1.z
+-r--r--r--   1 bin      bin         2596 May 18 19:21 ptu.1t.z
+-r--r--r--   1 bin      bin          703 May 18 19:21 pwck.1m.z
+-r--r--r--   1 bin      bin         1147 May 18 19:21 pwconv.1m.z
+-r--r--r--   1 bin      bin          468 May 18 19:21 pwd.1.z
+-r--r--r--   1 bin      bin          855 May 18 19:21 pwunconv.1m.z
+-r--r--r--   1 bin      bin         4737 May 18 19:21 qsym.1t.z
+-r--r--r--   1 bin      bin          970 May 18 19:21 rdflush.1t.z
+-r--r--r--   1 bin      bin         2155 May 18 19:21 rdload.1t.z
+-r--r--r--   1 bin      bin         1127 May 18 19:21 regcmp.1.z
+-r--r--r--   1 bin      bin          815 May 18 19:21 reject.1m.z
+-r--r--r--   1 bin      bin         1798 May 18 19:21 rm.1.z
+-r--r--r--   1 bin      bin         5076 May 18 19:21 rmail.1.z
+-r--r--r--   1 bin      bin         1226 May 18 19:21 rmdel.1.z
+-r--r--r--   1 bin      bin          669 May 18 19:21 rmdir.1.z
+-r--r--r--   1 bin      bin          495 May 18 19:21 rmtcon.1t.z
+-r--r--r--   1 bin      bin         1111 May 18 19:21 rsh.1.z
+-r--r--r--   1 bin      bin         1966 May 18 19:21 sa1.1m.z
+-r--r--r--   1 bin      bin         4662 May 18 19:21 sa2.1m.z
+-r--r--r--   1 bin      bin         1361 May 18 19:21 sact.1.z
+-r--r--r--   1 bin      bin         1865 May 18 19:21 sadc.1m.z
+-r--r--r--   1 bin      bin         2722 May 18 19:21 sadsp.1t.z
+-r--r--r--   1 bin      bin         3465 May 18 19:21 sar.1.z
+-r--r--r--   1 bin      bin         1155 May 18 19:21 sccsdiff.1.z
+-r--r--r--   1 bin      bin         5918 May 18 19:21 sdb.1.z
+-r--r--r--   1 bin      bin         2545 May 18 19:21 sdiff.1.z
+-r--r--r--   1 bin      bin         4705 May 18 19:21 sed.1.z
+-r--r--r--   1 bin      bin          592 May 18 19:21 setmnt.1m.z
+-r--r--r--   1 bin      bin          608 May 18 19:21 setsite.1m.z
+-r--r--r--   1 bin      bin        19051 May 18 19:21 sh.1.z
+-r--r--r--   1 bin      bin         1438 May 18 19:21 show.1t.z
+-r--r--r--   1 bin      bin         1280 May 18 19:21 showfs.1t.z
+-r--r--r--   1 bin      bin         2018 May 18 19:21 showhex.1t.z
+-r--r--r--   1 bin      bin         1861 May 18 19:21 showmsg.1t.z
+-r--r--r--   1 bin      bin         1743 May 18 19:21 shutdown.1m.z
+-r--r--r--   1 bin      bin         1024 May 18 19:21 size.1.z
+-r--r--r--   1 bin      bin          440 May 18 19:21 sleep.1.z
+-r--r--r--   1 bin      bin          917 May 18 19:21 slog.1t.z
+-r--r--r--   1 bin      bin          456 May 18 19:21 slotload.1t.z
+-r--r--r--   1 bin      bin         7041 May 18 19:21 sort.1.z
+-r--r--r--   1 bin      bin          308 May 18 19:21 spaid.1t.z
+-r--r--r--   1 bin      bin         4875 May 18 19:21 spell.1.z
+-r--r--r--   1 bin      bin          931 May 18 19:21 split.1.z
+-r--r--r--   1 bin      bin         2948 May 18 19:21 spooladm.1t.z
+-r--r--r--   1 bin      bin         1659 May 18 19:21 strace.1m.z
+-r--r--r--   1 bin      bin          600 May 18 19:21 strclean.1m.z
+-r--r--r--   1 bin      bin         1379 May 18 19:21 strerr.1m.z
+-r--r--r--   1 bin      bin          289 May 18 19:21 strings.1.z
+-r--r--r--   1 bin      bin         1710 May 18 19:21 strip.1.z
+-r--r--r--   1 bin      bin         2886 May 18 19:21 strnstat.1t.z
+-r--r--r--   1 bin      bin         4936 May 18 19:21 stty.1.z
+-r--r--r--   1 bin      bin         1657 May 18 19:21 su.1.z
+-r--r--r--   1 bin      bin          863 May 18 19:21 sum.1.z
+-r--r--r--   1 bin      bin         2798 May 18 19:21 swupdate.1t.z
+-r--r--r--   1 bin      bin          429 May 18 19:21 sync.1m.z
+-r--r--r--   1 bin      bin          295 May 18 19:21 sysboot.1t.z
+-r--r--r--   1 bin      bin         1777 May 18 19:21 tail.1.z
+-r--r--r--   1 bin      bin         7616 May 18 19:21 tar.1.z
+-r--r--r--   1 bin      bin         2344 May 18 19:21 tcdl.1t.z
+-r--r--r--   1 bin      bin         3793 May 18 19:21 tcdump.1t.z
+-r--r--r--   1 bin      bin         1481 May 18 19:21 tcreset.1t.z
+-r--r--r--   1 bin      bin         3012 May 18 19:21 tcstat.1t.z
+-r--r--r--   1 bin      bin          655 May 18 19:21 tde.1t.z
+-r--r--r--   1 bin      bin         2342 May 18 19:21 tdts.1t.z
+-r--r--r--   1 bin      bin          488 May 18 19:21 tee.1.z
+-r--r--r--   1 bin      bin         1500 May 18 19:21 test.1.z
+-r--r--r--   1 bin      bin         2428 May 18 19:21 tic.1m.z
+-r--r--r--   1 bin      bin          710 May 18 19:21 time.1.z
+-r--r--r--   1 bin      bin         2226 May 18 19:21 timex.1.z
+-r--r--r--   1 bin      bin         2545 May 18 19:21 toisam.1t.z
+-r--r--r--   1 bin      bin         2343 May 18 19:21 topc.1t.z
+-r--r--r--   1 bin      bin         1336 May 18 19:21 touch.1.z
+-r--r--r--   1 bin      bin         3311 May 18 19:21 tput.1.z
+-r--r--r--   1 bin      bin         1942 May 18 19:21 tr.1.z
+-r--r--r--   1 bin      bin          370 May 18 19:21 true.1.z
+-r--r--r--   1 bin      bin          675 May 18 19:21 tsort.1.z
+-r--r--r--   1 bin      bin          863 May 18 19:21 tty.1.z
+-r--r--r--   1 bin      bin          461 May 18 19:21 ttyname.1.z
+-r--r--r--   1 bin      bin         7445 May 18 19:21 tx.1t.z
+-r--r--r--   1 bin      bin          743 May 18 19:21 umask.1.z
+-r--r--r--   1 bin      bin          583 May 18 19:21 umount.1m.z
+-r--r--r--   1 bin      bin          366 May 18 19:21 umountall.1m.z
+-r--r--r--   1 bin      bin         1092 May 18 19:21 uname.1.z
+-r--r--r--   1 bin      bin         1271 May 18 19:21 unget.1.z
+-r--r--r--   1 bin      bin         1842 May 18 19:21 uniq.1.z
+-r--r--r--   1 bin      bin         1006 May 18 19:21 units.1.z
+-r--r--r--   1 bin      bin          306 May 18 19:21 unlink.1m.z
+-r--r--r--   1 bin      bin          777 May 18 19:21 unpack.1.z
+-r--r--r--   1 bin      bin         1323 May 18 19:21 update.1m.z
+-r--r--r--   1 bin      bin          747 May 18 19:21 upsmon.1t.z
+-r--r--r--   1 bin      bin          643 May 18 19:21 upsoff.1t.z
+-r--r--r--   1 bin      bin          354 May 18 19:21 upson.1t.z
+-r--r--r--   1 bin      bin         1420 May 18 19:21 upsstat.1t.z
+-r--r--r--   1 bin      bin         1648 May 18 19:21 upswait.1t.z
+-r--r--r--   1 bin      bin         2809 May 18 19:21 usradm.1t.z
+-r--r--r--   1 bin      bin          863 May 18 19:21 uucheck.1m.z
+-r--r--r--   1 bin      bin         1199 May 18 19:21 uucico.1m.z
+-r--r--r--   1 bin      bin         1673 May 18 19:21 uucleanup.1m.z
+-r--r--r--   1 bin      bin         3605 May 18 19:21 uucp.1c.z
+-r--r--r--   1 bin      bin         1024 May 18 19:21 uuencode.1c.z
+-r--r--r--   1 bin      bin         1886 May 18 19:21 uugetty.1m.z
+-r--r--r--   1 bin      bin          759 May 18 19:21 uusched.1m.z
+-r--r--r--   1 bin      bin         2329 May 18 19:21 uustat.1c.z
+-r--r--r--   1 bin      bin         1879 May 18 19:21 uuto.1c.z
+-r--r--r--   1 bin      bin          726 May 18 19:21 uutry.1m.z
+-r--r--r--   1 bin      bin         3291 May 18 19:21 uux.1c.z
+-r--r--r--   1 bin      bin          970 May 18 19:21 uuxqt.1m.z
+-r--r--r--   1 bin      bin         1685 May 18 19:21 val.1.z
+-r--r--r--   1 bin      bin         3518 May 18 19:21 vc.1.z
+-r--r--r--   1 bin      bin         4594 May 18 19:21 vfisam.1t.z
+-r--r--r--   1 bin      bin        17112 May 18 19:21 vi.1.z
+-r--r--r--   1 bin      bin          245 May 18 19:21 view.1.z
+-r--r--r--   1 bin      bin         4293 May 18 19:21 volcopy.1m.z
+-r--r--r--   1 bin      bin          482 May 18 19:21 wait.1.z
+-r--r--r--   1 bin      bin          435 May 18 19:21 wall.1m.z
+-r--r--r--   1 bin      bin         1035 May 18 19:21 wc.1.z
+-r--r--r--   1 bin      bin          868 May 18 19:21 what.1.z
+-r--r--r--   1 bin      bin         4160 May 18 19:21 who.1.z
+-r--r--r--   1 bin      bin          302 May 18 19:21 whodo.1m.z
+-r--r--r--   1 bin      bin         1460 May 18 19:21 write.1.z
+-r--r--r--   1 bin      bin         3666 May 18 19:21 xargs.1.z
+-r--r--r--   1 bin      bin          608 May 18 19:21 xns.1m.z
+-r--r--r--   1 bin      bin         1854 May 18 19:21 xnsd.1t.z
+-r--r--r--   1 bin      bin         2070 May 18 19:21 yacc.1.z
+
+/usr/man/man2:
+total 159
+
+drwxr-xr-x   2 bin      bin         1136 May 18 19:21 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+-r--r--r--   1 bin      bin         1328 May 18 19:21 access.2.z
+-r--r--r--   1 bin      bin         1201 May 18 19:21 acct.2.z
+-r--r--r--   1 bin      bin          460 May 18 19:21 alarm.2.z
+-r--r--r--   1 bin      bin         1339 May 18 19:21 brk.2.z
+-r--r--r--   1 bin      bin          675 May 18 19:21 chdir.2.z
+-r--r--r--   1 bin      bin         1994 May 18 19:21 chmod.2.z
+-r--r--r--   1 bin      bin         1256 May 18 19:21 chown.2.z
+-r--r--r--   1 bin      bin          792 May 18 19:21 chroot.2.z
+-r--r--r--   1 bin      bin          503 May 18 19:21 close.2.z
+-r--r--r--   1 bin      bin         1931 May 18 19:21 creat.2.z
+-r--r--r--   1 bin      bin          744 May 18 19:21 dup.2.z
+-r--r--r--   1 bin      bin         3826 May 18 19:21 exec.2.z
+-r--r--r--   1 bin      bin         1450 May 18 19:21 exit.2.z
+-r--r--r--   1 bin      bin         4306 May 18 19:21 fcntl.2.z
+-r--r--r--   1 bin      bin         1457 May 18 19:21 fork.2.z
+-r--r--r--   1 bin      bin         2958 May 18 19:21 getmsg.2.z
+-r--r--r--   1 bin      bin          333 May 18 19:21 getpid.2.z
+-r--r--r--   1 bin      bin          376 May 18 19:21 getuid.2.z
+-r--r--r--   1 bin      bin        14169 May 18 19:21 intro.2.z
+-r--r--r--   1 bin      bin          582 May 18 19:21 ioctl.2.z
+-r--r--r--   1 bin      bin         1353 May 18 19:21 kill.2.z
+-r--r--r--   1 bin      bin         1140 May 18 19:21 link.2.z
+-r--r--r--   1 bin      bin          920 May 18 19:21 lseek.2.z
+-r--r--r--   1 bin      bin         1261 May 18 19:21 mkdir.2.z
+-r--r--r--   1 bin      bin         2057 May 18 19:21 mknod.2.z
+-r--r--r--   1 bin      bin         2173 May 18 19:21 mount.2.z
+-r--r--r--   1 bin      bin         1599 May 18 19:21 msgctl.2.z
+-r--r--r--   1 bin      bin         1378 May 18 19:21 msgget.2.z
+-r--r--r--   1 bin      bin         3747 May 18 19:21 msgop.2.z
+-r--r--r--   1 bin      bin          596 May 18 19:21 nice.2.z
+-r--r--r--   1 bin      bin         3058 May 18 19:21 open.2.z
+-r--r--r--   1 bin      bin          474 May 18 19:21 pause.2.z
+-r--r--r--   1 bin      bin          636 May 18 19:21 pipe.2.z
+-r--r--r--   1 bin      bin         1100 May 18 19:21 plock.2.z
+-r--r--r--   1 bin      bin         3009 May 18 19:21 poll.2.z
+-r--r--r--   1 bin      bin          861 May 18 19:21 profil.2.z
+-r--r--r--   1 bin      bin         3967 May 18 19:21 ptrace.2.z
+-r--r--r--   1 bin      bin         2812 May 18 19:21 putmsg.2.z
+-r--r--r--   1 bin      bin         2279 May 18 19:21 read.2.z
+-r--r--r--   1 bin      bin          843 May 18 19:21 readlink.2.z
+-r--r--r--   1 bin      bin          928 May 18 19:21 rmdir.2.z
+-r--r--r--   1 bin      bin         2462 May 18 19:21 semctl.2.z
+-r--r--r--   1 bin      bin         1588 May 18 19:21 semget.2.z
+-r--r--r--   1 bin      bin         3388 May 18 19:21 semop.2.z
+-r--r--r--   1 bin      bin          314 May 18 19:21 setpgrp.2.z
+-r--r--r--   1 bin      bin          664 May 18 19:21 setuid.2.z
+-r--r--r--   1 bin      bin         1538 May 18 19:21 shmctl.2.z
+-r--r--r--   1 bin      bin         1665 May 18 19:21 shmget.2.z
+-r--r--r--   1 bin      bin         1622 May 18 19:21 shmop.2.z
+-r--r--r--   1 bin      bin         3296 May 18 19:21 signal.2.z
+-r--r--r--   1 bin      bin         5144 May 18 19:21 sigset.2.z
+-r--r--r--   1 bin      bin         2171 May 18 19:21 stat.2.z
+-r--r--r--   1 bin      bin         2221 May 18 19:21 statfs.2.z
+-r--r--r--   1 bin      bin          402 May 18 19:21 stime.2.z
+-r--r--r--   1 bin      bin         1250 May 18 19:21 symlink.2.z
+-r--r--r--   1 bin      bin          389 May 18 19:21 sync.2.z
+-r--r--r--   1 bin      bin         1090 May 18 19:21 sysfs.2.z
+-r--r--r--   1 bin      bin          452 May 18 19:21 time.2.z
+-r--r--r--   1 bin      bin          929 May 18 19:21 times.2.z
+-r--r--r--   1 bin      bin         1046 May 18 19:21 ulimit.2.z
+-r--r--r--   1 bin      bin          371 May 18 19:21 umask.2.z
+-r--r--r--   1 bin      bin          899 May 18 19:21 umount.2.z
+-r--r--r--   1 bin      bin          724 May 18 19:21 uname.2.z
+-r--r--r--   1 bin      bin         1120 May 18 19:21 unlink.2.z
+-r--r--r--   1 bin      bin          718 May 18 19:21 ustat.2.z
+-r--r--r--   1 bin      bin         1326 May 18 19:21 utime.2.z
+-r--r--r--   1 bin      bin         1605 May 18 19:21 wait.2.z
+-r--r--r--   1 bin      bin         2375 May 18 19:21 waitpid.2.z
+-r--r--r--   1 bin      bin         3078 May 18 19:21 write.2.z
+
+/usr/man/man3:
+total 470
+
+drwxr-xr-x   2 bin      bin         3824 May 18 19:21 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+-r--r--r--   1 bin      bin          766 May 18 19:21 a64l.3c.z
+-r--r--r--   1 bin      bin          498 May 18 19:21 abort.3c.z
+-r--r--r--   1 bin      bin          315 May 18 19:21 abs.3c.z
+-r--r--r--   1 bin      bin          617 May 18 19:21 assert.3c.z
+-r--r--r--   1 bin      bin          721 May 18 19:21 bessel.3m.z
+-r--r--r--   1 bin      bin         2055 May 18 19:21 bsearch.3c.z
+-r--r--r--   1 bin      bin          562 May 18 19:21 clock.3c.z
+-r--r--r--   1 bin      bin          843 May 18 19:21 conv.3c.z
+-r--r--r--   1 bin      bin          393 May 18 19:21 cputype.3t.z
+-r--r--r--   1 bin      bin         1224 May 18 19:21 crypt.3c.z
+-r--r--r--   1 bin      bin          726 May 18 19:21 ctermid.3s.z
+-r--r--r--   1 bin      bin         5575 May 18 19:21 ctime.3c.z
+-r--r--r--   1 bin      bin         2439 May 18 19:21 ctype.3c.z
+-r--r--r--   1 bin      bin        51276 May 18 19:21 curses.3x.z
+-r--r--r--   1 bin      bin          557 May 18 19:21 cuserid.3s.z
+-r--r--r--   1 bin      bin          867 May 18 19:21 decadd.3t.z
+-r--r--r--   1 bin      bin          547 May 18 19:21 deccmp.3t.z
+-r--r--r--   1 bin      bin          832 May 18 19:21 deccvasc.3t.z
+-r--r--r--   1 bin      bin          418 May 18 19:21 deccvdbl.3t.z
+-r--r--r--   1 bin      bin          376 May 18 19:21 deccvint.3t.z
+-r--r--r--   1 bin      bin          371 May 18 19:21 deccvlong.3t.z
+-r--r--r--   1 bin      bin          721 May 18 19:21 dececvt.3t.z
+-r--r--r--   1 bin      bin          900 May 18 19:21 dectoasc.3t.z
+-r--r--r--   1 bin      bin          457 May 18 19:21 dectodbl.3t.z
+-r--r--r--   1 bin      bin          461 May 18 19:21 dectoint.3t.z
+-r--r--r--   1 bin      bin          464 May 18 19:21 dectolong.3t.z
+-r--r--r--   1 bin      bin         3916 May 18 19:21 dial.3c.z
+-r--r--r--   1 bin      bin         1911 May 18 19:21 directory.3c.z
+-r--r--r--   1 bin      bin         2919 May 18 19:21 drand48.3c.z
+-r--r--r--   1 bin      bin          606 May 18 19:21 dup2.3c.z
+-r--r--r--   1 bin      bin          952 May 18 19:21 ecvt.3c.z
+-r--r--r--   1 bin      bin          550 May 18 19:21 end.3c.z
+-r--r--r--   1 bin      bin          417 May 18 19:21 erf.3m.z
+-r--r--r--   1 bin      bin         1252 May 18 19:21 exp.3m.z
+-r--r--r--   1 bin      bin          518 May 18 19:21 fclose.3s.z
+-r--r--r--   1 bin      bin         1602 May 18 19:21 fe_abort.3t.z
+-r--r--r--   1 bin      bin         1172 May 18 19:21 fe_close.3t.z
+-r--r--r--   1 bin      bin         5391 May 18 19:21 fe_exportscree
+-r--r--r--   1 bin      bin         1019 May 18 19:21 fe_flush.3t.z
+-r--r--r--   1 bin      bin         1164 May 18 19:21 fe_getparm.3t
+-r--r--r--   1 bin      bin         2275 May 18 19:21 fe_importscree
+-r--r--r--   1 bin      bin         8997 May 18 19:21 fe_open.3t.z
+-r--r--r--   1 bin      bin         4152 May 18 19:21 fe_printscreen
+-r--r--r--   1 bin      bin         1855 May 18 19:21 fe_putchar.3t
+-r--r--r--   1 bin      bin         6089 May 18 19:21 fe_read.3t.z
+-r--r--r--   1 bin      bin         2535 May 18 19:21 fe_restorescre
+-r--r--r--   1 bin      bin         2479 May 18 19:21 fe_savescreen.
+-r--r--r--   1 bin      bin         1715 May 18 19:21 fe_setvbits.3t
+-r--r--r--   1 bin      bin         3105 May 18 19:21 fe_write.3t.z
+-r--r--r--   1 bin      bin          611 May 18 19:21 ferror.3s.z
+-r--r--r--   1 bin      bin          478 May 18 19:21 floor.3m.z
+-r--r--r--   1 bin      bin         1695 May 18 19:21 fopen.3s.z
+-r--r--r--   1 bin      bin         1040 May 18 19:21 fread.3s.z
+-r--r--r--   1 bin      bin          815 May 18 19:21 frexp.3c.z
+-r--r--r--   1 bin      bin         1030 May 18 19:21 fseek.3s.z
+-r--r--r--   1 bin      bin         1610 May 18 19:21 ftw.3c.z
+-r--r--r--   1 bin      bin          786 May 18 19:21 gamma.3m.z
+-r--r--r--   1 bin      bin         1042 May 18 19:21 get_text.3t.z
+-r--r--r--   1 bin      bin         1174 May 18 19:21 getc.3s.z
+-r--r--r--   1 bin      bin          720 May 18 19:21 getcwd.3c.z
+-r--r--r--   1 bin      bin          313 May 18 19:21 getenv.3c.z
+-r--r--r--   1 bin      bin         1428 May 18 19:21 getgrent.3c.z
+-r--r--r--   1 bin      bin          570 May 18 19:21 getlogin.3c.z
+-r--r--r--   1 bin      bin         2250 May 18 19:21 getopt.3c.z
+-r--r--r--   1 bin      bin          592 May 18 19:21 getpass.3c.z
+-r--r--r--   1 bin      bin          567 May 18 19:21 getpw.3c.z
+-r--r--r--   1 bin      bin         1514 May 18 19:21 getpwent.3c.z
+-r--r--r--   1 bin      bin          747 May 18 19:21 gets.3s.z
+-r--r--r--   1 bin      bin         2212 May 18 19:21 getspent.3x.z
+-r--r--r--   1 bin      bin         1060 May 18 19:21 getupsflags.3t
+-r--r--r--   1 bin      bin         2762 May 18 19:21 getut.3c.z
+-r--r--r--   1 bin      bin          546 May 18 19:21 gspaid.3t.z
+-r--r--r--   1 bin      bin         1110 May 18 19:21 gsppwent.3t.z
+-r--r--r--   1 bin      bin          426 May 18 19:21 hasupsport.3t
+-r--r--r--   1 bin      bin         3147 May 18 19:21 hsearch.3c.z
+-r--r--r--   1 bin      bin          391 May 18 19:21 hypot.3m.z
+-r--r--r--   1 bin      bin         3926 May 18 19:21 intro.3.z
+-r--r--r--   1 bin      bin         1064 May 18 19:21 isaddindex.3t
+-r--r--r--   1 bin      bin         1063 May 18 19:21 isaudit.3t.z
+-r--r--r--   1 bin      bin          687 May 18 19:21 isbuild.3t.z
+-r--r--r--   1 bin      bin          636 May 18 19:21 isclose.3t.z
+-r--r--r--   1 bin      bin          431 May 18 19:21 isdelcurr.3t.z
+-r--r--r--   1 bin      bin          460 May 18 19:21 isdelete.3t.z
+-r--r--r--   1 bin      bin          891 May 18 19:21 isdelindex.3t
+-r--r--r--   1 bin      bin          444 May 18 19:21 isdelrec.3t.z
+-r--r--r--   1 bin      bin          502 May 18 19:21 iserase.3t.z
+-r--r--r--   1 bin      bin          527 May 18 19:21 isflush.3t.z
+-r--r--r--   1 bin      bin         1100 May 18 19:21 isindexinfo.3t
+-r--r--r--   1 bin      bin          501 May 18 19:21 islock.3t.z
+-r--r--r--   1 bin      bin         1533 May 18 19:21 isopen.3t.z
+-r--r--r--   1 bin      bin          764 May 18 19:21 ispath.3t.z
+-r--r--r--   1 bin      bin         1466 May 18 19:21 isread.3t.z
+-r--r--r--   1 bin      bin          427 May 18 19:21 isrelease.3t.z
+-r--r--r--   1 bin      bin          374 May 18 19:21 isrename.3t.z
+-r--r--r--   1 bin      bin          541 May 18 19:21 isrewcurr.3t.z
+-r--r--r--   1 bin      bin          568 May 18 19:21 isrewrec.3t.z
+-r--r--r--   1 bin      bin          556 May 18 19:21 isrewrite.3t.z
+-r--r--r--   1 bin      bin          726 May 18 19:21 issetunique.3t
+-r--r--r--   1 bin      bin         1330 May 18 19:21 isstart.3t.z
+-r--r--r--   1 bin      bin          596 May 18 19:21 isuniqueid.3t
+-r--r--r--   1 bin      bin          400 May 18 19:21 isunlock.3t.z
+-r--r--r--   1 bin      bin          579 May 18 19:21 iswrcurr.3t.z
+-r--r--r--   1 bin      bin          503 May 18 19:21 iswrite.3t.z
+-r--r--r--   1 bin      bin          519 May 18 19:21 l3tol.3c.z
+-r--r--r--   1 bin      bin          567 May 18 19:21 ldahread.3x.z
+-r--r--r--   1 bin      bin          937 May 18 19:21 ldclose.3x.z
+-r--r--r--   1 bin      bin          368 May 18 19:21 lddbl.3t.z
+-r--r--r--   1 bin      bin          739 May 18 19:21 lddecimal.3t.z
+-r--r--r--   1 bin      bin          628 May 18 19:21 ldfhread.3x.z
+-r--r--r--   1 bin      bin          364 May 18 19:21 ldfloat.3t.z
+-r--r--r--   1 bin      bin         1159 May 18 19:21 ldgetname.3x.z
+-r--r--r--   1 bin      bin          343 May 18 19:21 ldint.3t.z
+-r--r--r--   1 bin      bin          363 May 18 19:21 ldlong.3t.z
+-r--r--r--   1 bin      bin         1318 May 18 19:21 ldlread.3x.z
+-r--r--r--   1 bin      bin          779 May 18 19:21 ldlseek.3x.z
+-r--r--r--   1 bin      bin          493 May 18 19:21 ldohseek.3x.z
+-r--r--r--   1 bin      bin         1672 May 18 19:21 ldopen.3x.z
+-r--r--r--   1 bin      bin          777 May 18 19:21 ldrseek.3x.z
+-r--r--r--   1 bin      bin          823 May 18 19:21 ldshread.3x.z
+-r--r--r--   1 bin      bin          738 May 18 19:21 ldsseek.3x.z
+-r--r--r--   1 bin      bin          787 May 18 19:21 ldtbindex.3x.z
+-r--r--r--   1 bin      bin          663 May 18 19:21 ldtbread.3x.z
+-r--r--r--   1 bin      bin          488 May 18 19:21 ldtbseek.3x.z
+-r--r--r--   1 bin      bin         3091 May 18 19:21 lockf.3c.z
+-r--r--r--   1 bin      bin          417 May 18 19:21 logname.3x.z
+-r--r--r--   1 bin      bin          658 May 18 19:21 lpopen.3t.z
+-r--r--r--   1 bin      bin         1661 May 18 19:21 lsearch.3c.z
+-r--r--r--   1 bin      bin         1459 May 18 19:21 malloc.3c.z
+-r--r--r--   1 bin      bin         2638 May 18 19:21 malloc.3x.z
+-r--r--r--   1 bin      bin         2329 May 18 19:21 matherr.3m.z
+-r--r--r--   1 bin      bin         1159 May 18 19:21 memory.3c.z
+-r--r--r--   1 bin      bin          577 May 18 19:21 mktemp.3c.z
+-r--r--r--   1 bin      bin         1596 May 18 19:21 monitor.3c.z
+-r--r--r--   1 bin      bin          488 May 18 19:21 nap.3c.z
+-r--r--r--   1 bin      bin         1025 May 18 19:21 nlist.3c.z
+-r--r--r--   1 bin      bin          792 May 18 19:21 perror.3c.z
+-r--r--r--   1 bin      bin         1121 May 18 19:21 pick_log_file.
+-r--r--r--   1 bin      bin         1500 May 18 19:21 pick_msg_set.3
+-r--r--r--   1 bin      bin         1227 May 18 19:21 popen.3s.z
+-r--r--r--   1 bin      bin         4696 May 18 19:21 printf.3s.z
+-r--r--r--   1 bin      bin         3161 May 18 19:21 printm.3t.z
+-r--r--r--   1 bin      bin         1698 May 18 19:21 putc.3s.z
+-r--r--r--   1 bin      bin          837 May 18 19:21 putenv.3c.z
+-r--r--r--   1 bin      bin          546 May 18 19:21 putpwent.3c.z
+-r--r--r--   1 bin      bin          541 May 18 19:21 puts.3s.z
+-r--r--r--   1 bin      bin          699 May 18 19:21 putspent.3x.z
+-r--r--r--   1 bin      bin          767 May 18 19:21 qsort.3c.z
+-r--r--r--   1 bin      bin          507 May 18 19:21 rand.3c.z
+-r--r--r--   1 bin      bin         2581 May 18 19:21 regcmp.3x.z
+-r--r--r--   1 bin      bin         4779 May 18 19:21 regexp.3x.z
+-r--r--r--   1 bin      bin          713 May 18 19:21 safe.3t.z
+-r--r--r--   1 bin      bin         4850 May 18 19:21 scanf.3s.z
+-r--r--r--   1 bin      bin         1252 May 18 19:21 setbuf.3s.z
+-r--r--r--   1 bin      bin          404 May 18 19:21 setfwmode.3t.z
+-r--r--r--   1 bin      bin         1378 May 18 19:21 setjmp.3c.z
+-r--r--r--   1 bin      bin          439 May 18 19:21 setotmode.3t.z
+-r--r--r--   1 bin      bin          619 May 18 19:21 sinh.3m.z
+-r--r--r--   1 bin      bin         1035 May 18 19:21 sleep.3c.z
+-r--r--r--   1 bin      bin          618 May 18 19:21 sputl.3x.z
+-r--r--r--   1 bin      bin         1367 May 18 19:21 ssignal.3c.z
+-r--r--r--   1 bin      bin          411 May 18 19:21 stdbl.3t.z
+-r--r--r--   1 bin      bin          702 May 18 19:21 stdecimal.3t.z
+-r--r--r--   1 bin      bin         2260 May 18 19:21 stdio.3s.z
+-r--r--r--   1 bin      bin         1198 May 18 19:21 stdipc.3c.z
+-r--r--r--   1 bin      bin          415 May 18 19:21 stfloat.3t.z
+-r--r--r--   1 bin      bin          389 May 18 19:21 stint.3t.z
+-r--r--r--   1 bin      bin          405 May 18 19:21 stlong.3t.z
+-r--r--r--   1 bin      bin         2271 May 18 19:21 string.3c.z
+-r--r--r--   1 bin      bin          838 May 18 19:21 strtod.3c.z
+-r--r--r--   1 bin      bin          901 May 18 19:21 strtol.3c.z
+-r--r--r--   1 bin      bin          375 May 18 19:21 swab.3c.z
+-r--r--r--   1 bin      bin          456 May 18 19:21 system.3s.z
+-r--r--r--   1 bin      bin         2448 May 18 19:21 t_accept.3n.z
+-r--r--r--   1 bin      bin         1953 May 18 19:21 t_alloc.3n.z
+-r--r--r--   1 bin      bin         3483 May 18 19:21 t_bind.3n.z
+-r--r--r--   1 bin      bin          876 May 18 19:21 t_close.3n.z
+-r--r--r--   1 bin      bin         3328 May 18 19:21 t_connect.3n.z
+-r--r--r--   1 bin      bin         1076 May 18 19:21 t_error.3n.z
+-r--r--r--   1 bin      bin         1105 May 18 19:21 t_free.3n.z
+-r--r--r--   1 bin      bin         3345 May 18 19:21 t_getinfo.3n.z
+-r--r--r--   1 bin      bin         1513 May 18 19:21 t_getstate.3n
+-r--r--r--   1 bin      bin         1902 May 18 19:21 t_listen.3n.z
+-r--r--r--   1 bin      bin         1054 May 18 19:21 t_look.3n.z
+-r--r--r--   1 bin      bin         3647 May 18 19:21 t_open.3n.z
+-r--r--r--   1 bin      bin         2364 May 18 19:21 t_opt.3n.z
+-r--r--r--   1 bin      bin         1912 May 18 19:21 t_rcv.3n.z
+-r--r--r--   1 bin      bin         2086 May 18 19:21 t_rcvcon.3n.z
+-r--r--r--   1 bin      bin         1621 May 18 19:21 t_rcvdis.3n.z
+-r--r--r--   1 bin      bin         1027 May 18 19:21 t_rcvrel.3n.z
+-r--r--r--   1 bin      bin         3245 May 18 19:21 t_rcvudata.3n
+-r--r--r--   1 bin      bin         2673 May 18 19:21 t_rcvuderr.3n
+-r--r--r--   1 bin      bin         2589 May 18 19:21 t_snd.3n.z
+-r--r--r--   1 bin      bin         1824 May 18 19:21 t_snddis.3n.z
+-r--r--r--   1 bin      bin          975 May 18 19:21 t_sndrel.3n.z
+-r--r--r--   1 bin      bin         2656 May 18 19:21 t_sndudata.3n
+-r--r--r--   1 bin      bin         1684 May 18 19:21 t_sync.3n.z
+-r--r--r--   1 bin      bin          702 May 18 19:21 t_unbind.3n.z
+-r--r--r--   1 bin      bin         1998 May 18 19:21 termcap.3x.z
+-r--r--r--   1 bin      bin          985 May 18 19:21 tiaddindex.3t
+-r--r--r--   1 bin      bin         1038 May 18 19:21 tiaudit.3t.z
+-r--r--r--   1 bin      bin         1051 May 18 19:21 tibuild.3t.z
+-r--r--r--   1 bin      bin          501 May 18 19:21 ticache.3t.z
+-r--r--r--   1 bin      bin          580 May 18 19:21 ticlose.3t.z
+-r--r--r--   1 bin      bin          394 May 18 19:21 tidelcurr.3t.z
+-r--r--r--   1 bin      bin          412 May 18 19:21 tidelete.3t.z
+-r--r--r--   1 bin      bin          776 May 18 19:21 tidelindex.3t
+-r--r--r--   1 bin      bin          403 May 18 19:21 tidelrec.3t.z
+-r--r--r--   1 bin      bin          408 May 18 19:21 tierase.3t.z
+-r--r--r--   1 bin      bin          458 May 18 19:21 tiflush.3t.z
+-r--r--r--   1 bin      bin         1027 May 18 19:21 tiindexinfo.3t
+-r--r--r--   1 bin      bin          763 May 18 19:21 tilock.3t.z
+-r--r--r--   1 bin      bin         1792 May 18 19:21 tiopen.3t.z
+-r--r--r--   1 bin      bin         1600 May 18 19:21 tioption.3t.z
+-r--r--r--   1 bin      bin         1584 May 18 19:21 tiread.3t.z
+-r--r--r--   1 bin      bin          879 May 18 19:21 tireadrec.3t.z
+-r--r--r--   1 bin      bin          400 May 18 19:21 tirelease.3t.z
+-r--r--r--   1 bin      bin          782 May 18 19:21 tirename.3t.z
+-r--r--r--   1 bin      bin          490 May 18 19:21 tirewcurr.3t.z
+-r--r--r--   1 bin      bin          506 May 18 19:21 tirewrec.3t.z
+-r--r--r--   1 bin      bin          511 May 18 19:21 tirewrite.3t.z
+-r--r--r--   1 bin      bin          669 May 18 19:21 tisetunique.3t
+-r--r--r--   1 bin      bin         1295 May 18 19:21 tistart.3t.z
+-r--r--r--   1 bin      bin          552 May 18 19:21 tiucoll.3t.z
+-r--r--r--   1 bin      bin          555 May 18 19:21 tiuniqueid.3t
+-r--r--r--   1 bin      bin          361 May 18 19:21 tiunlock.3t.z
+-r--r--r--   1 bin      bin          532 May 18 19:21 tiwrcurr.3t.z
+-r--r--r--   1 bin      bin          466 May 18 19:21 tiwrite.3t.z
+-r--r--r--   1 bin      bin          403 May 18 19:21 tmpfile.3s.z
+-r--r--r--   1 bin      bin         1776 May 18 19:21 tmpnam.3s.z
+-r--r--r--   1 bin      bin         1304 May 18 19:21 trig.3m.z
+-r--r--r--   1 bin      bin         3784 May 18 19:21 tsearch.3c.z
+-r--r--r--   1 bin      bin          471 May 18 19:21 ttyname.3c.z
+-r--r--r--   1 bin      bin          487 May 18 19:21 ttyslot.3c.z
+-r--r--r--   1 bin      bin          701 May 18 19:21 ungetc.3s.z
+-r--r--r--   1 bin      bin          488 May 18 19:21 upsoff.3t.z
+-r--r--r--   1 bin      bin          378 May 18 19:21 upson.3t.z
+-r--r--r--   1 bin      bin          990 May 18 19:21 vprintf.3s.z
+
+/usr/man/man4:
+total 277
+
+drwxr-xr-x   2 bin      bin          896 May 18 19:21 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+-r--r--r--   1 bin      bin         2166 May 18 19:21 a.out.4.z
+-r--r--r--   1 bin      bin         1363 May 18 19:21 acct.4.z
+-r--r--r--   1 bin      bin         2031 May 18 19:21 alpcaps.4.z
+-r--r--r--   1 bin      bin         1771 May 18 19:21 alpdefs.4.z
+-r--r--r--   1 bin      bin          607 May 18 19:21 aouthdr.4.z
+-r--r--r--   1 bin      bin         2180 May 18 19:21 ar.4.z
+-r--r--r--   1 bin      bin          439 May 18 19:21 bshlogin.4.z
+-r--r--r--   1 bin      bin         4527 May 18 19:21 ccbdev.4.z
+-r--r--r--   1 bin      bin          837 May 18 19:21 cftime.4.z
+-r--r--r--   1 bin      bin          355 May 18 19:21 checklist.4.z
+-r--r--r--   1 bin      bin          844 May 18 19:21 core.4.z
+-r--r--r--   1 bin      bin         1377 May 18 19:21 cpio.4.z
+-r--r--r--   1 bin      bin          616 May 18 19:21 dir.4.z
+-r--r--r--   1 bin      bin         1132 May 18 19:21 errfile.4.z
+-r--r--r--   1 bin      bin        22016 May 18 19:21 fecap.4.z
+-r--r--r--   1 bin      bin         1180 May 18 19:21 filehdr.4.z
+-r--r--r--   1 bin      bin         4082 May 18 19:21 files.4.z
+-r--r--r--   1 bin      bin         4734 May 18 19:21 fs.4.z
+-r--r--r--   1 bin      bin          910 May 18 19:21 fslist.4.z
+-r--r--r--   1 bin      bin         1554 May 18 19:21 fspec.4.z
+-r--r--r--   1 bin      bin          535 May 18 19:21 fstab.4.z
+-r--r--r--   1 bin      bin         2204 May 18 19:21 gettydefs.4.z
+-r--r--r--   1 bin      bin          508 May 18 19:21 group.4.z
+-r--r--r--   1 bin      bin         4529 May 18 19:21 inittab.4.z
+-r--r--r--   1 bin      bin          770 May 18 19:21 inode.4.z
+-r--r--r--   1 bin      bin          279 May 18 19:21 intro.4.z
+-r--r--r--   1 bin      bin          290 May 18 19:21 issue.4.z
+-r--r--r--   1 bin      bin         3109 May 18 19:21 ldfcn.4.z
+-r--r--r--   1 bin      bin          783 May 18 19:21 linenum.4.z
+-r--r--r--   1 bin      bin          557 May 18 19:21 login.4.z
+-r--r--r--   1 bin      bin          889 May 18 19:21 math.4.z
+-r--r--r--   1 bin      bin         1956 May 18 19:21 menu.4.z
+-r--r--r--   1 bin      bin          594 May 18 19:21 mnttab.4.z
+-r--r--r--   1 bin      bin         2829 May 18 19:21 mtctab.4.z
+-r--r--r--   1 bin      bin         1309 May 18 19:21 passwd.4.z
+-r--r--r--   1 bin      bin          590 May 18 19:21 profile.4.z
+-r--r--r--   1 bin      bin         7075 May 18 19:21 ptdf.4.z
+-r--r--r--   1 bin      bin         1353 May 18 19:21 rdlist.4.z
+-r--r--r--   1 bin      bin         1519 May 18 19:21 reloc.4.z
+-r--r--r--   1 bin      bin         1078 May 18 19:21 rootlogin.4.z
+-r--r--r--   1 bin      bin         3466 May 18 19:21 sccsfile.4.z
+-r--r--r--   1 bin      bin          952 May 18 19:21 scnhdr.4.z
+-r--r--r--   1 bin      bin          802 May 18 19:21 shadow.4.z
+-r--r--r--   1 bin      bin          790 May 18 19:21 softpwd.4.z
+-r--r--r--   1 bin      bin         2531 May 18 19:21 syms.4.z
+-r--r--r--   1 bin      bin         1373 May 18 19:21 tar.4.z
+-r--r--r--   1 bin      bin         5695 May 18 19:21 tctab.4.z
+-r--r--r--   1 bin      bin         3864 May 18 19:21 term.4.z
+-r--r--r--   1 bin      bin        88908 May 18 19:21 terminfo.4.z
+-r--r--r--   1 bin      bin        16629 May 18 19:21 tisam.4.z
+-r--r--r--   1 bin      bin         2228 May 18 19:21 tz.4.z
+-r--r--r--   1 bin      bin         1345 May 18 19:21 utmp.4.z
+-r--r--r--   1 bin      bin        33237 May 18 19:21 vdtrdwrt.4.z
+-r--r--r--   1 bin      bin         1533 May 18 19:21 xnscf.4.z
+
+/usr/man/man5:
+total 53
+
+drwxr-xr-x   2 bin      bin          208 May 18 19:21 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+-r--r--r--   1 bin      bin         1407 May 18 19:21 ascii.5.z
+-r--r--r--   1 bin      bin        10119 May 18 19:21 commands.5.z
+-r--r--r--   1 bin      bin         5595 May 18 19:21 environ.5.z
+-r--r--r--   1 bin      bin         1158 May 18 19:21 fcntl.5.z
+-r--r--r--   1 bin      bin          177 May 18 19:21 intro.5.z
+-r--r--r--   1 bin      bin         1532 May 18 19:21 stat.5.z
+-r--r--r--   1 bin      bin         1904 May 18 19:21 sys.5.z
+-r--r--r--   1 bin      bin         3415 May 18 19:21 term.5.z
+-r--r--r--   1 bin      bin        17241 May 18 19:21 termcap.5.z
+-r--r--r--   1 bin      bin         1116 May 18 19:21 types.5.z
+-r--r--r--   1 bin      bin         1537 May 18 19:21 varargs.5.z
+
+/usr/man/man6:
+total 2
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:21 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+-r--r--r--   1 bin      bin            0 May 18 19:21 intro.6
+
+/usr/man/man7:
+total 53
+
+drwxr-xr-x   2 bin      bin          288 May 18 19:21 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+-r--r--r--   1 bin      bin          565 May 18 19:21 acu.7.z
+-r--r--r--   1 bin      bin          802 May 18 19:21 clone.7.z
+-r--r--r--   1 bin      bin          768 May 18 19:21 dsk.7.z
+-r--r--r--   1 bin      bin          487 May 18 19:21 err.7.z
+-r--r--r--   1 bin      bin          340 May 18 19:21 intro.7.z
+-r--r--r--   1 bin      bin         3861 May 18 19:21 log.7.z
+-r--r--r--   1 bin      bin          676 May 18 19:21 mem.7.z
+-r--r--r--   1 bin      bin         1667 May 18 19:21 mt.7.z
+-r--r--r--   1 bin      bin          195 May 18 19:21 null.7.z
+-r--r--r--   1 bin      bin          526 May 18 19:21 prf.7.z
+-r--r--r--   1 bin      bin          706 May 18 19:21 qt.7.z
+-r--r--r--   1 bin      bin         2127 May 18 19:21 ramdsk.7.z
+-r--r--r--   1 bin      bin        14166 May 18 19:21 streamio.7.z
+-r--r--r--   1 bin      bin        13380 May 18 19:21 termio.7.z
+-r--r--r--   1 bin      bin          359 May 18 19:21 tty.7.z
+-r--r--r--   1 bin      bin         1861 May 18 19:21 vt.7.z
+
+/usr/man/man8:
+total 2
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:21 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+-r--r--r--   1 bin      bin            0 May 18 19:21 intro.8
+
+/usr/man/manl:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+
+/usr/man/mann:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+
+/usr/man/mano:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+
+/usr/man/manx:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  14 bin      bin          224 May 18 19:13 ..
+
+/usr/net:
+total 3
+
+drwxrwx---   3 root     sys           48 May 18 19:20 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+drwxrwx---   2 root     sys           48 May 18 19:20 nls
+
+/usr/net/nls:
+total 96
+
+drwxrwx---   2 root     sys           48 May 18 19:20 .
+drwxrwx---   3 root     sys           48 May 18 19:20 ..
+-rwx--x--x   1 root     sys        94258 May 18 19:20 listen
+
+/usr/news:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+
+/usr/plib:
+total 4
+
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 lex
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 terminfo
+
+/usr/plib/lex:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 ..
+
+/usr/plib/terminfo:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 ..
+
+/usr/preserve:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+
+/usr/pub:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+
+/usr/skel:
+total 6
+
+drwxr-xr-x   2 bin      bin           96 May 18 19:27 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+-rw-r--r--   1 bin      bin          361 May 18 19:27 .cshrc
+-rw-r--r--   1 bin      bin          441 May 18 19:27 .login
+-rw-r--r--   1 bin      bin           41 May 18 19:27 .logout
+-rw-r--r--   1 bin      bin          509 May 18 19:27 .profile
+
+/usr/spool:
+total 9
+
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 cron
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 locks
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 lp
+drwxrwxrwx   2 lp       bin           32 May 18 19:13 lppublic
+drwxrwxrwx   2 bin      bin           32 May 18 19:13 pscrn
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 uucp
+drwxrwxrwx   2 uucp     uucp          32 May 18 19:13 uucppublic
+
+/usr/spool/cron:
+total 4
+
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 .
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 ..
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 atjobs
+drwxr-xr-x   2 bin      bin           48 May 18 19:17 crontabs
+
+/usr/spool/cron/atjobs:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 ..
+
+/usr/spool/cron/crontabs:
+total 3
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:17 .
+drwxr-xr-x   4 bin      bin           64 May 18 19:13 ..
+-rw-r--r--   1 root     sys          129 May 18 19:17 adm
+
+/usr/spool/locks:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 ..
+
+/usr/spool/lp:
+total 11
+
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 .
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 ..
+-rwx------   1 lp       bin           98 May 18 19:20 .login
+drwxrwxr-x   3 lp       bin           48 May 18 19:13 admins
+drwxrwxr-x   2 lp       bin          144 May 18 19:20 bin
+drwxrwxr-x   4 lp       bin           64 May 18 19:13 fifos
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 logs
+drwxrwxr-x   2 lp       bin           96 May 18 19:20 model
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 requests
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 system
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 temp
+
+/usr/spool/lp/admins:
+total 3
+
+drwxrwxr-x   3 lp       bin           48 May 18 19:13 .
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 ..
+drwxrwxr-x   8 lp       bin          128 May 18 19:13 lp
+
+/usr/spool/lp/admins/lp:
+total 8
+
+drwxrwxr-x   8 lp       bin          128 May 18 19:13 .
+drwxrwxr-x   3 lp       bin           48 May 18 19:13 ..
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 classes
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 forms
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 interfaces
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 logs
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 printers
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 pwheels
+
+/usr/spool/lp/admins/lp/classes:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x   8 lp       bin          128 May 18 19:13 ..
+
+/usr/spool/lp/admins/lp/forms:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x   8 lp       bin          128 May 18 19:13 ..
+
+/usr/spool/lp/admins/lp/interfaces:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x   8 lp       bin          128 May 18 19:13 ..
+
+/usr/spool/lp/admins/lp/logs:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x   8 lp       bin          128 May 18 19:13 ..
+
+/usr/spool/lp/admins/lp/printers:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x   8 lp       bin          128 May 18 19:13 ..
+
+/usr/spool/lp/admins/lp/pwheels:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x   8 lp       bin          128 May 18 19:13 ..
+
+/usr/spool/lp/bin:
+total 113
+
+drwxrwxr-x   2 lp       bin          144 May 18 19:20 .
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 ..
+-r--r--r--   1 lp       bin          700 May 18 19:20 alert.proto
+-r-xr-xr-x   1 lp       bin        11272 May 18 19:20 drain.output
+-r-xr-xr-x   1 lp       bin        36696 May 18 19:20 lp.cat
+-r-xr-xr-x   1 lp       bin         7736 May 18 19:20 lp.page
+-r-xr-xr-x   1 lp       bin        32244 May 18 19:20 lp.set
+-r-xr-xr-x   1 lp       bin        15804 May 18 19:20 lp.tell
+-r-xr-xr-x   1 bin      bin         1801 May 18 19:20 slow.filter
+
+/usr/spool/lp/fifos:
+total 4
+
+drwxrwxr-x   4 lp       bin           64 May 18 19:13 .
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 ..
+drwxrwx--x   2 lp       bin           32 May 18 19:13 private
+drwxrwx-wx   2 lp       bin           32 May 18 19:13 public
+
+/usr/spool/lp/fifos/private:
+total 2
+
+drwxrwx--x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x   4 lp       bin           64 May 18 19:13 ..
+
+/usr/spool/lp/fifos/public:
+total 2
+
+drwxrwx-wx   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x   4 lp       bin           64 May 18 19:13 ..
+
+/usr/spool/lp/logs:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 ..
+
+/usr/spool/lp/model:
+total 37
+
+drwxrwxr-x   2 lp       bin           96 May 18 19:20 .
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 ..
+-r--r--r--   1 lp       bin         2637 May 18 19:20 readme
+-r-xr-xr-x   1 lp       bin        25661 May 18 19:20 standard
+-r-xr-xr-x   1 lp       bin         2918 May 18 19:20 tr78
+-r-xr-xr-x   1 lp       bin         1564 May 18 19:20 tr87
+
+/usr/spool/lp/requests:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 ..
+
+/usr/spool/lp/system:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 ..
+
+/usr/spool/lp/temp:
+total 2
+
+drwxrwxr-x   2 lp       bin           32 May 18 19:13 .
+drwxrwxr-x  10 lp       bin          176 May 18 19:20 ..
+
+/usr/spool/lppublic:
+total 2
+
+drwxrwxrwx   2 lp       bin           32 May 18 19:13 .
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 ..
+
+/usr/spool/pscrn:
+total 2
+
+drwxrwxrwx   2 bin      bin           32 May 18 19:13 .
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 ..
+
+/usr/spool/uucp:
+total 10
+
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 .
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 ..
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .Admin
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .Corrupt
+drwxr-xr-x   6 uucp     uucp          96 May 18 19:13 .Log
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .Old
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .Sequence
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .Status
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .Workspace
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .Xqtdir
+
+/usr/spool/uucp/.Admin:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 ..
+
+/usr/spool/uucp/.Corrupt:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 ..
+
+/usr/spool/uucp/.Log:
+total 6
+
+drwxr-xr-x   6 uucp     uucp          96 May 18 19:13 .
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 ..
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 uucico
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 uucp
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 uux
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 uuxqt
+
+/usr/spool/uucp/.Log/uucico:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxr-xr-x   6 uucp     uucp          96 May 18 19:13 ..
+
+/usr/spool/uucp/.Log/uucp:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxr-xr-x   6 uucp     uucp          96 May 18 19:13 ..
+
+/usr/spool/uucp/.Log/uux:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxr-xr-x   6 uucp     uucp          96 May 18 19:13 ..
+
+/usr/spool/uucp/.Log/uuxqt:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxr-xr-x   6 uucp     uucp          96 May 18 19:13 ..
+
+/usr/spool/uucp/.Old:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 ..
+
+/usr/spool/uucp/.Sequence:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 ..
+
+/usr/spool/uucp/.Status:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 ..
+
+/usr/spool/uucp/.Workspace:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 ..
+
+/usr/spool/uucp/.Xqtdir:
+total 2
+
+drwxr-xr-x   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx  10 uucp     uucp         160 May 18 19:13 ..
+
+/usr/spool/uucppublic:
+total 2
+
+drwxrwxrwx   2 uucp     uucp          32 May 18 19:13 .
+drwxrwxrwx   9 bin      bin          144 May 18 19:13 ..
+
+/usr/src:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+
+/usr/sys:
+total 2379
+
+drwxrwx---   4 sys      sys          336 May 18 19:14 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+drwxrwx---   2 sys      sys          160 May 18 19:14 cf
+-rw-rw----   1 sys      sys       141274 May 18 19:14 fpu.lib
+-rw-rw----   1 sys      sys        51296 May 18 19:14 fs.lib
+-rw-rw----   1 sys      sys        18144 May 18 19:14 hs.lib
+-rw-rw----   1 sys      sys       452436 May 18 19:14 io.lib
+-rw-rw----   1 sys      sys        42866 May 18 19:14 kdb.lib
+-rw-rw----   1 sys      sys           72 May 18 19:14 lcf
+drwxrwx---   5 sys      sys           80 May 18 19:13 ldd
+-rw-rw----   1 sys      sys          959 May 18 19:14 makefile
+-rw-rw----   1 sys      sys        18464 May 18 19:14 ml.lib
+-rw-rw----   1 sys      sys         2200 May 18 19:14 nfs.lib
+-rw-rw----   1 sys      sys       238682 May 18 19:14 os.lib
+-rw-rw----   1 sys      sys         7170 May 18 19:14 pnw.lib
+-rw-rw----   1 sys      sys       154512 May 18 19:14 primitive.new
+-rw-rw----   1 sys      sys         2256 May 18 19:14 rev.o
+-rw-rw----   1 sys      sys       168890 May 18 19:14 stbm.lib
+-rw-rw----   1 sys      sys        86868 May 18 19:14 te.lib
+-rwxrwx---   1 sys      sys       933185 May 18 19:14 unix.new
+-rw-rw----   1 sys      sys        73016 May 18 19:14 vm.lib
+
+/usr/sys/cf:
+total 127
+
+drwxrwx---   2 sys      sys          160 May 18 19:14 .
+drwxrwx---   4 sys      sys          336 May 18 19:14 ..
+-rw-rw----   1 sys      sys        34299 May 18 19:14 conf.c
+-rw-rw----   1 sys      sys        33530 May 18 19:14 conf.o
+-rw-rw----   1 sys      sys          724 May 18 19:14 linesw.o
+-rw-rw----   1 sys      sys        13707 May 18 19:14 locore.o
+-rw-rw----   1 sys      sys        32932 May 18 19:14 locore.s
+-rw-rw----   1 sys      sys          377 May 18 19:14 makefile
+-rw-rw----   1 sys      sys         3103 May 18 19:14 ttyioctl.c
+-rw-rw----   1 sys      sys          552 May 18 19:14 ttyioctl.o
+
+/usr/sys/ldd:
+total 5
+
+drwxrwx---   5 sys      sys           80 May 18 19:13 .
+drwxrwx---   4 sys      sys          336 May 18 19:14 ..
+drwxrwx---   2 sys      sys           32 May 18 19:13 cf
+drwxrwx---   2 sys      sys           32 May 18 19:13 lib
+drwxrwx---   2 sys      sys           32 May 18 19:13 sys
+
+/usr/sys/ldd/cf:
+total 2
+
+drwxrwx---   2 sys      sys           32 May 18 19:13 .
+drwxrwx---   5 sys      sys           80 May 18 19:13 ..
+
+/usr/sys/ldd/lib:
+total 2
+
+drwxrwx---   2 sys      sys           32 May 18 19:13 .
+drwxrwx---   5 sys      sys           80 May 18 19:13 ..
+
+/usr/sys/ldd/sys:
+total 2
+
+drwxrwx---   2 sys      sys           32 May 18 19:13 .
+drwxrwx---   5 sys      sys           80 May 18 19:13 ..
+
+/usr/ti:
+total 641
+
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+drwxr-xr-x   2 bin      bin           80 May 18 19:17 collate
+drwxr-xr-x   2 bin      bin          304 May 18 19:29 cp2db
+drwxr-xr-x   2 bin      bin         1008 May 18 19:29 dnio
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 examples
+drwxr-xr-x   2 bin      bin           80 May 18 19:28 fetest
+-rw-rw----   1 root     root      161792 May 18 19:30 filemap
+drwxr-xr-x   3 bin      bin          480 May 18 19:27 helps
+-rw-r--r--   1 root     root      467992 May 18 19:22 master
+drwxr-xr-x   2 bin      bin          432 May 18 19:27 menus
+drwxr-xr-x   2 bin      bin           48 May 18 19:28 net
+drwxrwx---   3 root     root          64 May 18 19:30 netware.3.11
+drwxr-xr-x   2 bin      bin           48 May 18 19:13 nfs
+drwxr-xr-x   2 bin      bin         3040 May 18 19:27 prompts
+drwxr-xr-x   3 bin      bin           64 May 18 19:13 tcp
+drwxr-xr-x   2 bin      bin          176 May 18 19:19 tisam
+
+/usr/ti/collate:
+total 17
+
+drwxr-xr-x   2 bin      bin           80 May 18 19:17 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rw-r--r--   1 bin      bin         1024 May 18 19:17 INTL
+-rw-r--r--   1 bin      bin         1024 May 18 19:17 USA
+-rw-r--r--   1 bin      bin        11336 May 18 19:17 collate.c
+
+/usr/ti/cp2db:
+total 19
+
+drwxr-xr-x   2 bin      bin          304 May 18 19:29 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rw-rw-r--   1 root     root          31 May 18 19:29 alltrc
+-rw-rw-r--   1 root     root         104 May 18 19:29 ataqg
+-rw-rw-r--   1 root     root          84 May 18 19:29 atcpuqg
+-rw-rw-r--   1 root     root          46 May 18 19:29 atrwqg
+-rw-rw-r--   1 root     root          97 May 18 19:29 bkpt0
+-rw-rw-r--   1 root     root          97 May 18 19:29 bkpt1
+-rw-rw-r--   1 root     root         100 May 18 19:29 cd0cpuqg
+-rw-rw-r--   1 root     root          54 May 18 19:29 cd0rwqg
+-rw-rw-r--   1 root     root         100 May 18 19:29 cd1cpuqg
+-rw-rw-r--   1 root     root          54 May 18 19:29 cd1rwqg
+-rw-rw-r--   1 root     root         111 May 18 19:29 clrdu0
+-rw-rw-r--   1 root     root         110 May 18 19:29 clrdu1
+-rw-rw-r--   1 root     root          32 May 18 19:29 clrtrc
+-rw-rw-r--   1 root     root         113 May 18 19:29 ctaqg
+-rw-rw-r--   1 root     root          92 May 18 19:29 ctcpuqg
+-rw-rw-r--   1 root     root          50 May 18 19:29 ctrwqg
+-rw-rw-r--   1 root     root         111 May 18 19:29 trace
+
+/usr/ti/dnio:
+total 1657
+
+drwxr-xr-x   2 bin      bin         1008 May 18 19:29 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rw-r--r--   1 root     root         715 May 18 19:28 INL
+-rw-r--r--   1 root     root        1233 May 18 19:28 INL990
+-rw-r--r--   1 root     root        1792 May 18 19:29 bsa.com.i
+-rw-r--r--   1 root     root        1798 May 18 19:29 bsa.com.t
+-rw-r--r--   1 root     root        5912 May 18 19:29 bsadriv.com.i
+-rw-r--r--   1 root     root        5291 May 18 19:29 bsadriv.com.t
+-rw-r--r--   1 root     root       33022 May 18 19:28 ccbxport
+-rw-r--r--   1 root     root        2196 May 18 19:29 cpcf.1
+-rw-r--r--   1 root     root        5398 May 18 19:28 cpcf.o
+-rw-r--r--   1 root     root       72669 May 18 19:28 dnio1500.o
+-rw-r--r--   1 root     root        1392 May 18 19:29 dnio1500init
+-rw-r--r--   1 root     root        2381 May 18 19:29 dnio_cleanup
+-rw-r--r--   1 root     root      108309 May 18 19:29 dnpatch
+-rw-r--r--   1 root     root       16873 May 18 19:29 fecap.inl
+-rw-r--r--   1 root     root       13660 May 18 19:29 from.exe
+-rw-r--r--   1 root     root        3998 May 18 19:29 inl.1
+-rw-r--r--   1 root     root       24067 May 18 19:28 inl.o
+-rw-r--r--   1 root     root        6211 May 18 19:29 inl990.1
+-rw-r--r--   1 root     root       35225 May 18 19:28 inl990.o
+-rw-r--r--   1 root     root        1764 May 18 19:29 inst.spapw
+-rw-r--r--   1 root     root       23335 May 18 19:29 install.scr
+-rwxr--r--   1 root     root         753 May 18 19:29 installdnio
+-rw-r--r--   1 root     root       16764 May 18 19:29 ipccli.990
+-rw-r--r--   1 root     root       21593 May 18 19:29 ipccli.BSA
+-rw-r--r--   1 root     root       13522 May 18 19:29 ipcowner
+-rw-r--r--   1 root     root       30664 May 18 19:29 kbdsp.com.i
+-rw-r--r--   1 root     root       29862 May 18 19:29 kbdsp.com.t
+-rw-r--r--   1 root     root        1899 May 18 19:29 keybrd.com.i
+-rw-r--r--   1 root     root        1711 May 18 19:29 keybrd.com.t
+-rw-r--r--   1 root     root       57402 May 18 19:28 libnetc.a
+-rw-r--r--   1 root     root       20956 May 18 19:28 libnetsubs.a
+-rw-r--r--   1 root     root       59374 May 18 19:28 libnettisam.a
+-rw-r--r--   1 root     root       73470 May 18 19:28 libxport.a
+-rw-r--r--   1 root     root       40541 May 18 19:29 messages
+-rw-r--r--   1 root     root        4078 May 18 19:28 niologger.o
+-rw-r--r--   1 root     root       33039 May 18 19:29 niopdrvr.dev.i
+-rw-r--r--   1 root     root       32703 May 18 19:29 niopdrvr.dev.t
+-rw-r--r--   1 root     root       33082 May 18 19:29 nios.com.i
+-rw-r--r--   1 root     root       33034 May 18 19:29 nios.com.t
+-rw-r--r--   1 root     root       57679 May 18 19:28 nios990.o
+-rw-r--r--   1 root     root        2369 May 18 19:29 nmclr.1
+-rw-r--r--   1 root     root        6195 May 18 19:29 nmclr.o
+-rw-r--r--   1 root     root        2701 May 18 19:29 nmsdn.1
+-rw-r--r--   1 root     root        7084 May 18 19:29 nmsdn.o
+-rw-r--r--   1 root     root        2106 May 18 19:29 nmset.1
+-rw-r--r--   1 root     root        7398 May 18 19:29 nmset.o
+-rw-r--r--   1 root     root        2290 May 18 19:29 nmsia.1
+-rw-r--r--   1 root     root        5878 May 18 19:29 nmsia.o
+-rw-rw----   1 root     root      554444 May 18 19:27 parts.a
+-rw-r--r--   1 root     root        5923 May 18 19:29 preinit.o
+-rw-r--r--   1 root     root       19881 May 18 19:29 relinfo
+-rw-r--r--   1 root     root         807 May 18 19:29 rin.1
+-rw-r--r--   1 root     root        3690 May 18 19:29 rin.o
+-rw-r--r--   1 root     root         796 May 18 19:29 rout.1
+-rw-r--r--   1 root     root        3734 May 18 19:29 rout.o
+-rw-r--r--   1 root     root       13986 May 18 19:29 to.exe
+-rw-r--r--   1 root     root          93 May 18 19:29 update.os
+-rw-r--r--   1 root     root         287 May 18 19:29 updatebsa
+-rw-r--r--   1 root     root       26980 May 18 19:29 xnetp.com.i
+-rw-r--r--   1 root     root       26296 May 18 19:29 xnetp.com.t
+-rw-r--r--   1 root     root        7924 May 18 19:28 xnets.o
+
+/usr/ti/examples:
+total 2
+
+drwxr-xr-x   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+
+/usr/ti/fetest:
+total 198
+
+drwxr-xr-x   2 bin      bin           80 May 18 19:28 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rwxr-xr-x   1 bin      bin        88682 May 18 19:28 keytest
+-rwxr-xr-x   1 bin      bin        22911 May 18 19:28 keytrace
+-rwxr-xr-x   1 bin      bin        84984 May 18 19:28 wrtmulti
+
+/usr/ti/helps:
+total 41
+
+drwxr-xr-x   3 bin      bin          480 May 18 19:27 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rw-r--r--   1 bin      bin          276 May 18 19:27 accounts.hlp
+-rw-r--r--   1 bin      bin          179 May 18 19:27 activity.hlp
+-rw-r--r--   1 bin      bin          194 May 18 19:27 assembly.hlp
+-rw-r--r--   1 bin      bin          353 May 18 19:27 c.hlp
+-rw-r--r--   1 bin      bin         7202 May 18 19:27 cobol.hlp
+-rw-r--r--   1 bin      bin          369 May 18 19:27 cobolmen.hlp
+-rw-r--r--   1 bin      bin          290 May 18 19:27 data.hlp
+-rw-r--r--   1 bin      bin          244 May 18 19:27 dir.hlp
+-rw-r--r--   1 bin      bin          648 May 18 19:27 disk.hlp
+-rw-r--r--   1 bin      bin          261 May 18 19:27 file.hlp
+-rw-r--r--   1 bin      bin          377 May 18 19:27 fortran.hlp
+-rw-r--r--   1 bin      bin          381 May 18 19:27 lexical.hlp
+-rw-r--r--   1 bin      bin          299 May 18 19:27 mail.hlp
+-rw-r--r--   1 bin      bin         4114 May 18 19:27 menu.hlp
+-rw-r--r--   1 bin      bin          341 May 18 19:27 mlc.hlp
+-rw-r--r--   1 bin      bin          443 May 18 19:27 network.hlp
+-rw-r--r--   1 bin      bin          145 May 18 19:27 object.hlp
+-rw-r--r--   1 bin      bin          359 May 18 19:27 pascal.hlp
+-rw-r--r--   1 bin      bin          253 May 18 19:27 personal.hlp
+drwxr-xr-x   2 bin      bin          400 May 18 19:23 pm
+-rw-r--r--   1 bin      bin          211 May 18 19:27 process.hlp
+-rw-r--r--   1 bin      bin          309 May 18 19:27 program.hlp
+-rw-r--r--   1 bin      bin          483 May 18 19:27 sccs.hlp
+-rw-r--r--   1 bin      bin          176 May 18 19:27 software.hlp
+-rw-r--r--   1 bin      bin          175 May 18 19:27 spooler.hlp
+-rw-r--r--   1 bin      bin          604 May 18 19:27 support.hlp
+-rw-r--r--   1 bin      bin          216 May 18 19:27 terminal.hlp
+-rw-r--r--   1 bin      bin          424 May 18 19:27 users.hlp
+
+/usr/ti/helps/pm:
+total 79
+
+drwxr-xr-x   2 bin      bin          400 May 18 19:23 .
+drwxr-xr-x   3 bin      bin          480 May 18 19:27 ..
+-rw-r--r--   1 bin      bin          898 May 18 19:23 bus_net.hlp
+-rw-r--r--   1 bin      bin         2670 May 18 19:23 ccb_disp.hlp
+-rw-r--r--   1 bin      bin        17908 May 18 19:23 cfg_item.hlp
+-rw-r--r--   1 bin      bin         5805 May 18 19:23 cpu_disp.hlp
+-rw-r--r--   1 bin      bin          661 May 18 19:23 dsk_exdb.hlp
+-rw-r--r--   1 bin      bin          690 May 18 19:23 dsk_exdl.hlp
+-rw-r--r--   1 bin      bin          615 May 18 19:23 dsk_exll.hlp
+-rw-r--r--   1 bin      bin          544 May 18 19:23 dsk_exqc.hlp
+-rw-r--r--   1 bin      bin          537 May 18 19:23 dsk_exts.hlp
+-rw-r--r--   1 bin      bin         1931 May 18 19:23 dsk_info.hlp
+-rw-r--r--   1 bin      bin         3593 May 18 19:23 gen_info.hlp
+-rw-r--r--   1 bin      bin         1805 May 18 19:23 lin_inf1.hlp
+-rw-r--r--   1 bin      bin         4087 May 18 19:23 lin_inf2.hlp
+-rw-r--r--   1 bin      bin         1020 May 18 19:23 mem_dump.hlp
+-rw-r--r--   1 bin      bin         2336 May 18 19:23 net_disp.hlp
+-rw-r--r--   1 bin      bin         4968 May 18 19:23 qst_mark.hlp
+-rw-r--r--   1 bin      bin          663 May 18 19:23 rate.hlp
+-rw-r--r--   1 bin      bin         1442 May 18 19:23 slot_cfg.hlp
+-rw-r--r--   1 bin      bin         3406 May 18 19:23 sys_wide.hlp
+-rw-r--r--   1 bin      bin          702 May 18 19:23 tc_disp.hlp
+-rw-r--r--   1 bin      bin         1888 May 18 19:23 tde.hlp
+-rw-r--r--   1 bin      bin         5505 May 18 19:23 total.hlp
+-rw-r--r--   1 bin      bin         5791 May 18 19:23 vm.hlp
+
+/usr/ti/menus:
+total 29
+
+drwxr-xr-x   2 bin      bin          432 May 18 19:27 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rw-r--r--   1 bin      bin          314 May 18 19:27 accounts
+-rw-r--r--   1 bin      bin          118 May 18 19:27 activity
+-rw-r--r--   1 bin      bin          719 May 18 19:27 assembly
+-rw-r--r--   1 bin      bin          210 May 18 19:27 c
+-rw-r--r--   1 bin      bin          223 May 18 19:27 cobol
+-rw-r--r--   1 bin      bin         1210 May 18 19:27 data
+-rw-r--r--   1 bin      bin          340 May 18 19:27 dir
+-rw-r--r--   1 bin      bin          699 May 18 19:27 disk
+-rw-r--r--   1 bin      bin         1546 May 18 19:27 file
+-rw-r--r--   1 bin      bin          222 May 18 19:27 fortran
+-rw-r--r--   1 bin      bin          261 May 18 19:27 lexical
+-rw-r--r--   1 bin      bin          353 May 18 19:27 mail
+-rw-r--r--   1 bin      bin          879 May 18 19:27 mlc
+-rw-r--r--   1 bin      bin          129 May 18 19:27 network
+-rw-r--r--   1 bin      bin          331 May 18 19:27 object
+-rw-r--r--   1 bin      bin          220 May 18 19:27 pascal
+-rw-r--r--   1 bin      bin          300 May 18 19:27 personal
+-rw-r--r--   1 bin      bin          528 May 18 19:27 process
+-rw-r--r--   1 bin      bin          457 May 18 19:27 program
+-rw-r--r--   1 bin      bin          567 May 18 19:27 sccs
+-rw-r--r--   1 bin      bin          462 May 18 19:27 software
+-rw-r--r--   1 bin      bin          480 May 18 19:27 spooler
+-rw-r--r--   1 bin      bin          332 May 18 19:27 support
+-rw-r--r--   1 bin      bin          244 May 18 19:27 terminal
+-rw-r--r--   1 bin      bin          405 May 18 19:27 users
+
+/usr/ti/net:
+total 4
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:28 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rwxr-xr-x   1 root     root        1247 May 18 19:28 netwhat
+
+/usr/ti/netware.3.11:
+total 4
+
+drwxrwx---   3 root     root          64 May 18 19:30 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+drwxrwx---   2 root     root          96 May 18 19:30 pnw0001
+-rw-rw----   1 root     root         309 May 18 19:30 update.os
+
+/usr/ti/netware.3.11/pnw0001:
+total 108
+
+drwxrwx---   2 root     root          96 May 18 19:30 .
+drwxrwx---   3 root     root          64 May 18 19:30 ..
+-rwx------   1 root     root        4837 May 18 19:30 install
+-rw-rw----   1 root     root          54 May 18 19:30 modlist
+-rw-rw----   1 root     root       98470 May 18 19:30 pnw.lib.332
+-rw-rw----   1 root     root        1759 May 18 19:30 readme
+
+/usr/ti/nfs:
+total 3
+
+drwxr-xr-x   2 bin      bin           48 May 18 19:13 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rwxr-xr--   1 root     root         656 May 18 19:13 install.scr
+
+/usr/ti/prompts:
+total 293
+
+drwxr-xr-x   2 bin      bin         3040 May 18 19:27 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rwxr-xr-x   1 bin      bin         2273 May 18 19:27 A68K
+-rwxr-xr-x   1 bin      bin         1746 May 18 19:27 A68M
+-rwxr-xr-x   1 bin      bin          318 May 18 19:27 ACCEPT
+-rwxr-xr-x   1 bin      bin         2115 May 18 19:27 ADMIN
+-rwxr-xr-x   1 bin      bin         2605 May 18 19:27 AR
+-rwxr-xr-x   1 bin      bin         1010 May 18 19:27 AS
+-rwxr-xr-x   1 bin      bin          443 May 18 19:27 AT
+-rwxr-xr-x   1 bin      bin         1131 May 18 19:27 AWK
+-rwxr-xr-x   1 bin      bin         1903 May 18 19:27 BACKUP
+-rwxr-xr-x   1 bin      bin          715 May 18 19:27 BANNER
+-rwxr-xr-x   1 bin      bin          402 May 18 19:27 BATCH
+-rwxr-xr-x   1 bin      bin          562 May 18 19:27 BC
+-rwxr-xr-x   1 bin      bin         1166 May 18 19:27 BDIFF
+-rwxr-xr-x   1 bin      bin         1388 May 18 19:27 BSH
+-rwxr-xr-x   1 bin      bin          412 May 18 19:27 CAL
+-rwxr-xr-x   1 bin      bin          228 May 18 19:27 CALENDAR
+-rwxr-xr-x   1 bin      bin          923 May 18 19:27 CANCEL
+-rwxr-xr-x   1 bin      bin          963 May 18 19:27 CAT
+-rwxr-xr-x   1 bin      bin          818 May 18 19:27 CB
+-rwxr-xr-x   1 bin      bin         1006 May 18 19:27 CDC
+-rwxr-xr-x   1 bin      bin          990 May 18 19:27 CFLOW
+-rwxr-xr-x   1 bin      bin          384 May 18 19:27 CHGRP
+-rwxr-xr-x   1 bin      bin          370 May 18 19:27 CHMOD
+-rwxr-xr-x   1 bin      bin          365 May 18 19:27 CHOWN
+-rwxr-xr-x   1 bin      bin          671 May 18 19:27 CMP
+-rwxr-xr-x   1 bin      bin          724 May 18 19:27 COMM
+-rwxr-xr-x   1 bin      bin          358 May 18 19:27 CP
+-rwxr-xr-x   1 bin      bin         1260 May 18 19:27 CPDIR
+-rwxr-xr-x   1 bin      bin         4405 May 18 19:27 CPIO
+-rwxr-xr-x   1 bin      bin          680 May 18 19:27 CPISAM
+-rwxr-xr-x   1 bin      bin          780 May 18 19:27 CRONTAB
+-rwxr-xr-x   1 bin      bin          806 May 18 19:27 CRYPT
+-rwxr-xr-x   1 bin      bin         1410 May 18 19:27 CSH
+-rwxr-xr-x   1 bin      bin         1245 May 18 19:27 CUT
+-rwxr-xr-x   1 bin      bin         1362 May 18 19:27 CXREF
+-rwxr-xr-x   1 bin      bin          831 May 18 19:27 DATE
+-rwxr-xr-x   1 bin      bin          294 May 18 19:27 DC
+-rwxr-xr-x   1 bin      bin         2380 May 18 19:27 DD
+-rwxr-xr-x   1 bin      bin         1102 May 18 19:27 DELTA
+-rwxr-xr-x   1 bin      bin          818 May 18 19:27 DEVADM
+-rwxr-xr-x   1 bin      bin          580 May 18 19:27 DF
+-rwxr-xr-x   1 bin      bin          314 May 18 19:27 DFM
+-rwxr-xr-x   1 bin      bin         1332 May 18 19:27 DIFF
+-rwxr-xr-x   1 bin      bin         1215 May 18 19:27 DIFF3
+-rwxr-xr-x   1 bin      bin         1069 May 18 19:27 DIRCMP
+-rwxr-xr-x   1 bin      bin          711 May 18 19:27 DISABLE
+-rwxr-xr-x   1 bin      bin          683 May 18 19:27 DU
+-rwxr-xr-x   1 bin      bin         2840 May 18 19:27 DUMP
+-rwxr-xr-x   1 bin      bin          523 May 18 19:27 ED
+-rwxr-xr-x   1 bin      bin          292 May 18 19:27 EDIT
+-rwxr-xr-x   1 bin      bin         2062 May 18 19:27 EGREP
+-rwxr-xr-x   1 bin      bin          296 May 18 19:27 ENABLE
+-rwxr-xr-x   1 bin      bin          681 May 18 19:27 ENV
+-rwxr-xr-x   1 bin      bin         1488 May 18 19:27 ERRPT
+-rwxr-xr-x   1 bin      bin          892 May 18 19:27 EX
+-rwxr-xr-x   1 bin      bin          274 May 18 19:27 FACTOR
+-rwxr-xr-x   1 bin      bin         1798 May 18 19:27 FF
+-rwxr-xr-x   1 bin      bin         2089 May 18 19:27 FGREP
+-rwxr-xr-x   1 bin      bin         1350 May 18 19:27 FILE
+-rwxr-xr-x   1 bin      bin          797 May 18 19:27 FINC
+-rwxr-xr-x   1 bin      bin         3180 May 18 19:27 FIND
+-rwxr-xr-x   1 bin      bin         1002 May 18 19:27 FINDISAM
+-rwxr-xr-x   1 bin      bin          612 May 18 19:27 FREC
+-rwxr-xr-x   1 bin      bin         1172 May 18 19:27 FRISAM
+-rwxr-xr-x   1 bin      bin         1143 May 18 19:27 FRPC
+-rwxr-xr-x   1 bin      bin         1770 May 18 19:27 FSCK
+-rwxr-xr-x   1 bin      bin          595 May 18 19:27 FUSER
+-rwxr-xr-x   1 bin      bin          707 May 18 19:27 GET
+-rwxr-xr-x   1 bin      bin         1272 May 18 19:27 GREP
+-rwxr-xr-x   1 bin      bin          532 May 18 19:27 GRPCK
+-rwxr-xr-x   1 bin      bin          633 May 18 19:27 HEAD
+-rwxr-xr-x   1 bin      bin          433 May 18 19:27 HELP
+-rwxr-xr-x   1 bin      bin          189 May 18 19:27 ID
+-rwxr-xr-x   1 bin      bin         1709 May 18 19:27 INSTALL
+-rwxr-xr-x   1 bin      bin          864 May 18 19:27 IPCRM
+-rwxr-xr-x   1 bin      bin         1349 May 18 19:27 IPCS
+-rwxr-xr-x   1 bin      bin         1437 May 18 19:27 JOIN
+-rwxr-xr-x   1 bin      bin          258 May 18 19:27 KIFTISAM
+-rwxr-xr-x   1 bin      bin          327 May 18 19:27 KILL
+-rwxr-xr-x   1 bin      bin         1307 May 18 19:27 LABELIT
+-rwxr-xr-x   1 bin      bin         1558 May 18 19:27 LD
+-rwxr-xr-x   1 bin      bin          665 May 18 19:27 LEX
+-rwxr-xr-x   1 bin      bin         2316 May 18 19:27 LINT
+-rwxr-xr-x   1 bin      bin          418 May 18 19:27 LN
+-rwxr-xr-x   1 bin      bin          173 May 18 19:27 LOGNAME
+-rwxr-xr-x   1 bin      bin         6056 May 18 19:27 LP
+-rwxr-xr-x   1 bin      bin         7047 May 18 19:27 LPADMIN
+-rwxr-xr-x   1 bin      bin          701 May 18 19:27 LPMOVE
+-rwxr-xr-x   1 bin      bin          265 May 18 19:27 LPSCHED
+-rwxr-xr-x   1 bin      bin          253 May 18 19:27 LPSHUT
+-rwxr-xr-x   1 bin      bin         3403 May 18 19:27 LPSTAT
+-rwxr-xr-x   1 bin      bin         3952 May 18 19:27 LS
+-rwxr-xr-x   1 bin      bin          358 May 18 19:27 LTXCOFF
+-rwxr-xr-x   1 bin      bin         1329 May 18 19:27 LTXDUMP
+-rwxr-xr-x   1 bin      bin         1226 May 18 19:27 MAIL
+-rwxr-xr-x   1 bin      bin         1364 May 18 19:27 MAILX
+-rwxr-xr-x   1 bin      bin         1740 May 18 19:27 MAKE
+-rwxr-xr-x   1 bin      bin          519 May 18 19:27 MAKEKEY
+-rwxr-xr-x   1 bin      bin          879 May 18 19:27 MAN
+-rwxr-xr-x   1 bin      bin          440 May 18 19:27 MAPISAM
+-rwxr-xr-x   1 bin      bin          518 May 18 19:27 MESG
+-rwxr-xr-x   1 bin      bin          290 May 18 19:27 MKDIR
+-rwxr-xr-x   1 bin      bin          554 May 18 19:27 MKISAM
+-rwxr-xr-x   1 bin      bin          462 May 18 19:27 MKMSG
+-rwxr-xr-x   1 bin      bin          332 May 18 19:27 MORE
+-rwxr-xr-x   1 bin      bin          616 May 18 19:27 MV
+-rwxr-xr-x   1 bin      bin          393 May 18 19:27 MVDIR
+-rwxr-xr-x   1 bin      bin          832 May 18 19:27 MVISAM
+-rwxr-xr-x   1 bin      bin         1425 May 18 19:27 NETCP
+-rwxr-xr-x   1 bin      bin          571 May 18 19:27 NETECHO
+-rwxr-xr-x   1 bin      bin          752 May 18 19:27 NETEXEC
+-rwxr-xr-x   1 bin      bin         2023 May 18 19:27 NETSTAT
+-rwxr-xr-x   1 bin      bin         2263 May 18 19:27 NEWFORM
+-rwxr-xr-x   1 bin      bin          365 May 18 19:27 NEWGRP
+-rwxr-xr-x   1 bin      bin          303 May 18 19:27 NEWS
+-rwxr-xr-x   1 bin      bin          955 May 18 19:27 NICE
+-rwxr-xr-x   1 bin      bin         1351 May 18 19:27 NM
+-rwxr-xr-x   1 bin      bin         1652 May 18 19:27 OD
+-rwxr-xr-x   1 bin      bin          419 May 18 19:27 PACK
+-rwxr-xr-x   1 bin      bin          181 May 18 19:27 PASSWD
+-rwxr-xr-x   1 bin      bin         1181 May 18 19:27 PASTE
+-rwxr-xr-x   1 bin      bin          613 May 18 19:27 PATCH
+-rwxr-xr-x   1 bin      bin          541 May 18 19:27 PCAT
+-rwxr-xr-x   1 bin      bin          313 May 18 19:27 PG
+-rwxr-xr-x   1 bin      bin         3283 May 18 19:27 PR
+-rwxr-xr-x   1 bin      bin         1171 May 18 19:27 PRS
+-rwxr-xr-x   1 bin      bin         1425 May 18 19:27 PS
+-rwxr-xr-x   1 bin      bin          319 May 18 19:27 PWCK
+-rwxr-xr-x   1 bin      bin          201 May 18 19:27 PWD
+-rwxr-xr-x   1 bin      bin         2029 May 18 19:27 QSYM
+-rwxr-xr-x   1 bin      bin          427 May 18 19:27 REGCMP
+-rwxr-xr-x   1 bin      bin          513 May 18 19:27 REJECT
+-rwxr-xr-x   1 bin      bin          788 May 18 19:27 RM
+-rwxr-xr-x   1 bin      bin          450 May 18 19:27 RMDEL
+-rwxr-xr-x   1 bin      bin          509 May 18 19:27 RMDIR
+-rwxr-xr-x   1 bin      bin          589 May 18 19:27 SACT
+-rwxr-xr-x   1 bin      bin          199 May 18 19:27 SADSP
+-rwxr-xr-x   1 bin      bin          993 May 18 19:27 SCCSDIFF
+-rwxr-xr-x   1 bin      bin          638 May 18 19:27 SDB
+-rwxr-xr-x   1 bin      bin          975 May 18 19:27 SDIFF
+-rwxr-xr-x   1 bin      bin          388 May 18 19:27 SETSITE
+-rwxr-xr-x   1 bin      bin         1388 May 18 19:27 SH
+-rwxr-xr-x   1 bin      bin          275 May 18 19:27 SHOW
+-rwxr-xr-x   1 bin      bin          295 May 18 19:27 SHOWFS
+-rwxr-xr-x   1 bin      bin          301 May 18 19:27 SHOWHEX
+-rwxr-xr-x   1 bin      bin          460 May 18 19:27 SHOWMSG
+-rwxr-xr-x   1 bin      bin          552 May 18 19:27 SIZE
+-rwxr-xr-x   1 bin      bin         3641 May 18 19:27 SORT
+-rwxr-xr-x   1 bin      bin         1173 May 18 19:27 SPELL
+-rwxr-xr-x   1 bin      bin          462 May 18 19:27 SPLIT
+-rwxr-xr-x   1 bin      bin          851 May 18 19:27 STRIP
+-rwxr-xr-x   1 bin      bin          783 May 18 19:27 STRNSTAT
+-rwxr-xr-x   1 bin      bin          698 May 18 19:27 STTY
+-rwxr-xr-x   1 bin      bin          614 May 18 19:27 SU
+-rwxr-xr-x   1 bin      bin          441 May 18 19:27 SUM
+-rwxr-xr-x   1 bin      bin         1049 May 18 19:27 TAIL
+-rwxr-xr-x   1 bin      bin         2570 May 18 19:27 TAR
+-rwx------   1 bin      bin         1301 May 18 19:27 TCDUMP
+-rwx------   1 bin      bin          649 May 18 19:27 TCRESET
+-rwxr-xr-x   1 bin      bin          760 May 18 19:27 TCSTAT
+-rwxr-xr-x   1 bin      bin          391 May 18 19:27 TIC
+-rwxr-xr-x   1 bin      bin          256 May 18 19:27 TIME
+-rwxr-xr-x   1 bin      bin         1347 May 18 19:27 TIMEX
+-rwxr-xr-x   1 bin      bin         1103 May 18 19:27 TOISAM
+-rwxr-xr-x   1 bin      bin         1145 May 18 19:27 TOPC
+-rwxr-xr-x   1 bin      bin         1047 May 18 19:27 TOUCH
+-rwxr-xr-x   1 bin      bin         1179 May 18 19:27 TPUT
+-rwxr-xr-x   1 bin      bin         1490 May 18 19:27 TR
+-rwxr-xr-x   1 bin      bin          485 May 18 19:27 TSORT
+-rwxr-xr-x   1 bin      bin          426 May 18 19:27 TTY
+-rwxr-xr-x   1 bin      bin          241 May 18 19:27 TX
+-rwxr-xr-x   1 bin      bin          504 May 18 19:27 UMASK
+-rwxr-xr-x   1 bin      bin          900 May 18 19:27 UNAME
+-rwxr-xr-x   1 bin      bin          648 May 18 19:27 UNGET
+-rwxr-xr-x   1 bin      bin         1488 May 18 19:27 UNIQ
+-rwxr-xr-x   1 bin      bin          305 May 18 19:27 UNPACK
+-rwxr-xr-x   1 bin      bin          255 May 18 19:27 USRADM
+-rwxr-xr-x   1 bin      bin          873 May 18 19:27 VAL
+-rwxr-xr-x   1 bin      bin         1040 May 18 19:27 VFISAM
+-rwxr-xr-x   1 bin      bin          748 May 18 19:27 VI
+-rwxr-xr-x   1 bin      bin         1942 May 18 19:27 VOLCOPY
+-rwxr-xr-x   1 bin      bin          293 May 18 19:27 WALL
+-rwxr-xr-x   1 bin      bin         1005 May 18 19:27 WC
+-rwxr-xr-x   1 bin      bin          314 May 18 19:27 WHAT
+-rwxr-xr-x   1 bin      bin         1635 May 18 19:27 WHO
+-rwxr-xr-x   1 bin      bin          202 May 18 19:27 WHODO
+-rwxr-xr-x   1 bin      bin          286 May 18 19:27 WRITE
+-rwxr-xr-x   1 bin      bin          689 May 18 19:27 YACC
+
+/usr/ti/tcp:
+total 4
+
+drwxr-xr-x   3 bin      bin           64 May 18 19:13 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+drwxr-xr-x   2 bin      bin          656 May 18 19:29 3.0
+-rw-r--r--   1 bin      bin          989 May 18 19:29 install.scr
+
+/usr/ti/tcp/3.0:
+total 905
+
+drwxr-xr-x   2 bin      bin          656 May 18 19:29 .
+drwxr-xr-x   3 bin      bin           64 May 18 19:13 ..
+-rw-r--r--   1 bin      bin          399 May 18 19:29 TIsockvers.o
+-rw-r--r--   1 bin      bin         6356 May 18 19:29 chkccb
+-rw-r--r--   1 bin      bin         7869 May 18 19:29 chkspace
+-rw-r--r--   1 bin      bin        10282 May 18 19:29 commands
+-rw-r--r--   1 bin      bin         5580 May 18 19:29 errlst.o
+-rw-r--r--   1 bin      bin        81927 May 18 19:29 ftp.o
+-rw-r--r--   1 bin      bin         4059 May 18 19:29 hostname.o
+-rw-r--r--   1 bin      bin        15731 May 18 19:29 inetd.o
+-rw-r--r--   1 bin      bin        27130 May 18 19:29 install.scr
+-rw-r--r--   1 bin      bin        10186 May 18 19:29 installname
+-rw-r--r--   1 bin      bin       216988 May 18 19:29 io_lib
+-rw-r--r--   1 bin      bin         3763 May 18 19:29 ipmux.o
+-rw-r--r--   1 bin      bin         8892 May 18 19:29 lmail.o
+-rw-r--r--   1 bin      bin         4750 May 18 19:29 logger.o
+-rw-r--r--   1 bin      bin        67912 May 18 19:29 named.o
+-rw-r--r--   1 bin      bin        20469 May 18 19:29 netlogin.o
+-rw-r--r--   1 bin      bin        17649 May 18 19:29 node.cf
+-rw-r--r--   1 bin      bin        22945 May 18 19:29 relay.cf
+-rw-r--r--   1 bin      bin         7873 May 18 19:29 removetcp
+-rw-r--r--   1 bin      bin        12247 May 18 19:29 rlogind.o
+-rw-r--r--   1 bin      bin        27760 May 18 19:29 routed.o
+-rw-r--r--   1 bin      bin         6183 May 18 19:29 ruptime.o
+-rw-r--r--   1 bin      bin         2395 May 18 19:29 rwho.1
+-rw-r--r--   1 bin      bin         9650 May 18 19:29 rwho.o
+-rw-r--r--   1 bin      bin        10595 May 18 19:29 rwhod.o
+-rw-r--r--   1 bin      bin       127494 May 18 19:29 sendmail.o
+-rw-r--r--   1 bin      bin         2188 May 18 19:29 setcband
+-rw-r--r--   1 bin      bin         7205 May 18 19:29 setslip.o
+-rw-r--r--   1 bin      bin         1077 May 18 19:29 settings
+-rw-r--r--   1 bin      bin         2772 May 18 19:29 slattach
+-rw-r--r--   1 bin      bin         1459 May 18 19:29 sldetach
+-rw-r--r--   1 bin      bin         7604 May 18 19:29 slip.o
+-rw-r--r--   1 bin      bin        39112 May 18 19:29 socket.o
+-rw-r--r--   1 bin      bin         2311 May 18 19:29 strcf
+-rw-r--r--   1 bin      bin         4565 May 18 19:29 tcp
+-rw-r--r--   1 bin      bin        40767 May 18 19:29 telnet.o
+-rw-r--r--   1 bin      bin        23773 May 18 19:29 telnetd.o
+-rw-r--r--   1 bin      bin        11906 May 18 19:29 update.os
+-rw-r--r--   1 bin      bin         1345 May 18 19:29 wait3.o
+
+/usr/ti/tisam:
+total 157
+
+drwxr-xr-x   2 bin      bin          176 May 18 19:19 .
+drwxr-xr-x  15 bin      bin          272 May 18 19:30 ..
+-rw-r--r--   1 bin      bin         7588 May 18 19:19 cpisam.o
+-rw-r--r--   1 bin      bin         3330 May 18 19:19 findisam.o
+-rw-r--r--   1 bin      bin         7088 May 18 19:19 frisam.o
+-rw-r--r--   1 bin      bin         8635 May 18 19:19 kiftisam.o
+-rw-r--r--   1 bin      bin        11143 May 18 19:19 mapisam.o
+-rw-r--r--   1 bin      bin        13529 May 18 19:19 mkisam.o
+-rw-r--r--   1 bin      bin         9816 May 18 19:19 mvisam.o
+-rw-r--r--   1 bin      bin         6032 May 18 19:19 toisam.o
+-rw-r--r--   1 bin      bin        84260 May 18 19:19 vfisam.o
+
+/usr/tmp:
+total 2
+
+drwxrwxrwx   2 bin      bin           32 May 18 19:13 .
+drwxr-xr-x  24 root     root         384 May 18 19:20 ..
+
+/util:
+total 20
+
+drwxr-xr-x   2 bin      bin           80 May 18 19:18 .
+drwxr-xr-x  14 root     root         320 May 18 19:14 ..
+-rwx------   1 root     root        1130 May 18 19:13 MKSRCFS
+-rwx------   1 root     root        1196 May 18 19:13 exer
+-rwx------   1 root     root       13028 May 18 19:18 fndmap

@@ -1,0 +1,59 @@
+# PARSE.SCR - Rev. 3.1 - Copyright 1990, Communications Research Group, Inc.
+if null @logfile return 8
+set @eflag = "0"
+set @fn = @logfile
+set @logfile = ""
+fopenr 1, @fn
+if @status not = "0"
+werror "Can't open log file"
+return 9
+end
+set @fn = ""
+fopenr 2, @tc_file
+if @status not = "0"
+werror "Can't open Transfer Commmand File"
+return 9
+end
+fopenw 3, "tmp.fil"
+if @status not = "0"
+werror "Can't create temporary file"
+return 9
+end
+.RLOOP
+frewind 1
+fread 2, @fn1
+if @status not = "0" goto .EOF
+set @fn = @fn1
+ascii @fn1, 1
+if @status = "43"
+strlen @fn1
+strtrim @fn1, 2, @status
+end
+.INLOOP
+fread 1, @fn2
+if @status = "0"
+strinx @fn2, "TIMEOUT"
+if @status not = "0" set @eflag = "2"
+strinx @fn2, @fn1
+if @status = "0" goto .INLOOP
+strinx @fn2, "completed" 
+if @status not = "0" goto .RLOOP 
+end
+fwrite 3, @fn
+if @eflag = "0" set @eflag = "1"
+goto .RLOOP
+.EOF
+echo off
+fclose 1
+fclose 2
+fclose 3
+if @eflag not = "0"
+display "Error Transfering Files"
+ldelete @tc_file
+lrename "tmp.fil", @tc_file
+end
+else
+ldelete "tmp.fil"
+display "Transfer Successful"
+end
+return @eflag

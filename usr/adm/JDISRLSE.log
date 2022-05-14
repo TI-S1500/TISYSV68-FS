@@ -1,0 +1,1432 @@
+ %%> Begin JDIS Install of CBTs 
+ %%> Extract UNIX CORE and PARTS CBT PROGRAMS 
+ %%> Extract of Program Files Successful 
+ %%> Routine Maintenance Begins... 
+ %%> CBT 93-1 INSTALLATION IS COMPLETE !! 
+ %%> Begin JDIS Install of QUOTE Software 
+ %%> Extract of Programs and Procedures Complete 
+ %%> QUOTE Procs Have Been Loaded to Dealer System 
+ %%> Routine Maintenance Complete 
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 93-1 
+ %%> Begin JDIS Install of RELEASE 93-2 Software 
+ %%> Initial Maintenance of Existing Software Begins.. 
+ %%> Initial Maintenance of Existing Software Completed 
+ %%> Core Programs and Procedures will be loaded.
+ %%> US Retail Notes Programs will be loaded.
+ %%> Customer Sales Programs will be loaded.
+ %%> Customer Sales Profile will be loaded.
+ %%> Financial Programs will be loaded.
+ %%> Parts Programs will be loaded.
+ %%> Quote Programs will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> Service Mgmt Program will be loaded.
+ %%> Extract of Programs and Procs Complete 
+ %%> Procedures Have Been Updated to Dealer System 
+ %%> Updating of Production Directories Begins.. 
+ %%> Updating of Production Directories Completed 
+ %%> JDIS RELEASE 93-2 SOFTWARE LOAD IS COMPLETE 
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 93-2 
+ %%> Begin JDIS Update of RELEASE 93-2 Software 
+ %%> Core Pgms and Procs will be loaded.
+ %%> Parts will be loaded.
+ %%> MIM will be loaded.
+ %%> Customer Sales Profile will be loaded.
+ %%> Extract of Programs and Procs Complete 
+ %%> Procedures Have Been Updated to Dealer System 
+ %%> JDIS RELEASE 93-2 UPDATE IS COMPLETE 
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 93-2 
+ %%> Begin JDIS Install of RELEASE 94-1 Software 
+ %%> Initial Maintenance of Existing Software Begins.. 
+ %%> Initial Maintenance of Existing Software Completed 
+ %%> Core Programs and Procedures will be loaded.
+ %%> US Retail Notes Programs will be loaded.
+ %%> Customer Sales Programs will be loaded.
+ %%> Customer Sales Profile will be loaded.
+ %%> Financial Programs will be loaded.
+ %%> Parts Programs will be loaded.
+ %%> Quote Programs will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> Service Mgmt/WO Programs will be loaded.
+ %%> Extract of Programs and Procs Complete 
+ %%> Procedures Have Been Updated to Dealer System 
+ %%> Updating of Production Directories Begins.. 
+ %%> Updating of Production Directories Completed 
+ %%> JDIS RELEASE 94-1 SOFTWARE LOAD IS COMPLETE 
+%%>Dealer has Installed JDSDF Patch JSDF0021 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0023 JDUPDATE
+%%> /JDIS/DATA/MF/TRANS is empty
+%%> /JDIS/DATA/MI/INV is empty
+%%> /JDIS/DATA/CG/CGTRAN is empty
+%%> /JDIS/DATA/MF/ADJTRN is empty
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 94-1 
+ %%> Begin JDIS Install of RELEASE 94-2 Software 
+ %%> Initial Maintenance of Existing Software Begins.. 
+ %%> Initial Maintenance of Existing Software Completed 
+ %%> Core Programs and Procedures will be loaded.
+ %%> Balance Forward Accts Receivable Programs will be loaded.
+ %%> US Retail Notes Programs will be loaded.
+ %%> Customer Sales Programs will be loaded.
+ %%> Customer Sales Profile will be loaded.
+ %%> Financial Programs will be loaded.
+ %%> Parts Programs will be loaded.
+ %%> Quote Programs will be loaded.
+ %%> New PMXSPC.ENG will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> Service Mgmt Programs will be loaded.
+ %%> Extract of Programs and Procs Complete 
+ %%> Procedures Have Been Updated to Dealer System 
+ %%> Updating of Production Directories Begins.. 
+ %%> Updating of Production Directories Completed 
+ %%> JDIS RELEASE 94-2 SOFTWARE LOAD IS COMPLETE 
+%%>Dealer has Installed JDSDF Patch JSDF0026 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0025 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0028 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0032 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0034 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0036 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0038 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0039 JDUPDATE
+ %%> Begin JDIS Install of OPEN ITEM Programs 
+ %%> Extract of Program Files Complete 
+ %%> Begin JDIS Install of New Masters Training Data 
+ %%> Extract of Training Data Complete 
+%%> JDIS MASTERS TRAINING DATA IS LOADED! 
+%%>Dealer has Installed JDSDF Patch JSDF0045 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0049 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0050 JDUPDATE
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 94-2 
+ %%> Begin JDIS Install of RELEASE 95-1 Software 
+ %%> Initial Maintenance of Existing Software Begins.. 
+ %%> Initial Maintenance of Existing Software Completed 
+ %%> Core Programs and Procedures will be loaded.
+ %%> Accounts Receivable Programs will be loaded.
+ %%> US Retail Notes Programs will be loaded.
+ %%> Customer Sales Programs will be loaded.
+ %%> Financial Programs will be loaded.
+ %%> Parts Programs will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> Service Mgmt Programs will be loaded.
+ %%> Service Pricing Programs will be loaded.
+ %%> Extract of Programs and Procs Complete 
+ %%> Procedures Have Been Updated to Dealer System 
+ %%> JDIS RELEASE 95-1 SOFTWARE LOAD IS COMPLETE 
+%%>No one is in aspen for CONVASP
+%%> CONVERSION OF ASPEN COMPLETE
+%%>Dealer has Installed JDSDF Patch JSDF0054 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0055 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0057 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0056 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0059 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0063 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0062 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0068 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0067 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0070 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0072 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0076 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0080 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0077 JDUPDATE
+%%> 14Mar96 10:36 checkspace 1.0 completed for Release 96-1               PASS                                                                       
+ Have you completed your PREWORK - Y or N: %%> PREWORK =Y
+ Enter Printer ID:  LP$%%> /JDIS/DATA/MF/TRANS is empty
+%%> /JDIS/DATA/MI/INV is empty
+%%> /JDIS/DATA/CG/CGTRAN is empty
+%%> /JDIS/DATA/MF/ADJTRN is empty
+%%> /JDIS/DATA/MS/SADIST is empty
+%%> /JDIS/DATA/MF/OPAID is empty
+%%> /JDIS/DATA/MF/OPCPD is empty
+%%> /JDIS/DATA/MF/OGLTRN is empty
+ %%> DEALER HAS INSTALLED 95-1 
+ %%> Begin JDIS Install of RELEASE 96-1 Software 
+ %%> Initial Maintenance of Existing Software Begins.. 
+ %%> Initial Maintenance of Existing Software Completed 
+ %%> Core Programs and Procedures will be loaded.
+ %%> Accounts Receivable Programs will be loaded.
+ %%> Customer Sales Programs will be loaded.
+ %%> Customer Sales Profile will be loaded.
+ %%> Financial Programs will be loaded.
+ %%> Parts Programs will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> Service Mgmt Programs will be loaded.
+ %%> Service Pricing Programs will be loaded.
+ %%> Extract of Programs and Procs Complete 
+ %%> Procedures Have Been Updated to Dealer System 
+ %%> Configuration Update will execute for XENIX/UNIX machines 
+ %%> JDIS RELEASE 96-1 SOFTWARE LOAD IS COMPLETE 
+%%> Begin Secure System Implementation
+%%> Secure System Implementation completed successfully
+%%>Dealer has Installed JDSDF Patch JSDF0082 JDUPDATE
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED PATCH 82
+ %%> Begin JDIS Update of RELEASE 96-1 Software 
+ %%> Core Programs and Procedures will be loaded.
+ %%> PARTS Programs will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> Extract of Programs and Procs Complete 
+ %%> Procedures Have Been Updated to Dealer System 
+ %%> JDIS RELEASE 96-1 UPDATE #2 IS COMPLETE 
+%%>Dealer has Installed JDSDF Patch JSDF0084 JDUPDATE
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 96-1 
+ %%> Begin JDIS Install of RELEASE 96-2 SOFTWARE 
+ %%> Core Programs and Procedures will be loaded.
+ %%> PARTS Programs will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> FINANCIAL Programs will be loaded.
+ %%> SERVICE Programs will be loaded.
+ %%> Extract of Procedures Complete 
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 96-2 
+ %%> Begin JDIS Update of RELEASE 96-2 SOFTWARE 
+ %%> Core Programs and Procedures will be loaded.
+ %%> PARTS Programs will be loaded.
+ %%> Extract of Procedures Complete 
+%%>Dealer has Installed JDSDF Patch JSDF0085 JDUPDATE
+%%> 19Sep96 09:18 checkspace 2.0 completed for Release 96-3               PASS                                                                       
+%%> 19Nov96 08:04 checkspace 2.0 completed for Release 96-3               PASS                                                                       
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 96-2 
+ %%> Begin JDIS Install of RELEASE 96-3 SOFTWARE 
+ %%> Core Programs and Procedures will be loaded.
+ %%> PARTS Programs will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> FINANCIAL Programs will be loaded.
+ %%> Accounts Receivable Programs will be loaded.
+ %%> SERVICE Programs will be loaded.
+ %%> Service Pricing Programs will be loaded.
+ %%> Extract of Procedures Complete 
+%%>No one is in aspen for ASPEN963
+%%> UPDATING OF aspen and jdisinstall COMPLETE
+%%> Begin Security Phase II Implementation
+%%> Security Phase II Implementation completed successfully
+ Enter Printer ID:  LP$ %%> SPG UPDATE has not been loaded
+ %%> Begin JDIS Update of RELEASE 96-3 SOFTWARE 
+ %%> Core Programs and Procedures will be loaded.
+ %%> PARTS Programs will be loaded.
+ %%> FINANCIAL programs will be loaded.
+ %%> SERVICE programs will be loaded.
+ %%> MIM programs will be loaded.
+ %%> Extract of Programs and Procedures Complete 
+ Enter Printer ID:  LP$[2J[H[1;1H %%> Rel963 prod update #1 loaded
+ %%> Begin JDIS Release 96-3 Update #2 
+ %%> Core Programs and Procedures will be loaded.
+ %%> PARTS Programs will be loaded.
+ %%> SERVICE PRICING programs will be loaded.
+ %%> Extract of Programs and Procedures Complete 
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 96-3 
+ %%> Begin JDIS Install of RELEASE 97-1 SOFTWARE 
+ %%> CORE Programs will be loaded.
+ %%> BUSINESS PLAN Programs will be loaded.
+ %%> PARTS Programs will be loaded.
+ %%> MIM Programs will be loaded.
+ %%> FINANCIAL Programs will be loaded.
+ %%> ACCOUNTS RECEIVABLE programs will be loaded.
+ %%> SERVICE Programs will be loaded.
+ %%> Service Pricing Programs will be loaded.
+ %%> Extract of Procedures Complete 
+%%>Dealer has Installed JDSDF Patch JSDF0099 JDUPDATE
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED 97-1 
+ %%> Begin JDIS Update of RELEASE 97-1 SOFTWARE 
+ %%> CORE procs and programs included
+ %%> PARTS programs included
+ %%> MIM programs included
+ %%> SERVICE MGMT programs included
+ %%> Service Pricing Programs will be loaded.
+ %%> Extract of Procedures Complete 
+%%>Dealer has Installed JDSDF Patch JSDF0103 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0102 JDUPDATE
+%%> 07Oct97 08:30 checkspace 972 completed for Release 97-2               PASS                                                                       
+ Enter Printer ID:  LP$ %%> DEALER HAS INSTALLED PATCH103
+%%> **********************
+%%> Begin RELEASE 97-1 PROD UPDATE #4 on:
+%%> Fri Nov 28 11:44:18 CST 1997
+%%> **********************
+ %%> Begin JDIS Update of RELEASE 97-1 SOFTWARE 
+ %%> CORE procs and programs included
+ %%> PARTS programs included
+ %%> SERVICE MGMT programs included
+ %%> SERVICE PRICING programs included
+ %%> Extract of Procedures Complete 
+%%> Fri Nov 28 11:44:50 CST 1997
+%%> RELEASE 97-1 PRODUCTION UPDATE #4 IS COMPLETE
+%%> **********************
+%%>Dealer has Installed JDSDF Patch JSDF0106 JDUPDATE
+%%> 28Nov97 12:38 checkspace 972 completed for Release 97-2               FAIL                                                                       
+%%> 28Nov97 14:43 checkspace 972 completed for Release 97-2               FAIL                                                                       
+%%> 28Nov97 14:49 checkspace 972 completed for Release 97-2               FAIL                                                                       
+%%> 28Nov97 15:02 checkspace 972 completed for Release 97-2               PASS                                                                       
+BEGIN jdisinstall 
+Fri Nov 28 16:23:39 CST 1997
+tar xv0 /once/init.jdis
+%%> **********************
+%%> Begin RELEASE 97-2 on:
+%%> Fri Nov 28 16:29:43 CST 1997
+
+ Enter Printer ID:  LP$
+ %%> /JDIS/DATA/MF/TRANS is empty
+
+ %%> /JDIS/DATA/MI/INV is empty
+
+ %%> /JDIS/DATA/CG/CGTRAN is empty
+
+ %%> /JDIS/DATA/MF/ADJTRN is empty
+
+ %%> /JDIS/DATA/MS/SADIST is empty
+
+ %%> Begin JDIS Install of RELEASE 97-2 SOFTWARE 
+
+
+ %%> CORE Programs will be loaded.
+
+
+ %%> US RETAIL NOTES Programs will be loaded.
+
+
+ %%> PARTS Programs will be loaded.
+
+
+ %%> MIM Programs will be loaded.
+
+
+ %%> FINANCIAL Programs will be loaded.
+
+
+ %%> ACCOUNTS RECEIVABLE programs will be loaded.
+
+
+ %%> Service Mgmt/WO Programs will be loaded.
+
+
+ %%> Service Mgmt Program will be loaded.
+
+
+ %%> Service Pricing Programs will be loaded.
+
+
+ %%> Customer Sales Programs will be loaded.
+
+
+ %%> Customer Sales Profile will be loaded.
+
+Extract   PPROC/JDIS.RCT , 954368 bytes
+Extract   PPROC/REPORT , 155648 bytes
+Extract   /usr/bin/MOD972 , 614 bytes
+Extract   PROG/COMM/INFOXDMO.COB , 4608 bytes
+Extract   PPROC/ACPCTL.INX , 40960 bytes
+Extract   PPROC/DD.972.SEQ , 1954048 bytes
+Extract   PPROC/PMMSRVR , 110 bytes
+Extract   u/PROG/CMN/asplogcv , 78952 bytes
+Extract   u/PROG/CMN/proclist , 111682 bytes
+Extract   u/PROG/CMN/JDISOFF , 840 bytes
+Extract   u/PROG/CMN/JDISON , 2987 bytes
+Extract   PROG/CMN/ACCTSRCH.COB , 18176 bytes
+Extract   PROG/CMN/APINVSCH.COB , 77568 bytes
+Extract   PROG/CMN/APPMTSCH.COB , 17152 bytes
+Extract   PROG/CMN/ARINVSCH.COB , 17920 bytes
+Extract   PROG/CMN/countusr , 224 bytes
+Extract   PROG/CMN/CC725A.COB , 73472 bytes
+Extract   PROG/CMN/CGEQSCH.COB , 35840 bytes
+Extract   PROG/CMN/CGNOTEWN.COB , 13056 bytes
+Extract   PROG/CMN/CGSPECWN.COB , 19712 bytes
+Extract   PROG/CMN/CPEQFM.COB , 36352 bytes
+Extract   PROG/CMN/CPEQSCH.COB , 33792 bytes
+Extract   PROG/CMN/CRDTSCH.COB , 10752 bytes
+Extract   PROG/CMN/CTLRPT.COB , 25344 bytes
+Extract   PROG/CMN/CTRLSRCH.COB , 10752 bytes
+Extract   PROG/CMN/CUSTFM.COB , 52736 bytes
+Extract   PROG/CMN/CUSTSCH.COB , 13568 bytes
+Extract   PROG/CMN/DOCSCH.COB , 18432 bytes
+Extract   PROG/CMN/DTCALC.COB , 2816 bytes
+Extract   PROG/CMN/DTCONV.COB , 3584 bytes
+Extract   PROG/CMN/HISTSRC.COB , 9472 bytes
+Extract   PROG/CMN/IFCUSTFM.COB , 6400 bytes
+Extract   PROG/CMN/IFMFSUBR.COB , 6912 bytes
+Extract   PROG/CMN/JDISOFF , 444 bytes
+Extract   PROG/CMN/JDISON , 2692 bytes
+Extract   PROG/CMN/LC798.COB , 3584 bytes
+Extract   PROG/CMN/LOCSCH.COB , 9728 bytes
+Extract   PROG/CMN/MSCOMMNT.COB , 26112 bytes
+Extract   PROG/CMN/MSDESCWN.COB , 20992 bytes
+Extract   PROG/CMN/MSPIPWN.COB , 11520 bytes
+Extract   PROG/CMN/MSSPGMNT.COB , 22784 bytes
+Extract   PROG/CMN/PAYGSCH.COB , 65024 bytes
+Extract   PROG/CMN/PIPFM.COB , 37888 bytes
+Extract   PROG/CMN/PIPRP.COB , 13056 bytes
+Extract   PROG/CMN/PIPSR.COB , 7680 bytes
+Extract   PROG/CMN/RECTPSCH.COB , 9984 bytes
+Extract   PROG/CMN/SPGSCH.COB , 36096 bytes
+Extract   PROG/CMN/STATID.COB , 1536 bytes
+Extract   PROG/CMN/USERSCH.COB , 8192 bytes
+Extract   PROG/CMN/VENDSCH.COB , 10240 bytes
+Extract   PROG/CMN/pmhome , 105 bytes
+Extract   PROG/Z/CMN/JDCPEQFM , 18826 bytes
+Extract   PROG/Z/CMN/JDCPESCH , 9936 bytes
+Extract   PROG/Z/CMN/JDCSTSCH , 5790 bytes
+Extract   PROG/INT/PCCLAIMS.COB , 13312 bytes
+Extract   PROG/INT/PCCPEQUP.COB , 13056 bytes
+Extract   PROG/INT/PCPIPS.COB , 13312 bytes
+Extract   PROG/SOS/alpdef , 17952 bytes
+Extract   PROG/SOS/jdkill , 16384 bytes
+Extract   PROG/SOS/jdlpmove , 284 bytes
+Extract   PROG/SOS/prntmod , 762 bytes
+Extract   PROG/SOS/prtdef , 45307 bytes
+Extract   PROG/SOS/schedfix , 670 bytes
+Extract   PROG/SOS/termdef , 4824 bytes
+Extract   u/PROG/SOS/swprt , 604 bytes
+Extract   PROG/REP/BDADJTRN.COB , 1792 bytes
+Extract   PROG/REP/BDAPAUTH.COB , 2816 bytes
+Extract   PROG/REP/BDAPCHK.COB , 2816 bytes
+Extract   PROG/REP/BDAPPGUP.COB , 2816 bytes
+Extract   PROG/REP/BDAPPRNT.COB , 2816 bytes
+Extract   PROG/REP/BDAPPSEQ.COB , 2816 bytes
+Extract   PROG/REP/BDAPVSEQ.COB , 2816 bytes
+Extract   PROG/REP/BDAPREC.COB , 2816 bytes
+Extract   PROG/REP/BDAPTRAN.COB , 2816 bytes
+Extract   PROG/REP/BDAPVNUP.COB , 2816 bytes
+Extract   PROG/REP/BDARHIST.COB , 2816 bytes
+Extract   PROG/REP/BDAROINV.COB , 2816 bytes
+Extract   PROG/REP/BDAROPMT.COB , 2816 bytes
+Extract   PROG/REP/BDATRANR.COB , 2048 bytes
+Extract   PROG/REP/BDCGADDL.COB , 2816 bytes
+Extract   PROG/REP/BDCGEQUP.COB , 2816 bytes
+Extract   PROG/REP/BDCGTRAN.COB , 1792 bytes
+Extract   PROG/REP/BDCLAIMS.COB , 2816 bytes
+Extract   PROG/REP/BDCPEQUP.COB , 2816 bytes
+Extract   PROG/REP/BDCSHWK.COB , 1792 bytes
+Extract   PROG/REP/BDEISSU.COB , 2816 bytes
+Extract   PROG/REP/BDEISXT.COB , 2816 bytes
+Extract   PROG/REP/BDFPBTCH.COB , 1792 bytes
+Extract   PROG/REP/BDHIST.COB , 2816 bytes
+Extract   PROG/REP/BDMSEOM.COB , 2816 bytes
+Extract   PROG/REP/BDMSTMP.COB , 2816 bytes
+Extract   PROG/REP/BDMSWIP.COB , 2816 bytes
+Extract   PROG/REP/BDMSWOH.COB , 2816 bytes
+Extract   PROG/REP/BDMTRANR.COB , 2048 bytes
+Extract   PROG/REP/BDNOHEAD.COB , 1792 bytes
+Extract   PROG/REP/BDOARHPM.COB , 2816 bytes
+Extract   PROG/REP/BDOARHST.COB , 2816 bytes
+Extract   PROG/REP/BDORDER.COB , 2816 bytes
+Extract   PROG/REP/BDPIPS.COB , 2816 bytes
+Extract   PROG/REP/BDPMMNTH.COB , 2816 bytes
+Extract   PROG/REP/BDRCPTO.COB , 2816 bytes
+Extract   PROG/REP/BDRMTRAN.COB , 1792 bytes
+Extract   PROG/REP/BDSADIST.COB , 1792 bytes
+Extract   PROG/REP/BDSKSTAT.COB , 2816 bytes
+Extract   PROG/REP/BDTRANS.COB , 1792 bytes
+Extract   PROG/REP/BDTRWK.COB , 2048 bytes
+Extract   PROG/REP/BDWRKWIP.COB , 2816 bytes
+Extract   PROG/REP/CAARAGE.COB , 7680 bytes
+Extract   PROG/REP/CAAROINV.COB , 10496 bytes
+Extract   PROG/REP/CAARRCPT.COB , 7936 bytes
+Extract   PROG/REP/CABFAR.COB , 9728 bytes
+Extract   PROG/REP/CACPEQUP.COB , 8192 bytes
+Extract   PROG/REP/CAOARHST.COB , 10240 bytes
+Extract   PROG/REP/CAOTHERS.COB , 29696 bytes
+Extract   PROG/REP/CAPMMPUR.COB , 12032 bytes
+Extract   PROG/REP/CARM.COB , 12800 bytes
+Extract   PROG/REP/CGSAVE.COB , 4864 bytes
+Extract   PROG/REP/CHECKACT.COB , 17920 bytes
+Extract   PROG/REP/CPCONV.COB , 17920 bytes
+Extract   PROG/REP/CPEQUPLD.COB , 18688 bytes
+Extract   PROG/REP/CUARAGE.COB , 8192 bytes
+Extract   PROG/REP/CUAROINV.COB , 10752 bytes
+Extract   PROG/REP/CUARRCPT.COB , 8448 bytes
+Extract   PROG/REP/CUBFAR.COB , 9984 bytes
+Extract   PROG/REP/CUCPEQUP.COB , 8704 bytes
+Extract   PROG/REP/CUCSM.COB , 12544 bytes
+Extract   PROG/REP/CUOARHST.COB , 10752 bytes
+Extract   PROG/REP/CUOTHERS.COB , 30720 bytes
+Extract   PROG/REP/CUPMMPUR.COB , 13824 bytes
+Extract   PROG/REP/CURM.COB , 14080 bytes
+Extract   PROG/REP/CUSTCONV.COB , 26880 bytes
+Extract   PROG/REP/CUSTMERG.COB , 24064 bytes
+Extract   PROG/REP/C2AROINV.COB , 12288 bytes
+Extract   PROG/REP/C2BFAR.COB , 9984 bytes
+Extract   PROG/REP/C2CSM.COB , 12288 bytes
+Extract   PROG/REP/C2OTHERS.COB , 31232 bytes
+Extract   PROG/REP/C2PMMPUR.COB , 13568 bytes
+Extract   PROG/REP/C2QUOTE.COB , 9984 bytes
+Extract   PROG/REP/C2RM.COB , 14080 bytes
+Extract   PROG/REP/DFDCC797.COB , 7424 bytes
+Extract   PROG/REP/FIXARMST.COB , 18176 bytes
+Extract   PROG/REP/FXAROINV.COB , 6144 bytes
+Extract   PROG/REP/JFORMENU.COB , 2816 bytes
+Extract   PROG/REP/JFORMEN2.COB , 3072 bytes
+Extract   PROG/REP/JFRMI971.COB , 7424 bytes
+Extract   PROG/REP/JFRPO971.COB , 7680 bytes
+Extract   PROG/REP/OIARCONV.COB , 16896 bytes
+Extract   PROG/REP/PSMSG.COB , 22016 bytes
+Extract   PROG/REP/SETDEMND.COB , 6656 bytes
+Extract   PROG/REP/VNDRENUM.COB , 23808 bytes
+Extract   PROG/REP/ZEROVEND.COB , 6400 bytes
+Extract   PROG/RG/APCASH.COB , 2816 bytes
+Extract   PROG/RG/APCHK.COB , 2816 bytes
+Extract   PROG/RG/APREC.COB , 2560 bytes
+Extract   PROG/RG/CGADDL.COB , 3072 bytes
+Extract   PROG/RG/CGEQUP.COB , 2816 bytes
+Extract   PROG/RG/CGTRAN.COB , 2560 bytes
+Extract   PROG/RG/CLAIMS.COB , 2560 bytes
+Extract   PROG/RG/CPEQUP.COB , 2816 bytes
+Extract   PROG/RG/LMFARPMT.COB , 2560 bytes
+Extract   PROG/RG/LMFINVCE.COB , 2816 bytes
+Extract   PROG/RG/LMFORHST.COB , 2816 bytes
+Extract   PROG/RG/LMFTRAN.COB , 2560 bytes
+Extract   PROG/RG/LMIORDER.COB , 2816 bytes
+Extract   PROG/RG/LMSEOM.COB , 2560 bytes
+Extract   PROG/RG/MIORDER.COB , 2816 bytes
+Extract   PROG/RG/MPCOMP.COB , 2816 bytes
+Extract   PROG/RG/MSWIP.COB , 2560 bytes
+Extract   PROG/RG/MSWOH.COB , 2816 bytes
+Extract   PROG/RG/MTRAN.COB , 2560 bytes
+Extract   PROG/RG/PIPS.COB , 2816 bytes
+Extract   PROG/RG/RMTRAN.COB , 2560 bytes
+Extract   PROG/ESIS/CGSISPFM.COB , 16384 bytes
+Extract   PROG/ESIS/DFDLC750.COB , 13824 bytes
+Extract   PROG/ESIS/DFDLC760.COB , 6656 bytes
+Extract   PROG/ESIS/ESISIN.COB , 14080 bytes
+Extract   PROG/ESIS/ESISOUT.COB , 9984 bytes
+Extract   PROG/ESIS/PIPLOG.COB , 15360 bytes
+Extract   PROG/ESIS/WCLAIM.COB , 71424 bytes
+Extract   PROG/ESIS/WCLMDL.COB , 12032 bytes
+Extract   PROG/ESIS/WCLMRP.COB , 28672 bytes
+Extract   PROG/ESIS/WCLMSR.COB , 6400 bytes
+Extract   PROG/ESIS/WCLOG.COB , 18944 bytes
+Extract   PROG/RN/COGEN3.COB , 14080 bytes
+Extract   PROG/RN/RNCOGEN.COB , 29696 bytes
+Extract   PROG/RN/RNPURFM.COB , 20992 bytes
+Extract   PROG/MF/ACPFM.COB , 58112 bytes
+Extract   PROG/MF/ADJLPRT.COB , 14336 bytes
+Extract   PROG/MF/ADJLUP.COB , 27136 bytes
+Extract   PROG/MF/AKRESTOR.COB , 11776 bytes
+Extract   PROG/MF/APVEN972.COB , 6912 bytes
+Extract   PROG/MF/BUDGET.COB , 45568 bytes
+Extract   PROG/MF/BUDGETFM.COB , 22016 bytes
+Extract   PROG/MF/DAYEND.COB , 15360 bytes
+Extract   PROG/MF/DELETE30.COB , 8960 bytes
+Extract   PROG/MF/FINAUDIT.COB , 18688 bytes
+Extract   PROG/MF/FINGEN.COB , 36864 bytes
+Extract   PROG/MF/FINGENIS.COB , 16384 bytes
+Extract   PROG/MF/FINGENMG.COB , 15360 bytes
+Extract   PROG/MF/FINPRY.COB , 28672 bytes
+Extract   PROG/MF/FINSET.COB , 47616 bytes
+Extract   PROG/MF/FLOOR.COB , 15104 bytes
+Extract   PROG/MF/FPPOLL1.COB , 38912 bytes
+Extract   PROG/MF/FPPOLL2.COB , 14592 bytes
+Extract   PROG/MF/FXAC.COB , 14336 bytes
+Extract   PROG/MF/FXCPAR.COB , 6144 bytes
+Extract   PROG/MF/FXMAKE.COB , 9728 bytes
+Extract   PROG/MF/FXMODEL.COB , 9472 bytes
+Extract   PROG/MF/FX0CONT.COB , 6400 bytes
+Extract   PROG/MF/FXSLSPN.COB , 11264 bytes
+Extract   PROG/MF/FXTERR.COB , 7680 bytes
+Extract   PROG/MF/FXZIPCD.COB , 16384 bytes
+Extract   PROG/MF/GLCHART.COB , 8192 bytes
+Extract   PROG/MF/GLMFM.COB , 25856 bytes
+Extract   PROG/MF/JDTBTRNS.COB , 16896 bytes
+Extract   PROG/MF/JRNLPRT.COB , 14080 bytes
+Extract   PROG/MF/JRNLUP.COB , 31744 bytes
+Extract   PROG/MF/MFCHKSEC.COB , 9984 bytes
+Extract   PROG/MF/MFCTRLFM.COB , 29696 bytes
+Extract   PROG/MF/MFDOWNLD.COB , 43264 bytes
+Extract   PROG/MF/MFDSCHE.COB , 15104 bytes
+Extract   PROG/MF/MFFPB972.COB , 6656 bytes
+Extract   PROG/MF/MFGLADD.COB , 57600 bytes
+Extract   PROG/MF/MFGLUPDT.COB , 58624 bytes
+Extract   PROG/MF/MFIDSFM.COB , 20224 bytes
+Extract   PROG/MF/MFINBFAR.COB , 18432 bytes
+Extract   PROG/MF/MFINQAP.COB , 37376 bytes
+Extract   PROG/MF/MFINQAR.COB , 58368 bytes
+Extract   PROG/MF/MFINQGL.COB , 17152 bytes
+Extract   PROG/MF/MFMTR972.COB , 8192 bytes
+Extract   PROG/MF/MFNEWCV.COB , 13568 bytes
+Extract   PROG/MF/MFPREXP.COB , 40960 bytes
+Extract   PROG/MF/MFREC972.COB , 6912 bytes
+Extract   PROG/MF/MFSALTX.COB , 12544 bytes
+Extract   PROG/MF/MFSHD972.COB , 7168 bytes
+Extract   PROG/MF/MFTRN972.COB , 6912 bytes
+Extract   PROG/MF/MFWRK972.COB , 6912 bytes
+Extract   PROG/MF/MFYTD972.COB , 6912 bytes
+Extract   PROG/MF/MKRESTOR.COB , 13056 bytes
+Extract   PROG/MF/MONTHEND.COB , 52480 bytes
+Extract   PROG/MF/MTRANDEL.COB , 14848 bytes
+Extract   PROG/MF/MTRANFIX.COB , 7680 bytes
+Extract   PROG/MF/SRCALL.COB , 13568 bytes
+Extract   PROG/MF/SRCRPT.COB , 9472 bytes
+Extract   PROG/MF/SURLSMF.COB , 11776 bytes
+Extract   PROG/MF/TAXCDADD.COB , 15872 bytes
+Extract   PROG/MF/TAXCDFM.COB , 28416 bytes
+Extract   PROG/MF/TAXCDFIX.COB , 14336 bytes
+Extract   PROG/MF/USER.COB , 37120 bytes
+Extract   PROG/Z/MF/FXCP4 , 21638 bytes
+Extract   PROG/Z/MF/FXDEMADD , 4052 bytes
+Extract   PROG/Z/MF/JRNLDISB , 41362 bytes
+Extract   PROG/Z/MF/JRNLIN , 14388 bytes
+Extract   PROG/Z/MF/JRNLINPR , 6478 bytes
+Extract   PROG/Z/MF/JRNLINPT , 40366 bytes
+Extract   PROG/Z/MF/JRNLPAYG , 10464 bytes
+Extract   PROG/Z/MF/JRNLPRF , 21026 bytes
+Extract   PROG/Z/MF/JRNLPRIN , 11260 bytes
+Extract   PROG/Z/MF/JRNLPURC , 41952 bytes
+Extract   PROG/Z/MF/SCHED , 18676 bytes
+Extract   PROG/Z/MF/SCHEDACC , 13944 bytes
+Extract   PROG/Z/MF/SCHEDINP , 10104 bytes
+Extract   PROG/Z/MF/SCHEDRPT , 16054 bytes
+Extract   PROG/Z/MF/SCHEDSCR , 16394 bytes
+Extract   PROG/AR/ARAGE.COB , 62208 bytes
+Extract   PROG/AR/ARAGE972.COB , 6912 bytes
+Extract   PROG/AR/ARAGEAUD.COB , 13056 bytes
+Extract   PROG/AR/ARAGEREC.COB , 12288 bytes
+Extract   PROG/AR/ARATR972.COB , 6912 bytes
+Extract   PROG/AR/ARCONV.COB , 26880 bytes
+Extract   PROG/AR/ARCPT972.COB , 6912 bytes
+Extract   PROG/AR/ARFINCHG.COB , 30208 bytes
+Extract   PROG/AR/ARHD972.COB , 6912 bytes
+Extract   PROG/AR/ARHIS972.COB , 6912 bytes
+Extract   PROG/AR/ARHPM972.COB , 6912 bytes
+Extract   PROG/AR/ARHST972.COB , 7424 bytes
+Extract   PROG/AR/ARHSTPRG.COB , 20736 bytes
+Extract   PROG/AR/ARINVFM.COB , 38912 bytes
+Extract   PROG/AR/ARINVUPT.COB , 15360 bytes
+Extract   PROG/AR/ARINV972.COB , 9728 bytes
+Extract   PROG/AR/ARLAB.COB , 21248 bytes
+Extract   PROG/AR/ARPMTUPT.COB , 24064 bytes
+Extract   PROG/AR/ARPMT972.COB , 6912 bytes
+Extract   PROG/AR/ARPURGE.COB , 15616 bytes
+Extract   PROG/AR/ARRCPTFM.COB , 15360 bytes
+Extract   PROG/AR/ARSETUP.COB , 31488 bytes
+Extract   PROG/AR/ARSLSRPT.COB , 19456 bytes
+Extract   PROG/AR/ARSTMNT.COB , 41728 bytes
+Extract   PROG/AR/ARSTMTBF.COB , 41728 bytes
+Extract   PROG/AR/ARSYNCH.COB , 11264 bytes
+Extract   PROG/AR/ARTERMS.COB , 20224 bytes
+Extract   PROG/AR/ARTXCDRP.COB , 9984 bytes
+Extract   PROG/AR/CASH.COB , 97792 bytes
+Extract   PROG/AR/CHKCUST.COB , 8192 bytes
+Extract   PROG/AR/CLIST.COB , 18688 bytes
+Extract   PROG/AR/CPEQP972.COB , 5120 bytes
+Extract   PROG/AR/CSTFM.COB , 25344 bytes
+Extract   PROG/AR/CSTFMA.COB , 55040 bytes
+Extract   PROG/AR/CSTFMB.COB , 27392 bytes
+Extract   PROG/AR/CSTFMC.COB , 26368 bytes
+Extract   PROG/AR/CSTFMD.COB , 43776 bytes
+Extract   PROG/AR/CSTFME.COB , 39936 bytes
+Extract   PROG/AR/CSTFMR.COB , 36096 bytes
+Extract   PROG/AR/FXARROLL.COB , 10240 bytes
+Extract   PROG/MI/AUDIT.COB , 55552 bytes
+Extract   PROG/MI/BINCNT.COB , 14592 bytes
+Extract   PROG/MI/BINVAR.COB , 13056 bytes
+Extract   PROG/MI/CHECKPRT.COB , 7424 bytes
+Extract   PROG/MI/CLEARIT.COB , 6656 bytes
+Extract   PROG/MI/CMTFM.COB , 17920 bytes
+Extract   PROG/MI/COMBWHSE.COB , 6912 bytes
+Extract   PROG/MI/CVLSTSLE.COB , 8704 bytes
+Extract   PROG/MI/DELRCPTS.COB , 7680 bytes
+Extract   PROG/MI/DFDPC536.COB , 24832 bytes
+Extract   PROG/MI/DFDPC538.COB , 6656 bytes
+Extract   PROG/MI/DFDPC539.COB , 12800 bytes
+Extract   PROG/MI/DFDPC550.COB , 14592 bytes
+Extract   PROG/MI/DFDPC563.COB , 9216 bytes
+Extract   PROG/MI/DFDPC568.COB , 22272 bytes
+Extract   PROG/MI/DFDPC592.COB , 16384 bytes
+Extract   PROG/MI/DFDPC593.COB , 7424 bytes
+Extract   PROG/MI/DPNC.COB , 20992 bytes
+Extract   PROG/MI/EOMFM.COB , 15360 bytes
+Extract   PROG/MI/EOMPRG.COB , 8448 bytes
+Extract   PROG/MI/EOMRPT.COB , 40448 bytes
+Extract   PROG/MI/EXCLAIMS.COB , 3072 bytes
+Extract   PROG/MI/EXMSWIP.COB , 3328 bytes
+Extract   PROG/MI/EXMSWOH.COB , 3328 bytes
+Extract   PROG/MI/EXPIPS.COB , 3328 bytes
+Extract   PROG/MI/EXPRTMST.COB , 3072 bytes
+Extract   PROG/MI/FIXACOST.COB , 3328 bytes
+Extract   PROG/MI/FIXDESC.COB , 3072 bytes
+Extract   PROG/MI/FIXSRC.COB , 2560 bytes
+Extract   PROG/MI/FMPRTMST.COB , 6656 bytes
+Extract   PROG/MI/GROUPFM.COB , 116224 bytes
+Extract   PROG/MI/HIACT.COB , 17152 bytes
+Extract   PROG/MI/INCMPLNK.COB , 13824 bytes
+Extract   PROG/MI/INVCST.COB , 14848 bytes
+Extract   PROG/MI/INVREG.COB , 33792 bytes
+Extract   PROG/MI/JDAVAIL.COB , 22016 bytes
+Extract   PROG/MI/JDPRCFIL.COB , 15360 bytes
+Extract   PROG/MI/JDPRCTAP.COB , 22528 bytes
+Extract   PROG/MI/JDPSPUR.COB , 9216 bytes
+Extract   PROG/MI/JDSUBRPT.COB , 13312 bytes
+Extract   PROG/MI/JDTRACK.COB , 16640 bytes
+Extract   PROG/MI/LMBAL.COB , 2560 bytes
+Extract   PROG/MI/MIINQ.COB , 21248 bytes
+Extract   PROG/MI/MIMNTH.COB , 32512 bytes
+Extract   PROG/MI/MINRPT.COB , 17664 bytes
+Extract   PROG/MI/MOVEHIST.COB , 5376 bytes
+Extract   PROG/MI/NOCOUNT.COB , 16128 bytes
+Extract   PROG/MI/NWPRTS.COB , 16640 bytes
+Extract   PROG/MI/OEFIX.COB , 9472 bytes
+Extract   PROG/MI/ORDERCK.COB , 5632 bytes
+Extract   PROG/MI/ORDERFX.COB , 7168 bytes
+Extract   PROG/MI/ORDINFO.COB , 6656 bytes
+Extract   PROG/MI/ORDINVP.COB , 8960 bytes
+Extract   PROG/MI/ORDOPN.COB , 11520 bytes
+Extract   PROG/MI/ORDRVW.COB , 18432 bytes
+Extract   PROG/MI/PARTSFM.COB , 71680 bytes
+Extract   PROG/MI/PBUPDATE.COB , 6656 bytes
+Extract   PROG/MI/PC510.COB , 30720 bytes
+Extract   PROG/MI/PC513.COB , 11008 bytes
+Extract   PROG/MI/PC514.COB , 11520 bytes
+Extract   PROG/MI/PC515.COB , 9984 bytes
+Extract   PROG/MI/PC517.COB , 17152 bytes
+Extract   PROG/MI/PC520.COB , 17152 bytes
+Extract   PROG/MI/PC521.COB , 6400 bytes
+Extract   PROG/MI/PC522.COB , 6144 bytes
+Extract   PROG/MI/PC530.COB , 90112 bytes
+Extract   PROG/MI/PC531.COB , 22528 bytes
+Extract   PROG/MI/PC532.COB , 12544 bytes
+Extract   PROG/MI/PC533.COB , 18944 bytes
+Extract   PROG/MI/PC534.COB , 90624 bytes
+Extract   PROG/MI/PC535.COB , 17920 bytes
+Extract   PROG/MI/PC560.COB , 14336 bytes
+Extract   PROG/MI/PC562.COB , 20736 bytes
+Extract   PROG/MI/PC564.COB , 28416 bytes
+Extract   PROG/MI/PC566.COB , 11264 bytes
+Extract   PROG/MI/PC567.COB , 19200 bytes
+Extract   PROG/MI/PC569.COB , 14336 bytes
+Extract   PROG/MI/PMASNBIN.COB , 7936 bytes
+Extract   PROG/MI/PMASSEMB.COB , 22016 bytes
+Extract   PROG/MI/PMAUD972.COB , 6400 bytes
+Extract   PROG/MI/PMAUDOH.COB , 6912 bytes
+Extract   PROG/MI/PMAUDPRG.COB , 6912 bytes
+Extract   PROG/MI/PMCAPPLC.COB , 20480 bytes
+Extract   PROG/MI/PMCAVAIL.COB , 11264 bytes
+Extract   PROG/MI/PMCCDESC.COB , 6144 bytes
+Extract   PROG/MI/PMCCMACH.COB , 6144 bytes
+Extract   PROG/MI/PMCCMAKE.COB , 6144 bytes
+Extract   PROG/MI/PMCCMODE.COB , 5888 bytes
+Extract   PROG/MI/PMCCWHSE.COB , 5888 bytes
+Extract   PROG/MI/PMCFOOTN.COB , 8448 bytes
+Extract   PROG/MI/PMCJDCRS.COB , 16384 bytes
+Extract   PROG/MI/PMCOMPRG.COB , 10496 bytes
+Extract   PROG/MI/PMCOMPRT.COB , 16384 bytes
+Extract   PROG/MI/PMCOTHER.COB , 8960 bytes
+Extract   PROG/MI/PMCPAPPL.COB , 9472 bytes
+Extract   PROG/MI/PMCPARTS.COB , 20480 bytes
+Extract   PROG/MI/PMCPPART.COB , 4096 bytes
+Extract   PROG/MI/PMCPPRNT.COB , 14592 bytes
+Extract   PROG/MI/PMCPPRT2.COB , 15104 bytes
+Extract   PROG/MI/PMCPRINT.COB , 14592 bytes
+Extract   PROG/MI/PMCPSPEC.COB , 5376 bytes
+Extract   PROG/MI/PMCSCATC.COB , 9472 bytes
+Extract   PROG/MI/PMCSDESC.COB , 8448 bytes
+Extract   PROG/MI/PMCSLECT.COB , 8704 bytes
+Extract   PROG/MI/PMCSMACH.COB , 8192 bytes
+Extract   PROG/MI/PMCSMAKE.COB , 8448 bytes
+Extract   PROG/MI/PMCSMODE.COB , 8448 bytes
+Extract   PROG/MI/PMCSPECP.COB , 19200 bytes
+Extract   PROG/MI/PMCSPECS.COB , 24832 bytes
+Extract   PROG/MI/PMCST972.COB , 6400 bytes
+Extract   PROG/MI/PMCTWHSE.COB , 6144 bytes
+Extract   PROG/MI/PMDECDRV.COB , 9472 bytes
+Extract   PROG/MI/PMDECSAL.COB , 10496 bytes
+Extract   PROG/MI/PMEXPIND.COB , 8448 bytes
+Extract   PROG/MI/PMHOSTCL.COB , 11008 bytes
+Extract   PROG/MI/PMHOSTOR.COB , 4096 bytes
+Extract   PROG/MI/PMINV972.COB , 6656 bytes
+Extract   PROG/MI/PMINVHST.COB , 28672 bytes
+Extract   PROG/MI/PMINVPRG.COB , 6912 bytes
+Extract   PROG/MI/PMJDVAVL.COB , 8192 bytes
+Extract   PROG/MI/PMMAFTER.COB , 6656 bytes
+Extract   PROG/MI/PMMCVOF6.COB , 7168 bytes
+Extract   PROG/MI/PMMCVSRC.COB , 9216 bytes
+Extract   PROG/MI/PMMDAILP.COB , 6656 bytes
+Extract   PROG/MI/PMMDAILY.COB , 10496 bytes
+Extract   PROG/MI/PMMIY972.COB , 6656 bytes
+Extract   PROG/MI/PMMLDPDC.COB , 11520 bytes
+Extract   PROG/MI/PMMLOAD.COB , 8448 bytes
+Extract   PROG/MI/PMMLOCAT.COB , 9216 bytes
+Extract   PROG/MI/PMMPC550.COB , 10240 bytes
+Extract   PROG/MI/PMMST972.COB , 7168 bytes
+Extract   PROG/MI/PMMUTDEL.COB , 7424 bytes
+Extract   PROG/MI/PMMUTDSC.COB , 3072 bytes
+Extract   PROG/MI/PMMUTDTE.COB , 7936 bytes
+Extract   PROG/MI/PMMUTHST.COB , 6656 bytes
+Extract   PROG/MI/PMMUTNTX.COB , 6912 bytes
+Extract   PROG/MI/PMMUTPPC.COB , 6912 bytes
+Extract   PROG/MI/PMORD972.COB , 6912 bytes
+Extract   PROG/MI/PMORDIFF.COB , 55808 bytes
+Extract   PROG/MI/PMORN972.COB , 7680 bytes
+Extract   PROG/MI/PMPARTAD.COB , 17408 bytes
+Extract   PROG/MI/PMPC530W.COB , 29184 bytes
+Extract   PROG/MI/PMPICORP.COB , 18432 bytes
+Extract   PROG/MI/PMPMM972.COB , 6400 bytes
+Extract   PROG/MI/PMPNADOC.COB , 9728 bytes
+Extract   PROG/MI/PMPNDDOC.COB , 11264 bytes
+Extract   PROG/MI/PMPNPDOC.COB , 7936 bytes
+Extract   PROG/MI/PMPRCUVO.COB , 10752 bytes
+Extract   PROG/MI/PMPRICE.COB , 11264 bytes
+Extract   PROG/MI/PMPRT972.COB , 6400 bytes
+Extract   PROG/MI/PMPRTFIX.COB , 5888 bytes
+Extract   PROG/MI/PMPSM972.COB , 6400 bytes
+Extract   PROG/MI/PMQINTC.COB , 6912 bytes
+Extract   PROG/MI/PMQOHAND.COB , 16896 bytes
+Extract   PROG/MI/PMQORDER.COB , 7936 bytes
+Extract   PROG/MI/PMQOSYNC.COB , 7936 bytes
+Extract   PROG/MI/PMQUIADD.COB , 11520 bytes
+Extract   PROG/MI/PMQUOTOR.COB , 7936 bytes
+Extract   PROG/MI/PMQUOTUP.COB , 28416 bytes
+Extract   PROG/MI/PMRCO972.COB , 6400 bytes
+Extract   PROG/MI/PMRCPTPU.COB , 7936 bytes
+Extract   PROG/MI/PMREPICK.COB , 10752 bytes
+Extract   PROG/MI/PMRPART.COB , 15360 bytes
+Extract   PROG/MI/PMSAL972.COB , 6400 bytes
+Extract   PROG/MI/PMSAT1ST.COB , 13056 bytes
+Extract   PROG/MI/PMSIM972.COB , 6656 bytes
+Extract   PROG/MI/PMSKT972.COB , 12800 bytes
+Extract   PROG/MI/PMSPA972.COB , 6656 bytes
+Extract   PROG/MI/PMSPGSCH.COB , 24320 bytes
+Extract   PROG/MI/PMSPTSCH.COB , 12544 bytes
+Extract   PROG/MI/PMSTKCHK.COB , 6912 bytes
+Extract   PROG/MI/PMSTK972.COB , 8448 bytes
+Extract   PROG/MI/PMSTP972.COB , 6656 bytes
+Extract   PROG/MI/PMSUB.COB , 12544 bytes
+Extract   PROG/MI/PMSURPCF.COB , 10240 bytes
+Extract   PROG/MI/PMSURPSA.COB , 17664 bytes
+Extract   PROG/MI/PMSURPUF.COB , 7424 bytes
+Extract   PROG/MI/PMUSE972.COB , 6400 bytes
+Extract   PROG/MI/PNCLOOP.COB , 7424 bytes
+Extract   PROG/MI/PRCFM.COB , 12800 bytes
+Extract   PROG/MI/PRCUPD.COB , 16896 bytes
+Extract   PROG/MI/PRICEMAT.COB , 4608 bytes
+Extract   PROG/MI/PSMONTH.COB , 29696 bytes
+Extract   PROG/MI/PSTCOBAD.COB , 9728 bytes
+Extract   PROG/MI/PSTCOBGL.COB , 19200 bytes
+Extract   PROG/MI/PSTCOBPO.COB , 6912 bytes
+Extract   PROG/MI/PSTCOBRC.COB , 7680 bytes
+Extract   PROG/MI/PSTINV.COB , 13312 bytes
+Extract   PROG/MI/PSTMISC.COB , 21248 bytes
+Extract   PROG/MI/PSTPC567.COB , 6144 bytes
+Extract   PROG/MI/PTREORG.COB , 2816 bytes
+Extract   PROG/MI/RENUMPRT.COB , 9984 bytes
+Extract   PROG/MI/RESETDSC.COB , 3584 bytes
+Extract   PROG/MI/REVRCPTS.COB , 8960 bytes
+Extract   PROG/MI/RIUPD.COB , 5376 bytes
+Extract   PROG/MI/SALEANL.COB , 12544 bytes
+Extract   PROG/MI/SALES.COB , 93952 bytes
+Extract   PROG/MI/SETBIN.COB , 5376 bytes
+Extract   PROG/MI/SETCL.COB , 4864 bytes
+Extract   PROG/MI/SFSETUP.COB , 22528 bytes
+Extract   PROG/MI/SLSMN.COB , 9984 bytes
+Extract   PROG/MI/SPCORDER.COB , 33024 bytes
+Extract   PROG/MI/SPTORD.COB , 61696 bytes
+Extract   PROG/MI/STDPFM.COB , 45056 bytes
+Extract   PROG/MI/STKORD.COB , 95744 bytes
+Extract   PROG/MI/STKSTAT.COB , 50176 bytes
+Extract   PROG/MI/STKSTAT1.COB , 26112 bytes
+Extract   PROG/MI/STKSTAT2.COB , 22784 bytes
+Extract   PROG/MI/STKSTAT3.COB , 34816 bytes
+Extract   PROG/MI/STKSTAT4.COB , 33792 bytes
+Extract   PROG/MI/STKSTAT5.COB , 53248 bytes
+Extract   PROG/MI/STKSTAT6.COB , 5888 bytes
+Extract   PROG/MI/STKSTAT7.COB , 5888 bytes
+Extract   PROG/MI/STKSTATF.COB , 27392 bytes
+Extract   PROG/MI/STKSTATI.COB , 6144 bytes
+Extract   PROG/MI/STKSTATM.COB , 46592 bytes
+Extract   PROG/MI/SUBCOMNT.COB , 8960 bytes
+Extract   PROG/MI/SUBCONV.COB , 4096 bytes
+Extract   PROG/MI/SYNCDATE.COB , 3584 bytes
+Extract   PROG/MI/TEXPARTS.COB , 5888 bytes
+Extract   PROG/MI/TRACKING.COB , 8960 bytes
+Extract   PROG/MI/TRANSFER.COB , 28160 bytes
+Extract   PROG/MI/TSTRNK.COB , 17664 bytes
+Extract   PROG/MI/WHSDUP.COB , 17408 bytes
+Extract   PROG/MI/WHSPNC.COB , 15872 bytes
+Extract   PROG/MI/ZEROCOST.COB , 2560 bytes
+Extract   PROG/Z/MI/JDORD , 35324 bytes
+Extract   PROG/Z/MI/JDORDOP1 , 17116 bytes
+Extract   PROG/Z/MI/MIDOCSCH , 8364 bytes
+Extract   PROG/Z/MI/ORDER , 27654 bytes
+Extract   PROG/Z/MI/ORDERPT , 23382 bytes
+Extract   PROG/Z/MI/PMAVAIL , 19730 bytes
+Extract   PROG/Z/MI/PMINVBAL , 30158 bytes
+Extract   PROG/Z/MI/PMMADDPT , 20686 bytes
+Extract   PROG/Z/MI/PMORD , 6352 bytes
+Extract   PROG/Z/MI/PMQACC01 , 14342 bytes
+Extract   PROG/Z/MI/PMQACCMI , 9170 bytes
+Extract   PROG/Z/MI/PMQACCPT , 31156 bytes
+Extract   PROG/Z/MI/PMQACCWO , 19480 bytes
+Extract   PROG/Z/MI/PMQADDPT , 3872 bytes
+Extract   PROG/Z/MI/PMQCOMNT , 13090 bytes
+Extract   PROG/Z/MI/PMQCOPY , 29010 bytes
+Extract   PROG/Z/MI/PMQDELET , 5866 bytes
+Extract   PROG/Z/MI/PMQDETA1 , 21080 bytes
+Extract   PROG/Z/MI/PMQDETA2 , 41072 bytes
+Extract   PROG/Z/MI/PMQDETA3 , 2382 bytes
+Extract   PROG/Z/MI/PMQDETA4 , 11558 bytes
+Extract   PROG/Z/MI/PMQDETAI , 21186 bytes
+Extract   PROG/Z/MI/PMQLIST , 19610 bytes
+Extract   PROG/Z/MI/PMQOTHER , 12720 bytes
+Extract   PROG/Z/MI/PMQPASSW , 5746 bytes
+Extract   PROG/Z/MI/PMQPREQ , 14856 bytes
+Extract   PROG/Z/MI/PMQPREQR , 27066 bytes
+Extract   PROG/Z/MI/PMQPRICE , 14246 bytes
+Extract   PROG/Z/MI/PMQPRINT , 22870 bytes
+Extract   PROG/Z/MI/PMQPROFI , 25298 bytes
+Extract   PROG/Z/MI/PMQPURGE , 7426 bytes
+Extract   PROG/Z/MI/PMQRPMNU , 7078 bytes
+Extract   PROG/Z/MI/PMQSAL01 , 8290 bytes
+Extract   PROG/Z/MI/PMQSCHED , 7416 bytes
+Extract   PROG/Z/MI/PMQSRPT , 17512 bytes
+Extract   PROG/Z/MI/PMQSUB , 21508 bytes
+Extract   PROG/Z/MI/PMQTOTAL , 12114 bytes
+Extract   PROG/Z/MI/PMQTRACE , 7228 bytes
+Extract   PROG/Z/MI/PMQTRACK , 24758 bytes
+Extract   PROG/Z/MI/PMQTRACR , 21916 bytes
+Extract   PROG/Z/MI/PMQUOTE , 28964 bytes
+Extract   PROG/Z/MI/PMQUSER , 10046 bytes
+Extract   PROG/Z/MI/PMSURPAD , 15100 bytes
+Extract   PROG/Z/MI/PMSURPDL , 5694 bytes
+Extract   PROG/Z/MI/PMSURPFM , 27758 bytes
+Extract   PROG/Z/MI/PMSURPMM , 22004 bytes
+Extract   PROG/Z/MI/PMSURPOH , 9624 bytes
+Extract   PROG/Z/MI/PMSURPPA , 22478 bytes
+Extract   PROG/Z/MI/PMSURPPM , 22928 bytes
+Extract   PROG/Z/MI/PMSURPRP , 18804 bytes
+Extract   PROG/Z/MI/PSTGLCOB , 8922 bytes
+Extract   PROG/Z/MI/PSTORDAD , 24118 bytes
+Extract   PROG/Z/MI/PSTORDBL , 11878 bytes
+Extract   PROG/Z/MI/PSTORDCG , 25150 bytes
+Extract   PROG/Z/MI/PSTORDER , 40248 bytes
+Extract   PROG/Z/MI/PSTORDGL , 10780 bytes
+Extract   PROG/Z/MI/PSTORDIN , 10844 bytes
+Extract   PROG/Z/MI/PSTORDPM , 13658 bytes
+Extract   PROG/Z/MI/PSTORDPT , 11480 bytes
+Extract   PROG/Z/MI/PSTORDPW , 2732 bytes
+Extract   PROG/Z/MI/PSTORDRC , 11946 bytes
+Extract   PROG/Z/MI/PSTORDTB , 15358 bytes
+Extract   PROG/Z/MI/PSTORDX , 3336 bytes
+Extract   PROG/Z/MI/PSTRCCOB , 9818 bytes
+Extract   PROG/Z/MI/SPGSRC , 30632 bytes
+Extract   PROG/Z/MI/WOSRC , 8494 bytes
+Extract   PROG/Z/JDPS/JDPSSPG , 19372 bytes
+Extract   PROG/Z/JDPS/PMPACCPT , 17330 bytes
+Extract   PROG/Z/JDPS/PMPAVAIL , 4796 bytes
+Extract   PROG/Z/JDPS/PMPCOMNT , 3252 bytes
+Extract   PROG/Z/JDPS/PMPDELET , 4090 bytes
+Extract   PROG/Z/JDPS/PMPDETA1 , 9050 bytes
+Extract   PROG/Z/JDPS/PMPDETA2 , 20684 bytes
+Extract   PROG/Z/JDPS/PMPDETAI , 14000 bytes
+Extract   PROG/Z/JDPS/PMPOHAND , 13726 bytes
+Extract   PROG/Z/JDPS/PMPOTHER , 4882 bytes
+Extract   PROG/Z/JDPS/PMPPRINT , 14868 bytes
+Extract   PROG/Z/JDPS/PMPQUOTE , 8952 bytes
+Extract   PROG/Z/JDPS/PMPSAL01 , 3862 bytes
+Extract   PROG/Z/JDPS/PMPSCHED , 3632 bytes
+Extract   PROG/Z/JDPS/PMPSUB , 13992 bytes
+Extract   PROG/Z/JDPS/PMPTOTAL , 9958 bytes
+Extract   PROG/Z/JDPS/PMPUSER , 5124 bytes
+Extract   PROG/RPT , 0 bytes
+Extract   PROG/RPT/RPT.COB , 6656 bytes
+Extract   PROG/RPT/RPTCALL.COB , 4608 bytes
+Extract   PROG/RPT/RPTCCINP.COB , 5120 bytes
+Extract   PROG/RPT/RPTCCODE.COB , 8704 bytes
+Extract   PROG/RPT/RPTCCONV.COB , 6400 bytes
+Extract   PROG/RPT/RPTCCRP.COB , 9216 bytes
+Extract   PROG/RPT/RPTCCSCH.COB , 4864 bytes
+Extract   PROG/RPT/RPTCRINP.COB , 4864 bytes
+Extract   PROG/RPT/RPTDCUS.COB , 14080 bytes
+Extract   PROG/RPT/RPTDRV.COB , 5376 bytes
+Extract   PROG/RPT/RPTEOMX.COB , 12544 bytes
+Extract   PROG/RPT/RPTPASS.COB , 3584 bytes
+Extract   PROG/RPT/RPTPIA.COB , 22272 bytes
+Extract   PROG/RPT/RPTPMMX.COB , 17920 bytes
+Extract   PROG/RPT/RPTPRINT.COB , 3584 bytes
+Extract   PROG/RPT/RPTPRTIN.COB , 6912 bytes
+Extract   PROG/RPT/RPTPRTSH.COB , 10496 bytes
+Extract   PROG/RPT/RPTPRTX.COB , 11776 bytes
+Extract   PROG/RPT/RPTRPCRT.COB , 12800 bytes
+Extract   PROG/RPT/RPTRPCUS.COB , 3328 bytes
+Extract   PROG/RPT/RPTRPINP.COB , 4096 bytes
+Extract   PROG/RPT/RPTRPLOC.COB , 6400 bytes
+Extract   PROG/RPT/RPTSCCUS.COB , 16640 bytes
+Extract   PROG/RPT/RPTSCLOC.COB , 15360 bytes
+Extract   PROG/RPT/RPTSCOD.COB , 4864 bytes
+Extract   PROG/RPT/RPTSCUS.COB , 11520 bytes
+Extract   PROG/RPT/RPTSETCM.COB , 11008 bytes
+Extract   PROG/RPT/RPTSETGL.COB , 19456 bytes
+Extract   PROG/RPT/RPTSETLS.COB , 4096 bytes
+Extract   PROG/RPT/RPTSETPS.COB , 3840 bytes
+Extract   PROG/RPT/RPTSETRP.COB , 42496 bytes
+Extract   PROG/RPT/RPTSETSL.COB , 3584 bytes
+Extract   PROG/RPT/RPTSETUP.COB , 3072 bytes
+Extract   PROG/RPT/RPTSLS2.COB , 20992 bytes
+Extract   PROG/RPT/RPTSLSCH.COB , 4096 bytes
+Extract   PROG/RPT/RPTSLSM.COB , 38400 bytes
+Extract   PROG/RPT/RPTSSLS.COB , 7168 bytes
+Extract   PROG/RPT/RPTTEST.COB , 2304 bytes
+Extract   PROG/RPT/RPTWHSE.COB , 5120 bytes
+Extract   PROG/RPT/RPTWPROF.COB , 6400 bytes
+Extract   PROG/RPT/rpt.lib , 425984 bytes
+Extract   PROG/CG/CGACCALL.COB , 13312 bytes
+Extract   PROG/CG/CGACSRCH.COB , 15360 bytes
+Extract   PROG/CG/CGADD972.COB , 7424 bytes
+Extract   PROG/CG/CGADJ1.COB , 33792 bytes
+Extract   PROG/CG/CGADJUST.COB , 36864 bytes
+Extract   PROG/CG/CGANALPR.COB , 45312 bytes
+Extract   PROG/CG/CGATTACH.COB , 43264 bytes
+Extract   PROG/CG/CGCATRPT.COB , 10240 bytes
+Extract   PROG/CG/CGCATUPD.COB , 24832 bytes
+Extract   PROG/CG/CGCHKSEC.COB , 7168 bytes
+Extract   PROG/CG/CGCOSTWN.COB , 15104 bytes
+Extract   PROG/CG/CGEQP972.COB , 8448 bytes
+Extract   PROG/CG/CGEQPLOC.COB , 29440 bytes
+Extract   PROG/CG/CGEQU2.COB , 6400 bytes
+Extract   PROG/CG/CGEQUP.COB , 27648 bytes
+Extract   PROG/CG/CGFINWN.COB , 24576 bytes
+Extract   PROG/CG/CGFUNCWN.COB , 9216 bytes
+Extract   PROG/CG/CGHIS972.COB , 7168 bytes
+Extract   PROG/CG/CGHISTFM.COB , 30976 bytes
+Extract   PROG/CG/CGIF.COB , 8704 bytes
+Extract   PROG/CG/CGINV4.COB , 62976 bytes
+Extract   PROG/CG/CGINV5.COB , 46336 bytes
+Extract   PROG/CG/CGINVAV.COB , 13568 bytes
+Extract   PROG/CG/CGINVAV1.COB , 50688 bytes
+Extract   PROG/CG/CGINVAV2.COB , 39936 bytes
+Extract   PROG/CG/CGINVCE.COB , 96768 bytes
+Extract   PROG/CG/CGINV972.COB , 6144 bytes
+Extract   PROG/CG/CGLINKWN.COB , 13824 bytes
+Extract   PROG/CG/CGLOAD.COB , 7424 bytes
+Extract   PROG/CG/CGMARGIN.COB , 1792 bytes
+Extract   PROG/CG/CGMGNANL.COB , 30976 bytes
+Extract   PROG/CG/CGNAEDA.COB , 19456 bytes
+Extract   PROG/CG/CGNOTEFX.COB , 7680 bytes
+Extract   PROG/CG/CGORDWN.COB , 17408 bytes
+Extract   PROG/CG/CGPOLREC.COB , 30464 bytes
+Extract   PROG/CG/CGPRINT.COB , 46080 bytes
+Extract   PROG/CG/CGPRM972.COB , 7168 bytes
+Extract   PROG/CG/CGPURGE.COB , 32000 bytes
+Extract   PROG/CG/CGRENTWN.COB , 14592 bytes
+Extract   PROG/CG/CGSPCSCH.COB , 9728 bytes
+Extract   PROG/CG/CGSPECFM.COB , 26880 bytes
+Extract   PROG/CG/CGSPECPT.COB , 13056 bytes
+Extract   PROG/CG/CGTRADE.COB , 29440 bytes
+Extract   PROG/CG/CGTRANPT.COB , 16384 bytes
+Extract   PROG/CG/CGUSERWN.COB , 16640 bytes
+Extract   PROG/CG/CGWARRWN.COB , 19456 bytes
+Extract   PROG/CG/CGWASH.COB , 27904 bytes
+Extract   PROG/CG/CGWASHOU.COB , 1792 bytes
+Extract   PROG/CG/DFDCC790.COB , 12288 bytes
+Extract   PROG/CG/DFDCC791.COB , 15616 bytes
+Extract   PROG/CG/DFDCC793.COB , 11520 bytes
+Extract   PROG/CG/FXCGSPEC.COB , 7424 bytes
+Extract   PROG/CG/IFORDREC.COB , 9728 bytes
+Extract   PROG/CG/SURLSCG.COB , 12544 bytes
+Extract   PROG/Z/CG/CGINVSCH , 7622 bytes
+Extract   PROG/Z/CG/CGORDER , 20510 bytes
+Extract   PROG/Z/CG/CGORDFM , 21280 bytes
+Extract   PROG/Z/CG/CGORDSCH , 7780 bytes
+Extract   PROG/Z/CG/CGPARMFM , 34906 bytes
+Extract   PROG/Z/CG/CGRCPT2A , 40062 bytes
+Extract   PROG/Z/CG/CGRCPT2B , 21806 bytes
+Extract   PROG/Z/CG/CGRECON , 7824 bytes
+Extract   PROG/Z/CG/CGRECPT , 39662 bytes
+Extract   PROG/Z/CG/CGRECPT1 , 25468 bytes
+Extract   PROG/Z/CG/CGRECPT2 , 20128 bytes
+Extract   PROG/Z/CG/CGRECPT3 , 29158 bytes
+Extract   PROG/Z/CG/CGRECPTA , 25428 bytes
+Extract   PROG/Z/CG/CGRECREV , 30204 bytes
+Extract   PROG/Z/CG/CGSPCSCH , 7948 bytes
+Extract   PROG/Z/CG/CGSPECFM , 30358 bytes
+Extract   PROG/Z/CG/CGSPECIO , 8746 bytes
+Extract   PROG/MP/MPCALC.COB , 43776 bytes
+Extract   PROG/MS/MSBUDFM.COB , 12800 bytes
+Extract   PROG/MS/MSCLM972.COB , 9728 bytes
+Extract   PROG/MS/MSCON1.COB , 7680 bytes
+Extract   PROG/MS/MSCON4.COB , 13056 bytes
+Extract   PROG/MS/MSCON6.COB , 28416 bytes
+Extract   PROG/MS/MSCON8.COB , 10240 bytes
+Extract   PROG/MS/MSCON9.COB , 14336 bytes
+Extract   PROG/MS/MSCONT.COB , 19200 bytes
+Extract   PROG/MS/MSCONT.POLL , 20224 bytes
+Extract   PROG/MS/MSCONTRL.COB , 104192 bytes
+Extract   PROG/MS/MSCUSUM.COB , 11520 bytes
+Extract   PROG/MS/MSEOM972.COB , 8704 bytes
+Extract   PROG/MS/MSGLIN.COB , 26368 bytes
+Extract   PROG/MS/MSHACCT.COB , 23040 bytes
+Extract   PROG/MS/MSINV1.COB , 7168 bytes
+Extract   PROG/MS/MSINV2.COB , 25088 bytes
+Extract   PROG/MS/MSINV3.COB , 26112 bytes
+Extract   PROG/MS/MSINV4.COB , 11520 bytes
+Extract   PROG/MS/MSINV5.COB , 7168 bytes
+Extract   PROG/MS/MSINV6.COB , 25856 bytes
+Extract   PROG/MS/MSINV7.COB , 6656 bytes
+Extract   PROG/MS/MSINV972.COB , 7936 bytes
+Extract   PROG/MS/MSINVC.COB , 31744 bytes
+Extract   PROG/MS/MSINVRG.COB , 20480 bytes
+Extract   PROG/MS/MSINVRGX.COB , 10496 bytes
+Extract   PROG/MS/MSLAB.COB , 39680 bytes
+Extract   PROG/MS/MSLAB1.COB , 48384 bytes
+Extract   PROG/MS/MSLAB2.COB , 13568 bytes
+Extract   PROG/MS/MSLABSUM.COB , 18432 bytes
+Extract   PROG/MS/MSLUTCAP.COB , 14848 bytes
+Extract   PROG/MS/MSMNTH.COB , 9472 bytes
+Extract   PROG/MS/MSOPEN.COB , 6656 bytes
+Extract   PROG/MS/MSOPSUM.COB , 15616 bytes
+Extract   PROG/MS/MSOTHCMD.COB , 9472 bytes
+Extract   PROG/MS/MSOWIPR.COB , 27648 bytes
+Extract   PROG/MS/MSPCOMP.COB , 14592 bytes
+Extract   PROG/MS/MSPIP972.COB , 7936 bytes
+Extract   PROG/MS/MSPOADD.COB , 14848 bytes
+Extract   PROG/MS/MSPOM.COB , 18688 bytes
+Extract   PROG/MS/MSPRACC.COB , 15360 bytes
+Extract   PROG/MS/MSPREV.COB , 58112 bytes
+Extract   PROG/MS/MSPRTPRV.COB , 16384 bytes
+Extract   PROG/MS/MSPRTUPD.COB , 14848 bytes
+Extract   PROG/MS/MSPRV0.COB , 6656 bytes
+Extract   PROG/MS/MSPRV1.COB , 29440 bytes
+Extract   PROG/MS/MSPRV2.COB , 20992 bytes
+Extract   PROG/MS/MSPRV3.COB , 8192 bytes
+Extract   PROG/MS/MSPRV6.COB , 62720 bytes
+Extract   PROG/MS/MSPRV8.COB , 8192 bytes
+Extract   PROG/MS/MSPRV9.COB , 12288 bytes
+Extract   PROG/MS/MSPRVCLM.COB , 48384 bytes
+Extract   PROG/MS/MSPURGE.COB , 13568 bytes
+Extract   PROG/MS/MSQUOTE.COB , 12032 bytes
+Extract   PROG/MS/MSSAD972.COB , 7936 bytes
+Extract   PROG/MS/MSSPGA.COB , 37632 bytes
+Extract   PROG/MS/MSSPGA.POLL , 37632 bytes
+Extract   PROG/MS/MSSPGSUM.COB , 18688 bytes
+Extract   PROG/MS/MSTECSUM.COB , 25856 bytes
+Extract   PROG/MS/MSTRANS.COB , 28672 bytes
+Extract   PROG/MS/MSWIP972.COB , 9216 bytes
+Extract   PROG/MS/MSWIPDEL.COB , 9472 bytes
+Extract   PROG/MS/MSWIPPR.COB , 15104 bytes
+Extract   PROG/MS/MSWIPUN.COB , 10496 bytes
+Extract   PROG/MS/MSWOANL.COB , 15104 bytes
+Extract   PROG/MS/MSWOH972.COB , 10496 bytes
+Extract   PROG/MS/MSWOLOG.COB , 14592 bytes
+Extract   PROG/MS/MSWOSUM.COB , 15872 bytes
+Extract   PROG/MS/REOPEN.COB , 6656 bytes
+Extract   PROG/MS/SURLSMS.COB , 7936 bytes
+Extract   PROG/MS/WIPSRC.COB , 14848 bytes
+Extract   PROG/Z/MS/JDWARR , 37050 bytes
+Extract   PROG/Z/MS/MSWIPDTL , 9646 bytes
+Extract   PROG/Z/MS/MSWIPUPD , 13028 bytes
+Extract   PROG/SP/MSCOMFM.COB , 17152 bytes
+Extract   PROG/SP/SPGCAT.COB , 10496 bytes
+Extract   PROG/SP/SPGPOLL.COB , 22016 bytes
+Extract   PROG/CSP/CPCATUPD.COB , 15360 bytes
+Extract   PROG/CSP/CPLABELS.COB , 19200 bytes
+Extract   PROG/CSP/CPPMT972.COB , 9472 bytes
+Extract   PROG/CSP/CPPROFIL.COB , 46336 bytes
+Extract   PROG/CSP/CPTARGC.COB , 23808 bytes
+Extract   PROG/CSP/CPTARGD1.COB , 32256 bytes
+Extract   PROG/CSP/CPTARGE.COB , 57856 bytes
+Extract   PROG/CSP/CPTARGET.COB , 18432 bytes
+Extract   PROG/CSP/CPTARGW.COB , 38144 bytes
+Extract   PROG/Z/CSM/CGEQSRCH , 10892 bytes
+Extract   PROG/Z/CSM/CONTFM , 14400 bytes
+Extract   PROG/Z/CSM/CPEQSRCH , 8486 bytes
+Extract   PROG/Z/CSM/CUSTLIST , 11342 bytes
+Extract   PROG/Z/CSM/FXCALLMD , 3728 bytes
+Extract   PROG/Z/CSM/FXCPCNT2 , 696 bytes
+Extract   PROG/Z/CSM/FXSMNCD , 9794 bytes
+Extract   PROG/Z/CSM/SMBROKER , 15718 bytes
+Extract   PROG/Z/CSM/SMBROKP1 , 22160 bytes
+Extract   PROG/Z/CSM/SMBROKPT , 30240 bytes
+Extract   PROG/Z/CSM/SMCALL , 25132 bytes
+Extract   PROG/Z/CSM/SMCALLFM , 17864 bytes
+Extract   PROG/Z/CSM/SMCALLP1 , 20012 bytes
+Extract   PROG/Z/CSM/SMCALLPT , 20688 bytes
+Extract   PROG/Z/CSM/SMCDUPD1 , 25840 bytes
+Extract   PROG/Z/CSM/SMCDUPD2 , 10706 bytes
+Extract   PROG/Z/CSM/SMCSUPDT , 20238 bytes
+Extract   PROG/Z/CSM/SMCULSPT , 13396 bytes
+Extract   PROG/Z/CSM/SMLDDTPT , 14624 bytes
+Extract   PROG/Z/CSM/SMLEAD , 24466 bytes
+Extract   PROG/Z/CSM/SMLEADFM , 18484 bytes
+Extract   PROG/Z/CSM/SMLEADPT , 13134 bytes
+Extract   PROG/Z/CSM/SMLOST , 22900 bytes
+Extract   PROG/Z/CSM/SMLOST1 , 4108 bytes
+Extract   PROG/Z/CSM/SMLOST2 , 3496 bytes
+Extract   PROG/Z/CSM/SMLOSTFM , 17670 bytes
+Extract   PROG/Z/CSM/SMLOSTPT , 25228 bytes
+Extract   PROG/Z/CSM/SMPRINT , 2344 bytes
+Extract   PROG/Z/CSM/SMQUOTE , 26872 bytes
+Extract   PROG/Z/CSM/SMQUOTFM , 24152 bytes
+Extract   PROG/Z/CSM/SMRPSCHD , 30148 bytes
+Extract   PROG/Z/CSM/SMSCMDPT , 14812 bytes
+Extract   PROG/Z/CSM/SMSCNMPT , 12296 bytes
+Extract   PROG/Z/CSM/SMSLLSPT , 14060 bytes
+Extract   PROG/Z/CSM/SMSLPRPT , 11276 bytes
+Extract   PROG/Z/CSM/SMSLQPPT , 20794 bytes
+Extract   PROG/Z/CSM/SMSUMMPT , 14854 bytes
+Extract   PPROC/ACPFM.EXT , 757 bytes
+Extract   PPROC/ADJLPRT.EXT , 887 bytes
+Extract   PPROC/ALPDEF.EXT , 5016 bytes
+Extract   PPROC/APCHECK.EXT , 3129 bytes
+Extract   PPROC/APCHKFM.EXT , 642 bytes
+Extract   PPROC/APCPY2GL.EXT , 1717 bytes
+Extract   PPROC/APCSHFOR.EXT , 1686 bytes
+Extract   PPROC/APHIST.EXT , 1597 bytes
+Extract   PPROC/APHISTFM.EXT , 1212 bytes
+Extract   PPROC/APHSTFX.EXT , 1220 bytes
+Extract   PPROC/APINR972.EXT , 936 bytes
+Extract   PPROC/APINVFM.EXT , 1157 bytes
+Extract   PPROC/APLABELS.EXT , 1163 bytes
+Extract   PPROC/APLOAD.EXT , 1743 bytes
+Extract   PPROC/APPGUPDT.EXT , 3533 bytes
+Extract   PPROC/APTRBAL.EXT , 1273 bytes
+Extract   PPROC/APVENDOR.EXT , 2012 bytes
+Extract   PPROC/APVNUPDT.EXT , 3976 bytes
+Extract   PPROC/APCHK972.EXT , 1090 bytes
+Extract   PPROC/APHPT972.EXT , 1113 bytes
+Extract   PPROC/APHST972.EXT , 1134 bytes
+Extract   PPROC/APINV972.EXT , 1120 bytes
+Extract   PPROC/APPMT972.EXT , 1090 bytes
+Extract   PPROC/APREC972.EXT , 1090 bytes
+Extract   PPROC/APTRN972.EXT , 1113 bytes
+Extract   PPROC/APVEN972.EXT , 1103 bytes
+Extract   PPROC/APVPY972.EXT , 1113 bytes
+Extract   PPROC/ARAGE972.EXT , 1075 bytes
+Extract   PPROC/ARATR972.EXT , 1117 bytes
+Extract   PPROC/ARCPT972.EXT , 1095 bytes
+Extract   PPROC/ARHD972.EXT , 1069 bytes
+Extract   PPROC/ARHIS972.EXT , 1088 bytes
+Extract   PPROC/ARHPM972.EXT , 1095 bytes
+Extract   PPROC/ARHST972.EXT , 1093 bytes
+Extract   PPROC/ARINV972.EXT , 1143 bytes
+Extract   PPROC/ARPMT972.EXT , 1095 bytes
+Extract   PPROC/ARAGE.EXT , 930 bytes
+Extract   PPROC/ARINVFM.EXT , 1068 bytes
+Extract   PPROC/ARLAB.EXT , 1045 bytes
+Extract   PPROC/ARRCPTFM.EXT , 961 bytes
+Extract   PPROC/ARSLSRPT.EXT , 965 bytes
+Extract   PPROC/ARSTMNT.EXT , 2323 bytes
+Extract   PPROC/ARSTMTBF.EXT , 2462 bytes
+Extract   PPROC/ARTERMS.EXT , 932 bytes
+Extract   PPROC/ASPLOGCV.EXT , 505 bytes
+Extract   PPROC/BDAPAUTH.EXT , 710 bytes
+Extract   PPROC/BDAPPGUP.EXT , 571 bytes
+Extract   PPROC/BDAPPRNT.EXT , 713 bytes
+Extract   PPROC/BDAPPSEQ.EXT , 571 bytes
+Extract   PPROC/BDAPVNUP.EXT , 571 bytes
+Extract   PPROC/BDAPVSEQ.EXT , 571 bytes
+Extract   PPROC/BDARSTMT.EXT , 1034 bytes
+Extract   PPROC/BDEISSU.EXT , 488 bytes
+Extract   PPROC/BDEISXT.EXT , 492 bytes
+Extract   PPROC/BDMSTMP.EXT , 512 bytes
+Extract   PPROC/BDPOSSKU.EXT , 701 bytes
+Extract   PPROC/BKSPG.EXT , 2309 bytes
+Extract   PPROC/BKUP.EXT , 6535 bytes
+Extract   PPROC/CASH.EXT , 4944 bytes
+Extract   PPROC/CDDEMO.EXT , 10646 bytes
+Extract   PPROC/CG01.MEN , 372 bytes
+Extract   PPROC/CGADD972.EXT , 1123 bytes
+Extract   PPROC/CGCATRPT.EXT , 748 bytes
+Extract   PPROC/CGEQP972.EXT , 889 bytes
+Extract   PPROC/CGEQUIP.EXT , 4859 bytes
+Extract   PPROC/CGHIS972.EXT , 882 bytes
+Extract   PPROC/CGINVAVL.EXT , 1787 bytes
+Extract   PPROC/CGINVCE.EXT , 4874 bytes
+Extract   PPROC/CGINV972.EXT , 882 bytes
+Extract   PPROC/CGMGNANL.EXT , 1579 bytes
+Extract   PPROC/CGNAEDA.EXT , 710 bytes
+Extract   PPROC/CGORDREC.EXT , 5388 bytes
+Extract   PPROC/CGPINUPD.EXT , 1972 bytes
+Extract   PPROC/CGPRM972.EXT , 882 bytes
+Extract   PPROC/CGPURGE.EXT , 1598 bytes
+Extract   PPROC/CGTRANPT.EXT , 1093 bytes
+Extract   PPROC/CGWASH.EXT , 1560 bytes
+Extract   PPROC/CLIST.EXT , 809 bytes
+Extract   PPROC/CONDD972.EXT , 1071 bytes
+Extract   PPROC/CONV972.EXT , 4714 bytes
+Extract   PPROC/CPEQP972.EXT , 890 bytes
+Extract   PPROC/CPPMT972.EXT , 842 bytes
+Extract   PPROC/CPVALUFM.EXT , 838 bytes
+Extract   PPROC/CSM01.MEN , 368 bytes
+Extract   PPROC/CSMLAB.EXT , 288 bytes
+Extract   PPROC/CURM.EXT , 5451 bytes
+Extract   PPROC/CUSTAUDT.EXT , 11152 bytes
+Extract   PPROC/CUSTCONV.EXT , 2009 bytes
+Extract   PPROC/CUSTMERG.EXT , 5357 bytes
+Extract   PPROC/CUSTUPDT.EXT , 19434 bytes
+Extract   PPROC/C2CSM.EXT , 4052 bytes
+Extract   PPROC/C2OTHERS.EXT , 6534 bytes
+Extract   PPROC/C2QUOTE.EXT , 2206 bytes
+Extract   PPROC/C2RM.EXT , 5648 bytes
+Extract   PPROC/C2STMERG.EXT , 10062 bytes
+Extract   PPROC/DAYEND.EXT , 18982 bytes
+Extract   PPROC/DIALINON.EXT , 4462 bytes
+Extract   PPROC/EIS.EXT , 1537 bytes
+Extract   PPROC/EISDRV.EXT , 1028 bytes
+Extract   PPROC/EISDEL.EXT , 1008 bytes
+Extract   PPROC/EISDEMO.EXT , 807 bytes
+Extract   PPROC/EISSAVE.EXT , 148 bytes
+Extract   PPROC/ENDGO.EXT , 9572 bytes
+Extract   PPROC/ES01.MEN , 522 bytes
+Extract   PPROC/FINGEN.EXT , 6276 bytes
+Extract   PPROC/FINSTAT.EXT , 1767 bytes
+Extract   PPROC/FPPOLL.EXT , 3379 bytes
+Extract   PPROC/FPRPT.EXT , 2446 bytes
+Extract   PPROC/FXACTV1.EXT , 772 bytes
+Extract   PPROC/FXACTV2.EXT , 780 bytes
+Extract   PPROC/FXDEMADD.EXT , 798 bytes
+Extract   PPROC/FXMAKE.EXT , 593 bytes
+Extract   PPROC/FXMODEL.EXT , 484 bytes
+Extract   PPROC/FXSMNCD.EXT , 914 bytes
+Extract   PPROC/FXTERR.EXT , 369 bytes
+Extract   PPROC/FXZIPCD.EXT , 499 bytes
+Extract   PPROC/GETLOGON.EXT , 1594 bytes
+Extract   PPROC/GOHOME.EXT , 14246 bytes
+Extract   PPROC/IDSFM.EXT , 876 bytes
+Extract   PPROC/INVREG.EXT , 1951 bytes
+Extract   PPROC/JDIS05.MEN , 275 bytes
+Extract   PPROC/JDPSPUR.EXT , 914 bytes
+Extract   PPROC/JDQESUM.EXT , 1760 bytes
+Extract   PPROC/JDWARR.EXT , 2950 bytes
+Extract   PPROC/JRNLIN.EXT , 6589 bytes
+Extract   PPROC/JRNLPRT.EXT , 917 bytes
+Extract   PPROC/KILLID.EXT , 2771 bytes
+Extract   PPROC/KILLST.EXT , 5934 bytes
+Extract   PPROC/KO.EXT , 348 bytes
+Extract   PPROC/LABELS.EXT , 981 bytes
+Extract   PPROC/LOCATE.EXT , 2540 bytes
+Extract   PPROC/LOCKOUT.EXT , 5503 bytes
+Extract   PPROC/MAINMENU.MEN , 353 bytes
+Extract   PPROC/MFCON972.EXT , 1366 bytes
+Extract   PPROC/MFFPB972.EXT , 926 bytes
+Extract   PPROC/MFMTR972.EXT , 1276 bytes
+Extract   PPROC/MFREC972.EXT , 1095 bytes
+Extract   PPROC/MFSHD972.EXT , 1082 bytes
+Extract   PPROC/MFTRN972.EXT , 1084 bytes
+Extract   PPROC/MFWRK972.EXT , 1055 bytes
+Extract   PPROC/MFYTD972.EXT , 1084 bytes
+Extract   PPROC/MFDSCHE.EXT , 1135 bytes
+Extract   PPROC/MFGLUPDT.EXT , 8370 bytes
+Extract   PPROC/MFINQ.EXT , 3913 bytes
+Extract   PPROC/MFSALTX.EXT , 1598 bytes
+Extract   PPROC/MI001.MEN , 290 bytes
+Extract   PPROC/MI002.MEN , 268 bytes
+Extract   PPROC/MI003.MEN , 386 bytes
+Extract   PPROC/MI005.MEN , 203 bytes
+Extract   PPROC/MI006.MEN , 399 bytes
+Extract   PPROC/MI008.MEN , 233 bytes
+Extract   PPROC/MI011.MEN , 227 bytes
+Extract   PPROC/MONTHEND.EXT , 7754 bytes
+Extract   PPROC/MPCALC.EXT , 4471 bytes
+Extract   PPROC/MPCPY2GL.EXT , 1550 bytes
+Extract   PPROC/MPUPDT.EXT , 5849 bytes
+Extract   PPROC/MS001.MEN , 272 bytes
+Extract   PPROC/MSCLM972.EXT , 1183 bytes
+Extract   PPROC/MSCUSUM.EXT , 902 bytes
+Extract   PPROC/MSENTRY.EXT , 11015 bytes
+Extract   PPROC/MSEOM972.EXT , 859 bytes
+Extract   PPROC/MSGLIN.EXT , 1130 bytes
+Extract   PPROC/MSHST972.EXT , 853 bytes
+Extract   PPROC/MSINVRG.EXT , 981 bytes
+Extract   PPROC/MSINV972.EXT , 797 bytes
+Extract   PPROC/MSLABSUM.EXT , 957 bytes
+Extract   PPROC/MSLUTCAP.EXT , 874 bytes
+Extract   PPROC/MSOWIPR.EXT , 1080 bytes
+Extract   PPROC/MSPCOMP.EXT , 941 bytes
+Extract   PPROC/MSPIP972.EXT , 799 bytes
+Extract   PPROC/MSPRACC.EXT , 964 bytes
+Extract   PPROC/MSSAD972.EXT , 877 bytes
+Extract   PPROC/MSTECSUM.EXT , 1476 bytes
+Extract   PPROC/MSWIP972.EXT , 862 bytes
+Extract   PPROC/MSWIPUPD.EXT , 1405 bytes
+Extract   PPROC/MSWOH972.EXT , 876 bytes
+Extract   PPROC/MW001.MEN , 272 bytes
+Extract   PPROC/NEWUSER.EXT , 120 bytes
+Extract   PPROC/ORDENT.EXT , 12295 bytes
+Extract   PPROC/ORDINVP.EXT , 488 bytes
+Extract   PPROC/PCONFIG.EXT , 201 bytes
+Extract   PPROC/PCTOXEN.EXT , 26886 bytes
+Extract   PPROC/PIPLOG.EXT , 1115 bytes
+Extract   PPROC/PMAUD972.EXT , 1034 bytes
+Extract   PPROC/PMCST972.EXT , 970 bytes
+Extract   PPROC/PMHRUN.EXT , 1606 bytes
+Extract   PPROC/PMINV972.EXT , 950 bytes
+Extract   PPROC/PMMIY972.EXT , 994 bytes
+Extract   PPROC/PMMST972.EXT , 904 bytes
+Extract   PPROC/PMNIGHT.EXT , 1295 bytes
+Extract   PPROC/PMORD.EXT , 7917 bytes
+Extract   PPROC/PMORD972.EXT , 1081 bytes
+Extract   PPROC/PMORN972.EXT , 983 bytes
+Extract   PPROC/PMPMM972.EXT , 994 bytes
+Extract   PPROC/PMPQUOTE.EXT , 7145 bytes
+Extract   PPROC/PMPRT972.EXT , 995 bytes
+Extract   PPROC/PMPSM972.EXT , 999 bytes
+Extract   PPROC/PMRCO972.EXT , 983 bytes
+Extract   PPROC/PMSAL972.EXT , 982 bytes
+Extract   PPROC/PMSIM972.EXT , 1016 bytes
+Extract   PPROC/PMSKT972.EXT , 1168 bytes
+Extract   PPROC/PMSPA972.EXT , 1013 bytes
+Extract   PPROC/PMSTK972.EXT , 904 bytes
+Extract   PPROC/PMSTP972.EXT , 994 bytes
+Extract   PPROC/PMUSE972.EXT , 877 bytes
+Extract   PPROC/POENTRY.EXT , 4145 bytes
+Extract   PPROC/POLLPARM.EXT , 412 bytes
+Extract   PPROC/POLLRCPT.EXT , 9926 bytes
+Extract   PPROC/POLLRPTS.EXT , 2819 bytes
+Extract   PPROC/POSETUP.EXT , 2837 bytes
+Extract   PPROC/POSSKUIN.EXT , 758 bytes
+Extract   PPROC/POSYNAS.EXT , 1487 bytes
+Extract   PPROC/POSYNDS.EXT , 730 bytes
+Extract   PPROC/PROCLIST.EXT , 79 bytes
+Extract   PPROC/PROFILE.EXT , 1180 bytes
+Extract   PPROC/PRTDEF.EXT , 20009 bytes
+Extract   PPROC/PSTORDER.EXT , 7172 bytes
+Extract   PPROC/QUOTE.EXT , 17436 bytes
+Extract   PPROC/RDDLR.EXT , 14324 bytes
+Extract   PPROC/RENT.EXT , 5942 bytes
+Extract   PPROC/REOPEN.EXT , 373 bytes
+Extract   PPROC/RMCGADDL.EXT , 796 bytes
+Extract   PPROC/RMTRANPT.EXT , 917 bytes
+Extract   PPROC/RNUSR972.EXT , 555 bytes
+Extract   PPROC/RPT.EXT , 2078 bytes
+Extract   PPROC/RSTR.EXT , 17127 bytes
+Extract   PPROC/RSTRPB.EXT , 7416 bytes
+Extract   PPROC/SALECALL.EXT , 3085 bytes
+Extract   PPROC/SCHED.EXT , 1525 bytes
+Extract   PPROC/SHCOST.EXT , 1018 bytes
+Extract   PPROC/SHMUA.EXT , 1020 bytes
+Extract   PPROC/SP001.MEN , 224 bytes
+Extract   PPROC/SPGCAT.EXT , 1987 bytes
+Extract   PPROC/SPGPOLL.EXT , 4311 bytes
+Extract   PPROC/SPLFIN.EXT , 17794 bytes
+Extract   PPROC/SPTORD.EXT , 1700 bytes
+Extract   PPROC/SRCALL.EXT , 899 bytes
+Extract   PPROC/STATUS.EXT , 28248 bytes
+Extract   PPROC/STDPFM.EXT , 1385 bytes
+Extract   PPROC/STKORD.EXT , 10040 bytes
+Extract   PPROC/SURLSCG.EXT , 810 bytes
+Extract   PPROC/SURLSCP.EXT , 991 bytes
+Extract   PPROC/SURLSMI.EXT , 861 bytes
+Extract   PPROC/SURLSMS.EXT , 463 bytes
+Extract   PPROC/SURLSPO1.EXT , 583 bytes
+Extract   PPROC/SURLSRM.EXT , 907 bytes
+Extract   PPROC/SVCHG.EXT , 1236 bytes
+Extract   PPROC/TAPEBKUP.EXT , 23364 bytes
+Extract   PPROC/TERMDEF.EXT , 4276 bytes
+Extract   PPROC/TRANFILE.EXT , 1601 bytes
+Extract   PPROC/TRANSFER.EXT , 3741 bytes
+Extract   PPROC/UTILMEN.MEN , 253 bytes
+Extract   PPROC/VERPRT.EXT , 422 bytes
+Extract   PPROC/VNDRENUM.EXT , 8188 bytes
+Extract   PPROC/WCLOG.EXT , 961 bytes
+
+ %%> Extract of Programs and Procedures Complete 
+
+
+ Update Procedures to Dealer System 
+
+[7;30HDeleting Member AFPARTS1.[2J[H[1;1H[7;30HDeleting Member AFPARTS2.[2J[H[1;1H[7;30HDeleting Member AFPARTS3.[2J[H[1;1H[7;30HDeleting Member AP971CON.[2J[H[1;1H[7;30HDeleting Member BLDGLCNV.[2J[H[1;1H[7;30HDeleting Member CHKFILES.[2J[H[1;1H[7;30HDeleting Member CONVACCT.[2J[H[1;1H[7;30HDeleting Member CONSOLID.[2J[H[1;1H[7;30HDeleting Member FXCGMAKE.[2J[H[1;1H[7;30HDeleting Member FXMSWIP.[2J[H[1;1H[7;30HDeleting Member FXMSWOH.[2J[H[1;1H[7;30HDeleting Member GLCONV.[2J[H[1;1H[7;30HDeleting Member GLUPDT.[2J[H[1;1H[7;30HDeleting Member INPUTGL.[2J[H[1;1H[7;30HDeleting Member MVGLTRNS.[2J[H[1;1H[7;30HDeleting Member POMS971.[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H[2J[H[1;1H
+ Procedures Have Been Updated to Dealer System 
+
+%%> RELEASE 97-2 SOFTWARE LOAD IS COMPLETE
+%%> **********************
+request id is lp01-5112 (1 file)
+
+ RELEASE 97-2 SOFTWARE LOAD IS COMPLETE 
+
+
+ Press Return END   jdisinstall 
+Fri Nov 28 16:51:32 CST 1997
+%%> MOD972 chmod complete for 97-2
+%%>Dealer has Installed JDSDF Patch JSDF0108 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0113 JDUPDATE
+%%>Dealer has Installed JDSDF Patch JSDF0114 JDUPDATE

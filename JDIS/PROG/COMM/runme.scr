@@ -1,0 +1,65 @@
+# rev 8.4.1
+#
+###########################################################################
+# runme.scr - List scriptfiles in the current directory                   #
+#                                                                         #
+# This script displays a list of the script files (*.scr) in the current  #
+# directory. It then prompts for the name of the script file you want to  #
+# execute.                                                                #
+###########################################################################
+#
+#
+.top
+clear                           # clear screen
+cursor 0,0                      # home the cursor
+display "       The following is a list of BLAST scripts in the current directory:"
+display "       ------------------------------------------------------------------"
+display ""
+menu on                         # display all menus as they are used
+local                           # do a local list of the current directory
+list                            # this also could be done with the LLIST
+short                           # command
+*.scr
+esc
+menu off                        # return to non-menu display
+#                               # prompt for the script to execute
+ask "Enter the name of the script or (ESC) to exit.", @name
+if @status not = "0" return 0   # exit if ESC was hit
+lower @name                     # make the entry all lower case
+#
+#                               # check to see if the script requested
+#                               # is one of the following
+if @name = "listsys"
+  clear
+  cursor 1,0
+  display "                               - LISTSYS.SCR -"
+  display "    This script reads the systems.scr library and interprets the entries"
+  display "    and displays an English language listing of the system types supported."
+  display "    It also allows a selected system type to be used in the current setup."
+  wait 7
+  goto .run
+end
+if @name = "listmod"
+  clear
+  cursor 1,0
+  display "                               - LISTMOD.SCR -"
+  display "    This script reads the modems.scr library and interprets the entries"
+  display "    and displays an English language listing of the modem types supported."
+  display "    It also allows a selected modem type to be used in the current setup."
+  wait 7
+  goto .run
+end
+#                               # clear the screen
+clear
+cursor 5,0
+display @name,"Now executing script  file <",@name,".scr>."
+#                               # run the script entered
+.run
+call @name                      # script call command
+if @status not = "0"            # test if the call was successful
+  display "Could not execute the script <",@name,".scr>."
+  ask "Execute another script? (y/n)" @ask
+  lower @ask
+  if @ask = "y" goto .top
+return 0
+

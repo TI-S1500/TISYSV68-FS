@@ -1,0 +1,25 @@
+TIUNIQUEID(3T)                                     TIUNIQUEID(3T)
+
+NAME
+     tiuniqueid - Gets a unique ID for the T-ISAM file
+
+SYNOPSIS
+     #include <tisam.h>
+
+     int tiuniqueid(tifd, uidp)
+     int tifd;
+     unsigned long *uidp;
+
+DESCRIPTION
+     The tiuniqueid function automatically increments and returns
+     the current unique ID.  The unique ID can be set with
+     tisetunique(3T).
+
+DIAGNOSTICS
+     On error, -1 is returned and tierrno, tierrio, tistat1, and
+     tistat2 are set.
+
+SEE ALSO
+     isuniqueid(3T), tisam(4), tisetunique(3T).
+
+

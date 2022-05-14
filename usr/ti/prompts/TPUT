@@ -1,0 +1,44 @@
+# cshf   TPUT - list terminfo option for terminal 
+#	@(#)TPUT.sh	1.2  87/12/08
+#
+onintr end
+
+@ count = 0
+while ($count == 0)
+prompt	"^TPUT -- QUERIES THE TERMINFO DATABASE"\
+	"^Reset:" reset yesno n\
+	"^Blink:" blkflg yesno n\
+	"^Bold:" bold yesno n\
+	"^Clear Screen:" clrflg yesno n\
+	"^Print Number of Columns:" colflg yesno n\
+	"^Reverse Video:" revflg yesno n\
+	"^Underline On:" undon yesno n\
+	"^Underline Off:" undoff yesno n\
+	"^#$*"
+
+  if( $abort )  goto end
+  if ($reset == "y") @ count++
+  if ($blkflg == "y") @ count++
+  if ($bold == "y") @ count++
+  if ($clrflg == "y") @ count++
+  if ($colflg == "y") @ count++
+  if ($revflg == "y") @ count++
+  if ($undon == "y") @ count++
+  if ($undoff == "y") @ count++
+  if ($count != 1) @ count = 0
+end
+
+if ($reset == "y") set action = rmso
+if ($blkflg == "y") set action = blink
+if ($bold == "y") set action = smso
+if ($clrflg == "y") set action = clear
+if ($colflg == "y") set action = cols
+if ($revflg == "y") set action = rev
+if ($undon == "y") set action = smul
+if ($undoff == "y") set action = rmul
+echo "=== TPUT COMMAND EXECUTING ==="
+echo tput $action
+tput $action
+
+end:
+unset reset *flg bold undon undoff action count

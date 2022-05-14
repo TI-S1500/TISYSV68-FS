@@ -1,0 +1,81 @@
+******************************************************************************
+* JSDF0115.INT- INSTALL OF PATCH 0115 -  checkspace for Release 98-1
+* 24FEB98 DHB
+******************************************************************************
+* 24FEB98 DB Created Batch
+/ CS
+/ DI (1,5) " JDIS SOFTWARE DISTRIBUTION FACILITY - # 0115"
+:CHKID
+? @USERID EQ "sys999" (PTAR)
+/ DI (5,15) "YOU MUST BE LOGGED ON AS sys999 TO DO THIS UPDATE"
+/ PS
+{END}
+*
+:PTAR
+#cd /JDIS/JDSDF
+$ JSDF0115.LOG A
+JSDF0115.DAT INSTALL START
+JSDF0115.DAT	*****	 SOFTWARE PATCH INSTALL - @DATE @TIME @USERID
+JSDF0115.DAT	*****	 Using tar to extract all patch members
+$$
+#mkdir /once 2>>/dev/null
+#mkdir /once/init2 2>>/dev/null
+#tar xf JSDF0115.DAT 2>>/dev/null
+F EX /once/init2/checkspace (CONT)
+S AS SDERR "tar extract failed"
+{SDFERR}
+*
+:CONT
+S AS SDERR "error copying checkspace to /JDIS/PROG/CMN"
+#cp /once/init2/checkspace /JDIS/PROG/CMN/checkspace
+? @SYSRC EQ 0 [SOFERR]
+:FINI
+#cd /JDIS/JDSDF
+$ JSDF0115.LOG A
+JSDF0115.DAT	***** 981 checkspace
+$$
+*
+#rm -r /once/init2
+#rm /JDIS/JDSDF/JSDF0115.DAT
+:LOG
+$ JSDF0115.LOG A
+JSDF0115.DAT	*****	 cleanup complete
+JSDF0115.DAT INSTALL COMPLETE-NO ERRORS
+$$
+/ DI (12,5) "The JDSDF Installation of # 0115 is Complete"
+/ DI (16,5) "Perform a Program File Backup As Soon"
+/ DI (17,5) "As Possible."
+/ PS
+$ /usr/adm/JDISRLSE.log A
+%%>Dealer has Installed JDSDF Patch JSDF0115 JDUPDATE
+$$
+$ @D1"COMM/JDISINFO" A
+********** PATCH0115 INSTALLED ***********************************************
+$$
+S AS INTGOOD "Y"
+#echo  "PATCH 0115 COMPLETE-NO ERRORS" >> /JDIS/PROG/CMN/SHOWSDF
+# { date; } >> /JDIS/currlse.log
+#echo "PATCH 0115 COMPLETE-NO ERRORS" >> /JDIS/currlse.log
+{END}
+*
+:SDFERR
+# { date; } >> /JDIS/currlse.log
+#echo "PATCH 0115 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/currlse.log
+#echo "PATCH 0115 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/PROG/CMN/SHOWSDF
+/ DI (5,5) "The JDSDF Software Installation FAILED With the Following Error:"
+/ DI (7,10) @SDERR
+/ DI (9,5) "Contact JDIS Support"
+/ DI "DO NOT Attempt to Setup for POLL Until the Problem is Resolved"
+/ DI "ALL Other Jobs/Processing Can Be Run as Normal"
+/ PS
+{END}
+:SOFERR
+# { date; } >> /JDIS/currlse.log
+#echo "PATCH 0115 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/currlse.log
+#echo "PATCH 0115 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/PROG/CMN/SHOWSDF
+/ CS
+/ DI (5,5) "The JDSDF Software Installation was INCOMPLETE:"
+/ DI (7,10) @SDERR
+/ PS
+:END
+S DS SDERR

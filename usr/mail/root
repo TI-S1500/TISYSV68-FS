@@ -1,0 +1,2737 @@
+From lp Thu Jan 18 11:50 CST 1996
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-199 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From sys999 Fri Sep 20 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sat Sep 21 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Sep 22 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Sep 23 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Sep 24 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Wed Sep 25 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Thu Sep 26 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Fri Sep 27 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sat Sep 28 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Sep 29 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Sep 30 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Oct  1 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Wed Oct  2 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Thu Oct  3 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Fri Oct  4 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sat Oct  5 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Oct  6 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Oct  7 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Oct  8 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Wed Oct  9 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Thu Oct 10 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Fri Oct 11 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sat Oct 12 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Oct 13 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Oct 14 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Oct 15 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Wed Oct 16 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Thu Oct 17 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Fri Oct 18 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sat Oct 19 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Oct 20 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Oct 21 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Oct 22 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Wed Oct 23 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Thu Oct 24 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Fri Oct 25 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sat Oct 26 04:30 CDT 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Oct 27 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Oct 28 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Oct 29 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Wed Oct 30 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Thu Oct 31 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Fri Nov  1 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sat Nov  2 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Nov  3 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Nov  4 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Nov  5 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Wed Nov  6 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Thu Nov  7 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Fri Nov  8 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sat Nov  9 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Nov 10 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Nov 11 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Nov 12 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Wed Nov 13 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Thu Nov 14 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Fri Nov 15 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From DLR001 Fri Nov 15 20:26 CST 1996
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-1200 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From sys999 Sat Nov 16 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Sun Nov 17 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Mon Nov 18 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From sys999 Tue Nov 19 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Nov 20 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Nov 21 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Nov 22 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Nov 23 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Nov 24 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Nov 25 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Nov 26 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Nov 27 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Nov 28 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Nov 29 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Nov 30 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Dec  1 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Dec  2 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Dec  3 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Dec  4 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From DLR001 Wed Dec  4 12:02 CST 1996
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-1829 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From root Thu Dec  5 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Dec  6 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Dec  7 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Dec  8 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Dec  9 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Dec 10 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Dec 11 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Dec 12 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Dec 13 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Dec 14 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Dec 15 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Dec 16 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Dec 17 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Dec 18 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Dec 19 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Dec 20 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Dec 21 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Dec 22 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Dec 23 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Dec 24 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Dec 25 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Dec 26 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Dec 27 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Dec 28 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Dec 29 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Dec 30 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From DLR001 Mon Dec 30 12:32 CST 1996
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-2709 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From root Tue Dec 31 04:30 CST 1996
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Jan  1 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Jan  2 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Jan  3 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Jan  4 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Jan  5 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Jan  6 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Jan  7 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Jan  8 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Jan  9 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Jan 10 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Jan 11 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Jan 12 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Jan 13 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Jan 14 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Jan 15 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Jan 16 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Jan 17 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Jan 18 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Jan 19 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Jan 20 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Jan 21 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Jan 22 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Jan 23 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Jan 24 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Jan 25 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Jan 26 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Jan 27 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Jan 28 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Jan 29 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From DLR001 Wed Jan 29 08:21 CST 1997
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-3832 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Jan 29 08:43 CST 1997
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-3837 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Jan 29 08:58 CST 1997
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-3838 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Jan 29 09:32 CST 1997
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-3841 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From root Thu Jan 30 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Jan 31 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Feb  1 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Feb  2 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Feb  3 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Feb  4 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Feb  5 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Feb  6 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Feb  7 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Feb  8 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Feb  9 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Feb 10 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Feb 11 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Feb 12 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Feb 13 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Fri Feb 14 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sat Feb 15 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Sun Feb 16 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Mon Feb 17 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Tue Feb 18 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Wed Feb 19 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From root Thu Feb 20 04:30 CST 1997
+ : Can't open file l (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file -9 (WARNING 1000501)
+The file or directory doesn't exist
+ : Can't open file  } } ' >> runaway.out
+ (WARNING 1000501)
+The file or directory doesn't exist
+
+
+*************************************************
+Cron: The previous message is the standard output
+      and standard error of one of your cron commands.
+
+From DLR001 Fri Sep 19 20:41 CDT 1997
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-2513 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Mon Nov 10 15:07 CST 1997
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-4479 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Thu Jan 22 20:38 CST 1998
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-6747 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Feb 18 00:03 CST 1998
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-7587 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Tue May  5 16:38 CDT 1998
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-9679 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Sat Jun 27 00:31 CDT 1998
+Subject: Problem with printer lp01
+
+The printer lp01 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp01-374 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Jul  1 20:37 CDT 1998
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Failed to open the printer port.
+(No such device)
+
+From DLR001 Wed Jul  1 21:51 CDT 1998
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Jul  1 22:08 CDT 1998
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Thu Jul  2 22:07 CDT 1998
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Jan 27 16:04 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Sat Jan 30 10:41 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Failed to open the printer port.
+(No such device)
+
+From DLR001 Sat Jan 30 10:49 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Mon Mar 15 11:15 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Mon Mar 15 15:40 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Mar 17 13:22 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Tue Mar 30 11:08 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Fri Apr  2 09:08 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Sat Apr  3 10:23 CST 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Tue May 25 09:14 CDT 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Failed to open the printer port.
+(No such device)
+
+From DLR001 Tue May 25 09:45 CDT 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Tue Sep 28 15:25 CDT 1999
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Timed-out trying to open the printer port.
+
+From DLR001 Wed Dec 31 18:05 CST 1969
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Failed to open the printer port.
+(No such device)
+
+From DLR001 Wed Dec 31 18:03 CST 1969
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Failed to open the printer port.
+(No such device)
+

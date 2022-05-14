@@ -1,0 +1,226 @@
+:
+# RBKUPCK for unix and xenix.
+#
+# This script should only be called when nothing else is runing on the
+# system, and only the root file system is mounted.  Users should run
+# it by executing the ROOTBKUP script (or some ASPEN proc which calls
+# ROOTBKUP.
+
+# 07mar90 dwm rlf
+# 05jun90 rlf (update for printer choice, printout and log file)
+multiuser ()
+{
+echo "\07\07\07\n System exiting maintenance mode." | \
+      tee -a /etc/BKUP_DIR/rootlog
+echo "\n Please wait for the login prompt.\n" | \
+      tee -a /etc/BKUP_DIR/rootlog
+if (test "$SYS" != "XENIX")
+then
+   sync
+   umount /dev/dsk/sys:usr >/dev/null 2>&1
+   sync
+fi
+exit 0
+}
+
+fatalerror ()
+{
+echo "\07\07\07\n\n ROOTBKUP MUST be retried." | \
+      tee -a /etc/BKUP_DIR/rootlog
+echo "\n Press return to exit maintenance mode: \c" | \
+      tee -a /etc/BKUP_DIR/rootlog
+read return
+multiuser
+}
+
+# cleanfs may be removed at some future time if it is deemed unneccesary
+
+cleanfs ()
+{
+if (test "$SYS" = "XENIX")
+then
+   fsck -rr -q -t /dev/scratch /dev/root
+else
+   fsck -oqy /dev/dsk/sys:usr
+fi
+}
+
+marktape ()
+{
+if (test "$SYS" = "XENIX")
+then
+   tape rewind >/dev/null 2>&1
+   tar cbf 1 /dev/nrct0 /etc/BKUP_DIR/rootheader >/dev/null 2>&1
+else
+   /JDIS/PROG/CMN/rewind_tape `cat /etc/BKUP_DIR/rbkup_dev` > /dev/null 2>&1
+   tar cbf 2 `cat /etc/BKUP_DIR/rbkup_dev`n /etc/BKUP_DIR/rootheader > \
+         /dev/null 2>&1
+fi
+}
+
+trap "" 1
+trap "" 2
+trap "" 3
+trap "" 15
+
+PATH=/bin:/usr/bin:/etc
+export PATH
+
+if (test ! -f "/ROOTBKUP.FLAG")
+then
+   exit 0
+fi
+rm /ROOTBKUP.FLAG
+
+echo "\n Do you wish to continue with ROOTBKUP? (Y or N): \c" | \
+      tee -a /etc/BKUP_DIR/rootlog
+read return
+if (test "$return" = "N" -o "$return" = "n")
+then
+   echo "\n\n ROOTBKUP aborted by user." | tee -a /etc/BKUP_DIR/rootlog 
+   fatalerror
+fi
+
+cd /
+
+SYS=`uname`
+
+rm /etc/BKUP_DIR/rootverify >/dev/null 2>&1
+rm /rootverify >/dev/null 2>&1
+
+echo "rootlog: `date`\n" > /etc/BKUP_DIR/rootlog
+echo "rootheader: `date`\n" > /etc/BKUP_DIR/rootheader
+
+echo "\n Begin ROOTBKUP." | tee -a /etc/BKUP_DIR/rootlog
+
+echo "\n 1. Marking the ROOTBKUP tape.  Please wait..." | \
+      tee -a /etc/BKUP_DIR/rootlog
+
+uname -a >> /etc/BKUP_DIR/rootheader
+echo "\n\nThis is a ROOTBKUP tape." >> /etc/BKUP_DIR/rootheader
+if (test "$SYS" = "XENIX")
+then
+   echo "\nIt was created using cpio -o.\n" >> /etc/BKUP_DIR/rootheader
+else
+   echo "\nIt was created using tar cpbvfF 32.\n" >> /etc/BKUP_DIR/rootheader
+fi
+
+while (test 1)
+do
+   marktape
+   if (test "$?" = "0")
+   then
+      break
+   fi
+   echo "\n\n Unable to mark ROOTBKUP tape." | \
+         tee -a /etc/BKUP_DIR/rootlog
+   echo "\n Check to be sure the tape is inserted properly." | \
+         tee -a /etc/BKUP_DIR/rootlog
+   echo "\n Do you wish to try again? (Y or N): \c" | \
+         tee -a /etc/BKUP_DIR/rootlog
+   read return
+   if (test "$return" = "N" -o "$return" = "n")
+   then
+      echo "\n\n ROOTBKUP aborted by user." | \
+            tee -a /etc/BKUP_DIR/rootlog
+      fatalerror
+   fi
+done
+
+echo "\n 2. Cleaning filesystems.  Please wait..." | \
+      tee -a /etc/BKUP_DIR/rootlog
+
+find . -name 'core' -exec rm -f {} \;
+
+for i in 1 2 3
+do
+   cleanfs
+   if (test "$?" = "0")
+   then
+      break
+   elif (test i = 3)
+   then
+      echo "\n\n Unable to clean file systems." | \
+            tee -a /etc/BKUP_DIR/rootlog
+      fatalerror
+   fi
+done
+
+if (test "$SYS" != "XENIX")
+then
+   mount /dev/dsk/sys:usr /usr > /dev/null 2>&1
+   if (test "$?" != "0")
+   then
+      echo "\n\n Unable to mount the usr file system." | \
+            tee -a /etc/BKUP_DIR/rootlog
+      fatalerror
+   fi
+fi
+
+echo "\n 3. Creating ROOTBKUP tape.  Please wait..." | \
+      tee -a /etc/BKUP_DIR/rootlog
+
+if (test "$SYS" = "XENIX")
+then
+   find . -print | cpio -o > /dev/rct0
+else
+   ls -a . |grep -v '^\.$'|grep -v '^\.\.$' > /etc/BKUP_DIR/ctlroot
+   echo "rootverify: `date`\n" > /rootverify
+   tar cpbvfF 32 `cat /etc/BKUP_DIR/rbkup_dev` /etc/BKUP_DIR/ctlroot >> \
+   /rootverify 2>&1
+   mv /rootverify /etc/BKUP_DIR/rootverify
+
+fi
+if (test "$?" != "0")
+then
+   echo "\n\n Unable to create ROOTBKUP tape." | \
+         tee -a /etc/BKUP_DIR/rootlog
+   fatalerror
+fi
+
+echo "\n 4. Verifying ROOTBKUP tape.  Please wait..."
+
+if (test "$SYS" = "XENIX")
+then
+   echo "rootverify: `date`\n" > /etc/BKUP_DIR/rootverify
+   tar tbf 1 /dev/nrct0 >> /etc/BKUP_DIR/rootverify 2>&1
+   cpio -itv < /dev/rct0 >> /etc/BKUP_DIR/rootverify 2>&1
+else
+   tar kpbf 2 `cat /etc/BKUP_DIR/rbkup_dev`n >> \
+         /etc/BKUP_DIR/rootverify 2>&1
+   tar kpbf 32 `cat /etc/BKUP_DIR/rbkup_dev` >> \
+         /etc/BKUP_DIR/rootverify 2>&1
+fi
+if (test "$?" != "0")
+then
+   echo "\n\n Unable to verify ROOTBKUP tape." | \
+         tee -a /etc/BKUP_DIR/rootlog
+   fatalerror
+fi
+
+echo "\n 4. Verify ROOTBKUP tape complete." >> /etc/BKUP_DIR/rootlog
+
+echo "\n ROOTBKUP completed." | tee -a /etc/BKUP_DIR/rootlog
+
+echo "\n\n ROOTBKUP listing will be printed on the selected " | \
+      tee -a /etc/BKUP_DIR/rootlog
+echo " printer AFTER the system exits maintenance mode." | \
+      tee -a /etc/BKUP_DIR/rootlog
+
+cat /etc/BKUP_DIR/rootlog >> /etc/BKUP_DIR/log
+
+banner 'ROOTBKUP' | pr -e4 -h "ROOTBKUP LISTING" - \
+      /etc/BKUP_DIR/rootverify /etc/BKUP_DIR/rootlog \
+      /etc/BKUP_DIR/rootheader > /etc/BKUP_DIR/rootlisting
+if (test "$SYS" = "XENIX")
+then
+   lp -d`cat /etc/BKUP_DIR/list_dev` /etc/BKUP_DIR/rootlisting > /dev/null 2>&1
+   if (test "$?" != "0")
+   then
+      lp /etc/BKUP_DIR/rootlisting > /dev/null 2>&1
+   fi
+else
+   touch /etc/BKUP_DIR/rootbkup.print
+fi
+
+multiuser

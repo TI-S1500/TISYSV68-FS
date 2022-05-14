@@ -1,0 +1,17 @@
+# sh script called by rdload
+
+# This script is used to copy the files in the /etc/rdlist or alternate
+# file to the /ram or alternate directory
+#
+# This script will be called from rdload for every line in the rdlist file
+# @(#)rdscript	1.2 88/11/16
+
+USAGE="Usage: $0 input pathname  output dir"
+
+if [ $# -eq 2 ]
+then
+	(cd /; tar cpbf 10 - $1) | (cd $2; tar xpbf 10 -)
+else
+	echo $USAGE
+	exit 1
+fi

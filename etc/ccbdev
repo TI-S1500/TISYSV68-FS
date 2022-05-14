@@ -1,0 +1,8 @@
+/dev/ccb08/pu:/etc/ccbmtc.rm:mtcd: 0=m 1=h 
+opt=1
+/dev/ccb08/pu:/etc/ccbdlc:dlc0: 0=m 1=h
+03
+/dev/ccb08/pu:/etc/ccbdial:dial: 0=m 1=h
+opt=0
+/dev/ccb08/pu:/etc/ccbplp:plpd: 0=m 1=h
+parallel printer

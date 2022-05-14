@@ -1,0 +1,12 @@
+T,C,PROMPT26,REPAIR(SPECIFIC)FILE MAIN.(PW06)
+F,Work Order Number,6,11,0,,2,0,0,1
+F,Maintenance Code,12,13,1,,0,,0,2
+A,Reversal Code,17,17,1,- R,1, ,0,0
+F,Repair Completion Date-2 Position Day,18,19,1,,2,0,1,1
+A,3 Position Alpha Month,20,22,1,JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC,0,,0,1
+F,2 Position Year,23,24,1,^@04^,0, ,1,2
+F,Flat Rate Job Number,25,32,1,,1, ,0,0
+F,Service Technician ID,33,35,1,,2,0,0,9
+F,Change Data,36,51,0,,1, ,0,0
+C,Card Code,1,1,1,,0,Z,0,2
+C,Transaction Code,2,5,1,,0,PW06,0,2

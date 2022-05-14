@@ -1,0 +1,96 @@
+#@(#)slattach.sh	3.6 92/03/06 Texas Instruments TCP/IP System V
+#@(#)BUILD(TI):	3.1:/src/comm/tcpip30/usr/src/cmd/net/slattach/s.slattach.sh
+
+############################################################################
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1990.  ALL	   #
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	   #
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	   #
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	   #
+#	ASSOCIATED DOCUMENTATION.					   #
+############################################################################
+
+#      @(#)slattach.sh	4.3 Lachman System V STREAMS TCP  source
+#
+#	System V STREAMS TCP - Release 3.1
+#
+#   Copyright 1990 Interactive Systems Corporation,(ISC)
+#   All Rights Reserved.
+#
+#	Copyright 1987, 1988, 1989 Lachman Associates, Incorporated (LAI)
+#	All Rights Reserved.
+#
+#	The copyright above and this notice must be preserved in all
+#	copies of this source code.  The copyright above does not
+#	evidence any actual or intended publication of this source
+#	code.
+#
+#	This is unpublished proprietary trade secret source code of
+#	Lachman Associates.  This source code may not be copied,
+#	disclosed, distributed, demonstrated or licensed except as
+#	expressly authorized by Lachman Associates.
+#
+#	System V STREAMS TCP was jointly developed by Lachman
+#	Associates and Convergent Technologies.
+#
+#      SCCS IDENTIFICATION
+#
+# shell script to emulate old slattach program
+#
+#set -e
+PATH=/bin:/usr/bin:/etc:/usr/etc:/usr/local/bin
+
+case $# in
+3)	term=$1
+	src=$2
+	dest=$3
+	baud=9600;;
+
+4)	term=$1
+	src=$2
+	dest=$3
+	baud=$4;;
+
+*)	echo "usage: slattach tty src-addr dest-addr [baud]"
+	exit 1;;
+esac
+
+who=`id | cut -f1 -d' '`
+name=`id | cut -f2 -d'(' | cut -f1 -d')'`
+if [ "$name" != "root" ]; then
+	echo "$0: not super-user"
+	exit 1
+fi
+term2=`echo $term | cut -f3 -d'/'`
+if [ -f /usr/spool/locks/sliptty.$term2 ]; then
+	echo "`cat /usr/spool/locks/sliptty.$term2` <- already done !"
+	exit 1
+fi
+setslip $term $baud > /tmp/ss$$
+st=$?
+if [ $st != 0 ]; then
+	echo "$0: setslip error status = $st"
+	exit 2
+fi
+unit=`cat /tmp/ss$$`
+rm /tmp/ss$$
+
+# wait for the slink which is executed in setslip
+#    to set up the slip interface 
+ifconfig $unit >/dev/null 2>&1
+if [ $? != 0 ]; then
+	sleep 2;
+	ifconfig $unit >/dev/null 2>&1
+	if [ $? != 0 ];then
+		echo "$0: errors in setslip, no $unit interface found"
+		exit 3
+	fi
+fi
+ifconfig $unit inet $src $dest
+ifconfig $unit inet up
+
+# Keep track of $term arg so as to prevent trying to slattach
+# it again. Removed by sldetach
+echo "$0 $term $src $dest $baud = $unit" > /usr/spool/locks/sliptty.$term2
+chmod 644 /usr/spool/locks/sliptty.$term2
+
+#version = "@(#)slattach:	TI-Sys-V-3.2 TCP/IP version 3.0.0	DATE: 03/14/93";

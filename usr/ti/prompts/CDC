@@ -1,0 +1,29 @@
+# cshf	cdc--change delta commentary 
+#	@(#)CDC.sh	1.1  87/03/09
+#
+onintr end
+set quote = \"
+
+prompt "^CDC -- CHANGES DELTA COMMENTARY OF SCCS DELTA"\
+       "^File Name(s) Containing Delta:" _input_file macnm "$_input_file"\
+       "^Give Delta Version Number:" rflag string\
+       "^*List of MR Numbers:" mflag string\
+       "^*Comment Changes:" yflag string "$yflag"\
+       "^#$*"
+
+if ($abort) goto end
+if ($rflag != "") set ropt = -r$rflag
+if ("$mflag" != "") set mopt = -m"$mflag"
+if ("$yflag" != "") set yopt = -y"$yflag"
+
+echo "=== CDC COMMAND EXECUTING ==="
+echo cdc "$mopt" $ropt "$yopt" $_input_file
+# trouble with sending correct representation to command 
+if (("$mopt" == "") && ("$yopt" == "")) cdc  $ropt  $_input_file
+if (("$mopt" != "") && ("$yopt" == "")) cdc  "$mopt" $ropt  $_input_file
+if (("$mopt" == "") && ("$yopt" != "")) cdc  $ropt  "$yopt" $_input_file
+if (("$mopt" != "") && ("$yopt" != "")) cdc  "$mopt" $ropt  "$yopt" $_input_file
+
+# cleanup time
+end:
+unset *opt *flag quote

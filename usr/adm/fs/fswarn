@@ -1,0 +1,11 @@
+#
+# filesystem full warning script
+#
+# parameters:
+#
+#  $1 = filesystem device name
+#  $2 = filesystem mount point
+#  $3 = percentage currently in use
+#
+# @(#)fswarn.sh	1.1 91/02/14
+#

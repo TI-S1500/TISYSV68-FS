@@ -1,0 +1,7 @@
+:
+while test ! -r /etc/BKUP_DIR/PMBKUP
+do
+   sleep 101
+done
+rm -f /etc/BKUP_DIR/PMBKUP
+aspen<pmhome.incl

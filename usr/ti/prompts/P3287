@@ -1,0 +1,69 @@
+# cshf 3287 Printer Emulator
+# @(#)P3287	1.3 88/01/26
+onintr end
+prompt "^P3287 -- 3270 SNA System V Printer Emulation" \
+	"^*Accept Default Options?: " sna_d yesno y \
+"^File/Dev,Sngl_Pipe,Mult_Pipe (f/s/m): " sna_ot "element(f=f,s=s,m=m)" \
+	"^#$*"
+if ($sna_d == "n") then
+	prompt "^P3287 -- Options" \
+		"^*Trace File Name: " sna_t acnm \
+		"^Columns on Form: " sna_c "range(1,255)" 132 \
+		"^Left Margin: " sna_lm "range(1,255)" 1 \
+		"^Right Margin: " sna_rm "range(1,255)" 132 \
+		"^*Horizontal Tab Stops: " sna_ht string \
+		"^Lines on Form: " sna_l "range(1,127)" 1 \
+		"^Top Margin: " sna_tm "range(1,127)" 1 \
+		"^Bottom Margin: " sna_bm "range(1,127)" 1 \
+		"^*Vertical Tab Stops: " sna_vt string \
+		"^*Form Feed Supported?: " sna_f yesno y \
+		"^#$*"
+endif
+if($sna_lm > $sna_c) then
+	echo "Left Margin must be less than or equal Columns on Form"
+	goto end
+endif
+if($sna_tm > $sna_l || $sna_bm > $sna_l) then
+	echo "Top/Bottom Margins must be less than or equal Lines on Form"
+	goto end
+endif
+if ($sna_t != "") set sna_t = "-t "$sna_t
+if ($sna_c != "") set sna_h = "-h "$sna_c" "$sna_lm" "$sna_rm
+if ($sna_l != "") set sna_v = "-v "$sna_l" "$sna_tm" "$sna_bm
+if ($sna_f == "y") then
+	set sna_f = "-f"
+else
+	unset sna_f
+endif
+if ($sna_ot == "f") then
+	prompt "^P3287 -- Output Routing" \
+		"^Output File/Device Name: " sna_or acnm \
+		"^#$*"
+endif
+if ($sna_ot == "s") then
+	prompt "^P3287 -- Output Routing" \
+		"^Pipe Command: " sna_or string \
+		"^#$*"
+endif
+if ($sna_ot == "m") then
+	prompt "^P3287 -- Output Routing" \
+		"^Pipe Command: " sna_or string \
+		"^#$*"
+endif
+if ($abort) goto end
+echo "=== P3287 COMMAND EXECUTING ==="
+if ($sna_ot == "f") then
+	echo "/usr/bin/p3287 $sna_t $sna_h $sna_ht $sna_v $sna_vt $sna_f $sna_or &"
+	/usr/bin/p3287 $sna_t $sna_h $sna_ht $sna_v $sna_vt $sna_f $sna_or &
+endif
+if ($sna_ot == "s") then
+	echo "/usr/bin/p3287 $sna_t $sna_h $sna_ht $sna_v $sna_vt $sna_f | $sna_or &"
+	/usr/bin/p3287 $sna_t $sna_h $sna_ht $sna_v $sna_vt $sna_f | $sna_or &
+endif
+if ($sna_ot == "m") then
+	echo "/usr/bin/p3287 $sna_t $sna_h $sna_ht $sna_v $sna_vt $sna_f -p $sna_or &"
+	/usr/bin/p3287 $sna_t $sna_h $sna_ht $sna_v $sna_vt $sna_f -p $sna_or &
+endif
+end:
+unset sna_d sna_t sna_c sna_h sna_l sna_v sna_f sna_o sna_q
+unset sna_ot sna_lm sna_rm sna_tm sna_bm sna_or sna_ht sna_vt

@@ -1,0 +1,36 @@
+    UID   PID  PPID  C   STIME    TTY  TIME COMMAND  ARGS
+   root     0     0  0  Apr 30      ?  1:03 swapper
+   root     0     0  0  Apr 30      ?  0:11 pageout  
+   root     0     0  0  Apr 30      ?  0:01 streamer 
+   root     1     0  0  Apr 30      ?  1:39 init     
+   root     0     0  0  Apr 30      ?  0:01 log_proc 
+   root    82     1  0  Apr 30   cons 18:45 update   -t 20 -f /etc/update.open 
+   root   143     1  0  Apr 30     07  0:00 getty    tty07 19200 t9 
+   root   125     1  0  Apr 30      ?  0:53 lpsched  
+   root    74     1  0  Apr 30   cons  0:00 bdcast   
+   root    72     1  0  Apr 30      ?  0:02 cron     
+   root    69     1  0  Apr 30      ?  0:00 errdemon -c 
+   root    84     1  0  Apr 30   cons  0:02 mirupdat 
+   root    86     1  0  Apr 30      ?  0:04 fsfmon   -c -l 
+   root    96     1  0  Apr 30   cons  0:00 logdmon  /dev/ccb08/log 
+   root   102     1  0  Apr 30   cons  0:00 pad_srvc -f /dev/pad_srvc 
+   root   108     1  0  Apr 30      ?  0:00 mtcdl.rm -v 
+   root   118     1  0  Apr 30   cons  0:00 strerr   
+   root   109   108  0  Apr 30      ?  0:02 mtcdl.rm -v 
+   root   133     1  0  Apr 30   cons  0:00 getty    console 9600 t9 
+   root  4949     1  0 17:21:10    03  0:00 getty    tty03 19200 t9 
+ DLR001  5336  5040  0 20:00:09    06  0:00 sleep    101 
+   root   141     1  0  Apr 30      ?  2:03 pu       
+ DLR001  5354  5338 17 20:00:24    06  0:00 sh       -c ps -ef >/JDIS/PROG/CMN/BK
+ DLR001  5036     1  0 17:26:57    06  0:02 sh       
+   root  4961     1  0 17:23:17    01  0:00 getty    tty01 19200 t1 
+   root  4938     1  0 17:00:45    04  0:00 getty    tty04 19200 t1 
+ DLR001  4657     1 47 14:38:15    06 284:28 Z        PMSURPMM 
+ DLR001  5355  5354  2 20:00:24    06  0:00 ps       -ef 
+ DLR001  4658  4657  0 14:38:18    06  0:57 AKFSON     
+ DLR001  5338  5036 47 20:00:18    06  0:01 aspen    
+   root  4953     1  0 17:23:00    05  0:00 getty    tty05 19200 x1 
+   root  5056     1  0 17:29:50    02  0:00 getty    tty02 19200 t1 
+ DLR001  4616     1  0 14:37:01    06  0:06 aspen    
+ DLR001  4635  4616  0 14:37:43    06  0:00 pdmon    
+ DLR001  5040     1  0 17:26:58    06  0:03 sh       

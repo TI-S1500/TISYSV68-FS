@@ -1,0 +1,11 @@
+cd /JDIS/CBT/QUOTE
+echo "*********************************************************************"
+echo "*                                                                   *"
+echo "*                Loading the QUOTE CBT Program now.                 *"
+echo "*                                                                   *"
+echo "*                                                                   *"
+echo "*                Please wait .............                          *"
+echo "*                                                                   *"
+echo "*********************************************************************"
+interp01 -big
+

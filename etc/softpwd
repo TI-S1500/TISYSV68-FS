@@ -1,0 +1,11 @@
+TIV.030:013d73156a50311a1c320d597b7b56301f701777:TI System V password
+C020_1.0::SVSC 020 compiler
+C010_1.0::SVSC 010 compiler
+COBOL2.0::Cobol compiler
+COBRT2.0::Cobol runtime
+Pasc_1.0::Pascal compiler
+FORT_1.0::Fortran compiler
+SortM1.0:0017593c7977332f26622d7b683e565632117f0f:Sort/Merge
+BSCsys5::3780/2780
+Forms1.0::COBOL Forms
+3270sys5:017201274f0750670a330a0a1a61720a0d4f0337: 3270 SNA System V

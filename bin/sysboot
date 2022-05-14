@@ -1,0 +1,148 @@
+#
+# COPYRIGHT (c) 1991 TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+
+#       Copyright (c) 1984 AT&T
+#         All Rights Reserved
+
+#       THIS IS UNPLUBLISHED PROPRIETARY SOURCE CODE OF AT&T
+#       The copyright notice above does not evidence any
+#       acutal or intended publication of such source code.
+
+#       This procedure checks to see if you are permitted and allows an
+#       interactive shutdown.  The actual change of state, killing of
+#       processes and such are performed by the new init state, say 0,
+#       and its /etc/rc0.
+
+#       Usage: sysboot [ -g<grace-period> ]
+
+#
+#ident "@(#)sysboot.sh  1.8 91/06/11"
+#
+
+sync; sync; sync
+
+#
+# remember the name we were invoked with for usage messages
+#
+myname=$0
+
+#
+# default to 60 second grace period.
+#
+grace=60
+
+#
+# parse command line args.
+#
+while [ $# -gt 0 ]
+do
+        case $1
+        in
+        [0-9] | \
+        [0-9][0-9] | \
+        [0-9][0-9][0-9] )
+                grace=$1
+                ;;
+
+        -g[0-9]* )
+                grace=`expr "$1" : '-g\(.*\)'`
+                ;;
+
+        * )     echo "Usage: $myname [ -g<grace> ]\r" 1>&2
+                exit 1
+                ;;
+        esac
+
+        shift
+done
+
+#
+# check to make sure we are super user.
+#
+myid=`id | cut -d= -f2 | cut -d\( -f1`
+case $myid
+in
+0)      ;;
+
+*)      echo "\n$myname must be run by the super user (root).\r\n"
+        exit 1
+        ;;
+esac
+
+#
+# check if the /etc/mnttab file is present. If it is not, then do
+# not perform the disk space check that follows.
+#
+if [ -f /etc/mnttab ]
+then
+        #
+        # see if disk space is too tight for a good startup
+        # and give the user a chance to back out if it's not.
+        #
+        a=`df "/"`
+        set -- $a
+        blk=$3
+        if [ $blk -lt 50 ]
+        then
+                echo
+                echo
+                echo "  The ROOT, '/', file system has less than 50 free blocks"
+                echo "  available.  The actual number of free blocks is $blk."
+                echo "  This condition may prevent you from rebooting the system"
+                echo "  or cause unpredictable results upon rebooting."
+                echo "  Do you want to continue the reboot? (y or n): \c";
+                read b
+                if [ "$b" != "y" -a "$b" != "Y" ]
+                then
+                        echo "\nSysboot Aborted\n"
+                        exit 0
+                fi
+                echo
+                echo
+        fi
+fi
+
+#
+# Tell 'init' to NOT do respawns.
+# you must do an 'init q' (or some level other than z)
+# before leaving or gettys will not respawn, so we 
+# have trap do an init q at exit. you might add them
+# anyway, there are some cases where the trap won't
+# get called when we exit.
+#
+trap "/etc/init q ; exit 1" 1 2 3
+/etc/init z
+
+/etc/wall <<!
+
+***********************************************
+        PLEASE LOG OFF NOW ! ! !
+      System maintenance about to begin.
+All processes will be killed in $grace seconds.
+***********************************************
+!
+
+sleep $grace
+
+/etc/wall <<!
+
+*******************************
+SYSTEM BEING REBOOTED NOW ! ! !
+*******************************
+!
+
+#
+# the point of no return
+#
+/usr/lib/lpshut
+/usr/lib/acct/shutacct
+echo "\rProcess accounting stopped.\r"
+/etc/errstop
+echo "\rError logging stopped.\r"
+
+#killall (The tcp/ip install script looks for this here.)
+
+sync; sync; sync
+/etc/init 4
+sleep 60000

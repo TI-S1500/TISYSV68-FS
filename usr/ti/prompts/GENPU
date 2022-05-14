@@ -1,0 +1,13 @@
+# cshf 3270 Sysgen
+# @(#)GENPU	1.3 87/08/03
+onintr end
+prompt "^ GENPU -- SNA System V System Generation Process" \
+	"^Input File Name: " sna_i acnm \
+	"^Output File Name: " sna_o acnm \
+	"^#$*"
+if ($abort) goto end
+echo "=== GENPU COMMAND EXECUTING ==="
+echo "/usr/ucs/genpu $sna_i $sna_o"
+/usr/ucs/genpu $sna_i $sna_o
+end:
+unset sna_i sna_o

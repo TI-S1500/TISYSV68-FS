@@ -1,0 +1,327 @@
+#@(#)removetcp	1.28 90/03/02
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1989.  ALL	
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	
+#	ASSOCIATED DOCUMENTATION.					
+
+cd /usr/tmp
+
+if (test `pwd` != /usr/tmp) then
+	echo You need to be in /usr/tmp to execute this install script.
+	exit 0
+fi
+
+set `who -r` S S S S 
+if [ $3 != "S" ]; then
+	echo "Are you in single user mode? [y/n]: \c"
+	read ok
+	if [ X$ok != Xy -a X$ok != XY ]; then
+		exit
+	fi
+fi
+
+echo
+echo "Do you really want to remove TCP/IP from your system? [y/n]: \c"
+read ok
+
+if [ X$ok != Xy -a X$ok != XY ]; then
+	exit 0
+fi
+echo
+
+mkdir -p /usr/ti/tcp/named/old 2>/dev/null
+sync
+
+echo removing TCP/IP /usr/sys/io.lib parts...
+if [ -r /usr/sys/OLDinet.o ]; then
+	cd /usr/sys
+	ar -d io.lib inet.o arp.o ip.o ip_icmp.o llcloop.o rip.o slip.o \
+	socket.o tcp.o udp.o vty.o ipmux.o
+	mv OLDinet.o inet.o
+	ar -r io.lib inet.o
+	cd /usr/tmp
+else
+	echo "ERROR: could not find /usr/sys/OLDinet.o!"
+fi 
+sync
+
+if [ -r /usr/lib/sendmail.cf ]; then
+	echo
+	echo saving mail configuration file /usr/lib/sendmail.cf...
+	mv /usr/lib/sendmail.cf /usr/ti/tcp/sendmail.cf
+fi
+
+if [ -r /etc/hosts ]; then
+	echo
+	echo saving configuration file /etc/hosts...
+	mv /etc/hosts /usr/ti/tcp/hosts
+fi
+
+if [ -r /etc/networks ]; then
+	echo
+	echo saving configuration file /etc/networks...
+	mv /etc/networks /usr/ti/tcp/networks
+fi
+
+if [ -r /etc/hosts.equiv ]; then
+	echo
+	echo saving configuration file /etc/hosts.equiv...
+	mv /etc/hosts.equiv /usr/ti/tcp/hosts.equiv
+fi
+
+if [ -r /etc/named.boot ]; then
+	echo
+	echo saving configuration for named ...
+	mv /etc/named.boot /usr/ti/tcp/named/old
+	mv /usr/lib/named/* /usr/ti/tcp/named/old
+	rm -rf /usr/lib/named
+fi
+sync
+
+
+if [ -r /usr/lib/libsocket.a ]; then
+	echo
+	echo removing /usr/lib/libsocket.a...
+	rm -rf /usr/lib/libsocket.a /usr/lib/TIsockvers.o
+fi
+
+echo
+echo "deleting the TCP/IP and Socket header files..."
+
+cd /usr/include
+rm -rf net arpa protocols netinet
+rm -rf  netdb.h resolv.h strings.h sysexits.h syslog.h 
+
+cd /usr/include/sys
+rm -rf net netinet
+rm -rf llcloop.h resource.h syslog.h vty.h nihdr.h TIhdr.h time.h wait.h \
+       ipspa.h 
+
+sync
+cd /usr/tmp
+
+echo
+echo restoring /etc/download...
+echo /tcp start/D > /usr/tmp/sfile$$
+sed -f /usr/tmp/sfile$$  /etc/download >> tempload$$
+mv tempload$$ /etc/download
+chmod 770 /etc/download
+chgrp root /etc/download
+chown root /etc/download
+
+echo
+echo restoring /etc/shutdown...
+echo /tcp stop/D > /usr/tmp/sfile1$$
+sed -f /usr/tmp/sfile1$$  /etc/shutdown >> tempload1$$
+mv tempload1$$  /etc/shutdown
+chmod 755 /etc/shutdown
+chgrp root /etc/shutdown
+chown root /etc/shutdown
+rm -f tempload$$ sfile1$$
+
+echo
+echo restoring /bin/sysboot... 
+echo /tcp stop/D > /usr/tmp/sfile1$$
+sed -f /usr/tmp/sfile1$$  /bin/sysboot >> tempload1$$
+mv tempload1$$  /bin/sysboot
+chmod 700 /bin/sysboot
+chgrp root /bin/sysboot
+chown root /bin/sysboot
+rm -f tempload$$ sfile1$$
+sync
+
+
+echo
+echo removing TCP/IP commands...
+rm -rf /etc/tcp
+rm -rf /etc/strcf
+rm -rf /etc/resolv.conf 
+rm -rf /usr/adm/syslog
+rm -rf /usr/spool/mqueue
+rm -rf /usr/spool/rwho
+rm -rf /usr/spool/locks
+rm -rf /usr/lib/mail
+rm -rf /usr/lib/sendmail
+rm -rf /usr/lib/sendmail.st
+rm -rf /usr/lib/sendmail.fc
+rm -rf /usr/bin/newaliases  /usr/bin/mailq
+rm -rf /usr/lib/mail
+rm -rf /usr/bin/arp
+rm -rf /usr/bin/finger
+rm -rf /usr/etc/fingerd
+rm -rf /usr/bin/ftp
+rm -rf /usr/etc/ftpd
+rm -rf /usr/bin/hostname
+rm -rf /usr/etc/ifconfig
+rm -rf /usr/etc/inetd
+rm -rf /etc/inetd.conf
+rm -rf /etc/services
+rm -rf /etc/protocols
+rm -rf /usr/bin/ipcheck
+rm -rf /usr/etc/ldsocket
+rm -rf /etc/sockcf
+rm -rf /usr/bin/lmail
+rm -rf /usr/bin/logger
+rm -rf /usr/bin/mconnect
+rm -rf /usr/bin/mailstats
+rm -rf /usr/etc/named
+rm -rf /usr/bin/nslookup
+rm -rf /usr/lib/nslookup.hlp
+rm -rf /usr/bin/netlogin
+rm -rf /usr/bin/tcpstat
+rm -rf /usr/bin/ping
+rm -rf /usr/bin/query
+rm -rf /usr/bin/rcmd
+rm -rf /usr/bin/rcp
+rm -rf /usr/etc/rexecd
+rm -rf /usr/bin/rlogin
+rm -rf /usr/etc/rlogind
+rm -rf /bin/rmail
+echo
+echo restoring /bin/rmail...
+if [ -r /bin/OLDrmail ]; then
+	mv /bin/OLDrmail /bin/rmail
+#	mv /usr/ti/tcp/rmail.1 /usr/catman/u_man/man1
+else
+	echo could not find /bin/OLDrmail!
+#	mv /usr/ti/tcp/rmail.1 /usr/catman/u_man/man1
+fi
+sync
+echo
+echo restoring /usr/lib/mailx/mailx.rc...
+echo /set sendmail/D > /usr/tmp/sfile$$
+sed -f /usr/tmp/sfile$$  /usr/lib/mailx/mailx.rc >> tempmailx$$
+mv tempmailx$$ /usr/lib/mailx/mailx.rc
+rm -rf /usr/etc/route
+rm -rf /usr/etc/routed
+rm -rf /usr/etc/rshd
+rm -rf /usr/bin/rdate
+rm -rf /usr/bin/ruptime
+rm -rf /usr/bin/rwho
+rm -rf /usr/etc/rwhod
+rm -rf /usr/etc/setslip
+rm -rf /usr/bin/sink
+rm -rf /usr/etc/sinkd
+rm -rf /usr/etc/slink
+rm -rf /etc/strcf
+rm -rf /usr/bin/talk
+rm -rf /usr/etc/talkd
+rm -rf /usr/bin/telnet
+rm -rf /usr/etc/telnetd
+rm -rf /usr/bin/tftp
+rm -rf /usr/etc/tftpd
+rm -rf /usr/etc/timed
+rm -rf /usr/etc/timedc
+rm -rf /usr/bin/trace
+rm -rf /usr/bin/trpt
+rm -rf /etc/hosts
+rm -rf /usr/etc/tcpwhat
+rm -rf /usr/etc/mkhosts
+rm -rf /usr/etc/slattach
+rm -rf /usr/etc/sldetach
+sync
+echo
+echo removing TCP/IP man pages...
+cd /usr/catman/u_man/man1
+rm -f   arp.1m		finger.1	fingerd.1m	ftp.1		\
+	ftpd.1m	 	hostname.1	ifconfig.1m	inetd.1m	\
+	ldsocket.1m	lmail.1m	logger.1	mkhosts.1m	\
+	named.1m	netlogin.1m	tcpstat.1	nslookup.1	\
+	ping.1m		rcmd.1		rcp.1		rdate.1m	\
+	rexecd.1m	rfsaddr.1m	rlogin.1	rlogind.1m 	\
+	route.1m	routed.1m	rshd.1m		\
+	ruptime.1	rwho.1		rwhod.1m	sendmail.1m	\
+	slattach.1m	slink.1m	talk.1		talkd.1m	\
+	tcp.1m		telnet.1	telnetd.1m	tftp.1		\
+	tftpd.1m	timed.1m	timedc.1m	trpt.1m		\
+	mkvty.1m
+cd /usr/tmp
+sync
+
+
+echo
+echo removing TCP/IP devices...
+rm -f /dev/slip
+rm -f /dev/socksys
+rm -f /dev/lo0
+rm -f /dev/llcloop
+rm -f /dev/cl01
+rm -f /dev/tmux
+rm -f /dev/ttyp*
+rm -f /dev/ptyp*
+rm -rf /dev/inet
+sync
+
+echo
+echo "The TCP/IP kernel parts have been removed."
+echo "Do you wish to build a new kernel now? [y/n]: \c"
+read ok
+if [ X$ok = Xy -o X$ok = Xyes ]; then
+	echo
+	echo "Which boot band would you like the new kernel installed?"
+	while true; do
+		echo [unx2 or unx3]:" \c"
+		read bband
+		if [ X$bband = Xunx2 -o X$bband = Xunx3 ]; then
+			if [ X$bband = Xunx2  ]; then
+				cfg=cfg2
+			else
+				cfg=cfg3
+			fi
+			break
+		fi
+		echo
+	done	
+	cd /usr/sys
+	echo
+	while true; do
+		dfvol=`df / | cut -f5 -d"/" | cut -f1 -d:`
+		echo "Partition / was found on system volume: $dfvol."
+		echo ------------------------------------------------
+		df / | cut -f1-2 -d:
+		echo ------------------------------------------------
+		echo "On which volume do you want this boot band installed?"
+		echo "Enter system volume name (or just return for $dfvol): \c"
+		read newvolume
+		if [ X$newvolume = X ]; then
+			volume=$dfvol
+		else
+			volume=$newvolume
+		fi
+		echo "You've specified: $volume.  Is this correct? [y/n]: \c"
+		read ok
+		if [ X$ok = Xy -o X$ok = Xyes ]; then
+			break
+		else
+			continue
+		fi
+	done
+	echo
+	echo "Making new unix.new..."
+	echo
+	make
+	sync
+	echo
+	echo Installing unix.new in $bband...
+	make $bband VOLNAME=$volume
+	echo
+	echo clearing cband parameters in /dev/dsk/$volume:$cfg...
+	sh /usr/ti/tcp/clrcband /dev/dsk/$volume:$cfg
+	sync
+	echo
+	echo "After you have made sure that the new kernel works and you"
+	echo "want to run it from default, you should run the script "
+	echo "/usr/ti/tcp/clrcband with /dev/dsk/$volume:cfg1 as your"
+	echo "parameter.  This will reduce the amount of memory required"
+	echo "by the kernel."
+	cd /usr/tmp
+fi
+
+echo
+echo "TCP has been removed from your system.  Some of the configuration files"
+echo "have been saved in /usr/ti/tcp.  If you reinstall TCP/IP, you can either"
+echo "have the install package create new configuration files or you can"
+echo "restore the saved ones to recover any changes you may have made to them."
+rm -rf /usr/tmp/*
+sync

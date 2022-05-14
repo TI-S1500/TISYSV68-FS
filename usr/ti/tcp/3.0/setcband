@@ -1,0 +1,70 @@
+# @(#)setcband	1.11 91/08/23 Texas Instruments
+#	To run this file, set streams parameters in the settings file to 
+#	your desired values.  Then execute the script with
+#
+#	sh setcband /dev/dsk/VOLUME:CFG < settings
+#
+#	where VOLUME is the system volume name (normally this is sys) and 
+#	      CFG is the configuration band (for default this is cfg1).
+#
+
+set -e
+cfg=$1
+cband -d $cfg > cbandtmp$$
+
+nospace()
+{
+# removed SPACE so echo "xxx   :" does not become "xxx :"i
+# below contains tab,newline
+IFS='	'
+}
+
+tistring="TI System V                     "
+# Changes/or adds cband parm IF new value is greater than old value
+chvalue()
+{
+nospace
+while read aline; do
+   string="`echo $aline | cut -f1 -d':'`:"
+   param="`echo  $aline | cut -f2 -d':'`" 
+   # add '^' to distinguish last 2 streams parms
+   grepstring="^$string"
+   set +e
+   prev="`grep "$grepstring" cbandtmp$$ | cut -f2 -d':'`"
+   set -e
+
+   # add cband if grep did not find cband entry else modify
+   if [ X$prev = X ]; then
+      sh -c "cband -a $cfg \"$tistring\" \"$string $param\" " >/dev/null
+      echo "$string$param + added new parameter"
+
+   else # changing existing cband param
+      if [ $param -gt $prev ]; then
+         sh -c "echo $param | cband -p $cfg \"$tistring\" \
+               \"$string\" " >/dev/null
+         # remove trailing blanks from $param
+	 IFS=' 	' # space, tab
+         param="`echo $param`"
+	 nospace # restore IFS to remove space for next read
+         echo "$string$prev < $param, changed to $param"
+      else # no change required
+         if [ $param -eq $prev ]; then
+	    echo "$string$prev = same value"
+	 else
+            # remove trailing blanks from $param
+	    IFS=' 	' # space, tab
+            param="`echo $param`"
+	    nospace # restore IFS to remove space for next read
+	    echo "$string$prev > $param, no change"
+         fi
+      fi
+   fi
+   done
+}
+chvalue
+rm -f cbandtmp$$
+
+#alias below are for testing only:
+## alias see1 'cband -p $cfg "TI System V                     " "Streams net heapsize:"'
+## alias see2 'cband -p $cfg "TI System V                     " "4 byte block count:"'
+## alias see3 'cband -p $cfg "TI System V                     " "TCP/IP ARP buckets:"'

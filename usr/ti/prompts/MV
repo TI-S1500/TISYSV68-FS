@@ -1,0 +1,27 @@
+# cshf 	mv - move files (or rename) a file or a directory 
+#	@(#)MV.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^MV -- MOVES FILES"\
+	"^File or Directory Name(s):" F1 macnm \
+	"^Target Name:" F2 acnm\
+	"^Override Write Protect:" fflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if (-e $F2) then
+	prompt  "^MV -- MOVES FILES"\
+		"^TARGET FILE OR DIRECTORY EXISTS AND WILL BE ALTERED"\
+		"^Execute Command:" sure yesno n\
+		"^#$*"
+endif
+if ($sure == "n") goto end
+if ($fflag == "y") set opt = "-f"
+if ($abort) goto end
+echo "=== MV COMMAND EXECUTING ==="
+echo mv $opt $F1 $F2
+mv $opt $F1 $F2
+
+end:
+unset F1 F2 sure *flag *opt

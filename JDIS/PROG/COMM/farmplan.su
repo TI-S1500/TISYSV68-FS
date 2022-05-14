@@ -1,0 +1,34 @@
+#BLAST V8.0 System Setup
+      Description: FarmPlan Setup (Version 93-HS UNIX platform)
+     Phone Number: 18002432488
+      System Type:
+ Originate/Answer: ORIGINATE
+           Userid:
+         Password:
+        Comm Port: /dev/tty00
+       Modem Type: FARMU
+        Baud Rate: 19.2
+           Parity: NONE
+   Data/Stop Bits: 8/1
+  XON/XOFF Pacing: YES
+   RTS/CTS Pacing: NO
+  Transfer Passwd:
+      Script File: farmplan.scr
+         Log File: farmplan.log
+   Translate File:
+    Keyboard File:
+        Emulation: TTY
+    Attention Key: ^K
+      Full Screen: NO
+       Local Echo: NO
+        AutoLF In: NO
+       AutoLF Out: NO
+    Wait for Echo: NO
+      Prompt Char: NONE
+       Char Delay: 0
+       Line Delay: 0
+         Protocol: XMODEM
+    Logon Timeout: 120
+  Connect Timeout: 120
+    7 Bit Channel: NO
+      Packet Size: 128

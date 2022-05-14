@@ -1,0 +1,35 @@
+# cshf	3279 Terminal Emulator
+# @(#)V3279	1.3 87/07/20
+onintr end
+prompt "^V3279 -- 3270 SNA System V Terminal Emulation" \
+	"^*Accept Default Options?: " sna_d yesno y \
+	"^#$*"
+if ($sna_d == "n") then
+	prompt "^V3279 -- Options" \
+		"^*Trace File Name: " sna_t acnm \
+		"^*Associated VPSC Process?: " sna_p yesno n \
+		"^#$*"
+	if ($sna_t != "") set sna_t = "-t "$sna_t
+	if ($sna_p == "y") then
+		prompt "^V3279 -- VPSC Process Options" \
+			"^*VPSC Process Releases Keyboard?: " sna_k yesno n \
+			"^*VPSC Process Releases Video?: " sna_v yesno n \
+			"^VPSC Process File Name: " sna_n acnm \
+			"^*VPSC Process Parameter String: " sna_s string \
+			"^#$*"
+		if($sna_k == "y" && $sna_v == "y") set sna_o = "-u"
+		if($sna_k == "n" && $sna_v == "y") set sna_o = "-uk"
+		if($sna_k == "n" && $sna_v == "n") set sna_o = "-ub"
+		if($sna_k == "y" && $sna_v == "n") set sna_o = "-ux"
+	endif
+endif
+if($abort) goto end
+if($sna_o == "-ux") then
+	echo "VPSC process may not keep keyboard and release video"
+else
+	echo "=== V3279 COMMAND EXECUTING ==="
+	echo "/usr/bin/v3279 $sna_t $sna_o $sna_n $sna_s"
+	/usr/bin/v3279 $sna_t $sna_o $sna_n $sna_s
+endif
+end:
+unset sna_t sna_o sna_n sna_s sna_k sna_v sna_p sna_d

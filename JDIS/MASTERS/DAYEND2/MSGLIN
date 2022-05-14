@@ -1,0 +1,184 @@
+DATE: 07JUN93                                         VALLEYVIEW EQUIPMENT CO.                                            PAGE:    1
+TIME: 15:31                                      Sales Account Distribution Report                                        (MSGLIN-1)
+                                                            LOCATION 01
+
+    INVOICE     ACCOUNT  CUST./CONTROL                        SALE      ENTRY            SALE          COST          PROFIT
+    NUMBER      NUMBER     NUMBER   CUSTOMER NAME             TYPE      TYPE            AMOUNT        AMOUNT          PCNT
+
+       2-01    105-00-00 00000002   N F BOWER                 WTY      *CONTRA          83.50
+       2-01    166-01-00 00000002   N F BOWER                 WTY      *INV*              .00
+       2-01    230-00-00 00000002   N F BOWER                 WTY      *TAX*              .00
+       2-01    366-03-30 00000002   N F BOWER                 WTY      *PARTS*            .00
+       2-01    383-01-40 00000002   N F BOWER                 WTY      *LABOR*            .00
+       2-01    399-05-42 00000002   N F BOWER                 WTY      *LABOR*          83.50-
+       2-01    466-03-30 00000002   N F BOWER                 WTY      *COST*             .00
+       2-02    105-00-00 00000005   N F BOWER                 WTY      *CONTRA          58.00
+       2-02    166-01-00 00000005   N F BOWER                 WTY      *INV*              .00
+       2-02    230-00-00 00000005   N F BOWER                 WTY      *TAX*              .00
+       2-02    366-03-30 00000005   N F BOWER                 WTY      *PARTS*            .00
+       2-02    383-01-40 00000005   N F BOWER                 WTY      *LABOR*          15.00-          5.00          66.66
+       2-02    399-05-42 00000005   N F BOWER                 WTY      *LABOR*          43.00-
+       2-02    466-03-30 00000005   N F BOWER                 WTY      *COST*             .00
+       2-03    105-00-00 00000002   N F BOWER                 WTY      *CONTRA          80.00
+       2-03    383-03-40 00000002   N F BOWER                 WTY      *LABOR*            .00
+       2-03    399-05-42 00000002   N F BOWER                 WTY      *LABOR*          80.00-
+       2-04    105-00-00 00000002   N F BOWER                 WTY      *CONTRA           9.00
+       2-04    166-01-00 00000002   N F BOWER                 WTY      *INV*              .00
+       2-04    230-00-00 00000002   N F BOWER                 WTY      *TAX*              .00
+       2-04    366-03-30 00000002   N F BOWER                 WTY      *PARTS*            .00
+       2-04    383-01-40 00000002   N F BOWER                 WTY      *LABOR*            .00
+       2-04    466-03-30 00000002   N F BOWER                 WTY      *COST*             .00
+       2-04 99 999-99-99 00000002   N F BOWER                 WTY      *LABOR*           9.00-
+       2-05    105-00-00 00000002   N F BOWER                 WTY      *CONTRA            .00
+       2-05    383-03-40 00000002   N F BOWER                 WTY      *LABOR*            .00
+       2-05    399-06-42 00000002   N F BOWER                 WTY      *LABOR*            .00
+       2-06    105-00-00 00000002   N F BOWER                 WTY      *CONTRA            .00
+       2-06    166-01-00 00000002   N F BOWER                 WTY      *INV*              .00
+       2-06    230-00-00 00000002   N F BOWER                 WTY      *TAX*              .00
+       2-06    366-03-30 00000002   N F BOWER                 WTY      *PARTS*            .00
+       2-06    383-01-40 00000002   N F BOWER                 WTY      *LABOR*            .00
+       2-06    399-05-42 00000002   N F BOWER                 WTY      *LABOR*            .00
+       2-06    466-03-30 00000002   N F BOWER                 WTY      *COST*             .00
+       2-07    105-00-00 00000002   N F BOWER                 WTY      *CONTRA            .00
+       2-07    383-03-40 00000002   N F BOWER                 WTY      *LABOR*            .00
+       2-07    399-06-42 00000002   N F BOWER                 WTY      *LABOR*            .00
+
+       3-01    106-00-00 00000003   B E BROWN                 WTY      *CONTRA            .00
+       3-01    166-01-00 00000003   B E BROWN                 WTY      *INV*              .00
+       3-01    230-00-00 00000003   B E BROWN                 WTY      *TAX*              .00
+       3-01    366-01-30 00000003   B E BROWN                 WTY      *PARTS*            .00
+       3-01    392-01-40 00000003   B E BROWN                 WTY      *MISC*             .00
+       3-01    399-05-42 00000003   B E BROWN                 WTY      *LABOR*            .00
+       3-01    466-01-30 00000003   B E BROWN                 WTY      *COST*             .00
+       3-02    384-02-40 00000003   B E BROWN                 EXP      *LABOR*            .00
+       3-02    528-01-20 00000003   B E BROWN                 EXP      *CONTRA            .00
+       3-02    528-01-20 00000003   B E BROWN                 EXP      *MISC*             .00
+
+       4-01    105-00-00 00000004   JOHN DOE                  WTY      *CONTRA          63.00
+       4-01    166-01-00 00000004   JOHN DOE                  WTY      *INV*              .00
+       4-01    230-00-00 00000004   JOHN DOE                  WTY      *TAX*              .00
+       4-01    366-03-30 00000004   JOHN DOE                  WTY      *PARTS*            .00
+DATE: 07JUN93                                         VALLEYVIEW EQUIPMENT CO.                                            PAGE:    2
+TIME: 15:31                                      Sales Account Distribution Report                                        (MSGLIN-1)
+                                                            LOCATION 01
+
+    INVOICE     ACCOUNT  CUST./CONTROL                        SALE      ENTRY            SALE          COST          PROFIT
+    NUMBER      NUMBER     NUMBER   CUSTOMER NAME             TYPE      TYPE            AMOUNT        AMOUNT          PCNT
+
+       4-01    383-01-40 00000004   JOHN DOE                  WTY      *LABOR*            .00
+       4-01    399-05-42 00000004   JOHN DOE                  WTY      *LABOR*          45.00-
+       4-01    399-06-42 00000004   JOHN DOE                  WTY      *LABOR*          18.00-
+       4-01    466-03-30 00000004   JOHN DOE                  WTY      *COST*             .00
+       4-02    105-00-00 00000004   JOHN DOE                  WTY      *CONTRA            .00
+       4-02    383-03-40 00000004   JOHN DOE                  WTY      *LABOR*            .00
+       4-02    399-06-42 00000004   JOHN DOE                  WTY      *LABOR*            .00
+
+       5-01    105-00-00 00000005   MIKE KING FARMS, INC      WTY      *CONTRA       1,227.74
+       5-01    166-01-00 00000005   MIKE KING FARMS, INC      WTY      *INV*           729.70-
+       5-01    230-00-00 00000005   MIKE KING FARMS, INC      WTY      *TAX*            69.49-
+       5-01    366-03-30 00000005   MIKE KING FARMS, INC      WTY      *PARTS*       1,158.25-        729.70          36.99
+       5-01    383-01-40 00000005   MIKE KING FARMS, INC      WTY      *LABOR*            .00
+       5-01    399-03-40 00000005   MIKE KING FARMS, INC      WTY      *LABOR*            .00
+       5-01    466-03-30 00000005   MIKE KING FARMS, INC      WTY      *COST*          729.70
+       5-02    105-00-00 00000005   MIKE KING FARMS, INC      WTY      *CONTRA       1,200.75-
+       5-02    166-01-00 00000005   MIKE KING FARMS, INC      WTY      *INV*           729.70
+       5-02    230-00-00 00000005   MIKE KING FARMS, INC      WTY      *TAX*            69.50
+       5-02    366-03-30 00000005   MIKE KING FARMS, INC      WTY      *PARTS*       1,158.25         729.70-         36.99
+       5-02    383-01-40 00000005   MIKE KING FARMS, INC      WTY      *LABOR*            .00
+       5-02    399-03-40 00000005   MIKE KING FARMS, INC      WTY      *LABOR*          27.00-
+       5-02    466-03-30 00000005   MIKE KING FARMS, INC      WTY      *COST*          729.70-
+DATE: 07JUN93                                         VALLEYVIEW EQUIPMENT CO.                                            PAGE:    3
+TIME: 15:31                                      Sales Account Distribution Report                                        (MSGLIN-1)
+
+                                                        LOCATION 01 TOTALS
+
+                                                       SALE                  COST          PROFIT
+                                                     AMOUNT                AMOUNT           PCNT
+
+                                  SALES TOTAL          320.50-                5.00          98.43
+
+
+
+                                  PARTS TOTAL             .00                  .00
+
+                                  LABOR TOTAL          320.50-                5.00          98.43
+
+                                  MISC. TOTAL             .00                  .00
+
+                                  DISC. TOTAL             .00                  .00
+
+                                  TAX TOTAL               .01                  .00
+
+                                  CONTRA TOTAL         320.49                  .00
+
+
+DATE: 07JUN93                                         VALLEYVIEW EQUIPMENT CO.                                            PAGE:    4
+TIME: 15:31                                      Sales Account Distribution Report                                        (MSGLIN-1)
+
+
+                                                       SALE                  COST          PROFIT
+                                                     AMOUNT                AMOUNT           PCNT
+
+                                  SALES TOTAL          320.50-                5.00          98.43
+
+
+
+                                  PARTS TOTAL             .00                  .00
+
+                                  LABOR TOTAL          320.50-                5.00          98.43
+
+                                  MISC. TOTAL             .00                  .00
+
+                                  DISC. TOTAL             .00                  .00
+
+                                  TAX TOTAL               .01                  .00
+
+                                  CONTRA TOTAL         320.49                  .00
+
+
+
+                                  PROOF                   .00                  .00
+
+DATE: 07JUN93                                         VALLEYVIEW EQUIPMENT CO.                                            PAGE:    5
+TIME: 15:31                                      Sales Account Distribution Totals                                        (MSGLIN-1)
+
+
+
+                                            A C C O U N T   D I S T R I B U T I O N
+                SALE   *--------- TOTAL ---------*    *-------- TAXABLE --------*    *------ NONTAXABLE -------*
+        A/C     TYPE         DEBIT         CREDIT           DEBIT         CREDIT           DEBIT         CREDIT
+
+   105-00-00     WTY       2650.74        2330.25-
+
+   106-00-00     WTY        436.80         436.80-
+
+   166-01-00     WTY        889.42         889.42-         889.42         889.42-
+
+   230-00-00     WTY         83.70          83.69-
+
+   366-01-30     WTY         30.00          30.00-          30.00          30.00-
+
+   366-03-30     WTY       1364.85        1364.85-        1364.85        1364.85-
+
+   383-01-40     WTY        738.00         753.00-                                        738.00         753.00-
+
+   383-03-40     WTY        345.00         345.00-                                        345.00         345.00-
+
+   384-02-40     EXP        175.00         175.00-                                        175.00         175.00-
+
+   392-01-40     WTY        321.00         321.00-                                        321.00         321.00-
+
+   399-03-40     WTY         42.00          69.00-                                         42.00          69.00-
+
+   399-05-42     WTY        158.50         410.00-                                        158.50         410.00-
+
+   399-06-42     WTY        190.00         208.00-                                        190.00         208.00-
+
+   466-01-30     WTY         21.00          21.00-          21.00          21.00-
+
+   466-03-30     WTY        868.42         868.42-         868.42         868.42-
+
+   528-01-20     EXP        175.00         175.00-                                        175.00         175.00-
+
+99 999-99-99     WTY          3.00          12.00-                                          3.00          12.00-
+

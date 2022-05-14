@@ -1,0 +1,6 @@
+	assembly - Assembly Language Programming Menu
+		@(#)assembly.sh	1.1 87/03/09
+
+	This menu lists tools used to create and manipulate object 
+	   files and programs written in assembly language.
+

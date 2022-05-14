@@ -1,0 +1,78 @@
+# cshf  a68k -- Invokes the Quelo 68020 assembler source processor 
+#	@(#)A68K.sh	1.1  87/03/09
+#
+onintr end
+set comma = ','
+
+@ count = 0
+while ($count == 0)
+  prompt "^A68K -- INVOKES THE QUELO 68020 ASSEMBLER SOURCE PROCESSOR"\
+	"^Input File Name:"  _input_file string $_input_file\
+	"^Include Local Labels:" eflag yesno n\
+	"^Retain Lowercase Char. Symbols:" lflag yesno n\
+	"^Truncate Long Symbols:" tflag yesno n\
+	"^Select Advanced Options:" options yesno n\
+	"^SELECT ONLY ONE OR NONE OF THE FOLLOWING:"\
+	"^Define Output File Names:" exten yesno n\
+	"^Produce Only the Linker Text File:" linker yesno n\
+	"^#$*"
+
+  if ($abort) goto end
+  @ count++
+  if (($exten == "y") && ($linker == "y")) @ count = 0
+end
+
+if ($abort) goto end
+if ($exten == "y") then
+	prompt "^A68K -- EXTENSION OPTIONS"\
+ 		"^*Linker File Name:" _linker_file acnm $_linker_file\
+ 		"^*Assembly Listing File Name:" _asslst_file acnm $_asslst_file\
+ 		"^*Symbol Data File Name:" _symbol_file acnm $_symbol_file\
+		"^#$*"
+
+	if ($abort) goto end
+	set ltx = $_linker_file$comma
+	set prn = $_asslst_file$comma
+	set sym = $_symbol_file
+endif
+
+if ($options == "y") then
+	prompt "^A68K -- OPTIONS"\
+ 		"^*Linker File Name:" _linker_file acnm $_linker_file\
+ 		"^*Assembly Listing File Name:" _asslst_file acnm $_asslst_file\
+ 		"^*Symbol Data File Name:" _symbol_file acnm $_symbol_file\
+		"^Include Symbol Table/Cross Ref. Data:" bflag yesno n\
+		"^Include Symbol Table:" sflag yesno n\
+		"^Inserts Formfeed Character:" vflag yesno n\
+		"^Include Cross Reference Data:" xflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($sflag == "y") set opt = s$opt
+	if ($bflag == "y") set opt = b$opt
+	if ($vflag == "y") set opt = v$opt
+	if ($xflag == "y") set opt = x$opt
+endif
+
+if ($abort) goto end
+if ($eflag == "y") set opt = e$opt
+if ($lflag == "y") set opt = l$opt
+if ($tflag == "y") set opt = t$opt
+if ($opt != "") set opt = -$opt
+
+echo "=== AS COMMAND EXECUTING ==="
+if ($exten == "y") then
+	echo a68k $opt $sym$ltx$prn=$_input_file
+	a68k $opt $sym$ltx$prn=$_input_file
+else if ($linker == "y") then
+	echo a68k $opt =$_input_file
+	a68k $opt =$_input_file
+else
+	echo a68k $opt $_input_file
+	a68k $opt $_input_file
+endif
+endif
+
+#clean up time
+end:
+unset *flag *opt sym ltx prn options exten comma file linker

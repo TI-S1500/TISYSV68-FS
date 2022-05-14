@@ -1,0 +1,13 @@
+# cshf	showhex -- display a binary file  
+#	@(#)SHOWHEX.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^SHOWHEX -- SHOWS AND EDITS FILES IN HEX AND ASCII FORMAT"\
+	"^File Name:"  _input_file  acnm $_input_file\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== SHOWHEX COMMAND EXECUTING ==="
+showhex $_input_file
+end:

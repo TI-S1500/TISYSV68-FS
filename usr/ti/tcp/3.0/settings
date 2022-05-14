@@ -1,0 +1,33 @@
+Callout table size: 100
+Streams net heapsize: 20          
+Streams net link max: 16          
+Number of streams queues: 512     
+Number of streams: 256            
+Number of linked streams: 32      
+Number of streams events: 32      
+Extra event cells: 6              
+Max pushed streams modules: 9     
+Max streams data size: 8192       
+Max streams control size: 1024    
+Low priority threshold: 80        
+Med priority threshold: 90        
+4096 byte block count: 16         
+2048 byte block count: 32         
+1024 byte block count: 64
+512 byte block count: 64
+256 byte block count: 512         
+128 byte block count: 1024         
+64 byte block count: 1024          
+16 byte block count: 1024          
+4 byte block count: 1024           
+TCP/IP ARP buckets       : 5
+TCP/IP ARP bucket size   : 10
+TCP/IP IP control blocks : 10
+TCP/IP IP interfaces     : 16
+TCP/IP SLIP connections  : 2
+TCP/IP Sockets           : 256
+TCP/IP TCP debug buffers : 0
+TCP/IP TCP window size   : 0
+TCP/IP TCP connections   : 256
+TCP/IP UDP connections   : 256
+TCP/IP virtual terminals : ZZVTYS

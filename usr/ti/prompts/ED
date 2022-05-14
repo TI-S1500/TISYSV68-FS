@@ -1,0 +1,23 @@
+# cshf  ed -- invokes the line oriented editor 
+#	@(#)ED.sh	1.4 88/01/20
+#
+onintr end
+
+prompt "^ED -- INVOKES A LINE ORIENTED EDITOR"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+	"^Suppress Character Counts:" flag yesno n\
+	"^*Prompt String:" pflag string\
+	"^#$*"
+
+if ($abort) goto end
+if ($pflag != "") set popt="-p "$pflag
+if ($flag == "y") set opt = "-"
+
+if ($abort) goto end
+echo "=== ED COMMAND EXECUTING ==="
+echo ed $opt $popt $_input_file
+ed $opt $popt $_input_file
+
+#clean up time
+end:
+unset *flag *opt

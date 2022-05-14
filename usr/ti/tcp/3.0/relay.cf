@@ -1,0 +1,790 @@
+######
+######	Sendmail configuration for relay.Domain
+######  @(#)relay.mc	1.1 90/02/21
+######  @(#)relay.mc	3.2 LAI System V.3 STREAMS TCP/IP  source
+######
+######	this file defines the machine specific constants and expects
+######	the master.m4 template to use them in the appropriate
+######	places.
+######
+
+# Some background information.
+#	can reach the internet
+#	accepts mail for parent domain
+
+############################################################
+###	local info
+############################################################
+
+###
+###	Installation dependent parameters.
+###	many of these can remain unchanged.
+###
+
+#	load average at which mail is queued instead of delivered.
+Ox10
+#	load average at which SMTP connections are refused.
+OX10
+#	time zone names (V6 only)
+OtCST,CDT
+#	wizard password
+OWgiHzXIFrVAQ.Y
+#	(LAI) trusted users.
+#Taes
+#Tstevea
+#Tmwg
+# put off validating RHS of aliases in alias file
+Onfalse
+
+###
+###	full-blown sendmail site. no delivermail competition.
+###
+#	wait 0 minutes for alias database updates
+Oa0
+#	Do NOT rebuild the database if it isn't ready after that time.
+#OD
+
+###
+###	(standard) trusted users.
+###
+Troot
+Tdaemon
+Tuucp
+Tnuucp
+
+######################
+#   General Macros   #
+######################
+
+# fully qualified name of the local domain and nicknames for the
+# "bottom" component of the local domain.
+# [use lower case because that is how /etc/hosts is formatted]
+DDZZDOMAINZZDOTZZDOM
+CDZZDOMAIN
+
+# major relay host (note fully qualified name)
+DRZZRELAY
+CRZZRELAY mailhost
+
+# known SMTP/ethernet hosts (local domain only) -- only $R need be complete
+#	These sites are listed in "localhosts.m4"
+#	and supplemented on a per-host basis from /usr/local/lib/mail/localhosts
+
+# known top-level domains....
+# gotta have a single token abbreviation for the local domain..
+CTLOCAL
+# the new regime of DARPA top level domains....
+CTARPA COM EDU GOV MIL NET ORG
+CTIL UK US
+# other top level names. not necessarily recognized by the NIC, but handy
+# for all sorts of wonderful purposes.  we let these leak out into
+# the world. perhaps we will change this someday.
+CTBITNET CSNET DEC MAILNET OZ
+# we turn most *.uucp addresses back to bangist format. this is handy
+# for manipulating them witin rulesets.
+CTUUCP
+
+###	Set up the values specific to this host
+###
+# bounce to the relay machine
+DF$R
+
+DGether
+# internet hostname
+#	fix up host name and class
+DwZZHOST
+CwZZHOST
+#
+CwZZHOST
+# this machine is always in class S
+CSZZHOST
+#
+CSZZHOST
+
+# Our UUCP hostname and any uucp nicknames
+#	add our uucp name and nicknames...
+DUZZHOST
+CUZZHOST
+#
+CUZZHOST
+#	ifdefuucpname
+
+# override SMTP hostname to match Internet name
+Dj$w.$D
+
+###	include the stock/boilerplate definitions
+###
+
+# @(#)version.m4	1.1 90/02/21
+# Version
+#
+DVLAI-3.2
+
+##########################
+###   Special macros   ###
+##########################
+
+# my name
+DnMAILER-DAEMON
+# UNIX header format
+DlFrom $g  $d
+# delimiter (operator) characters
+Do.:%@!^=/[]
+# format of a total name
+Dq$g$?x ($x)$.
+# SMTP login message
+De$j Sendmail $v/$V ready at $b
+
+###################
+###   Options   ###
+###################
+
+# location of alias file
+OA/usr/lib/aliases
+# default delivery mode (deliver in background)
+Odbackground
+# (don't) connect to "expensive" mailers
+#Oc
+# temporary file mode
+OF0640
+# default GID
+Og1
+# location of help file
+OH/usr/lib/sendmail.hf
+# log level
+OL9
+# allow users to specify out-and-back to themselves
+Om
+# default messages to old style
+Oo
+# queue directory
+OQ/usr/spool/mqueue
+# read timeout -- violates protocols
+Or2h
+# status file
+OS/usr/lib/sendmail.st
+# queue up everything before starting transmission
+Os
+# default timeout interval
+OT3d
+# default UID
+Ou1
+
+###############################
+###   Message precedences   ###
+###############################
+
+Pfirst-class=0
+Pspecial-delivery=100
+Pjunk=-100
+
+#############################
+###   Format of headers   ###
+#############################
+
+H?P?Return-Path: <$g>
+HReceived: $?sfrom $s $.by $j $?rwith $r $.
+	($v/$V) id $i; $b
+H?D?Resent-Date: $a
+H?D?Date: $a
+H?F?Resent-From: $q
+H?F?From: $q
+H?x?Full-Name: $x
+HSubject:
+# HPosted-Date: $a
+# H?l?Received-Date: $b
+H?M?Resent-Message-Id: <$t.$i@$j>
+H?M?Message-Id: <$t.$i@$j>
+
+###########################
+###   Rewriting rules   ###
+###########################
+
+################################
+#  Sender Field Pre-rewriting  #
+################################
+S1
+#R$*<$+>$*		$1$2$3				defocus
+# this collapses non-standard references to local hosts into a more
+# standard notation (turns $w.uucp into $w.local, etc).
+R$+			$:$>6$1				apply local conventions
+
+###################################
+#  Recipient Field Pre-rewriting  #
+###################################
+S2
+#R$*<$+>$*		$1$2$3				defocus
+
+#################################
+#  Final Output Post-rewriting  #
+#################################
+S4
+
+R@			$@				handle <> error addr
+
+# resolve numeric address to name if possible
+R$*<@[$+]>$*		$:$1<@$[[$2]$]>$3		lookup numeric inet addr
+
+# externalize local domain info
+# some of these match zero or one time.
+R$*<$*LOCAL>$*		$1<$2$D>$3			expand local token
+R$*LOCAL!$*		$1$D!$2				expand local token
+R$*LOCAL		$:$1$D				expand local token
+
+R$*<$+>$*		$1$2$3				defocus
+
+# handle multiple route-addrs
+R@$+:@$+:$+		$@@$1,@$2:$3			<route-addr> canonical
+#	ensure only 1 at sign in a route-addr.
+R@$*:$*@$*@$*		@$1:$2%$3@$4			route:user@host@host
+R@$+:$+			$@@$1:$2			finish route-addr
+
+# remaining addresses are in normal order.
+
+# UUCP should always be presented in old form
+R$+@$-.UUCP		$2!$1				u@h.UUCP => h!u
+R$+@$+.$-.UUCP		$2.$3.UUCP!$1			u@h.d.uucp=> h.d.uucp!u
+
+# delete duplicate local names -- mostly for arpaproto.mc
+R$+%$=w@$=w		$1@$3				u%UCB@UCB => u@UCB
+
+# Make sure we have only one @ in the address
+R$+@$*@$*		$1%$2@$3			user@host@host
+
+###########################
+#  Name Canonicalization  #
+###########################
+S3
+
+# handle "from:<>" special case
+R<>			$@@				turn into magic token
+
+# basic textual canonicalization -- note RFC733 heuristic here
+R$*<$*<$*<$+>$*>$*>$*	$4				3-level <> nesting
+R$*<$*<$+>$*>$*		$3				2-level <> nesting
+R$*<$+>$*		$2				basic RFC821/822 parsing
+R$+ at $+		$1@$2				"at" -> "@" for RFC 822
+R$*<$+>$*		$1$2$3				in case recursive
+
+# mangle <@a,@b:user@d> so we can find the "@a" easily. fixed in 4.
+R@$+,$+			$:@$1:$2			change first "," to ":"
+
+# localize and dispose of domain-based addresses
+R@$+:$+			$@<@$1>:$2			handle <route-addr>
+
+# more miscellaneous cleanup
+R$+:$*;@$+		$@$1:$2;@$3			list syntax
+R$+@$+			$:$1<@$2>			focus on domain
+R$+<$+@$+>		$1$2<@$3>			move gaze right
+R$+<@$+>		$@$1<@$2>			already canonical
+R$+%$+			$:$1<@$2>			user%host
+R$+<@$+%$+>		$1%$2<@$3>			fix user%host%host2
+R$+<@$+>		$@$1<@$2>			get outta here
+
+# At this point, we have handled (and returned) for addresses
+# of the form "usr@domain.spec" and "@route:addr". Anything else is
+# in a throwback format such as UUCP or Berknet.
+R$+			$:$>8$1				host dependent cleanup
+
+# convert old-style addresses to a domain-based address
+R$-:$+			$@$2<@$1>			host:user
+R$+^$+			$1!$2				convert ^ to !
+
+# now, turn site.domain!host.domain!user into user%host.domain@site.domain
+R$-.$*!$*		$>9$1.$2!$3			site.domain!user
+R$+@$+@$*		$1%$2@$3			kill duplicate %'s
+R$+@$+			$@$>3$1@$2			call ruleset 3 again.
+
+# simple, straightforward UUCP names....
+R$-!$+			$@$2<@$1.UUCP>		resolve uucp names
+
+#
+#	Ruleset 7 is used to invoke ruleset 3 then ruleset 0
+#	this lets us get rid of the call to ruleset 3 that is
+#	at the beginning of ruleset 0. this saves us time.
+#
+
+S7
+R$*<$+>$*		$1$2$3			defocus
+R$+			$:$>3$1			canonicalize
+R$*			$:$>0$1			invoke ruleset 0
+
+#
+#	Conversion into/outof bangist notation.
+#
+#	5 = to bangist
+#	9 = from bangist
+#
+#	Convert internal notation to bangist
+#		[has a uucp-ish dependency in the $U macro]
+#
+#	without using fancy rewrite rules
+S5
+R$*<@$=w.LOCAL>$*	$1<@$U.UUCP>$3			Myself in UUCPland
+R$*<@$*LOCAL>$*		$1<@$2$D>$3			expand local domain
+# cop out on complex cases to avoid turning user%site@gateway.arpa
+# into:   laidbak!gateway.arpa!user%site and watch the % change to @
+# yielding:  laidbak!gateway.arpa!user@site
+R$*%$*@$*		$@$1%$2@$3			too hot to handle
+#
+R$*<@$-.UUCP>		$@$2!$1				user@host.UUCP
+R$*<@$+.$-.UUCP>	$@$2.$3.UUCP!$1			user@host.sd.UUCP
+R$*<@$+.$->		$@$2.$3!$1			user@domain.spec
+R$*<@$->		$@$2.!$1			user@site
+
+#
+#	convert bangist notation to internal notation
+#
+#	Crippled (incomplete) way...
+S9
+R$-.!$*			$@$2@$1				site.!u -> u@site
+R$-.$+!$*		$@$3@$1.$2			s.dom!u -> u@s.dom
+
+#######################
+#   Rewriting rules   #
+#######################
+
+#####
+##### special local conversions
+#####
+#####	This ruleset gets called when we want to turn local nicknames
+#####	into their proper form.  This is currently done from rulset 0
+#####	and from ruleset 1 (sender pre-write).
+#####
+#####	we don't hack the addresses when they are in to-headers.
+#####
+#####	many of these rules only need to iterate once.
+S6
+# local uucp connections
+R$*<%$=V>		$:$1<@$2.UUCP>			uucp-isms
+R$*<@$=V>		$:$1<@$2.UUCP>			uucp-isms
+
+# local hosts in uucp-style notation (laidbak!user)
+R$*<@$=S.UUCP>		$:$1<@$2.LOCAL>			uucp-isms
+# non-etherneted local domain hosts in uucp notation...
+R$*<@$=L.UUCP>		$:$1<@$2.LOCAL>			uucp-isms
+#
+R$*<@$*$=D>$*		$:$1<@$2LOCAL>$4		expand local domain
+R$*<@$*$=S>$*		$:$1<@$2$3.LOCAL>$4		user@host.subdomain
+R$*<@$*$=S.$D>$*	$:$1<@$2$3.LOCAL>$4		user@host.subdomain
+#	abbreviations of the local domain...
+
+# Now, internalize the local domain...
+R$*<@$*$=D>$*		$1<@$2LOCAL>$4			made it local
+# peer domains that appeared in abbreviated format.
+#R$*<@$*$=P>$*		$1<@$2$3.$D>$4	get peers
+
+#	Short out a few things that make addresses messy looking
+R$+%$=S<@LOCAL>		$1<@$2.LOCAL>			hack for % syntax
+R$+%$=S<@$=R.LOCAL>	$1<@$2.LOCAL>			hacks for % syntax
+R$+%$=S<@$=S.LOCAL>	$1<@$2.LOCAL>			relayed internally
+R$+%$=S.$D<@$=w.$D>	$1<@$2.LOCAL>			relayed internally
+R$+%$=S<@$=w.$D>	$1<@$2.LOCAL>			relayed internally
+
+#	not using C and D rules
+
+Mlocal, P=/usr/bin/lmail, F=CDFPMlms, S=10, R=20, A=lmail $u
+
+Mprog,	P=/bin/sh,   F=DFMelsu,   S=10, R=20, A=sh -c $u
+
+S10
+R@			$n				errors to MAILER-DAEMON
+# don't chop local sender 
+#R$*<$*.LOCAL>$*		$1<$2>$3			local chop
+
+S20
+# leave local recipient addresses qualified...
+# R$*<$*.LOCAL>$*		$1<$2>$3			local chop
+
+Mether,	P=[IPC], F=CDFMXemsu, S=11, R=21, A=IPC $h
+
+S11
+R$*<@$+>$*		$@$1<@$2>$3			already ok
+R$+			$@$1<@$w.LOCAL>			tack on our hostname
+
+S21
+
+## intuiting domain names disabled
+
+# Host names for our gateways:
+# Corresponding classes list (known) sites in that domain.
+#	BITNET gateway
+DBcunyvm.columbia.edu
+#	CSNET gateway
+DCrelay.cs.net
+#	DEC Engineering network gateway
+DEdecwrl.dec.com
+#	Mailnet gateway
+DMmit-multics.arpa
+
+# load list of known hosts in the local domain.
+
+#
+# known SMTP/ethernet hosts (this domain only)
+#
+
+FS/etc/hosts.equiv
+
+# load any hosts we know about here
+FS/usr/lib/mail/localhosts
+# add UUCP neighbors in our domain sending mail as site!user (see rule 6).
+FL/usr/lib/mail/uucpindomain
+
+# Local UUCP Systems -- not in class S
+FV/usr/lib/uucp/Systems
+
+S0
+
+# first make canonical
+##	sendmail invokes ruleset 3 before calling ruleset 0
+##	our configurations invoke ruleset 7 instead of just coming back to
+##	ruleset 0. ruleset 7 invokes ruleset 3 and then ruleset 0.
+##
+##	this saves us a significant chunk of time that is otherwise wasted
+##	running addresses through ruleset 3 two times.
+##
+#R$*<$+>$*		$1$2$3				defocus
+#R$+			$:$>3$1				make canonical
+
+R$+			$:$>6$1				apply local conventions
+
+# handle special cases.....
+R@			$#local$:$n			handle <> form
+R$*<@[$+]>$*		$:$1<@$[[$2]$]>$3		lookup numeric inet addr
+R<@[$+]>:$*		$#tcp$@[$1]$:$2			numeric internet spec
+R$*<@[$+]>		$#tcp$@[$2]$:$1			numeric internet spec
+
+# canonicalize using the nameserver if not internal domain
+R$*<@$*.$~T>$*		$:$1<@$[$2.$3$]>$4
+R$*<@$->$*		$:$1<@$[$2$]>$3
+
+# delete local info; fall into rules that re-invoke ruleset 0.
+R$*<@$=w.LOCAL>$*	$1<@>$3				thishost.LOCAL
+R$*<@$=w>$*		$1<@>$3				thishost
+R$*<$*.>$*		$1<$2>$3			drop trailing dot
+# catch bare @. with and without angle brackets.
+R<@>:$*			$@$>7$1				retry after route strip
+R@:$*			$@$>7$1				retry after route strip
+R$*<@>			$@$>7$1				strip null & retry
+R$*@			$@$>7$1				strip null & retry
+
+# forward around hosts with communication problems
+R$*<@$=F.LOCAL>$*	$#ether$@$F$:$1<@$2.LOCAL>$3	reroute message
+
+##################################
+#  End of ruleset zero preamble  #
+##################################
+
+################################################
+###  Machine dependent part of ruleset zero  ###
+################################################
+
+#  @(#)parent.m4	1.1 90/02/21
+#  @(#)parent.m4	3.2 LAI System V.3 STREAMS TCP/IP  source
+#
+#	Handle references to the parent domain.
+#
+#	if the address portion is "<@LOCAL>", we have something addressed
+#	to the virtual node representing the local domain.
+#	Lachman makes sure that everyone with a valid
+#	signon on our machines has an alias on the master machine
+#	(laidbak.Lachman.COM) and thus we can let it resolve to here.
+#	[actually, it might even be something like user%site@LOCAL]
+#
+
+R<@LOCAL>:$*		$@$>7$1				strip route & retry
+R$*<@LOCAL>		$@$>7$1				strip & retry
+R$*<@$D>		$@$>7$1				strip & retry
+
+# Resolve names which are on other (non-official right now) domains
+# like bitnet and mailnet.  Push them through the appropriate
+# gateway.
+
+#	can reach these gateways via the Internet
+# Various resolutions for Internet connected hosts...
+#	BITNET names...
+R$*<@$*.BITNET>$*	$#tcp$@$B$:$1<@$2.BITNET>$3	user@domain.BITNET
+#	CSNET names...
+R$*<@$*.CSNET>$*	$#tcp$@$C$:$1<@$2.CSNET>$3	user@domain.CSNET
+#	DEC names.... (DEC Engineering network)
+R$*<@$*.DEC>$*		$#tcp$@$E$:$1<@$2.DEC>$3	user@domain.DEC
+#	MAILNET names (via mit-multics)
+R$*<@$*.MAILNET>$*	$#tcp$@$M$:$1<@$2.MAILNET>$3	user@domain.MAILNET
+#	end of bitnet/dec/mailnet processing.
+
+# Ways to handle the above (arpa,bitnet,dec,mailnet) names if you
+# are on CSnet Phonenet.
+####	BITNET...
+####  R$*<@$*.BITNET>$*	$@$>7<@$B>:$1<@$2.BITNET>	user@domain.BITNET
+####	CSNET...
+####  R$+<@$*.CSNET>	$#pmdf$@$C$:$1<@$2.CSNET>	user@domain.CSNET
+####	DEC Engineering Network...
+####  R$*<@$*.DEC>$*	$@$>7<@$E>:$1<@$2.DEC>		user@domain.DEC
+####	MAILNET names....
+####  R$*<@$*.MAILNET>$*	$@$>7<@$M>:$1<@$2.MAILNET>$3	user@domain.MAILNET
+# end of hard coded gateway rules
+
+#	Fall into rules to handle names that the nameserver may
+#	not have done anything to...
+#
+
+# 	Resolve (local) names that can go via the ethernet
+R$*<@$*$=w.$D>$*	$#local$:$1			user@local
+R$*<@$*$=S.LOCAL>$*	$#ether$@$3$:$1<@$2$3>$4	user@etherhost
+R$*<@$*$=S.$D>$*	$#ether$@$3$:$1<@$2$3>$4	user@etherhost
+
+# Resolve UUCP connections
+
+R<@$=V.UUCP>:$+		$:$>9 $1			First clean up
+R<@$=V.UUCP>:$+		$#uucp  $@$1 $:$2		@host.uucp:
+R$+<@$=V.UUCP>		$#uucp  $@$2 $:$1		user@host.uucp
+
+# we are the virtual parent.
+# anything else in the local domain gets shipped out right now..
+# an alternative is to error return on anything we do not recognize.
+# blindly resolving to ether mailer gets us access to new local sites
+# without having updated the configuration file.
+R$*<@$*.LOCAL>$*	$#ether$@$2.$D$:$1<@$2.LOCAL>$3	user@localhosts
+#
+#R$*<@$*.LOCAL>$*	$#error$:Unknown host $2 in local domain
+
+#	ARPA names ...
+#	NB: the fact that we resolve with "host.arpa" instead of "host".
+#		arguably more correct but it can bite back if someone
+#		sends to "user@nickame.arpa" where "nickname" does not
+#		appear as "nickname.arpa" in the host table.
+#	if you can internet....
+R$+<@$*$-.ARPA>		$#tcp$@$3.arpa$:$1<@$2$3.ARPA>	user@domain.ARPA
+R<@$*$-.ARPA>:$*	$#tcp$@$2.arpa$:<@$1$2.ARPA>:$3	@host.arpa: ...
+
+####	For CSnet Phonenet people...
+####	ARPA...
+####  R$*<@$*.ARPA>$*	$#pmdf$@$C$:$1<@$2.ARPA>$3	user@domain.ARPA
+
+#	See about mail bound for the ".csnet" domain (old-style name)
+#	and forward it to csnet-relay.
+# We do the =C stuff here instead of in the intuit section (below) because
+# some of the sites in class C are really .ARPA and not .CSNET and appending
+# a ".csnet" to those addresses would result in failure to deliver.
+#
+# Internet connected rules:
+#	able to reach the internet
+
+# CSnet Phonenet members just push it up to csnet-relay on the pmdf mailer.
+####  R$+<@$=C>		$#pmdf$@$C$:$1<@$2>		CSnet host
+
+# Resolve UUCP links
+
+#
+#	Route-addr formats...
+R<@$+.$-.UUCP>:$+	$#uucp$@$1.$2.$3$:$>5$3		@host.domain.UUCP: ...
+R<@$-.UUCP>:$+		$#uucp$@$1$:$>5$2		@host.UUCP: ...
+
+#	Allegd subdomains of UUCP.  Keep the ".uucp" in the hostname.
+#	For partial routes, the uucp mailer knows to re-qualify the user.
+R$+<@$+.$-.UUCP>	$#uucp$@$2.$3.UUCP$:$>5$1	user@host.domain.UUCP
+
+#	Don't pass the ".uucp" on simple cases. These probably started
+#	as site!user.
+#	Uttering "site.domain.uucp" as "site.uucp" usually lucks out
+#	since most our our "site.doman.uucp" names have a "site" alias.
+R$+<@$-.UUCP>		$#uucp$@$2$:$>5$1		user@host.UUCP
+
+## intuiting domain names is disabled
+
+#	If you are not on the Internet, you should figure out someone
+#	more omnipotent than your machine. Send any mail which still
+#	contains some sort of indication of being remote to that
+#	host. Maybe he will know what to do with it. If not,
+#	he will send it back at the original sender.
+#	R$*<@$*>$*	$#somemailer$@omnihost$:$1<@$2>$3
+#
+#	But since we are Internet connected and our call to the
+#	routing filter has already consulted with the masters of
+#	the universe, we can pretty much assume that the address is
+#	nonsense...
+#
+
+#	Error on any names with a network in them here since we could not
+#	figure out where to send them.
+#
+###R$*<@$+>$*		$#error$:Unknown host or domain $2 in address
+R<@$*>:$*		$#tcp$@$1$:<@$1>:$2		try anyway
+R$*<@$*>		$#tcp$@$2$:$1<@$2>		try anyway
+
+# remaining names are local (since they aren't on any of our networks)
+R!$+			$@$>7$1				strip leading !
+R$+			$#local$:$1			everything else
+
+########################################
+###  Host dependent address cleanup  ###
+########################################
+# Ruleset 8 is called from the back of ruleset 3 (canonicalize an address).
+# it is supposed to be to catch any host-specific glitches. I haven't
+# found a use for it yet. This is why it's empty.
+#
+S8
+
+#	class of mailers that have uucp properties.
+#
+# rawuucp	1-user, uux to rmail on next host. UNUSED.
+# uucp		1-user, path expansion.
+# uucp1		1-user, path expansion, our domain name in return address.
+# uucp2		1-user, path expansion, no local name unless local letter.
+# uucpm		n-user, path expansion.
+# uucp1m	n-user, path expansion, our domain name in return address.
+# uucp2m	n-user, path expansion, no local name unless local letter.
+# uucp3bnet	1-user, no path expansion, to 3bnet neighbor w/uucp rules.
+#	[the mailer program is a copy of the stock System V /bin/mail]
+CZuucp uucp1 uucp2
+CZuucpm uucp1m uucp2m
+CZuucp3bnet
+# uuxtcp	n-user, uux/rmail, tcp rules; senders bangized.
+# uuxether	n-user, uux/rmail, ether rules; senders bangized.
+CYuuxtcp uuxether
+
+###
+###	As-of-yet undefined uucp-style mailers
+###
+###	uucpc	"uucp" mailer, n-users, looks for common prefixes
+###	uucp1c, uucp2c -- same idea as uucpc
+###		[these guys need mods to mail/uucp-queue first]
+###
+
+#
+# actual mailer definitions -- see below for the rulesets.
+#
+#	can not use C/D rules
+Muucp,  P=/usr/bin/uux, F=DFMUhsu, S=13, R=23, M=100000,
+	A=uux - -r $h!rmail ($u)
+
+###
+###	vanilla sender re-writing. used to some extent by all of
+###	these mailers.
+
+S13
+#
+# think about if we want to do this....
+#R@			nobody				from nobody
+#
+R$+			$:$>5$1				convert to bangist
+R$=w.LOCAL!$*		$:$U!$2				uucp-ize
+R$+			$:$U!$1				stick on our host name
+R$=U!$=U!$+		$U!$3				strip redundancy
+R$=U!$=R:$+		$:$U!$3				local-don't use relay
+
+# Recipients address
+S23
+# leave them alone..
+#R$+			$@$>5$1				to bangist
+
+###	uucp1 mailer rewrite rules
+###
+###	This is for the hosts that are happy with a line like
+###	From ...  remote from site.domain
+###
+###	path expanding, uucp-order.  says laidbak.lachman.com!... instead
+###	of laidbak!...
+###
+
+#	Senders address
+#	call 13 (normal uucp rules) and then replace my uucpname
+#	prefix with the local machines domain name...
+S12
+R$+			$:$>13$1			convert to UUCP-style
+R$=U!$*			$@$w.$D!$2			uucp to domain name
+
+###
+###	uucp2 mailer rewrite rules
+###
+###	In this one, we do not prepend our system name in either form
+###	unless the user is a simple case.  Could make things like
+###	stacked From_ lines give incorrect impressions of the routing
+###	of the letter, but it will keep us from piling up unneeded
+###	relay information.
+###	Call 13, then strip our name unless it is the only one.
+###
+###	We only use this when we know the other end is either smart
+###	or knows how to hand off tough addresses to someone smarter
+###	than it is.
+###
+
+S15
+R$+			$:$>13$1			convert to uucp-order
+R$=U!$+!$*		$@$2!$3				drop unneeded name
+R$=U!$*			$@$w.$D!$2			use our domain name
+
+#	not using C and D rules
+Mtcp,	P=[IPC], F=DFLMXemsu, S=14, R=24, A=IPC $h, E=\r\n
+
+#
+#	Sender addresses -- From:
+#
+S14
+#
+# local conventions have alread been applied by ruleset 1
+#
+
+# pass <route-addr>'s through
+R<@$+>$*		$@<@$[$1$]>$2			resolve <route-addr>
+R$*<@[$+]>$*		$:$1<@$[[$2]$]>$3		lookup numeric inet addr
+
+#	ruleset 4 will fix up "LOCAL" for us.
+R$+<@$*LOCAL>		$@$1<@$2LOCAL>			ok, so get out
+
+# Process UUCP addresses by appending a qualifier.
+R$*<@$*UUCP>		$@$>28$1<@$2UUCP>$)<@$w.LOCAL>	handle UUCP
+
+# Fix up remaining network addresses.  Just push them out as is.
+# 
+# NB: this doesn't worry about whether names are NIC approved.
+#R$+<@[$+]>		$@$1<@[$2]>			already ok
+#R$+<@$*.$=T>		$@$1<@$2.$3>			user@host.sub.domain
+#R$+<@$->		$@$1<@$2>			don't add .ARPA
+R$+<@$+>		$@$1<@$[$2$]>			return as is
+
+# anything else, just append ourselves as a relay.
+R$+			$@$1<@$w.LOCAL>			tack on our hostname
+
+#
+# Recipient addresses -- To:, Cc:, etc.
+#
+S24
+#
+# apply local conventions
+#
+R$+			$:$>6$1				apply local conventions
+# pass <route-addr>'s through
+R<@$+>$*		$@<@$[$1$]>$2			resolve <route-addr>
+R$*<@[$+]>$*		$:$1<@$[[$2]$]>$3		lookup numeric inet addr
+
+# ruleset 4 will take care of "LOCAL" stuff.
+R$+<@$*LOCAL>		$@$1<@$2LOCAL>			ok, get out
+
+# Fix up remaining addresses. Domains make them all simple...
+#
+#	NB: this rule lets "site.csnet", "site.arpa", "site.bitnet",
+#	and "site.dec" out. Perhaps we should do more with them?
+#
+#R$+<@[$+]>		$@$1<@[$2]>			already ok
+#R$+<@$*.$=T>		$@$1<@$2.$3>			user@host.sub.domain
+#R$+<@$->		$@$1<@$2>			don't add .ARPA
+R$+<@$+>		$@$1<@$2>			any network stuff.
+
+# anything else, just append ourselves as a relay.
+R$+			$@$1<@$w.LOCAL>			tack on our hostname
+
+#
+#	Rules to rearrange some UUCP-specific things
+#
+S28
+# simple uucp names...
+R$-<@$-.UUCP>		$@$2!$1				simple uucp host
+R$-<@$*.$-.UUCP>	$@$2.$3.UUCP!$1			fancy naming
+# uucp routes...
+R$*!$-<@$-.UUCP>	$@$3!$1!$2			multi-hop routed
+R$*!$-<@$*.$-.UUCP>	$@$3.$4.UUCP!$1!$2		fancy naming
+#
+# note that we avoided turning "user%site%site2.uucp" into "site2!user%site".
+#
+

@@ -1,0 +1,43 @@
+#@
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1985.  ALL
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+#	ASSOCIATED DOCUMENTATION.
+#
+echo '
+*************************************************************
+Displaying CCB/NTC networking version(s)
+*************************************************************'
+dir='/etc'
+version='vers'
+update=
+cd $dir
+for module
+  in 'ccbenet' 'ccbiop' 'ccbllien' 'ccbnet' 'ccbrout' 'ccbtokr' 'ccbxns' 'tcload'
+do
+  if ( test -r $module ); then
+    case `what $module | grep -c $version`
+      in
+      0) 
+	  echo "******* Module $dir/$module: No version number currently listed"
+	  ;;
+      1)
+	  update=`what $module | grep $version | cut -d" " -f4`
+	  echo "******* Module $dir/$module: Version $update"
+	  ;;
+      *)  
+	  echo "******* Cannot get version number for $dir/$module.  "
+	  ;;
+    esac
+  else
+    if ( test ! -f $module ); then
+	echo "******* $dir/$module does not exist"
+    else
+	echo "******* Invalid permissions for getting version of $dir/$module"
+    fi
+  fi
+	
+done
+echo "*************************************************************"

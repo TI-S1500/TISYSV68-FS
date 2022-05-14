@@ -1,0 +1,37 @@
+:
+#----------------------------------------------------------------
+# Name: VSATSTATUS
+# Desc: Displays the status of the VSAT connection
+# Vers: 2.0
+# Date: 1 April 1991
+#----------------------------------------------------------------
+rm -f /tmp/VSTATUS*
+echo "\012\012"
+cat >/tmp/VSTATUS.dpu <<END_END
+d pu
+q
+END_END
+#----------------------------------------------------------
+#  ck to see if VSAT is installed
+#----------------------------------------------------------
+/usr/ucs/snaadm </tmp/VSTATUS.dpu >/tmp/VSTATUS.out1
+grep answer /tmp/VSTATUS.out1 >/dev/null 2>&1
+if [ $? != 0 ] 
+then
+	echo "WARNING: the VSAT software is not installed\n\n"
+	exit 1
+fi
+#----------------------------------------------------------
+#  ck to see if the VSAT connection is active
+#----------------------------------------------------------
+grep answer /tmp/VSTATUS.out1 >/tmp/VSTATUS.out2 2>&1
+grep inactive /tmp/VSTATUS.out2 >/dev/null 2>&1
+if [ $? = 0 ] 
+then
+	echo "\n\nThe VSAT connection is NOT active.\n\n"
+else
+	echo "\n\nThe VSAT connection is active.\n\n"
+fi
+#----------------------------------------------------------
+rm -f /tmp/VSTATUS*
+exit 0

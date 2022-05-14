@@ -1,0 +1,138 @@
+...3.3.2 OS Upgrade Pre-work Started
+
+Thu Jan 11 09:47:25 CST 1996
+
+...Removing all dnio files
+
+
+...Cleaning up wtmp, requests, and lpsched
+
+
+...Deleting rootlisting and rootverify from BKUP_DIR
+
+
+...Pruning backup log to last 100 lines
+
+ : Can't find file /etc/dnio1500init (WARNING 1000505)
+The file or directory doesn't exist
+
+...Saving JDIS versions of login, standard, and inittab
+
+ : Can't find file /usr/adm/errfile.old (WARNING 1000505)
+The file or directory doesn't exist
+
+...Cleaning up syslog and sulog
+
+
+
+Prep Work Complete....  Beginning 3.3.2 osupdate
+
+
+Doing post 332 update custom JDIS changes...
+
+Thu Jan 11 10:19:15 CST 1996
+
+...Removing dnio files
+
+
+...Removing old JDIS lp request, spool directories
+
+
+...Making new JDIS lp and temp dirs; linking to usr spool
+
+ : Failed to make directory /JDIS/lp : Errno 17 (ERROR 1001226)
+
+...Restoring JDIS version of standard model
+
+
+...Restoring JDIS version of login program
+
+
+...Modifying inittab file
+
+
+...Copying new unixdos for termite to usr bin
+
+
+...Copying new dosunix for termite to usr bin
+
+
+...Copying new rebuild jdis script to BKUP DIR
+
+
+...Creating new ptu entries in BKUP DIR
+
+
+Current space usage is...
+
+/                   (/dev/dsk/sys:root):           1810 blocks     2245 i-nodes
+                    total:                        12288 blocks     3072 i-nodes
+/usr                (/dev/dsk/sys:usr):           10468 blocks     6051 i-nodes
+                    total:                        32768 blocks     8192 i-nodes
+/JDIS               (/dev/dsk/sys:jdis):         194727 blocks    59450 i-nodes
+                    total:                       448972 blocks    65488 i-nodes
+
+Moving on-line man to JDIS
+
+
+...Creating Directory: /JDIS/usr/man
+
+
+...Copying /usr/man to /JDIS/usr/man
+
+
+...Deleting /usr/man
+
+
+...Linking /JDIS/usr/man to /usr/man
+
+
+Space usage after moving /usr/man...
+
+/                   (/dev/dsk/sys:root):           1810 blocks     2245 i-nodes
+                    total:                        12288 blocks     3072 i-nodes
+/usr                (/dev/dsk/sys:usr):           12599 blocks     6800 i-nodes
+                    total:                        32768 blocks     8192 i-nodes
+/JDIS               (/dev/dsk/sys:jdis):         192593 blocks    58698 i-nodes
+                    total:                       448972 blocks    65488 i-nodes
+
+JDIS 332 Post Processing Complete...
+
+
+Loading all current 332 patches...
+
+Thu Jan 11 10:36:48 CST 1996
+
+...Checking terminal type
+
+
+...Loading 332 Patches into JDIS/332UPD/PATCHES using tar
+
+
+Doing 332 Cleanup...
+
+Thu Jan 11 11:07:01 CST 1996
+
+...Removing /temp_osupdate
+
+CLEAN332: Can't find file echo (WARNING 1000505)
+The file or directory doesn't exist
+CLEAN332: Can't find file \n...Removing /osupdate\n (WARNING 1000505)
+The file or directory doesn't exist
+
+...Removing /osupdate
+
+
+...Copying 332LOG to /JDIS/SPOOL directory
+
+
+...Removing /JDIS/332UPD directory
+
+
+...Cleaning up unnecessary root and usr files
+
+CLEAN332: Can't find file /etc/login.jdis (WARNING 1000505)
+The file or directory doesn't exist
+/usr/mail/:saved is a directory.  Use rmdir to remove it.
+CLEAN332: Can't find file /JDIS/os.sav (WARNING 1000505)
+The file or directory doesn't exist

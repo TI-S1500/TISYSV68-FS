@@ -1,0 +1,727 @@
+
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    1
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-1)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5748       6X4 GATOR 160   3     8    24    24     00      3.71    89.04  MO           1   N    1 *   24        25    14  78.6
+  Cur   1 Dec    7 Nov    4 Oct    1 Sep      Aug    2 Jul    1 Jun    1 May      Apr    1 Mar    3 Feb    3 Jan    2
+          Dec    7 Nov    2 Oct    2 Sep    3 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+Order has been increased to minimum order qty
+
+PM5762       8870 4WD  160         0     3     3     00     37.95   113.85  MO           1   N    1 *    3        10    13  23.1-
+  Cur   3 Dec    2 Nov    2 Oct    2 Sep      Aug    1 Jul    1 Jun      May      Apr    1 Mar    1 Feb      Jan
+          Dec    6 Nov    1 Oct      Sep      Aug    1 Jul      Jun      May    1 Apr    2 Mar    1 Feb    1 Jan
+Order has been increased to minimum order qty
+
+
+Warehouse Total                               27                    202.89               Number of Line Items that Ordered  =     2
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 1   Order Form =                                                 *
+*                          Your order is currently at STCN        $202.89     5% Discount         $10.14                           *
+*                                                                                                                                  *
+*                 The next level is STCN      $4,500.01     5% Discount        $225.00   Add    $4,297.12 for STCN                 *
+************************************************************************************************************************************
+
+Program Total                                 27                    202.89               Number of Line Items that Ordered  =     2
+
+Grand Total                                   27                    202.89               Number of Line Items that Ordered  =     2
+
+
+                                                          (End of Report)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    2
+Time:  8:33                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 011997                        Type Order=ST  Program Number=CN
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM1232       DISPLAY CA160  36     9     0     0     00      5.13      .00               5   N    1 *   12         3       100.0
+  Cur     Dec    3 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM1233       DISPLAY CA160  36     3     0     0     00      7.23      .00  MO           5   N    1 *    6         1       100.0
+  Cur   2 Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM4326       TOY       160         0     0     0     00     24.68      .00  NS           5   N    1 *    4         1       100.0
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM4327       TOY       160         0     0     0     00     37.94      .00  NS           5   N    1 *    4                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM4353       TOY       160         0     0     0     00      2.30      .00  NS           5   N    1 *   24                    .0
+  Cur     Dec    3 Nov    3-Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM4458       RANCH SET 160         4     0     0     00     23.59      .00  NS           5   N    1 *    4                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM4522       TOY       160         0     0     0     00     11.57      .00  NS           5   N    1 *    6         1       100.0
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5055       TOY       160         0     0     0     00      2.30      .00  NS           5   N    1 *   24                    .0
+  Cur     Dec    1 Nov    1-Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM510        FORAGE WGN160  36     6     0     0     00     10.48      .00  MO           5   N    1 *    6         2     6  66.7-
+  Cur   1 Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec    2 Nov      Oct      Sep    1 Aug    2 Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+PM511        TOY       160         0     0     0     00     34.30      .00  AP           5   N    1 *    4               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5358       TOY       160         0     0     0     00     16.74      .00  NS           5   N    1 *    6                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5523       4 PCE  SET160  12     2     0     0     00      7.14      .00  MO           5   N    1 *   12         2     7  71.4-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb    2 Jan
+          Dec      Nov      Oct    1 Sep    1 Aug      Jul    1 Jun      May      Apr    3 Mar    1 Feb      Jan
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    3
+Time:  8:33                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 011997                        Type Order=ST  Program Number=CN
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5605       TOY       160 144    12     0     0     00      4.53      .00  MO           5   N    1 *   12         1     8  87.5-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb    1 Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul    1 Jun    1 May    1 Apr    1 Mar      Feb    2 Jan    1
+
+PM5639       BALER     160 156    13     0     0     00      5.23      .00  AP           5   N    1 *   12         1     4  75.0-
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    2 Aug      Jul    1 Jun      May      Apr      Mar      Feb    1 Jan
+
+PM568        BULLDOZER 160         2     0     0     00      4.53      .00  MO           5   N    1 *   12                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5684       PRECISION 160  42     7     0     0     00     82.95      .00  MO           5   N    1 *    4         2     7  71.4-
+  Cur   1-Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar    1 Feb    1-Jan    1
+          Dec    2 Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar    2 Feb      Jan    2
+
+PM5690       TOY       160   8     2     0     0     00    122.06      .00  MO           5   N    1      1         3       100.0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr    2 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5694       HAY WGN   160  60    10     0     0     00      3.37      .00  MO           5   N    1 *   12         2     4  50.0-
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep    2 Aug      Jul      Jun      May      Apr      Mar      Feb    1 Jan
+
+PM5724       TOY       160         0     0     0     00     14.99      .00               5   N    1 *    6         2       100.0
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5726       SET # 1   160        11     0     0     00     10.00      .00  MO           5   N    1 *   12               6 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr    1 Mar    1 Feb      Jan    3
+
+PM5735       HIST  SET#160        41     0     0     00     10.00      .00  AP           5   N    1 *   12               7 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    2 Oct      Sep      Aug      Jul      Jun    2 May      Apr    2 Mar    1 Feb      Jan
+
+PM5741       445 LAWN T160         0     0     0     00      3.83      .00  AP           5   N    1 *   12               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM5744       WATERLOO B160        10     0     0     00      7.40      .00  AP           5   N    1 *   12               3 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb    1 Jan
+
+PM5768       VINTAGE TR160  12     2     0     0     00     16.11      .00  MO           5   N    1 *    6         2     2    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar    1 Feb    1 Jan
+          Dec      Nov      Oct    1 Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    4
+Time:  8:33                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 011997                        Type Order=ST  Program Number=CN
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5916       TOY       160         0     0     0     00     23.75      .00  NS           5   N    1 *    4                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5918       TOY       160         0     6     0     00     17.27      .00  NS           5   N    1 *    6                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5920       TOY       160         0    12     0     00     17.27      .00  NS           5   N    1 *    6                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5927       TOY       160         0     0     0     00      2.58      .00  NS           5   N    1 *   24         1       100.0
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5936       TOY       160         0     0     0     00      1.64      .00  NS           5   N    1 *   24                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+Warehouse Total                                0                       .00               Number of Line Items that Ordered  =     0
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 1   Order Form =                                                 *
+*                          Your order is currently at STCN           $.00     0% Discount           $.00                           *
+*                                                                                                                                  *
+*                 The next level is STCN          $1.00     5% Discount           $.05   Add        $1.00 for STCN                 *
+*                 The next level is STCN      $4,500.01     5% Discount        $225.00   Add    $4,500.01 for STCN                 *
+************************************************************************************************************************************
+
+Program Total                                  0                       .00               Number of Line Items that Ordered  =     0
+
+Grand Total                                    0                       .00               Number of Line Items that Ordered  =     0
+
+
+                                                          (End of Report)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    5
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM1507       FIGURINES 160  14    13     0     0     00      9.17      .00               1   N    1 *   12        11       100.0
+  Cur     Dec    5 Nov    2 Oct      Sep    4 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM4311       TOY       160  28     7     0     0     00     13.90      .00  MO           7   N    1 *    6         3     2  50.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr    1 Mar    1 Feb      Jan
+          Dec    1 Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM4594       CREAM SEPA160  16    11     0     0     00     14.21      .00  MO           D   N    1 *    6         8     5  60.0
+  Cur     Dec    1 Nov      Oct    1 Sep    1 Aug      Jul    1 Jun      May    1 Apr      Mar      Feb    2 Jan    1
+          Dec      Nov    1 Oct    1 Sep    3 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM4966       TOY       160  26    13     0     0     00     13.37      .00  MO           D   N    1 *    6         6    11  45.5-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    2 Jun    1 May      Apr    1 Mar      Feb    1 Jan    1
+          Dec    4 Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr    2 Mar    1 Feb    1 Jan    2
+
+PM4969       "E" ENG  B160  25    15     0     0     00     17.52      .00  MO           D   N    1 *    6         7     9  22.2-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    2 May      Apr      Mar      Feb    2 Jan    2
+          Dec    4 Nov    2 Oct    1 Sep    1 Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM502        GLOBE     160         0     0     0     00     12.95      .00  MO           1   N    1 *    6        17       100.0
+  Cur     Dec    5 Nov    5 Oct    1 Sep    6 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5062DO     GP W/ FLAR160   2     2     0     0     00     23.75      .00  MO           1   N    1 *    6        10       100.0
+  Cur     Dec      Nov      Oct    1 Sep    5 Aug      Jul    2 Jun    2 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM509        FORAGE HAR160  12     6     0     0     00     10.74      .00  MO           D   N    1 *    6         6     5  20.0
+  Cur     Dec    2 Nov    1 Oct    1 Sep      Aug    1 Jul      Jun      May      Apr      Mar    1 Feb      Jan
+          Dec    4 Nov      Oct      Sep    1-Aug    1 Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM522        BALE WGN  160  22    11     0     0     00      8.23      .00  MO           1   N    1 *    6         6     9  33.3-
+  Cur     Dec      Nov    1 Oct    2 Sep      Aug      Jul      Jun      May    1 Apr    1 Mar    1 Feb      Jan
+          Dec    2 Nov    1 Oct    1 Sep    3 Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan    1
+
+PM525        TOY       160  19     8     0     0     00     10.30      .00  MO           D   N    1 *    6         5    10  50.0-
+  Cur     Dec    2 Nov      Oct      Sep      Aug      Jul      Jun    1 May    1 Apr    1 Mar      Feb      Jan
+          Dec    1 Nov      Oct    1 Sep    1 Aug    1 Jul      Jun      May    1 Apr    1 Mar    2 Feb    1 Jan    1
+
+PM5259       8400 PRECI160  39    13     0     0     00     55.37      .00  MO           7   N    1 *    4         4     2 100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar    1 Feb    1 Jan    2
+          Dec    2 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM529        FLARE WGN 160  19     8     0     0     00      5.23      .00  MO           1   N    1 *    6         5     6  16.7-
+  Cur     Dec    1 Nov    1 Oct    1 Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec    1 Nov      Oct      Sep    3 Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan    1
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    6
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5329       7410 TRACT160  36     9     0     0     00      4.96      .00               D   N    1 *   12         3       100.0
+  Cur     Dec    1 Nov    2 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM535        TRAILER   160   4     4     0     0     00     22.26      .00  MO           1   N    1      1        11     3 266.7
+  Cur     Dec    2 Nov      Oct    2 Sep      Aug      Jul    2 Jun      May    2 Apr    1 Mar    1 Feb    1 Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May    1 Apr      Mar    1 Feb      Jan
+
+PM539        A TRACTOR 160  13     9     0     0     00     10.83      .00  MO           D   N    1 *    6         8     7  14.3
+  Cur     Dec    3 Nov      Oct      Sep      Aug      Jul    1 Jun    3 May      Apr      Mar    1 Feb      Jan
+          Dec    1 Nov    2 Oct    1 Sep    2 Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM546        TOY       160   1     2     0     0     00     26.95      .00  MO           1   N    1 *    4        14    11  27.3
+  Cur   1 Dec    3 Nov    6 Oct    1 Sep    1 Aug    1 Jul      Jun    1 May      Apr      Mar      Feb    1 Jan
+          Dec    5 Nov    1 Oct    1 Sep      Aug    1 Jul    1 Jun    1 May      Apr    1 Mar      Feb      Jan
+
+PM549        TOY       160   6     4     0     0     00     13.97      .00  MO           D   N    1 *    6         7     8  12.5-
+  Cur   1 Dec    3 Nov    1 Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb    1 Jan    1
+          Dec    4 Nov      Oct      Sep      Aug    1 Jul    2 Jun      May    1 Apr      Mar      Feb      Jan
+
+PM552        TOY       160   1     3     6     0     00    105.67      .00  MO           1   N    1      1        20    12  66.7
+  Cur     Dec    4 Nov    1 Oct    2 Sep      Aug    2 Jul    1 Jun    4 May    2 Apr    1 Mar    1 Feb    2 Jan
+          Dec    4 Nov      Oct      Sep      Aug    1 Jul      Jun    2 May    1 Apr    1 Mar    1 Feb    1 Jan    1
+
+PM5528       GRAIN DRIL160  20    19     0     0     00      1.78      .00  MO           1   N    1 *   24        11    12   8.3-
+  Cur   1 Dec    1 Nov    2 Oct    2 Sep      Aug    3 Jul    1 Jun    1 May      Apr    1 Mar      Feb      Jan
+          Dec    2 Nov    1 Oct    4 Sep      Aug    1 Jul    1 Jun      May      Apr      Mar    1 Feb    1 Jan    1
+
+PM5539       WHEEL LOAD160  12     8     0     0     00      4.53      .00  MO           1   N    1 *   12         8     6  33.3
+  Cur   2 Dec    2 Nov      Oct      Sep      Aug      Jul      Jun    1 May    1 Apr    1 Mar    2 Feb    1 Jan
+          Dec    5 Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5540       INDUST  GR160  14     6     0     0     00      4.53      .00  MO           1   N    1 *   12         5     7  28.6-
+  Cur     Dec    2 Nov    2 Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec    2 Nov      Oct      Sep      Aug      Jul    1 Jun    2 May      Apr    1 Mar      Feb    1 Jan
+
+PM5565       TOY       160  27    25     0     0     00      2.67      .00  MO           1   N    1 *   24        11    11    .0
+  Cur   1 Dec    2 Nov    4 Oct      Sep    1 Aug      Jul    2 Jun    1 May      Apr      Mar      Feb    1 Jan
+          Dec    1 Nov    1 Oct      Sep      Aug    3 Jul    3 Jun      May    1 Apr    1 Mar      Feb      Jan    1
+
+PM5594       TOY       160   6     4     0     0     00     10.80      .00  MO           D   N    1 *    6         7     3 133.3
+  Cur     Dec      Nov      Oct    1 Sep      Aug    2 Jul    2 Jun    1 May      Apr      Mar      Feb    1 Jan
+          Dec    1 Nov      Oct      Sep    1 Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+
+PM5600       ROTARY CUT160  38    19     0     0     00      1.88      .00  MO           1   N    1 *   24         6    11  45.5-
+  Cur     Dec      Nov    1 Oct    1 Sep      Aug    1 Jul      Jun      May    1 Apr    1 Mar      Feb      Jan    1
+          Dec    2 Nov      Oct      Sep    2 Aug    3 Jul    2 Jun      May      Apr      Mar    1 Feb    1 Jan
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    7
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5602       TOY       160  21     9     0     0     00     11.64      .00  MO           D   N    1 *    6         5     8  37.5-
+  Cur     Dec    1 Nov    2 Oct      Sep      Aug      Jul    1 Jun      May    1 Apr      Mar      Feb      Jan
+          Dec    3 Nov    1 Oct    2 Sep      Aug      Jul      Jun    1 May    1 Apr      Mar      Feb      Jan
+
+PM5604       JD COMBINE160   9    34     0     0     00      7.56      .00  MO           1   N    1 *   12        41    10 310.0
+  Cur     Dec    2 Nov      Oct      Sep   21 Aug    2 Jul    1 Jun      May      Apr      Mar      Feb      Jan   15
+          Dec      Nov    2 Oct    1 Sep    1 Aug    1 Jul      Jun    1 May    2 Apr      Mar    1 Feb    1 Jan
+
+PM5611       70 TR     160  14     6     0     0     00     13.53      .00  MO           D   N    1 *    6         5     2 150.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug    1 Jul      Jun    1 May    1 Apr      Mar      Feb    1 Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM5619       7600 TRACT160  39    13     0     0     00     22.01      .00               7   N    1 *    6         4     4    .0
+  Cur     Dec    1 Nov      Oct    1 Sep      Aug    1 Jul      Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct    1 Sep      Aug    1 Jul      Jun      May      Apr      Mar    1 Feb      Jan
+
+PM5626       5 PCE  SET160  13    22     0     0     00      8.24      .00  MO           1   N    1 *    6        19    19    .0
+  Cur     Dec    2 Nov      Oct    1 Sep    1 Aug    2 Jul    2 Jun    4 May    1 Apr    2 Mar    2 Feb    2 Jan
+          Dec    6 Nov    1 Oct    4 Sep    2 Aug      Jul      Jun    1 May    1-Apr    5 Mar    1 Feb      Jan
+
+PM5630       MOWER COND160  14     6     0     0     00     13.97      .00  MO           D   N    1 *    6         5     2 150.0
+  Cur     Dec    1 Nov      Oct      Sep    1 Aug      Jul    1 Jun      May    1 Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    1 May      Apr      Mar      Feb      Jan
+
+PM5646       BALER     160  51    17     0     0     00      1.88      .00  MO           D   N    1 *   24         4    12  66.7-
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar    2 Feb      Jan    1
+          Dec    4 Nov      Oct      Sep    2 Aug      Jul      Jun    1 May    1-Apr    2 Mar    1 Feb      Jan    3
+
+PM5649       7800 W/DUA160   6    15     0     0     00      2.11      .00  MO           1   N    1 *   24        26    16  62.5
+  Cur     Dec    2 Nov   10 Oct    1 Sep    1 Aug    1 Jul    2 Jun    4 May    2 Apr    2 Mar      Feb      Jan    1
+          Dec    6 Nov      Oct      Sep      Aug    1 Jul      Jun    1 May    2 Apr    2 Mar      Feb    2 Jan    2
+
+PM5651       TOY       160  37    44     0     0     00      2.11      .00  MO           1   N    1 *   24        14    24  41.7-
+  Cur   1 Dec    3 Nov      Oct    2 Sep    1 Aug    1 Jul      Jun    1 May      Apr    2 Mar      Feb    3 Jan    1
+          Dec    8 Nov    4 Oct    1 Sep      Aug    3 Jul    3 Jun    3 May    1 Apr    1 Mar      Feb      Jan
+
+PM5652       TOY       160 123    41     0     0     00      3.24      .00  MO           D   N    1 *   24         4     4    .0
+  Cur     Dec    2 Nov      Oct      Sep      Aug      Jul      Jun    2 May      Apr      Mar      Feb      Jan
+          Dec    4 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5657       TOY       160  41    31     0     0     00      1.94      .00  MO           1   N    1 *   24         9     7  28.6
+  Cur   1 Dec    2 Nov    1 Oct    1 Sep      Aug    1 Jul    3 Jun    1 May      Apr      Mar      Feb      Jan
+          Dec    2 Nov      Oct    1 Sep      Aug    2 Jul    1 Jun      May      Apr      Mar      Feb    1 Jan
+
+PM5658       6910 FOR  160  12    30     0     0     00      6.02      .00  MO           1   N    1 *   12        29     6 383.3
+  Cur     Dec      Nov      Oct    1 Sep    1 Aug    1 Jul    3 Jun      May      Apr      Mar      Feb      Jan   23
+          Dec    2 Nov    1 Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar    1 Feb      Jan    1
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    8
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM566        FORAGE HAR160  24    22     0     0     00      1.78      .00  MO           1   N    1 *   24        11    10  10.0
+  Cur     Dec    2 Nov    1 Oct    1 Sep      Aug    2 Jul    2 Jun    1 May      Apr      Mar      Feb    2 Jan
+          Dec      Nov    2-Oct    3 Sep      Aug    1 Jul      Jun    2 May    2 Apr    1 Mar    1 Feb      Jan    2
+
+PM5661       TOY       160  39    13     0     0     00      2.88      .00  MO           D   N    1 *   12         4     7  42.9-
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr    1 Mar    1 Feb    1 Jan
+          Dec    3 Nov    1 Oct      Sep      Aug    1 Jul    2 Jun      May      Apr      Mar      Feb      Jan
+
+PM5667       6200MFWD  160  30    10     0     0     00     17.44      .00  MO           7   N    1 *    6         4     6  33.3-
+  Cur     Dec    1 Nov      Oct    1 Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+          Dec    3 Nov    1 Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan    1
+
+PM5668       TOY       160  33    11     0     0     00      7.31      .00  MO           D   N    1 *   12         4     7  42.9-
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr    1 Mar    1 Feb    1 Jan
+          Dec      Nov      Oct    1 Sep    2 Aug    1 Jul    1 Jun      May      Apr    1 Mar      Feb    1 Jan
+
+PM567        TOY       160  12    21     0     0     00      1.78      .00  MO           1   N    1 *   24        20     7 185.7
+  Cur     Dec    3 Nov    1 Oct      Sep    4 Aug    3 Jul    3 Jun    2 May      Apr    1 Mar      Feb    1 Jan    2
+          Dec    3 Nov      Oct    1 Sep      Aug    1 Jul      Jun      May      Apr    1 Mar    1 Feb      Jan
+
+PM5674       HAY WGN   160  16     4     0     0     00     11.74      .00  MO           7   N    1 *    6         3     1 200.0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul    1 Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM5702       A W/FIGURI160   8     5     0     0     00     23.21      .00  MO           D   N    1 *    6         7       100.0
+  Cur     Dec      Nov    1 Oct      Sep    1 Aug    1 Jul      Jun    1 May    2 Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5705       820 DIESEL160  16     7     0     0     00     13.94      .00  MO           D   N    1 *    6         5       100.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug    1 Jul    3 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5711       MULCH TILL160  21     9     0     0     00     17.32      .00  MO           D   N    1 *    6         5     9  44.4-
+  Cur     Dec      Nov      Oct    2 Sep      Aug      Jul      Jun    1 May      Apr      Mar    1 Feb      Jan    1
+          Dec    1 Nov      Oct    1 Sep      Aug    1 Jul      Jun    3 May      Apr      Mar      Feb    1 Jan    2
+
+PM5716       4010 TRACT160   9     7     0     0     00     17.04      .00  MO           D   N    1 *    6         9    13  30.8-
+  Cur   1 Dec    2 Nov      Oct    1 Sep      Aug    5 Jul      Jun      May      Apr      Mar      Feb    1 Jan
+          Dec    3 Nov    1 Oct    2 Sep    1 Aug      Jul    3 Jun    1 May    1 Apr    1 Mar      Feb      Jan
+
+PM5720       TRAC & LOA160  15     5     0     0     00     11.84      .00  MO           7   N    1 *    6         4     3  33.3
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun    1 May      Apr      Mar    1 Feb    1 Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul    2 Jun      May      Apr      Mar      Feb      Jan
+
+PM5725       1/43 4010 160  30    15     0     0     00      4.29      .00  MO           1   N    1 *   12         6    15  60.0-
+  Cur     Dec    1 Nov      Oct    1 Sep      Aug      Jul      Jun    2 May      Apr      Mar      Feb    2 Jan
+          Dec    3 Nov      Oct    3 Sep    2 Aug    1 Jul    2 Jun    1 May    2 Apr    1 Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    9
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5727       TOY       160  44    33     0     0     00      3.48      .00  MO           1   N    1 *   24         9    17  47.1-
+  Cur     Dec    2 Nov      Oct      Sep    1 Aug    1 Jul    1 Jun      May    2 Apr    1 Mar      Feb    1 Jan
+          Dec    1 Nov    2 Oct    1 Sep    1 Aug    2 Jul    4 Jun      May    2 Apr    1 Mar    1 Feb    1 Jan    1
+
+PM5728       150 BLOWER160   4    11    24     0     00      1.77      .00               1   N    1 *   24        32       100.0
+  Cur   5 Dec   11 Nov    6 Oct   15 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5729       6400 MFWD 160  49    29     0     0     00      2.27      .00  MO           1   N    1 *   24         7    20  65.0-
+  Cur     Dec    3 Nov      Oct      Sep    1 Aug      Jul    1 Jun      May      Apr      Mar    1 Feb      Jan    1
+          Dec    4 Nov      Oct    1 Sep    1 Aug    1 Jul    2 Jun      May    1 Apr    3 Mar    2 Feb    5 Jan
+
+PM5736       TOY       160  12     3     0     0     00     10.00      .00  MO           7   N    1 *   12         3     6  50.0-
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb    1 Jan
+          Dec      Nov    1 Oct      Sep    1 Aug      Jul    2 Jun    2 May      Apr      Mar      Feb      Jan
+
+PM574        HYDRA PUSH160  21    23     0     0     00      1.69      .00  MO           1   N    1 *   24        13    12   8.3
+  Cur     Dec    1 Nov    2 Oct      Sep      Aug    3 Jul      Jun    1 May      Apr    4 Mar      Feb      Jan    2
+          Dec    4 Nov    1 Oct    1 Sep    1 Aug    1 Jul      Jun    1 May    1 Apr    1 Mar    1 Feb      Jan
+
+PM5740       425 LAWN T160  54    18     0     0     00      3.83      .00  MO           D   N    1 *   12         4    14  71.4-
+  Cur     Dec      Nov    2 Oct      Sep      Aug      Jul      Jun      May    1 Apr    1 Mar      Feb      Jan
+          Dec    2 Nov      Oct      Sep      Aug    2 Jul    2 Jun    2 May    1 Apr    5 Mar      Feb      Jan
+
+PM5742       TOY       160  45    19     0     0     00      3.83      .00  MO           1   N    1 *   12         5    23  78.3-
+  Cur     Dec      Nov      Oct    2 Sep      Aug      Jul    2 Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct   12 Sep      Aug      Jul    3 Jun    3 May    1 Apr    3 Mar    1 Feb      Jan
+
+PM5745       TOY       160  24    12     0     0     00      3.83      .00  MO           1   N    1 *   12         6     6    .0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun    1 May    2 Apr    1 Mar      Feb    1 Jan
+          Dec    4 Nov    1 Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5747       TR & IMPL 160  37    25     0     0     00      5.56      .00  MO           1   N    1 *   12         8     3 166.7
+  Cur     Dec    4 Nov    1 Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb    1 Jan    1
+          Dec    2 Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5750       7600      160   8     4     0     0     00      6.38      .00  MO           1   N    1 *   12         6     6    .0
+  Cur     Dec    1 Nov    1 Oct    1 Sep      Aug    1 Jul      Jun      May    1 Apr      Mar      Feb      Jan    1
+          Dec    2 Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr    2 Mar      Feb    1 Jan
+
+PM5751       HAY RAKE  160  84    35     0     0     00      2.03      .00  MO           1   N    1 *   24         5    15  66.7-
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar    2 Feb    1 Jan
+          Dec      Nov    1 Oct      Sep      Aug    5 Jul    2 Jun      May      Apr    1 Mar      Feb    4 Jan    2
+
+PM5752       SPRAYER   160   3    19     0     0     00      5.39      .00               1   N    1 *   24        75       100.0
+  Cur   2 Dec   13 Nov   56 Oct    6 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   10
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5754       TOY       160   5    10     0     0     00      6.26      .00  MO           1   N    1 *   12        21    17  23.5
+  Cur     Dec    4 Nov    3 Oct    3 Sep      Aug    1 Jul    2 Jun    1 May    1 Apr    2 Mar      Feb    2 Jan    2
+          Dec    2 Nov      Oct    1 Sep    2 Aug    4 Jul    3 Jun    1 May    1 Apr    2 Mar    1 Feb      Jan
+
+PM5755       BALE WGN  160   2     4     0     0     00      1.83      .00               1   N    1 *   24        20     11900.0
+  Cur   1 Dec    2 Nov    2 Oct    6 Sep    8 Aug    1 Jul      Jun      May      Apr      Mar    1 Feb      Jan
+          Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5756       2510 TR   160         0    24     0     00      2.27      .00               1   N    1 *   24        48       100.0
+  Cur     Dec    4 Nov   31 Oct   11 Sep    2 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM576        TOY       160  30    28     0     0     00      2.31      .00  MO           1   N    1 *   24        11    12   8.3-
+  Cur   1 Dec    1 Nov      Oct      Sep    1 Aug      Jul    5 Jun    1 May    2 Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct      Sep      Aug    2 Jul    3 Jun    1 May    3 Apr      Mar    1 Feb    1 Jan    1
+
+PM5763       PRECISION 160  20     5     0     0     00     52.76      .00  MO           7   N    1 *    4         3     7  57.1-
+  Cur     Dec      Nov      Oct      Sep      Aug    2 Jul      Jun    1 May      Apr      Mar      Feb      Jan
+          Dec    5 Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr    1 Mar      Feb      Jan
+
+PM577        ROUND BALE160   2     1     0     0     00      1.77      .00  MO           1   N    1 *   24         6     5  20.0
+  Cur     Dec      Nov    1 Oct    1 Sep    1 Aug    1 Jul    1 Jun      May      Apr      Mar      Feb      Jan    1
+          Dec    1 Nov      Oct    1 Sep      Aug    1 Jul      Jun      May      Apr    1 Mar      Feb    1 Jan
+
+PM5776       5020      160         3    24     0     00      2.27      .00               1   N    1 *   24        45       100.0
+  Cur     Dec    6 Nov   29 Oct    8 Sep    2 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM578        MULCH TILL160  38    16     0     0     00      1.78      .00               1   N    1 *   24         5     2 150.0
+  Cur   1 Dec    1 Nov    1 Oct      Sep      Aug      Jul    1 Jun    1 May      Apr      Mar      Feb      Jan    1
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+
+PM5786       8300 MFWD 160   8     4     0     0     00     26.99      .00               7   N    1 *    4         6     6    .0
+  Cur     Dec    1 Nov      Oct    1 Sep    1 Aug      Jul      Jun    1 May      Apr    1 Mar      Feb    1 Jan
+          Dec    1 Nov      Oct      Sep      Aug      Jul    2 Jun      May    1 Apr    2 Mar      Feb      Jan
+
+PM5787       GP 1930   160  12     3     0     0     00     16.26      .00  MO           7   N    1 *    6         3     5  40.0-
+  Cur   1 Dec    1 Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb    1 Jan
+          Dec    3 Nov    2 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5788       70 PRECISI160  13     9     0     0     00     80.69      .00  MO           7   N    1 *    4         8     2 300.0
+  Cur   1 Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    1 May      Apr    1 Mar    1 Feb    3 Jan    1
+          Dec    2 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5790       TOY       160   9     7     0     0     00      6.16      .00               1   N    1 *   12         9    14  35.7-
+  Cur   1 Dec      Nov    3 Oct    1 Sep    2 Aug      Jul      Jun      May    1 Apr      Mar    2 Feb      Jan
+          Dec    3 Nov    2 Oct      Sep      Aug    1 Jul      Jun    1 May    1 Apr    4 Mar    1 Feb    1 Jan
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   11
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5791       8870 4WD  160   9     8     0     0     00      3.25      .00  MO           1   N    1 *   12        10    13  23.1-
+  Cur   1 Dec    2 Nov      Oct      Sep    1 Aug    1 Jul    3 Jun    1 May    1 Apr      Mar      Feb      Jan    1
+          Dec    1 Nov    1 Oct    1 Sep    1 Aug    1 Jul      Jun      May    1 Apr    4 Mar    1 Feb    2 Jan
+
+PM5793       IMPL  TRUC160 132    11     0     0     00     13.94      .00               7   N    1 *    6         1       100.0
+  Cur     Dec    3-Nov      Oct    1 Sep    3 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM580        DRILL     160  19     8     0     0     00     13.97      .00               D   N    1 *    6         5     5    .0
+  Cur     Dec    2 Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr    1 Mar      Feb      Jan    1
+          Dec    2 Nov    1 Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan    1
+
+PM5805       4WD IMPL  160  22    11     0     0     00      8.79      .00  MO           1   N    1 *    6         6     7  14.3-
+  Cur     Dec    3 Nov      Oct      Sep      Aug      Jul    1 Jun      May    2 Apr      Mar      Feb      Jan
+          Dec    2 Nov      Oct      Sep    1 Aug      Jul      Jun      May    2 Apr    2 Mar      Feb      Jan
+
+PM581        COMPACT UT160  24    10     0     0     00     10.52      .00  MO           D   N    1 *    6         5     3  66.7
+  Cur     Dec      Nov    2 Oct      Sep      Aug    2 Jul      Jun      May      Apr      Mar      Feb    1 Jan
+          Dec      Nov      Oct      Sep    3 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5819       95 COMBINE160         0    12     0     00      6.18      .00  MO           1   N    1 *   12        49       100.0
+  Cur     Dec    1 Nov   37 Oct   11 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5831       SEMI/TRACT160   2     2     0     0     00     13.59      .00               1   N    1 *   12        10       100.0
+  Cur     Dec    3 Nov    5 Oct    2 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5832       720 PRECIS160         0     0     0     00     81.85      .00  MO           1   N    1 *    4        11       100.0
+  Cur   1 Dec    6 Nov    5 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5836       TOY       160  12    21     0     0     00      6.96      .00  MO           1   N    1 *   12        20    18  11.1
+  Cur   1 Dec    3 Nov    5 Oct    1 Sep    2 Aug      Jul    2 Jun    1 May      Apr    1 Mar    2 Feb    2 Jan    1
+          Dec    2 Nov    3 Oct      Sep    2 Aug    4 Jul    2 Jun    2 May    2 Apr    1 Mar      Feb      Jan
+
+PM5838       PREC 494A 160         0     0     0     00     76.67      .00  MO           1   N    1 *    4        10       100.0
+  Cur   1 Dec    3 Nov    2 Oct    4 Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5840       TOY       160         0     0     0     00     27.17      .00  MO           D   N    1 *    4         5       100.0
+  Cur     Dec    5 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5841       CONSTR  SE160   8    11     0     0     00     11.95      .00  MO           1   N    1 *   12        15     9  66.7
+  Cur     Dec    5 Nov    2 Oct    1 Sep    1 Aug      Jul    1 Jun    3 May      Apr      Mar      Feb    1 Jan    1
+          Dec    6 Nov    1 Oct      Sep    2 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 22JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   12
+Time:  8:33                                          ERTL TOY PROGRAM - EXPO                                             (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 011997
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM5904       '37 "B" TR160   2     2    12     0     00     15.65      .00  MO           D   N    1 *    6         9       100.0
+  Cur   1 Dec    9 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5911       SQUARE BAL160  17    13     0     0     00     15.11      .00               D   N    1 *    6         9     8  12.5
+  Cur     Dec    1 Nov    1 Oct      Sep      Aug    1 Jul      Jun      May    1 Apr      Mar    2 Feb    3 Jan
+          Dec    7 Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5923       P/U & SKID160   8     5     0     0     00     16.84      .00               D   N    1 *    6         7       100.0
+  Cur     Dec      Nov    1 Oct      Sep    1 Aug    2 Jul    2 Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5928       V-SPREADER160   3    11     0     0     00      2.68      .00  MO           1   N    1 *   24        36       100.0
+  Cur   1 Dec   13 Nov      Oct    8 Sep   12 Aug    3 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5930       FLARE WGN 160   8    10     0     0     00      1.77      .00               1   N    1 *   24        14       100.0
+  Cur     Dec    2 Nov    3 Oct    4 Sep    2 Aug    3 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5931       WAGON     160   2     4     0     0     00      1.82      .00               1   N    1 *   24        20       100.0
+  Cur     Dec    5 Nov    4 Oct    1 Sep    7 Aug    3 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM5944       CHEVY DEAL160         4     0     0     00     18.24      .00  MO           7   N    1 *    4                    .0
+  Cur     Dec    4-Nov      Oct    1 Sep    2 Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+Warehouse Total                                0                       .00               Number of Line Items that Ordered  =     0
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 1   Order Form =                                                 *
+*                          Your order is currently at STCN           $.00     0% Discount           $.00                           *
+*                                                                                                                                  *
+*                 The next level is STCN          $1.00     5% Discount           $.05   Add        $1.00 for STCN                 *
+*                 The next level is STCN      $4,500.01     5% Discount        $225.00   Add    $4,500.01 for STCN                 *
+************************************************************************************************************************************
+
+Program Total                                  0                       .00               Number of Line Items that Ordered  =     0
+
+Grand Total                                    0                       .00               Number of Line Items that Ordered  =     0
+
+
+                                                          (End of Report)

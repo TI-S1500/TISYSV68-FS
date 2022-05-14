@@ -1,0 +1,3 @@
+0 2 * * * cp /dev/null /etc/wtmp; cp /dev/null /usr/adm/sulog
+30 4 * * 0-6 /usr/bin/cron/cleanup.scr
+* * * * * /usr/bin/cron/pmm_srvmon

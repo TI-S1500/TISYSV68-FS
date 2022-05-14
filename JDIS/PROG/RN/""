@@ -1,0 +1,25 @@
+
+Date: 27SEP95            Retail Notes Amortization Schedule             Page:  1
+Time: 16:17                                                           (RNCALC-1)
+
+Contract Date: 01OCT95                         Date Finance Chg Begins:  01OCT95
+
+Principal:      11,000.00    Int Rate:  10.90 %   Payments Based on:  12 Periods
+
+          Date       Principal       Interest     Payment      Balance Due
+
+        01OCT95                                                  11,000.00
+        01NOV95         871.80          99.88        971.68      10,128.20
+        01DEC95         879.72          91.96        971.68       9,248.48
+        01JAN96         887.70          83.98        971.68       8,360.78
+        01FEB96         895.76          75.92        971.68       7,465.02
+        01MAR96         903.90          67.78        971.68       6,561.12
+        01APR96         912.11          59.57        971.68       5,649.01
+        01MAY96         920.39          51.29        971.68       4,728.62
+        01JUN96         928.74          42.94        971.68       3,799.88
+        01JUL96         937.18          34.50        971.68       2,862.70
+        01AUG96         945.69          25.99        971.68       1,917.01
+        01SEP96         954.27          17.41        971.68         962.74
+        01OCT96         962.74           8.94        971.68            .00
+
+                     11,000.00         660.16     11,660.16

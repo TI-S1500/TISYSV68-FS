@@ -1,0 +1,10 @@
+T,C,PROMPT33,MACHINE IDENTIFICATION RECORD
+F,Work Order Number,8,13,1,,2,0,0,1
+F,Failure Date [DDMMMYY]  IE 12DEC85,14,20,1,^@03@07@05^,1, ,0,0
+A,Reason For Repair,21,21,1,NAFPS WCMVR,1, ,0,0
+F,Model/Series,22,25,1,,1, ,0,1
+F,Machine Serial Number,26,31,1,,2,0,1,0
+F,Hour Meter Reading,32,36,1,,2,0,1,9
+F,Functional Group,37,40,1,,1, ,0,0
+A,Response Code,41,41,1,Y N,1, ,0,0
+C,Control Data,1,7,1,,0,ZPS9701,0,2

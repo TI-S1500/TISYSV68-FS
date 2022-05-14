@@ -1,0 +1,26 @@
+:            
+option=`echo $1 | sed 's/-//g'`
+                    
+cat /etc/alpdefs | sed '/alp00/d' > /etc/alpdefs.tmp
+            
+tm_def='bb=\E[5i eb=\E[4i pr=\\0 sz=132 rt=100'
+t1_def='bb=\E[5i eb=\E[?9i pr=\EQ sz=132 rt=0'
+
+if [ "$option" = "e" ]
+then
+        echo "/dev/alp00  ${t1_def}" >> /etc/alpdefs.tmp
+else
+        if [ "$option" = "h" ]
+        then
+                echo "/dev/alp00  ${tm_def}" >> /etc/alpdefs.tmp
+        else
+                echo "Invalid option"
+                exit 1
+        fi
+fi
+
+cp /etc/alpdefs /etc/alpdefs.sw
+mv -f /etc/alpdefs.tmp /etc/alpdefs
+
+exit 0  
+        

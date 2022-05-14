@@ -1,0 +1,25 @@
+
+Time: 00:03                                      POLL TRANSACTIONS RECEIPT REPORT                                       (DFDPC538-1)
+                                                      WAREHOUSE,PACKLIST,PART
+
+                                               *---------- RECEIPT INFO ----------*  *--------------- ORDER INFO -----------------*
+WH PART        DESCRIPTION SRC GROUP BIN   CONT TYP  QTY PACKLIST      COST  EXT COST TYP QTY   DATE CUST# CUST NAME        DOC/WO
+
+                                               *** RECEIPTED ORDER FILE IS EMPTY ***Date: 30JUN1998                                      PARTS MARKETING MANAGEMENT                                           Page:    1
+Time: 00:03                                 PRICE EXCEPTION AND ADJUSTMENT LISTING A                                    (DFDPC538-1)
+                                                         RUN TYPE: RECEIPT
+
+WH  PART NUMBER   SRC  ONHAND  OLD COST  OLD VALUE   NEWCOST  NEW VALUE  DIFFERENCE   % CHG   OLD LIST  NEW LIST  MESSAGES
+
+                                               *** PRICE ADJUSTMENT FILE IS EMPTY ***Date: 30JUN1998                                      PARTS MARKETING MANAGEMENT                                           Page:    2
+Time: 00:03                                 PRICE EXCEPTION AND ADJUSTMENT LISTING B                                    (DFDPC538-1)
+                                                         RUN TYPE: RECEIPT
+
+                  *SOURCE  *----DESCRIPTION-----*   *---GROUP---*  PACKAGE  RETURN   YR OUT   COMM CODE
+WH  PART NUMBER   OLD  NEW  OLD         NEW         OLD      NEW   OLD NEW  OLD NEW  OLD NEW   OLD   NEW COMMENTS
+
+                                               *** PRICE ADJUSTMENT FILE IS EMPTY ***Date: 30JUN1998                                      PARTS MARKETING MANAGEMENT                                           Page:    3
+Time: 00:03                                     EXTENDED NET CHANGE BY WAREHOUSE                                        (DFDPC538-1)
+                                                      RUN TYPE: RECEIPT
+
+                              WAREHOUSE         EXTENDED NET CHANGE

@@ -1,0 +1,109 @@
+# rev 8.4.1
+#
+goto .start                     # bypass the loop code
+.writeln
+set @linenum = "1"
+reps @numln
+set  @line = "1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4 5 5 5 5 5 6 6 6 6 6 7 7 7 7 7 8 8 8 8 8"
+.loop
+cursor 13,19
+put "Writing line <",@linenum,"> of <",@numln,">."
+fwrite 1,@line                  # write the line to the file
+let @linenum = @linenum + "1"
+if reps goto .loop
+goto .end
+# The above  loop appears here to speed its execution. See the label
+# .start for the beginning of the script.
+#
+###########################################################################
+# flowtst.scr - Create a flow control test file 7/89                      #
+#                                                                         #
+# This script creates a text file for use in confirming that flow control #
+# is working properly between two computers. The file consists of lines   #
+# of a repeated text pattern for use in uploading to a remote system. The #
+# file makes it easy to see if the computer is dropping characters or if  #
+# it is properly receiving the data.                                      #
+###########################################################################
+#  Variables used:
+#
+#  @numln: the number of lines to be writen to the file.
+#  @line: the line of text to be written to the file.
+#  @ask: used to hold ask prompt responses.
+#  @linenum :the current line number being written to the file
+#  @loop: loop index variable
+#
+.start
+#
+if not exist "flowtst.fil" goto .makefil
+#
+clear
+ask "The file <flowtst.fil> already exists. Overwrite it? (y/n)",@ask
+if @status not = "0" return 0 # exit if ESC is hit
+lower @ask                    # check if the file already exists
+if @ask = "y" goto .makefil   # and prompt the user if he wants to
+clear                         # overwrite it.
+cursor 4,0
+display "File not overwritten. Script execution ending."
+return 0
+#
+.makefil                        # create the test file
+#
+clear                           # clear the screen
+cursor 0,0
+display "This script creates a text file for use in confirming that flow control"
+display "is working properly between two computers. The file consists of lines"
+display "of a repeated text pattern for use in uploading to a remote system. The
+display "text lines are of the following format:"
+display ""
+display "1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4 5 5 5 5 5 6 6 6 6 6 7 7 7 7 7 8 8 8 8 8"
+display ""
+display "This format makes it easy to see if the computer is dropping characters"
+display "or if it is properly receiving the data when the file is captured and"
+display "re-displayed."
+ask "Press <ENTER> to continue...",@ask
+if @status not = "0" return 0   # exit if ESC is hit
+#
+#                               # get the number of lines the file should be
+#
+.getnumln
+ask "Enter the number of lines the file should be, (minimum = 50)",@ask
+if @status not = "0" return 0   # exit if ESC is hit
+set @numln = @ask
+#
+display "                                                             "
+display "Now writing <",@numln,"> lines to the file 'flowtst.fil'."
+display "                                                              "
+display "Please wait..."
+fopenw 1,"flowtst.fil"          # open the file and give it a handle of "1"
+goto .writeln                   # execute the writeln loop at the top
+#                               # of the script.
+.end
+#
+fclose 1                        # close the file
+#
+cursor 13,0
+display "File creation complete.                                          "
+ask "Press 'U' to Upload the file, 'V' to view the file, or 'Q' to quit",@ask
+#
+#                               # prompt to upload view or quit
+#
+if @status not = "0" return 0   # if @status not 0, ESC was hit so exit
+lower @ask
+if @ask = "u"                   # upload the file if "u" was hit
+  tupload "flowtst.fil"
+  cursor 13,0
+  display "                                                                 "
+  display "File upload complete.                                            "
+  end
+if @ask = "v"                   # ltype the file if "v" was hit
+  display "                                                                 "
+  ltype "flowtst.fil"
+  write "File type complete."
+  wait 4
+  end
+#
+return 0
+
+
+
+

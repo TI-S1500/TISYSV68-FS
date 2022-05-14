@@ -1,0 +1,314 @@
+Date: 10FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 12:55                                    Add, Change, Delete G/L Account Report                                      Page:   1
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    530-00-21  AFTER SALES              50    10                           Y
+ Add    532-00-21  POLICY ADJUSTMENT        50    10                           Y
+ Add    420-00-21  JD FARM EQUIPMENT        20    10                           Y
+ Add    422-00-21  JD CONSUMER              20    10                           Y
+ Add    444-00-21  JD ATTACHMENTS           20    10                           Y
+ Add    426-00-21  HINIKER                  20    10                           Y
+ Add    458-00-21  OTHER ATTACHMENTS        20    10                           Y
+ Add    462-01-21  RENT & LEASE             20    10                           Y
+ Add    321-00-21  O/A JD FARM EQUIPMENT    20    10        M
+ Add    323-00-21  O/A JD CONSUMER PRODS    20    10        M
+ Add    327-00-21  O/A - HINIKER            10    10        M
+ Add    345-00-21  O/A JD ATTACHMENTS       10    10        M
+ Add    359-00-21  O/A OTHER ATTACHMENTS    10    10        M
+ Add    361-00-21  O/A USED EQUIPMENT       10    10        M
+ Add    362-00-21  RENT & LEASE             10    10        R          S
+ Add    344-00-21  MISC ATTACHMENTS         10    10        M          S
+ Add    342-00-21  CHAINSAWS/TIRES/FUEL     10    10        M          S
+
+                                                          (End of Report)Date: 10FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 13:12                                    Add, Change, Delete G/L Account Report                                      Page:   1
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    558-00-21  RENT & LEASE             50    10
+ Add    558-00-41  RENT & LEASE             50    10
+ Add    580-00-21  REGISTRATION FEES        50    10
+ Add    562-00-21  OTHER TAXES              50    10
+ Chg    462-01-21  RENTAL EXPENSE           20    10
+ Chg    362-00-21  RENTAL REVENUE           10    10        R          S
+ Add    462-02-21  RENTAL EXEPENSE          20    10
+ Add    320-00-21  JD FARM EQUIPMENT        10    10        M          S
+ Add    322-00-21  JD CONSUMER PRODUCTS     10    10        M          S
+ Add    326-00-21  HINIKER                  10    10        M          S
+ Chg    344-00-21  JD ATTACHMENTS           10    10        M          S
+ Add    358-00-21  OTHER ATTACHMENTS        10    10        M          S
+ Add    360-00-21  USED EQUIPMENT           10    10        M          S
+ Add    530-00-22  AFTER SALES              50    10                           Y
+ Add    532-00-22  POLICY ADJUSTMENT        50    10                           Y
+ Add    420-00-22  JD INDUSTRIAL EQUIP      20    10                           Y
+ Add    422-00-22  JOHN DEERE CP PRODUCTS   20    10                           Y
+ Add    426-00-22  HINIKER                  20    10                           Y
+ Add    444-00-22  JD ATTACHMENTS           20    10                           Y
+ Add    458-00-22  OTHER ATTACHMENTS        20    10                           Y
+ Add    460-00-22  USED EQUIPMENT           20    10                           Y
+ Add    462-01-22  RENT & LEASE             20    10                           Y
+ Add    321-00-22  O/A JD INDUSTRIAL        20    10
+ Add    323-00-22  O/A JD CONSUMER PRODS    20    10
+ Add    327-00-22  O/A - HINIKER            10    10
+ Add    345-00-22  O/A JD ATTACHMENTS       10    10
+ Add    359-00-22  O/A OTHER ATTACHMENTS    10    10
+ Add    361-00-22  O/A USED EQUIPMENT       10    10
+ Add    362-00-22  RENT & LEASE             10    10        R          S
+ Add    344-00-22  JD ATTACHMENTS           10    10        M          S
+ Add    342-00-22  OTHER EQUIPMENT          10    10        M          S
+ Add    558-00-22  RENT & LEASE             50    10
+ Add    558-00-42  RENT & LEASE             50    10
+ Add    580-00-22  REGISTRATION FEES        50    10
+ Add    562-00-22  OTHER TAXES              50    10
+ Add    462-02-22  RENTAL SERVICE EXP       20    10                           Y
+ Add    320-00-22  JD IDUSTRIAL             10    10        M          S
+ Add    322-00-22  JD CONSUMER PRODUCTS     10    10        M          S
+ Add    326-00-22  HINIKER                  10    10        M          S
+ Add    358-00-22  OTHER ATTACHMENTS        10    10        M          S
+ Add    360-00-22  USED EQUIPMENT           10    10        M          S
+
+                                                          (End of Report)Date: 10FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 13:30                                    Add, Change, Delete G/L Account Report                                      Page:   1
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    460-00-21  USED EQUIPMENT           20    10                           Y
+
+                                                          (End of Report)Date: 11FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 12:22                                    Add, Change, Delete G/L Account Report                                      Page:   1
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    366-01-31  JOHN DEERE PARTS         10    10        P          S                       166-01-00      466-01-31
+ Add    466-01-31  JOHN DEERE PARTS         20    10
+ Add    371-01-31  OTHER PARTS - MFR        10    10        P          S                       172-01-00      472-01-31
+ Add    472-01-31  OTHER PARTS              20    10
+ Add    366-02-31  JOHN DEERE PARTS         10    10        P          S                       166-01-00      466-02-31
+ Add    466-02-31  JOHN DEERE PARTS         20    10
+ Add    372-02-31  OTHER PARTS              10    10        P          S                       172-01-00      472-02-31
+ Add    472-02-31  OTHER PARTS              20    10
+ Add    366-03-31  JOHN DEERE PARTS         10    10        P          S                       166-01-00      466-03-31
+ Add    466-03-31  JOHN DEERE PARTS         20    10
+ Add    372-03-31  OTHER PARTS              10    10        P          S                       172-01-00      472-03-31
+ Add    472-03-31  OTHER PARTS              20    10
+ Add    375-00-31  PARTS SPECIAL HANDLING   10    10        P          S
+ Add    379-00-31  PARTS DISCOUNT ALLOWED   10    10                   S
+ Add    381-01-41  CUSTOMER LABOR SALES     10    10        S          S
+ Add    394-00-41  O/S LABOR & MATERIAL     10    10        S          S
+ Add    397-00-41  SERVICE LBR DISC ALLOW   10    10                   S
+ Add    398-00-41  SERV NON-LBR DISC ALLOW  10    10                   S
+ Add    532-00-31  POLICY ADJUSTMENT        50    10                           Y
+ Add    532-00-41  POLICY ADJUSTMENT        50    10                           Y
+ Add    534-00-31  CASH DISCOUNTS ALLOWED   50    10
+ Add    534-00-11  CASH DISCOUNTS ALLOWED   50    10
+ Add    366-01-32  JOHN DEERE PARTS         10    10        P          S                       166-01-00      466-01-32
+ Add    466-01-32  JOHN DEERE PARTS         20    10
+ Add    371-01-32  OTHER PARTS - MFR        10    10        P          S                       172-01-00      472-01-32
+ Add    472-01-32  OTHER PARTS              20    10
+
+                                                          (End of Report)Date: 11FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 13:26                                    Add, Change, Delete G/L Account Report                                      Page:   1
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    375-00-32  PARTS SPECIAL HANDLING   10    10        P          S
+ Add    379-00-32  PARTS DISCOUNT ALLOWED   10    10                   S
+ Add    381-01-42  CUSTOMER LABOR SALES     10    10        S          S
+ Add    394-00-42  O/S LABOR & MATERIAL     10    10        S          S
+ Add    397-00-42  SERVICE LBR DISC ALLOW   10    10                   S
+ Add    398-00-42  SERV NON-LBR DISC ALLOW  10    10                   S
+ Add    532-00-32  POLICY ADJUSTMENT        50    10                           Y
+ Add    532-00-42  POLICY ADJUSTMENT        50    10                           Y
+ Add    534-00-32  CASH DISCOUNTS ALLOWED   50    10
+ Add    534-00-12  CASH DISCOUNTS ALLOWED   50    10
+ Add    366-02-32  JOHN DEERE PARTS         10    10        P          S                       166-01-00      466-02-32
+ Add    466-02-32  JOHN DEERE PARTS         20    10
+ Add    366-03-32  JOHN DEERE PARTS         10    10        P          S                       166-01-00      466-03-32
+ Add    466-03-32  JOHN DEERE PARTS         20    10
+ Add    372-03-32  OTHER PARTS              10    10        P          S                       172-01-00      472-03-32
+ Add    472-03-32  OTHER PARTS              20    10
+ Add    399-01-41  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    381-03-41  CUSTOMER LABOR SALES     10    10        S          S
+ Add    381-02-41  CUSTOMER LABOR SALES     10    10        S          S
+ Add    390-02-41  DELIVERY VEHICLE INCOME  10    10        S          S
+ Add    390-04-41  DELIVERY VEHICLE INCOME  10    10        S          S
+ Add    487-01-41  NON-REV TECH SALARIES    20    10
+ Add    490-01-41  DELIVERY VEH INCOME      20    10
+ Add    490-03-41  DELIVERY VEH INCOME      20    10
+ Add    516-07-41  EMPLOYEE BENEFITS        50    10
+ Add    399-01-42  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    382-04-41  INTERNAL LABOR SALES     10    10                   S
+ Add    382-01-41  INTERNAL LABOR SALES     10    10                   S
+ Add    382-02-41  INTERNAL LABOR SALES     10    10                   S
+ Add    382-03-41  INTERNAL LABOR SALES     10    10                   S
+ Add    399-02-41  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    399-03-41  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    399-04-41  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    564-01-41  REPAIR AND MAINTENANCE   50    10
+ Add    564-02-41  REPAIR AND MAINTENANCE   50    10
+ Add    564-03-41  REPAIR AND MAINTENANCE   50    10
+ Add    564-04-41  REPAIR AND MAINTENANCE   50    10
+ Add    564-04-21  REPAIR AND MAINTENANCE   50    10
+ Add    564-04-31  REPAIR AND MAINTENANCE   50    10
+ Add    599-01-41  OTHER EXPENSE            50    10
+ Add    599-02-41  OTHER EXPENSE            50    10
+ Add    599-02-11  OTHER EXPENSE            50    10
+ Add    599-02-21  OTHER EXPENSE            50    10
+ Add    599-02-31  OTHER EXPENSE            50    10
+ Add    526-00-41  ADVERTISING & PROMOTION  50    10
+ Add    526-00-21  ADVERTISING & PROMOTION  50    10
+ Add    526-00-31  ADVERTISING & PROMOTION  50    10
+ Add    384-03-41  MFR PIP LABOR SALES      10    10                   S
+ Add    384-01-41  MFR PIP LABOR SALES      10    10                   S
+ Add    384-02-41  MFR PIP LABOR SALES      10    10                   S
+ Add    384-04-41  MFR PIP LABOR SALES      10    10                   S
+ Add    528-02-41  WARRANTY                 50    10
+
+                                                          (Continued)Date: 11FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 13:26                                    Add, Change, Delete G/L Account Report                                      Page:   2
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    495-01-41  SPEC SERVICE EQUIPMENT   20    10
+ Add    495-02-41  SPEC SERVICE EQUIPMENT   20    10
+ Add    495-03-41  SPEC SERVICE EQUIPMENT   20    10
+ Add    495-04-41  SPEC SERVICE EQUIPMENT   20    10
+ Add    495-05-41  SPEC SERVICE EQUIPMENT   20    10
+ Add    492-01-41  SERVICE VEHICLE INCOME   20    10
+ Add    492-02-41  SERVICE VEHICLE INCOME   20    10
+ Add    492-03-41  SERVICE VEHICLE INCOME   20    10
+
+                                                          (End of Report)Date: 11FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 14:42                                    Add, Change, Delete G/L Account Report                                      Page:   1
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    492-04-41  SERVICE VEHICLE INCOME   20    10
+ Add    514-01-41  TRAINING                 50    10
+ Add    514-02-41  TRAINING                 50    10
+ Add    514-03-41  TRAINING                 50    10
+ Add    514-05-41  TRAINING                 50    10
+ Add    502-02-41  SALARIES-DEPT MANAGERS   50    10
+ Add    540-01-41  VEHICLE EXPENSE          50    10
+ Add    540-02-41  VEHICLE EXPENSE          50    10
+ Add    540-03-41  VEHICLE EXPENSE          50    10
+ Add    540-04-41  VEHICLE EXPENSE          50    10
+ Add    540-01-11  VEHICLE EXPENSE          50    10
+ Add    540-01-21  VEHICLE EXPENSE          50    10
+ Add    540-01-31  VEHICLE EXPENSE          50    10
+ Add    383-03-41  MFR WARR LABOR SALES     10    10                   S
+ Add    383-01-41  MFR WARR LABOR SALES     10    10                   S
+ Add    383-02-41  MFR WARR LABOR SALES     10    10                   S
+ Add    399-05-41  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    399-06-41  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    377-01-41  SERVICE ACCESSORIES      10    10        S          S
+ Add    392-01-41  SERVICE VEHICLE INCOME   10    10        S          S
+ Add    392-02-41  SERVICE VEHICLE INCOME   10    10        S          S
+ Add    392-03-41  SERVICE VEHICLE INCOME   10    10        S          S
+ Add    392-04-41  SERVICE VEHICLE INCOME   10    10        S          S
+ Add    395-01-41  SPEC SERV EQUIPMENT      10    10        S          S
+ Add    395-02-41  SPEC SERV EQUIPMENT      10    10        S          S
+ Add    395-03-41  SPEC SERV EQUIPMENT      10    10        S          S
+ Add    395-04-41  SPEC SERV EQUIPMENT      10    10        S          S
+ Add    395-05-41  SPEC SERV EQUIPMENT      10    10        S          S
+ Add    381-03-42  CUSTOMER LABOR SALES     10    10        S          S
+ Add    381-02-42  CUSTOMER LABOR SALES     10    10        S          S
+ Add    390-02-42  DELIVERY VEHICLE INCOME  10    10        S          S
+ Add    390-04-42  DELIVERY VEHICLE INCOME  10    10        S          S
+ Add    487-01-42  NON-REV TECH SALARIES    20    10
+ Add    490-01-42  DELIVERY VEH INCOME      20    10
+ Add    490-03-42  DELIVERY VEH INCOME      20    10
+ Add    516-07-42  EMPLOYEE BENEFITS        50    10
+ Add    399-02-42  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    382-04-42  INTERNAL LABOR SALES     10    10                   S
+ Add    382-01-42  INTERNAL LABOR SALES     10    10                   S
+ Add    382-02-42  INTERNAL LABOR SALES     10    10                   S
+ Add    382-03-42  INTERNAL LABOR SALES     10    10                   S
+ Add    399-03-42  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    399-04-42  SERVICE LABOR ALLOWANCE  10    10                   S
+ Add    564-01-42  REPAIR AND MAINTENANCE   50    10
+ Add    564-02-42  REPAIR AND MAINTENANCE   50    10
+ Add    564-03-42  REPAIR AND MAINTENANCE   50    10
+ Add    564-04-42  REPAIR AND MAINTENANCE   50    10
+ Add    564-04-22  REPAIR AND MAINTENANCE   50    10
+ Add    564-04-32  REPAIR AND MAINTENANCE   50    10
+ Add    599-01-42  OTHER EXPENSE            50    10
+ Add    599-02-42  OTHER EXPENSE            50    10
+ Add    599-02-12  OTHER EXPENSE            50    10
+
+                                                          (Continued)Date: 11FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 14:42                                    Add, Change, Delete G/L Account Report                                      Page:   2
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    599-02-22  OTHER EXPENSE            50    10
+ Add    599-02-32  OTHER EXPENSE            50    10
+ Add    526-00-42  ADVERTISING & PROMOTION  50    10
+ Add    526-00-22  ADVERTISING & PROMOTION  50    10
+ Add    526-00-32  ADVERTISING & PROMOTION  50    10
+ Add    384-01-42  MFR PIP LABOR SALES      10    10                   S
+ Add    384-02-42  MFR PIP LABOR SALES      10    10        S          S
+ Add    384-03-42  MFR PIP LABOR SALES      10    10        S          S
+
+                                                          (End of Report)Date: 11FEB93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+Time: 15:15                                    Add, Change, Delete G/L Account Report                                      Page:   1
+
+        Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+ Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+ Add    528-02-42  WARRANTY                 50    10
+ Add    495-01-42  SPEC SERVICE EQUIPMENT   20    10
+ Add    495-02-42  SPEC SERVICE EQUIPMENT   20    10
+ Add    495-03-42  SPEC SERVICE EQUIPMENT   20    10
+ Add    495-04-42  SPEC SERVICE EQUIPMENT   20    10
+ Add    495-05-42  SPEC SERVICE EQUIPMENT   20    10
+ Add    492-01-42  SERVICE VEHICLE INCOME   20    10
+ Add    492-02-42  SERVICE VEHICLE INCOME   20    10
+ Add    492-03-42  SERVICE VEHICLE INCOME   20    10
+ Add    492-04-42  SERVICE VEHICLE INCOME   20    10
+ Add    514-01-42  TRAINING                 50    10
+ Add    514-02-42  TRAINING                 50    10
+ Add    514-03-42  TRAINING                 50    10
+ Add    514-04-42  TRAINING                 50    10
+ Add    514-05-42  TRAINING                 50    10
+ Add    502-02-42  SALARIES-DEPT MANAGERS   50    10
+ Add    540-01-42  VEHICLE EXPENSE          50    10
+ Add    540-02-42  VEHICLE EXPENSE          50    10
+ Add    540-03-42  VEHICLE EXPENSE          50    10
+ Add    540-04-42  VEHICLE EXPENSE          50    10
+ Add    540-01-12  VEHICLE EXPENSE          50    10
+ Add    540-01-22  VEHICLE EXPENSE          50    10
+ Add    540-01-32  VEHICLE EXPENSE          50    10
+
+                                                          (End of Report) Date: 15DEC93                                        FINANCIAL MANAGEMENT SYSTEM                                         (MFGLADD-1)
+ Time: 10:46                                    Add, Change, Delete G/L Account Report                                      Page:   1
+
+         Account                            Acct  Sched  YTD Sales    Sales    CG             Parts Sales Chaining Accts
+  Code   Number     Account Description     Type  Code   Indicator   Tax Code  Ind              Inventory         Cost
+
+  Add    234-00-00  GOODS/SERVICE TAX PAY    40    10                   T
+  Add    114-00-00  GST RECEIVABLE-CAN       20    10
+  Add    540-02-20  VEHICLE EXP #2           50    10
+  Add    540-03-20  VEHICLE EXP #3           50    10
+  Add    540-04-20  VEHICLE EXP #4           50    10
+  Add    516-08-41  EMP BENEFIT-ABSENTEE SA  50    10
+  Add    540-02-21  VEHICLE EXP #2           50    10
+  Add    540-03-21  VEHICLE EXP #3           50    10
+  Add    540-04-21  VEHICLE EXP #4           50    10
+  Add    528-01-41  PARTS/LABOR VAR-PIPS     50    10
+  Add    516-08-42  EMP BENEFIT-ABSENTEE SA  50    10
+  Add    540-02-22  VEHICLE EXP #2           50    10
+  Add    540-03-22  VEHICLE EXP #3           50    10
+  Add    540-04-22  VEHICLE EXP #4           50    10
+  Add    528-01-42  PARTS/LABOR VAR-PIPS     50    10
+
+                                                           (End of Report)

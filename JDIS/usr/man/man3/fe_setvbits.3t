@@ -1,0 +1,51 @@
+FE_SETVBITS(3T)                                   FE_SETVBITS(3T)
+
+NAME
+     FE_setvbits - Sets bits in alternate validation table for
+     field edit
+
+SYNOPSIS
+     #include <vdtrdwrt.h>
+
+     int offset, value;
+     struct alttable *altptr;
+
+     FE_setvbits(altptr->bitmap, offset, value);
+
+DESCRIPTION
+     The FE_setvbits function sets the appropriate value in the
+     alternate validation table bitmap for any particular
+     character.  The parameter altptr -> bitmap is a pointer to
+     the bitmap in the alternate character validation table.  The
+     parameter offset is the offset into the bitmap, typically a
+     character value.  The parameter value is the symbolic name
+     the bitmap for that character offset is to be set to, from
+     the vdtrdwrt.h file.  The value parameter can be:
+
+     + VBITS_IGNORE - The character is invalid
+
+     + VBITS_EVENT - The character is enabled as a data character
+       event
+
+     + VBITS_DATA - The character is a valid data character
+
+     If the alternate validation table feature is used, all 256
+     character positions should be initialized to one of these
+     values.  Note that this function does not clear bits, it
+     only sets them.
+
+RETURN VALUES
+     No errors are returned.  If the pointer to the alternate
+     validation table bit map is not correct, results are
+     unpredictable.
+
+SEE ALSO
+     FE_abort(3T), FE_close(3T), FE_exportscreen(3T),
+     FE_flush(3T), FE_getparm(3T), FE_importscreen(3T),
+     FE_open(3T), FE_printscreen(3T), FE_putchar(3T),
+     FE_read(3T), FE_restorescreen(3T), FE_savescreen(3T),
+     FE_write(3T), fecap(4), vdtrdwrt.h(4).
+     ``Terminal Input/Output'' in the TI System V Programmer's
+     Guide.
+
+

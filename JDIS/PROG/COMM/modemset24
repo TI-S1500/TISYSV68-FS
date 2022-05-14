@@ -1,0 +1,16 @@
+:
+su sys000 -c 'chmod 666 /dev/tty00'
+su sys000 -c 'rm -f /JDIS/PROG/COMM/modemset.log'
+su sys000 -c 'rm -f /JDIS/PROG/COMM/modemset.out'
+cd /JDIS/PROG/COMM
+BLASTDIR=/JDIS/PROG/COMM
+export BLASTDIR
+SETUPDIR=/JDIS/PROG/COMM
+export SETUPDIR
+csh -c "blast modemset" >/JDIS/PROG/COMM/modemset.out
+if test $? != 0
+then
+        echo "\nmodemset: blast error while optioning the modem.\n"
+        exit 1
+fi
+exit 0

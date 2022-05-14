@@ -1,0 +1,93 @@
+:
+sync; sync; sync
+
+#
+# Are we running on batteries?
+#
+if (test "`/bin/upsstat`" = "1")
+then
+	#
+	# startup up upsmon to monitor the ups. upsmon only works on
+	# systems with UPS hardware support. on other systems, the
+	# normal port monitor will still be in operation.
+	# upsmon will go into background by itself.
+	#
+	/bin/upsmon
+
+	sleep 120
+
+	if (test "`/bin/upsstat`" = "0")
+	then
+		/bin/upsoff
+		exit 0
+	fi
+
+	echo "Power Failure on `date`" > /.power_fail
+	echo "\nPOWER FAILURE - RUNNING ON BATTERIES ! ! !\007\r\n"
+
+	POWER_FAIL="yes"
+
+elif (test "`/bin/upsstat -O`" = "1")
+then
+	echo "Overtemp Condition on `date`" > /.power_fail
+	echo "\nOVER TEMPERATURE ! ! !\007\r\n"
+
+	POWER_FAIL="no"
+
+else
+	/bin/upsoff
+	exit 0
+fi
+
+#
+# Tell 'init' to NOT do respawns.
+# you must do an 'init q' (or some level other than z)
+# before leaving or gettys will not respawn, so we 
+# have trap do an init q at exit. you might add them
+# anyway, there are some cases where the trap won't
+# get called when we exit.
+#
+trap "/etc/init q ; exit 1" 1 2 3
+/etc/init z
+
+#
+# we don't want to wall in pf mode since it's likely that
+# there are no terminals that can listen.
+#
+if (test "$POWER_FAIL" = "no")
+then
+	GRACE=60
+	/etc/wall <<!
+
+***********************************************
+        PLEASE LOG OFF NOW ! ! !
+      System maintenance about to begin.
+All processes will be killed in $GRACE seconds.
+***********************************************
+!
+
+	sleep $GRACE
+
+	/etc/wall <<!
+
+***********************************
+SYSTEM BEING BROUGHT DOWN NOW ! ! !
+***********************************
+!
+
+else
+	echo "\nSYSTEM BEING BROUGHT DOWN NOW ! ! !\007\r\n"
+fi
+
+#
+# the point of no return.
+#
+/usr/lib/lpshut
+/usr/lib/acct/shutacct
+echo "\rProcess accounting stopped.\r"
+/etc/errstop
+echo "\rError logging stopped.\r"
+
+sync; sync; sync
+/etc/init 3
+sleep 60000

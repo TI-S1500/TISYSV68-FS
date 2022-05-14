@@ -1,0 +1,34 @@
+#BLAST V8.0 System Setup
+      Description: 
+     Phone Number: 
+      System Type: 
+ Originate/Answer: ORIGINATE
+           Userid: 
+         Password: 
+        Comm Port: /dev/tty00
+       Modem Type: HAYES
+        Baud Rate: 2400
+           Parity: SPACE
+   Data/Stop Bits: 7/1
+  XON/XOFF Pacing: YES
+   RTS/CTS Pacing: NO
+  Transfer Passwd: 
+      Script File: modemset.scr
+         Log File: modemset.log
+   Translate File: 
+    Keyboard File: 
+        Emulation: TTY
+    Attention Key: ^K
+      Full Screen: NO
+       Local Echo: NO
+        AutoLF In: NO
+       AutoLF Out: NO
+    Wait for Echo: NO
+      Prompt Char: NONE
+       Char Delay: 0
+       Line Delay: 0
+         Protocol: BLAST
+    Logon Timeout: 120
+  Connect Timeout: 120
+    7 Bit Channel: YES
+      Packet Size: 84

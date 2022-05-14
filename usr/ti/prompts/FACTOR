@@ -1,0 +1,17 @@
+# cshf  factor -- Factors a number 
+#	@(#)FACTOR.sh	1.2  88/01/20
+#
+onintr end
+
+prompt "^FACTOR -- FACTORS A NUMBER"\
+	"^Number to be Factored:" num integer\
+	"^#$*"
+
+if ($abort) goto end
+
+echo "=== FACTOR COMMAND EXECUTING ==="
+echo factor $num
+factor $num
+
+end:
+unset num

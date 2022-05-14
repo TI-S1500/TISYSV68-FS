@@ -1,0 +1,494 @@
+%%> 14Mar96 10:35 checkspace 1.0 started for   Release 96-1            MEYER_IM
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+1. Check current state of filesystems: need at least 15% available to pass
+/JDIS                                   Avail:182121        Pct:41%       PASS
+
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PPROC              Req:3200       Avail:182121     NetPct:40%       PASS
+/JDIS                 CumReq:3200    NetAvail:178921    
+
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MF/APHST.INX",3           ***NOT FOUND***                             PASS
+@D1"MF/APTRN.INX",3           ***NOT FOUND***                             PASS
+@D1"MF/OPCHK.INX",2      Req:17         Avail:178921     NetPct:40%       PASS
+@D1"MF/BUDPRY.INX",2     Req:113        Avail:178921     NetPct:40%       PASS
+@D1"MF/BUDGET.INX",2     Req:113        Avail:178921     NetPct:40%       PASS
+/JDIS                 CumReq:0       NetAvail:178921    
+
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D2"MS/MSWOH.INX",2      Req:3393       Avail:178921     NetPct:40%       PASS
+@D3"MI/PMMPUR.INX",2     Req:577        Avail:175528     NetPct:39%       PASS
+@D3"MI/ORDER.INX",2      Req:561        Avail:174951     NetPct:39%       PASS
+/JDIS                 CumReq:4531    NetAvail:174390    
+
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PROG               Req:1000       Avail:174390     NetPct:39%       PASS
+/JDIS                 CumReq:1000    NetAvail:173390    
+
+    checkspace has completed.  Final count is PASS:11  FAIL:0
+    The dealer will be advised to PROCEED with the install of 96-1
+%%> 14Mar96 10:36 checkspace 1.0 completed for Release 96-1               PASS                                                                       
+%%> 19Sep96 09:18 checkspace 2.0 started for   Release 96-3            MEYER_IM
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+1. Check current state of filesystems: need at least 15% available to pass
+/JDIS                                   Avail:182103        Pct:41%       PASS
+
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PPROC              Req:11252      Avail:182103     NetPct:39%       PASS
+/JDIS                 CumReq:11252   NetAvail:170851    
+
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MI/AUDIT",3          Req:6158       Avail:170851     NetPct:37%       PASS
+/JDIS                 CumReq:0       NetAvail:170851    
+
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MI/AUDIT",2          Req:4105       Avail:170851     NetPct:38%       PASS
+/JDIS                 CumReq:4105    NetAvail:166746    
+
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PROG               Req:1000       Avail:166746     NetPct:37%       PASS
+/JDIS                 CumReq:1000    NetAvail:165746    
+
+    checkspace has completed.  Final count is PASS:5  FAIL:0
+    The dealer will be advised to PROCEED with the install of 96-3
+%%> 19Sep96 09:18 checkspace 2.0 completed for Release 96-3               PASS                                                                       
+%%> 19Nov96 08:04 checkspace 2.0 started for   Release 96-3            MEYER_IM
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+1. Check current state of filesystems: need at least 15% available to pass
+/JDIS                                   Avail:180317        Pct:41%       PASS
+
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PPROC              Req:11252      Avail:180317     NetPct:38%       PASS
+/JDIS                 CumReq:11252   NetAvail:169065    
+
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MI/AUDIT",3          Req:35         Avail:169065     NetPct:38%       PASS
+/JDIS                 CumReq:0       NetAvail:169065    
+
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MI/AUDIT",2          Req:24         Avail:169065     NetPct:38%       PASS
+/JDIS                 CumReq:24      NetAvail:169041    
+
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PROG               Req:1000       Avail:169041     NetPct:38%       PASS
+/JDIS                 CumReq:1000    NetAvail:168041    
+
+    checkspace has completed.  Final count is PASS:5  FAIL:0
+    The dealer will be advised to PROCEED with the install of 96-3
+%%> 19Nov96 08:04 checkspace 2.0 completed for Release 96-3               PASS                                                                       
+%%> 07Oct97 08:28 checkspace 972 started for   Release 97-2            MEYER_IM
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+1. Check current state of filesystems: need at least 15% available to pass
+/JDIS                                   Avail:85048         Pct:19%       PASS
+
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PPROC              Req:3500       Avail:85048      NetPct:19%       PASS
+/JDIS                 CumReq:3500    NetAvail:81548     
+
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"AP/APCHK.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APHPMT.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APHIST.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APINV.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APPMT.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APREC.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APTRAN.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APVEND.INX",2     Req:17         Avail:81548      NetPct:19%       PASS
+@D1"AP/APVPAY.INX",2          ***NOT FOUND***                             PASS
+@D1"MF/ARAGE.INX",2      Req:65         Avail:81548      NetPct:19%       PASS
+@D2"MF/ATRANR",2         Req:299        Avail:81548      NetPct:19%       PASS
+@D1"MF/ARRCPT.INX",2     Req:5633       Avail:81548      NetPct:17%       PASS
+@D2"MF/NOHEAD",2         Req:1          Avail:81548      NetPct:19%       PASS
+@D1"MF/ARHIST.INX",2     Req:17         Avail:81548      NetPct:19%       PASS
+@D1"MF/OARHPM.INX",2     Req:209        Avail:81548      NetPct:19%       PASS
+@D2"MF/OARHST.INX",2     Req:5409       Avail:81548      NetPct:17%       PASS
+@D1"MF/AROINV.INX",2     Req:1809       Avail:81548      NetPct:18%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:81548      NetPct:19%       PASS
+@D2"MF/MTRANR",2         Req:3536       Avail:81548      NetPct:18%       PASS
+@D1"MF/FPRECN.INX",2     Req:9          Avail:81548      NetPct:19%       PASS
+@D2"MF/MFSCHD.INX",2     Req:17         Avail:81548      NetPct:19%       PASS
+@D1"MF/FPTRAN.INX",2     Req:9          Avail:81548      NetPct:19%       PASS
+@D1"MF/PROWK",2          Req:1          Avail:81548      NetPct:19%       PASS
+@D2"MF/YTDSRC",2         Req:149        Avail:81548      NetPct:19%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:81548      NetPct:18%       PASS
+@D2"MI/CSTSL",2          Req:1          Avail:81548      NetPct:19%       PASS
+@D1"MI/INV",2            Req:2          Avail:81548      NetPct:19%       PASS
+@D3"MI/MIYEND.INX",2     Req:33         Avail:81548      NetPct:19%       PASS
+@D3"MI/ORDER.INX",2      Req:657        Avail:81548      NetPct:19%       PASS
+@D1"MI/ORDEN.INX",2      Req:577        Avail:81548      NetPct:19%       PASS
+@D1"MI/PMMNTH.INX",2     Req:33         Avail:81548      NetPct:19%       PASS
+@D1"MI/PRTEOM.INX",2     Req:16705      Avail:81548      NetPct:15%       PASS
+@D3"MI/RCPTO.INX",2      Req:33         Avail:81548      NetPct:19%       PASS
+@D2"MI/SALEAN",2         Req:1          Avail:81548      NetPct:19%       PASS
+@D3"MI/PMSIMORD.INX",2   Req:17         Avail:81548      NetPct:19%       PASS
+@D3"MI/SKSTAT.INX",2     Req:65         Avail:81548      NetPct:19%       PASS
+@D1"MI/STPROG.INX",2     Req:81         Avail:81548      NetPct:19%       PASS
+@D3"CG/CGADDL.INX",2     Req:257        Avail:81548      NetPct:19%       PASS
+@D3"CG/CGEQUP.INX",2     Req:1233       Avail:81548      NetPct:18%       PASS
+@D1"MS/PIPS.INX",2       Req:785        Avail:81548      NetPct:18%       PASS
+@D2"MS/SADIST",2         Req:1          Avail:81548      NetPct:19%       PASS
+@D1"MS/CLAIMS.INX",2     Req:2129       Avail:81548      NetPct:18%       PASS
+@D2"SH/HIST.INX",2            ***NOT FOUND***                             PASS
+@D1"MS/MSEOM.INX",2      Req:57         Avail:81548      NetPct:19%       PASS
+@D2"MS/MSWOH.INX",2      Req:6081       Avail:81548      NetPct:17%       PASS
+@D2"MS/MSWIP.INX",2      Req:11561      Avail:81548      NetPct:16%       PASS
+@D2"MS/INVRG",2          Req:1817       Avail:81548      NetPct:18%       PASS
+/JDIS                 CumReq:0       NetAvail:81548     
+
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MF/OARHPM.INX",2     Req:209        Avail:81548      NetPct:19%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:81339      NetPct:19%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:81274      NetPct:18%       PASS
+/JDIS                 CumReq:2387    NetAvail:79161     
+
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PROG               Req:1000       Avail:79161      NetPct:18%       PASS
+/JDIS                 CumReq:1000    NetAvail:78161     
+
+    checkspace has completed.  Final count is PASS:53  FAIL:0
+    The dealer will be advised to PROCEED with the install of 97-2
+%%> 07Oct97 08:30 checkspace 972 completed for Release 97-2               PASS                                                                       
+%%> 28Nov97 12:37 checkspace 972 started for   Release 97-2            MEYER_IM
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+1. Check current state of filesystems: need at least 15% available to pass
+/JDIS                                   Avail:81515         Pct:19%       PASS
+
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PPROC              Req:3500       Avail:81515      NetPct:18%       PASS
+/JDIS                 CumReq:3500    NetAvail:78015     
+
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"AP/APCHK.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APHPMT.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APHIST.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APINV.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APPMT.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APREC.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APTRAN.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APVEND.INX",2     Req:17         Avail:78015      NetPct:18%       PASS
+@D1"AP/APVPAY.INX",2          ***NOT FOUND***                             PASS
+@D1"MF/ARAGE.INX",2      Req:65         Avail:78015      NetPct:18%       PASS
+@D2"MF/ATRANR",2         Req:299        Avail:78015      NetPct:18%       PASS
+@D1"MF/ARRCPT.INX",2     Req:5633       Avail:78015      NetPct:17%       PASS
+@D2"MF/NOHEAD",2         Req:1          Avail:78015      NetPct:18%       PASS
+@D1"MF/ARHIST.INX",2     Req:17         Avail:78015      NetPct:18%       PASS
+@D1"MF/OARHPM.INX",2     Req:225        Avail:78015      NetPct:18%       PASS
+@D2"MF/OARHST.INX",2     Req:6001       Avail:78015      NetPct:17%       PASS
+@D1"MF/AROINV.INX",2     Req:1809       Avail:78015      NetPct:17%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:78015      NetPct:18%       PASS
+@D2"MF/MTRANR",2         Req:3537       Avail:78015      NetPct:17%       PASS
+@D1"MF/FPRECN.INX",2     Req:9          Avail:78015      NetPct:18%       PASS
+@D2"MF/MFSCHD.INX",2     Req:17         Avail:78015      NetPct:18%       PASS
+@D1"MF/FPTRAN.INX",2     Req:9          Avail:78015      NetPct:18%       PASS
+@D1"MF/PROWK",2          Req:1          Avail:78015      NetPct:18%       PASS
+@D2"MF/YTDSRC",2         Req:167        Avail:78015      NetPct:18%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:78015      NetPct:17%       PASS
+@D2"MI/CSTSL",2          Req:1          Avail:78015      NetPct:18%       PASS
+@D1"MI/INV",2            Req:1          Avail:78015      NetPct:18%       PASS
+@D3"MI/MIYEND.INX",2     Req:33         Avail:78015      NetPct:18%       PASS
+@D3"MI/ORDER.INX",2      Req:657        Avail:78015      NetPct:18%       PASS
+@D1"MI/ORDEN.INX",2      Req:577        Avail:78015      NetPct:18%       PASS
+@D1"MI/PMMNTH.INX",2     Req:33         Avail:78015      NetPct:18%       PASS
+@D1"MI/PRTEOM.INX",2     Req:16705      Avail:78015      NetPct:14%       FAIL
+@D3"MI/RCPTO.INX",2      Req:33         Avail:78015      NetPct:18%       PASS
+@D2"MI/SALEAN",2         Req:1          Avail:78015      NetPct:18%       PASS
+@D3"MI/PMSIMORD.INX",2   Req:17         Avail:78015      NetPct:18%       PASS
+@D3"MI/SKSTAT.INX",2     Req:65         Avail:78015      NetPct:18%       PASS
+@D1"MI/STPROG.INX",2     Req:81         Avail:78015      NetPct:18%       PASS
+@D3"CG/CGADDL.INX",2     Req:257        Avail:78015      NetPct:18%       PASS
+@D3"CG/CGEQUP.INX",2     Req:1233       Avail:78015      NetPct:18%       PASS
+@D1"MS/PIPS.INX",2       Req:785        Avail:78015      NetPct:18%       PASS
+@D2"MS/SADIST",2         Req:1          Avail:78015      NetPct:18%       PASS
+@D1"MS/CLAIMS.INX",2     Req:2129       Avail:78015      NetPct:17%       PASS
+@D2"SH/HIST.INX",2            ***NOT FOUND***                             PASS
+@D1"MS/MSEOM.INX",2      Req:57         Avail:78015      NetPct:18%       PASS
+@D2"MS/MSWOH.INX",2      Req:6081       Avail:78015      NetPct:17%       PASS
+@D2"MS/MSWIP.INX",2      Req:12761      Avail:78015      NetPct:15%       PASS
+@D2"MS/INVRG",2          Req:2045       Avail:78015      NetPct:17%       PASS
+/JDIS                 CumReq:0       NetAvail:78015     
+
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MF/OARHPM.INX",2     Req:225        Avail:78015      NetPct:18%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:77790      NetPct:18%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:77725      NetPct:17%       PASS
+/JDIS                 CumReq:2403    NetAvail:75612     
+
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PROG               Req:1000       Avail:75612      NetPct:17%       PASS
+/JDIS                 CumReq:1000    NetAvail:74612     
+
+    checkspace has completed.  Final count is PASS:52  FAIL:1
+    The dealer will be advised to free up disk space                  
+%%> 28Nov97 12:38 checkspace 972 completed for Release 97-2               FAIL                                                                       
+%%> 28Nov97 14:42 checkspace 972 started for   Release 97-2            MEYER_IM
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+1. Check current state of filesystems: need at least 15% available to pass
+/JDIS                                   Avail:81194         Pct:19%       PASS
+
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PPROC              Req:3500       Avail:81194      NetPct:18%       PASS
+/JDIS                 CumReq:3500    NetAvail:77694     
+
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"AP/APCHK.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APHPMT.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APHIST.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APINV.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APPMT.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APREC.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APTRAN.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APVEND.INX",2     Req:17         Avail:77694      NetPct:18%       PASS
+@D1"AP/APVPAY.INX",2          ***NOT FOUND***                             PASS
+@D1"MF/ARAGE.INX",2      Req:65         Avail:77694      NetPct:18%       PASS
+@D2"MF/ATRANR",2         Req:299        Avail:77694      NetPct:18%       PASS
+@D1"MF/ARRCPT.INX",2     Req:5633       Avail:77694      NetPct:17%       PASS
+@D2"MF/NOHEAD",2         Req:1          Avail:77694      NetPct:18%       PASS
+@D1"MF/ARHIST.INX",2     Req:17         Avail:77694      NetPct:18%       PASS
+@D1"MF/OARHPM.INX",2     Req:225        Avail:77694      NetPct:18%       PASS
+@D2"MF/OARHST.INX",2     Req:6001       Avail:77694      NetPct:16%       PASS
+@D1"MF/AROINV.INX",2     Req:1809       Avail:77694      NetPct:17%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:77694      NetPct:18%       PASS
+@D2"MF/MTRANR",2         Req:3537       Avail:77694      NetPct:17%       PASS
+@D1"MF/FPRECN.INX",2     Req:9          Avail:77694      NetPct:18%       PASS
+@D2"MF/MFSCHD.INX",2     Req:17         Avail:77694      NetPct:18%       PASS
+@D1"MF/FPTRAN.INX",2     Req:9          Avail:77694      NetPct:18%       PASS
+@D1"MF/PROWK",2          Req:1          Avail:77694      NetPct:18%       PASS
+@D2"MF/YTDSRC",2         Req:167        Avail:77694      NetPct:18%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:77694      NetPct:17%       PASS
+@D2"MI/CSTSL",2          Req:1          Avail:77694      NetPct:18%       PASS
+@D1"MI/INV",2            Req:1          Avail:77694      NetPct:18%       PASS
+@D3"MI/MIYEND.INX",2     Req:33         Avail:77694      NetPct:18%       PASS
+@D3"MI/ORDER.INX",2      Req:657        Avail:77694      NetPct:18%       PASS
+@D1"MI/ORDEN.INX",2      Req:577        Avail:77694      NetPct:18%       PASS
+@D1"MI/PMMNTH.INX",2     Req:33         Avail:77694      NetPct:18%       PASS
+@D1"MI/PRTEOM.INX",2     Req:16705      Avail:77694      NetPct:14%       FAIL
+@D3"MI/RCPTO.INX",2      Req:33         Avail:77694      NetPct:18%       PASS
+@D2"MI/SALEAN",2         Req:1          Avail:77694      NetPct:18%       PASS
+@D3"MI/PMSIMORD.INX",2   Req:17         Avail:77694      NetPct:18%       PASS
+@D3"MI/SKSTAT.INX",2     Req:65         Avail:77694      NetPct:18%       PASS
+@D1"MI/STPROG.INX",2     Req:81         Avail:77694      NetPct:18%       PASS
+@D3"CG/CGADDL.INX",2     Req:257        Avail:77694      NetPct:18%       PASS
+@D3"CG/CGEQUP.INX",2     Req:1233       Avail:77694      NetPct:18%       PASS
+@D1"MS/PIPS.INX",2       Req:785        Avail:77694      NetPct:18%       PASS
+@D2"MS/SADIST",2         Req:1          Avail:77694      NetPct:18%       PASS
+@D1"MS/CLAIMS.INX",2     Req:2129       Avail:77694      NetPct:17%       PASS
+@D2"SH/HIST.INX",2            ***NOT FOUND***                             PASS
+@D1"MS/MSEOM.INX",2      Req:57         Avail:77694      NetPct:18%       PASS
+@D2"MS/MSWOH.INX",2      Req:6081       Avail:77694      NetPct:16%       PASS
+@D2"MS/MSWIP.INX",2      Req:12761      Avail:77694      NetPct:15%       PASS
+@D2"MS/INVRG",2          Req:2045       Avail:77694      NetPct:17%       PASS
+/JDIS                 CumReq:0       NetAvail:77694     
+
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MF/OARHPM.INX",2     Req:225        Avail:77694      NetPct:18%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:77469      NetPct:18%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:77404      NetPct:17%       PASS
+/JDIS                 CumReq:2403    NetAvail:75291     
+
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PROG               Req:1000       Avail:75291      NetPct:17%       PASS
+/JDIS                 CumReq:1000    NetAvail:74291     
+
+    checkspace has completed.  Final count is PASS:52  FAIL:1
+    The dealer will be advised to free up disk space                  
+%%> 28Nov97 14:43 checkspace 972 completed for Release 97-2               FAIL                                                                       
+%%> 28Nov97 14:47 checkspace 972 started for   Release 97-2            MEYER_IM
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+1. Check current state of filesystems: need at least 15% available to pass
+/JDIS                                   Avail:81521         Pct:19%       PASS
+
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PPROC              Req:3500       Avail:81521      NetPct:18%       PASS
+/JDIS                 CumReq:3500    NetAvail:78021     
+
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"AP/APCHK.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APHPMT.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APHIST.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APINV.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APPMT.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APREC.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APTRAN.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APVEND.INX",2     Req:17         Avail:78021      NetPct:18%       PASS
+@D1"AP/APVPAY.INX",2          ***NOT FOUND***                             PASS
+@D1"MF/ARAGE.INX",2      Req:65         Avail:78021      NetPct:18%       PASS
+@D2"MF/ATRANR",2         Req:299        Avail:78021      NetPct:18%       PASS
+@D1"MF/ARRCPT.INX",2     Req:5633       Avail:78021      NetPct:17%       PASS
+@D2"MF/NOHEAD",2         Req:1          Avail:78021      NetPct:18%       PASS
+@D1"MF/ARHIST.INX",2     Req:17         Avail:78021      NetPct:18%       PASS
+@D1"MF/OARHPM.INX",2     Req:225        Avail:78021      NetPct:18%       PASS
+@D2"MF/OARHST.INX",2     Req:6001       Avail:78021      NetPct:17%       PASS
+@D1"MF/AROINV.INX",2     Req:1809       Avail:78021      NetPct:17%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:78021      NetPct:18%       PASS
+@D2"MF/MTRANR",2         Req:3537       Avail:78021      NetPct:17%       PASS
+@D1"MF/FPRECN.INX",2     Req:9          Avail:78021      NetPct:18%       PASS
+@D2"MF/MFSCHD.INX",2     Req:17         Avail:78021      NetPct:18%       PASS
+@D1"MF/FPTRAN.INX",2     Req:9          Avail:78021      NetPct:18%       PASS
+@D1"MF/PROWK",2          Req:1          Avail:78021      NetPct:18%       PASS
+@D2"MF/YTDSRC",2         Req:167        Avail:78021      NetPct:18%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:78021      NetPct:17%       PASS
+@D2"MI/CSTSL",2          Req:1          Avail:78021      NetPct:18%       PASS
+@D1"MI/INV",2            Req:1          Avail:78021      NetPct:18%       PASS
+@D3"MI/MIYEND.INX",2     Req:33         Avail:78021      NetPct:18%       PASS
+@D3"MI/ORDER.INX",2      Req:657        Avail:78021      NetPct:18%       PASS
+@D1"MI/ORDEN.INX",2      Req:577        Avail:78021      NetPct:18%       PASS
+@D1"MI/PMMNTH.INX",2     Req:33         Avail:78021      NetPct:18%       PASS
+@D1"MI/PRTEOM.INX",2     Req:16705      Avail:78021      NetPct:14%       FAIL
+@D3"MI/RCPTO.INX",2      Req:33         Avail:78021      NetPct:18%       PASS
+@D2"MI/SALEAN",2         Req:1          Avail:78021      NetPct:18%       PASS
+@D3"MI/PMSIMORD.INX",2   Req:17         Avail:78021      NetPct:18%       PASS
+@D3"MI/SKSTAT.INX",2     Req:65         Avail:78021      NetPct:18%       PASS
+@D1"MI/STPROG.INX",2     Req:81         Avail:78021      NetPct:18%       PASS
+@D3"CG/CGADDL.INX",2     Req:257        Avail:78021      NetPct:18%       PASS
+@D3"CG/CGEQUP.INX",2     Req:1233       Avail:78021      NetPct:18%       PASS
+@D1"MS/PIPS.INX",2       Req:785        Avail:78021      NetPct:18%       PASS
+@D2"MS/SADIST",2         Req:1          Avail:78021      NetPct:18%       PASS
+@D1"MS/CLAIMS.INX",2     Req:2129       Avail:78021      NetPct:17%       PASS
+@D2"SH/HIST.INX",2            ***NOT FOUND***                             PASS
+@D1"MS/MSEOM.INX",2      Req:57         Avail:78021      NetPct:18%       PASS
+@D2"MS/MSWOH.INX",2      Req:6081       Avail:78021      NetPct:17%       PASS
+@D2"MS/MSWIP.INX",2      Req:12761      Avail:78021      NetPct:15%       PASS
+@D2"MS/INVRG",2          Req:2045       Avail:78021      NetPct:17%       PASS
+/JDIS                 CumReq:0       NetAvail:78021     
+
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MF/OARHPM.INX",2     Req:225        Avail:78021      NetPct:18%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:77796      NetPct:18%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:77731      NetPct:17%       PASS
+/JDIS                 CumReq:2403    NetAvail:75618     
+
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PROG               Req:1000       Avail:75618      NetPct:17%       PASS
+/JDIS                 CumReq:1000    NetAvail:74618     
+
+    checkspace has completed.  Final count is PASS:52  FAIL:1
+    The dealer will be advised to free up disk space                  
+%%> 28Nov97 14:49 checkspace 972 completed for Release 97-2               FAIL                                                                       
+%%> 28Nov97 15:01 checkspace 972 started for   Release 97-2            MEYER_IM
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+1. Check current state of filesystems: need at least 15% available to pass
+/JDIS                                   Avail:83196         Pct:19%       PASS
+
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PPROC              Req:3500       Avail:83196      NetPct:18%       PASS
+/JDIS                 CumReq:3500    NetAvail:79696     
+
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"AP/APCHK.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APHPMT.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APHIST.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APINV.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APPMT.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APREC.INX",2           ***NOT FOUND***                             PASS
+@D1"AP/APTRAN.INX",2          ***NOT FOUND***                             PASS
+@D1"AP/APVEND.INX",2     Req:17         Avail:79696      NetPct:18%       PASS
+@D1"AP/APVPAY.INX",2          ***NOT FOUND***                             PASS
+@D1"MF/ARAGE.INX",2      Req:65         Avail:79696      NetPct:18%       PASS
+@D2"MF/ATRANR",2         Req:299        Avail:79696      NetPct:18%       PASS
+@D1"MF/ARRCPT.INX",2     Req:5633       Avail:79696      NetPct:17%       PASS
+@D2"MF/NOHEAD",2         Req:1          Avail:79696      NetPct:18%       PASS
+@D1"MF/ARHIST.INX",2     Req:17         Avail:79696      NetPct:18%       PASS
+@D1"MF/OARHPM.INX",2     Req:225        Avail:79696      NetPct:18%       PASS
+@D2"MF/OARHST.INX",2     Req:6001       Avail:79696      NetPct:17%       PASS
+@D1"MF/AROINV.INX",2     Req:1809       Avail:79696      NetPct:18%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:79696      NetPct:18%       PASS
+@D2"MF/MTRANR",2         Req:3537       Avail:79696      NetPct:17%       PASS
+@D1"MF/FPRECN.INX",2     Req:9          Avail:79696      NetPct:18%       PASS
+@D2"MF/MFSCHD.INX",2     Req:17         Avail:79696      NetPct:18%       PASS
+@D1"MF/FPTRAN.INX",2     Req:9          Avail:79696      NetPct:18%       PASS
+@D1"MF/PROWK",2          Req:1          Avail:79696      NetPct:18%       PASS
+@D2"MF/YTDSRC",2         Req:167        Avail:79696      NetPct:18%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:79696      NetPct:18%       PASS
+@D2"MI/CSTSL",2          Req:1          Avail:79696      NetPct:18%       PASS
+@D1"MI/INV",2            Req:1          Avail:79696      NetPct:18%       PASS
+@D3"MI/MIYEND.INX",2     Req:33         Avail:79696      NetPct:18%       PASS
+@D3"MI/ORDER.INX",2      Req:657        Avail:79696      NetPct:18%       PASS
+@D1"MI/ORDEN.INX",2      Req:577        Avail:79696      NetPct:18%       PASS
+@D1"MI/PMMNTH.INX",2     Req:33         Avail:79696      NetPct:18%       PASS
+@D1"MI/PRTEOM.INX",2     Req:16705      Avail:79696      NetPct:15%       PASS
+@D3"MI/RCPTO.INX",2      Req:33         Avail:79696      NetPct:18%       PASS
+@D2"MI/SALEAN",2         Req:1          Avail:79696      NetPct:18%       PASS
+@D3"MI/PMSIMORD.INX",2   Req:17         Avail:79696      NetPct:18%       PASS
+@D3"MI/SKSTAT.INX",2     Req:65         Avail:79696      NetPct:18%       PASS
+@D1"MI/STPROG.INX",2     Req:81         Avail:79696      NetPct:18%       PASS
+@D3"CG/CGADDL.INX",2     Req:257        Avail:79696      NetPct:18%       PASS
+@D3"CG/CGEQUP.INX",2     Req:1233       Avail:79696      NetPct:18%       PASS
+@D1"MS/PIPS.INX",2       Req:785        Avail:79696      NetPct:18%       PASS
+@D2"MS/SADIST",2         Req:1          Avail:79696      NetPct:18%       PASS
+@D1"MS/CLAIMS.INX",2     Req:2129       Avail:79696      NetPct:18%       PASS
+@D2"SH/HIST.INX",2            ***NOT FOUND***                             PASS
+@D1"MS/MSEOM.INX",2      Req:57         Avail:79696      NetPct:18%       PASS
+@D2"MS/MSWOH.INX",2      Req:6081       Avail:79696      NetPct:17%       PASS
+@D2"MS/MSWIP.INX",2      Req:12761      Avail:79696      NetPct:15%       PASS
+@D2"MS/INVRG",2          Req:2045       Avail:79696      NetPct:18%       PASS
+/JDIS                 CumReq:0       NetAvail:79696     
+
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=/JDIS/DATA/               D2=/JDIS/DATA/        D3=/JDIS/DATA/
+@D1"MF/OARHPM.INX",2     Req:225        Avail:79696      NetPct:18%       PASS
+@D1"MF/AROPMT.INX",2     Req:65         Avail:79471      NetPct:18%       PASS
+@D3"MF/CPEQUP.INX",2     Req:2113       Avail:79406      NetPct:18%       PASS
+/JDIS                 CumReq:2403    NetAvail:77293     
+
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+/JDIS/PROG               Req:1000       Avail:77293      NetPct:17%       PASS
+/JDIS                 CumReq:1000    NetAvail:76293     
+
+    checkspace has completed.  Final count is PASS:53  FAIL:0
+    The dealer will be advised to PROCEED with the install of 97-2
+%%> 28Nov97 15:02 checkspace 972 completed for Release 97-2               PASS                                                                       

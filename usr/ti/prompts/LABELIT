@@ -1,0 +1,50 @@
+# cshf	labelit -- labels a file system 
+#	@(#)LABELIT.sh	1.2  91/05/07
+# 
+onintr end
+
+prompt "^LABELIT -- PROVIDES LABELS FOR DISK OR TAPE FILE SYSTEM"\
+	"^THIS IS A SUPER USER USER COMMAND"\
+	"^Create or Read Labels (c,r):" action\
+	"element(C,c=c,R,r=r)" r\
+	"^#$*"
+
+if ($abort) goto end
+if ($action == "r") then
+	prompt "^LABELIT -- DISPLAY A FILE SYSTEM LABEL"\
+		"^Disk Section or Tape Name:" special acnm $special\
+		"^#$*"
+
+	if ($abort) goto end
+	echo "=== LABELIT COMMAND EXECUTING ==="
+	echo /etc/labelit $special
+	/etc/labelit $special
+else
+	prompt "^LABELIT -- LABELS A FILE SYSTEMS"\
+		"^Disk Section or Tape:" special acnm $special\
+		"^*Mounted Name:" fsname string $fsname\
+		"^*Volume Name:" volname string $volname\
+		"^*Initial Tape Label:" nflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	echo "=== LABELIT COMMAND EXECUTING ==="
+	if (($volname != "") && ($fsname != "")) then
+		if ($nflag == "y") then
+			set nflag = -n
+		else
+			set nflag = ""
+		endif
+	else
+	  if ((($volname == "") || ($fsname == "")) && ($nflag == "y")) then
+	   echo ERROR: Must enter mounted and volume name for tape label option.
+	   goto end
+	  endif
+	endif  
+
+	echo /etc/labelit $special $fsname $volname $nflag
+	/etc/labelit $special $fsname $volname $nflag
+endif
+
+end:
+unset special fsname volname nflag action

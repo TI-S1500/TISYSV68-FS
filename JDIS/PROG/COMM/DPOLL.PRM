@@ -1,0 +1,4 @@
+*** This file contains polling parameters
+***    (Version 0.7.5)
+S AS VERSION "0.7.5"
+S AS PLATFORM "XENIX"

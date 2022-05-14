@@ -1,0 +1,37 @@
+FE_GETPARM(3T)                                     FE_GETPARM(3T)
+
+NAME
+     FE_getparm - Gets field edit screen parameters
+
+SYNOPSIS
+     #include <vdtrdwrt.h>
+
+     extern int errno;
+     int status, fd;
+     struct sFE_get_parms *parms_buff;
+     status = FE_getparm(fd, parms_buff);
+
+DESCRIPTION
+     The FE_getparm function returns the value of the maximum row
+     position (maxrow) and maximum column position (maxcol)
+     defined in the /etc/fecap file for a given terminal type.
+
+     If either maxrow or maxcol is undefined in the fecap file,
+     the function returns a zero for the undefined parameter.
+
+RETURN VALUES
+     The function can return the following status values:
+
+     status = 0 - No errors and parms_buff holds the defined
+                  parameters.
+     status = -1 - The file descriptor is not valid.
+
+SEE ALSO
+     FE_abort(3T), FE_close(3T), FE_exportscreen(3T),
+     FE_flush(3T), FE_importscreen(3T), FE_open(3T),
+     FE_printscreen(3T), FE_read(3T), FE_restorescreen(3T),
+     FE_savescreen(3T), FE_setvbits(3T), FE_write(3T), fecap(4),
+     vdtrdwrt.h(4).
+     ``Terminal Input/Output'' in TI System V Programmer's Guide.
+
+

@@ -1,0 +1,119 @@
+:
+# ____________________________________________________________________________
+#       HIGH SPEED MODEM PROJECT
+# ____________________________________________________________________________
+#  THE DEALER WILL SIGN ON AS sys999
+# 12/13/96 - R97-1 - C.G.KOLWEY - UPDATE FOR REMOVAL OF sys000
+# ----------------------------------------------------------------------------
+SYSNAME=`uname`
+if (test "$SYSNAME" = "XENIX") then
+cputype=`uname -p`
+fi
+  if (test -r /JDIS/good.log) then
+    rm /JDIS/good.log
+  fi
+  if (test -r /JDIS/bad.log) then
+    rm /JDIS/bad.log
+  fi
+  if (test -r /tmp/highspeed.log) then
+    rm /tmp/highspeed.log
+  fi
+if  (test "$cputype" = "i80286") then
+  /bin/echo "\n  Exiting   Update Not Applicable to 286 Machines \n"
+  /bin/echo "286 Machine - Update Not Applicable" >>/JDIS/bad.log
+exit
+fi
+USERNM=`id | awk 'BEGIN {FS="("; RS=")"} NR==1 {print $2}'`
+if (test "$USERNM" != "sys999") then
+/bin/echo "\n  Exiting   You Must Logon as sys999!!  \n"
+exit
+fi
+     /bin/echo "\n %%> Begin JDIS Install of High Speed Modem Software \n"
+# ____________________________________________________________________________
+#
+  { date; } >>/JDIS/bad.log
+  /bin/echo "JDIS ERROR LOG FILE" >>/JDIS/bad.log
+  /bin/echo "If this log shows any errors - contact JDIS" >>/JDIS/bad.log
+#_______________________________________________________________________
+#    ADD NEW PROCS AND MENUS TO ASPENPRC.SYS
+#-----------------------------------------------------------------------
+/bin/echo "\n Update and Load Procedures to Dealer System \n"
+sleep 2
+cd /JDIS/PROG/CMN
+/bin/echo "\n Routine Maintenance of Files Begins \n"
+#-----------------------------------------------------------------------
+#    RENAME UNIX FILES
+#-----------------------------------------------------------------------
+if (test "$SYSNAME" = "TI Sys V") then
+ cp /JDIS/PROG/CMN/JDISON /JDIS/PROG/CMN/JDISON24
+ cp /JDIS/PROG/CMN/JDISOFF /JDIS/PROG/CMN/JDISOFF24
+ chmod 777 /usr/ucs/hayes2400
+ chmod 777 /etc/gettydefs
+ cp /etc/gettydefs /etc/gettydefs24
+ cp /JDIS/PROG/COMM/DPOLL.su /JDIS/PROG/COMM/DPOLL.su24
+ cp /JDIS/PROG/COMM/farmplan.su /JDIS/PROG/COMM/farmplan.su24
+ cp /JDIS/PROG/COMM/modemset.su /JDIS/PROG/COMM/modemset.su24
+ cp /JDIS/PROG/COMM/modemset.scr /JDIS/PROG/COMM/modemset.scr24
+ cp /JDIS/PROG/COMM/modemset /JDIS/PROG/COMM/modemset24
+ cp /usr/ucs/hayes2400 /usr/ucs/hayes240024
+ chmod 777 /JDIS/PROG/CMN/JDISOFF
+ chmod 777 /JDIS/PROG/CMN/JDISOFF
+ cp /JDIS/PROG/COMM/HS/JDANSWER /JDIS/PROG/CMN/JDANSWER
+ cp /JDIS/PROG/COMM/HS/JDISONU /JDIS/PROG/CMN/JDISON
+ cp /JDIS/PROG/COMM/HS/JDISOFFU /JDIS/PROG/CMN/JDISOFF
+ cp /JDIS/PROG/COMM/HS/FARMU.scr /JDIS/PROG/COMM/FARMU.scr
+ cp /JDIS/PROG/COMM/HS/ROTARYU.scr /JDIS/PROG/COMM/ROTARYU.scr
+ cp /JDIS/PROG/COMM/HS/HIGHSPDU.scr /JDIS/PROG/COMM/HIGHSPDU.scr
+ cp /JDIS/PROG/COMM/HS/DPOLL.suU /JDIS/PROG/COMM/DPOLL.su
+ cp /JDIS/PROG/COMM/HS/farmplan.suU /JDIS/PROG/COMM/farmplan.su
+ cp /JDIS/PROG/COMM/HS/modemsetU /JDIS/PROG/COMM/modemset
+ cp /JDIS/PROG/COMM/HS/modemset.suU /JDIS/PROG/COMM/modemset.su
+ cp /JDIS/PROG/COMM/HS/modemset.scrU /JDIS/PROG/COMM/modemset.scr
+ cp /JDIS/PROG/COMM/HS/phonenumU /JDIS/PROG/COMM/phonenum
+ cp /JDIS/PROG/COMM/HS/phonenum.suU /JDIS/PROG/COMM/phonenum.su
+ cp /JDIS/PROG/COMM/HS/phonenum.scrU /JDIS/PROG/COMM/phonenum.scr
+ cp /JDIS/PROG/COMM/HS/hayes2400U /usr/ucs/hayes2400
+/bin/echo " UNIX Programs Renamed">> /JDIS/good.log
+fi
+#-----------------------------------------------------------------------
+#    RENAME XENIX FILES
+#-----------------------------------------------------------------------
+if (test "$SYSNAME" = "XENIX") then
+ su sys000 -c "cp /etc/gettydefs /etc/gettydefs24"
+ su sys000 -c "cp /etc/ttys /etc/ttys24"
+ cp /JDIS/PROG/COMM/DPOLL.su /JDIS/PROG/COMM/DPOLL.su24
+ cp /JDIS/PROG/COMM/farmplan.su /JDIS/PROG/COMM/farmplan.su24
+ cp /JDIS/PROG/COMM/modemset /JDIS/PROG/COMM/modemset24
+ su sys000 -c "cp /usr/ucs/hayes2400 /usr/ucs/hayes240024"
+ cp /JDIS/PROG/COMM/HS/JDISONX /JDIS/PROG/CMN/JDISON
+ cp /JDIS/PROG/COMM/HS/JDISOFFX /JDIS/PROG/CMN/JDISOFF
+ su sys000 -c "chmod 777 /JDIS/PROG/CMN/JDISON"
+ su sys000 -c "chmod 777 /JDIS/PROG/CMN/JDISOFF"
+ su sys000 -c "rm /usr/bin/JDISON"
+ su sys000 -c "rm /usr/bin/JDISOFF"
+ cp /JDIS/PROG/COMM/HS/FARMX.scr /JDIS/PROG/COMM/FARMX.scr
+ cp /JDIS/PROG/COMM/HS/ROTARYX.scr /JDIS/PROG/COMM/ROTARYX.scr
+ cp /JDIS/PROG/COMM/HS/HIGHSPDX.scr /JDIS/PROG/COMM/HIGHSPDX.scr
+ cp /JDIS/PROG/COMM/HS/DPOLL.suX /JDIS/PROG/COMM/DPOLL.su
+ cp /JDIS/PROG/COMM/HS/farmplan.suX /JDIS/PROG/COMM/farmplan.su
+ cp /JDIS/PROG/COMM/HS/modemsetX /JDIS/PROG/COMM/modemset
+ cp /JDIS/PROG/COMM/HS/modemset.suX /JDIS/PROG/COMM/modemset.su
+ cp /JDIS/PROG/COMM/HS/modemset.scrX /JDIS/PROG/COMM/modemset.scr
+ cp /JDIS/PROG/COMM/HS/dialin /JDIS/PROG/COMM/dialin
+ cp /JDIS/PROG/COMM/HS/dialin.su /JDIS/PROG/COMM/dialin.su
+ cp /JDIS/PROG/COMM/HS/dialin.scr /JDIS/PROG/COMM/dialin.scr
+ cp /JDIS/PROG/COMM/HS/phonenumX /JDIS/PROG/COMM/phonenum
+ cp /JDIS/PROG/COMM/HS/phonenum.suX /JDIS/PROG/COMM/phonenum.su
+ cp /JDIS/PROG/COMM/HS/phonenum.scrX /JDIS/PROG/COMM/phonenum.scr
+ su sys000 -c "cp /JDIS/PROG/COMM/HS/hayes2400X /usr/ucs/hayes2400"
+/bin/echo " XENIX Programs Renamed">> /JDIS/good.log
+fi
+#-----------------------------------------------------------------------
+#    APPEND to  /JDIS/currlse.log - used by spport by use of proc to
+#           show which release dealer is on and date installed
+#-----------------------------------------------------------------------
+touch /JDIS/currlse.log
+ { date; } >> /JDIS/currlse.log
+/bin/echo " HIGHSPEED MODEM Installed " >> /JDIS/currlse.log
+cat /JDIS/good.log >> /JDIS/bad.log
+/bin/echo "\n HIGHSPEED MODEMS INSTALLATION IS COMPLETE !! \n"

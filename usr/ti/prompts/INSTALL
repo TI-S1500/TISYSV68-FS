@@ -1,0 +1,59 @@
+# cshf  install -- installs system commands 
+#	@(#)INSTALL.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^INSTALL -- INSTALLS COMMANDS AND FILES"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^Report Existing Files:" cflag yesno n\
+	"^#$*"
+
+set iopt = ""
+set oopt = ""
+
+if ($abort) goto end
+if ($cflag == "y") then
+	prompt "^INSTALL -- REPORT EXISTING FILES OPTIONS"\
+		"^Input File Name(s):" _input_file macnm "$_input_file"\
+		"^*Installation Directory:" _input_dir acnm $_input_dir\
+		"^Supress Messages:" sflag yesno n\
+		"^#$*"
+	if ($abort) goto end
+	set opt = "-c "$_input_dir
+	if ($sflag == "y") set sopt = -s
+else
+	# the difference between the "f" and "n" options is that 
+	# with f no other directories are searched, while n will
+	# search all given in $list
+	#
+	prompt "^INSTALL -- EXISTING FILES OPTIONS"\
+		"^Input File Name(s):" _input_file macnm "$_input_file"\
+		"^*Installation Directory:" _input_dir string "$_input_dir"\
+ 		"^*Search Other Directories:" search yesno n\
+		"^*Rename Existing Files:" oflag yesno n\
+		"^*Supress Messages:" sflag yesno n\
+ 		"^#$*"
+	if ($abort) goto end 
+	if ($search == "n") set opt = "-f "$_input_dir
+	if ($sflag == "y") set sopt = -s
+	if ($oflag == "y") set oopt = -o
+
+	if ($search == "y") then
+	prompt "^INSTALL -- DIRECTORY SEARCH OPTIONS"\
+		"^*Ignore Default Directories:" iflag yesno n\
+ 		"^*Search Directories List:" list string "$list"\
+	 	"^#$*"
+	if ($abort) goto end
+	set opt = "-n "$_input_dir
+	if ($iflag == "y") set iopt = -i
+	endif
+endif
+
+if ($abort) goto end
+echo "=== INSTALL COMMAND EXECUTING ==="
+echo /etc/install $opt $sopt $iopt $oopt $_input_file $list
+/etc/install $opt $sopt $iopt $oopt $_input_file $list
+
+#clean up time
+end:
+unset *flag *opt list

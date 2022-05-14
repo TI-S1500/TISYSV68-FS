@@ -1,0 +1,97 @@
+
+JRNLPRT          03-23-94   STATION ALL       TRANSACTION EDIT REPORT BY ACCOUNT                                           PAGE    1
+ACCOUNT NO               DESCRIPTION             REFERENCE      CONTROL NO       DATE      STC   SM/SW  TECHNICIAN   AMOUNT     SJ
+
+
+
+
+   104-00-00       THORPE, JIM                     300102        00001009       3 18 94                           11,638.80     28
+   104-00-00       DEALBROOK, JAMES W.             300103        00001051       3 18 94                            4,579.20     28
+
+                            ACCOUNT DEBITS =      16,218.00 ACCOUNT CREDITS =            .00      TOTAL =      16,218.00
+
+
+   120-00-00       LINK ATTACHMENT                               00000075      11 13 92                            1,084.98     13
+   120-00-00       Rent Inventory Transfer                       00000010       3 23 94                           24,950.00-    28
+   120-00-00       LINK ATTACHMENT                               00001486       5 27 93                               47.58     13
+   120-00-00       Rent Inventory Transfer                       00000009       3 23 94                           28,532.50-    28
+   120-00-00       4650 TRACTOR                                  00469995      10 19 93                           57,164.80     12
+   120-00-00       LINK ATTACHMENT                               00000006       6 15 93                            2,468.72-    13
+   120-00-00       LINK ATTACHMENT                               00000002      11 12 92                              634.48     13
+   120-00-00       LINK ATTACHMENT                               00001486       6 15 93                            2,468.72     13
+   120-00-00       850B CRAWLER TRACTOR               543        00000075      11 12 92                           96,681.80     12
+   120-00-00       750BLGP CRAWLER DOZER             5342        00000025       5 28 93                           90,123.94     12
+   120-00-00       TRACTOR W/COMFORTGARD C          11111        00000017      11 03 92                           37,853.53     12
+   120-00-00       FREIGHT #1095                    34353        00000015       2 21 94                              100.00     13
+   120-00-00       7800 TRACTOR                    111111        00000018      11 03 92                           54,046.30     12
+   120-00-00       BLADE, INSIDE DOZER             325434        00000026       5 28 93                              565.00     12
+
+                            ACCOUNT DEBITS =     340,771.13 ACCOUNT CREDITS =      55,951.22-     TOTAL =     284,819.91
+
+
+   144-01-00       LINK ATTACHMENT                               00004128      11 13 92                            1,084.98-    13
+   144-01-00       LINK ATTACHMENT                               50             5 27 93                               47.58-    13
+   144-01-00       LINK ATTACHMENT                               00004129      11 12 92                              634.48-    13
+   144-01-00       LINK ATTACHMENT                               50             5 27 93                               47.58-    13
+   144-01-00       TOOL BOX                           535        STOCK25        2 22 93                               95.16     12
+   144-01-00       TOOL BOX                          3253        50             5 27 93                               95.16     12
+
+                            ACCOUNT DEBITS =         190.32 ACCOUNT CREDITS =       1,814.62-     TOTAL =       1,624.30-
+
+
+   162-00-00       Rent Inventory Transfer                       00000009       3 23 94                           28,532.50     28
+   162-00-00       Rent Inventory Transfer                       00000010       3 23 94                           24,950.00     28
+
+                            ACCOUNT DEBITS =      53,482.50 ACCOUNT CREDITS =            .00      TOTAL =      53,482.50
+
+
+   200-00-00       4650 TRACTOR                                  00469995      10 19 93                           57,164.80-    12
+   200-00-00       TOOL BOX                           535        STOCK25        2 22 93                               95.16-    12
+   200-00-00       850B CRAWLER TRACTOR               543        00000075      11 12 92                           96,681.80-    12
+   200-00-00       TOOL BOX                          3253        50             5 27 93                               95.16-    12
+   200-00-00       750BLGP CRAWLER DOZER             5342        00000025       5 28 93                           90,123.94-    12
+   200-00-00       TRACTOR W/COMFORTGARD C          11111        00000017      11 03 92                           37,853.53-    12
+   200-00-00       7800 TRACTOR                    111111        00000018      11 03 92                           54,046.30-    12
+   200-00-00       BLADE, INSIDE DOZER             325434        00000026       5 28 93                              565.00-    12
+
+                            ACCOUNT DEBITS =            .00 ACCOUNT CREDITS =     336,625.69-     TOTAL =     336,625.69-
+
+
+   215-00-00       FREIGHT #1095                        5        00001005       2 21 94                              100.00-    13
+
+                            ACCOUNT DEBITS =            .00 ACCOUNT CREDITS =         100.00-     TOTAL =         100.00-
+
+JRNLPRT          03-23-94   STATION ALL       TRANSACTION EDIT REPORT BY ACCOUNT                                           PAGE    2
+ACCOUNT NO               DESCRIPTION             REFERENCE      CONTROL NO       DATE      STC   SM/SW  TECHNICIAN   AMOUNT     SJ
+
+
+
+
+   230-00-00       THORPE, JIM                     300102        00001009       3 18 94    0101                      658.80-    28
+   230-00-00       DEALBROOK, JAMES W.             300103        00001051       3 18 94    0101                      259.20-    28
+
+                            ACCOUNT DEBITS =            .00 ACCOUNT CREDITS =         918.00-     TOTAL =         918.00-
+
+
+   344-00-22       DEALBROOK, JAMES W.             300103        00001051       3 18 94    0101                    4,320.00-    28
+
+                            ACCOUNT DEBITS =            .00 ACCOUNT CREDITS =       4,320.00-     TOTAL =       4,320.00-
+
+
+   362-01-22       THORPE, JIM                     300102        00001009       3 18 94    0101                   10,980.00-    28
+
+                            ACCOUNT DEBITS =            .00 ACCOUNT CREDITS =      10,980.00-     TOTAL =      10,980.00-
+
+
+   420-00-20       LINK ATTACHMENT                               00001488       5 27 93                               47.58     13
+
+                            ACCOUNT DEBITS =          47.58 ACCOUNT CREDITS =            .00      TOTAL =          47.58
+
+
+
+
+ DEBIT  TRANSACTIONS =        18    TOTAL DEBIT  =     410,709.53
+
+CREDIT  TRANSACTIONS =        20    TOTAL CREDIT =     410,709.53-
+
+ TOTAL  TRANSACTIONS =        38    TOTAL        =            .00

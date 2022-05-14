@@ -1,0 +1,22 @@
+##################################################################
+#
+#  DPOLLMST.scr
+#
+#      Version 8.2  - Added @ARG2 for GOHOME
+#
+##################################################################
+        DISPLAY "Calling dpoll now"
+#
+#       ECHO ON
+        CALL @ARG2
+#
+        SET @CALLRC = @STATUS
+        SET @SCRLREG = 1
+        SET @KEYBOARD = 0
+        DISPLAY "Back from dpoll: " @CALLRC
+#
+        fopena 1,"/JDIS/PROG/COMM/DPOLLSYN"
+        fwrite 1,"S AS BLASTRC " @MYSTATUS
+        fclose 1
+#
+        QUIT

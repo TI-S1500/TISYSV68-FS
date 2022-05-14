@@ -1,0 +1,240 @@
+#ident @(#)tcp.sh	3.25 92/03/06
+#      @(#)tcp.sh	3.15 LAI System V.3 STREAMS TCP/IP  source
+#
+#	System V STREAMS TCP - Release 3.0
+#
+#	Copyright 1987, 1988, 1989 Lachman Associates, Incorporated (LAI)
+#	All Rights Reserved.
+#
+#	The copyright above and this notice must be preserved in all
+#	copies of this source code.  The copyright above does not
+#	evidence any actual or intended publication of this source
+#	code.
+#
+#	This is unpublished proprietary trade secret source code of
+#	Lachman Associates.  This source code may not be copied,
+#	disclosed, distributed, demonstrated or licensed except as
+#	expressly authorized by Lachman Associates.
+#
+#	System V STREAMS TCP was jointly developed by Lachman
+#	Associates and Convergent Technologies.
+#
+
+#
+# TCP start/stop script
+# Usage: tcp [ start | stop ]
+#
+
+#
+# DOMAIN now set in DEFAULT
+#
+
+DEFAULT=/etc/default/tcp
+
+PATH=/bin:/usr/bin:/etc:/usr/etc:/usr/local/bin
+PROCS="slink inetd routed rwhod sendmail timed named rlogind telnetd rshd ftpd tftpd" # removed strerr - leave it around for xns
+
+# 
+# defaults will be overridden from /etc/default/tcp
+#
+
+DOT=ZZDOT
+SUBDOMAIN=ZZSUBDOMAIN
+TOPDOMAIN=ZZDOMAIN
+DOMAIN=$DOT$SUBDOMAIN$DOT$TOPDOMAIN
+
+NETMASK=
+BROADCAST=
+
+if [ -r $DEFAULT ]; then
+	. $DEFAULT
+fi
+
+case "$1" in
+
+start)
+
+	slnks=`ps -el | grep -c slink`
+	if [ $slnks -ge 1 ]; then
+		echo "TCP is already started!"
+		exit
+	fi
+        echo "Starting TCP: \c"
+
+	#
+	# Verify spa correct
+	#
+	ipcheck
+	if [ $? != 0 ]; then
+		echo "ERROR:  TCP/IP will not be started"
+		sleep 3
+		exit 1
+	fi
+
+	#
+	# Network initialization commands -- edit as appropriate.
+	#
+	# epump 	# for 3b2/EMD
+	# nistart ni0	# for i386/NI
+
+	#
+	# Clean up the spool directories from last time
+	#
+	echo
+	echo "clean /usr/spool/locks"
+	rm -f /usr/spool/locks/*
+	echo "clean /usr/spool/rwho"
+	rm -f /usr/spool/rwho/*
+
+
+	#
+	# STREAMS & socket initialization
+	#
+	slink ; echo "slink \c"
+	ldsocket; echo "ldsocket \c"
+
+	#
+	# set the host name
+	#
+	hostname `uname -n`$DOMAIN
+
+	#
+	# Interface configuration -- edit as appropriate.
+	#
+	#The following lines configure the TCP/IP network interface.
+	#These (will be/were) modified by the installtcp script.
+	#They should appear as :
+	#	ifconfig en[slot][port] [Internet Address]  -trailers  
+	ifconfig lo0 127.0.0.1
+#%% ifconfigs precede this line %%
+
+	#
+	# Daemons & other things -- edit as appropriate
+	#
+	ps -e | fgrep strerr > /dev/null 2>&1
+	if [ $? = 0 ]; then # already running - this should be true on OS 3.3.1
+		: ##echo "(strerr already running) \c"
+	else
+		strerr > /dev/console 2>&1 &
+		echolog "strerr \c"
+	fi
+
+
+	#
+	# run these commands to build their cache files 
+	#
+
+	if [ -x /usr/bin/tcpstat ]; then
+		rm -f /etc/tcpstat_data
+		tcpstat -a > /dev/null 2>&1 &
+	fi
+	rm -f /etc/arp_data # cache file created by "arp -a"
+	if [ -x /usr/bin/arp ]; then
+		arp -a > /dev/null 2>&1 &
+	fi
+#	if [ -x /usr/bin/trpt ]; then
+#		trpt -a > /dev/null 2>&1 &
+#	fi
+
+	#
+	# Remote file sharing
+	#
+
+	if [ -s /usr/options/remote.name -o -s /usr/options/rfs.name ]; then
+		if [ -s /usr/net/nls/inet/tcp ]; then
+			nlsadmin -q inet/tcp || nlsadmin -s inet/tcp
+			echo "nlsadmin \c"
+		fi
+	fi
+
+	#
+	# name server should start before almost everything
+	#
+
+	if [ -x /usr/etc/named -a -f /etc/named.boot ]; then
+		named  ; echo "named \c"
+	fi
+
+	if [ -x /usr/etc/inetd ]; then
+		inetd  ; echo "inetd \c"
+	fi
+	if [ -x /usr/etc/routed ]; then
+		routed  ; echo "routed \c"
+	fi
+
+	if [ -x /usr/etc/timed ]; then
+		echo > /dev/null
+#ZZTKEYM#	timed -M ; echo "timed \c"
+#ZZTKEY#	timed ; echo "timed \c"
+	fi
+
+	if [ -x /usr/etc/rwhod ]; then
+		rwhod ; echo "rwhod \c"	# this puts a load on the network
+	fi
+
+	if [ -x /usr/lib/sendmail -a -f /usr/lib/sendmail.cf ]
+	then
+		/usr/lib/sendmail -bd -q1h  ; echo "sendmail \c"
+	fi
+
+	echo ""
+	;;
+
+stop)
+
+	echo "TCP Shutdown..."
+
+	#
+	#Clear the arp table so that if tcp is restarted arp won't have any
+	#data that might now be incorrect.
+	#
+
+#	echo "Clear the arp table..."
+#	rm -f /etc/arp_data
+#	for addr in `arp -a | cut -f2 -d"(" | cut -f1 -d")"` 
+#	do
+#		/usr/bin/arp -d $addr
+#	done
+
+	#
+	# Stop the listener
+	#
+
+	ps -e | fgrep listen > /dev/null 2>&1
+
+	if [ $? = 0 ]; then
+		nlsadmin -q inet/tcp && nlsadmin -k inet/tcp
+	fi
+
+	#
+	# Find all the other daemons
+	#
+
+	PX=""
+	OR=""
+	for P in $PROCS
+	do
+		PX="$PX$OR$P"
+		OR="|"
+	done
+	PX="/$PX/"
+
+	#
+	# Toast them.
+	#
+
+	ps -e | awk "$PX { print \"kill \" \$1 }" | sh
+
+	echo "TCP Shutdown Complete."
+	;;
+
+*)
+
+	echo "Usage: $0 [ start | stop ]"
+	exit 1
+	;;
+
+esac
+
+exit 0
+#version = "@(#)tcp:		TI-Sys-V-3.2 TCP/IP version 3.0.0	DATE: 03/14/93";

@@ -1,0 +1,41 @@
+#
+# Initialize the modem to a known state, and option it for dialin.
+#
+        ECHO ON
+        set @ATTEMPTS = "0"
+.LOOP
+        if @ATTEMPTS = "3" quit 1               # quit after 3 attempts
+        let @ATTEMPTS = @ATTEMPTS + "1"
+#
+        tsend "AT&F&W", CR                      # set factory options
+        ttrap 2 "OK"
+        tsend "ATZ", CR                         # reset modem
+        ttrap 2 "OK"
+        tsend "ATE1V1Q0X1", CR                  # set modem so blast can talk
+        ttrap 2 "OK"
+        tsend "AT", CR                          # is modem awake ?
+        ttrap 2 "OK"
+        if @status not = "1"
+                tsend "+++"                     # nope, break into cmd mode
+                ttrap 2 "OK", "NO CARRIER"
+                if @status = "0"                # awake yet ?
+                        drop                    # nope, try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                goto .LOOP                      # go try again
+        end
+#
+        tsend "ATS0=1&C0&D0&M0&S0&X0*C1*E1*F1*L0*P0", CR
+                                                # set modem to:
+                                                #       answer on first ring
+                                                #       CXR follows true carrier
+        ttrap 2 "OK"
+        if @status not = "1" quit 2
+#
+        tsend "ATE0Q1", CR                      # set modem to:
+                                                #       no response messages
+#
+        quit 0
+.END

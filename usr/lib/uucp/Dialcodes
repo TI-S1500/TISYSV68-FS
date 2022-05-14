@@ -1,0 +1,10 @@
+#ident	"@(#)uucp:Dialcodes	2.2"
+#
+#	Provide a translation to be applied to phone numbers when the \T
+#	escape code is used in a Dialers file entry.  The format is
+#
+# name trans
+#
+#	For example:
+#
+# chicago 1=312

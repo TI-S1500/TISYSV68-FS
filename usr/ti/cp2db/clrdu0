@@ -1,0 +1,11 @@
+sd0 enb off
+sd0 amtc 0
+sd0 amsk 0
+sd0 dmtc 0
+sd0 dmsk 0
+sd0 icnt 0
+sd0 thlt off
+sd0 tbrk off
+cd0rwqg
+cd0cpuqg
+

@@ -1,0 +1,21 @@
+:
+#phonenum - UNIX version - High speed modem
+# 01/23/96 - R96-3 - remove sys000, add error to phonenum.log
+#
+chmod 666 /dev/tty00
+rm -f /JDIS/PROG/COMM/phonenum.log
+rm -f /JDIS/PROG/COMM/phonenum.out
+cd /JDIS/PROG/COMM
+BLASTDIR=/JDIS/PROG/COMM
+export BLASTDIR
+SETUPDIR=/JDIS/PROG/COMM
+export SETUPDIR
+./blast phonenum -n
+if test $? != 0
+then
+        echo "\nphonenum: blast error while optioning the modem.\n">>phonenum.log
+        exit 1
+else
+        echo "\nphonenum options successfully set \n" >>phonenum.log
+fi
+exit 0

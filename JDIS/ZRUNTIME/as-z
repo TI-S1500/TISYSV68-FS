@@ -1,0 +1,28 @@
+
+if [ ! -f $HOME/SYNONYM.VAL ]
+then
+   echo "Did not find SYNONYM.VAL in your home directory.
+         Is "$HOME" your home directory? (y/n) \c"
+
+   read answer
+
+   case $answer in 
+   [yY]*) echo "Creating the file for you."
+          cp /etc/SYNONYM.VAL $HOME
+          ;;
+
+   *)     echo " Please make certain your HOME environment variable
+is set to your home directory and run this script again."
+          exit 1
+          ;;
+    esac
+fi
+
+while :
+do
+	echo "Synonym name:  \c"
+        read sname
+        echo "Synonym value: \c"
+        read sval
+        echo "$sname $sval" >> $HOME/SYNONYM.VAL
+done

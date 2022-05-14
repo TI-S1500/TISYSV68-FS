@@ -1,0 +1,14 @@
+:
+TERMINFO='/JDIS/PROG/CMN/terminfo'
+export TERMINFO
+cd /JDIS/PROG/CMN/terminfo_src
+rm -rf ${TERMINFO}
+mkdir  ${TERMINFO}
+tic s32.ti
+:
+TERMINFO='/JDIS/PROG/CMN/terminfo.v51'
+export TERMINFO
+cd /JDIS/PROG/CMN/terminfo_src
+rm -rf ${TERMINFO}
+mkdir  ${TERMINFO}
+tic s32.ti.v51

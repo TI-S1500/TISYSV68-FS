@@ -1,0 +1,17 @@
+# cshf	 chmod - change the mode for a file 
+#	@(#)CHMOD.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^CHMOD -- CHANGES FILE ACCESS PERMISSIONS"\
+	"^File Name(s):"   _input_file  macnm  "$_input_file"\
+	"^New Mode:"  mode integer\
+	"^#$*"
+
+if ( $abort ) goto end
+echo "=== CHMOD COMMAND EXECUTING ==="
+echo chmod  $mode $_input_file
+chmod  $mode $_input_file
+
+end:
+unset mode

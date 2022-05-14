@@ -1,0 +1,38 @@
+############################
+# trace information	   #
+############################
+trace_file=/usr/ucs/trace
+trace_host=on
+###############################
+# node id information	      #
+###############################
+nodeid=acctg
+nodetype=t21
+nodexid=01712345
+################################
+# pu #1 information - xanadu   #
+################################
+puname=cxanac
+qllc_devname=/dev/osi3mux
+qllc_pathid=osi30801
+connect=originate
+xid=01722346
+qllc_mbtus=265
+############################
+# lu information for pu #1 #
+############################
+lu=2	lutype=vdt
+lu=3	lutype=prt
+lu=4	lutype=vdt
+lu=5	lutype=vdt
+lu=6	lutype=vdt
+lu=7	lutype=i62
+#########################
+# device information	#
+#########################
+userid=30001   device_type=vdt device_lu=2  # boss's LU
+userid=30002   device_type=prt device_lu=3  # denver host printer
+#########################
+# client information	#
+#########################
+client=appcsvd localid=31004 clientlu=7

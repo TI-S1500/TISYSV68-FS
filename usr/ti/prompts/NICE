@@ -1,0 +1,35 @@
+# cshf   nice -- run a command at low priority 
+#	@(#)NICE.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^NICE -- RUN A COMMAND AT LOW PRIORITY"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Priority Number (1-19):" pry\
+	"range(1,19)" 10\
+	"^Command to be Executed:" cmd string\
+	"^*Command Arguments:" arg string\
+	"^*Background Mode:" mode yesno n\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== NICE COMMAND EXECUTING ==="
+if (($_output_file == "") && ($mode == "y")) then
+	echo nice +$pry $cmd $arg "&"
+	nice +$pry $cmd $arg &
+endif
+if (($_output_file == "") && ($mode == "n")) then
+	echo nice +$pry $cmd $arg 
+	nice +$pry $cmd $arg 
+endif
+if (($_output_file != "") && ($mode == "y")) then
+	echo nice +$pry $cmd $arg ">"$_output_file "&"
+	nice +$pry $cmd $arg >$_output_file &
+endif
+if (($_output_file != "") && ($mode == "n")) then
+	echo nice +$pry $cmd $arg ">"$_output_file
+	nice +$pry $cmd $arg >$_output_file
+endif
+ 
+end:
+unset pry cmd arg mode

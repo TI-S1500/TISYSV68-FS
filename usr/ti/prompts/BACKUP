@@ -1,0 +1,65 @@
+# cshf       BACKUP - maintain  backups 
+#	@(#)BACKUP.sh	1.2  88/02/10
+#
+onintr end
+
+prompt	"^BACKUP -- CREATES OR RESTORES FILES FROM BACKUP TAPE"\
+	"^Create, Restore, or Index (c,r,i):" mode\
+	"element(C,c=c,R,r=r,I,i=i)"  c\
+	"^#$*"
+
+if( $abort ) goto end
+switch ( $mode )
+case c:		#----------------------------------------------------------
+	if( $abort ) goto end
+	prompt	"^BACKUP -- CREATE A BACKUP TAPE"\
+		"^Include File Name:"  inc   acnm     $inc      \
+		"^*Exclude File Name:" exc   acnm     $exc      \
+		"^Name of Tape:"  tape  acnm     $tape     \
+		"^Select by Age:"  mode  yesno     y        \
+		"^#$*"
+
+	if( $abort ) goto end
+	if( $mode == "y" )  then
+		prompt	"^BACKUP -- BACK UP FILES BASED ON AGE"\
+			"^ Number of Days Old:" age integer $age\
+			"^#$*"
+
+		if( $abort ) goto end
+		echo "=== BACKUP COMMAND EXECUTING ==="
+		echo backup -c $age $inc $exc $tape
+		backup -c $age $inc $exc $tape
+	else prompt "^BACKUP -- BACK UP FILES YOUNGER THAN REFERENCE FILE"\
+			"^File Name Used For Comparison:" age acnm $age\
+			"^#$*"
+		if( $abort ) goto end
+		echo "=== BACKUP COMMAND EXECUTING ==="
+		echo backup -n $age $inc $exc $tape
+		backup -n $age $inc $exc $tape
+	endif
+	breaksw
+case r:		#----------------------------------------------------------
+	if( $abort ) goto end
+	prompt	"^BACKUP -- RESTORE FILES FROM A BACKUP"\
+		"^Name of Tape:"   tape  acnm    $tape  \
+		"^*File Name Patterns:"  pat   string  $pat\
+		"^#$*"
+	if( $abort ) goto end
+	echo "=== BACKUP COMMAND EXECUTING ==="
+	echo backup -r   $tape  $pat
+	backup -r   $tape  $pat
+	breaksw
+case i:		#----------------------------------------------------------
+	if( $abort ) goto end
+	prompt	"^BACKUP -- DISPLAY CONTENTS OF BACKUP"\
+		"^Name of Tape:"  tape acnm $tape\
+		"^#$*"
+	if( $abort ) goto end
+	echo "=== BACKUP COMMAND EXECUTING ==="
+	echo backup -i   $tape
+	backup -i   $tape
+endsw
+
+# cleanup time
+end:
+unset  mode pat

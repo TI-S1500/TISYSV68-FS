@@ -1,0 +1,1392 @@
+
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    1
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-1)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM200-1200   CROSS AND 160   1     5     1     1     00      6.28     6.28          .8   1   R    1      1        41    48  14.6-
+  Cur     Dec      Nov    1 Oct    6 Sep    2 Aug    6 Jul   18 Jun    2 May    1 Apr    1 Mar    3 Feb      Jan    1
+          Dec    1 Nov    1 Oct    5 Sep    4 Aug    7 Jul   10 Jun   18 May    2 Apr      Mar      Feb      Jan
+
+PM20004016   CHAIN SPRO160   1     1     3     3     00      2.99     8.97          .6   1   R    1      1        12     8  50.0
+  Cur     Dec    2 Nov    1 Oct      Sep      Aug    1 Jul      Jun      May    4 Apr      Mar      Feb    4 Jan
+          Dec      Nov      Oct    1 Sep    1 Aug    1 Jul      Jun      May    4 Apr      Mar      Feb      Jan    1
+
+PM20006020   CHAIN SPRO160   2     1     1     1     00      8.47     8.47  PI     1.7   D   R    1      1         5     5    .0
+  Cur     Dec    1 Nov    2 Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb    1 Jan
+          Dec      Nov    1 Oct    2 Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan    1
+
+PM20020016   HUB       160   1     3     5     5     00      3.62    18.10         3.2   1   R    1      1        36    39   7.7-
+  Cur     Dec    2 Nov    5 Oct    4 Sep    4 Aug    2 Jul    2 Jun    4 May    6 Apr    1 Mar      Feb    4 Jan    2
+          Dec      Nov    1 Oct    6 Sep    5 Aug    3 Jul    1 Jun    4 May    6 Apr    2 Mar    6 Feb    1 Jan    4
+
+PM20020020   HUB       160   3     2     1     1     00      3.62     3.62          .4   1   R    1      1         8    13  38.5-
+  Cur     Dec    1 Nov    2 Oct    1 Sep      Aug    1 Jul      Jun      May      Apr    1 Mar    1 Feb    1 Jan
+          Dec    2 Nov    3 Oct    1 Sep    1 Aug      Jul      Jun    2 May    3 Apr    1 Mar      Feb      Jan
+
+PM20030022   HUB       160   4     4     3     3     00      4.76    14.28         3.3   1   R    1      1        12     5 140.0
+  Cur     Dec      Nov      Oct    1 Sep    2 Aug    1 Jul    1 Jun    1 May      Apr    2 Mar    4 Feb      Jan
+          Dec      Nov    2 Oct      Sep      Aug      Jul    1 Jun      May    2 Apr      Mar      Feb      Jan
+
+
+Warehouse Total                               14                     59.72        10     Number of Line Items that Ordered  =     6
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 2   Order Form = AG200                                           *
+*                          Your order is currently at STGR         $59.72     0% Discount           $.00                           *
+*                                                                                                                                  *
+************************************************************************************************************************************
+
+Program Total                                 14                     59.72        10     Number of Line Items that Ordered  =     6
+
+Grand Total                                   14                     59.72        10     Number of Line Items that Ordered  =     6
+
+
+                                                          (End of Report)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    2
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM100-1406   YOKE      160         0     0     0     00     20.08      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+
+PM101-4421   YOKE      160         2     0     0     00     42.54      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM102-0606   YOKE      160         0     0     0     00     16.26      .00  RB           7   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM102-1221   YOKE      160         2     0     0     00     17.05      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM102-1421   YOKE      160         1     0     0     00     18.78      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+
+PM102-4420   YOKE      160         0     0     0     00     54.63      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM102-6506   YOKE      160         0     0     0     00     36.05      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM102-8406   YOKE      160         0     0     0     00     23.46      .00               5   R    1      1         2       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM105-0615   YOKE      160         0     1     0     00     25.37      .00  NS           5   R    1      1         1       100.0
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM11005548   TUBE *    160         1     0     0     00    116.13      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM13002021   LOCK      160         2     0     0     00      2.06      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM13003000   LOCK      160         1     0     0     00     11.99      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    3
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM13003100   KIT       160         1     0     0     00      4.83      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM13004006   LOCK      160         1     0     0     00      2.74      .00  AP           5   N    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    1 May      Apr      Mar      Feb      Jan
+
+PM13004021   LOCK      160         1     0     0     00      2.74      .00  AP           5   N    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM200-0700   KIT       160  12     3     0     0     00     12.62      .00               5   R    1      1         3     9  66.7-
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    2 Aug      Jul    2 Jun    4 May      Apr      Mar    1 Feb      Jan
+
+PM200-1430   KIT       160         2     0     0     00     40.35      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM200-3500   CROSS AND 160         0     0     4     00      9.89      .00  RB           1   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM200-3545   KIT       160         4     0     0     00     62.30      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM200-8261   CROSS AND 160  24     2     0     0     00     10.33      .00  AP           5   R    1      1         1     2  50.0-
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul    1 Jun      May      Apr      Mar      Feb      Jan
+
+PM200-8474   BEARING   160  36     3     0     0     00     11.93      .00  AP           5   R    1      1         1     3  66.7-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul    1 Jun    1 May      Apr      Mar      Feb      Jan
+
+PM20003596   CHAIN SPRO160         0     0     0     00     13.67      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004013   CHAIN SPRO160         0     0     0     00      2.60      .00  NS           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004020   CHAIN SPRO160         0     0     1     00      3.64     3.64          .3   5   R    1      1         2       100.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    4
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM20004025   CHAIN SPRO160         0     0     0     00      4.60      .00  AP           5   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan    1
+
+PM20004026   CHAIN SPRO160  24     4     0     0     00      4.80      .00               5   R    1      1         2     5  60.0-
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May    2 Apr    2 Mar      Feb      Jan
+
+PM20004030   CHAIN SPRO160         0     0     0     00      5.62      .00  NS           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004045   CHAIN SPRO160         0     0     0     00      9.93      .00               5   R    1      1         2     1 100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    2 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004048   CHAIN SPRO160         0     0     0     00     10.85      .00  AP           5   R    1      1         1     3  66.7-
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan    1
+
+PM20004072   CHAIN SPRO160         0     0     0     00     22.00      .00  NS           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004096   CHAIN SPRO160         0     0     0     00     33.64      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005010   CHAIN SPRO160         0     0     1     00      2.79     2.79  AP      .1   5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005011   CHAIN SPRO160  12     1     0     0     00      3.04      .00  AP           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005024   CHAIN SPRO160         2     0     0     00      6.44      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM20005026   CHAIN SPRO160  12     1     0     0     00      7.08      .00  NS           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005028   CHAIN SPRO160  12     1     0     0     00      7.80      .00  AP           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    5
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM20005029   CHAIN SPRO160         0     0     0     00      8.16      .00  NS           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005030   CHAIN SPRO160         3     0     0     00      8.53      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005032   CHAIN SPRO160  12     1     0     0     00      9.36      .00  AP           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005034   CHAIN SPRO160         0     0     0     00     10.22      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005035   CHAIN SPRO160         0     0     0     00     10.66      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+PM20005038   CHAIN SPRO160   6     1     0     0     00     12.18      .00               5   R    1      1         2     2    .0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM20005040   CHAIN SPRO160   6     1     0     0     00     13.14      .00               5   R    1      1         2     4  50.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    2 Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug    1 Jul      Jun      May    2 Apr      Mar      Feb      Jan
+
+PM20005060   CHAIN SPRO160         0     0     1     00     28.09    28.09               5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20006011   CHAIN SPRO160  24     2     0     0     00      4.15      .00  AP           5   R    1      1         1     3  66.7-
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep    1 Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM20006012   CHAIN SPRO160  12     2     0     0     00      4.44      .00               5   R    1      1         2     3  33.3-
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar    1 Feb      Jan
+          Dec    1 Nov      Oct      Sep    1 Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM20006013   CHAIN SPRO160  24     2     0     0     00      4.80      .00  AP           5   R    1      1         1     1    .0
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+PM20006016   CHAIN SPRO160         2     0     0     00      6.19      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    6
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM20006018   CHAIN SPRO160         2     0     0     00      7.29      .00  AP           5   R    1      1               3 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun    1 May    1 Apr      Mar      Feb      Jan
+
+PM20006035   CHAIN SPRO160         0     0     0     00     20.38      .00  NS           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20006036   CHAIN SPRO160  12     1     0     0     00     21.33      .00  AP           5   R    1      1         1     1    .0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM20006040   CHAIN SPRO160   6     1     0     0     00     25.13      .00               5   R    1      1         2     3  33.3-
+  Cur     Dec      Nov      Oct      Sep    1 Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug      Jul    1 Jun      May      Apr    1 Mar      Feb      Jan
+
+PM20006042   CHAIN SPRO160         0     0     0     00     27.00      .00  AP           5   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    2 Apr      Mar      Feb      Jan
+
+PM20006054   CHAIN SPRO160         0     0     0     00     36.11      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20010010   HUB       160  84     7     0     0     00      2.76      .00  AP           5   R    1      1         1     8  87.5-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+          Dec      Nov    2 Oct      Sep      Aug    1 Jul    2 Jun      May    1 Apr    2 Mar      Feb      Jan
+
+PM20020008   HUB       160         1     0     0     00      3.62      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20020010   HUB       160   6     1     0     0     00      3.62      .00               5   R    1      1         2     3  33.3-
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar    1 Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug      Jul    1 Jun      May    1 Apr      Mar      Feb      Jan
+
+PM20020019   HUB       160         0     0     0     00      3.62      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM20021018   HUB HEX 1-160         3     0     0     00      5.49      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20022206   HUB       160         1     0     0     00      5.36      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    7
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM20030013   HUB       160         5     0     0     00      4.76      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20030015   HUB       160         3     0     0     00      4.76      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM20030019   HUB       160  24     2     0     0     00      4.76      .00  AP           5   R    1      1         1     4  75.0-
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep    1 Aug      Jul    1 Jun      May      Apr    1 Mar      Feb      Jan
+
+PM20031014   HUB       160         1     0     0     00      6.29      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20031016   HUB       160  12     1     0     0     00      6.29      .00  AP           5   R    1      1         1     1    .0
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20031018   HUB       160         2     0     0     00      6.29      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20031806   HUB       160         0     0     0     00      6.18      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM21020045   PULLEY    160         2     0     0     00      3.52      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM21020100   PULLEY    160  12     1     0     0     00      7.67      .00  AP           5   R    1      1         1     2  50.0-
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM300-0500   YOKE      160         2     0     0     00      8.15      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM300-0600   YOKE, WITH160         2     0     0     00      8.15      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM300-0700   YOKE      160         1     0     0     00     11.91      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    8
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM300-1400   YOKE, WITH160  18     3     0     0     00     13.10      .00               5   R    1      1         2     5  60.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul    1 Jun      May      Apr    3 Mar      Feb      Jan
+
+PM400-0015   SHAFT     160  36     6     0     0     00     27.93      .00  AP           5   R    6      1         2     6  66.7-
+  Cur     Dec      Nov      Oct      Sep      Aug    2 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    6 Mar      Feb      Jan
+
+PM400-1618   SHAFT     160  36     6     0     0     00     37.71      .00  AP           5   R    6      1         2    11  81.8-
+  Cur     Dec      Nov      Oct    2 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    4 Jun      May      Apr    7 Mar      Feb      Jan
+
+PM400-7234   TUBE *    160         0     0     0     00     27.61      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM501-3500   SLEEVE    160  12     1     0     0     00     17.32      .00  AP           5   R    1      1         1     1    .0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+
+PM503-3500   SLEEVE    160         0     0     0     00     26.35      .00  AP           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM508-1075   SPRING PIN160         0     0     0     00      1.53      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM510-0600   SLEEVE    160         1     0     0     00     12.92      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM600-0016   TUBE *    160         5     0     0     00     33.24      .00  AP           5   R    6      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM600-2022   TUBE *    160        14     0     0     00     32.59      .00  AP           5   R    6      1               3 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    3 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM600-6552   TUBE *    160         0     0     0     00     37.52      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM600-7241   TUBE *    160         0     0     0     00     25.56      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:    9
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM602-0600   TUBE *    160         6     0     0     00     12.75      .00  NS           5   R    6      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM602-1400   TUBE *    160  19     8     0     0     00     31.07      .00               5   R    6      1         5    23  78.3-
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul    4 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    2 Sep    6 Aug      Jul    4 Jun    1 May      Apr   10 Mar      Feb      Jan
+
+PM602-4400   TUBE *    160  12     3     0     0     00     60.55      .00  AP           5   R    6      1         3       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    3 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM700-0700   YOKE      160         1     0     0     00     11.91      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM700-6552   YOKE      160         0     0     0     00     34.37      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM700-7441   YOKE      160         1     0     0     00     24.75      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM701-0600   YOKE      160         1     0     0     00     10.15      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM701-1200   YOKE, WITH160   6     1     0     0     00     11.55      .00               5   R    1      1         2     1 100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM701-4400   YOKE, WITH160         0     0     0     00     30.09      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar    1 Feb      Jan
+
+PM702-3500   YOKE      160  24     2     0     0     00     19.49      .00  AP           5   R    1      1         1     5  80.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug    1 Jul      Jun    1 May      Apr    1 Mar    1 Feb      Jan
+
+PM800-0614   YOKE      160         3     0     0     00      7.81      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-0615   YOKE      160         5     0     0     00      7.81      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   10
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM800-0616   YOKE      160   6     1     0     0     00      7.81      .00               5   R    1      1         2    14  85.7-
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug    1 Jul    2 Jun      May    1 Apr    1 Mar      Feb    8 Jan
+
+PM800-0618   YOKE      160         2     0     0     00      7.81      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-0620   YOKE      160         1     0     0     00      7.81      .00  AP           5   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+
+PM800-0716   YOKE      160         1     0     0     00     11.91      .00  AP           5   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    2 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-1218   YOKE      160         3     0     0     00     12.32      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-1222   YOKE      160         2     0     0     00     12.32      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-1416   YOKE      160         2     0     0     00     12.95      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-1420   YOKE      160         1     0     0     00     12.95      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM800-1423   YOKE      160         1     0     0     00     12.95      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-3518   YOKE      160         3     0     0     00     18.19      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-3523   YOKE      160  12     1     0     0     00     18.19      .00  AP           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar    1 Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-5524   YOKE      160         0     0     0     00     37.80      .00  AP           5   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec    1 Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   11
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM801-1206   YOKE      160         1     0     0     00     13.26      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM801-1406   YOKE      160         2     0     0     00     14.42      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM801-3506   YOKE      160         1     0     0     00     19.02      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM802-8435   YOKE      160         1     0     0     00     24.46      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM804-0616   YOKE      160  12     1     0     0     00      8.77      .00  AP           5   R    1      1         1     1    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM804-0618   YOKE      160         2     0     0     00      8.77      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM804-3519   YOKE      160         1     0     0     00     19.14      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM806-0618   YOKE      160         1     0     0     00      8.56      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM806-1418   YOKE      160         1     0     0     00     13.88      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM900-4448   SHIELD    160         1     0     0     00     53.95      .00  AP           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM900-8030   SHIELD    160         0     0     0     00     38.57      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM901-1248   SHIELD    160         0     0     0     00     39.97      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   12
+Time: 16:04                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 010597                        Type Order=ST  Program Number=GR
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM901-1272   GUARD     160         0     0     0     00     58.62      .00  AP           5   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM960-2015   BEARING KI160         0     0     0     00      2.12      .00  AP           5   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    2 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM960-3052   BEARING KI160         1     0     0     00      3.66      .00  NS           5   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM960-3545   BEARING KI160         1     0     0     00      6.86      .00  AP           5   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+Warehouse Total                                7                     34.52               Number of Line Items that Ordered  =     4
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 2   Order Form = AG200                                           *
+*                          Your order is currently at STGR         $34.52     0% Discount           $.00                           *
+*                                                                                                                                  *
+************************************************************************************************************************************
+
+Program Total                                  7                     34.52               Number of Line Items that Ordered  =     4
+
+Grand Total                                    7                     34.52               Number of Line Items that Ordered  =     4
+
+
+                                                          (End of Report)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   13
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM100-0606   YOKE      160   8     2     0     0     00     16.26      .00  PI           7   R    1      1         3     4  25.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May    2 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    3 May      Apr      Mar      Feb      Jan
+
+PM100-0621   YOKE      160         1     0     0     00     16.26      .00  PI           7 M R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM10000648   SHAFT     160   4     1     0     0     00     21.20      .00  PI           7   R    1      1         3     3    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May    2 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    1 May    1 Apr      Mar      Feb      Jan
+
+PM10001248   SHAFT     160  12     1     0     0     00     31.32      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM10001448   SHAFT     160   2     1     0     0     00     35.26      .00  PI           7   R    1      1         6     1 500.0
+  Cur     Dec      Nov    1 Oct    1 Sep      Aug    2 Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+
+PM10003548   SHAFT     160  12     1     0     0     00     41.90      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM102-1206   YOKE      160   4     2     0     0     00     17.05      .00               D   R    1      1         5     4  25.0
+  Cur     Dec      Nov      Oct      Sep    1 Aug    2 Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug    1 Jul      Jun    1 May    1 Apr      Mar      Feb      Jan
+
+PM102-1406   YOKE      160   2     2     0     0     00     18.26      .00               1   R    1      1        11     7  57.1
+  Cur     Dec      Nov    3 Oct    2 Sep      Aug    4 Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec    1 Nov      Oct    1 Sep    1 Aug      Jul    2 Jun    1 May      Apr    1 Mar      Feb      Jan
+
+PM102-3506   YOKE      160   6     2     0     0     00     21.65      .00               7   R    1      1         4    10  60.0-
+  Cur     Dec      Nov      Oct    1 Sep      Aug    1-Jul    2 Jun    1 May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug    2 Jul      Jun    2 May      Apr    2 Mar      Feb    2 Jan    1
+
+PM102-3521   YOKE      160  24     2     0     0     00     22.66      .00  PI           7   R    1      1         1     1    .0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM102-5521   YOKE      160   4     1     0     0     00     46.33      .00  PI           7   R    1      1         3       100.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun    1 May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM11000648   TUBE *    160   4     1     0     0     00     25.23      .00  PI           7   R    1      1         3     5  40.0-
+  Cur     Dec      Nov    1 Oct      Sep      Aug    1 Jul      Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug      Jul    2 Jun      May    1 Apr    1 Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   14
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM11001248   TUBE *    160  36     3     0     0     00     38.94      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM11001448   TUBE *    160   4     1     0     0     00     39.24      .00  PI           7   R    1      1         3     2  50.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul    1 Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr    1 Mar      Feb      Jan
+
+PM11003548   TUBE *    160  12     1     0     0     00     58.58      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM13002006   LOCK      160  24     2     0     0     00      2.06      .00  PI           8   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM200-0600   CROSS AND 160   2     3     0     0     00      5.75      .00               1   R    1      1        15    36  58.3-
+  Cur     Dec    1 Nov    1 Oct      Sep    2 Aug      Jul    3 Jun    1 May    5 Apr      Mar    1 Feb      Jan    1
+          Dec      Nov    2 Oct      Sep    2 Aug    4 Jul    6 Jun   11 May    3 Apr    1 Mar    2 Feb    4 Jan    1
+
+PM200-1400   CROSS AND 160   2     8     0     0     00      7.91      .00               1   R    1      1        33    27  22.2
+  Cur     Dec      Nov    6 Oct    2 Sep      Aug   10 Jul    7 Jun    3 May    1 Apr    3 Mar      Feb    1 Jan
+          Dec    1 Nov    2 Oct      Sep    1 Aug    2 Jul    7 Jun    3 May    1 Apr    8 Mar    2 Feb      Jan
+
+PM200-4400   CROSS AND 160  24     2     0     0     00     14.15      .00  PI           7   R    1      1         1     6  83.3-
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul    3 Jun    2 May      Apr      Mar      Feb      Jan
+
+PM200-5500   CROSS AND 160   3     2     0     0     00     20.21      .00               D   R    1      1         7     5  40.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug    1 Jul    2 Jun    1 May    2 Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct    1 Sep    2 Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+
+PM200-6154   CROSS AND 160  24     2     0     0     00      9.55      .00  PI           8   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM200-6580   CROSS AND 160         2     0     0     00     17.17      .00  PI           1   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM200-7155   CROSS AND 160  36     3     0     0     00      9.68      .00  PI           D   R    1      1         1     2  50.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    1 May      Apr      Mar      Feb      Jan
+
+PM200-7676   CROSS AND 160         2     0     0     00     22.09      .00  PI           7   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   15
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM200-7989   CROSS AND 160         2     0     0     00     22.99      .00  PI           7   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM20003515   CHAIN SPRO160   4     2     0     0     00      2.12      .00  PI           D   R    1      1         5       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    2 Jul    2 Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20003516   CHAIN SPRO160   8     2     0     0     00      2.16      .00  PI           D   R    1      1         3       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul    1 Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004012   CHAIN SPRO160  18     6     0     0     00      2.50      .00               D   R    1      1         4     6  33.3-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    2 May      Apr      Mar      Feb      Jan    1
+          Dec      Nov    2 Oct      Sep      Aug    1 Jul      Jun      May    1 Apr    2 Mar      Feb      Jan
+
+PM20004014   CHAIN SPRO160  24     2     0     0     00      2.69      .00  PI           D   R    1      1         1     3  66.7-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb    1 Jan
+          Dec      Nov      Oct    2 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+PM20004015   CHAIN SPRO160  12     2     0     0     00      2.80      .00  PI           7   R    1      1         2     2    .0
+  Cur     Dec      Nov    1 Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan
+
+PM20004018   CHAIN SPRO160   2     1     0     0     00      3.26      .00               1   R    1      1         6     5  20.0
+  Cur     Dec    1 Nov    1 Oct      Sep      Aug    2 Jul      Jun      May    1 Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    3 Jul      Jun      May    2 Apr      Mar      Feb      Jan
+
+PM20004022   CHAIN SPRO160  48     4     0     0     00      3.97      .00  PI           8   R    1      1         1       100.0
+  Cur     Dec    1-Nov      Oct    1 Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004024   CHAIN SPRO160  24     2     0     0     00      4.38      .00  PI           7   R    1      1         1     1    .0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM20004028   CHAIN SPRO160  36     3     0     0     00      5.17      .00  PI           8   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004032   CHAIN SPRO160   8     2     0     0     00      6.21      .00               D   R    1      1         3       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr    1 Mar      Feb      Jan    1
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20004036   CHAIN SPRO160  24     2     0     0     00      7.45      .00  PI           D   R    1      1         1     1    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   16
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM20004040   CHAIN SPRO160   8     2     0     0     00      8.40      .00  PI           D   R    1      1         3     6  50.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    3 May      Apr      Mar      Feb      Jan
+          Dec      Nov    2 Oct      Sep      Aug      Jul    1 Jun      May    2 Apr      Mar    1 Feb      Jan
+
+PM20005012   CHAIN SPRO160  24     6     0     0     00      3.24      .00               D   R    1      1         3    16  81.3-
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct    2 Sep      Aug    1 Jul    2 Jun    3 May    3 Apr      Mar    3 Feb    1 Jan    1
+
+PM20005013   CHAIN SPRO160   9     3     0     0     00      3.50      .00               D   R    1      1         4     4    .0
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb    1 Jan    1
+          Dec      Nov    2 Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar    1 Feb      Jan
+
+PM20005014   CHAIN SPRO160  24     2     0     0     00      3.71      .00  PI           D   R    1      1         1     4  75.0-
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May    4 Apr      Mar      Feb      Jan
+
+PM20005015   CHAIN SPRO160   6     2     0     0     00      3.97      .00  PI           D   R    1      1         4     4    .0
+  Cur     Dec      Nov    1 Oct      Sep      Aug    3 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec    1 Nov      Oct      Sep    1 Aug      Jul    1 Jun      May    1 Apr      Mar      Feb      Jan
+
+PM20005016   CHAIN SPRO160   4     2     0     0     00      4.20      .00               1   R    1      1         6     4  50.0
+  Cur     Dec      Nov    2 Oct    1 Sep    1 Aug      Jul    1 Jun      May      Apr      Mar      Feb    1 Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May    3 Apr      Mar      Feb      Jan
+
+PM20005017   CHAIN SPRO160  24     2     0     0     00      4.44      .00  PI           D   R    1      1         1     5  80.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep    2 Aug      Jul      Jun      May    1 Apr    1 Mar      Feb      Jan
+
+PM20005018   CHAIN SPRO160   9     3     0     0     00      4.66      .00               D   R    1      1         4     5  20.0-
+  Cur     Dec      Nov      Oct    1 Sep      Aug    2 Jul      Jun      May      Apr      Mar    1 Feb      Jan
+          Dec      Nov    1 Oct    2 Sep      Aug      Jul      Jun      May      Apr    2 Mar      Feb      Jan
+
+PM20005020   CHAIN SPRO160   4     3     0     0     00      5.15      .00               1   R    1      1         8     6  33.3
+  Cur     Dec      Nov    2 Oct    2 Sep    1 Aug      Jul    2 Jun    1 May      Apr      Mar      Feb      Jan
+          Dec    1 Nov      Oct    2 Sep    2 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+PM20005022   CHAIN SPRO160         2     0     0     00      5.75      .00  PI           8   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20005023   CHAIN SPRO160  12     2     0     0     00      6.09      .00  PI           D   R    1      1         2     3  33.3-
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb    1 Jan
+          Dec      Nov      Oct      Sep      Aug    2 Jul    1 Jun      May      Apr      Mar      Feb      Jan
+
+PM20005025   CHAIN SPRO160  24     2     0     0     00      6.75      .00  PI           8   R    1      1         1     2  50.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    2 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   17
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM20005036   CHAIN SPRO160   4     1     0     0     00     11.13      .00  PI           7   R    1      1         3     1 200.0
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul    1 Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb    1 Jan
+
+PM20005042   CHAIN SPRO160  12     1     0     0     00     14.29      .00  PI           7   R    1      1         1     5  80.0-
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    2 Sep      Aug    2 Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM20006010   CHAIN SPRO160         2     0     0     00      3.84      .00  PI           7   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20006014   CHAIN SPRO160  12     4     0     0     00      5.23      .00               D   R    1      1         4     3  33.3
+  Cur     Dec      Nov      Oct    3 Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    2 Mar      Feb      Jan    1
+
+PM20006015   CHAIN SPRO160   7     3     0     0     00      5.68      .00  PI           D   R    1      1         5     6  16.7-
+  Cur     Dec      Nov    1 Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar    3 Feb      Jan
+          Dec      Nov      Oct    2 Sep      Aug      Jul    1 Jun    2 May      Apr      Mar      Feb      Jan    1
+
+PM20006017   CHAIN SPRO160  12     2     0     0     00      6.73      .00  PI           8   R    1      1         2       100.0
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1-Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+PM20006024   CHAIN SPRO160         5     0     0     00     11.05      .00  PI           7   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+PM20006026   CHAIN SPRO160  24     2     0     0     00     12.40      .00  PI           7   R    1      1         1     2  50.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM20006032   CHAIN SPRO160  12     1     0     0     00     17.58      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20010008   HUB       160         2     0     0     00      2.76      .00  PI           7   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+
+PM20010012   HUB       160   3     2     0     0     00      2.76      .00               1   R    1      1         7     3 133.3
+  Cur     Dec      Nov    1 Oct    2 Sep      Aug    1 Jul    2 Jun    1 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    2 Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM20010014   HUB       160   9     3     0     0     00      2.76      .00  PI           D   R    1      1         4       100.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug    1 Jul      Jun      May      Apr    1 Mar      Feb      Jan    1
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   18
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM20020012   HUB       160   5     4     0     0     00      3.62      .00               1   R    1      1         9    10  10.0-
+  Cur     Dec    2 Nov      Oct      Sep      Aug    4 Jul      Jun    1 May      Apr      Mar    1 Feb      Jan    1
+          Dec      Nov    1 Oct      Sep      Aug    2 Jul    2 Jun      May    1 Apr      Mar      Feb    2 Jan    2
+
+PM20020014   HUB       160   4     2     0     0     00      3.62      .00               D   R    1      1         5    10  50.0-
+  Cur     Dec    1 Nov      Oct      Sep    1 Aug    1 Jul      Jun    2 May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep    1-Aug    1 Jul    2 Jun    3 May    3 Apr    1 Mar      Feb      Jan
+
+PM20020015   HUB       160  12     1     0     0     00      3.62      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20020018   HUB       160   9     3     0     0     00      3.62      .00               D   R    1      1         4     8  50.0-
+  Cur     Dec    1 Nov    1 Oct      Sep      Aug      Jul    1 Jun    1 May      Apr      Mar      Feb      Jan
+          Dec    1 Nov      Oct    3 Sep    1 Aug    1 Jul      Jun      May    2 Apr      Mar      Feb      Jan
+
+PM20021016   HUB       160  24     2     0     0     00      5.49      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20030010   HUB       160  24     2     0     0     00      4.76      .00  PI           8   R    1      1         1     2  50.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov    2 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20030012   HUB       160   9     4     0     0     00      4.76      .00               1   R    1      1         5     3  66.7
+  Cur     Dec      Nov    1 Oct      Sep      Aug    2 Jul      Jun    2 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr    2 Mar      Feb      Jan
+
+PM20030014   HUB       160  24     2     0     0     00      4.76      .00  PI           D   R    1      1         1     4  75.0-
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan    2
+
+PM20030016   HUB       160   2     3     0     0     00      4.76      .00               1   R    1      1        18    19   5.3-
+  Cur     Dec    1 Nov    4 Oct      Sep    2 Aug    3 Jul      Jun    6 May      Apr    1 Mar      Feb      Jan    1
+          Dec      Nov    2 Oct    6 Sep      Aug      Jul    5 Jun    2 May    1 Apr      Mar    1 Feb      Jan    2
+
+PM20030018   HUB       160  18     6     0     0     00      4.76      .00  PI           D   R    1      1         4     5  20.0-
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun    2 May      Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct    1 Sep    4 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM20030020   HUB       160   3     4     0     0     00      4.76      .00               1   R    1      1        14    17  17.6-
+  Cur     Dec    1 Nov    2 Oct    3 Sep      Aug      Jul    2 Jun    1 May    2 Apr    1 Mar      Feb    1 Jan    1
+          Dec    3 Nov    1 Oct    2 Sep      Aug    2 Jul    1 Jun    2 May    2 Apr    2 Mar      Feb    1 Jan    1
+
+PM20030024   HUB       160   8     2     0     0     00      4.76      .00               D   R    1      1         3     4  25.0-
+  Cur     Dec      Nov      Oct    1 Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb    1 Jan
+          Dec      Nov    1 Oct      Sep    1 Aug      Jul      Jun    1 May    1 Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   19
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM20401708   CHAIN SPRO160         3     0     0     00      8.32      .00  PI           8   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb    1 Jan
+
+PM20501510   CHAIN SPRO160   8     2     0     0     00     10.02      .00  PI           7   R    1      1         3     1 200.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM21020035   PULLEY    160  16     4     0     0     00      2.91      .00               D   R    1      1         3     3    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun    2 May      Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct    2 Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM21020040   PULLEY    160         2     0     0     00      3.15      .00  PI           7   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM21020050   PULLEY    160         4     0     0     00      3.80      .00  PI           D   R    1      1               3 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep    2-Aug    2 Jul    1 Jun      May    1 Apr      Mar      Feb      Jan
+
+PM21020055   PULLEY    160   4     2     0     0     00      4.28      .00  PI           D   R    1      1         5       100.0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul    1 Jun    3 May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM21020060   PULLEY    160   3     2     0     0     00      4.41      .00  PI           1   R    1      1         7     2 250.0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun    3 May    1 Apr      Mar    1 Feb    1 Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM21020065   PULLEY    160         2     0     0     00      4.86      .00  PI           8   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM21020070   PULLEY    160   8     2     0     0     00      5.01      .00  PI           D   R    1      1         3     3    .0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan    1
+          Dec      Nov      Oct    1 Sep    1 Aug      Jul      Jun      May      Apr      Mar    1 Feb      Jan
+
+PM21020080   PULLEY    160  24     2     0     0     00      5.52      .00  PI           D   R    1      1         1     3  66.7-
+  Cur     Dec      Nov      Oct    1 Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug      Jul    1 Jun    1 May      Apr      Mar      Feb      Jan
+
+PM21020090   PULLEY    160         2     0     0     00      6.85      .00  PI           D   R    1      1               3 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep    2 Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM21020120   PULLEY    160   3     1     0     0     00      9.84      .00  PI           D   R    1      1         4     4    .0
+  Cur     Dec      Nov    1 Oct      Sep      Aug    1 Jul    1 Jun      May      Apr      Mar    1 Feb      Jan
+          Dec      Nov      Oct    1 Sep      Aug    1 Jul      Jun      May    1 Apr      Mar    1 Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   20
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM21020160   PULLEY    160  12     1     0     0     00     16.44      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM300-1200   YOKE, WITH160   4     1     0     0     00     11.55      .00  PI           7   R    1      1         3     3    .0
+  Cur     Dec      Nov      Oct      Sep      Aug    2 Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun    1 May    1 Apr      Mar      Feb      Jan
+
+PM300-3500   YOKE, WITH160   6     2     0     0     00     17.11      .00               7   R    1      1         4     4    .0
+  Cur     Dec      Nov    1 Oct      Sep      Aug    1 Jul      Jun    1 May      Apr      Mar    1 Feb      Jan
+          Dec      Nov      Oct      Sep    2 Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan    1
+
+PM400-0016   SHAFT     160  84     7     0     0     00     30.54      .00  PI           8   R    6      1         1     3  66.7-
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    3 Jun      May      Apr      Mar      Feb      Jan
+
+PM400-0019   SHAFT     160  48    72     0     0     00     40.15      .00  PI           8   R   72      1        18     6 200.0
+  Cur     Dec      Nov      Oct   14 Sep      Aug      Jul      Jun      May      Apr      Mar    4 Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    2 Jun      May      Apr    4 Mar      Feb      Jan
+
+PM400-1214   SHAFT     160        11     0     0     00     20.76      .00  PI           8   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM402-0016   SHAFT     160         0     6     0     00     22.06      .00  PI           8   R    6      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM402-0018   SHAFT     160         6     0     0     00     28.34      .00  PI           8   R    6      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM500-1400   SLEEVE    160  12     3     0     0     00     13.33      .00  PI           7   R    1      1         3     5  40.0-
+  Cur     Dec      Nov      Oct      Sep      Aug    2 Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul    2 Jun      May      Apr    2 Mar      Feb      Jan
+
+PM500-3500   SLEEVE    160  12     2     0     0     00     15.05      .00  PI           7   R    1      1         2     2    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    1 Jun      May      Apr      Mar    1 Feb      Jan
+          Dec      Nov      Oct      Sep    1 Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM600-0015   TUBE *    160         8     0     0     00     32.08      .00  PI           7   R    6      1               4 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    4 Mar      Feb      Jan
+
+PM600-1618   TUBE *    160         6     0     0     00     25.77      .00  PI           8   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   21
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM602-3500   TUBE *    160  28    12     0     0     00     39.26      .00  PI           D   R    6      1         5    11  54.5-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar    4 Feb      Jan    1
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    2 May      Apr    9 Mar      Feb      Jan
+
+PM700-0600   YOKE, WITH160         3     0     0     00      8.80      .00  PI           D   R    1      1               3 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug    1 Jul      Jun    1 May    1 Apr      Mar      Feb      Jan
+
+PM700-1200   YOKE, WITH160  18     3     0     0     00     11.55      .00  PI           8   R    1      1         2     1 100.0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM701-1400   YOKE, WITH160  12     2     0     0     00     13.65      .00  PI           7   R    1      1         2     3  33.3-
+  Cur     Dec      Nov      Oct      Sep      Aug    1 Jul    1 Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    1 May      Apr    1 Mar      Feb      Jan
+
+PM701-3500   YOKE, WITH160  12     2     0     0     00     18.38      .00  PI           7   R    1      1         2     3  33.3-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar    1 Feb      Jan    1
+          Dec      Nov    1 Oct      Sep    1 Aug      Jul    1 Jun      May      Apr      Mar      Feb      Jan
+
+PM701-5500   YOKE, WITH160  24     2     0     0     00     43.10      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-0612   YOKE      160  12     2     0     0     00      7.81      .00  PI           8   R    1      1         2       100.0
+  Cur     Dec      Nov      Oct      Sep    2 Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-0720   YOKE      160         2     0     0     00     12.88      .00  PI           7   R    1      1               1 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM800-1216   YOKE      160  24     2     0     0     00     12.32      .00  PI           8   R    1      1         1     1    .0
+  Cur     Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-1220   YOKE      160         1     0     0     00     12.32      .00  PI           7   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan
+
+PM800-1418   YOKE      160         4     0     0     00     12.95      .00  PI           8   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-1422   YOKE      160         2     0     0     00     12.95      .00  PI           7   R    1      1               2 100.0-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   22
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PM800-3520   YOKE      160         2     0     0     00     18.19      .00  PI           8   R    1      1                    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-3522   YOKE      160  12     1     0     0     00     18.19      .00  PI           7   R    1      1         1       100.0
+  Cur     Dec    1 Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM800-3524   YOKE      160  12     1     0     0     00     18.19      .00  PI           7   R    1      1         1     1    .0
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan    1
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+PM900-0648   SHIELD    160   4     1     0     0     00     21.30      .00  PI           7   R    1      1         3     8  62.5-
+  Cur     Dec      Nov      Oct      Sep    1 Aug      Jul    1 Jun      May    1 Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    2 Jun    3 May    1 Apr    1 Mar      Feb      Jan    1
+
+PM900-1248   SHIELD    160   2     3     0     0     00     21.30      .00  PI           1   R    1      1        13     2 550.0
+  Cur     Dec      Nov    2 Oct    2 Sep      Aug    3 Jul    1 Jun    2 May      Apr    2 Mar    1 Feb      Jan
+          Dec      Nov    1 Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+
+PM900-3548   SHIELD    160  24     2     0     0     00     26.98      .00  PI           7   R    1      1         1     3  66.7-
+  Cur     Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan
+          Dec      Nov    1 Oct      Sep    1 Aug      Jul      Jun    1 May      Apr      Mar      Feb      Jan
+
+PM920-0600   SHIELD    160  12     4     0     0     00      1.59      .00  PI           D   R    1      1         4     4    .0
+  Cur     Dec      Nov      Oct    2 Sep      Aug      Jul      Jun      May      Apr    2 Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul    1 Jun    2 May      Apr      Mar    1 Feb      Jan
+
+PM920-1200   SHIELD    160   8     2     0     0     00      1.59      .00  PI           8   R    1      1         3       100.0
+  Cur     Dec      Nov      Oct    1 Sep      Aug    2 Jul      Jun      May      Apr      Mar      Feb      Jan
+          Dec      Nov      Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan
+
+
+                                                            (Continued)
+Date: 04JAN97                                          MEYER IMPLEMENT, INC.                                             Page:   23
+Time: 16:04                                          DRIVELINE COMPONENTS - EX                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 010597
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+
+Warehouse Total                                0                       .00               Number of Line Items that Ordered  =     0
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 2   Order Form = AG200                                           *
+*                          Your order is currently at STGR           $.00     0% Discount           $.00                           *
+*                                                                                                                                  *
+************************************************************************************************************************************
+
+Program Total                                  0                       .00               Number of Line Items that Ordered  =     0
+
+Grand Total                                    0                       .00               Number of Line Items that Ordered  =     0
+
+
+                                                          (End of Report)

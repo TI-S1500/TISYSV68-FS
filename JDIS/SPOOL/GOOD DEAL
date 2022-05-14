@@ -1,0 +1,185 @@
+
+Date: 02NOV96                                          MEYER IMPLEMENT, INC.                                             Page:    1
+Time: 14:40                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 110396                        Type Order=ST  Program Number=EQ
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+TY8349       HIGH PRESS160         0     0     0     00    687.20      .00  AP           5   N    1      1                    .0
+  Cur     Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan      Dec      Nov
+          Oct      Sep      Aug      Jul      Jun      May      Apr      Mar      Feb      Jan      Dec      Nov
+
+
+Warehouse Total                                0                       .00               Number of Line Items that Ordered  =     0
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 2   Order Form =                                                 *
+*                          Your order is currently at STEQ           $.00     0% Discount           $.00                           *
+*                                                                                                                                  *
+************************************************************************************************************************************
+
+Program Total                                  0                       .00               Number of Line Items that Ordered  =     0
+
+                                                            (Continued)
+Date: 02NOV96                                          MEYER IMPLEMENT, INC.                                             Page:    2
+Time: 14:40                                       Special Terms Suggested Order                                          (SPTORD-2)
+Order Date/Ref No: 110396                        Type Order=ST  Program Number=EU
+Warehouse 1D                            Program Parts NOT Set To Order (AP, DP, NS, RB, OFC 5)
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   Sugg    Shp     Net   Sugg Ordr Ord Sugg Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+TY16285      PRIMER    160         0     0     0     00     10.22      .00               5   N    1 *    2         1     2  50.0-
+  Cur     Oct      Sep      Aug      Jul      Jun      May    1 Apr      Mar      Feb      Jan      Dec      Nov
+          Oct      Sep      Aug      Jul      Jun      May      Apr    1 Mar      Feb      Jan    1 Dec      Nov
+
+
+Warehouse Total                                0                       .00               Number of Line Items that Ordered  =     0
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 2   Order Form =                                                 *
+*                          Your order is currently at STEU           $.00     0% Discount           $.00                           *
+*                                                                                                                                  *
+************************************************************************************************************************************
+
+Program Total                                  0                       .00               Number of Line Items that Ordered  =     0
+
+Grand Total                                    0                       .00               Number of Line Items that Ordered  =     0
+
+
+                                                          (End of Report)
+Date: 02NOV96                                          MEYER IMPLEMENT, INC.                                             Page:    3
+Time: 14:40                                          NOVEMBER FLYER - CLEANER                                            (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 110396
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+TY15622      FLUID     160  25    36     0     0     00      2.09      .00               1   N    1 *   12        17    28  39.3-
+  Cur     Oct    3 Sep    1 Aug    2 Jul      Jun    2 May    2 Apr    5 Mar      Feb      Jan      Dec    2 Nov
+          Oct      Sep    6 Aug    8 Jul    2 Jun    4 May      Apr      Mar    1 Feb    5 Jan    2 Dec      Nov
+
+TY15867      DETERGENT 160   2     5     0     0     00      2.24      .00               1   N    1 *   12        25    25    .0
+  Cur   1 Oct    2 Sep    5 Aug    1 Jul    1 Jun    2 May      Apr    4 Mar      Feb    7 Jan      Dec    1 Nov    2
+          Oct    2 Sep    1 Aug    1 Jul    3 Jun    2 May    5 Apr      Mar    1 Feb    3 Jan    1 Dec    4 Nov    2
+
+TY16041      DETERGENT 160   9    33     0     0     00      3.74      .00               1   N    1 *   12        40    35  14.3
+  Cur     Oct    4 Sep    1 Aug    2 Jul    7 Jun    3 May    5 Apr    3 Mar    5 Feb    3 Jan    7 Dec      Nov
+          Oct    5 Sep    6 Aug    3 Jul    3 Jun    4 May    7 Apr    3 Mar    4 Feb      Jan      Dec      Nov
+
+TY16329      DETERGENT 160  19    24     0     0     00      3.71      .00               1   N    1 *   24        15    16   6.3-
+  Cur     Oct    1 Sep    1 Aug      Jul    2 Jun    3 May    1 Apr    4 Mar      Feb    1 Jan    1 Dec    1 Nov
+          Oct    1 Sep    1 Aug    1 Jul      Jun    2 May    6 Apr    4 Mar    1 Feb      Jan      Dec      Nov
+
+
+Warehouse Total                                0                       .00               Number of Line Items that Ordered  =     0
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 2   Order Form =                                                 *
+*                          Your order is currently at STEP           $.00     0% Discount           $.00                           *
+*                                                                                                                                  *
+************************************************************************************************************************************
+
+Program Total                                  0                       .00               Number of Line Items that Ordered  =     0
+
+                                                            (Continued)
+Date: 02NOV96                                          MEYER IMPLEMENT, INC.                                             Page:    4
+Time: 14:40                                          NOVEMBER FLYER                                                      (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 110396
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+PT528        HAND CLEAN160   2     3     0     0     00      7.59      .00               1   N    1 *    6        13     8  62.5
+  Cur     Oct    1 Sep      Aug    5 Jul    2 Jun      May    2 Apr    1 Mar      Feb    1 Jan      Dec      Nov    1
+          Oct    1 Sep    1 Aug    1 Jul      Jun    2 May      Apr    1 Mar      Feb    1 Jan      Dec    1 Nov
+
+TY15409      HAND CLEAN160   4     7     0     0     00      1.66      .00               1   N    1 *   12        20    27  25.9-
+  Cur     Oct    1 Sep    2 Aug    2 Jul    1 Jun    4 May      Apr    2 Mar    1 Feb    2 Jan    2 Dec      Nov    3
+          Oct      Sep    6 Aug      Jul    1 Jun    7 May    1 Apr      Mar    1 Feb    7 Jan      Dec      Nov    4
+
+TY6304       SEALANT   160   4     7     0     0     00      6.99      .00               1   N    1 *    5        21    22   4.5-
+  Cur     Oct    1 Sep    1 Aug    1 Jul    7 Jun    1 May    2 Apr    2 Mar    1 Feb    1 Jan    4 Dec      Nov
+          Oct    4 Sep    2 Aug    2 Jul    3 Jun    2 May    1 Apr    1 Mar    1 Feb    1 Jan    3 Dec    1 Nov    1
+
+TY8311       ADHESIVE  160   2     2     0     0     00     17.14      .00               1   N    1 *    3        12     8  50.0
+  Cur     Oct    4 Sep    1 Aug    2 Jul    3 Jun    1 May      Apr      Mar    1 Feb      Jan      Dec      Nov
+          Oct    1 Sep    1 Aug    1 Jul    1 Jun    2 May      Apr    1 Mar      Feb      Jan      Dec    1 Nov
+
+
+Warehouse Total                                0                       .00               Number of Line Items that Ordered  =     0
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 2   Order Form =                                                 *
+*                          Your order is currently at STEU           $.00     0% Discount           $.00                           *
+*                                                                                                                                  *
+************************************************************************************************************************************
+
+Program Total                                  0                       .00               Number of Line Items that Ordered  =     0
+
+                                                            (Continued)
+Date: 02NOV96                                          MEYER IMPLEMENT, INC.                                             Page:    5
+Time: 14:40                                          NOVEMBER FLYER - SLIP PLA                                           (SPTORD-6)
+Warehouse 1D
+Order Date/Ref No: 110396
+                                 ******************************************************************
+                                 *                        SHIP MONTH IS 00                        *
+                                 ******************************************************************
+
+                                               Parts are eligible, but did not order
+
+                                                                                         O                       Last  Prev
+                           Mos   On    On   New     Shp     Net    New Ordr Ord  New Ord F R R     Pkg Pal       12    12     %
+Part Number  Descr     Src Sup  Hand  Ordr  Ordr    Mth    Price    Value   Ind  Weight  C C I PPP Qty Qty       Sls   Sls   Inc
+
+TY6248       LUBRICANT 160   6     2     0     0     00     20.16      .00  PI           7   N    1 *    4         4     3  33.3
+  Cur     Oct    1 Sep      Aug      Jul      Jun    3 May      Apr      Mar      Feb      Jan      Dec      Nov
+          Oct      Sep      Aug      Jul    2 Jun      May      Apr      Mar      Feb      Jan      Dec      Nov    1
+
+TY6431       LUBRICANT 160   3    10    12     0     00      3.87      .00               1   N    1 *   12        38    32  18.8
+  Cur     Oct    1 Sep      Aug      Jul    6 Jun    2 May    7 Apr    2 Mar      Feb    4 Jan      Dec    1 Nov   15
+          Oct    2 Sep    2 Aug    1 Jul    4 Jun      May    6 Apr    2 Mar      Feb    3 Jan    7 Dec    5 Nov
+
+
+Warehouse Total                                0                       .00               Number of Line Items that Ordered  =     0
+
+************************************************************************************************************************************
+*                                        Freight = 00   Payment = 2   Order Form =                                                 *
+*                          Your order is currently at STFF           $.00     0% Discount           $.00                           *
+*                                                                                                                                  *
+************************************************************************************************************************************
+
+Program Total                                  0                       .00               Number of Line Items that Ordered  =     0
+
+Grand Total                                    0                       .00               Number of Line Items that Ordered  =     0
+
+
+                                                          (End of Report)

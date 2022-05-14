@@ -1,0 +1,44 @@
+------------------
+Fri Feb 14 09:41:06 CST 1992
+------------------
+
+The patch /JDIS/patch_tape/os/os.3.3/os330011 
+is already installed on your system or your system is more up to date than 
+the patch.  
+
+The patch /JDIS/patch_tape/3270/3270.1.5/com15001 
+is already installed on your system or your system is more up to date than 
+the patch.  
+
+The patch /JDIS/patch_tape/3270/3270.1.5/com15002 
+is already installed on your system or your system is more up to date than 
+the patch.  
+
+The patch /JDIS/patch_tape/3270/3270.1.5/com15003 
+is already installed on your system or your system is more up to date than 
+the patch.  
+
+The patch /JDIS/patch_tape/3270/3270.1.5/com15004 
+is already installed on your system or your system is more up to date than 
+the patch.  
+
+The patch /JDIS/patch_tape/3270/3270.1.5/com15005 
+is already installed on your system or your system is more up to date than 
+the patch.  
+ Download all CCBs.
+
+
+
+
+The patched new kernel is now installed.  Reboot your system from unx2!
+Test out the kernel and if everything is ok, cd to /usr/sys and do a 
+"make default" to install it as the default boot kernel.
+
+------------------
+Thu Jan 11 10:59:19 CST 1996
+------------------
+
+The patched new kernel is now installed.  Reboot your system from unx2!
+Test out the kernel and if everything is ok, cd to /usr/sys and do a 
+"make default" to install it as the default boot kernel.
+

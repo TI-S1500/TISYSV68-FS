@@ -1,0 +1,2758 @@
+#INDEX
+>ATT2412 00002588 000064
+>ATT4000 00005454 000155
+>ATT4024 00007686 000236
+>Con224AD00012892 000383
+>Con296  00015699 000469
+>ConDA29600023724 000668
+>DataBMX 00032163 000872
+>Fastlink00036218 001005
+>Hayes   00043151 001267
+>HayesAB 00048527 001392
+>Mic96MNP00054083 001522
+>PCRace  00060348 001704
+>RV3451  00064920 001814
+>RV9600VP00067102 001885
+>Tblazer 00073693 002040
+>UDSsuV3200078866 002167
+>UDSV32  00084414 002297
+>USR2400e00089053 002410
+>USRDualH00094627 002534
+>USRDualV00099921 002653
+:
+#########################################
+#       rev 1.0.1
+#       MODEMS.S - BLAST II Modem script file
+#
+#       06/10/87 - BLAST II 8.0.5 - jgc
+#       01/17/89 - jdm
+#       02/21/89 - BLAST II 8.4 - brr
+#       03/21/89 - BLAST II 8.4 - brr - Tblazer, added PCRace
+#       04/04/89 - BLAST II 8.4 - brr - ConDA296, Con296, Con224AD
+#       05/04/89 - BLAST II 8.4 - brr - USRDualH, USRDualV, UDSSUV32
+#       05/15/89 - BLAST II 8.4 - brr - made all labels < 8 characters
+#       05/16/89 - BLAST II 8.4 - brr - Fix .DIAL20 label in Tblazer
+#       05/23/89 - BLAST II 8.4 - brr - Move .ANSW11/.HANG11 labels immed'ly
+#                                       after "goto .INIT" in Hayes, PCRace,
+#                                       UDSV32, USR2400e, USRDualH, USRDualV
+#       06/20/89 - BLAST II 8.4 - brr - Add NO CARRIER test to UDSsuv32
+#       06/22/89 - BLAST II 8.4 - brr - Add ATT4024 support
+#       06/27/89 - BLAST II 8.4 - brr - Add trap for ERROR after ATX4 for
+#                                       HayesXX compatible (older) modems
+#       07/07/89 - BLAST II 8.4 - brr - Change test of @status on ttrap ERROR
+#                                       in Hayes script
+#       07/07/89 - BLAST II 8.4 - brr - Remove "^M" from ttraps UDSSUV32
+#       07/07/89 - BLAST II 8.4 - brr - Force 3 tries at initialization ATT4024
+#       07/10/89 - BLAST II 8.4 - brr - Add \015 to connect UDSSUV32
+#       07/13/89 - BLAST II 8.4 - brr - Lock USR2400e baud rate at @BAUDRATE
+#       07/19/89 - BLAST II 8.4 - brr - Add retry on busy/no answer CON224AD
+#       11/07/89 - BLAST II R/C - 9.0.1 - gdb - Release
+#       12/27/89 - BLAST II 9.01- lsr - Changed ATT4024 to trap for Answer
+:
+#########################################
+#
+# AT&T 2224/C & 2212/C
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     02/21/89        Add answer command to disconnect
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#
+:ATT2412
+#
+#       DIAL the remote system
+#
+.DIAL
+        if not null @phoneno goto .DIAL10       # check for empty phone number
+        ask "enter phone number", @phoneno      # empty, prompt for one
+        if null @phoneno  return 0
+#
+.DIAL10
+        reps 3
+#
+.DIAL15
+        tsend CR
+        ttrap 1
+        tsend "AT",CR
+        ttrap 5 ":"                             # try and wake up the modem
+        if 1 goto .DIAL20                       # got it, continue
+        if reps goto .DIAL15                    # time out, loop and try again
+        return 1                                # give up
+#
+.DIAL20
+        tsend "T",@phoneno,CR                   # dial the phone
+        ttrap 45 "Answered"
+        if 1 return 0                           # return TRUE if CONNECT
+        return 1
+#
+#
+#       HANGUP the modem
+#
+.HANGUP
+        reps 3                                  # try three times
+#
+.HANG10
+        ttrap 2                                 # wait 2 seconds
+        tsend "$:"                              # tsend escape sequence
+        ttrap 2 ":"
+        if 1 goto .HANG20                       # if OK, we got modem's attention
+        if reps goto .HANG10                    # else loop and try again
+#
+        tsend CR                                # see if modem is already hung up
+        ttrap 1
+        tsend "AT",CR
+        ttrap 5 ":"
+        if 1 return 0
+        return 1
+#
+.HANG20                                         # got modems attention, not hung up
+        tsend "Q",CR                            # tsend hangup command
+        ttrap 5 "IDLE"
+        if 1
+                tsend "ANS",CR                  # set HAYES to auto answer
+                return 0                        # modem has hung up
+        end
+        return 1                                # else we failed
+#
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        reps 3
+#
+.ANSWER1
+        tsend CR
+        ttrap 1
+        tsend "AT", CR
+        ttrap 5 ":"                             # try and wake up the modem
+        if 1 goto .ANSWER3                      # got it, continue
+        if reps goto .ANSWER1                   # time out, loop and try again
+        return 1                                # give up
+#
+.ANSWER3
+        ttrap "call"                            # wait for text from modem
+        tsend "ANS",CR                          # set HAYES to auto answer
+        wait CARRIER                            # wait for connection
+        if 1 return 0
+        return 1
+#
+.END
+:
+#########################################
+#
+# AT&T 4000
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     02/21/89        Add answer command to disconnect
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#
+:ATT4000
+#
+#       DIAL the remote system
+#
+.DIAL
+        if not null @phoneno goto .DIAL10       # check for empty phone number
+        ask "enter phone number", @phoneno      # empty, prompt for one
+        if null @phoneno return 0
+#
+.DIAL10
+        tsend CR                                # try to get modem prompt
+        ttrap 2
+        tsend CR
+        ttrap 10 "MODEM:"
+        if 0 return 1                           # can't get it, punt
+        tsend @phoneno,CR                       # dial the phone
+        ttrap 45 "DATA"
+        if 1 return 0                           # if CARRIER return TRUE
+        return 1                                # return FALSE
+#
+#
+#       HANGUP the modem
+#
+.HANGUP
+        reps 3                                  # try three times
+#
+.HANG10
+        ttrap 2
+        tsend "%%"                              # tsend break sequence
+        ttrap 10 "MODEM:"
+        if 1 return 0
+        if reps goto .HANG10
+#
+        tsend CR
+        ttrap 2
+        tsend CR
+        ttrap 10 "MODEM:"
+        if 1
+                tsend "^[S1002",CR              # send preliminary characters
+                ttrap 1
+                tsend "^[S0301",CR
+                return 0
+        end
+        return 1
+#
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        reps 3
+#
+.ANSWER1
+        tsend CR                                # try to get modem prompt
+        ttrap 2
+        tsend CR
+        ttrap 10 "MODEM:"
+        if 1 goto .ANSWER3                      # got it, continue
+        if reps goto .ANSWER1                   # time out, loop and try again
+        return 1                                # give up
+#
+.ANSWER3
+        tsend "^[S1002",CR                      # send preliminary characters
+        ttrap 1
+        tsend "^[S0301",CR
+        ttrap 0 "DATA"
+        if 1 return 0                           # call received
+        return 1
+#
+.END
+:
+#########################################
+#
+# AT&T 4024
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     06/19/89        Update ATT4000 for 4024 specifics
+#       BRR     07/07/89        Force 3 tries at initialization
+#
+:ATT4024
+#
+#       DIAL the remote system
+#
+.DIAL
+        reps 3
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno
+                        set @BAUDRATE = @OLDBAUD
+                        return 0                # if still no number quit
+                end
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"
+                if reps goto .DIAL10
+                return 1
+        end
+.DIAL20
+        tsend @phoneno, CR                      # dial the phone
+        ttrap 75 "Answer", "1200 bps", "300 bps", "No dial", "Busy", "No answer"
+        if 0 or 4 or 5 or 6
+                if reps goto .DIAL20
+                return 1
+        end
+        goto .AUTOBD
+#
+#       HANGUP the modem
+#
+.HANGUP
+        ttrap 2 "DATA mode suspended"
+        if 1 wait 2
+        set @retlbl = "HANGUP"                  # setup for return from init
+        reps 3
+.HANG10
+        goto .INIT                              # force modem to known state
+.HANG11
+        if @retval not = "0"
+                if reps goto .HANG10
+                return 1
+        end
+.HANG20
+        tsend "q",CR                            # already at command mode?
+        ttrap 5 "IDLE"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        reps 3
+        set @retlbl = "ANSWER"                  # setup for return from init
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"
+                if reps goto .ANSW10
+                return 1
+        end
+        tsend "q", CR
+        ttrap 5 "IDLE"
+        raise
+        wait CARRIER                            # DCD unsupported by some H/W
+        return 0
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # preset for failure
+        set @OLDBAUD = @BAUDRATE                # save the initial baudrate
+        tsend CR,CR
+        ttrap 2 ":"
+        if 0
+                tsend "$:"                      # send Exit DATA Mode chars
+                tsend CR,CR                     # try to get prompt
+                ttrap 2 ":"
+                if @status = "0" goto .INIT20   # failed to get attention
+        end
+.INIT10                                         # set modem to:
+        tsend "o12=n", CR                       #       NO transparent data (o12=n)
+        ttrap 5 "is now"
+        ttrap 1 ":"
+        tsend "o20=1", CR                       #       answer on 1st ring (o20=1)
+        ttrap 5 "is now"
+        ttrap 1 ":"
+        tsend "o26=$:", CR                      #       exit DATA Mode on $: (o26=$:)
+        ttrap 5 "$:"
+        ttrap 1 ":"
+        if @status not = "1"                    # nope
+                drop                            # try drop and raise dtr
+                wait 1
+                raise
+                wait 1
+                tsend "o12=n", CR               #       NO transparent data (o12=n)
+                ttrap 5 "is now"
+                ttrap 1 ":"
+                tsend "o20=1", CR               #       answer on 1st ring (o20=1)
+                ttrap 5 "is now"
+                ttrap 1 ":"
+                tsend "o26=$:", CR              #       exit DATA Mode on $: (o26=$:)
+                ttrap 5 "$:"
+                ttrap 1 ":"
+                if @status not = "1"
+                        if @BAUDRATE = "300" set @BAUDRATE = "2400"
+                        else
+                                if @BAUDRATE = "1200" set @BAUDRATE = "300"
+                                if @BAUDRATE = "2400" set @BAUDRATE = "1200"
+                        end
+                        if @BAUDRATE = @OLDBAUD goto .INIT20
+                        goto .INIT10
+                end
+        end
+        set @retval = "0"                       # successful initialization
+.INIT20
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        set @BAUDRATE = @OLDBAUD
+        return 1                                # give up, wrong label set
+#
+.AUTOBD
+        if not 0
+                if 2 set @BAUDRATE = "1200"
+                if 3 set @BAUDRATE = "300"
+        end
+        return 0                                # give up, wrong label set
+.END
+:
+#########################################
+#
+# Concord 224 Autodial
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     02/21/89        Add answer command to disconnect
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     04/04/89        Make DTR drop for 5 seconds (was 3)
+#       BRR     07/19/89        Added retries on busy or no answer
+#
+:Con224AD
+#
+#       DIAL the remote system
+#
+.DIAL
+        if not null @phoneno goto .DIAL10       # check for empty phone number
+        ask "enter phone number", @phoneno      # empty, prompt for one
+        if null @phoneno return 0
+#
+.DIAL10
+        reps 3
+#
+.DIAL15
+        tsend CR,CR
+        ttrap 5 "CDS"                           # try and wake up the modem
+        if 1 goto .DIAL20                       # got it, continue
+        if reps goto .DIAL15                    # time out, loop and try again
+        return 1                                # give up
+#
+.DIAL20
+        tsend "DM",@phoneno,CR                  # dial the phone
+        ttrap 45 "ANSWER"
+        if 1 return 0                           # return TRUE if CONNECT
+        if reps goto .DIAL15                    # busy/no answer try again
+        return 1
+#
+#
+#       HANGUP the modem
+#
+.HANGUP
+        reps 3                                  # try three times
+#
+.HANG10
+        drop                                    # drop DTR for 5 seconds
+        WAIT 5
+        RAISE
+        WAIT 3
+        tsend CR,CR                             # get modem's attention
+        ttrap 2 "CDS"
+        if not 1                                # modem has been hung up
+                if reps goto .HANG10            # else loop and try again
+                return 1
+        end
+#
+        tsend "E",CR                            # set modem to auto answer
+        return 0
+#
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        reps 3
+#
+.ANSWER1
+        tsend CR,CR
+        ttrap 5 "CDS"                           # try and wake up the modem
+        if 1 goto .ANSWER3                      # got it, continue
+        if reps goto .ANSWER1                   # time out, loop and try again
+        return 1                                # give up
+#
+.ANSWER3
+        tsend "E",CR                            # set modem to auto answer
+        ttrap "ANSWER"                          # wait for connection
+        if 1 return 0
+        return 1
+#
+.END
+:
+#########################################
+#
+# Concord 296 Trellis
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     12/02/88        Replaced goto's w/nested if's
+#       BRR     12/09/88        Moved .INIT to bottom
+#       BRR     02/17/89        Updated to new specs, add support to reset
+#                               Hayes mode to Concord mode
+#       BRR     02/20/89        Finish update to new specs
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     04/04/89        Add "AT" to get modem's attention
+#       BRR     05/15/89        Make labels 6 chars
+#       LSR     01/02/90        Replaced nested if's w/goto's
+#
+:Con296
+#
+#       DIAL the remote system
+#
+.DIAL
+        set @retval = "0"
+        if null @phoneno                        # get phone number if missing
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0
+        end
+        reps 3
+.DIAL10
+        set @retlbl = "DIAL"
+        goto .INIT                              # Go do INITialization
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend CR
+        ttrap 2 "CDS >"
+        if @status = "0" return 1               # should have been working
+        tsend "D M ",@phoneno,CR                # dial the phone
+        ttrap 10 "DIALING","NO DIAL","FAILED"
+        if @status = "1" goto .DIAL30
+        if reps goto .DIAL20
+        return 1
+.DIAL30
+        ttrap 45 "ANSWER"
+        if @status not = "0" goto .DIAL40
+        if reps goto .DIAL20
+        return 1
+.DIAL40
+        ttrap 55 "DIRECT","PROTECT","BUFFER","BUSY","FAILED"
+        if (@STATUS not = "4") AND (@STATUS not = "5") return 0                       # return TRUE if CONNECT
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retval = "0"
+        reps 3
+.HANG10
+        set @retlbl = "HANGUP"
+        goto .INIT                              # Go do INITialization
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend CR,"H",CR                         # Hangup
+        ttrap 3 "CDS >"
+        if @status = "1"
+                tsend "SRM2",CR                 # turn off echo and responses
+                return 0                        # WE HUNG UP OK
+        end
+        if reps goto .HANG20                    # else loop and try again
+        return 1
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retval = "0"
+        reps 3
+        set @retlbl = "ANSWER"
+.ANSW10
+        goto .INIT                              # Go do INITialization
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        tsend "SRG1 SRI0",CR                    # set modem to auto answer
+        ttrap 5 "INVALID COMMAND" "CDS >"
+        if @status NOT = "2" return 1           # no response from modem
+        ttrap "DIRECT","PROTECT","BUFFER"       # wait for connection
+        return 0
+#
+# Initialize the modem to a known and hopefully optimum state
+#
+.INIT
+        set @retval = "0"
+        set @setup = "Not initialized"
+        reps 3
+.INIT10
+        tsend CR, "SRM0", CR                    # try turning on echo
+        ttrap 2 "CDS >", "ERROR"
+        if @status = "0"                        # timeout means Hayes/baud
+         tsend "AT", CR                         # will fix baud rate
+         ttrap 2 "CDS >", "OK"                  # make sure we got there
+         if @status = "2" tsend "ATSMC0", CR    # switch to Concord Mode
+         ttrap 2 "CDS >", "ERROR"               # make sure we got there
+        end
+        if @status not = "1"
+         wait 1                                 # try wake up with +++
+         tsend "+++"
+         wait 1
+         tsend CR, "SRM0", CR                   # try turning on echo
+         ttrap 2 "CDS >"
+         if @status not = "1"
+          if @initsave = @modem return 1        # if no answer, fail
+          wait 1                                # try wake up with default char
+          tsend "\001\001\001"
+          wait 1
+          tsend CR, "SRM0", CR                  # try turning on echo
+          ttrap 2 "CDS >"
+          if @status not = "1"
+           drop                                 # try wake up with DTR
+           wait 3
+           raise
+           wait 2
+           tsend CR, "SRM0", CR                 # try turning on echo
+           ttrap 2 "CDS >"
+           if @status not = "1"
+            tsend BREAK                         # try wake up with break
+            wait 3
+            tsend CR, "SRM0", CR                # try turning on echo
+            ttrap 2 "CDS >"
+            if @status not = "1"
+             if reps goto .INIT10
+             return 1                           # failed to wake up
+            end
+           end
+          end
+         end
+        end
+#
+# Modem is talking, now initialize it
+#
+.SETUP
+        set @retval = "1"                       # failure
+        ########################################################
+        #                                                      #
+        #              Modem Register Settings                 #
+        #                                                      #
+        # SAS0 = Auto speed change disabled                    #
+        # SBA0 = Baud rate adjust disabled                     #
+        # SBK1 = Clear buffer, send break                      #
+        # SCC0 = Upper case from modem to computer             #
+        # SCP1 = Call progress monitoring on                   #
+        # SDL0 = Dial line mode                                #
+        # SE/+ = Exit char is +                                #
+        # SLCC0 = DSR held high                                #
+        # SLCD0 = Ignore DTR                                   #
+        # SLCF0 = DCD held high                                #
+        # SPE0 = Local echo of transmitted data disabled       #
+        # STE25 = Escape code guard time = .5 sec              #
+        # STR0 = No wait between RTS hi and CTS hi             #
+        # SCM1 = Use compression                               #
+        # SMF1/0 = Use/(Don't use) xon/xoff from modem to comp #
+        # SPF2 = Use CTS for std. hardware flow control        #
+        # SLCA2 = Use RTS for std. hardware flow control       #
+        ########################################################
+        tsend "SAS0 SBA0 SBK1 SCC0 SCP1 SDL0 SE/+ SLCC0 SLCD0 SLCF0 SPE0 SRM0 STE25 STR0",CR
+        ttrap 2 "CDS >"
+        tsend "SRG1 SRI0",CR                    # set modem to auto answer
+        ttrap 2 "CDS >"
+        if @status = "1"                        # has to work
+         if @xonxoff = "YES" tsend "SMF1",CR    # use X/on and x/off
+         else tsend "SMF0",CR                   # Don't use x/on x/off
+         ttrap 2 "CDS >"
+         if @status = "1"                       # has to work
+          if null @RTSCTS set @RTSCTS = @DTRCTS # bug workaround
+          if @RTSCTS = "YES" tsend "SPF2 SLCA2",CR      # hardware flow control
+          else tsend "SPF0",CR                  # bilateral X/on X/off
+          ttrap 2 "CDS >"
+          if @status = "1" set @retval = "0"    # Success
+         end
+        end
+        if @retlbl = "DIAL" goto .DIAL11
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up
+#
+.END
+:
+#########################################
+#
+# Concord DialAccess 296
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     12/02/88        Copied Trellis script and restructured into
+#                               nested ifs, eliminating many goto's
+#       BRR     12/09/88        Moved .INIT to bottom
+#       BRR     02/17/89        Updated to new specs, add support to reset
+#                               Hayes mode to Concord mode
+#       BRR     02/20/89        Finish update to new specs
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     04/04/89        Add "AT" to get modem's attention
+#       BRR     05/15/89        Make labels 6 chars
+#
+:ConDA296
+#
+#       DIAL the remote system
+#
+.DIAL
+        set @retval = "0"
+        if null @phoneno                        # get phone number if missing
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0
+        end
+        reps 3
+.DIAL10
+        set @retlbl = "DIAL"
+        goto .INIT                              # Go do INITialization
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend CR
+        ttrap 2 "MODEM >"
+        if @status = "0" return 1               # should have been working
+        tsend "D M ",@phoneno,CR                # dial the phone
+        ttrap 10 "DIALING","NO DIAL","FAILED"
+        if @status = "1"
+         ttrap 45 "ANSWER"
+         if @status not = "0"
+          ttrap 55 "DIRECT","PROTECT","BUFFER","BUSY","FAILED"
+          if (@STATUS not = "4") AND (@STATUS not = "5") return 0                       # return TRUE if CONNECT
+         end
+        end
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retval = "0"
+        reps 3
+.HANG10
+        set @retlbl = "HANGUP"
+        goto .INIT                              # Go do INITialization
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend CR,"H",CR                         # Hangup
+        ttrap 3 "MODEM >"
+        if @status = "1"
+                tsend "SRM2",CR                 # turn off echo and responses
+                return 0                        # WE HUNG UP OK
+        end
+        if reps goto .HANG20                    # else loop and try again
+        return 1
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retval = "0"
+        reps 3
+        set @retlbl = "ANSWER"
+.ANSW10
+        goto .INIT                              # Go do INITialization
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        tsend "SRG1 SRI0",CR                    # set modem to auto answer
+        ttrap 5 "INVALID COMMAND" "MODEM >"
+        if @status NOT = "2" return 1           # no response from modem
+        ttrap "DIRECT","PROTECT","BUFFER"       # wait for connection
+        return 0
+#
+# Initialize the modem to a known and hopefully optimum state
+#
+.INIT
+        set @retval = "0"
+        reps 3
+.INIT10
+        tsend CR, "SRM0", CR                    # try turning on echo
+        ttrap 2 "MODEM >", "ERROR"
+        if @status = "0"                        # timeout means Hayes/baud
+         tsend "AT", CR                         # will fix baud rate
+         ttrap 2 "MODEM >", "OK"                # make sure we got there
+         if @status = "2" tsend "ATSMC0", CR    # switch to Concord Mode
+         ttrap 2 "MODEM >", "ERROR"             # make sure we got there
+        end
+        if @status not = "1"
+         wait 1                                 # try wake up with +++
+         tsend "+++"
+         wait 1
+         tsend CR, "SRM0", CR                   # try turning on echo
+         ttrap 2 "MODEM >"
+         if @status not = "1"
+          if @initsave = @modem return 1        # if no answer, fail
+          wait 1                                # try wake up with default char
+          tsend "\001\001\001"
+          wait 1
+          tsend CR, "SRM0", CR                  # try turning on echo
+          ttrap 2 "MODEM >"
+          if @status not = "1"
+           drop                                 # try wake up with DTR
+           wait 3
+           raise
+           wait 2
+           tsend CR, "SRM0", CR                 # try turning on echo
+           ttrap 2 "MODEM >"
+           if @status not = "1"
+            tsend BREAK                         # try wake up with break
+            wait 3
+            tsend CR, "SRM0", CR                # try turning on echo
+            ttrap 2 "MODEM >"
+            if @status not = "1"
+             if reps goto .INIT10
+             return 1                           # failed to wake up
+            end
+           end
+          end
+         end
+        end
+#
+# Modem is talking, now initialize it
+#
+.SETUP
+        set @retval = "1"                       # failure
+        ########################################################
+        #                                                      #
+        #              Modem Register Settings                 #
+        #                                                      #
+        # SAS0 = Auto speed change disabled                    #
+        # SBA0 = Baud rate adjust disabled                     #
+        # SBK1 = Clear buffer, send break                      #
+        # SCC0 = Upper case from modem to computer             #
+        # SCP1 = Call progress monitoring on                   #
+        # SDL0 = Dial line mode                                #
+        # SE/+ = Exit char is +                                #
+        # SLCC0 = DSR held high                                #
+        # SLCD0 = Ignore DTR                                   #
+        # SLCF0 = DCD held high                                #
+        # SPE0 = Local echo of transmitted data disabled       #
+        # STE25 = Escape code guard time = .5 sec              #
+        # STR0 = No wait between RTS hi and CTS hi             #
+        # SCM1 = Use compression                               #
+        # SMF1/0 = Use/(Don't use) xon/xoff from modem to comp #
+        # SPF2 = Use CTS for std. hardware flow control        #
+        # SLCA2 = Use RTS for std. hardware flow control       #
+        ########################################################
+        tsend "SAS0 SBA0 SBK1 SCC0 SCP1 SDL0 SE/+ SLCC0 SLCD0 SLCF0 SPE0 SRM0 STE25 STR0",CR
+        ttrap 2 "MODEM >"
+        tsend "SRG1 SRI0",CR                    # set modem to auto answer
+        ttrap 2 "MODEM >"
+#       tsend "SCM1", CR                        # set to MNP ON(1)/comp_lvl=1
+#       set @comp_lvl = "1"                     # or MNP OFF(0)/comp_lvl=4
+#       ttrap 2 "MODEM >"
+        if @status = "1"                        # has to work
+         if @xonxoff = "YES" tsend "SMF1",CR    # use X/on and x/off
+         else tsend "SMF0",CR                   # Don't use x/on x/off
+         ttrap 2 "MODEM >"
+         if @status = "1"                       # has to work
+          if null @RTSCTS set @RTSCTS = @DTRCTS # bug workaround
+          if @RTSCTS = "YES" tsend "SPF2 SLCA2",CR      # hardware flow control
+          else tsend "SPF0",CR                  # bilateral X/on X/off
+          ttrap 2 "MODEM >"
+          if @status = "1" set @retval = "0"    # Success
+         end
+        end
+        if @retlbl = "DIAL" goto .DIAL11
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up
+#
+.END
+:
+#########################################
+#
+# Data Race BMX
+#
+#       SPECIAL NOTE
+#
+#       Occasionally, some non-DataRace modems have difficulty establishing
+#       a connection with the DataRace using the auto speed sense capability
+#       of the DataRace.  To facilitate these difficult connections, place
+#       a string of the form "baud=xxxx" in the Description field in the
+#       setup, where xxxx is one of 300, 1200, 2400, 4800, 7200, 9600 (the
+#       quotes are not necessary around the string).
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     12/28/88        Use Concord 296 DA as template, change for BMX
+#       BRR     02/20/89        Update to new specs
+#       BRR     02/20/89        Correct init string to set for autoanswer
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     04/04/89        DROP DTR for quick disconnect
+#       BRR     05/15/89        Change @retval settings & make labels 6 chars
+#       BRR     05/22/89        Change baud rate handler, add NOTE above
+#
+:DataBMX
+#
+#       DIAL the remote system
+#
+.DIAL
+        set @retval = "0"
+        if null @phoneno                        # get phone number if missing
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0
+        end
+        reps 3
+.DIAL10
+        set @retlbl = "DIAL"
+        goto .INIT                      # Go do INITialization
+.DIAL11
+        if @retval not = "0"            # Success, continue
+                if reps goto .DIAL10    # Lets try again
+                return 1                # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT", @phoneno, CR      # dial command
+        ttrap 45 "BMX ONLINE", "CONNECT","NO CARRIER","NO DIALTONE","BUSY"
+        if @status = "1" or @status = "2"
+                ttrap 2 "\r"    # let all dialog display
+                return 0        # return TRUE if CONNECT
+        end
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retval = "0"
+        reps 3
+.HANG10
+        drop                                    # drop carrier for fast disc.
+        wait 2
+        raise
+        wait 1
+        set @retlbl = "HANGUP"
+        goto .INIT                              # Go do INITialization
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend "ATH", CR
+        ttrap 10 "OK", ">"
+        tsend CR
+        wait 1
+        tsend "+++"
+        ttrap 5 "OK"
+        tsend "ATE0Q1", CR
+        return 0
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retval = "0"
+        reps 3
+        set @retlbl = "ANSWER"
+.ANSW10
+        goto .INIT                              # Go do INITialization
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+.ANSW20
+        ttrap "BMX ONLINE", "CONNECT","NO CARRIER","NO DIALTONE"
+        if @status = "1" or @status = "2" return 0 # return TRUE if CONNECT
+        goto .ANSW20
+#
+# Initialize the modem to a known and hopefully optimum state
+#
+.INIT
+        set @retval = "1"
+        tsend CR
+        ttrap 5 "OK" ">"
+        if @status = "1"
+                set @retval = "0"
+                goto .SETUP
+        end
+        tsend CR
+        wait 1
+        tsend "+++"
+        ttrap 5 "OK" ">"
+        if @status not = "2" set @retval = "0"
+#
+# Modem is talking, now initialize it
+#
+.SETUP
+        if @retval = "0"
+                set @retval = "1"
+                tsend "ATE1V1Q0X4 S0=1 s23=10", CR
+                ttrap 5 "OK"
+                tsend "AT"
+                strinx @sysdesc "baud=300"
+                if @status not = "0" tsend "S23=00"
+                strinx @sysdesc "baud=1200"
+                if @status not = "0" tsend "S23=04"
+                strinx @sysdesc "baud=2400"
+                if @status not = "0" tsend "S23=06"
+                strinx @sysdesc "baud=4800"
+                if @status not = "0" tsend "S23=12"
+                strinx @sysdesc "baud=7200"
+                if @status not = "0" tsend "S23=14"
+                strinx @sysdesc "baud=9600"
+                if @status not = "0" tsend "S23=08"
+        end
+        tsend CR
+        ttrap 5 "OK"
+        if @status = "1" set @retval = "0"
+        if @retlbl = "DIAL" goto .DIAL11
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up
+.END
+:
+#########################################
+#
+# DCA Fastlink
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     02/21/89        Added autoanswer to HANGUP
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#
+:Fastlink
+#
+#       DIAL the remote system
+#
+.DIAL
+#
+#       Set baudrate to 19.2 as soon as we figure out where we are
+#
+        if not null @phoneno goto .DIAL10       # check for empty phone number
+        ask "enter phone number", @phoneno      # empty, prompt for one
+        if null @phoneno return 0
+#
+.DIAL10
+        reps 2
+#
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .DIAL15
+#
+#       Check all baudrates for echo, when we get it
+#       send initialization string and goto 19.2K
+#
+.DIAL11
+#
+        set @BAUDRATE = "300"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .DIAL15
+#
+        set @BAUDRATE = "1200"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .DIAL15
+#
+        set @BAUDRATE = "2400"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .DIAL15
+#
+        set @BAUDRATE = "9600"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .DIAL15
+#
+        set @BAUDRATE = "19.2"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .DIAL15
+        if reps goto .DIAL11
+        display "Can't talk to modem - suggest you cycle the power and try again"
+        return 1
+#
+.DIAL15
+        tsend "AT&FS45=255S50=0S51=255S54=3S62=6", CR
+        ttrap 5 "OK"                            # try and wake up the modem
+        if 1 goto .DIAL20                       # got it, continue
+        if reps goto .DIAL15                    # time out, loop and try again
+#
+        display "Can't talk to modem - suggest you cycle the power and try again"
+        return 1
+#
+.DIAL20
+        set @BAUDRATE = "19.2"
+#
+        reps 20
+#
+.DIAL22
+        tsend "A"
+        ttrap 1 "A"
+        if 1
+                tsend "T",cr
+                goto .DIAL25
+        end
+        if reps goto .DIAL22
+#
+        display "Can't talk to modem - suggest you cycle the power and try again"
+        return 1
+#
+.DIAL25
+        tsend "ATDT",@phoneno,CR
+        ttrap 45 "CONNECT FAST","CONNECT 2400","CONNECT 1200","CONNECT 300","NO CARRIER","BUSY"
+        if 1
+                if @PAKTSZ = "84"
+                        set @PAKTSZ = "2048"
+                end
+                return 0
+        end
+        if 2
+                set @BAUDRATE = "2400"
+                return 0
+        end
+        if 3
+                set @BAUDRATE = "1200"
+                return 0
+        end
+        if 4
+                set @BAUDRATE = "300"
+                return 0
+        end
+        if 5
+                return 1
+        end
+        if 6
+                return 1
+        end
+#
+        return 1
+#
+#
+#       HANGUP the modem
+#
+.HANGUP
+        reps 3
+#
+.HANG10
+        ttrap 2                                 # wait 2 seconds
+        tsend "+++"                             # tsend escape sequence
+        ttrap 2 "OK", "NO CARRIER"
+        if 2 return 0                           # if NO CARRIER, we are done
+        if 1 goto .HANG20                       # if OK, we got modem's attention
+        if reps goto .HANG10                    # else loop and try again
+#
+        tsend CR                                # see if modem is not connected
+        ttrap 1
+        tsend "AT",CR
+        ttrap 2 "OK"
+        if 1 goto .HANG20
+#
+        return 1
+#
+.HANG20                                         # got modems attention, not hung up
+        ttrap 3
+        tsend "ATH",CR                          # tsend hangup command
+        ttrap 5 "OK","NO CARRIER"
+        if 1 or 2
+                tsend "ATS0=1", CR              # autoanswer
+                return 0                        # modem is hung up
+        end
+        return 1                                # else failed
+#
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+#
+#       Set baudrate to 19.2 once we figure out where we are
+#
+#
+.ANSWER1
+        reps 2
+#
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .ANSWER2
+#
+#       Check all baudrates for echo, when we get it
+#       send initialization string and goto 19.2K
+#
+.ANSW11
+#
+        set @BAUDRATE = "300"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .ANSWER2
+#
+        set @BAUDRATE = "1200"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .ANSWER2
+#
+        set @BAUDRATE = "2400"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .ANSWER2
+#
+        set @BAUDRATE = "9600"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .ANSWER2
+#
+        set @BAUDRATE = "19.2"
+        tsend "AT",cr
+        ttrap 2 "OK"
+        if 1 goto .ANSWER2
+        if reps goto .ANSW11
+#       display "Can't talk to modem - suggest you cycle the power and try again
+        return 1
+#
+.ANSWER2
+        tsend "AT&FS45=255S50=0S51=255S54=3S62=6", CR
+        ttrap 5 "OK"                            # try and wake up the modem
+        if 1 goto .ANSWER3                      # got it, continue
+        if reps goto .ANSW11                    # time out, loop and try again
+#
+#       display "Can't talk to modem - suggest you cycle the power and try again
+        return 1
+#
+.ANSWER3
+        set @BAUDRATE = "19.2"
+        reps 20
+#
+.ANSWER4
+        tsend "A"
+        ttrap 1 "A"
+        if 1
+                tsend "T",cr
+                goto .ANSWER5
+        end
+        if reps goto .ANSWER4
+#
+#       display "Can't talk to modem - suggest you cycle the power and try again
+        return 1
+#
+.ANSWER5
+        tsend "ATS0=1",CR                       # set modem to auto answer
+        ttrap 0 "CONNECT FAST","CONNECT 2400","CONNECT 1200","CONNECT 300","NO CARRIER"
+        if 1
+                if @PAKTSZ = "84"
+                        set @PAKTSZ = "2048"
+                end
+                return 0
+        end
+        if 2
+                set @BAUDRATE = "2400"
+                return 0
+        end
+        if 3
+                set @BAUDRATE = "1200"
+                return 0
+        end
+        if 4
+                set @BAUDRATE = "300"
+                return 0
+        end
+        if 5
+                return 1
+        end
+#
+        return 1
+#
+.END
+:
+#########################################
+#
+# Hayes Smartmodem or compatible
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     02/17/89        Rewrite to new specs
+#       BRR     02/20/89        Add wait for slow modems
+#       BRR     02/20/89        Finish update to new specs
+#       BRR     02/21/89        Put autoanswer into INIT section
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     04/04/89        Remove PCRace to its own script
+#       BRR     04/11/89        Add "BUSY" to dial ttrap
+#       BRR     05/15/89        Change @retval settings & make labels 6 chars
+#       BRR     05/23/89        Move .ANSW11/.HANG11 to after "goto .INIT"
+#       BRR     06/27/89        Add trap for ERROR after ATX4 for older modems
+#       BRR     07/07/89        Change test for @status after ttrap for ERROR
+#
+:Hayes
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0       # if still no number quit
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        reps 3
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR             # dial the phone
+        ttrap 45 "CONNECT","NO CARRIER","BUSY"
+        if @status = "1" return 0               # return TRUE if CONNECT
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        reps 3
+.HANG10
+        goto .INIT                              # force modem to known state
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend "ATH",CR                       # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        wait 6                                  # add wait for slow modems
+        tsend "ATE0Q1", CR                  # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+                                                #       answer (S0 > 0)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        reps 3
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        ttrap "CONNECT"                         # wait for connection
+        return 0                                # return success only
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # set for unsuccessful init
+        tsend "ATE1V1Q0X1S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X1S0=1", CR      # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK","ERROR"                    # wait for response
+        if @status not = "0" set @retval = "0"  # set success
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.END
+:
+#########################################
+#
+# Hayes compatible 19200-300 Auto Baud
+#
+#       This modem routine demonstrates BLAST's ability to
+#       automatically change baud rates as conditions
+#       warrant
+#
+#       WARNING:  This routine will ONLY work with Hayes and
+#       Hayes-compatible 19200/9600/4800/2400/1200/300 baud modems!
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     02/21/89        Rewrite to new specs
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     04/11/89        Add "BUSY" to dial ttrap, add support for
+#                               4800 - 19200 baud
+#       BRR     04/12/89        Complete adding all baud rates
+#       BRR     04/28/89        Updated comments and header
+#       BRR     05/15/89        Make labels 6 chars
+#       BRR     05/23/89        Move .ANSW11/.HANG11 to after "goto .INIT"
+#       BRR     06/27/89        Add trap for ERROR after ATX4 for older modems
+#
+:HayesAB
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno
+                        set @BAUDRATE = @OLDBAUD
+                        return 0                # if still no number quit
+                end
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        goto .INIT                              # force modem to known state
+.DIAL11
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR             # dial the phone
+        ttrap 45 "CONNECT 19", "CONNECT 9600", "CONNECT 4800", "CONNECT 2400", "CONNECT 1200", "CONNECT^M", "BUSY", "NO CARRIER"
+        if 0 or 7 or 8
+                if reps goto .DIAL20
+                return 1
+        end
+        goto .AUTOBD
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        goto .INIT                              # force modem to known state
+.HANG11
+        reps 3
+.HANG20
+        tsend "ATH",CR                       # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        wait 6                                  # add wait for slow modems
+        tsend "ATE0Q1", CR                  # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+                                                #       answer (S0 > 0)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        goto .INIT                              # force modem to known state
+.ANSW11
+        ttrap "CONNECT 19", "CONNECT 9600","CONNECT 4800","CONNECT 2400","CONNECT 1200","CONNECT^M"
+        goto .AUTOBD
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @OLDBAUD = @BAUDRATE                # save the initial baudrate
+.INIT10
+        tsend "ATE1V1Q0X1S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X1S0=1", CR      # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+                if @status not = "1"
+                        if @BAUDRATE = "300" set @BAUDRATE = "19.2"
+                        else
+                                if @BAUDRATE = "600" set @BAUDRATE = "300"
+                                if @BAUDRATE = "1200" set @BAUDRATE = "300"
+                                if @BAUDRATE = "2400" set @BAUDRATE = "1200"
+                                if @BAUDRATE = "4800" set @BAUDRATE = "2400"
+                                if @BAUDRATE = "9600" set @BAUDRATE = "4800"
+                                if @BAUDRATE = "19.2" set @BAUDRATE = "9600"
+                                if @BAUDRATE = "38.4" set @BAUDRATE = "19.2"
+                        end
+                        if @BAUDRATE = @OLDBAUD return 1
+                        goto .INIT10
+                end
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK","ERROR"                    # wait for response
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        set @BAUDRATE = @OLDBAUD
+        return 1                                # give up, wrong label set
+#
+.AUTOBD
+        if not 0
+                if 1 set @BAUDRATE = "19.2"
+                if 2 set @BAUDRATE = "9600"
+                if 3 set @BAUDRATE = "4800"
+                if 4 set @BAUDRATE = "2400"
+                if 5 set @BAUDRATE = "1200"
+                if 6 set @BAUDRATE = "300"
+        end
+        return 0                                # give up, wrong label set
+.END
+:
+#########################################
+#
+# Microcom 96XX (in MNP mode)
+#
+#       The modem must have all switches up except for front switch 4.
+#
+#       Decimal characters ASCII value 000, 003, 004, 008, 016, 027
+#       are the only allowable modem "exit connect state characters".
+#       the character used must be enabled in the BLAST translate table.
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     02/22/89        Add autoanswer to DISCONNECT
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#
+:Mic96MNP
+#
+#       DIAL the remote system
+#
+.DIAL
+        if not null @phoneno goto .DIAL10       # check for empty phone number
+        ask "enter phone number", @phoneno      # empty, prompt for one
+        if null @phoneno return 0
+#
+.DIAL10
+        clear
+        cursor 0,0
+        tsend "CMF",CR                          # Clear modem flow control
+        ttrap 2 "!"                             # try and wake up the modem
+# if modem already awake use the existing baud rates
+        if @status = "1" goto .DIAL20           # if successful use this baud
+        reps 5
+.DIAL11
+        set @sbaud = @baudrate                  # save the orig baud
+        set @baudrate = "19.2"                  # try fastest
+        if @baudrate not = "19.2" set @baudrate = "9600"
+        write "Baud rate adjusted to ",@baudrate, " for optimum speed"
+        wait 5
+#                                                 ok use 9600
+        drop                                    # reinit the modem
+        wait 2
+        raise
+        wait 2
+        tsend "4"                               # try to configure the port
+        ttrap 1,"4"
+        if @status = "1" goto .DIAL15
+        if reps goto .DIAL11
+        return 1
+.DIAL15
+        tsend "5"
+        ttrap 2,"5"
+        if @status = "0" return 1
+        tsend CR
+        ttrap 2,"!"
+        if @status = "0" return 1
+.DIAL20
+        tsend "s2?",cr
+        ttrap 2,"000","003","004","007","016","027"     # interrput char must be one
+        if @status = "0" goto .DIAL21
+        if @status = "1" then set @intchar = "\000"
+        if @status = "2" then set @intchar = "\003"
+        if @status = "3" then set @intchar = "\004"
+        if @status = "4" then set @intchar = "\007"
+        if @status = "5" then set @intchar = "\020"
+        if @status = "6" then set @intchar = "\033"
+        if @status = "6" or not null @xlfile then goto .DIAL22
+        write "XLATE file requird. Using ESC (027) for exit connect state char"
+        wait 5
+        tsend "S2=027",cr
+        ttrap 2, "!"
+        if @status = "0" then return 1
+        goto .DIAL22
+.DIAL21
+write "Modem exit connect state char must be decimal ASCII value 0,3,4,16,27"
+        wait 5
+        return 1
+.DIAL22
+        fopenw 1,"intchar.tmp"          # save the interrupt char for HANG
+        fwrite 1,@intchar
+        fclose 1
+        set @xonxoff = "YES"            # we must have flow control
+        tsend "SMAUT",CR                # use reliable mode if available
+        ttrap 2,"!"
+        if @status = "0" then return 1  # this must work
+        reps 3
+.DIAL25
+        tsend "DT ",@phoneno,CR         # dial the phone
+        ttrap 45 "CONNECT ",NO CONNECTION"
+        if @status = "1"
+          ttrap 2 "\015","REL"          # let the rest of the dialog display
+          if @status = "0" return 1     # never got the CR
+          if @status = "1" return 0     # not REL given, must be nonerror ctrl
+          if @paktsz = "84" set @paktsz = "2048"
+                                        # big packet for good thruput
+          set @comp_lvl = "1"           # RLE compression only
+          write "Packet size and compression adjusted to optimum throughput"
+          wait 5
+        return 0
+        end
+        if not reps return 1
+        tsend @intchar,cr               # interrupt and try again
+        ttrap 2 "!"
+        if @status = "0" return 1
+        goto .DIAL25
+#
+#
+#       HANGUP the modem
+#
+.HANGUP
+        reps 3
+#
+.HANG10
+        fopenr 1,"intchar.tmp"                  # get the interrupt character
+        fread 1,@intchar
+        fclose 1
+        tsend @intchar,CR                       # exit connect state
+        ttrap 2 "!"
+        if @status = "0" goto .HANG12           # couldn't interrupt
+.HANG11
+        TSEND "H",CR                            # hang up command
+        TTRAP 3 "NO CONNECTION"
+        IF @STATUS = "1"
+                tsend "AA",CR                   # set modem to auto answer
+                return 0                        # hung up ok
+        end
+.HANG12
+        drop                                    # try hardware disconnect
+        wait 3
+        raise
+        wait 3
+        tsend "4"                               # try to configure the port
+        ttrap 1,"4"
+        if @status = "1" goto .HANG15
+        if reps goto .HANG11
+        return 1
+.HANG15
+        tsend "5"
+        ttrap 2,"5"
+        if @status = "0" return 1
+        tsend cr                                # try for a firm disconnect
+        ttrap 2,"!"
+        if @status = "1" goto .HANG11
+        if reps goto .HANG10                    # else loop and try again
+        return 1
+#
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        reps 3
+#
+.ANSWER1
+        fopenr 1,"intchar.tmp"                  # get the interrupt character
+        fread 1,@intchar
+        fclose
+        tsend @intchar,CR                       # exit connect state
+        ttrap 2 "!"
+        if @status = "1" goto .ANSWER2          # couldn't interrupt
+        drop                                    # try hardware disconnect
+        wait 3
+        raise
+        wait 3
+        send "4"                                # try to configure the port
+        ttrap 1,"4"
+        if @status = "1" goto .ANSWER5
+        if reps goto .ANSWER1
+        return 1
+.ANSWER5
+        tsend "5"
+        ttrap 2,"5"
+        if @status = "0" return 1
+        tsend cr                                # try for a firm disconnect
+        ttrap 2,"!"
+        if @status = "1" goto .ANSWER2
+        if reps goto .ANSWER1                   # else loop and try again
+        return 1                                # give up
+#
+.ANSWER2
+        tsend "AA",CR                           # set modem to auto answer
+        ttrap 2,"!"                             # SUCCESSFUL?
+        if @status = "1" then return 0
+        return 1
+#
+.END
+:
+#########################################
+#
+# Data Race PCRace
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     04/05/89        Use Hayes script as basis
+#       BRR     05/15/89        Change @retval settings & make labels 6 chars
+#       BRR     05/23/89        Move .ANSW11/.HANG11 to after "goto .INIT"
+#
+:PCRace
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0       # if still no number quit
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        reps 3
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR                # dial the phone
+        ttrap 45 "CONNECT","NO CARRIER"
+        if @status = "1" return 0               # return TRUE if CONNECT
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        reps 3
+.HANG10
+        goto .INIT                              # force modem to known state
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend "ATH",CR                          # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        wait 6                                  # add wait for slow modems
+        tsend "ATE0Q1", CR                      # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+                                                #       answer (S0 > 0)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        reps 3
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        ttrap "CONNECT"                         # wait for connection
+        return 0                                # return success only
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # set for unsuccessful init
+        tsend "ATE1V1Q0X1S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X1S0=1", CR      # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK"                            # wait for response
+        if @status = "1" set @retval = "0"
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.END
+:
+##########################################
+#
+# Racal Vadic 3451
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#
+:RV3451
+#
+#       DIAL the remote system
+#
+.DIAL
+        if not null @phoneno goto .DIAL10       # check for empty phone number
+        ask "enter phone number", @phoneno      # empty, prompt for one
+        if null @phoneno return 0               # null response, exit FALSE
+#
+.DIAL10
+        reps 5
+#
+.DIAL15
+        tsend "^E", CR
+        ttrap 5 "*"                             # try and wake up the modem
+        if 1 goto .DIAL20                       # got it, continue
+        if reps goto .DIAL15                    # time out, loop and try again
+        return 1                                # give up
+#
+.DIAL20
+        tsend "D",CR                            # dial the phone
+        ttrap 3
+        tsend @phoneno,CR
+        ttrap 1
+        tsend CR
+        ttrap 45 "ON LINE","FAILED CALL"
+        if 1 return 0                           # return TRUE if CONNECT
+        if 2 return 1
+#
+        return 1
+#
+#
+#       HANGUP the modem
+#
+.HANGUP
+        reps 3                                  # try three times
+#
+.HANG10
+        drop                                    # drop DTR for 5 seconds
+        tsend "^E",CR                           # get modem's attention
+        ttrap 2 "*"
+        if 1 return 0                           # modem has been hung up
+        if reps goto .HANG10                    # else loop and try again
+        return 1
+#
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        wait CARRIER                            # wait for DCD to be asserted
+        if 1 return 0
+        return 1
+#
+.END
+:
+#########################################
+#
+# Racal-Vadic 9600VP
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     01/11/89        Initial code.
+#       BRR     01/16/89        Corrected hangup and answer sections
+#       BRR     02/20/89        Finish update to new specs
+#       BRR     02/21/89        Chg to hunt for speed and speed convert
+#                               add comments
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     05/15/89        Make labels 6 chars
+#
+:RV9600VP
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # get phone number if missing
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0
+        end
+        set @retlbl = "DIAL"
+        goto .INIT                              # Go do INITialization
+.DIAL11
+        reps 3
+.DIAL20
+        tsend "D", @phoneno, CR                 # Dial, then wait for result
+        ttrap 45 "ON LINE", "*", "BUSY!", "DISCONNECT", "FAILED CALL"
+        if @status = "1" return 0               # success
+        tsend CR                                # oops, failed
+        if reps goto .DIAL20                    # try again
+        return 1                                # total failure
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"
+        goto .INIT                              # Go do INITialization
+.HANG11
+        tsend "O", CR                           # turn off echo, make quiet
+        ttrap 5, "NUMBER?"
+        if @status = "0" return 1
+        tsend "5", CR                           # echo is option 5
+        ttrap 5, "05*"
+        if @status = "0" return 1
+        tsend "2", CR                           # value 2 is quiet
+        ttrap 5, "NUMBER?"
+        tsend CR
+        ttrap 5, "*"
+        tsend "I", CR                           # put into "I"dle mode
+        ttrap 5, "IDLE"
+        return 0
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"
+.ANSW10
+        goto .INIT                              # Go do INITialization
+.ANSW11
+        tsend "I", CR                           # put into "I"dle mode
+        wait carrier
+        return 0
+#
+# Initialize the modem to a known and hopefully optimum state
+#
+.INIT
+        reps 3
+.INIT10
+        tsend CR                                # already in Interactive mode?
+        ttrap 5 "*"
+        if @status = "0"                        # not in Interactive yet
+                tsend "^E", CR                  # goto Interactive
+                ttrap 5 "*"
+        end
+        if @status = "0"                        # nope
+                wait 1
+                tsend "\003\004"                # break any connection
+                wait 1
+                ttrap 5 "DISCONNECT"            # Interactive yet?
+                if @status = "1"
+                        wait 5
+                        tsend "^E", CR
+                        ttrap 5, "*"
+                end
+        end
+        if @status = "0"                        # above attempts failed
+                if reps goto .INIT10            # try 3 times
+                return 1                        # then fail
+        end
+#
+# Modem is talking, now initialize it
+#
+.SETUP
+        if null @RTSCTS
+                set @RTSCTS = @DTRCTS           # bug workaround
+        end
+        # Option         1111111
+        #       1234567890123456
+        tsend "O2111121111111111"               # set all the options
+                                                # 1     Std settings off
+                                                # 2     DSR off 4 secs @ offline
+                                                # 3     DCD normal
+                                                # 4     Answer on 1 ring
+                                                # 5     Echo on
+                                                # 6     Tone dialing
+                                                # 7     Blind dial disable
+                                                # 8     Call progress enabled
+                                                # 9     Word responses
+                                                # 10    10 bits (only setting)
+                                                # 11    ^CD discon. @ 9600 on
+                                                # 12    unused
+                                                # 13    unused
+                                                # 14    async
+                                                # 15    no autoredial
+                                                # 16    Connect to remote at highest speed
+        if @RTSCTS = "YES" tsend "3"            # 17    RTS/CTS flow control
+        else
+                if @XONXOFF = "YES" tsend "6"   # 17    ...or XON/XOFF
+                else tsend "1"                  # 17    ...or NONE
+        end
+        # Opt: 11222222222
+        #      89012345678
+        tsend "21112111111", CR                 # 18    Enable speed conversion
+                                                # 19    unused
+                                                # 20    unused
+                                                # 21    CTS follows RTS
+                                                # 22    DTR forced ON
+                                                # 23    No ENQ/ACK
+                                                # 24    unused
+                                                # 25    fallback to 4800 baud
+                                                # 26    discon after 30 sec no DCD
+                                                # 27    unused
+                                                # 28    enable RTS/CTS delay
+        ttrap 5 "*"
+        if @status = "0"                        # if failure
+                if reps goto .INIT10            # try 3 times
+                return 1                        # then fail
+        end
+        if @retlbl = "DIAL" goto .DIAL11
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up
+#
+.END
+:
+#########################################
+#
+# Telebit Trailblazer series
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       LLD     01/23/89        Initial code.
+#       BRR     02/17/89        update comments
+#       BRR     02/20/89        Finish update to new specs
+#       BRR     02/21/89        Removed unnecessary regs from init, enabled
+#                               MNP 3 when avail
+#       BRR     02/27/89        Separated some reg settings for clarity
+#       BRR     03/20/89        Changed X3 setting to X1 and added separate set
+#                               of X to level 3 with trap for ERROR, to support
+#                               older models which only use X0/X1
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     05/15/89        Make labels 6 chars
+#       BRR     05/16/89        Change .DIAL22 to .DIAL20
+#
+:Tblazer
+#
+# Dial phone number
+#
+.DIAL
+        set @FROM = "dial"              # set from var
+        goto .INIT                      # check init var
+.DIAL11
+        if null @PHONENO                # ans for No.
+                ask "enter phone number", @PHONENO
+                if null @PHONENO return 0       # exit if no No
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT",@PHONENO,cr
+        ttrap 45, "NO CARRIER", "BUSY", "NO ANS", "NO DIAL", "CONNECT"
+        if @STATUS = "5" return 0       # success
+        if reps goto .DIAL20
+        return 1                        # failure
+#
+#  HANGING UP MODEM
+#
+.HANGUP
+        reps 3
+        set @FROM = "hangup"            # set from var
+        goto .INIT                      # check init var
+.HANG11
+        tsend "ATH0",CR
+        ttrap 2, "OK"
+        tsend "ATE0Q1",CR               # send hangup
+        ttrap 2, "OK"
+        return 0                        # success
+#
+#  ANSWERING MODEM
+#
+.ANSWER
+        set @FROM = "answer"
+        goto .INIT
+        reps 3
+.ANSW11
+        ttrap "CONNECT"
+        return 0
+#
+# TrailBlazer initialization script
+#
+.INIT
+        reps 3
+.INIT10
+        wait 2
+        tsend "+++"
+        wait 2
+        tsend "ATE1Q0V1X1", cr          #check modem response
+        ttrap 2, "OK"
+        if @STATUS = "0"
+                set @BAUDRATE = "9600"  #reset baudrate to 9600
+                tsend "ATE1Q0V1X1",CR
+                ttrap 2, "OK"
+        end
+        if @STATUS = "0"
+                if reps goto .INIT10    #retry if no OK
+                return 1                #return with error status 1
+        end
+.SETUP
+        tsend "ATX3", cr                #set to max verbosity (some older
+        ttrap 2, "OK", "ERROR"          #models dont support so trap ERROR)
+        tsend "ATS0=1S45=255S48=0S49=0S50=0S51=4S52=0S53=4S54=2S55=0", CR
+                                        # Set options
+                                        #       Answer on 1 ring
+                                        #       enable remote acces
+                                        #       only compare 7 bits for esc code
+                                        #       report ID codes
+                                        #       auto modem-modem speed
+                                        #       set interface to 9600
+                                        #       DTR ignored
+                                        #       DSR/DCD Normal
+                                        #       send BREAK immediately
+                                        #       Enter CMD mode on ESC seq
+        ttrap 2, "OK"
+        if @RTSCTS = "YES" tsend "ATS58=2",CR           # RTS/CTS flow control
+        else
+                if @XONXOFF = "YES" tsend "ATS58=3",CR  # ...or XON/XOFF
+                else tsend "ATS58=0",CR                 # ...or NONE
+        end
+        ttrap 2, "OK"
+        tsend "ATS60=0S63=1S64=0S65=0S66=1S67=0S68=255S90=0S91=0S92=0S95=2S100=0S101=0", CR
+                                        #       8 bits, no parity
+                                        #       Require "AT" on commands
+                                        #       Abort dial/ans if chars from DTE
+                                        #       Normal Xon/Xoff if enabled
+                                        #       Lock interface speed
+                                        #       Use CTS to control data flow
+                                        #       Use flow control spec'd in s58
+                                        #       Bell 212A mode
+                                        #       No guard tone
+                                        #       Normal speed search sequence
+                                        #       Use MNP autoreliable mode
+                                        #       Normal org/ans mode
+                                        #       Normal connect
+        ttrap 2, "OK"
+        tsend "ATS104=0S110=0S111=0S121=0F1",CR
+                                        #       Disable "autodial"
+                                        #       Disable compression
+                                        #       No protocol spoofing
+                                        #       No echo suppress compensate
+                                        #       Data echo off
+        wait 1 idle                     #       let echo display
+        if @FROM = "dial" goto .DIAL11
+        if @FROM = "hangup" goto .HANG11
+        if @FROM = "answer" goto .ANSW11
+        return 1
+.END
+:
+#########################################
+#
+# UDS Sync-Up V.32 9600-300 Auto Baud
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     05/04/89        Start w/300-19200 Hayes AB script
+#                               eliminate 19200 and assume 9600 after disconnect
+#       BRR     05/15/89        Make labels 6 chars
+#       BRR     06/20/89        Add NO CARRIER ttrap to begin of .HANGUP
+#       BRR     07/07/89        Remove "^M" from ttraps for CONNECT
+#       BRR     07/10/89        Add "\015" to ttraps for CONNECT at 300 baud
+#
+:UDSsuV32
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno
+                        set @BAUDRATE = @OLDBAUD
+                        return 0                # if still no number quit
+                end
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        goto .INIT                              # force modem to known state
+.DIAL11
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR                # dial the phone
+        ttrap 45 "CONNECT 9600", "CONNECT 4800", "CONNECT 2400", "CONNECT 1200", "CONNECT\015", "BUSY", "NO CARRIER"
+        if 0 or 6 or 7
+                if reps goto .DIAL20
+                return 1
+        end
+        goto .AUTOBD
+#
+#       HANGUP the modem
+#
+.HANGUP
+        ttrap 2 "NO CARRIER"
+        if 1 goto .HANG30
+        set @retlbl = "HANGUP"                  # setup for return from init
+        goto .INIT                              # force modem to known state
+.HANG11
+        reps 3
+.HANG20
+        tsend "ATH",CR                          # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+.HANG30
+        set @BAUDRATE = "9600"                  # force baud rate to 9600
+        wait 1                                  # add wait for slow modems
+        tsend "ATE0Q1", CR                      # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+                                                #       answer (S0 > 0)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        goto .INIT                              # force modem to known state
+.ANSW11
+        ttrap "CONNECT 9600","CONNECT 4800","CONNECT 2400","CONNECT 1200","CONNECT\015"
+        goto .AUTOBD
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @OLDBAUD = @BAUDRATE                # save the initial baudrate
+        ttrap 1 "NO CARRIER"                    # check if just disconnected
+        if 1 set @BAUDRATE = "9600"             # if so, modem is @ 9600 baud
+.INIT10
+        tsend "ATE1V1Q0X1S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X1S0=1", CR      # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+                if @status not = "1"
+                        if @BAUDRATE = "300" set @BAUDRATE = "9600"
+                        else
+                                if @BAUDRATE = "600" set @BAUDRATE = "300"
+                                if @BAUDRATE = "1200" set @BAUDRATE = "300"
+                                if @BAUDRATE = "2400" set @BAUDRATE = "1200"
+                                if @BAUDRATE = "4800" set @BAUDRATE = "2400"
+                                if @BAUDRATE = "9600" set @BAUDRATE = "4800"
+                        end
+                        if @BAUDRATE = @OLDBAUD return 1
+                        goto .INIT10
+                end
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK"                            # wait for response
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        set @BAUDRATE = @OLDBAUD
+        return 1                                # give up, wrong label set
+#
+.AUTOBD
+        if not 0
+                if 1 set @BAUDRATE = "9600"
+                if 2 set @BAUDRATE = "4800"
+                if 3 set @BAUDRATE = "2400"
+                if 4 set @BAUDRATE = "1200"
+                if 5 set @BAUDRATE = "300"
+        end
+        return 0                                # give up, wrong label set
+.END
+:
+#########################################
+#
+# Universal Data Systems V.32
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     02/16/89        Rewrite to new specs
+#       BRR     02/21/89        Add autoanswer to INIT
+#       BRR     03/21/89        Reformat labels/description for use w/listmod
+#       BRR     05/15/89        Change @retval settings & make labels 6 chars
+#       BRR     05/23/89        Move .ANSW11/.HANG11 to after "goto .INIT"
+#
+:UDSV32
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0       # if still no number quit
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        reps 3
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR                # dial the phone
+        ttrap 45 "CONNECT","NO CARRIER"
+        if @status = "1"
+          ttrap 2 "\r"                          # let all dialog display
+          return 0                              # return TRUE if CONNECT
+        end
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        reps 3
+.HANG10
+        goto .INIT                              # force modem to known state
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend "ATH",CR                          # hangup
+        ttrap 2 "OK"                            # check response
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        tsend "ATE0Q1", CR                      # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+                                                #       answer (S0 > 0)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        reps 3
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        ttrap "CONNECT"                         # wait for connection
+        return 0                                # return success only
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # set for unsuccessful init
+        tsend "ATE1V1Q0X4S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X4)
+                                                #       autoanswer (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X4S0=1", CR      # set modem as above
+                ttrap 2 "OK"
+        end
+        if @status = "1" set @retval = "0"
+        if @retlbl = "DIAL" goto .DIAL11        #return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.END
+:
+#########################################
+#
+# US Robotics Courier 2400e
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     05/04/89        Started with Hayes script
+#       BRR     05/15/89        Change @retval settings & make labels 6 chars
+#       BRR     05/23/89        Move .ANSW11/.HANG11 to after "goto .INIT"
+#       BRR     07/13/89        Lock modem baud rate at @BAUDRATE in .INIT
+#
+:USR2400e
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0       # if still no number quit
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        reps 3
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR                # dial the phone
+        ttrap 45 "CONNECT","NO CARRIER","BUSY"
+        if @status = "1" return 0               # return TRUE if CONNECT
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        reps 3
+.HANG10
+        goto .INIT                              # force modem to known state
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend "ATH",CR                          # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        tsend CR, "ATE0Q1", CR                  # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+                                                #       answer (S0 > 0)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        reps 3
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        ttrap "CONNECT"                         # wait for connection
+        return 0                                # return success only
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # set for unsuccessful init
+        tsend "ATE1V1Q0X1S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X1S0=1", CR      # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK"                            # wait for response
+        tsend "AT&K1&M0&N0&R1&S0"               # compress if possible, no MNP
+                                                # change to &M4 or &M5 for MNP
+                                                # variable link speed,
+                                                # ignore RTS, DSR hi
+        tsend "&B"                              # lock DTE speed
+        if @BAUDRATE = "300" tsend "1",CR       #  at 300 baud
+        if @BAUDRATE = "600" tsend "2",CR       #  at 600 baud
+        if @BAUDRATE = "1200" tsend "3",CR      #  at 1200 baud
+        if @BAUDRATE = "2400" tsend "4",CR      #  at 2400 baud
+        if @BAUDRATE = "4800" tsend "5",CR      #  at 4800 baud
+        if @BAUDRATE = "9600" tsend "6",CR      #  at 9600 baud
+        if @BAUDRATE = "19.2" tsend "7",CR      #  at 19200 baud
+        ttrap 2 "OK"                            # wait for response
+        if @status = "1" set @retval = "0"      # can't wake it up !
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.END
+:
+#########################################
+#
+# US Robotics Courier HST dual standard (HST mode)
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     05/04/89        Started with Hayes script
+#       BRR     05/15/89        Change @retval settings & make labels 6 chars
+#       BRR     05/23/89        Move .ANSW11/.HANG11 to after "goto .INIT"
+#
+:USRDualH
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0       # if still no number quit
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        reps 3
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR                # dial the phone
+        ttrap 45 "CONNECT","NO CARRIER","BUSY"
+        if @status = "1" return 0               # return TRUE if CONNECT
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        reps 3
+.HANG10
+        goto .INIT                              # force modem to known state
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend "ATH",CR                          # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        wait 6                                  # add wait for slow modems
+        tsend "ATE0Q1", CR                      # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+                                                #       answer (S0 > 0)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        reps 3
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        ttrap "CONNECT"                         # wait for connection
+        return 0                                # return success only
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # set for unsuccessful init
+        tsend "ATE1V1Q0X1S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X1S0=1", CR      # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK"                            # wait for response
+        tsend "ATB1&B1&K1&M0&N0&R2&S0&Y3", CR   # HST mode, fixed DTE speed,
+                                                # compress if possible, no MNP
+                                                # change to &M4 or &M5 if HST to HST
+                                                # variable link speed,
+                                                # RTS std, DSR hi
+                                                # send BREAK in sequence
+        ttrap 2 "OK"                            # wait for response
+        if @status = "1" set @retval = "0"      # can't wake it up !
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.END
+:
+#########################################
+#
+# US Robotics Courier HST dual standard (V.32 mode)
+#
+#       MODIFICATION HISTORY
+#
+#       Who     When            What or why
+#       ---     --------        -----------------------------------------------
+#       BRR     05/04/89        Started with USRDualH script
+#       BRR     05/15/89        Change @retval settings & make labels 6 chars
+#       BRR     05/23/89        Move .ANSW11/.HANG11 to after "goto .INIT"
+#
+:USRDualV
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0       # if still no number quit
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        reps 3
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR                # dial the phone
+        ttrap 45 "CONNECT","NO CARRIER","BUSY"
+        if @status = "1" return 0               # return TRUE if CONNECT
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        reps 3
+.HANG10
+        goto .INIT                              # force modem to known state
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend "ATH",CR                          # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        wait 6                                  # add wait for slow modems
+        tsend "ATE0Q1", CR                      # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+                                                #       answer (S0 > 0)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        reps 3
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        ttrap "CONNECT"                         # wait for connection
+        return 0                                # return success only
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # set for unsuccessful init
+        tsend "ATE1V1Q0X1S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X1S0=1", CR      # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK"                            # wait for response
+        tsend "ATB0&B1&K1&M0&N0&R2&S0&Y3", CR   # V.32 mode, fixed DTE speed,
+                                                # compress if possible, no MNP
+                                                # change to &M4 or &M5 if HST to HST
+                                                # variable link speed,
+                                                # RTS std, DSR hi
+                                                # send BREAK in sequence
+        ttrap 2 "OK"                            # wait for response
+        if @status = "1" set @retval = "0"      # can't wake it up !
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.END
+

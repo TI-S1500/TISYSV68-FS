@@ -1,0 +1,218 @@
+#-----------------------------------------------------------------------
+# This script adds additional terminal and printer definitions to VSAT 
+# genfiles.  It will perform genpu to create a new puinput and reset the
+# pu for this new configuration.
+#-----------------------------------------------------------------------
+
+# Create files to be used during script
+
+# Create prtdef.scr file
+
+touch /tmp/prtdef
+chmod +rwx /tmp/prtdef
+
+
+echo '/lu=21/a\' >/tmp/prtdef
+echo 'lu=22   lutype=vdt\' >>/tmp/prtdef
+echo 'lu=23   lutype=vdt\' >>/tmp/prtdef
+echo 'lu=24   lutype=vdt\' >>/tmp/prtdef
+echo 'lu=25   lutype=vdt\' >>/tmp/prtdef
+echo 'lu=26   lutype=vdt\' >>/tmp/prtdef
+echo 'lu=27   lutype=vdt\' >>/tmp/prtdef
+echo 'lu=28   lutype=vdt\' >>/tmp/prtdef
+echo 'lu=29   lutype=vdt\' >>/tmp/prtdef
+echo 'lu=2a   lutype=prt\' >>/tmp/prtdef
+echo 'lu=2b   lutype=prt\' >>/tmp/prtdef
+echo 'lu=2c   lutype=prt\' >>/tmp/prtdef
+echo 'lu=2d   lutype=prt\' >>/tmp/prtdef
+echo 'lu=2e   lutype=prt\' >>/tmp/prtdef
+echo 'lu=2f   lutype=prt\' >>/tmp/prtdef
+echo 'lu=30   lutype=prt\' >>/tmp/prtdef
+echo 'lu=31   lutype=prt' >>/tmp/prtdef
+
+# Create file /tmp/prtdef2
+
+touch /tmp/prtdef2
+chmod +rwx /tmp/prtdef2
+
+echo '/device_lu=10/a\' >/tmp/prtdef2
+echo '       userid=30009     device_type=prt device_lu=2a\' >>/tmp/prtdef2
+echo '       userid=30010     device_type=prt device_lu=2b\' >>/tmp/prtdef2
+echo '       userid=30011     device_type=prt device_lu=2c\' >>/tmp/prtdef2
+echo '       userid=30012     device_type=prt device_lu=2d\' >>/tmp/prtdef2
+echo '       userid=30013     device_type=prt device_lu=2e\' >>/tmp/prtdef2
+echo '       userid=30014     device_type=prt device_lu=2f\' >>/tmp/prtdef2
+echo '       userid=30015     device_type=prt device_lu=30\' >>/tmp/prtdef2
+echo '       userid=30016     device_type=prt device_lu=31' >>/tmp/prtdef2
+
+# Create dpu file
+
+touch /tmp/dpu
+chmod +rwx /tmp/dpu
+
+echo 'd pu' >/tmp/dpu
+echo 'q' >>/tmp/dpu
+
+# Create stoppu file
+
+touch /tmp/stoppu
+chmod +rwx /tmp/stoppu
+
+echo 'stop pu' > /tmp/stoppu
+echo 'q' >>/tmp/stoppu
+#------------------------------------------------------------------------
+
+# Print program name and purpose
+echo "*******************************************************************************"
+echo " "
+echo "        This program will update your VSAT definitions to allow"
+echo "        you to have 16 printer and 32 terminal sessions in DIALUP.."
+echo " "
+echo "*******************************************************************************"
+
+# Check to see if dealer is on HP platform (no update necessary)
+uname -a > /tmp/uname
+grep "HP-UX" /tmp/uname >/dev/null  
+if [ $? = 0 ]
+   then
+	echo "HP platform, no update necessary.  Exiting program..."
+	exit
+fi
+
+# Check to see if dealer is a VSAT dealer
+touch /tmp/out1
+chmod +rwx /tmp/out1
+/JDIS/PROG/CMN/JDISSNAADM -w 60 /usr/ucs/snaadm </tmp/dpu >/tmp/out1
+		if [ $? != 0 ] 
+			then
+				echo " "
+				echo "                      ERROR!   ERROR!!  ERROR!!!"
+				echo " "
+				echo "Your DIALUP software is not running.  At your earliest convience call JDIS and"
+				echo "tell the support person that the VSAT printer update did not run correctly."
+				echo " " 
+				echo "This program is quitting with no update... "
+				exit
+		fi
+
+grep "originate" /tmp/out1 >/dev/null 
+if [ $? = 0 ]
+   then
+	echo "Dealer does not use VSAT, no update necessary.  Exiting program..."
+	exit
+fi
+
+# Check to see if dealers genfile.vsat has been updated already...
+
+grep "device_lu=31" /usr/ucs/genfile.vsat >/dev/null 
+if [ $? = 0 ]
+   then
+	echo "Dealer has already been updated for add'l printers and terminals"
+	exit
+fi
+
+#-------------------------------------------------------------------------------
+
+# Main Program
+echo " "
+echo " "
+echo "Updating VSAT files, please stand by..."
+
+# Get to the /usr/ucs directory
+cd /usr/ucs
+
+# Make a safety copy of the genfile.vsat file
+cp genfile.vsat genfile.vsat.sav
+
+# Run script to add terminal and printer definitions to genfile.vsat.
+sed -f /tmp/prtdef genfile.vsat > genfile.out
+mv genfile.out genfile.vsat
+
+sed -f /tmp/prtdef2 genfile.vsat > genfile.out
+mv genfile.out genfile.vsat
+
+# Run genpu to create new puinput.vsat
+su sys000 -c '/usr/ucs/genpu genfile.vsat puinput.vsat' >/dev/null
+
+# Create the "stoppu" file used in the snaadm command to stop the pu
+
+# Stop the pu, copy the new puinput.vsat into puinput\
+/JDIS/PROG/CMN/JDISSNAADM -w 60 /usr/ucs/snaadm </tmp/stoppu > /tmp/out1 2>&1
+		if [ $? != 0 ] 
+			then
+				echo " "
+				echo "                      ERROR!   ERROR!!  ERROR!!!"
+				echo " "
+				echo " "
+				echo " "
+				echo "Cannot get VSAT active.  At your earliest convenience you will need to call the JDIS support line to get VSAT active."
+				echo " " 
+				echo " "
+				echo "In the meantime, if you need to dial into the host, run SWCHVSAT and you can"
+				echo "then run DIALUP on your modem..."
+				exit
+		fi
+
+cp puinput.vsat puinput
+
+# Wait 5 seconds and restart
+sleep 5
+
+# Start the pu
+su sys000 -c '/usr/ucs/pu'
+
+# Check that the pu is running ok
+echo "  "
+echo "  "
+echo "VSAT files updated. Now checking for active PU, this may take up to 2 minutes..."
+looper=1
+while [ " $looper" -lt  20 ]
+	do
+		sleep 6
+
+		/JDIS/PROG/CMN/JDISSNAADM -w 60 /usr/ucs/snaadm </tmp/dpu >/tmp/out1
+		if [ $? != 0 ] 
+			then
+				echo " "
+				echo "                      ERROR!   ERROR!!  ERROR!!!"
+				echo " "
+				echo "Cannot get VSAT active.  At your earliest convenience you will need to call the JDIS support line to get VSAT active."
+				echo " " 
+				echo " "
+				echo "In the meantime, if you need to dial into the host, run SWCHVSAT and you can"
+				echo "then run DIALUP on your modem..."
+				exit
+		fi
+
+		grep "  active" /tmp/out1 >/dev/null 2>&1
+
+		if [ $? = 0 ]
+			then
+
+				echo "  "
+				echo "   "
+				echo "PU is active, update complete..."
+				pu=running
+				looper=20
+		fi	
+		looper=`expr $looper + 1`
+	done
+
+# Check to see if pu never started
+if test "$pu" != "running"
+	then
+				echo " "
+				echo "                      ERROR!   ERROR!!  ERROR!!!"
+				echo " "
+				echo "Cannot get VSAT active.  At your earliest convenience you will need to call the JDIS support line to get VSAT active."
+				echo " " 
+				echo " "
+				echo "In the meantime, if you need to dial into the host, run SWCHVSAT and you can"
+				echo "then run DIALUP on your modem..."
+fi
+
+# Remove temporary files
+rm /tmp/stoppu
+rm /tmp/dpu
+rm /tmp/prtdef
+rm /tmp/prtdef2

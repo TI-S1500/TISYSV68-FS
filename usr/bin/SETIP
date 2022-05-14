@@ -1,0 +1,94 @@
+#!/bin/sh
+
+# This script will prompt the user for the IP address of each JDVision
+# server that the dealership has.  Each JDVision server will have an
+# rpcbroker running on it only if the business system is TI Unix.
+# Otherwise, if it is HP Unix the rpcbroker runs on the HP Unix machine.
+# Each IP address will be put into the server.env file on the TI Unix system. 
+
+x=1
+nul=""
+yes="Y"
+yeslc="y"
+no="N"
+cp /usr/bin/oecpmmsrvr/newserver.env /tmp/server
+touch /usr/bin/oecpmmsrvr/brkrstat
+chown jdvision /usr/bin/oecpmmsrvr/brkrstat
+chmod 777 /usr/bin/oecpmmsrvr/brkrstat
+echo
+echo
+echo "You will now be asked to enter the IP address of your JDVision Server."
+echo "At the prompt, you need to enter the IP address for each SERVER that you"
+echo "have, including any JDVision Servers that you have at your remote stores."
+echo "Type in the IP address for your first JDVision Server and press the" 
+echo "RETURN key.  The IP address you entered will then be displayed back"
+echo "to you and you will be asked if the IP address is correct.  If it is,"
+echo "type Y and press the RETURN key.  If it is not correct, type N and"
+echo "press the RETURN key and that IP address will not be saved.  After"
+echo "typing in Y or N, you will be prompted to enter another IP address."
+echo "If you have another JDVision Server, type in the IP address of that"
+echo "server and press the RETURN key, and so on.  After you have entered the"
+echo "IP address for each of your JDVision Servers, simply press the RETURN"
+echo "key at the prompt where it is asking for the IP address and the"
+echo "procedure will complete."
+echo
+while [ $x -eq 1 ]
+do 
+	echo
+	echo "Enter the IP address of your JDVision Server and press the RETURN key"
+	echo "(To end this procedure, just press the RETURN key.)"
+	echo "                    (example: 204.55.73.192): \c"
+	read ipad 
+	if [ "$ipad" != "$nul" ]
+	then
+		echo
+		echo "You entered:    $ipad"
+		echo
+		echo "Type Y and press the RETURN key if this is correct,"
+		echo " or type N and press the RETURN key if it is not."
+		read yn
+		if [ "$yn" = "$yes" -o "$yn" = "$yeslc" ]
+		then
+			echo "DCE_BROKER=${ipad},7900" >> /tmp/server
+		fi
+	else
+		x=0
+	fi
+done
+
+mv /tmp/server /usr/bin/oecpmmsrvr/server.env
+
+#
+# Assign the rootcrons file to the crontab process.  Then create a
+# kill command for the currently running cron process.  Run the command
+# to kill the cron.  Then start the cron.
+# 
+crontab /usr/bin/cron/rootcrons
+touch cronkill
+ps -e|grep cron|awk '{ print "kill -9 " $1 } ' >>cronkill
+chmod +x cronkill
+./cronkill
+rm cronkill
+/etc/cron
+#
+# check to see if /usr/bin/oecpmmsrvr is already in /etc/exports.
+# If it is, don't add it again.  If it isn't, add it at the end of the 
+# file.
+#
+grep /usr/bin/oecpmmsrvr /etc/exports > /dev/null
+if [ $? -ne 0 ];then
+	cp /etc/exports /tmp/exports
+	echo "/usr/bin/oecpmmsrvr" >> /tmp/exports
+	mv /tmp/exports /etc/exports
+fi
+#
+# Check to see if /usr/bin/oecpmmsrvr is already exported.  If it is,
+# don't do an exportfs.  If it isn't, issue the command:  exportfs -a 
+#
+/usr/bin/exportfs > /tmp/exprtfs
+grep /usr/bin/oecpmmsrvr /tmp/exprtfs > /dev/null
+if [ $? -ne 0 ];then
+	/usr/bin/exportfs -a
+	rm /tmp/exprtfs
+fi
+

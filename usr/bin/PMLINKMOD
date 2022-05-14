@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# This script changes prodaix1.dx.deere.com in /JDIS/PROG/CMN/client.env to
+# 192.43.1.31 because of a problem with the hostname lookup on TI with the
+# OEC software.
+
+
+sed s/prodaix1.dx.deere.com/192.43.1.31/ /JDIS/PROG/CMN/client.env > /tmp/client.env
+
+mv /tmp/client.env /JDIS/PROG/CMN/client.env
+

@@ -1,0 +1,103 @@
+#########################################
+#  RVHAYES.scr
+#      Release 8.2
+# 5/19/94 - R95-1- C.G.KOLWEY - disable autoanswer in HANG - S0=0
+#########################################
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno
+                        set @BAUDRATE = @OLDBAUD
+                        return 0                # if still no number quit
+                end
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        goto .INIT                              # force modem to known state
+.DIAL11
+        reps 3
+.DIAL20
+        tsend CR,"ATDT",@phoneno,CR             # dial the phone
+        ttrap 45 "CONNECT 19", "CONNECT 9600", "CONNECT 4800", "CONNECT 2400", "CONNECT 1200", "CONNECT^M", "BUSY", "NO CARRIER"
+        if 0 or 7 or 8
+                if reps goto .DIAL20
+                return 1
+        end     
+        goto .AUTOBD
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        goto .INIT                              # force modem to known state
+.HANG11
+        reps 3
+.HANG20
+        tsend CR,"ATH",CR                       # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        wait 6                                  # add wait for slow modems
+        tsend CR, "ATE0Q1S0=0", CR                  # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+        return 0                                # return success
+.ANSWER
+        set @ANSRC = "1"                        # set answer rtncode to error
+        set @retlbl = "ANSWER"                  # setup for return from init
+        goto .INIT                              # force modem to known state
+.ANSW11
+        set @logfile = @logfile
+        ttrap "CONNECT 19", "CONNECT 9600","CONNECT 4800","CONNECT 2400","CONNECT 1200","CONNECT^M"
+        goto .AUTOBD
+.INIT
+        set @OLDBAUD = @BAUDRATE                # save the initial baudrate
+.INIT10
+        tsend "ATE1V1Q0X1*C1*E0*F1*L1S0=1", CR  # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+                                                #       speed conversion on
+                                                #       error control off
+                                                #       flow control on
+                                                #       hunt mode on
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                tsend "ATE1V1Q0X1*C1*E0*F1*L1S0=1", CR  # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+                if @status not = "1"
+                        if @BAUDRATE = "300" set @BAUDRATE = "19.2"
+                        else
+                                if @BAUDRATE = "600" set @BAUDRATE = "300"
+                                if @BAUDRATE = "1200" set @BAUDRATE = "300"
+                                if @BAUDRATE = "2400" set @BAUDRATE = "1200"
+                                if @BAUDRATE = "4800" set @BAUDRATE = "2400"
+                                if @BAUDRATE = "9600" set @BAUDRATE = "4800"
+                                if @BAUDRATE = "19.2" set @BAUDRATE = "9600"
+                        end
+                        if @BAUDRATE = @OLDBAUD return 1
+                        goto .INIT10
+                end
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK"                            # wait for response
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        set @BAUDRATE = @OLDBAUD
+        return 1                                # give up, wrong label set
+.AUTOBD
+        if not 0
+                if 1 set @BAUDRATE = "19.2"
+                if 2 set @BAUDRATE = "9600"
+                if 3 set @BAUDRATE = "4800"
+                if 4 set @BAUDRATE = "2400"
+                if 5 set @BAUDRATE = "1200"
+                if 6 set @BAUDRATE = "300"
+        end
+        set @ANSRC = "0"                        # set answer rtncode to OK
+        DISPLAY "BAUDRATE=" @BAUDRATE
+        return 0                                # give up, wrong label set
+.END

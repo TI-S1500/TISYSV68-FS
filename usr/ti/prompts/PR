@@ -1,0 +1,93 @@
+# cshf 	pr -- prints files   
+#	@(#)PR.sh	1.3  88/11/03
+#
+onintr end
+set quote = '"'
+
+prompt "^PR -- PRINTS FILES"\
+	"^Name of File(s) to Output:" _input_file macnm "$_input_file"\
+	"^*Output File or Device Name:" _output_file acnm $_output_file\
+	"^*Line Width:" wflag integer 80\
+	"^*Page Length:" lflag integer 66\
+	"^Accept Advanced Options:" optns yesno y\
+	"^#$*"\
+
+if ($abort) goto end
+if ($optns == "n") then
+   prompt "^PR -- PRINT OPTIONS"\
+          "^*First Page Number in Output:" kplsflag integer 1\
+          "^*Number of Columns in Output:" kflag    integer 1\
+          "^*Multiple Column Output Across Page:" aflag yesno n\
+          "^*Double Space Output:" dflag yesno n\
+          "^*Input Tab Expansion Size:" eflag string 8\
+          "^*Form Feed For New Pages:" fflag yesno n\
+          "^*Supply Custom Header:" hflag yesno n\
+          "^*Output Tab Expansion Size:" iflag string 8\
+          "^*Digits for Line Numbering:" nflag string 5\
+          "^*Merge and Print All Files:" mflag yesno n\
+          "^*Indent Each Line:" oflag integer 0\
+          "^*Pause After Each Page:" pflag yesno n\
+          "^*Print Diagnostic Messages:" rflag yesno y\
+          "^*Column Separation Character:" sflag string\
+          "^*Default Header/Trailer:" tflag yesno y\
+	  "^#$*"\
+
+	if ($abort) goto end
+	if ($hflag == "y") then
+		prompt "^PR -- HEADER LINE"\
+			"^Header Line:" hline string \
+			"^#$*"
+		if ($abort) goto end
+	endif
+		
+	if ($tflag == "n") set opt = t$opt
+	if ($rflag == "n") set opt = r$opt
+	if ($pflag == "y") set opt = p$opt
+	if ($mflag == "y") set opt = m$opt
+	if ($fflag == "y") set opt = f$opt
+	if ($dflag == "y") set opt = d$opt
+	if ($aflag == "y") set opt = a$opt
+	#
+	# start setting up printer options
+	if ($kflag != "")    set k    = -$kflag
+	if ($kplsflag != "") set K    = +$kplsflag
+	if ($eflag != "")    set eopt = -e$eflag
+	if ($iflag != "")    set iopt = -i$iflag
+	if ($nflag != "")    set nopt = -n$nflag
+	if ($sflag != "")    set sopt = -s$sflag
+	if ($oflag != "")    set oopt = -o$oflag
+endif
+#
+if ($optns == "y") set opt = frt
+if ($opt != "") set opt = -$opt
+
+if ($lflag != "") set lopt = -l$lflag
+if ($wflag != "") set wopt = -w$wflag
+
+if ($abort) goto end
+echo "=== PR COMMAND EXECUTING ==="
+if (($_output_file == "") && ("$hline" == "")) then
+  echo pr $K $k $opt $eopt $iopt $lopt $nopt $oopt $sopt $wopt $_input_file
+  pr $K $k $opt $eopt $iopt $lopt $nopt $oopt $sopt $wopt $_input_file
+endif
+if (($_output_file != "") && ("$hline" == "")) then
+  echo pr $K $k $opt $eopt $iopt $lopt $nopt \
+   $oopt $sopt $wopt $_input_file ">"$_output_file
+  pr $K $k $opt $eopt $iopt $lopt $nopt \
+   $oopt $sopt $wopt $_input_file >$_output_file
+endif
+if (($_output_file == "") && ("$hline" != "")) then
+  echo pr $K $k $opt $eopt -h $quote"$hline"$quote $iopt $lopt $nopt \
+   $oopt $sopt $wopt $_input_file 
+  pr $K $k $opt $eopt -h "$hline" $iopt $lopt $nopt \
+   $oopt $sopt $wopt $_input_file
+endif
+if (($_output_file != "") && ("$hline" != "")) then
+  echo pr $K $k $opt $eopt -h $quote"$hline"$quote $iopt $lopt $nopt \
+   $oopt $sopt $wopt $_input_file ">"$_output_file
+  pr $K $k $opt $eopt -h "$hline" $iopt $lopt $nopt \
+   $oopt $sopt $wopt $_input_file >$_output_file
+endif
+
+end:
+unset *opt *flag k K hline optns quote

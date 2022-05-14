@@ -1,0 +1,2 @@
+Dec 31 18:03:06 >>console  root >> : CPP device /dev/ccb08/cpp1, opcode = DNLDREQ, error = 54, MTC tc0. (INFO 1005618)
+Dec 31 18:03:06 >>console  root >> : MTC download process completed. (INFO 1005653)

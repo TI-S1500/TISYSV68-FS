@@ -1,0 +1,9 @@
+st offbd off
+st onbd off
+st eprom off
+st nureg off
+st dram off
+st sram off
+st port0 off
+st port1 off
+st ctrl off

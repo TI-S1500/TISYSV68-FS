@@ -1,0 +1,50 @@
+:
+SYSNAME=`uname`
+if (test "$SYSNAME" = "XENIX") then
+  exit
+fi
+SYS0GRP=`grep -c sys000 /etc/passwd`
+if (test $SYS0GRP -eq 0) then
+  ROOTID=`id|grep -c root`
+  if (test $ROOTID -eq 0) then
+    touch /JDIS/PROG/CMN/updtcron
+    echo "\nYou must su to root, or log onto the Master Console as root,\n"
+    echo "  then enter  cronset.85  and press return\n"
+    echo "  to complete this Patch Update."
+    echo "\n\n\n Press Return to Continue... \c"
+    read a
+    exit
+  fi
+fi
+mkdir /usr/bin/cron 2>>/dev/null
+touch /usr/bin/cron/cron85.log
+date >>/usr/bin/cron/cron85.log
+if (test -r /usr/lib/cron/cron.allow)
+  then
+    ROOTGRP=`grep -c root /usr/lib/cron/cron.allow`
+    if (test $ROOTGRP -gt 0)
+      then
+	echo "root is in cron allow" >>/usr/bin/cron/cron85.log
+      else
+	echo root >>/usr/lib/cron/cron.allow
+	echo "root added to cron allow" >>/usr/bin/cron/cron85.log
+     fi
+  else
+     echo "cron allow file does not exist" >>/usr/bin/cron/cron85.log
+fi
+rm /usr/bin/cron/rootcrons 2>>/dev/null
+touch /usr/bin/cron/rootcrons
+cp /usr/spool/cron/crontabs/root /usr/bin/cron/rootcrons 2>>/dev/null
+cp /once/init/cleanup.scr /usr/bin/cron/cleanup.scr
+cp /once/init/cleanup.cron /usr/bin/cron/cleanup.cron
+rm -r /once/init
+chmod 777 /usr/bin/cron/cleanup.scr
+cat /usr/bin/cron/cleanup.cron >>/usr/bin/cron/rootcrons
+crontab /usr/bin/cron/rootcrons
+ps -e|grep cron|awk '{ print "kill " $1 }' >/usr/bin/cronkill
+chmod +x /usr/bin/cronkill
+/usr/bin/cronkill
+echo "reinitialize cron" >>/usr/bin/cron/cron85.log
+/etc/cron
+crontab -l >>/usr/bin/cron/cron85.log
+rm /usr/bin/cronkill

@@ -1,0 +1,42 @@
+# SET3715.mdp: BEING USED BY DIALINON ON TI U, HP MDP ON E,F,G AND HP D MACHINES
+#*******************************************************************************
+# ATT DATAPORT 3715 - TI/HP VERSION
+# 04/23/96 - C.G.KOLWEY - CREATE SCRIPT
+# 08/08/96 - R96-3 - C.G.KOLWEY - REMOVE &C1 (DEFAULT ON 3715, 3740 BUT NOT 3710)
+# 12/02/96 - R97-1 - C.G.KOLWEY - ADD L1
+#*******************************************************************************
+.DIAL
+        set @ATTEMPTS = "0"
+.LOOP
+        if @ATTEMPTS = "3" quit 1               # quit after 3 attempts
+        let @ATTEMPTS = @ATTEMPTS + "1"
+#
+#JDPS and DIALIN modem settings - factory async, Q2=enable in orig mode,
+#&D2=DTR RS232, \Q1=XON/XOFF flow control, L1= lower volume
+#\T20=disc after 20 mins no activity, E0=disable echo
+#
+        tsend "AT&F0Q2&D2\\Q1\\T20E0L1&W0", CR
+        ttrap 2 "OK"
+#
+        wait 3
+        tsend "ATZ0", CR                        # reset modem
+        ttrap 2 "OK"
+#
+        wait 3
+        tsend "AT", CR                          # is modem awake ?
+        ttrap 2 "OK"
+        if @status not = "1"
+                wait 3
+                tsend "+++"                     # nope, break into cmd mode
+                ttrap 2 "OK", "NO CARRIER"
+                if @status = "0"                # awake yet ?
+                        drop                    # nope, try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                goto .LOOP                      # go try again
+        end
+#
+        quit 0
+.END

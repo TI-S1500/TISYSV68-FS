@@ -1,0 +1,31 @@
+ISDELINDEX(3T)                                     ISDELINDEX(3T)
+
+NAME
+     isdelindex - Deletes an index from a T-ISAM file
+
+SYNOPSIS
+     #include <isam.h>
+
+     int isdelindex(tifd, iskd)
+     int tifd;
+     struct keydesc *iskd;
+
+DESCRIPTION
+     The isdelindex function is the C-ISAM 2.1 interface to
+     tidelindex(3T).
+
+     This function deletes the index defined by iskd from the 
+     T-ISAM file indicated by tifd.  The file must be opened with
+     exclusive access.  The iskd is copied and converted into a
+     tikd (tikeydesc structure), using the global variable
+     isflage to set tikd.k_flage before calling tidelindex.
+
+DIAGNOSTICS
+     On error, -1 is returned and iserrno, iserrio, isstat1, and
+     isstat2 are set.  If no errors occur, iskdid is set to the
+     unique key ID assigned to iskd.
+
+SEE ALSO
+     isaddindex(3T), isopen(3T), tidelindex(3T), tisam(4).
+
+

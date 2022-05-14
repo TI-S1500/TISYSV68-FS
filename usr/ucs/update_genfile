@@ -1,0 +1,411 @@
+############################################################################
+# This script updates both genfiles for new lu config.
+# 15 Jun 95  David Corkery
+#
+#
+# Updates___________________________________________________________________
+#
+# Reorganized script into main program and subroutines.  Added subroutine to
+# test if script has been run previously.  Added subroutine to check if pu
+# is already stopped.  07 Aug 95 DMC
+# 
+# Revised script to complete update of one genfile (vsat or dial) if the other
+# fails to update.  Tightened up error checking.  Added more update messages
+# to log file.  Saving sed files if errors occur.  19 Oct 95 DMC
+############################################################################
+
+
+
+# Subroutines_______________________________________________________________
+
+
+repl_files()
+{
+# Replace safety copies of genfiles...
+su sys000 -c "cp /usr/ucs/genfile.vsav /usr/ucs/genfile.vsat"
+su sys000 -c "cp /usr/ucs/genfile.dsav /usr/ucs/genfile.dial"
+su sys000 -c "cp /usr/ucs/puinput.vsav /usr/ucs/puinput.vsat"
+su sys000 -c "cp /usr/ucs/puinput.dsav /usr/ucs/puinput.dial"
+su sys000 -c "cp /usr/ucs/puinput.sav /usr/ucs/puinput"
+}
+
+
+error_routine()
+{
+
+echo "Updating DIALUP files ENDED IN ERRORS!  Please Call JDIS..."
+echo `date`',Update to TI 3270 SNA files completed with errors.' >>/usr/adm/JDISRLSE.log
+error=1
+
+# Start pu if it is stopped...
+activate_pu
+
+# Exit script...
+exit_routine
+}
+
+
+display_message()
+{
+# Display message to users...
+echo ""
+echo ""
+echo "                Updating DIALUP files.  Please stand by..."
+
+echo `date`',Starting update_genfile script'>>/usr/adm/JDISRLSE.log
+
+# Initialize variables...
+error=0
+
+}
+
+
+init_script()
+{
+# Make safety copies of genfiles in case of error...
+su sys000 -c "cp /usr/ucs/genfile.vsat /usr/ucs/genfile.vsav"
+su sys000 -c "cp /usr/ucs/genfile.dial /usr/ucs/genfile.dsav"
+su sys000 -c "cp /usr/ucs/puinput.vsat /usr/ucs/puinput.vsav"
+su sys000 -c "cp /usr/ucs/puinput.dial /usr/ucs/puinput.dsav"
+su sys000 -c "cp /usr/ucs/puinput /usr/ucs/puinput.sav"
+}
+
+
+snaadm_dpu()
+# Run d pu command within snaadm and pipe output to file...
+{
+activate_pu
+echo 'd pu\n\nq' > /usr/ucs/temp5
+/JDIS/PROG/CMN/JDISSNAADM -w 60 /usr/ucs/snaadm </usr/ucs/temp5 >/usr/ucs/temp6 2>&1
+if [ $? != 0 ]
+then
+	echo `date`',update_genfile failed determining dial or vsat' >> /usr/adm/JDISRLSE.log
+	error_routine
+fi
+}
+
+
+test_previous()
+# Determine if update_genfile has been run previously...
+{
+grep 'userid=30024' /usr/ucs/genfile.dial >/usr/ucs/temp8 2>&1
+if [ $? = 0 ]
+then
+	grep 'userid=30024' /usr/ucs/genfile.vsat >/usr/ucs/temp8 2>&1
+	if [ $? = 0 ]
+	then
+		echo `date`',update_genfile has been run previously.  Exiting...' >> /usr/adm/JDISRLSE.log
+		exit_routine
+	fi
+fi
+}
+
+activate_pu()
+# Routine will start pu if inactive...
+{
+echo 'q' > /usr/ucs/temp5
+su sys000 -c "/usr/ucs/snaadm </usr/ucs/temp5 >/usr/ucs/temp9 2>&1"
+#grep "channel not available" >/usr/ucs/temp9 2>&1
+if [ $? != 0 ]
+then
+	restart_pu
+fi
+active=0
+}
+
+
+
+vsat_or_dial()
+# Determine if dealer is VSAT or DIAL
+{
+snaadm_dpu
+grep 'originate' /usr/ucs/temp6 >/usr/ucs/temp7 2>&1
+if [ $? = 0 ]
+then
+	mode=dial
+	echo `date`',update_genfile detected mode as DIAL' >> /usr/adm/JDISRLSE.log
+else
+	mode=vsat
+	echo `date`',update_genfile detected mode as VSAT' >> /usr/adm/JDISRLSE.log
+fi
+}
+
+
+stop_pu()
+# Stop sna pu...
+{
+# If pu is active then stop it..
+if [ $active != 0 ]
+then
+	exit
+else
+# Stop sna pu 
+	if [ -f /usr/bin/3270fixup ] 
+	then
+		/usr/bin/3270fixup -quiet -kill
+		rc=$?
+	
+	elif [ -f /JDIS/PROG/CMN/3270fixup ]
+	then
+		/JDIS/PROG/CMN/3270fixup -quiet -kill
+		rc=$?
+	
+	else
+		echo `date`',update_genfile could not find 3270fixup program.' >> /usr/adm/JDISRLSE.log
+		error_routine
+	fi
+	
+	if [ $rc != 0 ]
+	then
+			echo `date`',update_genfile failed stopping pu' >> /usr/adm/JDISRLSE.log
+			error_routine
+	else
+		echo `date`',update_genfile successfully stopped pu' >> /usr/adm/JDISRLSE.log
+	fi
+fi
+}
+
+update_genfiles()
+# update genfiles with new lu config and regen files...
+{
+
+update_error=0
+if [ -f /usr/ucs/genfile.$type ]
+then
+	sed '/lu=/d' /usr/ucs/genfile.$type >/usr/ucs/temp1
+	grep 'lu=' /usr/ucs/temp1 >/usr/ucs/tempdump
+	if [ $? = 0 ]
+	then
+		echo `date`",update_genfile could not delete \"lu=\" in genfile.$type" >> /usr/adm/JDISRLSE.log
+		update_error=1
+		echo $type >>/usr/ucs/temperr
+	else
+		echo `date`",update_genfile successfully deleted \"lu=\" in genfile.$type" >> /usr/adm/JDISRLSE.log
+	fi
+
+	if [ $update_error = 0 ]
+	then
+		sed -f /usr/ucs/addlus /usr/ucs/temp1 >/usr/ucs/temp2
+		grep 'lu=51' /usr/ucs/temp2 >/usr/ucs/tempdump
+		if [ $? != 0 ]
+		then
+			echo `date`",update_genfile failed adding lu's in genfile.$type" >> /usr/adm/JDISRLSE.log
+			update_error=1
+			echo $type >>/usr/ucs/temperr
+		else
+			echo `date`",update_genfile successfully added lu's in genfile.$type" >> /usr/adm/JDISRLSE.log
+		fi
+	fi
+
+	if [ $update_error = 0 ]
+	then
+		sed -f /usr/ucs/adddevs /usr/ucs/temp2 > /usr/ucs/temp3
+		grep 'userid=30024' /usr/ucs/temp3 >/usr/ucs/tempdump
+		if [ $? != 0 ]
+		then
+			echo `date`",update_genfile failed adding devs in genfile.$type" >> /usr/adm/JDISRLSE.log
+			update_error=1
+			echo $type >>/usr/ucs/temperr
+		else
+			echo `date`",update_genfile successfully added devs in genfile.$type" >> /usr/adm/JDISRLSE.log
+		fi
+	fi
+
+	if [ $update_error = 0 ]
+	then
+		su sys000 -c "cp /usr/ucs/temp3 /usr/ucs/genfile.$type"
+		echo `date`",update_genfile successfully converted genfile.$type" >> /usr/adm/JDISRLSE.log
+	fi
+
+
+else
+	echo `date`",/usr/ucs/genfile.$type does not exist" >> /usr/adm/JDISRLSE.log
+fi
+
+if [ $update_error = 1 ]
+then
+	error=1
+fi
+
+}
+
+
+regen_pu()
+{
+#Regen the file
+genpu_error=0
+su sys000 -c "/usr/ucs/genpu /usr/ucs/genfile.$type /usr/ucs/puinput.$type >/usr/ucs/temp4"
+if [ $? != 0 ]
+then
+	echo `date`",update_genfile failed running genpu genfile.$type" >> /usr/adm/JDISRLSE.log
+	genpu_error=1
+else
+	echo `date`",update_genfile successfully regenerated the pu for genfile.$type" >> /usr/adm/JDISRLSE.log
+fi
+}
+
+
+copy_puinput()
+#Copy dial or vsat puinput into puinput file
+{
+if [ $mode = dial ]
+then
+	su sys000 -c "cp /usr/ucs/puinput.dial /usr/ucs/puinput"
+	echo `date`',update_genfile successfully copied puinput.dial into puinput.' >> /usr/adm/JDISRLSE.log
+else
+	su sys000 -c "cp /usr/ucs/puinput.vsat /usr/ucs/puinput"
+	echo `date`',update_genfile successfully copied puinput.vsat into puinput.' >> /usr/adm/JDISRLSE.log
+fi
+}
+
+reconfig_gen()
+{
+if [ -f /usr/ucs/temperr ]
+then
+	rm -r /usr/ucs/temperr
+fi
+
+touch /usr/ucs/temperr
+
+if [ -f /usr/ucs/temperr2 ]
+then
+	rm -r /usr/ucs/temperr2
+fi
+
+touch /usr/ucs/temperr2
+
+if [ -f /usr/ucs/temptype ]
+then
+	rm -r /usr/ucs/temptype
+fi
+
+echo vsat >/usr/ucs/temptype
+echo dial >> /usr/ucs/temptype
+
+for type in `cat /usr/ucs/temptype`
+do
+
+	update_genfiles
+	
+	grep $type /usr/ucs/temperr >/usr/ucs/temphold
+	if [ $? != 0 ]
+	then
+		regen_pu
+		if [ $genpu_error = 1 ]
+		then
+			if [ $type = vsat ]
+			then
+				su sys000 -c "mv /usr/ucs/genfile.vsat /usr/ucs/genfile.v961"
+				su sys000 -c "mv /usr/ucs/genfile.vsav /usr/ucs/genfile.vsat"
+				su sys000 -c "mv /usr/ucs/puinput.vsav /usr/ucs/puinput.vsat"
+			else	
+				su sys000 -c "mv /usr/ucs/genfile.dial /usr/ucs/genfile.d961"
+				su sys000 -c "mv /usr/ucs/genfile.dsav /usr/ucs/genfile.dial"
+				su sys000 -c "mv /usr/ucs/puinput.dsav /usr/ucs/puinput.dial"
+			fi
+		
+			echo $type >>/usr/ucs/temperr2
+			error=1
+		fi
+	else
+		echo `date`",update_genfile did not regen puinput for "$type" due to error." >> /usr/adm/JDISRLSE.log
+
+	fi
+
+done
+
+}
+
+
+restart_pu()
+# Restart pu
+{
+su sys000 -c '/usr/ucs/pu'
+if [ $? != 0 ]
+then
+	echo `date`',update_genfile failed starting the pu' >> /usr/adm/JDISRLSE.log
+	error_routine
+else
+	echo `date`',update_genfile successfully started the pu' >> /usr/adm/JDISRLSE.log
+fi
+}
+
+
+exit_routine()
+# Exit script...
+{
+if [ $error = 0 ]
+then
+	echo `date`',Update to TI 3270 SNA files completed successfully.' >>/usr/adm/JDISRLSE.log
+echo ""
+echo "                Update to TI 3270 SNA files completed SUCCESSFULLY!"
+else
+	echo `date`',Update to TI 3270 SNA files completed with errors.' >>/usr/adm/JDISRLSE.log
+echo ""
+echo "                Update to TI 3270 SNA files completed with ERRORS!"
+fi
+
+if [ -f /usr/ucs/temperr ]
+then
+	err=`wc -w /usr/ucs/temperr | awk '{ print $1 }' 2>&1`
+	if [ $err -lt 1 ]
+	then
+		rm -f /usr/ucs/addlus
+		rm -f /usr/ucs/adddevs
+	fi
+else
+	rm -f /usr/ucs/adddevs
+	rm -f /usr/ucs/addlus
+fi
+
+rm -f /usr/ucs/temp*
+rm -f /usr/ucs/*sav
+
+exit
+}
+
+
+
+############################################################################
+# M A I N   P R O G R A M 
+############################################################################
+
+# Display message to user...
+  display_message
+
+# Test if update_genfile was run previously...
+  test_previous
+
+# Make safety copies of genfiles...
+  init_script
+
+# See if dealer is VSAT or DIAL...
+  vsat_or_dial
+
+# Stop sna pu...
+  stop_pu
+
+# Update genfiles with new LU configuration...
+  reconfig_gen
+
+# If no errors in reconfig of the gen then update puinput...
+  grep $mode /usr/ucs/temperr >/usr/ucs/temphold
+  if [ $? != 0 ]
+  then
+  	grep $mode /usr/ucs/temperr2 >/usr/ucs/temphold
+  	if [ $? != 0 ]
+  	then
+		copy_puinput
+  	else
+		echo `date`",update_genfile did not copy puinput."$mode" into puinput due to error." >>/usr/adm/JDISRLSE.log
+	fi
+  else
+	echo `date`",update_genfile did not copy puinput."$mode" into puinput due to error." >>/usr/adm/JDISRLSE.log
+  fi
+
+# Restart the PU...
+  restart_pu
+
+# Exit...
+  exit_routine
+

@@ -1,0 +1,10 @@
+dir:menu:     DIRECTORY OPERATIONS MENU, Series 1000     :dir.hlp
+CPDIR:c:Copies a directory:
+DFM:c:Invokes the directory and file manager:
+DIRCMP:c:Compares directories:
+FIND:c:Finds files:
+LS:c:Lists contents of directories:
+MKDIR:c:Makes a directory:
+PWD:c:Prints working directory name:
+RM:c:Removes files:
+RMDIR:c:Removes directories:

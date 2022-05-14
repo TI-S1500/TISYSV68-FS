@@ -1,0 +1,35 @@
+# cshf CAT - display a file on the terminal screen 
+#	@(#)CAT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt	"^CAT -- CONCATENATES AND PRINTS FILES"\
+	"^File Name(s):"  _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^#$*"
+
+if( $abort )  goto end
+if( $_output_file == "" )  then
+	      echo "=== CAT COMMAND EXECUTING ==="
+	      cat $_input_file 
+	else  if( -e $_output_file ) then
+		prompt	"^CAT -- COPIES AND CONCATENATES FILES"\
+			"^Replace or Append:"  how  "element(R,r=Rep,A,a=App"\
+			"^#$*"
+		if( $abort )  goto end
+		if( $how == "Rep" )  then
+	      	             echo "=== CAT COMMAND EXECUTING ==="
+			     cat $_input_file  > $_output_file
+			else
+	      	             echo "=== CAT COMMAND EXECUTING ==="
+ 			     cat $_input_file >> $_output_file
+		endif
+	else
+	echo "=== CAT COMMAND EXECUTING ==="
+	echo cat $_input_file > $_output_file
+	cat $_input_file  > $_output_file
+endif	
+
+# cleanup time
+end:
+unset how 

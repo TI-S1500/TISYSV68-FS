@@ -1,0 +1,8 @@
+T,C,PROMPT24,FLAT RATE NUM CHG.(PW04)
+A,Reversal Code,17,17,1,- R,1, ,0,0
+F,Work Order Number,18,23,1,,2,0,0,1
+F,Part Number,24,35,0,,1, ,0,0
+F,Old Repair Number,36,43,1,,1, ,0,1
+F,New Repair Number,44,51,1,,1, ,0,1
+C,Card Code,1,1,1,,0,Z,0,2
+C,Transaction Code,2,5,1,,0,PW04,0,2

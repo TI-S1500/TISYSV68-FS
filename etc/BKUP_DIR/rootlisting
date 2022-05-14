@@ -1,0 +1,2969 @@
+
+
+Nov 28 15:26 1997  ROOTBKUP LISTING Page 1
+
+
+######  ####### ####### ####### ######  #    #  #     # ######
+#     # #     # #     #    #    #     # #   #   #     # #     #
+#     # #     # #     #    #    #     # #  #    #     # #     #
+######  #     # #     #    #    ######  ###     #     # ######
+#   #   #     # #     #    #    #     # #  #    #     # #
+#    #  #     # #     #    #    #     # #   #   #     # #
+#     # ####### #######    #    ######  #    #   #####  #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 1
+
+
+rootverify: Fri Nov 28 15:16:52 CST 1997
+
+Archive   .cshrc    1 blocks
+Archive   .exrc 1 blocks
+Archive   .lastlogin    0 blocks
+Archive   .login    2 blocks
+Archive   .profile  1 blocks
+Archive   ASPENLOK.SYS  0 blocks
+Archive   JDIS  0 blocks
+Archive   VDTCTL    28 blocks
+Archive   bin   0 blocks
+Archive   bin/as    9 blocks
+Archive   bin/acctcom   64 blocks
+Archive   bin/ar    60 blocks
+Archive   bin/backup    4 blocks
+Archive   bin/basename  1 blocks
+Archive   bin/cat   43 blocks
+Archive   bin/chgrp 43 blocks
+Archive   bin/chkshlib  33 blocks
+Archive   bin/chmod 37 blocks
+Archive   bin/chown 41 blocks
+Archive   bin/cmp   34 blocks
+Archive   bin/comm  36 blocks
+Archive   bin/cpio  119 blocks
+Archive   bin/crypt 23 blocks
+Archive   bin/csplit    25 blocks
+Archive   bin/ctrace    78 blocks
+Archive   bin/ctcr  7 blocks
+Archive   bin/ctc is linked to bin/ctcr
+Archive   bin/cut   37 blocks
+Archive   bin/date  43 blocks
+Archive   bin/dd    45 blocks
+Archive   bin/df    29 blocks
+Archive   bin/diff  44 blocks
+Archive   bin/diffh 38 blocks
+Archive   bin/diff3prog 18 blocks
+Archive   bin/diff3 3 blocks
+Archive   bin/dircmp    6 blocks
+Archive   bin/dirname   1 blocks
+Archive   bin/du    39 blocks
+Archive   bin/dump  78 blocks
+Archive   bin/echo  12 blocks
+Archive   bin/ed    62 blocks
+Archive   bin/red is linked to bin/ed
+Archive   bin/env   42 blocks
+Archive   bin/errpt 47 blocks
+Archive   bin/expr  43 blocks
+Archive   bin/factor    18 blocks
+Archive   bin/false 1 blocks
+Archive   bin/file  44 blocks
+Archive   bin/finc  60 blocks
+Archive   bin/find  62 blocks
+Archive   bin/frec  89 blocks
+Archive   bin/getopt    35 blocks
+Archive   bin/grep  41 blocks
+Archive   bin/head  35 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 2
+
+
+Archive   bin/id    17 blocks
+Archive   bin/join  37 blocks
+Archive   bin/kill  13 blocks
+Archive   bin/ld    183 blocks
+Archive   bin/line  9 blocks
+Archive   bin/login 38 blocks
+Archive   bin/lorder    5 blocks
+Archive   bin/ls    60 blocks
+Archive   bin/mail  87 blocks
+Archive   bin/rmail is linked to bin/mail
+Archive   bin/make  71 blocks
+Archive   bin/makekey   11 blocks
+Archive   bin/mc68as    603 blocks
+Archive   bin/mkdir 38 blocks
+Archive   bin/mkmirr    39 blocks
+Archive   bin/mkmsg 66 blocks
+Archive   bin/mkshlib   94 blocks
+Archive   bin/more  127 blocks
+Archive   bin/ln    47 blocks
+Archive   bin/mv is linked to bin/ln
+Archive   bin/cp is linked to bin/ln
+Archive   bin/ncheck    39 blocks
+Archive   bin/newform   27 blocks
+Archive   bin/newgrp    24 blocks
+Archive   bin/nice  20 blocks
+Archive   bin/nl    22 blocks
+Archive   bin/nm    42 blocks
+Archive   bin/nohup 23 blocks
+Archive   bin/od    38 blocks
+Archive   bin/pack  20 blocks
+Archive   bin/passwd    49 blocks
+Archive   bin/paste 37 blocks
+Archive   bin/pcat  15 blocks
+Archive   bin/pg    70 blocks
+Archive   bin/prmsg 35 blocks
+Archive   bin/ps    52 blocks
+Archive   bin/pwd   60 blocks
+Archive   bin/rm    41 blocks
+Archive   bin/rmdir 37 blocks
+Archive   bin/sdiff 44 blocks
+Archive   bin/sed   37 blocks
+Archive   bin/sh    98 blocks
+Archive   bin/rsh is linked to bin/sh
+Archive   bin/show  196 blocks
+Archive   bin/showfs    65 blocks
+Archive   bin/showhex   123 blocks
+Archive   bin/showmsg   34 blocks
+Archive   bin/size  40 blocks
+Archive   bin/sleep 14 blocks
+Archive   bin/sort  57 blocks
+Archive   bin/split 13 blocks
+Archive   bin/strip 90 blocks
+Archive   bin/stty  58 blocks
+Archive   bin/su    72 blocks
+Archive   bin/sum   34 blocks
+Archive   bin/sync  8 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 3
+
+
+Archive   bin/sysboot   7 blocks
+Archive   bin/bootdvr   66 blocks
+Archive   bin/sysdump   41 blocks
+Archive   bin/tail  37 blocks
+Archive   bin/tar   114 blocks
+Archive   bin/time  22 blocks
+Archive   bin/touch 37 blocks
+Archive   bin/true  1 blocks
+Archive   bin/tsort 16 blocks
+Archive   bin/tty   35 blocks
+Archive   bin/uname 13 blocks
+Archive   bin/uniq  37 blocks
+Archive   bin/unpack    20 blocks
+Archive   bin/upsstat   28 blocks
+Archive   bin/upson is linked to bin/upsstat
+Archive   bin/upsoff is linked to bin/upsstat
+Archive   bin/upsmon is linked to bin/upsstat
+Archive   bin/portwait  14 blocks
+Archive   bin/upswait   6 blocks
+Archive   bin/usradm    16 blocks
+Archive   bin/usradm1   176 blocks
+Archive   bin/wc    35 blocks
+Archive   bin/who   45 blocks
+Archive   bin/bsh   258 blocks
+Archive   bin/csh is linked to bin/bsh
+Archive   bin/ccbda 241 blocks
+Archive   bin/cp2db 298 blocks
+Archive   bin/mtcda 41 blocks
+Archive   bin/awk   111 blocks
+Archive   bin/tee   35 blocks
+Archive   bin/login.jdis    38 blocks
+Archive   bin/btape_utility 104 blocks
+Archive   bin/slog  60 blocks
+Archive   bin/sysdump.rm    59 blocks
+Archive   bin/sysdump.lo    68 blocks
+Archive   bin/mtcda.rm  171 blocks
+Archive   bin/mtcda.lo  97 blocks
+Archive   bin_orig  0 blocks
+Archive   bin_orig/login    75 blocks
+Archive   dev   0 blocks
+Archive   dev/dsk   0 blocks
+Archive   dev/dsk/ram   0 blocks
+Archive   dev/dsk/c09u00    0 blocks
+Archive   dev/dsk/sys   0 blocks
+Archive   dev/dsk/c09u00s000    0 blocks
+Archive   dev/dsk/sys:LABL  0 blocks
+Archive   dev/dsk/c09u00s001    0 blocks
+Archive   dev/dsk/sys:PTBL  0 blocks
+Archive   dev/dsk/c09u00s002    0 blocks
+Archive   dev/dsk/sys:SAVE  0 blocks
+Archive   dev/dsk/c09u00s003    0 blocks
+Archive   dev/dsk/sys:FMT   0 blocks
+Archive   dev/dsk/c09u00s004    0 blocks
+Archive   dev/dsk/sys:TZON  0 blocks
+Archive   dev/dsk/c09u00s008    0 blocks
+Archive   dev/dsk/sys:unx1  0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 4
+
+
+Archive   dev/dsk/c09u00s012    0 blocks
+Archive   dev/dsk/sys:unx2  0 blocks
+Archive   dev/dsk/c09u00s016    0 blocks
+Archive   dev/dsk/sys:unx3  0 blocks
+Archive   dev/dsk/c09u00s017    0 blocks
+Archive   dev/dsk/sys:cfg1  0 blocks
+Archive   dev/dsk/c09u00s018    0 blocks
+Archive   dev/dsk/sys:cfg2  0 blocks
+Archive   dev/dsk/c09u00s019    0 blocks
+Archive   dev/dsk/sys:cfg3  0 blocks
+Archive   dev/dsk/c09u00s020    0 blocks
+Archive   dev/dsk/sys:root  0 blocks
+Archive   dev/dsk/c09u00s021    0 blocks
+Archive   dev/dsk/sys:usr   0 blocks
+Archive   dev/dsk/c09u00s022    0 blocks
+Archive   dev/dsk/sys:jdis  0 blocks
+Archive   dev/dsk/c09u00s023    0 blocks
+Archive   dev/dsk/sys:pipe  0 blocks
+Archive   dev/dsk/c09u00s024    0 blocks
+Archive   dev/dsk/sys:swap  0 blocks
+Archive   dev/mt    0 blocks
+Archive   dev/qt    0 blocks
+Archive   dev/qt/0h 0 blocks
+Archive   dev/qt/0hn    0 blocks
+Archive   dev/qt/0n 0 blocks
+Archive   dev/qt/0nn    0 blocks
+Archive   dev/qt/0o 0 blocks
+Archive   dev/qt/0on    0 blocks
+Archive   dev/qt/0p 0 blocks
+Archive   dev/qt/0pn    0 blocks
+Archive   dev/qt/0q 0 blocks
+Archive   dev/qt/0qn    0 blocks
+Archive   dev/rdsk  0 blocks
+Archive   dev/rdsk/ram  0 blocks
+Archive   dev/rdsk/c09u00   0 blocks
+Archive   dev/rdsk/sys  0 blocks
+Archive   dev/rdsk/c09u00s000   0 blocks
+Archive   dev/rdsk/sys:LABL 0 blocks
+Archive   dev/rdsk/c09u00s001   0 blocks
+Archive   dev/rdsk/sys:PTBL 0 blocks
+Archive   dev/rdsk/c09u00s002   0 blocks
+Archive   dev/rdsk/sys:SAVE 0 blocks
+Archive   dev/rdsk/c09u00s003   0 blocks
+Archive   dev/rdsk/sys:FMT  0 blocks
+Archive   dev/rdsk/c09u00s004   0 blocks
+Archive   dev/rdsk/sys:TZON 0 blocks
+Archive   dev/rdsk/c09u00s008   0 blocks
+Archive   dev/rdsk/sys:unx1 0 blocks
+Archive   dev/rdsk/c09u00s012   0 blocks
+Archive   dev/rdsk/sys:unx2 0 blocks
+Archive   dev/rdsk/c09u00s016   0 blocks
+Archive   dev/rdsk/sys:unx3 0 blocks
+Archive   dev/rdsk/c09u00s017   0 blocks
+Archive   dev/rdsk/sys:cfg1 0 blocks
+Archive   dev/rdsk/c09u00s018   0 blocks
+Archive   dev/rdsk/sys:cfg2 0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 5
+
+
+Archive   dev/rdsk/c09u00s019   0 blocks
+Archive   dev/rdsk/sys:cfg3 0 blocks
+Archive   dev/rdsk/c09u00s020   0 blocks
+Archive   dev/rdsk/sys:root 0 blocks
+Archive   dev/rdsk/c09u00s021   0 blocks
+Archive   dev/rdsk/sys:usr  0 blocks
+Archive   dev/rdsk/c09u00s022   0 blocks
+Archive   dev/rdsk/sys:jdis 0 blocks
+Archive   dev/rdsk/c09u00s023   0 blocks
+Archive   dev/rdsk/sys:pipe 0 blocks
+Archive   dev/rdsk/c09u00s024   0 blocks
+Archive   dev/rdsk/sys:swap 0 blocks
+Archive   dev/rmt   0 blocks
+Archive   dev/rqt   0 blocks
+Archive   dev/rqt/0h    0 blocks
+Archive   dev/rqt/0hn   0 blocks
+Archive   dev/rqt/0n    0 blocks
+Archive   dev/rqt/0nn   0 blocks
+Archive   dev/rqt/0o    0 blocks
+Archive   dev/rqt/0on   0 blocks
+Archive   dev/rqt/0p    0 blocks
+Archive   dev/rqt/0pn   0 blocks
+Archive   dev/rqt/0q    0 blocks
+Archive   dev/rqt/0qn   0 blocks
+Archive   dev/rvt   0 blocks
+Archive   dev/vt    0 blocks
+Archive   dev/root  0 blocks
+Archive   dev/swap  0 blocks
+Archive   dev/rswap 0 blocks
+Archive   dev/console   0 blocks
+Archive   dev/syscon    0 blocks
+Archive   dev/tty   0 blocks
+Archive   dev/mem   0 blocks
+Archive   dev/kmem  0 blocks
+Archive   dev/null  0 blocks
+Archive   dev/pmem  0 blocks
+Archive   dev/systty    0 blocks
+Archive   dev/phys0 0 blocks
+Archive   dev/phys1 0 blocks
+Archive   dev/phys2 0 blocks
+Archive   dev/phys3 0 blocks
+Archive   dev/phys4 0 blocks
+Archive   dev/phys5 0 blocks
+Archive   dev/phys6 0 blocks
+Archive   dev/phys7 0 blocks
+Archive   dev/boot  0 blocks
+Archive   dev/error 0 blocks
+Archive   dev/hot   0 blocks
+Archive   dev/spa   0 blocks
+Archive   dev/rtc   0 blocks
+Archive   dev/prf   0 blocks
+Archive   dev/opctl 0 blocks
+Archive   dev/clone 0 blocks
+Archive   dev/log   0 blocks
+Archive   dev/strnet    0 blocks
+Archive   dev/pipe  0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 6
+
+
+Archive   dev/ups   0 blocks
+Archive   dev/mirror    0 blocks
+Archive   dev/ptmx  0 blocks
+Archive   dev/pts000    0 blocks
+Archive   dev/pts001    0 blocks
+Archive   dev/pts002    0 blocks
+Archive   dev/pts003    0 blocks
+Archive   dev/pts004    0 blocks
+Archive   dev/pts005    0 blocks
+Archive   dev/pts006    0 blocks
+Archive   dev/pts007    0 blocks
+Archive   dev/pts008    0 blocks
+Archive   dev/pts009    0 blocks
+Archive   dev/pts010    0 blocks
+Archive   dev/pts011    0 blocks
+Archive   dev/pts012    0 blocks
+Archive   dev/pts013    0 blocks
+Archive   dev/pts014    0 blocks
+Archive   dev/pts015    0 blocks
+Archive   dev/pts016    0 blocks
+Archive   dev/pts017    0 blocks
+Archive   dev/pts018    0 blocks
+Archive   dev/pts019    0 blocks
+Archive   dev/pts020    0 blocks
+Archive   dev/pts021    0 blocks
+Archive   dev/pts022    0 blocks
+Archive   dev/pts023    0 blocks
+Archive   dev/pts024    0 blocks
+Archive   dev/pts025    0 blocks
+Archive   dev/pts026    0 blocks
+Archive   dev/pts027    0 blocks
+Archive   dev/pts028    0 blocks
+Archive   dev/pts029    0 blocks
+Archive   dev/pts030    0 blocks
+Archive   dev/pts031    0 blocks
+Archive   dev/pts032    0 blocks
+Archive   dev/pts033    0 blocks
+Archive   dev/pts034    0 blocks
+Archive   dev/pts035    0 blocks
+Archive   dev/pts036    0 blocks
+Archive   dev/pts037    0 blocks
+Archive   dev/pts038    0 blocks
+Archive   dev/pts039    0 blocks
+Archive   dev/pts040    0 blocks
+Archive   dev/pts041    0 blocks
+Archive   dev/pts042    0 blocks
+Archive   dev/pts043    0 blocks
+Archive   dev/pts044    0 blocks
+Archive   dev/pts045    0 blocks
+Archive   dev/pts046    0 blocks
+Archive   dev/pts047    0 blocks
+Archive   dev/pts048    0 blocks
+Archive   dev/pts049    0 blocks
+Archive   dev/pts050    0 blocks
+Archive   dev/pts051    0 blocks
+Archive   dev/pts052    0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 7
+
+
+Archive   dev/pts053    0 blocks
+Archive   dev/pts054    0 blocks
+Archive   dev/pts055    0 blocks
+Archive   dev/pts056    0 blocks
+Archive   dev/pts057    0 blocks
+Archive   dev/pts058    0 blocks
+Archive   dev/pts059    0 blocks
+Archive   dev/pts060    0 blocks
+Archive   dev/pts061    0 blocks
+Archive   dev/pts062    0 blocks
+Archive   dev/pts063    0 blocks
+Archive   dev/pts064    0 blocks
+Archive   dev/pts065    0 blocks
+Archive   dev/pts066    0 blocks
+Archive   dev/pts067    0 blocks
+Archive   dev/pts068    0 blocks
+Archive   dev/pts069    0 blocks
+Archive   dev/pts070    0 blocks
+Archive   dev/pts071    0 blocks
+Archive   dev/pts072    0 blocks
+Archive   dev/pts073    0 blocks
+Archive   dev/pts074    0 blocks
+Archive   dev/pts075    0 blocks
+Archive   dev/pts076    0 blocks
+Archive   dev/pts077    0 blocks
+Archive   dev/pts078    0 blocks
+Archive   dev/pts079    0 blocks
+Archive   dev/pts080    0 blocks
+Archive   dev/pts081    0 blocks
+Archive   dev/pts082    0 blocks
+Archive   dev/pts083    0 blocks
+Archive   dev/pts084    0 blocks
+Archive   dev/pts085    0 blocks
+Archive   dev/pts086    0 blocks
+Archive   dev/pts087    0 blocks
+Archive   dev/pts088    0 blocks
+Archive   dev/pts089    0 blocks
+Archive   dev/pts090    0 blocks
+Archive   dev/pts091    0 blocks
+Archive   dev/pts092    0 blocks
+Archive   dev/pts093    0 blocks
+Archive   dev/pts094    0 blocks
+Archive   dev/pts095    0 blocks
+Archive   dev/pts096    0 blocks
+Archive   dev/pts097    0 blocks
+Archive   dev/pts098    0 blocks
+Archive   dev/pts099    0 blocks
+Archive   dev/pts100    0 blocks
+Archive   dev/pts101    0 blocks
+Archive   dev/pts102    0 blocks
+Archive   dev/pts103    0 blocks
+Archive   dev/pts104    0 blocks
+Archive   dev/pts105    0 blocks
+Archive   dev/pts106    0 blocks
+Archive   dev/pts107    0 blocks
+Archive   dev/pts108    0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 8
+
+
+Archive   dev/pts109    0 blocks
+Archive   dev/pts110    0 blocks
+Archive   dev/pts111    0 blocks
+Archive   dev/pts112    0 blocks
+Archive   dev/pts113    0 blocks
+Archive   dev/pts114    0 blocks
+Archive   dev/pts115    0 blocks
+Archive   dev/pts116    0 blocks
+Archive   dev/pts117    0 blocks
+Archive   dev/pts118    0 blocks
+Archive   dev/pts119    0 blocks
+Archive   dev/pts120    0 blocks
+Archive   dev/pts121    0 blocks
+Archive   dev/pts122    0 blocks
+Archive   dev/pts123    0 blocks
+Archive   dev/pts124    0 blocks
+Archive   dev/pts125    0 blocks
+Archive   dev/pts126    0 blocks
+Archive   dev/pts127    0 blocks
+Archive   dev/pts128    0 blocks
+Archive   dev/pts129    0 blocks
+Archive   dev/pts130    0 blocks
+Archive   dev/pts131    0 blocks
+Archive   dev/pts132    0 blocks
+Archive   dev/pts133    0 blocks
+Archive   dev/pts134    0 blocks
+Archive   dev/pts135    0 blocks
+Archive   dev/pts136    0 blocks
+Archive   dev/pts137    0 blocks
+Archive   dev/pts138    0 blocks
+Archive   dev/pts139    0 blocks
+Archive   dev/pts140    0 blocks
+Archive   dev/pts141    0 blocks
+Archive   dev/pts142    0 blocks
+Archive   dev/pts143    0 blocks
+Archive   dev/pts144    0 blocks
+Archive   dev/pts145    0 blocks
+Archive   dev/pts146    0 blocks
+Archive   dev/pts147    0 blocks
+Archive   dev/pts148    0 blocks
+Archive   dev/pts149    0 blocks
+Archive   dev/pts150    0 blocks
+Archive   dev/pts151    0 blocks
+Archive   dev/pts152    0 blocks
+Archive   dev/pts153    0 blocks
+Archive   dev/pts154    0 blocks
+Archive   dev/pts155    0 blocks
+Archive   dev/pts156    0 blocks
+Archive   dev/pts157    0 blocks
+Archive   dev/pts158    0 blocks
+Archive   dev/pts159    0 blocks
+Archive   dev/pts160    0 blocks
+Archive   dev/pts161    0 blocks
+Archive   dev/pts162    0 blocks
+Archive   dev/pts163    0 blocks
+Archive   dev/pts164    0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 9
+
+
+Archive   dev/pts165    0 blocks
+Archive   dev/pts166    0 blocks
+Archive   dev/pts167    0 blocks
+Archive   dev/pts168    0 blocks
+Archive   dev/pts169    0 blocks
+Archive   dev/pts170    0 blocks
+Archive   dev/pts171    0 blocks
+Archive   dev/pts172    0 blocks
+Archive   dev/pts173    0 blocks
+Archive   dev/pts174    0 blocks
+Archive   dev/pts175    0 blocks
+Archive   dev/pts176    0 blocks
+Archive   dev/pts177    0 blocks
+Archive   dev/pts178    0 blocks
+Archive   dev/pts179    0 blocks
+Archive   dev/pts180    0 blocks
+Archive   dev/pts181    0 blocks
+Archive   dev/pts182    0 blocks
+Archive   dev/pts183    0 blocks
+Archive   dev/pts184    0 blocks
+Archive   dev/pts185    0 blocks
+Archive   dev/pts186    0 blocks
+Archive   dev/pts187    0 blocks
+Archive   dev/pts188    0 blocks
+Archive   dev/pts189    0 blocks
+Archive   dev/pts190    0 blocks
+Archive   dev/pts191    0 blocks
+Archive   dev/pts192    0 blocks
+Archive   dev/pts193    0 blocks
+Archive   dev/pts194    0 blocks
+Archive   dev/pts195    0 blocks
+Archive   dev/pts196    0 blocks
+Archive   dev/pts197    0 blocks
+Archive   dev/pts198    0 blocks
+Archive   dev/pts199    0 blocks
+Archive   dev/pts200    0 blocks
+Archive   dev/pts201    0 blocks
+Archive   dev/pts202    0 blocks
+Archive   dev/pts203    0 blocks
+Archive   dev/pts204    0 blocks
+Archive   dev/pts205    0 blocks
+Archive   dev/pts206    0 blocks
+Archive   dev/pts207    0 blocks
+Archive   dev/pts208    0 blocks
+Archive   dev/pts209    0 blocks
+Archive   dev/pts210    0 blocks
+Archive   dev/pts211    0 blocks
+Archive   dev/pts212    0 blocks
+Archive   dev/pts213    0 blocks
+Archive   dev/pts214    0 blocks
+Archive   dev/pts215    0 blocks
+Archive   dev/pts216    0 blocks
+Archive   dev/pts217    0 blocks
+Archive   dev/pts218    0 blocks
+Archive   dev/pts219    0 blocks
+Archive   dev/pts220    0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 10
+
+
+Archive   dev/pts221    0 blocks
+Archive   dev/pts222    0 blocks
+Archive   dev/pts223    0 blocks
+Archive   dev/pts224    0 blocks
+Archive   dev/pts225    0 blocks
+Archive   dev/pts226    0 blocks
+Archive   dev/pts227    0 blocks
+Archive   dev/pts228    0 blocks
+Archive   dev/pts229    0 blocks
+Archive   dev/pts230    0 blocks
+Archive   dev/pts231    0 blocks
+Archive   dev/pts232    0 blocks
+Archive   dev/pts233    0 blocks
+Archive   dev/pts234    0 blocks
+Archive   dev/pts235    0 blocks
+Archive   dev/pts236    0 blocks
+Archive   dev/pts237    0 blocks
+Archive   dev/pts238    0 blocks
+Archive   dev/pts239    0 blocks
+Archive   dev/pts240    0 blocks
+Archive   dev/pts241    0 blocks
+Archive   dev/pts242    0 blocks
+Archive   dev/pts243    0 blocks
+Archive   dev/pts244    0 blocks
+Archive   dev/pts245    0 blocks
+Archive   dev/pts246    0 blocks
+Archive   dev/pts247    0 blocks
+Archive   dev/pts248    0 blocks
+Archive   dev/pts249    0 blocks
+Archive   dev/pts250    0 blocks
+Archive   dev/pts251    0 blocks
+Archive   dev/pts252    0 blocks
+Archive   dev/pts253    0 blocks
+Archive   dev/pts254    0 blocks
+Archive   dev/pts255    0 blocks
+Archive   dev/ccb08 0 blocks
+Archive   dev/ccb08/pu  0 blocks
+Archive   dev/ccb08/prf 0 blocks
+Archive   dev/ccb08/log 0 blocks
+Archive   dev/ccb08/cpp1    0 blocks
+Archive   dev/ccb08/sdlc0   0 blocks
+Archive   dev/ccb08/dial0   0 blocks
+Archive   dev/ccb08/tc000   0 blocks
+Archive   dev/ccb08/tc000/pu    0 blocks
+Archive   dev/ccb08/tc000/cps   0 blocks
+Archive   dev/ccb08/tc001   0 blocks
+Archive   dev/ccb08/tc001/pu    0 blocks
+Archive   dev/ccb08/tc001/cps   0 blocks
+Archive   dev/ccb08/tc002   0 blocks
+Archive   dev/ccb08/tc002/pu    0 blocks
+Archive   dev/ccb08/tc002/cps   0 blocks
+Archive   dev/ccb08/tc003   0 blocks
+Archive   dev/ccb08/tc003/pu    0 blocks
+Archive   dev/ccb08/tc003/cps   0 blocks
+Archive   dev/lp01  0 blocks
+Archive   dev/tty00 0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 11
+
+
+Archive   dev/tty01 0 blocks
+Archive   dev/alp01 0 blocks
+Archive   dev/tty02 0 blocks
+Archive   dev/tty03 0 blocks
+Archive   dev/alp03 0 blocks
+Archive   dev/tty04 0 blocks
+Archive   dev/alp04 0 blocks
+Archive   dev/tty05 0 blocks
+Archive   dev/tty06 0 blocks
+Archive   dev/tty07 0 blocks
+Archive   dev/tty08 0 blocks
+Archive   dev/tty09 0 blocks
+Archive   dev/tty0a 0 blocks
+Archive   dev/tty0b 0 blocks
+Archive   dev/tty0c 0 blocks
+Archive   dev/tty0d 0 blocks
+Archive   dev/tty0e 0 blocks
+Archive   dev/tty0f 0 blocks
+Archive   dev/tty10 0 blocks
+Archive   dev/tty11 0 blocks
+Archive   dev/tty12 0 blocks
+Archive   dev/tty13 0 blocks
+Archive   dev/tty14 0 blocks
+Archive   dev/tty15 0 blocks
+Archive   dev/tty16 0 blocks
+Archive   dev/tty17 0 blocks
+Archive   dev/tty18 0 blocks
+Archive   dev/tty19 0 blocks
+Archive   dev/tty1a 0 blocks
+Archive   dev/tty1b 0 blocks
+Archive   dev/tty1c 0 blocks
+Archive   dev/tty1d 0 blocks
+Archive   dev/tty1e 0 blocks
+Archive   dev/tty1f 0 blocks
+Archive   dev/appletalk 0 blocks
+Archive   dev/appletalk/ddp 0 blocks
+Archive   dev/appletalk/ddp0    0 blocks
+Archive   dev/appletalk/elap    0 blocks
+Archive   dev/appletalk/elap0   0 blocks
+Archive   dev/senet 0 blocks
+Archive   dev/xnsidp    0 blocks
+Archive   dev/ck802.exceptio    0 blocks
+Archive   dev/pad_srvc  0 blocks
+Archive   dev/conlog    0 blocks
+Archive   dev/ipx   0 blocks
+Archive   dev/ipx0  0 blocks
+Archive   dev/spx   0 blocks
+Archive   dev/nspxd 0 blocks
+Archive   dev/nspx  0 blocks
+Archive   dev/ncp   0 blocks
+Archive   dev/ncp0  0 blocks
+Archive   dev/nvt   0 blocks
+Archive   dev/ddp   0 blocks
+Archive   dev/ddp0  0 blocks
+Archive   dev/elap  0 blocks
+Archive   dev/elap0 0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 12
+
+
+Archive   dev/nbio  0 blocks
+Archive   etc   0 blocks
+Archive   etc/backups   0 blocks
+Archive   etc/backups/monthly.usr   3 blocks
+Archive   etc/backups/weekly.usr    3 blocks
+Archive   etc/backups/daily.usr 3 blocks
+Archive   etc/backups/do_monthly    3 blocks
+Archive   etc/backups/monthly   2 blocks
+Archive   etc/backups/ff_to_frec    1 blocks
+Archive   etc/fstyp.d   0 blocks
+Archive   etc/fstyp.d/s5fstyp   15 blocks
+Archive   etc/fstyp.d/hsfstyp   13 blocks
+Archive   etc/log   0 blocks
+Archive   etc/log/filesave.log  0 blocks
+Archive   etc/utmp  1 blocks
+Archive   etc/wtmp  5 blocks
+Archive   etc/gettydefs 6 blocks
+Archive   etc/group 1 blocks
+Archive   etc/issue 2 blocks
+Archive   etc/magic 4 blocks
+Archive   etc/motd  1 blocks
+Archive   etc/profile   2 blocks
+Archive   etc/sitename  1 blocks
+Archive   etc/softpwd   1 blocks
+Archive   etc/.bshlogin 2 blocks
+Archive   etc/.bshlogout    1 blocks
+Archive   etc/TZ    1 blocks
+Archive   etc/TIMEZONE  1 blocks
+Archive   etc/passwd    26 blocks
+Archive   etc/checklist 1 blocks
+Archive   etc/update.open   1 blocks
+Archive   etc/fstab 1 blocks
+Archive   etc/mountall  5 blocks
+Archive   etc/umountall 2 blocks
+Archive   etc/bcheckrc  3 blocks
+Archive   etc/brc   1 blocks
+Archive   etc/checkups  4 blocks
+Archive   etc/rc    6 blocks
+Archive   etc/rdscript  1 blocks
+Archive   etc/rdflscr   1 blocks
+Archive   etc/inittab   5 blocks
+Archive   etc/ioctl.syscon  1 blocks
+Archive   etc/termcap   20 blocks
+Archive   etc/cband 133 blocks
+Archive   etc/bband 123 blocks
+Archive   etc/bdcast    24 blocks
+Archive   etc/chroot    41 blocks
+Archive   etc/clri  35 blocks
+Archive   etc/cron  75 blocks
+Archive   etc/dcopy 33 blocks
+Archive   etc/devadm    424 blocks
+Archive   etc/devadslot 60 blocks
+Archive   etc/devadinter    342 blocks
+Archive   etc/devnm 35 blocks
+Archive   etc/errstop   1 blocks
+Archive   etc/ff    66 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 13
+
+
+Archive   etc/fsck  105 blocks
+Archive   etc/fsfmon    50 blocks
+Archive   etc/fsstat    25 blocks
+Archive   etc/fstyp 2 blocks
+Archive   etc/fuser 37 blocks
+Archive   etc/getty 73 blocks
+Archive   etc/grpck 18 blocks
+Archive   etc/init  90 blocks
+Archive   etc/install   11 blocks
+Archive   etc/killall   26 blocks
+Archive   etc/labelit   51 blocks
+Archive   etc/link  35 blocks
+Archive   etc/mirupdate 10 blocks
+Archive   etc/mkfs  29 blocks
+Archive   etc/mklg  18 blocks
+Archive   etc/mknod 41 blocks
+Archive   etc/mount 138 blocks
+Archive   etc/mnttab    1 blocks
+Archive   etc/movhd 20 blocks
+Archive   etc/mvdir 4 blocks
+Archive   etc/opctl 31 blocks
+Archive   etc/packfs    50 blocks
+Archive   etc/patch 29 blocks
+Archive   etc/prfld 21 blocks
+Archive   etc/prfdc 35 blocks
+Archive   etc/prfpr 40 blocks
+Archive   etc/prfsnap   9 blocks
+Archive   etc/prfstat   13 blocks
+Archive   etc/ptu   42 blocks
+Archive   etc/pwck  18 blocks
+Archive   etc/rdflush   24 blocks
+Archive   etc/rdload    39 blocks
+Archive   etc/rdlist    0 blocks
+Archive   etc/setmnt    9 blocks
+Archive   etc/setsite   25 blocks
+Archive   etc/ush   104 blocks
+Archive   etc/shutdown  9 blocks
+Archive   etc/spaid 35 blocks
+Archive   etc/swupdate  5 blocks
+Archive   etc/sysinit   65 blocks
+Archive   etc/umount    97 blocks
+Archive   etc/unlink    35 blocks
+Archive   etc/update    13 blocks
+Archive   etc/volcopy   94 blocks
+Archive   etc/wall  48 blocks
+Archive   etc/whodo 2 blocks
+Archive   etc/cload 101 blocks
+Archive   etc/ddinq 60 blocks
+Archive   etc/ddload    79 blocks
+Archive   etc/ddunload  60 blocks
+Archive   etc/initterm  42 blocks
+Archive   etc/logdmon   62 blocks
+Archive   etc/pdmon 72 blocks
+Archive   etc/mapout    51 blocks
+Archive   etc/ccbdump   74 blocks
+Archive   etc/ccbexec.0 117 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 14
+
+
+Archive   etc/ccbexec.1 113 blocks
+Archive   etc/ccbexec.2 108 blocks
+Archive   etc/ccbtty    202 blocks
+Archive   etc/ccbplp    22 blocks
+Archive   etc/ccbplp202 21 blocks
+Archive   etc/ccbacu    16 blocks
+Archive   etc/tcdl  82 blocks
+Archive   etc/tcdump    39 blocks
+Archive   etc/tcreset   45 blocks
+Archive   etc/ccbiop    72 blocks
+Archive   etc/tcload    270 blocks
+Archive   etc/tcload.sym    76 blocks
+Archive   etc/ccbrout   12 blocks
+Archive   etc/tdts  81 blocks
+Archive   etc/ccbnet    59 blocks
+Archive   etc/ccbenet   55 blocks
+Archive   etc/ccbxns    102 blocks
+Archive   etc/ccbllien  35 blocks
+Archive   etc/mtcdl 45 blocks
+Archive   etc/rootlogin 1 blocks
+Archive   etc/expresrv  1 blocks
+Archive   etc/download  3 blocks
+Archive   etc/slotload  1 blocks
+Archive   etc/fecap 28 blocks
+Archive   etc/alpdefs   10 blocks
+Archive   etc/alpcaps   6 blocks
+Archive   etc/mtc.config    1 blocks
+Archive   etc/ccbdev    1 blocks
+Archive   etc/rc4   1 blocks
+Archive   etc/powerfail 4 blocks
+Archive   etc/rc3   1 blocks
+Archive   etc/rc5   1 blocks
+Archive   etc/BKUP_DIR  0 blocks
+Archive   etc/BKUP_DIR/RBKUPCK  11 blocks
+Archive   etc/BKUP_DIR/ROOTBKUP 3 blocks
+Archive   etc/BKUP_DIR/addup_pt.sed 1 blocks
+Archive   etc/BKUP_DIR/rebuild_jdis 3 blocks
+Archive   etc/BKUP_DIR/set_partitions   2 blocks
+Archive   etc/BKUP_DIR/disk_list    1 blocks
+Archive   etc/BKUP_DIR/c09u00.ptu   30 blocks
+Archive   etc/BKUP_DIR/permits  1 blocks
+Archive   etc/BKUP_DIR/permits.inode    1 blocks
+Archive   etc/BKUP_DIR/dheader  1 blocks
+Archive   etc/BKUP_DIR/log  384 blocks
+Archive   etc/BKUP_DIR/rbkup_dev    1 blocks
+Archive   etc/BKUP_DIR/list_dev 1 blocks
+Archive   etc/BKUP_DIR/rootlog  1 blocks
+Archive   etc/BKUP_DIR/rootheader   1 blocks
+Archive   etc/BKUP_DIR/ctlroot  1 blocks
+Archive   etc/BKUP_DIR/rootlisting  185 blocks
+Archive   etc/BKUP_DIR/RBDATE   1 blocks
+Archive   etc/BKUP_DIR/RLSEDONE 0 blocks
+Archive   etc/BKUP_DIR/setlog   1 blocks
+Archive   etc/BKUP_DIR/RLBKDATE 1 blocks
+Archive   etc/BKUP_DIR/jdsecure.log 1 blocks
+Archive   etc/BKUP_DIR/setlst   38 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 15
+
+
+Archive   etc/BKUP_DIR/GOODSET.963  0 blocks
+Archive   etc/BKUP_DIR/RLSEBKST 0 blocks
+Archive   etc/ccbdial   23 blocks
+Archive   etc/ccbdlc    44 blocks
+Archive   etc/usradm.cfg    1 blocks
+Archive   etc/startlp   1 blocks
+Archive   etc/SYS.ERR.LOG   0 blocks
+Archive   etc/.mnt.lock 0 blocks
+Archive   etc/tar.default   1 blocks
+Archive   etc/init.save 90 blocks
+Archive   etc/tctab 0 blocks
+Archive   etc/mtctab    1 blocks
+Archive   etc/bd_cast.err   0 blocks
+Archive   etc/ps_data   19 blocks
+Archive   etc/SYNONYM.VAL   1 blocks
+Archive   etc/inittab.old   5 blocks
+Archive   etc/.pwd.lock 0 blocks
+Archive   etc/passwd.sav    26 blocks
+Archive   etc/opasswd   26 blocks
+Archive   etc/inittab.blast 4 blocks
+Archive   etc/lwnoo 74 blocks
+Archive   etc/issue24   2 blocks
+Archive   etc/gettydefs24   5 blocks
+Archive   etc/passwd.jdv    24 blocks
+Archive   etc/inittab.jdis  4 blocks
+Archive   etc/conlogd   41 blocks
+Archive   etc/ddtell    38 blocks
+Archive   etc/devadm.init   1 blocks
+Archive   etc/getgid    13 blocks
+Archive   etc/mtcdt 43 blocks
+Archive   etc/pad_srvc  33 blocks
+Archive   etc/padsrvc   1 blocks
+Archive   etc/rmtcon    14 blocks
+Archive   etc/logfiles  2 blocks
+Archive   etc/ttyname   14 blocks
+Archive   etc/xnsd  24 blocks
+Archive   etc/mtcdl.rm  152 blocks
+Archive   etc/ccbmtc.rm 126 blocks
+Archive   etc/mtcload.rm    327 blocks
+Archive   etc/mtcdl.lo  146 blocks
+Archive   etc/ccbmtc.lo 86 blocks
+Archive   etc/mtcload.lo    101 blocks
+Archive   etc/xns   3 blocks
+Archive   etc/xnscf 1 blocks
+Archive   etc/init.sav2 133 blocks
+Archive   etc/initcgk   5 blocks
+Archive   lib   0 blocks
+Archive   lib/chrclass  0 blocks
+Archive   lib/chrclass/ascii    2 blocks
+Archive   lib/libc.a    502 blocks
+Archive   lib/libc_s.a  491 blocks
+Archive   lib/crt0.o    1 blocks
+Archive   lib/crt1.o    2 blocks
+Archive   lib/crtn.o    2 blocks
+Archive   lib/fcrt1.o   2 blocks
+Archive   lib/mcrt0.o   2 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 16
+
+
+Archive   lib/mcrt1.o   3 blocks
+Archive   lib/libg.a    2 blocks
+Archive   lib/cpp   50 blocks
+Archive   lib/runtime.c 17 blocks
+Archive   lost+found    0 blocks
+Archive   once  0 blocks
+Archive   once/INIT_PS  12 blocks
+Archive   once/setupc.jdps  62 blocks
+Archive   once/JDPSPUR.EXT  2 blocks
+Archive   permits   1 blocks
+Archive   permits.backup    1 blocks
+Archive   pipe  0 blocks
+Archive   primitive 302 blocks
+Archive   ram   0 blocks
+Archive   shlib 0 blocks
+Archive   shlib/libc_s  137 blocks
+Archive   shlib/libnsl_s    72 blocks
+Archive   shlib/libtisam_s  217 blocks
+Archive   ti    0 blocks
+Archive   ti/ptext  0 blocks
+Archive   ti/ptext/USA  284 blocks
+Archive   ti/ptext/USA.sav  276 blocks
+Archive   ti/stext  0 blocks
+Archive   ti/stext/USA  652 blocks
+Archive   ti/stext/USA.sav  633 blocks
+Archive   tmp   0 blocks
+Archive   tmp/relcntl.971   1 blocks
+Archive   unix  1828 blocks
+Archive   usr   0 blocks
+Archive   usr/bin   0 blocks
+Archive   usr/bin/tic   101 blocks
+Archive   usr/bin/captoinfo 101 blocks
+Archive   usr/bin/infocmp   119 blocks
+Archive   usr/bin/tput  84 blocks
+Archive   usr/bin/active    199 blocks
+Archive   usr/bin/a68k  237 blocks
+Archive   usr/bin/a68m  125 blocks
+Archive   usr/bin/ltxcoff   99 blocks
+Archive   usr/bin/ltxdump   101 blocks
+Archive   usr/bin/qsym  117 blocks
+Archive   usr/bin/asa   15 blocks
+Archive   usr/bin/awk   111 blocks
+Archive   usr/bin/banner    15 blocks
+Archive   usr/bin/bc    42 blocks
+Archive   usr/bin/cal   36 blocks
+Archive   usr/bin/calendar  3 blocks
+Archive   usr/bin/cb    34 blocks
+Archive   usr/bin/cflow 4 blocks
+Archive   usr/bin/chrtbl    57 blocks
+Archive   usr/bin/col   19 blocks
+Archive   usr/bin/crontab   26 blocks
+Archive   usr/bin/at    68 blocks
+Archive   usr/bin/batch 1 blocks
+Archive   usr/bin/cxref 33 blocks
+Archive   usr/bin/dc    50 blocks
+Archive   usr/bin/deroff    40 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 17
+
+
+Archive   usr/bin/dfm   155 blocks
+Archive   usr/bin/dfsck 29 blocks
+Archive   usr/bin/egrep 28 blocks
+Archive   usr/bin/fgrep 18 blocks
+Archive   usr/bin/frpc  51 blocks
+Archive   usr/bin/graph 30 blocks
+Archive   usr/bin/uuname    33 blocks
+Archive   usr/bin/uucp  117 blocks
+Archive   usr/bin/uux   120 blocks
+Archive   usr/bin/uustat    89 blocks
+Archive   usr/bin/cu    136 blocks
+Archive   usr/bin/ct    133 blocks
+Archive   usr/bin/ipcrm 37 blocks
+Archive   usr/bin/ipcs  49 blocks
+Archive   usr/bin/cpisam    37 blocks
+Archive   usr/bin/findisam  26 blocks
+Archive   usr/bin/frisam    34 blocks
+Archive   usr/bin/kiftisam  30 blocks
+Archive   usr/bin/mapisam   37 blocks
+Archive   usr/bin/mkisam    40 blocks
+Archive   usr/bin/mvisam    40 blocks
+Archive   usr/bin/toisam    32 blocks
+Archive   usr/bin/vfisam    150 blocks
+Archive   usr/bin/lex   72 blocks
+Archive   usr/bin/logname   14 blocks
+Archive   usr/bin/cancel    50 blocks
+Archive   usr/bin/lp    106 blocks
+Archive   usr/bin/disable   71 blocks
+Archive   usr/bin/enable    71 blocks
+Archive   usr/bin/lpstat    223 blocks
+Archive   usr/bin/lint  8 blocks
+Archive   usr/bin/m4    46 blocks
+Archive   usr/bin/mailx 183 blocks
+Archive   usr/bin/man   4 blocks
+Archive   usr/bin/mesg  14 blocks
+Archive   usr/bin/nawk  189 blocks
+Archive   usr/bin/news  40 blocks
+Archive   usr/bin/nlsadmin  62 blocks
+Archive   usr/bin/pm    362 blocks
+Archive   usr/bin/tde   66 blocks
+Archive   usr/bin/pr    49 blocks
+Archive   usr/bin/prof  31 blocks
+Archive   usr/bin/pwconv    24 blocks
+Archive   usr/bin/pwunconv  24 blocks
+Archive   usr/bin/regcmp    17 blocks
+Archive   usr/bin/sar   70 blocks
+Archive   usr/bin/timex 48 blocks
+Archive   usr/bin/sadsp 128 blocks
+Archive   usr/bin/comb  60 blocks
+Archive   usr/bin/admin 80 blocks
+Archive   usr/bin/bdiff 24 blocks
+Archive   usr/bin/cdc   79 blocks
+Archive   usr/bin/delta 97 blocks
+Archive   usr/bin/get   87 blocks
+Archive   usr/bin/help  13 blocks
+Archive   usr/bin/prs   70 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 18
+
+
+Archive   usr/bin/rmdel 79 blocks
+Archive   usr/bin/sact  57 blocks
+Archive   usr/bin/unget 57 blocks
+Archive   usr/bin/val   24 blocks
+Archive   usr/bin/vc    28 blocks
+Archive   usr/bin/what  14 blocks
+Archive   usr/bin/sccsdiff  3 blocks
+Archive   usr/bin/sdb   195 blocks
+Archive   usr/bin/spell 4 blocks
+Archive   usr/bin/spooladm  174 blocks
+Archive   usr/bin/tee   35 blocks
+Archive   usr/bin/topc  49 blocks
+Archive   usr/bin/tplot 2 blocks
+Archive   usr/bin/tr    36 blocks
+Archive   usr/bin/tx    291 blocks
+Archive   usr/bin/units 19 blocks
+Archive   usr/bin/ctags 31 blocks
+Archive   usr/bin/fold  19 blocks
+Archive   usr/bin/strings   20 blocks
+Archive   usr/bin/ex    263 blocks
+Archive   usr/bin/vi is linked to usr/bin/ex
+Archive   usr/bin/view is linked to usr/bin/ex
+Archive   usr/bin/edit is linked to usr/bin/ex
+Archive   usr/bin/write 39 blocks
+Archive   usr/bin/xargs 20 blocks
+Archive   usr/bin/yacc  62 blocks
+Archive   usr/bin/strerr    38 blocks
+Archive   usr/bin/strclean  20 blocks
+Archive   usr/bin/strace    37 blocks
+Archive   usr/bin/strnstat  22 blocks
+Archive   usr/bin/tcstat    50 blocks
+Archive   usr/bin/netecho   58 blocks
+Archive   usr/bin/netstat   70 blocks
+Archive   usr/bin/networks  29 blocks
+Archive   usr/bin/netu  29 blocks
+Archive   usr/bin/netcp 94 blocks
+Archive   usr/bin/netexec   63 blocks
+Archive   usr/bin/mnetecho  41 blocks
+Archive   usr/bin/mnetstat  41 blocks
+Archive   usr/bin/mtcdump   41 blocks
+Archive   usr/bin/mtcreset  41 blocks
+Archive   usr/bin/mtcshmd   41 blocks
+Archive   usr/bin/mtcstat   41 blocks
+Archive   usr/bin/3270fixup 9 blocks
+Archive   usr/bin/SNAADM    1 blocks
+Archive   usr/bin/dfmlp 35 blocks
+Archive   usr/bin/unixdos   76 blocks
+Archive   usr/bin/jdisinstall   7 blocks
+Archive   usr/bin/jdislp    43 blocks
+Archive   usr/bin/line_config   81 blocks
+Archive   usr/bin/line_speed    54 blocks
+Archive   usr/bin/p3287 263 blocks
+Archive   usr/bin/rewind_tape   31 blocks
+Archive   usr/bin/AKFSON    298 blocks
+Archive   usr/bin/mapsna    195 blocks
+Archive   usr/bin/RUN.MSG   7 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 19
+
+
+Archive   usr/bin/FMECBT    2 blocks
+Archive   usr/bin/GLCBT 2 blocks
+Archive   usr/bin/KIFSON    118 blocks
+Archive   usr/bin/REC.MSG   2 blocks
+Archive   usr/bin/RMFMECBT  3 blocks
+Archive   usr/bin/RMGLCBT   3 blocks
+Archive   usr/bin/Z 341 blocks
+Archive   usr/bin/v3279 400 blocks
+Archive   usr/bin/ZSORT 40 blocks
+Archive   usr/bin/ZTERM 62 blocks
+Archive   usr/bin/OSCBT 2 blocks
+Archive   usr/bin/RMOSCBT   3 blocks
+Archive   usr/bin/PMMCBT    2 blocks
+Archive   usr/bin/RMPMMCBT  3 blocks
+Archive   usr/bin/v3279.sav 397 blocks
+Archive   usr/bin/BICCBT    2 blocks
+Archive   usr/bin/CSMCBT    2 blocks
+Archive   usr/bin/JDPTSCBT  2 blocks
+Archive   usr/bin/NEOCBT    2 blocks
+Archive   usr/bin/PAYCBT    2 blocks
+Archive   usr/bin/QUOTECBT  2 blocks
+Archive   usr/bin/STKSTATCBT    2 blocks
+Archive   usr/bin/interp01  263 blocks
+Archive   usr/bin/MS1CBT    2 blocks
+Archive   usr/bin/RMMS1CBT  3 blocks
+Archive   usr/bin/MS2CBT    2 blocks
+Archive   usr/bin/RMMS2CBT  3 blocks
+Archive   usr/bin/CONVASP   4 blocks
+Archive   usr/bin/mnetecho.rm   120 blocks
+Archive   usr/bin/mnetstat.rm   127 blocks
+Archive   usr/bin/mtcdump.rm    96 blocks
+Archive   usr/bin/mtcreset.rm   118 blocks
+Archive   usr/bin/mtcshmd.rm    95 blocks
+Archive   usr/bin/mtcstat.rm    108 blocks
+Archive   usr/bin/mnetecho.lo   127 blocks
+Archive   usr/bin/mnetstat.lo   147 blocks
+Archive   usr/bin/mtcdump.lo    107 blocks
+Archive   usr/bin/mtcreset.lo   130 blocks
+Archive   usr/bin/mtcshmd.lo    107 blocks
+Archive   usr/bin/mtcstat.lo    120 blocks
+Archive   usr/bin/dosunix   78 blocks
+Archive   usr/bin/termitedir    0 blocks
+Archive   usr/bin/termitedir/getsn  1 blocks
+Archive   usr/bin/termitedir/testpage.prn   1 blocks
+Archive   usr/bin/termite   9 blocks
+Archive   usr/bin/cronset.85    4 blocks
+Archive   usr/bin/cron  0 blocks
+Archive   usr/bin/cron/cron85.log   1 blocks
+Archive   usr/bin/cron/rootcrons    1 blocks
+Archive   usr/bin/cron/cleanup.scr  1 blocks
+Archive   usr/bin/cron/cleanup.cron 1 blocks
+Archive   usr/bin/cron/pmm_srvmon   3 blocks
+Archive   usr/bin/PMLINKNEW 2 blocks
+Archive   usr/bin/setupc.jdps   56 blocks
+Archive   usr/bin/ASPEN963  5 blocks
+Archive   usr/bin/pmm_server    477 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 20
+
+
+Archive   usr/bin/start_server  1 blocks
+Archive   usr/bin/oecpmmsrvr    0 blocks
+Archive   usr/bin/oecpmmsrvr/server.env 1 blocks
+Archive   usr/bin/oecpmmsrvr/newserver.env  1 blocks
+Archive   usr/bin/SETIP 7 blocks
+Archive   usr/bin/PMLINKMOD 1 blocks
+Archive   usr/bin/rfmt_PSPORT.r9    4 blocks
+Archive   usr/bin/alpdef    35 blocks
+Archive   usr/bin/MOD971    1 blocks
+Archive   usr/bin/jdisload  3 blocks
+Archive   usr/sys   0 blocks
+Archive   usr/sys/cf    0 blocks
+Archive   usr/sys/cf/makefile   1 blocks
+Archive   usr/sys/cf/locore.s   65 blocks
+Archive   usr/sys/cf/conf.c 67 blocks
+Archive   usr/sys/cf/ttyioctl.c 7 blocks
+Archive   usr/sys/cf/locore.o   27 blocks
+Archive   usr/sys/cf/conf.o 66 blocks
+Archive   usr/sys/cf/linesw.o   2 blocks
+Archive   usr/sys/cf/ttyioctl.o 2 blocks
+Archive   usr/sys/ldd   0 blocks
+Archive   usr/sys/ldd/cf    0 blocks
+Archive   usr/sys/ldd/lib   0 blocks
+Archive   usr/sys/ldd/sys   0 blocks
+Archive   usr/sys/stbm.lib  330 blocks
+Archive   usr/sys/primitive.new 302 blocks
+Archive   usr/sys/makefile  2 blocks
+Archive   usr/sys/lcf   1 blocks
+Archive   usr/sys/nfs.lib   5 blocks
+Archive   usr/sys/io.lib    889 blocks
+Archive   usr/sys/os.lib    468 blocks
+Archive   usr/sys/fs.lib    101 blocks
+Archive   usr/sys/vm.lib    143 blocks
+Archive   usr/sys/kdb.lib   84 blocks
+Archive   usr/sys/ml.lib    37 blocks
+Archive   usr/sys/fpu.lib   277 blocks
+Archive   usr/sys/hs.lib    36 blocks
+Archive   usr/sys/rev.o 5 blocks
+Archive   usr/sys/unix.new  1828 blocks
+Archive   usr/sys/pnw.lib   15 blocks
+Archive   usr/sys/te.lib    170 blocks
+Archive   usr/ti    0 blocks
+Archive   usr/ti/collate    0 blocks
+Archive   usr/ti/collate/USA    2 blocks
+Archive   usr/ti/collate/INTL   2 blocks
+Archive   usr/ti/collate/collate.c  23 blocks
+Archive   usr/ti/cp2db  0 blocks
+Archive   usr/ti/cp2db/alltrc   1 blocks
+Archive   usr/ti/cp2db/ataqg    1 blocks
+Archive   usr/ti/cp2db/atcpuqg  1 blocks
+Archive   usr/ti/cp2db/atrwqg   1 blocks
+Archive   usr/ti/cp2db/bkpt0    1 blocks
+Archive   usr/ti/cp2db/bkpt1    1 blocks
+Archive   usr/ti/cp2db/cd0cpuqg 1 blocks
+Archive   usr/ti/cp2db/cd0rwqg  1 blocks
+Archive   usr/ti/cp2db/cd1cpuqg 1 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 21
+
+
+Archive   usr/ti/cp2db/cd1rwqg  1 blocks
+Archive   usr/ti/cp2db/clrdu0   1 blocks
+Archive   usr/ti/cp2db/clrdu1   1 blocks
+Archive   usr/ti/cp2db/clrtrc   1 blocks
+Archive   usr/ti/cp2db/ctaqg    1 blocks
+Archive   usr/ti/cp2db/ctcpuqg  1 blocks
+Archive   usr/ti/cp2db/ctrwqg   1 blocks
+Archive   usr/ti/cp2db/trace    1 blocks
+Archive   usr/ti/master 924 blocks
+Archive   usr/ti/tcp    0 blocks
+Archive   usr/ti/tcp/3.0    0 blocks
+Archive   usr/ti/tcp/3.0/node.cf    35 blocks
+Archive   usr/ti/tcp/3.0/relay.cf   45 blocks
+Archive   usr/ti/tcp/3.0/ipmux.o    8 blocks
+Archive   usr/ti/tcp/3.0/install.scr    53 blocks
+Archive   usr/ti/tcp/3.0/setcband   5 blocks
+Archive   usr/ti/tcp/3.0/installname    20 blocks
+Archive   usr/ti/tcp/3.0/chkccb 13 blocks
+Archive   usr/ti/tcp/3.0/settings   3 blocks
+Archive   usr/ti/tcp/3.0/ftp.o  161 blocks
+Archive   usr/ti/tcp/3.0/inetd.o    31 blocks
+Archive   usr/ti/tcp/3.0/lmail.o    18 blocks
+Archive   usr/ti/tcp/3.0/netlogin.o 40 blocks
+Archive   usr/ti/tcp/3.0/sendmail.o 250 blocks
+Archive   usr/ti/tcp/3.0/rlogind.o  24 blocks
+Archive   usr/ti/tcp/3.0/ruptime.o  13 blocks
+Archive   usr/ti/tcp/3.0/rwho.o 19 blocks
+Archive   usr/ti/tcp/3.0/rwhod.o    21 blocks
+Archive   usr/ti/tcp/3.0/telnet.o   80 blocks
+Archive   usr/ti/tcp/3.0/telnetd.o  47 blocks
+Archive   usr/ti/tcp/3.0/routed.o   55 blocks
+Archive   usr/ti/tcp/3.0/logger.o   10 blocks
+Archive   usr/ti/tcp/3.0/errlst.o   11 blocks
+Archive   usr/ti/tcp/3.0/TIsockvers.o   1 blocks
+Archive   usr/ti/tcp/3.0/tcp    9 blocks
+Archive   usr/ti/tcp/3.0/io_lib 424 blocks
+Archive   usr/ti/tcp/3.0/rwho.1 5 blocks
+Archive   usr/ti/tcp/3.0/slattach   6 blocks
+Archive   usr/ti/tcp/3.0/sldetach   3 blocks
+Archive   usr/ti/tcp/3.0/chkspace   16 blocks
+Archive   usr/ti/tcp/3.0/removetcp  16 blocks
+Archive   usr/ti/tcp/3.0/commands   21 blocks
+Archive   usr/ti/tcp/3.0/hostname.o 8 blocks
+Archive   usr/ti/tcp/3.0/named.o    133 blocks
+Archive   usr/ti/tcp/3.0/setslip.o  15 blocks
+Archive   usr/ti/tcp/3.0/wait3.o    3 blocks
+Archive   usr/ti/tcp/3.0/update.os  24 blocks
+Archive   usr/ti/tcp/3.0/socket.o   77 blocks
+Archive   usr/ti/tcp/3.0/strcf  5 blocks
+Archive   usr/ti/tcp/3.0/slip.o 15 blocks
+Archive   usr/ti/tcp/install.scr    2 blocks
+Archive   usr/ti/tcp/3.1    0 blocks
+Archive   usr/ti/tcp/3.1/inet.o 6 blocks
+Archive   usr/ti/tcp/3.1/arp.o  27 blocks
+Archive   usr/ti/tcp/3.1/ip.o   122 blocks
+Archive   usr/ti/tcp/3.1/ip_icmp.o  28 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 22
+
+
+Archive   usr/ti/tcp/3.1/llcloop.o  10 blocks
+Archive   usr/ti/tcp/3.1/rip.o  31 blocks
+Archive   usr/ti/tcp/3.1/slip.o 16 blocks
+Archive   usr/ti/tcp/3.1/socket.o   97 blocks
+Archive   usr/ti/tcp/3.1/tcp.o  100 blocks
+Archive   usr/ti/tcp/3.1/udp.o  34 blocks
+Archive   usr/ti/tcp/3.1/vty.o  10 blocks
+Archive   usr/ti/tcp/3.1/ipmux.o    9 blocks
+Archive   usr/ti/tcp/3.1/forceread  13 blocks
+Archive   usr/ti/tcp/3.1/chkccb 38 blocks
+Archive   usr/ti/tcp/3.1/install.scr    74 blocks
+Archive   usr/ti/tcp/3.1/install.fix    2 blocks
+Archive   usr/ti/tcp/3.1/update.os  4 blocks
+Archive   usr/ti/tcp/TCP.3.3.2  2 blocks
+Archive   usr/ti/nfs    0 blocks
+Archive   usr/ti/nfs/install.scr    2 blocks
+Archive   usr/ti/examples   0 blocks
+Archive   usr/ti/fetest 0 blocks
+Archive   usr/ti/fetest/keytrace    45 blocks
+Archive   usr/ti/fetest/keytest 174 blocks
+Archive   usr/ti/fetest/wrtmulti    166 blocks
+Archive   usr/ti/helps  0 blocks
+Archive   usr/ti/helps/pm   0 blocks
+Archive   usr/ti/helps/pm/bus_net.hlp   2 blocks
+Archive   usr/ti/helps/pm/ccb_disp.hlp  6 blocks
+Archive   usr/ti/helps/pm/cfg_item.hlp  35 blocks
+Archive   usr/ti/helps/pm/cpu_disp.hlp  12 blocks
+Archive   usr/ti/helps/pm/dsk_exdb.hlp  2 blocks
+Archive   usr/ti/helps/pm/dsk_exdl.hlp  2 blocks
+Archive   usr/ti/helps/pm/dsk_exll.hlp  2 blocks
+Archive   usr/ti/helps/pm/dsk_exqc.hlp  2 blocks
+Archive   usr/ti/helps/pm/dsk_exts.hlp  2 blocks
+Archive   usr/ti/helps/pm/dsk_info.hlp  4 blocks
+Archive   usr/ti/helps/pm/gen_info.hlp  8 blocks
+Archive   usr/ti/helps/pm/lin_inf1.hlp  4 blocks
+Archive   usr/ti/helps/pm/lin_inf2.hlp  8 blocks
+Archive   usr/ti/helps/pm/mem_dump.hlp  2 blocks
+Archive   usr/ti/helps/pm/net_disp.hlp  5 blocks
+Archive   usr/ti/helps/pm/qst_mark.hlp  10 blocks
+Archive   usr/ti/helps/pm/rate.hlp  2 blocks
+Archive   usr/ti/helps/pm/slot_cfg.hlp  3 blocks
+Archive   usr/ti/helps/pm/sys_wide.hlp  7 blocks
+Archive   usr/ti/helps/pm/tc_disp.hlp   2 blocks
+Archive   usr/ti/helps/pm/tde.hlp   4 blocks
+Archive   usr/ti/helps/pm/total.hlp 11 blocks
+Archive   usr/ti/helps/pm/vm.hlp    12 blocks
+Archive   usr/ti/helps/accounts.hlp 1 blocks
+Archive   usr/ti/helps/activity.hlp 1 blocks
+Archive   usr/ti/helps/assembly.hlp 1 blocks
+Archive   usr/ti/helps/c.hlp    1 blocks
+Archive   usr/ti/helps/cobol.hlp    15 blocks
+Archive   usr/ti/helps/cobolmen.hlp 1 blocks
+Archive   usr/ti/helps/data.hlp 1 blocks
+Archive   usr/ti/helps/dir.hlp  1 blocks
+Archive   usr/ti/helps/disk.hlp 2 blocks
+Archive   usr/ti/helps/file.hlp 1 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 23
+
+
+Archive   usr/ti/helps/fortran.hlp  1 blocks
+Archive   usr/ti/helps/lexical.hlp  1 blocks
+Archive   usr/ti/helps/mail.hlp 1 blocks
+Archive   usr/ti/helps/menu.hlp 9 blocks
+Archive   usr/ti/helps/mlc.hlp  1 blocks
+Archive   usr/ti/helps/network.hlp  1 blocks
+Archive   usr/ti/helps/object.hlp   1 blocks
+Archive   usr/ti/helps/pascal.hlp   1 blocks
+Archive   usr/ti/helps/personal.hlp 1 blocks
+Archive   usr/ti/helps/process.hlp  1 blocks
+Archive   usr/ti/helps/program.hlp  1 blocks
+Archive   usr/ti/helps/sccs.hlp 1 blocks
+Archive   usr/ti/helps/software.hlp 1 blocks
+Archive   usr/ti/helps/spooler.hlp  1 blocks
+Archive   usr/ti/helps/support.hlp  2 blocks
+Archive   usr/ti/helps/terminal.hlp 1 blocks
+Archive   usr/ti/helps/users.hlp    1 blocks
+Archive   usr/ti/menus  0 blocks
+Archive   usr/ti/menus/accounts 1 blocks
+Archive   usr/ti/menus/activity 1 blocks
+Archive   usr/ti/menus/assembly 2 blocks
+Archive   usr/ti/menus/c    1 blocks
+Archive   usr/ti/menus/cobol    1 blocks
+Archive   usr/ti/menus/data 3 blocks
+Archive   usr/ti/menus/dir  1 blocks
+Archive   usr/ti/menus/disk 2 blocks
+Archive   usr/ti/menus/file 4 blocks
+Archive   usr/ti/menus/fortran  1 blocks
+Archive   usr/ti/menus/lexical  1 blocks
+Archive   usr/ti/menus/mail 1 blocks
+Archive   usr/ti/menus/mlc  2 blocks
+Archive   usr/ti/menus/network  1 blocks
+Archive   usr/ti/menus/object   1 blocks
+Archive   usr/ti/menus/pascal   1 blocks
+Archive   usr/ti/menus/personal 1 blocks
+Archive   usr/ti/menus/process  2 blocks
+Archive   usr/ti/menus/program  1 blocks
+Archive   usr/ti/menus/sccs 2 blocks
+Archive   usr/ti/menus/software 1 blocks
+Archive   usr/ti/menus/spooler  1 blocks
+Archive   usr/ti/menus/support  1 blocks
+Archive   usr/ti/menus/terminal 1 blocks
+Archive   usr/ti/menus/users    1 blocks
+Archive   usr/ti/menus/3270sna  1 blocks
+Archive   usr/ti/net    0 blocks
+Archive   usr/ti/net/netwhat    3 blocks
+Archive   usr/ti/prompts    0 blocks
+Archive   usr/ti/prompts/BACKUP 4 blocks
+Archive   usr/ti/prompts/A68K   5 blocks
+Archive   usr/ti/prompts/A68M   4 blocks
+Archive   usr/ti/prompts/ACCEPT 1 blocks
+Archive   usr/ti/prompts/ADMIN  5 blocks
+Archive   usr/ti/prompts/AR 6 blocks
+Archive   usr/ti/prompts/AS 2 blocks
+Archive   usr/ti/prompts/AT 1 blocks
+Archive   usr/ti/prompts/AWK    3 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 24
+
+
+Archive   usr/ti/prompts/BANNER 2 blocks
+Archive   usr/ti/prompts/BATCH  1 blocks
+Archive   usr/ti/prompts/BC 2 blocks
+Archive   usr/ti/prompts/BDIFF  3 blocks
+Archive   usr/ti/prompts/BSH    3 blocks
+Archive   usr/ti/prompts/CAL    1 blocks
+Archive   usr/ti/prompts/CALENDAR   1 blocks
+Archive   usr/ti/prompts/CANCEL 2 blocks
+Archive   usr/ti/prompts/CAT    2 blocks
+Archive   usr/ti/prompts/CB 2 blocks
+Archive   usr/ti/prompts/CDC    2 blocks
+Archive   usr/ti/prompts/CFLOW  2 blocks
+Archive   usr/ti/prompts/CHGRP  1 blocks
+Archive   usr/ti/prompts/CHMOD  1 blocks
+Archive   usr/ti/prompts/CHOWN  1 blocks
+Archive   usr/ti/prompts/CMP    2 blocks
+Archive   usr/ti/prompts/COMM   2 blocks
+Archive   usr/ti/prompts/CP 1 blocks
+Archive   usr/ti/prompts/CPDIR  3 blocks
+Archive   usr/ti/prompts/CPIO   9 blocks
+Archive   usr/ti/prompts/CPISAM 2 blocks
+Archive   usr/ti/prompts/CRONTAB    2 blocks
+Archive   usr/ti/prompts/CRYPT  2 blocks
+Archive   usr/ti/prompts/CSH    3 blocks
+Archive   usr/ti/prompts/CUT    3 blocks
+Archive   usr/ti/prompts/CXREF  3 blocks
+Archive   usr/ti/prompts/DATE   2 blocks
+Archive   usr/ti/prompts/DC 1 blocks
+Archive   usr/ti/prompts/DD 5 blocks
+Archive   usr/ti/prompts/DELTA  3 blocks
+Archive   usr/ti/prompts/DEVADM 2 blocks
+Archive   usr/ti/prompts/DF 2 blocks
+Archive   usr/ti/prompts/DFM    1 blocks
+Archive   usr/ti/prompts/DIFF   3 blocks
+Archive   usr/ti/prompts/DIFF3  3 blocks
+Archive   usr/ti/prompts/DIRCMP 3 blocks
+Archive   usr/ti/prompts/DISABLE    2 blocks
+Archive   usr/ti/prompts/DU 2 blocks
+Archive   usr/ti/prompts/DUMP   6 blocks
+Archive   usr/ti/prompts/ED 2 blocks
+Archive   usr/ti/prompts/EDIT   1 blocks
+Archive   usr/ti/prompts/EGREP  5 blocks
+Archive   usr/ti/prompts/ENABLE 1 blocks
+Archive   usr/ti/prompts/ENV    2 blocks
+Archive   usr/ti/prompts/ERRPT  3 blocks
+Archive   usr/ti/prompts/EX 2 blocks
+Archive   usr/ti/prompts/FACTOR 1 blocks
+Archive   usr/ti/prompts/FF 4 blocks
+Archive   usr/ti/prompts/FGREP  5 blocks
+Archive   usr/ti/prompts/FILE   3 blocks
+Archive   usr/ti/prompts/FINC   2 blocks
+Archive   usr/ti/prompts/FIND   7 blocks
+Archive   usr/ti/prompts/FINDISAM   2 blocks
+Archive   usr/ti/prompts/FREC   2 blocks
+Archive   usr/ti/prompts/FRISAM 3 blocks
+Archive   usr/ti/prompts/FRPC   3 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 25
+
+
+Archive   usr/ti/prompts/FSCK   4 blocks
+Archive   usr/ti/prompts/FUSER  2 blocks
+Archive   usr/ti/prompts/GET    2 blocks
+Archive   usr/ti/prompts/GREP   3 blocks
+Archive   usr/ti/prompts/GRPCK  2 blocks
+Archive   usr/ti/prompts/HEAD   2 blocks
+Archive   usr/ti/prompts/HELP   1 blocks
+Archive   usr/ti/prompts/ID 1 blocks
+Archive   usr/ti/prompts/INSTALL    4 blocks
+Archive   usr/ti/prompts/IPCRM  2 blocks
+Archive   usr/ti/prompts/IPCS   3 blocks
+Archive   usr/ti/prompts/JOIN   3 blocks
+Archive   usr/ti/prompts/KIFTISAM   1 blocks
+Archive   usr/ti/prompts/KILL   1 blocks
+Archive   usr/ti/prompts/LABELIT    3 blocks
+Archive   usr/ti/prompts/LD 4 blocks
+Archive   usr/ti/prompts/LEX    2 blocks
+Archive   usr/ti/prompts/LINT   5 blocks
+Archive   usr/ti/prompts/LN 1 blocks
+Archive   usr/ti/prompts/LOGNAME    1 blocks
+Archive   usr/ti/prompts/LP 12 blocks
+Archive   usr/ti/prompts/LPADMIN    14 blocks
+Archive   usr/ti/prompts/LPMOVE 2 blocks
+Archive   usr/ti/prompts/LPSCHED    1 blocks
+Archive   usr/ti/prompts/LPSHUT 1 blocks
+Archive   usr/ti/prompts/LPSTAT 7 blocks
+Archive   usr/ti/prompts/LS 8 blocks
+Archive   usr/ti/prompts/LTXCOFF    1 blocks
+Archive   usr/ti/prompts/LTXDUMP    3 blocks
+Archive   usr/ti/prompts/MAIL   3 blocks
+Archive   usr/ti/prompts/MAILX  3 blocks
+Archive   usr/ti/prompts/MAKE   4 blocks
+Archive   usr/ti/prompts/MAKEKEY    2 blocks
+Archive   usr/ti/prompts/MAN    2 blocks
+Archive   usr/ti/prompts/MAPISAM    1 blocks
+Archive   usr/ti/prompts/MESG   2 blocks
+Archive   usr/ti/prompts/MKDIR  1 blocks
+Archive   usr/ti/prompts/MKISAM 2 blocks
+Archive   usr/ti/prompts/MKMSG  1 blocks
+Archive   usr/ti/prompts/MORE   1 blocks
+Archive   usr/ti/prompts/MV 2 blocks
+Archive   usr/ti/prompts/MVDIR  1 blocks
+Archive   usr/ti/prompts/MVISAM 2 blocks
+Archive   usr/ti/prompts/NEWFORM    5 blocks
+Archive   usr/ti/prompts/NEWGRP 1 blocks
+Archive   usr/ti/prompts/NEWS   1 blocks
+Archive   usr/ti/prompts/NICE   2 blocks
+Archive   usr/ti/prompts/NM 3 blocks
+Archive   usr/ti/prompts/OD 4 blocks
+Archive   usr/ti/prompts/PACK   1 blocks
+Archive   usr/ti/prompts/PASSWD 1 blocks
+Archive   usr/ti/prompts/PASTE  3 blocks
+Archive   usr/ti/prompts/PATCH  2 blocks
+Archive   usr/ti/prompts/PCAT   2 blocks
+Archive   usr/ti/prompts/PG 1 blocks
+Archive   usr/ti/prompts/PR 7 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 26
+
+
+Archive   usr/ti/prompts/PRS    3 blocks
+Archive   usr/ti/prompts/PS 3 blocks
+Archive   usr/ti/prompts/PWCK   1 blocks
+Archive   usr/ti/prompts/PWD    1 blocks
+Archive   usr/ti/prompts/QSYM   4 blocks
+Archive   usr/ti/prompts/REGCMP 1 blocks
+Archive   usr/ti/prompts/REJECT 2 blocks
+Archive   usr/ti/prompts/RM 2 blocks
+Archive   usr/ti/prompts/RMDEL  1 blocks
+Archive   usr/ti/prompts/RMDIR  1 blocks
+Archive   usr/ti/prompts/SACT   2 blocks
+Archive   usr/ti/prompts/SADSP  1 blocks
+Archive   usr/ti/prompts/SCCSDIFF   2 blocks
+Archive   usr/ti/prompts/SDB    2 blocks
+Archive   usr/ti/prompts/SDIFF  2 blocks
+Archive   usr/ti/prompts/SETSITE    1 blocks
+Archive   usr/ti/prompts/SH 3 blocks
+Archive   usr/ti/prompts/SHOW   1 blocks
+Archive   usr/ti/prompts/SHOWFS 1 blocks
+Archive   usr/ti/prompts/SHOWHEX    1 blocks
+Archive   usr/ti/prompts/SHOWMSG    1 blocks
+Archive   usr/ti/prompts/SIZE   2 blocks
+Archive   usr/ti/prompts/SORT   8 blocks
+Archive   usr/ti/prompts/SPELL  3 blocks
+Archive   usr/ti/prompts/SPLIT  1 blocks
+Archive   usr/ti/prompts/STRIP  2 blocks
+Archive   usr/ti/prompts/STTY   2 blocks
+Archive   usr/ti/prompts/SU 2 blocks
+Archive   usr/ti/prompts/SUM    1 blocks
+Archive   usr/ti/prompts/TAIL   3 blocks
+Archive   usr/ti/prompts/TAR    6 blocks
+Archive   usr/ti/prompts/TIC    1 blocks
+Archive   usr/ti/prompts/TIME   1 blocks
+Archive   usr/ti/prompts/TIMEX  3 blocks
+Archive   usr/ti/prompts/VFISAM 3 blocks
+Archive   usr/ti/prompts/TOISAM 3 blocks
+Archive   usr/ti/prompts/TOPC   3 blocks
+Archive   usr/ti/prompts/TOUCH  3 blocks
+Archive   usr/ti/prompts/TPUT   3 blocks
+Archive   usr/ti/prompts/TR 3 blocks
+Archive   usr/ti/prompts/TSORT  1 blocks
+Archive   usr/ti/prompts/TTY    1 blocks
+Archive   usr/ti/prompts/TX 1 blocks
+Archive   usr/ti/prompts/UMASK  1 blocks
+Archive   usr/ti/prompts/UNAME  2 blocks
+Archive   usr/ti/prompts/UNGET  2 blocks
+Archive   usr/ti/prompts/UNIQ   3 blocks
+Archive   usr/ti/prompts/UNPACK 1 blocks
+Archive   usr/ti/prompts/USRADM 1 blocks
+Archive   usr/ti/prompts/VAL    2 blocks
+Archive   usr/ti/prompts/VI 2 blocks
+Archive   usr/ti/prompts/VOLCOPY    4 blocks
+Archive   usr/ti/prompts/WALL   1 blocks
+Archive   usr/ti/prompts/WC 2 blocks
+Archive   usr/ti/prompts/WHAT   1 blocks
+Archive   usr/ti/prompts/WHO    4 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 27
+
+
+Archive   usr/ti/prompts/WHODO  1 blocks
+Archive   usr/ti/prompts/WRITE  1 blocks
+Archive   usr/ti/prompts/YACC   2 blocks
+Archive   usr/ti/prompts/NETCP  3 blocks
+Archive   usr/ti/prompts/NETECHO    2 blocks
+Archive   usr/ti/prompts/NETEXEC    2 blocks
+Archive   usr/ti/prompts/NETSTAT    4 blocks
+Archive   usr/ti/prompts/TCDUMP 3 blocks
+Archive   usr/ti/prompts/TCRESET    2 blocks
+Archive   usr/ti/prompts/TCSTAT 2 blocks
+Archive   usr/ti/prompts/STRNSTAT   2 blocks
+Archive   usr/ti/prompts/GENPU  1 blocks
+Archive   usr/ti/prompts/SNAADM 1 blocks
+Archive   usr/ti/prompts/V3279  3 blocks
+Archive   usr/ti/prompts/P3287  5 blocks
+Archive   usr/ti/prompts/MAPSNA 2 blocks
+Archive   usr/ti/tisam  0 blocks
+Archive   usr/ti/tisam/cpisam.o 15 blocks
+Archive   usr/ti/tisam/findisam.o   7 blocks
+Archive   usr/ti/tisam/frisam.o 14 blocks
+Archive   usr/ti/tisam/kiftisam.o   17 blocks
+Archive   usr/ti/tisam/mapisam.o    22 blocks
+Archive   usr/ti/tisam/mkisam.o 27 blocks
+Archive   usr/ti/tisam/mvisam.o 20 blocks
+Archive   usr/ti/tisam/toisam.o 12 blocks
+Archive   usr/ti/tisam/vfisam.o 165 blocks
+Archive   usr/ti/filemap    376 blocks
+Archive   usr/ti/patch  0 blocks
+Archive   usr/ti/patch/os   4 blocks
+Archive   usr/ti/patch/3270 1 blocks
+Archive   usr/ti/patch/patchmenu    1 blocks
+Archive   usr/ti/patch/important.old    3 blocks
+Archive   usr/ti/master.sav 897 blocks
+Archive   usr/ti/netware.3.11   0 blocks
+Archive   usr/ti/netware.3.11/pnw0001   0 blocks
+Archive   usr/ti/netware.3.11/pnw0001/pnw.lib.332   193 blocks
+Archive   usr/ti/netware.3.11/pnw0001/install   10 blocks
+Archive   usr/ti/netware.3.11/pnw0001/readme    4 blocks
+Archive   usr/ti/netware.3.11/pnw0001/modlist   1 blocks
+Archive   usr/ti/netware.3.11/update.os 1 blocks
+Archive   usr/lib   0 blocks
+Archive   usr/lib/acct  0 blocks
+Archive   usr/lib/acct/acctcms  62 blocks
+Archive   usr/lib/acct/acctcon1 52 blocks
+Archive   usr/lib/acct/acctcon2 13 blocks
+Archive   usr/lib/acct/acctdisk 13 blocks
+Archive   usr/lib/acct/acctdusg 17 blocks
+Archive   usr/lib/acct/acctmerg 18 blocks
+Archive   usr/lib/acct/acctprc1 45 blocks
+Archive   usr/lib/acct/acctprc2 16 blocks
+Archive   usr/lib/acct/acctwtmp 13 blocks
+Archive   usr/lib/acct/fwtmp    35 blocks
+Archive   usr/lib/acct/wtmpfix  43 blocks
+Archive   usr/lib/acct/accton   22 blocks
+Archive   usr/lib/acct/diskusg  21 blocks
+Archive   usr/lib/acct/chargefee    2 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 28
+
+
+Archive   usr/lib/acct/ckpacct  4 blocks
+Archive   usr/lib/acct/dodisk   4 blocks
+Archive   usr/lib/acct/monacct  3 blocks
+Archive   usr/lib/acct/lastlogin    4 blocks
+Archive   usr/lib/acct/nulladm  1 blocks
+Archive   usr/lib/acct/prctmp   1 blocks
+Archive   usr/lib/acct/prdaily  4 blocks
+Archive   usr/lib/acct/prtacct  2 blocks
+Archive   usr/lib/acct/remove   1 blocks
+Archive   usr/lib/acct/runacct  25 blocks
+Archive   usr/lib/acct/shutacct 1 blocks
+Archive   usr/lib/acct/startup  1 blocks
+Archive   usr/lib/acct/turnacct 2 blocks
+Archive   usr/lib/acct/holidays 2 blocks
+Archive   usr/lib/cron  0 blocks
+Archive   usr/lib/cron/queuedefs    1 blocks
+Archive   usr/lib/cron/.proto   1 blocks
+Archive   usr/lib/cron/start.new.log    4 blocks
+Archive   usr/lib/cron/log  2 blocks
+Archive   usr/lib/cron/at.deny  0 blocks
+Archive   usr/lib/cron/cron.deny    0 blocks
+Archive   usr/lib/cron/cron.allow   1 blocks
+Archive   usr/lib/cron/OLDlog   8 blocks
+Archive   usr/lib/font  0 blocks
+Archive   usr/lib/help  0 blocks
+Archive   usr/lib/help/lib  0 blocks
+Archive   usr/lib/help/lib/help2    16 blocks
+Archive   usr/lib/help/ad   9 blocks
+Archive   usr/lib/help/bd   3 blocks
+Archive   usr/lib/help/cb   2 blocks
+Archive   usr/lib/help/cm   6 blocks
+Archive   usr/lib/help/cmds 11 blocks
+Archive   usr/lib/help/co   9 blocks
+Archive   usr/lib/help/de   7 blocks
+Archive   usr/lib/help/default  1 blocks
+Archive   usr/lib/help/ge   5 blocks
+Archive   usr/lib/help/he   1 blocks
+Archive   usr/lib/help/prs  2 blocks
+Archive   usr/lib/help/rc   5 blocks
+Archive   usr/lib/help/un   2 blocks
+Archive   usr/lib/help/ut   5 blocks
+Archive   usr/lib/help/vc   5 blocks
+Archive   usr/lib/lex   0 blocks
+Archive   usr/lib/lex/ncform    8 blocks
+Archive   usr/lib/lex/nrform    7 blocks
+Archive   usr/lib/libp  0 blocks
+Archive   usr/lib/libp/libc.a   545 blocks
+Archive   usr/lib/libp/libm.a   54 blocks
+Archive   usr/lib/macros    0 blocks
+Archive   usr/lib/mailx 0 blocks
+Archive   usr/lib/mailx/help    0 blocks
+Archive   usr/lib/mailx/rmmail  13 blocks
+Archive   usr/lib/mailx/mailx.help  2 blocks
+Archive   usr/lib/mailx/mailx.help.~    3 blocks
+Archive   usr/lib/mapout    0 blocks
+Archive   usr/lib/mapout/prt931grph 4 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 29
+
+
+Archive   usr/lib/mapout/vdt931grph 2 blocks
+Archive   usr/lib/news  0 blocks
+Archive   usr/lib/sa    0 blocks
+Archive   usr/lib/sa/sa1    1 blocks
+Archive   usr/lib/sa/sa2    1 blocks
+Archive   usr/lib/sa/sadc   24 blocks
+Archive   usr/lib/spell 0 blocks
+Archive   usr/lib/spell/spellin 44 blocks
+Archive   usr/lib/spell/hashmake    31 blocks
+Archive   usr/lib/spell/hashcheck   33 blocks
+Archive   usr/lib/spell/spellprog   47 blocks
+Archive   usr/lib/spell/compress    1 blocks
+Archive   usr/lib/spell/hlista  106 blocks
+Archive   usr/lib/spell/hlistb  106 blocks
+Archive   usr/lib/spell/hstop   13 blocks
+Archive   usr/lib/spell/spellhist   0 blocks
+Archive   usr/lib/tabset    0 blocks
+Archive   usr/lib/tabset/vt100  1 blocks
+Archive   usr/lib/tabset/std    1 blocks
+Archive   usr/lib/term  0 blocks
+Archive   usr/lib/terminfo  0 blocks
+Archive   usr/lib/terminfo/a    0 blocks
+Archive   usr/lib/terminfo/a/ansi   3 blocks
+Archive   usr/lib/terminfo/b    0 blocks
+Archive   usr/lib/terminfo/b/bpc    3 blocks
+Archive   usr/lib/terminfo/d    0 blocks
+Archive   usr/lib/terminfo/d/d0 3 blocks
+Archive   usr/lib/terminfo/d/d1 3 blocks
+Archive   usr/lib/terminfo/d/d2 3 blocks
+Archive   usr/lib/terminfo/d/d3 3 blocks
+Archive   usr/lib/terminfo/d/dumb   2 blocks
+Archive   usr/lib/terminfo/d/d4 3 blocks
+Archive   usr/lib/terminfo/v    0 blocks
+Archive   usr/lib/terminfo/v/vt100 is linked to usr/lib/terminfo/d/d0
+Archive   usr/lib/terminfo/v/vt100-am is linked to usr/lib/terminfo/d/d0
+Archive   usr/lib/terminfo/v/vt220 is linked to usr/lib/terminfo/d/d1
+Archive   usr/lib/terminfo/v/vt220-8 is linked to usr/lib/terminfo/d/d2
+Archive   usr/lib/terminfo/v/vt220-132 is linked to usr/lib/terminfo/d/d3
+Archive   usr/lib/terminfo/v/vs 3 blocks
+Archive   usr/lib/terminfo/v/vs100 is linked to usr/lib/terminfo/v/vs
+Archive   usr/lib/terminfo/v/v2 3 blocks
+Archive   usr/lib/terminfo/v/vs100s is linked to usr/lib/terminfo/v/v2
+Archive   usr/lib/terminfo/v/vt220-8-132 is linked to usr/lib/terminfo/d/d4
+Archive   usr/lib/terminfo/M    0 blocks
+Archive   usr/lib/terminfo/M/Mw 4 blocks
+Archive   usr/lib/terminfo/w    0 blocks
+Archive   usr/lib/terminfo/w/wyse is linked to usr/lib/terminfo/M/Mw
+Archive   usr/lib/terminfo/w/wy75 is linked to usr/lib/terminfo/M/Mw
+Archive   usr/lib/terminfo/w/wyse75 is linked to usr/lib/terminfo/M/Mw
+Archive   usr/lib/terminfo/w/w7 3 blocks
+Archive   usr/lib/terminfo/w/wy60 is linked to usr/lib/terminfo/w/w7
+Archive   usr/lib/terminfo/w/wyse60 is linked to usr/lib/terminfo/w/w7
+Archive   usr/lib/terminfo/w/w8 3 blocks
+Archive   usr/lib/terminfo/w/wy60-132 is linked to usr/lib/terminfo/w/w8
+Archive   usr/lib/terminfo/w/wyse60-132 is linked to usr/lib/terminfo/w/w8
+Archive   usr/lib/terminfo/w/wy60-w is linked to usr/lib/terminfo/w/w8
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 30
+
+
+Archive   usr/lib/terminfo/w/wyse60-w is linked to usr/lib/terminfo/w/w8
+Archive   usr/lib/terminfo/7    0 blocks
+Archive   usr/lib/terminfo/7/75 is linked to usr/lib/terminfo/M/Mw
+Archive   usr/lib/terminfo/n    0 blocks
+Archive   usr/lib/terminfo/n/nc 3 blocks
+Archive   usr/lib/terminfo/n/ncsa is linked to usr/lib/terminfo/n/nc
+Archive   usr/lib/terminfo/t    0 blocks
+Archive   usr/lib/terminfo/t/t1 3 blocks
+Archive   usr/lib/terminfo/t/ti924 is linked to usr/lib/terminfo/t/t1
+Archive   usr/lib/terminfo/t/t2 3 blocks
+Archive   usr/lib/terminfo/t/ti924-8 is linked to usr/lib/terminfo/t/t2
+Archive   usr/lib/terminfo/t/t3 3 blocks
+Archive   usr/lib/terminfo/t/ti924-132 is linked to usr/lib/terminfo/t/t3
+Archive   usr/lib/terminfo/t/t4 3 blocks
+Archive   usr/lib/terminfo/t/ti924-8-132 is linked to usr/lib/terminfo/t/t4
+Archive   usr/lib/terminfo/t/t6 3 blocks
+Archive   usr/lib/terminfo/t/t7 3 blocks
+Archive   usr/lib/terminfo/t/ti931r 3 blocks
+Archive   usr/lib/terminfo/t/tm 3 blocks
+Archive   usr/lib/terminfo/t/ti928  3 blocks
+Archive   usr/lib/terminfo/t/ti928-8    3 blocks
+Archive   usr/lib/terminfo/t/ti928-132  3 blocks
+Archive   usr/lib/terminfo/t/ti928-8-132    3 blocks
+Archive   usr/lib/terminfo/t/t9 3 blocks
+Archive   usr/lib/terminfo/t/ti931 is linked to usr/lib/terminfo/t/t9
+Archive   usr/lib/terminfo/t/t8 3 blocks
+Archive   usr/lib/terminfo/t/t5 3 blocks
+Archive   usr/lib/terminfo/t/ti926-8    3 blocks
+Archive   usr/lib/terminfo/t/ti926  3 blocks
+Archive   usr/lib/terminfo/t/ti850-generic  3 blocks
+Archive   usr/lib/terminfo/t/ti830-855dp    3 blocks
+Archive   usr/lib/terminfo/t/ti835-855dp    3 blocks
+Archive   usr/lib/terminfo/t/ti850  3 blocks
+Archive   usr/lib/terminfo/t/ti855dp    3 blocks
+Archive   usr/lib/terminfo/t/ti860  3 blocks
+Archive   usr/lib/terminfo/t/ti865dp    3 blocks
+Archive   usr/lib/terminfo/t/ti880-at   3 blocks
+Archive   usr/lib/terminfo/t/ti8930-855dp   3 blocks
+Archive   usr/lib/terminfo/t/ti2015-855dp   3 blocks
+Archive   usr/lib/terminfo/t/tiwp-generic   3 blocks
+Archive   usr/lib/terminfo/t/ti830  3 blocks
+Archive   usr/lib/terminfo/t/ti830-855wp    3 blocks
+Archive   usr/lib/terminfo/t/ti835  3 blocks
+Archive   usr/lib/terminfo/t/ti835-855wp    3 blocks
+Archive   usr/lib/terminfo/t/ti855  3 blocks
+Archive   usr/lib/terminfo/t/ti855wp    3 blocks
+Archive   usr/lib/terminfo/t/ti865  3 blocks
+Archive   usr/lib/terminfo/t/ti865wp    3 blocks
+Archive   usr/lib/terminfo/t/ti2015-855wp   3 blocks
+Archive   usr/lib/terminfo/t/ti8930-855wp   3 blocks
+Archive   usr/lib/terminfo/t/ti880-generic  3 blocks
+Archive   usr/lib/terminfo/t/ti880  3 blocks
+Archive   usr/lib/terminfo/t/ti885  3 blocks
+Archive   usr/lib/terminfo/t/ti8930 3 blocks
+Archive   usr/lib/terminfo/t/ti8930-880 3 blocks
+Archive   usr/lib/terminfo/t/ti875-generic  3 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 31
+
+
+Archive   usr/lib/terminfo/t/ti875  3 blocks
+Archive   usr/lib/terminfo/t/ti875dp    3 blocks
+Archive   usr/lib/terminfo/t/ti875lq    3 blocks
+Archive   usr/lib/terminfo/t/ti877  3 blocks
+Archive   usr/lib/terminfo/t/ti877dp    3 blocks
+Archive   usr/lib/terminfo/t/ti877lq    3 blocks
+Archive   usr/lib/terminfo/t/ti210-hpjet    3 blocks
+Archive   usr/lib/terminfo/t/ti2015-hpjet   4 blocks
+Archive   usr/lib/terminfo/t/ti2108-hpjet   4 blocks
+Archive   usr/lib/terminfo/t/ti2115-hpjet   4 blocks
+Archive   usr/lib/terminfo/t/ti810  3 blocks
+Archive   usr/lib/terminfo/t/ti916  3 blocks
+Archive   usr/lib/terminfo/t/ti916-8    3 blocks
+Archive   usr/lib/terminfo/t/ti916-132  3 blocks
+Archive   usr/lib/terminfo/t/ti916-8-132    3 blocks
+Archive   usr/lib/terminfo/e    0 blocks
+Archive   usr/lib/terminfo/e/em924 is linked to usr/lib/terminfo/t/t6
+Archive   usr/lib/terminfo/e/em931 is linked to usr/lib/terminfo/t/t8
+Archive   usr/lib/terminfo/x    0 blocks
+Archive   usr/lib/terminfo/x/x5 is linked to usr/lib/terminfo/t/ti931r
+Archive   usr/lib/terminfo/x/x1 is linked to usr/lib/terminfo/t/ti928
+Archive   usr/lib/terminfo/x/x2 is linked to usr/lib/terminfo/t/ti928-8
+Archive   usr/lib/terminfo/x/x3 is linked to usr/lib/terminfo/t/ti928-132
+Archive   usr/lib/terminfo/x/x4 is linked to usr/lib/terminfo/t/ti928-8-132
+Archive   usr/lib/terminfo/x/x6 3 blocks
+Archive   usr/lib/terminfo/x/xterm is linked to usr/lib/terminfo/v/vs
+Archive   usr/lib/terminfo/x/xterms is linked to usr/lib/terminfo/v/v2
+Archive   usr/lib/terminfo/X    0 blocks
+Archive   usr/lib/terminfo/X/X5 is linked to usr/lib/terminfo/t/ti931r
+Archive   usr/lib/terminfo/T    0 blocks
+Archive   usr/lib/terminfo/T/T9 is linked to usr/lib/terminfo/t/t9
+Archive   usr/lib/terminfo/i    0 blocks
+Archive   usr/lib/terminfo/i/i2 is linked to usr/lib/terminfo/t/ti926-8
+Archive   usr/lib/terminfo/i/i1 is linked to usr/lib/terminfo/t/ti926
+Archive   usr/lib/terminfo/u    0 blocks
+Archive   usr/lib/terminfo/u/unknown    2 blocks
+Archive   usr/lib/terminfo/h    0 blocks
+Archive   usr/lib/terminfo/h/hpjet-generic  3 blocks
+Archive   usr/lib/terminfo/p    0 blocks
+Archive   usr/lib/terminfo/p/ptronics-gnrc  2 blocks
+Archive   usr/lib/terminfo/p/p300   2 blocks
+Archive   usr/lib/terminfo/p/p600   2 blocks
+Archive   usr/lib/terminfo/q    0 blocks
+Archive   usr/lib/terminfo/q/q1 is linked to usr/lib/terminfo/t/ti916
+Archive   usr/lib/terminfo/q/q2 is linked to usr/lib/terminfo/t/ti916-8
+Archive   usr/lib/terminfo/q/q3 is linked to usr/lib/terminfo/t/ti916-132
+Archive   usr/lib/terminfo/q/q4 is linked to usr/lib/terminfo/t/ti916-8-132
+Archive   usr/lib/terminfo_src  0 blocks
+Archive   usr/lib/terminfo_src/s32.ti   34 blocks
+Archive   usr/lib/terminfo_src/trailer.ti   4 blocks
+Archive   usr/lib/terminfo_src/adds.ti  6 blocks
+Archive   usr/lib/terminfo_src/annarbor.ti  12 blocks
+Archive   usr/lib/terminfo_src/beehive.ti   9 blocks
+Archive   usr/lib/terminfo_src/cdc.ti   1 blocks
+Archive   usr/lib/terminfo_src/concept.ti   11 blocks
+Archive   usr/lib/terminfo_src/datamedia.ti 5 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 32
+
+
+Archive   usr/lib/terminfo_src/dec.ti   13 blocks
+Archive   usr/lib/terminfo_src/diablo.ti    6 blocks
+Archive   usr/lib/terminfo_src/general.ti   3 blocks
+Archive   usr/lib/terminfo_src/hardcopy.ti  2 blocks
+Archive   usr/lib/terminfo_src/hazeltine.ti 7 blocks
+Archive   usr/lib/terminfo_src/heath.ti 5 blocks
+Archive   usr/lib/terminfo_src/homebrew.ti  6 blocks
+Archive   usr/lib/terminfo_src/hp.ti    16 blocks
+Archive   usr/lib/terminfo_src/ibm.ti   7 blocks
+Archive   usr/lib/terminfo_src/lsi.ti   7 blocks
+Archive   usr/lib/terminfo_src/microterm.ti 6 blocks
+Archive   usr/lib/terminfo_src/misc.ti  34 blocks
+Archive   usr/lib/terminfo_src/pc.ti    8 blocks
+Archive   usr/lib/terminfo_src/perkinelm.ti 2 blocks
+Archive   usr/lib/terminfo_src/print.ti 3 blocks
+Archive   usr/lib/terminfo_src/special.ti   2 blocks
+Archive   usr/lib/terminfo_src/tektronix.ti 8 blocks
+Archive   usr/lib/terminfo_src/teleray.ti   5 blocks
+Archive   usr/lib/terminfo_src/teletype.ti  9 blocks
+Archive   usr/lib/terminfo_src/televideo.ti 13 blocks
+Archive   usr/lib/terminfo_src/ti.ti    1 blocks
+Archive   usr/lib/terminfo_src/virtual.ti   8 blocks
+Archive   usr/lib/terminfo_src/visual.ti    8 blocks
+Archive   usr/lib/terminfo_src/ansi.ti  10 blocks
+Archive   usr/lib/terminfo_src/att.ti   66 blocks
+Archive   usr/lib/terminfo_src/colorscan.ti 2 blocks
+Archive   usr/lib/terminfo_src/fortune.ti   4 blocks
+Archive   usr/lib/terminfo_src/sperry.ti    4 blocks
+Archive   usr/lib/terminfo_src/tymshare.ti  2 blocks
+Archive   usr/lib/terminfo_src/printer.ti   43 blocks
+Archive   usr/lib/tmac  0 blocks
+Archive   usr/lib/uucp  0 blocks
+Archive   usr/lib/uucp/Devices  3 blocks
+Archive   usr/lib/uucp/Dialers  25 blocks
+Archive   usr/lib/uucp/Systems  2 blocks
+Archive   usr/lib/uucp/Permissions  1 blocks
+Archive   usr/lib/uucp/Poll 1 blocks
+Archive   usr/lib/uucp/Dialcodes    1 blocks
+Archive   usr/lib/uucp/Devconfig    1 blocks
+Archive   usr/lib/uucp/Sysfiles 4 blocks
+Archive   usr/lib/uucp/Maxuuxqts    1 blocks
+Archive   usr/lib/uucp/Maxuuscheds  1 blocks
+Archive   usr/lib/uucp/uudemon.poll 2 blocks
+Archive   usr/lib/uucp/uudemon.cleanu   9 blocks
+Archive   usr/lib/uucp/uudemon.hour 1 blocks
+Archive   usr/lib/uucp/uudemon.admin    2 blocks
+Archive   usr/lib/uucp/Uutry    3 blocks
+Archive   usr/lib/uucp/SetUp    4 blocks
+Archive   usr/lib/uucp/uulog    4 blocks
+Archive   usr/lib/uucp/uuto 3 blocks
+Archive   usr/lib/uucp/uupick   8 blocks
+Archive   usr/lib/uucp/nttysrv  42 blocks
+Archive   usr/lib/uucp/remote.unknown   85 blocks
+Archive   usr/lib/uucp/uuxqt    127 blocks
+Archive   usr/lib/uucp/uucico   203 blocks
+Archive   usr/lib/uucp/uusched  67 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 33
+
+
+Archive   usr/lib/uucp/uucpd    59 blocks
+Archive   usr/lib/uucp/uugetty  49 blocks
+Archive   usr/lib/uucp/uucheck  39 blocks
+Archive   usr/lib/uucp/uucleanup    84 blocks
+Archive   usr/lib/uucp/uuencode 22 blocks
+Archive   usr/lib/uucp/uudecode 25 blocks
+Archive   usr/lib/libups.a  8 blocks
+Archive   usr/lib/libcurses.a   653 blocks
+Archive   usr/lib/libphys.a 6 blocks
+Archive   usr/lib/libplot.a 17 blocks
+Archive   usr/lib/lib300.a  24 blocks
+Archive   usr/lib/lib300s.a 24 blocks
+Archive   usr/lib/lib4014.a 21 blocks
+Archive   usr/lib/lib450.a  24 blocks
+Archive   usr/lib/libvt0.a  20 blocks
+Archive   usr/lib/libtermcap.a  10 blocks
+Archive   usr/lib/libtermlib.a is linked to usr/lib/libtermcap.a
+Archive   usr/lib/libcrypt.a    20 blocks
+Archive   usr/lib/libgen.a  180 blocks
+Archive   usr/lib/liby.a    3 blocks
+Archive   usr/lib/libsec.a  7 blocks
+Archive   usr/lib/libnsl.a  73 blocks
+Archive   usr/lib/libnsl_s.a    57 blocks
+Archive   usr/lib/libmalloc.a   14 blocks
+Archive   usr/lib/libm.a    51 blocks
+Archive   usr/lib/libm881.a 18 blocks
+Archive   usr/lib/libld.a   40 blocks
+Archive   usr/lib/libl.a    9 blocks
+Archive   usr/lib/libPW.a   66 blocks
+Archive   usr/lib/libtisam.a    382 blocks
+Archive   usr/lib/libtisam_s.a  354 blocks
+Archive   usr/lib/libpt.a   3 blocks
+Archive   usr/lib/libfe.a   173 blocks
+Archive   usr/lib/lib.b 4 blocks
+Archive   usr/lib/calprog   34 blocks
+Archive   usr/lib/dag   16 blocks
+Archive   usr/lib/lpfx  24 blocks
+Archive   usr/lib/nmf   13 blocks
+Archive   usr/lib/flip  13 blocks
+Archive   usr/lib/xpass 127 blocks
+Archive   usr/lib/xcpp  52 blocks
+Archive   usr/lib/errdemon  47 blocks
+Archive   usr/lib/getoptcvt 4 blocks
+Archive   usr/lib/accept    71 blocks
+Archive   usr/lib/lpshut    52 blocks
+Archive   usr/lib/lpfilter  137 blocks
+Archive   usr/lib/lpforms   167 blocks
+Archive   usr/lib/lpmove    68 blocks
+Archive   usr/lib/lpusers   109 blocks
+Archive   usr/lib/reject    71 blocks
+Archive   usr/lib/lpsched   616 blocks
+Archive   usr/lib/lpadmin   319 blocks
+Archive   usr/lib/llib-lc   30 blocks
+Archive   usr/lib/llib-lc.ln    27 blocks
+Archive   usr/lib/llib-port 15 blocks
+Archive   usr/lib/llib-port.ln  14 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 34
+
+
+Archive   usr/lib/llib-lm   4 blocks
+Archive   usr/lib/llib-lm.ln    3 blocks
+Archive   usr/lib/lint1 164 blocks
+Archive   usr/lib/lint2 35 blocks
+Archive   usr/lib/libnls.a  8 blocks
+Archive   usr/lib/mv_dir    35 blocks
+Archive   usr/lib/pt_chmod  14 blocks
+Archive   usr/lib/t4014 21 blocks
+Archive   usr/lib/t300  22 blocks
+Archive   usr/lib/t300s 22 blocks
+Archive   usr/lib/t450  22 blocks
+Archive   usr/lib/vplot 46 blocks
+Archive   usr/lib/unittab   16 blocks
+Archive   usr/lib/exrecover 60 blocks
+Archive   usr/lib/expreserve    31 blocks
+Archive   usr/lib/yaccpar   19 blocks
+Archive   usr/lib/libfe.a.sav   170 blocks
+Archive   usr/plib  0 blocks
+Archive   usr/plib/lex  0 blocks
+Archive   usr/plib/terminfo 0 blocks
+Archive   usr/etc   0 blocks
+Archive   usr/adm   0 blocks
+Archive   usr/adm/acct  0 blocks
+Archive   usr/adm/acct/fiscal   0 blocks
+Archive   usr/adm/acct/nite 0 blocks
+Archive   usr/adm/acct/sum  0 blocks
+Archive   usr/adm/active    0 blocks
+Archive   usr/adm/active/cmds   0 blocks
+Archive   usr/adm/active/imap   0 blocks
+Archive   usr/adm/fs    0 blocks
+Archive   usr/adm/fs/fsfull 1 blocks
+Archive   usr/adm/fs/fswarn 1 blocks
+Archive   usr/adm/fs/fslist 1 blocks
+Archive   usr/adm/sa    0 blocks
+Archive   usr/adm/sa/tdecap 112 blocks
+Archive   usr/adm/streams   0 blocks
+Archive   usr/adm/.login    1 blocks
+Archive   usr/adm/.cshrc    1 blocks
+Archive   usr/adm/sh.bck    98 blocks
+Archive   usr/adm/sh.sec    98 blocks
+Archive   usr/adm/errfile   61 blocks
+Archive   usr/adm/softerr   0 blocks
+Archive   usr/adm/comlog    0 blocks
+Archive   usr/adm/comlog/tcdllog    1 blocks
+Archive   usr/adm/comlog/prnt.ccb08.0   33 blocks
+Archive   usr/adm/comlog/mtcdllog   1 blocks
+Archive   usr/adm/comlog/prnt.ccb08.1   6 blocks
+Archive   usr/adm/JDISRLSE.log  27 blocks
+Archive   usr/adm/sulog 1 blocks
+Archive   usr/adm/pacct 0 blocks
+Archive   usr/adm/arlog 0 blocks
+Archive   usr/adm/arlog/tcdllog 1 blocks
+Archive   usr/adm/arlog/prnt.ccb08.0    3 blocks
+Archive   usr/adm/arlog/mtcdllog    1 blocks
+Archive   usr/adm/SYS.ERR.LOG1  0 blocks
+Archive   usr/adm/SYS.ERR.LOG2  0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 35
+
+
+Archive   usr/adm/SYS.ERR.LOG3  0 blocks
+Archive   usr/adm/SYS.ERR.LOG4  0 blocks
+Archive   usr/adm/syslog    0 blocks
+Archive   usr/include   0 blocks
+Archive   usr/include/sys   0 blocks
+Archive   usr/include/sys/fs    0 blocks
+Archive   usr/include/sys/fs/s5dir.h    1 blocks
+Archive   usr/include/sys/fs/s5fblk.h   1 blocks
+Archive   usr/include/sys/fs/s5filsys.h 6 blocks
+Archive   usr/include/sys/fs/s5inode.h  5 blocks
+Archive   usr/include/sys/fs/s5macros.h 6 blocks
+Archive   usr/include/sys/fs/s5param.h  6 blocks
+Archive   usr/include/sys/fs/hsdir.h    7 blocks
+Archive   usr/include/sys/fs/hsfcntl.h  3 blocks
+Archive   usr/include/sys/fs/hsfilsys.h 4 blocks
+Archive   usr/include/sys/fs/hsinode.h  3 blocks
+Archive   usr/include/sys/fs/hsmacros.h 4 blocks
+Archive   usr/include/sys/fs/hsparam.h  1 blocks
+Archive   usr/include/sys/fs/hsvolume.h 9 blocks
+Archive   usr/include/sys/acct.h    3 blocks
+Archive   usr/include/sys/alloc.h   4 blocks
+Archive   usr/include/sys/anchor.h  3 blocks
+Archive   usr/include/sys/boot.h    12 blocks
+Archive   usr/include/sys/bswap.h   3 blocks
+Archive   usr/include/sys/buf.h 27 blocks
+Archive   usr/include/sys/busnet.h  19 blocks
+Archive   usr/include/sys/callo.h   2 blocks
+Archive   usr/include/sys/cirmgr.h  4 blocks
+Archive   usr/include/sys/cmap.h    5 blocks
+Archive   usr/include/sys/comm.h    15 blocks
+Archive   usr/include/sys/conf.h    11 blocks
+Archive   usr/include/sys/confrom.h 7 blocks
+Archive   usr/include/sys/cpu.h 31 blocks
+Archive   usr/include/sys/crtctl.h  5 blocks
+Archive   usr/include/sys/devinfo.h 2 blocks
+Archive   usr/include/sys/devmap.h  12 blocks
+Archive   usr/include/sys/dialio.h  6 blocks
+Archive   usr/include/sys/dir.h 1 blocks
+Archive   usr/include/sys/dirent.h  2 blocks
+Archive   usr/include/sys/elog.h    4 blocks
+Archive   usr/include/sys/enc.h 31 blocks
+Archive   usr/include/sys/erec.h    10 blocks
+Archive   usr/include/sys/err.h 2 blocks
+Archive   usr/include/sys/errno.h   15 blocks
+Archive   usr/include/sys/fault.h   2 blocks
+Archive   usr/include/sys/fblk.h    1 blocks
+Archive   usr/include/sys/fcntl.h   4 blocks
+Archive   usr/include/sys/file.h    3 blocks
+Archive   usr/include/sys/filsys.h  1 blocks
+Archive   usr/include/sys/flock.h   6 blocks
+Archive   usr/include/sys/fp.h  3 blocks
+Archive   usr/include/sys/fsid.h    2 blocks
+Archive   usr/include/sys/fstyp.h   8 blocks
+Archive   usr/include/sys/init.h    3 blocks
+Archive   usr/include/sys/ino.h 3 blocks
+Archive   usr/include/sys/inode.h   16 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 36
+
+
+Archive   usr/include/sys/iobuf.h   5 blocks
+Archive   usr/include/sys/mirror.h  4 blocks
+Archive   usr/include/sys/ioctl.h   3 blocks
+Archive   usr/include/sys/ipc.h 3 blocks
+Archive   usr/include/sys/kdb.h 5 blocks
+Archive   usr/include/sys/lihdr.h   11 blocks
+Archive   usr/include/sys/lock.h    2 blocks
+Archive   usr/include/sys/log.h 4 blocks
+Archive   usr/include/sys/map.h 2 blocks
+Archive   usr/include/sys/mapout.h  3 blocks
+Archive   usr/include/sys/mmu.h 5 blocks
+Archive   usr/include/sys/kerrf.h   6 blocks
+Archive   usr/include/sys/mount.h   5 blocks
+Archive   usr/include/sys/msc.h 23 blocks
+Archive   usr/include/sys/msg.h 6 blocks
+Archive   usr/include/sys/mtio.h    4 blocks
+Archive   usr/include/sys/multivol.h    4 blocks
+Archive   usr/include/sys/nami.h    9 blocks
+Archive   usr/include/sys/np.h  28 blocks
+Archive   usr/include/sys/nserve.h  5 blocks
+Archive   usr/include/sys/nubus.h   3 blocks
+Archive   usr/include/sys/opc.h 8 blocks
+Archive   usr/include/sys/open.h    4 blocks
+Archive   usr/include/sys/opt.h 2 blocks
+Archive   usr/include/sys/param.h   22 blocks
+Archive   usr/include/sys/partab.h  6 blocks
+Archive   usr/include/sys/phys.h    2 blocks
+Archive   usr/include/sys/pmapinfo.h    6 blocks
+Archive   usr/include/sys/poll.h    3 blocks
+Archive   usr/include/sys/proc.h    19 blocks
+Archive   usr/include/sys/psl.h 4 blocks
+Archive   usr/include/sys/pte.h 13 blocks
+Archive   usr/include/sys/queue.h   12 blocks
+Archive   usr/include/sys/qtrio.h   8 blocks
+Archive   usr/include/sys/reg.h 2 blocks
+Archive   usr/include/sys/rfsys.h   3 blocks
+Archive   usr/include/sys/runq.h    2 blocks
+Archive   usr/include/sys/sat.h 3 blocks
+Archive   usr/include/sys/sdma.h    4 blocks
+Archive   usr/include/sys/seg.h 7 blocks
+Archive   usr/include/sys/sem.h 7 blocks
+Archive   usr/include/sys/sema.h    3 blocks
+Archive   usr/include/sys/shm.h 8 blocks
+Archive   usr/include/sys/signal.h  5 blocks
+Archive   usr/include/sys/sky.h 5 blocks
+Archive   usr/include/sys/smap.h    3 blocks
+Archive   usr/include/sys/spa.h 6 blocks
+Archive   usr/include/sys/socket.h  25 blocks
+Archive   usr/include/sys/sockvars.h    3 blocks
+Archive   usr/include/sys/space.h   18 blocks
+Archive   usr/include/sys/stack.h   15 blocks
+Archive   usr/include/sys/stat.h    5 blocks
+Archive   usr/include/sys/statfs.h  2 blocks
+Archive   usr/include/sys/stbm.h    86 blocks
+Archive   usr/include/sys/strcom.h  6 blocks
+Archive   usr/include/sys/stream.h  34 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 37
+
+
+Archive   usr/include/sys/strlog.h  3 blocks
+Archive   usr/include/sys/strnet.h  13 blocks
+Archive   usr/include/sys/stropts.h 6 blocks
+Archive   usr/include/sys/strstat.h 3 blocks
+Archive   usr/include/sys/sysinfo.h 10 blocks
+Archive   usr/include/sys/sysmacros.h   11 blocks
+Archive   usr/include/sys/systm.h   7 blocks
+Archive   usr/include/sys/termio.h  14 blocks
+Archive   usr/include/sys/text.h    4 blocks
+Archive   usr/include/sys/times.h   2 blocks
+Archive   usr/include/sys/tihdr.h   23 blocks
+Archive   usr/include/sys/timod.h   5 blocks
+Archive   usr/include/sys/tiuser.h  14 blocks
+Archive   usr/include/sys/tmrinfo.h 3 blocks
+Archive   usr/include/sys/trace.h   2 blocks
+Archive   usr/include/sys/trap.h    6 blocks
+Archive   usr/include/sys/ttold.h   2 blocks
+Archive   usr/include/sys/tty.h 15 blocks
+Archive   usr/include/sys/types.h   5 blocks
+Archive   usr/include/sys/user.h    15 blocks
+Archive   usr/include/sys/utsname.h 2 blocks
+Archive   usr/include/sys/var.h 4 blocks
+Archive   usr/include/sys/vlabel.h  6 blocks
+Archive   usr/include/sys/vm.h  2 blocks
+Archive   usr/include/sys/vmmacros.h    7 blocks
+Archive   usr/include/sys/vmmeter.h 5 blocks
+Archive   usr/include/sys/vmparams.h    7 blocks
+Archive   usr/include/sys/device.h  4 blocks
+Archive   usr/include/sys/cpuloc.h  11 blocks
+Archive   usr/include/sys/rtc.h 2 blocks
+Archive   usr/include/sys/sysm68k.h 3 blocks
+Archive   usr/include/sys/rd.h  2 blocks
+Archive   usr/include/sys/incdec.h  5 blocks
+Archive   usr/include/sys/fuword.h  6 blocks
+Archive   usr/include/sys/splx.h    6 blocks
+Archive   usr/include/sys/bread.h   1 blocks
+Archive   usr/include/sys/ups.h 2 blocks
+Archive   usr/include/sys/netstat.h 16 blocks
+Archive   usr/include/sys/senetif.h 4 blocks
+Archive   usr/include/sys/jioctl.h  4 blocks
+Archive   usr/include/sys/ldterm.h  7 blocks
+Archive   usr/include/sys/ptms.h    4 blocks
+Archive   usr/include/sys/ptem.h    3 blocks
+Archive   usr/include/sys/sa.h  8 blocks
+Archive   usr/include/sys/conlog.h  4 blocks
+Archive   usr/include/sys/nvram.h   10 blocks
+Archive   usr/include/sys/idphdr.h  9 blocks
+Archive   usr/include/M_DEFS.h  4 blocks
+Archive   usr/include/a.out.h   15 blocks
+Archive   usr/include/alarm.h   3 blocks
+Archive   usr/include/aouthdr.h 2 blocks
+Archive   usr/include/ar.h  4 blocks
+Archive   usr/include/assert.h  1 blocks
+Archive   usr/include/cpio.h    2 blocks
+Archive   usr/include/core.h    2 blocks
+Archive   usr/include/ctype.h   3 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 38
+
+
+Archive   usr/include/decimal.h 3 blocks
+Archive   usr/include/dial.h    3 blocks
+Archive   usr/include/dirent.h  2 blocks
+Archive   usr/include/dumprestor.h  2 blocks
+Archive   usr/include/errno.h   1 blocks
+Archive   usr/include/execargs.h    2 blocks
+Archive   usr/include/fatal.h   2 blocks
+Archive   usr/include/fcntl.h   1 blocks
+Archive   usr/include/filehdr.h 11 blocks
+Archive   usr/include/ftw.h 1 blocks
+Archive   usr/include/grp.h 1 blocks
+Archive   usr/include/isam.h    18 blocks
+Archive   usr/include/ldfcn.h   5 blocks
+Archive   usr/include/linenum.h 2 blocks
+Archive   usr/include/macros.h  5 blocks
+Archive   usr/include/mallint.h 10 blocks
+Archive   usr/include/malloc.h  3 blocks
+Archive   usr/include/math.h    5 blocks
+Archive   usr/include/memory.h  1 blocks
+Archive   usr/include/mnttab.h  1 blocks
+Archive   usr/include/mon.h 1 blocks
+Archive   usr/include/nan.h 4 blocks
+Archive   usr/include/nlist.h   2 blocks
+Archive   usr/include/nserve.h  11 blocks
+Archive   usr/include/pn.h  4 blocks
+Archive   usr/include/printm.h  1 blocks
+Archive   usr/include/prmode.h  3 blocks
+Archive   usr/include/poll.h    1 blocks
+Archive   usr/include/nsaddr.h  2 blocks
+Archive   usr/include/prof.h    2 blocks
+Archive   usr/include/pwd.h 1 blocks
+Archive   usr/include/regexp.h  16 blocks
+Archive   usr/include/reloc.h   4 blocks
+Archive   usr/include/rje.h 6 blocks
+Archive   usr/include/scnhdr.h  6 blocks
+Archive   usr/include/search.h  1 blocks
+Archive   usr/include/setjmp.h  1 blocks
+Archive   usr/include/sgtty.h   4 blocks
+Archive   usr/include/shadow.h  3 blocks
+Archive   usr/include/signal.h  1 blocks
+Archive   usr/include/stand.h   5 blocks
+Archive   usr/include/stdio.h   4 blocks
+Archive   usr/include/storclass.h   4 blocks
+Archive   usr/include/string.h  1 blocks
+Archive   usr/include/stropts.h 1 blocks
+Archive   usr/include/symbol.h  1 blocks
+Archive   usr/include/syms.h    10 blocks
+Archive   usr/include/sys.m68k  3 blocks
+Archive   usr/include/termio.h  1 blocks
+Archive   usr/include/time.h    2 blocks
+Archive   usr/include/tisam.h   29 blocks
+Archive   usr/include/tiuser.h  1 blocks
+Archive   usr/include/tp_defs.h 1 blocks
+Archive   usr/include/ustat.h   1 blocks
+Archive   usr/include/utmp.h    4 blocks
+Archive   usr/include/values.h  14 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 39
+
+
+Archive   usr/include/varargs.h 1 blocks
+Archive   usr/include/x25lib.h  0 blocks
+Archive   usr/include/stermio.h 3 blocks
+Archive   usr/include/unistd.h  3 blocks
+Archive   usr/include/curses.h  47 blocks
+Archive   usr/include/unctrl.h  1 blocks
+Archive   usr/include/term.h    94 blocks
+Archive   usr/include/netstat.h 1 blocks
+Archive   usr/include/vdtrdwrt.h    44 blocks
+Archive   usr/include/lan.h 10 blocks
+Archive   usr/include/xns.h 9 blocks
+Archive   usr/include/dialio.h  1 blocks
+Archive   usr/local 0 blocks
+Archive   usr/local/crash   313 blocks
+Archive   usr/lost+found    0 blocks
+Archive   usr/mail  0 blocks
+Archive   usr/mail/:saved   0 blocks
+Archive   usr/mail/root 145 blocks
+Archive   usr/mail/adm  166 blocks
+Archive   usr/man is linked to /JDIS/usr/man
+Archive   usr/catman    0 blocks
+Archive   usr/catman/u_man  0 blocks
+Archive   usr/catman/u_man/man1 0 blocks
+Archive   usr/catman/a_man  0 blocks
+Archive   usr/catman/a_man/man1 0 blocks
+Archive   usr/news  0 blocks
+Archive   usr/preserve  0 blocks
+Archive   usr/pub   0 blocks
+Archive   usr/skel  0 blocks
+Archive   usr/skel/.cshrc   1 blocks
+Archive   usr/skel/.login   2 blocks
+Archive   usr/skel/.logout  1 blocks
+Archive   usr/skel/.profile 1 blocks
+Archive   usr/spool 0 blocks
+Archive   usr/spool/cron    0 blocks
+Archive   usr/spool/cron/atjobs 0 blocks
+Archive   usr/spool/cron/crontabs   0 blocks
+Archive   usr/spool/cron/crontabs/adm   1 blocks
+Archive   usr/spool/cron/crontabs/root  1 blocks
+Archive   usr/spool/cron/crontabs/sys999    1 blocks
+Archive   usr/spool/lp  0 blocks
+Archive   usr/spool/lp/admins   0 blocks
+Archive   usr/spool/lp/admins/lp    0 blocks
+Archive   usr/spool/lp/admins/lp/classes    0 blocks
+Archive   usr/spool/lp/admins/lp/forms  0 blocks
+Archive   usr/spool/lp/admins/lp/interfaces 0 blocks
+Archive   usr/spool/lp/admins/lp/interfaces/HELD    3 blocks
+Archive   usr/spool/lp/admins/lp/interfaces/lp06    3 blocks
+Archive   usr/spool/lp/admins/lp/interfaces/lp01    3 blocks
+Archive   usr/spool/lp/admins/lp/interfaces/lp03    3 blocks
+Archive   usr/spool/lp/admins/lp/interfaces/lp05    3 blocks
+Archive   usr/spool/lp/admins/lp/logs   0 blocks
+Archive   usr/spool/lp/admins/lp/printers   0 blocks
+Archive   usr/spool/lp/admins/lp/printers/HELD  0 blocks
+Archive   usr/spool/lp/admins/lp/printers/HELD/configuration    1 blocks
+Archive   usr/spool/lp/admins/lp/printers/HELD/alert.sh 2 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 40
+
+
+Archive   usr/spool/lp/admins/lp/printers/HELD/alert.vars   1 blocks
+Archive   usr/spool/lp/admins/lp/printers/HELD/users.deny   0 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp06  0 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp06/configuration    1 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp06/alert.sh 2 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp06/alert.vars   1 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp06/users.deny   0 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp01  0 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp01/configuration    1 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp01/alert.sh 7 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp01/alert.vars   1 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp01/users.deny   0 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp05  0 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp05/configuration    1 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp05/alert.sh 2 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp05/alert.vars   1 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp05/users.deny   0 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp03  0 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp03/configuration    1 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp03/alert.sh 2 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp03/alert.vars   1 blocks
+Archive   usr/spool/lp/admins/lp/printers/lp03/users.deny   0 blocks
+Archive   usr/spool/lp/admins/lp/pwheels    0 blocks
+Archive   usr/spool/lp/bin  0 blocks
+Archive   usr/spool/lp/bin/lp.set   63 blocks
+Archive   usr/spool/lp/bin/lp.cat   72 blocks
+Archive   usr/spool/lp/bin/lp.page  41 blocks
+Archive   usr/spool/lp/bin/lp.tell  31 blocks
+Archive   usr/spool/lp/bin/drain.output 23 blocks
+Archive   usr/spool/lp/bin/alert.proto  2 blocks
+Archive   usr/spool/lp/bin/slow.filter  4 blocks
+Archive   usr/spool/lp/fifos    0 blocks
+Archive   usr/spool/lp/fifos/private    0 blocks
+Archive   usr/spool/lp/fifos/public 0 blocks
+Archive   usr/spool/lp/fifos/FIFO   0 blocks
+Archive   usr/spool/lp/logs 0 blocks
+Archive   usr/spool/lp/logs/lpsched 5 blocks
+Archive   usr/spool/lp/logs/requests    1 blocks
+Archive   usr/spool/lp/model    0 blocks
+Archive   usr/spool/lp/model/standard   3 blocks
+Archive   usr/spool/lp/model/tr78   6 blocks
+Archive   usr/spool/lp/model/tr87   4 blocks
+Archive   usr/spool/lp/model/readme 6 blocks
+Archive   usr/spool/lp/model/standard.sav   3 blocks
+Archive   usr/spool/lp/model/standard.332   51 blocks
+Archive   usr/spool/lp/requests 0 blocks
+Archive   usr/spool/lp/system   0 blocks
+Archive   usr/spool/lp/system/pstatus   1 blocks
+Archive   usr/spool/lp/temp is linked to /JDIS/lp/temp
+Archive   usr/spool/lp/.login   1 blocks
+Archive   usr/spool/lp/default  1 blocks
+Archive   usr/spool/lppublic    0 blocks
+Archive   usr/spool/pscrn   0 blocks
+Archive   usr/spool/pscrn/logfile   1 blocks
+Archive   usr/spool/uucp    0 blocks
+Archive   usr/spool/uucp/.Xqtdir    0 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 41
+
+
+Archive   usr/spool/uucp/.Corrupt   0 blocks
+Archive   usr/spool/uucp/.Log   0 blocks
+Archive   usr/spool/uucp/.Log/uucp  0 blocks
+Archive   usr/spool/uucp/.Log/uux   0 blocks
+Archive   usr/spool/uucp/.Log/uuxqt 0 blocks
+Archive   usr/spool/uucp/.Log/uucico    0 blocks
+Archive   usr/spool/uucp/.Sequence  0 blocks
+Archive   usr/spool/uucp/.Status    0 blocks
+Archive   usr/spool/uucp/.Workspace 0 blocks
+Archive   usr/spool/uucp/.Admin 0 blocks
+Archive   usr/spool/uucp/.Old   0 blocks
+Archive   usr/spool/uucppublic  0 blocks
+Archive   usr/spool/locks   0 blocks
+Archive   usr/src   0 blocks
+Archive   usr/tmp   0 blocks
+Archive   usr/net   0 blocks
+Archive   usr/net/nls   0 blocks
+Archive   usr/net/nls/listen    185 blocks
+Archive   usr/ucs   0 blocks
+Archive   usr/ucs/bldate    1 blocks
+Archive   usr/ucs/psctask   90 blocks
+Archive   usr/ucs/CPSC  1 blocks
+Archive   usr/ucs/FX_xfer.o 26 blocks
+Archive   usr/ucs/pu    335 blocks
+Archive   usr/ucs/KEYMAP.SNA    1 blocks
+Archive   usr/ucs/KEYS.console  3 blocks
+Archive   usr/ucs/KEYS.ti924    3 blocks
+Archive   usr/ucs/KEYS.ti928    3 blocks
+Archive   usr/ucs/KEYS.ti931    3 blocks
+Archive   usr/ucs/KEYS.vt100    3 blocks
+Archive   usr/ucs/KEYS.wy75 3 blocks
+Archive   usr/ucs/MAPSNA    2 blocks
+Archive   usr/ucs/genpu 92 blocks
+Archive   usr/ucs/snaadm    63 blocks
+Archive   usr/ucs/v3279 355 blocks
+Archive   usr/ucs/att2224   1 blocks
+Archive   usr/ucs/genfile.dial  8 blocks
+Archive   usr/ucs/genfile.vsat  8 blocks
+Archive   usr/ucs/cobpsc.MFC    10 blocks
+Archive   usr/ucs/dialtest  69 blocks
+Archive   usr/ucs/example.c 27 blocks
+Archive   usr/ucs/fecapsna  35 blocks
+Archive   usr/ucs/fxfr  130 blocks
+Archive   usr/ucs/hayes2400 1 blocks
+Archive   usr/ucs/icspsc.o  14 blocks
+Archive   usr/ucs/keycodes.h    8 blocks
+Archive   usr/ucs/pmapsna.o 31 blocks
+Archive   usr/ucs/pugen.ex1 2 blocks
+Archive   usr/ucs/pugen.ex2 2 blocks
+Archive   usr/ucs/pugen.ex3 2 blocks
+Archive   usr/ucs/pulog 489 blocks
+Archive   usr/ucs/pulog.old 120 blocks
+Archive   usr/ucs/puta  128 blocks
+Archive   usr/ucs/readme    6 blocks
+Archive   usr/ucs/sdlc_dial 121 blocks
+Archive   usr/ucs/hold  1 blocks
+
+
+
+
+
+
+
+Nov 28 15:20 1997  ROOTBKUP LISTING Page 42
+
+
+Archive   usr/ucs/usercall.add  3 blocks
+Archive   usr/ucs/userintf.o    47 blocks
+Archive   usr/ucs/userv3279.h   6 blocks
+Archive   usr/ucs/v3279fe.o 223 blocks
+Archive   usr/ucs/v3279keys 16 blocks
+Archive   usr/ucs/v3279rm   286 blocks
+Archive   usr/ucs/xfrance   6 blocks
+Archive   usr/ucs/xgermany  6 blocks
+Archive   usr/ucs/xinational    6 blocks
+Archive   usr/ucs/xitaly    6 blocks
+Archive   usr/ucs/xjapan    6 blocks
+Archive   usr/ucs/xnorden   6 blocks
+Archive   usr/ucs/xspain    6 blocks
+Archive   usr/ucs/xswefin   6 blocks
+Archive   usr/ucs/xswitz    6 blocks
+Archive   usr/ucs/xuk   6 blocks
+Archive   usr/ucs/xusa  6 blocks
+Archive   usr/ucs/KEYS.vt220    3 blocks
+Archive   usr/ucs/KEYS.ti916    3 blocks
+Archive   usr/ucs/neccmds   1 blocks
+Archive   usr/ucs/pugen.ex4 3 blocks
+Archive   usr/ucs/pugen.ex5 2 blocks
+Archive   usr/ucs/startprts 1 blocks
+Archive   usr/ucs/puinput.dial  32 blocks
+Archive   usr/ucs/puinput.vsat  32 blocks
+Archive   usr/ucs/puinput   32 blocks
+Archive   usr/ucs/hayes.befdis  1 blocks
+Archive   usr/ucs/hayes240024   2 blocks
+Archive   usr/ucs/update_genfile    19 blocks
+Archive   usr/noaspen   0 blocks
+Archive   usr/noaspen/.cshrc    1 blocks
+Archive   usr/noaspen/.login    2 blocks
+Archive   usr/noaspen/.lastlogin    0 blocks
+Archive   util  0 blocks
+Archive   util/exer 3 blocks
+Archive   util/MKSRCFS  3 blocks
+Archive   util/fndmap   26 blocks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nov 28 15:26 1997  ROOTBKUP LISTING Page 1
+
+
+rootlog: Fri Nov 28 15:16:19 CST 1997
+
+
+ Begin ROOTBKUP.
+
+ 1. Marking the ROOTBKUP tape.  Please wait...
+
+ 2. Cleaning filesystems.  Please wait...
+
+ 3. Creating ROOTBKUP tape.  Please wait...
+
+ 4. Verify ROOTBKUP tape complete.
+
+ ROOTBKUP completed.
+
+
+ ROOTBKUP listing will be printed on the selected
+ printer AFTER the system exits maintenance mode.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nov 28 15:16 1997  ROOTBKUP LISTING Page 1
+
+
+rootheader: Fri Nov 28 15:16:19 CST 1997
+
+TI Sys V MEYER_IM V/68-1.0 3.3.2 MC680X0
+
+
+This is a ROOTBKUP tape.
+
+It was created using tar cpbvfF 32.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

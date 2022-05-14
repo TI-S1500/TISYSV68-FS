@@ -1,0 +1,45 @@
+# cshf  wc -- Counts lines, words, characters 
+#	@(#)WC.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^WC -- PROVIDES A COUNT OF CHARACTERS, WORDS, AND LINES"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^Count All:" all yesno y\
+	"^#$*"
+
+if ($all == "n") then
+	#this is to make sure that at least one option is selected
+	set lflag = "n"
+	set wflag = "n"
+	set cflag = "n"
+
+	while (($lflag == "n") && ($wflag == "n") && ($cflag == "n"))
+	prompt "^WC -- OPTIONS"\
+		"^SELECT AT LEAST ONE OPTION"\
+		"^Count Lines:" lflag yesno n\
+		"^Count Words:" wflag yesno n\
+		"^Count Characters:" cflag yesno n\
+		"^#$*"
+	if ($abort) goto end
+	end
+endif
+
+if ($abort) goto end
+if ($all == "y") then 
+	set opt = lwc
+else
+	if ($cflag == "y") set opt = c$opt
+	if ($wflag == "y") set opt = w$opt
+	if ($lflag == "y") set opt = l$opt
+endif
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== WC COMMAND EXECUTING ==="
+echo wc $opt $_input_file
+wc $opt $_input_file
+
+#clean up time
+end:
+unset *flag *opt

@@ -1,0 +1,49 @@
+<  root 1044 c Fri Apr  2 04:30:00 1999
+<  adm 1045 c Fri Apr  2 04:30:01 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1055 c Fri Apr  2 05:00:00 1999
+<  adm 1055 c Fri Apr  2 05:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1062 c Fri Apr  2 05:30:00 1999
+<  adm 1062 c Fri Apr  2 05:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1069 c Fri Apr  2 06:00:00 1999
+<  adm 1069 c Fri Apr  2 06:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1076 c Fri Apr  2 06:30:00 1999
+<  adm 1076 c Fri Apr  2 06:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1083 c Fri Apr  2 07:00:01 1999
+<  adm 1083 c Fri Apr  2 07:00:01 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1090 c Fri Apr  2 07:30:00 1999
+<  adm 1090 c Fri Apr  2 07:30:00 1999
+>  CMD: /JDIS/home/sys999/cron/STID.script
+>  sys999 1097 c Fri Apr  2 08:00:00 1999
+<  sys999 1097 c Fri Apr  2 08:00:00 1999
+! *** cron started ***   pid = 72 Fri Apr  2 09:06:53 1999
+! *** cron started ***   pid = 72 Sat Apr  3 10:21:57 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 211 c Sat Apr  3 10:30:00 1999
+<  adm 211 c Sat Apr  3 10:30:01 1999
+! *** cron started ***   pid = 72 Tue May 25 09:13:42 1999
+! *** cron started ***   pid = 72 Tue May 25 09:43:30 1999
+! *** cron started ***   pid = 72 Tue Sep 28 15:23:49 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 297 c Tue Sep 28 18:00:01 1999
+<  adm 297 c Tue Sep 28 18:00:01 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 304 c Tue Sep 28 18:30:00 1999
+<  adm 304 c Tue Sep 28 18:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 311 c Tue Sep 28 19:00:00 1999
+<  adm 311 c Tue Sep 28 19:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 318 c Tue Sep 28 19:30:00 1999
+<  adm 318 c Tue Sep 28 19:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 350 c Tue Sep 28 20:00:00 1999
+<  adm 350 c Tue Sep 28 20:00:00 1999
+! *** cron started ***   pid = 72 Wed Dec 31 18:02:37 1969
+! *** cron started ***   pid = 72 Wed Dec 31 18:04:37 1969
+! *** cron started ***   pid = 72 Wed Dec 31 18:02:21 1969

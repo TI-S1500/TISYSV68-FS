@@ -1,0 +1,19 @@
+# cshf  split -- splits a file into parts 
+#	@(#)SPLIT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^SPLIT -- SPLITS A FILE INTO PIECES"\
+	"^Input File Name:" _input_file acnm $_input_file\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Number of Lines:" num integer 1000\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== SPLIT COMMAND EXECUTING ==="
+echo split -$num $_input_file $_output_file
+split -$num $_input_file $_output_file
+
+#clean up time
+end:
+unset num

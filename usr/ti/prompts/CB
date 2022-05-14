@@ -1,0 +1,31 @@
+# cshf  cb -- beautifies C programs
+#	@(#)CB.sh	1.2  88/02/10
+#
+onintr end
+
+prompt "^CB -- BEAUTIFIES C PROGRAMS"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Use Kernighan and Ritchie Style:" sflag yesno n\
+	"^Rejoin Split Lines:" jflag yesno n\
+	"^*Maximum Line Length:" lflag integer\
+	"^#$*"
+
+if ($abort) goto end
+if ($sflag == "y") set sopt = -s
+if ($jflag == "y") set jopt = -j
+if ($lflag != "") set lopt = "-l "$lflag
+
+if ($abort) goto end
+echo "=== CB COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo cb $sopt $jopt $lopt $_input_file
+	cb $sopt $jopt $lopt $_input_file
+else
+	echo cb $sopt $jopt $lopt $_input_file ">"$_output_file
+	cb $sopt $jopt $lopt $_input_file >$_output_file
+endif
+
+#clean up time
+end:
+unset *flag *opt

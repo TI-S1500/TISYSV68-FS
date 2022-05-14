@@ -1,0 +1,50 @@
+si::sysinit:/etc/sysinit
+up:2:initdefault:
+cl:s:once:/etc/conlogd
+bu::bootwait:/etc/checkups < /dev/syscon > /dev/syscon 2>&1
+bl::bootwait:/etc/bcheckrc < /dev/syscon > /dev/syscon 2>&1
+bc::bootwait:/etc/brc < /dev/syscon > /dev/syscon 2>&1
+rc::wait:/etc/rc 2 1> /dev/syscon 2>&1
+rc3:3:wait:/etc/rc3 < /dev/console > /dev/console 2>&1
+rc4:4:wait:/etc/rc4 < /dev/console > /dev/console 2>&1
+rc5:5:wait:/etc/rc5 < /dev/console > /dev/console 2>&1
+cb:2:wait:/etc/download < /dev/syscon > /dev/syscon 2>&1
+clo:2:once:/etc/conlogd -o -q
+ex:2:wait:/etc/expresrv
+lp:2:wait:/etc/startlp < /dev/null > /dev/null 2>&1
+sl:2:wait:/bin/sleep 30 < /dev/null > /dev/null 2>&1
+pf::powerfail:/etc/powerfail < /dev/console > /dev/console 2>&1
+sdlc:2:once:/usr/ucs/pu
+ta:2:respawn:/etc/getty console 9600 t9
+t000:2:respawn:/etc/getty tty00 R19200 t1 
+t001:2:respawn:/etc/getty tty01 19200 t1 
+t002:2:respawn:/etc/getty tty02 19200 t1 
+t003:2:respawn:/etc/getty tty03 19200 t9 
+t004:2:respawn:/etc/getty tty04 19200 t1 
+t005:2:respawn:/etc/getty tty05 19200 x1 
+t006:2:respawn:/etc/getty tty06 19200 x1 
+t007:2:respawn:/etc/getty tty07 19200 t9
+t008:2:off:/etc/getty tty08 19200 unknown
+t009:2:off:/etc/getty tty09 19200 unknown
+t00a:2:off:/etc/getty tty0a 19200 unknown
+t00b:2:off:/etc/getty tty0b 19200 unknown
+t00c:2:off:/etc/getty tty0c 19200 unknown
+t00d:2:off:/etc/getty tty0d 19200 unknown
+t00e:2:off:/etc/getty tty0e 19200 unknown
+t00f:2:off:/etc/getty tty0f 19200 unknown
+t010:2:off:/etc/getty tty10 19200 unknown
+t011:2:off:/etc/getty tty11 19200 unknown
+t012:2:off:/etc/getty tty12 19200 unknown
+t013:2:off:/etc/getty tty13 19200 unknown
+t014:2:off:/etc/getty tty14 19200 unknown
+t015:2:off:/etc/getty tty15 19200 unknown
+t016:2:off:/etc/getty tty16 19200 unknown
+t017:2:off:/etc/getty tty17 19200 unknown
+t018:2:off:/etc/getty tty18 19200 unknown
+t019:2:off:/etc/getty tty19 19200 unknown
+t01a:2:off:/etc/getty tty1a 19200 unknown
+t01b:2:off:/etc/getty tty1b 19200 unknown
+t01c:2:off:/etc/getty tty1c 19200 unknown
+t01d:2:off:/etc/getty tty1d 19200 unknown
+t01e:2:off:/etc/getty tty1e 19200 unknown
+t01f:2:off:/etc/getty tty1f 19200 unknown

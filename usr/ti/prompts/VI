@@ -1,0 +1,29 @@
+# bshf  vi -- Visual editor 
+#	@(#)VI.sh	1.2 87/10/15
+#
+onintr end
+
+prompt "^VI -- INVOKES THE VISUAL EDITOR"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+	"^Recover Files:" rflag yesno n\
+	"^LISP Mode:" lflag yesno n\
+	"^*Window Size:" wflag integer\
+	"^Readonly Mode:" Rflag yesno n\
+	"^*Search/Positioning Command:" cmd string $cmd\
+	"^#$*"
+
+if ($abort) goto end
+if ($rflag == "y") set ropt = -r
+if ($lflag == "y") set lopt = -l
+if ($wflag != "") set wopt = -w$wflag
+if ($Rflag == "y") set Ropt = -R
+if ($cmd != "") set cmdopt = +$cmd
+
+if ($abort) goto end
+echo "=== VI COMMAND EXECUTING ==="
+echo vi $ropt $lopt $wopt $Ropt $cmdopt $_input_file
+vi $ropt $lopt $wopt $Ropt $cmdopt $_input_file
+
+#clean up time
+end:
+unset *flag *opt cmd

@@ -1,0 +1,55 @@
+:
+# Before exiting, check to see if printdir has copied the input file(s), and
+# return the correct exit code.
+trap '
+        if [ -n "${request_id}" ]
+        then
+                jdiscancel ${request_id}
+        else
+                jdiscancel $1
+        fi
+
+        if [ -n "${exit_code}" ]
+        then
+		echo "\n\n$printer printer driver error:\n" > /dev/console
+                cat /JDIS/tmp/${printer} > /dev/console 2>&1
+                exit ${exit_code}
+        else
+                exit 0
+        fi
+        ' 0
+
+# Shell killed via cancel, output formfeed;
+trap '
+        echo "\014\c"
+	unset exit_code
+	exit
+        ' 15
+
+printer=`basename $0`
+exec 2> /JDIS/tmp/${printer}
+exit_code=-1
+
+request_id=$1
+copies=$4
+shift 5
+files="$*"
+
+i=1
+while [ $i -le $copies ]
+do
+        for file in $files
+        do
+                jdislp "${file}" "${printer}" "cat "
+                return_code=$?
+                if [ "${return_code}" != 0 ]
+                then
+			exit_code=${return_code}
+                        exit
+                fi
+                echo "\014\c"
+        done
+        i=`expr $i + 1`
+done
+
+unset exit_code

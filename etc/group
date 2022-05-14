@@ -1,0 +1,13 @@
+root::0:
+daemon::1:
+bin::2:
+sys::3:
+adm::4:
+uucp::5:
+mail::6:
+sync::7:
+spool::8:
+news::9:
+guest::10:
+other::11:
+group::50:

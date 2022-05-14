@@ -1,0 +1,17 @@
+#
+#   /etc/fstab - file containing information on file systems
+#                that are to be mounted
+#
+#  format -
+# Col 1 - block special device name
+# Col 2 - mount-point directory
+# Col 3 - "-r" if to be mounted read-only
+# Col 4 - (optional) file system type string
+#
+#  White spaces delimit columns
+#
+#  @(#)fstab	1.2 89/11/01
+#
+/dev/dsk/sys:pipe /pipe
+/dev/dsk/sys:usr /usr
+/dev/dsk/sys:jdis /JDIS

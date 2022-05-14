@@ -1,0 +1,54 @@
+# cshf 	OD - OCTAL DUMP OF A FILE 
+#	@(#)OD.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^OD -- DUMPS FILE (OCTAL DUMP)"\
+	"^*Input File Name :" _input_file acnm $_input_file   \
+	"^*Output File Name :" _output_file acnm $_output_file   \
+	"^Interpret Bytes in Octal:" bflag yesno n\
+	"^Interpret Bytes in ASCII:" cflag yesno n\
+	"^Interpret Words in Unsigned Decimal:" dflag yesno n\
+	"^Interpret Words in Octal:" oflag yesno y\
+	"^Interpret 16-Bit Words/Unsigned Dec.:" sflag yesno n\
+	"^Interpret Words in Hexadecimal:" xflag yesno n\
+	"^Select Offset Options:" off yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($off == "y") then
+	prompt "^OD -- OFFSET OPTIONS"\
+		"^Offset:" offset integer \
+		"^*Octal or Decimal Bytes (o,d):" bytetype \
+		"element(O,o=o,D,d=d)" o\
+		"^*Interpret Offset in Blocks:" blocks yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($_input_file == "") set offset = "+"$offset
+	if ($blocks == "y") set bopt = b
+	if ($bytetype == "d") set dot = "."
+endif
+
+if ($abort) goto end
+if ($bflag == "y") set opt = b$opt
+if ($cflag == "y") set opt = c$opt
+if ($dflag == "y") set opt = d$opt
+if ($oflag == "y") set opt = o$opt
+if ($sflag == "y") set opt = s$opt
+if ($xflag == "y") set opt = x$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== OD COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo od  $opt $_input_file $offset $dot $bopt
+	od  $opt $_input_file $offset $dot $bopt | \
+	pg -cp"Output from OD is being piped through pg: "
+else
+	echo od  $opt $_input_file $offset $dot $bopt ">"$_output_file
+	od  $opt $_input_file $offset $dot $bopt >$_output_file
+endif
+
+end:
+unset   *flag *opt dot offset bytetype blocks

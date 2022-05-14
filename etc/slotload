@@ -1,0 +1,10 @@
+# @(#)slotload	1.9 89/11/29
+echo "Downloading CCB."
+trap "" 1
+cload -rs $1
+ddload $1
+echo "CCB loaded."
+tcdl -v -s $1
+mtcdl -v -s $1
+initterm p &
+tdts -s $1

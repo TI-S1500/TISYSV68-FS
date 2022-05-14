@@ -1,0 +1,5 @@
+#
+# Configuration file for STREAMS XNS protocol driver for high performance
+# Ethernet interfaces. 
+# See XNSCF(4) for configuring directions.
+#

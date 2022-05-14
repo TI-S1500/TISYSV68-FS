@@ -1,0 +1,42 @@
+# bshf	frisam - read data from isam file; copy to stdout
+#	@(#)FRISAM.sh	1.2 87/10/16
+#
+onintr end
+
+if ($nopt == "") set nopt="y"
+if ($Fopt == "") set Fopt="n"
+if ($eopt == "") set eopt="y"
+
+prompt	"^FRISAM -- COPY T-ISAM DATA TO STANDARD FILE"\
+	"^T-ISAM Data File:"          dfile acnm $dfile\
+	"^*T-ISAM Index File:"        ifile acnm $ifile\
+	"^*Output File:"             sfile acnm $sfile\
+	"^*Sort by Key Number:"      key   integer $key\
+	"^*Record Size:"             siz   integer $siz\
+	"^Insert Newline? (y/n):"     nopt  yesno  $nopt\
+	"^*Null or Blank Fill? (n/b/ ):" Fopt  "element(N,n=n,B,b=b)"  $Fopt\
+	"^Exclusive Access? (y/n):"   eopt  yesno  $eopt\
+	"^#$*"
+
+if ($abort) goto end
+
+set sfl=""
+set ky=""
+set sz=""
+set nop=""
+set Fop=""
+set eop=""
+
+if ( $sfile != "") set sfl="-f "${sfile}" "
+if ($key != "") set ky="-k "${key}" "
+if ($siz != "") set sz="-s "${siz}" "
+if ($nopt == "y") set nop="-n "
+if ($Fopt == "n") set Fop="-F "
+if ($Fopt == "b") set Fop="-B "
+if ($eopt == "y") set eop="-e "
+
+echo frisam ${sfl}${ky}${sz}${nop}${Fop}${eop} ${dfile} ${ifile}
+frisam ${sfl}${ky}${sz}${nop}${Fop}${eop} ${dfile} ${ifile}
+
+end:
+unset sfl ky sz nop Fop eop

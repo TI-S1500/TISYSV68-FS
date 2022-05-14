@@ -1,0 +1,4 @@
+# Sample AT&T 2224 dial commands file
+# @(#)att2224	1.4 89/06/05
+DIALPARMS=CR,2400,7,1,ODD,10,30
+atztelephone_number<>

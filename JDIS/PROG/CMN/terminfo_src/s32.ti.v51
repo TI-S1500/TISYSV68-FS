@@ -1,0 +1,214 @@
+#
+# ??/??/?? - Rls 8.0 (Mairet)
+#            1. Added "kel" capability definition for t1, t9, and x1
+#               terminal definitions for "skip" key feature.
+#            2. Commented out the "sgr" capability definition for t9
+#               terminal definition (TI 931) to enable high and low
+#               intensities (will need to be worked on again for enabling
+#               of line draw graphics).
+#
+# 04/22/92 - Rls 8.2 (Beaudry) - Changed to accommodate line draw graphics
+#            for RM 5.1 runtime:
+#            1. Copied sgr definition from VT100 vanilla terminal to
+#               definition for t1 (TI 924) terminal.
+#            2. Copied sgr definition from VT100 vanilla terminal, replacing
+#               the p9 "code" with that of the sgr definition for Mw (Wyse 75)
+#               terminal (last line) to definition for x1 (TI 928) terminal.
+#            3. Replaced commented-out "sgr" capability for t9 terminal defn.
+#               with the "sgr" capability from the x5 defn. (also TI 931).
+#
+# 04/29/92 - Rls 8.2 (Beaudry) - Eliminated unused definitions (Dec, Wyse,
+#            etc.), but retaining all "t" and "x" definitions.  Also elim-
+#            inated the "T9" and "X5" synonyms from the "t9" and "x5" defns.
+#
+# COPYRIGHT (c) 1988 TEXAS INSTRUMENTS INCORPORATED. ALL RIGHTS RESERVED. 
+#                                                                       
+#
+# Terminals supported on the 1500
+#
+ansi|default for ti924 vt100 vt220 and the wyse75,
+        bel=^G, blink=\E[5m, bold=\E[1m,
+        civis=\E[?25l, clear=\E[2J\E[H, cnorm=\E[?25h, cols#80, cr=^M,
+        csr=\E[%i%p1%d;%p2%dr, cub1=\E[D, cud1=\E[B, cuf1=\E[C,
+        cup=\E[%i%p1%d;%p2%dH, cuu1=\E[A, cvvis=\E[?31h,
+        dl1=\E[M, ed=\E[J, el=\E[K, home=\E[H, ht=^I, hts=\EH,
+        il1=\E[L, ind=\ED, it#8, kbs=^H, ich1=\E[@, dch1=\E[P,
+        kcub1=\E[D, kcud1=\E[B, kcuf1=\E[C, kcuu1=\E[A,
+        lines#24, rc=\E8, rev=\E[7m, ri=\EM, rmso=\E[m, rmul=\E[m,
+        sc=\E7, sgr0=\E[0m, smso=\E[7m, smul=\E[4m, tbc=\E[3g, xon,
+#
+# Texas Instruments 924 VDT 7 bit control mode
+#
+t1|ti924|Texas Instruments 924 VDT 8859/1 7 bit CTRL:,
+        am,xenl,kf0=\E[29~, khome=\E[H,
+        kdch1=\E[P, kf1=\EOP, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
+        kf5=\E[16~, kf6=\E[17~, kf7=\E[18~, kf8=\E[19~,
+        kf9=\E[20~, kf10=\E[21~, kf11=\E[23~, kf12=\E[24~, kich1=\E[@,
+        kel=\E[4~,
+        acsc=jjkkllmmnnttuuvvwwxxqq``aaggffooss0aha,
+        smacs=\E(0,rmacs=\E(B,
+        sgr=\E[0%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;m
+            %?%p9%t^N%e^O%;,
+        sgr0=\E[1m, dim=\E[22m, rmso=\E[0m,
+        lf3=\E[1~,
+        use=ansi,
+#
+# Texas Instruments 924 VDT 8 bit control mode
+#
+t2|ti924-8|Texas Instruments 924 VDT 8859/1 8 bit CTRL:,
+        am,xenl,
+        kdch1=\233P, kf1=\217P, kf2=\217Q, kf3=\217R, kf4=\217S,
+        kf5=\23316~, kf6=\23317~, kf7=\23318~, kf8=\23319~,
+        kf9=\23320~, kf10=\23321~, kf11=\23323~, kf12=\23324~, kich1=\233@,
+        smacs=\E(0,rmacs=\E(B, sgr0=\E[0m\E(B, kcmd=\E[29~, khome=\E[H,
+        acsc=jjkkllmmnnttuuvvwwxxqq``aaggffooss0aha,
+        use=ansi,
+#
+# Texas Instruments 924 VDT 8859/1 7 bit control 132 column mode
+#
+t3|ti924-132|Texas Instruments 924 VDT 132 column:,
+        cols#132, use=t1,
+#
+# Texas Instruments 924 VDT 8859/1 8 bit control 132 column mode
+#
+t4|ti924-8-132|Texas Instruments 924 VDT 132 column:,
+        cols#132, use=t2,
+#
+# Texas Instruments 924 Emulator in 931 Mode
+#
+t5|Texas Instruments 924 Emulator on 945 (931 Mode):,
+        use=x5,
+#
+# Texas Instruments 924 Emulator in 924 Mode on 945 (7 bit control mode):,
+#
+t6|em924|Texas Instruments 924 Emulator (924 Mode):,
+        use=t1,
+#
+# Texas Instruments 924 Emulator in 924 Mode on 945 (8 bit control mode):,
+#
+t7|Texas Instruments 924 Emulator (924 Mode):,
+        use=t2,
+#
+# Texas Instruments 931 Emulator
+#
+t8|em931|Texas Instruments 931 Emulator,
+        use=x5,
+#
+# Texas Instruments 931 VDT
+#
+x5|ti931r|Texas Instruments 931 VDT,
+        am, bel=^G, clear=\EL, cnorm=\EM,km,
+        cols#80, cr=^M, cub1=\ED, cud1=\EB, cuf1=\EC,
+        cup=\EY%p1%' '%+%c%p2%' '%+%c, cuu1=\EA,
+        dch1=\ER\EQ\EM, dl1=\EO, ed=\EJ, el=\EI, home=\EH,
+        il1=\EN, ind=\Ea, invis=\E4H, kbs=\E2,
+        kcub1=\ED, kcud1=\EB, kcuf1=\EC, kcuu1=\EA,
+        kdch1=\EQ, kdl1=\EO, kich1=\EP, kil1=\EN,
+        kf1=\Ei1, kf2=\Ei2, kf3=\Ei3, kf4=\Ei4, kf5=\Ei5,
+        kf6=\Ei6, kf7=\Ei7, kf8=\Ei8, kf9=\Ei9,
+        kf10=\Ei:, kf11=\Ei;, kf12=\Ei<, kcmd=\Eh,
+        lines#24, rev=\E4B, ri=\Eb, khome=\EH, kent=\Eiq,
+        sgr0=\E4@\017,
+        smso=\E{\001, smul=\E{\004, rmso=\E}\776, blink=\E{\020,
+        smacs=\016, rmacs=\017, rmul=\E}\773,
+        civis=\ER, cvvis=\EM,
+        acsc=l*m-k:j=q6x)n8t;u+v<w\,a909h9i7~\042,
+        sgr=\E4@\017%?%p1%t\E{\001%;%?%p2%t\E{\004%;%?%p3%t\E{\002%;
+            %?%p4%t\E{\020%;%?%p6%t\E{\001%;%?%p9%t\016%e\017%;,
+#
+# Texas Instruments Travelmate terminal
+#
+tm|Texas Instruments travelmate:,
+        bel=^G, blink=\E[5m, bold=\E[1m,
+        cub=\E[%p1%dD, cud=\E[%p1%dB, cuf=\E[%p1%dC,
+        cuu=\E[%p1%dA, cub1=^H, il1=\E[L, dl1=\E[M,
+        csr=\E[1;24r, ll=\E[24;1H,
+        kf1=\E[23~, kf2=\E[24~,kf3=\E[25~,kf4=\E[26~, kf5=\E[28~,
+        kf6=\E[29~, kf7=\E[31~, kf8=\E[32~, kf9=\E[33~,
+        kcub1=\EOS, kcud1=\EOQ, kcuf1=\EOR, kcuu1=\EOP, kdch1=\E[3~,
+        kf10=\E[31~, kf11=\E[32~, kf12=\E[33~, kf13=\E[34~,
+        kich1=\E[2~, knp=\E[6~, kpp=\E[5~,
+        civis=\E[?25l, clear=\E[2J\E[H, cnorm=\E[?25h, cols#80, cr=^M,
+        csr=\E[%i%p1%d;%p2%dr, cud1=\E[B, cuf1=\E[C,
+        cup=\E[%i%p1%d;%p2%dH, cuu1=\E[A, cvvis=\E[?31h,
+        ed=\E[J, el=\E[K, home=\E[H, ht=^I, hts=\EH,
+        dl=\E[%p1%dM,il=\E[%p1%dL, il1=\E[L, ind=\ED, it#8, kbs=^H,
+        ich1=\E[@, dch1=\E[P, lines#24, rc=\E8, rev=\E[7m, ri=\EM,
+        rmso=\E[m, rmul=\E[m, sc=\E7, sgr0=\E[0m, smso=\E[7m,
+        smul=\E[4m, tbc=\E[3g, xon,
+        enacs=\E(B\E)0, smacs=^N, rmacs=^O,
+        acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+        sgr=\E[0%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;m
+            %?%p9%t^N%e^O%;,
+#
+# Texas Instruments 928 VDT 7 bit control mode
+#
+x1|ti928|Texas Instruments 928 VDT 8859/1 7 bit CTRL:,
+        am, xenl,kf0=\E[33~,khome=\E[H,
+        kdch1=\E[P, kel=\E_1\E\\,
+        kf1=\E[17~, kf2=\E[18~, kf3=\E[19~, kf4=\E[20~,
+        kf5=\E[21~, kf6=\E[23~, kf7=\E[24~, kf8=\E[25~,
+        kf9=\E[26~, kf10=\E[28~, kf11=\E[29~, kf12=\E[31~,
+        kf13=\E[32~, kf15=\E[34~,
+        kich1=\E[@, knp=\E[S, kpp=\E[T, kprt=\E[35~,
+        smacs=\E(0,rmacs=\E(B,
+        sgr=\E[0%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;m
+            %?%p9%t\E(0%e\E(B%;,
+        sgr0=\E[1m, dim=\E[22m, rmso=\E[0m,
+        acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+        lf3=\E[8~,
+        use=ansi,
+#
+# Texas Instruments 928 VDT 8 bit control mode
+#
+x2|ti928-8|Texas Instruments 928 VDT 8859/1 8 bit CTRL:,
+        am, xenl,
+        kdch1=\233P, kend=\2371\234, kent=\2338~,
+        kf1=\23317~, kf2=\23318~, kf3=\23319~, kf4=\23320~,
+        kf5=\23321~, kf6=\23323~, kf7=\23324~, kf8=\23325~,
+        kf9=\23326~, kf10=\23328~, kf11=\23329~, kf12=\23331~,
+        kf13=\23332~, kf15=\23334~, kcmd=\E[33~,khome=\E[H,
+        khome=\233H, kich1=\233@, knp=\233S, kpp=\233T, kprt=\23335~,
+        smacs=\E(0,rmacs=\E(B, sgr0=\E[0m\E(B,
+        acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+        use=ansi,
+#
+# Texas Instruments 928 VDT 8859/1 7 bit control 132 column mode
+#
+x3|ti928-132|Texas Instruments 928 VDT 132 column:,
+        am, xenl,
+        cols#132, use=x1,
+#
+# Texas Instruments 928 VDT 8859/1 8 bit control 132 column mode
+#
+x4|ti928-8-132|Texas Instruments 928 VDT 132 column:,
+        am, xenl,
+        cols#132, use=x2,
+#
+# Texas Instruments 924 VDT in 931 mode
+#
+t9|ti931|Texas Instruments 924 in 931 mode,
+        am, bel=^G, clear=\EL, cnorm=\EM,km,
+        cols#80, cr=^M, cub1=\ED, cud1=\EB, cuf1=\EC,
+        cup=\EY%p1%' '%+%c%p2%' '%+%c, cuu1=\EA,
+        dch1=\ER\EQ\EM, dl1=\EO, ed=\EJ, el=\EI, home=\EH,
+        il1=\EN, ind=\Ea, invis=\E4H, kbs=\E2,
+        kcub1=\ED, kcud1=\EB, kcuf1=\EC, kcuu1=\EA,
+        kdch1=\EQ, kdl1=\EO, kich1=\EP, kil1=\EN,
+        kf1=\Ei1, kf2=\Ei2, kf3=\Ei3, kf4=\Ei4, kf5=\Ei5,
+        kf6=\Ei6, kf7=\Ei7, kf8=\Ei8, kf9=\Ei9,
+        kf10=\Ei:, kf11=\Ei;, kf12=\Ei<,
+        kel=\Es,
+        lines#24, rev=\E4B, ri=\Eb,
+        kf0=\Eh, khome=\EH,kent=\Eiq,
+        civis=\ER, cvvis=\EM,
+        sgr=\E4@\017%?%p1%t\E{\001%;%?%p2%t\E{\004%;%?%p3%t\E{\002%;
+            %?%p4%t\E{\020%;%?%p6%t\E{\001%;%?%p9%t\016%e\017%;,
+        sgr0=\E{\001, dim=\E}\376, rmso=\E4@,
+        acsc=l*m-k:j=q6x)n8t;u+v<w\,a909h9i7~\042,
+#
+# Texas Instruments 928 VDT 132 column and 55 line 7 bit
+#
+x6|Texas Instruments 928 VDT,
+        am, xenl,
+        cols#132, lines#55, use=x1,

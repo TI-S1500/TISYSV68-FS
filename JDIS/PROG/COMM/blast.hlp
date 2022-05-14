@@ -1,0 +1,3823 @@
+#INDEX
+>7BITCHN 00002416 000099
+>ATTKEY  00003644 000125
+>AUTOLFIN00005246 000156
+>AUTOLFOU00005846 000170
+>BAUDRATE00006467 000186
+>CAAPPEND00007460 000204
+>CACONTIN00007738 000211
+>CANEW   00008026 000219
+>CAOFF   00008543 000231
+>CAOVERWR00008909 000242
+>CHARDLY 00009128 000248
+>COMMPORT00010589 000279
+>CONTIMO 00014151 000347
+>D/S_BITS00016806 000396
+>DIREDIT 00017360 000413
+>EDITHELP00018421 000438
+>EDYES   00023573 000557
+>EMULATE 00023805 000563
+>EXNO    00024811 000587
+>EXYES   00024963 000592
+>FIFILE  00025116 000597
+>FIGET   00026784 000631
+>FILOCAL 00034009 000799
+>FIMESSAG00034622 000812
+>FIREMOTE00034996 000821
+>FISEND  00035681 000837
+>FULLSCR 00042493 001001
+>GENERAL 00043007 001015
+>KEYFILE 00067418 001543
+>LINEDLY 00068482 001565
+>LOCHDIR 00069515 001588
+>LODELETE00070107 001600
+>LOCECHO 00070618 001612
+>LOEDIT  00071352 001628
+>LOLIST  00073299 001675
+>LOGFILE 00073876 001689
+>LOGTIMO 00074764 001707
+>LOLONG  00076396 001741
+>LONO    00076795 001750
+>LOPAGE  00076979 001756
+>LOPRINT 00077733 001774
+>LORENAME00078321 001787
+>LOSCROLL00078711 001797
+>LOSHORT 00079516 001815
+>LOSYSTEM00079919 001824
+>LOTYPE  00080675 001841
+>LOYES   00081478 001859
+>MODEM   00081640 001864
+>OFLOCAL 00091771 002086
+>OFMODIFY00092081 002093
+>OFNEW   00092556 002104
+>OFNO    00093687 002127
+>OFONLINE00093886 002133
+>OFREMOVE00094654 002149
+>OFSELECT00095048 002159
+>OFWRITE 00096652 002196
+>OFYES   00097205 002208
+>ONACCESS00097344 002213
+>ONCAPTUR00098402 002241
+>ONCONNEC00098965 002254
+>ONDISCON00099900 002272
+>ONFILETR00100899 002292
+>ONLOCAL 00101392 002304
+>ONNO    00101640 002311
+>ONSCRIPT00101782 002316
+>ONTERMIN00141053 003121
+>ONUPLOAD00142605 003154
+>ONYES   00144641 003194
+>ORGANS  00144792 003199
+>PAKTSZ  00147593 003253
+>PARITY  00149220 003287
+>PASSWORD00149762 003300
+>PHONENO 00150504 003317
+>PROMPTCH00151007 003330
+>PROTOCOL00151950 003351
+>RECHDIR 00152777 003374
+>REDELETE00153302 003387
+>RELIST  00153743 003399
+>RELONG  00154311 003413
+>REMORE  00154712 003422
+>REPRINT 00155050 003430
+>RERENAME00155693 003444
+>RESHORT 00156856 003467
+>RETYPE  00157257 003476
+>RTSCTS  00157990 003493
+>SCRFILE 00160050 003530
+>SYSDESC 00160708 003544
+>SYSTYPE 00161142 003553
+>TERMHELP00164520 003621
+>TRPASSWD00166112 003655
+>USERID  00167021 003677
+>WT4ECHO 00167712 003694
+>XLTFILE 00168808 003717
+>XMGET   00170047 003741
+>XMSEND  00171009 003761
+>XONXOFF 00171926 003781
+:7BITCHN
+  Offline MENU - MODIFY - 7 BIT CHANNEL                                     
+  
+  The 7 BIT CHANNEL Setup field defines the width of the data path to use
+  during BLAST transfer. The Data/Stop Setup field governs terminal operations.
+  
+  The Communications Concepts manual supplied with BLAST discusses the
+  importance of channel width in depth.  Briefly, some communications
+  networks and devices (for example, packet networks and mainframe computer
+  front ends) support only 7-bit paths, while other devices are able to handle
+  a full 8-bit path. An 8-bit path is always more efficient, so use it
+  whenever possible.
+  
+  Select either "YES" (7 bit) or "NO" (8 bit) by pressing the space bar.  The
+  default value is YES.  Note that the value in this Setup field
+  "negotiates" down - your computer and the remote computer will compare
+  values and select the lower figure. Unless both fields are set to "NO",
+.P
+  7-bit channel will be used.
+  
+  The channel width has nothing to do with the type of data that may be
+  transferred or the use of software flow control. BLAST will transfer 8-bit
+  binary or 7-bit ASCII over both 7- and 8-bit paths.
+  
+  The BLAST reserved variable for this field is @7BITCHN.
+:
+:ATTKEY
+  OFFLINE - MODIFY - ATTENTION KEY                                          
+  
+  The ATTENTION KEY - referred to as <ATTN> within both your documentation
+  and the program itself - stops an Online function before it would
+  normally end. <ATTN> is always a "control" character, meaning that you
+  must hold down the CONTROL key on your keyboard while hitting another key.
+  
+  Enter any single character; it's recommended that you pick a letter from A
+  to Z.  BLAST will prefix the character with a caret - for example, the
+  default attention key for most BLAST products is a "^K".
+  
+  When changing <ATTN>, be sure the letter you choose does not already have
+  a significant purpose.  DO NOT USE ^M or ^J, which are the carriage return
+  and line feed characters. DO NOT USE ^Q or ^S, which are reserved for flow
+  control in terminal mode. DO NOT USE any control characters which are
+  reserved for the remote computer's operating system or applications.
+.P
+  It is ESPECIALLY important to change <ATTN> when using BLAST on your
+  computer as a terminal to bring up BLAST menus on a remote system. If both
+  systems use the same <ATTN>, you cannot get the attention of the remote
+  system, since the <ATTN> will always be acted on locally and never sent
+  to the remote.
+  
+  When acting as a terminal to a remote computer, you can send the control
+  character defined as <ATTN> by typing <ATTN> (<CTRL>+character) and then
+  hitting just the character. For example, to send a <CTRL>K when <CTRL>K is
+  <ATTN>, use <ATTN>K.
+  
+  The BLAST reserved variable for this field is @ATTKEY.
+:
+:AUTOLFIN
+  OFFLINE - MODIFY - AutoLF IN                                              
+  
+  Setting AUTOLF IN to "YES" displays a line feed after each carriage return
+  received from the remote computer in terminal mode.  AUTOLF IN has no effect
+  on the text captured when using the Online menu Capture item.
+  
+  Some remote systems may not automatically supply line feeds, causing data
+  to display as multiple lines of text written top of each other.  Set the
+  AUTOLF IN Setup field to "YES" to correctly read incoming text from such a
+  system.
+  
+  The BLAST reserved variable is @AUTOLFIN.
+:
+:AUTOLFOU
+  OFFLINE - MODIFY - AUTOLF OUT                                             
+  
+  When AUTOLF OUT is set to "YES", BLAST sends a line feed after each
+  carriage return in terminal mode.
+  
+  Some remote systems may need line feeds after carriage returns when
+  transferring text files via the Online menu Upload item. Set AUTOLF OUT
+  to "YES" to upload to these systems.
+  
+  BLAST can communicate with remote printers attached to modems. When using
+  BLAST to send data to a serial printer, you will probably need to set AUTOLF
+  OUT to "YES".
+  
+  The BLAST reserved variable for this field is @AUTOLFOUT.
+:
+:BAUDRATE
+  OFFLINE - MODIFY - BAUD RATE                                              
+  
+  The BAUD RATE Setup field sets the speed of the communications port. The
+  baud rate must match for both the local and remote computers (unless you're
+  using a high-speed intelligent modem which does baud rate conversion).
+  BAUD RATE is a multiple-choice Setup field, so press the space bar until the
+  desired baud rate appears.  BLAST usually supports all of the baud rates
+  that the hardware will support. The default value for BAUD RATE is "1200".
+  
+  Sometimes it is better to run at a baud rate lower than the maximum. Older
+  minicomputers and original IBM PC's drop characters at high baud rates.
+  For example, when in terminal mode capturing text, characters may be lost.
+  While transferring files, lost characters may cause some packets to be re-
+  transmitted; therefore, throughput may be better at a slower baud rate.
+  
+  The BLAST reserved variable for this field is @BAUDRATE.
+:
+:CAAPPEND
+  ONLINE - CAPTURE - APPEND                                                 
+  
+  When  capturing text from a remote computer, BLAST appends the text to the
+  end of an existing file. The file is extended from its previous length by
+  the new text being captured.
+:
+:CACONTINUE
+  ONLINE - CAPTURE - CONTINUE                                               
+  
+  CONTINUE resumes the Capture, using the filename previously specified.
+  
+  While the text is being captured, you may toggle Capture off/on
+  - without leaving terminal mode - by pressing <ATTN>C.
+:
+:CANEW
+  ONLINE - CAPTURE - NEW                                                    
+  
+  Selecting the Online menu NEW item saves the capture buffer in the
+  previously specified file and prompts for a new capture file for
+  subsequent text.
+  
+  Use NEW when capturing incoming text which is to be saved in more than one
+  file. For example, when capturing several different airline schedules from
+  an online information service, use NEW between schedules to save each one
+  to a different file for later review.
+:
+:CAOFF
+  ONLINE - CAPTURE - OFF                                                    
+  
+  Selecting the Capture menu Off item ends capturing, and saves
+  buffer to the specified file.
+  
+  Turn capture OFF when incoming data does not need to be saved.
+  
+  Once capture has been turned off, you must again specify the file name for
+  subsequent text capture.
+:
+:CAOVERWRITE
+  ONLINE - CAPTURE - OVERWRITE                                              
+  
+  Selecting  the Capture Menu Overwrite item deletes an existing file, if
+  necessary, and starts a new file for captured data.
+:
+:CHARDLY
+  OFFLINE - MODIFY - CHARACTER DELAY                                        
+  
+  
+  Character delay is a form of flow control. CHAR DELAY specifies the time
+  between each character sent. This slows strings sent by BLAST scripts
+  and text uploading. The value of the field may be:
+  
+  VALUE   RESULT
+  =====   ======================================================
+   0      Characters are sent as fast as possible.
+   1 - 99 Characters are sent with single character system calls introducing
+          some delay in sending rate less than 1 second. The operating
+          system does not allow for greater timing resolution than 1 second.
+  100-199 Text is send with one second between characters.
+  200-299 Text is sent with two seconds between characters.
+  300...etc.
+.P
+  Use CHAR DELAY when a remote computer is unable to keep up with BLAST, and
+  no other form of flow control is available.  A common use is to slow down
+  the dialog with a modem or other simple hardware device which does not
+  support other forms of flow control.
+  
+  See the Online Help for the Offline menu Select item for explanation of
+  all five forms of flow control available (X-ON/OFF, RTS/CTS, Wait for
+  Echo, Prompt Char, and Line Delay). In general, only one of these
+  techniques is appropriate for any given situation although there is no
+  limit on the number and combinations of selections.
+  
+  The BLAST reserved variable for this field is @CHARDLY.
+:
+:COMMPORT
+  OFFLINE - MODIFY - Comm Port                                              
+  
+  The COMMUNICATIONS PORT Setup field indicates which serial asynchronous
+  port on the local computer is to be used for the current session.
+  
+  The COMMUNICATIONS PORT Setup field may be a serial asynchronous port name
+  or a disk file name. If it is a disk file name, this "hunt" file must
+  contain a list of communication port names.  BLAST looks at the port names
+  in the file in order, and opens the first port which is not already in
+  use. If no port is available, BLAST gives the message "can't open comm
+  port".
+  
+  The default communications port is the logical device name /dev/blast.
+  This name was assigned to a physical device in the installation procedure.
+  Use this name or the name of a physical tty port (tty1,tty2...).  To
+  reassign the default without going through a whole new install, use the
+.P
+  following commands while logged on as root or superuser,
+  
+            rm /dev/blast                 -    deassign default
+            ln /dev/tty1 /dev/blast      -    assign a new port
+            chmod 666 /dev/blast          -    give everyone access
+  
+  If you need to use host mode (that is, over the same communications line
+  you are logged into as a terminal), start BLAST on the remote computer
+  with the -h switch).  When transferring in host mode, the host adapts to
+  whatever Setup the other BLAST specifies subject to the host's maximums
+  and minimums. This means that the baud rate, parity, etc. specified in the
+  host Setup is ignored. However, if a log file name or BLAST script
+  is specified in the Setup, these operate as you would expect.
+  
+  If the first available port is a port on which users may login, BLAST
+  disables the port changing the inittab file to reflect the new port
+.P
+  configuration. BLAST puts lock files in /usr/spool/locks when Honey-Danber
+  locking is used, otherwise, BLAST places locks in /usr/spool/uucp. When
+  changing the port name in the Setup, loading a new Setup, or exiting
+  BLAST, BLAST restores the line in the inittab file and the ports to their
+  previous configuration, and deletes the lock file.
+  
+  The format of each line in the hunt file is:
+          Flag Device Modemtype Baudrate
+  where
+    Flag is 1 if the device is to be tried, or 0 for not to be tried.
+    Device is the logical or physical name of the port. For example,
+      blast_port or /dev/tty01.
+    Modemtype is the type of modem connected to the port. For example,
+      USRDUALV and MIC96MNP are modems defined by standalone modem-handling
+      routines or modems.scr library entries.
+    Baudrate is the speed of the port. 1200 and 2400 are common baudrates.
+.P
+  Modemtype and Baudrate are optional. Baudrate may not be used unless a
+  Modemtype is also specified.
+  
+  WARNING: Due to the continual evolution of standards within the UNIX/XENIX
+  world, the locking techniques used by BLAST may or may not be compatible
+  with other communications packages. For instance, both BLAST and UUCP can be
+  used on one machine, but you must be certain they use different ports.
+  
+  WARNING: If BLAST ends abnormally (for example, because of a dump,
+  shutdown or disconnect), the previous configurations of the ports may NOT
+  be restored and the lock files may not deleted. Your system manager
+  may have to edit the inittab file to correct the problem.  However, any
+  user may delete the lock file and continue using the port for BLAST.
+  
+  The BLAST reserved variable for this field is @COMMPORT.
+:
+:CONTIMO
+  OFFLINE - MODIFY - CONNECT TIMEOUT                                        
+  
+  The CONNECT TIMEOUT Setup field defines the time interval (in seconds)
+  that BLAST will wait to receive or send a good data packet from the remote
+  computer after BLAST transfer has been established before timing
+  out. Transfer timeouts happen when the connection is lost, when there
+  is excessive noise on the line, or when the remote computer malfunctions.
+  
+  Valid values for this field are zero (0) to 999. If zero is specified,
+  BLAST never times out. The default value is 120 seconds. When BLAST waits
+  longer than the number of seconds specified without receiving a valid
+  packet from the other end, transfer ends, @EFERROR is set to "-5" and
+  displays the timeout message, "TIMEOUT...disconnecting from REMOTE".
+  
+  The BLAST reserved variable for this field is @CONTIMO.
+.P
+  If the reserved variable @ONERROR is set to "CONTINUE" in BLASTscript, the
+  script continues.  If @ONERROR is  "STOP",  BLAST  displays  the  timeout
+  message and waits for the user to strike a key to acknowledge the problem.
+  
+  If a transfer is interrupted it can't be restarted until both local and
+  remote systems timeout or are interrupted by <ATTN><ATTN>. To pick up
+  from point of interrupt, reconnect, if necessary, and restart the same
+  file transfer which was occurring at point of interrupt. Files which were
+  transmitted successfully will not be retransmitted. Any files which were
+  not sent will be sent. BLAST restarts from the last point at which its
+  buffers were flushed to disk.  Depending on the BLAST version this may be
+  right at the interrupt point or as much as 10,000 characters before the
+  interrupt point.
+  
+  DO NOT indicate the overwrite option when you want BLAST to restart from
+  the point of interruption.
+.P
+  WARNING: If CONNECT TIMEOUT is set to 0 at the remote end, you may not be
+  able to restart the remote - it continues to send out transfer packets
+  in a vain attempt to re-establish contact.  To prevent this, be sure your
+  multiuser computer can sense modem carrier detect and logs off users on
+  disconnect (aborting the programs they leave running).  Alternately, if you
+  are communicating with BLAST version 7.4 and higher using B protocol,
+  you may go to terminal mode locally; if you see a BLAST transfer packet on
+  your screen, type:
+  
+                         ;DISC.<ENTER>
+  
+  This line tells remote BLAST to abort. It takes 5-10 seconds to get out of
+  BLAST transfer.  The line you type will not be echoed on the screen, so type
+  it several times if necessary. The command is case sensitive.
+:
+:D/S_BITS
+  OFFLINE - MODIFY - DATA/STOP BITS                                         
+  
+  Sets the number of data bits (7 or 8) and number of stop bits (1 or 2) for
+  the communications port while you are in terminal mode. This field has no
+  effect on BLAST transfer - for transfers, use the Setup "7 Bit Channel"
+  field.
+  
+  The possible values of D/S_BITS are,
+  
+     7/1  7/2  8/1  8/2
+  
+  Conventional use is 1 stop bit used except when transmitting at 110 baud.
+  Try 8/1 first.
+  
+  The BLAST reserved variable for this field is @D/S_BITS.
+:
+:DIREDIT
+  OFFLINE - SELECT - SETUP LISTING                                          
+  
+  This lists all existing BLAST Setup files in the path specified in the
+  SETUPDIR environment variable (if defined), in the path specified in the
+  BLASTDIR environment variable (if defined) or in the path specified for
+  Setups when you installed BLAST. Each Setup must be a file with the
+  extension .su.
+  
+  Path error messages may be not be obvious. BLAST may only indicate that it
+  cannot find or write a particular Setup without suggesting that the path
+  specification is at fault.
+  
+  The directory references all Setups by their file names. However, the
+  directory also displays the description and phone number entered in each
+.P
+  Setup. The desired Setup may be loaded by:
+  
+  - Selecting the Offline menu Select item, which then displays a directory
+    of available Setus, or
+  - Entering the Setup name at the file name prompt.
+  
+  Once the Setup has been selected, the items within it can be changed by
+  selecting the Offline menu Modify item.
+:
+:EDITHELP
+  EDIT                                                                      
+  The BLAST editor is a fast, in-memory, standalone text editor with familiar
+  WordStar-like commands.
+  
+  See the Local menu Edit item help to customize the editor to your
+  system, and how to use your favorite standalone text editor under BLAST.
+  
+  Note: Since the BLAST editor is entirely memory-resident, there is a
+  maximum size for an edited file. The number of remaining bytes
+  available is displayed on the editor status line.
+.P
+  Editor commands are given below (^indicates use of the control key):
+  
+  Cursor Positioning
+    ^A - previous word      ^F - next  word     ^S  -  previous  character
+    ^D - next character     ^E - previous line  ^X - next line
+    ^R - previous page      ^C - next page      ^QR - beginning of file
+    ^QC - end of file
+  Deleting
+    ^G - deletes current character       DEL - deletes previous character
+    ^T - deletes next word               ^Y  - deletes the current line
+.P
+  Special Commands
+    ^I (tab) - move text to next tab if insert is ON;
+               move cursor to next tab if insert is OFF
+    ^N - insert a line
+    ^V   - toggle insert mode ON/OFF
+    ^K?  - display Help
+    Right/left arrow - Move cursor right/left
+  Block Operations
+    ^KB - defines the beginning of a block of text
+    ^KK - defines the end of a block of text
+    ^KH - toggles block highlighting off or on
+    ^KC - copy a defined block to the present cursor position
+    ^KV - move a defined block to the present cursor position
+    ^KR - read a disk file into the current file at cursor position
+    ^KW - write a defined block of text to a disk file
+    ^KY - delete a defined block of text
+.P
+  Search Commands
+    ^QF - search  for  a  string with options: a=all occurrences,b=search
+          backwards,u=ignore case; multiple options may be specified
+    ^L  - repeat the last search
+    ^QA - search and replace in file with above options
+    ^QP - Return to position prior to last ^Q command
+  Notes:
+  ^X means that the <ctrl>X key causes BLAST to perform the command
+    function described.
+  TDF column shows which Terminal Definition Facility keys cause BLAST to
+    perform the command function.
+.P
+  You would want to use TDF when,
+    1) the operating system intercepts the default key strokes,
+    2) the terminal cannot generate a particular key stroke,
+    3) the default keystroke is awkward because of keyboard layout,
+    4) your own personal preference.
+  Most users will never need to use TDF. The defaults have been selected to
+  operate well on many computer/operating system/terminal combinations.
+  
+  Deleting commands
+    DEFAULT   TDF   COMMAND FUNCTION
+    ------- ------- ----------------
+    ^G              deletes current character
+    ^H        <del> deletes previous character
+    ^T              deletes next word
+    ^Y   <del line> deletes the current line
+.P
+  Cursor Positioning
+    DEFAULT   TDF   COMMAND FUNCTION
+    ------- ------- ----------------
+    ^A             previous word
+    ^F             next word
+    ^S      <left> previous character
+    ^F     <right> next character
+    ^E        <up> previous line
+    ^X      <down> next line
+    ^R      <home> previous page
+    ^C   <pg down> next page
+    ^QR   <quick>R beginning of file
+    ^QC   <quick>C end of file
+.P
+  Special Commands
+    DEFAULT   TDF   COMMAND FUNCTION
+    ------- ------- ----------------
+    ^I              move text to next tab if insert is ON;
+                    move cursor to next tab if insert is OFF
+    ^K      <block> Preface character for editor block commands (see below)
+    ^L              Repeat the last quick command (see below)
+    ^N              insert a line
+    ^Q      <quick> Preface character for editor quick commands (see below)
+    ^V     <insert> toggle insert mode ON/OFF
+    ^P       <help> bring up online Help
+    ^W    <repaint> repaint the screen
+    ^[       <exit> leave the editor and save the file
+    ESC             the ESC and ^[ send the same character to the computer
+                    on most terminals
+.P
+  Block Operations (2 key command)
+    DEFAULT  TDF    COMMAND FUNCTION
+    ------- ------- ----------------
+    <block>B        defines the beginning of a block of text
+    <block>K        defines the end of a block of text
+    <block>H        toggles block highlighting off or on
+    <block>C        copy a defined block to the present cursor position
+    <block>V        move a defined block to the present cursor position
+    <block>R        read a disk file into the text at cursor position
+    <block>W        write a defined block of text to a disk file
+    <block>Y        delete a defined block of text
+.P
+  Search Commands (2 key commands.)
+    DEFAULT  TDF    COMMAND FUNCTION
+    ------- ------- ----------------
+    <quick>F        search for a string with options: a=all occurrences,
+                    b=search backwards, u=ignore case; multiple options may
+                    be specified
+    <quick>A        search and replace in file with above options
+    <quick>P        Return to position prior to last ^Q command
+:
+:EDYES
+  LOCAL - EDIT - YES                                                        
+  
+  Select  YES  to  save the changes made to the edited file  (or  the  newly
+  created file), exit the editor, and return to the Local Menu.
+:
+:EMULATE
+  OFFLINE - MODIFY - EMULATION                                              
+  
+  
+  The EMULATION Setup field has no function in this version of BLAST. Its
+  value is NONE and cannot be changed.
+  
+  When you logon a  remote  computer  which  supports  multiple  terminal
+  types,  set  the remote computer to recognize your terminal type, not this
+  Setup field.
+.P
+  To provide complete transparency so all characters pass without change,
+  filtering, or interpretation between the communications port and the
+  screen,
+  
+    -  set X-ON/XOFF to NO in the Setup.
+    -  specify  PASSTHRU.TBL in the Setup Translate File field.
+    -  remove the rp and br definitions from the blast.tdf file.
+  
+  You need complete transparency when using BLAST as a terminal to a remote
+  computer which uses special characters or an international character set.
+  These characters must NOT be modified or interpreted as they flow through
+  your local computer communications port and then on to your display.
+:
+:EXNO
+  EXIT                                                                      
+  
+  Select NO to return to the Offline Menu and remain in BLAST.
+:
+:EXYES
+  EXIT                                                                      
+  
+  Select YES to exit BLAST and return to the operating system.
+:
+:FIFILE
+  FILETRANSFER - FILE                                                       
+  
+  FILE prompts you to pick a file which contains commands for BLAST transfers.
+  When BLAST prompts for a command file name, give it or press <ENTER> without
+  entering a file name to return to the FileTransfer Menu.
+  
+  The command file is one way to connect your application programs to BLAST.
+  The commands are ASCII text, making them easy to read and write with other
+  programs. Your own program can write the names of files to be transferred
+  in a command file so that scripts don't require modification.
+  
+  Unless a pathname  is  specified,  BLAST  will  search  only  the  current
+  directory  for  the  command file.
+.P
+  The format of the BLAST transfer command file is,
+  
+          +filename/switches newname/switches -Get filename
+          filename/switches newname/switches  -Send filename
+          !command                    -Perform a command at the remote end
+          ;message                    -Send a message to the operator and
+                                       the log file at the other end
+  
+  Filename must be a valid pathname.  Command must be a valid operating
+  system command to be executed by the remote computer after file
+  transfer is complete. Message is a text message to be sent to the remote
+  operator while the transfer is in progress.  /switches are any valid
+  switches for the remote computer PLUS "/OVW" for overwrite, "/TXT" for text,
+  "/APP" for append. Newname is the name the file is to have at the receiving
+  end.
+.P
+  The  !commands  are executed at the remote end (if the receiver is using
+  BLAST) as received.
+:
+:FIGET
+  FILETRANSFER - GET                                                        
+  
+  Select GET to receive a file from the remote system using BLAST transfer.
+  BLAST prompts for the local and remote file names.
+  
+  During the transfer, BLAST displays the name of the files being sent
+  and received, the options used, file transfer percent completed, the file
+  size, number of bytes sent, line quality (good, fair, poor or dead) and
+  the number of packets which required retransmission due to line noise or
+  dropped characters.
+  
+  This help section covers four topics:
+    1) Pathname and templates used in selecting files to transfer.
+    2) Transfer options - overwrite, text, and append.
+    3) Data compression selection.
+    4) Other switches used in BLAST transfer.
+.P
+  FILE NAME TEMPLATES
+  
+  Pressing <ENTER> without entering a file name returns control to the
+  FileTransfer Menu. BLAST will use a file name which includes wildcards and
+  pathnames. BLAST lets you specify the name of an existing file to
+  transmit, and another different name to be used by the receiving computer.
+  
+  You may use *  and ?  as wildcard characters naming the files to be
+  transmitted. For example:
+  
+    *   matches all file names
+.P
+    *.txt matches myfile.txt , yourfile.txt
+        would not match  files named: myfile.tex, exe.tex, programexe
+    myfile.* matches myfile.bin
+        would not match  files named: myfile., yourfile.txt, myfile2.sav
+    ?   matches any single character
+    x?z matches files named: xyz , x1z , xxz , x?z
+        would not match files named: yyz , xz , xyx
+    myfile.? matches  files named: myfile.1 , myfile.a
+        would not match files named: myfile , yourfile.1
+  
+  Wildcards can be combined, and you may use the % wildcard character in
+  naming the files received.
+.P
+  Sending files named,
+    /fred/* means send all files in the directory, fred
+  Receiving as,
+    %       means receive files into the current directory stripping off
+            the path part of the filename and just keeping the filename
+  Sending files named,
+    *.exe   means send blast.exe, program.exe, etc. in the current directory
+            does not match exe.bak, program.com, programexe
+  Receiving as,
+    /fred/% means receive the files into directory, fred, not receiver's
+            current directory
+.P
+  Sending files named,
+  
+    AB?DE.* matches ABCDE.WDL, AB1DE.XYZ, ABXDE.
+            does not match BBCDE.WDL, ABCDX.123, ABCD.
+  Receiving as,
+  
+    -blank- nothing specified as the receiving name keeps the original path
+            and name.
+.P
+  TRANSFER OPTIONS
+  
+  The transfer options selected after giving the file name are:
+  
+  TEXT- informs BLAST to translate the file during transfer to the
+    receiver's native text format.
+  OVERWRITE- if the  specified  file name already exists on the receiver, it
+    will be erased and re-created with the new data.
+  APPEND- If the specified filename exists on the receiving end, data
+    transferred will be appended to the end of the file. If the file
+    does not exist, it will be created.
+.P
+  Select the TEXT option ONLY when transferring pure text files.  BLAST
+  converts the sending text format to a native text format adding, deleting,
+  and changing the file internally. This means:
+  
+  1) Most word processing files are NOT text files because they contain
+     special control codes. Transfer them as binary files.
+  2) Executable files sent as TEXT will not execute properly. For instance,
+     if a carriage return is encountered in the file, BLAST will change it
+     to a "native" end of line form. ALWAYS transfer executables as binary
+     files.
+  3) Lines in text files from a computer which allows very long lines of
+     text (more than 132 characters) may be truncated when being sent to
+     computers which have a limited line length for text files. Transfer
+     them as binary files.
+.P
+  DATA COMPRESSION
+  
+  BLAST transfer includes data compression.  Compression is available in five
+  levels:  level 0 is no compression, while level 4 is very high compression.
+  
+  IMPORTANT:  BLAST automatically defaults to the highest level of compression
+  supported by both BLASTing computers!
+  
+  You would want to use compression level 0 when your CPU is not very fast
+  and the baud rate is high; for example, running BLAST on an original 4.77
+  MHz PC at 9600 baud and above. This maximizes the number of characters
+  sent out of the communications port. Level 1 compression also has minimal
+  overhead, and may be advantageous.
+  
+  You would use compression level 1 when your data has strings of duplicate
+  characters; such data would include row and column reports (which have a
+.P
+  lot of embedded blanks) and executables (which include blocks of nulls).
+  You would also use compression level 1 when you are communicating
+  over a high speed modem which performs its own compression; these modems
+  do not perform the same type of compression as level 1.
+  
+  Level 2 compression starts becoming cpu intensive.  Moreover,
+  when you use modems with good compression algorithms, BLAST compression
+  levels 2-4 may actually slow down your rate of transfer.
+  
+  Levels 3 and 4 compression are most effective when a limited character set
+  is used or there are repetitious patterns; for example, text usually uses
+  a character set of less than 72 characters. Spread sheets have patterns
+  and limited character sets, and consequently are  highly compressible.
+.P
+  Remember, BLAST will automatically use the highest compression possible!
+  However, if you wish to use another level, you may:
+  
+  - Include switches on the file names of the files to be  transferred.  For
+    example. Respond to the file transfer remote file name prompt with
+  
+      enter local filename :   localfilename/comp=4
+      enter remote filename:   remotefilename/comp=4
+  
+    This transfers with highest possible compression.
+  
+.P
+  - The file can be sent compressed and stored compressed with the following
+    command.
+  
+      enter local filename :   localfilename /comp=4
+      enter remote filename:   remotefilename /comp=0
+  
+    The  remote  file will not be usable until it is sent with the following
+    command.
+  
+      enter local filename :   localfilename /comp=0
+      enter remote filename:   remotefilename /comp=4
+  
+    This command reverses the compression.
+.P
+  OTHER SWITCHES
+  
+  Depending  on the type of computer with which you are communicating, other
+  switches are available. The meaning of these switches is system dependent;
+  check the BLAST manual supplied with the remote computer for a description
+  of the switches it uses.
+  
+  These switches relate to specific file types supported by one computer,
+  but not by the other; for example, IBM mainframes support partitioned data
+  sets, fixed length records, blocked records and variable length records.
+.P
+  The following command sends a file to a VAX VMS sequentially-organized file
+  with variable length record format.
+  
+    enter local filename :   localfilename
+    enter remote filename:   remotefilename//ORG=VMSSEQ/RTYPE=VMSVAR
+  
+  The 1st switch has a double / (which distinguishes switches from
+  pathnames).
+:
+:FILOCAL
+  FILETRANSFER - LOCAL                                                      
+  
+  Selecting the Filetransfer menu LOCAL item takes you to the Local
+  Menu for local file management functions (like DELETE or RENAME).
+  
+  You may perform local functions while you are connected, but BLAST
+  interrupts the sending or receiving of files while processing LOCAL
+  commands.  Data received is flow-controlled when possible.  BLAST
+  transfer may timeout while you are in the LOCAL menu if the time spent
+  performing a LOCAL function exceeds the number of seconds allowed by your
+  Connect Timeout value.
+:
+:FIMESSAGE
+  FILETRANSFER - MESSAGE                                                    
+  
+  Use the Filetransfer menu MESSAGE item to send a message of up to 64
+  characters to the remote computer.  Messages are displayed on the remote
+  computer's screen and written to the log file, if open.
+  
+  An <ENTER> with no message specified goes back to the Filetransfer Menu.
+:
+:FIREMOTE
+  FILETRANSFER - REMOTE                                                     
+  
+  The Filetransfer menu REMOTE item passes control to the Remote Menu, where
+  basic file management functions may be performed, such as listing,
+  renaming, or printing files.
+  
+  BLAST  VERSION 7.5 and above perform these functions immediately, and
+  send a message to the local computer indicating the results of the
+  command.
+  
+  Earlier versions of BLAST store all remote commands received in a special
+  file, blast.cmd or blastcc. The procedure, macro command, or .BAT file
+  you use to start BLAST may also contain appropriate subsequent commands
+  to cause the procedure to execute.
+:
+:FISEND
+  FILETRANSFER - SEND                                                       
+  
+  Use the Filetransfer menu SEND item to transmit a file to the remote
+  computer using BLAST transfer.
+  
+  This help section covers four topics:
+    1) Pathname and templates used in selecting files to transfer
+    2) Transfer options, overwrite, text, append
+    3) Control of Data Compression
+    4) Other switches used in FileTransfer
+  
+  
+.P
+  FILE NAME TEMPLATES
+  
+  Pressing <ENTER> without entering a file name returns control to the
+  FileTransfer Menu. BLAST prompts you for an existing filename to transmit
+  and another to be used by the receiver. You may use "*" and "?" as wildcard
+  characters when naming destination files. For example:
+  
+    *   matches all file names
+.P
+    *.txt matches myfile.txt, yourfile.txt
+        (would not match files named: myfile.tex, exe.tex, programexe).
+    myfile.* matches myfile.bin
+        (would not match files named: myfile., yourfile.txt, myfile2.sav).
+    ?   matches any single character
+    x?z matches files named: xyz , x1z , xxz , x?z
+        (would not match files named: yyz , xz , xyx).
+    myfile.? matches files named: myfile.1 , myfile.a
+        (would not match files named: myfile , yourfile.1).
+  
+  Wildcards are combinable, and you may use the "%" wildcard character while
+  naming the received files.
+.P
+  Sending files named:
+    /fred/* sends all files in the directory fred.
+  
+  Receiving as:
+    %       receives files into the current directory, stripping off
+            the path portion of the filename.
+  
+  Sending files named:
+    *.exe   sends blast.exe, program.exe, etc. in the current directory
+            (does not match exe.bak, program.com, programexe).
+  
+  Receiving as:
+    /fred/% receives the files into directory fred, not receiver's
+            current directory.
+.P
+  Sending files named:
+    AB?DE.* matches ABCDE.WDL, AB1DE.XYZ, ABXDE.
+            does not match BBCDE.WDL, ABCDX.123, ABCD.
+  
+  Receiving as:
+    -blank- nothing specified as the receiving name keeps the original
+            path and name on the receving machine.
+  
+.P
+  TRANSFER OPTIONS
+  
+  The transfer options selected after giving the file name are:
+  
+  TEXT - informs BLAST to translate the file during transfer to the
+    receiver's native text format.
+  
+  OVERWRITE - if the specified file name already exists on the receiving
+    end, it will be erased and recreated with the new data.
+  
+  APPEND - if the specified file name exists on the receiving end, data
+    transferred will be appended to the end of the file. If the file does
+    not exist, the file will be created.
+.P
+  Select the TEXT option ONLY when transferring pure text files.  BLAST
+  converts the sender's text format to a native text format (adding,
+  deleting, and changing the file internally). This means:
+  
+  1) Most word processing files are NOT text files; they contain
+     special control codes. Transfer them as binary files.
+  
+  2) Executable files sent as TEXT will not execute properly. For instance,
+     if a carriage return is encountered in the file, BLAST will change it
+     to a native end-of-line form. Transfer executables as binary files.
+  
+  3) Text from a computer which allows very long lines (more than 132
+     characters) may be truncated when sent to computers with a limited line
+     length for text files. Transfer them as binary files.
+.P
+  DATA COMPRESSION
+  
+  BLAST transfer includes data compression.  Compression is available in five
+  levels: compression level 0 is no compression, while compression level 4 is
+  very high compression.  BLAST defaults to the highest level of compression
+  supported by both BLASTing computers.
+  
+  You would want to use compression level 0 when your CPU is not very fast
+  and the baud rate is high; for example, running BLAST on an original 4.77
+  MHz PC at 9600 baud and above. This maximizes the number of characters
+  sent out of the communications port.
+  
+  Level 1 compression also has minimal overhead, and may be advantageous.
+  You would use compression level 1 when your data has strings of duplicate
+  characters.  Such data would include row and column reports (which have a
+  lot of embedded blanks) and executable images (which include blocks of
+.P
+  nulls). You would also use compression level 1 when you are communicating
+  over a high speed modem which performs its own compression; for example, a
+  USRobotics HST modem with error-correction. These modems do not performd the
+  same type of compression as BLAST Level 1.
+  
+  Level 2 compression starts becoming computationally intensive.  Moreover,
+  when you use modems with good compression algorithms, BLAST compression
+  levels 2-4 may actually slow down your rate of transfer - therefore, do not
+  use a compression level higher than 1 with error-correcting modems.
+  
+  Levels 3 and 4 compression are most effective when a limited character set
+  is used or there are repetitious patterns. For example, text usually uses
+  a character set of less than 72 characters. Spreadsheets have patterns
+  and limited character sets, and consequently are highly compressible.
+.P
+  You can select the compression level used in BLAST transfer in several
+  ways:
+  
+  - Include switches on the file names of the files to be transferred.  For
+    example. Respond to the file transfer remote file name prompt with
+  
+      enter local filename :   localfilename/comp=1
+      enter remote filename:   remotefilename/comp=1
+  
+    This transfers with the lowest level of data compression.
+.P
+  - The file can be sent compressed and stored compressed with the following
+    command:
+  
+      enter local filename :   localfilename/comp=4
+      enter remote filename:   remotefilename/comp=0
+  
+    The remote file will not be usable until it is sent with the following
+    command:
+  
+      enter local filename :   localfilename/comp=0
+      enter remote filename:   remotefilename/comp=4
+  
+    This command reverses the compression.
+.P
+  OTHER SWITCHES
+  
+  Depending  on the type of computer with which you are communicating, other
+  switches are available. The meaning of these switches is system dependent.
+  Check the remote's BLAST manual for the switches it requires.
+  
+  These switches relate to specific file types supported by one computer,
+  but not by the other. For example, IBM mainframes support partitioned data
+  sets, fixed length records, blocked records and variable length records.
+  For example, the following command sends a file to a VAX VMS sequentially
+  organized file with variable length record format.
+  
+    enter local filename :   localfilename
+    enter remote filename:   remotefilename//ORG=VMSSEQ/RTYPE=VMSVAR
+  
+  The 1st switch has a double "/", distinguishing it from pathnames.
+.P
+:
+:FULLSCR
+  OFFLINE - MODIFY - FULL SCREEN                                            
+  
+  The  FULL SCREEN Setup field indicates whether the top 3 lines of the
+  BLAST menu display will be suppressed while in terminal mode.
+  
+  When using programs which require 24 lines, set the FULL SCREEN
+  to YES.
+  
+  If you are using a D-200 terminal or other terminal which does not have
+  scrolling windows, use full screen to speed up terminal operations.
+  
+  The BLAST reserved variable for this field is @FULLSCR.
+:
+:GENERAL
+  GENERAL HELP                                                              
+  
+  (Revision 133.4 - 04/17/90)
+  
+  This Help section is quite extensive and deals with the following topics:
+    - Getting Help with BLAST
+    - Overview
+    - Connecting to the BLAST Demonstration System
+    - Configuring BLAST on Your System
+    - Installation Procedures
+    - Defining Terminal Types
+    - Starting BLAST from the Command Line
+    - BLAST File Locations
+    - Special Keyboard and Terminal Definitions
+    - Controlling Line Drawing
+    - Customizing BLAST for a Particular Terminal Type
+.P
+    - Using BLAST in the Background
+    - RS-232 Connections
+  
+  GETTING HELP WITH BLAST
+  
+  BLAST is a product of Communications Research Group
+                        5615  Corporate Boulevard
+                        Baton Rouge, LA 70808
+                        504-923-0888
+  
+  Your support terms may vary according to the license agreement under which
+  you purchased the product. If you purchased BLAST from us directly or from
+  a reseller who is unable to support you, we will be happy to help you under
+  the following terms:
+  
+  1) If you sent in your warranty card, call between 8 am and 6 pm Central
+.P
+    Standard Time. Please have your manual, the product serial number and
+    the original distribution media nearby when you call.  While the
+    replacement/refund warranty is limited, we will always try to help you
+    after that period.
+  
+  2) If you did not send in the card and you purchased the product within
+     the last 90 days, call between 8 am and 6 pm Central Standard Time.
+     Have all the materials noted above ready PLUS your purchase order
+     number, who you purchased BLAST from and when you received the product.
+  
+  3) If you did not send in the card and it has been more than 90 days since
+    you purchased BLAST, please call CRG sales at 800-242-5278.
+  
+  Products which have a problem during the warranty period may be returned.
+  After the warranty period, we will upgrade a product with a problem for
+  free if an upgrade exists and if there is no adequate workaround.  In all
+.P
+  other cases, contact CRG sales for upgrade pricing.
+  
+  OVERVIEW
+  
+  BLAST II products use a "hierarchical" set of menus; selecting one menu item
+  may perform a function or may bring up another set of menus. You can always
+  return to the previous menu by hitting <exit>. Moving from one menu item to
+  the next by is as simple as pressing the space bar. To select a menu item,
+  press the capitalized letter in the menu item or press <enter> when the
+  cursor rests on the desired menu item.
+  
+  Below the menu is a one-line description of the current function. For more
+  help, highlight the desired item and press <help> (BLAST always displays
+  the help key for your computer in the upper right corner of the menu).
+  After the text related to the menu item, BLAST displays this Help section
+  on general topics.
+.P
+  Before BLAST can communicate with another computer, it must know 'how' to
+  communicate; for example, BLAST needs to know the port speed\baud rate
+  and the phone number of the remote computer.
+  
+  To use BLAST's automated CONNECT process, BLAST must know the remote
+  system type and what kind of modem is being used.  BLAST keeps all this
+  information in the 'Setup'. Setups are individual, named text files of a
+  specific format. They may be edited or created by BLAST or a standalone
+  text editor.
+  
+  The first time BLAST is started after installation, BLAST creates a Setup,
+  default.su (if this file does not already exist). This Setup contains
+  values we recommend as a starting point for the development of your own
+  Setups. Default.su is a "lowest common denominator"; it is compatibile
+.P
+  with a wide range of networks, computers, modems, and multiplexors, but
+  optimum performance will almost always require you to change some of the
+  default values.
+  
+  To communicate with a remote computer, either load an existing Setup using
+  the Offline menu SELECT item, or create a new Setup using the Offline menu
+  NEW item. Move up and down then directory of Setups using the <up> and
+  <down> keys. Chose the Setup the cursor rests on with <ENTER>.
+  
+  Select Online to move to the Online Menu, where one of two methods may  be
+  used to connect to the remote system:
+  
+  - Select  the  Online menu CONNECT item to dial and logon to the remote
+    computer using modem and system handling BLASTscript subroutines from
+    the modems.scr and systems.scr libraries to automate the process.
+.P
+  - Select the Online menu TERMINAL item to communicate with the modem and
+    remote system manually.
+  
+  We recommend that you try TERMINAL first, and do everything manually to
+  make sure you understand the basic process of using a modem and logging
+  in. The automated BLASTscript subroutines do many things you might not
+  understand, and they do it faster than most people can follow.
+  
+  After connection to the remote computer, BLAST can:
+  
+  - Perform Error-Free BLAST Transfer between the two computers. The  BLAST
+    protocol  used  in FILETRANSFER mode insures a BLAST transfer session
+    will be reliable, efficient, and error-free.  To use BLAST transfer, the
+    BLAST program must be executed on both computers.
+  
+  - Capture incoming data from the other computer into a disk file. This
+.P
+    option can save information from online databases such as Dow  Jones  or
+    the  Official Airlines Guide, or from computers without a copy of BLAST.
+    Since BLAST transfer is not used, the data is subject to corruption from
+    outside causes (like phone line static).
+  
+  - Upload  data  to  the remote computer. This means BLAST simulates a very
+    fast typist.  This is also used to communicate  with  computers  without
+    BLAST. Upload transfers text files only.  BLAST transfer is not used, so
+    data is subject to distortion caused by line noise.
+  
+  - Do file management such as typing, listing, deleting, renaming files on
+    the local or the remote computer.
+  
+  - Edit text using the BLAST built in text editor.
+.P
+  - Logon a minicomputer or mainframe using a BLAST terminal emulator  to
+    connect  your  display  and keyboard to another computer. BLAST emulates
+    certain terminal types expected by your minicomputer or mainframe.
+  
+  ONLINE HELP
+  
+  BLAST includes an extensive help file, blast.hlp, which can be modified by
+  any text editor.
+  
+  You may change the help file to tailor it to your own applications.  Make
+  sure not to change the lines beginning with ":", and observe the 16 line
+  per page limitation of the displays.  Use the index program to re-index
+  blast.hlp after modification.
+.P
+  CONNECTING TO THE BLAST DEMONSTRATION SYSTEM
+  
+  CRG maintains a free 24-hour/day, 7 days/week demonstration line.  You
+  may wish to use the Demoline to test BLAST functions or leave messages
+  to BLAST Tech Support.
+  
+  The Demoline phone number is 504-926-5625, and it supports 1200, 2400 and
+  9600 baud.  The login is "reliable", and the password is "fast-transfer".
+  Remember, the login is case-sensitive!
+  
+  IMPORTANT: The Demoline will "clean itself up" after you disconnect,
+  so NEVER upload files that shouldn't be erased!  They will not be saved
+  for your next call.
+  
+  CONFIGURING BLAST ON YOUR SYSTEM
+.P
+  BLAST for your system includes the following files,
+  
+    blast        -  main process
+    blast.tdf    -  the terminal definitions file
+    blastedit    -  text editor program
+    blastinstall -  installation program
+    blcnrd0      -  console read process
+    blcmrd0      -  communications port read process
+    blcmwr0      -  communications port write process
+    bltimer0     -  timer process
+    blast.hlp    -  text for the Online Help function
+    demoline.su  -  communications session Setup required to reach the CRG
+                    demonstration computer
+    index        -  Reindexes blast.hlp, systems.scr, modems.scr
+    modems.scr   -  Modem BLASTscript library file
+.P
+    passthru.tbl -  filter/translate table for full transparency
+    read.me      -  the BLAST product release notice
+    setgetty     -  port management program
+    systems.scr  -  System BLASTscript library file
+    translat.tbl -  standard filter/translation table
+    flowtst.scr  -  A BLAST script that creates a test file
+    listsys.scr  -  A BLAST script which lists valid system types
+    listmod.scr  -  A BLAST script which lists valid modems
+    runme.scr    -  A sample BLAST script
+  
+  DEFINING THE TERMINAL TYPE BEFORE STARTING BLAST
+  
+  BLAST, like many UNIX programs, uses the TERM environment variable to
+  index into the terminfo data base to determine how to make different types
+  of terminals display the BLAST menus.  This requires that TERM be set
+  properly before starting BLAST.
+.P
+  If  you  are  using  a  DEC  VT  type terminal with TERM set to "vt100" or
+  "vt220", the BLAST screen should display properly. If the screen does  not
+  appear  correct,  use the UNIX command,
+          TERM=VT100              (note capitalization of vt)
+          export TERM
+  This will cause BLAST not to use the terminfo database, and to use the
+  blast.tdf file instead.
+  
+  If your terminal type is not a VT type terminal (or at least a close clone
+  of a VT terminal type), it may be necessary to change the BLAST keyboard
+  and BLAST graphics characters definitions in the terminal definition file,
+  blast.tdf.
+.P
+  The blast.tdf file contains many comments which document the format of the
+  file should changes be necessary. You may use any text editor  which  does
+  not insert special formatting characters into the file to edit blast.tdf.
+  
+  STARTING BLAST FROM THE OPERATING SYSTEM COMMAND LINE
+  
+  From the operating system prompt, enter
+  
+            blast Setupfilename -switch1 -switch2 ...
+  
+  Setupfilename is the name of a .su file which contains the definition of a
+  communications session.
+  
+  Be  sure  that  the  directory in which you installed BLAST is part of the
+  PATH of everyone who will need to use BLAST. Unless you  placed  BLAST  in
+.P
+  /usr/bin,  you  will  not be able to run BLAST immediately on installation
+  even logged in as root.
+  
+  Switches are,
+  -a use BLAST A protocol for  compatibility with older BLAST products.
+  -f Enables flow control between your display and the computer while in
+     BLAST menus.  This may be necessary if you are using a DEC VT-220, or
+     other terminal that cannot keep up with high speed I/O and does flow
+     control. The net effect is to disable the ^S and ^Q keys used by BLAST
+     for cursor positioning and editing.  Instead of positioning with these
+     keys define alternate positioning keys such as the arrow keys. See the
+     Online help discussion of BLAST Special Keys and Terminal Definition
+     Facility under General help.
+  -h HOST operation. Use BLAST transfer on the line you are logged in on.
+  -n executes BLAST in no display mode. This means BLAST can run after  your
+.P
+    programs without wiping out the display left by the programs.
+  -q executes BLAST is quiet mode (no beeps on error conditions).
+  -z try to open the communications port without changing port status.  Will
+    fail on an attempt to open a port which is enabled for logon.
+  
+  When using a terminal such as a VT-220 which does not have an ESC key, use
+  ^[ to generate an ESC character. The BACKSPACE KEY of a VT-100 is in top
+  right corner and is labeled "DELETE". For a VT-220 the backspace is
+  labeled with an X enclosed in a shape resembling a backarrow.
+  
+  CONTROLLING WHERE BLAST LOOKS FOR ITS FILES
+  
+  Before BLAST executes, it must know where needed disk information exists.
+.P
+  BLAST uses environment variables to find where to look for control
+  information. Please review your operating system manual for a full
+  description of environment variables.
+  
+  If the variables are undefined, BLAST uses default values. While defaults
+  are acceptable when using BLAST on small systems, large multiuser computer
+  installations with security considerations will certainly want to use the
+  controls that the environment variables provide.
+  
+  Before executing BLAST, set the environment variables with the command:
+    environvar=value
+      where environvar is one of the following upper case names, and value
+      is that value which will be assigned to the variable.
+.P
+  BLASTDIR=directory name
+    where directory name is the name of the directory which contains the
+    systems.scr, modems.scr, and blast.hlp files. The default is
+    /usr/blast.
+  BLASTTDF=filename
+    where   filename   includes   the path  to the file used by the Terminal
+    Definition Facility (TDF).  Default is file blast.tdf in the BLASTDIR.
+  EDITOR=valid executable command line
+    EDITOR=valid executable command line
+      where the command line includes the path to the program invoked by the
+      Local menu Edit item. Default is blastedit in the BLASTDIR.
+.P
+  PATH=valid pathname
+    where the system can locate the blast program. The directory where blast
+    is installed must be appended to the existing PATH.
+  PRINTER=name
+    where name is a system device to which BLAST directs print output. The
+    default is /dev/lp.
+  SETUPDIR=directory name
+    where directory name is the name of the directory which contains the
+    communications session Setup .su files. The default is the directory
+    named by BLASTDIR.
+  TERM=value
+    where value is termtype as it exists in terminfo, or the blast.tdf file.
+    The default is VT-220.
+.P
+  TMP=valid directory name.
+    where BLAST stores temporary files. Default is defined in BLASTDIR.
+  
+  SPECIAL KEY DEFINITIONS
+  
+  Special keys allow you to select functions from within BLAST. For
+  example, hitting <EXIT> will interrupt current activity and return to a
+  stage of BLAST operation. When BLAST is doing terminal emulation, a
+  different set of special keys simulate the feel of the emulated terminal
+  keyboard.
+  
+  The assignment of special keys to the physical keys of your keyboard is
+  the process of mapping.
+  This section defines the special keys named in other BLAST documentation
+  using <name> conventions. Special keys make BLAST perform commands and
+.P
+  functions.
+  In the following table,
+  
+    - control characters are preceded by a caret, (^).
+    - \E stands for the escape character, decimal 33.
+    - \hhh where hhh is a octal constant for a character.
+    - DEFAULT is the sequence of keys that cause BLAST to perform the
+      function
+    - ALTERNATE is an alternate sequence of keys that cause BLAST to
+      perform the function
+.P
+  The special keys are:
+  
+  ALTERNATE    DEFAULT  NAME       FUNCTION DESCRIPTION
+  ------------ -------  -----      -----------------------------------------
+  \E\133\101    ^E      <up>       cursor up 1 line in menus and EDITOR
+  \E\133\102    ^X      <down>     cursor down 1 line in menus and EDITOR
+  \E\133\103    ^D      <right>    cursor right 1 char. in menus and EDITOR
+               spacebar            cursor right one item in menus
+  \E\133\104    ^S      <left>     cursor right 1 char. in menus and EDITOR
+               ^M (CR)  <enter>    End of line, end of field, end of input.
+  ^Z           ^[(esc)  <exit>     end function for menus and EDITOR
+  ?             ?       <help>     invokes help for menus and EDITOR
+.P
+  ALTERNATE    DEFAULT  NAME       FUNCTION DESCRIPTION
+  ------------ -------  -----      -----------------------------------------
+                ^A      <wdleft>   EDITOR word left
+                ^F      <wdright>  EDITOR word right
+                ^G      <del left> EDITOR delete character cursor rests on
+  ^H            ^H      <DEL>      EDITOR del. char. left and menu item left
+                ^I      <tab>      EDITOR tab, Setup next field
+  ^K            ^K      <block>    EDITOR block mode key.
+  ^Q            ^Q      <quick>    EDITOR quick key.
+                ^T      <erase>    EDITOR Erase the next word
+                                   SETUP  Erase the current field
+  ^V            ^V      <insert>   EDITOR insert/overwrite toggle key
+                ^W      <ln down>  EDITOR and SETUP line down
+  ^Y            ^Y      <del line> EDITOR delete line
+                ^K      <attn>     Online operation attention key.
+.P
+  ALTERNATE    DEFAULT  NAME       FUNCTION DESCRIPTION
+  ------------ -------  -----      -----------------------------------------
+  ^B                    <altbreak> TERMINAL mode alternate break key
+  ^R            ^R      <pg up>    Top of page for Setup screen and EDITOR
+  ^C            ^C      <pg down>  go to last bottom of Setup & EDITOR
+  ^W                    <repaint>  repaint key for BLAST menus
+  
+  The <enter> key may be changed through the use of the translate table,
+  but not through TDF. No default indicates that unless the function has
+  an alternate definition in blast.tdf, the function cannot be performed.
+  No alternate indicates that the function cannot have an alternate
+  definition.  The attention key is defined in the Setup and NOT the TDF
+  (since it's very common to change this key while Online).
+  
+  In the blast.tdf file as distributed in the product, the <up>, <down>,
+.P
+  <right>, <left> ALTERNATE keys are defined for DEC VT terminals.
+  
+  
+  CONTROLLING LINE DRAWING
+  
+  When displaying windows, help screens, and user interface, BLAST draws
+  lines and boxes and uses video intensity to make the BLAST display more
+  understandable. BLAST uses the terminfo database on your system, or
+  definitions in blast.tdf.
+  
+  Since using TDF for this purpose is rare, only one set of graphics control
+  characters is defined. This means that if you use the TDF, the definition
+  of the graphics control characters doesn't change with you terminal type.
+.P
+  To use different control characters, you have to edit the blast.tdf file
+  according to the following rules. The PREDEFINED graphics characters are
+  for the DEC VT terminals. These include,
+  PREDEFINED   GRAPHICS    FUNCTION
+  ----------  ---------------------------------------------------------
+  j           \016j\017    bottom right
+  k           \016k\017    top right
+  l           \016l\017    top left
+  m           \016m\017    bottom left
+  q           \016q\017    horizontal line
+  x           \016x\017    vertical line
+  
+    where \016 is a start graphics sequence prefixed to each character.
+          \017 is a stop graphics sequence postfixed to each character.
+          lower case characters are the control characters.
+.P
+  The strings for a non-VT terminal type will, of course, be completely
+  different. Consult your terminal manual for details.
+  
+  If your terminal is not a VT terminal and does not respond appropriately
+  to these graphics sequences, you will see unexpected characters where
+  lines should be, trash all over the screen or no screen display at all.
+  To fix this, you should customize the blast.tdf file to reflect the proper
+  control strings.
+.P
+  CUSTOMIZING BLAST TO YOUR PARTICULAR TERMINAL TYPE
+  
+  While running BLAST, the computer interprets your keystrokes as one of the
+  following:
+  
+  1) commands to the operating system; ^S & ^Q perform flow control.
+  2) commands to BLAST to perform a function; writing the file to disk after
+     editing, moving the cursor to the next BLAST menu item or deleting text
+     in a Setup field.
+  3) characters to be inserted into a field or sent to a remote computer.
+.P
+  The keystrokes are evaluated in the following order:
+  
+  1) If the operating system interprets the keys as a command or function
+     the keys, the operating system function is performed, and the key
+     strokes are not passed to BLAST.
+  
+  2) If the key strokes are defined by the Terminal Definition Facility
+     (TDF), BLAST performs the command or function as defined by TDF. TDF is
+     discussed below.
+  
+  3) If the key strokes are default BLAST command or function key strokes
+     and not defined in TDF, BLAST performs the command or function.
+  
+  4) If the key strokes are not defined, BLAST treats them as text and
+     enters them into the current field or text.
+.P
+  TDF enables you to define alternate command and function  key  strokes  in
+  addition to the default key strokes. Use TDF when:
+  
+  1) the operating system intercepts the default key strokes,
+  2) the terminal cannot generate a particular key stroke,
+  3) the default keystroke is awkward because of keyboard layout,
+  4) your own personal preference.
+  
+  Most users will never need to use TDF. The defaults have been selected to
+  operate well on most computer systems.
+.P
+  BLAST looks for the file to use for TDF in the following order:
+  
+  1) a file named blast.tdf file in the current directory,
+  2) a file named blast.tdf in the directory specified by the BLASTDIR
+     environment variable,
+  3) a file named in the environment variable BLASTTDF.
+  
+  The blast.tdf file supplied as part of the BLAST product is a text file
+  that documents the default and TDF alternate key strokes and functions.
+  This file can be edited by the text editor of your choice including the
+  BLAST editor. BLAST must be restarted to put the modified file in effect.
+.P
+  USING BLAST AS A BACKGROUND UTILITY
+  
+  
+  BLAST may be run under the UNIX utility cron. The cron command can
+  execute BLAST at specified times and dates. Your operating system manual
+  describes cron and crontab files in detail. The first five crontab fields
+  are time related, while the sixth field is the shell command to start BLAST.
+  It should consist of the following at a minimum:
+.P
+    PATH=$PATH:/usr/blast   (be sure cron can get to BLAST)
+    EXPORT PATH
+    blast Setupfilename -n -sBLASTscriptname
+      Where,
+        Setupfilename is a Setup containing the name of a log file. Under
+        cron, there will be no video display of activity, so you will not be
+        able to determine the success or failure of the communications session
+        without a log file.
+        -n executes BLAST in no display mode. This means BLAST will
+           suppress the start up banner and menu display (There is no
+           terminal to output to under cron.)
+  
+        -s specifies a BLAST script name which performs the required
+           functions. The script should use the ONERROR statement and not
+           do screen I/O. Any attempt to write to the screen will cause
+.P
+           BLAST to fail.
+  
+  BLAST in the background still responds to timeouts, fatal errors, and
+  other unanticipated events by writing messages into the log file and
+  removing itself from memory.
+  
+  WARNING: There is no way to know what happened in a background session (as
+  with any unattended session) unless you use a log file. Unattended
+  BLAST scripts should make extensive use of error-checking features.
+.P
+  RS-232 CONNECTIONS
+  
+  For most computers,  the 25 pin connector is defined as per DTE below.
+  For ALL modems the 25 pin connector is defined as per DCE below.
+  
+  The  direction  notations  indicate which signals the  device  expects  to
+  receive (IN), and which the device generates (OUT). GND (ground signals)
+  are neither IN nor OUT.
+.P
+                  -DIRECTION-
+  Pin    Signal  DCE     DTE     Description
+  
+  1      GND      -       -      Frame Ground
+  2      TXD     IN      OUT     Transmitted Data
+  3      RXD     OUT     IN      Received Data
+  4      RTS     IN      OUT     Request to Send
+  5      CTS     OUT     IN      Clear to Send
+  6      DSR     OUT     IN      Data Set Ready
+  7      GND      -      -       Signal Ground
+  8      DCD     OUT     IN      Data Carrier Detect
+  20     DTR     IN      OUT     Data Terminal Ready
+  22     RI      OUT     IN      Ring Indicator
+.P
+  The  IBM-AT  may  have a 9 pin connector for  RS-232  signals.  These  are
+  defined as follows:
+  
+  Pin    Signal        Direction Description
+  
+  1      DCD             IN      Data Carrier detect
+  2      RXD             IN      Receive Data
+  3      TXD             OUT     Transmit Data
+  4      DTR             OUT     Data Terminal Ready
+  5      GND             BOTH    Ground
+  6      DSR             OUT     Data Set Ready
+  7      RTS             OUT     Request to Send
+  8      CTS             IN      Clear to Send
+  9      RI              IN      Ring Indicator
+:
+:KEYFILE
+  OFFLINE - MODIFY - KEYBOARD FILE                                          
+  
+  BLAST provides a way to reduce many keystrokes to a few using softkeys.
+  Softkeys are invoked by pressing <attn>digit where digit is 0 through 9.
+  The action taken when a softkey is pressed depends on the BLAST script
+  in the KEYBOARD FILE named in this Setup field. The KEYBOARD FILE
+  may be up to 1024 bytes long.
+  
+  To define a softkey, create a text file using this format:
+  1.   The  first line of the softkey definition is a label.   The label  is
+       a period (.) followed by a digit (1 through 9 and 0) which identifies
+       which softkey is being defined.
+  2.   Following lines are TTRAP and TSEND BLASTscript statements ONLY.
+  3.   The  soft key definitions must be in numerical order.  You can skip a
+       number, but don't enter them out of order. Softkey 0 is last.
+  4.   The definition of a softkey ends at the next label or the end of the
+.P
+       KEYBOARD FILE.
+  
+  The BLAST reserved variable @KEYFILE is the value of the Setup field.
+:
+:LINEDLY
+  OFFLINE - MODIFY - LINE DELAY                                             
+  
+  The LINE DELAY is a form of flow control.  It specifies time, in seconds,
+  to pause after sending a line of data.
+  
+  Some remote systems may be unable to keep up with BLAST.  Setting this
+  Setup field to a non-zero value prevents overloading the remote computer.
+  This parameter is always in effect during text uploads. When using BLAST
+  transfer to an IBM mainframe, HP 3000, and HP 1000, this delay is also in
+  effect between packets.
+  
+  Valid  Setup field values are zero (0) to 999. If zero (0) is entered, no
+  delay will occur. The default value for this field is zero (0).
+  
+  The BLAST reserved variable for this field is @LINEDLY.
+.P
+  Please refer to the Online Help for the Offline menu Select item for an
+  explanation of all five forms of flow control available (X-ON/OFF, RTS/CTS,
+  Wait for Echo, Prompt Character, and Line Delay). Usually, only one of
+  these techniques is appropriate for any given situation.
+  
+:
+:LOCHDIR
+  LOCAL - CHDIR                                                             
+  
+  Select the Local menu CHDIR item to change the local current directory.
+  
+  BLAST prompts for a new directory path. Enter a path which is valid for
+  the system and your level of privilege. If the path does not exist, BLAST
+  will return an error message.  Pressing <ENTER> or <EXIT> without entering
+  a path will abort CHDIR and return control to the Local Menu.
+  The effect of changing the default directory is to change which files are
+  accessed when file names are specified without paths.
+:
+:LODELETE
+  LOCAL - DELETE                                                            
+  
+  DELETE deletes a local file. BLAST prompts for the file name to delete.
+  
+  Unless a pathname is specified, BLAST will search only the current
+  directory for the file to be deleted. Pressing <ENTER> or <EXIT> without
+  entering a file name returns control to the Local Menu.
+  
+  BLAST  prompts  you requesting verification that the file should be
+  deleted. Select YES to delete the specified file, or NO to abort.
+:
+:LOCECHO
+  LOCAL - LOCAL ECHO                                                        
+  
+  LOCAL ECHO determines whether BLAST will echo typed characters to the
+  screen when you are in terminal mode. Possible values are YES and NO.
+  
+  Answer YES when the remote computer does not echo characters and you can't
+  see what you're typing.  If you set this Setup field to YES and you
+  see double characters on the screen, change the parameter to NO.
+  
+  Local Echo Off/On and Full/Half duplex are, in some respects, equivalent
+  terms. BLAST documentation does not use the Full/Half duplex terms, but
+  they are noted here for users who are familiar with communications.
+  
+  The BLAST reserved variable for this field is @LOCECHO.
+:
+:LOEDIT
+  LOCAL - EDIT                                                              
+  
+  Selecting this item invokes a text editor. When the editor completes
+  editing, control returns to BLAST. This Online Help section describes:
+  
+  -  how to use your favorite standalone text editor as an alternate editor
+     under BLAST.
+  -  how to customize the editor to your terminal using the BLAST Terminal
+     Definition Facility.
+  
+  For Online Help on how to use the BLAST editor, select the Local menu
+  Editor item, choose a text file to edit, then invoke Online Help. Of
+  course, you'll find complete instructions for the BLAST editor in your
+  Reference Manual.
+.P
+  ALTERNATE EDITOR
+  
+  You may use your own standalone text editor by defining the environment
+  variable EDITOR before executing BLAST. If no environment variable is
+  defined, BLAST will use the program blastedit in either the current
+  directory or in /usr/blast.
+  
+  The command line interpreter commands to define the new editor are:
+  
+          EDITOR=nnn
+          export EDITOR
+  where
+          nnn is the name of the editor you wish to use.
+  
+  BLAST restores the communications port attributes, including flow control,
+  before invoking the editor. The blastedit editor disables flow control so
+.P
+  that the operating system does not intercept ^S and ^Q for flow control.
+  The BLAST editor uses these characters for cursor positioning.  This
+  causes problems when using MNP modems or multiplexor devices which require
+  flow control. The solution is to:
+  
+  1)  switch to an alternate editor which does not use ^S and ^Q.
+  
+  2)  use the BLAST Terminal Definition Facility to redefine these control
+      characters. The General Online Help describes the BLAST Terminal
+      Definition Facility (TDF) and the blast.tdf file. TDF will allow you
+      to define an alternate set of keystrokes to perform the BLAST editor
+      functions and commands.
+  
+:
+:LOLIST
+  LIST                                                                      
+  
+  Select the Local menu LIST item to obtain a list of files on the local
+  computer. Either a SHORT or LONG file listing may be requested. The
+  differences are:
+  
+  SHORT - displays the file name only, in column format, similar to the output
+          of the UNIX/XENIX command `ls -x'
+  
+  LONG - displays  the name,  size,  creation date and creation time for  each
+         file  in  the current local directory,  similar to the output of  the
+         UNIX/XENIX command 'ls -l'.
+:
+:LOGFILE
+  OFFLINE - MODIFY - LOG FILE                                               
+  
+  BLAST uses the LOG FILE to keep a record of all BLAST session activity.
+  When a file is transferred, or a menu selection made, or a BLASTscript
+  statement affecting files executed, the log file records the activity and
+  the time it occurred. Your scripts can write to the log file using the
+  WRITE statement. This statement also displays the message to the screen,
+  a consideration when running BLAST in the background with a script.
+  
+  If the log file specified in the Setup already exists, BLAST appends the
+  new session activity information. Otherwise, the file is created.
+  
+  If you have already opened a log file by selecting a Setup with a log
+  file, it is closed when you load another Setup, or change the @LOGFILE.
+  
+  The BLAST reserved variable for this field is @LOGFILE.
+:
+:LOGTIMO
+  OFFLINE - MODIFY - LOGON TIMEOUT                                          
+  
+  BLAST will wait the number of seconds given here to establish a BLAST
+  transfer session with the remote computer. Valid entries for this field
+  are zero (0) to 999.  If zero (0) is entered, no timeout will occur and
+  BLAST will attempt to establish BLAST transfer with the remote computer
+  indefinitely.  The default value for this field is 120.
+  
+  When BLAST unsuccessfully attempts to establish BLAST transfer for longer
+  than the number of seconds specified in LOGON TIMEOUT, the message:
+  
+    TIMEOUT... can't logon with remote system
+  
+  is displayed and BLAST transfer aborts. If this occurs, the other end may
+  not abort at the same time - preventing immediate reconnection.
+.P
+  WARNING: If you set LOGON TIMEOUT to 0 at the remote end, you may find you
+  cannot reset the remote - it continues to send out packets in a vain
+  attempt to establish BLAST transfer. To prevent this, be sure to have
+  multiuser systems log off disconnected users (aborting the programs they
+  leave running). See the Security Topic of the Users Manual for a discussion
+  of this subject.
+  
+  If you are communicating with BLAST version 7.4 and higher using B
+  protocol, you may go to terminal mode locally; if you see a BLAST transfer
+  packet on the display, type:
+  
+                         ;DISC.<ENTER>
+  
+  This line tells BLAST on the remote to abort. It takes 5-10 seconds to get
+  out of BLAST transfer.  The line you type will not be echoed on the screen,
+  so type it several times if necessary. The command is case sensitive.
+:
+:LOLONG
+  LOCAL - LIST - LONG                                                       
+  SHORT - displays the file name only, in column format, similar to the output
+          of the UNIX/XENIX command `ls -x'.
+  
+  LONG - displays the name, size, creation date and creation time for each
+         file in the current local directory, similar to the output of the
+         UNIX/XENIX command 'ls -l'.
+:
+:LONO
+  LOCAL - DELETE - NO                                                       
+  
+  Select  NO  to  abort deletion of the specified entry and  return  to  the
+  previous menu.
+:
+:LOPAGE
+  LOCAL - TYPE - PAGE                                                       
+  
+  Select the Local menu TYPE item to display a local ASCII text file. This
+  command has several display options which are also described here.
+  
+  Unless a pathname is specified, BLAST searches only the current directory
+  for the file to be displayed. Trying to TYPE a nonexistent file causes an
+  error.
+  
+  Use the PAGE option to display data one screen at a time when TYPEing a
+  file which fills more than one screen.  Use SCROLL to display data to the
+  screen without stopping.
+  
+  Always select PAGE if you may wish to view only part of a long file. If
+  you select SCROLL, then the display cannot be interrupted and may take some
+  time to complete.
+:
+:LOPRINT
+  LOCAL - PRINT                                                             
+  
+  Select the Local menu PRINT item to print a local file on a local printer
+  without leaving BLAST.  BLAST prompts for the file name to print.  Unless
+  a pathname is specified, BLAST will search only the current directory for
+  the file to be printed.  Pressing <ENTER> without entering a file name
+  returns control to the Local Menu.
+  
+  The PRINT function uses the PRINTER environment variable to specify the
+  printer name.  If none is specified, BLAST uses the default printer,
+  dev/lp.
+:
+:LORENAME
+  LOCAL - RENAME                                                            
+  
+  RENAME renames local files.
+  
+  BLAST prompts for the old and new name of the file to rename. Unless a
+  pathname is specified, BLAST will search only the current directory.
+  Pressing <ENTER> or <EXIT> without entering a file name returns control
+  to the Local Menu without taking any action.
+:
+:LOSCROLL
+  LOCAL - TYPE - SCROLL                                                     
+  
+  Select the Local menu TYPE item to display a local ASCII text file. This
+  command has several display options which are also described here.
+  
+  Unless a pathname  is  specified,  BLAST  will  search  only  the  current
+  directory  for the file to be displayed. Trying to TYPE a nonexistent file
+  causes an error message to be displayed.
+  
+  Use the PAGE option to display data one screen at a time when TYPEing a
+  file which fills more than one screen.  Use SCROLL to display data to the
+  screen without stopping.
+  
+  Always select PAGE if you may want to interrupt the display of a very long
+  file. If you select SCROLL, then the display cannot be interrupted and may
+  take to long time to complete.
+:
+:LOSHORT
+  LOCAL - LIST - SHORT                                                      
+  SHORT - displays the file name only, in column format, similar to the output
+          of the UNIX/XENIX command `ls -x'.
+  
+  LONG - displays the name, size, creation date and creation time for each
+         file in the current local directory, similar to the output of the
+         UNIX/XENIX command 'ls -l'.
+:
+:LOSYSTEM
+  LOCAL - SYSTEM                                                            
+  
+  Select the Local menu SYSTEM item to run programs or perform system
+  commands without leaving BLAST.
+  
+  After selecting SYSTEM item, type the desired system command.  BLAST will
+  give the command to the command line interpreter for processing.  You can
+  use all the switches and special features of the system command.
+  
+  Pressing <ENTER> at the command prompt, returns control to the command
+  line interpreter. Pressing <EXIT> returns you to the BLAST menu. Return to
+  BLAST from the system by pressing <CTRL>D.
+  
+  Remember, although a system prompt is on the screen,  BLAST is still
+  running - do not run programs that use same com port(s) as BLAST.
+:
+:LOTYPE
+  LOCAL - TYPE                                                              
+  
+  Select the Local menu TYPE item to display a local ASCII text file. This
+  command has several display options which are also described here.
+  
+  Unless a pathname  is  specified,  BLAST  will  search  only  the  current
+  directory  for the file to be displayed. Trying to TYPE a nonexistent file
+  causes an error message to be displayed.
+  
+  Use the PAGE option to display data one screen at a time when TYPEing a
+  file which fills more than one screen.  Use SCROLL to display data to the
+  screen without stopping.
+  
+  Always select PAGE if you may want to interrupt the display of a very long
+  file. If you select SCROLL, then the display cannot be interrupted and may
+  take to long time to complete.
+:
+:LOYES
+  LOCAL - DELETE - YES                                                      
+  
+  Select YES to delete the specified entry and return to the local menu.
+:
+:MODEM
+  OFFLINE - MODIFY - MODEM TYPE                                             
+  
+  The Setup Modem Type field identifies the type of modem connected to the
+  communications port specified in Setup Comm Port field. Run the
+  BLAST script program "listmod", supplied as a part of the BLAST product to
+  display the modem types supported in the modems.scr library.
+  
+  This remainder of this Online Help section is a lengthy discussion divided
+  as follows:
+  
+  1)   GENERAL DISCUSSION
+  2)   MULTIUSER SYSTEM CONSIDERATIONS
+  3)   AT COMMAND SET
+  4)   CABLING
+.P
+  GENERAL DISCUSSION
+  
+  When you select Online menu Connect item or use the CONNECT BLASTscript
+  statement, BLAST uses stand-alone modem handling BLASTscript subroutines
+  or routines from the modems.scr library to perform various modem specific
+  tasks such as dialing the phone, answering a call, and disconnecting from
+  a remote computer.
+  
+  You can supply your own modem type by creating a BLAST script named
+  ModemType.scr, putting the new script in the same directory as modems.scr,
+  and using that ModemType name in the Setup Modem Type field. This creates
+  new modem-handling routines and overrides existing modem handlers in
+  modems.scr. BLAST always looks for individually-named scripts before
+  looking in modems.scr. This means that a script named "hayes.scr" will
+  control the CONNECT process instead of the HAYES entry in modems.scr.
+.P
+  During the CONNECT process,
+  1) BLAST sets the modem to 'verbose' mode; the modem responds to commands
+     with English messages.
+  2) BLAST uses the Setup Phone number field according to the modem handling
+     .DIAL label. If the Setup Phone Number field is empty, the routine
+     prompts for it.  If you press <ENTER> at the 'enter phone number:'
+     prompt, BLAST assumes that you don't have a modem and continues the
+     CONNECT process.
+  3) If a Modem Type is not defined, BLAST assumes that your computer is
+    'hardwired' to the remote computer and does not use a modem handler.
+  4) When the modem handler is finished processing successfully, CONNECT
+     turns over control to a system-handling BLAST script routine.
+  5) As with the modem handler, the system handler may come from the
+     systems.scr library or an individually named file. Processing begins at
+     the label .LOGON if a particular System Type is named in the Setup. See
+     Online Help for the Offline menu System Type item.
+.P
+  During the DISCONNECT process,
+  
+  1) BLAST tries to log off the computer using the process defined in system
+     handler BLAST script at the .LOGOFF label.
+  2) If the logoff is successful, BLAST transfers to .HANGUP in the modem
+     handler to hang up the modem.
+  3) After the modem is hung up, BLAST issues commands to put the modem in
+     'quiet' mode. This means the modem will not respond to commands or give
+     a ring indication. This prepares the modem to receive calls on a
+     multiuser computer. If the modem were left in verbose mode, it would
+     confuse the system login program by sending ring messages when called.
+  4) When the DISCONNECT is complete, BLAST returns to the Online menu, or
+     to the next line of the script issuing the DISCONNECT call.
+  
+  In some cases, you may have to modify the modem and system handling
+.P
+  BLASTscript routines for proper operation. For example:
+  
+  - The modem is set up differently than assumed by routines in modems.scr
+    or you have a different revision of firmware than the routine requires.
+  - The modem is connected to a special switch, LAT, or other  port selector
+    with which you must communicate before logging on,
+  - The computer or modem is not one of the types supported by BLAST.
+  - The  normal (i.e. operating system standard) logon has been modified  by
+    your system manager,
+  
+  If you modify blast.hlp, modems.scr, or systems.scr you must use the index
+  utility to rebuild the BLASTscript libraries index. At the system prompt,
+  type "index oldname newname" where oldname is the name of the edited text
+  and newname is the final library name.
+  
+  Except for the blast.hlp file, modems.scr, and systems.scr, the index
+.P
+  utility has no value with other BLAST scripts. Since BLAST looks
+  for stand-alone systemtype/modemtype.scr handling routines before looking
+  in the modems.scr or systems.scr libraries, do not modify the libraries.
+  Extract and modify the script text you need and create a new routine with
+  a unique name.  Your new routine does not require indexing.
+  
+  The modem and system handling libraries use variables to perform their
+  work. These variables are in common memory with your own variables.
+  Note that:
+  
+  1) If you use the same variable names as a handling routine, the handling
+     routine will change these variables during execution. On return from
+     the handling routine, your variable will contain the information put in
+     it by the handling routine, and not its previous value.
+  
+  2) BLASTscripts may only use a limited number of variables, and the
+.P
+     handling routines use up some of these.
+  
+  
+  The default Modem Type is HAYES. We have attempted to design the Hayes
+  handling routine in modems.scr to accommodate a wide variety of AT
+  command set modems. The modems supported in this product can be obtained
+  by running the listmod.scr script distributed with BLAST.
+  
+  NOTE: When BLAST uses a handler from modems.scr to perform any modem
+  activity (for example, dial, hang-up or answer), BLAST will display a
+  message if the Modem Type does not match any of the entries in modems.scr
+  and there is no standalone routine with the same name in the BLAST
+  directory.  Verify that the Setup Modem Type field is correctly spelled.
+  
+  The BLAST reserved variable for this field is @MODEM.
+.P
+  MULTIUSER SYSTEM MODEM CONSIDERATIONS
+  
+  In multiuser systems, modems can be used to originate and answer calls. In
+  originate mode, smart modems must look at the data stream, give answers
+  (verbose mode) to questions, dial, hang-up, and give many indications to
+  the user regarding the status of his call. In answer mode, the modem must
+  be fully transparent (i.e. not look at the data stream), keep quiet (quiet
+  mode), answer, and hang-up when losing connection with the other end or
+  getting a hardware (DTR drop) signal from the computer.
+  
+  BLAST sets the modem to verbose on CONNECT and to quiet on DISCONNECT, but
+  you  should be prepared to work manually with the modem in case BLAST does
+  not exit normally and complete modem control.
+  
+  AT MODEM COMMAND SET
+.P
+  Because of the popularity of the AT command set, we have included a quick
+  reference here. There are many unique, proprietary extensions of the AT
+  command set which are not included.
+  
+  AT   Modem attention code; indicates start of a command line.
+  +++  Escape  code;  changes  modem  from on-line  to  command  state;
+  Ds   Dial where s is
+            0..9 selects a stored number
+            P    pulse dial
+            R    Dial an "original-only" modem (reverse mode)
+            T    Touch tone dial
+            ,    Pause while dialing (see S8)
+            ;    return to command state after dialing
+            default is DP
+.P
+  A/   Repeat previous command; the only command neither preceded by an AT
+       nor followed by a carriage return.
+  A    Answer call immediately
+  cn   where n is
+            0    Transmitter off
+            1    Transmitter on
+            default C1
+  En   where n is
+            0    No echo
+            1    Echo
+            default is E1
+  Fn   where n is
+            0    Half duplex
+            1    Full duplex
+.P
+            default is F1
+  H    where n is
+            0    Hang up (on Hook)
+            1    Off hook
+            2    Special Off Hook
+            default is blank, same as ATH0, hang up
+  I    where n is
+            0    Request and display identification code of modem
+            1    Request and display checksum of modem ROM memory
+  Mn   where n is
+            0    Speaker off
+            1    Speaker on until carrier detected
+            2    Speaker always on
+            default is M1
+  O    Returns to on-line state
+.P
+  Qn   where n is
+            0    Result codes sent
+            1    Result codes not sent
+            default is Q0
+  Sr?  Read and display register where r is a register number
+  Sr=n Set  register  where r is a register number 0..17,  and n is a  value
+       0..255.
+  S0   Number of rings before the modem answers.
+  S1   Number of rings that occurred before answer.
+  S2   Escape cope character ASCII decimal. Default 43 (+).
+  S3   Carriage return character ASCII decimal. Default 13.
+  S4   Line Feed character ASCII decimal. Default is 10.
+  S5   Backspace character ASCII decimal. Default is 8.
+  S6   Wait for dial tone. Default is 2  seconds.
+  S7   Wait time for carrier. Default is 30.
+  S8   Length of dialing pause (,). Default 2 seconds.
+.P
+  S9   Carrier response detect time. Default is 6 tenths of a second.
+  S10  Time  between loss of carrier. Default is 7 tenths of a second.
+  S11  Touch tone duration and spacing. Default is 70 milliseconds.
+  S12  Escape code guard time. Measured in 1/50-seconds, default is 1 second.
+  S13,14,16,17 Bit mapped
+  S16  Self test.
+  Vn   where n is
+       0    Digit result codes
+       1    Word result codes
+       default is V1
+  Xn   where n is
+       0    Basic result code set
+       1    Extended result code
+       default is X1
+  Z    reset the modem to factory defined defaults
+.P
+  CABLING
+  
+  We recommend that you buy a modem cable from your computer manufacturer.
+  Second choice is a flat ribbon cable with appropriate sex connectors from
+  an electronics supply store.  Most recent vintage computers (after 1981)
+  have a 25 pin male connector, while most modems have female connectors.
+  This means the typical modem cable has one male and one female connector.
+  
+  NOTE:  This ribbon cable is for computer to modem connection, not computer
+  to computer connection. See the Communication  Concepts  manual  for  more
+  cable making discussion.
+:
+:OFLOCAL
+  OFFLINE - LOCAL                                                           
+  
+  Select the Offline menu LOCAL item to move to the Local Menu, where a
+  variety of functions may be performed without exiting BLAST, such as
+  listing the files on this system, renaming, deleting, or editing a file.
+:
+:OFMODIFY
+  OFFLINE - MODIFY                                                          
+  
+  Use the Offline menu MODIFY item to change Setup field values.
+  
+  Remember,  although you may modify a Setup that is loaded into BLAST,  the
+  modifications are temporary.  If you exit BLAST or load another Setup from
+  disk before going to the WRITE step, you will lose the changes. Hit <EXIT>
+  after completing changes and select Offline menu WRITE item to save the
+  new Setup.
+:
+:OFNEW
+  OFFLINE - NEW                                                             
+  
+  Use the Offline menu NEW item to create new Setups. BLAST will not allow a
+  new Setup with the same name as an existing Setup. To create a Setup
+  similar to one that already exists, select the existing Setup with the
+  Offline menu SELECT item, then select the Offline menu NEW item. Select
+  the Offline menu MODIFY item to make changes, if necessary, then use the
+  Offline menu Write item to save the new Setup.
+.P
+  If BLAST will not let you select an existing Setup or create a new one it
+  is probably because the file is not in:
+  
+    1) the current directory,
+    2) the directory specified by the SETUPDIR environment variable,
+    3) the directory specified by the BLASTDIR environment variable.
+    4) the default directories and SETUPDIR and or BLASTDIR is null.
+    5) a directory for which you have read/write privileges.
+  
+  It may also be that the BLASTDIR or SETUPDIR environment variable is
+  invalid, or you may not have the privilege level required to create files
+  in the Setup directory, or the current directory.
+:
+:OFNO
+  OFFLINE - WRITE - NO                                                      
+  
+  Select NO to abort the deletion or overwriting of the specified Setup  and
+  return to the Offline Menu.
+:
+:OFONLINE
+  OFFLINE - ONLINE                                                          
+  
+  Offline menu Online item brings up a new menu, the Online menu.
+  
+  You  will not be able to go Online until you have selected a Setup and the
+  Setup includes a valid communications  port name.
+  
+  At the point that you go Online, BLAST attempts to open the communications
+  port. If the operating system call to open the port hangs because the port
+  is flow controlled (either hardware or software), BLAST will hang at this
+  point. Try disconnecting the modem cable from the computer port if you
+  suspect the problem is with hardware flow control. Dial up the modem from
+  another modem and send ^Q to the modem if you suspect the problem is
+  software flow control.
+:
+:OFREMOVE
+  OFFLINE - REMOVE                                                          
+  
+  Use the REMOVE item to eliminate a Setup from the current directory.
+  Removing a Setup deletes the ".su" file, so only remove those Setups that
+  will no longer be needed.
+  
+  If you would like to keep the Setup, but not display it in the directory,
+  rename it with an extension other than ".su".
+:
+:OFSELECT
+  OFFLINE - SELECT                                                          
+  
+  Use the SELECT item to choose and load a Setup.
+  
+  Setups contain information needed by BLAST about other computer systems,
+  such as:
+  
+  - local computer information, such as the name of the asynchronous
+    communications port to be used;
+  - remote computer information, such as terminal type, System Type (VMS,
+    UNIX, etc.) and translation tables;
+  - modem information, such as the type modem to be used, the number to
+    dial, baud rate and parity etc.
+  - information needed to optimize BLAST transfer, including selection of a
+    transfer protocol, timeouts, packet size.
+.P
+  BLAST prompts for a specific Setup. If you just <ENTER>, BLAST will list
+  all Setups. Load the desired by:
+  
+  - highlighting the Setup with the cursor movement keys and <ENTER>.
+  - entering  the Setup name at the file name prompt,or
+  - specifying the Setup name on the BLAST command line.
+  
+  If BLAST will not let you select an existing Setup or create a new one it
+  is probably because the file is not in:
+  
+    1) the current directory,
+    2) the directory specified by the SETUPDIR environment variable,
+    3) the directory specified by the BLASTDIR environment variable.
+    4) the default directories and SETUPDIR and or BLASTDIR is null.
+    5) a directory for which you have read/write privleges.
+.P
+  It may also be that the BLASTDIR or SETUPDIR environment variable is
+  invalid, or you may not have the privilege level required to create files
+  in the Setup directory, or the current directory.
+:
+:OFWRITE
+  OFFLINE - WRITE                                                           
+  
+  Use   the   WRITE  item to save the current Setup. Frequently used or
+  customized Setups can be retrieved by name, rather than creating the Setup
+  each time it is needed.
+  
+  BLAST will create the disk file name for the Setup by adding the extension
+  `.su' to the Setup name . You cannot give a Setup a name which already has
+  an extension. If a file already exists with the same name, BLAST offers to
+  OVERWRITE the existing Setup with the current Setup.
+:
+:OFYES
+  OFFLINE - WRITE - YES                                                     
+  
+  Select YES to delete or overwrite the Setup.
+:
+:ONACCESS
+    Online MENU - ACCESS                                                    
+  
+    The ACCESS item allows PC BLAST II with RemoteControl to connect with
+    and control a remote PC running a copy of BLAST Satellite.
+  
+    ACCESS requires a valid Setup to call the Satellite PC.  Create a Setup
+    containing the following information:
+  
+   -    The telephone number of the Satellite PC, if using a modem
+   -    Your login name and password, if any
+.P
+   -    The correct Modem Type
+   -    The System Type of ACCESS
+  
+    After connection, the keystrokes you type are sent to the Satellite PC,
+    just as if you had typed them at the remote location.  The screen output
+    from the Satellite PC will be sent to your computer.
+  
+    You may choose to transfer files using the BLAST protocol during a
+    RemoteControl session.
+.P
+    IMPORTANT:  Satellite MUST already be running on the remote computer
+    before you choose the ACCESS item.
+  
+    For complete details on the RemoteControl process, please consult your
+    User Manual.
+:
+:ONCAPTURE
+  ONLINE - CAPTURE                                                          
+  
+  Use the Capture item to enable saving received characters to disk while in
+  TERMINAL mode. For example, use Capture to get text from a remote
+  computing service which does not have BLAST
+  
+  Incoming data will be displayed on the screen. If Capture mode is on, the
+  data will also be saved in the capture buffer. If Capture mode is OFF, the
+  data will only be displayed to the screen.
+  
+  Capture mode may be toggled on/off while in terminal mode using <ATTN>C.
+:
+:ONCONNECT
+  ONLINE - CONNECT                                                          
+  
+  Select the CONNECT item to start an automated procedure which uses modem
+  and system handling BLASTscript libraries to connect the local
+  and remote computers. BLAST will set modem mode (See Online Help for the
+  Offline menu Modify item Modem Type field), dial the phone number, and log
+  onto the remote computer using the standard logon sequence (See Online
+  Help for the Offline menu Modify item System Type field.)
+  
+  If the CONNECT process is unsuccessful, BLAST waits for you to strike a
+  key acknowledging the problem.  Setting @ONERROR to "CONTINUE" in scripts
+  bypasses the required acknowledgement.
+  
+  WARNING: The CONNECT and DISCONNECT processes change the verbose and quiet
+  modes of the modem. The DISCONNECT must be successful to restore the modem
+  to a mode where users can call in and logon to the computer.
+:
+:ONDISCONNECT
+  ONLINE - DISCONNECT                                                       
+  
+  DISCONNECT starts an automated process that follows these steps:
+  
+  - if the Setup System Type is defined and connection has been established,
+    then BLAST will use the standard logoff technique as defined in the
+    system handler BLASTscript library (starting at the .LOGOFF label).
+  - When Modem Type is defined, BLAST uses a modem handling routine at the
+    .HANGUP label to hang up the modem, and put it in quiet mode.
+  - When  the Setup Modem Type field is empty, BLAST assumes a direct
+    connect, ends the automated process, and returns control to the Online
+    Menu (or BLASTscript routine). See Online Help for the Offline menu
+    Setup SYSTEM TYPE field.
+  
+  WARNING: The CONNECT and DISCONNECT processes change the verbose and quiet
+  modes of the modem. The DISCONNECT must be successful to restore the modem
+.P
+  to a mode where users can call in and logon to the computer.
+:
+:ONFILETRANSFER
+  ONLINE - FILETRANSFER                                                     
+  
+  Use the FILETRANSFER item to transfer files, messages, and system commands
+  error-free between your computer and remote computer.
+  
+  For  FILETRANSFER  to  be successful, the remote computer must also have a
+  version of BLAST installed, or a program which uses the Xmodem protocol.
+  
+  BLAST  uses  the  entry  in  the  PROTOCOL  field  of the current Setup to
+  determine what protocol to use.
+:
+:ONLOCAL
+  ONLINE - LOCAL                                                            
+  
+  The LOCAL item transfers control to the Local Menu, where local file
+  management functions as well as system tasks may be performed without
+  exiting BLAST.
+:
+:ONNO
+  ONLINE - NO                                                               
+  
+  Select NO to return control to the Online menu.
+:
+:ONSCRIPT
+  ONLINE - SCRIPT                                                           
+  
+  Selecting this item invokes the BLAST interpreter and runs a BLAST script.
+  BLASTscript is programming language tailored to communication
+  automation.
+  
+  Select the SCRIPT item to invoke scripts, which can automate all or part
+  of a session.
+  
+  BLAST prompts for the name of the program. Unless a pathname is specified,
+  BLAST will search only the current directory for the script. Entering the
+  name of a nonexistent script will display an error message.
+.P
+  The remainder of this lengthy help is divided into the following sections:
+  
+  1)   Language Reference, the basic language keywords and syntax
+  2)   ASCII Code Chart
+  3)   Error Conditions
+  
+  LANGUAGE REFERENCE
+  
+  This BLASTscript reference is divided into four sections.
+  
+    1) Data Types
+    2) Syntax rules
+    3) Maximum and Minimum Specifications
+    3) BLASTscript Reserved Variables
+    4) BLASTscript Verbs
+.P
+  Abort a BLAST script immediately with <ATTN><ATTN>, a SINGLE <ATTN>
+  causes abort after the currently executing statement completes. Note, the
+  currently executing statement may be a lengthy upload or BLAST transfer.
+  
+  DATA TYPES
+  
+  All data is stored as strings of up to 139 characters in length. When the
+  strings are numeric-values, mathematical (+,-,x,/) operations can be
+  performed.  Parentheses are NOT allowed. Expression is evaluated left to
+  right without precedence.
+.P
+  Numeric-constants are digits depending on the statement. Examples,
+  -----------------
+        4  , 24  , 1
+  
+  Variables start with @ followed by up to 8 characters. Examples,
+  ---------
+        @X , @FRED , @123
+  
+  String-constants must be enclosed in quotes (").  Examples,
+  ----------------
+       "THIS IS A STING CONSTANT" ,  "12345" , ".123ABC"
+.P
+  String constants may contain special control characters.
+  
+     \r  - carriage return
+     \n  - linefeed
+     \f  - formfeed
+     \b  - backspace
+     \\  - the \ character
+     \oct- where oct is the three digit octal value of the character
+  
+     WARNING:  \oct  is  not  valid  for  \000.  Null  characters are string
+     terminators and when encountered stop string processing.
+.P
+  Reserved variables are of two types: Read only and Read/Write. BLAST
+  scripts can test a physical signal or logical condition using read only
+  reserved variables. With read/write reserved variables, scripts not only
+  test but also change a condition by using a SET to change the reserved
+  variable.
+      @PHONENO  - the phone number used by the Online menu Connect item
+      @EFERROR  - the logical state in which last BLAST transfer ended
+  
+  String-values may be string-constants or variables as defined above.
+  -------------
+  
+  Numeric-values may be numeric-constants or variables as defined above.
+  --------------
+.P
+  BLASTSCRIPT STATEMENT SYNTAX RULES
+  
+  A statement may be 80 characters long. Indentation using ^I (tab) makes
+  code easier to read and has no effect on operation.
+  
+  Comment lines begin with a # sign; they can also be placed on the same
+  line as code by putting a # within the line (all characters from the # to
+  the end of the line are treated as comments). Since BLASTscript is
+  interpretive, comments must be skipped over while executing. This adds
+  to execution time; therefore, avoid placing comments inside loops.
+.P
+  BLAST is highly blank sensitive. When in doubt, separate all elements of a
+  line of code with blanks. Also, use "" to enclose ALL constants.
+  
+  In the following sections, the following special characters are used:
+  
+    _     Indicates a required space.
+    []    indicates an optional field.
+    [x|y] indicates optionally choose either x or y, but not both.
+    {x|y} indicates a required choice of x or y, but not both.
+.P
+  MAXIMUM AND MINIMUM SPECIFICATIONS
+  
+  The total number of variables that can be used (including all used in
+  CONNECT and DISCONNECT routines) is 32. This count does not include
+  reserved variables.
+  
+    IF statements may be nested 6 deep.
+  
+    Maximum variable length is 140.
+  
+    Maximum BLAST transfer packet size is 4096
+  
+  The maximum and minimum numeric constants are 1073741824 and -1073741823.
+.P
+  RESERVED VARIABLES
+  
+  @ARGn  gives  BLAST scripts a way of taking information  from  the
+    operating system command line. "n" indicates which argument. The command
+    line must be of the format:
+    BLAST Setupfilename -switch1info -switch2info ARG0 ARG1...ARG9
+  @7BITCHN  defines  the  data  path width in file transfer mode.  If  "YES"
+    width is 7 bits. If "NO" width is 8 bits.
+  @ATTKEY  is the character which is defined as the attention  key,   <ATTN>
+    in the Setup. SET this variable to an unlikely character when you do not
+    want the user to be able to interrupt the BLAST script.
+  @AUTOLFIN set to "YES" forces BLAST to insert a linefeed after every
+    carriage return displayed; when it's set to "NO", no linefeeds are added.
+  @AUTOLFOUT set to "YES" forces BLAST to insert a linefeed after every
+    carriage return which goes out the communications port. When @AUTOLFOUT
+    is set to "NO", no linefeeds are inserted.
+.P
+  @BAUDRATE is the speed you choose for the communications session. The rate
+    must be a string set to one of the valid port/modem speeds for your
+    computer - for instance, "300","1200" or "9600". Of course, the remote
+    system must also use this same port/modem speed to communicate with you.
+  @CHARDLY is the delay period between the transmission of each
+    character sent to the remote computer during a text upload.
+  @COMMPORT  is the name of the communications port being used by BLAST to
+    communicate with the remote computer.
+  @COMP_LVL is the level of compression used in BLAST transfer. Level 0
+    indicates that no compression will be performed. Level 4 is the highest
+    level of compression.
+  @CONTIMO is the time interval (in seconds) that BLAST will wait for a
+    packet of data from the remote computer when in BLAST transfer.
+  @CTS read only variable - is set to "1" if CTS is True (Clear to Send is
+    asserted  meaning  the device, usually a modem, can receive characters).
+    @CTS is set to "0" if not ready to receive characters.
+.P
+  @DCD read only variable - is set to "1" if DCD is True  (Carrier  Detected
+    by  the  modem).  @DCD is set to "0" if the modem does not sense carrier
+    from another modem,i.e. not connected.
+  @EFERROR gives additional information about the termination of a BLAST
+    transfer session beyond @STATUS value.
+        0   Normal termination, no errors
+       -1   initialization error
+       -2   remote operator ended activity with <ATTN>
+       -3   remote operator aborted the transfer with <ATTN><ATTN>
+       -4   never got starting message (logon timeout)
+       -5   lost connection with remote (connect timeout)
+       -6   incompatible PrivateNetwork version.
+  @EMULATE determines the type of terminal emulation BLAST will use in
+    terminal mode.
+  @FULLSCR toggles the top three lines of the BLAST menu display on and off
+    while in terminal mode.  These lines will always be redisplayed when you
+.P
+    press <ATTN><ATTN>.
+  @KEYBOARD controls whether a user may enter data from the keyboard.  If 1,
+    the keyboard is "unlocked" and may be used. If 0, the keyboard will not
+    function, effectively ending user control of BLAST.  Use this variable
+    carefully, and only with unattended scripts that require no user
+    intervention.
+  @KEYFILE is the file which stores BLAST softkey definitions.
+  @LINEDLY is the delay time (in tenths of a second) that BLAST pauses
+    after sending a carriage return at the end of a line.
+  @LOCECHO determines whether BLAST will display typed characters
+    locally at the same time it sends those characters to a remote system.
+    If to "OFF", data will be displayed only if the remote computer echos
+    the data back to you (this is the default, since most computers handle
+    echo in this manner).  If characters are "doubled" as you type them
+    (for instance, "HHeelllloo"), then SET this variable to "OFF".
+  @LOGTIMO is the length of time (in seconds) during which BLAST will
+.P
+    attempt to establish BLAST transfer with a remote system.
+  @LOGFILE is the name of an optional logfile, which records all activity
+    during a BLAST session.
+  @MODEM is a string containing the name of the type of modem on the local
+   computer. The name must be either a valid entry in the modems.scr library
+   OR it must match a routine named @MODEM-value.scr in the BLAST directory.
+   For more information concerning modem control, please consult your User
+   Manual.
+  @ONERROR  determines  BLAST's  response to non-fatal  BLAST script
+    errors. Choices are "CONTINUE" or "STOP". The default for @ONERROR is
+    "STOP".
+  @ORGANS indicates how the CONNECT statement will operate.  If SET to
+    "ANSWER", CONNECT will place your system in auto-answer mode, waiting
+    for a remote computer to call.  If set to "ORIGINATE", CONNECT will try
+    to dial a number.
+  @PAKTSZ determines the number of bytes in a BLAST transfer data packet.
+.P
+  @PARITY  indicates  what  parity  will  be used in both terminal mode and
+    BLAST transfer. Choices are "ODD", "EVEN", "MARK", "SPACE", and "NONE".
+  @PASSWORD is the user's password for the remote system.  The BLAST
+    system-handling routines in systems.scr use @PASSWORD to answer logon
+    prompts from a host system.  If a password is saved as part of a Setup,
+    it's encrypted for better security.
+  @PHONENO stores the remote computer phone number. The CONNECT statement
+    uses this number to dial the remote system.
+  @PROMPTCH defines a prompt character. During text upload, BLAST waits
+    after each line for the remote computer to send a prompt before sending
+    the next line.  Note that the default setting is blank (no prompt
+    character).
+  @PROTOCOL  indicates  the  protocol  used in the BLAST session. Choices are
+    "BLAST" and "XMODEM".
+  @RLINEQ monitors receiving line quality. This variable displays the
+    final line quality at the conclusion of the last transfer. You may then
+.P
+    set the packet size of BLAST larger to take advantage of clean lines, or
+    smaller to cope with noisy lines. Possible values are, "GOOD", "FAIR",
+    "POOR" and "DEAD".
+  @RTSCTS set to "YES" indicates that hardware flow control is enabled.
+  @SCRFILE  is  the  name  of a BLAST script which will  be  executed
+    immediately after BLAST begins execution.
+  @SCRLREG controls data display in the scrolling region  (lines  5-24).  If
+    set to "1", characters received in terminal mode will be displayed and
+    the script can use the DISPLAY statement. @SCRLREG is one of
+    the variables set to "0" when BLAST is started in the video suppress
+    mode (-n switch on the command line).
+  @SCRIPTERR returns numeric value of last error which occurred in the
+    script. This variable can be used with the ERRSTR statement
+    to get the error message. See ERROR CONDITIONS in following sections.
+  @SLINEQ  monitors sending line quality. This variable tells you  what  the
+    final line qualify at the conclusion of the last transfer. You may then
+.P
+    set the packet size of BLAST larger to take advantage of clean lines, or
+    smaller to live with noisy lines.  Possible values are, "GOOD", "FAIR",
+    "POOR" and "DEAD".
+  @STATUS  is a condition code set by the last statement which  reports its
+    completion status.  This variable may be read, set, or tested. Commands
+    succeed set @STATUS to "0". A non-zero value in @STATUS may be an error
+    number, or may indicate a condition depending on the statement which set
+    it. On returning from another script, @STATUS is set to the
+    numeric-constant given as the argument on the RETURN statement.
+  @SYSDESC describes the remote  computer. This  field  may  be  up  to  40
+    characters.  No  special  processing is done based on the information in
+    this field. The user may use it for his own purposes.
+  @SYSTYPE is the type of the remote computer (UNIX, VMS, etc.). BLASTscript
+    system handling routines in systems.scr library use this field to
+    determine how to perform certain functions on the remote computer.
+  @TRANSTAT controls the display of the Transfer Status window. If set to
+.P
+    "1", the  window is active. This variable is one of the variables set
+    to "0" when BLAST is started with video suppress mode (-n switch).
+  @TRPASSWD  is  a BLAST transfer password. If this variable is  set  to
+    other than null, then the computers must exchange a special file name
+    before transfers are permitted.
+  @USERID stores the user's identification for the remote computer.  The
+    BLASTscript system handling routines in systems.scr use this
+    variable in answering the logon prompts from a multiuser computer.
+  @USERIF  controls data display in the user interface region  (lines  1-4).
+    If set to "1", the window is displayed. If 0, this area becomes part  of
+    the  scrolling  region. This variable is one of the ones turned off when
+    BLAST is started in the video suppress mode.
+  @WT4ECHO when set to "YES" waits for the remote computer to echo  uploaded
+    text before sending the next character.
+  @XLTFILE stores the name of the translate file. Translate files  are  used
+    in terminal mode to discard or interpret certain characters.
+.P
+  @XONXOFF when "YES" indicates that software flow control is enabled.
+  
+  BLASTSCRIPT STATEMENTS
+  
+  Conventions used in describing the statements are as follows,
+  
+  - A required blank is indicated by an underline character (_).
+  - The arguments to the verbs are described fully above under Data Types.
+  - [ARG] indicates an optional argument
+  - [ arg1 | arg2 | arg3 ] indicates choose one arg or none.
+  - { arg1 | arg2 : arg3 } indicates choose one arg.
+  - arg1, ...arg9 indicates 9 total arguments separated by commas
+  
+  ASCII_string-value,numeric-value
+    ASCII sets @STATUS to the ASCII value of the character at position
+    numeric-value within the string-value. The first position is 1.
+.P
+  ASK_string-value,variable
+    ASK prompts the user with string-value at the top  of  the  screen.  The
+    response  from  the  user  will be placed in variable. NOTE; If the user
+    replies to the ASK prompt by pressing <EXIT>, @STATUS will be set to 1.
+  CALL_string-value
+    CALL  loads and executes another BLAST script. The called script
+    returns to the calling script. String-value  is  the  pathname  to  the
+    called  script.  @STATUS  is  set to the argument of the called script
+    RETURN statement.
+  CLEAR
+    Clears the scrolling window portion of the screen.
+  CLEOL
+    CLEOL clears to the end of the current line from current cursor position
+    in the 20 x 80 scrolling window.
+  CONNECT
+    BLAST executes modem and system handling BLASTscript routines from the
+.P
+    modems.scr and systems.scr libraries to dial and logon a remote
+    computer. See help for the Online menu Connect item.
+  CURSOR numeric-value1,numeric-value2
+    CURSOR  positions  the cursor to a given row (numeric-value1) and column
+    (numeric-value2) in the 20 x 80 scrolling window. The row ranges from  0
+    to  19,  column from 0 to 79. If @USERIF is set to "1", the full 24 x 80
+    screen can be addressed.
+  DISCONNECT
+    BLAST executes modem and system handling BLASTscript routines from the
+    modems.scr and systems.scr libraries to log off and hang-up the modem.
+    See Online Help for the Online menu Connect item.
+  DISPLAY_string-value,...
+    DISPLAY is used to display messages in the scrolling window on the BLAST
+    screen.  If a log file has been specified, these messages will also be
+    sent to the log file.
+  DROP_[DTR | RTS]
+.P
+    DROP drops signals on the RS-232 interface. Where value is DTR, data
+    terminal ready drops.  This hangs up most modems. Where value is RTS,
+    request to send drops causing some devices to stop transmitting.  NOTE:
+    Some systems may have DTR and RTS tied together. This means issuing DROP
+    either value causes both to drop.
+  ECHO_[ON | OFF]
+    ECHO ON traces BLASTscript statements as they are executed.
+  ERRSTR_numeric-value, variable
+    This statement puts the English language error message in the variable
+    which corresponds to the numeric-value. This statement is most often
+    used in association with the reserved variable @SCRIPTERR which contains
+    the error number of the last BLASTscript error.
+  ESC
+    Use  ESC to terminate lists of files following certain BLASTscript verbs
+    which have a variable number of arguments.
+  FCLOSE_numeric-constant
+.P
+    FCLOSE is used to close an open file. Numeric-constant can range from  1
+    to 4. If successful, @STATUS is set to 0.
+  FILETRANSFER
+  [ statement | paragraph ]
+      .
+      .
+  [ statement | paragraph ]
+  ESC
+    This complex multiline statement calls the .TRANSFER routine in the
+    systems.scr library, and then enters file transfer mode using error-
+    free protocol. The FILETRANSFER statement may be followed by one or many
+.P
+    multiline paragraphs. BLASTscript statements may be interspersed between
+    the paragraphs.
+  
+    The statements may be any valid BLASTscript statements except those
+    which affect the communications port (i.e. TSEND, TTRAP, etc.),
+    another FILETRANSFER statement, SET statements which @BAUDRATE,
+    @7BITCHN, etc.
+  
+    The paragraphs may be made of any number of lines. Each line may be text
+    or a string-variable. When a paragraph has completed, @EFERROR is set to
+    indicate the success/failure of the operation. IF statements can be used
+.P
+    between paragraphs to test @EFERROR, and take remedial action if
+    necessary.
+  
+  The paragraphs may be in the following formats:
+  
+    MESSAGE
+    { message-text }
+  
+    Send a message to the remote computer. The line must be followed
+    by a line of text (67 characters max). The message is displayed at the
+    remote end.
+.P
+    { GET | SEND }
+    Source-filename [/switches]
+    { Destination-file name | blank } [/switches]
+    { T | O | A }
+  
+    The first line Gets or Sends a file from or to the remote system. The
+    second line specifies which file to be sent or received. The third line
+    specifies the name that the file is to have at the receiving end. The
+    fourth line indicates that the file is a 'T'ext file and that the file
+    received should 'O'verwrite or 'A'ppend to a file of the same name.
+    Blank indicates use the source filename as destination filename.
+    The optional switches can be used when the receiving end requires in-
+    formation about file organization (for example, blocked or fixed-
+    length files).
+    See your BLAST manuals for the valid switches for your computer.
+.P
+  FILE
+  { filename }
+    The name of an BLAST transfer command file. The file format is:
+      +filename/switches newname/switches -Get filename
+      filename/switches newname/switches  -Send filename
+      !command          -Perform a command at the remote end
+      ;message          -Send a message to the operator and the  logfile
+                         at the other end
+  
+    Filename must be a valid pathname.  Command must be an operating system
+    command to be executed by the receiving operating system after file
+    transfer is complete. Message is a text message to be sent to the remote
+    operator while the transfer is in progress. /switches are any valid
+    switches for the remote computer PLUS "/O" for overwrite, "/T" for text,
+    "/A" for append. Newname is the file name at the receiving end.
+.P
+  [ LOCAL | REMOTE }
+  { DELETE | TYPE | PRINT | CHDIR }
+  { filename | directory-name }
+  
+    Perform  file operations on the local or remote computer. the functions
+    are,
+  
+       CHDIR-  Change  the  current directory. The next line is the name of
+               the new current directory.
+       DELETE- Delete a file. The next line may be a file name or may  use
+               file name templates.
+       TYPE-   Type a file. The next line is the file name to be typed.
+       PRINT-  Print a file on the system default printer. The next
+               file is the file name to be  printed.
+.P
+  [ LOCAL | REMOTE }
+  LIST
+  { SHORT | LONG }
+  { blank | filename }
+  
+    Get a directory listing for the local/remote. The next line is "LONG" or
+    "SHORT" indicating the information to list. The following line is blank
+    to get all files, or use filename templates.
+  
+  [ LOCAL | REMOTE }
+  RENAME
+  old-filename
+  new-filename
+  
+    Renames a file. Do not specify a path name for the new file.
+.P
+  FOPENA_numeric-constant,string-value
+    FOPENA is used to open a file for appending. If the file does not exist,
+    it will be created. If it does exist, it will be opened and subsequent
+    writes will append data to the end of the file.  Numeric-constant can
+    range from 1 to 4. String-value is the pathname of the file to open. If
+    successful, @STATUS is set to 0. After opening, other file statements
+    refer to the file by its numeric-constant.
+  FOPENR_numeric-constant,string-value
+    FOPENR is used to open a file for reading.  The file must exist. The
+    range of Numeric-constant is 1 to 4. String-value is the pathname of
+    the file to open.  If successful, @STATUS is set to 0. After opening,
+    other file statements refer to the file by its numeric-constant.
+.P
+  FOPENW_numeric-constant,string-value
+    FOPENW is used to open a file for writing. If the file does not exist it
+    will be created. If it does exist it will be truncated. Numeric-constant
+    can range from 1 to 4. String-value is the pathname of the file to open.
+    If successful, @STATUS is set to 0. After opening, file statements refer
+    to the file by its numeric-constant.
+  FREAD_numeric-constant,variable
+    FREAD reads a line of text from the open file. The file is identified by
+    numeric-constant used in the FOPENR. The line is read into variable. If
+    successful, the @STATUS is set to 0.  A non-zero @STATUS indicates error
+    reading the file or end of file.
+  FREWIND_numeric-constant
+    FREWIND rewinds the file identified by numeric-constant. This resets the
+    file pointer to the file beginning. If successful, @STATUS is set to 0.
+  FWRITE_numeric-constant,string-value,...
+    FWRITE writes out a series of one or more strings to the file identified
+.P
+    by numeric-constant. Each FWRITE is a single  line  of  text  ending  in
+    carriage return. If successful, @STATUS is set to 0.
+  GOTO_.label
+    GOTO is used to branch to another location in a BLAST script.  Locations
+    are marked by lines that begin with a "." followed by up to 8
+    alphanumeric characters.  GOTO will abort the script if ".label" is
+    not found.
+  IF_<condition>_[THEN]_<statement>
+    The IF statement performs the statement when the condition is TRUE.
+    A <condition> is constructed by combining variable names, keywords,
+    string-values, and operators.  Operators include =, AND ,OR , and NOT.
+    Conditions may include several operators. Evaluation is from left to
+    right.  Parentheses are not permitted. Math is not permitted. If the
+    condition is a numeric-value, the condition is TRUE when numeric-value
+.P
+    equals @STATUS. The keywords are,
+  
+      OK                 TRUE if @STATUS = "0"
+      EXIST string-value TRUE if file specified in string-value exists
+      NULL string-value  TRUE if file specified in string-value is 0 length
+      REPS               TRUE if the number of times through a loop has been
+                              decremented to zero. REPS is decremented each
+                              time it is tested.
+  IF_<condition>
+     <statement>
+         .
+         .
+     <statement>
+  END
+    When the condition is  TRUE, the statements following and up to the END
+    are executed.
+.P
+   IF_<condition>
+     <statement>
+         .
+         .
+     <statement>
+  ELSE
+     <statement>
+         .
+         .
+     <statement>
+  END
+  
+    When the condition is TRUE, the statements following and up to the ELSE
+    are executed.  When the condition is FALSE, the statements following
+    ELSE and up to the END are executed.
+  LCHDIR_string-value
+.P
+    LCHDIR  is  used  to  change  the current working directory on the local
+    computer. IF LCHDIR is successful @STATUS is set to "0".
+  LDELETE_string-value
+    LDELETE is used to delete a file on  the local computer.  IF  LCHDIR  is
+    successful @STATUS is set to "0".
+  LET_variable_=_numeric-value_[ + | - | * | / ]_numeric-value...
+    LET  does  simple  integer  arithmetic. The expression is evaluated from
+    left to right, with no grouping or precedence. The result is  placed  in
+    variable. @STATUS is not affected.
+  LLIST_[LONG]_string-value
+    LLIST displays a list of files as specified  by  string-value. File name
+    templates  may  be  used.  If LLIST is success in finding files to list,
+    @STATUS is set to "0".
+  LOAD_string-value
+    LOAD loads a new Setup from the Setup directory. The string-value is the
+    pathname to the new Setup. The status is set to 0 indicating  the  Setup
+.P
+    has been successfully loaded.
+  LOCAL
+    This statement must be followed on the next line by the word "SYSTEM".
+    The next line (3rd line) must have a command to be executed by MS-DOS,
+    or may be blank.  If blank, BLAST invokes COMMAND.COM from which the
+    user must type "EXIT" to return to BLAST.
+  LOWER_variable
+    LOWER is used to change characters in variable to lower case.
+  LPRINT_string-value
+    LPRINT  prints the file specified by string-value to the printer. If the
+    printer and file are found, @STATUS is set  to  "0"  when  the  printing
+    completes. See General help about how to specify the printer used.
+  LRENAME_string-value1,string-value2
+    LRENAME renames a the  file  specified  in  string-value1  to  the  name
+    specified  in  string-value2  on  the local computer.  if  the rename is
+    successful, @STATUS is set to "0".
+.P
+  LTYPE_string-value
+    Type  a the file specified in string-value on the video display screen.
+  MENU_[ON|OFF]
+    During BLASTscript execution BLAST, by default, displays the interactive
+    menu, and simulates menu selections as the script executes. To stop
+    menu display use the MENU OFF statement. To restore display use MENU ON.
+  PUT_string-value,...
+    PUT is used to output one or more string-values to the scrolling window.
+    There  is no implicit carriage return or new line after the output. This
+    command is usually used in conjunction with the CURSOR command.
+  QUIT_numeric-constant
+    QUIT is used to abort BLAST and return to the operating system with an
+    numeric-constant exit code. The exit code will be displayed by BLAST and
+    then can be tested by the operating system macro command. Some command
+    line interpreters will display the code if no macro command is running.
+  RAISE_[ | DTR | RTS ]
+.P
+    RAISE is used to raise the Data  Terminal  Ready  signal  (DTR)  or  the
+    Request  to  Send signal (RTS) on the RS-232 interface. This signals are
+    usually used with modems. Some systems have DTR and RTS tied together so
+    that RAISE either affects both signals. RAISE with no argument defaults
+    to RAISE DTR.
+  REPS_numeric-value
+    REPS is used to make loops in scripts. When REPS used in an
+    IF statement, the REPS count is decremented then tested for equal to
+    zero. The numeric-value is the number of repetitions. If numeric-value
+    is a variable, the variable is NOT decremented by using REPs in an IF.
+  RETURN_numeric-constant
+    RETURN  returns to the menu system or the calling BLAST script.
+    @STATUS is set to the numeric-constant in the calling script.
+  SET_variable_=_string-value
+    SET  is  used to assign a string value to variable.@STATUS set to 0 if
+    the SET is successful. If there is an error in the setting @STATUS is
+.P
+    set to 1.
+  STRCAT_variable,string-value
+    STRCAT will append string-value to variable.
+  STRINX_string-value1,string-value2
+    STRING  finds  the  first  occurrence  of string-value2 in string-value1
+    @STATUS is set to the starting character position of string-value2, or 0
+    if no match.
+  STRLEN_variable
+    STRLEN sets @STATUS to the length of the given variable.
+  STRTRIM_variable,numeric-value1,numeric-value2
+    STRTRIM is used to extract a substring from variable. Variable is set to
+    the  substring  which  begins  at  position  numeric-value1  and ends at
+    position numeric-value2.
+  TCAPTURE_[ON_[APPEND|OVERWRITE]_string-value | OFF]
+    TCAPTURE enables or disables text capturing while in terminal mode. The
+    ON or OFF keyword indicates whether capture mode is being enabled or
+.P
+    disabled.  APPEND or OVERWRITE can be used to indicate if an existing
+    file should be appended to or overwritten.  If neither is specified,
+    APPEND is assumed. @STATUS is set to 0 if the string-value is a valid
+    file name and can be written to; otherwise, @STATUS is set to an error
+    code. TCAPTURE OFF does not affect @STATUS. TCAPTURE only enables text
+    capturing. No data is captured until executing one of the following:
+    TSEND, TTRAP, TUPLOAD, or WAIT with the CARRIER or IDLE option.
+  TSEND_[BREAK],[CR],[LF] [string-value],...
+    TSEND is used to send breaks, carriage returns, line feeds or strings
+    to the remote computer.  Any combination of strings, line terminating
+    characters and breaks can be sent.
+.P
+  TTRAP_[mm:ss,],string-value1,... string-value8
+    TTRAP pauses the BLAST script in terminal mode testing data flow
+    to the communications port.  When TTRAP sees one of the string-values,
+    it continues at the next statement. If mm:ss (minutes:seconds) is given
+    and none of the string-values is received in that length of time, the
+    TTRAP times out. TTRAP sets @STATUS to the number of the string which
+    was found, or 0 if TTRAP timed out.
+  TUPLOAD_string-value
+    TUPLOAD sends text to the remote computer.  TUPLOAD opens the file
+    specified by string-value and sends the characters to the remote.
+    The transmission is paced by any flow control options specified in the
+    Setup. TUPLOAD sets @STATUS to "0" on completion of the upload.
+    WARNING: Some computers buffer the flow of data extensively. This  means
+    a TUPLOAD may complete well before all of the file reaches the remote.
+    If you do a timed TTRAP after a TUPLOAD, the TTRAP will begin to execute
+    as soon as the all the uploaded characters are placed in the computer's
+.P
+    buffer.  Therefore, the timeout on the TTRAP must allow enough time for
+    all the uploaded characters to clear buffers before the strings you're
+    trapping  for  will be seen. After an upload, it is a good idea to TTRAP
+    for a prompt signaling the end of the upload or do a WAIT mm:ss IDLE.
+  
+    WARNING: QUITting BLAST before  the  buffers  are  clear  may  cause  the
+    operating system to terminate BLAST abnormally.
+  UPPER_variable
+    UPPER changes all alpha characters in the variable to upper case.
+  WAIT_[mm:ss]
+    Pause the BLAST script for mm minutes, ss seconds.
+  WAIT_UNTIL_hh:mm
+.P
+    Pause a script until the time is hh hours, mm minutes (military time).
+  WAIT_[mm:ss]_CARRIER
+    Pause a script mm minutes, ss seconds or until a carrier is detected.
+  WAIT_[mm:ss]_IDLE
+    Pause script until no data is received for mm minutes, ss seconds.
+  WERROR_"error-message"
+    Writes an error message to the display and the logfile, then pauses for
+    a key to be pressed before continuing. Never use WERROR when
+    writing an unattended script unless you also set @ONERROR to "CONTINUE".
+  WRITE_"message"
+    WRITE displays a message to the operator and logfile without pausing.
+.P
+  ASCII CODE CHART
+  
+  D-decimal;  H-hexadecimal;  O-octal;  M-mnemonic
+   D     H       O       M   Key Sequence  Explanation
+   0     00      00      nul     ^@        padding character
+   1     01      01      soh     ^A        start of header
+   2     02      02      stx     ^B        start of text
+   3     03      03      etx     ^C        end of text
+   4     04      04      eot     ^D        end of transmission
+   5     05      05      enq     ^E        enquire
+   6     06      06      ack     ^F        positive acknowledgement
+   7     07      07      bel     ^G        audible alarm
+.P
+  D-decimal;  H-hexadecimal;  O-octal;  M-mnemonic
+   D     H       O       M   Key Sequence  Explanation
+   8     08      10      bs      ^H        backspace
+   9     09      11      ht      ^I        horizontal tab
+  10     0A      12      1f      ^J        line feed
+  11     0B      13      vt      ^K        vertical tab
+  12     0C      14      ff      ^L        form feed
+  13     0D      15      cr      ^M        carriage return
+  14     0E      16      so      ^N        shift out
+  15     0F      17      si      ^O        shift in
+.P
+  D-decimal;  H-hexadecimal;  O-octal;  M-mnemonic
+   D     H       O       M   Key Sequence  Explanation
+  16     10      20      dle     ^P        data link escape
+  17     11      21      dcl     ^Q        dev. control 1 (resume output)
+  18     12      22      dc2     ^R        device control 2
+  19     13      23      dc3     ^S        dev. control 3 (pause output)
+  20     14      24      dc4     ^T        device control 4
+  21     15      25      nak     ^U        negative acknowledgement
+  22     16      26      syn     ^V        synchronization character
+  23     17      27      etb     ^W        end of text block
+.P
+  D-decimal;  H-hexadecimal;  O-octal;  M-mnemonic
+   D     H       O       M   Key Sequence  Explanation
+  24     18      30      can     ^X        cancel
+  25     19      31      em      ^Y        end of medium
+  26     1A      32      sub     ^Z        substitute
+  27     1B      33      esc     ^[        escape
+  28     1C      34      fs      ^/        frame separator
+  29     1D      35      gs      ^]        group separator
+  30     1E      36      rs      ^^        record separator
+  31     1F      37      us      ^_        unit separator
+.P
+  The following pages have 4 columns of Decimal, Hex, Octal and ASCII:
+    D   H    O  A     D   H    O  A     D   H    O  A     D   H    O  A
+   --  --   --  -    --  --   --  -    --  --   --  -    --  --   --  -
+   32  20   40       40  28   50  (    48  30   60  0    56  38   70  8
+   33  21   41  !    41  29   51  )    49  31   61  1    57  39   71  9
+   34  22   42  "    42  2A   52  *    50  32   62  2    58  3A   72  :
+   35  23   43  #    43  2B   53  +    51  33   63  3    59  3B   73  ;
+   36  24   44  $    44  2C   54  ,    52  34   64  4    60  3C   74  <
+   37  25   45  %    45  2D   55  -    53  35   65  5    61  3D   75  =
+   38  26   46  &    46  2E   56  .    54  36   66  6    62  3E   76  >
+   39  27   47  '    47  2F   57  /    55  37   67  7    63  3F   77  ?
+.P
+   D   H    O   A     D   H    O  A     D   H    O  A     D   H    O  A
+   --  --   --  -    --  --   --  -    --  --   --  -    --  --   --  -
+   64  40  100  @    72  48  110  H    80  50  120  P    88  58  130  X
+   65  41  101  A    73  49  111  I    81  51  121  Q    89  59  131  Y
+   66  42  102  B    74  4A  112  J    82  52  122  R    90  5A  132  Z
+   67  43  103  C    75  4B  113  K    83  53  123  S    91  5B  133  [
+   68  44  104  D    76  4C  114  L    84  54  124  T    92  5C  134  \
+   69  45  105  E    77  4D  115  M    85  55  125  U    93  5D  135  ]
+   70  46  106  F    78  4E  116  N    86  56  126  V    94  5E  136  ^
+   71  47  107  G    79  4F  117  O    87  57  127  W    95  5F  137  _
+.P
+    D   H    O  A     D   H    O  A     D   H    O  A     D   H    O  A
+   --  --   --  -    --  --   --  -    --  --   --  -    --  --   --  -
+   96  60  140  `   104  68  150  h   112  70  160  p   120  78  170  x
+   97  61  141  a   105  69  151  i   113  71  161  q   121  79  171  y
+   98  62  142  b   106  6A  152  j   114  72  162  r   122  7A  172  z
+   99  63  143  c   107  6B  153  k   115  73  163  s   123  7B  173  {
+  100  64  144  d   108  6C  154  l   116  74  164  t   124  7C  174  |
+  101  65  145  e   109  6D  155  m   117  75  165  u   125  7D  175  }
+  102  66  146  f   110  6E  156  n   118  76  166  v   126  7E  176  ~
+  103  67  147  g   111  6F  157  o   119  77  167  w   127  7F  177  
+.P
+  ERROR CONDITIONS
+  
+  BLAST Transfer Errors and Return Codes
+       21   logon timeout
+       22   console interrupt
+       23   connect timeout
+       24   error in processing command file
+       25   can't connect to remote
+       26   remote disconnect
+       27   attempt to connect to a private network
+       29   connection control string timeout
+  Data File Management Errors
+       31   error-free file not found
+       32   error-free file cannot be created
+       33   error-free file cannot be deleted
+       34   error occurred while closing error free file
+.P
+       35   error positioning within a file
+       36   error reading a file
+       37   error writing to a file
+       38   size conflict
+       39   file name too long or invalid
+       40   file not flagged as interrupted (file exists with that name)
+       41   error reading file directory
+       48   permission denied
+       49   file transfer not allowed to/from BLAST Private Network
+  Utility File Management Errors
+       51   error opening a data file
+       52   error creating a utility file
+       53   error deleting a utility file
+       54   error closing a utility file
+       55   error positioning a utility file
+       56   error reading a utility file
+.P
+       57   error writing a utility file
+       58   error in the size of a utility file
+       59   error renaming a utility file
+       60   directory specified in environment is invalid
+  Operating System Errors
+       100  MS-DOS: insufficient memory
+       101  TERM environment variable name is too big
+       102  can't extract control string from terminfo
+       103  terminfo control string too big
+       104  TERM Environment variable is empty
+       108  error in processing Setup
+       109  error in processing translate table update file
+       110  command line usage error
+       111  can't execute a child process
+       112  can't create a pipe
+       113  can't fork a new process
+.P
+       117  can't control the console port with ioctl() call
+       118  can't open the console port
+       119  can't control the communications port with ioctl() call
+       120  can't open the communications port
+       121  lock file exists for the comm port
+       123  keyboard mapping error
+       127  control pipe I/O error
+       128  unexpected signal
+  PANIC Codes
+        90  error in script or command file
+       210  error in a compression routine
+       253  internal error; call CRG
+  Keyboard Mapping Utility (unnumbered)
+       -    Unable to create temp file
+       -    Unable to open temp file
+       -    Unable to open blast.tdf
+.P
+       -    Unable to write to temp file
+       -    Unable to delete blast.tdf file
+       -    Unable to copy temporary file to blast.tdf
+       -    Keyboard mapping utility aborted.
+:
+:ONTERMINAL
+  ONLINE - TERMINAL                                                         
+  
+  Select the TERMINAL item to begin terminal emulation of the type specified
+  in the Setup emulation field. In terminal mode, keystrokes are sent out
+  the communications port, and incoming characters are displayed.
+  
+  Certain special keys are interpreted by BLAST as control and function keys
+  to be acted upon locally, and do not produce characters sent to the remote
+  computer.
+  
+  In the table, the function <name> indicates that it is possible to use
+  the BLAST Terminal Definition Facility (TDF) to define alternate
+  keystrokes in addition to the default keys to perform this function. See
+  the discussion of the blastkbd utility in the Online General Help.
+  
+  Where no default is shown, the function cannot be performed unless TDF is
+.P
+  used to define alternate keystrokes.
+  The ACTION column gives a description of what occurs when the key is
+  struck. The ^ indicates use of the <CTRL> key.
+  
+  FUNCTION   DEFAULT   ACTION
+  ---------  ------- ------------------------------------------------------
+  <REPAINT>          Redisplay the BLAST menu
+  <ATTN>        ^K   Return to the Online Menu
+  <ATTN>B       ^KB  Send a break out the communications port
+                       interrupting an executing BLAST script
+  <ATTN>C       ^KC  Toggle text capture on and off
+  <ATTN>digit   ^Kd  Invoke the corresponding softkey script. Digit is 0-9
+  <ATTN>P       ^KP  Toggle printer on and off
+  <ATTN>?       ^K?  Invoke the help function
+:
+:ONUPLOAD
+  ONLINE - UPLOAD                                                           
+  
+  The UPLOAD item sends a text file to a remote computer or device that does
+  not have the BLAST program. For example, use upload to send MCI mail; send
+  text to a printer; send text to a minicomputer text editor.
+  
+  The remote computer must have a text editor, or other capability to accept
+  the characters from BLAST and write them to media.
+  
+  If a computer type is specified in the Setup, BLAST uses a system handler
+  BLASTscript routine from the systems.scr library. The handler starts
+  standard text editor supplied by the computer manufacturer. Sometimes
+  system managers change the name of the text editor, or the way you start
+  it. This requires modifying the handler routine to operate properly.
+  
+  If the handler routine is successful in invoking the remote editor, it
+.P
+  prompts for the name of the file to create on the remote computer. If
+  <ENTER> is pressed without specifying a file name, BLAST will attempt to
+  use the name of the local file being uploaded for the file name on the
+  remote computer.
+  
+  If  no  computer  type  is  specified  or if the handler routine cannot
+  start the remote editor, the user must take action interactively to abort
+  the upload and perform the required actions to accomplish his objectives.
+  
+  Flow control is important when using upload since it is easy to overrun
+  the remote computer. Watch the progress of the upload carefully, if the
+  text which is echoed back to your screen is corrupted, you will have to
+  start over.  Read Online Help for the flow control parameters available in
+  the Setup including X-ON/OFF character delay, prompt character, and end of
+  line delay.
+.P
+  Please refer to the Online Help for the Offline menu Select item for an
+  explanation of all five forms of flow control available (X-ON/OFF, RTS/CTS,
+  Wait for Echo, Prompt Character, and Line Delay). Usually, only one of
+  these techniques is appropriate for any given situation.
+  
+:
+:ONYES
+  ONLINE - YES                                                              
+  
+  Select YES to start the automated CONNECT procedure again.
+:
+:ORGANS
+  OFFLINE - MODIFY - ORIGINATE/ANSWER                                       
+  
+  The ORIGINATE/ANSWER Setup field determines what BLAST will do during the
+  automated CONNECT process. When you want to dial out and initiate a
+  connection, set this field to ORIGINATE. BLAST will run the BLASTscript
+  modem handler routine from the modems.scr library at the .DIAL label, and
+  the system handler routine from the systems.scr library at .LOGIN.
+  
+  When passively waiting for a user to call in, set this field to ANSWER.
+  When you select CONNECT or use CONNECT in a BLAST script, the handler
+  routine will start at the .ANSWER label, set the modem into verbose mode,
+  and make the modem ready to auto-answer.
+  
+  The BLAST reserved variable for this field is @ORGANS.
+  
+  In some cases, you may have to modify the modem and system-handling
+.P
+  BLASTscript routines from modems.scr and systems.scr to make them work
+  properly.  This may be necessary when:
+  
+  - The modem is set up differently than assumed by the modems.scr library
+    or you have a different revision of firmware than the routine requires.
+  - The modem is connected to a special switch, LAT or other port selector
+    with which you must communicate before logging on.
+  - The computer or modem is not one of the types supported by BLAST.
+  - The  normal (operating system standard) logon has been modified  by
+    your system manager.
+  
+  If you modify blast.hlp, modems.scr, or systems.scr you must use the index
+  utility to rebuild the BLASTscript library index. At the system prompt,
+  type "index name" where name is modems.scr, systems.scr or blast.hlp.
+  The index utility is only required if you modify one of these three files.
+.P
+  Since BLAST looks for stand-alone handling routines that you've created
+  yourself before looking in the modems.scr/systems.scr libraries, it's not
+  necessary to modify the libraries themselves; rather, extract the parts of
+  them you need and create a new routine.  You may name your new standalone
+  routine whatever you wish, as long as it's in the form "name.scr"
+  (up to eight characters, with an extender of '.scr').  These routines will
+  not require indexing.
+  
+  The modem and system-handling libraries use variables to perform their
+  work, and these variables are in common memory with any others you might
+  use in your own scripts. Therefore:
+  
+  1) If you use the same variable names as a handling routine, the handling
+     routine will change these variables during execution. On return from
+     the handling routine, your variable will contain the information put in
+     it by the handling routine, and not its previous value.
+.P
+  2) BLAST scripts may only use a limited number of variables, and the
+     handling routines use up some of these.
+:
+:PAKTSZ
+  OFFLINE - MODIFY - PACKET SIZE                                            
+  
+  The PACKET SIZE Setup field sets the number of bytes in an transfer packet.
+  
+  PACKET SIZE may be changed to accommodate communications link conditions.
+  Large packets increase throughput (the rate of actual data transfer
+  between systems) over a good connection, but may decrease throughput on
+  noisy connections where data is more frequently corrupted. Small packets
+  in such circumstances increase throughput by minimizing the amount of data
+  which must be retransmitted.
+  
+  PACKET SIZE "negotiates" down.  The versions of BLAST running on the local
+  computer and the remote computer will compare values and use the smaller
+  of the two values.
+  
+  While transferring files watch the line quality and retry count in the
+.P
+  upper right part of the screen.  If the quality of the line varies, or
+  there are a significant number of retries (more than 1 in 20-50 packets),
+  a smaller packet size will improve throughput.
+  
+  NOTE: CRG ships BLAST with a small default packet size of 84 bytes. This
+  allows  most users  to  deal  with  communications  link  problems
+  without having to call CRG tech support for help. However, for most users,
+  the default packet size of 84 is inefficient.  Change your Setup to a
+  packet size of 256 and use an 8-bit data path (set the 7-bit channel Setup
+  field to NO). This will produce 12-20% better throughput than the defaults
+  on a low-noise connection.
+  
+  The BLAST reserved variable for this field is @PAKTSZ.
+  
+  Maximum packet size is 4096. Minimum packet size is 32.
+:
+:PARITY
+  OFFLINE - MODIFY - PARITY                                                 
+  
+  The PARITY Setup field sets the communications port of the local computer
+  to match what you expect on the remote port. Only Terminal operations use
+  the parity setting.
+  
+  User entries are not allowed.  To select a parity setting, press the space
+  bar until the desired value appears.  Valid parity values are NONE, ODD,
+  EVEN, MARK, and SPACE. The default parity setting is NONE.
+  
+  The BLAST reserved variable for this field is @PARITY.
+:
+:PASSWORD
+  OFFLINE - MODIFY - PASSWORD                                               
+  
+  If you specify a System Type in your Setup and then do a CONNECT, BLAST
+  will use a handler routine from the systems.scr library or a standalone
+  handler routine named "SystemType.scr" to log onto the remote computer.
+  
+  The PASSWORD and USERID Setup fields are used in the system handler
+  routine to answer the account, login, id, password, username queries of
+  the remote computer. The PASSWORD field does not display to maintain
+  security, and is encrypted in the Setup.su file on disk.
+  
+  If the PASSWORD or USERID values are not in the Setup, BLAST will prompt
+  for them.
+  
+  The BLAST reserved variable for this field is @PASSWORD.
+:
+:PHONENO
+  OFFLINE - MODIFY - PHONE NUMBER                                           
+  
+  The PHONE NUMBER Setup field stores the phone number of the remote
+  computer. This field will hold up to 40 characters.
+  
+  Although any alphanumeric character may be entered, be careful to avoid
+  using characters that may be misinterpreted by the modem.  The string of
+  characters is passed unchanged to the modem. See the modem manual for
+  details.
+  
+  The BLAST script reserved variable is @PHONENO.
+:
+:PROMPTCH
+  OFFLINE - MODIFY - PROMPT CHARACTER                                       
+  
+  Prompting is a form of flow control used while text uploading.  It is one
+  of the more effective forms of one-ended flow control.  After sending a
+  line of text BLAST pauses after sending a carriage return until the remote
+  end sends the prompt character.  This is ideal for use with editors which
+  prompt at the beginning of each line.
+  
+  Any single character, including a control character, is a valid entry.  To
+  enter a control character prefix the character with a caret (^).
+  
+  The reserved variable @PROMPTCH gives the value of this field.
+  
+  Please refer to the Online Help for the Offline menu Select item for an
+  explanation of all five forms of flow control available (X-ON/OFF, RTS/CTS,
+  Wait for Echo, Prompt Character, and Line Delay). Usually, only one of
+.P
+  these techniques is appropriate for any given situation.
+  
+:
+:PROTOCOL
+  OFFLINE - MODIFY - PROTOCOL                                               
+  
+  PROTOCOL selects the type of error checking that will be used in BLAST
+  transfer.
+  
+  Using BLAST protocol instead of Xmodem will:
+  
+  1)  allow faster file transfers,
+  2)  offer more file conversion features,
+  3)  have a much higher degree of error-correction,
+  4)  operate in host mode on multiuser systems,
+  5)  be compatible with other BLAST communication packages.
+  
+  BLAST Xmodem runs well with most of the popular mass market PC
+  communication packages; however, no Xmodem program - including BLAST -
+  can offer complete compatibility with ALL other Xmodem programs.
+.P
+  This version of BLAST uses the BLAST protocol and the original Xmodem
+  checksum protocol.
+  
+  The BLASTscript reserved variable is @PROTOCOL.
+:
+:RECHDIR
+  REMOTE - CHDIR                                                            
+  
+  Use the CHDIR item to change the current directory on the remote computer.
+  The CHDIR option allows the use of any existing directory on any drive on
+  the remote computer as the default.
+  
+  Enter any path which is valid for the remote computer. If  the  path  does
+  not exist, BLAST will return an error message.
+  
+  Pressing <ENTER> without entering a path will abort the CHDIR item and
+  return control to the Remote Menu.
+:
+:REDELETE
+  REMOTE - DELETE                                                           
+  
+  Use the DELETE item to delete a file on the remote computer.
+  
+  Unless a pathname is specified, BLAST will search only the current remote
+  directory for the specified file name. Trying to DELETE a nonexistent file
+  causes an error message to be displayed.
+  
+  Pressing <ENTER> without entering a file name returns control to the
+  Remote Menu.
+:
+:RELIST
+  REMOTE - LIST                                                             
+  LIST
+  
+  Select the Remote LIST item to obtain a list of files the remote computer.
+  Either a SHORT or LONG file listing may be requested. The differences are,
+  
+  SHORT - displays the file name only, in column format, similar to the output
+          of the UNIX/XENIX command `ls -x'.
+  
+  LONG - displays the name, size, creation date and creation time for each
+         file in the current local directory, similar to the output of the
+         UNIX/XENIX command 'ls -l'.
+:
+:RELONG
+  REMOTE - LIST - LONG                                                      
+  SHORT - displays the file name only, in column format, similar to the output
+          of the UNIX/XENIX command `ls -x'.
+  
+  LONG - displays the name, size, creation date and creation time for each
+         file in the current local directory, similar to the output of the
+         UNIX/XENIX command 'ls -l'.
+:
+:REMORE
+  REMOTE - LIST - MORE                                                      
+  
+  Use the MORE item to continue displaying information on the local screen,
+  such as when TYPEing or LISTing files on the remote computer. BLAST will
+  pause during these processes when the screen is full; to continue the
+  display, select MORE.
+:
+:REPRINT
+  REMOTE - PRINT                                                            
+  Select the PRINT item to print a file on the remote  computer.  BLAST
+  will send the contents of the specified file to the remote printer.
+  
+  BLAST prompts for the remote file to print.  Unless a pathname is
+  specified, BLAST will search only the current remote directory for the
+  file to be printed. Trying to PRINT a nonexistent file causes an error
+  message to be displayed.
+  
+  BLAST uses the printer defined in the remote environment.  See the  remote
+  computer's  instruction  manual for instructions to designate a  different
+  printer.
+:
+:RERENAME
+  REMOTE - RENAME                                                           
+  
+  Use the RENAME item to rename a file on the remote computer.
+  
+  BLAST prompts for the old and new name of the file to rename. Unless a
+  pathname is specified, BLAST will search only the current directory.
+  Pressing <ENTER> or <EXIT> without entering a file name returns control
+  to the Local Menu without taking any action.
+  
+  If the remote computer is a PC, pay attention to the following:
+  
+  WARNING: If the path of the old file was different from that of the
+  current directory, the correct pathname must be repeated for the new file
+  name. If no path is specified for the new file, the directory entry for
+  the file with the new name will be placed in the current directory AND
+  REMOVED FROM ITS ORIGINAL DIRECTORY. This has the net effect of copying a
+.P
+  file to the default directory and deleting the original. No actual copying
+  is done, just the disk directory is updated. The file is renamed, and
+  directory entries moved , but the file may appear to be LOST because you
+  didn't mean to move it and then don't know where to look for it later.
+:
+:RESHORT
+  REMOTE - LIST - SHORT                                                     
+  SHORT - displays the file name only, in column format, similar to the output
+          of the UNIX/XENIX command `ls -x'.
+  
+  LONG - displays the name, size, creation date and creation time for each
+         file in the current local directory, similar to the output of the
+         UNIX/XENIX command 'ls -l'.
+:
+:RETYPE
+  REMOTE - TYPE                                                             
+  
+  Select the TYPE item to display the contents of an ASCII text file from
+  the remote computer on your screen.
+  
+  Unless  a  pathname  is  specified,  BLAST  will  search  only the current
+  directory for the specified file name. Trying to TYPE a  nonexistent  file
+  will produce an error message.
+  
+  After the first screen of the file has been displayed, use the MORE item
+  to display the remainder of the file one screen at a time.
+  
+  NOTE: A TYPE from the Remote menu sends the file from the remote computer
+  using BLAST transfer. This accounts for the apparent "pauses" of
+  characters on the screen as each packet is processed.
+:
+:RTSCTS
+  OFFLINE - MODIFY - RTS/CTS PACING                                         
+  
+  The  RTS/CTS  PACING  is  a form of flow control using the RS-232 signals,
+  Request-to-Send  and  Clear-to-Send.  It  is  sometimes  referred  to   as
+  "hardware"  or "out-of-band" flow control. The valid selections are YES to
+  enable hardware flow control, or NO to disable.
+  
+  When the device attached to your communications port (modem, printer,
+  multiplexor, or another computer) holds CTS (pin 5) low, keys struck, text
+  uploaded, and file transfer packets will not be sent through to the port.
+  This may cause the communications process to appear to hang with no
+  apparent reason. The opposite is also true, if your communications port
+  holds RTS low (pin 4), a device set up to sense RTS will appear to hang.
+  
+  BLAST can control RTS in a BLAST script with the RAISE RTS and DROP
+  RTS statements. The reserved variable for this field is @RTSCTS.
+.P
+  Most modems do not support RTS/CTS flow control; they ignore hardware
+  flow signals or even disconnect when they are asserted by the computer.
+  Unless you have a very "intelligent" buffered modem, you will not be able to
+  use RTS/CTS with it.  Intelligent modems include MNP error-controlled, V.29
+  high-speed and V.32/42 error-corrected modems.
+  
+  UNIX/XENIX tty defs can define a line as having modem control. When this
+  definition is used, the operating system handles hardware flow control.
+  The actual way these signals operate is dependent of the hardware and the
+  computer vendor's driver implementation. This is not well standardized and
+  may vary. Some systems tie RTS and DTR (data terminal ready) together so
+  that a single BLAST script statement, either DROP or RAISE, changes both.
+  Please refer to the Online Help for the Offline menu Select item for an
+  explanation of all five forms of flow control available (X-ON/OFF, RTS/CTS,
+  Wait for Echo, Prompt Character, and Line Delay). Usually, only one of
+.P
+  these techniques is appropriate for any given situation.
+  
+:
+:SCRFILE
+  OFFLINE - MODIFY - SCRIPT FILE                                            
+  
+  The BLAST script named here will be executed immediately whenever you go to
+  the Online menu. This means that when you put a script name in the Setup
+  ONLY that script can be used with this particular Setup (Of course, the
+  script could prompt you to enter another script name and CALL it).
+  
+  Use scripts to automate part or all of a BLAST session. See the BLAST
+  manual for more information on automating sessions and programs.  The
+  Online General help screen includes a BLASTscript language reference.
+  
+  The BLASTscript reserved variable is @SCRFILE.
+:
+:SYSDESC
+  DESCRIPTION                                                               
+  
+  The DESCRIPTION Setup field provides a more detailed description of the
+  Setup up to 40 characters. This information is basically a free form
+  comment.  However, your scripts can use the variable @SYSDESC
+  for any purpose. For example, the script can take information from that
+  line as input, or write to it to save status information.
+:
+:SYSTYPE
+  OFFLINE - MODIFY - SYSTEM TYPE                                            
+  
+  The System Type Setup field identifies the type of computer that will be
+  contacted. BLAST uses a BLASTscript routine named SystemType.scr or the
+  systems.scr library of routines to perform the Online menu CONNECT item or
+  CONNECT statement.
+  
+  If you get a System Type not found message, verify that you spelled the
+  system name correctly in the Setup. Run the BLAST script "listsys"
+  (supplied as part of the BLAST product) to display the system types that
+  are supported in the systems.scr library.
+  
+  The BLASTscript reserved variable is @SYSDESC.
+.P
+  The functions defined in system handler routines from the systems.scr
+  library are:
+  
+  - Logon. The ID and password you specify in the Setup are used to answer
+    the logon prompts from the host.
+  - Logoff. The current routine is interrupted  with  the  system  interrupt
+    character,  and  BLAST gives the log off command for the system.
+    DISCONNECT starts processing at the label .LOGOFF.
+  - Upload.  BLAST starts the text editor for the operating system to
+    provide a destination for the uploaded file. The editor will require
+    a file name for the destination file.
+  - Transfer. The handler tries to start BLAST on the remote system based on
+    the Setup System Type field.
+  
+  In some cases, you may have to modify the modem and system-handling
+  BLASTscript routines from modems.scr and systems.scr to make them work
+.P
+  properly.  This may be necessary when:
+  
+  - The modem is set up differently than assumed by the modems.scr library
+    or you have a different revision of firmware than the routine requires.
+  - The modem is connected to a special switch, LAT or other port selector
+    with which you must communicate before logging on.
+  - The computer or modem is not one of the types supported by BLAST.
+  - The  normal (operating system standard) logon has been modified  by
+    your system manager.
+  
+  If you modify blast.hlp, modems.scr, or systems.scr you must use the index
+  utility to rebuild the BLASTscript library index. At the system prompt,
+  type "index name" where name is modems.scr, systems.scr or blast.hlp.
+  The index utility is only required if you modify one of these three files.
+  
+  Since BLAST looks for stand-alone handling routines that you've created
+.P
+  yourself before looking in the modems.scr/systems.scr libraries, it's not
+  necessary to modify the libraries themselves; rather, extract the parts of
+  them you need and create a new routine.  You may name your new standalone
+  routine whatever you wish, as long as it's in the form "name.scr"
+  (up to eight characters, with an extender of '.scr').  These routines will
+  not require indexing.
+  
+  The modem and system-handling libraries use variables to perform their
+  work, and these variables are in common memory with any others you might
+  use in your own scripts. Therefore:
+  
+  1) If you use the same variable names as a handling routine, the handling
+     routine will change these variables during execution. On return from
+     the handling routine, your variable will contain the information put in
+     it by the handling routine, and not its previous value.
+  2) BLAST scripts may only use a limited number of variables, and the
+.P
+     handling routines use up some of these.
+:
+:TERMHELP
+  ONLINE - TERMINAL                                                         
+  
+  The following Special Keys are effective without leaving terminal
+  mode. The keys beginning with the <attn> key will interrupt any
+  BLAST script which is executing.
+  
+  Certain special keys are interpreted by BLAST as control and function keys
+  to be acted upon locally, and do not produce characters sent to the remote
+  computer. These are listed in the table on the next page.
+  
+  In the table, the function <name> indicates that it is possible to use
+  the BLAST Terminal Definition Facility (TDF) to define alternate
+  keystrokes in addition to the default keys to perform this function. See
+  the discussion of the blastkbd utility in the Online General Help.
+  
+  Where no default is shown, the function cannot be performed unless TDF is
+.P
+  used to define alternate keystrokes.
+  The ACTION column gives a description of what occurs when the key is
+  struck. The ^ indicates use of the <CTRL> key.
+  
+  FUNCTION   DEFAULT   ACTION
+  ---------  ------- ------------------------------------------------------
+  <REPAINT>          Redisplay the BLAST menu
+  <BREAK>            Send break
+  <ATTN>        ^K   Return to the Online Menu.
+  <ATTN>B       ^KB  Send a break out the communications port
+                       interrupting an executing BLASTscript program
+  <ATTN>C       ^KC  Toggle text capture on and off
+  <ATTN>digit   ^Kd  Invoke the corresponding softkey script. Digit is 0-9
+  <ATTN>P       ^KP  Toggle printer on and off
+  <ATTN>?       ^K?  Invoke the help function
+:
+:TRPASSWD
+  OFFLINE - MODIFY - TRANSFER PASSWORD                                      
+  
+  The TRANSFER PASSWORD stores a password that will restrict BLAST transfer
+  by a remote user. Requests to get files from a password-protected computer
+  or to do file maintenance functions are not honored unless the password
+  has been received first.  This feature does not affect sending messages to
+  a password-protected computer.
+  
+  To send the transfer password, select SEND from the Filetransfer Menu then
+  at the local file name prompt, use the following command:
+  
+            !password=xxyyzz
+               where 'xxyyzz' is the transfer password
+  
+  The Transfer Password provides another level of security... unauthorized
+  users who gain access to a dedicated BLAST communications port cannot
+.P
+  access the powerful BLAST transfer facilities.
+  
+  The BLASTscript reserved variable is @TRPASSWD.
+:
+:USERID
+  OFFLINE - MODIFY - USERID                                                 
+  
+  If you specify a System Type in your Setup and then do a CONNECT, BLAST
+  will use a handler routine from systems.scr library or a standalone
+  handler routine named "SystemType.scr" to log onto the remote computer.
+  
+  The PASSWORD and USERID Setup fields are used during this process to
+  answer the ID and password queries of the remote computer. The PASSWORD
+  field does not display to maintain security, and is encrypted in the Setup
+  file on disk.
+  
+  If the PASSWORD or USERID values are not in the Setup, BLAST will prompt for
+  them.
+  
+  The BLASTscript reserved variable is @USERID.
+:
+:WT4ECHO
+  OFFLINE - MODIFY - WAIT FOR ECHO                                          
+  
+  WAIT FOR ECHO is a form of one-ended flow control used with text upload
+  and BLASTscript operations. When set to YES, BLAST waits for any incoming
+  character (usually the echo of the previously sent character) before
+  sending another character.
+  
+  Wait for Echo is useful when sending one line commands to 'smart' modems,
+  some of which cannot take bursts of high speed data while in command mode.
+  Wait for Echo is not useful for long text uploads.  First, it is slow.
+  Second, it is easily fooled by extra characters coming back in the data
+  stream causing BLAST to think that the echoes are coming back more rapidly
+  than they really are.
+  
+  The BLAST reserved variable for this field is @WT4ECHO.
+.P
+  Please refer to the Online Help for the Offline menu Select item for an
+  explanation of all five forms of flow control available (X-ON/OFF, RTS/CTS,
+  Wait for Echo, Prompt Character, and Line Delay). Usually, only one of
+  these techniques is appropriate for any given situation.
+  
+:
+:XLTFILE
+  OFFLINE - MODIFY - TRANSLATE FILE                                         
+  
+  The TRANSLATE FILE is an optional BLAST translation table file.  The file
+  is an ASCII text file that can be edited by a text processor or the BLAST
+  editor. In terminal mode and text upload/capture, BLAST uses the values in
+  the file to filter or translate incoming or outgoing characters.
+  
+  For example, some systems use DEL (hexadecimal 7F) as a padding character.
+  The padding characters are transmitted after each line of text. This
+  causes a problem if DEL is a displayable character on the local terminal.
+  Using a translate file, provides the ability to translate DEL to a more
+  appropriate character, or to filter out DEL completely.
+  
+  EDITING: A translate table has two sections (a receive table and transmit
+  table) each with 256 entries (one for each possible value of a byte)
+  separated by commas.  Each entry is a hexadecimal value of the character
+.P
+  which to be received/transmitted instead of the actual character of data.
+  Preceding the hex entry with a '-' removes that character from the data
+  stream (i.e. translated to nothing and filtered out).
+  
+  The BLAST reserved variable for this field is @XLTFILE.
+:
+:XMGET
+  FILETRANSFER - XMODEM - GET FILE                                          
+  
+  Choose GET FILE to receive a file from a remote system using Xmodem
+  protocol.  You'll be prompted for the local file name to create; you
+  may specify a full pathname if the new file will not be located in the
+  current directory.
+  
+  When receiving a file using Xmodem, you MUST begin the Xmodem "send"
+  program on the remote computer FIRST - the remote must be prepared to send
+  your file.  No message will be displayed from the remote when a successful
+  connection has been made, but if the transfer has been correctly initiated
+  the FileTransfer window will appear, and you may monitor the byte count and
+  necessary retransmissions as the data is sent.
+  
+  IMPORTANT: Please note that BLAST supports the original "Checksum"
+  variety of Xmodem.  Do not attempt to receive a file from a remote computer
+.P
+  using the "CRC" or "Windowed" versions of Xmodem.
+:
+:XMSEND
+  FILETRANSFER - XMODEM - SEND FILE                                         
+  
+  Choose SEND FILE to transfer a file to a remote system using Xmodem
+  protocol.  You'll be prompted for the name of a local file to transfer;
+  you may specify a full pathname if the file is not located in the
+  current directory.
+  
+  When sending a file using Xmodem, you MUST begin the Xmodem "receive"
+  program on the remote computer FIRST - the remote must be prepared to
+  receive your file.  No message will be displayed from the remote, but if
+  the transfer has been correctly initiated the FileTransfer window will
+  appear, and you may monitor the byte count and necessary retransmissions
+  as the data is sent.
+  
+  IMPORTANT: Please note that BLAST supports the original "Checksum"
+  variety of Xmodem.  Do not attempt to send a file to a remote computer
+.P
+  using the "CRC" or "Windowed" versions of Xmodem.
+:
+:XONXOFF
+  OFFLINE - MODIFY - X-ON/OFF                                               
+  
+  Setting X-ON/OFF PACING to "YES" allows BLAST will to use software flow
+  control during terminal and BLAST transfer operation.
+  
+  Using X-ON/OFF, two computers can easily control the pace of text transfer
+  during a BLAST session. When one machine needs to stop the flow of incoming
+  data, it transmits an X-OFF (^S) to the other computer. When the computer
+  is again ready to receive data, it transmits an X-ON (^Q).
+  
+  The BLAST reserved variable for this field is @XONXOFF.
+  
+  X-ON/OFF  is  the  most  widely used form of flow control. However, it has
+  potential problems:
+  
+  1) The file transfer protocol you choose must not use the flow control
+.P
+     characters to carry data. For example, Xmodem uses X-ON/OFF control
+     characters for data; therefore, you should not transfer a file using
+     XMODEM protocol through a connection which uses X-ON/OFF flow control.
+  
+  2) Both ends must implement a procedure to follow if the X-ON character is
+    lost.  Otherwise the transmission will lock up, waiting for a signal that
+    never comes.  BLAST, for example, automatically unlocks after 30 seconds
+    of being X-OFFed.  If the receiver really needs BLAST to be stopped it
+    will immediately send another X-OFF and BLAST will wait 30 more seconds.
+  
+  3) The sequence of flow control can get very cumbersome when the computer,
+     an MNP modem, a network and a terminal server are all exerting flow
+     control on each other with X-ON/OFF - each device must decide whether
+     to pass on the flow control character to the other end or act on it.
+     Keep in mind that flow control is THE MOST COMMON PROBLEM (other than
+     cabling) encountered by CRG Technical Support.  Please consult your
+.P
+     User Manual and Communications Concepts booklet for more information
+     on X-ON/OFF flow control.
+  
+  Please refer to the Online Help for the Offline menu Select item for an
+  explanation of all five forms of flow control available (X-ON/OFF, RTS/CTS,
+  Wait for Echo, Prompt Character, and Line Delay). Usually, only one of
+  these techniques is appropriate for any given situation.
+  
+:

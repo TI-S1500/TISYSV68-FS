@@ -1,0 +1,99 @@
+
+The Process Linear Address Space screen displays a virtual memory map and
+various statistics about a the memory usage of particular process.  The left 
+side of the screen contains the following text, data, stack, and shared
+memory statistics for the selected process on the current CPU:
+
+    Text Pages (total)   Shows the total number of pages of address space 
+        used for all text segments by the selected process.
+
+    Text Shared Lib Pages   Shows the number of text pages that are in
+        shared libraries for the selected process and the percentage of
+        such pages of the total text pages.
+
+    Text Pages in Memory   Shows the number of text pages that are 
+        currently in memory for the selected process and the percentage 
+        of such pages of the total text pages.
+
+    Text Pages FOD   Shows the number of text pages filled on demand for 
+        the selected process and the percentage of such pages of the 
+        total text pages.
+
+    Text Pages Accessed   Shows the number of text pages accessed for the 
+        selected process and the percentage of such pages of the total
+        text pages.
+
+    Text Pages Modified   Shows the number of text pages modified for the 
+        selected process and the percentage of such pages of the total
+        text pages.
+
+    Data Pages (total)   Shows the total number of pages of address space 
+        used for all data segments by the selected process.
+
+    Data Shared Lib Pages   Shows the number of data pages that are in
+        shared libraries for the selected process and the percentage of
+        such pages of the total data pages.
+
+    Data Pages in Memory   Shows the number of data pages that are 
+        currently in memory for the selected process and the percentage
+        of such pages of the total data pages.
+
+    Data Pages FOD   Shows the number of data pages filled on demand for 
+        the selected process and the percentage of such pages of the total 
+        data pages.
+
+    Data Pages Accessed   Shows the number of data pages accessed for the 
+        selected process and the percentage of such pages of the total 
+        data pages.
+
+    Data Pages Modified   Shows the number of data pages modified for the 
+        selected process and the percentage of such pages of the total 
+        data pages.
+
+    Stack Pages (total)   Shows the total number of pages of address space 
+        used for stack by the selected process.
+
+    Stack Pages in Memory   Shows the number of stack pages that are 
+        currently in memory for the selected process and the percentage 
+        of such pages of the total stack pages.
+
+    Stack Pages FOD   Shows the number of stack pages filled on demand for 
+        the selected process and the percentage of such pages of the total 
+        stack pages.
+
+    Stack Pages Accessed   Shows the number of stack pages accessed for the 
+        selected process and the percentage of such pages of the total 
+        stack pages.
+
+    Stack Pages Modified   Shows the number of stack pages modified for the 
+        selected process and the percentage of such pages of the total 
+        stack pages.
+
+    Pages on Free List   Shows the number of text, data, and stack pages on 
+        the free list for the selected process and the percentage of such 
+        pages of all pages for that process.
+
+This right side of the Process Linear Address Space screen contains a map of 
+the virtual memory layout for the selected process on the current CPU. Memory 
+on the map is broken into pages of 4096 bytes (4K bytes). Each line on the 
+memory map contains a virtual address followed by the status and usage of each 
+of page beginning at that address. The following symbols are used to indicate 
+the usage of each memory page:
+
+    .(period) - Free page
+
+    D    - Data page
+
+    d    - Shared data page 
+
+    S    - Stack page
+
+    s    - Shared stack page
+
+    T    - Text page
+
+    t    - Shared text page
+
+    M    - Shared memory page being used by one process
+
+    m    - Shared memory page being used by more than one process

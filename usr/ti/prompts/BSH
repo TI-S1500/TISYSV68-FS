@@ -1,0 +1,55 @@
+# cshf bsh - Business Shell Command Interpreter 
+#	@(#)BSH.sh	1.2  87/10/15
+#
+onintr end
+
+prompt "^BSH -- CALLS THE BUSINESS SHELL COMMAND INTERPRETER"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+	"^Accept Default Options:" options yesno y\
+	"^#$*"
+
+if ($abort) goto end
+if ($options == "n") then
+	prompt "^BSH -- OPTIONS"\
+		"^Exit on Abnormal Termination:" eflag yesno n\
+		"^Search/Execute .cshrc:" fflag yesno y\
+		"^Parse Commands:" nflag yesno n\
+		"^Read/Execute One Command:" tflag yesno n\
+		"^Set Verbose Variable:" vflag yesno n\
+		"^Set Echo Variable:" xflag yesno n\
+		"^Set Echo Before .cshrc:" Xflag yesno n\
+		"^Set Verbose Before .cshrc:" Vflag yesno n
+endif
+
+if ($abort) goto end
+
+# Set default options
+set opt = ""
+
+# set flags for interactive mode or file read
+if ($_input_file == "") then
+	set opt = i
+else
+	set opt = s
+endif
+
+# set all other flags - non default options
+if ($options == "n") then
+	if ($eflag == "y") set opt = e$opt  
+	if ($fflag == "n") set opt = f$opt  
+	if ($nflag == "y") set opt = n$opt  
+	if ($tflag == "y") set opt = t$opt  
+	if ($vflag == "y") set opt = v$opt  
+	if ($xflag == "y") set opt = x$opt  
+	if ($Vflag == "y") set opt = V$opt  
+	if ($Xflag == "y") set opt = X$opt  
+endif
+if (opt != "") set opt = -$opt
+
+echo "=== BSH COMMAND EXECUTING ==="
+echo bsh $opt $_input_file
+
+bsh $opt $_input_file
+
+end:
+unset *flag opt options 

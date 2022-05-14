@@ -1,0 +1,27 @@
+ 
+     (1) If a data field is completely filled the cursor automatically
+         advances to the next field. Pressing the return key also advances
+         the cursor when a field is not completely filled. (This automatic
+         field advance can be turned off if desired. See Main Menu #10.) 
+
+     (2) If an error is found on a previous data line, you have 2 options:
+           a) Use the arrow keys at any time to position the cursor
+              where the correction is required & correct the field.
+           b) Complete the remaining fields & use 'Error Correction' to
+              correct the error.
+ 
+     (3) If the data being entered is right justified (ie. quantity/
+         extended $/etc) it is not necessary to key leading zeros.
+
+     (4) For data fields that are left justified (ie. part#/description/ 
+         etc) it is only necessary to key the significant characters.
+
+     (5) The function keys listed below perform special program options: 
+           F7 - Fills all remaining fields on the current record with blanks.
+           F8 - Completes all remaining fields the same as the previous record.
+                (Only possible when continuing same record format)
+           F9 - Cancels current record being entered & goes to previous menu.
+
+     (6) During data entry some fields may display a default value. To keep
+         the default value press return.  To change or remove the default
+         value, type over it or press the space bar to blank the field.

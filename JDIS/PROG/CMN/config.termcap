@@ -1,0 +1,112 @@
+/**************************************************************************
+/*                                                                        *
+/*    Changes for Release 94-2 - 30 Sep 93 - B. Beaudry                   *
+/*                                                                        *
+/*    1. Moved entry for 'cr' (RETURN key) and changed its code assign-   *
+/*       ment from 00 to 13 (for 5.35 version of runtime).                *
+/*    2. Added codes 14 - 25 to map into function keys F13 - F24 (will    *
+/*       map into escape sequences for SHIFT function keys F1 - F12).     *
+/*    3. Deleted codes for 59, 61, 64, 67, 68, and 82 (not used).         *
+/*                                                                        *
+/*    Changes for Release 95-2 - 08 May 95 - B. Beaudry                   *
+/*                                                                        *
+/*    1. Ensured that the TAPEIN and TAPEOUT record's path specification  * 
+/*       is correct for all versions of this file.                        *
+/*                                                                        *
+/*    Changes for Release 96-2 - 07 Feb 96 - B. Beaudry                   *
+/*                                                                        *
+/*    1. Inserted the "default file version number = 0" record to force   *
+/*       compatibility with the 5.x version of the file system.           *
+/*                                                                        *
+/**************************************************************************
+/*
+RUN-ATTR accept-intensity=high beep=yes blink=yes display-intensity=high
+&reverse=yes
+RUN-ATTR error-message-destination=standard-error
+RUN-FILES-ATTR buffer-pool-size=48000
+RUN-OPTION b=264 k=display m=1
+RUN-INDEX-FILES default-file-version-number=0
+RUN-INDEX-FILES allocation-increment=8 blocking-buffers=10 block-size=1024
+RUN-INDEX-FILES data-compression=yes force-closed=no force-data=no
+RUN-INDEX-FILES force-disk=no force-index=no key-compression=yes
+RUN-REL-FILES blocking-buffers=5 block-size=1024
+RUN-SEQ-FILES blocking-buffers=2 block-size=1024 default-type=binary
+RUN-SORT intermediate-files=3 memory-size=0
+TERM-UNIT move-attr=no define-control-characters=yes
+TERM-INTERFACE terminfo
+TERM-INPUT action=left-arrow       kcub1
+TERM-INPUT action=right-arrow      kcuf1
+TERM-INPUT action=backspace precedence=1 kbs
+TERM-INPUT action=set-rm-insertion kich1
+TERM-INPUT action=delete-character kdch1
+TERM-INPUT action=erase-entire     kclr
+TERM-INPUT code=00 exception=no  lf3
+TERM-INPUT code=01 exception=yes kf1
+TERM-INPUT code=02 exception=yes kf2
+TERM-INPUT code=03 exception=yes kf3
+TERM-INPUT code=04 exception=yes kf4
+TERM-INPUT code=05 exception=yes kf5
+TERM-INPUT code=06 exception=yes kf6
+TERM-INPUT code=07 exception=yes kf7
+TERM-INPUT code=08 exception=yes kf8
+TERM-INPUT code=09 exception=yes kf9
+TERM-INPUT code=10 exception=yes kf10
+TERM-INPUT code=11 exception=yes kf11
+TERM-INPUT code=12 exception=yes kf12
+TERM-INPUT code=13 exception=no  cr
+TERM-INPUT code=14 exception=yes kf13
+TERM-INPUT code=15 exception=yes kf14
+TERM-INPUT code=16 exception=yes kf15
+TERM-INPUT code=17 exception=yes kf16
+TERM-INPUT code=18 exception=yes kf17
+TERM-INPUT code=19 exception=yes kf18
+TERM-INPUT code=20 exception=yes kf19
+TERM-INPUT code=21 exception=yes kf20
+TERM-INPUT code=22 exception=yes kf21
+TERM-INPUT code=23 exception=yes kf22
+TERM-INPUT code=24 exception=yes kf23
+TERM-INPUT code=25 exception=yes kf24
+TERM-INPUT code=40 exception=yes kf0
+TERM-INPUT code=52 exception=yes kcuu1
+TERM-INPUT code=53 exception=yes kcud1
+TERM-INPUT code=54 exception=yes khome
+TERM-INPUT code=56 exception=yes kf63
+TERM-INPUT action=erase-remainder code=57 exception=yes kel
+TERM-INPUT code=58 exception=yes kc3
+PRINT-ATTR auto-line-feed=no
+PRINT-ATTR form-feed-available=yes top-of-form-at-close=no
+/**********************************************************************
+/*                                                                    *
+/* The next section of this file contains the parameters to define    *
+/* external devices such as a printer or a tape drive.                *
+/*                                                                    *
+/* It is VERY important to keep this "table" in order.                *
+/* The table is searched sequentially at open time.  Since it is a    *
+/* prefix compare, it does require that shorter string names follow   *
+/* the longer ones.                                                   *
+/*                                                                    *
+/* See the RM/Cobol 2.2 for more information.                         *
+/* This is NOT documented in the Cobol 85 manuals.   DML  8 NOV 88    *
+/*                                                                    *
+/**********************************************************************
+DEFINE-DEVICE device=LPT1 path="/JDIS/PROG/CMN/printdir 1" pipe=yes
+DEFINE-DEVICE device=LPT2 path="/JDIS/PROG/CMN/printdir 2" pipe=yes
+DEFINE-DEVICE device=LPT3 path="/JDIS/PROG/CMN/printdir 3" pipe=yes
+DEFINE-DEVICE device=PRINT1 path="/JDIS/PROG/CMN/printdir 1" pipe=yes
+DEFINE-DEVICE device=PRINT2 path="/JDIS/PROG/CMN/printdir 2" pipe=yes
+DEFINE-DEVICE device=PRINT3 path="/JDIS/PROG/CMN/printdir 3" pipe=yes
+DEFINE-DEVICE device=PRINT4 path="/JDIS/PROG/CMN/printdir 4" pipe=yes
+DEFINE-DEVICE device=PRINT5 path="/JDIS/PROG/CMN/printdir 5" pipe=yes
+DEFINE-DEVICE device=PRINT6 path="/JDIS/PROG/CMN/printdir 6" pipe=yes
+DEFINE-DEVICE device=PRINT7 path="/JDIS/PROG/CMN/printdir 7" pipe=yes
+DEFINE-DEVICE device=PRINTER path="/JDIS/PROG/CMN/printdir 1" pipe=yes
+DEFINE-DEVICE device=PRINTP1 path="/JDIS/SPOOL/PRINTP1" pipe=no
+DEFINE-DEVICE device=PRINTP2 path="/JDIS/SPOOL/PRINTP2" pipe=no
+DEFINE-DEVICE device=PRINTR path="/JDIS/PROG/CMN/printdir 2" pipe=yes
+DEFINE-DEVICE device=PRINT path="/JDIS/PROG/CMN/printdir 1" pipe=yes
+DEFINE-DEVICE device=PRN path="/JDIS/PROG/CMN/printdir 1" pipe=yes
+DEFINE-DEVICE device=PRTFILE path="/JDIS/PROG/CMN/printdir 1" pipe=yes
+DEFINE-DEVICE device=PRTSCH path="/JDIS/PROG/CMN/printdir 1" pipe=yes
+DEFINE-DEVICE device=RPTFLE path="/JDIS/PROG/CMN/printdir 1" pipe=yes
+DEFINE-DEVICE device=TAPEIN path="/dev/rqt/0h" pipe=no
+DEFINE-DEVICE device=TAPEOUT path="/JDIS/PROG/CMN/blocker >/dev/rqt/0h" pipe=yes

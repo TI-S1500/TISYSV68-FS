@@ -1,0 +1,26 @@
+TISETUNIQUE(3T)                                   TISETUNIQUE(3T)
+
+NAME
+     tisetunique - Sets a unique ID for the T-ISAM file
+
+SYNOPSIS
+     #include <tisam.h>
+     int tisetunique(tifd, uid)
+     int tifd;
+     unsigned long uid;
+
+DESCRIPTION
+     The tisetunique function sets the unique ID for the T-ISAM
+     file indicated by tifd to uid if uid is larger than the
+     unique ID currently held in the file.  The unique ID is
+     automatically incremented and returned with a tiuniqueid(3T)
+     call.
+
+DIAGNOSTICS
+     On error, -1 is returned and tierrno, tierrio, tistat1, and
+     tistat2 are set.
+
+SEE ALSO
+     issetunique(3T), tisam(4), tiuniqueid(3T).
+
+

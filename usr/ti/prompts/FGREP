@@ -1,0 +1,70 @@
+# cshf   fgrep -- search a file for a pattern 
+#	@(#)FGREP.sh	1.1  87/03/09
+#
+onintr end
+set quote = '"'
+
+prompt "^FGREP -- SEARCH A FILE FOR A PATTERN"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Print All But Matching Lines:" vflag yesno n\
+	"^Print Exact Matching Lines:" xflag yesno n\
+	"^Count Matching Lines:" cflag yesno n\
+	"^Ignore Upper/Lower Case:" iflag yesno n\
+	"^File Names Only:" lflag yesno n\
+	"^Print File Line Numbers:" nflag yesno n\
+	"^Print Block Numbers:" bflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+set strng = ""
+set fflag = ""
+while (("$strng" == "") && ($fflag == ""))
+	prompt "^FGREP -- PATTERN FOR SEARCH OPTIONS"\
+		"^SELECT ONLY ONE."\
+		"^*Pattern for Search:" strng string "$strng"\
+		"^*File Containing Pattern:" fflag acnm\
+		"^#$*"
+	if ($abort) goto end
+	if (("$strng" != "") && ($fflag != "")) then
+	  set strng = ""
+	  set fflag = ""
+	endif
+end
+
+if ($abort) goto end
+# for file containing pattern
+if ($fflag != "") set fopt = -f$fflag
+
+if ($cflag == "y") set opt = c$opt
+if ($vflag == "y") set opt = v$opt
+if ($lflag == "y") set opt = l$opt
+if ($nflag == "y") set opt = n$opt
+if ($bflag == "y") set opt = b$opt
+if ($iflag == "y") set opt = i$opt
+if ($xflag == "y") set opt = x$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== FGREP COMMAND EXECUTING ==="
+if (($_output_file != "") && ("$strng" != "")) then 
+	echo fgrep $opt "$strng" $_input_file ">"$_output_file
+	fgrep $opt "$strng" $_input_file >$_output_file
+else if (($_output_file == "") && ("$strng" != "")) then 
+	echo fgrep $opt "$strng" $_input_file
+	fgrep $opt "$strng" $_input_file | \
+	pg -cp"Output from FGREP is being piped through pg: "
+else if (($_output_file == "") && ("$strng" == "")) then 
+	echo fgrep $opt $fopt $_input_file
+	fgrep $opt $fopt $_input_file | \
+	pg -cp"Output from FGREP is being piped through pg: "
+else 
+	echo fgrep $opt $fopt $_input_file ">"$_output_file
+	fgrep $opt  $fopt $_input_file >$_output_file
+endif
+endif
+endif
+
+#clean up time
+end:
+unset *opt  *flag quote

@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# This script checks the /usr/bin/oecpmmsrvr/brkrstat file to see if it has a 1
+# in it.  If it does, it means the OEC broker has been started on NT server
+# and the PMM Part Availability server need to be restarted.  So if the server 
+# needs to be restarted, it first checks to see if the server is running.  
+# If it is, it kills it then restarts it.  Then it will put a 0 into the
+# /JDIS/DATA/brkrstat file.  This script will get run out of cron every minute.
+# 
+SERVER=pmm_serv 
+
+PROCESS_SERVER=`ps -ef | grep $SERVER | grep -v grep`
+PROCID=`ps -ef | grep $SERVER | grep -v grep | awk '{ print $2 }'`
+
+touch /usr/bin/oecpmmsrvr/brkrstat
+chown jdvision /usr/bin/oecpmmsrvr/brkrstat
+chmod 777 /usr/bin/oecpmmsrvr/brkrstat
+grep 1 /usr/bin/oecpmmsrvr/brkrstat > /dev/null
+stat=$?
+case $stat in
+0) 
+      if [ "$PROCESS_SERVER" = "" ]
+      then
+	/usr/bin/start_server
+      else
+	kill ${PROCID}
+	sleep 5
+	/usr/bin/start_server
+      fi
+      /bin/echo "0" > /usr/bin/oecpmmsrvr/brkrstat
+      ;;
+1)
+      if [ "$PROCESS_SERVER" = "" ]
+      then
+	/usr/bin/start_server
+      fi
+      /bin/echo "0" > /usr/bin/oecpmmsrvr/brkrstat	
+      ;;
+*)
+      echo "Case statement in pmm_srvmon failed!!"
+      ;;
+esac

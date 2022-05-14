@@ -1,0 +1,326 @@
+
+The Configurable Parameters screens display statistics for the various TI
+System V configuable parameters.  The tables on these screens include columns 
+for the following information about each of the configurable parameters:
+
+    Configurable Parameter   Indicates the name of the parameter as 
+        described by the cband(1T) utility.
+
+    Configured   Shows the value of the parameter at boot time. This number 
+        is usually a maximum value that cannot be exceeded.
+
+    Current   Shows the current value of the parameter.
+
+    High   Shows the highest value of the parameter since the system was 
+        booted.
+
+The configured values of the parameters are selected from the configuration 
+band at boot time. These values can be modified with the cband(1T) utility to 
+produce a customized kernel. 
+
+The configurable parameters statistics are presented on four screens. Use the + 
+and - commands to display the next and previous configurable parameter screens. 
+The first screen shows the configured, current, and high values for each of the 
+following parameters:
+
+    Process Table Size   Shows the maximum number of processes that can 
+        exist on the system at one time (configured), the current number of 
+        processes on the system, and highest number of processes on the 
+        system at one time since the system was booted.
+
+    Inode Segment Count   Shows the maximum number of distinct executing 
+        objects that can execute on the system at one time (configured), 
+        the current number of distinct executing objects executing on the 
+        system, and highest number of distinct executing objects on the 
+        system executing at one time since the system was booted. If more 
+        than one copy of a process is running concurrently, the process 
+        will use only one inode segment entry.
+
+    Segment Descriptor Count   Shows the maximum number of segment descriptors 
+        that can exist on the system at one time (configured), the current 
+        number of segment descriptors in use on the system, and the highest 
+        number of segment descriptors used on the system at one time since the
+        system was booted.  Each process uses at least 3 segment descriptors:
+        one each for its text segment, data segment, and stack segment.  Each 
+        shared library used by a process will use two more segment descriptors
+        and each shared memory segment attached will use one more.   
+
+    Segment Swap Map Count   Shows the maximum number of segment swap maps 
+        that can exist on the system at one time (configured), the current 
+        number of segment swap maps in use on the system, and the highest 
+        number of segment swap maps used on the system at one time since the 
+        system was booted.  Each process uses at least 2 segment swap maps: 
+        one each for its data segment and stack segment.  Each shared library 
+        used by a process will use one more segment swap map.
+  
+    Open File Table Size   Shows the maximum number of open operations that 
+        can be outstanding on the system at one time (configured), the 
+        current number of open operations on the system, and the highest 
+        number of open operations on the system at one time since the 
+        system was booted. If more than one program has the same file open, 
+        each program uses a different open file table entry.
+
+    Inode Table Size   Shows the maximum number of distinct files that can 
+        be open on the system at one time (configured), the current number 
+        of open files on the system, and the highest number of open files 
+        on the system at one time since the system was booted. If more 
+        than one program has the same file open, only one inode table entry 
+        is used.
+
+    Callout Table Size   Shows the maximum number of callout table entries 
+        to include in the system at one time (configured), the current 
+        number of callout table entries, and the highest number of callout 
+        table entries on the system at one time since the system was 
+        booted. A callout entry is used when the kernel schedules an event 
+        to occur in a specified number of clock ticks. This occurs 
+        frequently during normal system operation.
+
+    Mount Table Size   Shows the maximum number of mount table entries that 
+        can exist in the system at one time (configured), the current 
+        number of mount table entries, and the highest number of mount 
+        table entries on the system at one time since the system was 
+        booted. The system uses a mount table entry for every file system 
+        that is mounted in the system.
+
+    Max dynamic 1K FS Buffers   Shows the maximum number of dynamic file 
+        system buffers totaled for all CPUs that the system will have for 
+        file I/O (configured), and the current number of file buffers 
+        totaled for all CPUs. A file buffer is used whenever the system 
+        performs disk I/O to a file. Pages containing buffers move to and
+        from the virtual memory system as needed for the file buffer cache
+        and virtual memory system.
+
+    Ram Disk Size (Kbytes)   Shows the size in 1K-byte blocks of the RAM 
+	disk uou have configured. Since the ram disk does not grow or 
+        shrink, the maximum size and the current size are not applicable. 
+        The ram disk contains a file system that is created and filled 
+        each time the system is booted.
+
+    File Read Ahead Count   Shows the number of extra blocks to read from
+        the disk into the file system buffer cache whenever a process
+        requests a single block from a file. This number is constant, so 
+        the maximum value and the current value are not applicable. The 
+        extra blocks read are placed into the file system buffer cache for
+        possible later access.
+
+    Raw I/O Header Pool Size   Shows the maximum number of raw I/O headers 
+        that can exist in the system at one time (configured), the current 
+        number of raw I/O headers, and the highest number of raw I/O 
+        headers in the system at one time since the system was booted. The 
+        system uses a raw I/O header for every raw I/O request. 
+
+    Swap Buffer Pool Size   Shows the maximum number of simultaneous swap 
+        buffers the system can have at one time for paging or swapping I/O 
+        (configured), the current number of swap buffers, and the highest 
+        number of swap buffers in the system at any one time since the 
+        system was booted. The system uses a swap buffer whenever disk I/O 
+        to the swap partition occurs.
+
+    Swap Map Size   Shows the maximum swap map size (configured), the 
+        current swap map size, and the highest swap map size since the 
+        system was booted. The swap map size determines the permissible 
+        amount of swap space fragmentation. The larger the value, the more 
+        fragmentation can occur without performance degradation.
+
+    Size of Swap Space   Shows the maximum size of the swap partition 
+        (configured), the current size of the swap partition, and the 
+        highest swap partition size since the system was booted.
+
+    Kernel Virtual Map Size   Shows the maximum kernel virtual map size 
+        (configured), the current kernel virtual map size, and the highest 
+        kernel virtual map size since the system was booted. The kernel 
+        virtual map size parameter applies to a structure called the 
+        kernel virtual window (KVW). The system uses the KVW to 
+        temporarily map portions of memory into the virtual address 
+        space of the kernel.
+
+After you view the first configurable parameters screen, use the + command to 
+display the second screen, which shows the configured, current, and high values 
+for each of the following parameters:
+
+    Number of Record Locks   Shows the maximum number of system-wide record 
+        locks that can be in force at any one time (configured), the 
+        current number of system-wide record locks, and the highest number 
+        of system-wide record locks since the system was booted.
+
+    Number of Shared Memory Segments   Shows the maximum number of shared 
+        memory identifiers that can exist in the system at any one time 
+        (configured), the current number of shared memory identifiers in 
+        the system, and the highest number of shared memory identifiers in 
+        the system since the system was booted. Each shared memory identifier 
+        corresponds to a shared memory segment.
+
+    Total Shared Memory Limit (Kbytes)   Shows the maximum amount of memory 
+        system-wide that can be used for shared memory at any one time 
+        (configured), the current amount of shared memory, and the highest 
+        amount of shared memory in the system since the system was booted. 
+        These values reflect the number of 1K-byte blocks that can be used 
+        for shared memory, regardless of the number of shared memory 
+        segments actually in use.
+
+    Size of Message Space   Shows the maximum size of message segments 
+        (configured), the current message segment size, and the highest 
+        message segment size since the system was booted. The system 
+        allocates an amount of memory for IPC messages (in bytes) equal to 
+        the message segment size. IPC message passing is a means of 
+        protecting critical kernel code from concurrent access by more than 
+        one process.
+
+    Number of Message Segments   Shows the maximum number of message 
+        segments (configured), the current number of message segments, and 
+        the highest number of message segments since the system was booted. 
+        Messages typically exceed the message space. Multiple message 
+        segments are allocated as necessary to fulfill the size of the IPC 
+        request.
+
+    Number of Message Queues   Shows the maximum number of message queue 
+        identifiers that are available in the system (configured), the 
+        current number of message queues, and the highest number of 
+        message queues since the system was booted.
+
+    Maximum Size of any Message Queue   Shows the maximum number of message 
+        characters that can be pending on a message queue at any one time 
+        (configured) and the highest number of message characters pending 
+        on a message queue since the system was booted. Messages are 
+        pending on a message queue if a process has sent a message and no 
+        process has received the message. This maximum is enforced 
+        regardless of the number of messages in the system.
+
+    Number of Messages   Shows the maximum number of messages that are 
+        available in the system (configured), the current number of messages 
+        available, and the highest number of messages available since the 
+        system was booted. This maximum is enforced regardless of the 
+        message size.
+
+    Maximum Size of any Message   Shows the maximum message size (in bytes) 
+        of any message in the system (configured) and the highest message 
+        size since the system was booted. This value has no effect on 
+        memory use or performance.
+
+    Number of Semaphore Sets   Shows the maximum number of semaphore sets 
+        available in the system (configured), the current number of 
+        semaphore sets, and the highest number of semaphore sets since the 
+        system was booted. 
+
+    Max Number of Semaphores in any Set   Shows the maximum number of 
+        semaphores that can be associated with any one semaphore set 
+        (configured) and the highest number of semaphores in any set since 
+        the system was booted.
+
+    Number of Semaphores   Shows the maximum number of semaphores that can 
+        exist in the system (configured), the current number of semaphores 
+        in the system, and the highest number of semaphores in the system 
+        since the system was booted. A semaphore is a software lock that 
+        protects critical sections of the operating system kernel code from 
+        concurrent access by more than one process.
+
+    Number of Semaphore Undos   Shows the maximum number of individual 
+        processes for which a semaphore undo (SEM_UNDO) request can be 
+        pending (configured), the current number of semaphore undo requests 
+        in the system, and the highest number of semaphore undo requests 
+        in the system since the system was booted.
+
+    Max Semaphore Undos of any Process   Shows the maximum number of 
+        individual semaphores for which a single process can request a 
+        SEM_UNDO (configured) and the highest number of individual processes 
+        since the system was booted for which a single process can request 
+        a semaphore SEM_UNDO.
+
+    Max Semaphore Operations of any Call   Shows the maximum number of 
+        semaphore operations that any one system request can call 
+        (configured) and the highest number of semaphore operations called 
+        by any system request since the system was booted. 
+
+    Number of Mirror Buffer Headers   Shows the maximum number of buffer
+        headers used for mirroring (configured), the current number of buffer 
+        headers being used, and the highest number of buffer headers used 
+        at the same time since the system was booted.
+
+After you view the second configurable parameters screen, use the + command to 
+display the third screen, which shows the configured values for each of the 
+following parameters:
+
+    Number of SDMA Segments   Shows the maximum number of shared 
+        direct-memory access (SDMA) segments that can exist in the system at 
+        any one time (configured), the current number of SDMA segments in 
+        the system, and the highest number of SDMA segments in the system 
+        since the system was booted. Except for the configurations used in
+        the EXPLORER LX(TM), the SDMA parameter should always be 0 
+        (disabled).
+
+    Number of Busnet Packets   Shows the maximum number of elements in 
+        the BusNet I/O pool that can exist in the system at any one time 
+        (configured), the current number of BusNet packets in the system, 
+        and the highest number of BusNet packets in the system since the 
+        system was booted.
+
+    I/O Memory Distribution   Shows the value used to determine how RAM 
+        disk and buffer cache memory (I/O memory) will be allocated in 
+        multiprocessors configurations that contain CPUs with different
+        memory sizes.
+
+    Shared Memory Break Value (Kbytes)   Determines the virtual address 
+        assigned by the system for the first shared memory segment attach
+        operation by a process. The value is the number of 1K-byte increments
+        beyond the current end of process data segment where shared memory
+        addresses will be assigned.  If this value is not on a 4 K-byte 
+        boundary, it will be rounded up to the next 4 K-byte boundary.
+
+    File Size Limit (in 512-byte blocks)   Shows the maximum number of 512
+        -byte blocks that a file can have and still be written without having
+        super-user privileges.
+
+    Maximum Processes per User   Shows the maximum number of processes that
+        can be created under a particular user's ID.
+
+    Maximum Process Size (Kbytes)   Shows the maximum total address space
+        in 1K-byte increments allowed for a single process.
+
+    Maximum User Stack Size (Kbytes)   Shows the maximum total size in 1K
+        -byte increments allowed for the stack segment of any process.
+
+    Time Slice (in clock ticks)   Shows the maximum number of clock ticks
+        that a process is allowed to have before scheduling out. Each tick
+        is defined as being 50 milliseconds.
+
+    Load Balancing Interval   Shows the number of seconds between system 
+        attempts to redistribute the processing load by migrating processes 
+        from one CPU to another.
+
+    Enable Core Dumps?   Shows whether or not core dump files are to be
+        created when an application program would normally produce a 
+        core file due to a receipt of a signal or due to an application
+        error.
+
+    Trans. Log Enabled?   Shows whether logging of file changes is occurring 
+        to the transactional log file. 
+
+After you view the third configurable parameters screen, use the + command to 
+display the fourth screen, which shows the configured values for each of the 
+following parameters:
+
+    Streams   Shows the maximum number of streams that can be open at one 
+        time (configured), the current number of open streams, and the 
+        highest number of open streams since the system was booted.   
+
+    Queues   Shows the maximum number of queues that can be allocated at one 
+        time (configured), the current number of allocated queues, and the 
+        highest number of allocated queues since the system was booted.   
+
+    Message Blocks   Shows the maximum number of message blocks that the
+        system can pass to a stream in a single system call (configured), 
+        the current number of message blocks, and the highest number of 
+        message blocks passed since the system was booted.   
+
+    Data Block totals   Shows the cumulative total of the data-block 
+        statistics described in the following text.
+
+    Data Block Size n   Shows the maximum number of n-byte data blocks
+        available for STREAMS operations (configured), the current number
+        of n-byte data blocks, and the highest number of n-byte data blocks 
+        since the system was booted.
+
+After you view the fourth configurable parameters screen, use the - command 
+to return to the third screen, or use another PM command to access other
+performance data.
+

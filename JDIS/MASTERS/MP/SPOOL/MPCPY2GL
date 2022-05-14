@@ -1,0 +1,82 @@
+
+Date:  04JUN93                                       VALLEYVIEW EQUIPMENT CO.                                            Page:     1
+Time:  16:49                                     Transaction Edit Report by Account                                     (MPCPY2GL-1)
+
+Account Number           Description              Reference       Control No        Date    Sm/Sw Technician    Amount        SJ
+
+
+
+   102-00-00       PAYROLL NET PAY                                 PAYROLL         6 04 93                      829.46-       95
+
+                            Account Debits =            .00 Account Credits =         829.46-     Total =         829.46-
+
+   104-00-00       HAROLD WAGE                       12345         00001310        6 04 93                       25.00-        1
+   104-00-00       PAM WAGE                          12346         00001315        6 04 93                       10.00-        1
+   104-00-00       DON WAGE                          12347         00001400        6 04 93                       15.00-        1
+
+                            Account Debits =            .00 Account Credits =          50.00-     Total =          50.00-
+
+   235-01-00           F.I.C.A.                          1         PAYROLL         6 04 93                       84.92-       95
+
+                            Account Debits =            .00 Account Credits =          84.92-     Total =          84.92-
+
+   235-02-00       FEDERAL TAX                           1         PAYROLL         6 04 93                       68.52-       95
+
+                            Account Debits =            .00 Account Credits =          68.52-     Total =          68.52-
+
+   235-03-00       ILLINOIS TAX                          1         PAYROLL         6 04 93                       29.10-       95
+
+                            Account Debits =            .00 Account Credits =          29.10-     Total =          29.10-
+
+   235-04-00       PENSION PLAN                          1         PAYROLL         6 04 93                       25.00-       95
+
+                            Account Debits =            .00 Account Credits =          25.00-     Total =          25.00-
+
+   249-99-00       Emplyer FICA                          1         PAYROLL         6 04 93                       32.90        95
+   249-99-00       UNIFORMS                              1         PAYROLL         6 04 93                        7.00-       95
+
+                            Account Debits =          32.90 Account Credits =           7.00-     Total =          25.90
+
+   252-00-00       Emplyer FICA                          1         PAYROLL         6 04 93                       84.92-       95
+
+                            Account Debits =            .00 Account Credits =          84.92-     Total =          84.92-
+
+   486-00-40       EARNINGS                              1         PAYROLL         6 04 93                      430.00        95
+
+                            Account Debits =         430.00 Account Credits =            .00      Total =         430.00
+
+   506-00-30       EARNINGS                              1         PAYROLL         6 04 93                      680.00        95
+
+                            Account Debits =         680.00 Account Credits =            .00      Total =         680.00
+
+   516-01-30       HEALTH INS.                           1         PAYROLL         6 04 93                       10.00-       95
+
+                            Account Debits =            .00 Account Credits =          10.00-     Total =          10.00-
+
+   516-02-30       LIFE INS.                             1         PAYROLL         6 04 93                        4.00-       95
+
+                            Account Debits =            .00 Account Credits =           4.00-     Total =           4.00-
+
+                                                            (Continued)Date:  04JUN93                                       VALLEYVIEW EQUIPMENT CO.                                            Page:     2
+Time:  16:49                                     Transaction Edit Report by Account                                     (MPCPY2GL-1)
+
+Account Number           Description              Reference       Control No        Date    Sm/Sw Technician    Amount        SJ
+
+
+
+   516-02-40       LIFE INS.                             1         PAYROLL         6 04 93                        2.00-       95
+
+                            Account Debits =            .00 Account Credits =           2.00-     Total =           2.00-
+
+   516-04-30       Emplyer FICA                          1         PAYROLL         6 04 93                       52.02        95
+
+                            Account Debits =          52.02 Account Credits =            .00      Total =          52.02
+
+
+ Debit  Transactions =         4    Total Debit  =       1,194.92
+
+Credit  Transactions =        13    Total Credit =       1,194.92-
+
+ Total  Transactions =        17    Total        =            .00
+
+                                                          (End of Report)

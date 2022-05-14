@@ -1,0 +1,76 @@
+# cshf  newform -- changes format of a text file 
+#	@(#)NEWFORM.sh	1.2  87/10/15
+#
+onintr end
+
+prompt "^NEWFORM -- CHANGES THE FORMAT OF A TEXT FILE"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^*Input Tab Specification:" iflag integer \
+	"^*Output Tab Specification:" oflag integer\
+	"^*Line Length:" lflag integer 80\
+	"^Truncate Beginning Characters:" bflag yesno n\
+	"^Truncate End Characters:" eflag yesno n\
+	"^*Prefix/Append Character:" cflag string \
+	"^Select Number of Prefix Char:" pflag yesno n\
+	"^Select Number of Append Characters:" aflag yesno n\
+	"^Write Tab Spec. Format Line:" fflag yesno n\
+	"^Tack Leading Char to EOL:" sflag yesno n\
+	"^#$*"
+
+if ($bflag == "y") then
+	prompt "^NEWFORM -- CHANGES THE FORMAT OF A TEXT FILE"\
+		"^*Number Beginning Char to Truncate:" bnum integer\
+		"^#$*"
+	if ($abort) goto end
+	set bopt = -b$bnum
+endif
+
+if ($eflag == "y") then
+	prompt "^NEWFORM -- CHANGES THE FORMAT OF A TEXT FILE"\
+		"^*Number Ending Char to Truncate:" enum integer\
+		"^#$*"
+	if ($abort) goto end
+	set eopt = -e$enum
+endif
+
+if ($pflag == "y") then
+	prompt "^NEWFORM -- CHANGES THE FORMAT OF A TEXT FILE"\
+		"^*Number of Prefix Characters:" pnum integer\
+		"^#$*"
+	if ($abort) goto end
+	set popt = -p$pnum
+endif
+if ($aflag == "y") then
+	prompt "^NEWFORM -- CHANGES THE FORMAT OF A TEXT FILE"\
+		"^*Number of Append Characters:" anum integer\
+		"^#$*"
+	if ($abort) goto end
+	set aopt = -a$anum
+endif
+
+if ($abort) goto end
+if ($fflag == "y") set fopt = -f
+if ($sflag == "y") set sopt = -s
+if ($iflag != "") set iopt = -i$iflag
+if ($oflag != "") set oopt = -o$oflag
+if ($lflag != "") set lopt = -l$lflag
+if ($cflag != "") set copt = -c$cflag
+
+if ($abort) goto end
+echo "=== NEWFORM COMMAND EXECUTING ==="
+if ($_output_file != "") then
+	echo newform $iopt $oopt $lopt $bopt $eopt $copt $popt $aopt \
+	$fopt $sopt $_input_file ">"$_output_file
+	newform $iopt $oopt $lopt $bopt $eopt $copt $popt $aopt \
+	$fopt $sopt $_input_file >$_output_file
+else
+	echo newform $iopt $oopt $lopt $bopt $eopt $copt $popt $aopt \
+	$fopt $sopt $_input_file 
+	newform $iopt $oopt $lopt $bopt $eopt $copt $popt $aopt \
+	$fopt $sopt $_input_file
+endif
+
+#clean up time
+end:
+unset *flag *opt

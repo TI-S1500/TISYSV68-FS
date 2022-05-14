@@ -1,0 +1,21 @@
+# cshf  pack -- compresses files 
+#	@(#)PACK.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^PACK -- COMPRESSES FILES"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^Minimum Redundancy:" flag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($flag == "y") set opt = "-"
+
+if ($abort) goto end
+echo "=== PACK COMMAND EXECUTING ==="
+echo pack $opt $_input_file
+pack $opt $_input_file
+
+#clean up time
+end:
+unset *flag *opt

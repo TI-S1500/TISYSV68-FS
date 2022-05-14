@@ -1,0 +1,16 @@
+:
+#----------------------------------------------------------------
+# Name: DPU
+# Desc: Executes the 3270 snaadm display pu command
+# Vers: 1.0
+# Date: 1 April 1991
+#----------------------------------------------------------------
+rm -f /tmp/DPU.*
+cat >/tmp/DPU.dpu <<'!'
+d pu
+
+
+q
+!
+/usr/ucs/snaadm </tmp/DPU.dpu >/tmp/DPU.out
+more /tmp/DPU.out

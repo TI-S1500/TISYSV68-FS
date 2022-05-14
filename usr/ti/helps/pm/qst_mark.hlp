@@ -1,0 +1,124 @@
+
+
+PM uses the following commands in the interactive mode to collect and display 
+performance information on various system components:
+
+    0-9, a-f Display the CPU, CCB, or Disk Controller screen, as 
+             appropriate, for the processor in the specified system slot
+             number. (The slot numbers are in hexadecimal format; a-f 
+             refers to slot numbers 10-15.)
+
+	    u   At the CPU screen, u will display the disk controller screen
+                if there is a CPU and disk controller in the same slot, which
+	        occurs in 68040 NuBus (TM) boards. 
+
+    g   Displays the General Information screen in the last selected format.
+
+	    At the General Information screen, The following upper case
+	    commands may be used:
+
+    	    C   Display only the CPUs' bar graphs.
+
+    	    D   Display only the disk controllers' (NPI, MSC, and NP2) bar 
+	        graphs.
+
+            N   Display only the communication carrier boards' (CCB) bar
+	        graphs.
+
+            S   Display all bar graphs in slot order from lowest to highest
+	        slot, unless overriden by PM control file.  
+
+    	    G   Display all bar graphs grouped by functionality.
+
+    i   Displays the BusNet I/O Activity screen.
+
+    l   Displays the Process Linear Address ID screens for the current CPU.
+
+            At an ID screen, enter the process ID for a particular process to 
+            display the Process Linear Address Space screen for the specified 
+            process.
+
+    m   Displays the Memory Map screens for the current CPU.
+
+    n   Displays the Network Statistics screen for the current CCB.
+
+            l   At the Network Statistics screen, l### displays the Local 
+                Terminal Concentrator (TC) screen for the TC specified by 
+                ### (leading zeros are required).
+
+    p   Displays the Configurable Parameters screens for the system.
+
+    s   Displays the System Slot Configuration screen for the system.
+
+    t   Displays the System Totals screens for the current CPU.
+
+    v   Displays the Virtual Memory Subsystem screens for the current CPU.
+
+    w   Displays the System Wide Activity screen for the system.
+    
+PM uses the following commands to perform certain utility functions in
+the interactive mode:
+
+    +/- Display the next/previous screen if performance information 
+        collected by a command is presented on more than one screen.
+
+    ?   Displays a general help screen which lists the foreground commands.
+        
+            q  Enter q to exit the General Help screen, and returns to the
+               last performance screen displayed.
+
+    h   Displays a Help screen that is specific to the information 
+        currently displayed on the screen.  
+
+            ?  Lists the keys to control the display of a Help screen.
+
+            F1/F2  Display the next/previous Help screen if help information 
+                   is presented on more than one screen.
+
+            q  Enter q to exit a Help screen, and returns to the last 
+               performance screen displayed.
+
+    r   Displays the Change PM Sample Rate screen.  
+
+            The up arrow or k      At the sample rate screen, increases the
+                                   sample rate in increments of 1 second.
+            The down arrow or j    At the sample rate screen, decreases the
+                                   sample rate in increments of 1 second.
+            q  Enter q to exit a Sample Rate screen, and returns to the last
+               performance screen displayed.
+
+    q   Quits the interactive mode and returns to the system prompt.
+
+
+    right arrow   At the General Information screen, if there are more than 
+                  16 bar graphs and there are more bar graphs on the right, 
+                  the right arrow key will move the display one bar graph
+                  to the right.
+
+    left arrow    At the General Information screen, if there are more than 
+                  16 bar graphs and there are more bar graphs on the left, 
+                  the left arrow key will move the display one bar graph to 
+	          the left.
+
+
+NOTE: If PM is sleeping (between sample times) when you press a command key, 
+there might be a delay before PM acts upon the command. PM will detect the 
+command key and carry out the command as soon as it wakes up to collect and 
+display the next sample. The maximum delay will be equal to the sample rate.
+
+
+PM control File:
+
+PM looks for an environment variable PM_CONTROL which points to a PM
+control file.  The file name may be an absolute pathname or a relative
+pathname.  If it is relative, it is relative to the user's home directory,
+and not the current working directory.
+
+   If the PM control file contains the following:
+
+        General Screen Order: xxxxxxxxxxx
+
+   where the x's are the slot numbers in hexidecimal in the order desired,
+   then that order will be used by "S" command and will be default when PM
+   is first activated.
+

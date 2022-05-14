@@ -1,0 +1,37 @@
+# cshf    frpc -- transfers a file from a pc 
+#	@(#)FRPC.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^FRPC -- TRANSFERS A FILE FROM A WORKSTATION TO HOST"\
+	"^Workstation File Name:" _output_file string $_output_file\
+	"^Host File Name:" _input_file acnm $_input_file\
+	"^Replace Host File:" replace yesno n\
+	"^Select Binary or Text (b,t):" crlf\
+	"element (B,b=b,T,t=t)" t\
+	"^Accept Default Options:" opt yesno y\
+	"^#$*"
+if ($opt == "n") then
+	prompt "^FRPC -- ADVANCED OPTIONS"\
+		"^*Timeout in seconds (5-256):" tflag\
+		"range(5,256)" 10\
+		"^*Device Name of Attached Terminal:" dflag string \
+		"^*Trace File Name:" xflag acnm \
+		"^#$*"
+	if ($tflag != "") set topt = "-t "$tflag
+	if ($dflag != "") set dopt = "-d "$dflag
+	if ($xflag != "") set xopt = "-x "$xflag
+endif
+
+if ($abort) goto end
+if ($replace == "y") set options = r$options
+if ($crlf == "b") set options = b$options
+if ($options != "") set options = -$options
+
+echo "=== FRPC COMMAND EXECUTING ==="
+echo frpc $options $topt $dopt $xopt $_output_file $_input_file 
+frpc $options $topt $dopt $xopt $_output_file $_input_file 
+
+#clean up time
+end:
+unset replace crlf *opt options

@@ -1,0 +1,40 @@
+ISINDEXINFO(3T)                                   ISINDEXINFO(3T)
+
+NAME
+     isindexinfo - Returns general information about a T-ISAM
+     file
+
+SYNOPSIS
+     #include <isam.h>
+
+     int isindexinfo(tifd, ddkd, kn)
+     int tifd;
+     char *ddkd;
+     int kn;
+
+DESCRIPTION
+     The isindexinfo function is the C-ISAM 2.1 interface to
+     tiindexinfo(3T).
+
+     The isindexinfo function returns information about the 
+     T-ISAM file indicated by tifd and returns either a dictinfo or
+     keydesc structure.
+
+     If kn is 0, a dictinfo structure is copied into the location
+     addressed by ddkd.  The structure contains the number of
+     indexes, maximum record length, node record length, and
+     number of records.  Otherwise, the keydesc structure for the
+     kn'th index is copied.  The global variable isflage is set
+     to k_flage and iskdid is set to k_kdid.
+
+     Key descriptor structures are returned in the order of the
+     index IDs.
+
+DIAGNOSTICS
+     On error, -1 is returned and iserrno, iserrio, isstat1, and
+     isstat2 are set.
+
+SEE ALSO
+     tiindexinfo(3T), tisam(4).
+
+

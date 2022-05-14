@@ -1,0 +1,125 @@
+:
+## termite : TI version :
+## Written by Martin Meier, JDIS Research, February 26,1996
+## program name: termite ( termite.hp ) from patch #77
+## other version: termite ( termite.ti ) from patch #77
+## should reside in /usr/bin
+## file permissions 775
+## options: printon - initializes attached printing on TERMiTE terminal
+## options: printoff - restores previous printing setups before printon
+## options: variable $1 passed during command 'termite printon'
+## files: /usr/bin/termite /etc/alpcaps /etc/alpdefs
+## adds one line to /etc/alpcaps, calls /etc/mkalp -r to remove previous
+## alp device, /etc/mkalp to make new device based upon added TERMITE
+## line in /etc/alpcaps, saves copies first of /etc/alpdefs-/etc/alpcaps
+## calls /etc/initalp -d to initialize new definition, prints test page
+## on TERMiTE emulation attached printer
+
+tput clear
+
+#check tty, make sure not networked or psuedo-tty
+if tty | grep "[pts,console]" > /dev/null
+then
+echo "\007\n\nThis program can not run from network or console... `tty`"
+echo "\n...exiting program...\n"
+exit 1
+fi
+
+myid=`id | cut -d= -f2 | cut -d\( -f1`
+ case $myid in
+  0)    :
+        ;;
+  *)    echo "\007\nmust be run by the super user (root)-exiting...\n"
+        exit 1
+        ;;
+esac
+
+echo "TERMiTE ATTACHED PRINTER INITIALIZATION - TI VERSION\n"
+echo "This program enables printing on PC's running TERMiTE emulation. To
+use this program, you must be logged in as root from the TERMiTE PC that
+you wish to configure for printing. Also, the printer attached to your PC
+must already print from any Windows program and be on-line. If your are
+uncertain of any of these requirements, you may end this program."
+
+echo "\n\007Do you wish to continue - Y / N > \c"
+read ans
+case $ans in
+ Y|y) echo "\nContinuing with Attached Printing Initialization-$1"
+      continue
+      ;;
+
+ N|n) echo "\n\n\007Program terminated by user...exiting"
+      exit 1
+      ;;
+
+   *) echo "\n\n\007Invalid Key entry...exiting program"
+      exit 1
+      ;;
+esac
+
+# determine current tty line id ; assign variables
+#
+tty_ix=`tty`                                    ## /dev/ttyxx
+tty_id=`basename $tty_ix`                       ## ttyxx
+alp_id=`echo $tty_id | cut -c4-5`               ## xx
+alp_dv="alp$alp_id"                             ## alpxx
+lp_id=`lpstat -s | grep $alp_dv | cut -c12-15`  ## lpxx
+
+# check for 'printon' or 'printoff' in variable $1
+
+case $1 in
+printon)
+      if test -s /etc/alpcaps.tmsav
+      then
+      :
+      else
+      cp /etc/alpcaps /etc/alpcaps.tmsav
+      cp /etc/alpdefs /etc/alpdefs.tmsav
+      fi
+
+ if   grep "tm termite:" /etc/alpcaps >/dev/null
+  then
+      :
+      # sed '/termite/d' /etc/alpcaps > /etc/alpcaps.tmp
+      # mv /etc/alpcaps.tmp /etc/alpcaps
+  else
+   echo 'tm termite: bb=\E[5i eb=\E[4i pr=\\0 sz=132 rt=500' >> /etc/alpcaps
+ fi
+
+      devadm -m tty $tty_id -r          ##remove old alp device for terminal
+      devadm -m tty $tty_id -p -t tm    ##define new device built on -t tm
+      /bin/chmod 666 /dev/alp$alp_id    ##make sure perms set ok
+      /etc/initterm p                   ##reads /etc/alpdefs again for ea device
+
+      echo "\nReady to print ...\n"
+      echo "Press <enter> when printer is on-line and ready to test print...\c"
+      read ans1
+      echo ""
+      lp -d$lp_id /usr/bin/termitedir/testpage.prn
+      ;;
+
+printoff)
+      echo "\nprintoff requested-restores saved files to original"
+      if test -s /etc/alpcaps.tmsav
+      then
+       cp /etc/alpcaps.tmsav /etc/alpcaps
+       devadm -m tty $tty_id -r          ##remove termite alp device
+       devadm -m tty $tty_id -p -t t1    ##make new dev on old alpcaps file
+       /bin/chmod 666 /dev/alp$alp_id    ##check perms
+       /etc/initterm p                   ##read /etc/alpdefs again
+       echo "\n\nfiles: /etc/alpcaps and /etc/alpdefs restored
+        and $alp_dv device replaced with t1 version"
+       /bin/rm -f /etc/alpcaps.tmsav
+       /bin/rm -f /etc/alpdefs.tmsav
+      else
+       echo "\nNO SAVED FILES: /etc/alpcaps EXIST...program exiting\n"
+      exit 1
+      fi
+      ;;
+
+  *)  echo "\n\007UNKNOWN OPTION...$1...Exiting Program\n"
+      exit 1
+      ;;
+esac
+
+echo "\nProcedure complete...Ok to Logout.\n"

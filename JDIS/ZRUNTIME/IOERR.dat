@@ -1,0 +1,154 @@
+0001                              (UNIX 001) Not owner                             
+0002                      (UNIX 002) No such file or directory                     
+0003                           (UNIX 003) No such process                          
+0004                       (UNIX 004) Interrupted system call                      
+0005                              (UNIX 005) I/O error                             
+0006                      (UNIX 006) No such device or address                     
+0007                          (UNIX 007) Arg list too long                         
+0008                          (UNIX 008) Exec format error                         
+0009                           (UNIX 009) Bad file number                          
+0010                             (UNIX 010) No children                            
+0011                          (UNIX 011) No more processes                         
+0012                           (UNIX 012) Not enough core                          
+0013                          (UNIX 013) Permission denied                         
+0014                             (UNIX 014) Bad address                            
+0015                        (UNIX 015) Block device required                       
+0016                             (UNIX 016) Device busy                            
+0017                             (UNIX 017) File exists                            
+0018                          (UNIX 018) Cross-device link                         
+0019                           (UNIX 019) No such device                           
+0020                           (UNIX 020) Not a directory                          
+0021                           (UNIX 021) Is a directory                           
+0022                          (UNIX 022) Invalid argument                          
+0023                         (UNIX 023) File table overflow                        
+0024                         (UNIX 024) Too many open files                        
+0025                       (UNIX 025) Not a character device                       
+0026                           (UNIX 026) Text file busy                           
+0027                           (UNIX 027) File too large                           
+0028                       (UNIX 028) No space left on device                      
+0029                            (UNIX 029) Illegal seek                            
+0030                        (UNIX 030) Read-only file system                       
+0031                           (UNIX 031) Too many links                           
+0032                             (UNIX 032) Broken pipe                            
+0033                         (UNIX 033) Argument too large                         
+0034                          (UNIX 034) Result too large                          
+0035                     (UNIX 035) No message of desired type                     
+0036                         (UNIX 036) Identifier removed                         
+0037                     (UNIX 037) Channel number out of range                    
+0038                      (UNIX 038) Level 2 not synchronized                      
+0039                           (UNIX 039) Level 3 halted                           
+0040                            (UNIX 040) Level 3 reset                           
+0041                      (UNIX 041) Link number out of range                      
+0042                    (UNIX 042) Protocol driver not attached                    
+0043                     (UNIX 043) No CSI structure available                     
+0044                           (UNIX 044) Level 2 halted                           
+0045                 (UNIX 045) Deadlock situation detected/avoided                
+0046                      (UNIX 046) No record locks available                     
+0050                       (UNIX 050) Bad exchange descriptor                      
+0051                       (UNIX 051) Bad request descriptor                       
+0052                         (UNIX 052) Message tables full                        
+0053                        (UNIX 053) Anode table overflow                        
+0054                          (UNIX 054) Bad request code                          
+0055                            (UNIX 055) Invalid slot                            
+0056                        (UNIX 056) File locking deadlock                       
+0057                        (UNIX 057) Bad font file format                        
+0060                         (UNIX 060) Not a stream device                        
+0061                          (UNIX 061) No data available                         
+0062                            (UNIX 062) Timer expired                           
+0063                       (UNIX 063) Out of stream resources                      
+0064                    (UNIX 064) Machine is not on the network                   
+0065                        (UNIX 065) Package not installed                       
+0066                          (UNIX 066) Object is remote                          
+0067                        (UNIX 067) Link has been severed                       
+0068                           (UNIX 068) Advertise error                          
+0069                            (UNIX 069) Srmount error                           
+0070                     (UNIX 070) Communication error on send                    
+0071                           (UNIX 071) Protocol error                           
+0074                         (UNIX 074) Multihop attempted                         
+0077                         (UNIX 077) Not a data message                         
+0080                     (UNIX 080) Name not unique on network                     
+0081                    (UNIX 081) File descriptor in bad state                    
+0082                       (UNIX 082) Remote address changed                       
+0083               (UNIX 083) Can not access a needed shared library               
+0084                (UNIX 084) Accessing a corrupted shared library                
+0085                   (UNIX 085) .lib section in a.out corrupted                  
+0086    (UNIX 086) Attempting to link in more shared libraries than system limit   
+0087               (UNIX 087) Can not exec a shared library directly               
+0100                          (ISAM 100) Duplicate record                          
+0101                            (ISAM 101) File not open                           
+0102                          (ISAM 102) Illegal argument                          
+0103                         (ISAM 103) Bad key descriptor                         
+0104                           (ISAM 104) Too many files                           
+0105                         (ISAM 105) Corrupted isam file                        
+0106                        (ISAM 106) Need exclusive access                       
+0107                        (ISAM 107) Record or file locked                       
+0108                        (ISAM 108) Index already exists                        
+0109                            (ISAM 109) Primary index                           
+0110                             (ISAM 110) End of file                            
+0111                          (ISAM 111) Record not found                          
+0112                          (ISAM 112) No current record                         
+0113                           (ISAM 113) File is in use                           
+0114                         (ISAM 114) File name too long                         
+0115                           (ISAM 115) Bad lock device                          
+0116                        (ISAM 116) Can't allocate memory                       
+0117                         (ISAM 117) Bad collating table                        
+0118                        (ISAM 118) Can't read log record                       
+0119                           (ISAM 119) Bad log record                           
+0120                         (ISAM 120) Can't open log file                        
+0121                       (ISAM 121) Can't write log record                       
+0122                           (ISAM 122) No transaction                           
+0123                          (ISAM 123) No shared memory                          
+0124                          (ISAM 124) No begin work yet                         
+0125                            (ISAM 125) Can't use nfs                           
+0126                         (ISAM 126) Audit trail exists                         
+0135     (UNIX 135) Rewrite attempted without covering lock (System Z message)     
+0137                           (UNIX 137) Not a name file                          
+0138                            (UNIX 138) Not available                           
+0139                           (UNIX 139) Is a name file                           
+0140                          (UNIX 140) Remote i/o error                          
+0141                        (UNIX 141) Initialization error                        
+0142                            (UNIX 142) Remote device                           
+0200                                   (RM74 200)                                  
+0201                         (RM74 201) Invalid file type.                         
+0202                         (RM74 202) Invalid open mode.                         
+0203                       (RM74 203) Cannot allocate memory.                      
+0204                          (RM74 204) Cannot open file.                         
+0205                          (RM74 205) Cannot read file.                         
+0206                (RM74 206) File not of proper type, or corrupt.                
+0207                  (RM74 207) CFILE structure not initialized.                  
+0208                         (RM74 208) Cannot write file.                         
+0209                        (RM74 209) Cannot seek in file.                        
+0210                       (RM74 210) Record does not exist.                       
+0211                     (RM74 211) Record too long for buffer.                    
+0212                       (RM74 212) Illegal duplicate key.                       
+0213              (RM74 213) Cursor undefined due to delete or insert.             
+0214                     (RM74 214) Error in Btree operations.                     
+0215                        (RM74 215) Key number too high.                        
+0216                       (RM74 216) Index B-tree too high.                       
+0217                  (RM74 217) Update record of different size.                  
+0218              (RM74 218) Unable to extend file. Out of disk space?             
+0219             (RM74 219) Illegal character in line sequential file.             
+0220                       (RM74 220) Key not found in Btree.                      
+0221                 (RM74 221) Conflict in record or file locking.                
+0231                         (RM85 231) Invalid file type.                         
+0232                         (RM85 232) Invalid open mode.                         
+0233                       (RM85 233) Cannot allocate memory.                      
+0234                          (RM85 234) Cannot open file.                         
+0235                          (RM85 235) Cannot read file.                         
+0236                (RM85 236) File not of proper type, or corrupt.                
+0237                  (RM85 237) CFILE structure not initialized.                  
+0238                         (RM85 238) Cannot write file.                         
+0239                        (RM85 239) Cannot seek in file.                        
+0240                       (RM85 240) Record does not exist.                       
+0241                     (RM85 241) Record too long for buffer.                    
+0242                       (RM85 242) Illegal duplicate key.                       
+0243              (RM85 243) Cursor undefined due to delete or insert.             
+0244                     (RM85 244) Error in Btree operations.                     
+0245                        (RM85 245) Key number too high.                        
+0246                       (RM85 246) Index B-tree too high.                       
+0247                  (RM85 247) Update record of different size.                  
+0248              (RM85 248) Unable to extend file. Out of disk space?             
+0249             (RM85 249) Illegal character in line sequential file.             
+0250                       (RM85 250) Key not found in Btree.                      
+0251             (RM85 251) Illegal character in line sequential file.             
+                                                                                                                                                                                                                                                                                                                   

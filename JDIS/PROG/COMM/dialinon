@@ -1,0 +1,20 @@
+:
+#dialinon - FOR HP/TI UNIX with HIGHSPEED MODEMS (3820,3715,3710)
+# 12/04/95 - remove sys000
+#
+rm -f /JDIS/PROG/COMM/dialinon.log
+rm -f /JDIS/PROG/COMM/dialinon.out
+cd /JDIS/PROG/COMM
+BLASTDIR=/JDIS/PROG/COMM
+export BLASTDIR
+SETUPDIR=/JDIS/PROG/COMM
+export SETUPDIR
+./blast dialinon -n -sMODTYPE.scr
+if test $? != 0
+then
+        echo "\ndialinon: blast error while optioning the modem.\n" >>dialinon.log
+        exit 1
+else
+        echo "\ndialinon options successfully set \n" >>dialinon.log
+fi
+exit 0

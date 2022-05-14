@@ -1,0 +1,24 @@
+# cshf  patch -- Invokes the common object file format file editor 
+#	@(#)PATCH.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^PATCH -- INVOKES THE COMMON OBJECT FILE FORMAT (COFF) FILE EDITOR"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^*Command File Name:" cflag acnm\
+	"^*Prefix Path Name:" pflag acnm\
+	"^*Character Flag:" tflag string\
+	"^#$*"
+
+if ($abort) goto end
+if ($cflag != "") set copt = -c$cflag
+if ($pflag != "") set popt = -p$pflag
+if ($tflag != "") set topt = -t$tflag
+
+echo "=== MKMSG COMMAND EXECUTING ==="
+echo /etc/patch $copt $popt $topt
+/etc/patch $copt $popt $topt
+
+#clean up time
+end:
+unset *opt *flag

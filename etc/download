@@ -1,0 +1,44 @@
+# @(#)download  1.27 93/02/19
+TZ=`cat /etc/TZ`
+trap "" 1
+export TZ
+rm -fr /usr/adm/arlog
+mv /usr/adm/comlog /usr/adm/arlog >/dev/null 2>&1
+mkdir /usr/adm/comlog
+echo "Downloading CCB(s)."
+/etc/mtcdt
+cload -r
+ddload
+tcdl -v
+if [ `ps -e|grep -c pad_srv` = 0 ]; then
+  /etc/padsrvc
+  echo "Padsrvc started"
+  sleep 5
+fi
+mtcdl -v
+initterm p &
+
+# start streams error logging.
+strerr &
+
+####
+# if your system contains a high-performance Ethernet interface and you 
+# plan to run XNS on it, uncomment "xns start" and comment out tdts 
+# ("xns start" starts the xnsd and tdts daemons).  if you plan to run
+# XNS on a high-performance Ethernet interface, you should read the man
+# pages on "xns", "xnscf", "xnsd", and "tdts".
+# if you use the "networks" and "netu" commands, you should review the man
+# pages for these because they have changed.
+####
+#
+#xns start
+
+tdts
+
+#
+# start UPS monitor. this MUST be done AFTER
+# ccb's are loaded or a false shutdown will occur
+# as soon as the system comes up! read the 
+# administrators section on the UPS before using
+# upswait.
+# /bin/upswait ttyXX &

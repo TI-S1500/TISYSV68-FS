@@ -1,0 +1,252 @@
+RP ************************************************************************
+RP *     PCS Report Generator - Function Keys                             *
+RP ************************************************************************
+RP Format Definition :
+RP
+RP Up 1 Line        - Up Arrow        *Insert a Line       - Shift F5
+RP Down 1 Line      - Down Arrow      *Delete a Line       - Shift F6
+RP Right 1 Pos      - Tab             *Mark Header         - Shift F7
+RP Left 1 Pos       - Shift Tab       *Save Report         - Shift F10
+RP Home             - HOME            *Display Report Name - Shift F9
+RP Scroll Right     - F4              *Add a Field         - F1
+RP Scroll Left      - Shift F4        *Move a Field        - F2
+RP Show Field Names - Shift F8        *Delete a Field      - F3
+RP Save Line        - F5              *Invoke Data Dicty   - F9
+RP Recall Line      - F6              *Help (this screen)  - F7
+RP Tab Right 10     - F10
+RP Insert a Char    - Shift F1        * Functions may also be accomplished
+RP Delete a Char    - Shift F2          by CMD followed by a command
+RP Next Report/Field- F8
+RP Next Page        - PgDn
+RP Previous Page    - PgUp
+SR *********************************************************************
+SR     PCS Report Generator - Sort Specification Help
+SR *********************************************************************
+SR
+SR The SORT function applies to all reports and extracts.  It is used to
+SR describe the sequence in which data will be presented in the report.
+SR The format is :
+SR
+SR                           File Name     Field Name  N/O
+SR
+SR    REPORT SEQUENCE 1 :    CUSTOMER      NUMBER       N
+SR    REPORT SEQUENCE 2 :    ORDER         NUMBER       N
+SR
+SR This report will appear in CUSTOMER NUMBER then ORDER NUMBER
+SR sequence.  N is Normal (Ascending), O is Opposite (descending).
+SR
+SR When sorting is not specified, the report will appear in the same
+SR sequence as the "master" file.  Sorting is a fairly time-consuming
+SR task and should be specified only when it contributes to the
+SR meaningfulness of a report when input files are large.
+SR
+SR InsertLine = ShF5  DelLine = ShF6   GoToTop = HOME    CopyLine= F4
+SR Up/Down 1 Line = Up/Down Arrow      Scroll Up/Down = PgUp/PgDn
+BK*********************************************************************
+BK     PCS Report Generator - Break Specification Help
+BK*********************************************************************
+BK
+BK Break specifications are used to define print format spacing. Breaks
+BK are independent of total breaks which are defined as part of totals.
+BK
+BK When a break field changes value, the report is spaced by the number
+BK of lines given in the break specification.
+BK
+BK For example :  CUSTOMER NUMBER   3
+BK                CUSTOMER REGION   P
+BK
+BK would cause triple spacing when customer number changes and a new
+BK page when region changes.  When more than one condition applies, the
+BK greater break value prevails.
+BK
+BK Valid break values are 1-72 lines and P (new page).
+BK
+BK InsertLine = ShF5  DelLine = ShF6   GoToTop = HOME    CopyLine= F4
+BK Up/Down 1 Line = Up/Down Arrow      Scroll Up/Down = PgUp/PgDn
+SC *********************************************************************
+SC     PCS Report Generator - Selective Computation Help
+SC *********************************************************************
+SC
+SC Seelctive compuations are syntactically combinations of select and
+SC compute statements.  Selective computations are IF <condition> then
+SC <do something>.  While selection specifications cause entire records
+SC to be included into the report, selective computations cause only
+SC the items defined to be operated on after a record has been selected.
+SC
+SC The format is :  IF...  (same as selection specification)
+SC                  AND    (optional, same as in selection)
+SC                   <result> ... (same as computation)
+SC
+SC Each of the statements may occur any number of times.
+SC
+SC InsertLine = ShF5  DelLine = ShF6   GoToTop = HOME    CopyLine= F4
+SC Up/Down 1 Line = Up/Down Arrow      Scroll Up/Down = PgUp/PgDn
+CP *********************************************************************
+CP     PCS Report Generator - Computation Specification Help
+CP *********************************************************************
+CP
+CP Computation fields are fields which do not exist on your data files.
+CP The computed fields are always on the file WORK and therefore the
+CP screen does not prompt you for the 1st file name, it is set to WORK.
+CP
+CP The specification is <result> = <operand 1> <operation> <operand 2>
+CP
+CP Result is a field name which must exist on your WORK file.  Operand 1
+CP is any file/field.  Operations are * / + -.  Operand 2 is a
+CP file/field or a numeric literal.
+CP
+CP Computations require that the result and each operand be numeric.
+CP The exception to this is when computation is used to MOVE the value
+CP of operand 1 into the result field.  In that case there is neither
+CP an operation code nor an operand 2.  Result and operand 1 must be
+CP of the same general format, both must be any A/N format or both must
+CP be any numeric format.  Note that ALL date formats are treated as
+CP A/N for all specifications even though their actual value may be
+CP numeric.  Numeric value types are any 9x data type.
+CP
+CP InsertLine = ShF5  DelLine = ShF6   GoToTop = HOME    CopyLine= F4
+CP Up/Down 1 Line = Up/Down Arrow      Scroll Up/Down = PgUp/PgDn
+TO *********************************************************************
+TO     PCS Report Generator - Total Specification Help
+TO *********************************************************************
+TO
+TO FIELD TO BE TOTALLED   PRINT ON CHANGE   Col   Accum
+TO                        EDIT   LEVEL     LABEL              LABEL COL
+TO CUSTOMER OUTSTANDING   CUSTOMER NUMBER    20    N
+TO                                         Total For Customer =  1
+TO
+TO FIELD TO BE TOTALLED is the field whose value will be summed.
+TO   When this field is the same in two subsequent totals, then those
+TO   totals are printed on the same line, else totals go on new line.
+TO PRINT ON CHANGE is the field which will act as the break to trigger
+TO   the printing of this total value.  When no value is entered, this
+TO   is treated as a grand total (which are defined separately).
+TO Col is the column in which the total will be printed.  Pressing enter
+TO   without entering the value will cause the system to assign the
+TO   column so that the total lines up with the field being totalled.
+TO Accum denotes whether the value is to be reset after printing or
+TO   whether the value is to be a running total.  Default = N (reset)
+TO EDIT.  Noramlly a total is printed using the same edit mask as the
+TO   field being totalled.  If a larger mask is needed, enter value here
+TO LEVEL value 1-9.  A break at a given level will force a break at any
+TO   break level with a larger number (forces subtotals) (see manual)
+SL *********************************************************************
+SL     PCS Report Generator - Selection Specification Help
+SL *********************************************************************
+SL
+SL Selection criteria are used to determine if a data record is to be
+SL included in the report.  If this is a multifile report, then
+SL selection is used to determine if 1 set of records is to be included.
+SL
+SL Selection is defined by one or more IF (/AND) specifications.
+SL Each IF statement is treated as an OR, each IF and the AND's after
+SL it are treated as one criterion.   For example :
+SL
+SL     IF  CUSTOMER BALANCE  GT 1000
+SL     AND CUSTOMER LIMIT    LE 500
+SL     IF  CUSTOMER STATUS   EQ WORK FLAG
+SL
+SL is evaluated : Select this record if (Cust Balance > 1000 and
+SL                                       Cust Limit <= 500)
+SL                                   OR  Cust Status = Flag
+SL The second operand may be a field, a literal, a query value or a
+SL synonym.  A literal must be in single quotes if the 1st field is A/N,
+SL not in quotes if 1st field is numeric.  A query value is entered as
+SL @Q.  A synonym is entered '~SYN' or '%SYN' for A/N and numeric syns
+SL respectively.  SYN is the name of a synonym.
+IN *********************************************************************
+IN     PCS Report Generator - Initialization Specification Help
+IN *********************************************************************
+IN
+IN Initialization specifications is used to define any process which
+IN needs to occur before the report starts.  This includes two main
+IN functions : assign values to WORK items and position files.
+IN
+IN Assigning a value : WORK <field> <operand2>  N
+IN  This causes the value of operand 2 to be move to the WORK field.
+IN  Operand 2 may be a field or a literal, the Read column must be N.
+IN
+IN Positioning files : This entails either skipping 1 or more records :
+IN
+IN    CUSTOMER <any field>         Y    causes 1 record to be skipped
+IN    CUSTOMER <key field>  @Q     S/E  will cause a prompt for the
+IN                                  value of <key field> at report run
+IN                                  time. S means start when key GE, E
+IN                                  means end when key GE.
+IN
+IN  For compound keys, you may query the components (Read=N), then move
+IN  the actual key field to itself (program requires an operand 2 value)
+IN  and specify Read = S (or Read = E to end).
+IN
+GN *********************************************************************
+GN     PCS Report Generator - General Specification Help
+GN *********************************************************************
+GN
+GN This screen is used to define the general report format.
+GN
+GN LINES PER PAGE - lines per page.
+GN
+GN SUPPRESS REPEATS - causes columns with values identical to correspon-
+GN  ding values on the prior line to be suppressed (spaced).  Values are
+GN  Y/N/1-n.  Yes means suppress any/all.  N means do not suppress.  1-n
+GN  is the column of the last field to be eligible for suppression.
+GN
+GN SUPPRESS BLANK LINES - when a line contains no data due to suppress
+GN  or is all blank, a Y will cause no blank line to be printed.
+GN
+GN REPORT DESCRIPTION - enter text here, it will be displayed on the
+GN  report directory screen and will help you locate a report.
+GN
+GN Create/Change DATES - these dates are system maintained and represent
+GN  the date on which you created the report and the date on which you
+GN  last changed the report.
+GN
+GN
+EX *********************************************************************
+EX     PCS Report Generator - Extract Specification Help
+EX *********************************************************************
+EX
+EX Extract specifications are used to define the data elements which are
+EX to make up the extract file.  The extract file items and format will
+EX correspond to the extract specification sequence and format.
+EX
+EX Enter the file/field name.  Press Enter at Type prompt to retrieve
+EX the data dictionary definition for this field (or space out Type and
+EX press Enter to retrieve).  You may now change these characteristics
+EX to reform the data within the following limitations :  data type must
+EX not change from numeric to non-numeric and vice versa.  The input
+EX field will be reformatted using logical rules from its file format to
+EX the format (type, length, decs, sign) defined here.  (logical rules
+EX means A/N fields will have right end padded with spaces or truncated
+EX - numeric fields will be left zero filled or truncated, decs will be
+EX properly handled.  The item will then be stored as defined by the
+EX data type and length IF there is no edit mask.  If there is a mask
+EX then the reformatted field value is stored in edited form using the
+EX edited length.  Keyed extract files are currently NOT supported.
+EX
+LK *********************************************************************
+LK     PCS Report Generator - Linking Specification Help
+LK *********************************************************************
+LK
+LK Linking is the method used to convey to the program how to access
+LK secondary files in a multifile report.  The data dictionary may
+LK contain "paths" from one file to an other and, if so, the program
+LK will attempt to build paths using the data dictionary definitions.
+LK This is knows as automatic link resolution.  If the DD does not
+LK contain paths or there are multiple possible paths, this screen will
+LK appear.  (Linking is by far the most complex part of this system).
+LK
+LK Linking entails defining what value is used from the "main" file to
+LK access a corresponding record on a secondary file.  The field on the
+LK secondary file must be defined as a key field (the only way to get
+LK a record).  An example is ORDER CUSTOMERNUMBER links to ORDER NUMBER
+LK Here the data element on the Order file which contains the value of
+LK the customer number is used to retrieve the Customer record by way
+LK of the Customer key.
+LK
+LK To build a compound key, repeat the "to" key field listing the com-
+LK ponent "from" fields.  All values must be data type X in this case.
+LK It is recommended that in principle the keys be defined as X (they
+LK may be redefined properly for use as a report print field).
+
+ 

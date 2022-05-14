@@ -1,0 +1,16 @@
+# cshf 	cp - Make a copy of a file 
+#	@(#)CP.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^CP -- COPIES FILES"\
+	"^Source File Name(s):"  _input_file  macnm "$_input_file"\
+	"^Destination File (or Dir):"  target  acnm\
+	"^#$*"
+
+if(  $abort ) goto end
+echo "=== CP COMMAND EXECUTING ==="
+echo cp $_input_file $target
+cp   $_input_file   $target
+end:
+unset  target

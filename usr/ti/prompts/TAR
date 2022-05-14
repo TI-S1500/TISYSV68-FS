@@ -1,0 +1,96 @@
+# cshf  tar -- Archives Files 
+#	@(#)TAR.sh	1.3  90/01/26
+#
+onintr end
+set modifiers = "n"
+
+@ count = 0
+while ($count != 1)
+prompt "^TAR -- PROVIDES A TAPE FILE ARCHIVER"\
+	"^*File Name(s):" file macnm "$file"\
+	"^*Archive Name or Drive Number(a,d):" output\
+	"element(A,a=a,D,d=d)" a\
+	"^*Listing File Name:" _listing_file acnm $_listing_file\
+	"^Select Modifiers:" modifiers yesno $modifiers\
+	"^SELECT ONLY ONE OF THE FOLLOWING:"\
+	"^Create a New Tape :" cflag yesno n\
+	"^List Files on Tape:" tflag yesno n\
+	"^Extract Files From Tape:" xflag yesno n\
+	"^#$*"
+
+  if( $abort ) goto end
+  if ($cflag == "y") @ count++
+  if ($tflag == "y") @ count++
+  if ($xflag == "y") @ count++
+  if ($count != 1) @ count = 0
+end
+
+if ($output == "a") then
+	prompt "^TAR -- ARCHIVE FILE NAME"\
+		"^Archive Name:" fflag acnm "/dev/rqt/0h"\
+		"^#$*"
+	if ($abort) goto end
+	set output = $fflag
+else
+	prompt "^TAR -- DRIVE AND TAPE DENSITY MODIFIERS"\
+		"^Tape Drive Number(0-7):" drive "range(0,7)" \
+		"^Tape Density (l,m,h):" density "element(L,l=l,M,m=m,H,h=h)"\
+		"^#$*"
+	if ($abort) goto end
+	unset output
+	set dnum = $drive$density
+endif
+
+if ($abort) goto end
+if ($modifiers == "y") then
+	prompt "^TAR -- MODIFIERS"\
+		"^*Blocking Factor (1-200):" bflag "range(1,200)" 20\
+		"^Create With User's Owner:" oflag yesno n\
+		"^Verbose Listings:" vflag yesno n\
+		"^Confirm User's Action:" wflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($bflag != "") set mod = b$mod
+	if ($wflag == "y") set mod = w$mod
+	if ($vflag == "y") set mod = v$mod
+	if ($oflag == "y") set mod = o$mod
+endif
+
+if ($abort) goto end
+if ($cflag == "y") then
+	prompt "^TAR -- PRINT UNRESOLVED LINK MESSAGES OPTION"\
+		"^List Unresolved Links:" lflag yesno n\
+		"^#$*"
+	if ($abort) goto end
+	if ($lflag == "y") set mod = l$mod
+endif
+
+if ($abort) goto end
+if ($xflag == "y") then
+	prompt "^TAR -- RESTORE MODIFICATION TIMES OPTION"\
+		"^Restore Modification Times:" mflag yesno y\
+		"^#$*"
+	if ($abort) goto end
+	if ($mflag == "n") set mod = m$mod
+endif
+
+if ($abort) goto end
+if ($xflag == "y") set opt = x$opt
+if ($tflag == "y") set opt = t$opt
+if ($cflag == "y") set opt = c$opt
+if ($fflag != "") set mod = $mod"f"
+
+if ($abort) goto end
+echo "=== TAR COMMAND EXECUTING ==="
+if ($_listing_file == "") then
+	echo tar $opt$mod$dnum $bflag $output $file
+	tar $opt$mod$dnum $bflag $output $file
+else
+	echo tar $opt$mod$dnum $bflag $output $file ">&"$_listing_file
+	tar $opt$mod$dnum $bflag $output $file >& $_listing_file
+endif
+
+#clean up time
+end:
+unset *flag *opt *mod file dnum drive density count modifiers output

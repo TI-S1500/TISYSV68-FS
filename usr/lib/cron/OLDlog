@@ -1,0 +1,96 @@
+<  root 728 c Thu Apr  1 04:30:01 1999
+<  adm 729 c Thu Apr  1 04:30:02 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 739 c Thu Apr  1 05:00:00 1999
+<  adm 739 c Thu Apr  1 05:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 746 c Thu Apr  1 05:30:00 1999
+<  adm 746 c Thu Apr  1 05:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 753 c Thu Apr  1 06:00:00 1999
+<  adm 753 c Thu Apr  1 06:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 760 c Thu Apr  1 06:30:00 1999
+<  adm 760 c Thu Apr  1 06:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 767 c Thu Apr  1 07:00:00 1999
+<  adm 767 c Thu Apr  1 07:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 774 c Thu Apr  1 07:30:00 1999
+<  adm 774 c Thu Apr  1 07:30:00 1999
+>  CMD: /JDIS/home/sys999/cron/STID.script
+>  sys999 781 c Thu Apr  1 08:00:00 1999
+<  sys999 781 c Thu Apr  1 08:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 885 c Thu Apr  1 18:00:02 1999
+<  adm 885 c Thu Apr  1 18:00:02 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 892 c Thu Apr  1 18:30:00 1999
+<  adm 892 c Thu Apr  1 18:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 899 c Thu Apr  1 19:00:00 1999
+<  adm 899 c Thu Apr  1 19:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 906 c Thu Apr  1 19:30:00 1999
+<  adm 906 c Thu Apr  1 19:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 913 c Thu Apr  1 20:00:00 1999
+<  adm 913 c Thu Apr  1 20:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 920 c Thu Apr  1 20:30:00 1999
+<  adm 920 c Thu Apr  1 20:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 927 c Thu Apr  1 21:00:00 1999
+<  adm 927 c Thu Apr  1 21:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 934 c Thu Apr  1 21:30:00 1999
+<  adm 934 c Thu Apr  1 21:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 941 c Thu Apr  1 22:00:00 1999
+<  adm 941 c Thu Apr  1 22:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 948 c Thu Apr  1 22:30:00 1999
+<  adm 948 c Thu Apr  1 22:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 955 c Thu Apr  1 23:00:00 1999
+<  adm 955 c Thu Apr  1 23:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 962 c Thu Apr  1 23:30:00 1999
+<  adm 962 c Thu Apr  1 23:30:00 1999
+>  CMD: /usr/lib/cron/start.new.log
+>  adm 969 c Thu Apr  1 23:59:00 1999
+<  adm 969 c Thu Apr  1 23:59:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 978 c Fri Apr  2 00:00:00 1999
+<  adm 978 c Fri Apr  2 00:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 985 c Fri Apr  2 00:30:01 1999
+<  adm 985 c Fri Apr  2 00:30:01 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 992 c Fri Apr  2 01:00:00 1999
+<  adm 992 c Fri Apr  2 01:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 999 c Fri Apr  2 01:30:00 1999
+<  adm 999 c Fri Apr  2 01:30:00 1999
+>  CMD: cp /dev/null /etc/wtmp; cp /dev/null /usr/adm/sulog
+>  root 1006 c Fri Apr  2 02:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1007 c Fri Apr  2 02:00:00 1999
+<  root 1006 c Fri Apr  2 02:00:00 1999
+<  adm 1007 c Fri Apr  2 02:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1016 c Fri Apr  2 02:30:00 1999
+<  adm 1016 c Fri Apr  2 02:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1023 c Fri Apr  2 03:00:00 1999
+<  adm 1023 c Fri Apr  2 03:00:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1030 c Fri Apr  2 03:30:00 1999
+<  adm 1030 c Fri Apr  2 03:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1037 c Fri Apr  2 04:00:00 1999
+<  adm 1037 c Fri Apr  2 04:00:00 1999
+>  CMD: /usr/bin/cron/cleanup.scr
+>  root 1044 c Fri Apr  2 04:30:00 1999
+>  CMD: /etc/movhd > /dev/null 2>&1
+>  adm 1045 c Fri Apr  2 04:30:00 1999

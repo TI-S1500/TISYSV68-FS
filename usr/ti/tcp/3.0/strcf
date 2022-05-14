@@ -1,0 +1,118 @@
+#ident @(#)strcf	3.8 92/02/19 Texas Instruments
+#
+#	System V STREAMS TCP - Release 3.0
+#
+#      @(#)strcf	3.8 LAI System V.3 STREAMS TCP/IP  source
+#
+# tp - configure transport provider (i.e. tcp, udp, icmp)
+# usage: tp devname
+#
+tp {
+	p = open $1
+	ip = open /dev/inet/ip
+	link p ip
+}
+
+#
+# linkint - link interface to ip or arp
+# usage: linkint top bottom ifname
+#
+linkint {
+	x = link $1 $2
+	sifname $1 x $3
+}
+
+#
+# aplinkint - like linkint, but arpproc is pushed on dev
+# usage: aplinkint top bottom ifname
+#
+aplinkint {
+	push $2 arpproc
+	linkint $1 $2 $3
+}
+
+
+#
+# tienet - configure the stream net interface.
+# usage: tienet ip-fd strnet-dev-name if-name ipsm ipbg arpsm arpbg
+#
+tienet {
+	dev = open $2
+	strnetcfg dev $3 $4 $5
+	aplinkint $1 dev $3
+	dev = open $2
+	strnetcfg dev $3 $6 $7
+	arp = open /dev/inet/arp
+	linkint arp dev $3
+}
+
+#
+# loopback - configure loopback device
+# usage: loopback ip-fd
+#
+loopback {
+	dev = open /dev/llcloop
+	linkint $1 dev lo0
+}
+
+#
+# slip - configure slip interface
+# usage: slip unit
+#
+slip {
+	ip = open /dev/inet/ip
+	s = open /dev/slip
+	ifname = strcat sl $1
+	unitsel s $1
+	linkint ip s ifname
+}
+
+#
+# boot - boot time configuration
+#
+boot {
+	#
+	# queue params
+	#
+	initqp /dev/inet/udp rq 8192 49152
+	initqp /dev/inet/ip muxrq 8192 49152 rq 8192 49152
+	#
+	# transport
+	#
+	tp /dev/inet/tcp
+	tp /dev/inet/udp
+	tp /dev/inet/icmp
+	tp /dev/inet/rip
+	#
+	# interfaces
+	#
+	ip = open /dev/inet/ip
+	loopback ip
+
+########
+#
+# This section is used to select the appropriate device driver
+# and configuration parameters for TCP/IP.
+#
+# NOTE: Refer to release notes on TCP3.0 and to strcf.4 man page.
+#
+# For a CCB (or CP2, or CPO) : 
+# use the device driver /dev/strnet with the following syntax :
+#
+#	tienet ip /dev/strnet en[slot][port] [ip sm] [ip big] [arp sm] [arp big]
+#
+# For a high performance Ethernet interface :
+# use the device driver /dev/senet with the following syntax :
+#
+#	tienet ip /dev/senet en[slot]0 [ip sm] [ip big] [arp sm] [arp big]
+#
+# The last line in the file MUST be the } char in column 0.
+# The first char in each tienet line should be a tab.
+#
+# EXAMPLES: First  example is a CCB in slot 04 port 1
+# 	    Second example is a 68040 CPU in slot 02 ( port must be 0 )
+#
+#	tienet ip /dev/strnet en041 10 10 10 2
+#	tienet ip /dev/senet  en020 10 10 10 2
+#
+########

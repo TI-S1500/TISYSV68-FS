@@ -1,0 +1,118 @@
+# cshf 	ls - list contents of a directory 
+#  @(#)LS.sh	1.2 (TI) 87/11/17 
+#
+#
+onintr end
+prompt  "^LS -- LIST CONTENTS OF DIRECTORIES"\
+	"^*Directory Name(s):"  _input_dir  macnm "$_input_dir"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^List ALL Entries:" aflag yesno n\
+	"^List Long Format:" lflag yesno n\
+	"^Recursively List All Subdirectories:" Rflag yesno n\
+	"^Accept Default Options:" options yesno y\
+	"^#$*"
+
+if ($abort) goto end
+if (("$options" == "n") && ("$lflag" == "y")) then
+	prompt  "^LS -- ADVANCED OPTIONS"\
+		"^Sort by Time:" tflag yesno n\
+		"^Use Last Time of I-Node Modification:" cflag yesno n\
+		"^List only Directory Name:" dflag yesno n\
+		"^Omit Time:" Dflag yesno n\
+		"^Mark Directories and Executable Files:" Fflag yesno n\
+		"^Print Owner:" gflag yesno y\
+		"^Print I-Number:" iflag yesno n\
+		"^Show Owner and Group ID's:" nflag yesno n\
+		"^Print Group:" oflag yesno y\
+		"^Put Slash After Directory Names:" pflag yesno n\
+		"^Print Graphics Characters:" qflag yesno n\
+		"^Reverse Order of Sort:" rflag yesno n\
+		"^Give Size in Blocks:" sflag yesno n\
+		"^Use Time of Last Access:" uflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($bflag == "y") set opt = b$opt
+	if ($cflag == "y") set opt = c$opt
+	if ($dflag == "y") set opt = d$opt
+	if ($Dflag == "y") set opt = D$opt
+	if ($Fflag == "y") set opt = F$opt
+	if ($gflag == "n") set opt = g$opt
+	if ($iflag == "y") set opt = i$opt
+	if ($nflag == "y") set opt = n$opt
+	if ($oflag == "n") set opt = o$opt
+	if ($pflag == "y") set opt = p$opt
+	if ($qflag == "y") set opt = q$opt
+	if ($rflag == "y") set opt = r$opt
+	if ($sflag == "y") set opt = s$opt
+	if ($tflag == "y") set opt = t$opt
+	if ($uflag == "y") set opt = u$opt
+endif
+if (("$options" == "n") && ("$lflag" == "n")) then
+	prompt  "^LS -- ADVANCED OPTIONS"\
+		"^Sort by Time:" tflag yesno n\
+		"^Use Last Time of I-Node Modification:" cflag yesno n\
+		"^Arrange Output in Columns:" Cflag yesno n\
+		"^List only Directory Name:" dflag yesno n\
+		"^Force Directory Argument Interpretion:" fflag yesno n\
+		"^Mark Directories and Executable Files:" Fflag yesno n\
+		"^Print I-Number:" iflag yesno n\
+		"^Lists File Names in a Stream:" mflag yesno n\
+		"^Put Slash After Directory Names:" pflag yesno n\
+		"^Print Graphics Characters:" qflag yesno n\
+		"^Reverse Order of Sort:" rflag yesno n\
+		"^Give Size in Blocks:" sflag yesno n\
+		"^Use Time of Last Access:" uflag yesno n\
+		"^Arrange Output Sorted Left to Right:" xflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($bflag == "y") set opt = b$opt
+	if ($cflag == "y") set opt = c$opt
+	if ($Cflag == "y") set opt = C$opt
+	if ($dflag == "y") set opt = d$opt
+	if ($fflag == "y") set opt = f$opt
+	if ($Fflag == "y") set opt = F$opt
+	if ($iflag == "y") set opt = i$opt
+	if ($mflag == "y") set opt = m$opt
+	if ($pflag == "y") set opt = p$opt
+	if ($qflag == "y") set opt = q$opt
+	if ($rflag == "y") set opt = r$opt
+	if ($sflag == "y") set opt = s$opt
+	if ($tflag == "y") set opt = t$opt
+	if ($uflag == "y") set opt = u$opt
+	if ($xflag == "y") set opt = x$opt
+endif
+
+if ($abort) goto end
+if ($aflag == "y") set opt = a$opt
+if ($lflag == "y") set opt = l$opt
+if ($Rflag == "y") set opt = R$opt
+
+#the following action is done to make proper use of the u option
+if ($uflag == "y") then
+  if (($lflag == "n") && ($gflag == "y") && ($oflag == "y")) then
+     if ($tflag == "n") set opt = t$opt
+   endif
+endif
+
+#the following action is done to make proper use of the c option
+if ($cflag == "y") then
+  if (($lflag == "n") && ($gflag == "y") && ($oflag == "y")) then
+     if ($tflag == "n") set opt = t$opt
+   endif
+endif
+
+if ($opt != "") set opt = -$opt
+
+echo "=== LS COMMAND EXECUTING ==="
+if ($_output_file == "") then
+    echo ls $opt   $_input_dir
+    ls $opt   $_input_dir | pg -cp"Output from LS is being piped through pg:"
+else
+	echo ls $opt   $_input_dir ">"$_output_file
+	ls $opt   $_input_dir >$_output_file
+endif
+
+end:
+unset  *flag *opt options 

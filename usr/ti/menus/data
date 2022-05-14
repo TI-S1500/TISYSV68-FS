@@ -1,0 +1,28 @@
+data:menu:        DATA OPERATIONS MENU Series 1000          :data.hlp
+BDIFF:c:Compares files too large for diff:
+CMP:c:Compares two files:
+COMM:c:Selects or rejects lines common to two sorted files:
+CRYPT:c:Encrypts and decrypts a file:
+CUT:c:Cuts out selected fields of each line of a file:
+DIFF:c:Compares two files:
+DIFF3:c:Compares three files:
+ED:c:Invokes the line oriented editor:
+EDIT:c:Invokes a variant of ex for casual users:
+EGREP:c:Searches a file for a pattern (expression):
+EX:c:Invokes a variant of vi for line terminals:
+FGREP:c:Searches a file for a pattern (string):
+GREP:c:Searches a file for a pattern (expression):
+HEAD:c:Displays the beginning of a file:
+JOIN:c:Database operator that joins two relations:
+MAKEKEY:c:Generates encryption keys:
+NEWFORM:c:Changes the format of a text file:
+PASTE:c:Merges lines of several files or one file:
+SDIFF:c:Compares files side-by-side:
+SORT:c:Sorts and/or merges files:
+SPELL:c:Check for spelling errors in a file:
+SPLIT:c:Splits a file into pieces:
+TAIL:c:Delivers the last part of a file:
+TR:c:Translates characters:
+UNIQ:c:Reports repeated lines in a file:
+VI:c:Invokes the visual editor:
+WC:c:Provides a count of characters, words, and lines:

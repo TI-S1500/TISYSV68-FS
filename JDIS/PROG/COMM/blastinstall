@@ -1,0 +1,55 @@
+ERRFILES="./Files not found.  Restart installation.\n"
+ERRTMP="Error creating directory /usr/tmp."
+NEXTDISKMSG="Please insert the next media and strike any key to continue."
+if [ $# = 0 ]				# if no arguments given,
+then					# use default input with
+	echo "No device specified - using /dev/rdsk/f0."
+	set -- /dev/rdsk/f0		# default device
+fi					#
+if [ $1 = "-i" ]			# if not using default input method
+then					#
+	shift				# 
+	CPIO=$*				# user-defined input method
+else					# 
+	CPIODEV=$1			# input device: argument 1
+	CPIO="cpio -icBT <$CPIODEV"	# default input method
+fi					#
+if [ ! -d /usr/tmp ]			# make sure /usr/tmp exists
+then					#
+	mkdir /usr/tmp			#
+	if [ $? -ne 0 ]			# error in mkdir'ing /usr/tmp ?
+	then				#
+		echo $ERRTMP		#
+		exit			#
+	fi				#
+fi					#
+mkdir /usr/tmp/install$$		# create temp install directory
+CURDIR=`pwd`				# remember current directory
+cd /usr/tmp/install$$			# and go there
+DID="NO"				# all the files off media ?
+while [ $DID = "NO" ]			# until all files are gotten
+do					#
+	echo "extracting files..."	# so installers won't worry
+	eval $CPIO 2>/dev/null		# extract the files from media
+	if [ ! -f ./Files ]		# must have the ./Files file
+	then				#
+		echo $ERRFILES		#
+	fi				#
+	DID="YES"			# assume all files gotten
+	for F in `cat ./Files`		# but check each one to be sure
+	do				#
+		if [ ! -f ./$F ]	# if one is not there,
+		then			#
+			DID="NO"	# make sure we try another media
+		fi			#
+	done				#
+	if [ $DID = "NO" ]		# if needed,
+	then				# tell the user to insert
+		echo $NEXTDISKMSG	# the next media
+		read SHI
+	fi				#
+done					# 
+./Install				# install BLAST
+cd $CURDIR				# return to old directory
+rm -rf /usr/tmp/install$$		# so one can remove tmp directory
+exit					#

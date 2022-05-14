@@ -1,0 +1,158 @@
+
+Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    1
+Time: 09:49                     Purged Paid Invoices For Customer Number Range:        0 - 99999999                      (ARPURGE-1)
+
+Customer Customer                    Invoice  Invoice  [--------------- Invoice ---------------] [-------- Finance Charge ---------]
+ Number  Name                        Number    Date          Amount          Paid     Write-Off      Amount        Paid   Write-Off
+
+     115 ROBERT SCHUG                  95731  15MAY98        105.50        105.50-          .00         .00         .00         .00
+                                      213450  15MAY98         11.15         11.15-          .00         .00         .00         .00
+                                      213781  01JUN98          5.07          5.07-          .00         .00         .00         .00
+
+     605 GLENN MEYER                  213704  28MAY98         27.10         27.10-          .00         .00         .00         .00
+
+     787 DAN'S TOWING                  95654  19JUN98           .00           .00           .00         .00         .00         .00
+
+     810 DOUGLAS-HANSON CO.           213462  15MAY98         11.40         11.40-          .00         .00         .00         .00
+
+     870 DENNIS EMMERT                213744  29MAY98         21.59         21.59-          .00         .00         .00         .00
+
+    1380 VILLAGE OF HAMMOND             6106  21MAY98        250.00        250.00-          .00         .00         .00         .00
+                                      213412  13MAY98         30.00         30.00-          .00         .00         .00         .00
+
+    1395 CARL PRINSEN                  11096  20NOV97        412.14        412.14-          .00       19.18       18.86-        .32-
+                                     9999998  15MAY98         19.18         18.86-          .32-        .00         .00         .00
+
+    1526 STOLP MASONRY                 12503  29APR98        249.40        151.92-        97.48-       1.87         .00        1.87-
+                                     9999998  01JUN98          1.87           .00          1.87-        .00         .00         .00
+
+    1640 RICHARD HOLLE                 11980  18NOV97        487.88        487.88-          .00       37.78       37.78-        .00
+                                       12062  04DEC97        172.14        172.14-          .00       14.19       14.19-        .00
+                                       12424  27FEB98         17.37         17.37-          .00         .65         .65-        .00
+                                     9999998  01JUN98        533.86        530.86-         3.00-        .00         .00         .00
+
+    1780 IDEAL DOOR IDC FABRICAT      211910  07APR98         30.00         29.49-          .51-        .00         .00         .00
+                                      212246  13APR98      2,000.00      2,000.00-          .00       30.00         .00       30.00-
+                                      212275  13APR98      3,400.00      3,400.00-          .00       51.00         .00       51.00-
+                                      212276  13APR98      4,000.00      4,000.00-          .00       60.00         .00       60.00-
+                                     9999998  01JUN98        141.00           .00        141.00-        .00         .00         .00
+
+    1930 JON-DE FARM                  213535  19MAY98          2.02          2.02-          .00         .00         .00         .00
+
+    2020 KEN-RICH FARM                 95705  01MAY98           .00           .00           .00         .00         .00         .00
+                                      213113  04MAY98         60.82         60.82-          .00         .00         .00         .00
+                                      213186  06MAY98         37.99         37.99-          .00         .00         .00         .00
+                                      213293  08MAY98         50.80         50.80-          .00         .00         .00         .00
+                                      213419  14MAY98         37.50         37.50-          .00         .00         .00         .00
+                                      213490  18MAY98         35.04         35.04-          .00         .00         .00         .00
+                                      213707  28MAY98         45.22         45.22-          .00         .00         .00         .00
+
+    2590 DAVID MENTINK                212954  29APR98        122.12        122.12-          .00         .92         .92-        .00
+                                     9999998  01JUN98           .92           .92-          .00         .00         .00         .00
+
+    2750 RICK MOULTON                  12287  23JAN98        311.78        311.78-          .00       17.26       17.26-        .00
+                                       21998  19FEB98         15.31         14.92-          .39-        .55         .00         .55-
+                                     9999998  01JUN98         20.41         19.86-          .55-        .00         .00         .00
+
+    2940 NYGAARD FARMS, INC.          213782  01JUN98          7.90          7.90-          .00         .00         .00         .00
+
+    3060 DENNIS OMANN                 213698  27MAY98         12.40         12.40-          .00         .00         .00         .00
+
+
+                                                            (Continued)
+Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    2
+Time: 09:49                     Purged Paid Invoices For Customer Number Range:        0 - 99999999                      (ARPURGE-1)
+
+Customer Customer                    Invoice  Invoice  [--------------- Invoice ---------------] [-------- Finance Charge ---------]
+ Number  Name                        Number    Date          Amount          Paid     Write-Off      Amount        Paid   Write-Off
+
+    3480 ST CROIX ELECTRIC COOPERATI  212687  22APR98          4.14          4.14-          .00         .03         .03-        .00
+                                     9999998  01JUN98           .03           .03-          .00         .00         .00         .00
+
+    3490 ST. CROIX CO. HWY DEPT.      212897  28APR98         31.18         31.18-          .00         .00         .00         .00
+                                      212906  28APR98          3.94          3.94-          .00         .00         .00         .00
+                                      212970  30APR98         23.90         23.90-          .00         .00         .00         .00
+                                      213180  06MAY98         26.07         26.07-          .00         .00         .00         .00
+
+    3870 HAPPY ACRES                  213902  05JUN98         37.88         37.88-          .00         .00         .00         .00
+
+    3990 TRI-COUNTY IMPLEMENT         212973  30APR98         49.73         49.73-          .00         .00         .00         .00
+                                      212974  30APR98         49.73-        49.73           .00         .00         .00         .00
+                                      212975  30APR98         47.14         47.14-          .00         .35         .35-        .00
+                                      213349  12MAY98         47.57         47.22-          .35-        .00         .00         .00
+                                     9999998  01JUN98           .35           .35-          .00         .00         .00         .00
+
+    4050 B. W VAN BEEK                213461  15MAY98         55.04         55.04-          .00         .00         .00         .00
+
+    4070 ALLEN VAN SOMEREN            213780  01JUN98        119.76        119.76-          .00         .00         .00         .00
+
+    4240 WERNLUND WELDING             213605  22MAY98          6.30          6.30-          .00         .00         .00         .00
+                                      213655  26MAY98         50.92         50.92-          .00         .00         .00         .00
+                                      213672  26MAY98        440.57        440.57-          .00         .00         .00         .00
+                                      213703  28MAY98         14.46         14.46-          .00         .00         .00         .00
+                                      213807  02JUN98          2.90          2.90-          .00         .00         .00         .00
+
+    4242 BRADLEY WEVERS               213654  26MAY98         42.75         42.75-          .00         .00         .00         .00
+
+    4450 GARY AFFOLTER                 21998  19FEB98         37.73           .00         37.73-       1.40         .00        1.40-
+                                     9999998  01JUN98          1.40           .00          1.40-        .00         .00         .00
+
+    4470 D. J. HOLSTEINS               11010  30JUN97         59.08         59.08-          .00        8.52        8.24-        .28-
+                                     9999998  01JUN98        113.09        112.81-          .28-        .00         .00         .00
+
+    4660 MIKE DORWIN                   12476  30MAR98         55.23         55.23-          .00         .82         .82-        .00
+                                      211418  30MAR98      1,214.95      1,214.95-          .00       16.42        5.93-      10.49-
+                                      211477  30MAR98        166.35        166.35-          .00        2.50        2.50-        .00
+                                      211522  31MAR98         59.46         59.46-          .00         .90         .90-        .00
+                                      212509  17APR98          8.79          8.79-          .00         .07         .07-        .00
+                                      212743  24APR98         13.05         13.05-          .00         .10         .10-        .00
+                                      213248  08MAY98         14.97         14.97-          .00         .00         .00         .00
+                                     9999998  01JUN98         20.81         10.32-        10.49-        .00         .00         .00
+
+    6110 JOE KUSILEK                  211514  30MAR98           .00          1.72-         1.72         .00         .00         .00
+                                      212165  10APR98           .00          1.90-         1.90         .00         .00         .00
+
+    6401 CHAD PEABODY                 199688  29AUG97         24.64         24.64-          .00        2.90        2.90-        .00
+
+    7050 ED FIEDLER                   213533  19MAY98           .00           .26-          .26         .00         .00         .00
+
+    7270 DAVE QUAM                     21998  19FEB98         25.66           .00         25.66-        .95         .00         .95-
+                                     9999998  01JUN98           .95           .00           .95-        .00         .00         .00
+
+
+                                                            (Continued)
+Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    3
+Time: 09:49                     Purged Paid Invoices For Customer Number Range:        0 - 99999999                      (ARPURGE-1)
+
+Customer Customer                    Invoice  Invoice  [--------------- Invoice ---------------] [-------- Finance Charge ---------]
+ Number  Name                        Number    Date          Amount          Paid     Write-Off      Amount        Paid   Write-Off
+
+    8470 TIMME INC.                   212668  22APR98         84.78         84.78-          .00         .64         .00         .64-
+                                     9999998  01JUN98           .64           .00           .64-        .00         .00         .00
+
+
+                                                            (Continued)
+
+
+Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    4
+Time: 09:49                     Purged Paid Invoices For Customer Number Range:        0 - 99999999                      (ARPURGE-1)
+                                                           Summary Report
+
+                                              Invoices     Active       Open          Open Invoice
+                                Cycle          Purged    Customers    Invoices           Balance
+
+
+                                Weekly               0           0           0                 .00
+
+                                Semi-Monthly        77          69         224           42,501.02
+
+                                Monthly              0           0           0                 .00
+
+                                Cash Accounts        0           0           0                 .00
+
+                                No Statement         0           0           0                 .00
+
+                                All Cycles          77          69         224           42,501.02
+
+
+                                                          (End of Report)

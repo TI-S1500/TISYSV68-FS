@@ -1,0 +1,650 @@
+Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    1
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+----------------------------------------- Customized Report Selection and Sorting Options ------------------------------------------
+|                                                                                                                                  |
+| Report Date for Aging: 24JUN98             Aging Option:    All Aging                                                            |
+| Customer Number Range:        0 - 99999999 Balance Option:  Include only customers without a zero balance                        |
+| Customer Name Range:   A        - ZZZZZZZZ Statement Cycle: All Cycles                                                           |
+|                                                                                                                                  |
+|   Salespersons: All                                                   Territories: All                                           |
+|                                                                                                                                  |
+|   [------------------- Customer Status Codes --------------------]    [------------------ Source Journals -------------------]   |
+       All                                                                 All|                                                                                                                                  |
+|                                                                                                                                  |
+| Primary Sort: Customer Name      Secondary Sort:                    Third Sort:                    Invoice Sort: Invoice Date    |
+------------------------------------------------------------------------------------------------------------------------------------
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+     247    BRUCE A ALBARADO                         /S-MNTH /   0    /        / CASH  715-594-3956         02JUN98
+            N931 545TH ST                        BAY CITY WI  54723                                  $       250.00  $       500
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+    9952  07APR97          41               7,336.98                                                            6,279.22   1,373.21
+         Payment:  30APR97                    307.76-
+         Payment:  04MAY98                    500.00-
+         Payment:  02JUN98                    250.00-
+  192596  22MAY97          31                 106.74                                                              106.74      19.99
+  193694  06JUN97          31                 332.41                                                              332.41      57.36
+   11723  20NOV97          41                 141.00                                                              141.00      13.79
+   50498  04MAY98          80               2,459.81-                                              2,459.81-
+  213105  04MAY98          30                 305.69-                                                305.69-
+ 9999998  24JUN98          98               1,464.35        1,464.35
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       5,558.22                     1,464.35          .00          .00     2,765.50-    6,859.37   1,464.35
+------------------------------------------------------------------------------------------------------------------------------------
+     145    GREG ANDERSON                            /S-MNTH /   0    /        / CASH  715-749-3285         11JUN98
+            1306 70TH AVE                        ROBERTS WI  54023                                   $        50.00  $     2,500
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+       4  24SEP94          92                 913.66                                                                4.17     268.96
+         Payment:  17FEB95                     50.00-
+         Payment:  13JUN95                    100.00-
+         Payment:  17JUN95                     19.95-
+         Payment:  31JUL95                    175.00-
+         Payment:  04NOV95                     25.00-
+         Payment:  05JAN96                     25.00-
+         Payment:  22FEB96                     25.00-
+         Payment:  10JUN96                     25.00-
+         Payment:  11JUN96                     14.54-
+         Payment:  05NOV96                    100.00-
+         Payment:  05MAY97                     50.00-
+         Payment:  12JAN98                     50.00-
+         Payment:  12FEB98                     50.00-
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    2
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+     145    GREG ANDERSON    (Continued from previous page)
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+         Payment:  12MAR98                     50.00-
+         Payment:  13APR98                     50.00-
+         Payment:  12MAY98                     50.00-
+         Payment:  11JUN98                     50.00-
+       3  24OCT94          92                  55.15                                                               55.15      34.00
+       2  23NOV94          92                  14.53                                                               14.53       9.02
+       1  23DEC94          92                  14.75                                                               14.75       9.02
+  143662  29APR95          31                  11.71                                                               11.71       6.66
+  147664  13JUN95          31                  80.79                                                               80.79      43.59
+  148185  17JUN95          31                  19.95                                                               19.95      10.80
+  151292  31JUL95          31                 160.37                                                              160.37      81.91
+    5772  03AUG95          41                  58.01                                                               58.01      29.61
+ 9999998  24JUN98          98                 493.57          493.57
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:         913.00                       493.57          .00          .00          .00       419.43     493.57
+------------------------------------------------------------------------------------------------------------------------------------
+     805    KEVIN ANDERSON                           /S-MNTH /   0    /  000   / NET30 715-698-2916         20APR98
+            N8694 CTY RD B                       SPRING VALLEY WI  54767                             $        13.51  $     2,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213449  15MAY98          31                  10.57                                     10.57                                  .08
+ 9999998  24JUN98          98                    .08             .08
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          10.65                          .08          .00        10.57          .00          .00        .08
+------------------------------------------------------------------------------------------------------------------------------------
+    1527    ROY BABCOCK                              /S-MNTH /   0    /        / CASH  715-948-4262
+            789 CTY RD P                         CLAYTON WI  54004                                   $          .00  $         0
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+   12507  29APR98          41               2,039.67                                               2,039.67                   30.60
+ 9999998  24JUN98          98                  30.60           30.60
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       2,070.27                        30.60          .00          .00     2,039.67          .00      30.60
+------------------------------------------------------------------------------------------------------------------------------------
+    5310    STANLEY BOLES                            /S-MNTH /   0    /  000   / NET30 715-262-5888         26MAY98
+            N5229 1220TH                         PRESCOTT WI  54021                                  $       483.80  $    10,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213568  21MAY98          31               2,935.92                                  2,935.92                                22.02
+ 1006109  21MAY98          11                 199.95                                    199.95                                 1.50
+ 9999998  24JUN98          98                  23.52           23.52
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       3,159.39                        23.52          .00     3,135.87          .00          .00      23.52
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    3
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+    1324    BOB CARLSON                              /S-MNTH /   0    /        / CASH  715-265-4612         06MAR98
+            DIANNE MCCLURE                       DOWNING WI  54734                                   $       100.00  $         0
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+   94954  16SEP97          80               1,820.40                                                            1,520.40     221.76
+         Payment:  08DEC97                    100.00-
+         Payment:  23FEB98                    100.00-
+         Payment:  06MAR98                    100.00-
+ 9999998  24JUN98          98                 221.76          221.76
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       1,742.16                       221.76          .00          .00          .00     1,520.40     221.76
+------------------------------------------------------------------------------------------------------------------------------------
+     750    DONALDSON'S                              /S-MNTH /   0    /  000   / NET30     684-3305         27MAY98
+            ATTN: ALLENE EGGEN                   BALDWIN WI  54002                                   $        42.50  $     5,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213528  19MAY98          31                   5.00                                      5.00
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:           5.00                          .00          .00         5.00          .00          .00        .00
+------------------------------------------------------------------------------------------------------------------------------------
+      45    DOUBLE A DAIRY                           /S-MNTH /   0    /  000   / CASH  715-698-2641         25MAR98
+            C/O JOE ACHTERHOF                    WOODVILLE WI  54028                                 $       300.00  $       500
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+    5176  27DEC96          99               1,500.00                                                               97.33     217.98
+         Payment:  21APR97                     73.23-
+         Payment:  21MAY97                     20.34-
+         Payment:  23MAY97                    200.00-
+         Payment:  04AUG97                    100.00-
+         Payment:  25AUG97                    109.10-
+         Payment:  11OCT97                    100.00-
+         Payment:  18NOV97                    100.00-
+         Payment:  11FEB98                    400.00-
+         Payment:  25MAR98                    300.00-
+  192184  16MAY97          31                   4.66                                                                4.66        .88
+  199333  25AUG97          31                   9.10                                                                9.10       1.26
+  212956  29APR98          31                 313.25-                                                313.25-
+ 9999998  24JUN98          98                 220.12          220.12
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          17.96                       220.12          .00          .00       313.25-      111.09     220.12
+------------------------------------------------------------------------------------------------------------------------------------
+    9998    JOANE/VIOLET GERKEN                      /S-MNTH /   0    /        / CASH  715-749-3414         15MAY98
+            941 70TH AVE                         ROBERTS WI  54023                                   $        50.00  $         0
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  112497  24SEP97          85               1,059.43                                                            1,009.43     110.50
+         Payment:  15MAY98                     50.00-
+ 9999998  24JUN98          98                 110.50          110.50
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       1,119.93                       110.50          .00          .00          .00     1,009.43     110.50
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    4
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+    1770    JOE HURTGEN                              /S-MNTH /   0    /  000   / CASH  715-698-2818         11JUN98
+            2522 110TH AVE.                      WOODVILLE WI  54028                                 $       250.00  $     5,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  201439  27SEP97          31                 687.31                                                              361.57      78.89
+         Payment:  07MAY98                     75.74-
+         Payment:  11JUN98                    250.00-
+  201623  01OCT97          31                  33.64                                                               33.64       4.00
+   11695  02OCT97          41                  31.60                                                               31.60       3.79
+  202616  15OCT97          31                  76.95                                                               76.95       9.23
+  202864  18OCT97          31                  34.35                                                               34.35       4.16
+  202973  21OCT97          31                   2.60                                                                2.60        .28
+  202975  21OCT97          31                  37.80                                                               37.80       3.96
+  202976  21OCT97          31                  40.00                                                               40.00       4.20
+   11864  30OCT97          41                  78.81                                                               78.81       8.26
+ 9999998  24JUN98          98                 116.77          116.77
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:         814.09                       116.77          .00          .00          .00       697.32     116.77
+------------------------------------------------------------------------------------------------------------------------------------
+    1868    ALAN JOHNSON                             /S-MNTH /   0    /        / CASH  715-698-2918         11JUN98
+            843 250th STREET                     WOODVILLE WI  54028                                 $        75.00  $       250
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+       4  24SEP94          92               3,072.76                                                              747.76   1,435.41
+         Payment:  12MAY95                    100.00-
+         Payment:  03JUN95                     50.00-
+         Payment:  26JUN96                     75.00-
+         Payment:  11JUL96                     75.00-
+         Payment:  19JUL96                     75.00-
+         Payment:  12AUG96                     75.00-
+         Payment:  26AUG96                     75.00-
+         Payment:  11SEP96                     75.00-
+         Payment:  26SEP96                     75.00-
+         Payment:  11OCT96                     75.00-
+         Payment:  28OCT96                     75.00-
+         Payment:  12NOV96                     75.00-
+         Payment:  26NOV96                     75.00-
+         Payment:  26SEP97                     75.00-
+         Payment:  13OCT97                     75.00-
+         Payment:  27OCT97                     75.00-
+         Payment:  12NOV97                     75.00-
+         Payment:  26NOV97                     75.00-
+         Payment:  11DEC97                     75.00-
+         Payment:  26DEC97                     75.00-
+         Payment:  12JAN98                     75.00-
+         Payment:  27JAN98                     75.00-
+         Payment:  12FEB98                     75.00-
+         Payment:  27FEB98                     75.00-
+         Payment:  12MAR98                     75.00-
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    5
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+    1868    ALAN JOHNSON    (Continued from previous page)
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+         Payment:  27MAR98                     75.00-
+         Payment:  13APR98                     75.00-
+         Payment:  27APR98                     75.00-
+         Payment:  12MAY98                     75.00-
+         Payment:  27MAY98                     75.00-
+         Payment:  11JUN98                     75.00-
+       3  24OCT94          92                  49.09                                                               49.09      30.34
+       2  23NOV94          92                  46.83                                                               46.83      28.70
+       1  23DEC94          92                  47.53                                                               47.53      29.14
+    6022  27SEP95          80                  50.96                                                               50.96      24.32
+   60396  03JUN96          80                  59.00                                                               59.00      21.33
+  199655  29AUG97          31                   8.25                                                                8.25       1.08
+  213209  07MAY98          30                   2.92-                                                  2.92-
+ 9999998  24JUN98          98               1,570.32        1,570.32
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       2,576.82                     1,570.32          .00          .00         2.92-    1,009.42   1,570.32
+------------------------------------------------------------------------------------------------------------------------------------
+    1887    GREG JOHNSON                             /S-MNTH /   0    /        / CASH  715-684-3160         19FEB98
+            861 200TH ST.                        BALDWIN WI  54002                                   $        25.20  $     1,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213468  15MAY98          80                  20.78                                     20.78                                  .16
+ 9999998  24JUN98          98                    .16             .16
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          20.94                          .16          .00        20.78          .00          .00        .16
+------------------------------------------------------------------------------------------------------------------------------------
+    1930    JON-DE FARM                              /S-MNTH /   0    /  000   / NET30 JIM 684-2620         09JUN98
+            C/O DEAN DOORNINK                    BALDWIN WI  54002                                   $         2.02  $    10,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213535  19MAY98          31                   2.02      ** Paid **
+         Payment:  09JUN98                      2.02-
+ 1006120  22JUN98          11                 378.00          378.00
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:         378.00                       378.00          .00          .00          .00          .00        .00
+------------------------------------------------------------------------------------------------------------------------------------
+    2020    KEN-RICH FARM                            /S-MNTH /   0    /  000   / NET30 KEN 684-2731         10JUN98
+            C/O KEN PETERSON                     BALDWIN WI  54002                                   $        80.26  $    10,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+   95705  01MAY98          01                    .00      ** Paid **
+         Payment:  01MAY98                    239.00
+         Payment:  08MAY98                      2.03-
+         Payment:  01JUN98                    236.97-
+  213113  04MAY98          31                  60.82      ** Paid **
+         Payment:  01JUN98                     60.82-
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    6
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+    2020    KEN-RICH FARM    (Continued from previous page)
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213186  06MAY98          31                  37.99      ** Paid **
+         Payment:  01JUN98                     37.99-
+  213293  08MAY98          31                  50.80      ** Paid **
+         Payment:  01JUN98                     50.80-
+  213419  14MAY98          31                  37.50      ** Paid **
+         Payment:  01JUN98                     37.50-
+  213490  18MAY98          31                  35.04      ** Paid **
+         Payment:  10JUN98                     35.04-
+  213707  28MAY98          31                  45.22      ** Paid **
+         Payment:  10JUN98                     45.22-
+  213839  03JUN98          31                   3.40            3.40
+  213860  04JUN98          31                  23.93           23.93
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          27.33                        27.33          .00          .00          .00          .00        .00
+------------------------------------------------------------------------------------------------------------------------------------
+    2205    RONALD F LANGER                          /S-MNTH /   0    /        / CASH  715-273-4212         22MAY98
+            W8180 570TH AVE                      ELLSWORTH WI  54011                                 $       100.00  $     1,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  190526  29APR97          31                  32.70                                                                5.25       5.98
+         Payment:  22MAY98                     27.45-
+  193298  02JUN97          31                  99.53                                                               99.53      17.91
+  195129  25JUN97          31                 353.77                                                              353.77      58.38
+  195134  25JUN97          31                  34.16                                                               34.16       5.64
+  195488  30JUN97          31                  46.79                                                               46.79       7.70
+   11020  03JUL97          41                 355.54                                                              355.54      58.66
+  196544  16JUL97          31                 301.32                                                              301.32      49.72
+  198724  15AUG97          31                 125.02                                                              125.02      18.80
+  199157  22AUG97          31                 112.00                                                              112.00      16.80
+  201523  29SEP97          31                  62.34                                                               62.34       7.52
+  202761  17OCT97          31                 158.14                                                              158.14      18.99
+ 9999998  24JUN98          98                 266.10          266.10
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       1,919.96                       266.10          .00          .00          .00     1,653.86     266.10
+------------------------------------------------------------------------------------------------------------------------------------
+    2310    VICTOR LEE                               /S-MNTH /   0    /  000   / CASH  715-698-2832         04MAY98
+            2684 PECAN LANE                      WOODVILLE WI  54028                                 $       171.98  $    10,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+   12458  09MAY98          30                 650.00          650.00                                                           4.88
+ 9999998  24JUN98          98                   4.88            4.88
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:         654.88                       654.88          .00          .00          .00          .00       4.88
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    7
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+    2313    LENERTZ FARMS, INC                       /S-MNTH /   0    /        / CASH  715-749-3305         08JAN98
+            P O BOX 292                          SOUTH ST. PAUL MN  55075                            $     5,103.14  $     5,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+   11633  14OCT97          41               3,103.65                                                            2,342.12     303.91
+         Payment:  08JAN98                    751.95-
+         Payment:  20FEB98                      9.58-
+  202783  17OCT97          31                  44.29                                                               44.29       5.28
+  202839  18OCT97          31                  68.33                                                               68.33       8.16
+  202876  20OCT97          31                  42.07                                                               42.07       5.07
+  202980  21OCT97          31                 123.60                                                              123.60      12.98
+  203441  25OCT97          31                  20.50                                                               20.50       2.14
+  203442  25OCT97          31                 311.44                                                              311.44      32.72
+    5777  13NOV97          11               1,055.00                                                            1,055.00     110.78
+  205097  22NOV97          31                  94.91                                                               94.91       8.52
+  205693  08DEC97          31                 407.01                                                              407.01      36.63
+  205833  10DEC97          31                   9.50                                                                9.50        .84
+  206142  17DEC97          31                 375.86                                                              375.86      33.84
+  206274  19DEC97          31                  30.86                                                               30.86       2.76
+  206424  23DEC97          31                  22.60                                                               22.60       1.70
+  206543  26DEC97          31                 199.40                                                              199.40      14.98
+  207446  16JAN98          31                 237.51                                                              237.51      17.80
+  207453  16JAN98          31                 388.87                                                              388.87      29.18
+  208841  09FEB98          31                 224.85                                                              224.85      13.51
+  208842  09FEB98          31                  78.61                                                               78.61       4.72
+  209049  13FEB98          31                  41.25                                                               41.25       1.86
+  209106  14FEB98          31                 363.17                                                              363.17      16.32
+   12342  19FEB98          41                 805.34                                                              805.34      36.24
+  209471  23FEB98          31                  50.00                                                               50.00       2.28
+  209796  27FEB98          31                  41.62                                                               41.62       1.86
+  209890  28FEB98          31                  42.11                                                               42.11       1.60
+ 9999998  24JUN98          98                 705.68          705.68
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       8,126.50                       705.68          .00          .00          .00     7,420.82     705.68
+------------------------------------------------------------------------------------------------------------------------------------
+    2440    PAUL LOKKER                              /S-MNTH /   0    /  000   / NET30 715-684-2162         05JUN98
+            857 220TH ST                         BALDWIN WI  54002                                   $       300.00  $    10,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  208579  03FEB98          31                 648.15                                                              100.72      32.93
+         Payment:  20MAY98                    247.43-
+         Payment:  05JUN98                    300.00-
+  208580  03FEB98          31                  33.68                                                               33.68       2.01
+  208669  05FEB98          31                  24.65                                                               24.65       1.45
+  209015  12FEB98          31                   8.30                                                                8.30        .48
+  209116  16FEB98          31                 161.42                                                              161.42       7.26
+  209123  16FEB98          31                   6.00                                                                6.00        .30
+  209140  16FEB98          31                 132.76                                                              132.76       6.00
+  209209  18FEB98          31                   3.00                                                                3.00        .12
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    8
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+    2440    PAUL LOKKER    (Continued from previous page)
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+    5945  02MAR98          11               1,500.00                                                            1,500.00      56.25
+  211404  30MAR98          31                 793.28                                                              793.28      17.85
+  212941  29APR98          31                 408.05                                                 408.05                    6.12
+  212976  30APR98          31                  22.28                                                  22.28                     .34
+  212992  30APR98          31                  24.05                                                  24.05                     .36
+    6077  01MAY98          11               1,754.00                                               1,754.00                   13.16
+  213072  02MAY98          31                   4.34                                                   4.34                     .03
+  213334  11MAY98          31                  10.50                                     10.50                                  .08
+  213595  22MAY98          31                  82.61                                     82.61                                  .62
+  213700  27MAY98          31                  58.05                        58.05
+  213776  30MAY98          31                   7.18            7.18
+  213796  01JUN98          31                  30.00           30.00
+  213947  22JUN98          31                 140.00          140.00
+ 9999998  24JUN98          98                 145.36          145.36
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       5,450.23                       322.54        58.05        93.11     2,212.72     2,763.81     145.36
+------------------------------------------------------------------------------------------------------------------------------------
+    6401    CHAD PEABODY                             /S-MNTH /   0    /        / CASH                       12JUN98
+            2704 NELSON DRIVE APT 7              MENOMONIE WI  54751                                 $        20.00  $       500
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  199688  29AUG97          31                  24.64      ** Paid **
+         Payment:  04MAY98                     15.34-
+         Payment:  12JUN98                      9.30-
+  200056  05SEP97          31                  13.97                                                                6.17       1.81
+         Payment:  12JUN98                      7.80-
+   20479  08SEP97          80                  11.00                                                               11.00       1.50
+  201782  02OCT97          31                   3.40                                                                3.40        .43
+   30698  13OCT97          85                  10.10                                                               10.10        .63
+  202440  13OCT97          31                  46.42                                                               46.42       5.60
+ 9999998  24JUN98          98                   9.97            9.97
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          87.06                         9.97          .00          .00          .00        77.09       9.97
+------------------------------------------------------------------------------------------------------------------------------------
+    3190    POLFUS IMPLEMENT                         /S-MNTH /   0    /  000   / NET30 715-246-6565         12FEB98
+            730 DEERE DRIVE                      NEW RICHMOND WI  54017                              $        37.58  $    10,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213841  03JUN98          30                  29.83           29.83
+  213944  19JUN98          31                 473.03          473.03
+  213945  19JUN98          31                 595.14          595.14
+  213950  23JUN98          31                  14.77           14.77
+  213952  23JUN98          31                  14.77-          14.77-
+  213953  23JUN98          31                  14.00           14.00
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       1,112.00                     1,112.00          .00          .00          .00          .00        .00
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:    9
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+     115    ROBERT SCHUG                             /S-MNTH /   0    /        / NET30 715-265-7112         15JUN98
+            P O BOX 44                           DOWNING WI  54734                                   $       121.72  $     1,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+   95731  15MAY98          20                 105.50      ** Paid **
+         Payment:  15JUN98                    105.50-
+  213450  15MAY98          31                  11.15      ** Paid **
+         Payment:  15JUN98                     11.15-
+  213781  01JUN98          31                   5.07      ** Paid **
+         Payment:  15JUN98                      5.07-
+  213917  09JUN98          31                  13.94           13.94
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          13.94                        13.94          .00          .00          .00          .00        .00
+------------------------------------------------------------------------------------------------------------------------------------
+    8601    RAYMOND SISLO                            /S-MNTH /   0    /        / CASH  715-269-5226         26JAN98
+            2201 200TH ST                        DEER PARK WI  54007                                 $       100.00  $         0
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+       4  24SEP94          92               1,741.68                                                               16.68     497.09
+         Payment:  28JAN95                     50.00-
+         Payment:  16MAY95                     50.00-
+         Payment:  14JUL95                    100.00-
+         Payment:  18AUG95                     50.00-
+         Payment:  23SEP95                    100.00-
+         Payment:  21NOV95                    100.00-
+         Payment:  01FEB96                     75.00-
+         Payment:  28MAR96                    100.00-
+         Payment:  05JUL96                    100.00-
+         Payment:  14AUG96                    100.00-
+         Payment:  28OCT96                    100.00-
+         Payment:  02DEC96                    100.00-
+         Payment:  02JAN97                    100.00-
+         Payment:  27JAN97                    100.00-
+         Payment:  27FEB97                    100.00-
+         Payment:  21MAY97                    100.00-
+         Payment:  01AUG97                    100.00-
+         Payment:  24SEP97                    100.00-
+         Payment:  26JAN98                    100.00-
+       3  24OCT94          92                  26.13                                                               26.13      16.02
+       2  23NOV94          92                  26.52                                                               26.52      16.40
+       1  23DEC94          92                  26.91                                                               26.91      16.40
+ 9999998  24JUN98          98                 545.91          545.91
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:         642.15                       545.91          .00          .00          .00        96.24     545.91
+------------------------------------------------------------------------------------------------------------------------------------
+    4020    WESLEY TUTTLE                            /S-MNTH /   0    /  000   / CASH      265-4302         07MAY98
+            3178 158TH AVE                       GLENWOOD CITY WI  54013                             $        75.00  $       500
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+   12293  02FEB98          41                 453.07                                                              218.07      21.47
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:   10
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+    4020    WESLEY TUTTLE    (Continued from previous page)
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+         Payment:  27APR98                     60.00-
+         Payment:  02MAY98                    100.00-
+         Payment:  07MAY98                     75.00-
+ 9999998  24JUN98          98                  21.47           21.47
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:         239.54                        21.47          .00          .00          .00       218.07      21.47
+------------------------------------------------------------------------------------------------------------------------------------
+    4132    VALUE IMPLEMENT                          /S-MNTH /   0    /        / NET30 715-684-3259         27MAY98
+            879 HWY 63 N                         BALDWIN WI  54002                                   $       193.39  $     3,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213833  03JUN98          31                  26.13           26.13
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          26.13                        26.13          .00          .00          .00          .00        .00
+------------------------------------------------------------------------------------------------------------------------------------
+    4240    WERNLUND WELDING                         /S-MNTH /   0    /  000   / NET30     684-2312         11JUN98
+            1170 6th AVE.                        BALDWIN WI  54002                                   $       518.09  $     5,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  213605  22MAY98          31                   6.30      ** Paid **
+         Payment:  11JUN98                      6.30-
+  213655  26MAY98          31                  50.92      ** Paid **
+         Payment:  11JUN98                     50.92-
+  213672  26MAY98          31                 440.57      ** Paid **
+         Payment:  11JUN98                    440.57-
+  213703  28MAY98          31                  14.46      ** Paid **
+         Payment:  11JUN98                     14.46-
+  213807  02JUN98          31                   2.90      ** Paid **
+         Payment:  11JUN98                      2.90-
+  213922  10JUN98          31                  25.91           22.97
+         Payment:  11JUN98                      2.94-
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          22.97                        22.97          .00          .00          .00          .00        .00
+------------------------------------------------------------------------------------------------------------------------------------
+     296    DAVID ZIEMER                             /S-MNTH /   0    /        / CASH  715-263-2887
+            2873 230TH AVE                       CLEAR LAKE WI  54005                                $          .00  $         0
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+  200604  15SEP97          31                  43.50                                                               43.50       5.88
+ 9999998  24JUN98          98                   5.88            5.88
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:          49.38                         5.88          .00          .00          .00        43.50       5.88
+------------------------------------------------------------------------------------------------------------------------------------
+    4390    DON ZIGNEGO                              /S-MNTH /   0    /  000   / CASH      698-2327         20APR98
+            2531 42ND AVE                        WOODVILLE WI  54028                                 $       300.00  $       200
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+    4928  19SEP96          11                 550.00                                                              173.61     160.80
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:   11
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+SORTED BY: Customer Name
+
+Customer #  Customer Name                        Status/Cycle/Salsprsn/Territory/Terms Phone #1       Last Pmt Date
+            Address                              City, State  Zip                      Phone #2        Last Pmt Amt    Credit Limit
+
+    4390    DON ZIGNEGO    (Continued from previous page)
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+         Payment:  20MAR98                     76.39-
+         Payment:  20APR98                    300.00-
+  178337  27SEP96          31                  15.77                                                               15.77       4.80
+  178501  30SEP96          31                  27.61                                                               27.61       8.23
+  179027  08OCT96          31                  21.40                                                               21.40       6.40
+  180589  31OCT96          31                  15.50                                                               15.50       4.40
+  180996  07NOV96          31                   5.47                                                                5.47       1.52
+    9319  08NOV96          41               1,029.92                                                            1,029.92     293.52
+    9608  06JAN97          41                 499.80                                                              499.80     127.50
+  184748  10JAN97          31               1,330.20                                                            1,330.20     339.18
+  187791  14MAR97          31                   9.16                                                                9.16       2.10
+  189005  10APR97          31                 679.00                                                              679.00     142.63
+  189358  16APR97          31                  37.14                                                               37.14       7.84
+    5338  17APR97          11                 195.00                                                              195.00      40.99
+  189648  21APR97          31                  10.25                                                               10.25       2.13
+  189922  23APR97          31                 287.50                                                              287.50      56.06
+  190366  28APR97          31                  17.25                                                               17.25       3.38
+  193589  05JUN97          31                  30.40                                                               30.40       5.52
+  197102  25JUL97          31                  52.65                                                               52.65       7.87
+  199088  21AUG97          31                   9.39                                                                9.39       1.40
+  200687  16SEP97          31                  40.75                                                               40.75       5.52
+  201939  04OCT97          31                  19.90                                                               19.90       2.40
+  203088  22OCT97          31                  58.62                                                               58.62       6.16
+  203594  28OCT97          31                   6.90                                                                6.90        .70
+  203819  31OCT97          31                   6.92                                                                6.92        .70
+  204126  05NOV97          31                  14.75                                                               14.75       1.54
+  206154  17DEC97          31                  65.49                                                               65.49       5.88
+  211440  30MAR98          31                  85.50                                                               85.50       1.92
+ 9999998  24JUN98          98               1,241.09        1,241.09
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:       5,986.94                     1,241.09          .00          .00          .00     4,745.85   1,241.09
+------------------------------------------------------------------------------------------------------------------------------------
+99999999    FINANCE CHARGE CUSTOMER                  /S-MNTH /   0    /  000   / CASH
+                                                                                                     $          .00  $     2,000
+
+   Inv # Inv Date DFC Date SJ FC Ind      Inv Amount         Current      Over 15      Over 30      Over 45     Over  60   Fin Chgs
+ 9999998  24JUN98          98                 244.42-         244.42-
+                                                        ------------ ------------ ------------ ------------ ------------ ----------
+          Total Balance:         244.42-                      244.42-         .00          .00          .00          .00        .00
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+                                                            (Continued)Date: 24JUN98                                          MEYER IMPLEMENT, INC.                                              Page:   12
+Time: 09:28                                 Accounts Receivable Detail Aging as of 24JUN98                                 (ARAGE-1)
+
+                                                             Current        Age 1        Age 2        Age 3        Age 4   Fin Chgs
+
+
+Customer Name Totals:         42,501.02                     9,361.22        58.05     3,265.33     1,170.72    28,645.70   7,198.09
+Percent of Total:                  100%                          22%           0%           8%           3%          67%
+
+
+Grand Totals:                 42,501.02                     9,361.22        58.05     3,265.33     1,170.72    28,645.70   7,198.09
+Percent of Total:                  100%                          22%           0%           8%           3%          67%
+
+
+                                                          (End of Report)

@@ -1,0 +1,119 @@
+
+The CPU screen displays statistics for a particular CPU, including a table
+of various rate statistics as well as mode of operation and on-board memory
+utilization bar graphs.  To display the screen for a particular CPU, press
+the number (0-f) that corresponds to the system slot number of that CPU.
+
+If there is a CPU and disk controller in the same slot, as is the case with
+the 68040 NuBus (TM) board, selecting the slot number will display the CPU
+screen. There is one exception to this: if the general screen is being 
+dislayed and only the disk controllers bar graphs are being displayed, then
+pressing the slot number will take you too the disk controller screen.
+If there is a disk controller in the same slot, pressing "u" at the CPU 
+screen will display the disk controller screen.
+
+The CPU utilization graph on the upper left side of the screen shows 
+the percentage of time the specified CPU is in the following modes of 
+operation:
+
+    USER   Shows the percentage of time the specified CPU spends executing 
+           code in a user process.
+
+    SYS    Shows the percentage of time the specified CPU spends executing 
+           code in the TI system kernel.
+
+    WAIT   Shows the percentage of time the specified CPU spends waiting 
+           for a resource to become available. Most wait time is spent 
+           waiting for I/O operations to complete.
+
+    IDLE   Shows the percentage of time the specified CPU is idle.
+
+The on-board memory utilization graph in the upper right corner of the screen 
+shows the percentages of memory utilization for the specified CPU, as computed 
+by the following formulas:
+
+    BufC (buffer cache)      = buffer cache memory allocated 
+                                                       / total physical memory
+
+    Proc (process memory)    = process memory allocated / total physical memory
+
+    SHM  (shared memory)     = shared memory allocated  / total physical memory
+
+    Kern (kernel memory)     = kernel memory allocated / total physical memory
+ 
+    Tot  (total used memory) = BufC + Proc + SHM + Kern / total physical memory
+
+Buffer cache memory reflects the amount of physical memory that is currently 
+allocated to the buffer cache.  This amount shrinks and grows, as physical
+memory moves back and forth from the VM system to the dynamic buffer cache.
+Process memory is the amount of physical memory currently being used by 
+processes text, data, and stack segments. Shared memory is the amount of 
+physical memory that has been allocated by shmget system calls.  Kernel memory 
+reflects all physical memory being used by the kernel including kernel text, 
+kernel data, kernel bss, kernel tables, kernel page tables, configurable 
+parameter memory, buffer headers, process page tables, user structures, and 
+kernel stacks.
+
+The table in the bottom of the screen shows the following rates and 
+statistics for the selected CPU:
+
+    Number of Processes   Shows the number of processes that are currently 
+        running on the selected CPU.
+
+    Number of Clones   Shows the number of clone processes produced by a 
+        fork(2) system call that are currently running on the selected CPU. 
+        A clone is a process that is a logical copy of another process.
+
+    Context Switches per Second   Shows the average number of times the CPU 
+        schedules a process each second.
+
+    Swap-Ins per Second   Shows the average number of requests per second 
+        to transfer data from the swap device.
+
+    Blks Swapped In per Second   Shows the average number of blocks 
+        transferred per second from the swap device as a result of a swap-in 
+        operation.
+
+    Swap-Outs per Second   Shows the average number of requests per second 
+        to transfer data to the swap device.
+
+    Blks Swapped Out per Second   Shows the average number of blocks 
+        transferred per second to the swap device as a result of a swap-out 
+        operation.
+
+    Page-Ins per Second   Shows the average number of requests per second 
+        by the virtual memory subsystem to transfer data into memory from
+        either the swap device or from executable files.
+
+    Blks Paged In per Second   Shows the average number of blocks 
+        transferred per second into memory as a result of a page-in 
+        operation.
+
+    Page-Outs per Second   Shows the average number of requests per second 
+        by the virtual memory subsystem to transfer data out of memory.
+
+    Blks Paged Out per Second   Shows the average number of blocks 
+        transferred per second out of memory as a result of a page-out 
+        operation.
+
+    Memory Load Factor   Shows the load on the memory system of this CPU.
+       
+            A Memory Load Factor below 100 indicate serious overload of 
+            the configured RAM for the current load and increasing RAM size 
+            can be expected to yield substantial performance improvement for
+            the current CPU.
+
+            A Memory Load Factor greater than 1000 indicates that the
+            configured RAM is adequate for the current load. Increasing RAM
+            size would not be expected to yield substantial performance
+            improvement. The configured RAM size may be larger than necessary
+            for the current load.
+
+            A Memory Load Factor greater than 100 and less than 1000 indicates
+            the intermediate range for memory load.  Generally, a Memory Load
+            Factor in this range indicates that the configured RAM size is
+            reasonable for the current load. Individual users will have 
+            different choices in the price/performance tradeoff, so the Memory
+            Load Factor should be used as a general guide for fine tuning the
+            price/performance tradeoff according to memory size.
+

@@ -1,0 +1,231 @@
+Date: 27JUN97                                         MEYER IMPLEMENT, INC.                                               Page:    1
+Time: 16:19                                  Surplus Analysis Report - Part                                             (PMSURPSA-1)
+Warehouse: 1D  MEYER IMPLEMENT, INC               Process Month - MAR 97
+
+
+Qty D Total                            Ext Cost     On  Bin            Ord R Last   Last   Last    YTD  Pkg                   Avg
+Ret P  Rtn  Part Number           CC   Avg Cost    Hand Loc    Src OFC Ind T Sale  12 Mon 24 Mon  Sales Qty PPP PIS   Cost    Cost
+--- - ----- --------------------- -- ----------- ------ ------ --- --- --- - ----- ------ ------ ------ --- --- --- -------- -------
+          1 AF2460R               12       36.51      1 RET-1  120   5  NS R NOV86      0      0      0   1   1   1    36.51   35.97
+            SWITCH                         35.97
+          1 AH75478               20       26.34      1 RET-1  080   5  AP R JAN87      1      2      1   1   1   1    26.34   26.34
+            PIVOT                          26.34
+          3 AL38238               12      120.06      3 RET-1  090   7     R MAY97      6      6      6   1   1   1    40.02   40.02
+            DISK, INNE                    120.06
+          0 AL55046               12        0.00      3 R-706  060   7  RB N OCT96      0      0      0   1   1   1    57.79   57.06
+            SOLENOID                        0.00
+          1 AM108820              20      444.11      1 RET-1  060   5  AP R JAN97      0      0      0   1   1   1   444.11  444.11
+            SHORT BLOC                    444.11
+          0 AM122867              20        0.00      0 P-015  100   D  RB N SEP96      0      0      0   1   1   1    20.44   19.84
+            SPINDLE                         0.00
+          1 AR47685               14       27.23      1 RET-1  120   5  NS R FEB97     -1     -1     -1   1   1   1    27.23   27.23
+            WIRING HAR                     27.23
+          0 AR51395               12        0.00      1 R-010  120   D     N APR97      6     12      1   1   1   1    11.82   11.70
+            CABLE                           0.00
+          0 AR54484               12        0.00      0 R-606  120   D  RB N MAY97      0      0      0   1   1   1    16.89   16.89
+            RELAY                           0.00
+          1 AR69266               20       41.41      0 RET-1  120   5  NS R MAR97      1      1      1   1   1   1    41.41   41.41
+            LINK                           41.41
+          3 AT103193              11       76.11      3 RET-1  050   5     R JAN97     -2     -2     -2   1   1   1    25.37   25.37
+            FILTER ELE                     76.11
+          1 AT117253              15       19.71      1 RET-1  050   5  NS R JAN97     -1     -1     -1   1   1   1    19.71   19.71
+            WIPER BLAD                     19.71
+          1 AT67960               11       20.23      1 RET-1  150   5  NS R JAN97     -1     -1     -1   1   1   1    20.23   20.23
+            FILTER ELE                     20.23
+          5 F2615R                15        7.50      5 RET-1  120   5  AP R FEB97      5      5      5   1   1   1     1.50    1.50
+            SHIM *                          7.50
+          1 H76033                20       34.03      1 RET-1  080   5  AP R JAN87      1      2      1   1   1   1    34.03   34.03
+            ARM                            34.03
+          1 L62161                11       15.03      1 RET-1  060   5  NS R MAR97      1      1      1   1   1   1    15.03   15.03
+            SEAL                           15.03
+          1 L62272                11       13.73      1 RET-1  060   5  NS R MAR97      1      1      1   1   1   1    13.73   13.73
+            SEAL                           13.73
+    *     2 R10020                15        7.76      2 RET-1  040   5  NS R MAR97      0      0      0   1   1   1     3.88    3.88
+            BUSHING                         7.76
+          1 R62807                20       77.82      1 RET-1  120   5  AP R DEC86      1      2      0   1   1   1    77.82   77.82
+            SHIFT COLL                     77.82
+          4 R65547                20        8.32      0 RET-1  120   5  RB D FEB97      0      0      0   2   1   1     2.08    2.08
+            TAPE                            8.32
+          1 RE14759               20       15.32      1 RET-1  150   5  AP R JAN87      0      1      0   1   1   1    15.32   15.32
+            LINE                           15.32
+          6 T21428                20       10.26      6 RET-1  150   5  NS R JAN87      6      6      6   3   1   1     1.71    1.71
+            DOWEL PIN                      10.26
+
+
+          Deleted List Totals                                               Running Totals
+          Items:            22                                              Items:                22
+          Value:      1,001.48                                              Value:          1,001.48
+      Avg Value:      1,000.94                                          Avg Value:          1,000.94
+
+                                                            (Continued)Date: 27JUN97                                         MEYER IMPLEMENT, INC.                                               Page:    2
+Time: 16:19                                  Surplus Analysis Report - Part                                             (PMSURPSA-1)
+Warehouse: 1D  MEYER IMPLEMENT, INC               Process Month - MAR 97
+
+
+Qty D Total                            Ext Cost     On  Bin            Ord R Last   Last   Last    YTD  Pkg                   Avg
+Ret P  Rtn  Part Number           CC   Avg Cost    Hand Loc    Src OFC Ind T Sale  12 Mon 24 Mon  Sales Qty PPP PIS   Cost    Cost
+--- - ----- --------------------- -- ----------- ------ ------ --- --- --- - ----- ------ ------ ------ --- --- --- -------- -------
+         36 11H260                00       14.76     36 US-CP  060   5  AP R FEB90      0      0      0   2   1   1     0.41    0.30
+            COTTER PIN                     10.80
+        300 19H1924               00       39.00    300 Y-100  060   5  AP R            0      0      0 100   1   1     0.13    0.12
+            CAP SCREW                      36.00
+         80 25H493                00        7.20     83 Q-GP   060   7  PI R JUN92      0      0      0  10   1   1     0.09    0.04
+            GROOVE PIN                      3.20
+        100 25H496                00        9.00    108 Q-GP   060   7  PI R AUG92      0      0      0  10   1   1     0.09    0.05
+            GROOVE PIN                      5.00
+         15 A39665                21       11.25     17 E-WAL  060   5  AP R MAY92      0      0      0   5   1   1     0.75    0.66
+            BOLT                            9.90
+          1 A41810                20       20.90      1 V-109  010   5  AP R            0      0      0   1   1   1    20.90   19.33
+            TUBE *                         19.33
+          1 A5623R                54       20.21      1 WC-07  130   5  NS R            0      0      0   1   1   1    20.21   17.28
+            GASKET                         17.28
+          1 AA15042               20        9.65      0 Q-PLDR 110   5  AP R MAY97      1      1      1   1   1   1     9.65    8.40
+            HYD  QUICK                      8.40
+          5 AA28271               14       51.75      4 M-203  010   5  NS R MAY97      1      1      1   1   1   1    10.35   10.22
+            BALL BEARI                     51.10
+          1 AA40212               12        8.73      1 D-830  010   5  NS R            0      0      0   1   1   1     8.73    8.27
+            CABLE                           8.27
+          1 AA40213               12        8.73      1 D-831  010   5  NS R            0      0      0   1   1   1     8.73    8.27
+            CABLE                           8.27
+          1 AA5192R               54       70.97      1 RET-1  120   5  NS R FEB87      0      0      0   1   1   1    70.97   70.97
+            STEERING G                     70.97
+         10 AC15055               15       12.00     11 E-410  070   5  AP R JUN92      0      0      0   5   1   1     1.20    0.74
+            PIN *                           7.40
+          1 AE36001               20       42.55      1 RET-1  070   5  NS R DEC86      0      0      0   1   1   1    42.55   42.55
+            DECAL KIT                      42.55
+          2 AE53853               20      248.54      2 Y-502  070   5  AP R            0      0      0   1   1   1   124.27  122.43
+            KIT                           244.86
+          2 AE53856                       226.76      2 H-119  070   5  AP R            0      0      0   1   1   1   113.38  111.70
+            KIT                           223.40
+          2 AE53857                       226.76      2 H-121  070   5  AP R            0      0      0   1   1   1   113.38  111.70
+            KIT                           223.40
+          2 AE53858               20      124.92      2 F-121  070   5  AP R            0      0      0   1   1   1    62.46   61.54
+            KIT                           123.08
+          2 AE54539                       231.70      2  F-19  070   5  NS R            0      0      0   1   1   1   115.85  114.14
+            KIT                           228.28
+          1 AF2143R               20        5.49      1 RET-1  130   5  AP R NOV86      0      1      0   1   1   1     5.49    5.41
+            RESISTOR                        5.41
+          1 AH138617              20        6.83      1 J-701  080   5  AP R AUG94      0      0      0   1   1   1     6.83    6.28
+            KIT                             6.28
+          1 AH89655               20        5.23      1 M-217  080   5  NS R            0      0      0   1   1   1     5.23    5.15
+            LOCKING CO                      5.15
+          1 AH97196               20       37.78      1 Y-UPS  080   5  NS R            0      0      0   1   1   1    37.78   37.22
+            SLAT                           37.22
+          2 AL63351               11       44.26      2 G-522  120   5  NS R JUN93      0      0      0   1   1   1    22.13   19.47
+            SEAL                           38.94
+          1 AL78869               11       37.26      1 Y-513  060   5  AP R            0      0      0   1   1   1    37.26   34.27
+            FILTER ELE                     34.27
+
+                                                            (Continued)Date: 27JUN97                                         MEYER IMPLEMENT, INC.                                               Page:    3
+Time: 16:19                                  Surplus Analysis Report - Part                                             (PMSURPSA-1)
+Warehouse: 1D  MEYER IMPLEMENT, INC               Process Month - MAR 97
+
+
+Qty D Total                            Ext Cost     On  Bin            Ord R Last   Last   Last    YTD  Pkg                   Avg
+Ret P  Rtn  Part Number           CC   Avg Cost    Hand Loc    Src OFC Ind T Sale  12 Mon 24 Mon  Sales Qty PPP PIS   Cost    Cost
+--- - ----- --------------------- -- ----------- ------ ------ --- --- --- - ----- ------ ------ ------ --- --- --- -------- -------
+          1 AL78870               11       19.25      1 Y-513  060   5  AP R            0      0      0   1   1   1    19.25   17.71
+            FILTER ELE                     17.71
+          1 AM108307              20       26.86      1 L-424  100   5  NS R            0      0      0   1   1   1    26.86   26.86
+            SHAFT                          26.86
+    *     1 AM33248               20       30.28      1 RET-1  040   5  NS R NOV86      0      0      0   1   1   1    30.28   30.28
+            BRACKET                        30.28
+          1 AN153119              11       13.71      1 C-734  110   7  PI R            0      0      0   1   1   1    13.71   13.51
+            FILTER ELE                     13.51
+          1 AR102766              52      105.25      1 RET-1  130   5  AP R JAN86      0      0      0   1   1   1   105.25  105.25
+            SOLENOID                      105.25
+          1 AR31945               14       10.09      1 E-605  120   5  NS R MAY93      0      0      0   1   1   1    10.09    8.50
+            KIT                             8.50
+          2 AR65448               20       90.06      2 Y-701  150   5  AP R JUN93      0      0      0   1   1   1    45.03   38.45
+            CUSHION                        76.90
+          2 AR65449               20      114.36      2 Y-731  150   5  AP R JUN93      0      0      0   1   1   1    57.18   49.13
+            CUSHION                        98.26
+          1 AR90840               14       21.04      1 R-609  120   7  PI R APR94      0      0      0   1   1   1    21.04   18.31
+            KIT                            18.31
+          1 AT42179               20      142.73      1 RET-1  150   5  NS R FEB87      0      0      0   1   1   1   142.73  142.73
+            METER                         142.73
+          2 AW24530               20       21.88      1 N-704  170   5  AP R MAR97      1      3      1   1   1   1    10.94   10.94
+            END                            21.88
+          1 B2897R                20       35.92      1 P-405  120   5  AP R            0      0      0   1   1   1    35.92   25.68
+            IMPELLER                       25.68
+          3 CH12206               20        8.67      3 S-501  060   5  AP R JUN94      0      0      0   1   1   1     2.89    2.45
+            KEY                             7.35
+          2 E32465                15        6.50      2 P-412  070   5  AP R JUN92      0      0      0   1   1   1     3.25    1.57
+            ABSORBER                        3.14
+          1 E40461                15       26.65      1 H-511  070   5  AP R            0      2      0   1   1   1    26.65   25.25
+            UNIVERSAL                      25.25
+          1 E62160                15       41.48      1 H-512  070   5  AP R            0      1      0   1   1   1    41.48   40.09
+            UNIVERSAL                      40.09
+          1 E63457                51        5.28      1 X-516  070   5  AP R            0      0      0   1   1   1     5.28    5.28
+            BELT                            5.28
+          8 EG246309              21        7.60      9 H-523  060   5  NS R SEP93      0      0      0   2   1   1     0.95    0.75
+            BOLT                            6.00
+          1 EG570221              51       36.57      1 X-605  060   5  AP R            0      1      0   1   1   1    36.57   36.57
+            BELT                           36.57
+         10 H1007B                20        9.80     10 K-303  010   5  AP R MAY94      0      0      0   2   1   1     0.98    0.76
+            SPRING                          7.60
+          1 H115759               11      108.17      1 X-515  080   5  AP R AUG93      0      0      0   1   1   1   108.17  104.01
+            BELT                          104.01
+          1 H125381               11       32.19      1 X-420  080   5  AP R            0      0      0   1   1   1    32.19   30.05
+            BELT                           30.05
+          1 H79789                11       45.43      2 Z-004  080   5  AP R OCT92      0      1      0   1   1   1    45.43   44.56
+            BELT                           44.56
+          1 JD3219                20       47.00      1 R-030  120   5  NS R            0      0      0   1   1   1    47.00   47.00
+            RIM                            47.00
+          4 JD5901                20       11.80      6 N-527  080   5  AP R APR94      1      1      0   2   1   1     2.95    1.94
+            REFLECTOR                       7.76
+
+                                                            (Continued)Date: 27JUN97                                         MEYER IMPLEMENT, INC.                                               Page:    4
+Time: 16:19                                  Surplus Analysis Report - Part                                             (PMSURPSA-1)
+Warehouse: 1D  MEYER IMPLEMENT, INC               Process Month - MAR 97
+
+
+Qty D Total                            Ext Cost     On  Bin            Ord R Last   Last   Last    YTD  Pkg                   Avg
+Ret P  Rtn  Part Number           CC   Avg Cost    Hand Loc    Src OFC Ind T Sale  12 Mon 24 Mon  Sales Qty PPP PIS   Cost    Cost
+--- - ----- --------------------- -- ----------- ------ ------ --- --- --- - ----- ------ ------ ------ --- --- --- -------- -------
+          1 JD9367                14       18.17      1 M-716  080   5  AP R AUG94      0      0      0   1   1   1    18.17   16.42
+            BALL BEARI                     16.42
+          2 L29197                12        5.36      3 K-410  060   5  AP R JUL94      0      0      0   2   1   1     2.68    2.25
+            THRUST WAS                      4.50
+          1 L33168                15       76.13      2 RET-1  090   5     R JUN97      0      0      0   1   1   1    76.13   76.13
+            DRUM                           76.13
+          3 M110588               15       36.48      3 RET-1  060   5  AP R FEB86      0      1      0   1   1   1    12.16   12.16
+            DRIVE DISK                     36.48
+    *     1 M73764                20        5.14      1 P-835  040   5  NS R            0      0      0   1   1   1     5.14    4.53
+            GEAR CASE                       4.53
+         10 P57925                00       12.40     10 H-423  290   5  AP R JUN94      0      0      0   1   1   1     1.24    1.14
+            CHAIN LINK                     11.40
+         10 P57928                00       21.20      0 H-324  220   5     R JUN94      0      0     10   1   1   1     2.12    2.12
+            KNIFE                          21.20
+          3 R100308               12        8.31      2 WC-21  120   5  AP R MAR97      1      1      1   1   1   1     2.77    1.61
+            GASKET                          4.83
+         12 R105379               20       62.52     12 RET-1  130   5  NS R JAN87      0      0      0   1   1   1     5.21    5.21
+            CAM FOLLOW                     62.52
+          1 R111906               14        5.86      1 WC-15  120   7  PI R MAY94      0      0      0   1   1   1     5.86    5.39
+            GASKET                          5.39
+          1 R43904                20       33.08      0 P-602  130   5  AP R JUN97      0      0      1   1   1   1    33.08   26.18
+            IMPELLER                       26.18
+          1 R52775                20        5.23      1 RET-1  120   5     R            0      0      0   1   1   1     5.23    5.23
+            FITTING                         5.23
+          1 RE34967               11       21.67      1 Y-522  060   5  AP R            0      0      0   1   1   1    21.67   20.53
+            FILTER ELE                     20.53
+         25 T23694                12        9.50     29 Q-SR   150   5  NS R AUG93      0      0      0  25   1   1     0.38    0.34
+            SNAP RING                       8.50
+          2 W22237                21       16.72      2 B-325  170   5  NS R JUL94      0      0      0   1   1   1     8.36    9.16
+            BOLT                           18.32
+          1 X6976                 54       68.78      1 S-407  130   5  AP R JUN93      0      0      0   1   1   1    68.78   51.22
+            ELECTRICAL                     51.22
+
+
+          Non-Deleted List Totals                                           Running Totals
+          Items:            66                                              Items:                88
+          Value:      2,947.35                                              Value:          3,948.83
+      Avg Value:      2,792.67                                          Avg Value:          3,793.61
+
+
+          Warehouse 1D Totals                                               Running Totals
+          Items:            88                                              Items:                88
+          Value:      3,948.83                                              Value:          3,948.83
+      Avg Value:      3,793.61                                          Avg Value:          3,793.61
+
+                                                           (End Of Report)

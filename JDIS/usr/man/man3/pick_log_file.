@@ -1,0 +1,40 @@
+PICK_LOG_FILE(3T)                               PICK_LOG_FILE(3T)
+
+NAME
+     pick_log_file - Selects an alternate file to contain
+     messages logged by the printm(3T) function
+
+SYNOPSIS
+     pick_log_file( filename )
+
+     char *filename;
+
+DESCRIPTION
+   Function
+     The pick_log_file routine appends error messages logged by
+     the printm routine to filename rather than to the standard
+     system error log file, /etc/SYS.ERR.LOG.
+
+   Parameters
+     filename
+            The name of the file that receives messages logged
+            after the pick_log_file routine is called.  Messages
+            logged prior to the routine call are logged to the
+            standard system error log file.
+
+            To log messages to the standard system error log file
+            after calling the pick_log_file routine, use the
+            following statement:
+
+            pick_log_file( (char*)NULL )
+
+EXAMPLE
+     The following statement, executed before a call to printm,
+     appends to /usr/customer/log any messages that are logged:
+
+          pick_log_file( "/usr/customer/log" )
+
+SEE ALSO
+     printm(3T).
+
+

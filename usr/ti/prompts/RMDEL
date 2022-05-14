@@ -1,0 +1,19 @@
+# cshf	rmdel--remove a delta from an SCCS file  
+#	@(#)RMDEL.sh	1.1  87/03/09
+# 
+onintr end
+
+prompt "^RMDEL -- REMOVE A DELTA FROM AN SCCS FILE"\
+       "^Input File Name(s):" _input_file macnm "$_input_file"\
+       "^Give Delta Version Number:" rflag string \
+       "^#$*"
+
+if ($abort) goto end
+if ($rflag != "") set opt = -r$rflag
+
+echo === RMDEL COMMAND EXECUTING === 
+echo rmdel $opt $_input_file
+rmdel $opt $_input_file
+
+end:
+unset *opt *flag

@@ -1,0 +1,72 @@
+*90530 18JUN98 08-00-0709-0709   08-00-0709-0709-WF1RS WF101169 MISC. DEBITS/CREDITS  080709                          199816905135978
+1   ** 18JUN98 ***************   08-00-0709-0709-WF1RS WF101169 MISC. DEBITS/CREDITS  080709
+1  DEBIT/CREDIT MEMO                       PAYABLE TO:              PAGE    1
+   DOCUMENT NUMBER:  D46493                JOHN DEERE COMPANY
+   DOCUMENT DATE:    17JUN98               MINNEAPOLIS, MN 554400855
+0  CHARGE/CREDIT TO:
+0  MEYER IMPLEMENT, INC.
+   RT 2  806 HWY 63N
+   BALDWIN        WI 54002
+0  ACCT NUMBER: 0709   DIV/TERR: 14
+
+   DESCRIPTION           QTY     SERIAL NBR      DUE DATE         AMOUNT DUE
++_______________________________________________________________________________
+-  PALLET CHARGES          1                                          420.00
+      FOR CHARGES ON ORDER FOR 30 BOX PALLETS @ $14.00 EACH.
+      PICKED UP AT MPLS BRANCH
+      DEERE CONTACT: HOWELL, KATHRYN
+      DEERE REFERENCE NUMBERS:
+      G/L # 36540000            INTERNAL RECORD #     050232
+
+
+
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0                              NON-TAXABLE         420.00
+                               TAXABLE (*)            .00
+                                                                      420.00
+0                                              TAX CHARGE                .00
+0
+                                               TOTAL                  420.00
+* 5 ** 18JUN98 08-00-0709-0709   08-00-0709-0709-9                                                                    199816917005452
+1 5 ** 18JUN98 ***************   08-00-0709-0709-9
+SHTSHAA        05000PP 0DISCONTINUED SWEEP       0000199812310000000000000000000000000000000000
+SDN182031     00000000000001
+* 5 ** 19JUN98 08-00-0709-0709   08-00-0709-0709-9                                                                    199817017011575
+1 5 ** 19JUN98 ***************   08-00-0709-0709-9
+SHSTAWA        00000PP 01998 TRAFFIC BUILDERS - N0000199808150000000000000000000000000000000000      Y
+SDPMDCO1998   00000000000024
+BAW  01MINIMUM ORDER QUANTITY IS 24.  PLEASE ORDER IN MULTIPLES OF 24.
+* 5 ** 19JUN98 08-00-0709-0709   08-00-0709-0709-9                                                                    199817017011575
+1 5 ** 19JUN98 ***************   08-00-0709-0709-9
+SHTSHAA        05000PP 0DISCONTINUED SWEEP       0000199812310000000000000000000000000000000000
+SDN182031     00000000000001
+*90530 17JUN98 08-00-0709-8376   08-00-0709-0709-SARRS SAR01168 SETTLEMENT AUDIT RPT  088376                          199816805252603
+1   ** 17JUN98 ***************   08-00-0709-8376-SARRS SAR01168 SETTLEMENT AUDIT RPT  088376
+1 RUNDATE: 17JUN98  SETTLEMENT JDCR   FOR BALDWIN       WI A4 8376 (L)   PG  1
+ *** DLR COPY              BY JDCRC    BATCH 36     ON  16JUN98
+ MEYER IMPLEMENT, INC.
+
+ TYPE   DREFER IT DESCRIPTION  SERIAL AMOUNT      EXTENDED  CURR   VOL  OFFICE T
+  DOC    C      #              NUMBER  OWED        TERMS    TERMS       USE    S
+
+ RNST   SC7932901 JD CREDIT CA            -22.15                        IBP JZ
+
+
+
+ MDM    MC7932901 JDCRCARD TRA             0.00   -22.15      0.00     0.00 X4
+
+
+ *** TOTALS FOR SETTLEMENT JDCR        -22.15      -22.15       0.00        0.00
+

@@ -1,0 +1,614 @@
+:               checkspace
+#     Check disk space growth requirements for a Release installation - ensure
+#     enough disk space for a successful install
+#  Rel 1.0      21DEC95      B.  Wolf      initial development
+#  Rel 2.0      05SEP96      B.  Wolf      modified for R962 to see if
+#                                          enough space to install R963
+#  Rel 972      21JUN97      B.  Wolf      modified for R972 to see if
+#                                          enough space to install R972
+#
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+TMPF1=${HOME}/TMPF1.$$;TMPF2=${HOME}/TMPF2.$$
+TMPF3=${HOME}/TMPF3.$$;TMPF4=${HOME}/TMPF4.$$
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+#ENTER THE DISK SPACE REQUIREMENTS BELOW - CORRECT SYNTAX & ACCURACY ARE A MUST!
+#   1.  TEMPORARY FILE GROWTH DURING THE INSTALL (syntax: file name,multiplier)
+cat << EOFEOF > ${TMPF1}
+@D1"AP/APCHK.INX",2
+@D1"AP/APHPMT.INX",2
+@D1"AP/APHIST.INX",2
+@D1"AP/APINV.INX",2
+@D1"AP/APPMT.INX",2
+@D1"AP/APREC.INX",2
+@D1"AP/APTRAN.INX",2
+@D1"AP/APVEND.INX",2
+@D1"AP/APVPAY.INX",2
+@D1"MF/ARAGE.INX",2
+@D2"MF/ATRANR",2
+@D1"MF/ARRCPT.INX",2
+@D2"MF/NOHEAD",2
+@D1"MF/ARHIST.INX",2
+@D1"MF/OARHPM.INX",2
+@D2"MF/OARHST.INX",2
+@D1"MF/AROINV.INX",2
+@D1"MF/AROPMT.INX",2
+@D2"MF/MTRANR",2
+@D1"MF/FPRECN.INX",2
+@D2"MF/MFSCHD.INX",2
+@D1"MF/FPTRAN.INX",2
+@D1"MF/PROWK",2
+@D2"MF/YTDSRC",2
+@D3"MF/CPEQUP.INX",2
+@D2"MI/CSTSL",2
+@D1"MI/INV",2
+@D3"MI/MIYEND.INX",2
+@D3"MI/ORDER.INX",2
+@D1"MI/ORDEN.INX",2
+@D1"MI/PMMNTH.INX",2
+@D1"MI/PRTEOM.INX",2
+@D3"MI/RCPTO.INX",2
+@D2"MI/SALEAN",2
+@D3"MI/PMSIMORD.INX",2
+@D3"MI/SKSTAT.INX",2
+@D1"MI/STPROG.INX",2
+@D3"CG/CGADDL.INX",2
+@D3"CG/CGEQUP.INX",2
+@D1"MS/PIPS.INX",2
+@D2"MS/SADIST",2
+@D1"MS/CLAIMS.INX",2
+@D2"SH/HIST.INX",2
+@D1"MS/MSEOM.INX",2
+@D2"MS/MSWOH.INX",2
+@D2"MS/MSWIP.INX",2
+@D2"MS/INVRG",2
+EOFEOF
+#   2.  PERMANENT FILE GROWTH AFTER THE INSTALL (syntax: file name,multiplier)
+cat << EOFEOF > ${TMPF2}
+@D1"MF/OARHPM.INX",2
+@D1"MF/AROPMT.INX",2
+@D3"MF/CPEQUP.INX",2
+EOFEOF
+#   3.  TEMPORARY DISK SPACE REQUIRED DURING THE INSTALL (directory, # of KB)
+cat << EOFEOF > ${TMPF3}
+/JDIS/PPROC,3500
+EOFEOF
+#   4.  PERMANENT DISK SPACE GROWTH AFTER THE INSTALL (directory, # of KB)
+cat << EOFEOF > ${TMPF4}
+/JDIS/PROG,1000
+EOFEOF
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+REL=972
+PASSCNT=0
+FAILCNT=0
+LOGFILE=/JDIS/PROG/CMN/SPACELOG
+JDISREL="97-2"
+PRMFILES=${HOME}/PRMFILES.$$
+TMPFILES=${HOME}/TMPFILES.$$
+TMPSPACE=${HOME}/TMPSPACE.$$
+PRMSPACE=${HOME}/PRMSPACE.$$
+# following sed script will convert the aspen synonyms @D1, @D2, and @D3 to
+# their respective values (i.e., /JDIS/DATA, /JDIS2/DATA, /JDIS3/DATA),
+# and also get rid of double slashes (//), as well as quotation marks (")
+SEDSCRIPT="-e s!@D1!${D1}! -e s!@D2!${D2}! -e s!@D3!${D3}! -e s!//!/!"
+SEDSCRIPT=${SEDSCRIPT}' -e s!"!! -e s!"!!'
+#  get platform type: HP-UX, XENIX, TI Sys V (convert to TI-UX)
+case `uname` in
+   HP-UX    )  PLATFORM=HP-UX;;
+   XENIX    )  PLATFORM=XENIX;;
+   *        )  PLATFORM=TI-UX;;
+esac
+#  since checkspace is to be run from aspen, screen clearing is not required
+# tput clear
+/bin/echo "      *********************************************************
+      *${PLATFORM}                  checkspace                   ${REL}*
+      *Ensure available disk space for installing Release ${JDISREL}*
+      *********************************************************"
+#    if user entered a command line argument, and if it's -c, do file cleanup
+if [ $# -eq 1 ];then
+   case $1 in
+   -c       )  /bin/echo "      Performing cleanup of checkspace files...\n\n"
+               rm ${HOME}/TMPFILES.* ${HOME}/PRMFILES.* > /dev/null 2> /dev/null
+               rm ${HOME}/TMPSPACE.* ${HOME}/PRMSPACE.* > /dev/null 2> /dev/null
+               rm ${HOME}/TMPF*      ${LOGFILE}         > /dev/null 2> /dev/null
+               /bin/echo "      Completed."
+               exit;;
+   *        )  /bin/echo "\n\n\n      Incorrect usage.  Invalid option used: '$1'."
+               exit;;
+   esac
+fi
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+#  Start: write out SPACELOG header record and general info
+touch ${LOGFILE}
+/bin/echo "%%> `date '+%d%h%y %H:%M'` checkspace ${REL} started for   Release ${JDISREL}\c" \
+        >> ${LOGFILE}
+/bin/echo "            `uname -n`
+            *** ALL DISK SPACE VALUES ARE IN 1K INCREMENTS ***
+       D1=${D1}               D2=${D2}        D3=${D3}" >> ${LOGFILE}
+#
+# for all 4 types of disk space growth requirements - (perm/temp space & files)
+# move info from temp files to new files, and get rid of blank lines (if any)
+rm -f ${TMPFILES} ${PRMFILES} ${TMPSPACE} ${PRMSPACE} > /dev/null 2> /dev/null
+cat ${TMPF1} | grep "/" > ${TMPFILES};cat ${TMPF2} | grep "/" > ${PRMFILES}
+cat ${TMPF3} | grep "/" > ${TMPSPACE};cat ${TMPF4} | grep "/" > ${PRMSPACE}
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+/bin/echo "      `date '+%d%h%y %H:%M:%S'`
+      1.  Determine current available disk space per filesystem...\c"
+/bin/echo "1. Check current state of filesystems: need at least 15% available to pass" \
+           >> ${LOGFILE}
+D1FILESYS=`/bin/echo ${D1} | awk -F/ '{print "/"$2}'`
+D2FILESYS=`/bin/echo ${D2} | awk -F/ '{print "/"$2}'`
+D3FILESYS=`/bin/echo ${D3} | awk -F/ '{print "/"$2}'`
+#       set flags for unique named file-systems
+if [ ${D2FILESYS} = ${D1FILESYS} ];then
+   D2UNIQUE=NO
+else
+   D2UNIQUE=YES
+fi
+case ${D3FILESYS} in
+   ${D1FILESYS}  )  D3UNIQUE=NO;;
+   ${D2FILESYS}  )  D3UNIQUE=NO;;
+   *             )  D3UNIQUE=YES;;
+esac
+rm -f ${TMPF1} ${TMPF2} ${TMPF3} ${TMPF4} > /dev/null 2> /dev/null
+#   NOTE: the following code tries to extract info about disk space from
+#         various commands (bdf, df).  A problem exists in trying to extract
+#         the unique line for a filesystem name.  If D1 is /JDIS, then lines
+#         containing /JDIS2 and /JDIS3 also contain the string /JDIS - this
+#         screws up the grep logic.  By using quoted strings, and appending
+#         a blank to the filesystem name, i.e. "/JDIS ", it is hoped this
+#         will differentiate the line for /JDIS from /JDIS2 and /JDIS3.
+#         FAIR WARNING: if D1, D2, and D3 have similar names (i.e. /JDIS,
+#         /JDIS2, and /JDIS3) it's possible that the logic won't work for
+#         all platforms.  As of now, using standard JDIS conventions for
+#         filesystem names, the following logic does work on all platforms.
+#
+#         (HP bdf has filesys name at end of line - need to append a " ")
+#         (XENIX reports in 512byte blocks; need to divide by 2 to convert to
+#          1kb blocks)
+#         (another HP note: put a " " before the filesys to make sure the
+#          correct line is selected)
+case ${PLATFORM} in
+   HP-UX    )  bdf | awk '{print $0" "}' >${TMPF1}
+               D1AVAIL=`grep " ${D1FILESYS} " ${TMPF1} | awk '{print $4}'`
+               D2AVAIL=`grep " ${D2FILESYS} " ${TMPF1} | awk '{print $4}'`
+               D3AVAIL=`grep " ${D3FILESYS} " ${TMPF1} | awk '{print $4}'`
+               D1TOTAL=`grep " ${D1FILESYS} " ${TMPF1} | awk '{print $2}'`
+               D2TOTAL=`grep " ${D2FILESYS} " ${TMPF1} | awk '{print $2}'`
+               D3TOTAL=`grep " ${D3FILESYS} " ${TMPF1} | awk '{print $2}'`
+               grep " ${D1FILESYS} " ${TMPF1} | sed 's/%//' | \
+               awk '{printf("%s %d %d %s\n",
+               $6, $4, 100-$5, 100-$5 < 15 ? " FAIL" : " PASS") }' > ${TMPF2}
+               if [ ${D2UNIQUE} = YES ];then
+                  grep " ${D2FILESYS} " ${TMPF1} | sed 's/%//' | \
+                  awk '{printf("%s %d %d %s\n",
+                  $6, $4, 100-$5, 100-$5 < 15 ? " FAIL" : " PASS") }' \
+                  >> ${TMPF2}
+               fi
+               if [ ${D3UNIQUE} = YES ];then
+                  grep " ${D3FILESYS} " ${TMPF1} | sed 's/%//' | \
+                  awk '{printf("%s %d %d %s\n",
+                  $6, $4, 100-$5, 100-$5 < 15 ? " FAIL" : " PASS") }' \
+                  >> ${TMPF2}
+               fi
+               ;;
+   TI-UX    )  df -t > ${TMPF1}
+               D1AVAIL=`grep "${D1FILESYS} " ${TMPF1} | awk '{print $3}'`
+               D2AVAIL=`grep "${D2FILESYS} " ${TMPF1} | awk '{print $3}'`
+               D3AVAIL=`grep "${D3FILESYS} " ${TMPF1} | awk '{print $3}'`
+               cat ${TMPF1} | awk 'BEGIN {save=" "}
+                 {if ($1 == "total:") {print save" "$2}
+                 else {save=$1} }' > ${TMPF3}
+               D1TOTAL=`grep "${D1FILESYS} " ${TMPF3} | awk '{print $2}'`
+               D2TOTAL=`grep "${D2FILESYS} " ${TMPF3} | awk '{print $2}'`
+               D3TOTAL=`grep "${D3FILESYS} " ${TMPF3} | awk '{print $2}'`
+               grep "${D1FILESYS} " ${TMPF1} | awk '{printf("%s %d ", $1, $3) }' \
+                  > ${TMPF2}
+               fsfmon -d | grep ${D1FILESYS} | sed 's/%//' | \
+                  awk '{printf("%d", 100-$4)
+                  if (100-$4 < 15) {print " FAIL"} else {print " PASS"}
+                  }' >> ${TMPF2}
+               if [ ${D2UNIQUE} = YES ];then
+                  grep "${D2FILESYS} " ${TMPF1} | \
+                     awk '{printf("%s %d ", $1, $3) }' >> ${TMPF2}
+                  fsfmon -d | grep ${D2FILESYS} | sed 's/%//' | \
+                     awk '{printf("%d", 100-$4)
+                     if (100-$4 < 15) {print " FAIL"} else {print " PASS"}
+                     }' >> ${TMPF2}
+               fi
+               if [ ${D3UNIQUE} = YES ];then
+                  grep "${D3FILESYS} " ${TMPF1} | \
+                     awk '{printf("%s %d ", $1, $3) }' >> ${TMPF2}
+                  fsfmon -d | grep ${D3FILESYS} | sed 's/%//' | \
+                     awk '{printf("%d", 100-$4)
+                     if (100-$4 < 15) {print " FAIL"} else {print " PASS"}
+                     }' >> ${TMPF2}
+               fi
+               ;;
+   XENIX    )  df -v > ${TMPF1}
+               D1AVAIL=`grep "${D1FILESYS} " ${TMPF1} | awk '{print $5}'`
+               D1AVAIL=`expr ${D1AVAIL} / 2`
+               D2AVAIL=`grep "${D2FILESYS} " ${TMPF1} | awk '{print $5}'`
+               D2AVAIL=`expr ${D2AVAIL} / 2`
+               D3AVAIL=`grep "${D3FILESYS} " ${TMPF1} | awk '{print $5}'`
+               D3AVAIL=`expr ${D3AVAIL} / 2`
+               D1TOTAL=`grep "${D1FILESYS} " ${TMPF1} | awk '{print $3}'`
+               D1TOTAL=`expr ${D1TOTAL} / 2`
+               D2TOTAL=`grep "${D2FILESYS} " ${TMPF1} | awk '{print $3}'`
+               D2TOTAL=`expr ${D2TOTAL} / 2`
+               D3TOTAL=`grep "${D3FILESYS} " ${TMPF1} | awk '{print $3}'`
+               D3TOTAL=`expr ${D3TOTAL} / 2`
+               grep "${D1FILESYS} " ${TMPF1} | sed 's/%//' | \
+               awk '{printf("%s %d %2d", $1, $5/2, 100-$6)
+                  if (100-$6 < 15) {print " FAIL"} else {print " PASS"}
+                  }' > ${TMPF2}
+               if [ ${D2UNIQUE} = YES ];then
+                  grep "${D2FILESYS} " ${TMPF1} | sed 's/%//' | \
+                  awk '{printf("%s %d %2d", $1, $5/2, 100-$6)
+                     if (100-$6 < 15) {print " FAIL"} else {print " PASS"}
+                     }' >> ${TMPF2}
+               fi
+               if [ ${D3UNIQUE} = YES ];then
+                  grep "${D3FILESYS} " ${TMPF1} | sed 's/%//' | \
+                  awk '{printf("%s %d %2d", $1, $5/2, 100-$6)
+                     if (100-$6 < 15) {print " FAIL"} else {print " PASS"}
+                     }' >> ${TMPF2}
+               fi
+               ;;
+esac
+PASSCNT=`cat ${TMPF2} | grep -c PASS`
+FAILCNT=`cat ${TMPF2} | grep -c FAIL`
+awk '{printf("%-35s     Avail:%-10d    Pct:%2d%s       %s\n",$1,$2,$3,"%",$4) }' \
+     ${TMPF2} >> ${LOGFILE}
+/bin/echo "done\n"
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+/bin/echo "
+2. Ensure temp space for install: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations" >> ${LOGFILE}
+/bin/echo "      `date '+%d%h%y %H:%M:%S'`
+      2.  Check temporary space required during installation......\c"
+D1CUMRQ=0
+D2CUMRQ=0
+D3CUMRQ=0
+for INPTLN  in `cat ${TMPSPACE}`;do
+   TMPFILESYS=`/bin/echo ${INPTLN} | awk -F'/' '{print "/"$2}'`
+   TMPSPACREQ=`/bin/echo ${INPTLN} | awk -F',' '{print $2}'`
+   TMPDIRNAME=`/bin/echo ${INPTLN} | awk -F',' '{print $1}'`
+   FLAG=0
+   case ${TMPFILESYS} in
+      ${D1FILESYS} )  TMPAVAIL=${D1AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D1AVAIL} - ${TMPSPACREQ} \) / ${D1TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D1AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D1AVAIL=`expr ${D1AVAIL} - ${TMPSPACREQ}`
+                         D1CUMRQ=`expr ${D1CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+      ${D2FILESYS} )  TMPAVAIL=${D2AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D2AVAIL} - ${TMPSPACREQ} \) / ${D2TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D2AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D2AVAIL=`expr ${D2AVAIL} - ${TMPSPACREQ}`
+                         D2CUMRQ=`expr ${D2CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+      ${D3FILESYS} )  TMPAVAIL=${D3AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D3AVAIL} - ${TMPSPACREQ} \) / ${D3TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D3AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D3AVAIL=`expr ${D3AVAIL} - ${TMPSPACREQ}`
+                         D3CUMRQ=`expr ${D3CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+   esac
+#      if all is OK add to PASSCNT;  else add to FAILCNT
+   if [ ${FLAG} -eq 0 ];then
+      PASSCNT=`expr ${PASSCNT} + 1`
+   else
+      FAILCNT=`expr ${FAILCNT} + 1`
+   fi
+   /bin/echo ${TMPDIRNAME} ${TMPSPACREQ} ${TMPAVAIL} ${NETPCT} ${FLAG} | \
+      awk '{printf("%-25sReq:%-10d Avail:%-10d NetPct:%2d%s       ",$1,$2,$3,$4,"%")
+            if ($5 > 0) {print "FAIL"} else {print "PASS"}
+           }' >> ${LOGFILE}
+done
+/bin/echo ${D1FILESYS} ${D1CUMRQ} ${D1AVAIL} | \
+   awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+if [ ${D2UNIQUE} = YES ];then
+   /bin/echo ${D2FILESYS} ${D2CUMRQ} ${D2AVAIL} | \
+      awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+fi
+if [ ${D3UNIQUE} = YES ];then
+   /bin/echo ${D3FILESYS} ${D3CUMRQ} ${D3AVAIL} | \
+      awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+fi
+/bin/echo "done\n"
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+/bin/echo "
+3. Check temp file size increases: actual space and min of 15% (net) available
+   *allocated & released per file, so NO deduction from available space
+       D1=${D1}               D2=${D2}        D3=${D3}" >> ${LOGFILE}
+D1CUMRQ=0
+D2CUMRQ=0
+D3CUMRQ=0
+/bin/echo "      `date '+%d%h%y %H:%M:%S'`
+      3.  Check temporary file size increases.....................\c"
+for INPTLN in `cat ${TMPFILES}`;do
+   EXPANDNAME=`/bin/echo ${INPTLN} | sed ${SEDSCRIPT}`
+   TMPFILESYS=`/bin/echo ${EXPANDNAME} | awk -F'/' '{print "/"$2}'`
+   TMPMULTIPL=`/bin/echo ${EXPANDNAME} | awk -F',' '{print $2}'`
+   TMPFILNAME=`/bin/echo ${EXPANDNAME} | awk -F',' '{print $1}'`
+#    if the file exists, process it; otherwise do special handling
+   if [ -f ${TMPFILNAME} ];then
+#          need to get current file size times multiplier (in 1k increments)
+      TMPSPACREQ=`ls -l ${TMPFILNAME} | awk '{print $5}'`
+      TMPSPACREQ=`expr 1 + ${TMPSPACREQ} \* ${TMPMULTIPL} / 1024`
+      FLAG=0
+      case ${TMPFILESYS} in
+      ${D1FILESYS} )  TMPAVAIL=${D1AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D1AVAIL} - ${TMPSPACREQ} \) / ${D1TOTAL}`
+                      if [ ${TMPSPACREQ}+0 -ge ${D1AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      ;;
+      ${D2FILESYS} )  TMPAVAIL=${D2AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D2AVAIL} - ${TMPSPACREQ} \) / ${D2TOTAL}`
+                      if [ ${TMPSPACREQ}+0 -ge ${D2AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      ;;
+      ${D3FILESYS} )  TMPAVAIL=${D3AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D3AVAIL} - ${TMPSPACREQ} \) / ${D3TOTAL}`
+                      if [ ${TMPSPACREQ}+0 -ge ${D3AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      ;;
+      esac
+#       gotta net out to at least 15% still available, or FAIL
+      if [ ${NETPCT}+0 -lt 15 ];then
+         FLAG=1
+      fi
+#      if all is OK add to PASSCNT, else add to FAILCNT
+      if [ ${FLAG} -eq 0 ];then
+         PASSCNT=`expr ${PASSCNT} + 1`;else
+         FAILCNT=`expr ${FAILCNT} + 1`
+      fi
+      /bin/echo ${INPTLN} ${TMPSPACREQ} ${TMPAVAIL} ${NETPCT} ${FLAG} | \
+         awk '{printf("%-25sReq:%-10d Avail:%-10d NetPct:%2d%s       ",$1,$2,$3,$4,"%")
+               if ($5 > 0) {print "FAIL"} else {print "PASS"}
+              }' >> ${LOGFILE}
+   else       # the file was not found - do special message (and PASS)
+      /bin/echo ${INPTLN} | \
+         awk '{printf("%-25s%-49sPASS\n",$1,"     ***NOT FOUND***")}' >> ${LOGFILE}
+         PASSCNT=`expr ${PASSCNT} + 1`
+   fi
+done
+/bin/echo ${D1FILESYS} ${D1CUMRQ} ${D1AVAIL} | \
+   awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+if [ ${D2UNIQUE} = YES ];then
+   /bin/echo ${D2FILESYS} ${D2CUMRQ} ${D2AVAIL} | \
+      awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+fi
+if [ ${D3UNIQUE} = YES ];then
+   /bin/echo ${D3FILESYS} ${D3CUMRQ} ${D3AVAIL} | \
+      awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+fi
+/bin/echo "done\n"
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+/bin/echo "
+4. Check perm file size increase: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations
+       D1=${D1}               D2=${D2}        D3=${D3}" >> ${LOGFILE}
+/bin/echo "      `date '+%d%h%y %H:%M:%S'`
+      4.  Check permanent file size increases.....................\c"
+D1CUMRQ=0
+D2CUMRQ=0
+D3CUMRQ=0
+for INPTLN in `cat ${PRMFILES}`;do
+   EXPANDNAME=`/bin/echo ${INPTLN} | sed ${SEDSCRIPT}`
+   TMPFILESYS=`/bin/echo ${EXPANDNAME} | awk -F'/' '{print "/"$2}'`
+   TMPMULTIPL=`/bin/echo ${EXPANDNAME} | awk -F',' '{print $2}'`
+   TMPFILNAME=`/bin/echo ${EXPANDNAME} | awk -F',' '{print $1}'`
+#    if the file exists, process it; otherwise do special handling
+   if [ -f ${TMPFILNAME} ];then
+#      need to get current file size times multiplier (in 1k increments)
+      TMPSPACREQ=`ls -l ${TMPFILNAME} | awk '{print $5}'`
+      TMPSPACREQ=`expr 1 + ${TMPSPACREQ} \* ${TMPMULTIPL} / 1024`
+      FLAG=0
+      case ${TMPFILESYS} in
+      ${D1FILESYS} )  TMPAVAIL=${D1AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D1AVAIL} - ${TMPSPACREQ} \) / ${D1TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D1AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D1AVAIL=`expr ${D1AVAIL} - ${TMPSPACREQ}`
+                         D1CUMRQ=`expr ${D1CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+      ${D2FILESYS} )  TMPAVAIL=${D2AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D2AVAIL} - ${TMPSPACREQ} \) / ${D2TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D2AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D2AVAIL=`expr ${D2AVAIL} - ${TMPSPACREQ}`
+                         D2CUMRQ=`expr ${D2CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+      ${D3FILESYS} )  TMPAVAIL=${D3AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D3AVAIL} - ${TMPSPACREQ} \) / ${D3TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D3AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D3AVAIL=`expr ${D3AVAIL} - ${TMPSPACREQ}`
+                         D3CUMRQ=`expr ${D3CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+      esac
+#      if all is OK add to PASSCNT;  else add to FAILCNT
+      if [ ${FLAG} -eq 0 ];then
+         PASSCNT=`expr ${PASSCNT} + 1`
+      else
+         FAILCNT=`expr ${FAILCNT} + 1`
+      fi
+      /bin/echo ${INPTLN} ${TMPSPACREQ} ${TMPAVAIL} ${NETPCT} ${FLAG} | \
+         awk '{printf("%-25sReq:%-10d Avail:%-10d NetPct:%2d%s       ",$1,$2,$3,$4,"%")
+               if ($5 > 0) {print "FAIL"} else {print "PASS"}
+              }' >> ${LOGFILE}
+   else     #     if file was not found do special message (and PASS)
+      /bin/echo ${INPTLN} | \
+         awk '{printf("%-25s%-49sPASS\n",$1,"     ***NOT FOUND***")}' >> ${LOGFILE}
+         PASSCNT=`expr ${PASSCNT} + 1`
+   fi
+done
+/bin/echo ${D1FILESYS} ${D1CUMRQ} ${D1AVAIL} | \
+   awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+if [ ${D2UNIQUE} = YES ];then
+   /bin/echo ${D2FILESYS} ${D2CUMRQ} ${D2AVAIL} | \
+      awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+fi
+if [ ${D3UNIQUE} = YES ];then
+   /bin/echo ${D3FILESYS} ${D3CUMRQ} ${D3AVAIL} | \
+      awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+fi
+/bin/echo "done\n"
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+/bin/echo "
+5. Check perm space increases: actual space and min of 15% (net) available
+   *if PASS, cummulative space WILL be deducted for subsequent calculations" >> ${LOGFILE}
+/bin/echo "      `date '+%d%h%y %H:%M:%S'`
+      5.  Check permanent space increases.........................\c"
+D1CUMRQ=0
+D2CUMRQ=0
+D3CUMRQ=0
+for INPTLN  in `cat ${PRMSPACE}`;do
+   TMPFILESYS=`/bin/echo ${INPTLN} | awk -F'/' '{print "/"$2}'`
+   TMPSPACREQ=`/bin/echo ${INPTLN} | awk -F',' '{print $2}'`
+   TMPDIRNAME=`/bin/echo ${INPTLN} | awk -F',' '{print $1}'`
+   FLAG=0
+   case ${TMPFILESYS} in
+      ${D1FILESYS} )  TMPAVAIL=${D1AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D1AVAIL} - ${TMPSPACREQ} \) / ${D1TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D1AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D1AVAIL=`expr ${D1AVAIL} - ${TMPSPACREQ}`
+                         D1CUMRQ=`expr ${D1CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+      ${D2FILESYS} )  TMPAVAIL=${D2AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D2AVAIL} - ${TMPSPACREQ} \) / ${D2TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D2AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D2AVAIL=`expr ${D2AVAIL} - ${TMPSPACREQ}`
+                         D2CUMRQ=`expr ${D2CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+      ${D3FILESYS} )  TMPAVAIL=${D3AVAIL}
+                      NETPCT=`expr 1 + 100 \* \( ${D3AVAIL} - ${TMPSPACREQ} \) / ${D3TOTAL}`
+                      if [ ${NETPCT}+0 -lt 15 ];then
+                         FLAG=1
+                      fi
+                      if [ ${TMPSPACREQ}+0 -ge ${D3AVAIL}+0 ];then
+                         FLAG=1
+                      fi
+                      if [ ${FLAG} -eq 0 ];then
+                         D3AVAIL=`expr ${D3AVAIL} - ${TMPSPACREQ}`
+                         D3CUMRQ=`expr ${D3CUMRQ} + ${TMPSPACREQ}`
+                      fi
+                      ;;
+   esac
+#      if all is OK add to PASSCNT;  else add to FAILCNT
+   if [ ${FLAG} -eq 0 ];then
+      PASSCNT=`expr ${PASSCNT} + 1`
+   else
+      FAILCNT=`expr ${FAILCNT} + 1`
+   fi
+   /bin/echo ${TMPDIRNAME} ${TMPSPACREQ} ${TMPAVAIL} ${NETPCT} ${FLAG} | \
+      awk '{printf("%-25sReq:%-10d Avail:%-10d NetPct:%2d%s       ",$1,$2,$3,$4,"%")
+            if ($5 > 0) {print "FAIL"} else {print "PASS"}
+           }' >> ${LOGFILE}
+done
+/bin/echo ${D1FILESYS} ${D1CUMRQ} ${D1AVAIL} | \
+   awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+if [ ${D2UNIQUE} = YES ];then
+   /bin/echo ${D2FILESYS} ${D2CUMRQ} ${D2AVAIL} | \
+      awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+fi
+if [ ${D3UNIQUE} = YES ];then
+   /bin/echo ${D3FILESYS} ${D3CUMRQ} ${D3AVAIL} | \
+      awk '{printf("%-22sCumReq:%-8dNetAvail:%-10d\n",$1,$2,$3)}' >> ${LOGFILE}
+fi
+/bin/echo "done\n"
+#  <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+#  final messages; intermix screen display and LOG msg's for expediency
+/bin/echo "      `date '+%d%h%y %H:%M:%S'`
+      checkspace has completed.  Final count is PASS:${PASSCNT}   FAIL:${FAILCNT}"
+/bin/echo "
+    checkspace has completed.  Final count is PASS:${PASSCNT}  FAIL:${FAILCNT}
+    The dealer will be advised to \c" >> ${LOGFILE}
+if [ ${FAILCNT} -eq 0 ];then
+   /bin/echo "      You have enough available disk space to proceed with the
+      installation of ${JDISREL}.  Be sure to run checkspace again just
+      before you actually install ${JDISREL}.\n\n\n"
+   /bin/echo "PROCEED with the install of ${JDISREL}" >> ${LOGFILE}
+else
+   /bin/echo "      You MAY not have enough available disk space to install ${JDISREL}.
+                                                               \n\n\n\n"
+   /bin/echo "free up disk space                  " >> ${LOGFILE}
+fi
+#  now write permanent (%%>) msg to the checkspace log file and
+#  to the release log file (want the msg to be left justified, with PASS/FAIL
+#  in columns 75-78)
+rm -f ${TMPF1} > /dev/null 2> /dev/null
+/bin/echo "%%> `date '+%d%h%y %H:%M'` checkspace ${REL} completed for Release ${JDISREL}" \
+       > ${TMPF1}
+if [ ${FAILCNT} -eq 0 ];then
+   /bin/echo "PASS" >> ${TMPF1}
+else
+   /bin/echo "FAIL" >> ${TMPF1}
+fi
+awk '{
+     if (NR = 1) {printf("%-74s",$0)} else {print $0}
+     }
+     END {print " "}
+     ' ${TMPF1} | tee -a ${LOGFILE} >> /usr/adm/JDISRLSE.log
+#   all done!  clean up and get out...
+rm -f ${TMPF1} ${TMPF2} ${TMPF3} ${TMPF4} > /dev/null 2> /dev/null
+rm -f ${TMPFILES} ${PRMFILES} ${TMPSPACE} ${PRMSPACE} > /dev/null 2> /dev/null
+#   since this script is invoked through aspen, no need to require c/r from
+#   user; aspen prompts with PRESS <ENTER>

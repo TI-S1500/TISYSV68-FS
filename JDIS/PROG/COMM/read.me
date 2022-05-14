@@ -1,0 +1,34 @@
+		Release Notes for UNIX BLAST II
+			16 March 1989	
+
+
+	This list of features is provided to clarify BLAST
+	operation under UNIX System V.3 :
+
+
+	1. When running BLAST from a non-ANSI terminal, the user
+	   may select the graphics characters for the BLAST
+	   menus. This feature is explained in the 'blast.tdf'
+	   file.
+
+	2. The DROP and RAISE commands affect BOTH DTR and RTS.
+	   This is a currently a limitation of System V.3.
+
+	3. The read-only script variables, @DCD and @CTS, do not
+	   reflect the current DCD and CTS signals.
+
+	4. File privileges are not preserved when editing files
+	   with the BLAST editor, blastedit.
+
+	5. When using the script command 'load' to load a new setup,
+	   enclose the setup file name to be loaded in double quotes.
+
+	6. Some versions of this product do not support "auto-disable"
+	   of communications ports. If your product does not include
+	   files named setgetty, mod_init and get_pid then you must
+	   disable the BLAST communications port from getty. See the
+	   BLAST Installation Manual for details.
+
+	7. Links to tty device names should no be used in Setups.
+	   Use the actual device name in the Comm Port field.
+

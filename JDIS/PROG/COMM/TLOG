@@ -1,0 +1,171 @@
+---------------------------------------------------------------------------
+          TPOLL COMMAND EXECUTED AT     09:30:49 04/23/97 DLR001
+          POLL modemset STARTED        09:30:55 04/23/97 DLR001
+          POLL modemset ENDED          09:31:10 04/23/97 DLR001
+          BLAST    SETUP STARTED       09:31:10 04/23/97 DLR001
+          BLAST    SETUP COMPLETE      09:31:11 04/23/97 DLR001
+          ------------------------------------------------
+          DPOLL2   STARTED             09:31:11 04/23/97 DLR001
+04/23/97 09:31:11 Executing DPOLLINT.EXT
+###############################################
+04/23/97 09:31:11 DPOLL2 STARTING
+04/23/97 09:31:11 Creating the DPOLLSYN file
+04/23/97 09:31:11 Creating the DPOLLRTN.EXT file
+04/23/97 09:31:11 Callnumber = 1 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+04/23/97 09:31:11 Deleting the DPOLL.LOG file
+===
+04/23/97 09:31:11 Create the DEALERID.DAT file:
+DLRNUM=0709
+UNITCODE=08
+DLRANSB=08000709
+TYPE=JDISPOLL
+VER=
+DATE=04/23/97
+TIME=09:31:11
+PLATFORM=
+===
+04/23/97 09:31:12 Create the EFF1.EFF file:
+DEALERID.DAT/T=TXT
+DEALER.EFF/T=TXT
+===
+04/23/97 09:31:12 Create the EFF2.EFF file:
+;BEGINNING FILE TRANSFER FROM DEALER
+/JDIS/PROG/COMM/TESTFILE.DAT/T=TXT TESTFILE.DAT/T=TXT
+;DLRPOLL COMPLETE
+===
+04/23/97 09:31:14 Delete the HOSTID.DAT & HOST.EFF files
+04/23/97 09:31:14 Status of file to be transmitted to John Deere:
+-rwxrwxrwx   1 DLR001   group      19440 Apr 22 18:38 /JDIS/PROG/COMM/DLR2JD.DAT
+04/23/97 09:31:14 Starting BLAST
+===============================================================
+===============================================================
+===============================================================
+04/23/97 09:31:22 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+04/23/97 09:31:22 * LOG * Calling dpoll now
+04/23/97 09:31:22 * LOG * ******************************************************
+04/23/97 09:31:22 * LOG * DPOLL.scr starting
+04/23/97 09:31:23 * LOG * @REC: !PASSWORD=08000709
+04/23/97 09:31:23 * LOG * TRPASSWD:  >>>08000709<<<
+04/23/97 09:31:26 * MNU * Online       * Connect
+04/23/97 09:31:31 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+04/23/97 09:32:17 * LOG * connect return status: 0
+04/23/97 09:32:17 * LOG * First eff starting
+04/23/97 09:32:20 * MNU * Online       * Filetransfer
+04/23/97 09:32:21 * LOG * ------------------------<< Entering BLAST Transfer Mode >>---------------------
+04/23/97 09:32:21 * LOG * ****  PC BLAST II 9.0.2 on remote system [uov]  ****
+04/23/97 09:32:24 * MNU * FileTransfer * File
+04/23/97 09:32:24 * PRM * enter filename: TRPASSWD.DAT
+04/23/97 09:32:26 * LOG * Password validated ... continue
+04/23/97 09:32:26 * LOG * Password validated ... continue
+04/23/97 09:32:26 * MNU * FileTransfer * File
+04/23/97 09:32:26 * PRM * enter filename: EFF1.EFF
+04/23/97 09:32:32 * LOG * HOSTID.DAT/T=TXT ... receive completed
+04/23/97 09:32:34 * LOG * DEALERID.DAT/T=TXT ... send completed
+04/23/97 09:32:40 * LOG * HOST.EFF/T=TXT ... receive completed
+04/23/97 09:32:40 * LOG * DEALER.EFF/T=TXT ... send completed
+04/23/97 09:32:40 * MNU * FileTransfer * <ESC>
+04/23/97 09:32:46 * LOG * ------------------------<< Exiting Transfer Mode >>----------------------------
+04/23/97 09:32:46 * LOG * First eff complete
+04/23/97 09:32:46 * LOG * The host id file was received ok
+04/23/97 09:32:46 * LOG * <*** start of file: HOSTID.DAT ***>
+04/23/97 09:32:46 * LOG * TPOLL
+04/23/97 09:32:46 * LOG * VER1
+04/23/97 09:32:46 * LOG * xxDATExx
+04/23/97 09:32:46 * LOG * xxTIMExx
+04/23/97 09:32:46 * LOG * Other infor here
+04/23/97 09:32:46 * LOG * <*** end of file ***>
+04/23/97 09:32:46 * LOG * Starting error-free file transfer
+04/23/97 09:32:49 * MNU * Online       * Filetransfer
+04/23/97 09:32:50 * LOG * ------------------------<< Entering BLAST Transfer Mode >>---------------------
+04/23/97 09:32:50 * LOG * ****  PC BLAST II 9.0.2 on remote system [uov]  ****
+04/23/97 09:32:53 * MNU * FileTransfer * File
+04/23/97 09:32:53 * PRM * enter filename: TRPASSWD.DAT
+04/23/97 09:32:54 * LOG * Password validated ... continue
+04/23/97 09:32:55 * LOG * Password validated ... continue
+04/23/97 09:32:55 * MNU * FileTransfer * File
+04/23/97 09:32:55 * PRM * enter filename: EFF2.EFF
+04/23/97 09:32:58 * LOG * BEGINNING FILE TRANSFER FROM DEALER
+04/23/97 09:33:00 * LOG * TESTSEND.DAT/T=TXT/OVW ... receive completed
+04/23/97 09:33:03 * LOG * /JDIS/PROG/COMM/TESTFILE.DAT/T=TXT TESTFILE.DAT/T=TXT ... send completed
+04/23/97 09:33:04 * LOG * DLRPOLL COMPLETE
+04/23/97 09:33:04 * MNU * FileTransfer * <ESC>
+04/23/97 09:33:08 * LOG * ------------------------<< Exiting Transfer Mode >>----------------------------
+04/23/97 09:33:08 * LOG * File transfer is complete
+04/23/97 09:33:08 * LOG * DISCONNECT
+04/23/97 09:33:08 * MNU * Online       * Disconnect
+04/23/97 09:33:09 * LOG * reps 2
+04/23/97 09:33:09 * LOG * .HANG11
+04/23/97 09:33:09 * LOG * wait 2
+04/23/97 09:33:11 * LOG * tsend "+++" 
+04/23/97 09:33:11 * LOG * ttrap 7, "OK" 
+04/23/97 09:33:12 * LOG * if @status = "0" goto .HANG20
+04/23/97 09:33:12 * LOG * wait 2
+04/23/97 09:33:14 * LOG * tsend "ATH", cr
+04/23/97 09:33:14 * LOG * ttrap 10, "OK", "NO CARRIER"
+04/23/97 09:33:16 * LOG * if @status = "0"
+04/23/97 09:33:16 * LOG * if reps goto .HANG11
+04/23/97 09:33:16 * LOG * return 1
+04/23/97 09:33:16 * LOG * end
+04/23/97 09:33:16 * LOG * .HANG12
+04/23/97 09:33:16 * LOG * reps 2
+04/23/97 09:33:16 * LOG * .HANG20
+04/23/97 09:33:16 * LOG * wait 2
+04/23/97 09:33:18 * LOG * tsend CR, "AT&F3\\Q1S0=0&W0", CR
+04/23/97 09:33:18 * LOG * ttrap 5, "OK"
+04/23/97 09:33:18 * LOG * if @status = "0"
+04/23/97 09:33:18 * LOG * tsend "+++"
+04/23/97 09:33:18 * LOG * wait 3
+04/23/97 09:33:18 * LOG * if reps goto .HANG20
+04/23/97 09:33:18 * LOG * return 1
+04/23/97 09:33:18 * LOG * end
+04/23/97 09:33:18 * LOG * wait 2 idle
+04/23/97 09:33:20 * LOG * return 0
+04/23/97 09:33:20 * LOG * display "modem disconnect complete"
+04/23/97 09:33:20 * LOG * modem disconnect complete
+04/23/97 09:33:20 * LOG * .EXIT
+04/23/97 09:33:20 * LOG * fopena 1,"/JDIS/PROG/COMM/DPOLLSYN"
+04/23/97 09:33:20 * LOG * fwrite 1,"S AS BLASTRC " @RTNCODE
+04/23/97 09:33:20 * LOG * fwrite 1,"*****endfile******"
+04/23/97 09:33:20 * LOG * fclose 1
+04/23/97 09:33:20 * LOG * display "Exiting blast"
+04/23/97 09:33:20 * LOG * Exiting blast
+04/23/97 09:33:20 * LOG * display "Exit code = " @RTNCODE
+04/23/97 09:33:20 * LOG * Exit code = 0
+04/23/97 09:33:20 * LOG * quit
+===============================================================
+===============================================================
+===============================================================
+04/23/97 09:33:22 BLAST has ended
+04/23/97 09:33:22 Status of file that was received from John Deere:
+No JD2DLR.DAT file found
+04/23/97 09:33:22 Dump of the DPOLLSYN file:
+S AS BLASTRC 999
+S AS BLASTRC 0
+*****endfile******
+04/23/97 09:33:22 The BLAST return code = 0
+04/23/97 09:33:22 Executing BLSTPARS
+****************************************************************
+blastpasre starting: Wed Apr 23 09:33:23 1997
+blastparse args: :/JDIS/PROG/COMM/BLSTPARS:DPOLL.LOG:DEALER.EFF:DEALER.NEW:HOST.EFF:SDF.FIL:BPARSE.FIL
+MATCH: 04/23/97 09:33:00 * LOG * TESTSEND.DAT/T=TXT/OVW ... receive completed
+
+MATCH: 04/23/97 09:33:03 * LOG * /JDIS/PROG/COMM/TESTFILE.DAT/T=TXT TESTFILE.DAT/T=TXT ... send completed
+
+The new eff-file:
+;BEGINNING FILE TRANSFER FROM DEALER
+;DLRPOLL COMPLETE
+JDSDF PROCESSING STARTING
+BEGINNING PATCHES not found in host.eff file
+blastparse: return code = 0
+sdf:        return code = 99
+04/23/97 09:33:23 The BLSTPARS return code = 0
+04/23/97 09:33:23 DPOLL2 exiting: Poll return code = 0
+                            JSDF return code = 99
+          DPOLL2   ENDED               09:33:23 04/23/97 DLR001
+          ------------------------------------------------
+          NUMBER OF CALLS MADE    CALL COUNT: 1
+          BLAST FILE TRANSFER    RETURN CODE: 0
+          TRANSMIT (DLR TO HOST) RETURN CODE: 0
+          RECEIVE  (HOST TO DLR) RETURN CODE: 0
+          JDSDF (JDIS SOFTWARE)  RETURN CODE: 99
+          ------------------------------------------------

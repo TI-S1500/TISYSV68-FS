@@ -1,0 +1,21 @@
+# cshf  showmsg -- explains system messages  
+#	@(#)SHOWMSG.sh	1.2  88/03/23
+#
+onintr end
+
+prompt "^SHOWMSG -- PRINTS THE EXPANDED MESSAGE FOR A GIVEN ERROR"\
+	"^Message Number:" tag_no integer \
+	"^*Message File:" msg_set acnm\
+	"^#$*"
+
+if ($abort) goto end
+if ($msg_set != "") set opt = -f" $msg_set"
+
+if ($abort) goto end
+echo "=== SHOWMSG COMMAND EXECUTING ==="
+echo showmsg $opt $tag_no
+showmsg $opt $tag_no
+
+#clean up time
+end:
+unset *opt msg_set tag_no

@@ -1,0 +1,101 @@
+#       @(#)rc  1.30 91/04/22
+
+set `who -r`
+if [ $7 = 2 ]
+then
+        # Set the site name
+        #
+        echo "Setting the site name"
+        /etc/setsite
+
+        # Check if a ROOTBKUP is being done.
+        #
+        /etc/BKUP_DIR/RBKUPCK # jdis
+
+        # Mount disks in appropriate places
+        #
+        echo "/dev/dsk/sys:root /" | /etc/setmnt
+        mountall
+
+        # Make device nodes for /dev/dsk/ram and /dev/rdsk/ram just in
+        # case they are missing.
+        #
+        mknod /dev/dsk/ram    b  9 0    >/dev/null 2>&1
+        chown bin /dev/dsk/ram          >/dev/null 2>&1
+        chgrp bin /dev/dsk/ram          >/dev/null 2>&1
+        chmod 600 /dev/dsk/ram          >/dev/null 2>&1
+
+        mknod /dev/rdsk/ram   c 49 0    >/dev/null 2>&1
+        chown bin /dev/rdsk/ram         >/dev/null 2>&1
+        chgrp bin /dev/rdsk/ram         >/dev/null 2>&1
+        chmod 600 /dev/rdsk/ram         >/dev/null 2>&1
+
+        size=`rdload -s`
+        if [ "$size" != "0" ]
+        then
+                echo "Creating ram disk\n"
+                mkfs -e /dev/dsk/ram "$size" 2>&1 > /dev/null
+                labelit -e /dev/dsk/ram ram TISysV 2>&1 > /dev/null
+                mount /dev/dsk/ram /ram
+                echo "Initializing ram disk\n"
+                rdload
+                sync
+                umount /dev/dsk/ram
+                mount /dev/dsk/ram /ram -r
+        fi
+        echo "\nDisks mounted."
+
+        # Set up error daemon reporting
+        #
+        /usr/lib/errdemon -c
+        echo "Error daemon started."
+
+        # Set up process accounting
+        #
+        #rm -f /usr/adm/acct/nite/lock*
+        #/bin/su - adm -c "/usr/lib/acct/startup" >/dev/null 2>&1
+        #echo "Process accounting started."
+
+        # Invoke ex/vi's session preservation notification
+        #
+        /usr/lib/expreserve -
+        echo "Expreserve notification performed for vi and ex."
+
+        # Set up system activity reporting.
+        #
+        #SA=/usr/adm/sa/sa`date +%d`
+        #OLDSA=/usr/adm/sa/OLDsa`date +%d`
+        #mv $SA $OLDSA >/dev/null 2>&1
+        #/usr/lib/sa/sadc $SA >/dev/null 2>&1
+        #mv /usr/adm/sulog /usr/adm/OLDsulog
+        #echo "System activity reporting started."
+
+        # Set up clock daemon
+        #
+        /etc/cron
+        echo "Cron started."
+
+        /etc/bdcast
+
+        # Cleanup
+        #
+        rm -f /tmp/* > /dev/null 2>&1
+        rm -f /usr/tmp/* > /dev/null 2>&1
+        rm -f /JDIS/tmp/* > /dev/null 2>&1
+        rm -f /usr/spool/uucp/LCK*
+        rm -f /usr/spool/uucp/ST*
+        cp /dev/null /etc/wtmp
+        echo "Cleanup performed."
+
+        /etc/update -t 20 -f /etc/update.open
+        echo "Update started."
+
+        /etc/mirupdate
+        echo "Mirupdate started."
+
+        /etc/fsfmon -c -l
+        echo "fsfmon started."
+
+        # Go for it!
+        echo "\n********** SYSTEM MULTI-USER `date` **********\n"
+fi

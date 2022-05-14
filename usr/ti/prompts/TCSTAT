@@ -1,0 +1,31 @@
+#cshf
+#	@(#)TCSTAT.sh	1.1 87/10/13
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1985.  ALL
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+#	ASSOCIATED DOCUMENTATION.
+# 
+onintr end
+prompt "^TCSTAT -- DISPLAYS TC STATUS "\
+       "^TC Name(s):" tcnames string All\
+       "^*Output Path Name:" out acnm\
+       "^#$*"
+
+if (! $abort) then
+  if ("$tcnames" == "All") then
+    if ($out == "") then
+      /usr/bin/tcstat
+    else
+      /usr/bin/tcstat > $out  
+    endif
+  else
+    if ($out == "") then
+      /usr/bin/tcstat $tcnames
+    else 
+      /usr/bin/tcstat $tcnames > $out
+    endif
+  endif
+endif
+end:

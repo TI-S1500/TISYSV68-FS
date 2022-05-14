@@ -1,0 +1,60 @@
+:
+# Print files written by COBOL have embedded Carriage Return and Line Feed
+# The tx editor can't handle files with Carriage Return.
+# This script was written inorder to prepare a "spool" file for tx edit.
+#
+# 07 February 1992 D. Lestor
+#
+if [ $# -lt 1 ]
+   then
+      /bin/echo "\n $0 - Edit a spool file  "
+      /bin/echo "\n Enter file name: \c"
+      read file
+      case "$file" in
+       "") # Nothing entered so exit
+           exit ;;
+        *) # Something entered so continue
+           ;;
+      esac
+else
+     file=$1
+fi
+#
+# Check to be sure you can read and write file
+if [ -r "${file}" ! -w "${file}" ]
+   then
+      tmp=/JDIS/tmp/sp-edit$$
+# Delete Carriage Returns from file
+      /bin/echo "\nConverting file, please wait...\c"
+      tr -d "[\015*]" <${file} >${tmp}
+      return_code=$?
+      if [ "${return_code}" != 0 ]
+      then
+         /bin/echo "\nERROR2 - A problem was detected during file conversion"
+         /bin/echo "Press Enter to Continue...\c"
+         read ans
+         exit_code=${return_code}
+         exit
+      fi
+# Rename output from tr command to original file
+      mv ${tmp} ${file}
+      return_code=$?
+      if [ "${return_code}" != 0 ]
+      then
+         /bin/echo "\nERROR3 - A problem was detected during file conversion"
+         /bin/echo "Press Enter to Continue...\c"
+         read ans
+         exit_code=${return_code}
+         exit
+      fi
+# Execute tx command
+      tx ${file}
+else
+   /bin/echo "\nERROR1 - You don't have permissions to read/write ${file} "
+   /bin/echo "Press Enter to Continue..\c"
+   read ans
+   exit_code=${return_code}
+   exit
+fi
+#
+unset exit_code

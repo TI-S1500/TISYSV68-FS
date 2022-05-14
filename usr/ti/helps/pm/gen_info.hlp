@@ -1,0 +1,78 @@
+
+The General Information screen includes a bar graph showing the current 
+utilization (Percent Busy) for each of the processor boards in the system, 
+which are identified by type and by slot number. The slot numbers appear in 
+hexadecimal format (0-f) on this screen. There can be as many as 16 bar
+graphs on the screen at one time.  If more than 16 bar graphs are needed, 
+the left and right arrow keys can be used to scroll the display. There are 
+also a number of commands that can be used at this screen to change the order
+of the bar graphs or which bar graphs are displayed. If the screen is 
+reordered, and you go to another screen then that order is maintained when
+"g" is used to return to the General Information screen.
+
+If there is a CPU and disk controller in the same slot, as is the case with
+the 68040 NuBus (TM) board, selecting the slot number will display the CPU
+screen. There is one exception to this: if only the disk controllers bar 
+graphs are being displayed, then pressing the slot number will take you to 
+the disk controller screen. 
+
+These graphs are described as follows:
+
+    CPU n   Shows the percentage of time the central processing unit (CPU) 
+            in slot n is busy executing code in a user process or in the 
+            TI System V kernel.
+
+    MSC n   Shows the percentage of time the mass storage controller (MSC) 
+            in slot n is busy servicing requests on its queue.
+
+    NPI n   Shows the percentage of time the NuBus (TM) peripheral interface 
+            (NUPI) in slot n is busy servicing requests on its queue.
+
+    NP2 n   Shows the percentage of time the NUPI-2 controller in slot n is
+            busy servicing requests on its queue.
+
+    CCB n   Shows the percentage of time the communications carrier board 
+            (CCB, CPO, or CP2) in slot n is busy servicing interrupts or has
+            requests outstanding.  An "NA" on the graph indicates that the
+            CCB is either not active or busy and cannot show the activity
+            level.
+
+Commands:
+
+    C  -  Display only the CPUs' bar graphs.
+
+    D  -  Display only the disk controllers' (NPI, MSC, and NP2) bar graphs.
+
+    N  -  Display only the communication carrier boards' (CCB) bar graphs.
+
+    S  -  Display all bar graphs in slot order from lowest to highest slot,
+          unless overriden by PM control file.  This is the default ordering.
+
+    G  -  Display all bar graphs grouped by functionality. All CPUs are 
+          displayed first, followed by all disk controllers' bar graphs, and 
+          then all communication carrier boards' (CCB) bar graphs.
+
+    right arrow  -  If there are more than 16 bar graphs and there are more 
+                    bar graphs on the right, then "->" will be displayed in
+                    the lower left corner of the screen. The right arrow
+                    key will move the display one bar graph to the right.
+
+    left arrow   -  If there are more than 16 bar graphs and there are more 
+                    bar graphs on the left, then "<-" will be displayed in
+                    the lower left corner of the screen. The left arrow
+                    key will move the display one bar graph to the left.
+
+          
+PM control file:
+
+   If the PM control file contains the following:
+
+        General Screen Order: xxxxxxxxxxx
+
+   where the x's are the slot numbers in hexidecimal in the order desired,
+   then that order will be used by "S" command and will be default when PM
+   is first activated.
+
+   Note: The PM control file is pointed to by the environment variable
+   "PM_CONTROL".
+

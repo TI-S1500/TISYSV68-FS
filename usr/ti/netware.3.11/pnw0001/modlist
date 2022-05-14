@@ -1,0 +1,3 @@
+echo " /unix
+/usr/sys/unix.new
+/usr/sys/pnw.lib" >>$1

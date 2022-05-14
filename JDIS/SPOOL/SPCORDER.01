@@ -1,0 +1,20 @@
+
+DATE: 11MAY1998                                        MEYER IMPLEMENT, INC.                                               PAGE:   1
+TIME: 12:03                                        CUSTOMER SPECIAL ORDER REPORT                                        (SPCORDER-1)
+                                                            WAREHOUSE 1D
+
+         ORD                       ORD  ORD      EXT   CUSTOMER  CUSTOMER              WO/DOC  SEG                  SHIP     DATE
+         QTY PART NUMBER   CC SRC  DATE TYP    WEIGHT   NUMBER     NAME                NUMBER  NUM  LINE  SLSPN     UNIT   RECEIVED
+
+           1 M84075        11 100 980511 C       0.53         7  STEVE GARDEN          39186D   00   002     6     _____   _______
+             BELT
+
+           1 M84136        11 100 980511 C       0.66         7  STEVE GARDEN          39186D   00   001     6     _____   _______
+             BELT
+
+           1 B3722R        14 060 980511 C       0.20      1205  MEYER, STANLEY        39187D   00   001     6     _____   _______
+             GASKET
+
+
+
+                                                          (End of Report)

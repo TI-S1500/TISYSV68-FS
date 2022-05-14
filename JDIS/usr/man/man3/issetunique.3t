@@ -1,0 +1,29 @@
+ISSETUNIQUE(3T)                                   ISSETUNIQUE(3T)
+
+NAME
+     issetunique - Sets the unique ID for the T-ISAM file
+
+SYNOPSIS
+     #include <isam.h>
+
+     int issetunique(tifd, uid)
+     int tifd;
+     unsigned long uid;
+
+DESCRIPTION
+     The issetunique function is the C-ISAM 2.1 interface to
+     tisetunique(3T).
+
+     The unique ID for the T-ISAM file indicated by tifd is set
+     to uid if uid is larger than the current unique ID held in
+     the file.  The unique ID is automatically incremented and
+     returned with an isuniqueid(3T) call.
+
+DIAGNOSTICS
+     On error, -1 is returned and iserrno, iserrio, isstat1, and
+     isstat2 are set.
+
+SEE ALSO
+     isuniqueid(3T), tisam(4), tisetunique(3T).
+
+

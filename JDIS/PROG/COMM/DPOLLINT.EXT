@@ -1,0 +1,11 @@
+*** This file contains poll initialization values
+***    (Version JDSDF)
+S AS SILENT "0"
+S AS JDLOAD "N"
+F EX /JDIS/PROG/COMM/SDFINT.EXT [END]
+#su sys000 -c 'chmod 777 /JDIS/PROG/COMM/SDFINT.EXT'
+& $/JDIS/PROG/COMM/SDFINT.EXT
+? @JDLOAD EQ "Y" [END]
+F DL /JDIS/PROG/COMM/SDFINT.EXT
+:END
+S DS JDLOAD

@@ -1,0 +1,5 @@
+T,C,PROMPT28,DESCRIPTION OF PROBLEM
+F,Sequence Number(11-99),6,7,0,,0,,1,2
+F,Work Order Number,8,13,1,,2,0,0,1
+F,Details,14,64,0,,1, ,0,1
+C,Control Data,1,5,1,,0,ZPW99,0,2

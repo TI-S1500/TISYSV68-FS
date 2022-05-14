@@ -1,0 +1,153 @@
+******************************************************************************
+* JSDF0116.INT- INSTALL OF PATCH 0116 -  LOADSPG.COB PROGRAMS FOR 97-2
+* 23MAR98  DHB
+* 14APR98 - ADD touch ON SURLSNW.SEQ
+******************************************************************************
+* 3-23-98 DB Created Batch
+/ CS
+/ DI (1,5) " JDIS SOFTWARE DISTRIBUTION FACILITY - # 0116"
+:CHKID
+? @USERID EQ "sys999" (CHKRLSE)
+/ DI (5,15) "YOU MUST BE LOGGED ON AS sys999 TO DO THIS UPDATE"
+/ PS
+{END}
+:CHKRLSE
+F EX /JDIS/PROG/REP/BDPMSORD.COB [CHKRLSE1]
+/ DI (5,15) "THIS PATCH DOES NOT APPLY TO RELEASE 98-1 DEALERS - EXITING"
+S AS INTGOOD "Y"
+#rm /JDIS/JDSDF/JSDF0116.DAT
+{WRGRLSE}
+*
+:CHKRLSE1
+#mkdir /once 2>>/dev/null
+#cd /JDIS/PROG/CMN
+#./library -e -l ASPENPRC.SYS -m SPGPOLL -f /once/SPGPOLL.EXT
+#./library -e -l ASPENPRC.SYS -m MFYTDFIX -f /once/MFYTDFIX.EXT
+S AS SDERR "RELEASE 97-2 PROD UPDATE #1 AND #2 MUST BE LOADED"
+# grep ^"24NOV97^" /once/SPGPOLL.EXT >>/dev/null 2>>/dev/null
+? @SYSRC EQ 0 [SOFERR]
+*
+S AS SDERR "RELEASE 97-2 PROD UPDATE #2 MUST BE LOADED"
+F EX /once/MFYTDFIX.EXT [SOFERR]
+*
+:PTAR
+#cd /JDIS/JDSDF
+$ JSDF0116.LOG A
+JSDF0116.DAT INSTALL START
+JSDF0116.DAT	*****	 SOFTWARE PATCH INSTALL - @DATE @TIME @USERID
+JSDF0116.DAT	*****	 Using tar to extract all patch members
+$$
+#mkdir /once 2>>/dev/null
+#mkdir /once/init4 2>>/dev/null
+#tar xf JSDF0116.DAT 2>>/dev/null
+F EX /once/init4/MSSPGA.COB (COPYPGM)
+S AS SDERR "tar extract failed"
+{SDFERR}
+*
+:COPYPGM
+S AS SDERR "error copying DFDLC750.COB to PROG/ESIS"
+#cp /once/init4/DFDLC750.COB /JDIS/PROG/ESIS/DFDLC750.COB
+? @SYSRC EQ 0 [SOFERR]
+S AS SDERR "error copying REPORT to DATA/RG"
+#cp /once/init4/REPORT @D1"RG/REPORT"
+? @SYSRC EQ 0 [SOFERR]
+F EX /JDIS/PROG/MS/MSCONTRL.COB [CHKMI]
+S AS SDERR "error copying MSPREV.COB to PROG/MS/MSPREV.COB"
+#cp /once/init4/MSPREV.COB /JDIS/PROG/MS/MSPREV.COB
+? @SYSRC EQ 0 [SOFERR]
+F EX /JDIS/PROG/MS/MSSPGA.POLL [REPCOB]
+F DL /JDIS/PROG/MS/MSSPGA.POLL
+S AS SDERR "error copying MSSPGA.COB to PROG/MS/MSSPGA.SPG"
+#cp /once/init4/MSSPGA.COB /JDIS/PROG/MS/MSSPGA.SPG
+? @SYSRC EQ 0 [SOFERR]
+{CONTCHK}
+:REPCOB
+S AS SDERR "error copying MSSPGA.COB to PROG/MS/MSSPGA.COB"
+#cp /once/init4/MSSPGA.COB /JDIS/PROG/MS/MSSPGA.COB
+? @SYSRC EQ 0 [SOFERR]
+:CONTCHK
+F EX /JDIS/PROG/MS/MSCONT.POLL [REPCOB2]
+F DL /JDIS/PROG/MS/MSCONT.POLL
+S AS SDERR "error copying MSCONT.COB to PROG/MS/MSCONT.SPG"
+#cp /once/init4/MSCONT.COB /JDIS/PROG/MS/MSCONT.SPG
+? @SYSRC EQ 0 [SOFERR]
+{CHKMI}
+:REPCOB2
+S AS SDERR "error copying MSCONT.COB to PROG/MS/MSCONT.COB"
+#cp /once/init4/MSCONT.COB /JDIS/PROG/MS/MSCONT.COB
+? @SYSRC EQ 0 [SOFERR]
+:CHKMI
+F EX /JDIS/PROG/MI/DFDPC550.COB [CHKSP]
+S AS SDERR "error copying LOADSPG.COB to PROG/MI/LOADSPG.COB"
+#cp /once/init4/LOADSPG.COB /JDIS/PROG/MI/LOADSPG.COB
+? @SYSRC EQ 0 [SOFERR]
+S AS SDERR "error copying PC510.COB to PROG/MI/PC510.COB"
+#cp /once/init4/PC510.COB /JDIS/PROG/MI/PC510.COB
+? @SYSRC EQ 0 [SOFERR]
+S AS SDERR "error copying PMPARTAD.COB to PROG/MI/PMPARTAD.COB"
+#cp /once/init4/PMPARTAD.COB /JDIS/PROG/MI/PMPARTAD.COB
+? @SYSRC EQ 0 [SOFERR]
+:CHKSP
+F EX /JDIS/PROG/SP/MSCOMFM.COB [LIBUP]
+#touch @D1"MS/SURLSNW.SEQ" 2>>/dev/null
+*
+:LIBUP
+#cd /JDIS/PROG/CMN
+#./library -r -m LOADSPG -l ASPENPRC.SYS -f /once/init4/LOADSPG.EXT
+#./library -r -m MSRNSPG -l ASPENPRC.SYS -f /once/init4/MSRNSPG.EXT
+:FINI
+#cd /JDIS/JDSDF
+$ JSDF0116.LOG A
+JSDF0116.DAT	***** SPG,MI
+$$
+*
+#rm -r /once/init4
+#rm /JDIS/JDSDF/JSDF0116.DAT
+:LOG
+$ JSDF0116.LOG A
+JSDF0116.DAT	*****	 cleanup complete
+JSDF0116.DAT INSTALL COMPLETE-NO ERRORS
+$$
+/ DI (12,5) "The JDSDF Installation of # 0116 is Complete"
+/ DI (16,5) "Perform a Program File Backup As Soon"
+/ DI (17,5) "As Possible."
+/ PS
+$ /usr/adm/JDISRLSE.log A
+%%>Dealer has Installed JDSDF Patch JSDF0116 JDUPDATE
+$$
+$ @D1"COMM/JDISINFO" A
+********** PATCH0116 INSTALLED ***********************************************
+$$
+S AS INTGOOD "Y"
+#echo "PATCH 0116 COMPLETE-NO ERRORS" >> /JDIS/PROG/CMN/SHOWSDF
+# { date; } >> /JDIS/currlse.log
+#echo "PATCH 0116 COMPLETE-NO ERRORS" >> /JDIS/currlse.log
+{END}
+*
+:SDFERR
+# { date; } >> /JDIS/currlse.log
+#echo "PATCH 0116 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/currlse.log
+#echo "PATCH 0116 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/PROG/CMN/SHOWSDF
+/ DI (5,5) "The JDSDF Software Installation FAILED With the Following Error:"
+/ DI (7,10) @SDERR
+/ DI (9,5) "Contact JDIS Support"
+/ DI "DO NOT Attempt to Setup for POLL Until the Problem is Resolved"
+/ DI "ALL Other Jobs/Processing Can Be Run as Normal"
+/ PS
+{END}
+:SOFERR
+# { date; } >> /JDIS/currlse.log
+#echo "PATCH 0116 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/currlse.log
+#echo "PATCH 0116 HAD ERRORS-DID NOT COMPLETE" >> /JDIS/PROG/CMN/SHOWSDF
+/ DI (5,5) "The JDSDF Software Installation was INCOMPLETE:"
+/ DI (7,10) @SDERR
+/ PS
+{END}
+:WRGRLSE
+# { date; } >> /JDIS/currlse.log
+#echo "PATCH 0116 NOT INSTALLED -DEALER ON 98-1" >> /JDIS/currlse.log
+#echo "PATCH 0116 NOT INSTALLED -DEALER ON 98-1" >> /JDIS/PROG/CMN/SHOWSDF
+/ PS
+:END
+S DS SDERR
+S DS RLSE

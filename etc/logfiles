@@ -1,0 +1,28 @@
+################################################################################
+#
+# logfiles - This file contains the list of log files that the "slog" utility
+#	     uses to create its main menu.  The System Administrator may
+#	     customize this file as needed by the following rules:
+#
+#		1.  All entries begin in column 1.
+#		2.  Comment lines begin with a "#" in column 1.
+#		3.  The display utility can be changed by setting PAGER
+#		    to the new display utility.
+#		4.  Use FULL logfile or log directory pathnames.
+#		    If the name does not exist, it will be ignored.
+#
+################################################################################
+
+PAGER=more
+/etc/conlog
+/usr/adm/errfile
+/etc/SYS.ERR.LOG
+/usr/adm/syslog
+/usr/adm/comlog
+/usr/adm/sulog
+/usr/spool/lp/logs
+/usr/spool/uucp/.Log
+/usr/ti/dnio/dniolog1
+/usr/ti/dnio/dniolog2
+/usr/ucs/pulog
+/usr/adm/loginlog

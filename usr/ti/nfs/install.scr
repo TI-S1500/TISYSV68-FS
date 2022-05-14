@@ -1,0 +1,19 @@
+
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1989.  ALL	
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	
+#	ASSOCIATED DOCUMENTATION.					
+#
+#
+
+echo "This install script is invoked from the NFS 3.2.4 installnfs"
+echo "script.  NFS 3.2.4 will not work with TI System V 3.3"
+echo ""
+echo "     WARNING     WARNING     WARNING      WARNING      "
+echo ""
+echo "     WARNING     WARNING     WARNING      WARNING      "
+echo ""
+echo "Do not attempt to make NFS 3.2.4 install on TI System V 3.3!"
+
+exit 100

@@ -1,0 +1,45 @@
+= lp01-817, uid 201, gid 50, size 19697, Tue Jan 19 09:47:38 1999
+z lp01
+C 1
+D lp01
+F /usr/spool/lp/temp/817-1
+P 20
+t simple
+U DLR001
+s 0x0010
+= lp01-818, uid 201, gid 50, size 708, Tue Jan 19 09:47:40 1999
+z lp01
+C 1
+D lp01
+F /usr/spool/lp/temp/818-1
+P 20
+t simple
+U DLR001
+s 0x0010
+= lp01-820, uid 201, gid 50, size 86489, Tue Sep 28 16:59:16 1999
+z lp01
+C 1
+D lp01
+F /usr/spool/lp/temp/820-1
+P 20
+t simple
+U DLR001
+s 0x0010
+= lp01-821, uid 201, gid 50, size 126174, Tue Sep 28 17:02:54 1999
+z lp01
+C 1
+D lp01
+F /usr/spool/lp/temp/821-1
+P 20
+t simple
+U DLR001
+s 0x0010
+= lp01-822, uid 201, gid 50, size 1349, Tue Sep 28 17:11:13 1999
+z lp01
+C 1
+D lp01
+F /usr/spool/lp/temp/822-1
+P 20
+t simple
+U DLR001
+s 0x0010

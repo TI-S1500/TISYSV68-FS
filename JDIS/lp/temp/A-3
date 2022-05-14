@@ -1,0 +1,17 @@
+Subject: Problem with printer lp05
+
+The printer lp05 has stopped printing for the reason given below.
+Fix the problem and bring the printer back on line.
+Printing has stopped, but will be restarted in a few minutes;
+issue an enable command if you want to restart sooner.
+Unless someone issues a change request
+
+	lp -i lp05-306 -P ...
+
+to change the page list to print, the current request will be reprinted from
+the beginning.
+
+The reason(s) it stopped (multiple reasons indicate repeated attempts):
+
+Failed to open the printer port.
+(No such device)

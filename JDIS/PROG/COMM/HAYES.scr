@@ -1,0 +1,102 @@
+#########################################
+# 5/16/94 - R95-1 - C.G.KOLWEY - disable autoanswer in HANG, ttrap CONNECT 120
+#                                set @logfile
+:Hayes
+#
+#       DIAL the remote system
+#
+.DIAL
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0       # if still no number quit
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        reps 3
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDT",@phoneno,CR             # dial the phone
+        ttrap 120 "CONNECT","NO CARRIER","BUSY"
+        if @status = "1" return 0               # return TRUE if CONNECT
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        set @retlbl = "HANGUP"                  # setup for return from init
+        reps 3
+.HANG10
+        goto .INIT                              # force modem to known state
+.HANG11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .HANG10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.HANG20
+        tsend "ATH",CR                       # already at command mode?
+        ttrap 5 "OK", "NO CARRIER"
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        wait 6                                  # add wait for slow modems
+        tsend "ATE0Q1S0=0", CR                  # set modem to:
+                                                #       no echo (E0)
+                                                #       quiet (Q1)
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        reps 3
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        set @logfile = @logfile
+        ttrap "CONNECT"                         # wait for connection
+        return 0                                # return success only
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # set for unsuccessful init
+        tsend "ATE1V1Q0X1S0=1", CR              # set modem to:
+                                                #       echo (E1)
+                                                #       verbose (V1)
+                                                #       nonquiet (Q0)
+                                                #       extended results (X1)
+                                                #       answer on 1st ring (S0=1)
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                tsend "ATE1V1Q0X1S0=1", CR      # set modem as above
+                ttrap 2 "OK"                    # is modem awake ?
+        end
+        tsend "ATX4", CR                        # set extended results if possible
+        ttrap 2 "OK","ERROR"                    # wait for response
+        if @status not = "0" set @retval = "0"  # set success
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.END

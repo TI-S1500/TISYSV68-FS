@@ -1,0 +1,11 @@
+	lexical - Lexical Analysis Tools Menu
+		@(#)lexical.sh	1.1 87/03/09
+
+	The Lexical Commands Menu lists tools used to create
+	   source files for lexical analyzers and parsers.
+
+	Lexical analyzers find patterns in a program and convert 
+	   these patterns into meaningful values or tokens.  Parsers 
+	   are to convert meaningful sequences of tokens and values 
+	   into actions. 
+

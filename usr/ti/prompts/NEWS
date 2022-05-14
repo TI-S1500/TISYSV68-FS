@@ -1,0 +1,19 @@
+# cshf  news -- print news items 
+#	@(#)NEWS.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^NEWS -- PRINT NEWS ITEMS"\
+	"^Print All Items:" aflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+
+if ($aflag == "y") set aopt = -a
+
+echo "=== NEWS COMMAND EXECUTING ==="
+echo news $aopt 
+news $aopt 
+
+end:
+unset *flag *opt

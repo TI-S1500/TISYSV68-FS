@@ -1,0 +1,43 @@
+#ident	"@(#)uucp:Devices	2.6"
+#
+# NOTE - all lines must have at least 5 fields, use '-' for unused fields.
+# The Devices file is used in conjunction with the Dialers file.
+# Types that appear in the 5th field must be either built-in
+# functions (801, TLI, TLIS) or standard functions whose name
+# appears in the first field in the Dialers file.
+#
+# ---Standard modem line
+#
+# ACU tty18 - 1200 penril
+#
+# ---A direct line so 'cu -ltty18' will work
+#
+# Direct tty18 - 4800 direct
+#
+# ---Access a direct connection to a system
+#
+# systemx tty00 - Any direct
+#
+#	The Systems file entry looks like:
+#
+# systemx Any systemx 1200 -  "" in:-\r\d-in: nuucp word: nuucp
+#
+#	(The third field in Systems matches the first field in Devices.)
+#
+# ---Transport Interface
+#	To use a STREAMS network that conforms to the Transport Interface
+#	with a direct connection to login service
+#
+# networkx,e devicex - - TLIS
+#
+#	The Systems file entry looks like:
+#
+# systemx Any networkx - addressx in:--in: nuucp word: nuucp
+#
+#	You must replace systemx, networkx, addressx, and devicex with system
+#	name, network name, network address and network device, respectively.
+#
+# NOTE: Blank lines and lines that begin with a <space>, <tab>, or # are 
+#	ignored.  Protocols can be specified as a comma-subfield of the device
+#	type either in the Devices file (where device type is field 1)
+#	or in the Systems file (where it is field 3).

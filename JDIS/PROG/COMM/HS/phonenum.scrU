@@ -1,0 +1,37 @@
+# phonenum.scr:
+# HIGH SPEED MODEM PROJECT
+#
+        set @ATTEMPTS = "0"
+.LOOP
+        if @ATTEMPTS = "3" quit 1               # quit after 3 attempts
+        let @ATTEMPTS = @ATTEMPTS + "1"
+#
+        tsend "AT&F3\\Q1&W0", CR      # set saved options to factory async dial
+        ttrap 2 "OK"                  # DTE/DTC flow control: XON/XOFF
+#
+        wait 3
+        tsend "AT&Z1=18006380425", CR
+        ttrap 2 "OK"
+#
+        wait 3
+        tsend "AT&Z2=9,18006380425", CR
+        ttrap 2 "OK"
+#
+        wait 3
+        tsend "AT", CR                          # is modem awake ?
+        ttrap 2 "OK"
+        if @status not = "1"
+                wait 3
+                tsend "+++"                     # nope, break into cmd mode
+                ttrap 2 "OK", "NO CARRIER"
+                if @status = "0"                # awake yet ?
+                        drop                    # nope, try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                goto .LOOP                      # go try again
+        end
+#
+        quit 0
+.END

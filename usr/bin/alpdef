@@ -1,0 +1,495 @@
+#!/bin/sh
+###########################################################################
+# Program:      /usr/bin/termite
+# Author:       Martin Meier, JDIS Research, February 26, 1996
+# Input:        printon - initializes attached printing on TERMiTE terminal
+#               printck - checks /etc/alpcaps,alpdefs for correct information
+#               variable $1 passed during command 'termite printon'
+# Files used:   /usr/bin/termite /etc/alpcaps /etc/alpdefs
+# Fuction:      adds one line to /etc/alpcaps, calls /etc/mkalp -r to remove 
+#               previous alp device, /etc/mkalp to make new device based on
+#               added TERMITE line in /etc/alpcaps.  Calls /etc/initald -d 
+#               (hp) and initterm p (TI) to initialize new definitions
+# Version:      02/26/96: MM    Initital Version
+#               04/07/96: MM    tests tty device major number
+#               11/13/96: SPM   change scripts for readability
+#               12/16/96: SPM   check for printer already defined to device
+#               02/27/97        fixes for TI Unix
+###########################################################################
+
+
+###########################################################################
+# Procedure:    Initvar
+# Function:     to initalize all global variables used throughout the 
+#               program.  Initvar will also do preliminary checks to make
+#               sure proper information was inputed
+###########################################################################
+initvar()
+{
+        debugfile=/tmp/termite.debug
+        tm_tempfile=/tmp/termite.$$
+        if [ -f $debugfile ]
+        then
+                set -x
+        fi
+        alpdef_file=/etc/alpdefs
+        if [ ! -f $alpdef_file ]
+        then 
+                echo "ERROR: $alpdef_file does not exist!"
+                error_out 1
+        fi
+        alpcap_file=/etc/alpcaps
+        if [ ! -f $alpcap_file ]
+        then 
+                echo "ERROR: $alpcap_file does not exist!"
+                error_out 1
+        fi
+        mtype=`uname -m | cut -c6-8`
+        OS=`uname -s | cut -c1-2`
+        tty_id=/dev/$1
+        tty_base=$1
+        if [ $option = "-a" ]
+        then
+                printer_name=$2
+        fi
+        if [ ! -c $tty_id ]
+        then
+                echo "ERROR: The device $tty_id does not exist!"
+                error_out 1
+                exit 1
+        fi
+        dev_id=`echo $1 | sed 's/tty//'`
+        alp_dev=/dev/alp${dev_id}
+        alp_nm=alp${dev_id}
+        case $OS in
+                HP)  lpshut_grep=not;;
+                TI)  lpshut_grep=stopped;;
+        esac
+}
+
+
+###########################################################################
+# Procedure:    program_setup
+# Function:     This procedure is to check the credibility of the input by
+#               the user.  It will check to see if the device is valid tty
+#               device and whether it is a network or serial device id.
+###########################################################################
+program_setup()
+{
+        if [ -f $debugfile ]
+        then
+                set -x
+        fi
+        lpstat -s | grep "for $printer_name" > /dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                echo "ERROR: lp $printer_name already exists!"
+                error_out 1
+        fi
+        lpstat -s | grep $alp_dev >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                echo "ERROR: printer already exists for device $tty_id!"
+                error_out 1
+        fi
+        grep "tm termite:" $alpcap_file >/dev/null 2>&1
+        if [ $? != 0 ]
+        then
+                echo 'tm termite: bb=\E[5i eb=\E[4i pr=\\0 sz=132 rt=100' >> $alpcap_file
+        fi
+        /usr/lib/lpshut >>$tm_tempfile 2>>$tm_tempfile
+        if [ $? != 0 ]
+        then
+                grep $lpshut_grep $tm_tempfile >/dev/null 2>/dev/null
+                if [ $? != 0 ]
+                then
+                        echo "ERROR: unable to shutdown print schedular"
+                        error_out 2
+                fi
+        fi
+}
+
+
+###########################################################################
+# Procedure:    remove_TI
+# Function:     This function is to perform the tasks needed to remove a 
+#               printer from TI system.  This procedure will perform all   
+#               nessecary checks.
+###########################################################################
+remove_TI()
+{
+        if [ -f $debugfile ]
+        then
+                set -x
+        fi
+        lpstat -s | grep $alp_dev > /dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                lpstat_output=`lpstat -s | grep $alp_dev`
+                printer_name=`echo $lpstat_output | sed 's/device for //'| sed 's/: \/dev\/alp'${dev_id}'//'`
+                /usr/lib/lpshut >>$tm_tempfile 2>>$tm_tempfile
+                if [ $? != 0 ]
+                then
+                        grep $lpshut_grep $tm_tempfile >/dev/null 2>/dev/null
+                        if [ $? != 0 ]
+                        then
+                                echo "ERROR: unable to shutdown print schedular"
+                                error_out 2
+                        fi
+                fi
+                echo "Printer $printer_name removed from print spooler successfully!"
+                /usr/lib/lpadmin -x${printer_name}
+                if [ $? != 0 ]
+                then
+                        echo "ERROR: Unable to remove printer from spooler"
+                        error_out 2
+                fi
+        fi
+        if [ ! -c $alp_dev ]
+        then
+                echo "ERROR: $tty_dev does not have an attached printer setup"
+                exit 1
+        fi
+        if [ -c $alp_dev ]
+        then
+                devadm -r lp $alp_nm 
+                if [ $? != 0 ]
+                then
+                        echo "ERROR: Unable to remove device file $alp_dev"
+                        error_out 3
+                fi
+                echo "Device $alp_dev was removed from the system successfully!"
+        fi
+        /usr/lib/lpsched >/dev/null 2>&1
+        if [ $? != 0 ]
+        then
+                echo "ERROR: Unable to start print spooler"
+                exit 1
+        fi
+        if [ -f $tm_tempfile ]
+        then
+                rm -f $tm_tempfile
+        fi
+}
+
+
+###########################################################################
+# Procedure:    remove_HP
+# Function:     This function is to perform the tasks needed to remove a 
+#               printer from HP system that is running 9.x.  This procedure
+#               will perform all nessecary checks.
+###########################################################################
+remove_HP()
+{
+        if [ -f $debugfile ]
+        then
+                set -x
+        fi
+        lpstat -s | grep $alp_dev > /dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                lpstat_output=`lpstat -s | grep $alp_dev`
+                printer_name=`echo $lpstat_output | sed 's/device for //'| sed 's/: \/dev\/alp'${dev_id}'//'`
+                /usr/lib/lpshut >>$tm_tempfile 2>>$tm_tempfile
+                if [ $? != 0 ]
+                then
+                        grep $lpshut_grep $tm_tempfile >/dev/null 2>/dev/null
+                        if [ $? != 0 ]
+                        then
+                                echo "ERROR: unable to shutdown print schedular"
+                                error_out 1
+                        fi
+                fi
+                /usr/lib/lpadmin -x${printer_name}
+                if [ $? != 0 ]
+                then
+                        echo "ERROR: Unable to remove printer from spooler"
+                        error_out 1
+                fi
+                echo "Printer $printer_name removed from print spooler successfully!"
+        fi
+        if [ ! -c $alp_dev ]
+        then
+                echo "ERROR: $tty_dev does not have an attached printer setup"
+                error_out 1
+        fi
+        if [ -c $alp_dev ]
+        then
+                /etc/mkalp -r$alp_dev
+                if [ $? = 2 ]
+                then
+                        echo "ERROR: Unable to remove device file $alp_dev"
+                        error_out 3
+                fi
+                echo "Device $alp_dev was removed from the system successfully!"
+        fi
+        /usr/lib/lpsched >/dev/null 2>&1
+        if [ $? != 0 ]
+        then
+                echo "ERROR: Unable to start print spooler"
+                exit 1
+        fi
+        if [ -f $tm_tempfile ]
+        then
+                rm -f $tm_tempfile
+        fi
+}
+
+
+############################################################################
+# Procedure:    add_HP
+# Function:     This function is to perform the tasks needed to add a printer
+#               to an HP system that is running 9.x.  This procedure will
+#               assume that all nessecary check have completed and were
+#               successful.
+###########################################################################
+add_HP()
+{
+        if [ -f $debugfile ]
+        then
+                set -x
+        fi
+        if [ ! -c $alp_dev ]
+        then
+                /etc/mkalp -d${tty_id} -ttm
+                echo "Device ${alp_dev} was created successfully!"
+                /bin/chmod 666 $alp_dev
+        elif [ -c $alp_dev ]
+        then
+                /etc/mkalp -r$alp_dev
+                /etc/mkalp -d${tty_id} -ttm
+                echo "Device ${alp_dev} was created successfully!"
+                /bin/chmod 666 $alp_dev
+        fi
+}
+
+
+###########################################################################
+# Procedure:    add_TI
+# Function:     This function is to perform the tasks needed to add a printer
+#               to an TI system that is running 3.x.  This procedure will
+#               assume that all nessecary check have completed and were
+#               successful.
+###########################################################################
+add_TI()
+{
+        if [ -f $debugfile ]
+        then
+                set -x
+        fi
+        devadm -m tty $tty_base -p -t t1
+        if [ $? != 0 ]
+        then
+                echo "Unable to create device id $alp_dev"
+                error_out 1
+        fi
+        echo "Device ${alp_dev} was created successfully!"
+        sed "/$alp_nm/d" /etc/alpdefs > /etc/alpdefs.tmp
+        new_alp=${alp_dev}'  bb=\E[5i eb=\E[4i pr=\\0 sz=132 rt=100'
+        echo $new_alp >> /etc/alpdefs.tmp
+        cp /etc/alpdefs.tmp /etc/alpdefs && rm /etc/alpdefs.tmp*
+        /etc/initterm p
+}
+
+###########################################################################
+# Procedure:    printer_setup  
+# Function:     This procedure is to complete those taks that need to be     
+#               performed on all system type reguardless of OS type.  Such
+#               things as lpadmin commands, enable and accept.         
+###########################################################################
+printer_setup()
+{
+        if [ -f $debugfile ]
+        then
+                set -x
+        fi
+        /usr/lib/lpadmin -p$printer_name -mstandard -v$alp_dev >/dev/null 2>&1
+        if [ $? != 0 ]
+        then
+                echo "ERROR: Unable to add printer $printer_name to spooler"
+                error_out 1
+        fi
+        echo "Printer ${printer_name} added to the spooler successfully!"
+        /usr/lib/lpsched >/dev/null 2>&1
+        if [ $? != 0 ]
+        then
+                echo "ERROR: Unable to start print spooler"
+                error_out 1
+        fi
+        if [ $OS != "TI" ]
+        then
+                /usr/lib/accept $printer_name >/dev/null 2>&1
+                if [ $? != 0 ]
+                then
+                        echo "ERROR: Unable to accept printer $printer_name"
+                        error_out 1
+                fi
+                echo "Printer ${printer_name} is now accepting requests!"
+                /usr/bin/enable $printer_name >/dev/null 2>&1
+                if [ $? != 0 ]
+                then
+                        echo "ERROR: Unable to enable printer $printer_name"
+                        error_out 1
+                fi
+                echo "Printer ${printer_name} id now enabled!"
+        fi
+        if [ $OS = "TI" ]
+        then
+                /usr/lib/accept $printer_name >/dev/null 2>&1
+                echo "Printer ${printer_name} is now accepting requests!"
+                /usr/bin/enable $printer_name >/dev/null 2>&1
+                echo "Printer ${printer_name} id now enabled!"
+        fi
+        if [ -f $tm_tempfile ]
+        then
+                rm -f $tm_tempfile
+        fi
+}
+
+
+###########################################################################
+# Procedure:    error_out      
+# Function:     This procedure is to funnel all errors through a common   
+#               procedure and perform restart spooler and etc.
+###########################################################################
+error_out()
+{
+        parm=$1
+        if [ $parm = 1 ]
+        then
+                exit 1
+        fi
+        if [ $parm = 2 ]
+        then
+                /usr/lib/lpsched >/dev/null 2>/dev/null
+                exit 1
+        fi
+        if [ $parm = 3 ]
+        then 
+                /usr/lib/lpshut >/dev/null 2>/dev/null
+                /usr/lib/lpadmin -x${printer_name} >/dev/null 2>/dev/null
+                /usr/lib/lpsched >/dev/null 2>/dev/null
+        fi
+}
+
+
+###########################################################################
+# Procedure:    test_printer   
+# Function:     This procedure is to send a test print to the printer that 
+#               was created using alpdef.  This will assume that the printer
+#               is installed, configured, and online.
+###########################################################################
+test_printer()
+{
+        debugfile=/tmp/termite.debug
+        if [ -f $debugfile ]
+        then
+                set -x
+        fi
+        tty_dev=/dev/$1
+        dev_id=`echo $1 | sed 's/tty//'`
+        alp_dev=/dev/alp${dev_id}
+        lpstat -s | grep $alp_dev > /dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                lpstat_output=`lpstat -s | grep $alp_dev`
+                printer_name=`echo $lpstat_output | sed 's/device for //'| sed 's/: \/dev\/alp'${dev_id}'//'`
+                tput clear
+                echo "
+        *************************************************************
+
+        The printer ${printer_name} on tty ${tty_dev} must be installed,
+        configured, and  online in order for the test print to be
+        successful.  Please check to make sure the following has
+        occured before continuing...
+
+                1)  Printer cable is hooked up properly to PC/Terminal
+                2)  Printer is configured (if needed)
+                3)  Printer is online
+                4)  Printer has been added using the alpdef untility
+
+        *************************************************************
+        Are the steps above completed? (y/n) \c"
+        read ans
+        else
+                echo " "
+                echo "  ERROR: There is no printer configured for ${tty_dev}!"
+                exit 1
+        fi
+        ANS=`echo $ans | tr "[a-z]" "[A-Z]"`
+        if [ $ANS = "Y" ]
+        then
+                lp -d ${printer_name} /etc/motd >/dev/null 2>&1
+                if [ $? = 0 ]
+                then
+                        echo " "
+                        echo "  Test print was spooled successfully!"
+                else
+                        echo " "
+                        echo "  ERROR: test print failed, be sure spooler is running!"
+                fi
+        else
+                exit 1
+        fi 
+}
+
+
+###########################################################################
+# Procedure:    usage_error    
+# Function:     This procedure is to report any errors related to usage and  
+#               to alert the user to proper way to execute the program.   
+###########################################################################
+usage_error()
+{
+        echo " Usage: termite -art tty_device_name printer_name"
+        echo "            "
+        echo "     -a   (add a termite printer to the system   )"
+        echo "     -r   (remove a termite printer to the system)"
+        echo "     -t   (test a printer that was added         )"
+}
+
+
+###########################################################################
+#
+# MAINLINE
+#
+###########################################################################
+
+if [ -f /tmp/termite.debug ]
+then
+        set -x
+fi
+option=$1
+case $option in
+        -a) if [ $# = 3 ]
+           then
+                initvar $2 $3   
+                program_setup
+                case $OS in
+                        HP)     add_HP;;
+                        TI)     add_TI;;
+                        *)      echo "This script is not setup for this system";
+                                exit 1;;
+                esac
+                printer_setup
+           else
+                usage_error
+           fi;;
+        -r) if [ $# = 2 ]
+           then
+                initvar $2
+                case $OS in
+                        HP)     remove_HP;;
+                        TI)     remove_TI;;
+                        *)      echo "This script is not setup for this system";exit 1;;
+                esac
+           else
+                usage_error
+           fi;;
+        -t) if [ $# = 2 ]
+           then
+                test_printer $2
+           fi;;
+        *)      usage_error;;
+esac
+exit 0

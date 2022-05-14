@@ -1,0 +1,44 @@
+DATE: 07JAN99                                         MEYER IMPLEMENT, INC.                                               PAGE:    1
+TIME: 14:25                                         Month-End Report for December                                       (MONTHEND-4)
+                                                         Update Log Report
+
+
+Time                Message
+--------            -------
+
+14:25:26            Verifying Default Account Balances Started
+14:25:27            Verifying Default Account Balances Completed
+
+14:25:27            Verifying General Ledger is in Balance Started
+14:25:29            Verifying General Ledger is in Balance Completed
+
+14:25:29            Sorting General Ledger Detail File Started
+14:27:44            Sorting General Ledger Detail File Completed
+
+14:27:44            Creating Detail Report Started
+14:27:51            Creating Detail Report Completed
+
+14:27:56            General Ledger Budget File Update Started
+14:28:03            General Ledger Budget File Update Completed
+
+14:28:04            General Ledger Master File Update Started
+14:28:06            General Ledger Master File Update Completed
+
+14:28:07            General Ledger Detail Update Started
+                       Number of MTRANR Records Read  =  4355
+                       Number of MTRANR Records Saved =  3243
+14:31:30            General Ledger Detail Update Completed
+
+14:31:30            Source File Update Started
+                       Number of Records Written to YTD Source =    21
+14:31:30            Source File Update Completed
+
+14:31:30            USER File Update Started
+14:31:39            USER File Update Completed
+
+14:31:39            Resetting Backup LDA Started
+14:31:39            Resetting Backup LDA Completed
+
+
+
+                                                          (End of Report)

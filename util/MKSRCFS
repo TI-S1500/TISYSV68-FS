@@ -1,0 +1,42 @@
+#        System Installation Script for /usr/src disk partition
+#-----------------------------------------------------------------------------
+# COPYRIGHT (c) 1986   TEXAS INSTRUMENTS INCORPORATED   ALL RIGHTS RESERVED
+#-----------------------------------------------------------------------------
+#
+#			 = "@(#)SRCINSTALL	1.0  86/07/29 " ;
+#
+#-----------------------------------------------------------------------------
+#
+
+/util/fndmap > out.fs
+
+read volnam isgood partsize blkpcyl < out.fs
+
+if test "$volnam" = "BADDEV"
+then echo "Bad read of root device number."
+     echo "Aborting src installation."
+     exit
+fi
+
+if test "$isgood" = "OKAY"
+then echo "Making the src filesystem"
+     mkfs /dev/dsk/"${volnam}:src" $partsize 1 $blkpcyl > /dev/null
+
+     echo "Labeling the src filesystem"
+     labelit /dev/dsk/"${volnam}:src" src TiSysV > /dev/null
+fi
+
+echo "Editing boot scripts"
+sed s/sys:/"${volnam}:"/g /etc/checklist > sbtemp
+cp sbtemp /etc/checklist
+sed s/sys:/"${volnam}:"/g /etc/rc > sbtemp
+cp sbtemp /etc/rc
+sed s/sys:/"${volnam}:"/g /etc/fstab > sbtemp
+cp sbtemp /etc/fstab
+rm sbtemp
+rm out.fs
+
+
+
+echo "Finished"
+

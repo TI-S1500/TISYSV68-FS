@@ -1,0 +1,14 @@
+#ident	"@(#)uucp:Devconfig	1.2"
+#
+#	Devconfig provides a means of configuring STREAMS devices
+#	by service.
+#
+#	FORMAT:
+#
+#	service=<service name>	device=<device type> \
+#				push=<STREAMS module list>
+#
+#	where service name is "uucico" or "cu", device type is the device or
+#	caller type (3rd field in Systems file, 1st field in Devices file),
+#	and STREAMS module list is a colon-separated list of STREAMS modules
+#	to be pushed on this stream.

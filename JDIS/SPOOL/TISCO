@@ -1,0 +1,291 @@
+
+Date: 22 NOV, 1996                                      MEYER IMPLEMENT, INC.                                             Page:    1
+Time: 13:34:09                                             STKSTAT - TISCO                                              (STKSTATM-1)
+
+                                                      Report Selection Criteria
+
+Logic: AND LOGIC
+
+Warehouses Selected: 1M
+Print Substitutions: No
+Print Comments:      No
+
+Basic Criteria:
+  Source:                    (Include) 506
+
+Sort Sequence: Warehouse, Part Number
+Report:        Mini form report
+
+
+                                                     (End of Selection Criteria)
+Date: 22 NOV, 1996                                      MEYER IMPLEMENT, INC.                                             Page:    2
+Time: 13:34:09                                             STKSTAT - TISCO                                              (STKSTATM-1)
+
+                                             On    On                            Order   Net       List  Crit  Comm   Curr      L12
+Wh  Part Number  Description     Bin        Hand  Order  OFC  ROP  LT  SS   PIS   Ind   Price     Price  Code  Code  12 SLS    Total
+
+1M  049254       SECTION                       0      0   5     0  39   0     1   AP     0.52      0.80   00              8        0
+1M  100G         GAUGE 100P      C-519         1      2   8     2   0   0     1          5.70      8.75   00              7        3
+1M  104591A      BALL            DISP-7        1      2   8     2   0   0     1          2.96      4.85   00              6        3
+1M  1850812      SPRING          R-602         0      0   5     0  39   0     1   AP    12.91     19.37   00              1        1
+1M  1860639      SPRING          R-602         1      0   5     0  39   0     1   AP     7.95     12.75   00              0        0
+1M  1877350      SRARTER DR      R-602         1      0   5     0  39   0     1   AP    19.05     31.10   00              1        1
+1M  1V1701       KIT             DISP-9        4      0   5     1  39   0     1   NS     3.52      5.10   00              0        0
+1M  1V1704       HANDLE          DISP-9        4      0   5     1  39   0     1   NS    15.80     22.60   00              0        0
+1M  228719       OIL GAUGE       P-309         1      1   D     2   0   0     1   PI     6.99     11.75   00              4        3
+1M  245WSK       KIT             PTO-1         1      0   5     0  39   0     1   AP     1.68      2.55   00              1        2
+1M  2755CB2      IDLER           J-608         3      0   D     2   0   0     1         11.42     17.13   00              5        0
+1M  2840CB2      IDLER           J-609         1      0   5     2  39   0     1         15.33     23.00   00              0        0
+1M  2856BE3      IDLER           J-610         1      0   5     2  39   0     1         19.92     29.88   00              0        0
+1M  290-0637     CORD            P-416         1      0   5     0  39   0     1   AP     6.53     10.80   00              1        1
+1M  290421       HUB             NONE          0      0   5     0  39   0     1   AP    19.07     28.60   00              0        1
+1M  30V1         PIN             A-105        10      0   5     2  39   0     1   NS     1.50      3.55   00              0        0
+1M  4Z4306       PLATE           DISP-9        4      0   7     1   0   0     1          3.30      4.95   00              3        4
+1M  5002179      BODY            C-518         3      0   5     0  39   0     1   AP     7.15     12.35   00              0        0
+1M  5046028      CAP             C-518         2      0   5     0  39   0     1   AP     2.00      4.37   00              0        0
+1M  5063010      #4 DISC                       0      0   5     0  39   0     1   NS     0.75      1.10   00             10        0
+1M  5067008      1"PT 1-1/4      C-118         6      0   5     0  39   0     1   AP     1.18      1.75   00              0        0
+1M  5067034      FITTING         C-118         4      0   7     1   0   0     1          1.75      2.65   00              6        0
+1M  5072228      GKT             C-217         4      0   5     0  39   0     1   AP     1.96      2.96   00              1        2
+1M  516050       SNAP RING       A-105         9      0   5     0  39   0     1   NS     0.10      0.25   00              0        0
+1M  5166003      NEEDLE POINT                  0      0   5     0  39   0     1   NS     0.90      1.45   00              3        0
+1M  5270986      22"BRASS GUN                  0      0   5     0  39   0     1   NS    45.00     63.00   00              0        0
+1M  5272338      TEE/HOLDER      C-315         4      0   5     0  39   0     1   NS     2.45      3.65   00              0        0
+1M  5272374      HOLDER          C-315         5      0   5     0  39   0     1   NS     1.75      2.65   00              0        0
+1M  5G           GAUGE           C-517         3      0   5     0  39   0     1   AP     4.08      6.25   00              0        1
+1M  60G          GAUGE           C-519         7      1   1     8  39   5     1          5.70      8.55   00             11       16
+1M  6566178B     SICKLE          V-126         1      0   5     0  39   0     1   AP   114.12    171.35   00              0        1
+1M  77695H       IH DRIVE        R-602         1      0   5     0  39   0     1   AP    28.44     41.95   00              1        0
+1M  800246       9FT SICKLE      V-127         0      0   5     0  39   0     1   AP    91.25    136.85   00              0        1
+1M  801-281      SICKLE 12FT     NONE          1      0   5     0  39   0     1   RB   129.90    194.15   00              0        0
+1M  801246       9FT BOLT SICKLE V-127         0      0   5     0  39   0     1   AP   123.06    165.00   00              0        1
+1M  801253       14'SICKLE       V-126         1      0   5     0  39   0     1   AP   155.95    195.95   00              0        0
+1M  801281       12' SICKLE      V-147         0      0   5     0  39   0     1   AP   129.42    175.55   00              0        2
+1M  801376       SICKLE          V-147         3      0   5     0  39   0     1   AP    95.86    143.79   00              0        0
+1M  801378       14' SICKLE      V-147         1      0   5     0  39   0     1   AP   144.28    195.75   00              0        0
+1M  9623559      SICKLE          V-127         2      0   5     0  39   0     1   AP    85.50    128.25   00              0        0
+1M  9623570      SICKLE          V-127         2      0   5     0  39   0     1   AP    71.62    107.43   00              0        0
+1M  BAT15        BATTERY HO      DISP-1        1      0   5     0  39   0     1   AP     5.29      8.45   00              0        1
+1M  BJ5496       1-1/8 BALL      DISP-7        1      0   5     0  39   0     1   AP     7.31     11.25   00              0        0
+1M  BO8295       TWIST CLEV                    0      0   5     1  39   0     1   RB    13.31     19.95   00              0        0
+1M  BP13931T     SHEAR PIN       G-402        56    103   1   161  39   5     1          1.70      3.00   00            161      125
+1M  BR10L        WASHER          Q-END       146      0   D     2   0   0     1          0.05      0.14   00              4      148
+1M  BR12L        WASHER          Q-END        64      0   D     2   0   0     1          0.06      0.09   00             19       90
+1M  BR12M        WASHER          Q-END        79      0   1    11  39   5     1          0.06      0.10   00             21      110
+1M  BR14L        WASHER          Q-END        53      0   7     1   0   0     1          0.08      0.13   00              5       56
+1M  BR14M        WASHER          Q-END        36      0   D     2   0   0     1          0.08      0.13   00             12       20
+1M  BR16L        WASHER          Q-END        24      0   D     2   0   0     1   RB     0.09      0.13   00              0        0
+
+                                                            (Continued)
+Date: 22 NOV, 1996                                      MEYER IMPLEMENT, INC.                                             Page:    3
+Time: 13:34:09                                             STKSTAT - TISCO                                              (STKSTATM-1)
+
+                                             On    On                            Order   Net       List  Crit  Comm   Curr      L12
+Wh  Part Number  Description     Bin        Hand  Order  OFC  ROP  LT  SS   PIS   Ind   Price     Price  Code  Code  12 SLS    Total
+
+1M  BR16M        WASHER          Q-END        54     35   1    89  39  10     1          0.09      0.13   00             89       21
+1M  BR18L        WASHER          Q-END        20      8   1    28  39   5     1          0.08      0.15   00             37       13
+1M  BR20H        WASHER          Q-END        33      0   1    16  39   5     1          0.22      0.33   00             29       53
+1M  BR20L        WASHER          Q-END        83      0   D     2   0   0     1          0.12      0.18   00             17       31
+1M  BR22L        WASHER          Q-END        30      4   1    34  39  10     1          0.20      0.30   00             34        8
+1M  BR22M        WASHER          Q-END        48      0   D     2   0   0     1          0.17      0.35   00              7       32
+1M  BR24M        WASHER          Q-END        50      0   1     7  39   5     1          0.24      0.40   00             23       71
+1M  BR28M        WASHER          Q-END       139      2   1   144  39   5   100          0.28      0.45   00            234      583
+1M  BR30M        WASHER          Q-END        10      0   D     2   0   0     1          0.25      0.40   00             10        0
+1M  BR32H        WASHER          Q-END        33      0   D     2   0   0     1          0.44      0.70   00             10       12
+1M  BR32M        WASHER          Q-END        83      0   5     1  39   0     1          0.31      0.65   00             12       50
+1M  BR34M        WASHER          Q-END        27      0   7     1   0   0     1          0.41      0.63   00              8        2
+1M  BR38M        WASHER          Q-END        14      0   5     0  39   0     1   AP     0.49      0.75   00              2        2
+1M  BR40M        WASHER          Q-END        50      0   5     0  39   0     1   AP     0.46      0.70   00              0        8
+1M  BR9L         WASHER          Q-END        17      0   7     1   0   0     1          0.06      0.14   00             33       25
+1M  C3NN18287A   TEMP  GAUG      P-405         1      0   5     0  39   0     1   NS    12.45     18.65   00              0        0
+1M  C950         COUPLER                       0      0   5     0  39   0     1   NS    80.25    120.00   00              1        0
+1M  CBAN1570     CROSS           H-501         1      0   5     0  39   0     1   AP     5.40      8.10   00              0        0
+1M  CC66         CABLE           R-412        11      0   D     2   0   0     1          3.91      5.95   00              3       10
+1M  CT6SR        TOOL KIT        F-501         0      0   5     0  39   0     1   AP    10.08     16.83   00              0        1
+1M  DBL2         DRAWBAR LO      DISP-7        1      0   5     0  39   0     1   AP    11.87     19.81   00              1        1
+1M  FAS110       BOLT            F-405        21      0   5     0  39   0     1   AP     0.10      0.15   00              0        0
+1M  FAS140       BOLT&NUT        F-406       160      0   5     0  39   0     1   AP     0.20      0.30   00              2        0
+1M  FHSLF206-20G BRG                           0      0   5     0  39   0     1   AP     0.12     25.69   00              0        1
+1M  FP2205       ELE  FUEL       R-501         1      0   5     0  39   0     1   NS    33.33     50.30   00              0        0
+1M  GADT365      TUBE            DISP-5        1      0   5     0  39   0     1   NS    10.41     16.53   00              0        0
+1M  GE-360       HEATER          Y-212         1      0   5     0  39   0     1   AP    12.77     19.35   00              0        0
+1M  GE62S        CORD            P-            0      0   5     0  39   0     1   AP     7.70     13.20   00              0        1
+1M  GE63P        CORD            P-416         2      0   5     0  39   0     1   NS     8.60     12.95   00              0        0
+1M  GFA12                                      0      0   5     0  39   0     1   AP     0.00      0.00   00              0        0
+1M  GG1000       1000 PSI GAUGE  C-516         2      0   5     1  39   0     1         12.30     18.45   00              0        0
+1M  GG400        GAUGE 400P      C-517         2      0   5     0  39   0     1   AP    13.21     19.85   00              0        0
+1M  HM771        HOUR METER      P-310         2      0   5     0  39   0     1   AP    25.47     40.75   00              1        2
+1M  HP3          CLIP            K-103       124      0   1     2  39   5     1          0.14      0.25   00             47       39
+1M  HP4          CLIP            K-103         0      0   5     0  39   0    11   AP     0.09      0.25   00              0      104
+1M  JAW10        WASHER          Q-END        20      0   5     0  39   0     1   NS     0.79      1.20   00              0        0
+1M  JSW10        WASHER          I-END         8      0   D     2   0   0     1          0.74      1.20   00             12       31
+1M  JSW11        WASHER          I-END        10      0   D     2   0   0     1          0.76      1.20   00              8        7
+1M  JSW12        SPLIT WASH      I-END         6      6   1    17  39   5     1          0.80      1.20   00             18       12
+1M  JSW14        WASHER          I-END        14      0   D     2   0   0     1          0.83      1.20   00              4        0
+1M  JSW16        WASHER          I-END        13      0   7     1   0   0     1          0.83      1.39   00              6        1
+1M  JSW6         WASHER          I-END        25      0   5     0  39   0     1          0.68      1.14   00              4        1
+1M  JSW7         WASHER          I-END        19      0   5     0  39   0     1   AP     0.68      1.10   00              0       10
+1M  JSW8         SPLIT WASH      I-END        16     33   1    49  39  10     1          0.68      1.10   00             49       21
+1M  JSW9         WASHER          I-END        14      0   1     2  39   5     1          0.72      1.10   00             12        0
+1M  JTBC100      COVER           DISP-8        1      0   7     1   0   0     1          9.74     15.52   00              4        3
+1M  JTBC500      COVER           DISP-8        2      0   5     0  39   0     1   NS    10.23     15.50   00              0        0
+1M  JTBL-1WB     BATTERY BO                    0      0   7     1   0   0     1   RB    50.75     80.10   00              0        0
+1M  JTBL-2WB     BOX RH                        0      0   5     0   0   0     1   RB    50.71     81.10   00              0        0
+1M  JTBL1WB      BATTERY BO      Q-311         1      0   7     1   0   0     1         50.75     76.20   00              2        3
+1M  JTBR2WB      BATTERY BO      Q-311         2      0   7     1   0   0     1   PI    50.75     76.20   00              1        1
+
+                                                            (Continued)
+Date: 22 NOV, 1996                                      MEYER IMPLEMENT, INC.                                             Page:    4
+Time: 13:34:09                                             STKSTAT - TISCO                                              (STKSTATM-1)
+
+                                             On    On                            Order   Net       List  Crit  Comm   Curr      L12
+Wh  Part Number  Description     Bin        Hand  Order  OFC  ROP  LT  SS   PIS   Ind   Price     Price  Code  Code  12 SLS    Total
+
+1M  KE114A24     SCREW,RIV       A-105         0      1   7     1   0   0     1          2.60      5.35   00              2        0
+1M  KE114A25     CUP             A-105         5      0   5     0  39   0     1   NS     0.48      0.80   00              0        0
+1M  KE114A26     SPRING          A-105         2      0   5     0  39   0     1   AP     0.35      0.45   00              0        0
+1M  KE114A28     SCREW ASSY      A-105         3      0   7     1   0   0     1          2.92      4.45   00              2        1
+1M  KE114A31     KO ANVIL        A-105         4      0   D     2   0   0     1          0.84      1.33   00              4        2
+1M  KE114A32     ANVIL           A-105         1      0   5     0  39   0     1   AP     0.83      1.55   00              2        0
+1M  KE116A28     HOLDER          A-105         5      0   D     2   0   0     1          1.50      2.35   00              3        4
+1M  L-21170      RH TOOTH        A-413        14      0   5     0  39   0     1   NS     0.01      2.95   00              0        0
+1M  L-5031       SWITCH          A-404         1      0   5     0  39   0     1   AP     2.96      4.74   00              0        0
+1M  L100MAG      LIGHT           K-112         1      0   5     0  39   0     1   NS    14.30     24.62   00              0        0
+1M  L101C        CORD                          0      0   5     0  39   0     1   AP     0.01      0.01   00              0        1
+1M  L44111       SEALED BUL      R-421         1      0   5     0  39   0     1   AP     4.28      6.40   00              1        0
+1M  L4970        BULB            DISP-1        2      0   D     2   0   0     1          3.60      5.40   00              6        2
+1M  L5011        SWITCH          A-404         0      2   D     2   0   0     1          3.16      4.95   00              3        2
+1M  L505-12V     LAMP                          0      0   7     1   0   0     1   RB     8.71     13.20   00              0        0
+1M  L50512V      LAMP            K-113         1      0   5     0  39   0     1   AP     8.75     13.25   00              0        5
+1M  L5056V       LAMP            DISP-1        1      0   7     1   0   0     1         10.05     15.04   00              2        0
+1M  L901         SOCKET          R-101         1      0   5     0  39   0     1   NS     6.14      9.82   00              0        0
+1M  L970-12V     LAMP ASSY       R-523         2      0   5     0  39   0     1   AP    10.20     14.40   00              0        0
+1M  LAS292       CAT 2 WELD      DISP-7        0      0   5     0  39   0     1   AP     9.00     14.40   00              0        1
+1M  MBH1153      HEATER          Y-222         0      0   5     0  39   0     1   AP    17.28     32.99   00              1        1
+1M  MC150        CLAMP           DISP-3        9      0   5     0  39   0     1   AP     0.43      0.95   00              0        3
+1M  MC225        CLAMP           DISP-3        6      0   7     1   0   0     1          0.66      1.50   00             13        2
+1M  MC275        CLAMP           DISP-3        6      0   5     0  39   0     1   AP     1.15      1.95   00              1        2
+1M  MC300        CLAMP 3"        DISP-3        4      6   1    10  39   5     1          1.51      2.75   00             10        2
+1M  MP10         5/16 ROUND      Q-RDPN       60      0   5     0  39   0     1   AP     0.06      0.10   00             12        0
+1M  MP11         3/8 ROUND       Q-RDPN       60      0   5     0  39   0     1   AP     0.08      0.13   00              0        0
+1M  MP14         7/16 ROUND      Q-RDPN       72      0   5     0  39   0     1   AP     0.11      0.18   00              0        0
+1M  MP4          ROUND KEY       Q-DR         10      0   5     0  39   0     1   NS     0.33      0.70   00              0        0
+1M  MP5          ROUND KEY       Q-DR         10      0   5     0  39   0     1   NS     0.35      0.70   00              0        0
+1M  MP8          ROUND KEY       Q-DR         10      0   5     0  39   0     1   NS     0.63      1.05   00              0        0
+1M  P516PTL      CLIP            DISP-7       23      0   1    10  39   5     1          0.41      0.75   00             13       13
+1M  PTB103W      TOOLBOX         DISP-3        2      0   5     0  39   0     1   AP    20.88     31.32   00              0        1
+1M  QDK3         PIN KIT         H-301         3      0   5     0  39   0     1   AP     1.50      3.40   00              0        0
+1M  RGF12        ZERK ASST       DISP-5        0     16   1    16  39  10     1          3.24      4.95   00             16       11
+1M  RIV77        ASST RIVET                    0      0   5     0  39   0     1   AP     1.55      2.50   00              1       28
+1M  RS24         SILVER SEA      A-805T        7      0   8     2   0   0     1          1.00      2.00   00              9       38
+1M  SBA-22       2-SPOOL VA      DISP-9        1      0   5     0  39   0     1   AP   122.77    185.95   00              0        0
+1M  SCV1         1-SPOOL VA      DISP-9        1      0   5     0  39   0     1   AP    62.23     87.12   00              0        0
+1M  SFX11        SIKL-FIX        A-104         4      0   5     0  39   0     1   AP    23.75     38.30   00              1        8
+1M  SFXK3        PUNCH           A-204        16      0   1    12  39  10     1          1.74      2.65   00             17       24
+1M  SL1541       RATCHET JA      DISP-7        0      0   5     0  39   0     1   AP    33.15     51.10   00              1        1
+1M  SMV1         SMV METAL       DISP-7        0      0   1     9  39  10     1   RB     4.80      7.20   00              0        0
+1M  SMV1D        SMV DECAL       DISP-7        0      0   1     4  39  10     1   RB     3.60      5.40   00              0        0
+1M  SMV1P        SMV PLASTI      DISP-7       10      0   1     3  39   5     1   RB     4.80      7.20   00              0        0
+1M  SMV5         BRKT            DISP-7        9      0   D     2   0   0     1          0.90      1.35   00              7        4
+1M  SMV6         POLE            DISP-7        1      0   5     0  39   0     1   AP     2.50      3.75   00              1        1
+1M  SMV7         SPADE           DISP-7        6     14   1    15  39  10     5          1.24      1.95   00             21       23
+1M  SRE2685      SNAP RING       Q-TOP         5      0   5     0  39   0     1   NS     0.30      0.45   00              1        0
+1M  SRE2870      SNAP RING       Q-TOP        20      0   5     0  39   0     1   NS     0.08      0.13   00              0        0
+1M  SRE2871      RING            Q-TOP        39      0   5     0  39   0     1   AP     0.08      0.40   00              0        0
+
+                                                            (Continued)
+Date: 22 NOV, 1996                                      MEYER IMPLEMENT, INC.                                             Page:    5
+Time: 13:34:09                                             STKSTAT - TISCO                                              (STKSTATM-1)
+
+                                             On    On                            Order   Net       List  Crit  Comm   Curr      L12
+Wh  Part Number  Description     Bin        Hand  Order  OFC  ROP  LT  SS   PIS   Ind   Price     Price  Code  Code  12 SLS    Total
+
+1M  SRE2872      RING            Q-TOP        10      0   5     0  39   0     1   NS     0.26      0.40   00              0        0
+1M  SRE2873      SNAP RING                     5      0   5     0  39   0     1   NS     0.10      0.25   00              2        0
+1M  SRE2875      SNAP RING       Q-TOP        14      0   5     0  39   0     1   AP     0.09      0.40   00              0        2
+1M  SRE2876      SNAP RING                     5      0   5     0  39   0     1   NS     0.30      0.40   00              2        0
+1M  SRE2878      SNAP RING       Q-TOP         5      0   7     1   0   0     1          0.30      0.45   00              2        0
+1M  SRE2879      SNAPRING        Q-TOP        37      0   5     0  39   0     1   AP     0.12      0.40   00              0        3
+1M  SRE2881      SNAP RING       Q-TOP        10      0   5     0  39   0     1   NS     0.15      0.23   00              0        0
+1M  SRE2884      RING            Q-TOP         5      0   5     0  39   0     1   NS     0.29      0.45   00              0        0
+1M  SRE2885      RING            Q-TOP         5      0   5     0  39   0     1   NS     0.29      0.45   00              0        0
+1M  SRE2887      SNAP RING       Q-TOP         2      0   5     0  39   0     1   AP     0.20      0.40   00              4        1
+1M  SRE2890      SNAP RING       Q-TOP        10      0   5     0  39   0     1   NS     0.38      0.61   00              0        0
+1M  SRE2891      SNAP RING       Q-TOP        90      0   5     0  39   0     1   AP     0.40      0.75   00              0        0
+1M  SRE2895      RING            Q-TOP        15      0   5     0  39   0     1   NS     0.48      0.80   00              1        0
+1M  SRI2816      SNAP RING       Q-TOP        20      0   5     0  39   0     1   NS     0.07      0.12   00              0        0
+1M  SRI2820      SNAP RING       Q-TOP         5      0   5     0  39   0     1          0.25      0.50   00              1        0
+1M  SRI2821      SNAP RING       Q-TOP         5      0   5     0  39   0     1          0.25      0.50   00              1        0
+1M  SRI2822      SNAP RING       Q-TOP        13      0   5     0  39   0     1   AP     0.20      0.30   00              0        3
+1M  SRI2827      SNAP RING       Q-TOP        10      0   5     0  39   0     1   NS     0.13      0.21   00              0        0
+1M  SRI2831      RING                          0      0   5     0  39   0     1   AP     0.50      0.80   00              0        1
+1M  SRI2833      SNAP RING       Q-TOP        50      0   5     0  39   0     1   AP     0.32      0.70   00              0        0
+1M  SRI2836      SNAPRING        Q-TOP        28      0   7     1   0   0     1          0.33      0.50   00              6        1
+1M  SRI2838      SNAP RING       Q-TOP        24      0   D     2   0   0     1          0.40      0.64   00              5        1
+1M  SSC100       COLLAR          A-502         1      1   1     2  39   5     1          1.02      1.50   00             19        7
+1M  SSC112       COLLAR          A-502        10      0   D     2   0   0     1          1.91      3.30   00              3        5
+1M  SSC114       COLLAR          A-502        14      0   7     1   0   0     1          1.58      2.45   00              2        6
+1M  SSC118       COLLAR          A-502         9      0   7     1   0   0     1          1.33      2.69   00              3       19
+1M  SSC12        COLLAR          A-502         7      0   5     1  39   0     1          0.56      1.05   00              2        2
+1M  SSC1316      COLLAR          A-502         3      0   5     0  39   0     1   AP     1.50      3.00   00              3        0
+1M  SSC138       COLLAR          A-502         9      0   5     0  39   0     1          1.88      3.30   00              2        0
+1M  SSC1516      COLLAR          A-502         4      0   5     0  39   0     1   AP     0.98      1.50   00              1        0
+1M  SSC1716      COLLAR          A-502         4      0   5     0  39   0     1   AP     2.02      3.30   00              1        0
+1M  SSC34        COLLAR          A-502         4     25   1    25  39   5     1          0.74      1.05   00             17       11
+1M  SSC38        COLLAR          A-502        12      0   5     0  39   0     1   AP     0.70      1.05   00              2        8
+1M  SSC58        COLLAR          A-502        11      0   7     1   0   0     1          0.70      1.05   00              8        4
+1M  SSC78        COLLAR          A-502         8      0   5     1  39   0     1          0.87      1.40   00              2       13
+1M  SWS259       WIRE SET 4      S-409         2      0   D     2   0   0     1          4.69      7.75   00              3        4
+1M  SWS260       WIRE SET 6      S-410         4      0   5     0  39   0     1   AP     7.19     11.95   00              1        4
+1M  T318         ADAPTER         DISP-7        1      1   D     2   0   0     1   PI     7.29     12.45   00              3        0
+1M  T322         PTO             DISP-7        2      0   5     0  39   0     1   AP    84.95    127.45   00              0        2
+1M  TGI110       INJECTOR        DISP-5        6     10   1     8  39  10     1          1.24      1.95   00             12       18
+1M  TH3220       PTO ADAPTER                   0      0   5     0   0   0     1   NS    40.00     65.43   00              0        0
+1M  TH3221       PTO ADAPTE      DISP-7        1      0   5     0  39   0     1   AP    43.44     65.15   00              1        2
+1M  TH3270       ADAPTER PT      DISP-7        1      0   7     1   0   0     1   PI    62.98     92.40   00              0        1
+1M  TPAE41703BL  SICKLE                        0      0   5     0  39   0     1   AP    91.36    137.05   00              0        0
+1M  TPAR34208    TOP LINK        DISP          1      0   5     0  39   0     1        187.70    250.00   00              0        0
+1M  TPAR34208AK  PIN KIT         DISP-7        1      2   5     2  39   0     1          8.71     13.10   00              0        0
+1M  TS940T       SEAT ASSEMBLY   DISP-9        0      0   5     0  39   0     1   AP   175.00    245.00   00              1        2
+1M  VU18         WOODRUFF KEY    K-105         2      0   5     2  39   0     1          8.41     12.60   00              0        0
+1M  WC10         WEATHERCAP      A-507         2      0   5     0  39   0     1   AP     5.07      9.30   00              1        2
+1M  WC11         WEATHERCAP      A-508         4      0   7     1   0   0     1          5.03     10.25   00              2        2
+1M  WC12         WEATHERCAP      A-508         5      0   5     0  39   0     1   AP     5.26     11.00   00              1        4
+
+                                                            (Continued)
+Date: 22 NOV, 1996                                      MEYER IMPLEMENT, INC.                                             Page:    6
+Time: 13:34:09                                             STKSTAT - TISCO                                              (STKSTATM-1)
+
+                                             On    On                            Order   Net       List  Crit  Comm   Curr      L12
+Wh  Part Number  Description     Bin        Hand  Order  OFC  ROP  LT  SS   PIS   Ind   Price     Price  Code  Code  12 SLS    Total
+
+1M  WC2          WEATHERCAP      A-503         3      0   5     0  39   0     1   AP     3.49      5.25   00              1        3
+1M  WC3          WEATHERCAP      A-503         5      0   5     0  39   0     1   AP     3.40      5.20   00              1        0
+1M  WC4          WEATHERCAP      A-504         1      2   8     2   0   0     1          3.86      5.65   00              6        1
+1M  WC5          WEATHERCAP      A-505         6      0   5     0  39   0     1   AP     3.99      5.65   00              0        1
+1M  WC6          WEATHERCAP      A-506         1      0   8     2   0   0     1          4.14      6.10   00              8        5
+1M  WC7          WEATHERCAP      A-507         2      0   8     2   0   0     1          4.21      6.35   00              5        1
+1M  WC8          WEATHERCAP      A-507         5      0   7     1   0   0     1          4.16      6.25   00              2        1
+1M  WC9          WEATHERCAP      A-507         3      0   5     0  39   0     1   NS     5.11      8.90   00              0        0
+1M  WPK406       PUMP KIT        P-212         7      0   5     0  39   0     1   AP    18.43     27.65   00              0        0
+1M  WS10         SPINNER         A-END         1      7   1     8  39  10     1          1.56      2.25   00             15       39
+1M  WSV121G      KNOB            A-102         5      0   1     5  39  10     1          5.95      8.55   00             11       18
+1M  WSV124B      KNOB            A-102         2     10   1    13  39  10     1          5.95      8.55   00             15       15
+1M  XB373HD      PTO ADAPTE      DISP-7        1      0   7     1   0   0     1         20.83     31.80   00              3        3
+
+
+                                                                                                YTD Sale $     Lst12 $
+                                                                                                YTD Cost $     Prv12 $
+                                                                                                Current Inv    % Inc
+                                                                                                YTD Ave Inv
+
+Totals for Warehouse 1M:                                                                          2937.39      3339.57
+                                                                                                  1956.10      5407.65
+                                                                                                  4126.01        38-
+                                                                                                  4414.55
+
+** Inventory Aged By Last Sale Year
+    At Current Cost: 96     1,412.24  95     1,104.58  94       225.06  93       189.89  92         0.00  Other     1,194.24
+    At Average Cost: 96     1,392.82  95     1,053.88  94       218.98  93       179.60  92         0.00  Other     1,204.66
+ At Constant $ Cost: 96     1,364.04  95     1,045.99  94       217.86  93       179.60  92         0.00  Other     1,204.66

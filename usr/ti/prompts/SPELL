@@ -1,0 +1,35 @@
+# cshf	 spell - find spelling errors
+#	@(#)SPELL.sh	1.2  87/10/16
+#
+onintr end
+
+prompt	"^SPELL -- FIND SPELLING ERRORS"\
+	"^File(s) to be checked:"	     _input_file macnm  "$_input_file"\
+	"^*British Spelling?:"		     br    yesno  n\
+	"^*Print all words?:"		     pall  yesno  n\
+	"^*Print Stems?:"		     stem  yesno  n\
+	"^*Ignore all included Files?:"      igno  yesno  n\
+	"^*Follow /usr/lib included Files?:" chain yesno  n\
+	"^*Local Spell File:"		     local acnm   $local\
+	"^*Listing Output File:"	     lfile acnm   $lfile\
+	"^#$*"
+
+if ($abort) goto end
+	if( $pall == "y" )  set vopt=-v
+	if( $br   == "y" )  set bopt=-b
+	if( $stem == "y" )  set xopt=-x
+	if( $igno == "y" )  set iopt=-i
+	if( $chain == "y" )  set lopt=-l
+	if ($local != "") set lfopt=" +"$local
+
+	echo "=== SPELL COMMAND EXECUTING ==="
+	if ($lfile == "") then
+	   echo spell $vopt $bopt $xopt $iopt $lopt $lfopt $_input_file
+	   spell $vopt $bopt $xopt $iopt $lopt $lfopt $_input_file
+	else
+	   echo spell $vopt $bopt $xopt $iopt $lopt $lfopt $_input_file ">" $lfile
+	   spell $vopt $bopt $xopt $iopt $lopt $lfopt $_input_file > $lfile
+	endif
+	unset *opt lfile local chain stem br pall igno
+endif
+end:

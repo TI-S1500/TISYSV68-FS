@@ -1,0 +1,5 @@
+T,P,PRODUCT INFORMATION REPORTING MENU SELECTION
+H,04,/07
+E,P33,Machine Identification  (ZPS97)
+E,P34,Key Part Identification (ZPS98)
+E,P35,Description of Problem  (ZPS99)

@@ -1,0 +1,169 @@
+# rev 8.4.1
+#
+###########################################################################
+# listsys.scr - List Available system types - 7/89                        #
+#                                                                         #
+# This script reads the systems.scr library and interprets the entries    #
+# and displays an English language listing of the system types supported. #
+# It also allows a selected system type to be used in the current setup.  #
+#                                                                         #
+# See the label .begin for the beginning of the script.                   #
+###########################################################################
+#
+goto .begin                     # the script actually starts at .begin
+#
+.mainloop                       # the main loop is here for speed up
+reps 9
+.getone                         # this section GETs one type and extracts
+#                               # the label
+fread 1,@line                   # @line contains a line from SYSTEMS.SCR
+set @lbl = @line
+strtrim @lbl,1,1
+if @lbl = ":"                   # if @lbl = ":", then finished
+  fclose 1
+  wait 3
+  let @curr = @curr + "1"       # @curr is the current screen line number
+  cursor @curr, 10              # position the cursor
+  put "---------------<End of List>---------------"
+  set @ask = ""
+  ask "Enter desired system type, <return> to continue.",@ask
+  if not null @ask              # choice entered, store it in setup
+    set @systype = @ask
+    return 0                    # and exit
+  end
+  set @ask = ""                 # clear the ask variable
+  ask "Do you wish to see the list again? (y/n)",@ask
+  lower @ask
+  if @ask = "y" goto .start
+  return 0
+end
+if not @lbl = ">" goto .getone  # check for a label beginning  with a '>'
+strtrim @line,2,9
+#
+set @text = "| "                # set text for unknown modem type
+strcat @text,@line
+strcat @text,"    |   (No system information available)"
+#
+# current available system types (7/89)
+#
+if @line = "ACCESS  " set @text = "|  ACCESS     |   BLASTAccess PC remote control systems"
+if @line = "AOS     " set @text = "|     AOS     |   Data General AOS & AOS/VS systems"
+if @line = "DEMO    " set @text = "|    DEMO     |   The CRG Bulletin Board/Demonstration System"
+if @line = "HP1000  " set @text = "|  HP1000     |   Hewlett Packard 1000 systems running RTE"
+if @line = "HP3000  " set @text = "|  HP3000     |   HP 3000 series (MPE)"
+if @line = "MVS/TSO " set @text = "| MVS/TSO     |   IBM mainframes under MVS/TSO"
+if @line = "PC      " set @text = "|      PC     |   Single-user systems with no login (PC, Mac...)"
+if @line = "PRIMOS  " set @text = "|  PRIMOS     |   Prime computers under Primos"
+if @line = "UNIX    " set @text = "|    UNIX     |   All UNIX and UNIX derivative systems"
+if @line = "VMS     " set @text = "|     VMS     |   DEC VAX systems running VMS"
+if @line = "VM/CMS  " set @text = "|  VM/CMS     |   IBM mainframes under VM/CMS"
+if @line = "WANG    " set @text = "|    WANG     |   Wang systems using VS"
+#
+cursor @curr, 9
+cleol
+put @text                       # write text description to screen
+cursor @curr, 75
+put "|"
+let @curr = @curr + "1"
+cursor @curr, 9
+cleol
+put "+-------------+---------------------------------------------------+"
+if reps goto .getone            # if screen is not full, loop again
+goto .screenful                 # end of .mainloop
+#
+###########################################################################
+#                                                                         #
+#  The  script  actually  begins  here.  Mainloop  is above to speed      #
+#  execution.                                                             #
+#                                                                         #
+###########################################################################
+#  Variables used:
+#
+#  @dir: directory of systems.scr
+#  @lbl: working variable, used to extract labels
+#  @curr: the current line of the display (used for drawing displays)
+#  @line: the line of text from the script.
+#  @text: the displayed information for each type
+#  @ask: used to hold assorted text
+###########################################################################
+.begin                          # this is actually the beginning of the script
+clear                           # clear the screen
+.dir
+if exist "systems.scr" goto .start  # systems.scr found, get going!
+#
+set @ask = ""
+ask "What directory is systems.scr in? (<return> to exit) ",@dir
+if null @dir return 0           # user hit <return>, abort
+local
+chdir
+@dir                            # @dir is the directory systems.scr is in
+esc
+#
+.start                          # time to settle in
+fopenr 1,"systems.scr"
+#
+if  not ok                      # most likely systems.scr not in this
+#                               # directory. (maybe permissions?)
+  werror "error: can't open systems.scr."
+  goto .dir
+end
+#
+clear
+cursor 0,0
+put "                        System Types Supported by BLAST"
+cursor 1,9
+put "+-------------+---------------------------------------------------+"
+cursor 2,9
+put "| System Type |          Description                              |"
+cursor 3,9
+put "+-------------+---------------------------------------------------+"
+#
+.group
+#
+set @curr = "4"                 # @curr contains the CURRent line of display
+#
+goto .mainloop
+.screenful
+#
+set @ask = ""
+ask "Enter desired system type, <return> for next page, 'q' to quit", @ask
+if not null @ask                # if @ask = "", user wants next screenful
+  if @ask = "q" or @ask = "Q" return 0        # quit
+  set @systype = @ask           # store choice in setup
+  return 0
+end
+#
+cursor 4,1
+cleol
+cursor 5,1                    # clear only that part of the screen that
+cleol                         # contained the previous screenful
+cursor 6,1                    # (keep the window title)
+cleol
+cursor 7,1
+cleol
+cursor 8,1
+cleol
+cursor 9,1
+cleol
+cursor 10,1
+cleol
+cursor 11,1
+cleol
+cursor 12,1
+cleol
+cursor 13,1
+cleol
+cursor 14,1
+cleol
+cursor 15,1
+cleol
+cursor 16,1
+cleol
+cursor 17,1
+cleol
+cursor 18,1
+cleol
+goto .group                   # time for the next group of system types
+#
+return 0
+

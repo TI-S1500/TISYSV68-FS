@@ -1,0 +1,9 @@
+#
+# filesystem full list of filesystems
+#
+# @(#)fslist.sh	1.1 91/02/14
+#
+# format:      device_or_mountpoint    full_pct     warning_pct
+#
+# warning_pct is optional
+#

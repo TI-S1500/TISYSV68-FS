@@ -1,0 +1,12 @@
+spooler:menu:LP SPOOLER COMMANDS MENU, Series 1000, Model 1500:spooler.hlp
+ACCEPT:c:Allows LP requests:
+CANCEL:c:Cancels requests to a line printer:
+DISABLE:c:Disables line printers:
+ENABLE:c:Enables line printers:
+LP:c:Sends requests to a line printer:
+LPADMIN:c:Configures the LP spooling system:
+LPMOVE:c:Moves LP requests:
+LPSCHED:c:Starts the LP request scheduler:
+LPSHUT:c:Stops the LP request scheduler:
+LPSTAT:c:Shows LP status information:
+REJECT:c:Prevents LP requests:

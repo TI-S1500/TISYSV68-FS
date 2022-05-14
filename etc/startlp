@@ -1,0 +1,15 @@
+:
+/usr/lib/lpsched
+
+#
+# Check to see if a ROOTBKUP listing needs to be printed.
+#
+if (test -f "/etc/BKUP_DIR/rootbkup.print")
+then
+   lp -d `cat /etc/BKUP_DIR/list_dev` /etc/BKUP_DIR/rootlisting
+   if (test "$?" != "0")
+   then
+      lp /etc/BKUP_DIR/rootlisting
+   fi
+   rm /etc/BKUP_DIR/rootbkup.print
+fi

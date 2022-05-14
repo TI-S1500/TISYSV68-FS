@@ -1,0 +1,19 @@
+ATTENTION:  FOCUS PERSON
+
+INSTALLATION INSTRUCTIONS - PATCH 122 - ALL TI1500 SERIES MACHINES
+
+	 PATCH INSTALLATION WILL TAKE LESS THAN 3 MINUTES
+   NOTE: EVERYONE MAY REMAIN ON THE SYSTEM WHILE INSTALLING THIS PATCH.
+
+TO INSTALL THE SOFTWARE:
+
+The Focus Person should log on a VDT with userid sys999.  (DO NOT log on
+the MASTER VDT.)   At the 'Enter Selection' prompt, type in JDUPDATE and
+press <RETURN>.  This command will install the update.	Once the installation
+is complete, you should log off the system.  To do this, press <F10> and
+answer Y to the prompt "Do you want to terminate ASPEN?"  Log back on using
+your normal userid.
+
+This patch does NOT require a backup.
+
+These are operating system files for your machine and JDVISION.

@@ -1,0 +1,13 @@
+T,N,MAIN MENU FOR DATA ENTRY PROGRAM
+H,00,HELP
+E,M00,No Longer Used  (01/29/97)
+E,G02,TRACE Transactions
+E,G13,FIS   Transactions
+E,M04,Product Reporting Transactions
+E,M05,Stock Order Transaction
+E,M06,Surplus Return Transaction
+E,M08,Generalized Data Entry
+E,M09,Transmit File Options
+E,G01,Enter Data For Another Dealer Contract Number
+E,M11,Program Options
+E,Q,End The Program

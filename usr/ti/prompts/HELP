@@ -1,0 +1,23 @@
+# cshf  help -- provides helpful information on SCCS 
+#	@(#)HELP.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^HELP -- FINDS HELP FOR SCCS COMMANDS"\
+	"^*Error Number or Command Name:" argmnt string "$argmnt"\
+	"^Stuck?:" lost yesno n\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== HELP COMMAND EXECUTING ==="
+if ($lost == "y") then
+	echo help stuck
+	help stuck
+else
+	echo help $argmnt
+	help $argmnt
+endif
+
+#clean up time
+end:
+unset argmnt lost

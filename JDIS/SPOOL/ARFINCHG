@@ -1,0 +1,324 @@
+
+Date: 01JUN98                                        MEYER IMPLEMENT, INC.                                                Page:    1
+Time: 08:12                                            Finance Charge Report                                            (ARFINCHG-1)
+                                                Customer Range: All Customers
+                                                Finance Charge Date: 01JUN98
+
+Note:  Double asterisks (**) indicates that a credit invoice and/or unapplied payment
+has been used to offset the invoice and/or finance charge using the oldest first logic
+
+Customer                                    Invoice Invoice  Defer  DFC  Curr Inv      Chgs   Previous    New Fin       New Fin
+ Number  Customer Name                      Number   Date   FC Date Ind Net Amount     Rate   Fin Chgs    Chg Calc      Balance
+
+      45 DOUBLE A DAIRY                        5176 27DEC96                  97.33    0.000     217.98         .00       217.98 **
+                                             192184 16MAY97                   4.66    0.750        .82         .03          .85
+                                             199333 25AUG97                   9.10    0.750       1.12         .07         1.19
+                                               Finance Charges Carried Forward                  219.92         .10       220.02
+
+     145 GREG ANDERSON                            1 23DEC94                  14.75    0.750       8.80         .11         8.91
+                                                  2 23NOV94                  14.53    0.750       8.80         .11         8.91
+                                                  3 24OCT94                  55.15    0.750      33.18         .41        33.59
+                                                  4 24SEP94                  54.17    0.750     268.52         .41       268.93
+                                               5772 03AUG95                  58.01    0.750      28.73         .44        29.17
+                                             143662 29APR95                  11.71    0.750       6.48         .09         6.57
+                                             147664 13JUN95                  80.79    0.750      42.37         .61        42.98
+                                             148185 17JUN95                  19.95    0.750      10.50         .15        10.65
+                                             151292 31JUL95                 160.37    0.750      79.51        1.20        80.71
+                                               Finance Charges Carried Forward                  486.89        3.53       490.42
+
+     247 BRUCE A ALBARADO                      9952 07APR97               6,529.22    0.500   1,336.82       18.82     1,355.64 **
+                                              11723 20NOV97                 141.00    0.500      12.37         .71        13.08
+                                             192596 22MAY97                 106.74    0.500      18.93         .53        19.46
+                                             193694 06JUN97                 332.41    0.500      54.04        1.66        55.70
+                                               Finance Charges Carried Forward                1,422.16       21.72     1,443.88
+
+     296 DAVID ZIEMER                        200604 15SEP97                  43.50    0.750       5.22         .33         5.55
+                                               Finance Charges Carried Forward                    5.22         .33         5.55
+
+     412 RAYMOND SELISKI                      11273 02SEP97                  72.20    0.000      38.54         .00        38.54 **
+                                              11375 09SEP97                 278.98    0.000      31.35         .00        31.35 **
+                                              12255 21JAN98                 146.37    0.000       7.70         .00         7.70 **
+                                               Finance Charges Carried Forward                   77.59         .00        77.59
+
+     705 ROGER LOKKER                        212813 27APR98                  60.31    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                     .00         .00          .00
+
+     879 GARY PICOTTE                         12123 31DEC97               1,320.40    0.000      69.32         .00        69.32 **
+                                               Finance Charges Carried Forward                   69.32         .00        69.32
+
+     999 SALES ACCESSORY OFFER               212251 13APR98                 246.84    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                     .00         .00          .00
+
+    1156 GEURKINK TRUCKING - LARRY & JOANNE  212012 08APR98                  24.25    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                     .00         .00          .00
+
+    1205 STANLEY MEYER                       210675 19MAR98                 188.91    0.000       1.42         .00         1.42 **
+                                             210677 19MAR98                 502.25    0.000       3.77         .00         3.77 **
+                                             211413 30MAR98                  17.69    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                    5.19         .00         5.19
+
+
+                                                            (Continued)Date: 01JUN98                                        MEYER IMPLEMENT, INC.                                                Page:    2
+Time: 08:12                                            Finance Charge Report                                            (ARFINCHG-1)
+                                                Customer Range: All Customers
+                                                Finance Charge Date: 01JUN98
+
+Note:  Double asterisks (**) indicates that a credit invoice and/or unapplied payment
+has been used to offset the invoice and/or finance charge using the oldest first logic
+
+Customer                                    Invoice Invoice  Defer  DFC  Curr Inv      Chgs   Previous    New Fin       New Fin
+ Number  Customer Name                      Number   Date   FC Date Ind Net Amount     Rate   Fin Chgs    Chg Calc      Balance
+
+    1324 BOB CARLSON                          94954 16SEP97               1,520.40    0.750     198.96       11.40       210.36
+                                               Finance Charges Carried Forward                  198.96       11.40       210.36
+
+    1395 CARL PRINSEN                         11096 20NOV97                    .00    0.000        .32         .00          .32
+                                               Finance Charges Carried Forward                     .32         .00          .32
+
+    1526 STOLP MASONRY                        12503 29APR98                 249.40    0.750        .00        1.87         1.87
+                                               Finance Charges Carried Forward                     .00        1.87         1.87
+
+    1527 ROY BABCOCK                          12507 29APR98               2,039.67    0.750        .00       15.30        15.30
+                                               Finance Charges Carried Forward                     .00       15.30        15.30
+
+    1528 SHELDON HUPPERT                     212951 29APR98                 368.38    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                     .00         .00          .00
+
+    1640 RICHARD HOLLE                        11980 18NOV97                  47.06    0.750      37.43         .35        37.78
+                                              12062 04DEC97                 172.14    0.750      12.90        1.29        14.19
+                                              12424 27FEB98                  17.37    0.750        .52         .13          .65
+                                               Finance Charges Carried Forward                   50.85        1.77        52.62
+
+    1770 JOE HURTGEN                          11695 02OCT97                  31.60    0.750       3.31         .24         3.55
+                                              11864 30OCT97                  78.81    0.750       7.08         .59         7.67
+                                             201439 27SEP97                 611.57    0.750      71.59        4.59        76.18
+                                             201623 01OCT97                  33.64    0.750       3.50         .25         3.75
+                                             202616 15OCT97                  76.95    0.750       8.07         .58         8.65
+                                             202864 18OCT97                  34.35    0.750       3.64         .26         3.90
+                                             202973 21OCT97                   2.60    0.750        .24         .02          .26
+                                             202975 21OCT97                  37.80    0.750       3.40         .28         3.68
+                                             202976 21OCT97                  40.00    0.750       3.60         .30         3.90
+                                               Finance Charges Carried Forward                  104.43        7.11       111.54
+
+    1780 IDEAL DOOR IDC FABRICAT             212246 13APR98               2,000.00    0.750      15.00       15.00        30.00
+                                             212275 13APR98               3,400.00    0.750      25.50       25.50        51.00
+                                             212276 13APR98               4,000.00    0.750      30.00       30.00        60.00
+                                               Finance Charges Carried Forward                   70.50       70.50       141.00
+
+    1868 ALAN JOHNSON                             1 23DEC94                  47.53    0.750      28.42         .36        28.78
+                                                  2 23NOV94                  46.83    0.750      28.00         .35        28.35
+                                                  3 24OCT94                  49.09    0.750      29.60         .37        29.97
+                                                  4 24SEP94                 822.76    0.750   1,423.67        6.15     1,429.82 **
+                                               6022 27SEP95                  50.96    0.750      23.56         .38        23.94
+                                              60396 03JUN96                  59.00    0.750      20.45         .44        20.89
+                                             199655 29AUG97                   8.25    0.750        .96         .06         1.02
+                                               Finance Charges Carried Forward                1,554.66        8.11     1,562.77
+
+    2205 RONALD F LANGER                      11020 03JUL97                 355.54    0.750      53.32        2.67        55.99
+
+                                                            (Continued)Date: 01JUN98                                        MEYER IMPLEMENT, INC.                                                Page:    3
+Time: 08:12                                            Finance Charge Report                                            (ARFINCHG-1)
+                                                Customer Range: All Customers
+                                                Finance Charge Date: 01JUN98
+
+Note:  Double asterisks (**) indicates that a credit invoice and/or unapplied payment
+has been used to offset the invoice and/or finance charge using the oldest first logic
+
+Customer                                    Invoice Invoice  Defer  DFC  Curr Inv      Chgs   Previous    New Fin       New Fin
+ Number  Customer Name                      Number   Date   FC Date Ind Net Amount     Rate   Fin Chgs    Chg Calc      Balance
+
+    2205 (Continued from previous page)      190526 29APR97                   5.25    0.750       5.90         .04         5.94
+                                             193298 02JUN97                  99.53    0.750      16.41         .75        17.16
+                                             195129 25JUN97                 353.77    0.750      53.08        2.65        55.73
+                                             195134 25JUN97                  34.16    0.750       5.12         .26         5.38
+                                             195488 30JUN97                  46.79    0.750       7.00         .35         7.35
+                                             196544 16JUL97                 301.32    0.750      45.20        2.26        47.46
+                                             198724 15AUG97                 125.02    0.750      16.92         .94        17.86
+                                             199157 22AUG97                 112.00    0.750      15.12         .84        15.96
+                                             201523 29SEP97                  62.34    0.750       6.58         .47         7.05
+                                             202761 17OCT97                 158.14    0.750      16.61        1.19        17.80
+                                               Finance Charges Carried Forward                  241.26       12.42       253.68
+
+    2313 LENERTZ FARMS, INC                    5777 13NOV97               1,055.00    0.750      94.96        7.91       102.87
+                                              11633 14OCT97               2,342.12    0.750     268.77       17.57       286.34
+                                              12342 19FEB98                 805.34    0.750      24.16        6.04        30.20
+                                             202783 17OCT97                  44.29    0.750       4.62         .33         4.95
+                                             202839 18OCT97                  68.33    0.750       7.14         .51         7.65
+                                             202876 20OCT97                  42.07    0.750       4.43         .32         4.75
+                                             202980 21OCT97                 123.60    0.750      11.12         .93        12.05
+                                             203441 25OCT97                  20.50    0.750       1.84         .15         1.99
+                                             203442 25OCT97                 311.44    0.750      28.04        2.34        30.38
+                                             205097 22NOV97                  94.91    0.750       7.10         .71         7.81
+                                             205693 08DEC97                 407.01    0.750      30.53        3.05        33.58
+                                             205833 10DEC97                   9.50    0.750        .70         .07          .77
+                                             206142 17DEC97                 375.86    0.750      28.20        2.82        31.02
+                                             206274 19DEC97                  30.86    0.750       2.30         .23         2.53
+                                             206424 23DEC97                  22.60    0.750       1.36         .17         1.53
+                                             206543 26DEC97                 199.40    0.750      11.98        1.50        13.48
+                                             207446 16JAN98                 237.51    0.750      14.24        1.78        16.02
+                                             207453 16JAN98                 388.87    0.750      23.34        2.92        26.26
+                                             208841 09FEB98                 224.85    0.750      10.13        1.69        11.82
+                                             208842 09FEB98                  78.61    0.750       3.54         .59         4.13
+                                             209049 13FEB98                  41.25    0.750       1.24         .31         1.55
+                                             209106 14FEB98                 363.17    0.750      10.88        2.72        13.60
+                                             209471 23FEB98                  50.00    0.750       1.52         .38         1.90
+                                             209796 27FEB98                  41.62    0.750       1.24         .31         1.55
+                                             209890 28FEB98                  42.11    0.750        .96         .32         1.28
+                                               Finance Charges Carried Forward                  594.34       55.67       650.01
+
+    2440 PAUL LOKKER                           5945 02MAR98               1,500.00    0.750      33.75       11.25        45.00
+                                             208579 03FEB98                 400.72    0.750      29.16        3.01        32.17
+                                             208580 03FEB98                  33.68    0.750       1.51         .25         1.76
+                                             208669 05FEB98                  24.65    0.750       1.09         .18         1.27
+                                             209015 12FEB98                   8.30    0.750        .36         .06          .42
+                                             209116 16FEB98                 161.42    0.750       4.84        1.21         6.05
+                                             209123 16FEB98                   6.00    0.750        .20         .05          .25
+
+                                                            (Continued)Date: 01JUN98                                        MEYER IMPLEMENT, INC.                                                Page:    4
+Time: 08:12                                            Finance Charge Report                                            (ARFINCHG-1)
+                                                Customer Range: All Customers
+                                                Finance Charge Date: 01JUN98
+
+Note:  Double asterisks (**) indicates that a credit invoice and/or unapplied payment
+has been used to offset the invoice and/or finance charge using the oldest first logic
+
+Customer                                    Invoice Invoice  Defer  DFC  Curr Inv      Chgs   Previous    New Fin       New Fin
+ Number  Customer Name                      Number   Date   FC Date Ind Net Amount     Rate   Fin Chgs    Chg Calc      Balance
+
+    2440 (Continued from previous page)      209140 16FEB98                 132.76    0.750       4.00        1.00         5.00
+                                             209209 18FEB98                   3.00    0.750        .08         .02          .10
+                                             211404 30MAR98                 793.28    0.750       5.95        5.95        11.90
+                                             212941 29APR98                 408.05    0.750        .00        3.06         3.06
+                                             212976 30APR98                  22.28    0.750        .00         .17          .17
+                                             212992 30APR98                  24.05    0.750        .00         .18          .18
+                                               Finance Charges Carried Forward                   80.94       26.39       107.33
+
+    2555 JEROME MAIER                         21281 17APR98                 204.74    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                     .00         .00          .00
+
+    2590 DAVID MENTINK                       212954 29APR98                 122.12    0.750        .00         .92          .92
+                                               Finance Charges Carried Forward                     .00         .92          .92
+
+    2750 RICK MOULTON                         12287 23JAN98                 110.06    0.750      16.43         .83        17.26
+                                              21998 19FEB98                  15.31    0.750        .44         .11          .55
+                                               Finance Charges Carried Forward                   16.87         .94        17.81
+
+    3480 ST CROIX ELECTRIC COOPERATIVE       212687 22APR98                   4.14    0.750        .00         .03          .03
+                                               Finance Charges Carried Forward                     .00         .03          .03
+
+    3490 ST. CROIX CO. HWY DEPT.             212897 28APR98                   3.34    0.000        .00         .00          .00 **
+                                             212906 28APR98                   3.94    0.000        .00         .00          .00 **
+                                             212970 30APR98                  23.90    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                     .00         .00          .00
+
+    3689 DAN SIMONSON                        212311 14APR98                  39.15    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                     .00         .00          .00
+
+    3915 TJADER & HIGHSTROM                  212967 29APR98                 211.00    0.000        .00         .00          .00 **
+                                               Finance Charges Carried Forward                     .00         .00          .00
+
+    3990 TRI-COUNTY IMPLEMENT                212973 30APR98                  49.73    0.000        .00         .00          .00 **
+                                             212975 30APR98                  47.14    0.750        .00         .35          .35
+                                               Finance Charges Carried Forward                     .00         .35          .35
+
+    4020 WESLEY TUTTLE                        12293 02FEB98                 218.07    0.750      18.19        1.64        19.83
+                                               Finance Charges Carried Forward                   18.19        1.64        19.83
+
+    4390 DON ZIGNEGO                           4928 19SEP96                 173.61    0.750     158.20        1.30       159.50
+                                               5338 17APR97                 195.00    0.750      38.07        1.46        39.53
+                                               9319 08NOV96               1,029.92    0.750     278.08        7.72       285.80
+                                               9608 06JAN97                 499.80    0.750     120.00        3.75       123.75
+                                             178337 27SEP96                  15.77    0.750       4.56         .12         4.68
+                                             178501 30SEP96                  27.61    0.750       7.81         .21         8.02
+                                             179027 08OCT96                  21.40    0.750       6.08         .16         6.24
+
+                                                            (Continued)Date: 01JUN98                                        MEYER IMPLEMENT, INC.                                                Page:    5
+Time: 08:12                                            Finance Charge Report                                            (ARFINCHG-1)
+                                                Customer Range: All Customers
+                                                Finance Charge Date: 01JUN98
+
+Note:  Double asterisks (**) indicates that a credit invoice and/or unapplied payment
+has been used to offset the invoice and/or finance charge using the oldest first logic
+
+Customer                                    Invoice Invoice  Defer  DFC  Curr Inv      Chgs   Previous    New Fin       New Fin
+ Number  Customer Name                      Number   Date   FC Date Ind Net Amount     Rate   Fin Chgs    Chg Calc      Balance
+
+    4390 (Continued from previous page)      180589 31OCT96                  15.50    0.750       4.16         .12         4.28
+                                             180996 07NOV96                   5.47    0.750       1.44         .04         1.48
+                                             184748 10JAN97               1,330.20    0.750     319.22        9.98       329.20
+                                             187791 14MAR97                   9.16    0.750       1.96         .07         2.03
+                                             189005 10APR97                 679.00    0.750     132.45        5.09       137.54
+                                             189358 16APR97                  37.14    0.750       7.28         .28         7.56
+                                             189648 21APR97                  10.25    0.750       1.97         .08         2.05
+                                             189922 23APR97                 287.50    0.750      51.74        2.16        53.90
+                                             190366 28APR97                  17.25    0.750       3.12         .13         3.25
+                                             193589 05JUN97                  30.40    0.750       5.06         .23         5.29
+                                             197102 25JUL97                  52.65    0.750       7.09         .39         7.48
+                                             199088 21AUG97                   9.39    0.750       1.26         .07         1.33
+                                             200687 16SEP97                  40.75    0.750       4.90         .31         5.21
+                                             201939 04OCT97                  19.90    0.750       2.10         .15         2.25
+                                             203088 22OCT97                  58.62    0.750       5.28         .44         5.72
+                                             203594 28OCT97                   6.90    0.750        .60         .05          .65
+                                             203819 31OCT97                   6.92    0.750        .60         .05          .65
+                                             204126 05NOV97                  14.75    0.750       1.32         .11         1.43
+                                             206154 17DEC97                  65.49    0.750       4.90         .49         5.39
+                                             211440 30MAR98                  85.50    0.750        .64         .64         1.28
+                                               Finance Charges Carried Forward                1,169.89       35.60     1,205.49
+
+    4450 GARY AFFOLTER                        21998 19FEB98                  37.73    0.750       1.12         .28         1.40
+                                               Finance Charges Carried Forward                    1.12         .28         1.40
+
+    4470 D. J. HOLSTEINS                      11010 30JUN97                  37.53    0.750       8.24         .28         8.52
+                                               Finance Charges Carried Forward                    8.24         .28         8.52
+
+    4660 MIKE DORWIN                          12476 30MAR98                  55.23    0.750        .41         .41          .82
+                                             211418 30MAR98               1,094.03    0.750       8.21        8.21        16.42
+                                             211477 30MAR98                 166.35    0.750       1.25        1.25         2.50
+                                             211522 31MAR98                  59.46    0.750        .45         .45          .90
+                                             212509 17APR98                   8.79    0.750        .00         .07          .07
+                                             212743 24APR98                  13.05    0.750        .00         .10          .10
+                                               Finance Charges Carried Forward                   10.32       10.49        20.81
+
+    6401 CHAD PEABODY                         20479 08SEP97                  11.00    0.750       1.34         .08         1.42
+                                              30698 13OCT97                  10.10    0.750        .47         .08          .55
+                                             199688 29AUG97                   9.30    0.750       2.83         .07         2.90
+                                             200056 05SEP97                  13.97    0.750       1.66         .10         1.76
+                                             201782 02OCT97                   3.40    0.750        .37         .03          .40
+                                             202440 13OCT97                  46.42    0.750       4.90         .35         5.25
+                                               Finance Charges Carried Forward                   11.57         .71        12.28
+
+    7270 DAVE QUAM                            21998 19FEB98                  25.66    0.750        .76         .19          .95
+                                               Finance Charges Carried Forward                     .76         .19          .95
+
+
+                                                            (Continued)Date: 01JUN98                                        MEYER IMPLEMENT, INC.                                                Page:    6
+Time: 08:12                                            Finance Charge Report                                            (ARFINCHG-1)
+                                                Customer Range: All Customers
+                                                Finance Charge Date: 01JUN98
+
+Note:  Double asterisks (**) indicates that a credit invoice and/or unapplied payment
+has been used to offset the invoice and/or finance charge using the oldest first logic
+
+Customer                                    Invoice Invoice  Defer  DFC  Curr Inv      Chgs   Previous    New Fin       New Fin
+ Number  Customer Name                      Number   Date   FC Date Ind Net Amount     Rate   Fin Chgs    Chg Calc      Balance
+
+    7760 GLEN GEURKINK                        12294 10FEB98                    .00    0.000       4.27         .00         4.27 **
+                                               Finance Charges Carried Forward                    4.27         .00         4.27
+
+    8470 TIMME INC.                          212668 22APR98                  84.78    0.750        .00         .64          .64
+                                               Finance Charges Carried Forward                     .00         .64          .64
+
+    8601 RAYMOND SISLO                            1 23DEC94                  26.91    0.750      16.00         .20        16.20
+                                                  2 23NOV94                  26.52    0.750      16.00         .20        16.20
+                                                  3 24OCT94                  26.13    0.750      15.62         .20        15.82
+                                                  4 24SEP94                  16.68    0.750     496.83         .13       496.96
+                                               Finance Charges Carried Forward                  544.45         .73       545.18
+
+    9998 JOANE/VIOLET GERKEN                 112497 24SEP97               1,009.43    0.750      95.36        7.57       102.93
+                                               Finance Charges Carried Forward                   95.36        7.57       102.93
+
+
+         **** Grand Totals ****                                          47,611.58            7,063.59      296.59     7,360.18
+
+
+                                                          (End of Report)

@@ -1,0 +1,81 @@
+#ident	"@(#)readme	1.1 91/08/02 5/18/93"
+
+
+	USING tr78 AND tr87 TO TRANSLATE TEXT FOR PRINTERS
+
+
+This document gives an example of how filters can be set up to automatically
+translate text among the various 7-bit national character sets and the 8-bit
+ISO 8859/1 set.
+
+These filters rely upon the "tr78" and "tr87" shell scripts to actually
+translate the text.  "tr78" translates from the 7-bit national character sets
+to ISO 8859/1.  "tr87" translates from ISO 8859/1 to the 7-bit character sets. 
+For both scripts, a single command line parameter from the table below (e.g. 
+fr) specifies which 7-bit national character set is intended.
+
+    fr		France
+    gr		Germany
+    nd or dn	Norway and Denmark
+    sp		Spain
+    sv		Sweden
+    sw		Switzerland
+    uk		United Kingdom
+    us		United States
+
+
+Printers that accept character sets of a specific nationality should have the
+nationality defined in in the printer's content-type-list.  For example, a
+printer which assumes that input is in the German national character set would
+be defined as follows:
+
+	/usr/lib/lpadmin -p lp1 -I gr . . .
+
+For each national character set for which a printer exists, an lp filter must
+be created.  This us done using the lpfilter command.  For example:
+
+	/usr/lib/lpfilter -f iso8859_gr -F filter-def-filename
+
+    where filter-def-filename is a file containing the following text:
+
+	Input types:	iso8859
+	Output types:	gr
+	Filter type:	fast
+	Command:	/usr/spool/lp/model/tr87 gr
+
+
+A printer which accepts ISO 8859/1 text would be defined as follows:
+
+	/usr/lib/lpadmin -p lp2 -I iso8859 . . .
+
+
+Filters may also be required to translate incomming text from national formats
+into iso8859/1 format.  For example, if the system sometimes handles text
+in the French national character set, the following filter would be required:
+
+	/usr/lib/lpfilter -f fr_iso8859 -F filter-def-filename
+
+    where filter-def-filename is a file containing the following text:
+
+	Input types:	fr
+	Output types:	iso8859
+	Filter type:	fast
+	Command:		/usr/spool/lp/model/tr78 fr
+
+
+Now, to print text in the French character set on the printer lp1, which was
+defined to handle the German character set, the user would simply use the "-T"
+option of the "lp" command, as follows:
+
+	lp -T fr -d lp1 <text-file>
+
+The "lp" utility would automatically pass the text through the "fr_iso8859"
+filter, then through the "iso8859_gr" filter before giving it to the printer.
+
+If the text were in ISO 8859/1 format, the following form of the "lp" command
+would be used:
+
+	lp -T iso8859 -d lp1 <text-file>
+
+The "lp" utility would automatically pass the text through the "iso9959-gr"
+filter.

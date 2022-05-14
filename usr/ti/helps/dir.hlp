@@ -1,0 +1,6 @@
+	dir- Directory Operations Menu
+		@(#)dir.sh	1.1 87/03/09
+
+	This menu lists tools to help the system user manipulate
+           directories.  These utilities facilitate the creation,
+	   deletion, comparison, and searching of UNIX directories.

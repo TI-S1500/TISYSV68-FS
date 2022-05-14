@@ -1,0 +1,6 @@
+:
+while test `date +%j%H%M` -lt $GOBEGIN
+do
+   sleep 100
+done
+aspen<gohome.incl

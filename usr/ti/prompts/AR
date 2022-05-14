@@ -1,0 +1,93 @@
+# cshf  ar -- maintains archive and library for portable archives 
+#	@(#)AR.sh	1.3 (TI) 88/02/10
+#
+onintr end
+
+@ count = 0
+while ($count != 1)
+  prompt "^ AR -- MAINTAINS ARCHIVE AND LIBRARY FOR PORTABLE ARCHIVES"\
+	"^*Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Archive File Name:" archive acnm $archive\
+	"^SELECT ONLY ONE OF THE FOLLOWING:"\
+	"^Delete Files:" dflag yesno n\
+	"^Move Files to End:" mflag yesno n\
+	"^Print Named Files:" pflag yesno n\
+	"^Quickly Append to End of Archive:" qflag yesno n\
+	"^Replace Named Files:" rflag yesno n\
+	"^Print Table of Contents:" tflag yesno n\
+	"^Extract Named Files:" xflag yesno n\
+	"^#$*"
+
+  if ($abort) goto end
+  if ($dflag == "y") @ count++
+  if ($mflag == "y") @ count++
+  if ($pflag == "y") @ count++
+  if ($qflag == "y") @ count++
+  if ($rflag == "y") @ count++
+  if ($tflag == "y") @ count++
+  if ($xflag == "y") @ count++
+  if ($count != 1) @ count = 0
+end
+
+# variable set here since other decisions depend on "action" being taken
+if ($dflag == "y") set action = "d"
+if ($mflag == "y") set action = "m"
+if ($pflag == "y") set action = "p"
+if ($qflag == "y") set action = "q"
+if ($tflag == "y") set action = "t"
+if ($xflag == "y") set action = "x"
+if ($rflag == "y") set action = "r"
+
+prompt "^AR -- ACTION OPTIONS"\
+	"^Create a File:" cflag yesno n\
+	"^Local Temporary Files:" lflag yesno n\
+	"^Create a Symbol Table:" sflag yesno n\
+	"^Verbose Listing:" vflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($vflag == "y") set opt = v$opt
+if ($cflag == "y") set opt = c$opt
+if ($lflag == "y") set opt = l$opt
+if ($sflag == "y") set opt = s$opt
+
+if (($action == "r") || ($action == "m")) then
+	if ($abort) goto end
+	@ count = 2
+	while ($count > 1)
+	  prompt "^AR -- POSITIONING OPTIONS:"\
+		"^*Positioning Name:" posname acnm $posname\
+		"^SELECT ONLY ONE OR NONE OF THE FOLLOWING:"\
+		"^Replace by Dates:" uflag yesno n\
+		"^Replace Before:" bflag yesno n\
+		"^Replace After:" aflag yesno n\
+		"^#$*"
+ 
+	  if ($abort) goto end
+	  @ count = 0
+	  if ($uflag == "y") @ count++
+	  if ($bflag == "y") @ count++
+	  if ($aflag == "y") @ count++
+	end
+
+ 	if ($abort) goto end
+	if (($posname == "") || ($count == 0)) then
+		set posname = ""
+		goto doit
+	endif
+
+	if ($uflag == "y") set posopt = u$posopt
+	if ($aflag == "y") set posopt = a$posopt
+	if ($bflag == "y") set posopt = b$posopt
+	set action = $action$posopt
+endif
+
+doit:
+if ($abort) goto end
+echo "=== AR COMMAND EXECUTING ==="
+echo ar $opt$action $posname $archive $_input_file 
+ar $opt$action $posname $archive $_input_file
+
+#clean up time
+end:
+unset *opt *flag  posname action archive

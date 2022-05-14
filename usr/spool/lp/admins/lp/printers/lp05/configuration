@@ -1,0 +1,6 @@
+Banner: on:Always
+Content types: simple
+Device: /dev/alp03
+Fault: continue
+Interface: /usr/spool/lp/admins/lp/interfaces/lp05
+Printer type: unknown

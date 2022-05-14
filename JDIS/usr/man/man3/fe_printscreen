@@ -1,0 +1,94 @@
+FE_PRINTSCREEN(3T)                             FE_PRINTSCREEN(3T)
+
+NAME
+     FE_printscreen - Prints field edit screen image
+
+SYNOPSIS
+     #include <vdtrdwrt.h>
+
+     extern int errno;
+     int status, fd;
+     status = FE_printscreen(fd);
+
+DESCRIPTION
+     The FE_printscreen function sends a copy of the data from
+     the screen image to the spooler for printing.  The fd
+     parameter is the TI System V file descriptor used in the
+     FE_open(3T) call.  The errno and status parameters return
+     error information.
+
+     You can also print the field edit screen image by pressing
+     the key defined as the print_screen_key in the /etc/fecap
+     file.  This key is Ctrl-p by default.
+
+     The function formats the data with a carriage return/line
+     feed character representing each blank line on the screen
+     and a carriage return/line feed character at the end of the
+     printable data on each line.  Blanks at the end of a line
+     are suppressed.  The line length used is the same as the
+     number of columns on the terminal in use.  A user-written
+     spooler interface program must be provided to print data
+     from 132-column terminals on 80-column printers.  The
+     FE_printscreen function returns no attribute or character
+     set information.
+
+     The data written to the spooler by this function might not
+     always match the data on the screen at the time the call is
+     issued.  If this function is called immediately after an
+     FE_write(3T) call, data that has not yet been physically
+     written to the screen might be present in the screen image.
+     Similarly, if an FE_read(3T) call is outstanding at the time
+     FE_printscreen is called (which requires two processes
+     because reads block other processes), any data gathered by
+     the uncompleted read call has not yet been placed into the
+     screen image.
+
+   printscreen Environment Variables
+     In order for the screen image to be printed, field edit must
+     be instructed to keep a screen image when the FE_open(3T)
+     call is issued.  You can do this by setting the environment
+     variable SCRNIMAGE to y (setenv SCRNIMAGE y) or by setting
+     the scrnimage flag in FE_open parms.  This variable is
+     checked only when the FE_open call is processed.  If the
+     variable SCRNIMAGE is not set or is set to some value other
+     than y or Y, the screen image is not kept and field edit
+     cannot print a screen.
+
+     The screen image is written to the spooler default
+     destination unless the environment variable PSCRN is set to
+     specify some other spooler device.  If PSCRN is set, it must
+     be set to some valid spooler device.  The screen image data
+     can be sent to a file if that file has been defined to the
+     spooler.  Data printed to a file defined to the spooler gets
+     appended to that file so that subsequent print data does not
+     overwrite previous print data.  The variable PSCRN is
+     checked when the FE_printscreen request is processed.  This
+     allows you to change the print destination by changing PSCRN
+     rather than by closing and re-opening field edit.
+
+RETURN VALUES
+     The function can return the following values in status:
+
+      0 - No errors.
+     -1 - Error occurred and errno contains the error code.  The
+     error can be:
+          EFE_BADFD - An invalid file descriptor was used.
+          EFE_NOIMAGE - Field edit is not currently keeping a
+          screen image for this terminal.
+          Other system errors are described in errno.h.
+
+     The screen image data is first written to a temporary file
+     in the /usr/spool/pscrn directory before the spooler is
+     called.  If the /usr/spool/pscrn directory has incorrect
+     access privileges, the temporary file is written to /usr/tmp
+     instead.
+
+SEE ALSO
+     FE_abort(3T), FE_close(3T), FE_exportscreen(3T),
+     FE_flush(3T), FE_getparm(3T), FE_importscreen(3T),
+     FE_open(3T), FE_read(3T), FE_restorescreen(3T),
+     FE_putchar(3T), FE_savescreen(3T), FE_setvbits(3T),
+     FE_write(3T), fecap(4), vdtrdwrt.h(4).
+     ``Terminal Input/Output'' in TI System V Programmer's Guide.
+
+

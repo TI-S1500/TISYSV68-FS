@@ -1,0 +1,16 @@
+                 STATUS OF PMNIGHT SUBMITTED ON 06/29/98 AT 15:40:45
+*
+           PMNIGHT BEGINNING    15:40:45  06/29/98  DLR001  from tty06 / ST08
+           The PMNIGHT process will begin at 
+           PMNIGHT SUBMITTED     15:40:45  06/29/98  DLR001
+              PMBKUP Created 06/29/98 20:38:07 DLR001
+           STKORD   Started   20:38:48   06/29/98  DLR001
+           -------------------------------------------------
+              STKORD NOT SCHEDULED TO RUN THIS NIGHT
+           -------------------------------------------------
+           STKORD   Ended   20:38:51   06/29/98  DLR001
+           PMDECDRV Started   20:38:51   06/29/98  DLR001
+           PMDECDRV ENDED AT 20:42:28 06/29/98 DLR001 from tty06 / ST08
+           RPTDRV   Started   20:42:28   06/29/98  DLR001
+           RPTDRV   Ended   21:27:31   06/29/98  DLR001
+           PMHRUN COMPLETED    21:27:31    06/29/98    DLR001

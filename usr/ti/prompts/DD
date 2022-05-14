@@ -1,0 +1,67 @@
+# cshf 	dd - convert and copy a file 
+#	@(#)DD.sh	1.5  91/03/04
+#
+onintr end
+
+prompt  "^DD - CONVERTS AND COPIES A FILE"\
+	"^*Input File Name:"  _input_file acnm $_input_file\
+	"^*Input Block Size:"  ibs  string 512\
+	"^*Output File Name:"  _output_file acnm $_output_file\
+	"^*Output Block Size:"  obs  string 512\
+	"^*Number of Blocks to Skip:" skipnum integer\
+	"^*Number of Blocks to Seek:" seeknum integer\
+	"^*Number of Input Blocks to Copy:" countnum integer\
+	"^Select Conversion Options:" options yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($_output_file != "") then
+	if (-e $_output_file) then
+		prompt "^DD -- REPLACE FILE OPTION"\
+		"^Output File Exists. Replace File:" rep yesno n\
+		"^#$*"
+		if (($rep == "n")  || ($abort)) goto end
+	endif
+endif
+
+if(  $abort ) goto end
+if ($options == "y") then
+	prompt "^DD -- CONVERSION OPTIONS"\
+		"^Convert EBCDIC to ASCII:" asciiflag yesno n\
+		"^Convert ASCII to EBCDIC:" ebcdicflag yesno n\
+		"^*Conversion Buffer Size:" cbsnum string\
+		"^Map Alphabetics to Lower Case:" lcaseflag yesno n\
+		"^Map Alphabetics to Upper Case:" ucaseflag yesno n\
+		"^Swap Every Pair of Bytes:" swabflag yesno n\
+		"^Stop Processing on an Error:" noerrorflag yesno y\
+		"^Pad Input Block to Input Block Size:" syncflag yesno n\
+		"^#$*"
+
+	if(  $abort ) goto end
+	if ($cbsnum != "") set cbs = "cbs=$cbsnum"
+	if ($asciiflag == "y") set ascii = "conv=ascii"
+	if ($ebcdicflag == "y") set ebcdic = "conv=ebcdic"
+	if ($lcaseflag == "y") set lcase = "conv=lcase"
+	if ($ucaseflag == "y") set ucase = "conv=ucase"
+	if ($swabflag == "y") set swab = "conv=swab"
+	if ($syncflag == "y") set sync = "conv=sync"
+	if ($noerrorflag == "n") set noerror = "conv=noerror"
+endif
+
+if ($_input_file != "") set if = "if=$_input_file"
+if ($_output_file != "") set of = "of=$_output_file"
+if ($ibs != "" ) set ibs = "ibs=$ibs"
+if ( $obs != "" ) set obs = "obs=$obs"
+if ($skipnum != "") set skip = "skip=$skipnum"
+if ($seeknum != "") set seek = "seek=$seeknum"
+if ($countnum != "") set count = "count=$countnum"
+
+echo "=== DD COMMAND EXECUTING ==="
+echo dd $if $of $ibs $obs $cbs $skip $seek $count $ascii $ebcdic $lcase $ucase\
+ $swab $noerror $sync
+dd $if $of $ibs $obs $cbs $skip $seek $count $ascii $ebcdic $lcase $ucase\
+ $swab $noerror $sync
+
+end:
+unset ibs obs if of conv *num ascii ebcdic lcase ucase swab noerror sync
+unset skip seek count cbs *flag options rep

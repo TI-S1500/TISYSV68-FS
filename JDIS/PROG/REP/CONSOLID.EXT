@@ -1,0 +1,132 @@
+* CONSOLID (General Ledger File Conversion)
+*
+* Created 06 SEP 89  Deanna Townsend
+*         08 NOV 90  Jim Hadden  -  add OPCHK file to proc
+*         22 APR 91/RLS82 Deanna Townsend - No changes to proc/only to
+*                    program
+*         17 MAR 94  Gary Eng - use BDSORCE instead of BDSORCENW for 94-1
+*         16 NOV 94  Gary Eng - add BUDPRY.INX for 94-2
+*         14 DEC 94  Elaine Boyd - added code to create BUDPRY if the file
+*                                  does not exist
+*
+/ DI - General Ledger File Conversion -
+*
+:SETPRT
+S AS SPRT1 @PRT1
+/ CC 4 5
+/ DI "Enter listing device "@PRT1
+/ CC 4 26
+/ RD PRT1 @PRT1
+*
+/ CC 24 02
+/ DI Program Is Being Loaded
+*
+S AS GLMST    @D1"MF/GLMST.INX"
+S AS GLMSTNEW @D1"MF/GLMSTNEW.INX"
+S AS AROINV   @D1"MF/AROINV.INX"
+S AS APTRN    @D1"MF/APTRN.INX"
+S AS BUDGET   @D1"MF/BUDGET.INX"
+S AS BUDNEW   @D1"MF/BUDNEW.INX"
+S AS BUDPRY   @D1"MF/BUDPRY.INX"
+S AS BUDPRNEW @D1"MF/BUDPRNEW.INX"
+S AS ACTPRM   @D1"MF/ACTPRM.INX"
+S AS MTRANR   @D2"MF/MTRANR"
+S AS SORCE    @D2"MF/SORCE.INX"
+S AS SORCENEW @D2"MF/SORCENEW.INX"
+S AS OPCHK    @D1"MF/OPCHK.INX"
+S AS OPCHKNEW @D1"MF/OPCHKNEW.INX"
+S AS ATRANR   @D2"MF/ATRANR"
+S AS GLCONVT  @D2"MF/GLCONVT.INX"
+S AS USER     @D1"MF/USER"
+*
+F EX @SORCENEW         [CREATE]
+F DL @SORCENEW
+*
+:CREATE
+S AS KEYFILE  @D2"MF/SORCENEW.INX"
+L AL 300:3 BLD
+#cd @RUN_PROG"/REP"
+!@RUN_PROG"REP/BDSORCE"
+? @RMRC GT 0           [GO_ON]
+/ PS
+:GO_ON
+*
+F EX @OPCHKNEW         [COPCHK]
+F DL @OPCHKNEW
+*
+:COPCHK
+S AS KEYFILE  @D1"MF/OPCHKNEW.INX"
+L AL 300:3 BLD
+#cd @RUN_PROG"/REP"
+!@RUN_PROG"REP/BDOPCHK"
+? @RMRC GT 0           [GO_ON1]
+/ PS
+:GO_ON1
+*
+F EX @BUDPRY           [CRTBUD]
+F EX @BUDPRY (GO_ON3)
+*
+:CRTBUD
+S AS KEYFILE  @D1"MF/BUDPRY.INX"
+L AL 300:3 BLD
+#cd @RUN_PROG"/REP"
+!@RUN_PROG"REP/BDBUDGET"
+? @RMRC GT 0           [GO_ON3]
+/ PS
+:GO_ON3
+*
+#cd @RUN_PROG"/REP"
+!@RUN_PROG"/REP/CONSOLID"
+? @RMRC GT 0  (PGM_ERR)
+*
+:PRMT2
+/ CS
+/ DI - General Ledger File Conversion -
+/ CC 4 5
+/ DI "Do you want to rename files? (Y,N): "
+/ CC 4 *
+/ RD RESP
+? @RESP EQ N  (GO_ON2)
+? @RESP EQ Y           [PRMT2]
+*
+#cp @D1"MF/GLMSTNEW.INX" @D1"MF/GLMST.INX"
+#cp @D1"MF/BUDNEW.INX" @D1"MF/BUDGET.INX"
+#cp @D1"MF/BUDPRNEW.INX" @D1"MF/BUDPRY.INX"
+#cp @D2"MF/SORCENEW.INX" @D2"MF/SORCE.INX"
+#cp @D1"MF/OPCHKNEW.INX" @D1"MF/OPCHK.INX"
+F DL @GLMSTNEW
+F DL @BUDNEW
+F DL @BUDPRNEW
+F DL @SORCENEW
+F DL @OPCHKNEW
+{GO_ON2}
+*
+:PGM_ERR
+/ PS
+:GO_ON2
+*
+*
+S DS GLMST
+S DS GLMSTNEW
+S DS AROINV
+S DS APTRN
+S DS BUDGET
+S DS BUDNEW
+S DS BUDPRY
+S DS BUDPRNEW
+S DS ACTPRM
+S DS MTRANR
+S DS SORCE
+S DS SORCENEW
+S DS OPCHK
+S DS OPCHKNEW
+S DS ATRANR
+S DS GLCONVT
+D DS USER
+S DS KEYFILE
+L AL 300:3
+*
+:RESET
+S AS PRT1 @SPRT1
+S DS SPRT1
+:END

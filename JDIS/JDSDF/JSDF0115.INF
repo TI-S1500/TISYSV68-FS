@@ -1,0 +1,59 @@
+ATTENTION:  FOCUS PERSON
+
+INSTALLATION INSTRUCTIONS - PATCH 115 - checkspace
+
+**** NOTE:  This patch contains the utility "checkspace".
+
+*******************************************************************************
+TO INSTALL PATCH 115   (Patch installation will take less than 2 minutes.
+			Other users can be on the system.>
+
+The focus person should log on a VDT with userid sys999.  (DO NOT log on the
+MASTER VDT.)  At the 'Enter Selection' prompt, type in JDUPDATE and press
+<RETURN>.**This command will install the update.  Once the installation is
+complete, you should log off the system.  To do this, press <F10> and answer
+Y to the prompt "Do you want to terminate ASPEN?"  Log back on using your
+normal userid.
+
+*****************************************************************************
+
+THIS UPDATE WILL INSTALL THE UTILITY CALLED checkspace.  checkspace READS
+SYSTEM FILES TO DETERMINE IF YOU HAVE ENOUGH AVAILABLE SPACE TO INSTALL
+RELEASE 98-1.  IT IS BEING SENT TO YOU NOW IN AN EFFORT TO PROVIDE YOU WITH
+SUFFICIENT TIME TO ADDRESS ANY SPACE ISSUES PRIOR TO RECEIVING THE RELEASE.
+RUNNING checkspace  WILL BE PART OF YOUR RELEASE 98-1 PREWORK.
+
+TO RUN checkspace:
+
+TYPE  checkspace  (lower case) AT THE ENTER SELECTION PROMPT.  THE UTILITY WILL
+READ THROUGH YOUR FILE SYSTEMS AND DETERMINE YOUR CURRENT DISK USAGE.  WHILE
+checkspace IS RUNNING, IT WILL DISPLAY A SCREEN TELLING WHAT IT IS CURRENTLY
+CHECKING.
+
+INCLUDED IN THE CALCULATIONS checkspace IS USING ARE A MINIMUM ALLOTMENT FOR
+SYSTEM OVERHEAD, AN ALLOWANCE FOR TEMPORARY SPACE REQUIREMENTS NECESSARY FOR
+THE INSTALLATION OF THE RELEASE, AND AN ALLOWANCE FOR SPACE NEEDED FOR THE
+PERMANENT GROWTH REQUIRED FOR THE RELEASE.
+
+WHEN checkspace IS COMPLETE, A SUMMARY WILL DISPLAY ON THE SCREEN.  EXAMPLES
+OF THE SUMMARY PARAGRAPH FOLLOW:  (YOUR RESULTS MAY DIFFER FROM THE EXAMPLES)
+
+IF YOUR DISK SPACE IS SUFFICIENT:
+		checkspace has completed.  Final count is PASS:11    FAIL:0
+		You have enough available disk space to proceed with the
+		installation of 98-1.  Be sure to run checkspace again just
+		before you actually install 98-1.
+
+IF YOUR AVAILABLE DISK SPACE IS IN QUESTION:
+		checkspace has completed.  Final count is PASS:10    FAIL:1
+		You MAY not have enough available disk space to install 98-1.
+
+IF YOU RECEIVE THE MESSAGE THAT YOUR AVAILABLE DISK SPACE IS IN QUESTION, YOU
+MAY NEED TO FREE UP DISK SPACE BY PURGING FILES OR DELETING UNNECESSARY SPOOL
+FILES.	PLEASE CALL THE JDIS RESPONSE LINE IF YOU NEED ASSISTANCE WITH THE
+DISK CLEANUP PROCESS.  THIS CAN BE DONE AT YOUR CONVENIENCE, BUT MUST BE
+DONE AS PREWORK TO INSTALLING RELEASE 98-1.
+
+checkspace CAN BE RUN AT ANY TIME WHILE PEOPLE ARE WORKING ON THE SYSTEM.
+checkspace WILL COMPLETE IN LESS THAN 1 MINUTE.
+

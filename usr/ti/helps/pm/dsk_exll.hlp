@@ -1,0 +1,12 @@
+
+Use the + and - commands to display the next and previous extended disk 
+statistics screens. The "r" command resets the counters in the kernel that are 
+used to compute the extended disk statistics.
+
+The Request Queue Sizes screen shows the size of the request queue at the time 
+a request is made to the selected disk drive. The size is the number of items 
+that are on the queue when a request is made. The bar graph displays the 
+percentage of queue sizes when a request is made. All sizes are shown in bytes. 
+The number of requests used to produce the graph is shown in the lower left 
+corner of the screen.
+

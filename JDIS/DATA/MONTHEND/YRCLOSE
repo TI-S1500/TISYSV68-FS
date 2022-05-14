@@ -1,0 +1,261 @@
+
+DATE: 07JAN99                                         MEYER IMPLEMENT, INC.                                               PAGE:    1
+TIME: 14:25                                         Month-End Report for December                                       (MONTHEND-7)
+                                           Year End Closing Entries to Retained Earnings
+
+             Account Number            Account Description                Balance Closed               Closing Amount
+
+                320-00-20              JD FARM EQUIPMENT                       83,541.74-
+                322-00-20              JD CONSUMER PRODUCTS                   213,385.71-
+                329-00-20              OVERALLOWANCE                           66,202.60
+                342-00-20              OTHER EQUIPMENT                        367,842.12-
+                360-00-20              USED EQUIPMENT                         176,303.17-
+                362-00-20              RENT & LEASE EQUIPMENT                     607.00-
+                366-01-30              JD PARTS CUSTOMER                      254,663.33-
+                366-02-30              JD PARTS INTERNAL                          740.41-
+                366-03-30              JD PARTS WARRANTY                          643.25-
+                372-01-30              OTHER PARTS CUSTOMER                   209,654.60-
+                372-02-30              OTHER PARTS INTERNAL                       616.46-
+                372-03-30              OTHER PARTS WARRANTY                     6,060.12-
+                374-00-30              OTHER MERCHANDISE                          591.10-
+                375-00-30              PARTS SPECIAL HANDLING                     396.32-
+                377-00-40              SERVICE ACCESSORIES                        708.10-
+                379-00-30              PARTS DISCOUNTS ALLOWED                 88,356.44
+                381-01-40              CUST LABOR-REPAIR                       39,313.34-
+                381-02-40              CUST LABOR-FIELD                           194.40-
+                381-03-40              CUST LABOR-OTHER                           368.60-
+                382-01-40              INTL LABOR-REPAIR                        9,079.20-
+                382-02-40              INTL LABOR-RECONDITION                     110.80-
+                382-03-40              INTL LABOR-SETUP/PREDEL                 11,251.20-
+                382-04-40              INTL LABOR-OTHER                         1,493.20-
+                383-01-40              WARR LABOR-REPAIR                        7,876.52-
+                383-02-40              WARR LABOR-FIELD                              .00
+                383-03-40              WARR LABOR-OTHER                           146.00-
+                384-01-40              PIP LABOR-REPAIR                            80.80-
+                384-02-40              PIP LABOR-FIELD                               .00
+                384-03-40              PIP LABOR-OTHER                               .00
+                390-01-40              DELIVERY VEH-MILEAGE                       394.50-
+                390-02-40              DELIVERY VEH-LABOR                            .00
+                392-00-40              SERVICE VEHICLE INCOME                        .00
+                394-00-40              OUTSIDE LBR & MATERIAL                   1,233.69-
+                395-01-40              SPCL SVC EQ-DYNO                            60.00-
+                395-02-40              SPCL SVC EQ-REFRIGERANT                    150.00-
+                395-03-40              SPCL SVC EQ-OTHER                             .00
+                397-00-40              SVC LABOR DISC ALLOWED                     821.70
+                398-00-40              SVC NON-LBR DISC ALLOW                      28.98
+                399-01-40              SVC LBR ALLOWANCE-CUST                     184.80
+                399-02-40              SVC LBR ALLOWANCE-INTL                        .00
+                399-03-40              SVC LBR ALLOWANCE-WARR                        .00
+                399-04-40              SVC LBR ALLOWANCE-PIP                         .00
+                420-00-20              JD FARM EQUIPMENT                       81,485.52
+                422-00-20              JD CONSUMER PRODUCTS                   184,441.87
+                442-00-20              OTHER EQUIPMENT                        346,688.16
+                459-00-20              INV VALUATION ADJ-CG                     2,278.70
+                460-00-20              USED EQUIPMENT                         174,083.61
+                462-00-20              RENT & LEASE EQUIPMENT                     488.61
+                466-01-30              JD PARTS CUSTOMER                      185,596.49
+                466-02-30              JD PARTS INTERNAL                             .00
+                466-03-30              JD PARTS WARRANTY                          487.82
+                472-01-30              OTHER PARTS CUSTOMER                   135,929.64
+
+
+                                                            (Continued)DATE: 07JAN99                                         MEYER IMPLEMENT, INC.                                               PAGE:    2
+TIME: 14:25                                         Month-End Report for December                                       (MONTHEND-7)
+                                           Year End Closing Entries to Retained Earnings
+
+             Account Number            Account Description                Balance Closed               Closing Amount
+
+                472-02-30              OTHER PARTS INTERNAL                       363.13
+                472-03-30              OTHER PARTS WARRANTY                     4,175.70
+                474-00-30              OTHER MERCHANDISE                             .03
+                475-00-30              INBOUND FREIGHT - PARTS                     59.03
+                477-00-40              SERVICE ACCESSORIES                        452.35
+                478-00-30              PARTS ORDER DISC EARNED                  2,085.80-
+                480-00-30              INV VALUATION ADJ-PARTS                  2,992.37
+                486-00-40              SERVICEPERSONS SALARIES                 32,997.96
+                487-01-40              NR TECH SALARIES-WORKED                  9,817.68-
+                487-02-40              NR TECH SALARIES-ABSENT                  1,785.25-
+                490-01-40              DELIVERY VEH-MILEAGE                          .00
+                490-02-40              DELIVERY VEH-LABOR                            .00
+                492-00-40              SERVICE VEHICLE                            402.95
+                494-00-40              OUTSIDE LBR & MATERIAL                   1,403.08
+                495-01-40              SPCL SVC EQ-DYNO                              .00
+                495-02-40              SPCL SVC EQ-REFRIGERANT                       .00
+                495-03-40              SPCL SVC EQ-OTHER                             .00
+                500-00-10              SALARIES/OFFS,OWNS,GMS                  31,200.00
+                502-01-20              SALARIES/DEPT MANAGERS                        .00
+                502-01-30              SALARIES/DEPT MANAGERS                  11,913.08
+                502-01-40              SALARIES/DEPT MANAGERS                  16,067.17
+                502-02-40              TECHNICIAN AS SVC MGR                      433.17
+                504-00-10              SALARY/CONTROLLER                        8,161.23
+                506-00-20              SALARIES/SALESPERSONS                   18,813.52
+                506-00-30              SALARIES/SALESPERSONS                   19,635.31
+                508-00-10              SALARIES & COMM/OTHER                    7,569.41
+                508-00-20              SALARIES & COMM/OTHER                         .00
+                508-00-30              SALARIES & COMM/OTHER                         .00
+                508-00-40              SALARIES & COMM/OTHER                         .00
+                512-00-10              BONUSES                                103,392.33
+                512-00-20              BONUSES                                  2,832.21
+                512-00-30              BONUSES                                  1,862.79
+                512-00-40              BONUSES                                 36,588.06
+                514-01-40              TRAINING-PATHFINDER                           .00
+                514-02-40              TRAINING-BRANCH                            150.00
+                514-03-40              TRAINING-TERRITORY                            .00
+                514-04-40              TRAINING-ON-THE-JOB                           .00
+                514-05-40              TRAINING-IN-HOUSE                             .00
+                514-06-10              TRAINING                                      .00
+                514-06-20              TRAINING                                      .00
+                514-06-30              TRAINING                                      .00
+                516-01-10              EMPLOYEE BENEFITS                        5,181.97
+                516-01-20              EMPLOYEE BENEFITS                        1,691.58
+                516-01-30              EMPLOYEE BENEFITS                          692.10
+                516-01-40              EMPLOYEE BENEFITS                        3,458.85
+                516-07-40              EMP BEN-BREAKS                           1,619.84
+                516-08-40              EMP BEN-VAC/HOLID/SICK                   1,785.25
+                520-00-20              DEMONSTRATION                                 .00
+                522-00-10              TRAVEL                                      28.80
+                522-00-20              TRAVEL                                        .00
+                522-00-30              TRAVEL                                        .00
+                522-00-40              TRAVEL                                        .00
+
+
+                                                            (Continued)DATE: 07JAN99                                         MEYER IMPLEMENT, INC.                                               PAGE:    3
+TIME: 14:25                                         Month-End Report for December                                       (MONTHEND-7)
+                                           Year End Closing Entries to Retained Earnings
+
+             Account Number            Account Description                Balance Closed               Closing Amount
+
+                524-00-10              ENTERTAINMENT                                 .00
+                524-00-20              ENTERTAINMENT                                 .00
+                526-00-10              ADVERTISING & PROMOTION                  4,602.04
+                526-00-20              ADVERTISING & PROMOTION                  3,936.01
+                526-00-30              ADVERTISING & PROMOTION                  4,626.03
+                526-00-40              ADVERTISING & PROMOTION                    404.24
+                528-01-10              WARRANTY                                      .00
+                528-01-20              WARRANTY                                 5,403.29
+                528-01-30              WARRANTY-MFG WARR DIFF                      42.13
+                528-01-40              WARRANTY-MFG WARR DIFF                     494.38
+                528-02-40              WARRANTY-REWORK                          1,188.12
+                530-00-20              AFTER SALES                                   .00
+                530-00-40              AFTER SALES                                   .00
+                532-00-20              POLICY ADJUSTMENT                             .00
+                532-00-40              POLICY ADJUSTMENT                        5,162.06
+                534-00-20              CASH DISCOUNTS ALLOWED                        .00
+                534-00-30              CASH DISCOUNTS ALLOWED                   1,127.35
+                534-00-40              CASH DISCOUNTS ALLOWED                   1,109.87
+                540-00-10              VEHICLE EXPENSE                            133.06
+                540-00-20              VEHICLE EXPENSE                             11.48
+                540-00-30              VEHICLE EXPENSE                               .00
+                540-00-40              VEHICLE EXPENSE                          2,704.80
+                542-00-40              EXPENDABLE TOOLS                         3,035.47-
+                544-00-10              SUPPLIES EXPENSE                           677.35
+                544-00-20              SUPPLIES EXPENSE                              .00
+                544-00-30              SUPPLIES EXPENSE                         1,633.35
+                544-00-40              SUPPLIES EXPENSE                         1,344.78
+                546-00-10              POSTAGE & SHIPPING                         171.50
+                546-00-20              POSTAGE & SHIPPING                          85.75
+                546-00-30              POSTAGE & SHIPPING                         729.01
+                546-00-40              POSTAGE & SHIPPING                          85.75
+                548-00-10              TELEPHONE                                  719.53
+                548-00-20              TELEPHONE                                  352.66
+                548-00-30              TELEPHONE                                  626.86
+                548-00-40              TELEPHONE                                  479.97
+                550-00-10              DATA PROCESSING                          3,053.80
+                550-00-20              DATA PROCESSING                            117.18
+                550-00-30              DATA PROCESSING                            202.56
+                550-00-40              DATA PROCESSING                             16.39
+                552-00-10              DUES & SUBSCRIPTIONS                        25.00
+                554-00-10              CONTRIBUTIONS                                 .00
+                556-00-10              UTILITIES                                  284.35
+                556-00-20              UTILITIES                                1,010.19
+                556-00-30              UTILITIES                                1,010.19
+                556-00-40              UTILITIES                                4,377.36
+                558-00-10              RENT & LEASE                             2,400.00
+                558-00-20              RENT & LEASE                             6,000.00
+                558-00-30              RENT & LEASE                             6,000.00
+                558-00-40              RENT & LEASE                             9,600.00
+                560-00-10              INSURANCE                                3,548.34-
+                560-00-20              INSURANCE                                3,392.42
+                560-00-30              INSURANCE                                2,757.90
+
+
+                                                            (Continued)DATE: 07JAN99                                         MEYER IMPLEMENT, INC.                                               PAGE:    4
+TIME: 14:25                                         Month-End Report for December                                       (MONTHEND-7)
+                                           Year End Closing Entries to Retained Earnings
+
+             Account Number            Account Description                Balance Closed               Closing Amount
+
+                560-00-40              INSURANCE                                  481.46
+                562-00-10              TAX OTH THAN INCOME TAX                 20,831.65
+                564-01-40              REP & MNT-SWEEP/CLEAN                    7,030.48
+                564-02-40              REP & MNT-BUILDINGS                        569.44
+                564-03-40              REP & MNT-GROUNDS                          424.19
+                564-04-40              REP & MNT-OTHER                          1,082.88
+                564-05-10              REPAIR & MAINTENANCE                          .00
+                564-05-20              REPAIR & MAINTENANCE                       340.84
+                564-05-30              REPAIR & MAINTENANCE                        15.30
+                568-00-10              DEPRECIATION                                  .00
+                570-00-10              AMORTIZATION                                  .00
+                572-00-10              CREDIT & COLLECTION EXP                  1,119.74
+                573-00-10              PROVISION FOR BAD DEBTS                 13,638.08
+                580-00-10              LEGAL EXPENSE                           11,739.13
+                582-00-10              AUDITING EXPENSE                              .00
+                584-00-10              BANK CHARGES                                43.71
+                588-00-10              PROFESSIONAL FEES                        4,269.61
+                599-01-40              DOWNTIME DELAYS                             27.38
+                599-02-10              OTHER EXPENSE                               24.12
+                599-02-20              OTHER EXPENSE                               27.21
+                599-02-30              OTHER EXPENSE                            1,833.62
+                599-02-40              OTHER EXPENSE                              115.89
+                600-00-10              CASH DISCOUNTS EARNED                      654.08-
+                607-00-20              COMM & SALES BONUSES                        50.00-
+                607-00-30              COMM & SALES BONUSES                          .00
+                612-00-10              GAIN ON DSPL OF PROPRTY                106,530.75-
+                614-00-10              BAD DEBT RECOVERY                          117.58-
+                615-00-20              VOLUME DISCOUNT EARNED                        .00
+                615-00-30              VOLUME DISCOUNT EARNED                        .00
+                618-00-20              CP PERF BONUS EARNED                       174.57-
+                669-00-10              INTEREST INCOME                         27,183.50-
+                699-00-10              OTHER ADDITIONS                            171.78-
+                699-00-20              OTHER ADDITIONS                          5,674.21-
+                699-00-30              OTHER ADDITIONS                            631.36-
+                699-00-40              OTHER ADDITIONS                          1,500.00-
+                712-00-10              LOSS ON DSPL OF PROPRTY                       .00
+                799-00-10              OTHER DEDUCTIONS                              .00
+                799-00-20              OTHER DEDUCTIONS                              .00
+                799-00-30              OTHER DEDUCTIONS                              .00
+                799-00-40              OTHER DEDUCTIONS                              .00
+                855-00-10              INTEREST EXPENSE                           180.34
+                855-00-20              INTEREST EXPENSE                         3,251.67
+                860-00-10              PROV FOR FED INCOME TAX                       .00
+                862-00-10              PROV FOR STATE INC TAX                        .00
+                864-00-10              PROV FOR OTH INCOME TAX                    865.07-
+                899-00-10              OTHER ADJUSTMENTS                       11,887.00-
+                899-00-20              OTHER ADJUSTMENTS                             .00
+                899-00-30              OTHER ADJUSTMENTS                             .00
+                899-00-40              OTHER ADJUSTMENTS                        4,600.00-
+                899-99-10              PAYROLL DEFAULT ACC'T                         .00
+                988-88-88              MI&MW INTERNAL SALE DEF                       .00
+                999-01-00              MI PARTS DEFAULT ACCT                         .00
+
+
+                                                            (Continued)DATE: 07JAN99                                         MEYER IMPLEMENT, INC.                                               PAGE:    5
+TIME: 14:25                                         Month-End Report for December                                       (MONTHEND-7)
+                                           Year End Closing Entries to Retained Earnings
+
+             Account Number            Account Description                Balance Closed               Closing Amount
+
+                999-02-00              MI JD PARTS DEFAULT ACT                       .00
+                999-03-00              MI VENDOR PARTS DEF ACT                       .00
+                999-10-00              DUMMY C/S ACCOUNT                             .00
+                999-20-00              MW LABOR DEFAULT ACCT                         .00
+                999-21-00              MW PARTS DEFAULT ACCT                         .00
+                999-22-00              MW JD PARTS DEFAULT A/C                       .00
+                999-23-00              MW VENDOR PARTS DEF A/C                       .00
+             99 999-99-88              INVREG DEFAULT ACCOUNT                        .00
+             99 999-99-99              SYSTEM DEFAULT ACCOUNT                        .00
+
+                286-00-00              RETAINED EARNINGS                                                   160,325.54
+
+
+                                                          (End of Report)

@@ -1,0 +1,23 @@
+* @(#)holidays	1.10 90/01/05
+* Prime/Nonprime Table for UNIX Accounting System
+*
+* The numbers given are examples.  Update this file with holidays for your
+* site and remove those in comments.
+*
+* Curr	Prime	Non-Prime
+* Year	Start	Start
+*
+  1993	0830	1700
+*
+* Day of	Calendar	Company
+* Year		Date		Holiday
+*
+    1		Jan 1		New Year's Day
+   99		Apr 9		Good Friday
+  151		May 31		Memorial Day
+  185		Jul 4		Indep. Day
+  249		Sep 6		Labor Day
+  329		Nov 25		Thanksgiving Day
+  330		Nov 26		day after Thanksgiving	
+  358		Dec 24		Christmas Eve
+  359		Dec 25		Christmas

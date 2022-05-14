@@ -1,0 +1,29 @@
+ (A) Key in number 1 to 10 for specific action desired, then press enter or
+     return key.  Below is a brief description of each action.
+
+  (1) Trace is used by Industrial dealers on Trace. (This includes all Trace
+      transactions except those included in DPARTS.)
+
+  (2) FIS is used by dealers on the Financial Information System to transmit
+      their trial balances.
+
+  (3) Product Reporting is used by dealers who report product failures to
+      Deere.  This screen can be used by AG or Industrial dealers.
+
+  (4) Stock orders can be entered to add parts to regularly calculated orders.
+
+  (5) Surplus returns is used to enter surplus returns transactions.
+
+  (6) General data entry is a free format 67 column screen. Any type of record
+      can be entered for transmission, however no audits or prompts are given.
+
+  (7) Transmit file options includes four options of printing Transmit file
+      records, and options to delete individual records or a block of records.
+
+  (8) Allows multiple store dealers to input data for another dealer contract
+      number.
+
+  (9) Program options allows the data entry automatic field advance to be
+      turned off and selection of color for systems with color monitors.
+
+ (10) End of program successfully exits the DCTRANS program.

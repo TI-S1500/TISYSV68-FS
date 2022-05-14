@@ -1,0 +1,14 @@
+T,O,TRANSMIT FILE OPTIONS MENU
+E,0,"           Printing Options"
+E,G12,Print Complete Transmit File On The Printer
+E,G15,Print Transmit File Starting From a Selected Record
+E,0,
+E,0,"           Display Options"
+E,G09,Display Complete Transmit File On The Screen
+E,G10,Display Transmit File Starting From a Selected Record
+E,G11,Display Only Last Record In Transmit File
+E,0, 
+E,0,"           Deleting Options"
+E,G06,Delete Individual Record(s) From Transmit File
+E,G05,Delete a Block Of Records From Transmit File
+E,G14,Delete the Entire Transmit File

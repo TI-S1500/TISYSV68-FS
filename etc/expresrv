@@ -1,0 +1,12 @@
+#!/bin/sh
+# expresrv version 1.1
+# This script performs notifications for vi and ex
+
+if [ -f /etc/.exprs ]; then
+/usr/lib/expreserve -
+echo "Expreserve notification performed for vi and ex." > /dev/console 2>&1 
+rm -f /etc/.exprs
+else
+/usr/lib/expreserve -
+echo "Expreserve notification performed for vi and ex." > /dev/syscon 2>&1 
+fi

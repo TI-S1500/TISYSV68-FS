@@ -1,0 +1,21 @@
+
+The BusNet I/O Activity screen displays a table that describes the activity 
+levels of each system processor board that is participating in BusNet
+input and output.  The table on this screen shows the following information 
+about each system processor board that participates in BusNet I/O activity:
+
+    Slot   Shows the number of the system board slot in which the processor 
+        board resides. The slot numbers appear in decimal format (0-15) on 
+        this screen.
+
+    Type   identifies the board type as either a CPU, CCB, CP2, or CPO.
+
+    Collisions   Shows the number of times a CPU and a CCB, CP2, or CPO
+         have attempted BusNet I/O (contended for the BusNet) at the same 
+         time.
+
+    Free Queue   Shows the total number of packets in the local free queue.
+
+This screen also shows the number of collisions and the total number of 
+packets in the global free queue.
+

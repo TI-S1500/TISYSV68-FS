@@ -1,0 +1,200 @@
+#  COPYRIGHT (c) 1985  TEXAS INSTRUMENTS INCORPORATED  ALL RIGHTS RESERVED
+# @(#)as.sh	1.5 86/11/17
+#
+# as.sh   shell script for the TI System V assembler utility (Quelo front-end)
+
+estat=0
+tstat=0
+asnoerr=0
+aserror=1
+qunoerr=0
+quwarn=1
+querror=2
+quabort=3
+dumpltx=
+rmlst=true
+rmwrk=true
+macros=
+srcfile=
+objfile=
+version='6.2I'
+
+#
+# parse options
+#
+set -- `getopt dlmsVo: $*`
+if [ $? != 0 ]
+then	prmsg "as" 1002840 2 2 0 0
+	exit "$aserror"
+fi
+for i in $*
+do
+   	case $i in
+   	-d) 	dumpltx=true; shift;;
+   	-l)	rmlst= ; shift;;
+   	-m)	macros=true; shift;;
+  	-o)	if [ "$objfile" = "" ]
+  		then	objfile=$2 
+			shift 2
+		else	prmsg "as" 1002842 2 2 0 0
+			exit "$aserror"
+		fi;; 
+   	-s)	rmwrk= ; shift;;
+   	-V)	prmsg "as" 1002841 0 1 0 0 "$version"; shift;;
+	--)	shift; break;;
+   	esac
+done
+
+#
+# verify source file name specified
+#
+srcfile=$1 
+if [ "$srcfile" = "" ]
+then	prmsg "as" 1002844 2 2 0 0
+	exit "$aserror"
+fi
+
+#
+# verify that source file exists and is a regular file; determine base name
+# (the base name determination is a generalized version of the basename
+# utility shell script that has been modified to remove ANY file name suffix)
+#
+if test -f $srcfile
+then	fname=`expr //$srcfile : '.*/\(.*\)'`
+	suffix=`expr $fname : ".*\(\..*\)"`
+	base=`expr $fname : "\(.*\)$suffix$" \| $fname`
+else	prmsg "as" 1002845 2 2 0 0 "$srcfile"
+	exit "$aserror"
+fi
+
+#
+# remove any previous listing file
+#
+rm -f ${base}.lst
+
+#
+# if macros, process assembler source via a68m
+#
+# NOTE: The source input file is copied into the current directory to
+#       force the Quelo utilities to create their output files in the
+#       current directory.  Quelo utilities create their output files
+#       using the full pathname of the source input file.
+#
+if [ "$macros" != "true" ]
+then	if [ "${srcfile}" != "${base}.a68" ]
+	then	cp ${srcfile} ${base}.a68
+	fi
+else	if [ "${srcfile}" != "${base}.m68" ]
+	then	cp ${srcfile} ${base}.m68
+	fi
+	a68m -l ${base}
+	tstat=$?
+	if [ "$tstat" != "$qunoerr" ] && [ "$tstat" != "$quwarn" ]
+	then	prmsg "as" 1002846 2 2 0 0 "a68m" "$tstat"
+		estat="$aserror"
+	fi
+	if [ "$tstat" != "$quabort" ]
+	then
+		cat ${base}.err >> ${base}.lst
+	fi
+fi
+
+#
+# process assembler source via a68k
+#
+if [ "$estat" = 0 ]
+then	a68k -bel ${base}
+	tstat=$?
+	if [ "$tstat" != "$qunoerr" ] && [ "$tstat" != "$quwarn" ]
+	then	prmsg "as" 1002846 2 2 0 0 "a68k" "$tstat"
+		estat="$aserror"
+	fi
+	if [ "$tstat" != "$quabort" ]
+	then
+		cat ${base}.prn >> ${base}.lst
+	fi
+fi
+
+#
+# generate reports and convert ltx file to COFF
+#
+if [ "$estat" = 0 ]
+then
+	if [ "$rmlst" = "" ] 
+	then	qsym -b ${base}.sym
+		tstat=$?
+		if [ "$tstat" != "$qunoerr" ] && [ "$tstat" != "$quwarn" ]
+		then	prmsg "as" 1002846 1 2 0 0 "qsym" "$tstat"
+		fi
+		if [ "$tstat" != "$quabort" ]
+		then
+			cat ${base}.rpt >> ${base}.lst
+		fi
+	fi
+	if [ "$dumpltx" = "true" ]
+	then	ltxdump ${base}.ltx
+		tstat=$?
+		if [ "$tstat" != "$qunoerr" ] && [ "$tstat" != "$quwarn" ]
+		then	prmsg "as" 1002846 1 2 0 0 "ltxdump" "$tstat"
+		fi
+	fi
+	ltxcoff ${base}
+	tstat=$?
+	if [ "$tstat" != "$qunoerr" ] && [ "$tstat" != "$quwarn" ]
+	then	prmsg "as" 1002846 2 2 0 0 "ltxcoff" "$tstat"
+		estat="$aserror"
+	fi
+fi
+
+#
+# rename object file if different name specified by -o option 
+#
+if [ "$objfile" != "" ]
+then	if [ "${objfile}" != "${base}.o" ]
+	then	mv ${base}.o ${objfile}
+	fi
+fi
+
+#
+# remove intermediate Quelo output files
+#
+rm -f ${base}.err ${base}.prn ${base}.rpt
+if [ "$rmwrk" = "true" ]
+then	rm -f ${base}.sym ${base}.ltx
+fi
+
+#
+# remove TEMPORARY source files created by as and a68m
+#
+if [ "$macros" != "true" ]
+then	if [ "${srcfile}" != "${base}.a68" ]
+	then	rm -f ${base}.a68
+	fi
+else	if [ "${srcfile}" != "${base}.m68" ]
+	then	rm -f ${base}.m68 
+	fi
+	if [ "$rmwrk" = "true" ]
+	then	rm -f ${base}.a68
+	fi
+fi
+
+#
+# remove concatenated listing file if user does not need it and no errors
+# were found
+#
+if [ "$rmlst" = "true" ] && [ "$estat" = 0 ]
+then	rm -f ${base}.lst
+fi
+
+# 
+# append ltxdump listing file to concatenated listing if ltxdump completed
+# successfully and remove ltxdump listing file
+#
+if [ "$dumpltx" = "true" ]
+then	if test -f ${base}.dmp
+	then	cat ${base}.dmp >> ${base}.lst
+		rm -f ${base}.dmp
+	fi
+fi
+
+exit "$estat"

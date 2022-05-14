@@ -1,0 +1,132 @@
+##################################################################
+# Define trace information #
+##################################################################
+#trace_file=/tmp/trace
+#trace_host=on
+#trace_device=on
+#trace_ch=on
+##################################################################
+# Define node id parameters #
+##################################################################
+nodeid=c1
+##################################################################
+# Define pu record information #
+##################################################################
+puname=c1
+sdlc_devname=/dev/ccb08/sdlc0
+sdlc_pollid=c1
+nrzi=off
+dial=/usr/ucs/sdlc_dial,/dev/ccb08/dial0,/usr/ucs/hayes2400
+xid=017050D4
+connect=originate
+##################################################################
+# Define lu information #
+##################################################################
+# The following node definitions were added with Release 96-1
+lu=02   lutype=vdt
+lu=03   lutype=vdt
+lu=04   lutype=vdt
+lu=05   lutype=vdt
+lu=06   lutype=vdt
+lu=07   lutype=vdt
+lu=08   lutype=vdt
+lu=09   lutype=prt
+lu=0a   lutype=prt
+lu=0b   lutype=prt
+lu=0c   lutype=prt
+lu=0d   lutype=prt
+lu=0e   lutype=prt
+lu=0f   lutype=prt
+lu=10   lutype=prt
+lu=11   lutype=vdt
+lu=12   lutype=vdt
+lu=13   lutype=vdt
+lu=14   lutype=vdt
+lu=15   lutype=vdt
+lu=16   lutype=vdt
+lu=17   lutype=vdt
+lu=18   lutype=vdt
+lu=19   lutype=vdt
+lu=1a   lutype=vdt
+lu=1b   lutype=vdt
+lu=1c   lutype=vdt
+lu=1d   lutype=vdt
+lu=1e   lutype=vdt
+lu=1f   lutype=vdt
+lu=20   lutype=vdt
+lu=21   lutype=vdt
+lu=22   lutype=vdt
+lu=23   lutype=vdt
+lu=24   lutype=vdt
+lu=25   lutype=vdt
+lu=26   lutype=vdt
+lu=27   lutype=vdt
+lu=28   lutype=vdt
+lu=29   lutype=vdt
+lu=2a   lutype=prt
+lu=2b   lutype=prt
+lu=2c   lutype=prt
+lu=2d   lutype=prt
+lu=2e   lutype=prt
+lu=2f   lutype=prt
+lu=30   lutype=prt
+lu=31   lutype=prt
+lu=32   lutype=vdt
+lu=33   lutype=vdt
+lu=34   lutype=vdt
+lu=35   lutype=vdt
+lu=36   lutype=vdt
+lu=37   lutype=vdt
+lu=38   lutype=vdt
+lu=39   lutype=vdt
+lu=3a   lutype=vdt
+lu=3b   lutype=vdt
+lu=3c   lutype=vdt
+lu=3d   lutype=vdt
+lu=3e   lutype=prt
+lu=3f   lutype=prt
+lu=40   lutype=prt
+lu=41   lutype=prt
+lu=42   lutype=vdt
+lu=43   lutype=vdt
+lu=44   lutype=vdt
+lu=45   lutype=vdt
+lu=46   lutype=vdt
+lu=47   lutype=vdt
+lu=48   lutype=vdt
+lu=49   lutype=vdt
+lu=4a   lutype=vdt
+lu=4b   lutype=vdt
+lu=4c   lutype=vdt
+lu=4d   lutype=vdt
+lu=4e   lutype=prt
+lu=4f   lutype=prt
+lu=50   lutype=prt
+lu=51   lutype=prt
+##################################################################
+# Define device records   
+##################################################################
+       userid=30001     device_type=prt device_lu=09
+       userid=30002     device_type=prt device_lu=0a
+       userid=30003     device_type=prt device_lu=0b
+       userid=30004     device_type=prt device_lu=0c
+       userid=30005     device_type=prt device_lu=0d
+       userid=30006     device_type=prt device_lu=0e
+       userid=30007     device_type=prt device_lu=0f
+       userid=30008     device_type=prt device_lu=10
+       userid=30009     device_type=prt device_lu=2a
+       userid=30010     device_type=prt device_lu=2b
+       userid=30011     device_type=prt device_lu=2c
+       userid=30012     device_type=prt device_lu=2d
+       userid=30013     device_type=prt device_lu=2e
+       userid=30014     device_type=prt device_lu=2f
+       userid=30015     device_type=prt device_lu=30
+       userid=30016     device_type=prt device_lu=31
+       userid=30017     device_type=prt device_lu=3e
+       userid=30018     device_type=prt device_lu=3f
+       userid=30019     device_type=prt device_lu=40
+       userid=30020     device_type=prt device_lu=41
+       userid=30021     device_type=prt device_lu=4e
+       userid=30022     device_type=prt device_lu=4f
+       userid=30023     device_type=prt device_lu=50
+       userid=30024     device_type=prt device_lu=51

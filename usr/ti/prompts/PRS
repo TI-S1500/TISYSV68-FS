@@ -1,0 +1,42 @@
+# cshf	prs--prints an SCCS file  
+#	@(#)PRS.sh	1.1  87/03/09
+# 
+onintr end
+
+prompt "^PRS -- PRINTS AN SCCS FILE"\
+       "^Input File Name(s):" _input_file macnm "$_input_file"\
+       "^*Output File Name:" _output_file acnm $_output_file\
+       "^*Give Delta Version Number:" rflag string $rflag\
+       "^*Output Data Specifications:" dflag string "$dflag"\
+       "^#$*"
+
+if ($abort) goto end
+if ($rflag != "") then
+	prompt "^PRS -- DELTA VERSION NUMBER OPTIONS"\
+	"^Include Earlier Deltas:" eflag yesno n\
+	"^Include Later Deltas:" lflag yesno n\
+	"^Include Removed Deltas:" aflag yesno n\
+	"^#$*"
+
+	if ($abort) goto end
+	if ($eflag == "y") set opt = e$opt
+	if ($aflag == "y") set opt = a$opt
+	if ($lflag == "y") set opt = l$opt
+	if ($opt != "") set opt = -$opt
+endif
+
+if ($rflag != "") set ropt = -r$rflag
+if ("$dflag" != "") set dopt = -d"$dflag"
+
+if ($abort) goto end
+echo "=== PRS COMMAND EXECUTING ==="
+if ($_output_file != "") then
+	echo prs $opt $ropt "$dopt" $_input_file ">"$_output_file
+	prs $opt $ropt "$dopt" $_input_file ">"$_output_file
+else
+	echo prs $opt $ropt "$dopt" $_input_file 
+	prs $opt $ropt "$dopt" $_input_file 
+endif
+
+end:
+unset *opt *flag

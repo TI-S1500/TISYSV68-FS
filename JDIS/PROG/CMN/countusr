@@ -1,0 +1,9 @@
+cd $ST_DIR
+if [ "$2" = "COBOL" ]
+then
+    num=`ps -fu $1 |grep -v countusr |grep runcobol |grep $3 |wc -l`
+else
+    num=`ps -fu $1 |grep -v countusr |grep Z |grep $3 |wc -l`
+fi
+echo "S AS USER_COUNT "$num >LOGINID
+exit $num

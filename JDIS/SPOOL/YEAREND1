@@ -1,0 +1,570 @@
+
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+
+All Locations: Y
+
+All Salespersons: Y
+Print Commissions on Report: N
+
+Select By: 1 - Commodity Code
+           1 - Report all commodity codes on file
+
+
+Year-to-Date Retail Sales: 3 - Include all YTD Retail Sales
+
+Retail Sales Inc/Decrease: 3 - Include all Increase/Decrease
+
+Gross Profit Percent: 3 - Include all YTD Gross Profit Percents
+
+Print Gross Profit on Report: Y
+
+Enter Report Month: 01
+
+Print Detail or Summary Report: S
+
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    1
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   0                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                             84                84               760        0             8,502             17,986
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    2
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   1                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0            14,508        0            65,795            247,262
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    3
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   2                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                            265               265             8,938        0           181,148            159,436
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    4
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   3                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0             1,799        0            35,502             35,094
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    5
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   4                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                            591               591            13,431        0           253,515            210,539
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    6
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   5                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0               655        0             7,021              7,920
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    7
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   6                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                             36                36                 0        0           155,078                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    8
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   7                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0            14,735        0           208,592            173,350
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:    9
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   8                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                11        0             7,844              6,524
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   10
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:   9                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0               538                499
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   11
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  10                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0               247        0             7,800              8,534
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   12
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  12                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   13
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  13                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 9                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   14
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  23                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                14                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   15
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  40                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0               223                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   16
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  65                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                15                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   17
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  70                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                52                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   18
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  76                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                55                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   19
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson:  78                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0               110                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   20
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 101                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                67                 80
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   21
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 102                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                363
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   22
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 103                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0               345                872
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   23
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 104                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                941
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   24
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 105                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0              1,512
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   25
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 106                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                204
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   26
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 108                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                10                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   27
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 117                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                31                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   28
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 121                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   29
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 202                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0             44,929
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   30
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 203                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                 31
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   31
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 204                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                -78
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   32
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 300                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   33
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 357                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                 21
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   34
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 363                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0               -18                  0
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   35
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 707                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                28              1,140
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   36
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 766                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                  5
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   37
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+Salesperson: 835                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                              0                 0                 0        0                 0                110
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                             (Continued)
+Date: 02JAN1998                                           MEYER IMPLEMENT, INC.                                           Page:   38
+Time: 10:58:                                           Salesperson Sales Report                                            (SALES-1)
+
+Location:  1 Total
+                               January         Year-To-Date      Lst-Yr-To-Dt                Current 12        Previous 12
+                                    Retail            Retail            Retail     MTD             Retail             Retail
+Comm. Code   Description    Units    Sales    Units    Sales    Units    Sales    Comm.    Units    Sales    Units     Sales   I/D%
+
+------------------------------------------------------------------------------------------------------------------------------------
+Counter Total                 114      976      114      976    7,341   39,319        0  140,557  720,635  153,426   691,519    4.0
+                        GM  15.7%      153    15.7%      153    27.8%   10,942             27.3%  196,428    25.6%   176,799
+Service Parts Sales             0        0        0        0    1,073   12,219        0   10,814  167,506   13,859   183,271   -9.0
+                        GM   0.0%        0     0.0%        0    33.6%    4,104             32.8%   54,898    32.1%    58,801
+Warranty Total                  0        0        0        0       69    1,664        0      988   30,577    1,018    24,029   27.0
+                        GM   0.0%        0     0.0%        0    25.4%      422             31.4%    9,590    31.4%     7,539
+Other Total                     0        0        0        0      198    1,882        0    1,913   13,557    2,076    18,455  -27.0
+                        GM   0.0%        0     0.0%        0    33.7%      635             32.1%    4,349    32.7%     6,032
+Sub Total                     114      976      114      976    8,681   55,084        0  154,272  932,275  170,379   917,274    2.0
+                        GM   0.0%      153    15.7%      153    29.2%   16,103             28.5%  265,266    27.2%   249,171
+------------------------------------------------------------------------------------------------------------------------------------
+Service Labor                            0                 0                 0        0                 0                  0    0.0
+------------------------------------------------------------------------------------------------------------------------------------
+Grand Total                            976               976            55,084        0           932,275            917,274
+------------------------------------------------------------------------------------------------------------------------------------
+
+                                                           (End of Report)

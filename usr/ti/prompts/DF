@@ -1,0 +1,24 @@
+# cshf	 df--shows free space on disk partitions 
+#	@(#)DF.sh	1.3  88/01/13
+#
+onintr end
+
+prompt "^DF -- REPORTS NUMBER OF FREE DISK BLOCKS"\
+       "^*File System or Device Name(s):" file macnm "$file"\
+       "^Show Total Allocated Blocks:" tflag yesno n\
+       "^Actual Blocks in Free List:" fflag yesno n\
+       "^#$*"
+#
+# df portion
+#
+if ($abort) goto end
+if ($tflag == "y") set opt = t$opt
+if ($fflag == "y") set opt = f$opt
+if ($opt != "") set opt = -$opt
+ 
+if ($mnt == "n") echo "=== DF COMMAND EXECUTING ==="
+echo df $opt $file
+df $opt $file
+
+end:
+unset *flag *opt file

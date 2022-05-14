@@ -1,0 +1,85 @@
+#       +---------------------------------------------------------------+
+#       ! Local terminals, 7 data bits, 1 stop bit, odd parity.         !
+#       +---------------------------------------------------------------+
+
+19200 #
+EXTA CLOCAL ECHO CS7 PARENB PARODD IXON #
+EXTA CLOCAL CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS7 PARENB PARODD IXOFF TAB3 #
+:login: #
+19200
+
+9600 #
+B9600 CLOCAL ECHO CS7 PARENB PARODD IXON #
+B9600 CLOCAL CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS7 PARENB PARODD IXOFF TAB3 #
+:login: #
+9600
+
+#       +---------------------------------------------------------------+
+#       ! Remote 9600 baud, 7 data bits, 1 stop bit, odd parity.        !
+#       ! For all Paradyne statistical multiplexors.                    !
+#       +---------------------------------------------------------------+
+
+R9600 #
+B9600 ECHO CS7 PARENB PARODD IXON #
+B9600 CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS7 PARENB PARODD IXOFF TAB3 #
+:login: #
+R9600
+
+R19200 #
+EXTA ECHO CS7 PARENB PARODD IXON #
+EXTA CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS7 PARENB PARODD IXOFF TAB3 #
+:login: #
+R19200
+
+R4800 #
+B4800 ECHO CS7 PARENB PARODD IXON #
+B4800 CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS7 PARENB PARODD IXOFF TAB3 #
+:login: #
+R4800
+
+R2400 #
+B2400 ECHO CS7 PARENB PARODD IXON #
+B2400 CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS7 PARENB PARODD IXOFF TAB3 #
+:login: #
+R2400
+
+#       +---------------------------------------------------------------+
+#       ! Remote 2400 baud, 7 data bits, 1 stop bit, space parity.      !
+#       ! For Racal-Vadic 2400PA mod 2 and Racal-Milgo RMD 2412 dialup  !
+#       ! modems.                                                       !
+#       !                                                               !
+#       ! The 1200 baud entry is in the loop so VA212's can dial in.    !
+#       +---------------------------------------------------------------+
+
+R2400S #
+B2400 ECHO CS8 ISTRIP IXON #
+B2400 CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS8 ISTRIP TAB3 IXOFF #
+:login: #
+R1200S
+
+R1200S #
+B1200 ECHO CS8 ISTRIP IXON #
+B1200 CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS8 ISTRIP TAB3 IXOFF #
+:login: #
+R2400S
+
+#       +---------------------------------------------------------------+
+#       ! Remote 19200 baud, 7 data bits, 1 stop bit, space parity.     !
+#       ! For AT&T Paradyne COMSPHERE 3810 dialup modem.                !
+#       +---------------------------------------------------------------+
+
+R19200S #
+EXTA ECHO CS8 ISTRIP IXON #
+EXTA CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+        ISIG CS8 ISTRIP TAB3 IXOFF #
+:login: #
+R19200S
+

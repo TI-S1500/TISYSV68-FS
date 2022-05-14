@@ -1,0 +1,124 @@
+
+# @(#)exer	1.3 (TI) 86/06/04
+echo Testing utilities
+
+echo ar
+ar r /tmp/junk /bin/chgrp /bin/chmod /bin/chown
+
+echo cat
+cat /etc/inittab
+
+echo chgrp
+chgrp root /tmp/junk
+
+echo chmod
+chmod 777 /tmp/junk
+
+echo chown 
+chown root /tmp/junk
+
+echo cp
+cp /tmp/junk /tmp/yuck
+
+echo cmp
+cmp /tmp/junk /tmp/yuck
+
+echo cpio
+echo /bin/ls | cpio -ov > /tmp/junk
+
+echo date
+date
+
+echo dd
+dd if=/tmp/junk of=/tmp/garb bs=1k
+
+echo du
+du /tmp
+
+echo expr
+expr 1 + 1
+
+echo false
+false
+
+echo file
+file /bin/ls
+
+echo find
+find /bin -name ls -print
+
+echo grep
+grep t9 /etc/termcap
+
+echo ln
+ln /tmp/junk /tmp/busy
+
+echo ls
+ls -l /tmp
+
+echo mkdir
+mkdir /tmp/tmp
+
+echo mv
+mv /tmp/junk /tmp/tmp
+
+echo nm
+nm -V
+
+echo od
+od /etc/inittab
+
+echo ps
+ps -le
+
+echo pwd
+cd /tmp/tmp; pwd
+
+echo rm
+rm /tmp/tmp/junk
+
+echo rmdir
+cd /; rmdir /tmp/tmp
+
+echo size
+size /bin/ls
+
+echo stty
+stty -a
+
+echo sum
+sum /etc/inittab
+
+echo sync
+sync
+
+echo tail
+tail /etc/termcap
+
+echo tar
+tar cvf /tmp/junk /unix
+
+echo touch
+touch /tmp/x
+
+echo true
+true
+
+echo tty
+tty
+
+echo uname
+uname -a
+
+echo wc
+wc /etc/inittab
+
+echo who
+who -r
+
+echo Cleaning up
+cd /tmp
+rm -f x junk yuck garb
+
+echo All done, let\'s check the file system!
+fsck /dev/dsk/sys:root

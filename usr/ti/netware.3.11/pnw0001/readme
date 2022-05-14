@@ -1,0 +1,50 @@
+-------------------------------------------------------------------------------
+Patch:		pnw0001
+Product:	Netware 3.11
+Created:	March 16, 1993
+STR's: 25619
+OS: 3.3.2
+Escal. #'s:
+Summary:	Allows Netware Virtual Terminals to operate on OS 3.3.2.
+-------------------------------------------------------------------------------
+Affected Hardware and Software Configurations
+---------------------------------------------
+	This problem can occur on any 1500 running OS 3.3.2 and Netware 3.11.
+
+Purpose of Patch:
+-----------------
+	Allows Netware Virtual Terminals to operate on OS 3.3.2.
+
+Instructions for Installing Patch:
+----------------------------------
+
+	This patch will replace pnw.lib in /usr/sys. 
+
+	To install this patch, first make a backup of all the files
+	listed in the "modlist" file.  Then, as super user, execute the
+	install script.  After the script completes relink and install
+	a new kernel.  Make sure that the boot band that you install it
+	with has a corresponding config band with the streams parameters
+	set to run Netware.  Reboot the system from that boot band.
+
+Instructions for Verifying that the Patch Installed Correctly:
+--------------------------------------------------------------
+	
+	As super user execute the commands
+
+	what /usr/sys/pnw.lib | grep ncp.c | grep Hewlett
+
+	and search for the following line:
+
+ driver/ncp/ti1500/ncp.c 1.43 (Hewlett Packard) 
+
+	If the line is found the patch installed correctly.
+
+Instructions for removing patch from the system:
+------------------------------------------------
+
+	This patch can be removed by first restoring all of the 
+	files listed in "modlist" and then relinking and installing 
+	a new kernel.  Be aware that doing this may remove other patches
+	that modified the same files.
+

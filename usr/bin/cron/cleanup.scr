@@ -1,0 +1,5 @@
+#     Script to cleanup the cron log file which grows without bounds
+#     (Linda Jump, JDIS - Aug 96)
+#
+cp /usr/lib/cron/log /usr/lib/cron/OLDlog
+cat /dev/null >/usr/lib/cron/log

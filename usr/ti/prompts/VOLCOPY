@@ -1,0 +1,60 @@
+# cshf	volcopy -- copies a file system 
+#	@(#)VOLCOPY.sh	1.6  90/02/01
+# 
+onintr end
+
+prompt "^VOLCOPY -- COPIES FILE SYSTEMS WITH LABEL CHECKING"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^File System Name:" fsname acnm \
+	"^From Disk Section or Tape:" special1 acnm \
+	"^Physical Volume Name:" volname1 acnm\
+	"^Target Disk Section or Tape:" special2 acnm\
+	"^Target Volume Name:" volname2\
+	"^Copy Verification Option:" verifyflag yesno n\
+	"^Invoke Positive Operator Response:" aflag yesno y\
+	"^Invoke DEL:" sflag yesno n\
+	"^List Tape Options:" topt yesno n\
+	"^#$*"
+
+if ($abort) goto end
+#
+# screen face and code for tape options.
+#
+if ($topt == "y") then
+	prompt "^VOLCOPY -- TAPE OPTIONS"\
+		"^ "\
+		"^ Density List -> 800,1600,3200,6250,17500,c=cart,v=video,t=ct150"\
+		"^*Density :" bpi \
+	"element(800=800,1600=1600,3200=3200,6250=6250,17500=17500,v,V=video,c,C=cart,t,T=ct150)"cart\
+		"^*Reel Size in Feet (1-3600):" reel \
+		"range(1,3600)" 600\
+		"^*First Reel Number:" numb integer $numb\
+		"^Use Double Buffered IO:" buff yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($bpi != "") set bpi = -bpi$bpi
+	if ($reel != "") set reel = -feet$reel 
+	if ($numb != "") set numb = -reel$numb
+	if ($buff == "y") set buf = -buf
+endif
+
+if ($abort) goto end
+echo "=== VOLCOPY COMMAND EXECUTING ==="
+if (("$sflag" == "y") && ("$aflag" == "n")) set opt = s$opt
+if (("$aflag" == "y") && ("$sflag" == "n")) set opt = a$opt
+if (("$aflag" == "y") && ("$sflag" == "y")) then
+	echo "Error: Postive Operator Response and Invoke DEL are\
+mutually exclusive. Option selection ignored."
+endif
+if ($verifyflag == "y") set vopt = -verify
+if ($opt != "") set opt = -$opt
+
+echo /etc/volcopy $opt $vopt $bpi $reel $numb $buf $fsname $special1 \
+$volname1 $special2 $volname2
+/etc/volcopy $opt $vopt $bpi $reel $numb $buf $fsname $special1 $volname1 \
+$special2 $volname2
+
+end:
+unset  *opt *flag bpi reel numb buf buff fsname special1 volname1 special2\
+volname2 

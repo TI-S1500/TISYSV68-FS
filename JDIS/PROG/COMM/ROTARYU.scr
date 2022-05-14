@@ -1,0 +1,103 @@
+#####################################################################
+#  AT&T PARADYNE - HIGH SPEED MODEM - UNIX - ROTARY
+#  5/11/94 - R95-1 - C.G.KOLWEY - disable autoanswer in HANG
+#  5/09/95 - R95-2 - C.G.KOLWEY - DELETE ATEQ1 IN HANG
+#####################################################################
+.DIAL
+#       ECHO ON
+        if null @phoneno                        # prompt if empty phone number
+                ask "enter phone number", @phoneno
+                if null @phoneno return 0       # if still no number quit
+        end
+        set @retlbl = "DIAL"                    # setup for return from init
+        reps 3
+.DIAL10
+        goto .INIT                              # force modem to known state
+.DIAL11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .DIAL10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        reps 3
+.DIAL20
+        tsend "ATDP",@phoneno,CR             # dial the phone
+        ttrap 60 "CONNECT","NO CARRIER","BUSY"
+        if @status = "1" goto .AUTOBD           # return TRUE if CONNECT
+        if reps goto .DIAL20
+        return 1
+#
+#       HANGUP the modem
+#
+.HANGUP
+        reps 3
+.HANG11
+        tsend "+++"
+        ttrap 7, "OK", "NO CARRIER"
+        wait 3
+        tsend CR,"AT&F3\\Q1S0=0&W0",CR  # load async UNIX dial factory settings
+        ttrap 5 "OK"                    # Flow Control - XON/XOFF
+        if @status not = "1"                    # nope
+                wait 3
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if reps go to .HANG11
+.HANG12
+        reps 3
+.HANG20
+        wait 3
+        tsend CR,"ATH0",CR                       # hang up
+        ttrap 5 "OK", "NO CARRIER"
+        wait 3                                  # add wait for slow modems
+        if @status = "0"
+                if reps goto .HANG20            # else loop and try again
+                return 1
+        end
+        return 0                                # return success
+#
+#       ANSWER an incoming call
+#
+.ANSWER
+        set @retlbl = "ANSWER"                  # setup for return from init
+        reps 3
+.ANSW10
+        goto .INIT                              # force modem to known state
+.ANSW11
+        if @retval not = "0"                    # Success, continue
+                if reps goto .ANSW10            # Lets try again
+                return 1                        # No more tries, failure
+        end
+        ttrap "CONNECT"                         # wait for connection
+        return 0                                # return success only
+#
+# Initialize the modem to a known state
+#
+.INIT
+        set @retval = "1"                       # set for unsuccessful init
+        tsend "ATQ0\\Q4", CR                    # set modem to:
+                                                # nonquiet (Q0)
+                                    # flow control of DTE - XON/XOFF (\Q4)
+                                    # flow control of modem - DISABLE pg 4-46
+        ttrap 2 "OK"                            # is modem awake ?
+        if @status not = "1"                    # nope
+                wait 2                          #       answer on 1st ring (S0=1)
+                tsend "+++"                     # break into cmd mode if online
+                ttrap 2 "OK", "NO CARRIER"      # awake yet ?
+                if @status = "0"                # nope
+                        drop                    # try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                wait 2
+                tsend "ATQ0\\Q4", CR            # set modem to:
+                ttrap 2 "OK"                    # is modem awake ?
+        end
+        if @status not = "0" set @retval = "0"  # set success
+        if @retlbl = "DIAL" goto .DIAL11        # return to where we came from
+        if @retlbl = "HANGUP" goto .HANG11
+        if @retlbl = "ANSWER" goto .ANSW11
+        return 1                                # give up, wrong label set
+.AUTOBD
+       DISPLAY "BAUDRATE=" @BAUDRATE
+       return 0
+.END

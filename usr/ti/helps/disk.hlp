@@ -1,0 +1,16 @@
+	disk - Disk Operations Menu
+		@(#)disk.sh	1.1 87/03/09
+
+        This menu lists tools to help the system administrator and
+	   system user manipulate and monitor disk space.
+
+	A disk may contain one or more partitions.  This will allow usage 
+	   of different areas of the disk for different purposes.  Each 
+	   partition is protected against damage from mis-use of other 
+	   partitions.
+
+	Each file system occupies a different partition.  A file system may 
+	   be mounted at a directory node location.   File systems may be 
+	   mounted in a read-only mode whereby none of the data contained 
+	   in the file system may be modified by users.
+

@@ -1,0 +1,254 @@
+#	@(#)chkspace	1.3 92/01/21 Texas Instruments TCP/IP System V
+############################################################################
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1990.  ALL	   #
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	   #
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	   #
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	   #
+#	ASSOCIATED DOCUMENTATION.					   #
+#
+############################################################################
+#
+#	Insure enough disk space is present for TCP installation.
+#
+#	usage: chkspace
+#
+###################################################################
+BOLD="${2:-`tput rev`}" ; NORM="${3:-`tput sgr0`}"
+	
+##	 Generic non-TCP specific code follows :  
+
+###################################################################
+#
+#	Insure enough disk space is present for installation.
+#
+#	usage: chkfree [header]	       { interactive mode , ctrl-D to end}
+#	usage: chkfree [header] < file { batch mode, each line is "dir blocks" }
+#
+###################################################################
+
+SUMfile="chkfree.$$" # temp file created/removed in various directories
+
+chkit() { #	 args: dir minimum free [extra]
+	expr $2 \<= $3 >/dev/null
+	if [ $? = 0 ]; then # expr is true 
+		echo "Need $2 blocks in $1, and it has $3 free - OK"
+		return 0
+	else
+		touch ERRfile
+		echo "${BOLD}Need $4$2 blocks in $1, but it has ONLY $3 free - FAILED$NORM"
+		return 1
+	fi
+}
+
+doparent() {
+	#	 args: dir blk DFfile PARENTSfile SUMfilename
+	#	        1    2   3      4             5
+	#	 convert $1 dir into its parent. If it is in $3 file - add
+	#	 parent of $1 dir to $4 file, else recurse with the parent of $1
+	parent=`dirname $1`
+### I left out "not a mounted filesystem" because it scares installers !!
+###	echo "Need $2 blocks in $1, not a mounted filesystem, checking parent."
+	echo "Need $2 free blocks in $1 so checking $parent for free space."
+	#	 is parent explicitly mounted?
+	pline=`grep "^$parent\$" $3`
+	if [ -z "$pline" ]; then
+		doparent $parent $2 $3 $4 $5
+	else
+		echo $parent >> $4
+		echo "$2 \c" >> $parent/$5 # store blks in parents dir
+	fi
+}
+
+chkfree() {
+	rm -f ERRfile
+	if test -t 0; then
+		echo "Enter directory and free space {1024k blks} then <return>"
+		echo "Input all lines and then enter ctrl-D."
+	else
+		echo "${1:-Checking directories for required free space...}"
+	fi
+	dirs=
+	blks=
+	cnt=0
+	while true; do
+		if test -t 0; then
+			echo "? \c"
+		fi
+		read args
+		if [ $? = 1 ]; then # EOF
+			if test -t 0; then
+				echo
+			fi
+			break
+		fi
+		dir="`echo $args | cut -f1 -d' '`"
+		blk="`echo $args | cut -f2 -d' '`"
+		if [ -z "$dir" -o "$dir" = "$blk" ]; then
+			echo "Less than 2 args entered. Expect 'dir blks'"
+		elif [ ! -d "$dir" ]; then
+			echo "$dir is not a directory"
+		else
+			dirs="$dirs $dir"
+			blks="$blks $blk"
+			cnt=`expr $cnt + 1`
+		fi
+	done
+	if [ $cnt = 0 ]; then
+		echo "chkfree: no valid inputs"
+		return 1 # null input file or terminal input
+	fi
+	
+	#	 check each pair if separately mounted or else
+	#	 combine pairs into whatever parent IS mounted
+	df > df$$
+	cat df$$ | cut -f1 -d' ' > df2$$ # just directory names
+	ncnt=0
+	ndirs=
+	nblks=
+	while [ $cnt != 0 ]; do
+		dir="`echo $dirs | cut -f$cnt -d' '`"
+		blk="`echo $blks | cut -f$cnt -d' '`"
+		line=`grep "^$dir " df$$`
+		if [ -z "$line" ]; then
+			# save for later combining check ...
+			ndirs="$ndirs $dir"
+			nblks="$nblks $blk"
+			ncnt=`expr $ncnt + 1`
+		else
+			# echo Check explictly mounted fs
+			free=`echo $line | cut -f3 -d' '`
+			chkit $dir $blk $free
+		fi
+		cnt=`expr $cnt - 1`
+	done
+
+	#	 convert each dir into its mounted parent node
+	#	 and sum each blk into THAT parents SUMfile
+
+	#	 init the parent temp files - contain blks of children
+	scnt=$ncnt
+	tmpfiles=parents$$
+	while [ $scnt != 0 ]; do
+		dir="`echo $ndirs | cut -f$scnt -d' '`"
+		tmpfile=`dirname $dir`/$SUMfile
+		tmpfiles="$tmpfiles $tmpfile" # save for later removal, too
+		scnt=`expr $scnt - 1`
+	done
+	rm -f $tmpfiles
+	touch parents$$
+
+	#	 process combinations ...
+	scnt=$ncnt
+	while [ $scnt != 0 ]; do
+		dir="`echo $ndirs | cut -f$scnt -d' '`"
+		blk="`echo $nblks | cut -f$scnt -d' '`"
+		# find parent of $dir and sum $blk into $parent/$SUMfile
+		doparent $dir $blk df2$$ parents$$ $SUMfile
+		scnt=`expr $scnt - 1`
+	done
+	##	echo Remove duplicates in parents$$
+	uniq parents$$ > parents2$$
+	mv parents2$$ parents$$
+	
+	#	echo Checking directories that are not mounted separately
+	cat parents$$ | while read aparent; do
+		# add ending newline or sed ignores file
+		echo "" >> $aparent/$SUMfile
+		vals="`cat $aparent/$SUMfile | sed 's/ / + /g'`"
+##		echo "$aparent is mounted, summing sub-directory blks:"
+##		echo "$vals"
+		total=`echo "0 $vals p" | dc`
+		line=`grep "^$aparent " df$$`
+		free=`echo $line | cut -f3 -d' '`
+		chkit $aparent $total $free "(total of} "
+	done	
+	rm -f $tmpfiles df$$ df2$$
+}
+
+
+chkexit() { #	 args: [product ""]
+	if [ -r ERRfile ]; then
+		echo "\n *** You do not have enough space to install ${1:-} ***\n"
+		echo "\n *** NOTE: It is NOT necessary to removetcp and re-extract"
+		echo "the TCP tar files at the current time. Just find more space"
+		echo "and re-execute ./installtcp."
+		rm ERRfile
+		exit 1
+	fi
+}
+
+##	 TCP specific code follows :
+
+product="TCP"
+
+### TCP free disk space requirement checking
+#
+#	 1. see if fixed needs can be met
+header="\n1. Verifying free space requirements of TCP"
+#	 NOTE: these values can be generated with the duall script.
+echo '/ 139
+/usr/adm 2
+/usr/bin 1490
+/usr/etc 1088
+/usr/include 241
+/usr/lib 142
+/usr/catman 186
+/usr/spool 3
+/usr/sys 250' > chkfree.in
+
+###	 1b. Check for special free space requirements of csplit
+#
+#	 Csplit of master file needs free space = 2 * size of master file
+siz="`du -s /usr/ti/master`" # next step also squeezes whitespace
+siz=`echo $siz | cut -f1 -d' '`
+siz2x=`echo "$siz $siz + p" | dc`
+#	 This must be done during installation since size has possibly
+#	 been altered by other installations or even 3rd party software.
+#	 A separate check also is necessary because this is a temporary
+#	 need for space and so the total requirement is really the MAX of
+#	 the space needed for /usr/ti and the space needed for /usr/* in 
+#	 the the first call to chkspace. If /usr/ti is not explicitly mounted
+#	 then if we just put "/usr/ti $siz2x" in the previous call to chkfree
+#	 then we would require the SUM of $siz2x plus all other blks that
+#	 are in /usr - which would be incorrect.
+echo "/usr/ti $siz2x" >> chkfree.in
+cat chkfree.in | chkfree "$header"
+chkexit TCP # will exit if enough space is not available
+
+###	 2. Check for special free space needs of "ar -r" cmd
+
+header="\n2. Verifying free space requirements of ar cmd of /usr/sys/io.lib"
+#
+#	 free space needed by ar is = 2 * `du -s /usr/sys/io.lib` + 20blks
+siz="`du -s /usr/sys/io.lib`" # next step also squeezes whitespace
+siz=`echo $siz | cut -f1 -d' '`
+
+#	 See if io.lib already has TCP, if not then an extra 250 blks will
+#	 be needed for the objects added with the "ar -r" cmd in install.scr
+tcpinside=`ar -tv /usr/sys/io.lib | grep -c tcp.o`
+if [ "$tcpinside" != 1 ]; then
+	siz=`echo $siz 250 + p | dc`
+fi
+safety=50 # blks - a safety margin
+siz2x=`echo "$siz $siz + 20 + $safety + p" | dc`
+
+#	 ar uses default "/tmp" if TMPDIR is not set
+#	 and -l option is not used.
+if [ -z "$TMPDIR" ]; then
+	# normal case, TMPDIR is not set
+	echo "/tmp $siz2x" | chkfree "$header"
+else
+	# this case only occurs if the user is
+	# fairly sofisticated, i.e. a little known feature
+	# but we ought to check it for validity.
+	echo "\nTMPDIR is currently $TMPDIR"
+	if [ ! -d $TMPDIR ]; then
+		echo
+		echo "Error: Environment var TMPDIR is set to a non-directory."
+		echo "Please correct this or unset TMPDIR."
+		echo
+		exit 1
+	fi
+	echo "$TMPDIR $siz2x" | chkfree "$header"
+fi
+chkexit TCP # will exit if enough space is not available

@@ -1,0 +1,372 @@
+                                              JOHN DEERE INFORMATION SYSTEMS                                MONTH ENDING 31MAR1998
+                                                     DELETION LISTING                                               PAGE   1
+
+                                           SRC                                       LAST SALE   DATE
+WHSE PART NUMBER  DESCRIPTION       BIN    CDE    GROUP   OFC       COST       LIST    DATE     ADDED   STATUS
+
+ 1D  12M7060      WASHER                   150  T          5         .03        .04    0795      0395     AP
+ 1D  16H246       RIVET                     60  DY         5         .03        .04              0296     NS
+ 1D  19H1924      CAP SCREW        Y-100    60  DY         5         .13        .17              0296     AP
+ 1D  19H3539      CAP SCREW                 60  DY         5        7.09       9.46    0296      0296     AP
+ 1D  19M7785      SCREW                     60  DY         5         .18        .24    0496      0395     AP
+ 1D  19M8138      SCREW                     70  E          5        2.69       3.59    0296      0296     AP
+ 1D  26H71        SHAFT KEY                 60  DY         5         .10        .15    0496      0188     AP
+ 1D  275SE        COMPRESSIO       K-214    70  E          5        3.82       6.06    0496      0188     AP
+ 1D  3084232      COIL  LAMP               504             5       29.70      54.00              0296     AP
+ 1D  37H95        SCREW                     60  DY         5         .09        .13              0296     NS
+ 1D  A20133       GANG BOLT        V-112   110  N          5       52.48      83.30    0596      0493     AP
+ 1D  A20647       SLEEVE                   110  N          5        5.67       8.10    0496      0695     AP
+ 1D  A32209       MOLDBOARD                110  N          5       92.48     120.10              0296     NS
+ 1D  A40473       MANIFOLD                  10  A          5        9.07      14.40    0296      0296     AP
+ 1D  A4355R       DISK                     120  R          5       42.99      68.24    0496      0895     AP
+ 1D  A48969       HINGE                     10  A          5         .60        .95    0296      0296     AP
+ 1D  A49966       MAST             RET-1    10  A          5       24.61      39.06              0296     AP
+ 1D  A49967       MAST             RET-1    10  A          5       24.61      39.06              0296     AP
+ 1D  A49968       MAST             RET-1    10  A          5       20.27      32.17    0396      0296     AP
+ 1D  A49969       MAST                      10  A          5       20.27      32.17    0296      0296     AP
+ 1D  A5622R       GASKET                    60  DY         5       15.03      22.43    0496      0295     AP
+ 1D  A5631R       BUSHING                  120  R          5        9.58      15.21    0496      0494     AP
+ 1D  AA23208      HOUSING          D-802    10  A          5       60.01      83.35    0496      0182     AP
+ 1D  AA30143      SPOOL            C-310   110  N          5       37.60      59.68    0496      0495     AP
+ 1D  AA30933      WIRING HAR                10  A          5      178.58     248.03    0396      0296     AP
+ 1D  AA34742      WIRING HAR                10  A          5      184.78     256.64    0396      0296     AP
+ 1D  AA34743      WIRING HAR                40  DP         5       89.29     124.01    0396      0296     AP
+ 1D  AA4923R      PISTON RIN               130  RG         5       34.98      52.21    0496      0495     AP
+ 1D  AA510R       SEAL             G-623    60  DY         5       11.85      18.81    0496      0181     AP
+ 1D  AE37690      SEAL KIT                  70  E          5       11.19      15.99    0296      0296     AP
+ 1D  AE48286      ROLLER CHA                70  E          5       60.12      83.50    0296      0296     AP
+ 1D  AE48949      HOUSING                   70  E          5      157.14     215.26    0296      0296     AP
+ 1D  AE53853      KIT              Y-502    70  E          5      125.51     163.00              0296     AP
+ 1D  AE53856      KIT              H-119    70  E          5      114.51     159.04              0296     AP
+ 1D  AE53857      KIT              H-121    70  E          5      114.51     159.04              0296     AP
+ 1D  AE53858      KIT              F-121    70  E          5       63.08      87.61              0296     AP
+ 1D  AF763R       PISTON RIN               130  RG         5       59.10      88.21    0296      0296     AP
+ 1D  AL66088      THROW-OUT                 90  L          5      201.42     275.92              0296     NS
+ 1D  ALH1210A     SHOE                      60  DY         5       11.70      16.03    0596      0494     AP
+ 1D  AM100725     BEARING KI                60  DY         5        4.96       7.87    0496      1094     AP
+ 1D  AM103540     SEAL KIT                 100  M          5        9.23      17.42    0496      0892     AP
+ 1D  AM107210     KIT                       60  DY         5        2.56       4.92    0496      0595     AP
+ 1D  AM120874     KIT                      100  M          5       32.95      54.02    0296      0296     NS
+ 1D  AM123038     CLUTCH                   100  M          5       56.74      93.02              0296     AP
+ 1D  AM2608T      HOUSING                   40  DP         5        6.57      10.43              0296     NS
+ 1D  AM2684T      SEAL                     150  T          5        4.39       6.01    0396      0296     AP
+ 1D  AM34838      CONTROL                  100  M          5        9.17      17.30              0296     NS
+ 1D  AM37464      WHEEL            L-120    60  DY         5       11.12      19.86    0496      0592     AP
+ 1D  AM37465      WHEEL            L-119    60  DY         5       12.35      22.05    0496      0595     AP
+ 1D  AM38018      TUBE *                   100  M          5        4.08       7.85    0296      0296     AP
+ 1D  AM38038      ARMATURE                 100  M          5       36.68      55.58    0296      0296     AP
+ 1D  AM38664      AM120874                 100  M          5       21.48      30.69              0296     NS
+ 1D  AM878047     GASKET KIT                60  DY         5       33.85      53.73    0496      1094     AP
+
+                                             - CONTINUED -                                              JOHN DEERE INFORMATION SYSTEMS                                MONTH ENDING 31MAR1998
+                                                     DELETION LISTING                                               PAGE   2
+
+                                           SRC                                       LAST SALE   DATE
+WHSE PART NUMBER  DESCRIPTION       BIN    CDE    GROUP   OFC       COST       LIST    DATE     ADDED   STATUS
+
+ 1D  AM878048     GASKET KIT                60  DY         5       60.80      96.51    0496      1094     AP
+ 1D  AN103180     CHAIN SPRO               110  N          5       98.59     147.15    0296      0296     AP
+ 1D  AN103242     HOUSING                   40  DP         5      345.15     547.86              0296     NS
+ 1D  AN103368     SPUR GEAR                110  N          5      137.82     218.76              0296     NS
+ 1D  AN153303     RELIEF VAL       C-423   160  TY         5       10.36      13.81    0496      0187     AP
+ 1D  AP19360      SEAL                      80  H          5        1.86       2.66    0396      0296     AP
+ 1D  AR105402     KIT                      150  T          5       24.13      33.05    0296      0296     AP
+ 1D  AR26663      HYDRAULIC        V-125    60  DY         5       26.69      42.37    0496      0188     AP
+ 1D  AR40163      SEAL             RET-1   130  RG         5       10.58      15.11    0296      0296     AP
+ 1D  AR47545      GAUGE            R-515   120  R          5       26.41      41.92    0496      0895     AP
+ 1D  AR49803      ELECTRICAL       N-121    60  DY         5       34.96      55.49    0396      0296     AP
+ 1D  AR53032      GASKET           I-GR    130  RG         7       42.91      64.04    0496      0185     AP
+ 1D  AR58282      RE57312                  120  R          5       15.41      21.11              0296     NS
+ 1D  AR60372      QUICK LOCK               120  R          5         .85       1.21    0596      0182     AP
+ 1D  AR94582      SEAL                     120  R          5        1.86       2.66    0296      0296     AP
+ 1D  AT12783      SUPPORT                  150  T          5       40.67      55.71              0296     NS
+ 1D  AT15917      COVER                    150  T          5       56.01      76.73    0296      0296     AP
+ 1D  AT175989     FILLER CAP                60  DY         5       31.00      42.47    0995      0296     MO
+ 1D  AT36733      ADJUSTER                 150  T          5        9.11      14.46    0296      0296     AP
+ 1D  AT44378      FILTER ELE       RET-1   150  T          5       12.15      15.78    0596      0595     AP
+ 1D  AW27590      MULTI SUB                170  W          5      875.11   1,250.16              0296     AP
+ 1D  AW28667      ARM                      170  W          5      194.93     309.41    0496      0296     AP
+ 1D  B12129       SPOOL            C-207   110  N          5       16.23      25.76    0496      0180     AP
+ 1D  B13181       SPOOL            C-107   110  N          5       26.79      42.52    0596      0180     AP
+ 1D  B15106       SPOOL            C-208   110  N          5       15.35      24.37    0496      0180     AP
+ 1D  BP13348      BUSHING                   70  E          5        4.29       6.81    0396      0296     AP
+ 1D  C16613       CHAIN SPRO               110  N          5       33.65      50.22              0296     NS
+ 1D  C18732       BLADE            E-009   170  W          5       18.08      28.70    0596      0180     AP
+ 1D  CH10568      PACKING                   60  DY         5         .23        .32    0296      0296     AP
+ 1D  D473R        GASKET                   120  R          5        3.72       5.55    0296      0296     AP
+ 1D  DE18678      GEAR CASE                 20  CE         5      556.86     795.51    0496      0296     AP
+ 1D  E55750       KEY                       70  E          5        2.03       2.90    0296      0296     AP
+ 1D  E81645       STRAP                     70  E          5       14.08      22.35    0396      0296     AP
+ 1D  F1055R       PIPE                      40  DP         5       23.24      36.89    0296      0296     AP
+ 1D  F458R        HOSE                     120  R          5        7.01      11.13    0296      0296     AP
+ 1D  GV10616      GLOW PLUG                 60  DY         5       16.80      22.40    0296      0296     AP
+ 1D  H96824       HEADLINER                 80  H          5      140.95     180.71              0296     NS
+ 1D  JD5902       REFLECTOR                110  N          5        3.03       4.33    0496      0494     AP
+ 1D  JD9011       BEARING CO       M-614    70  E          5        9.69      13.84    0496      1091     AP
+ 1D  M110544      BEARING                   60  DY         5        2.51       3.98    0296      0296     AP
+ 1D  M110588      DRIVE DISK       RET-1    60  DY         5       12.28      19.49    0286      0296     AP
+ 1D  M1111T       BUSHING                  150  T          5        3.25       5.16    0396      0296     AP
+ 1D  M125169      BLADE                    100  M          5       45.42      85.70    0195      0296     AP
+ 1D  M18782       SPRING           C-424   110  N          5        6.78      10.76    0496      0180     AP
+ 1D  M2337T       COVER                     40  DP         5       15.71      24.94    0296      0296     NS
+ 1D  M2670T       BUSHING                  150  T          5       12.79      20.30    0396      0296     AP
+ 1D  M2837T       NUT                      150  T          5        1.89       2.59    0396      0296     AP
+ 1D  M2839T       GASKET                   150  T          5        1.03       1.41    0396      0296     AP
+ 1D  M42646       STRAP            L-816T  100  M          5        5.48       9.96    0496      0595     AP
+ 1D  M4377T       WASHER           RET-1   150  T          5       15.37      24.40    0396      0296     AP
+ 1D  M47254       FRICTION P       L-611   100  M          5        4.02       7.31    0496      0180     AP
+ 1D  M49931       GEAR                     100  M          5       14.68      26.69    0296      0296     AP
+ 1D  M49933       GEAR                      40  DP         5       35.15      63.91    0296      0296     NS
+
+                                             - CONTINUED -                                              JOHN DEERE INFORMATION SYSTEMS                                MONTH ENDING 31MAR1998
+                                                     DELETION LISTING                                               PAGE   3
+
+                                           SRC                                       LAST SALE   DATE
+WHSE PART NUMBER  DESCRIPTION       BIN    CDE    GROUP   OFC       COST       LIST    DATE     ADDED   STATUS
+
+ 1D  M49941       SPUR GEAR                 40  DP         5       31.32      56.95    0296      0296     AP
+ 1D  M67341       SPRING           K-304    60  DY         5         .91       1.44    0496      0695     AP
+ 1D  M67342       SHOE             L-322    60  DY         5        8.58      13.62    0496      0290     AP
+ 1D  M67343       HUB                       60  DY         5       10.48      16.63    0496      0894     AP
+ 1D  M73322       FILTER ELE               100  M          5        1.23       2.02    0496      0594     AP
+ 1D  M801034      O-RING                    60  DY         5         .97       1.33    0296      0296     AP
+ 1D  M801036      O-RING                    60  DY         5        3.92       6.22    0296      0296     AP
+ 1D  M80322       SCREW            Q-SC D  100  M          5         .26        .49    0496      0185     AP
+ 1D  M83532       KNOB                     100  M          5        2.28       4.30    0496      0595     AP
+ 1D  M86873       DRAIN PLUG               100  M          5        1.42       2.68              0296     NS
+ 1D  M87261       BALL                     100  M          5         .31        .48    0296      0296     AP
+ 1D  N105100      GEAR                      40  DP         5      100.02     158.76              0296     NS
+ 1D  N130143      SWEEP            B-203   110  N          5        2.20       3.01    0496      0693     AP
+ 1D  N131641      U-BOLT           A-622   110  N          5        2.84       4.51    0496      0196     AP
+ 1D  OMM79000     OPERATOR'S               220  DS         5        6.28       9.42    0496      0995     AP
+ 1D  PC675        PARTS CATA               220  DS         5       11.82      17.72    0496      0794     AP
+ 1D  PMAF351K     AIR FILTER               160  TY         5       20.58      28.58    0496      0296     AP
+ 1D  PMFF223      FUEL FILTE               160  TY         5        4.85       6.74              0296     AP
+ 1D  PMFF224      FUEL FILTE               160  TY         5        5.31       7.38              0296     AP
+ 1D  PMHS14R      MOLDBOARD        E-WAL   160  TY         5       39.16      50.86    0496      0495     AP
+ 1D  PMPD50                                220             5         .20        .00              0296     NS
+ 1D  PMXXCX6-5110 PUMP                     160  TY         5       88.20     117.60    0794      0395     AP
+ 1D  PT16021      RELAY            L-629   160  TY         5        6.15       8.20    0296      0296     AP
+ 1D  PT6921       BLADE            L-817T   60  DY         5        8.47      15.13    0496      0183     AP
+ 1D  PT9638       DISK                      60  DY         5       11.36      17.48    0296      0296     AP
+ 1D  R10182       RETAINER                 130  RG         5         .15        .24    0496      1295     AP
+ 1D  R10223       GASKET                   130  RG         5        1.04       1.65    0296      0296     AP
+ 1D  R10300       CAP *                    130  RG         5         .59        .94    0496      0494     AP
+ 1D  R109863      PIN *                     60  DY         5        7.59      10.40    0496      0196     AP
+ 1D  R11228       CONNECTOR        R-402   130  RG         5        3.96       5.66    0496      0181     AP
+ 1D  R11296       CONNECTOR        R-403   130  RG         5        2.94       4.20    0496      0180     AP
+ 1D  R122595      RING                     130  RG         5        1.86       2.95    0695      0296     AP
+ 1D  R131476      GRIP                     120  R          5        7.43      11.79    1295      0296     AP
+ 1D  R31674       O-RING           Q-OR    150  T          5         .26        .41    0496      0491     AP
+ 1D  R33279       SPRING           K-201   120  R          5        3.73       5.92    0496      0790     AP
+ 1D  R34757       SHIM *           N-419   120  R          5         .96       1.52    0496      0181     AP
+ 1D  R38532       SHIM *                   120  R          5        3.13       4.97    0496      0395     AP
+ 1D  R41105       PISTON                   120  R          5       38.37      60.90    0296      0296     AP
+ 1D  R41147       SPRING                   120  R          5         .54        .86    0496      1095     AP
+ 1D  R47393       SPRING                   120  R          5         .41        .65    0296      0296     AP
+ 1D  R50644       STRAP                     60  DY         5       13.76      21.84              0296     NS
+ 1D  R50734       ANGLE            K-517    60  DY         5        4.28       6.79    0496      0181     AP
+ 1D  R51681       CAP SCREW                120  R          5        8.15      12.94    1095      1095     AP
+ 1D  R52117       WASHER                   120  R          5        1.21       1.92    0496      0595     AP
+ 1D  R52449       HOSE                      40  DP         5       16.60      26.35              0296     NS
+ 1D  R53437       HUB                      130  RG         5       21.29      33.79    0496      0184     AP
+ 1D  R549M        SPOUT            D-736    40  DP         5        2.24       3.56    0496      0395     AP
+ 1D  R56493       FOAM PAD         R-332   120  R          5        5.59       8.87    0396      0296     AP
+ 1D  R65396       COVER                    120  R          5        9.50      15.08    0296      0296     AP
+ 1D  R67235       BOLT                     120  R          5        5.05        .00    0496      0395     AP
+ 1D  R79623       INTAKE VAL               150  T          5        8.59      14.08    0596      0595     AP
+ 1D  R79624       EXHAUST VA       RET-1   150  T          5        9.99      16.38    0596      0193     AP
+ 1D  R99393       GASKET                   120  R          5        1.03       1.54    0296      0296     AP
+
+                                             - CONTINUED -                                              JOHN DEERE INFORMATION SYSTEMS                                MONTH ENDING 31MAR1998
+                                                     DELETION LISTING                                               PAGE   4
+
+                                           SRC                                       LAST SALE   DATE
+WHSE PART NUMBER  DESCRIPTION       BIN    CDE    GROUP   OFC       COST       LIST    DATE     ADDED   STATUS
+
+ 1D  RE11430      HOOD                      40  DP         5      279.56     443.75    0396      0296     AP
+ 1D  RE17091      LINE             RET-1   120  R          5       25.43      34.84              0296     AP
+ 1D  RE32914      KIT                      170  W          5        7.04      11.54    0296      0296     AP
+ 1D  RE32915      KIT                      170  W          5       17.86      33.70    0296      0296     AP
+ 1D  RE38857      GASKET KIT               150  T          5       75.27     112.34    0296      0296     AP
+ 1D  RE55262      MIRRORS                   15  15         5      222.53     289.00              0296     AP
+ 1D  RE55345      KIT                      150  T          5       40.15      63.73    0296      0296     AP
+ 1D  RE66881      SWITCH                   120  R          5       41.82      59.74              0296     AP
+ 1D  S137M        SPRING                   110  N          5       12.77      20.27    0496      0595     AP
+ 1D  SA110M       SCRAPER          D-826   110  N          5        3.09       4.61    0496      0182     AP
+ 1D  T11022       ARM                       40  DP         5       21.52      34.16    0296      0296     AP
+ 1D  T20046       OIL SLINGE               150  T          5        2.88       4.57    0496      0196     AP
+ 1D  T22150       ARM                      150  T          5        3.47       5.51    0296      0296     AP
+ 1D  T24869       HOSE                     150  T          5       10.56      16.76              0296     NS
+ 1D  T26161       BUSHING                  150  T          5        9.88      15.68    0296      0296     AP
+ 1D  T26324       THRUST WAS               150  T          5        2.96       4.70    0496      0196     AP
+ 1D  T26326       THRUST WAS               150  T          5        3.19       5.06    0496      0196     AP
+ 1D  T34392       REINFORCEM               150  T          5       36.45      57.86    0296      0296     AP
+ 1D  T38065       SCREW                    150  T          5         .46        .73    0296      0296     AP
+ 1D  T38066       ADAPTER          RET-1   150  T          5       11.52      18.29    0396      0296     AP
+ 1D  T77165       SPRING                   150  T          5        2.82       4.48    0296      0296     AP
+ 1D  TY15495      TIRE CHAIN               160  TY         5        1.23       1.68    0496      0196     AP
+ 1D  TY15988      TIRE CHAIN               160  TY         5      159.28     218.19    0396      0296     AP
+ 1D  TY16121      JACK                     160  TY         5       33.30      44.40              0296     AP
+ 1D  TY16274      HEATER           DISP    160  TY         5       14.96      19.95              0296     AP
+ 1D  TY16276      HEATER           DISP    160  TY         5       14.96      19.95              0296     AP
+ 1D  TY16283      EMERY CLOT       X-802   160  TY         5        2.26       3.10              0296     NS
+ 1D  TY21752      BATTERY                  160  TY         5       30.71      40.95              0296     AP
+ 1D  TY21753      BATTERY                  160  TY         5       30.71      40.95              0296     AP
+ 1D  TY22011      N/L/A                    160  TY         5      172.97     199.95    0496      0492     DP
+ 1D  TY3538       HEX WRENCH               160  TY         5         .95       1.36    0496      0182     AP
+ 1D  TY4029       PIN *                    160  TY         5        6.53       9.20    0496      0492     AP
+ 1D  TY4068       COVER                    160  TY         5       14.75      19.67    0296      0296     AP
+ 1D  TY8328       SPRAY GUN                160  TY         5       30.00      36.59              0296     AP
+ 1D  W28429       RATCHET WH               170  W          5       92.20     146.35    0596      0495     AP
+ 1D  W37081       SLEEVE                    40  DP         5      345.86     461.15              0296     NS
+ 1D  W38767       SPRING                    60  DY         5       18.63      25.52              0296     NS
+ 1D  W41382       POWERSHAFT               170  W          5       10.99      15.26    0496      0694     AP
+ 1D  W41477       TRANSMISSI               170  W          5      409.47     584.96              0296     AP
+ 1D  W42100       POWERSHAFT               170  W          5       39.40      54.72    0496      0694     AP
+ 1D  W42101       POWERSHAFT               170  W          5       39.04      54.22    0496      0694     AP
+ 1D  W42624       BLADE                    170  W          5      128.93     171.91    0296      0296     AP
+ 1D  W44422       HANDLE                   170  W          5        8.59      13.63    0594      0296     AP
+ 1D  X4056-4      QUICK COUP               160  TY         5       13.82      19.74              0296     NS
+ 1D  X5209-3      CAP *            DISP-8  160  TY         5        1.69       2.41              0296     MO
+
+ TOTAL PART NUMBERS DELETED FOR WAREHOUSE:     204                                              JOHN DEERE INFORMATION SYSTEMS                                MONTH ENDING 31MAR1998
+                                                     DELETION LISTING                                               PAGE   5
+
+                                           SRC                                       LAST SALE   DATE
+WHSE PART NUMBER  DESCRIPTION       BIN    CDE    GROUP   OFC       COST       LIST    DATE     ADDED   STATUS
+
+ 1M  1011657-067  HOUSING AXLE WE  N-635   504  SM         5       63.80     116.00    0496      0692     AP
+ 1M  1011935      FOOTREST ASM RH          504  SM         5       28.04      50.99    0296      0296     AP
+ 1M  1011954      FOOTREST ASM LH          504  SM         5       24.75      45.00    0296      0296     AP
+ 1M  1011968-067  SUPPORT LH BUMP          504  SM         5        8.14      14.80    0296      0296     AP
+ 1M  1011969-067  SUPPORT RH BUMP          504  SM         5        8.14      14.80    0296      0296     AP
+ 1M  1012044-067  LIMITER TORQUE           504  SM         5        9.01      16.38    0296      0296     AP
+ 1M  1012054-067  MT TRLG ARM LH           504  SM         5        6.52      11.85    0296      0296     AP
+ 1M  1012261-067  BULKHEAD ASM BL  BACK    504  SM         5      169.38     307.97    0296      0296     NS
+ 1M  1012263      FOOTREST LH BLK          504  SM         5       16.54      30.08    0296      0296     AP
+ 1M  1012378      1012378-067              504  SM         5      164.29     298.70    0296      0296     AP
+ 1M  1012428-067  BULKHEAD                 504  SM         5      132.00     240.00    0296      0296     AP
+ 1M  1321654      CLUTCH BASIC#53          504  SM         5      158.95     289.00              0296     NS
+ 1M  1332141-067  JACKSHAFT ASM            504  SM         5       40.79      74.16    0396      0296     AP
+ 1M  1540971-067  ARM R PIVOT              504  SM         5       38.52      70.04    0296      0296     AP
+ 1M  1580003-067  ARM SWING WELD   N-027   504  SM         5       70.81     128.75    0496      1095     AP
+ 1M  1822168-067  ROD RAD BLK              504  SM         5        8.89      16.17    0296      0296     AP
+ 1M  1822170-067  ROD RAD LOW BLK          504  SM         5        8.89      16.17    0296      0296     AP
+ 1M  1822246      ARM TRLG LH              504  SM         5       39.88      72.50    0296      0296     AP
+ 1M  1910177      DISC ASM BRAKE           504  SM         5       19.25      27.50    0296      0296     AP
+ 1M  2200260      KIT DECAL '88 4          504  SM         5       50.42      91.67    0296      0296     AP
+ 1M  2200651      KIT DECAL 96 XL          504  SM         5       44.75      81.37    0396      0296     AP
+ 1M  2511257      COOLER LH SIDE(          504  SM         5       38.17      69.40    0296      0296     AP
+ 1M  2511258      COOLER RH SIDE(          504  SM         5       38.17      69.40    0296      0296     AP
+ 1M  2610006-136  2610010-136              504  SM         5       32.45      59.00    0296      0296     AP
+ 1M  2620078-133  PANEL ASM INTAK          504  SM         5       19.26      35.02    0396      0296     AP
+ 1M  2681856      COVER SEAT STD           504  SM         5      100.22     143.17    0296      0296     AP
+ 1M  2852150      JKT, TRAIL       FRONT   504  SM         5       77.99     119.99    0496      0889     MO
+ 1M  285611803    JKT WMN CMP PLU  FRONT   504  SM         5      142.97     219.95    0496      0995     AP
+ 1M  285611903    JKT WMN CMP LAV  FRONT   504  SM         5      142.97     219.95    0496      0995     AP
+ 1M  2870906      KIT REV GEAR'A'          504  SM         5       39.89      56.99    0496      1293     AP
+ 1M  301923B      ROLL PIN                 514             5         .05        .07    0296      0296     AP
+ 1M  3083166      BAND ASM                 504  SM         5        1.98       3.60    0296      0296     AP
+ 1M  3083360      STUD             NONE    504  SM         5        1.06       1.92    0496      0395     AP
+ 1M  3083678      RING  010 O/S            504  SM         5        7.59      13.80    0496      0196     AP
+ 1M  3083862      BOLT&WASHER ASM          504  SM         5         .37        .67              0296     AP
+ 1M  3083863      PULLEY  DRIVE    L-130   504  SM         5       19.80      36.00              0296     NS
+ 1M  3084271      BOLT  FLANGE             504  SM         5         .51        .93    0396      0296     AP
+ 1M  3084341      PISTON  ( 020 O  NONE    504  SM         5       38.50      55.00    0496      0195     AP
+ 1M  3211061      BELT  DRIVE              504  SM         5       33.95      48.50              0296     NS
+ 1M  3554502      BEARING  NEEDLE  NONE    504  SM         5        6.29      11.43    0496      0395     AP
+ 1M  3576505      BEARING  LH PIV  NONE    504  SM         5        9.01      16.38    0496      0495     AP
+ 1M  3576506      BEARING  RH PIV  NONE    504  SM         5       10.73      19.50    0496      0495     AP
+ 1M  5020573      ROLLER                   504  SM         5        7.36      13.39    0296      0296     AP
+ 1M  5020737-067  ROD TIE BLK              504  SM         5        7.02      12.77    0296      0296     AP
+ 1M  5130620      GEAR  FWD        NONE    504  SM         5       78.40      98.00    0496      0495     AP
+ 1M  5130895      RAMP DRIVEN 36   P-334   504  SM         5       19.83      36.05    0396      0296     AP
+ 1M  5211649      LOCK BOLT MECHA          504  SM         5         .27        .49    0296      0296     AP
+ 1M  5222863      GUARD  COOL EXT          504  SM         5         .67       1.22    0296      0296     AP
+ 1M  5222889-067  BRACE HD SUPP L          504  SM         5        9.29      16.89    0296      0296     AP
+ 1M  5224532-067  BAR SWAY BLK (L          504  SM         5       18.87      34.30    0296      0296     AP
+ 1M  5240569-067  BRACE PAN LH BL          504  SM         5        1.38       2.50    0296      0296     AP
+ 1M  5240687      BRKT TOOLBOX             504  SM         5        3.00       5.46    0296      0296     AP
+ 1M  5240769      SHIELD FASTENER          504  SM         5         .35        .63    0296      0296     AP
+
+                                             - CONTINUED -                                              JOHN DEERE INFORMATION SYSTEMS                                MONTH ENDING 31MAR1998
+                                                     DELETION LISTING                                               PAGE   6
+
+                                           SRC                                       LAST SALE   DATE
+WHSE PART NUMBER  DESCRIPTION       BIN    CDE    GROUP   OFC       COST       LIST    DATE     ADDED   STATUS
+
+ 1M  5240865      LEVER PARKBRAKE          504  SM         5        3.40       6.18    0296      0296     AP
+ 1M  5410840      STRAP LIMITER F          504  SM         5        3.45       6.28    0296      0296     AP
+ 1M  5430601      LEVER-THROTTLE           504  SM         5        3.60       6.54              0296     AP
+ 1M  5430652      LEVER-THROTTLE           504  SM         5        2.15       3.90              0296     AP
+ 1M  5430804      COVER THROTTLE   NONE    504  SM         5         .89       1.61    0496      1194     AP
+ 1M  5431471-070  NOSEPAN BLK              504  SM         5       73.08     132.87    0296      0296     AP
+ 1M  5630065      WT   SHIFT "J"(          504  SM         5        2.43       4.42    0296      0296     AP
+ 1M  5810932      5811086          L-637   504  SM         5        2.56       4.66    0496      0296     AP
+ 1M  605-0102     HELMET                   518             5       57.85      79.95    0296      0296     AP
+ 1M  6516303      SHAFT                    514             5       77.35     120.86    0296      0296     AP
+ 1M  6519746      BREAKER                  514             5        6.64       9.76    0296      0296     AP
+ 1M  6539323      HEAD                     514             5       12.97      19.65    0496      0494     AP
+ 1M  6548194      CARBURKIT                514             5       19.72      30.81              0296     AP
+ 1M  6562067      BUSHING                  514             5        8.35      13.05    0396      0296     AP
+ 1M  6566611      843 O/M                  514             5       10.15      12.69    0496      1295     AP
+ 1M  6569219      SCREEN                   514             5        5.39       7.19    0296      0296     AP
+ 1M  6589798      SEAL KIT                 514             5       11.06      16.26    0396      0296     AP
+ 1M  6598220      SEAL KIT                 514             5        4.43       6.71    0396      0296     AP
+ 1M  6658352      MOULDING                 514             5        1.16       1.61              0296     AP
+ 1M  6658846      RIM                      514             5       94.24     142.79    0396      0296     AP
+ 1M  6661441      SEAL KIT                 514             5        3.35       5.08    0296      0296     AP
+ 1M  6665012      SEAL                     514             5        7.15      10.51              0296     AP
+ 1M  6701651      WIND REAR                514             5       20.35      29.93              0296     AP
+ 1M  6705735      WINDOW                   514             5        4.44       6.53              0296     AP
+ 1M  6724484      BLOCK HTR                514             5       44.91      66.04    0296      0296     AP
+ 1M  7040135      SPRING RH                504  SM         5        3.37       6.13    0296      0296     AP
+ 1M  7040136      SPRING L H               504  SM         5        3.37       6.13    0296      0296     AP
+ 1M  7041364-067  SPRING COMP BLK          504  SM         5        8.58      15.60    0296      0296     AP
+ 1M  7041385      SHOCK GAS IFS (  L-026   504  SM         5      107.43     153.47              0296     NS
+ 1M  7074529      DECAL LH TUNNEL          504  SM         5        1.82       3.30    0296      0296     AP
+ 1M  7074530      DECAL RH TUNNEL          504  SM         5        1.82       3.30    0296      0296     AP
+ 1M  7074745      DECAL "IFS X-TR          504  SM         5        1.27       2.30    0296      0296     AP
+ 1M  7074746      DECAL "IFS X-TR  L-125   504  SM         5        1.27       2.30              0296     NS
+ 1M  7075155      DECAL RH SIDEPA          504  SM         5        6.27      11.40    0296      0296     AP
+ 1M  7075157      DECAL RH SIDEPA          504  SM         5        6.33      11.50    0296      0296     AP
+ 1M  7075160      DECAL LH TUNNEL          504  SM         5        3.03       5.50    0296      0296     AP
+ 1M  7075161      DECAL RH TUNNEL          504  SM         5        3.03       5.50    0296      0296     AP
+ 1M  7075175      DECAL LH TUNNEL          504  SM         5        3.23       5.87    0296      0296     AP
+ 1M  7075176      DECAL RH TUNNEL          504  SM         5        3.23       5.87    0296      0296     AP
+ 1M  7075177      DECAL LH TUNNEL          504  SM         5        4.14       7.52    0296      0296     NS
+ 1M  7075204      DECAL LH "IFS X          504  SM         5        3.23       5.87    0296      0296     AP
+ 1M  7075414      DECAL LH TRACK/          504  SM         5         .22        .40    0296      0296     AP
+ 1M  7080084      CABLE THROTTLE           504  SM         5        6.74      12.26    0296      0296     AP
+ 1M  7080405      CABLE  CHOKE(LI          504  SM         5       10.37      18.85    0296      0296     AP
+ 1M  7515440      BOLT(10)                 504  SM         5         .11        .20    0296      0296     AP
+ 1M  7553001      7552603                  504  SM         5         .06        .11    0296      0296     AP
+ 1M  7555756      RIVET BURR(50)           504  SM         5         .07        .12    0396      0296     AP
+ 1M  7555876      WASHER THRUST(1          504  SM         5         .35        .63              0296     NS
+ 1M  7621323      POP RIVET(50)            504  SM         5         .05        .09    0296      0296     AP
+ 1M  7621470      RIVET(50)        Q-PR    504  SM         5         .12        .22    0396      0296     AP
+ 1M  845FSO06X06  TEE              Q-C4C2  516             5        4.00       5.20              0296     AP
+ 1M  9912397      OWN MAN '93-4X4  NONE    504  SM         5        3.60       4.50    0496      0395     AP
+ 1M  AR39052      SEAL                     518  R          5        1.36       2.23    0496      1094     AP
+
+                                             - CONTINUED -                                              JOHN DEERE INFORMATION SYSTEMS                                MONTH ENDING 31MAR1998
+                                                     DELETION LISTING                                               PAGE   7
+
+                                           SRC                                       LAST SALE   DATE
+WHSE PART NUMBER  DESCRIPTION       BIN    CDE    GROUP   OFC       COST       LIST    DATE     ADDED   STATUS
+
+ 1M  B117         REAR HOLDDOWN            502             5       14.39      22.55    0296      0296     AP
+ 1M  BB14         HOOK             A-202   518  BAUR       5        6.54       9.81    0496      1292     AP
+ 1M  BR26         BRACE                    502             5        6.06       8.66    0296      0296     AP
+ 1M  D69          YOKE             NONE    502             5        5.13       7.69    0496      0894     AP
+ 1M  F67          SHAFT                    502             5       79.69     113.85    0296      0296     AP
+ 1M  GDE21-5      BLADE            NONE    518  MWAG       5       14.50      22.13    0496      1095     AP
+ 1M  GDE21-5A     BOLT             NONE    518  MWAG       5        1.48       2.85    0496      1095     AP
+ 1M  JD720S       SEAT A,B,6       FRONT   518  K-M        5       21.50      32.75    0496      0693     AP
+ 1M  LP38114      LOCKING PI       DISP-7  518  CYCL       5        1.63       2.45    0496      0594     AP
+ 1M  R27          SPRING           NONE    502  FB         5        2.82       4.43    0496      0292     AP
+
+ TOTAL PART NUMBERS DELETED FOR WAREHOUSE:     116
+
+ TOTAL PART NUMBERS DELETED:     320

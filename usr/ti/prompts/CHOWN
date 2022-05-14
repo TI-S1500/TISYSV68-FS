@@ -1,0 +1,17 @@
+# cshf	 chown - change the owner of a file 
+#	@(#)CHOWN.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^CHOWN -- CHANGES FILE OWNERSHIP"\
+	"^File Name(s):"  _input_file  macnm  "$_input_file"\
+	"^New Owner:"  owner string\
+	"^#$*"
+
+if( $abort )  goto end
+echo "=== CHOWN COMMAND EXECUTING ==="
+echo chown  $owner $_input_file
+chown  $owner $_input_file 
+
+end:
+unset owner

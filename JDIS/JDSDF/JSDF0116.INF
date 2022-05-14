@@ -1,0 +1,50 @@
+ATTENTION:  FOCUS PERSON
+
+INSTALLATION INSTRUCTIONS - PATCH 116 - RELEASE 97-2 PRODUCTION UPDATE #3
+
+	 PATCH INSTALLATION WILL TAKE LESS THAN 3 MINUTES
+      NO ONE CAN BE ON THE SYSTEM DURING PATCH INSTALLATION
+
+TO INSTALL THE SOFTWARE:
+
+The Focus Person should log on a VDT with userid sys999.  (DO NOT log on
+the MASTER VDT.)   At the 'Enter Selection' prompt, type in JDUPDATE and
+press <RETURN>.  This command will install the update.
+When this is complete, you should log off the system.  To do this,
+press <F10> and answer Y to the prompt "Do you want to terminate ASPEN?"
+Log back on using your normal userid.
+
+JDIS recommends you make a new Program backup after installing this patch.
+
+PROGRAM CHANGES INCLUDED WITH PATCH 116
+
+SERVICE PRICING
+
+1.  A new program to load Service Pricing Guide (SPG) data is included.  You
+    must install this patch before you load the new SPG data tape that will
+    soon be shipped to all Ag dealers.
+
+2.  LOADSPG - This was modified to improve performance and allow selection of
+    individual CED categories.
+
+ESIS/SERVICE MANAGEMENT/WORK ORDER CONTROL
+
+1.  CGPINUPD - Delivery confirmation records - The emissions warranty date on
+    the equipment record was updated with zeros if a date was not sent from the
+    host.  The date will now contain spaces.
+
+2.  MSPREV - Occasionally when a user printed a range of invoiced work orders,
+    a credit memo would print instead of an invoice.  This has been fixed.
+
+PARTS MARKETING MANAGEMENT
+
+1.  When adding parts to the part master (through ORDENT, PARTSFM, etc.) AND
+    prompting for "date added" if using the "long add" routine, the date was
+    not being added correctly.	This problem has been fixed.
+
+2.  RGPROMDT - A JDMARS report for Parts Expert 1.2.   RGRPOMDT reports
+    promotional price information.
+
+3.  Canadian Dealers Only - A problem was recently detected with the
+    calculation of GST tax.  The problem was very sporadic but could have
+    resulted in a failure to charge GST tax.  That problem has been corrected.

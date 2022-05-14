@@ -1,0 +1,19 @@
+ (A) The FIS system enables creation of a chart of accounts, printing and
+     modifying the chart of accounts and entry of trial balance at month end.
+
+   (1) A chart of accounts must be created before any other FIS transactions
+       can be entered. If a multiple store dealer has separate general ledgers
+       for each store, a chart of accounts must be created for each one.
+         *** IMPORTANT NOTE *** When a new chart of accounts is written, all
+                                accounts previously on the file are deleted.
+
+   (2) If you add or delete account number(s) to the chart of accounts
+       you still must notify the branch or region of the account # change.
+
+   (3) When entering your chart of accounts or trial balance, you can use the
+       arrow keys to view and/or change previous entries.
+
+   (4) If the trial balance is out of balance, it is saved in the computer
+       until corrected.  Once in balance, the trial balance is printed & then
+       placed on the Transmit file. To make arithmetic adjustments to accounts
+       on the Transmit file see the General Data Entry help screen.

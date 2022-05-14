@@ -1,0 +1,97 @@
+
+# @(#)swupdate.sh	1.6 (TI) 88/09/03
+if [ $# -eq 1 ]
+   then TAPE=$1
+else
+   TAPE=/dev/rqt/0hn
+fi
+export TAPE
+tput clear
+echo
+echo "Ensure that the system is in single user mode."
+echo
+echo "Ensure that the software update tape is inserted in the tape unit "
+echo "whose device name is $TAPE."
+echo
+echo "Type c to continue or CTRL C to exit."
+echo
+ANSWER=
+while [ -z "$ANSWER" ]
+do
+   read ANSWER
+   if [ -z "$ANSWER" ]
+      then ANSWER=
+   else
+      if [ "$ANSWER" != "c" ]
+	 then ANSWER=
+      fi
+   fi
+done
+echo
+dd if=$TAPE of=/dev/null bs=1k > /dev/null 2>&1
+if [ ! -d /usr/ti/patch ]
+   then mkdir /usr/ti/patch
+fi
+cd /usr/ti/patch
+tar xbf 10 $TAPE >> /dev/null 2>&1
+if [ ! -x sw_backup ]
+   then echo "The sw_backup script was not restored."
+   exit
+fi
+if [ ! -x sw_apply ]
+   then echo "The sw_apply script was not restored."
+   exit
+fi
+if [ ! -x sw_begin ]
+   then echo "The sw_begin script was not restored."
+   exit
+fi
+if [ ! -x sw_end ]
+   then echo "The sw_end script was not restored."
+   exit
+fi
+if [ ! -f sw_toc ]
+   then echo "The sw_toc file was not restored."
+   exit
+fi
+OPTION=
+while [ -z "$OPTION" ]
+do
+   tput clear
+   echo
+   echo
+   echo "                      Software Update Menu"
+   echo
+   echo "1 - Backup the files that are about to be replaced by the update "\\c
+   echo "process."
+   echo
+   echo "2 - Apply the updates to the system disk"
+   echo
+   echo "3 - Quit the update process."
+   echo
+   echo
+   echo "Select an option--> "\\c; read OPTION
+   echo
+   case "$OPTION"
+   in
+       1) ./sw_backup
+	  ./sw_apply
+	  echo "cleanup in progress"
+	  rm sw_begin sw_end sw_apply sw_backup sw_toc
+	  echo "The software update procedure is complete."
+	  echo "You may remove /usr/ti/patch/sw_log after viewing its contents."
+	  exit;;
+       2) ./sw_apply
+	  echo "cleanup in progress"
+ 	  rm sw_begin sw_end sw_apply sw_backup sw_toc
+	  echo "The software update procedure is complete."
+	  echo "You may remove /usr/ti/patch/sw_log after viewing its contents."
+          exit;;
+       3) tput clear
+	  exit;;
+       *) echo
+	  echo "Enter 1 2 or 3 only"\\c; read ANSWER ;;
+   esac
+   OPTION=
+done
+exit

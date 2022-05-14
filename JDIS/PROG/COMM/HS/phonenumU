@@ -1,0 +1,18 @@
+:
+#phonenum - UNIX version - High speed modem project
+#
+su sys000 -c 'chmod 666 /dev/tty00'
+su sys000 -c 'rm -f /JDIS/PROG/COMM/phonenum.log'
+su sys000 -c 'rm -f /JDIS/PROG/COMM/phonenum.out'
+cd /JDIS/PROG/COMM
+BLASTDIR=/JDIS/PROG/COMM
+export BLASTDIR
+SETUPDIR=/JDIS/PROG/COMM
+export SETUPDIR
+csh -c "blast phonenum" >/JDIS/PROG/COMM/phonenum.out
+if test $? != 0
+then
+        echo "\nphonenum: blast error while optioning the modem.\n"
+        exit 1
+fi
+exit 0

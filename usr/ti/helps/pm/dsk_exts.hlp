@@ -1,0 +1,12 @@
+
+
+Use the + and - commands to display the next and previous extended disk 
+statistics screens. The "r" command resets the counters in the kernel that are 
+used to compute the extended disk statistics.
+
+The Request Transfer Sizes screen shows the size of data transfer requests that 
+have been made to the selected disk drive. The bar graph displays the 
+percentage of requests that have a particular size. All sizes shown are in 
+bytes. The number of requests used to produce the graph is shown in the lower 
+left corner of the screen.
+

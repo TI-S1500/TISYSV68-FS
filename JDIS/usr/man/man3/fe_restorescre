@@ -1,0 +1,63 @@
+FE_RESTORESCREEN(3T)                         FE_RESTORESCREEN(3T)
+
+NAME
+     FE_restorescreen - Restores field edit screen image
+
+SYNOPSIS
+     #include <vdtrdwrt.h>
+
+     extern int errno;
+     int status, fd ;
+     status = FE_restorescreen(fd);
+
+DESCRIPTION
+     The FE_restorescreen function causes field edit to restore
+     the saved screen image to the terminal.  The function writes
+     an erase screen command to the terminal and then writes the
+     screen image data with cursor and display attribute
+     information.  The fd parameter is the TI System V file
+     descriptor being used in the current field edit session.
+     The status and errno parameters return error information.
+
+     The FE_restorescreen, in conjunction with FE_savescreen(3T),
+     is intended for use with help screens and similar functions.
+     The FE_savescreen function causes field edit to save the
+     current screen image and not process field edit read or
+     write calls through the screen image until an
+     FE_restorescreen function is processed.  An application can
+     issue an FE_savescreen call, write any number of screens,
+     and issue any number of read requests.  When the terminal
+     operator indicates that he or she wishes to return to the
+     previous screen, the application calls FE_restorescreen,
+     which causes the saved screen image to be restored to the
+     terminal.
+
+     You can save only one image per terminal at any one time.
+     If you need to save multiple screen images, use
+     FE_exportscreen(3T).
+
+RETURN VALUES
+     The function can return the following values in status:
+
+      0 - No errors.
+     -1 - Error. The errno variable contains one of the following
+     error codes:
+          EFE_BADFD - An invalid file descriptor was used; that
+          is, a file descriptor different from the file
+          descriptor used in the FE_open call.
+          EFE_NOIMAGE - Field edit is not keeping a screen image
+          for this terminal (variable SCRNIMAGE not set) or the
+          screen image has not been saved by a preceding
+          FE_savescreen call.
+          See the /usr/include/sys/errno.h file for other system
+          error codes.
+
+SEE ALSO
+     FE_abort(3T), FE_close(3T), FE_exportscreen(3T),
+     FE_flush(3T), FE_getparm(3T), FE_importscreen(3T),
+     FE_open(3T), FE_printscreen(3T), FE_putchar(3T),
+     FE_read(3T), FE_savescreen(3T), FE_setvbits(3T),
+     FE_write(3T), fecap(4), vdtrdwrt.h(4).
+     ``Terminal Input/Output'' in TI System V Programmer's Guide.
+
+

@@ -1,0 +1,7 @@
+:
+cp /etc/inittab /etc/initcgk
+chmod 777 /etc/initcgk
+sed /$OFFTTY/s/t9/t1/ /etc/initcgk >/etc/inittab
+cp /etc/inittab /etc/initcgk
+chmod 777 /etc/initcgk
+sed /$OFFTTY/s/x1/t1/ /etc/initcgk >/etc/inittab

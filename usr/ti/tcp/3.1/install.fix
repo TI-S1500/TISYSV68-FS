@@ -1,0 +1,21 @@
+#	@(#)install.fix	1.2 93/01/25 Texas Instruments TCP/IP System V
+#
+# sourced by the install.scr script to use kernel files
+# compiled with system header files especially for this
+# OS, i.e., the kernel pieces in the TCP3.1 tape are only
+# good for OS 3.3.1. so we need to replace the ones extracted
+# from the Relase tape into the $installdir (setup by caller)
+#
+patchdir=/usr/ti/tcp/3.1
+patchobj() {
+	for patobj in $*; do
+		if [ -f $patchdir/$patobj ]; then
+			cp $patchdir/$patobj $installdir
+			echo "Found $patchdir/$patobj"
+		fi
+	done
+}
+
+patchobj "inet.o arp.o ip.o ip_icmp.o llcloop.o rip.o slip.o socket.o"
+patchobj "tcp.o udp.o vty.o ipmux.o"
+patchobj "forceread chkccb"

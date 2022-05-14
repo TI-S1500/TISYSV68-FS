@@ -1,0 +1,5 @@
+T,D,STOCK ORDER MENU
+H,05,/07
+E,P32,Weekly Stock Orders
+E,P39,Special Terms Orders
+E,P40,Initial Stock Orders

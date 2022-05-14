@@ -1,0 +1,27 @@
+:
+# --------------------------------------------------------------
+#   Check for pending AP Check Cycles just prior to installing
+#     Release 96-2
+# --------------------------------------------------------------
+/bin/echo "\n CHECK FOR PAYMENT CYCLES PRIOR TO LOADING A NEW RELEASE: \n"
+if (test -r /JDIS/PROG/CMN/apdump) then
+   rm /JDIS/PROG/CMN/apdump
+fi
+FILEA=$D1"AP/APAUTH*"
+FILEB=$D1"AP/APPRNT*"
+APFILES="N"
+if (test -r $FILEA ) then
+    APFILES="Y"
+    /bin/echo " $FILEA EXISTS" >> /JDIS/PROG/CMN/apdump
+fi
+if (test -r $FILEB ) then
+    APFILES="Y"
+    /bin/echo " $FILEB EXISTS" >> /JDIS/PROG/CMN/apdump
+fi
+if (test $APFILES = "Y") then
+   /bin/echo "\n YOUR AP CYCLES HAVE NOT COMPLETED\n"
+   /bin/echo " PLEASE FINISH PRIOR TO LOADING THE NEW RELEASE\n"
+   else
+   /bin/echo "\n NO PAYMENT CYCLES ARE PENDING \n"
+   /bin/echo " YOU MAY INSTALL THE NEW RELEASE \n"
+fi

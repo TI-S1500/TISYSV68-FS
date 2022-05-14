@@ -1,0 +1,111 @@
+
+#
+#	Title:	recovery
+#		RM/COBOL-85 Recovery Shell Script
+#
+#	The information contained here in is proprietary to Liant Software
+#	Corporation, and provided for maintenance purposes only.
+#	No other use of this material is authorized or permitted without
+#	specific authorization, in writing, from Liant Software Corporation.
+#
+#	This file obtained from $Archive:   /cobol85/pvcs/rmc85/util/scripts/recovery.__v  $ on $Date:   16 Apr 1993 15:21:58  $
+#	Version = @(#) $Header:   /cobol85/pvcs/rmc85/util/scripts/recovery.__v   5.5.1.1   16 Apr 1993 15:21:58   MIKE  $
+#
+#	Module History:
+#	   ??/??/??  Coded
+#	   90/09/06  Better handling of error codes.
+#		     Cleanup messages.
+#
+#
+#	$Log:   /cobol85/pvcs/rmc85/util/scripts/recovery.__v  $
+#    
+#       Rev 5.5.1.1   16 Apr 1993 15:21:58   MIKE
+#    Project: RM8553
+#    
+#    Put the blank line at the beginning back.  It indicated that this
+#    is a Bourne shell.
+#
+#	Rev 5.5.1.0   02 Apr 1993 13:17:08   MIKE
+#    Project: FJTSSP
+#    Fixed comment prefix.
+#
+#      Rev 5.5	 04 Dec 1992 04:37:50	rmcobol85
+#   Insert PVCS keywords
+#
+trap "echo 'Recovery process canceled by operator.';exit" 1 2
+if [ "$1" -a "$2" ]
+then
+    if [ -w $1 ]
+    then
+	echo "Attempting to recover $1 in place:"
+	echo "Press RETURN when ready..."
+	read yesno
+	trap "echo" 1 2
+	recover1 $1 $2
+	rc=$?
+	trap "" 1 2
+	if [ $rc -ne 1 ]
+	then
+	    if [ $rc -eq 0 ]
+	    then
+		echo "Index file $1 was recovered in place."
+		echo "Records with invalid duplicate keys can be found in $2."
+	    else
+		echo "Recovery process canceled by operator."
+	    fi
+	else
+	    trap "echo 'Recovery process canceled by operator.';exit" 1 2
+	    echo "Attempting to extract data records from $1 (file structure"
+	    echo "  will be retrieved from the original index file):"
+	    echo "Press RETURN when ready..."
+	    read yesno
+	    trap "echo" 1 2
+	    runcobol recover2 -k -a "$1,$3,NOSUB"
+	    rc=$?
+	    trap "" 1 2
+	    if [ $rc -ne 1 ]
+	    then
+		if [ $rc -eq 0 ]
+		then
+		    echo "The data recovery file specified for RECOVER2 contains the data records"
+		    echo "  from index file $1."
+		    echo "  See the Utilities Appendix of the RM/COBOL-85 User\'s Guide"
+		    echo "  for information on how to rebuild the index file."
+		else
+		    echo "Recovery process canceled by operator."
+		fi
+	    else
+		trap "echo 'Recovery process canceled by operator.';exit" 1 2
+		echo "Attempting to extract data records from $1 "
+		echo "(file structure must be supplied by user):"
+		echo "Press RETURN when ready..."
+		read yesno
+		trap "echo" 1 2
+		runcobol recover2 -k -a "$1,$3,SUB"
+		rc=$?
+		trap "" 1 2
+		if [ $rc -ne 1 ]
+		then
+		    if [ $rc -eq 0 ]
+		    then
+			echo "The data recovery file specified for RECOVER2 contains the data records"
+			echo "  from index file $1."
+			echo "  See the Utilities Appendix of the RM/COBOL-85 User\'s Guide"
+			echo "  for information on how to rebuild the index file."
+		    else
+			echo "Recovery process canceled by operator."
+		    fi
+		else
+		    echo "Recovery failed.  A portion of the data records from index file $1 may"
+		    echo "  exist in the data recovery file specified for RECOVER2."
+		    echo "  See the Utilities Appendix of the RM/COBOL-85 User\'s Guide"
+		    echo "  for more information."
+		fi
+	    fi
+	fi
+    else
+	echo "File $1 does not exist - execution terminated."
+    fi
+else
+    echo "Usage:  recovery index-file-name drop-file-name [data-recovery-file-name]"
+fi

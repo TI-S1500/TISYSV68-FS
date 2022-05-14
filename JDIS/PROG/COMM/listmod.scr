@@ -1,0 +1,176 @@
+# rev 8.4.1
+#
+###########################################################################
+# listmod.scr - List Available modem types - 7/19/89                      #
+#                                                                         #
+# This script reads the modems.scr library and interprets the entries     #
+# and displays an English language listing of the modem types supported.  #
+# It also allows a selected modem type to be used in the current setup.   #
+#                                                                         #
+# See the label .begin for the beginning of the script.                   #
+###########################################################################
+#
+goto .begin                     # the script actually starts at .begin
+#
+.mainloop                       # the main loop is here for speed up
+reps 9
+.getone                         # this section GETs one type and extracts
+#                               # the label
+fread 1,@line                   # @line contains a line from MODEMS.SCR
+set @lbl = @line
+strtrim @lbl,1,1
+if @lbl = ":"                   # if @lbl = ":", then finished
+  fclose 1
+  wait 3
+  let @curr = @curr + "1"       # @curr is the current screen line number
+  cursor @curr, 10              # position the cursor
+  put "---------------<End of List>---------------"
+  set @ask = ""
+  ask "Enter desired modem type, <return> to continue.",@ask
+  if not null @ask              # choice entered, store it in setup
+    set @modem = @ask
+    return 0                    # and exit
+  end
+  set @ask = ""                 # clear the ask variable
+  ask "Do you wish to see the list again? (y/n)",@ask
+  lower @ask
+  if @ask = "y" goto .start
+  return 0
+end
+if not @lbl = ">" goto .getone  # check for a label beginning  with a '>'
+strtrim @line,2,9
+#
+set @text = "| "                # set text for unknown modem type
+strcat @text,@line
+strcat @text,"   |    (No modem  information available)"
+#
+# current available modem  types (7/89)
+#
+if @line = "ATT2412 " set @text = "|  ATT2412   |    AT&T 2224/C & 2212/C"
+if @line = "ATT4000 " set @text = "|  ATT4000   |    AT&T 4000"
+if @line = "ATT4024 " set @text = "|  ATT4024   |    AT&T 4024"
+if @line = "Con224AD" set @text = "| Con224AD   |    Concord 224 Autodial"
+if @line = "Con296  " set @text = "|   Con296   |    Concord 296 Trellis"
+if @line = "ConDA296" set @text = "| ConDA296   |    Concord DialAccess 296"
+if @line = "DataBMX " set @text = "|  DataBMX   |    Data Race BMX"
+if @line = "Fastlink" set @text = "| Fastlink   |    DCA Fastlink"
+if @line = "Hayes   " set @text = "|    Hayes   |    Hayes Smartmodem or compatible"
+if @line = "HayesAB " set @text = "|  HayesAB   |    Hayes compatible 19200-300 Auto Baud"
+if @line = "Mic96MNP" set @text = "| Mic96MNP   |    Microcom 96XX (in MNP mode)"
+if @line = "PCRace  " set @text = "|   PCRace   |    Data Race PCRace"
+if @line = "RV3451  " set @text = "|   RV3451   |    Racal Vadic 3451 "
+if @line = "RV9600VP" set @text = "| RV9600VP   |    Racal-Vadic 9600VP"
+if @line = "Tblazer " set @text = "|  Tblazer   |    Telebit Trailblazer series"
+if @line = "UDSsuv32" set @text = "| UDSsuv32   |    UDS Sync-Up V.32 9600-300 Auto Baud"
+if @line = "UDSV32  " set @text = "|   UDSV32   |    Universal Data Systems V.32"
+if @line = "USR2400e" set @text = "| USR2400e   |    US Robotics Courier 2400e"
+if @line = "USRDualH" set @text = "| USRDualH   |    US Robotics Courier HST dual standard (HST mode)"
+if @line = "USRDualV" set @text = "| USRDualV   |    Courier HST dual standard (V.32 mode)"
+#
+cursor @curr, 9
+cleol
+put @text                       # write text description to screen
+cursor @curr, 75
+put "|"
+let @curr = @curr + "1"
+cursor @curr, 9
+cleol
+put "+------------+----------------------------------------------------+"
+if reps goto .getone            # if screen is not full, loop again
+goto .screenful                 # end of .mainloop
+#
+###########################################################################
+#                                                                         #
+#  The  script  actually  begins  here.  Mainloop  is above to speed      #
+#  execution.                                                             #
+#                                                                         #
+###########################################################################
+#  Variables used:
+#
+#  @dir: directory of modems.scr
+#  @lbl: working variable, used to extract labels
+#  @curr: the current line of the display (used for drawing displays)
+#  @line: the line of text from the script.
+#  @text: the displayed information for each type
+#  @ask: used to hold assorted text
+###########################################################################
+.begin                          # this is actually the beginning of the script
+clear                           # clear the screen
+.dir
+if exist "modems.scr"  goto .start  # modems.scr  found, get going!
+#
+set @ask = ""
+ask "What directory is modems.scr  in? (<return> to exit) ",@dir
+if null @dir return 0           # user hit <return>, abort
+local
+chdir
+@dir                            # @dir is the directory  modems.scr is in
+esc
+#
+.start                          # time to settle in
+fopenr 1,"modems.scr"
+#
+if  not ok                      # most likely  modems.scr not in this
+#                               # directory. (maybe permissions?)
+  werror "error: can't open modems.scr."
+  goto .dir
+end
+#
+clear
+cursor 0,0
+put "                        Modem Types Supported by BLAST"
+cursor 1,9
+put "+------------+----------------------------------------------------+"
+cursor 2,9
+put "| Modem Type |           Description                              |"
+cursor 3,9
+put "+------------+----------------------------------------------------+"
+#
+.group
+#
+set @curr = "4"                 # @curr contains the CURRent line of display
+#
+goto .mainloop
+.screenful
+#
+set @ask = ""
+ask "Enter desired modem  type, <return> for next page, 'q' to quit", @ask
+if not null @ask                # if @ask = "", user wants next screenful
+  if @ask = "q" or @ask = "Q" return 0        # quit
+  set @modem = @ask             # store choice in setup
+  return 0
+end
+#
+cursor 4,1
+cleol
+cursor 5,1                    # clear only that part of the screen that
+cleol                         # contained the previous screenful
+cursor 6,1                    # (keep the window title)
+cleol
+cursor 7,1
+cleol
+cursor 8,1
+cleol
+cursor 9,1
+cleol
+cursor 10,1
+cleol
+cursor 11,1
+cleol
+cursor 12,1
+cleol
+cursor 13,1
+cleol
+cursor 14,1
+cleol
+cursor 15,1
+cleol
+cursor 16,1
+cleol
+cursor 17,1
+cleol
+cursor 18,1
+cleol
+goto .group                   # time for the next group of modem types
+#
+return 0

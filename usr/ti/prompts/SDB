@@ -1,0 +1,25 @@
+# cshf  sdb -- symbolic debugger 
+#	@(#)SDB.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^SDB -- INVOKES A SYMBOLIC DEBUGGER"\
+	"^*Directory Name:" _input_dir acnm $_input_dir\
+	"^*Object File Name:" _object_file acnm $_object_file\
+	"^*Core File Name:" core acnm \
+	"^Disable Warnings:" Wflag yesno n\
+	"^Overwrite Locations:" wflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($Wflag == "y") set Wopt = -W
+if ($wflag == "y") set wopt = -w
+
+if ($abort) goto end
+echo "=== SDB COMMAND EXECUTING ==="
+echo sdb $Wopt $wopt $_object_file $core $_input_dir 
+sdb $Wopt $wopt $_object_file $core $_input_dir 
+
+#clean up time
+end:
+unset *flag *opt core

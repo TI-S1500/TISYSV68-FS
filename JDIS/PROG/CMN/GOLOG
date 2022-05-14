@@ -1,0 +1,28 @@
+                 STATUS OF GHOME SUBMITTED ON 06/29/98 AT 15:40:09
+*
+    GOHOME BEGINNING  15:40:09  06/29/98  DLR001  from tty06 / 01 / ST08
+           OPTION 1 - BKUP, DAYEND and POLL
+           The GOHOME process will begin at 2000
+               GOSTAT Listing Device is: LP$01
+               BKUP   Listing Device is: LP$01
+               DAYEND Listing Device is: LP$01
+               POLL   Listing Device is: LP$01
+           GOHOME SUBMITTED     15:40:44  06/29/98  DLR001
+          PMNIGHT SUBMITTED     15:40:45  06/29/98  DLR001
+           BKUP     Started     20:00:51  06/29/98  DLR001
+               BKUP   COMPLETED SUCCESSFULLY
+           BKUP     Ended       20:38:09  06/29/98  DLR001
+           DAYEND   Started     20:38:09  06/29/98  DLR001
+               DAYEND COMPLETED SUCCESSFULLY
+           DAYEND   Ended       20:41:50  06/29/98  DLR001
+           POLL     Started     20:41:51  06/29/98  DLR001
+               POLL is waiting for a call from the host
+*
+*   * * *  ATTENTION  * * *  ATTENTION  * * *  ATTENTION * * *
+*        You have received a Software Update from JDIS.
+*        Enter JDISINFO at the 'Enter Selection' line for
+*        instructions on loading this Update.
+*
+                  To Check the Status of POLL...Run POLLSTAT
+           POLL     Ended       00:03:51  06/30/98  DLR001
+           GOHOME COMPLETED     00:03:51  06/30/98  DLR001

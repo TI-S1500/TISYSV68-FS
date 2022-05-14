@@ -1,0 +1,9 @@
+# cshf   whodo - determines who is doing what 
+#	@(#)WHODO.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^WHODO -- TELLS WHO IS DOING WHAT ON THE SYSTEM"
+echo "=== WHODO COMMAND EXECUTING ==="
+/etc/whodo
+end:

@@ -1,0 +1,12 @@
+#
+# COPYRIGHT (c) 1985 TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+# @(#)startup.sh	1.2 86/03/20
+#
+#	"startup (acct) - should be called from /etc/rc"
+#	"whenever system is brought up"
+PATH=/usr/lib/acct:/bin:/usr/bin:/etc
+acctwtmp "acctg on" >>/etc/wtmp
+turnacct on
+#	"clean up yesterdays accounting files"
+remove

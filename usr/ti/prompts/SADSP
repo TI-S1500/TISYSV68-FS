@@ -1,0 +1,9 @@
+# cshf	sadsp -- Invokes a system actitity display
+#	@(#)SADSP.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^SADSP -- INVOKES A SYSTEM ACTITITY DISPLAY"
+echo "=== SADSP COMMAND EXECUTING ==="   
+sadsp
+end:

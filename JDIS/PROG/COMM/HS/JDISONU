@@ -1,0 +1,47 @@
+:
+# JDISON - HIGHSPEED MODEM PROJECT - TI UNIX VERSION ONLY
+# 11/21/95 - R96-3 - remove sys000
+# 02/02/96         - add OFFTTY, sedoff, sedcfg, sedon, init q
+#
+echo "\nThis will enable the modem for dial in support."
+chmod 766 /etc/inittab
+OFFTTY=tty00
+export OFFTTY
+/JDIS/PROG/CMN/sedoff
+kill -9 `ps -t 00 | awk 'NR > 1 {print $1}'`
+
+loop=0
+while (test "$loop" -lt "9")
+do
+        sleep 5
+        lines=`ps -t 00 | wc -l`
+        if (test $lines = "1")
+        then
+                break
+        fi
+        loop=`expr $loop + 1`
+done
+if (test "$loop" = "9")
+then
+        echo "\nJDISON: Error while disabling the line.\n"
+        exit 1
+fi
+
+/JDIS/PROG/CMN/sedcfg
+
+echo "\nTurn your A/B box to A."
+echo "\nThen press return to continue."
+read return
+
+/JDIS/PROG/COMM/modemset
+if (test $? != 0)
+then
+        exit 1
+fi
+
+/JDIS/PROG/CMN/sedon
+init q
+
+echo "Remember to run JDISOFF after the support person disconnects."
+echo "\nProcess Complete.\n"
+exit 0

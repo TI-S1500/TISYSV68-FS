@@ -1,0 +1,163 @@
+ow
+Fri May 29 08:41:32 CDT 1998,08,DLR001,The v3279 session has ended
+Fri May 29 08:41:34 CDT 1998,08,DLR001,Starting the cleanup task now
+Fri May 29 08:41:34 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Fri May 29 08:41:44 CDT 1998,08,DLR001,CLEANUP: print complete (break)
+Fri May 29 08:41:45 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Fri May 29 08:41:47 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Fri May 29 08:41:52 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Fri May 29 08:41:53 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Fri May 29 08:41:54 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Wed Jun 3 08:49:22 CDT 1998,04,DLR021,*******************************
+Wed Jun 3 08:49:23 CDT 1998,04,DLR021,The line is not active
+Wed Jun 3 08:49:24 CDT 1998,04,DLR021,Issuing snaadm connect now
+Wed Jun 3 08:49:59 CDT 1998,04,DLR021,Connect complete & line is active
+Wed Jun 3 08:50:00 CDT 1998,04,DLR021,Executing /usr/ucs/startprts
+Wed Jun 3 08:50:01 CDT 1998,04,DLR021,Starting v3279 now
+Wed Jun 3 08:51:42 CDT 1998,04,DLR021,The v3279 session has ended
+Wed Jun 3 08:51:45 CDT 1998,04,DLR021,Starting the cleanup task now
+Wed Jun 3 08:51:45 CDT 1998,04,DLR021,The 3270 cleanup task: Starting
+Wed Jun 3 08:51:48 CDT 1998,04,DLR021,CLEANUP: line inactive (break)
+Wed Jun 3 08:51:49 CDT 1998,04,DLR021,CLEANUP: STEP 1
+Wed Jun 3 08:51:52 CDT 1998,04,DLR021,CLEANUP: STEP 2
+Wed Jun 3 08:52:03 CDT 1998,04,DLR021,CLEANUP: STEP 3
+Wed Jun 3 08:52:05 CDT 1998,04,DLR021,CLEANUP: STEP 4
+Wed Jun 3 08:52:06 CDT 1998,04,DLR021,The 3270 cleanup task: Ending
+Wed Jun 3 09:04:05 CDT 1998,08,DLR001,*******************************
+Wed Jun 3 09:04:05 CDT 1998,08,DLR001,The line is not active
+Wed Jun 3 09:04:05 CDT 1998,08,DLR001,Issuing snaadm connect now
+Wed Jun 3 09:04:41 CDT 1998,08,DLR001,Connect complete & line is active
+Wed Jun 3 09:04:42 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Wed Jun 3 09:04:43 CDT 1998,08,DLR001,Starting v3279 now
+Wed Jun 3 09:06:44 CDT 1998,08,DLR001,The v3279 session has ended
+Wed Jun 3 09:06:46 CDT 1998,08,DLR001,Starting the cleanup task now
+Wed Jun 3 09:06:46 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Wed Jun 3 09:06:48 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Wed Jun 3 09:06:48 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Wed Jun 3 09:06:51 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Wed Jun 3 09:06:56 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Wed Jun 3 09:06:57 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Wed Jun 3 09:06:58 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Wed Jun 3 12:28:03 CDT 1998,08,DLR001,*******************************
+Wed Jun 3 12:28:04 CDT 1998,08,DLR001,The line is not active
+Wed Jun 3 12:28:04 CDT 1998,08,DLR001,Issuing snaadm connect now
+Wed Jun 3 12:28:39 CDT 1998,08,DLR001,Connect complete & line is active
+Wed Jun 3 12:28:40 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Wed Jun 3 12:28:41 CDT 1998,08,DLR001,Starting v3279 now
+Wed Jun 3 12:31:01 CDT 1998,08,DLR001,The v3279 session has ended
+Wed Jun 3 12:31:03 CDT 1998,08,DLR001,Starting the cleanup task now
+Wed Jun 3 12:31:03 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Wed Jun 3 12:31:06 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Wed Jun 3 12:31:07 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Wed Jun 3 12:31:10 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Wed Jun 3 12:31:15 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Wed Jun 3 12:31:16 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Wed Jun 3 12:31:17 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Thu Jun 4 08:59:43 CDT 1998,08,DLR001,*******************************
+Thu Jun 4 08:59:43 CDT 1998,08,DLR001,The line is not active
+Thu Jun 4 08:59:43 CDT 1998,08,DLR001,Issuing snaadm connect now
+Thu Jun 4 09:00:19 CDT 1998,08,DLR001,Connect complete & line is active
+Thu Jun 4 09:00:20 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Thu Jun 4 09:00:21 CDT 1998,08,DLR001,Starting v3279 now
+Thu Jun 4 09:05:11 CDT 1998,08,DLR001,The v3279 session has ended
+Thu Jun 4 09:05:13 CDT 1998,08,DLR001,Starting the cleanup task now
+Thu Jun 4 09:05:13 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Thu Jun 4 09:05:15 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Thu Jun 4 09:05:15 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Thu Jun 4 09:05:18 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Thu Jun 4 09:05:23 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Thu Jun 4 09:05:24 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Thu Jun 4 09:05:25 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Fri Jun 5 13:18:38 CDT 1998,08,DLR001,*******************************
+Fri Jun 5 13:18:38 CDT 1998,08,DLR001,The line is not active
+Fri Jun 5 13:18:38 CDT 1998,08,DLR001,Issuing snaadm connect now
+Fri Jun 5 13:18:41 CDT 1998,08,DLR001,Did not receive CONNECT COMPLETE
+Fri Jun 5 13:18:41 CDT 1998,08,DLR001,Issuing snaadm disc now
+Fri Jun 5 13:18:42 CDT 1998,08,DLR001,Issuing snaadm connect now
+Fri Jun 5 13:19:16 CDT 1998,08,DLR001,Connect complete & line is active
+Fri Jun 5 13:19:17 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Fri Jun 5 13:19:18 CDT 1998,08,DLR001,Starting v3279 now
+Fri Jun 5 13:25:12 CDT 1998,08,DLR001,The v3279 session has ended
+Fri Jun 5 13:25:14 CDT 1998,08,DLR001,Starting the cleanup task now
+Fri Jun 5 13:25:14 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Fri Jun 5 13:25:16 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Fri Jun 5 13:25:16 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Fri Jun 5 13:25:19 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Fri Jun 5 13:25:24 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Fri Jun 5 13:25:25 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Fri Jun 5 13:25:26 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Mon Jun 8 09:20:06 CDT 1998,08,DLR001,*******************************
+Mon Jun 8 09:20:06 CDT 1998,08,DLR001,The line is not active
+Mon Jun 8 09:20:06 CDT 1998,08,DLR001,Issuing snaadm connect now
+Mon Jun 8 09:20:41 CDT 1998,08,DLR001,Connect complete & line is active
+Mon Jun 8 09:20:42 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Mon Jun 8 09:20:43 CDT 1998,08,DLR001,Starting v3279 now
+Mon Jun 8 09:22:00 CDT 1998,08,DLR001,The v3279 session has ended
+Mon Jun 8 09:22:02 CDT 1998,08,DLR001,Starting the cleanup task now
+Mon Jun 8 09:22:02 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Mon Jun 8 09:22:04 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Mon Jun 8 09:22:05 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Mon Jun 8 09:22:07 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Mon Jun 8 09:22:12 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Mon Jun 8 09:22:13 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Mon Jun 8 09:22:14 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Fri Jun 12 07:54:36 CDT 1998,08,DLR001,*******************************
+Fri Jun 12 07:54:36 CDT 1998,08,DLR001,The line is not active
+Fri Jun 12 07:54:36 CDT 1998,08,DLR001,Issuing snaadm connect now
+Fri Jun 12 07:55:14 CDT 1998,08,DLR001,Connect complete & line is active
+Fri Jun 12 07:55:16 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Fri Jun 12 07:55:16 CDT 1998,08,DLR001,Starting v3279 now
+Fri Jun 12 07:58:26 CDT 1998,08,DLR001,The v3279 session has ended
+Fri Jun 12 07:58:28 CDT 1998,08,DLR001,Starting the cleanup task now
+Fri Jun 12 07:58:28 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Fri Jun 12 07:58:30 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Fri Jun 12 07:58:30 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Fri Jun 12 07:58:33 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Fri Jun 12 07:58:38 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Fri Jun 12 07:58:39 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Fri Jun 12 07:58:40 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Mon Jun 22 09:27:23 CDT 1998,08,DLR001,*******************************
+Mon Jun 22 09:27:24 CDT 1998,08,DLR001,The line is not active
+Mon Jun 22 09:27:24 CDT 1998,08,DLR001,Issuing snaadm connect now
+Mon Jun 22 09:27:57 CDT 1998,08,DLR001,Connect complete & line is active
+Mon Jun 22 09:27:58 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Mon Jun 22 09:27:59 CDT 1998,08,DLR001,Starting v3279 now
+Mon Jun 22 09:32:29 CDT 1998,08,DLR001,The v3279 session has ended
+Mon Jun 22 09:32:31 CDT 1998,08,DLR001,Starting the cleanup task now
+Mon Jun 22 09:32:31 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Mon Jun 22 09:32:34 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Mon Jun 22 09:32:34 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Mon Jun 22 09:32:36 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Mon Jun 22 09:32:41 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Mon Jun 22 09:32:42 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Mon Jun 22 09:32:43 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Mon Jun 29 14:33:12 CDT 1998,08,DLR001,*******************************
+Mon Jun 29 14:33:12 CDT 1998,08,DLR001,The line is not active
+Mon Jun 29 14:33:12 CDT 1998,08,DLR001,Issuing snaadm connect now
+Mon Jun 29 14:33:47 CDT 1998,08,DLR001,Connect complete & line is active
+Mon Jun 29 14:33:48 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Mon Jun 29 14:33:49 CDT 1998,08,DLR001,Starting v3279 now
+Mon Jun 29 14:35:20 CDT 1998,08,DLR001,The v3279 session has ended
+Mon Jun 29 14:35:22 CDT 1998,08,DLR001,Starting the cleanup task now
+Mon Jun 29 14:35:22 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Mon Jun 29 14:35:25 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Mon Jun 29 14:35:25 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Mon Jun 29 14:35:27 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Mon Jun 29 14:35:32 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Mon Jun 29 14:35:33 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Mon Jun 29 14:35:34 CDT 1998,08,DLR001,The 3270 cleanup task: Ending
+Mon Jun 29 15:23:03 CDT 1998,08,DLR001,*******************************
+Mon Jun 29 15:23:04 CDT 1998,08,DLR001,The line is not active
+Mon Jun 29 15:23:04 CDT 1998,08,DLR001,Issuing snaadm connect now
+Mon Jun 29 15:23:39 CDT 1998,08,DLR001,Connect complete & line is active
+Mon Jun 29 15:23:44 CDT 1998,08,DLR001,Executing /usr/ucs/startprts
+Mon Jun 29 15:23:44 CDT 1998,08,DLR001,Starting v3279 now
+Mon Jun 29 15:25:44 CDT 1998,08,DLR001,The v3279 session has ended
+Mon Jun 29 15:25:45 CDT 1998,08,DLR001,Starting the cleanup task now
+Mon Jun 29 15:25:46 CDT 1998,08,DLR001,The 3270 cleanup task: Starting
+Mon Jun 29 15:25:47 CDT 1998,08,DLR001,CLEANUP: line inactive (break)
+Mon Jun 29 15:25:48 CDT 1998,08,DLR001,CLEANUP: STEP 1
+Mon Jun 29 15:25:50 CDT 1998,08,DLR001,CLEANUP: STEP 2
+Mon Jun 29 15:25:55 CDT 1998,08,DLR001,CLEANUP: STEP 3
+Mon Jun 29 15:25:56 CDT 1998,08,DLR001,CLEANUP: STEP 4
+Mon Jun 29 15:25:57 CDT 1998,08,DLR001,The 3270 cleanup task: Ending

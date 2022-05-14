@@ -1,0 +1,140 @@
+#######################################################################
+#                                                                     #
+#     This script is used for communicating with the FarmPlan Poll    #
+#                                                                     #
+#######################################################################
+.BEGIN
+#	echo ON
+        clear
+        display "FarmPlan script starting"
+        display "First name is ..... " @ARG0
+        display "Last name is ...... " @ARG1
+        display "Farmplan file is .. " @ARG2
+        set @FNAME = @ARG0
+        set @LNAME = @ARG1
+        set @FPFILE = @ARG2
+        set @exitcode = 0
+        set @EFERROR = 0
+#
+#   Start the dial now
+#
+        display "Dialing now"
+        CONNECT
+        display "connect status = " @status
+        if @status = "1"
+            display "Unable to connect to Farmplan"
+            set @exitcode = 1
+            goto .EXIT
+        end
+#
+#   Wait for it to ask for first name
+#
+	reps 3
+.XXX
+	tsend CR
+        ttrap  15,"FIRST Name?"
+        if @status = "0"
+		if reps goto .XXX
+            	display "FIRST name prompt not received"
+           	set @exitcode = 2
+          	goto .EXIT
+        end
+        tsend  @FNAME,CR
+        display "Sent first name - " @FNAME
+#
+#   Wait for it to ask for last name
+#
+        ttrap  30,"LAST Name?"
+        if @status = "0"
+            display "LAST name prompt not received"
+            set @exitcode = 2
+            goto .EXIT
+        end
+        tsend  @LNAME,CR
+        display "Sent last name - " @LNAME
+#
+#   Wait for it to ask for password
+#
+        ttrap  30,"Enter Password (dots will echo)?"
+        if @status = "0"
+            display "PASSWORD prompt not received"
+            set @exitcode = 2
+            goto .EXIT
+        end
+        tsend  "FPJDIFP",CR
+        display "Sent password"
+#
+#   Wait for it display its main menu
+#   Then tell it to go to the File System menu
+#
+        ttrap  30,"Main Menu <E,F,G,H"
+        if @status = "0"
+            display "MAIN MENU prompt not received"
+            set @exitcode = 2
+            goto .EXIT
+        end
+        tsend  "F",CR
+        display "Sent Filesystem command"
+#
+#   Wait for it to display its Filesystem menu
+#   Then tell it we want to Upload a file
+#
+        ttrap  30,"File Menu <D,G,H,L"
+        if @status = "0"
+            display "FILE MENU prompt not received"
+            set @exitcode = 2
+            goto .EXIT
+        end
+        tsend  "U",CR
+        display "Sent Upload command"
+#
+#   Wait for it to ask for the filename to upload
+#
+        ttrap  30,"Enter full filename"
+        if @status = "0"
+            display "FILENAME prompt not received"
+            set @exitcode = 2
+            goto .EXIT
+        end
+        tsend  @FPFILE,CR
+        display "Sent it the filename - " @FPFILE
+#
+#   Wait for it to ask about type of upload
+#
+        ttrap  30,"Upload type"
+        if @status = "0"
+            display "UPLOAD TYPE prompt not received"
+            set @exitcode = 2
+            goto .EXIT
+        end
+        tsend  "X",CR
+        display "Sent it the upload type"
+#
+#   Go into file transfer mode & send the file
+#
+        ttrap  30,"XMODEM RECEIVE"
+    FILETRANSFER
+        SEND
+        FPOUT
+        ESC
+#
+#   Wait for Filesystem menu
+#       Then send it the Goodbye command
+#
+        ttrap  30,"File Menu <D,G,H,L"
+        if @status = "0"
+            display "GOODBYE prompt not received"
+            set @exitcode = 3
+            goto .EXIT
+        end
+        tsend  "G",CR
+.EXIT
+#
+#   Disconnect from the line
+#
+#       wait 00:30
+        display "Exiting Blast"
+        display "Exit code = " @exitcode
+        DISCONNECT
+        display "disconnect status = " @status
+        quit @exitcode

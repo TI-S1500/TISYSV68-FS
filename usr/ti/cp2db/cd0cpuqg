@@ -1,0 +1,8 @@
+sd0 cpu off
+sd0 spgm off
+sd0 sdat off
+sd0 fc4 off
+sd0 fc3 off
+sd0 upgm off
+sd0 udat off
+sd0 fc0 off

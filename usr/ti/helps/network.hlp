@@ -1,0 +1,9 @@
+	network - Network Operations Menu
+
+	This menu lists tools which allow the system user to access
+        files or directories on a remote system through network.
+        The netcp utility can be used to copy files or directories 
+        between UNIX and UNIX, or between UNIX and Business Systems. 
+        The netexec utility can help user to start a background process
+        on a remote system 1500, or a batch job on a Business System.
+

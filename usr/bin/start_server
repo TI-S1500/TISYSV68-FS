@@ -1,0 +1,17 @@
+#!/bin/sh 
+#
+# This script sets the proper environment variables and then starts the 
+# PMM Part Availability data server.
+#
+DDAA_TRACE=N
+export DDAA_TRACE
+DDAA_TRACE_FILE=/usr/bin/oecpmmsrvr/trace.log
+export DDAA_TRACE_FILE
+PMMSERV_TEMP_FILE_PATH=/tmp/
+export PMMSERV_TEMP_FILE_PATH
+RUN_PROG=/JDIS/PROG/
+export RUN_PROG
+RUNPATH=/JDIS/PROG/CMN
+export RUNPATH
+
+/usr/bin/pmm_server -e /usr/bin/oecpmmsrvr/server.env &

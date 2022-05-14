@@ -1,0 +1,40 @@
+:                                                                               
+# Translation from national 7-bit ISO to ISO 8859
+#
+# COPYRIGHT (c) 1986 TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+#	@(#)tr78	1.2 87/03/27
+case $# in                                                                      
+0 ) xl="us";;                                                                   
+1 ) xl=$1;;                                                                     
+esac                                                                            
+                                                                                
+case $xl in                                                                     
+"us" )                                                                          
+tr "[\177-\377]" "[ *129]" ;;                                                   
+"dn" | "nd" )                                                                   
+#       translate from denmark/norway 7-bit ISO to 8859                         
+tr "@\133\134]{|}" "\247\306\330\305\346\370\345" ;;                            
+"fr" )                                                                          
+#       translate from french 7-bit ISO to 8859                                 
+tr "#@\133\134]{|}~" "\243\340\260\347\247\351\371\350\250" ;;                  
+"gr" )                                                                          
+#       translate from german 7-bit ISO to 8859                                 
+tr "@\133\134]{|}~" "\247\304\326\334\344\366\374\337" ;;                       
+ "sp" )                                                                         
+#       translate from spanish 7-bit ISO to 8859                                
+tr "\133\134]{|}" "\241\321\277\260\361\347" ;;                                 
+ "sv" )                                                                         
+#       translate from swedish 7-bit ISO to 8859                                
+tr "\$@\133\134]^\140{|}~" "\244\311\304\326\305\334\351\344\366\345\374" ;;    
+"sw" )                                                                          
+#       translate from swiss 7-bit ISO to 8859                                  
+# 8859/1 to Swiss 7-bit ISO translation                                         
+tr "#@\133\134]{|}~" "\243\340\351\347\350\344\366\374\250" ;;                  
+ "uk" )                                                                         
+#       translate from U.K. 7-bit ISO to 8859                                   
+tr "#" "\243" ;;                                                                
+* )                                                                             
+echo /usr/spool/lp/model/tr78 : $1 not in the option list ;;                             
+esac                                                                            
+:

@@ -1,0 +1,12 @@
+T,C,PROMPT22,OPEN WORK ORDER(PW01)
+F,Work Order Number,6,11,1,,2,0,0,1
+F,Type Work Order,12,13,1,,1, ,0,0
+A,Reversal Code,17,17,1,- R,1, ,0,0
+F,Work Order Date-[DDMMM] IE 12DEC,18,22,1,^@03@07^,0,,0,1
+F,Non J.D. Indicator,50,51,1,,1, ,0,0
+F,Model Series,39,43,1,,1, ,0,0
+F,Machine Serial Number,44,49,1,,2,0,0,9
+F,Hour Meter Reading,52,56,1,,2,0,1,9
+A,Estimate Code,57,57,1,E XN,1, ,0,0
+C,Card Code,1,1,1,,0,Z,0,2
+C,Trace Transaction Code,2,5,1,,0,PW01,0,2

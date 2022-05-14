@@ -1,0 +1,41 @@
+*--------------------------------------------------------------------*
+*  Patch updates  3270 SNA SYSTEM V/MP  1.4.0 and         	     *
+*                 3770 SNA SYSTEM V/MP  1.0.0     Last Update none   *
+*--------------------------------------------------------------------*
+*  Instructions:                                                     *
+*                                                                    *
+*  Apply updates on patch media to your system as follows:           *
+*   For 3270 installations:					     *	
+*   1. Recopy the 3270 1.4 object installation media to disk as      *
+*      described in chapter 6 of the 3270 SNA manual.                *
+*   2. Now copy the update media to disk using the same tar command. *
+*      The updated modules on this media will replace the old        *
+*      versions copied in step 1 above.                              *
+*   3. Execute the installation script                               *
+*                                                                    *
+*   For 3770 installations:					     *
+*   1. Recopy the 3770 1.0 object installation media to disk as      *
+*      described in chapter 4 of the 3770 SNA manual.                *
+*   2. Now copy the update media to disk using the same tar command. *
+*      The updated modules on this media will replace the old        *
+*      versions copied in step 1 above.				     *
+*   3. Execute the installation script.				     *
+*								     *
+*  This procedure is documented in chapter 6 of the 3270 SNA System V*
+*  user's guide, or chapter 4 of the 3770 SNA System V user's guide. *
+*								     *
+*  Some of the following patches may apply only to either 3270 or    *
+*  3770.  If you are updating a product to which a patch does not    *
+*  apply, the actual software for the patch will not be included on  *
+*  your update media, although it is described here.                 *
+*--------------------------------------------------------------------*
+*  Begin patch update description for 3270/3770 SNA SYSTEM V/MP      *
+*--------------------------------------------------------------------*
+* Pxxxx   mm/dd/yy  str #zzzz   who   files:  			     *
+*                                                                    *
+* Problem:							     *
+*                                                                    *
+* Solution:							     *
+*--------------------------------------------------------------------*
+*  End patch update description for 3270/3770 SNA SYSTEM V/MP        *
+*--------------------------------------------------------------------*

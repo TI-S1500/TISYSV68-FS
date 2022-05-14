@@ -1,0 +1,8 @@
+:
+echo "Starting Blast"
+cd /JDIS/PROG/COMM
+BLASTDIR=/JDIS/PROG/COMM
+export BLASTDIR
+SETUPDIR=/JDIS/PROG/COMM
+export SETUPDIR
+csh -c "blast $*"

@@ -1,0 +1,30 @@
+# cshf  crypt -- Encrypts and decrypts a file 
+#	@(#)CRYPT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^ CRYPT -- ENCRYPTS AND DECRYPTS A FILE"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^*Password Key:" key string \
+	"^#$*"
+
+if ($abort) goto end
+echo "=== CRYPT COMMAND EXECUTING ==="
+if (($_output_file == "") && ($_input_file == "")) then
+	echo crypt $key
+	crypt $key
+endif
+if (($_output_file == "") && ($_input_file != "")) then
+	echo crypt $key "<"$_input_file
+	crypt $key <$_input_file | \
+	pg -cp"Output from CRYPT is being piped through pg: "
+endif
+if (($_output_file != "") && ($_input_file != "")) then
+	echo crypt $key "<"$_input_file ">"$_output_file
+	crypt $key <$_input_file >$_output_file
+endif 
+
+#clean up time
+end:
+unset key

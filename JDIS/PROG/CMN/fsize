@@ -1,0 +1,49 @@
+:
+#       Program al gets a file spec, does an lf on it then
+#       calculates Actual and Allocated bytes, and per cent of
+#       slack for the given filespec.
+#       
+#       Usage: al
+#               At "Filespec ?" prompt enter any regexp filespec.
+#               Press ENTER at the prompt for the full directory.
+#       Warning!: Using * as a filespec will yield unpredictable
+#       results. "al" doesn't account for contents of subdirs.
+#       Notes: "al" works on SCO XENIX/386.  XENIX reports
+#       1024-byte blocks in 512-byte increments.
+#       Len Cohen (Compuserve 75410,2177)
+#       27 April 1990
+#
+if (test $# != 0)
+then
+   if (test -r $1)
+   then
+       spec=$1
+   else
+       echo "\007 Directory not found... \""$spec"\""
+       exit
+   fi
+else
+   /bin/echo "\nEnter Directory Name...\c"
+   read spec
+   ls $spec 2>&- > /dev/null
+   if [ $? -ne 0 ]
+   then
+      echo "\007 Directory not found... \""$spec"\""
+      exit
+   fi
+fi
+echo "----------------------------------------------------------------"
+ls -RFC $spec | more
+echo "----------------------------------------------------------------"
+if [ "`uname`" = "XENIX" ]
+then
+    ls -Rls $spec | awk '
+    { blocks = blocks + $1; bytes = bytes + $6 }
+    END { print "Bytes Alloc.:\t" (blocks * 512); print "Bytes Actual:\t" bytes
+    print( 100 - int(((bytes / (blocks * 512)) * 100))) " % slack" }'
+else
+    ls -Rls $spec | awk '
+    { blocks = blocks + $1; bytes = bytes + $6 }
+    END { print "Bytes Alloc.:\t" (blocks * 1024); print "Bytes Actual:\t" bytes
+    print( 100 - int(((bytes / (blocks * 1024)) * 100))) " % slack" }'
+fi

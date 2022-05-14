@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# This script needs to be run when the OEC IMS Gateway moves to a different
+# machine.
+# This script changes prodaix1.dx.deere.com or 192.43.1.31 (depending on 
+# which is set) in /JDIS/PROG/CMN/client.env to pmlink.  This is 
+# the new OEC IMS Gateway machine.  It also adds the line for pmlink to
+# the /etc/hosts file. 
+
+chmod 666 /etc/hosts
+cp /etc/hosts /tmp/tmphosts
+echo "204.53.127.110	pmlink" >> /tmp/tmphosts
+mv /tmp/tmphosts /etc/hosts
+
+sed s/prodaix1.dx.deere.com/pmlink/ /JDIS/PROG/CMN/client.env > /tmp/client.env
+
+mv /tmp/client.env /JDIS/PROG/CMN/client.env
+
+sed s/192.43.1.31/pmlink/ /JDIS/PROG/CMN/client.env > /tmp/client.env
+
+mv /tmp/client.env /JDIS/PROG/CMN/client.env

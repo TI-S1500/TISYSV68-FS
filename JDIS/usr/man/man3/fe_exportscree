@@ -1,0 +1,129 @@
+FE_EXPORTSCREEN(3T)                           FE_EXPORTSCREEN(3T)
+
+NAME
+     FE_exportscreen - Exports field edit screen image
+
+SYNOPSIS
+     #include <vdtrdwrt.h>
+
+     extern int errno;
+     int status, fd, length;
+     struct FE_screen *screen;
+     status = FE_exportscreen(fd, screen, length);
+
+DESCRIPTION
+     The FE_exportscreen function causes field edit to copy the
+     entire screen image, including display attribute
+     information, into the data structure pointed to by the
+     screen parameter.  The fd parameter is the UNIX file
+     descriptor used in the current field edit session.  The
+     screen parameter is a pointer to a buffer at least length
+     bytes long.  The length parameter is the length of the
+     screen image data structure and can be calculated as
+     follows:
+
+          length=(((sizeof(struct attributes)+1)*maxrow*maxcol) +
+          sizeof(struct FE_screen))
+
+     FE_exportscreen and FE_importscreen(3T) are intended for use
+     by applications that must maintain multiple different screen
+     images to support hotkey functions or nested help files.  If
+     only one screen image needs to be saved at any one time, use
+     FE_savescreen(3T) and FE_restorescreen(3T).
+
+SCREEN IMAGE DATA STRUCTURE
+     The field edit screen image data structure is defined in
+     vdtrdwrt.h(4) as follows:
+
+          struct attributes {
+               unsigned char disp;
+               unsigned char fg_color;
+               unsigned char bg_color;
+               unsigned char res;
+               };
+
+          struct FE_screen {
+               unsigned char maxrow;
+               unsigned char maxcol;
+               short flags;
+               unsigned char *data;
+               struct attributes *attr;
+               };
+
+     The value of the maxrow and maxcol fields is determined by
+     the maxrow and maxcol parameters in the fecap file for the
+     given terminal type.  If no values are specified in the
+     fecap file, 24 and 80 are assumed as the maxrow and maxcol
+     values, respectively.  The flags field is used for field
+     edit internal processing and should be zero.  The pointer to
+     the data (char *data) is set to an offset from the end of
+     the FE_screen structure by the FE_exportscreen call and is
+     zero (the data follows immediately after).  The pointer to
+     the attribute structure (struct attributes *attr) is set to
+     an offset from the end of the FE_screen structure by the
+     FE_exportscreen call.  The attributes follow immediately
+     after the data.  The data and attr pointers can be changed
+     from offsets back to real pointers by the following code
+     fragments:
+
+         screen->data=(unsigned char *)((long)screen+ sizeof(struct 
+           FE_screen));
+         screen->attr=(struct attributes *)((long)screen+ sizeof(struct 
+           FE_screen) +
+               (screen->maxrow * screen->maxcol));
+
+     Data and attributes can be thought of as linear arrays
+     indexed by the position of a character on the screen.
+     However, while row and column positions are specified to
+     FE_read(3T) and FE_write(3T) as one-relative (the first
+     position on the screen is row 1, column 1), the screen image
+     index is zero-relative (the first position on the screen is
+     row 0, column 0).  In the following example, if row and col
+     are the one-relative coordinates for a character, the index
+     into the data and attribute arrays for that character can be
+     calculated by the following code:
+
+          row--;
+          col--;
+          index = (row * screen->maxcol) + col;
+
+     The only part of the attribute structure currently used is
+     the disp field, which contains the display attributes for
+     the character in the equivalent position in the data array.
+     The disp field is built by ORing the sgr_on flags for a
+     field with the inverse of the sgr_off flags.  The disp field
+     is a collection of the display attributes that have been
+     turned on and off for a particular field.  Some display
+     attributes must be present for each character in the data
+     array.  The default attributes for a character are 0x80.
+     Field edit uses changes in the attributes to determine the
+     beginning of a new field when redrawing or restoring the
+     screen.
+
+RETURN VALUES
+     The function can return the following values in status:
+
+      0 - No errors.
+     -1 - Error. The errno variable contains one of the following
+     error codes:
+          EFE_BADFD - An invalid file descriptor was used, that
+          is, a file descriptor different from the one used in
+          the FE_open(3T) call.
+          EFE_NOIMAGE - Field edit is not currently keeping a
+          screen image for this terminal (variable SCRNIMAGE is
+          not set).
+          EFE_BADBLOCK - The length parameter specified did not
+          match the length of the screen image data structure
+          field edit is currently keeping.
+          Other system error codes are found in
+          /usr/include/sys/errno.h.
+
+SEE ALSO
+     FE_abort(3T), FE_close(3T), FE_flush(3T), FE_getparm(3T),
+     FE_importscreen(3T), FE_open(3T), FE_printscreen(3T),
+     FE_putchar(3T), FE_read(3T), FE_restorescreen(3T),
+     FE_savescreen(3T), FE_setvbits(3T), FE_write(3T), fecap(4),
+     vdtrdwrt.h(4).
+     ``Terminal Input/Output'' in TI System V Programmer's Guide.
+
+

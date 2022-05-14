@@ -1,0 +1,37 @@
+# faxfirst.scr:
+# Let the fax answer on the first 3 rings
+# HIGH SPEED MODEM PROJECT - UNIX VERSION
+#
+        set @ATTEMPTS = "0"
+.LOOP
+        if @ATTEMPTS = "3" quit 1               # quit after 3 attempts
+        let @ATTEMPTS = @ATTEMPTS + "1"
+#
+        tsend CR,"ATS88=0&W0",CR        # Added by Rick S.
+        ttrap 2 "OK"
+        wait 2
+        tsend "AT&F3\\Q1S0=3&W0", CR      # set saved options to factory async dial
+        ttrap 2 "OK"                  # DTE/DTC flow control: XON/XOFF
+#
+        wait 3
+        tsend "ATZ0", CR                        # reset modem
+        ttrap 2 "OK"
+#
+        wait 3
+        tsend "AT", CR                          # is modem awake ?
+        ttrap 2 "OK"
+        if @status not = "1"
+                wait 3
+                tsend "+++"                     # nope, break into cmd mode
+                ttrap 2 "OK", "NO CARRIER"
+                if @status = "0"                # awake yet ?
+                        drop                    # nope, try drop and raise dtr
+                        wait 1
+                        raise
+                        wait 1
+                end
+                goto .LOOP                      # go try again
+        end
+#
+        quit 0
+.END

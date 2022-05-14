@@ -1,0 +1,709 @@
+# @(#)fecapsna	1.11 92/08/04
+# The archive history for this file was lost when the s.fecapsna file was
+# corrupted.  The last delta at that time was 1.7, on 2/10/88.	The file
+# was restored from a checked-out version, and placed back under SCCS.	All
+# changes exist, but they are no longer separated by SCCS versions.
+##############################################################################
+#
+# The console sgr entries offer only Default mode, Blink, and High Intensity.
+# Underline and Reverse Video do not provide results appropriate for the
+# v3279 emulator.  If the SNA host specifies underline, it is ignored.	If
+# Reverse Video is specified, it is displayed as High Intensity.
+#
+c1_3270|bpc_3270|console_3270|Business pro console:\
+	:up_key=\E[A:\
+	:down_key=\E[B:\
+	:right_key=\E[C:\
+	:left_key=\E[D:\
+	:home_key=\E[H:\
+	:back_space_key=^h:\
+	:tab_key=^i:\
+	:back_tab_key=^o:\
+	:rtn_key=^m:\
+	:enter_key=^j:\
+	:insert_key=\E[L:\
+	:delete_key=\177:\
+	:erase_field_key=\Ef:\
+	:erase_input_key=\Ei:\
+	:skip_key=\Es:\
+	:print_key=\E[i:\
+	:f1=\E[M:\
+	:f2=\E[N:\
+	:f3=\E[O:\
+	:f4=\E[P:\
+	:f5=\E[Q:\
+	:f6=\E[R:\
+	:f7=\E[S:\
+	:f8=\E[T:\
+	:f9=\E[U:\
+	:f10=\E[V:\
+	:f11=\E[Y:\
+	:f12=\E[Z:\
+	:f13=\E[a:\
+	:f14=\E[b:\
+	:f15=\E[c:\
+	:f16=\E[d:\
+	:f17=\E[e:\
+	:f18=\E[f:\
+	:f19=\E[g:\
+	:f20=\E[h:\
+	:f21=\E[k:\
+	:f22=\E[l:\
+	:f23=\E[m:\
+	:f24=\E[n:\
+	:f33=\Ea:\
+	:max_row#25:\
+	:max_col#80:\
+	:sgr_mask=\C%m:\
+	:sgr0=0:\
+	:sgr1=0;1:\
+	:sgr2=0:\
+	:sgr3=0;1:\
+	:sgr4=0:\
+	:sgr5=0;1:\
+	:sgr6=0:\
+	:sgr7=0;1:\
+	:sgr8=0;5:\
+	:sgr9=0;5;1:\
+	:sgr10=0;5:\
+	:sgr11=0;5;1:\
+	:sgr12=0;5:\
+	:sgr13=0;5;1:\
+	:sgr14=0;5:\
+	:sgr15=0;5;1:\
+	:tc=ansi_3270:
+
+t9_3270|T9_3270|ti931_3270|Texas Instruments 931 VDT-3270:\
+	:up_key=\EA:\
+	:down_key=\EB:\
+	:right_key=\EC:\
+	:left_key=\ED:\
+	:home_key=\EH:\
+	:back_space_key=^h:\
+	:tab_key=^i:\
+	:fld_rt_key=\Eio:\
+	:back_tab_key=\E2:\
+	:fld_lf_key=\Et:\
+	:rtn_key=^m:\
+	:enter_key=\Eiq:\
+	:insert_key=\EP:\
+	:delete_key=\EQ:\
+	:erase_field_key=\E=:\
+	:erase_input_key=\EK:\
+	:skip_key=\Es:\
+	:print_key=\EW:\
+	:cmd_key=\Eh:\
+	:f1=\Ei1:\
+	:f2=\Ei2:\
+	:f3=\Ei3:\
+	:f4=\Ei4:\
+	:f5=\Ei5:\
+	:f6=\Ei6:\
+	:f7=\Ei7:\
+	:f8=\Ei8:\
+	:f9=\Ei9:\
+	:f10=\Ei\072:\
+	:f11=\Ei;:\
+	:f12=\Ei<:\
+	:f13=\Ei=:\
+	:f14=\Ei>:\
+	:f15=\Ei?:\
+	:f16=\Ei@:\
+	:f17=\EiA:\
+	:f18=\EiB:\
+	:f19=\EiC:\
+	:f20=\EiD:\
+	:f21=\EiE:\
+	:f22=\EiF:\
+	:f23=\EiG:\
+	:f24=\EiH:\
+	:f33=\Eg:\
+	:f34=\Eb:\
+	:f35=\Ec:\
+	:f36=\Ed:\
+	:f37=\Ee:\
+	:f38=\Ej:\
+	:f39=\Ek:\
+	:f40=\Em:\
+	:f41=\En:\
+	:f42=\Eo:\
+	:f43=\Ep:\
+	:f44=\Eq:\
+	:f45=\Er:\
+	:f46=\Eu:\
+	:f47=\Ev:\
+	:f48=\Ew:\
+	:f49=\Ex:\
+	:f50=\Ey:\
+	:f51=\Ez:\
+	:f52=\E,:\
+	:f53=\E.:\
+	:f54=\E/:\
+	:f55=\E':\
+	:f56=\E;:\
+	:f57=\E\E:\
+	:f58=^a:\
+	:f59=^e:\
+	:f60=^f:\
+	:f61=^k:\
+	:f62=^l:\
+	:f63=^n:\
+	:f64=^p:\
+	:f65=^r:\
+	:f66=^t:\
+	:erase_all=\EL:\
+	:erase_eos=\EJ:\
+	:erase_eol=\EI:\
+	:cursor_up=\EA:\
+	:cursor_down=\EB:\
+	:cursor_right=\EC:\
+	:cursor_motion=\EY%+ %+ :\
+	:cursor_solid=\EV0:\
+	:cursor_blink=\EV1:\
+	:cursor_bright=\EM:\
+	:cursor_dark=\ER:\
+	:sgr_mask=\E4%:\
+	:sgr0=@:\
+	:sgr1=A:\
+	:sgr2=B:\
+	:sgr3=C:\
+	:sgr4=D:\
+	:sgr5=E:\
+	:sgr6=F:\
+	:sgr7=G:\
+	:sgr8=P:\
+	:sgr9=Q:\
+	:sgr10=R:\
+	:sgr11=S:\
+	:sgr12=T:\
+	:sgr13=U:\
+	:sgr14=V:\
+	:sgr15=W:\
+	:open=\EGB\E(BB@@\E):\
+	:close=\EGB\E(@B@@\E):\
+	:status_line_bb=\EGK\E(:\
+	:status_line_eb=\E):
+
+t1_3270|ti924_3270|Texas Instruments 924 VDT-3270 (7 bit):\
+	:up_key=\CA:\
+	:down_key=\CB:\
+	:right_key=\CC:\
+	:left_key=\CD:\
+	:home_key=\CH:\
+	:back_space_key=^h:\
+	:tab_key=^i:\
+	:fld_rt_key=\C6~:\
+	:back_tab_key=\CZ:\
+	:fld_lf_key=\C5~:\
+	:rtn_key=^m:\
+	:enter_key=\C1~:\
+	:insert_key=\C@:\
+	:delete_key=\CP:\
+	:erase_field_key=\C7~:\
+	:erase_input_key=\C3~:\
+	:skip_key=\C32~:\
+	:print_key=\C34~:\
+	:cmd_key=\C29~:\
+	:f1=\217P:\
+	:f2=\217Q:\
+	:f3=\217R:\
+	:f4=\217S:\
+	:f5=\C16~:\
+	:f6=\C17~:\
+	:f7=\C18~:\
+	:f8=\C19~:\
+	:f9=\C20~:\
+	:f10=\C21~:\
+	:f11=\C23~:\
+	:f12=\C24~:\
+	:f13=\C25~:\
+	:f14=\C26~:\
+	:f15=\C40~:\
+	:f16=\C41~:\
+	:f17=\C42~:\
+	:f18=\C43~:\
+	:f19=\C44~:\
+	:f20=\C45~:\
+	:f21=\C46~:\
+	:f22=\C47~:\
+	:f23=\C48~:\
+	:f24=\C49~:\
+	:f33=\C28~:\
+	:sticky_margin:\
+	:open=\E[?7h:\
+	:close=\E[?7l:\
+	:cursor_solid=\C33h:\
+	:cursor_blink=\C33l:\
+	:tc=ansi_3270:
+
+t2_3270|ti924-8_3270|Texas Instruments 924 VDT-3270 (8 bit):\
+	:8bit:\
+	:sticky_margin:\
+	:tc=ti924_3270:
+
+t3_3270|ti924-132_3270|Texas Instruments 924 VDT-3270 (132 col mode):\
+	:max_col#132:\
+	:sticky_margin:\
+	:tc=t1_3270:
+
+t4_3270|ti924-8-132_3270|Texas Instruments 924 VDT-3270 (8 bit, 132 col mode):\
+	:8bit:\
+	:max_col#132:\
+	:sticky_margin:\
+	:tc=t1_3270:
+
+t5_3270|Texas Instruments 924 Emulator on the 945 in the 931 Mode:\
+	:tc=t9_3270:
+
+t8_3270|em931_3270|Texas Instruments 931 emulator-3270:\
+	:sticky_margin:\
+	:tc=t9_3270:
+
+x1_3270|ti928_3270|Texas Instruments 928 VDT (7 bit) - 3270:\
+	:up_key=\CA:\
+	:down_key=\CB:\
+	:left_key=\CD:\
+	:right_key=\CC:\
+	:home_key=\CH:\
+	:back_space_key=^h:\
+	:tab_key=\t:\
+	:fld_rt_key=\C6~:\
+	:back_tab_key=\CZ:\
+	:fld_lf_key=\C5~:\
+	:rtn_key=^m:\
+	:enter_key=\C8~:\
+	:insert_key=\C@:\
+	:delete_key=\CP:\
+	:erase_field_key=\CN:\
+	:erase_input_key=\C3~:\
+	:skip_key=\E_1\E\\:\
+	:print_key=\C35~:\
+	:cmd_key=\C33~:\
+	:f1=\C17~:\
+	:f2=\C18~:\
+	:f3=\C19~:\
+	:f4=\C20~:\
+	:f5=\C21~:\
+	:f6=\C23~:\
+	:f7=\C24~:\
+	:f8=\C25~:\
+	:f9=\C26~:\
+	:f10=\C28~:\
+	:f11=\C29~:\
+	:f12=\C31~:\
+	:f13=\C37~:\
+	:f14=\C38~:\
+	:f15=\C39~:\
+	:f16=\C40~:\
+	:f17=\C41~:\
+	:f18=\C43~:\
+	:f19=\C44~:\
+	:f20=\C45~:\
+	:f21=\C46~:\
+	:f22=\C48~:\
+	:f23=\C49~:\
+	:f24=\C51~:\
+	:f33=\Ea:\
+	:sticky_margin:\
+	:open=\E[?7h:\
+	:close=\E[?7l:\
+	:cursor_solid=\C33h:\
+	:cursor_blink=\C33l:\
+	:tc=ansi_3270:
+
+x2_3270|ti928-8_3270|Texas Instruments 928 VDT (8 bit) - 3270:\
+	:8bit:\
+	:esc_key=\237\060\234:\
+	:sticky_margin:\
+	:tc=x1_3270:
+
+x3_3270|ti928-132_3270|Texas Instruments 928 VDT (132 column mode) - 3270:\
+	:max_col#132:\
+	:sticky_margin:\
+	:tc=x1_3270:
+
+x4_3270|ti928-8-132_3270|Texas Instruments 928 VDT (8-bit,132 column mode)3270:\
+	:8bit:\
+	:max_col#132:\
+	:sticky_margin:\
+	:tc=x2_3270:
+
+d0_3270|vt100_3270|vt100-am_3270|dec vt100-3270:\
+	:cmd_key=\EOS:\
+	:up_key=\CA:\
+	:down_key=\CB:\
+	:right_key=\CC:\
+	:left_key=\CD:\
+	:home_key=\EOS:\
+	:back_space_key=^h:\
+	:tab_key=^i:\
+	:back_tab_key=^o:\
+	:rtn_key=^m:\
+	:enter_key=\EOM:\
+	:insert_key=^y:\
+	:delete_key=^u:\
+	:erase_field_key=\Ef:\
+	:erase_input_key=\Ei:\
+	:skip_key=\Es:\
+	:print_key=\El:\
+	:f1=\EOq:\
+	:f2=\EOr:\
+	:f3=\EOs:\
+	:f4=\EOt:\
+	:f5=\EOu:\
+	:f6=\EOv:\
+	:f7=\EOw:\
+	:f8=\EOx:\
+	:f9=\EOy:\
+	:f10=\EOP:\
+	:f11=\EOQ:\
+	:f12=\EOR:\
+	:f13=\E1:\
+	:f14=\E2:\
+	:f15=\E3:\
+	:f16=\E4:\
+	:f17=\E5:\
+	:f18=\E6:\
+	:f19=\E7:\
+	:f20=\E8:\
+	:f21=\E9:\
+	:f22=\E0:\
+	:f23=\E-:\
+	:f24=\E=:\
+	:f33=\C28~:\
+	:sticky_margin:\
+	:open=\E[?1l\E=:\
+	:close=\E>:\
+	:tc=ansi_3270:
+
+Mw_3270|wyse_3270|75_3270|wy75_3270|wyse75-3270:\
+	:up_key=\CA:\
+	:down_key=\CB:\
+	:right_key=\CC:\
+	:left_key=\CD:\
+	:home_key=\CH:\
+	:back_space_key=^h:\
+	:tab_key=^i:\
+	:back_tab_key=^o:\
+	:rtn_key=^m:\
+	:enter_key=^j:\
+	:insert_key=\CL:\
+	:delete_key=\CK:\
+	:erase_field_key=\Ef:\
+	:erase_input_key=\Ei:\
+	:skip_key=\Es:\
+	:print_key=\C5i:\
+	:f1=\C?5i:\
+	:f2=\C?3i:\
+	:f3=\C2i:\
+	:f4=\C@:\
+	:f5=\CM:\
+	:f6=\C17~:\
+	:f7=\C18~:\
+	:f8=\C19~:\
+	:f9=\C20~:\
+	:f10=\C21~:\
+	:f11=\C23~:\
+	:f12=\C24~:\
+	:f13=\C25~:\
+	:f14=\C26~:\
+	:f15=\C28~:\
+	:f16=\C29~:\
+	:f17=\C31~:\
+	:f18=\C32~:\
+	:f19=\C33~:\
+	:f20=\C34~:\
+	:f21=\C35~:\
+	:f22=\C1~:\
+	:f23=\C2~:\
+	:f24=\C3~:\
+	:f33=\Ea:\
+	:sticky_margin:\
+	:open=\C0t\C1m:\
+	:sgr_mask=\C%m:\
+	:sgr0=1:\
+	:sgr1=0:\
+	:sgr2=0:\
+	:sgr3=0:\
+	:sgr4=0:\
+	:sgr5=0:\
+	:sgr6=0:\
+	:sgr7=0:\
+	:sgr8=0:\
+	:sgr9=0:\
+	:sgr10=0:\
+	:sgr11=0:\
+	:sgr12=0:\
+	:sgr13=0:\
+	:sgr14=0:\
+	:sgr15=0:\
+	:tc=ansi_3270:
+
+ansi_3270|Standard Ansi terminal-3270:\
+	:f34=\Eb:\
+	:f35=\Ec:\
+	:f36=\Ed:\
+	:f37=\Ee:\
+	:f38=\Ej:\
+	:f39=\Ek:\
+	:f40=\Em:\
+	:f41=\En:\
+	:f42=\Eo:\
+	:f43=\Ep:\
+	:f44=\Eq:\
+	:f45=\Er:\
+	:f46=\Eu:\
+	:f47=\Ev:\
+	:f48=\Ew:\
+	:f49=\Ex:\
+	:f50=\Ey:\
+	:f51=\Ez:\
+	:f52=\E,:\
+	:f53=\E.:\
+	:f54=\E/:\
+	:f55=\E':\
+	:f56=\E;:\
+	:f57=\E\E:\
+	:f58=^a:\
+	:f59=^e:\
+	:f60=^f:\
+	:f61=^k:\
+	:f62=^l:\
+	:f63=^n:\
+	:print_screen_key=^p:\
+	:f65=^r:\
+	:f66=^t:\
+	:erase_all=\C2J:\
+	:erase_eos=\CJ:\
+	:erase_eol=\CK:\
+	:cursor_up=\215:\
+	:cursor_down=\204:\
+	:cursor_right=\CC:\
+	:cursor_motion=\C%i%d;%dH:\
+	:cursor_bright=\C?25h:\
+	:cursor_dark=\C?25l:\
+	:sgr_mask=\C%m:\
+	:sgr0=0:\
+	:sgr1=0;1:\
+	:sgr2=0;7:\
+	:sgr3=0;1;7:\
+	:sgr4=0;4:\
+	:sgr5=0;4;1:\
+	:sgr6=0;4;7:\
+	:sgr7=0;1;4;7:\
+	:sgr8=0;5:\
+	:sgr9=0;5;1:\
+	:sgr10=0;5;7:\
+	:sgr11=0;5;7;1:\
+	:sgr12=0;5;4:\
+	:sgr13=0;5;4;1:\
+	:sgr14=0;5;4;7:\
+	:sgr15=0;1;4;5;7:
+
+nc_3270|ncsa_3270|NCSA telnet terminal definition:\
+	:f1=\EOP:f2=\EOQ:f3=\EOR:f4=\EOS:\
+	:f5=\C16~:f6=\C17~:f7=\C18~:f8=\C19~:\
+	:f9=\C20~:f10=\C21~:f11=\C23~:f12=\C24~:\
+	:sticky_margin:\
+	:cmd_key=\E?i:home_key=\E[1~:\
+	:rtn_key=^m:up_key=\E[A:down_key=\E[B:\
+	:left_key=\E[D:right_key=\E[C:\
+	:tab_key=\t:back_tab_key=\CZ:\
+	:insert_key=\C2~:delete_key=\C3~:\
+	:cursor_solid=\C33h:cursor_blink=\C33l:\
+	:enter_key=^j:\
+	:back_space_key=^h:tc=ansi_3270:
+
+vs_3270|xterm_3270|vs100_3270|xterm terminal emulator (X Window System):\
+	:f1=\C11~:f2=\C12~:f3=\C13~:f4=\C14~:f5=\C15~:f6=\C17~:\
+	:f7=\C18~:f8=\C19~:f9=\C20~:f10=\C21~:.f11=\C23~:f12=\C24~:\
+	:f13=\C25~:f14=\C26~:f15=\C28~:f16=\C29~:f17=\C31~:.f18=\C32~:\
+	:f19=\C33~:.f20=\C34~:f21=\C35~:f22=\C36~:f23=\C37~:f24=\C38~:\
+	:.f25=\C39~:.f26=\C40~:.f27=\C41~:.f28=\C42~:f29=\C43~:f30=\C44~:\
+	:.f31=\C45~:.f32=\C46~:f33=\C47~:f34=\C48~:f35=\C49~:\
+	:enter_key=^j:cmd_key=\C23~:rtn_key=^m:\
+	:up_key=\CA:down_key=\CB:left_key=\CD:right_key=\CC:\
+	:fld_rt_key=\C41~:fld_lf_key=\C42~:tab_key=^i:back_tab_key=\C39~:\
+	:blk_grey_key=\C34~:erase_input_key=\C32~:skip_key=\C40~:\
+	:esc_key=\C46~:back_space_key=^h:insert_key=\C2~:delete_key=\177:\
+	:home_key=\CH:erase_field_key=\C45~:cursor_up=\CA:cursor_down=\CB:\
+	:cursor_right=\CC:sgr1=0;7:sticky_margin:tc=ansi_3270:
+v2_3270|xterms_3270|vs100s_3270|xterm terminal emulator - small:\
+	:tc=xterm_3270:
+
+q1_3270|ti916_3270|Texas Instruments 916 VDT (7 bit):\
+	:f1=\C17~:f2=\C18~:f3=\C19~:f4=\C20~:\
+	:f5=\C21~:f6=\C23~:f7=\C24~:f8=\C25~:\
+	:f9=\C26~:f10=\C28~:.f11=\C29~:f12=\C31~:\
+	:f13=\C37~:f14=\C38~:f15=\C39~:f16=\C40~:\
+	:f17=\C41~:f18=\C43~:f19=\C44~:f20=\C45~:\
+	:f21=\C46~:f22=\C48~:f23=\C49~:f24=\C51~:\
+	:sticky_margin:\
+	:enter_key=^j:cmd_key=\C29~:print_key=^x:\
+	:rtn_key=^m:home_key=\CH:up_key=\CA:down_key=\CB:\
+	:left_key=\CD:right_key=\CC:fld_rt_key=\C6~:fld_lf_key=\C5~:\
+	:tab_key=\t:back_tab_key=\CZ:\
+	:insert_key=\C@:delete_key=\CP:erase_field_key=\CN:\
+	:blk_grey_key=\CL:erase_input_key=\CM:skip_key=\E_1\E\\:\
+	:esc_key=\E_2\E\\:\
+	:cursor_solid=\C33h:cursor_blink=\C33l:\
+	:back_space_key=^h:tc=ansi_3270:
+
+q2_3270|ti916-8_3270|Texas Instruments 916 VDT (8 bit):\
+	:8bit:skip_key=\237\061\234:esc_key=\237\062\234:\
+	:sticky_margin:tc=q1_3270:
+
+q3_3270|ti916-132_3270|Texas Instruments 916 VDT (132 column mode):\
+	:max_col#132:sticky_margin:tc=q1_3270:
+
+q4_3270|ti916-8-132_3270|Texas Instruments 916 VDT (8-bit, 132 column mode):\
+	:8bit:max_col#132:sticky_margin:tc=q2_3270:
+
+d1_3270|vt220_3270|dec vt220 7 bit mode:\
+	:f1=\C17~:f2=\C18~:f3=\C19~:f4=\C20~:f5=\C21~:\
+	:f6=\C23~:f7=\C24~:f8=\C25~:f9=\C26~:\
+	:f10=\C31~:f11=\C32~:f12=\C33~:f13=\C34~:\
+	:f14=\C37~:f15=\C38~:f16=\C39~:f17=\C40~:\
+	:f18=\C41~:f19=\C43~:f20=\C44~:f21=\C45~:f22=\C46~:\
+	:tab_key=^i:back_tab_key=\CZ:sticky_margin:\
+	:cmd_key=\C28~:skip_key=\C4~:erase_field_key=\217R:\
+	:print_key=\C1~:delete_key=\C3~:rtn_key=^m:\
+	:back_space_key=^h:insert_key=\C2~:\
+	:home_key=\C29~:fld_lf_key=\C5~:fld_rt_key=\C6~:\
+	:enter_key=^j:up_key=\CA:down_key=\CB:\
+	:right_key=\CC:left_key=\CD:\
+	:blk_grey_key=\217P:erase_input_key=\217Q:esc_key=\217S:\
+	:cursor_solid=\C33h:cursor_blink=\C33l:tc=ansi_3270:
+
+d2_3270|vt220-8_3270|dec vt220 8-bit mode:\
+	:8bit:sticky_margin:tc=d1_3270:
+
+d3_3270|vt220-132_3270|dec vt220 132-column mode:\
+	:max_col#132:sticky_margin:tc=d1_3270:
+
+d4_3270|vt220-8-132_3270|dec vt220 8-bit 132-column mode:\
+	:8bit:sticky_margin:tc=d3_3270:
+
+w7_3270|wy60_3270|wyse60_3270|Wyse WY-60 80 column/24 line screen:\
+	:f1=^a@^m:f2=^aA^m:f3=^aB^m:f4=^aC^m:\
+	:f5=^aD^m:f6=^aE^m:f7=^aF^m:f8=^aG^m:\
+	:f9=^aH^m:f10=^aI^m:.f11=^aJ^m:f12=^aK^m:\
+	:f13=^a`^m:f14=^aa^m:f15=^ab^m:f16=^ac^m:\
+	:f17=^ad^m:f18=^ae^m:f19=^af^m:f20=^ag^m:\
+	:f21=^ah^m:f22=^ai^m:f23=^aj^m:f24=^ak^m:\
+	:sticky_margin:\
+	:enter_key=^Y:cmd_key=^aJ^m:print_key=\EP:\
+	:rtn_key=^m:home_key=^^:up_key=^K:down_key=^J:\
+	:left_key=^H:right_key=^L:fld_rt_key=\EJ:fld_lf_key=\EK:\
+	:tab_key=\t:back_tab_key=\EI:insert_key=\Eq:delete_key=\EW:\
+	:blk_grey_key=\Er:erase_input_key=\ER:skip_key=\ET:esc_key=\EY:\
+	:print_screen_key=^p:redraw_screen_key=^r:\
+	:insert_line=\EE:delete_line=\ER:\
+	:erase_all=\E+:erase_eos=\EY:erase_eol=\ET:\
+	:cursor_up=^k:cursor_down=^j:cursor_right=^l:\
+	:cursor_motion=\Ea%i%dR%dC:cursor_solid=\E`2:\
+	:cursor_blink=\E`5:cursor_bright=\E`1:cursor_dark=\E`0:\
+	:sgr_mask=\EG%:sgr0=0:sgr1=4:sgr2=t:sgr3=4:sgr4=8:sgr5=<:\
+	:sgr6=|:sgr7=<:sgr8=2:sgr9=6:sgr10=v:sgr11=6:sgr12=\072:\
+	:sgr13=>:sgr14=~:sgr15=>:
+
+w8_3270|wy60-132_3270|wyse60-132_3270|wy60-w_3270|wyse60-w_3270|Wyse WY-60 132 column/24 line screen:\
+	:max_col#132:sticky_margin:tc=w7_3270:
+
+#
+#   The following keys can be defined for each terminal type
+#
+#
+#		"f1","f2","f3","f4",    /* 24 function keys */
+#		"f5","f6","f7","f8",
+#		"f9","f10","f11","f12",
+#		"f13","f14","f15","f16",
+#		"f17","f18","f19","f20",
+#		"f21","f22","f23","f24",
+#		"enter_key",            /* the ENTER key        */
+#		"cmd_key",              /* Command key          */
+#		"print_key",            /* PRINT key            */
+#		"rtn_key",              /* RETURN key           */
+#		"up_key",               /* up arrow key         */
+#		"down_key",             /* down arrorw          */
+#		"left_key",             /* left arrow           */
+#		"right_key",            /* right arrow          */
+#		"fld_rt_key",           /* FIELD right          */
+#		"fld_lf_key",           /* FIELD left           */
+#		"tab_key",              /* TAB key              */
+#		"back_tab_key",         /* back tab key         */
+#		"blk_grey_key",         /* BLANK GRAY key       */
+#		"erase_input_key",      /* Erase Input key      */
+#		"skip_key",             /* SKIP key             */
+#		"esc_key",              /* ESCAPE event shift/esc */
+#		"back_space_key",       /* backspace key        */
+#		"insert_key",           /* insert charcter      */
+#		"delete_key",           /* delete character     */
+#		"home_key",             /* HOME                 */
+#		"erase_field_key",      /* ERASE FIELD          */
+#
+#	The following output strings MUST be defined for
+#	minumum FE functionality:
+#
+#		"erase_all",            /* clear entire screen */
+#		"erase_eos",            /* clear to end of screen */
+#		"erase_eol",            /* clear to end of line */
+#		"cursor_up",            /* cursor up one position */
+#		"cursor_down",          /* cursor down one position */
+#		"cursor_right",         /* cursor right one position */
+#		"cursor_motion",        /* random cursor motion */
+#		"cursor_bright",        /* make cursor visible */
+#		"cursor_dark",          /* make cursor invisible */
+#
+#	The following output strings should be defined for
+#	maximum FE functionality:
+#
+#		"cursor_solid",         /* set cursor to normal */
+#		"cursor_blink",         /* set cursor to blinking */
+#		"sgr_mask,"             /* select graphic rendition template */
+#		"sgr0",                 /* default display attributes */
+#		"sgr1",                 /* hi_lite */
+#		"sgr2",                 /* Reverse video */
+#		"sgr3",                 /* Reverse video, hi_lite */
+#		"sgr4",                 /* Underline */
+#		"sgr5",                 /* Underline, hi_lite  */
+#		"sgr6",                 /* Underline, Reverse video */
+#		"sgr7",                 /* Underline, Reverse video, hi_lite */
+#		"sgr8",                 /* Blink */
+#		"sgr9",                 /* Blink, hi_lite */
+#		"sgr10",                /* Blink, Reverse video */
+#		"sgr11",                /* Blink, Reverse video, hi_lite */
+#		"sgr12",                /* Blink, Underline */
+#		"sgr13",                /* Blink, Underline, hi_lite */
+#		"sgr14",                /* Blink, Underline, Reverse video */
+#		"sgr15",                /* Blink, Underline, Reverse video, */
+#					/*   hi_lite */
+#
+#		"status_line_bb",       /* status line begin bracket */
+#		"status_line_eb",       /* status line end bracket */
+#		"status_line_restore",  /* Restore default status line */
+#
+#		"open",                 /* string to send at FE_open */
+#		"close",                /* string to send at FE_close */
+#
+#	The following numeric values can be used to specify a terminal
+#	that does not use the default(24/80) max row/col.
+#
+#		"max_row",              /* max row of terminal (1 relative) */
+#		"max_col",              /* max col of terminal (1 relative) */
+#
+#	The following flags can be defined to tell the FE driver not to do
+#	certain optimizations.	The default mode is optimization, which will
+#	occure if the flag is not defined.  These flags should only need to be
+#	specified if applications run "mixed mode" (i.e. tty and FE).
+#
+#		"no_sgr_opt",           /* Don't optimize sgr output */
+#		"no_cm_opt",            /* Don't optimize cm output */
+#		"no_buf_wrts",          /* Don't buffer writes */
+#		"no_raw_wrts",          /* Don't set tty driver "opost" off */
+#
+#	The following flag should be defined if the cursor does not
+#	automatically wrap from column 80 to column 1 of the next line.
+#
+#		"sticky_margin"         /* send cursor position at margin */
+#

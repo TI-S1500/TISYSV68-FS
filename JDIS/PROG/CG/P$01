@@ -1,0 +1,65 @@
+CGTRANPT         10-07-94   Station All         CG Transaction Report by Account                                           Page    1
+Account No.              Description             Reference      Control No.      Date         ST Code/Ind.        Amount          SJ
+
+
+
+
+   101-00-00       PALMER        FLORNESS            3590        00007690      10 07 94                           1,435.00        11
+
+                            ACCOUNT DEBITS =       1,435.00 ACCOUNT CREDITS =            .00        TOTAL =       1,435.00
+
+
+   104-00-00       GLENCO FARMS                      3589        00001240      10 07 94                             744.00        11
+
+                            ACCOUNT DEBITS =         744.00 ACCOUNT CREDITS =            .00        TOTAL =         744.00
+
+
+   120-00-00       3950 PULL TYPE FORAGE H         876956        985044        10 07 94                          13,982.46        12
+   120-00-00       7' CUSTOM DUTY PICKUP           876958        963630        10 07 94                           3,932.76        12
+   120-00-00       ROW CLEANER                     934770        BA26155       10 07 94                           1,003.64        12
+   120-00-00       ROW CLEANER                     934770        BA26156       10 07 94                           1,775.78        12
+
+                            ACCOUNT DEBITS =      20,694.64 ACCOUNT CREDITS =            .00        TOTAL =      20,694.64
+
+
+   142-00-00       GRAIN TANK EXTENTION -9           3589        GR TANK       10 07 94                             595.20-       11
+   142-00-00       8 X 31 AUGER - ENGINE D           3590        9122143       10 07 94                           1,059.41-       11
+   142-00-00       GRAIN TANK EXTENTION -9           5829        GR TANK       10 07 94                             595.20        12
+   142-00-00       8 X 31 AUGER - ENGINE D          30104        9122143       10 07 94                           1,059.41        12
+
+                            ACCOUNT DEBITS =       1,654.61 ACCOUNT CREDITS =       1,654.61-       TOTAL =            .00
+
+
+   249-02-00       3950 PULL TYPE FORAGE H         876956        985044        10 07 94                          13,982.46-       12
+   249-02-00       7' CUSTOM DUTY PICKUP           876958        963630        10 07 94                           3,932.76-       12
+   249-02-00       ROW CLEANER                     934770        BA26155       10 07 94                           1,003.64-       12
+   249-02-00       ROW CLEANER                     934770        BA26156       10 07 94                           1,775.78-       12
+
+                            ACCOUNT DEBITS =            .00 ACCOUNT CREDITS =      20,694.64-       TOTAL =      20,694.64-
+
+
+   249-04-00       GRAIN TANK EXTENTION -9           5829        GR TANK       10 07 94                             595.20-       12
+   249-04-00       8 X 31 AUGER - ENGINE D          30104        9122143       10 07 94                           1,059.41-       12
+
+                            ACCOUNT DEBITS =            .00 ACCOUNT CREDITS =       1,654.61-       TOTAL =       1,654.61-
+
+
+   342-00-20       GLENCO FARMS                      3589        00001240      10 07 94                             744.00-       11
+   342-00-20       PALMER        FLORNESS            3590        00007690      10 07 94                           1,435.00-       11
+
+                            ACCOUNT DEBITS =            .00 ACCOUNT CREDITS =       2,179.00-       TOTAL =       2,179.00-
+
+
+   442-00-20       GRAIN TANK EXTENTION -9           3589        GR TANK       10 07 94                             595.20        11
+   442-00-20       8 X 31 AUGER - ENGINE D           3590        9122143       10 07 94                           1,059.41        11
+
+                            ACCOUNT DEBITS =       1,654.61 ACCOUNT CREDITS =            .00        TOTAL =       1,654.61
+
+
+
+
+ DEBIT  TRANSACTIONS =        10    TOTAL DEBIT  =      26,182.86
+
+CREDIT  TRANSACTIONS =        10    TOTAL CREDIT =      26,182.86-
+
+ TOTAL  TRANSACTIONS =        20    TOTAL        =            .00

@@ -1,0 +1,16 @@
+# cshf   accept -- allows LP requests 
+#	 @(#)ACCEPT.sh	1.4 (TI) 91/07/08
+#
+onintr end
+
+prompt "^ACCEPT -- ALLOWS LP REQUESTS"\
+	"^Printer or Class Name(s):" val1 string "$val1"\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== ACCEPT COMMAND EXECUTING ==="
+echo /usr/lib/accept $val1
+/usr/lib/accept $val1
+ 
+end:  
+unset val1

@@ -1,0 +1,3 @@
+# Sample neccmds dial commands file
+DIALPARMS=BISYNC,BISYNC,BISYNC,BISYNC,BISYNC,240
+Dtelephone_number@<>0

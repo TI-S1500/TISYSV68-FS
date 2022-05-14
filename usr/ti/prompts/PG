@@ -1,0 +1,16 @@
+# cshf 	PG - DISPLAY A FILE BY SCREENS 
+#	@(#)PG.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^PG -- INVOKES THE FILE PERUSAL FILTER FOR VDT'S"\
+	"^File Name(s):" _input_file macnm "$_input_file"\
+	"^#$*"
+
+
+if ($abort) goto end
+echo "=== PG COMMAND EXECUTING ==="
+echo pg    $_input_file
+     pg    $_input_file
+
+end:

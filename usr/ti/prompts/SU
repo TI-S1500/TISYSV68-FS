@@ -1,0 +1,27 @@
+# cshf  su -- become a super-user or another user 
+#	@(#)SU.sh	1.3  91/04/10
+#
+onintr end
+set quote = '"'
+
+prompt "^SU -- CHANGES USER IDENTITY TO SUPER-USER OR ANOTHER USER"\
+	"^User's Name:" name string root\
+	"^Change Environment:" flag yesno n\
+	"^*Command and Arguments:" cmds string "$cmds"\
+	"^#$*"
+
+if ($abort) goto end
+if ($flag == "y") set opt = -
+if ("$cmds" != "") set copt = -c
+
+echo === SU COMMAND EXECUTING === 
+if ("$cmds" != "") then
+	echo su $opt $name $copt $quote"$cmds"$quote
+	su $opt $name $copt "$cmds"
+else
+	echo su $opt $name
+	su $opt $name
+endif
+
+end:
+unset name flag cmds opt copt quote

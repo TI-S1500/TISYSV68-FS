@@ -1,0 +1,9 @@
+## file: getsn gets the serial number of termite emulator
+## written by Martin Meier, JDIS Research, 02/26/96
+
+echo "\033[=13l\c"
+echo "\033[=1c\c"
+read ans
+read serialno
+echo "\033[=13h\c"
+echo $serialno

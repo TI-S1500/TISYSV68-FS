@@ -1,0 +1,28 @@
+:
+echo '\nThis procedure will restore the partition tables, and should only be'
+echo 'used under the direction of JDIS support personel.'
+echo "\nDo you want to continue? (y/n): \c"
+read CHECK
+if (test "$CHECK" != "y" -a "$CHECK" != "Y")
+then
+	echo '\nProcedure aborted by user.\n'
+	exit
+fi
+
+cd /etc/BKUP_DIR
+sync
+
+echo '\nRestoring partition tables.'
+awk '{print "echo y | (ptu -bsf "$0".ptu /dev/dsk/"$0" > /dev/null 2>&1)"}' \
+	disk_list | sh
+sync
+
+echo '\nUsing devadm to remove disks.'
+awk '{print "devadm -r disk "substr($0, 2, 2)" "substr($0, 5, 2)}' \
+	disk_list | sh
+sync
+
+echo '\nUsing devadm to add disks.'
+awk '{print "devadm -a disk "substr($0, 2, 2)" "substr($0, 5, 2)}' \
+	disk_list | sh
+sync

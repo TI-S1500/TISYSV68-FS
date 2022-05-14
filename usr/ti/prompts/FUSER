@@ -1,0 +1,24 @@
+# cshf  fuser -- identifies processes using a file or file structure 
+#	@(#)FUSER.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^FUSER -- IDENTIFIES PROCESSES USING A FILE OR FILE STRUCTURE"\
+	"^File Name(s):" _input_file macnm "$_input_file"\
+	"^Login Name:" uflag yesno n\
+	"^Kill Process:" kflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($kflag == "y") set opt = k$opt
+if ($uflag == "y") set opt = u$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== FUSER COMMAND EXECUTING ==="
+echo /etc/fuser $opt $_input_file
+/etc/fuser $opt $_input_file
+
+#clean up time
+end:
+unset *flag *opt

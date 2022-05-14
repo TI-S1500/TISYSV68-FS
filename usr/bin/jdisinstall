@@ -1,0 +1,114 @@
+:
+#
+#   This command reads the init.jdis command proc into the /once
+#   directory, executes it and then deletes it.
+#
+#       The following are acceptable executions of this proc:
+#               jdisinstall                     <- reads from /dev/install device
+#               jdisinstall tape        <- reads from the 0 tar device
+#               jdisinstall num         <- reads from the (0 - 9) tar device
+#               jdisinstall device      <- reads from the specified device
+#                                                               such as /dev/rfd096ds15
+#
+#       (I know its crude but it should get the job done.)
+##############################################################################
+#
+#  Add tee to update log file /usr/adm/JDISRLSE.log    12 May 1989  D. Lestor
+#  Add logic to wait for tape drive to rewind (xenix)  18 Dec 1991  D. Lestor
+#  Add logic to cleanup JDISRLSE.log                   28 Feb 1991  DHB
+#  Add logic to remove /once/init.jdis is there        09 Jun 1993  DHB
+#  Removed sys000 for Phase II Security                17 Jun 1996  LMJ
+##############################################################################
+if (test -r /once/init.jdis) then
+  rm /once/init.jdis
+fi
+touch /usr/adm/JDISRLSE.log
+if (test -r /usr/adm/TEMPRLSE.log) then
+  rm /usr/adm/TEMPRLSE.log
+else
+  touch /usr/adm/TEMPRLSE.log
+  grep "%%>" /usr/adm/JDISRLSE.log >> /usr/adm/TEMPRLSE.log
+  grep "&&>" /usr/adm/JDISRLSE.log >> /usr/adm/TEMPRLSE.log
+  mv /usr/adm/TEMPRLSE.log /usr/adm/JDISRLSE.log
+fi
+/bin/echo "BEGIN jdisinstall " >>/usr/adm/JDISRLSE.log
+{ date; } >>/usr/adm/JDISRLSE.log
+device=" "
+devnum=" "
+
+if (test $# -lt 1)
+        then device="/dev/install"
+
+elif (test "$1" = "tape")
+        then devnum="0"
+
+elif (test "$1" = "0")
+        then devnum="0"
+
+elif (test "$1" = "1")
+        then devnum="1"
+
+elif (test "$1" = "2")
+        then devnum="2"
+
+elif (test "$1" = "3")
+        then devnum="3"
+
+elif (test "$1" = "4")
+        then devnum="4"
+
+elif (test "$1" = "5")
+        then devnum="5"
+
+elif (test "$1" = "6")
+        then devnum="6"
+
+elif (test "$1" = "7")
+        then devnum="7"
+
+elif (test "$1" = "8")
+        then devnum="8"
+
+elif (test "$1" = "9")
+        then devnum="9"
+
+else device=$1
+fi
+
+echo
+echo
+#
+#  First, read in the command script /once/init.jdis
+#
+if (test "$device" = " ")
+        then echo tar xv$devnum /once/init.jdis | tee -a /usr/adm/JDISRLSE.log
+                tar xv$devnum /once/init.jdis | tee -a /usr/adm/JDISRLSE.log
+else
+        echo tar xvf $device /once/init.jdis | tee -a /usr/adm/JDISRLSE.log
+        tar xvf $device /once/init.jdis | tee -a /usr/adm/JDISRLSE.log
+fi
+#
+echo
+echo
+#
+# If using device number 0 and running on XENIX, wait for the tape to rewind
+#
+if (test "$devnum" = "0" -a "`uname`" = "XENIX")
+   then
+     /bin/echo "Waiting for the tape to rewind...\c" | tee -a /usr/adm/JDISRLSE.log
+     tape status >> /dev/null
+     /bin/echo " "
+fi
+#
+#  Now execute the command
+#
+sh /once/init.jdis | tee -a /usr/adm/JDISRLSE.log
+
+#
+#  Now delete the command from the /once directory
+#
+rm /once/init.jdis | tee -a /usr/adm/JDISRLSE.log
+
+/bin/echo "END   jdisinstall " >>/usr/adm/JDISRLSE.log
+{ date; } >>/usr/adm/JDISRLSE.log
+exit 0

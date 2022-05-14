@@ -1,0 +1,31 @@
+# bshf  ex -- variant of vi for line terminals 
+#	@(#)EX.sh	1.3 88/03/21
+#
+onintr end
+
+prompt "^EX -- INVOKES A VARIANT OF VI FOR LINE TERMINALS"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+	"^Suppress Interactive Feedback:" flag yesno n\
+	"^Invoke the VI Editor:" vflag yesno n\
+	"^*Recovery File Name:" rfile acnm\
+	"^Readonly Mode:" Rflag yesno n\
+	"^*Search/Positioning Command:" cmd string $cmd\
+	"^LISP Mode:" lflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($flag == "y") set opt = "-"
+if ($vflag == "y") set vopt = -v
+if ($rfile != "") set ropt = -r$rfile
+if ($Rflag == "y") set Ropt = -R
+if ($cmd != "") set cmdopt = +$cmd
+if ($lflag == "y") set lopt = -l
+
+if ($abort) goto end
+echo "=== EX COMMAND EXECUTING ==="
+echo ex $opt $vopt $ropt $Ropt $cmdopt $lopt $_input_file
+ex $opt $vopt $ropt $Ropt $cmdopt $lopt $_input_file
+
+#clean up time
+end:
+unset *flag *opt cmd rfile

@@ -1,0 +1,1089 @@
+:
+# SETUPC.mkm 04/08/96, Martin Meier, JDIS Research
+# this script assumes calls to UNIX will be made from bourne shell "sh"
+# revised 05/29/96 M.K. Meier
+# revised work-around /etc/mkalp for HP systems where version problems exist
+# revised 11/19/96 M.K. Meier & Matt Barkau;  includes new routines for HP D
+#       series and new format of PSPORT file.  For Patch 90 & release 97-1.
+
+#----PROCEDURE: check_plat() ---------------------------------------------#
+
+check_plat() {
+# test for 'D' box architecture: set variable '$atype', options are:
+# 'D'=DBOX, 'S'=Standard: E, F, G, H series or TI systems since * is used
+# in case statement below, also set OS name
+
+OS=`uname -s | cut -c1-2`
+
+mtype=`uname -m | cut -c6-8`
+
+case $mtype in
+ 801|811|821|831|841|851 ) atype='D'                    ;;
+                       * ) atype='S'                    ;;
+esac
+#end check_plat procedure
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: remove_oldport() removes previous PS port ----------------#
+remove_oldport() {
+
+target_file='/JDIS/PROG/CMN/PSPORT'
+clear_screen
+
+echo "
+                        Remove Old PS Port
+ ___________________________________________________________________________
+
+  This program provides the facility to remove an existing PS Port.  This
+  facility is useful where the PS Port is required to move from a non-modem
+  control port such as a MUX connection to a modem control port such
+  as on the MDP or in the case of completely removing a PS Port.
+
+  If requested, this procedure should be completed before the addition of a
+  new PS Port to ensure efficient PS program and file management.
+
+ ___________________________________________________________________________
+
+ Do you wish to remove an existing PS Port?   Y\N > \c"
+read ans
+
+case $ans in
+  Y|y ) clear_screen
+        echo "
+Remove Old PS Port:          Existing PS Ports
+___________________________________________________________________________
+tty:    lp:
+
+`cat "$target_file"`
+___________________________________________________________________________
+
+               Enter port number to remove
+               or press <enter> if no port removal
+               is requested.
+___________________________________________________________________________
+
+                Enter your choice > \c"
+               read port
+
+if [ -z "$port" ]
+ then
+ leave_prg
+fi
+
+occur=`awk '{print $1}' $target_file|grep $port`
+if [ "$occur" = "$port" ]
+ then
+  #remove the PSPORT entry #
+
+  remove_ln=`grep "$port" $target_file`
+  oldlp=lp`grep "$port" $target_file|awk '{print $2}'`
+  sed "/$remove_ln/d" $target_file > $target_file.tmp
+  cp $target_file.tmp $target_file && rm -f $target_file.tmp
+  echo "\n Found $oldlp:  Removing $oldlp"
+  sleep 2
+
+  if `lpstat -s | grep $oldlp > /dev/null`
+  then
+   /usr/lib/lpshut
+   /usr/lib/lpadmin -x$oldlp
+   /usr/lib/lpsched
+  fi
+  remove_status="been successfully"
+
+ else
+  remove_status="not been"
+  echo "
+  ERROR: Port $port is not listed in $target_file.
+
+ ___________________________________________________________________________
+
+   After this screen clears, please recheck your port choice
+   and rerun PS Port Remove program option.
+
+ ___________________________________________________________________________
+
+  Press <enter> to continue \c"
+  read ans
+
+ fi
+
+               clear_screen
+               echo "
+
+ PS PORT $port has $remove_status removed.
+ ___________________________________________________________________________
+
+
+ You may proceed from this point to add a PS PORT.
+
+ ___________________________________________________________________________
+
+ Do you wish to continue with PS PORT addition ?  Y\N > \c"
+
+read ans
+
+ case $ans in
+  Y|y ) continue   ;;
+
+  N|n ) leave_prg  ;;
+
+    * ) leave_prg  ;;
+ esac
+ ;;
+
+
+  N|n ) continue        ;;
+
+    * ) continue        ;;
+
+esac
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: get_port() gets port assignment from user ----------------#
+get_port() {
+
+#-- procedure: port_valid1() ---------------------------------------------#
+port_valid1() {
+echo "\007\n
+ Entry not valid: $port ... acceptable range: 01 - 5a, 92 - 96
+ 'D' Systems: other possible tty definitions: 2a1 - 4d16
+\nPress <enter> to retry\c"
+ read ans
+ port_valid=1
+}
+#-------------------------------------------------------------------------#
+
+#-- procedure: port_valid0() ---------------------------------------------#
+port_valid0() {
+ echo "
+ ___________________________________________________________________________
+    The port entered was $port.
+   \n OK to proceed?  Y, N or <enter> to END > \c"
+   read ans
+    case $ans in
+            Y | y ) port_valid=0
+                    tty_id="/dev/tty"$port
+                    tty_base="tty"$port                                  ;;
+            N | n ) port_valid=1                                         ;;
+            *     ) leave_prg                                            ;;
+    esac
+}
+#-------------------------------------------------------------------------#
+
+port_valid="1"
+until [ "$port_valid" -eq 0 ]
+do
+clear_screen
+echo "
+                       Personal Service Port Setup
+ ___________________________________________________________________________
+
+
+ Designate 2 digit tty port assignment, logical range= 01 - 5a, 92 - 96
+
+ example: type \"09\" for tty09
+
+ D systems use alternate form from range 2a1 - 4d16: i.e. 3b9
+ \n
+
+ ___________________________________________________________________________
+
+ Enter port assignment or press <enter> to quit: > \c"
+
+read port
+if [ -z "$port" ] #checks for null entry and exits
+ then
+  leave_prg
+ elif [ `echo "$port" | wc -c` -lt 3 ]
+  then
+   echo "\007
+ ERROR: port entry must be between 2 and 4 digits: $port was entered
+\n press <enter> to continue"
+  read ans
+  port_valid=1
+fi
+
+case $port in
+ 0              ) port_valid1                   ;;
+ [0][0]         ) port_valid1                   ;;
+ [0-5][0-9]     ) port_valid0                   ;;
+ [9][2-6]       ) port_valid0                   ;;
+ [0-5][a-f]     ) port_valid0                   ;;
+ [2-4][a-d][1-9] ) port_valid0                  ;;
+ [2-4][a-d][1][0-6] ) port_valid0             ;;
+ *              ) port_valid1                   ;;
+esac
+
+done
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: get_termtype() -------------------------------------------#
+# determine tty type from user input
+get_termtype() {
+
+term_id1="TERMiTE Emulator"
+term_id2="TI  924 Terminal <invalid for HP D series>"
+term_id3="TI  928 Terminal <invalid for HP D series>"
+type_valid=1
+
+until [ "$type_valid" -eq 0 ]
+do
+clear_screen
+echo "
+ Choose number corresponding with terminal type from list below:
+ ___________________________________________________________________________
+
+                         1 - $term_id1
+
+                         2 - $term_id2
+
+                         3 - $term_id3
+
+ __________________________________________________________________________
+
+ Enter choice: 1,2,3 or <enter> to End  > \c"
+read ttychoice
+if [ -z "$ttychoice" ] #checks for null entry and exits
+  then
+   leave_prg
+else
+ case $ttychoice in
+        1|2|3 ) echo "
+ The number entered was $ttychoice.\n
+ OK to proceed?  Y, N or <enter> to END > \c"
+               read ans
+                case $ans in
+                      Y | y ) case $ttychoice in
+                               1 ) mk_termid="TERMiTE Emulator" ;;
+                               2 ) mk_termid="TI  924 Terminal" ;;
+                               3 ) mk_termid="TI  928 Terminal" ;;
+                              esac
+
+                              case $ttychoice in
+                                1) ttype=t1   ;;
+                                2) ttype=t1   ;;
+                                3) ttype=x1   ;;
+                              esac
+
+                              type_valid=0                               ;;
+
+                      N | n ) type_valid=1                               ;;
+                      *     ) leave_prg                                  ;;
+                esac                                                     ;;
+
+            0 ) leave_prg                                                ;;
+            * ) leave_prg                                                ;;
+ esac
+fi
+done
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: ck_port_use() --------------------------------------------#
+ck_port_use() {
+clear_screen
+# determine is port is in use now #
+if `who | grep "$tty_base " > /dev/null`
+  then
+echo "\007
+                          >> ERROR <<
+ __________________________________________________________________________
+
+ Port $port, $tty_base, is in use by: `who | grep "$tty_base "`\n
+ This is a serious error and should be investigated before restarting
+ procedure.
+
+ It is advisable to SCREEN PRINT this page for use in error resolution.
+ After determining if port is correct, choose option SETUPC in Main Menu.
+
+ Program will terminate...
+ ___________________________________________________________________________
+
+ press <enter> to continue \c"
+read ans
+leave_prg
+fi
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: check_port() ---------------------------------------------#
+# Check if device file for port/tty exists and is character device.
+# Remove if MDP or D, make if MUX.
+check_port() {
+
+case $OS in
+
+ HP )
+  case $atype in
+   "D" )
+    # if a D series or MDP device (92-96), then remove device so it can be remade
+    rm -f $tty_id
+    rm_stmt="Device file $tty_id has been removed and will be recreated
+     by the system.  It is necessary to remove and recreate the device when
+     connecting to the 25-pin RS-232 EISA Mux interface in order to ensure
+     modem control."
+   ;;
+   "S" )
+    if [ "$port" -gt 91 -a "$port" -lt 97 ]
+     then
+      rm -f $tty_id
+      rm_stmt="Device file $tty_id has been removed and will be recreated
+       by the system.  It is necessary to remove and recreate the device when
+       connecting to the MDP type interface in order to ensure modem control."
+    elif [ -c $tty_id ]
+     then
+      continue                            #don't remake mux port if exists
+    elif [ ! -c $tty_id ]
+     then
+      mknod $tty_id c 58 0x0001$port
+      /bin/chmod 666 $tty_id
+    fi
+   ;;
+  esac
+ ;;
+
+ TI )
+  if [ ! -c $tty_id ]
+   then
+    no_ttydev=1
+    no_tidevice
+    leave_prg
+  fi
+ ;;
+esac
+
+if [ ! -c $tty_id ]
+ then
+  clear_screen
+echo "\007
+                          HP Device File Info
+ ___________________________________________________________________________
+
+ $tty_id does not exist in system.\n
+ $rm_stmt\n
+ This program will proceed to create proper device file.
+
+ It is advisable to SCREEN PRINT this page for use in error resolution.
+ Please determine from Dealer/Focus Person that port $tty_base is correct.
+ If after determining to proceed with device file creation, press <return>
+ as stated below to enter the Make Device procedure. If you do not wish to
+ create a device file at this time, press <return> at the prompt below and
+ choose option to End program on following screen.
+
+ ___________________________________________________________________________
+ "
+ echo " Press <enter> to continue ...\c"
+read ans
+   dev_ok="N"
+elif [ -c $tty_id ]
+ then
+   dev_ok="Y"
+fi
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: make_device() -makes MDP or HP D series modem control ports.#
+make_device() {
+
+clear_screen
+case $dev_ok in
+
+        N )  echo "
+                    Device File Creation Procedure
+ ___________________________________________________________________________
+
+            Preparing to create device file: $tty_id
+
+
+\n                     Do you wish to continue?
+
+ ___________________________________________________________________________
+
+ Enter your choice - Y, N, or <return> to End > \c"
+read ans
+ case $ans in
+   Y|y ) continue                                                     ;;
+   N|n ) leave_prg                                                    ;;
+     * ) leave_prg                                                    ;;
+ esac
+case $OS in
+  HP )
+   case $atype in
+
+    "D" )
+       jack_num=`echo $port|cut -c3-4`
+       if [ "$jack_num" -gt 10 ]
+        then
+         # translate to hex letter
+         jack_hex=`echo $jack_num|cut -c2|tr "[1-6]" "[a-f]"`
+        else
+         # use number, subtract 1
+         jack_hex=`expr $jack_num - 1`
+       fi
+       minor_d="0x0"`echo $port|cut -c1``echo $port|cut -c2|tr "[a-d]" "[0-3]"`$jack_hex"02"
+       mksf -deisa_mux0 -m$minor_d $tty_id                            ;;
+
+    "S" )
+     case $port in
+      92 ) mknod $tty_id c 58 0x200002  ;;
+      93 ) mknod $tty_id c 58 0x200003  ;;
+      94 ) mknod $tty_id c 58 0x200004  ;;
+      95 ) mknod $tty_id c 58 0x200005  ;;
+      96 ) mknod $tty_id c 58 0x200006  ;;
+     esac                                       ;;
+
+   esac    ;;
+
+  TI ) echo "
+ERROR: TI UNIX: device file $tty_id does not exist and cannot be created
+ by this automated application. There may be a problem with the tty $tty_id
+ or the device file has been removed in error prior to this application.
+ Please consult your Systems Support Staff for assistance.
+ Program will exit when <return> is pressed > \c"
+ read ans
+ leave_prg   ;;
+
+      esac                                                               ;;
+
+        Y ) continue                                                     ;;
+
+esac
+
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: ck_majnum() ----------------------------------------------#
+# HP  checks if port designate has major number of 58 for MDP or MUX;  OR
+#  on the D system, device file existence only is checked.
+# TI  checks if port designate has major number of 5 for MTC
+ck_majnum() {
+
+if [ -c $tty_id ]
+ then
+
+case $OS in
+
+ HP )  dev_maj=`ls -l $tty_id | awk -F" " '{print $5}'`
+       case $atype in
+        "D" )
+         if [ ! -w $tty_id ]
+          then
+           clear_screen
+           echo "\007
+ The JDPS program cannot be run over port $tty_id. It is either
+ a network device or is not a terminal device.
+
+ It is advisable to SCREEN PRINT this page for use in error resolution.
+ This program will terminate after this screen.  Determine that the port
+ to be configured is correct.  Select a valid device and restart program.
+ Device major number=$dev_maj, tty=$tty_id\c"
+           read ans3
+           exit 1
+         fi
+        ;;
+
+        "S" )
+         if [ "$dev_maj" -ne 58 ]
+          then
+           clear_screen
+           echo "\007
+ The JDPS program cannot be run over port $tty_id. It is either
+ a network device or is not a MUX / MDP device.
+
+ It is advisable to SCREEN PRINT this page for use in error resolution.
+ This program will terminate after this screen.  Determine that the port
+ to be configured is correct.  Select a valid device and restart program.
+ Device major number=$dev_maj, tty=$tty_id\c"
+           read ans3
+           exit 1
+         fi
+        ;;
+       esac
+ ;;
+
+ TI ) dev_maj=`ls -l $tty_id | awk -F" " '{print $5}' | sed 's/,.*//'`
+       if [ "$dev_maj" -ne 5 ]
+         then
+          clear_screen
+          echo "\007
+ The JDPS program cannot be run over port $tty_id. It is either
+ a network device or is not a MTC device.
+
+ It is advisable to SCREEN PRINT this page for use in error resolution.
+ This program will terminate after this screen.  Determine that the port
+ to be configured is correct.  Select a valid device and restart program.
+ Device major number=$dev_maj, tty=$tty_id\c"
+         read ans
+         exit 1
+       fi                                                                ;;
+esac
+elif [ ! -c $tty_id ]
+ then
+  clear_screen
+  echo "\007
+ Device file $tty_id does not exist.  Possible cause for this error is
+ due to incorrect userid status (root required) or system device conflict.
+ This is a serious error and will terminate program.  Consult support
+ staff for advice.\n
+ Please SCREEN PRINT this page for use in error resolution.
+
+ Press <enter> to continue. \c"
+read ans
+leave_prg
+fi
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: display_entries() ----------------------------------------#
+display_entries() {
+clear_screen
+
+echo "
+ Personal Service Port to be configured on the following:
+ ___________________________________________________________________________
+
+                         tty port = $port
+
+                    terminal type = $mk_termid
+
+ ___________________________________________________________________________
+"
+echo " OK to proceed?  Y, N or <enter> to END > \c"
+read ans
+if [ -z "$ans" ] #checks for null entry and exits
+ then
+  leave_prg
+fi
+ case $ans in
+      Y | y ) echo "\n ... working ... \c"                             ;;
+      N | n ) clear_screen
+              echo "
+ The port and terminal type must be acceptable before continuing.
+ All options must be reset and accepted. Program terminating ...
+ Choose SETUPC from Main Menu to rerun program...\n
+ Press <enter> when ready \c"
+read ans
+leave_prg                                                                ;;
+       * ) echo "\n\007... unknown entry ... exiting" ; sleep 2
+            leave_prg                                                    ;;
+esac
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: do_setup() -----------------------------------------------#
+do_setup() {
+
+# remove and re-add /etc/inittab entry
+#
+# determine initdefault run level
+drl=`grep initdefault /etc/inittab|awk -F":" '{print $2}'`
+
+case $OS in
+  HP)
+      ## check for next ps0-50 id for /etc/inittab line-identifier
+          valid_tab=1 ; ps_tab=0
+           until [ "$valid_tab" -eq 0 ]
+            do
+             if grep -q "ps$ps_tab" /etc/inittab
+              then
+               ps_tab=`expr $ps_tab + 1`
+              else
+               valid_tab=0
+             fi
+            done
+
+ case $atype in
+  "D" ) new_tab="ps$ps_tab:$drl:respawn:/usr/sbin/getty -h $tty_base 19200" ;;
+
+  "S" ) new_tab="ps$ps_tab:$drl:respawn:/etc/getty -h $tty_base 19200" ;;
+ esac
+
+## make new inittab entry for /etc/inittab
+# make copy of /etc/inittab
+ cp /etc/inittab /etc/inittab.ps
+
+ if grep -q "$tty_base " /etc/inittab
+  then
+   cp /etc/inittab /etc/inittab.ps_save
+    old_tab=`grep "$tty_base " /etc/inittab`
+    sed "s!$old_tab!$new_tab!" /etc/inittab > /etc/tmp_pstab
+    cp /etc/tmp_pstab /etc/inittab && rm -f /etc/tmp_pstab
+    kill -9 `ps -ef|grep "$tty_base "|grep -v grep|awk '{print $2}'`
+    init q
+  else
+   cp /etc/inittab /etc/inittab.ps_save
+   echo "$new_tab" >> /etc/inittab
+   init q
+ fi
+
+## make new inittab entry for /etc/inittab.on
+# make copy of /etc/inittab.on
+
+cp /etc/inittab.on /etc/inittab.on.ps
+
+ if grep -q "$tty_base " /etc/inittab.on
+  then
+    old_tab=`grep "$tty_base " /etc/inittab.on`
+   sed "s!$old_tab!$new_tab!" /etc/inittab.on > /etc/tmp_pstab.on
+   cp /etc/tmp_pstab.on /etc/inittab.on && rm -f /etc/tmp_pstab.on
+  else
+   echo "$new_tab" >> /etc/inittab.on
+ fi
+
+## make new inittab entry for /etc/inittab.off
+# make copy of /etc/inittab.off
+cp /etc/inittab.off /etc/inittab.off.ps
+
+ if grep -q "$tty_base " /etc/inittab.off
+  then
+   old_tab=`grep "$tty_base " /etc/inittab.off`
+   sed "s!$old_tab!$new_tab!" /etc/inittab.off > /etc/tmp_pstab.off
+   cp /etc/tmp_pstab.off /etc/inittab.off && rm -f /etc/tmp_pstab.off
+  else
+   echo "$new_tab" >> /etc/inittab.off
+ fi
+
+## adjust entries in /etc/ttytype for proper term type
+# make copy of original /etc/ttytype file
+
+ttyps_save='/etc/ttytype.ps'
+cp /etc/ttytype $ttyps_save
+
+new_ttype="$ttype $tty_base"
+
+if grep -q "$tty_base " /etc/ttytype
+  then
+   old_ttype=`grep "$tty_base " /etc/ttytype`
+   sed "/$tty_base/d" /etc/ttytype > /etc/tmp_ttytype
+   cp /etc/tmp_ttytype /etc/ttytype && rm -f /etc/tmp_ttytype
+   echo $new_ttype >> /etc/ttytype
+  else
+   echo $new_ttype >> /etc/ttytype
+ fi
+
+## create/update /JDIS/PROG/CMN/PSPORT with new valid tty entry
+
+target_file='/JDIS/PROG/CMN/PSPORT'
+ps_lin="$port\t$newlp_id"
+if [ ! -f "$target_file" ]
+ then
+  touch $target_file
+fi
+
+occur=`awk '{print $1}' $target_file|grep $port`
+if [ "$occur" = "$port" ]
+ then
+  echo "\n   An entry already exists for /dev/tty$port.
+   Please use this program to remove it before attempting to remake it.\n
+   Press <Enter> to continue\c"
+  read ans
+  leave_prg
+ else
+  echo $ps_lin >> $target_file
+fi
+
+## update /etc/alpcaps
+case $atype in
+ "D" ) continue        ;;
+
+ "S" )
+
+  tm_string='tm termite: bb=\E[5i eb=\E[4i pr=\\0 sz=132 rt=100'
+  case $ttychoice in
+   1) if  grep -q  'tm termite' /etc/alpcaps
+       then
+        cp /etc/alpcaps /etc/alpcaps.ps_save
+        sed '/tm termite/d' /etc/alpcaps > /etc/tmp_alpcaps
+        cp /etc/tmp_alpcaps /etc/alpcaps && rm -f /etc/tmp_alpcaps
+        echo $tm_string >> /etc/alpcaps
+       else
+        echo $tm_string >> /etc/alpcaps
+      fi                                                            ;;
+
+   * ) continue                                                     ;;
+  esac
+;;
+esac
+
+### create printer for tty, update /etc/alpdefs and alp device
+## determine if tty92-96 or 01-91
+# declare newlp_id and create newlp="lp$newlp_id"
+
+# call procedure find_new_lp_name to get correct printer name
+#find_new_lp_name
+
+case $atype in
+ "D" ) continue                 ;;
+
+ "S" )
+# # check for, remove and remake alp device
+
+alp_dev="/dev/alp$port"
+alp_id="alp$port"
+cp /etc/alpdefs /etc/alpdefs.ps_save
+
+if [ ! -c "$alp_dev" ]
+ then
+  continue
+ elif [ -c "$alp_dev" ]
+  then
+  rm -f "$alp_dev"
+fi
+
+case $ttychoice in
+ 1) alp_string='alp_dev  bb=\E[5i eb=\E[4i pr=\\0 sz=132 rt=100'     ;;
+ 2) alp_string='alp_dev  bb=\E[5i eb=\E[?9i pr=\\EQ sz=132 rt=0'     ;;
+ 3) alp_string='alp_dev  bb=\E[5i eb=\E[?90i pr=\\EQ sz=132 rt=0'    ;;
+esac
+
+if grep -q "$alp_dev" /etc/alpdefs
+ then
+   sed "/$alp_id/d" /etc/alpdefs > /etc/alpdefs.ps_tmp
+   cp /etc/alpdefs.ps_tmp /etc/alpdefs && rm -f /etc/alpdefs.ps_tmp
+   echo "$alp_string" >> /etc/alpdefs
+   sed "s!alp_dev!$alp_dev!" /etc/alpdefs > /etc/alpdefs.ps_tmp
+   cp /etc/alpdefs.ps_tmp /etc/alpdefs && rm -f /etc/alpdefs.ps_tmp
+  else
+   echo "$alp_string" >> /etc/alpdefs
+   sed "s!alp_dev!$alp_dev!" /etc/alpdefs > /etc/alpdefs.ps_tmp
+   cp /etc/alpdefs.ps_tmp /etc/alpdefs && rm -f /etc/alpdefs.ps_tmp
+fi
+
+if [ "$port" -gt 91 -a "$port" -lt 97 ] ## MDP connections
+ then
+  end_digit=`echo "$port" | cut -c2`
+  /etc/mknod $alp_dev c 58 0x21000$end_digit
+  /bin/chown lp  $alp_dev
+  /bin/chgrp bin $alp_dev
+  /bin/chmod 666 $alp_dev
+  /etc/initalp -d $alp_dev
+else
+   /etc/mknod $alp_dev c 58 0x0101$port
+   /bin/chown lp  $alp_dev
+   /bin/chgrp bin $alp_dev
+   /bin/chmod 666 $alp_dev
+   /etc/initalp -d $alp_dev
+fi
+;;
+esac
+
+# check for logical printer, see if busy, create if necessary
+
+#assign printer model type to variable 'model'
+# make sure model file exists on D system
+
+case $atype in
+ "D" ) model='lpps'
+       lp_dev="/dev/tty$port"
+       chown lp $lp_dev
+       if [ ! -s /usr/lib/lp/model/$model ]
+        then
+         echo "ERROR: model file $model does not exist in system:
+ cannot create printer: error message from lpadmin will display next;
+ load $model to /usr/lib/lp/model directory and retry"
+       fi                                              ;;
+
+ "S" ) model='standard'
+       lp_dev="$alp_dev"                                ;;
+esac
+
+if `lpstat -s | grep  "$newlp:" > /dev/null`
+then
+  continue
+ else
+  /usr/lib/lpshut > /dev/null
+  /usr/lib/lpadmin -p$newlp -m$model -v$lp_dev > /dev/null
+  /usr/lib/lpsched > /dev/null
+  /usr/lib/accept $newlp > /dev/null
+  /usr/bin/enable $newlp > /dev/null
+  chown root $lp_dev
+fi                                                                       ;;
+
+###### TI ######
+
+TI)
+
+## check entry in inittab  ##
+# step 1: make sure entry is in /etc/inittab so devadm can remove and readd
+# check default initdefault level in /etc/inittab and set var 'drl'
+drl=`grep initdefault /etc/inittab|awk -F":" '{print $2}'`
+
+new_tab="t0$port:$drl:respawn:/etc/getty $tty_base R19200PS $ttype"
+
+ if grep "$tty_base " /etc/inittab > /dev/null
+  then
+   continue
+  else
+   cp /etc/inittab /etc/inittab.ps_save
+   echo "$new_tab" >> /etc/inittab
+ fi
+
+## create/update /JDIS/PROG/CMN/PSPORT with new valid tty entry
+
+target_file='/JDIS/PROG/CMN/PSPORT'
+ps_lin="$port\t$newlp_id"
+if [ ! -f "$target_file" ]
+ then
+  touch $target_file
+fi
+
+occur=`awk '{print $1}' $target_file|grep $port`
+if [ "$occur" = "$port" ]
+ then
+  echo "\n   An entry already exists for port /dev/tty$port.
+   Please remove it before attempting to remake it.\n
+   Press <Enter> to continue\c"
+  read ans
+  leave_prg
+ else
+  echo $ps_lin >> $target_file
+fi
+
+## update /etc/alpcaps
+
+tm_string='tm termite: bb=\E[5i eb=\E[4i pr=\\0 sz=132 rt=100'
+case $ttychoice in
+ 1) if  grep 'tm termite' /etc/alpcaps > /dev/null
+     then
+      cp /etc/alpcaps /etc/alpcaps.ps_save
+      sed '/tm termite/d' /etc/alpcaps > /etc/tmp_alpcaps
+      cp /etc/tmp_alpcaps /etc/alpcaps && rm -f /etc/tmp_alpcaps
+      echo $tm_string >> /etc/alpcaps
+     else
+      echo $tm_string >> /etc/alpcaps
+    fi                                                                   ;;
+
+ *) :                                                                    ;;
+esac
+
+### create printer for tty, update /etc/alpdefs and alp device
+## determine if tty92-96 or 01-91
+# declare newlp_id and create newlp="lp$newlp_id"
+# call procedure find_new_lp_name
+
+#find_new_lp_name
+
+#check for remove and remake alp device
+
+alp_dev="/dev/alp$port"
+alp_id="alp$port"
+
+case $ttychoice in
+ 1) alp_term=tm ;;
+ 2) alp_term=t1 ;;
+ 3) alp_term=x1 ;;
+esac
+
+if [ ! -c $alp_dev ] ## double check for previous device missing
+ then
+  no_alpdev=1
+  no_tidevice
+  leave_prg
+ elif [ -c $alp_dev ]
+  then
+   devadm -m tty $tty_base -p -t $alp_term
+   /bin/chmod 666 $alp_dev
+   /etc/initterm p
+fi
+
+## make new entry for /etc/inittab ##
+
+new_tab="t0$port:$drl:respawn:/etc/getty $tty_base R19200PS $ttype"
+
+ if grep "$tty_base" /etc/inittab > /dev/null
+  then
+   cp /etc/inittab /etc/inittab.ps_save
+    old_tab=`grep "$tty_base " /etc/inittab`
+   sed "s!$old_tab!$new_tab!" /etc/inittab > /etc/tmp_pstab
+   cp /etc/tmp_pstab /etc/inittab && rm -f /etc/tmp_pstab
+   kill -9 `ps -ef|grep "$tty_base "|grep -v grep|awk '{print $2}'`
+   init q
+  else
+   cp /etc/inittab /etc/inittab.ps_save
+   echo "$new_tab" >> /etc/inittab
+   init q
+ fi
+
+# check for logical printer, see if busy, create if necessary
+
+if `lpstat -s | fgrep -x "$newlp:" > /dev/null`
+ then
+  continue
+ else
+  /usr/lib/lpshut > /dev/null
+  /usr/lib/lpadmin -p$newlp -mstandard -v$alp_dev > /dev/null
+  /usr/lib/lpsched >/dev/null
+  /usr/lib/accept $newlp > /dev/null
+  /usr/bin/enable $newlp > /dev/null
+fi
+
+## add entry to /etc/gettydefs for TI Systems with PS specs #
+
+if grep 'R19200PS' /etc/gettydefs > /dev/null
+ then
+  continue
+ else
+echo '
+#-------------------------------------------------------------------#
+#    Remote 19200 baud, 7 data bits, 1 stop bit, odd parity,        #
+#    For Personal Services Logins.                                  #
+#-------------------------------------------------------------------#
+
+R19200PS #
+EXTA HUPCL ECHO CS7 PARENB PARODD IXON #
+EXTA HUPCL CREAD ICRNL IXON BRKINT OPOST ONLCR ICANON ECHO ECHOE ECHOK
+     ISIG CS7 PARENB PARODD IXOFF TAB3 #
+ JDPS login: #
+R19200PS
+
+' >> /etc/gettydefs
+fi
+#
+
+## Add stty -clocal to PST1 or PSX1 to ensure processes drop upon close
+
+t1_profile='/JDIS/PROG/CMN/PST1'
+t1_pftmp='/JDIS/PROG/CMN/PST1.tmp'
+x1_profile='/JDIS/PROG/CMN/PSX1'
+x1_pftmp='/JDIS/PROG/CMN/PSX1.tmp'
+
+# check/change PST1
+
+if fgrep -x 'stty -clocal' $t1_profile > /dev/null
+ then
+  continue
+ else
+  sed '/stty /a\
+stty -clocal' $t1_profile > $t1_pftmp
+cp $t1_pftmp $t1_profile && rm -f $t1_pftmp
+fi
+
+# check/change PSX1
+
+if fgrep -x 'stty -clocal' $x1_profile > /dev/null
+ then
+  continue
+ else
+  sed '/stty /a\
+stty -clocal' $x1_profile > $x1_pftmp
+cp $x1_pftmp $x1_profile && rm -f $x1_pftmp
+fi
+
+;;
+esac
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: find_new_lp_name() find next unused printer name for PSPORT-#    -#
+find_new_lp_name() {
+target_file=/JDIS/PROG/CMN/PSPORT
+incr=1
+max=53
+until [ $incr -eq $max ]
+ do
+ case $incr in
+  [1-9]    )  name_last=`echo $incr|tr "[1-9]" "[A-I]"`
+              quer_lp_name=P$name_last ;;
+  [1][0-9] )  name_last=`echo $incr|cut -c2|tr "[0-9]" "[J-S]"`
+              quer_lp_name=P$name_last ;;
+  [2][0-6] )  name_last=`echo $incr|cut -c2|tr "[0-6]" "[T-Z]"`
+              quer_lp_name=P$name_last ;;
+  [2][7-9] )  name_last=`echo $incr|cut -c2|tr "[7-9]" "[A-C]"`
+              quer_lp_name=Q$name_last ;;
+  [3][0-9] )  name_last=`echo $incr|cut -c2|tr "[0-9]" "[D-M]"`
+              quer_lp_name=Q$name_last ;;
+  [4][0-9] )  name_last=`echo $incr|cut -c2|tr "[0-9]" "[N-W]"`
+              quer_lp_name=Q$name_last ;;
+  [5][0-2] )  name_last=`echo $incr|cut -c2|tr "[0-2]" "[X-Z]"`
+              quer_lp_name=Q$name_last ;;
+ esac
+ in_PSPORT=`cat $target_file|grep $quer_lp_name`
+ in_lpstat=`lpstat -s|grep "lp$quer_lp_name"`
+ if [ "$in_PSPORT" -o "$in_lpstat" ]
+  then
+   incr=`expr $incr + 1`
+  else
+   incr=$max
+ fi
+done
+newlp_id=$quer_lp_name
+newlp="lp$quer_lp_name"
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: show_status() --------------------------------------------#
+show_status() {
+:
+# - make report of system changes for this date and time and screen print
+# recommendation.               (& variables)
+}
+
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: no_tidevice() --------------------------------------------#
+no_tidevice() {
+if [ "$no_alpdev" -eq 1 ]
+ then
+echo '\007\007
+ ERROR: alp device $alp_dev does not exist in this system and cannot be
+        created.  This procedure will terminate after this screen. Please
+        consult Technical Support for assistance.
+
+ Press <enter> to continue ... \c'
+read ans
+elif [ "$no_ttydev" -eq 1 ]
+ then
+echo '\007\007
+ ERROR: tty device $tty_id does not exist in this system and cannot be
+        created.  This procedure will terminate after this screen. Please
+        consult Technical Support for assistance.
+
+ Press <enter> to continue ... \c'
+read ans
+fi
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: clear_screen() clears screen based upon platform type ----#
+clear_screen() {
+case $OS in
+        HP)     clear           ;;
+        TI)     tput clear      ;;
+esac
+}
+#-------------------------------------------------------------------------#
+
+#----PROCEDURE: leave_prg() ----------------------------------------------#
+leave_prg() {
+clear_screen
+echo "\007
+Exiting program ... user request\n"
+sleep 2
+exit 0
+}
+#-------------------------------------------------------------------------#
+
+####  PROGRAM: SETUPC  ####################################################
+#                                                                         #
+
+## begin procedures ##
+
+check_plat
+remove_oldport
+get_port
+get_termtype
+find_new_lp_name
+ck_port_use
+check_port
+make_device
+ck_majnum
+display_entries
+do_setup
+
+#show_status
+
+#                                                                         #
+###########################################################################

@@ -1,0 +1,27 @@
+# cshf  lex -- lexical analysis program generator 
+#	@(#)LEX.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^LEX -- GENERATES PROGRAMS FOR SIMPLE LEXICAL TASKS"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^Print Summary:" nflag yesno y\
+ 	"^Write Results to Standard Output:" tflag yesno n\
+ 	"^Summary of Statistics:" vflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+
+if ($vflag == "y") set opt = v$opt
+if ($tflag == "y") set opt = t$opt
+if ($nflag == "n") set opt = n$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== LEX COMMAND EXECUTING ==="
+echo lex $opt $_input_file
+lex $opt $_input_file 
+
+#clean up time
+end:
+unset *flag *opt action

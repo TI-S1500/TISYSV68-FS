@@ -1,0 +1,7 @@
+# List of files to be kept open during normal system operation.
+# See manual page on update in the User Reference Manual.
+/bin
+/lib
+/usr
+/usr/bin
+/usr/lib

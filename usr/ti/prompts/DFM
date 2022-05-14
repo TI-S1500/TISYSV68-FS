@@ -1,0 +1,15 @@
+#  cshf	dfm -- directory/file manager 
+#	@(#)DFM.sh	1.1  87/03/09
+#
+onintr end
+set _input_dir = `pwd`
+
+prompt "^INVOKES THE DIRECTORY AND FILE MANAGER"\
+       "^*Directory Path Name:" _input_dir acnm $_input_dir\
+       "^#$*"
+
+if (! $abort) then
+echo "=== DFM COMMAND EXECUTING ==="
+  dfm $_input_dir
+endif
+end:

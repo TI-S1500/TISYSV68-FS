@@ -1,0 +1,53 @@
+# cshf   csh - C Shell Command Interpreter 
+#	@(#)CSH.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^CSH -- CALLS THE BERKELEY C SHELL COMMAND INTERPRETER"\
+	"^*Input File Name:" _input_file acnm $_input_file\
+	"^Accept Default Options:" options yesno y\
+	"^#$*"
+
+if ($abort) goto end
+set opt = ""
+if ($options == "n") then
+	prompt "^CSH -- OPTIONS"\
+		"^Exit on Abnormal Termination:" eflag yesno n\
+		"^Search/Execute .cshrc:" fflag yesno n\
+		"^Parse Commands:" nflag yesno n\
+		"^Read/Execute One Command:" tflag yesno n\
+		"^Set Verbose Variable:" vflag yesno n\
+		"^Set Echo Variable:" xflag yesno n\
+		"^Set Echo Before .cshrc:" Xflag yesno n\
+		"^Set Verbose Before .cshrc:" Vflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	# set all other flags - non default options
+	if ($options == "n") then
+		if ($eflag == "y") set opt = e$opt  
+		if ($fflag == "n") set opt = f$opt  
+		if ($nflag == "y") set opt = n$opt  
+		if ($tflag == "y") set opt = t$opt  
+		if ($vflag == "y") set opt = v$opt  
+		if ($xflag == "y") set opt = x$opt  
+		if ($Vflag == "y") set opt = V$opt  
+		if ($Xflag == "y") set opt = X$opt  
+	endif
+endif
+
+if ($abort) goto end
+# set flags for interactive mode or file read
+if ($_input_file == "") then
+	set opt = i$opt
+else
+	set opt = s$opt
+endif
+if (opt != "") set opt = -$opt
+
+echo "=== CSH COMMAND EXECUTING ==="
+echo csh $opt $_input_file
+csh $opt $_input_file
+
+end:
+unset *flag options opt

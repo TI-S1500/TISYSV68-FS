@@ -1,0 +1,242 @@
+     ********************************************************
+          GOHOME RELEASING POLL        20:42:58 06/26/98 DLR001
+     ********************************************************
+---------------------------------------------------------------------------
+          POLL COMMAND EXECUTED AT     20:42:58 06/26/98 DLR001
+               GDA = 000
+          POLL modemset STARTED        20:42:59 06/26/98 DLR001
+          POLL modemset ENDED          20:43:15 06/26/98 DLR001
+          -----------------------------------------------------
+          POLL DATA COLLECTION STARTED 20:43:16 06/26/98 DLR001
+          POLLSET  STARTED             20:43:16 06/26/98 DLR001
+20431800***   POLL  PROCESSING MESSAGES FOR - 980626  ***
+          POLLSET  ENDED               20:43:18 06/26/98 DLR001
+          POLLTRN  STARTED             20:43:18 06/26/98 DLR001
+20432000 POLLTRN Started.                                                       
+20432000 POLLTRN Complete.                                                      
+          POLLTRN  ENDED               20:43:20 06/26/98 DLR001
+          MIPOUT   STARTED             20:43:23 06/26/98 DLR001
+          MIPOUT   ENDED               20:43:26 06/26/98 DLR001
+          ESISOUT  STARTED             20:43:26 06/26/98 DLR001
+          ESISOUT  ENDED               20:43:29 06/26/98 DLR001
+          SPGPOUT  STARTED             20:43:29 06/26/98 DLR001
+          SPGPOUT  ENDED               20:43:29 06/26/98 DLR001
+          CGPOUT   STARTED             20:43:29 06/26/98 DLR001
+          CGPOUT   ENDED               20:43:31 06/26/98 DLR001
+          POLL DATA COLLECTION ENDED   20:43:31 06/26/98 DLR001
+          -----------------------------------------------------
+          POLLOUT  STARTED             20:43:31 06/26/98 DLR001
+20433300 POLLOUT Started.
+20433300 POLLOUT Unit,Device,Loc,Contract = 08000709
+20433300 POLLOUT Transaction Error Count =  000000
+20433300 POLLOUT Complete.
+          POLLOUT  ENDED               20:43:35 06/26/98 DLR001
+          BLAST    SETUP STARTED       20:43:35 06/26/98 DLR001
+          BLAST    SETUP COMPLETE      20:43:36 06/26/98 DLR001
+          ------------------------------------------------
+          DPOLL2   STARTED             20:43:36 06/26/98 DLR001
+06/26/98 20:43:36 Executing DPOLLINT.EXT
+###############################################
+06/26/98 20:43:36 DPOLL2 STARTING
+06/26/98 20:43:36 Creating the DPOLLSYN file
+06/26/98 20:43:36 Creating the DPOLLRTN.EXT file
+06/26/98 20:43:37 Callnumber = 1 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+06/26/98 20:43:37 Deleting the DPOLL.LOG file
+===
+06/26/98 20:43:37 Create the DEALERID.DAT file:
+DLRNUM=0709
+UNITCODE=08
+DLRANSB=08000709
+TYPE=JDISPOLL
+VER=97-2GH
+DATE=06/26/98
+TIME=20:43:37
+PLATFORM=TI
+===
+06/26/98 20:43:37 Create the EFF1.EFF file:
+DEALERID.DAT/T=TXT
+DEALER.EFF/T=TXT
+===
+06/26/98 20:43:37 Create the EFF2.EFF file:
+;BEGINNING FILE TRANSFER FROM DEALER
+/JDIS/PROG/COMM/DLR2JD.DAT/T=TXT DLR2JD.DAT/T=TXT
+;DLRPOLL COMPLETE
+===
+06/26/98 20:43:38 Delete the HOSTID.DAT & HOST.EFF files
+06/26/98 20:43:38 Status of file to be transmitted to John Deere:
+-rwxrwxrwx   1 DLR001   group          0 Jun 26 20:43 /JDIS/PROG/COMM/DLR2JD.DAT
+06/26/98 20:43:39 Starting BLAST in silent mode
+===============================================================
+===============================================================
+===============================================================
+06/26/98 20:43:44 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/26/98 20:43:44 * LOG * Calling dpoll now
+06/26/98 20:43:44 * LOG * ******************************************************
+06/26/98 20:43:44 * LOG * GOPOLL.scr starting
+06/26/98 20:43:44 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/26/98 20:43:44 * LOG * @REC: !PASSWORD=08000709
+06/26/98 20:43:45 * LOG * TRPASSWD:  >>>08000709<<<
+06/26/98 20:43:45 * MNU * Online       * Connect
+06/26/98 20:43:50 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/27/98 00:20:16 * LOG * connect return status: 0
+06/27/98 00:20:16 * LOG * First eff starting
+06/27/98 00:20:16 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/27/98 00:20:18 * MNU * Online       * Filetransfer
+06/27/98 00:20:22 * LOG * ------------------------<< Entering BLAST Transfer Mode >>---------------------
+06/27/98 00:20:25 * LOG * ****  VMS BLAST II 8.4.2 on remote system [uov]  ****
+06/27/98 00:20:25 * MNU * FileTransfer * File
+06/27/98 00:20:25 * PRM * enter filename: TRPASSWD.DAT
+06/27/98 00:20:34 * LOG * Password validated ... continue
+06/27/98 00:20:34 * MNU * FileTransfer * File
+06/27/98 00:20:34 * PRM * enter filename: EFF1.EFF
+06/27/98 00:20:34 * LOG * HOSTID.DAT/OVW/T=TXT ... receive completed
+06/27/98 00:20:40 * LOG * 
+06/27/98 00:20:47 * LOG * DEALERID.DAT/T=TXT ... send completed
+06/27/98 00:20:52 * LOG * HOST.EFF/OVW/T=TXT ... receive completed
+06/27/98 00:20:56 * LOG * DEALER.EFF/T=TXT ... send completed
+06/27/98 00:20:56 * MNU * FileTransfer * <ESC>
+06/27/98 00:21:00 * LOG * ------------------------<< Exiting Transfer Mode >>----------------------------
+06/27/98 00:21:00 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/27/98 00:21:00 * LOG * First eff complete
+06/27/98 00:21:00 * LOG * The host id file was received ok
+06/27/98 00:21:00 * LOG * <*** start of file: HOSTID.DAT ***>
+06/27/98 00:21:00 * LOG * JDTYPE=NPOLL
+06/27/98 00:21:00 * LOG * JDVER=V021
+06/27/98 00:21:00 * LOG * JDDATE=1998-06-27
+06/27/98 00:21:00 * LOG * JDTIME=00:09:51.01
+06/27/98 00:21:00 * LOG * JDDLRN=07090709  JDDIR=08X0.080007090709
+06/27/98 00:21:00 * LOG * JDANSB=08000709
+06/27/98 00:21:00 * LOG * JDNODE=BLASTV JDLINE=BL_17 PDP=POLLV
+06/27/98 00:21:00 * LOG * TRMTYP=L 
+06/27/98 00:21:00 * LOG * <*** end of file ***>
+06/27/98 00:21:00 * LOG * Starting error-free file transfer
+06/27/98 00:21:00 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/27/98 00:21:02 * MNU * Online       * Filetransfer
+06/27/98 00:21:04 * LOG * ------------------------<< Entering BLAST Transfer Mode >>---------------------
+06/27/98 00:21:09 * LOG * ****  VMS BLAST II 8.4.2 on remote system [uov]  ****
+06/27/98 00:21:09 * MNU * FileTransfer * File
+06/27/98 00:21:09 * PRM * enter filename: TRPASSWD.DAT
+06/27/98 00:21:12 * LOG * BEGINNING FILE TRANSFER FROM JOHN DEERE
+06/27/98 00:21:20 * LOG * Password validated ... continue
+06/27/98 00:21:20 * MNU * FileTransfer * File
+06/27/98 00:21:20 * PRM * enter filename: EFF2.EFF
+06/27/98 00:21:23 * LOG * BEGINNING FILE TRANSFER FROM DEALER
+06/27/98 00:21:29 * LOG * /JDIS/PROG/COMM/DLR2JD.DAT/T=TXT DLR2JD.DAT/T=TXT ... send completed
+06/27/98 00:21:29 * LOG * DLRPOLL COMPLETE
+06/27/98 00:21:29 * MNU * FileTransfer * <ESC>
+06/27/98 00:24:50 * LOG * JD2DLR.DAT/T=TXT/OVW ... receive completed
+06/27/98 00:24:51 * LOG * HOST COMPLETE 
+06/27/98 00:24:51 * LOG * BEGINNING PATCHES
+06/27/98 00:24:52 * LOG * *HDR* 23JUN98 08-00-0709-0709   08-00-0709-0709-122P 1JSDF0122 00143360 01
+06/27/98 00:26:44 * LOG * /JDIS/PROG/COMM/JSDF0122.DAT ... receive completed
+06/27/98 00:26:48 * LOG * PATCHES COMPLETE
+06/27/98 00:26:48 * LOG * POLL COMPLETE 
+06/27/98 00:26:50 * LOG * command not recognized: PASSWORD=08000709
+06/27/98 00:26:56 * LOG * ------------------------<< Exiting Transfer Mode >>----------------------------
+06/27/98 00:26:56 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/27/98 00:26:56 * LOG * File transfer is complete
+06/27/98 00:26:56 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/27/98 00:26:56 * MNU * Online       * Disconnect
+06/27/98 00:27:07 * TOP * BLAST Ver 8.4.1 ** System Name: DPOLL **
+06/27/98 00:27:07 * LOG * modem disconnect complete
+06/27/98 00:27:07 * LOG * Exiting blast
+06/27/98 00:27:07 * LOG * Exit code = 0
+===============================================================
+===============================================================
+===============================================================
+06/27/98 00:27:09 BLAST has ended
+06/27/98 00:27:09 Status of file that was received from John Deere:
+-rw-r--r--   1 DLR001   group     447009 Jun 27  1998 JD2DLR.DAT
+06/27/98 00:27:09 Dump of the DPOLLSYN file:
+S AS BLASTRC 999
+S AS BLASTRC 0
+*****endfile******
+06/27/98 00:27:10 The BLAST return code = 0
+06/27/98 00:27:10 Executing BLSTPARS
+****************************************************************
+blastpasre starting: Sat Jun 27 00:27:10 1998
+blastparse args: :/JDIS/PROG/COMM/BLSTPARS:DPOLL.LOG:DEALER.EFF:DEALER.NEW:HOST.EFF:SDF.FIL:BPARSE.FIL
+MATCH: 06/27/98 00:21:29 * LOG * /JDIS/PROG/COMM/DLR2JD.DAT/T=TXT DLR2JD.DAT/T=TXT ... send completed
+
+MATCH: 06/27/98 00:24:50 * LOG * JD2DLR.DAT/T=TXT/OVW ... receive completed
+
+The new eff-file:
+;BEGINNING FILE TRANSFER FROM DEALER
+;DLRPOLL COMPLETE
+JDSDF PROCESSING STARTING
+BEGINNING PATCHES found in host.eff file
+Following SDF names found in host.eff file:
+     >/JDIS/PROG/COMM/JSDF0122.DAT<
+Starting scan of log file
+BEGINNING PATCHES found in log file
+JDSDF match found for >/JDIS/PROG/COMM/JSDF0122.DAT<
+Creating the SDF output file.
+  SDF file: >/JDIS/PROG/COMM/JSDF0122.DAT<
+JDSDF PROCESSING COMPLETE
+blastparse: return code = 0
+sdf:        return code = 0
+06/27/98 00:27:11 The BLSTPARS return code = 0
+06/27/98 00:27:11 DPOLL2 exiting: Poll return code = 0
+                            JSDF return code = 0
+          DPOLL2   ENDED               00:27:11 06/27/98 DLR001
+          ------------------------------------------------
+          NUMBER OF CALLS MADE    CALL COUNT: 1
+          BLAST FILE TRANSFER    RETURN CODE: 0
+          TRANSMIT (DLR TO HOST) RETURN CODE: 0
+          RECEIVE  (HOST TO DLR) RETURN CODE: 0
+          JDSDF (JDIS SOFTWARE)  RETURN CODE: 0
+          ------------------------------------------------
+          ROLLING  TRANSMIT FILE       00:27:13 06/27/98 DLR001
+          ------------------------------------------------
+          AFTRPOLL STARTED             00:27:14 06/27/98 DLR001
+          AFTRPOLL POLLIN   STARTED    00:27:15 06/27/98 DLR001
+00271600POLLIN Processing Started
+00273800 PINMI  PRTS RECEIPTS RECDS RECEIVED=     4
+00273800 PINMS  SERVICE/ESIS  RECDS RECEIVED=     0
+00273800 PINCG  WHOLE GOODS   RECDS RECEIVED=     0
+00273900 PINPRC PRICE UPDATE  RECDS RECEIVED=  1971
+00273900 PINRTI RTN INDICATOR RECDS RECEIVED=   509
+00273900 PINPKG PTS PACKAGING RECDS RECEIVED=    21
+00273900 PINCOM PTS COMMODITY RECDS RECEIVED=     9
+00273900 PINSUB SUBSTITUTION  RECDS RECEIVED=   530
+00273900 PINPCL PARTS RECLASS RECDS RECEIVED=   680
+00273900 PINSRC PARTS SOURCE  RECDS RECEIVED=     0
+00273900 PINSKU STOCK KEEPING UNITS RECEIVED=     0
+00273900 PINSPG SERVICE PRICING RECDS RECEIVED    0
+00273900 PINCO  MIM UPDATE    RECDS RECEIVED=     0
+00273900 PINBSP BUSINESS PLAN RECDS RECEIVED=     0
+00273900 PINFIS FIS REPORT    RECDS RECEIVED=     0
+00273900 PINRPT NUMBER OF PRINT REPORTS SENT=     2
+00273900 PRINT  UNDISTRIBUTED RECDS RECEIVED=    16  (COUNT INCLUDES HEADERS)
+00273900POLLIN Processing Completed
+          AFTRPOLL POLLIN   ENDED      00:27:39 06/27/98 DLR001
+          AFTRPOLL POLLSET  STARTED    00:27:39 06/27/98 DLR001
+00274000***   POLL  PROCESSING MESSAGES FOR - 980627  ***
+          AFTRPOLL POLLSET  ENDED      00:27:40 06/27/98 DLR001
+          AFTRPOLL POLLSPLT STARTED    00:27:41 06/27/98 DLR001
+          AFTRPOLL POLLSPLT ENDED      00:27:46 06/27/98 DLR001
+          AFTRPOLL POLLRCPT STARTED    00:27:46 06/27/98 DLR001
+          AFTRPOLL POLLRCPT ENDED      00:30:18 06/27/98 DLR001
+          AFTRPOLL ENDED               00:30:18 06/27/98 DLR001
+          ------------------------------------------------
+          DPOLLCTL Comparing POLLCTL   00:30:18 06/27/98 DLR001
+          ------------------------------------------------
+          ROLLING  INPUT.POL FILE      00:30:21 06/27/98 DLR001
+          ------------------------------------------------
+          PRTPOL   STARTED             00:30:23 06/27/98 DLR001
+          PRINTING POLLIN REPORT       00:30:24 06/27/98 DLR001
+          PRINTING CG Notifications    00:30:24 06/27/98 DLR001
+          PRINTING PARTS RECEIPTS      00:30:26 06/27/98 DLR001
+          REPORTS RECEIVED FROM DEERE  00:30:26 06/27/98 DLR001
+          PRTPOL   ENDED               00:30:26 06/27/98 DLR001
+          ------------------------------------------------
+          ------------------------------------------------
+          SOFTWARE PATCH PROCESSING
+          JDSDFUNL STARTED             00:30:26 06/27/98 DLR001
+                    JSDF0122.DAT UNLOAD SUCCESSFUL
+          JDSDFUNL ENDED               00:30:32 06/27/98 DLR001
+          ------------------------------------------------
+          ROLLING  LOGFIL GENERATIONS  00:30:32 06/27/98 DLR001
+          ------------------------------------------------
+          POLL processing ENDED        00:30:34 06/27/98 DLR001
+----------------------------------------------------------------------------

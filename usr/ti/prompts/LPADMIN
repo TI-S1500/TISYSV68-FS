@@ -1,0 +1,235 @@
+# cshf  lpadmin -- configures the LP spooling system 
+#	@(#)LPADMIN.sh	1.9 90/12/06
+#
+onintr end
+
+@ count = 0
+set DONE = "FALSE"
+while ($DONE != "TRUE")
+	prompt "^LPADMIN -- CONFIGURES THE LP SPOOLING SYSTEM"\
+		"^THIS COMMAND FOR USE ONLY BY LP ADMINISTRATORS"\
+		"^SELECT ONLY ONE OF THE FOLLOWING:"\
+		"^Add/Update Printer:" addupdflag yesno n\
+		"^Update Printwheel Alert:" pwalert yesno n\
+		"^Remove Printer or Class:" removeflag yesno n\
+		"^Remove Printer from a Class:" noclass yesno n\
+		"^Set System Default Destination:" defaultflag yesno n\
+		"^Add Network Printer:" netprint yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($addupdflag == 'y') @ count++
+	if ($updateflag == 'y') @ count++
+	if ($removeflag == 'y') @ count++
+	if ($noclass == 'y') @ count++
+	if ($pwalert == 'y') @ count++
+	if ($defaultflag == 'y') @ count++
+	if ($netprint == 'y' ) @ count++
+	if ($count >= 2) then
+		@ count = 0
+	else
+		set DONE = TRUE
+	endif
+end
+
+if ($abort) goto end
+
+# determine action -- only one action allowed
+if ($addupdflag == 'y') then
+	set action = u
+else
+	if ($removeflag == 'y') then
+		set action = r
+	else
+		if ($noclass == 'y') then
+			set action = c
+		else
+			if ($defaultflag == 'y') then
+				set action = d
+			else
+				if ($pwalert == "y") then
+					set action = p
+				else
+					if ($netprint == "y") then
+						set action = n
+					endif
+				endif
+			endif
+		endif
+	endif
+endif
+
+switch ($action)
+case u:
+	prompt "^LPADMIN -- OPTIONS FOR CREATING/UPDATING A PRINTER"\
+		"^Printer Name:" printername acnm $LPDEST\
+		"^*Class Name:" classname string\
+		"^*Description:" descr string\
+		"^*Fault Recovery(c,b,w):" faultrec "element(c,c=continue,b,b=beginning,w,w=wait)" b\
+		"^*Allowed Forms:" allowforms string\
+		"^*Denied Forms:" denyforms string\
+		"^*Hardwire or Login Terminal(h,l):" hlflag "element(h,H=h,l,L=l)"  h\
+		"^*Valid Content Type List:" contentlist string\
+		"^*Mount Form:" mountform string\
+		"^*Mount Printwheel/Font:" mountpw string\
+		"^Use Standard Interface:" standmodel yesno y\
+		"^Specify Output Options:" outputopts yesno y\
+		"^*Allow Printwheel/Alias List:" allowpw string\
+		"^Printer Type:" prtype string unknown\
+		"^*Allowed Users:" allowusers string\
+		"^*Denied Users:" denyusers string\
+		"^*Fault Alert Type:" alerttype string mail\
+		"^*Pathname of Device:" device acnm\
+		"^#$*"
+
+	if ($abort) goto end
+	if ("$mountform" != "") then
+    	prompt "^LPADMIN -- SPECIFY FORM ALIGNMENT PATTERN DISPOSITION"\
+			    "^Print Alignment Pattern:" align yesno y\
+			    "^Filebreak On Alignment:" alignbrk yesno y\
+				"^#$*"
+		if ($abort) goto end
+	endif
+
+	set options = "-p $printername"
+	if ("$classname" != "") 	set options = "$options -c $classname"
+	if ("$descr" != "") 	 	set options = "$options -D '$descr'"
+	if ("$faultrec" != "") 	 	set options = "$options -F $faultrec"
+	if ("$allowforms" != "") 	set options = "$options -f 'allow:$allowforms'"
+	if ("$denyforms" != "") 	set options = "$options -f 'deny:$denyforms'"
+	if ("$hlflag" == "h") 	 	set options = "$options -h"
+	if ("$hlflag" == "l") 	 	set options = "$options -l"
+	if ("$contentlist" == "l") 	set options = "$options -I '$contentlist'"
+	if ("$mountform" != "") 	set options = "$options -M -f $mountform"
+	if ("$align" == "y") 	 	set options = "$options -a"
+	if ("$alignbrk" == "y") 	set options = "$options -o filebreak"
+	if ("$mountpw" != "")		set options = "$options -M -S $mountpw"
+	if ("$standmodel" == "n")  then
+		@ count = 0
+		set DONE = "FALSE"
+		while ($DONE != "TRUE") 
+	    	prompt "^LPADMIN -- SELECT INTERFACE PROGRAM FOR NEW PRINTER"\
+			    "^SELECT ONLY ONE OF THE FOLLOWING:"\
+				"^*Interface Name:" iname string\
+			    "^*Copy Interface of Existing Printer:" eflag string \
+			    "^*Pathname of New Interface Program:" iflag string\
+				"^#$*"
+
+			if ($abort) goto end
+			if ("$iname" != "") @ count++
+			if ("$iflag" != "") @ count++
+			if ("$eflag" != "") @ count++
+			if ($count >= 2) then
+				@ count = 0
+			else
+				set DONE = TRUE
+			endif
+		end
+
+		if ($iname != "") then
+			set options = "$options -m $iname"
+		else
+			if ($iflag != "") then
+				set options = "$options -i $iflag"
+			else
+				if ($eflag != "") then
+					set options = "$options -e $eflag"
+				endif
+			endif
+		endif
+	endif
+
+	if ($outputopts == "y") then
+	   prompt "^LP -- LINE PRINTER OUTPUT OPTIONS"\
+		"^Require Banner Page:" bpage yesno y\
+		"^*Lines Per Inch:" lpi string\
+		"^*Characters Per Inch:" cpi string\
+		"^*Page Length:" pagelen string\
+		"^*Page Width:" pagewid string\
+		"^*stty Options:" sttyopts string\
+		"^#$*"
+		if ($abort) goto end
+	endif
+	if ($bpage == "n") 	 set options = "$options -o nobanner"
+	if ($bpage == "y") 	 set options = "$options -o banner"
+	if ($lpi != "") 	 set options = "$options -o lpi=$lpi"
+	if ($cpi != "") 	 set options = "$options -o cpi=$cpi"
+	if ($pagelen != "") 	 set options = "$options -o length=$pagelen"
+	if ($pagewid != "") 	 set options = "$options -o width=$pagewid"
+	if ("$sttyopts" != "") set options = "$options -o "\""stty='$sttyopts'"\"
+
+	if ($allowpw != "") 	 set options = "$options -S $allowpw"
+	if ($prtype != "") 	 set options = "$options -T $prtype"
+	if ("$allowusers" != "") set options = "$options -u 'allow:$allowusers'"
+	if ("$denyusers" != "")	 set options = "$options -u 'deny:$denyusers'"
+	if ($device != "") 	 set options = "$options -v $device"
+	if ($alerttype != "") 	 set options = "$options -A $alerttype"
+	breaksw
+
+case r:
+	prompt "^LPADMIN -- REMOVE PRINTER OR CLASS"\
+		"^Printer or Class Name:" dest string\
+		"^#$*"
+	if ($abort) goto end
+	set options = "-x $dest"
+	breaksw
+
+case c:
+	prompt "^LPADMIN -- REMOVE PRINTER FROM A CLASS"\
+		"^Printer Name:" printername acnm $LPDEST\
+		"^Class Name:" classname string\
+		"^#$*"
+	if ($abort) goto end
+	set options = "-p $printername -r $classname"
+	breaksw
+
+case d:
+	prompt "^LPADMIN -- SET SYSTEM DEFAULT DESTINATION"\
+		"^*Printer or Class Name:" default string\
+		"^#$*"
+	if ($abort) goto end
+	set options = "-d $default"
+	breaksw
+
+case p:
+	prompt "^LPADMIN -- SPECIFY PRINTWHEEL ALERT MODE"\
+		"^Printwheel/Charset Name:" wheelname string\
+		"^Alert Type/Command:" alerttype string list\
+		"^#$*"
+	if ($abort) goto end
+	if ($alerttype == "list") then
+		set options = "-S $wheelname -A $alerttype"
+	else
+		prompt "^LPADMIN -- SPECIFY PRINTWHEEL ALERT PARAMETERS"\
+			"^Repeat After (min):" retrymin integer 0\
+			"^High Water Mark:" queuepoint integer 0\
+			"^#$*"
+		if ($abort) goto end
+		set options = "-S $wheelname -A $alerttype -W $retrymin -Q $queuepoint"
+	endif
+	breaksw
+
+case n:
+    	prompt "^LPADMIN -- ADD NETWORK PRINTER"\
+			   "^Local printer name:" ln string\
+			   "^Host:" host string\
+			   "^*Remote printer name:" dest string\
+			   "^Is host running TI System V?" sysv yesno y\
+			   "^#$*"
+		if ($abort) goto end
+
+		if ($dest != "")	set dest = "\!${dest}"
+
+		set options = "-p ${ln} -s '${host}${dest}'"
+		if ($sysv == 'n') set options = "$options -b"
+	breaksw
+
+endsw
+
+
+echo "=== LPADMIN COMMAND EXECUTING ==="
+
+echo /usr/lib/lpadmin $options
+echo /usr/lib/lpadmin $options | /bin/sh -
+
+end:

@@ -1,0 +1,18 @@
+# cshf  chgrp -- change the group ownership of a file  
+#	@(#)CHGRP.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^CHGRP -- CHANGES GROUP OWNERSHIP"\
+       "^File Name(s):" _input_file macnm "$_input_file"\
+       "^New Group:" group string\
+	"^#$*"
+
+if ($abort) goto end
+
+echo "=== CHGRP COMMAND EXECUTING ==="
+echo chgrp $group $_input_file
+chgrp $group $_input_file
+ 
+end: 
+unset group 

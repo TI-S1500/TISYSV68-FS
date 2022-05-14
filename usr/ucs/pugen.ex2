@@ -1,0 +1,31 @@
+############################
+# trace information        #
+############################
+trace_file=/tmp/trace
+#trace_host=on
+#trace_device=on
+###############################
+# node id information         #
+###############################
+nodeid=acct
+#####################################
+# pu information - salt lake city   #
+#####################################
+puname=cslcac
+sdlc_devname=/dev/ccb01/sdlc0	
+sdlc_pollid=c1
+dial=/usr/ucs/sdlc_dial,/dev/ccb01/dial0,/usr/ucs/dial_slcity
+xid=01712345
+connect=originate
+############################
+# lu information           #
+############################
+lu=2	lutype=vdt
+lu=3	lutype=prt
+lu=4	lutype=rje
+#########################
+# device information    #
+#########################
+userid=30001   device_type=vdt	device_lu=2  # use with sl city host
+userid=30002   device_type=prt	device_lu=3  # sl city host printer
+userid=30003   device_type=rje	device_lu=4  # sna3770

@@ -1,0 +1,50 @@
+:
+#------------------------------------------------------------------------------
+# /usr/bin/rfmt_PSPORT.r971  - reformats PSPORT file from the old format with
+#                       S AS DIALTERM statements into the new format that also
+#     11/19/'96         lists attached printer names.  It reads the lpstat -s
+#    Matt Barkau        output to find the existing attached printer name
+#                       and puts that into field 2 of the new format.  The old
+#                       file is backed up as PSPORT.old_bk (same directory).
+#                   Here's an example line:
+#                   old format:  S AS DIALTERM1 92
+#                   new format:  92      PA
+#                       This script will be run from release 97-1.
+#                       Run this script from the bourne shell "sh".
+#------------------------------------------------------------------------------
+
+cd /JDIS/PROG/CMN
+[ ! -f PSPORT ] && exit 0
+if grep "S AS DIALTERM" PSPORT > /dev/null
+ then
+  continue
+ else
+  echo "\n\tPSPORT is not old format.  Exiting rfmt_PSPORT."
+  sleep 2
+  exit 1
+fi
+
+echo "\n\tReformatting PSPORT file\c"
+cp PSPORT PSPORT.old_bk
+echo "\nThis is a copy of the old PSPORT file made by release 97-1's
+invocation of rfmt_PSPORT.  Archived for reference only." >> PSPORT.old_bk
+rm -f PSPORT.lp 2>/dev/null
+rm -f PSPORT.trunc 2>/dev/null
+touch PSPORT.lp
+touch PSPORT.trunc
+awk 'NF==4 {print $4}' PSPORT > PSPORT.trunc
+
+line_num=1
+until [ `wc -l<PSPORT.lp` -eq `wc -l<PSPORT.trunc` ]
+ do
+  echo ".\c"
+  alp_id=alp`sed -n "$line_num"p PSPORT.trunc`
+  lp_num=`lpstat -s|grep $alp_id|awk '{print substr($3,3,2)}'`
+  [ -z "$lp_num" ] && lp_num=" "
+  echo $lp_num >> PSPORT.lp
+  line_num=`expr $line_num + 1`
+ done
+paste PSPORT.trunc PSPORT.lp > PSPORT
+rm -f PSPORT.lp
+rm -f PSPORT.trunc
+echo

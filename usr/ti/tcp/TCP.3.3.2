@@ -1,0 +1,13 @@
+#@(#)TCP.3.3.2	1.1 93/01/25 Texas Instruments TCP/IP System V
+#
+#	This file "patches" the version number for
+#	TCP's installtcp script, which sources this file
+#	if installed in /usr/ti/tcp/TCP.`uname -v`
+#	 If NEWINSTALLTCP is set it should be an exit code
+#       and this script replaces the installtcp script, else
+#	this script should just set the version of READHISTVER
+#
+#	06-22-92 : 04 - Hardcoded verison in installtcp script
+#	06-22-92 : 05 - Add bootpd prompt, remove forceread for aliases file
+READHISTVER=05
+uneed="3.3.2"

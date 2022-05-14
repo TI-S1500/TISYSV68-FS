@@ -1,0 +1,18 @@
+HASUPSPORT(3T)					   HASUPSPORT(3T)
+
+NAME
+     hasupsport - Determines the type of UPS hardware available
+
+SYNOPSIS
+     int hasupsport()
+
+DESCRIPTION
+     Returns a true if the system has a dedicated UPS interface
+     port; otherwise, returns false. The program must be linked
+     with /usr/lib/libups.a.
+
+RETURN VALUE
+     hasupsport returns -1 if an error occurred while accessing
+     the UPS device driver /dev/ups.
+
+

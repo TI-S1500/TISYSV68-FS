@@ -1,0 +1,9 @@
+	mlc - System Command Master Menu
+		@(#)mlc.sh	1.1 87/03/09
+
+	This menu lists UNIX tools which have been grouped in functional 
+	   categories.  The category titles represent the most commonly 
+	   performed activities of system users.  Many users will prefer   
+	   to create personal menus that list the commands they use most
+	   often.
+

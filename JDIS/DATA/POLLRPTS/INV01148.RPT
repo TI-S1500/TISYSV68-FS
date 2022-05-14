@@ -1,0 +1,37 @@
+
+ PARTS INVOICE                                PAYABLE TO:             PAGE   1
+ DOCUMENT NUMBER: 255042                      DEERE & COMPANY
+ DOCUMENT DATE  : 28MAY1998                   P.O. BOX 855
+                                              MINNEAPOLIS, MN  55440-0855
+
+ SOLD TO:                                     SHIP TO:
+ MEYER IMPLEMENT, INC.                        MEYER IMPLEMENT, INC.
+ RT 2  806 HWY 63N                            806 HWY 63N
+ BALDWIN, WI  54002                           BALDWIN, WI  54002
+
+ ACCT NUMBER: 0709   DIV/TER: 14              SHIP FROM:
+                                              J.D. DISTRIB SERVICE CENTER
+ SHIP DATE: 28MAY1998                         ROCK ISLAND, IL  61201
+
+                         ORDER                ORDER  PGM     DEALER
+ PACKLIST NUMBER         NUMBER               TYPE   NUMBER  REFERENCE NUMBER
+ DS00D147048048          40118                MD             052198
+
+  PKL SHIP  PART         ORDER DESCRIPTION    SO TYP R      PRICE        TOTAL
+  SEQ  QTY  NUMBER       NUMBER                % GDS I       EACH       AMOUNT
+
+    1 1000  E925         40118 PACKAGING MATER   DSC NR      4.10C       41.00
+
+                                  PARTS TOTAL                            41.00
+
+                               SHIPPING CHARGE                            3.92
+                               SALES TAX                                  2.26
+                                  NET ITEM TOTAL                          6.18
+                                  INVOICE TOTAL                          47.18
+
+                               AMOUNTS SHOW IN USD.
+
+  DS000800015455
+
+
+ CODES: C   - PRICE PER 100      NR  - NOT RETURNABLE     DSC - SALES PROMOTION

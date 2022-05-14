@@ -1,0 +1,55 @@
+# cshf  who -- Provides information about users and system activity 
+#	@(#)WHO.sh	1.1  87/03/09
+#
+onintr end
+
+prompt  "^WHO -- PROVIDES INFORMATION ABOUT USERS AND SYSTEM ACTIVITY"\
+	"^Display Full Information:" uflag yesno y\
+	"^Quick Who:" qflag yesno n\
+	"^Select Advanced Options:" options yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($options == "y") then
+	prompt  "^WHO -- ADVANCED OPTIONS"\
+		"^*Output File Name:" _output_file acnm $_output_file\
+		"^Process /etc/utmp With All Options:" aflag yesno n\
+		"^Report Last Reboot:" bflag yesno n\
+		"^Display Expired Processes:" dflag yesno n\
+		"^Print Headers:" Hflag yesno n\
+		"^Report Lines Waiting to Login:" lflag yesno n\
+		"^Display Active Processes:" pflag yesno n\
+		"^Report Run-Level of Init Process:" rflag yesno n\
+		"^Display Name, Line, Time Fields:" sflag yesno y\
+		"^Report Last Change to System Clock:" tflag yesno n\
+		"^Print State of Terminal Line:" Tflag yesno n\
+		"^#$*"
+
+	if ($abort) goto end
+	if ($aflag == "y") set opt = a$opt
+	if ($bflag == "y") set opt = b$opt
+	if ($dflag == "y") set opt = d$opt
+	if ($Hflag == "y") set opt = H$opt
+	if ($lflag == "y") set opt = l$opt
+	if ($pflag == "y") set opt = p$opt
+	if ($rflag == "y") set opt = r$opt
+	if ($sflag == "y") set opt = s$opt
+	if ($tflag == "y") set opt = t$opt
+	if ($Tflag == "y") set opt = T$opt
+endif
+
+if ($uopt == "y") set opt = u$opt
+if ($qflag == "y") set opt = q$opt
+if ($opt != "") set opt = -$opt
+
+echo "=== WHO COMMAND EXECUTING ==="
+if ($_output_file == "") then
+	echo who $opt
+	who $opt
+else
+	echo who $opt ">"$_output_file
+	who $opt >$_output_file
+endif
+
+end:
+unset amioption *opt *flag

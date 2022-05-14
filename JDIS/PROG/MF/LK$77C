@@ -1,0 +1,22 @@
+
+JRNLPRT          08-11-90   STATION ALL       TRANSACTION EDIT REPORT AS ENTERED                                           PAGE    1
+ACCOUNT NO               DESCRIPTION             REFERENCE      CONTROL NO       DATE      STC   SM/SW  TECHNICIAN   AMOUNT     SJ
+
+
+
+
+   102-01-00       PR                                   2        1              8 08 90                                 .00     80
+   101-01-00       PR                                   2        1              8 08 90                                 .00     80
+   102-03-00       PR                                   2        1              8 08 90                                 .00     80
+   104-00-00       CURRENT                             24        05234010       8 11 90                              200.00     80
+   108-00-00       CURRENT                             24        05234010       8 11 90                              200.00     80
+   109-00-00       CURRENT                             24        05234010       8 11 90                              400.00-    80
+   329-00-21       CURRETN                                                      8 11 90            329                20.00     80
+   482-00-41       CURRETN                                                      8 11 90            329                20.00-    80
+
+
+ DEBIT  TRANSACTIONS =         6    TOTAL DEBIT  =         420.00
+
+CREDIT  TRANSACTIONS =         2    TOTAL CREDIT =         420.00-
+
+ TOTAL  TRANSACTIONS =         8    TOTAL        =            .00

@@ -1,0 +1,64 @@
+#	@(#)bcheckrc.sh	2.2
+
+# ***** This file has those commands necessary to check the file
+# system, date, and anything else that should be done before mounting
+# the file systems.
+
+# remove the powerfail indicator file. this is done here, so it
+# can be detected and the prompts skipped if auto startup is desired.
+# see the admin guide for more info.
+/bin/rm -f /.power_fail
+
+trap "" 2
+
+# **** Check date
+
+#while :
+#do
+#	echo "Is the date `date` correct? (y or n) \c"
+#	read reply
+#	if [ "$reply" = y ]
+#	then
+#		break
+#	else
+#		echo "Enter the correct date (MMDDhhmmYY):  \c"
+#		read reply
+#		date "$reply"
+#	fi
+#done
+
+# ***** Auto check, if necessary
+
+#
+# if pipe slice exists, do a "mkfs device blocks:inodes"
+#
+makepipe() {
+	dev=`grep /pipe\$ /etc/fstab | cut -d' ' -f1`
+	if [ -b "$dev" ]; then
+		bsize=`labelit $dev|head -1|cut -d, -f3,4 | cut -d' ' -f3,5 |sed 's/, /:/'`
+		echo "Creating pipe filesystem\n"
+		mkfs -e $dev $bsize 2>&1 > /dev/null
+		labelit -e $dev pipe TISysV 2>&1 > /dev/null
+	fi
+}
+
+#while :
+#do
+#	echo "Do you want to check the file systems? (y or n) \c"
+#	read reply
+#	case "$reply" in
+#		y ) ;;
+#
+#		n* ) 
+#			makepipe
+#			break;;
+#
+#		* ) echo "Invalid input. Try again."
+#			continue ;;
+#	esac
+	trap "echo Interrupt" 2
+	makepipe
+	/etc/fsck 
+	trap "" 2
+#	break
+#done

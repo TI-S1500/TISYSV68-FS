@@ -1,0 +1,30 @@
+:
+echo "\n"
+echo "Enter the input file name with fully qualified path: \c"
+read input_file
+echo " "
+echo "Enter the output file name with absolute path: \c"
+read output_file
+echo " "
+echo "Enter the number of lines on a page for this report (default 58): \c"
+read lines_per_page
+if [ "$lines_per_page" = "" ]
+then
+	lines_per_page=58
+fi 
+echo " "
+echo "Enter the page number to start the print: \c"
+read first_page
+echo " "
+echo "Enter the page number to stop the print: \c"
+read last_page
+echo " "
+if [ $first_page -gt 1 ]
+then
+	first_page=`expr $first_page - 1`
+	first_line=`expr $lines_per_page \* $first_page`
+else
+	first_line=0
+fi
+last_line=`expr $lines_per_page \* $last_page`
+awk 'NR>='$first_line' && NR<='$last_line'{print}' <${input_file} >$output_file

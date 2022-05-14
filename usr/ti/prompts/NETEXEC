@@ -1,0 +1,26 @@
+#cshf
+#	@(#)NETEXEC.sh	1.1 87/10/13
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1985.  ALL
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+#	ASSOCIATED DOCUMENTATION.
+# 
+onintr end
+prompt "^NETEXEC -- NETWORK BATCH EXECUTION "\
+       "^Remote Site Name:" nx_site string $nx_site\
+       "^Executable File Path Name:" xfile string $xfile\
+       "^*Listing File Path Name:" lfile string\
+       "^*Execution Parameters:" parm string\
+       "^#$*"
+
+if (! $abort) then
+  if ("$lfile" != "") then
+    netexec -l$lfile $nx_site $xfile $parm
+else
+    netexec $nx_site $xfile $parm
+endif
+  
+endif
+end:

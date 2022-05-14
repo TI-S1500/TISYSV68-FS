@@ -1,0 +1,29 @@
+:
+cd /JDIS/PROG/CMN
+
+CHECK="n"
+while (test "$CHECK" != "y" -a "$CHECK" != "Y")
+	do
+	echo '\nEnter the ASPEN menu header:'
+	read HEAD
+	echo "\n$HEAD\nIs this correct? (y/n):\c"
+	read CHECK
+	done
+
+CHECK="n"
+while (test "$CHECK" != "y" -a "$CHECK" != "Y")
+	do
+	echo '\nEnter the ASPEN activation key:'
+	read KEY
+	echo "\n$KEY\nIs this correct? (y/n):\c"
+	read CHECK
+	done
+
+cat > ASPENATH.EXT <</
+S AS MENUHEAD "$HEAD"
+S AS AUTHNO "$KEY"
+/
+
+library -r -m ASPENATH -l ASPENPRC.SYS -f ASPENATH.EXT
+
+echo '\nASPEN activation complete.'

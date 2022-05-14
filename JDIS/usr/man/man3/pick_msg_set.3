@@ -1,0 +1,52 @@
+PICK_MSG_SET(3T)				 PICK_MSG_SET(3T)
+
+NAME
+     pick_msg_set - Selects the directory where printm(3T) looks
+     for message texts
+
+SYNOPSIS
+     pick_msg_set(min, max, dir)
+
+     long min, max;
+     char *dir;
+
+DESCRIPTION
+   Function
+     The pick_msg_set routine selects the directory that contains
+     the message text files for messages with tag number in the
+     range min to max.
+
+   Parameters
+     dir  The name of the directory that contains the two
+	  subdirectories, ptext and stext.  The ptext
+	  subdirectory contains the problem description text. The
+	  stext subdirectory contains the solution description
+	  text.
+
+	  The pick_msg_set routine appends the /ptext/USA and the
+	  /stext/USA components to the specified directory passed
+	  by the user program.	The file name USA specifies
+	  English text.
+
+     min max
+	  The printm routine accesses the file indicated by the
+	  pick_msg_set call if the message text tag number is
+	  between the numbers min and max, inclusive.
+
+EXAMPLE
+     Assume that the following statement is executed before a
+     call to printm:
+
+	  pick_msg_set( 7000, 8000, "/usr/customer/msg" )
+
+     The printm routine retrieves the message texts from the file
+     /usr/customer/msg/ptext/USA and /usr/customer/msg/stext/USA
+     if the message tag number is between 7,000 and 8,000.
+
+     If the message tag number is 1,000,000 or greater, printm
+     accesses /ti/ptext/USA and /ti/stext/USA.
+
+SEE ALSO
+     mkmsg(1T), pick_log_file(3T), printm(3T).
+
+

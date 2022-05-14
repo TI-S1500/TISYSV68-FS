@@ -1,0 +1,73 @@
+#
+# COPYRIGHT (c) 1985 TEXAS INSTRUMENTS INCORPORATED.  ALL RIGHTS RESERVED.
+#
+# @(#)checkups	1.6 11/29/89
+#
+# checkups: executed during startup.
+#           checks to see if the last boot was from a powerfail
+#
+
+
+# when set to 0, will wait forever for user to hit return
+MIN_CHARGE_TIME=0
+
+#
+# if the powerfail file exists, then we have work to do
+#
+if [ -r /.power_fail ]
+then
+	# parse command line args
+	if [ "$#" -gt "0" ]
+	then
+		case $1 in
+	
+			# got a number
+			[0-9]|[0-9][0-9]|[0-9][0-9][0-9]) MIN_CHARGE_TIME=$1 ;;
+	
+			# got garbage. complain, but go on.
+			*) echo "\nusage: $0 [minutes]" ;;
+
+		esac
+	fi
+
+	# give a warning on the screen
+	# that things were wrong earlier
+
+	echo "\n\007*** Warning ***\007"
+	echo "\nThe System Went Down Due To"
+	cat /.power_fail
+	echo "\n"
+
+	# if there is a timeout, start up a timeout daemon and spray
+	# a message indicating the grace period
+
+	if [ $MIN_CHARGE_TIME -gt "0" ]
+	then
+		# this message is broken up for readability here
+		echo "The boot process will automatically continue \c"
+		echo "in $MIN_CHARGE_TIME minutes, or"
+		echo "Press RETURN to continue the boot process now"
+		echo "or enter \"f\" and RETURN to continue in Forced Write mode: \c"
+
+		# start a timeout demon. convert the period to minutes
+		# and start it up.
+		MIN_CHARGE_TIME=`expr $MIN_CHARGE_TIME \* 60`
+		(sleep $MIN_CHARGE_TIME ; kill -14 $$) > /dev/null 2>&1 &
+	else
+		# we will wait forever, so say something simple.
+		echo "Press RETURN to continue the boot process"
+		echo "or enter \"f\" and RETURN to continue in Forced Write mode: \c"
+	fi
+
+	# eat a RETURN
+	read junk
+	read_timeout=$?
+
+	if [ "$junk" = "f" -o "$read_timeout" = "1" ]
+	then
+		/bin/upsstat -f 1
+		echo "\n\nContinuing with Forced Write Enabled"
+	fi
+
+	echo "\n"
+fi

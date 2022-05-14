@@ -1,0 +1,33 @@
+# cshf  crontab -- user crontab file 
+#	@(#)CRONTAB.sh	1.1  87/03/09
+#
+onintr end
+
+@ count = 0
+while ($count != 1)
+prompt "^CRONTAB -- SUBMITS, REPLACES, OR REMOVES A USER CRONTAB FILE"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^SELECT ONLY ONE OF THE FOLLOWING:"\
+	"^*File Name:" _input_file acnm $_input_file\
+	"^Remove File:" rflag yesno n\
+	"^List Crontab File:" lflag yesno n\
+	"^#$*"
+
+  if ($abort) goto end
+  if ($_input_file != "") @ count++
+  if ($rflag == "y") @ count++
+  if ($lflag == "y") @ count++
+  if ($count != 1) @ count = 0
+end
+
+if ($abort) goto end
+if ($_input_file != "") set opt = $_input_file
+if ($rflag == "y") set opt = -r
+if ($lflag == "y") set opt = -l
+
+echo "=== CRONTAB COMMAND EXECUTING ==="
+echo crontab $opt 
+crontab $opt 
+
+end:  
+unset opt *flag count

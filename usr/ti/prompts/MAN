@@ -1,0 +1,36 @@
+# cshf    man -- Online reference manual 
+#	@(#)MAN.sh	1.2  87/10/15
+#
+onintr end
+
+prompt "^MAN -- PRINTS ENTRIES IN THE TI SYSTEM V REFERENCE MANUALS"\
+	"^Titles:" titles string "$titles"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Accept Default Options:" defaults yesno y\
+	"^#$*"
+
+if ($abort) goto end
+if ($defaults == "n") then
+	prompt "^MAN -- ONLINE REFERENCE MANUAL OPTIONS"\
+		"^Search Current Directory:" dflag yesno n\
+		"^Print Path Names Only:" wflag yesno n\
+		"^#$*"
+
+	if ($dflag == "y") set opt = d$opt
+	if ($wflag == "y") set opt = w$opt
+	if ($opt != "") set opt = -$opt
+endif
+
+if ($abort) goto end
+echo "=== MAN COMMAND EXECUTING ==="
+if ($_output_file != "") then
+	echo man $opt $titles ">"$_output_file
+	man $opt $titles >$_output_file
+else
+	echo man $opt $titles
+	man $opt $titles 
+endif
+
+#clean up time
+end:
+unset *flag *opt titles defaults

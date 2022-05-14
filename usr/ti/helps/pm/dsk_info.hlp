@@ -1,0 +1,40 @@
+
+The Disk Controller screen displays statistics for a particular mass
+storage controller (MSC) or NuBus peripheral interface (NUPI), including
+processor utilization and various read/write statistics.  The graph on the
+left side of the screen shows the activity levels for each disk drive that 
+is connected to the selected disk controller. (The disk controller statistics 
+include only those drives that were connected, powered-up, and on-line when 
+PM was initialized.) This graph identifies the disk drives by their logical
+unit numbers, which are unique to the controller. The activity levels
+represent the percentage of time each disk drive is spending servicing actual
+requests; the time required to service the disk queues is not included.
+
+The table on the right side of the screen shows the following statistics for 
+each of the disk drives:
+
+    LUN   Identifies the disk drive by its logical unit number.
+
+    Read per Sec   Shows the average number of read requests per second 
+        issued to this disk drive.
+
+    Write per Sec   Shows the average number of write requests per second 
+        issued to this disk drive.
+
+    Blks Read/Sec   Shows the average number of blocks of data transferred 
+        from this disk drive per second as a result of read requests.
+
+    Blks Writ/Sec   Shows the average number of blocks of data transferred 
+        to this disk drive per second as a result of write requests.
+
+    Avg Queue Len   Shows the average number of requests to or from this 
+        disk drive that were outstanding (in the queue) while it was busy 
+        performing data transfer.
+
+    Avg Wait msec   Shows the average amount of time (in milliseconds) that 
+        requests wait before the disk drive begins servicing them.
+
+    Avg Srvc msec   Shows the average amount of time (in milliseconds) 
+        required to service a request, not including time spent to service 
+        the disk queue.
+

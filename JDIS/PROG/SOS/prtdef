@@ -1,0 +1,1046 @@
+:
+#####################################################################
+#
+#  prtdef   (10/22/96)
+#
+#  Author:      Steven Mueller
+# 
+#  Purpose:     To allow user to add printers to system by supplying
+#               the tty device port ID and the printer name
+#
+#  Input:       tty port 
+#               printer name
+#
+#  Version:     10/22/96 (SPM) - initial version
+#               2/11/97  (SPM) - added logic to add parallel printers
+#               2/21/97  (SPM) - fix to parallel printer problems
+#               2/21/97  (SPM) - convert LP to lp when remove printers
+#               2/27/97  (SPM) - fix problems with tty00 errors
+#               4/28/97  (SPM) - fix to the problems with ttytype file
+#               5/20/97  (LMJ) - add tee to log error messages to PRTLOG
+#               6/06/97  (SPM) - added login to support 9.0X systems
+#               6/27/97  (SPM) - change to convert LP to lower case
+#		7/14/97  (SPM) - fix to problems with STATUS
+#		7/18/97  (SPM) - added logic to add alpdef to serial
+#####################################################################
+
+#####################################################################
+#  Procedure:   init_var
+#
+#  Purpose:     to initialize variables that are to be used thoughout
+#               the program for adding printers
+#####################################################################
+init_var()
+{
+        wrk_fil=/tmp/$$.prtdef
+        setprt_file=/usr/bin/setprt
+        init_tab_file="/etc/inittab"
+        init_run_level=`cat $init_tab_file | head -1 | cut -d: -f2`
+        tty_name=$1
+        if [ ! -c /dev/$tty_name ]
+        then
+           echo "ERROR: The device /dev/$tty_name does not exist!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit
+        fi
+        printer_name=lp`echo $2 | cut -c 3-4`
+        lpstat -s | awk '{print $3}'| grep $printer_name >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then 
+           echo "ERROR: There is already a printer $printer_name setup!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit 
+        fi
+        grep $tty_name $setprt_file >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then 
+           echo "ERROR: There is already a printer setup with the device $tty_name!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit
+        fi
+        grep $printer_name $init_tab_file >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then 
+           echo "ERROR: There is already a printer setup with the name $printer_name!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit
+        fi
+        slot_name=`echo $tty_name| sed 's/tty//'`
+        minor_node=`ls -l /dev/$tty_name | awk '{print $6}'`
+        lunum=`echo $minor_node | cut -c 6`   
+        minor_num_chk=`echo $minor_node | cut -c7-8`
+        if [ $minor_num_chk = "02" ]
+        then 
+           echo "The device /dev/$tty_name is setup as a Personal Services Modem,"
+           echo "Are you sure you want to reconfigure this for a printer? (y/n) \c"
+           read response
+           ans=`echo $response | tr "[A-Z]" "[a-z]"`
+           if [ $ans != "Y" ]
+           then
+              echo "Exiting printer configuration with no actions performed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              exit
+           else
+              minor_node_tmp=`echo ${minor_node} | cut -c1-6`
+              minor_node=${minor_node_tmp}00
+           fi
+        fi      
+        
+}
+
+#####################################################################
+#  Procedure:   init_tm 
+#
+#  Purpose:     to initialize variables that are to be used thoughout
+#               the program for adding termite printers
+#####################################################################
+init_tm()
+{
+        init_tab_file="/etc/inittab"
+        wrk_fil=/tmp/$$.prtdef
+        printer_name=`echo $2 | tr "[A-Z]" "[a-z]"`
+        tty_name=$1
+        if [ $tty_name = "tty00" ]
+        then
+           echo "ERROR: Printer Configuration for tty00 not allowed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit
+        fi
+        grep $printer_name $init_tab_file >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then 
+           echo "ERROR: There is already a printer setup with the name $printer_name!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit
+        fi
+        if [ ! -c /dev/$tty_name ]
+        then
+           echo "ERROR: The device /dev/$tty_name does not exist!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit
+        fi
+}
+
+#####################################################################
+#  Procedure:   init_undo
+#
+#  Purpose:     to initialize variables that are to be used thoughout
+#               the program for removing a printer
+#####################################################################
+init_undo()
+{
+	dlrtmpdir=$2
+        set_prt_file=/usr/bin/setprt
+        inittab_file="/etc/inittab"
+        printer_name=`echo $1 | tr "[A-Z]" "[a-z]"`
+        lpstat -s | awk '{print $3}' |grep $printer_name  >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                device_name=`lpstat -s |grep -v default | grep -v alp|grep $printer_name | head -1 | cut -d\  -f4`
+        else
+                echo "ERROR: The printer $printer_name is not currently defined!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                /usr/lib/lpsched >/dev/null 2>/dev/null
+                exit 1
+        fi
+        if [ $device_name = "tty00" ]
+        then
+                echo "ERROR: tty00 cannot be changed! "|tee -a /JDIS/PROG/SOS/PRTLOG
+                /usr/lib/lpsched >/dev/null 2>/dev/null
+                exit 1
+        fi
+        if `echo $device_name | grep tty >/dev/null 2>/dev/null`
+        then
+                echo "This is a serial printer..."
+                echo "Please use the serial option to remove the printer!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                /usr/lib/lpsched >/dev/null 2>/dev/null
+                exit 1
+        fi
+        if `echo $device_name | grep h6_lp >/dev/null 2>/dev/null`
+        then
+                echo "This is a parallel printer..."
+                echo "Use the parallel printer remove option!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                /usr/lib/lpsched >/dev/null 2>/dev/null
+                exit 1
+        fi
+        slot_name=`echo $3 | sed 's/tty//g'`
+        minor_node=`ls -l $device_name | awk '{print $6}'`
+        minor_num_chk=`echo $minor_node | cut -c7-8`
+        lunum=`echo $minor_node | cut -c 6`  
+        if [ $minor_num_chk = "02" ]
+        then
+           echo "Not able to remove printer $printer_name with this utility!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit 
+        fi
+}
+
+#####################################################################           
+#  Procedure:   remove_printer_904                                              
+#                                                                               
+#  Purpose:     remove printer from the system and make tty device              
+#               file.  Any related configuration files will also be             
+#               updated: /etc/inittab, /etc/inittab.on,                         
+#               /etc/inittab.off, and /usr/bin/setprt.                          
+#####################################################################           
+remove_printer_904()                                                            
+{                                                                               
+        inittmp=/tmp/initfile                                                   
+        type_file=/etc/ttytype                                                  
+        init_run_level=`cat /etc/inittab | head -1 | cut -d: -f2`               
+        set_print="sprt:${init_run_level}:once:/usr/bin/setprt"                 
+        /usr/lib/lpadmin -x${printer_name} >/dev/null 2>&1                      
+        if [ $? = 0 ]                                                           
+        then                                                                    
+                echo "Printer $printer_name removed from print spooler..."|tee -a /JDIS/PROG/SOS/PRTLOG                                                         
+        else                                                                    
+                echo "ERROR: Printer $printer_name NOT REMOVED from spooler!"|tee -a /JDIS/PROG/SOS/PRTLOG                                                      
+                exit                                                            
+        fi
+	lastchar=`echo $slot_name | cut -c2`
+	case $lastchar in
+		a)num=10;;
+		b)num=11;;
+		c)num=12;;
+		d)num=13;;
+		e)num=14;;
+		f)num=15;;
+		*)num=$lastchar;;
+	esac	
+        mksf -d mux2 -l $lunum -p $num -h /dev/tty${slot_name}
+        if [ $? != 0 ]                                                          
+        then                                                                    
+                echo "ERROR: Unable to create special file /dev/tty${slot_name}" |tee -a /JDIS/PROG/SOS/PRTLOG                                                   
+                /usr/lib/lpadmin -v${device_name} -mstandard -p$printer_name    
+                exit                                                            
+        fi                                                                      
+        rm -f $device_name                                                      
+        cat $set_prt_file | sed '/'${printer_name}'/d' > $set_prt_file.tmp      
+        if [ $? = 0 ]                                                           
+        then                                                                    
+           mv $set_prt_file.tmp $set_prt_file                                   
+           chmod 777 $set_prt_file                                              
+        fi                                                                      
+        cat $inittab_file | sed '/'${printer_name}'/d' > $inittab_file.tmp      
+        if [ $? = 0 ]                                                           
+        then                                                                    
+           mv $inittab_file.tmp $inittab_file                                   
+        fi                                                                      
+        cat $inittab_file.on | sed '/'${printer_name}'/d' > $inittab_file.on.tmp
+        if [ $? = 0 ]                                                           
+        then                                                                    
+           mv $inittab_file.on.tmp $inittab_file.on                             
+        fi                                                                      
+        cat $inittab_file.off | sed '/'${printer_name}'/d' > $inittab_file.off.tmp                                                                              
+        if [ $? = 0 ]                                                           
+        then                                                                    
+           mv $inittab_file.off.tmp $inittab_file.off                           
+        fi                                                                      
+        init q                                                                  
+        grep "tty${slot_name} " $type_file >/dev/null 2>/dev/null               
+        if [ $? != 0 ]                                                          
+        then                                                                    
+                echo "x1 tty${slot_name}" >> $type_file                         
+        fi                                                                      
+        sed '/setprt/d' /etc/inittab > ${inittmp}                               
+        sed '/setprt/d' /etc/inittab.on > ${inittmp}.on                         
+        sed '/setprt/d' /etc/inittab.off > ${inittmp}.off                       
+        echo "${lunum}${slot_name}:${init_run_level}:respawn:/etc/getty -h tty${slot_name} 19200" >> ${inittmp}                                                 
+        echo "${lunum}${slot_name}:${init_run_level}:respawn:/etc/getty -h tty${slot_name} 19200" >> ${inittmp}.on                                              
+        echo "${lunum}${slot_name}:${init_run_level}:respawn:/etc/getty -h tty${slot_name} 19200" >> ${inittmp}.off                                             
+        echo $set_print >> ${inittmp}                                           
+        echo $set_print >> ${inittmp}.on                                        
+        echo $set_print >> ${inittmp}.off                                       
+        cp ${inittmp} /etc/inittab                                              
+        cp ${inittmp}.on /etc/inittab.on                                        
+        cp ${inittmp}.off /etc/inittab.off                                      
+        rm -f ${inittmp} >/dev/null 2>/dev/null                                 
+        rm -f ${inittmp}.on >/dev/null 2>/dev/null                              
+        rm -f ${inittmp}.off >/dev/null 2>/dev/null                             
+        cp /etc/inittab /etc/inittab.tmp                                        
+        cp /etc/inittab.tmp /etc/inittab                                        
+        rm /etc/inittab.tmp                                                     
+	echo "S AS TTY_NAME /dev/tty${slot_name}" > $dlrtmpdir/ttynames
+        sleep 3                                                                 
+        init q                                                                  
+        /usr/lib/lpsched >/dev/null 2>&1                                        
+        if [ $? = 0 ]                                                           
+        then                                                                    
+                echo "The print spooler has started successfully..."            
+        else                                                                    
+                echo "The printer spool failed to start!"                       
+                exit                                                            
+        fi                                                                      
+}        
+#####################################################################
+#  Procedure:   remove_printer_10
+#
+#  Purpose:     remove printer from the system and make tty device 
+#               file.  Any related configuration files will also be
+#               updated: /etc/inittab, /etc/inittab.on, 
+#               /etc/inittab.off, and /usr/bin/setprt.
+#####################################################################
+remove_printer_10()
+{
+        inittmp=/tmp/initfile
+        type_file=/etc/ttytype
+        init_run_level=`cat /etc/inittab | head -1 | cut -d: -f2`
+        set_print="sprt:${init_run_level}:once:/usr/bin/setprt"
+        lpadmin -x${printer_name} >/dev/null 2>&1
+        if [ $? = 0 ]
+        then 
+                echo "Printer $printer_name removed from print spooler..."|tee -a /JDIS/PROG/SOS/PRTLOG
+        else
+                echo "ERROR: Printer $printer_name NOT REMOVED from spooler!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                exit 
+        fi
+        mksf -d eisa_mux0 -m $minor_node /dev/tty${slot_name} >/dev/null 2>&1
+        if [ $? != 0 ]
+        then 
+                echo "ERROR: Unable to create special file /dev/tty${slot_name}"|tee -a /JDIS/PROG/SOS/PRTLOG
+                lpadmin -v/dev/c${slot_name}_lp -mstandard -p$printer_name
+                exit 
+        fi
+        rm -f $device_name
+        cat $set_prt_file | sed '/c'${slot_name}'_lp/d' > $set_prt_file.tmp
+        if [ $? = 0 ]
+        then
+           mv $set_prt_file.tmp $set_prt_file
+           chmod 777 $set_prt_file
+        fi
+        cat $inittab_file | sed '/c'${slot_name}'_lp/d' > $inittab_file.tmp
+        if [ $? = 0 ]
+        then
+           mv $inittab_file.tmp $inittab_file
+        fi
+        cat $inittab_file.on | sed '/c'${slot_name}'_lp/d' > $inittab_file.on.tmp
+        if [ $? = 0 ]
+        then
+           mv $inittab_file.on.tmp $inittab_file.on
+        fi
+        cat $inittab_file.off | sed '/c'${slot_name}'_lp/d' > $inittab_file.off.tmp
+        if [ $? = 0 ]
+        then
+           mv $inittab_file.off.tmp $inittab_file.off
+        fi
+        init q
+        grep "tty${slot_name} " $type_file >/dev/null 2>/dev/null
+        if [ $? != 0 ]
+        then
+                echo "x1 tty${slot_name}" >> $type_file
+        fi
+        sed '/setprt/d' /etc/inittab > ${inittmp}
+        sed '/setprt/d' /etc/inittab.on > ${inittmp}.on
+        sed '/setprt/d' /etc/inittab.off > ${inittmp}.off
+        echo "${slot_name}:${init_run_level}:respawn:/usr/sbin/getty -h tty${slot_name} 19200" >> ${inittmp}
+        echo "${slot_name}:${init_run_level}:respawn:/usr/sbin/getty -h tty${slot_name} 19200" >> ${inittmp}.on
+        echo "${slot_name}:${init_run_level}:respawn:/usr/sbin/getty -h tty${slot_name} 19200" >> ${inittmp}.off
+        echo $set_print >> ${inittmp}
+        echo $set_print >> ${inittmp}.on
+        echo $set_print >> ${inittmp}.off
+        cp ${inittmp} /etc/inittab
+        cp ${inittmp}.on /etc/inittab.on
+        cp ${inittmp}.off /etc/inittab.off
+        rm -f ${inittmp} >/dev/null 2>/dev/null
+        rm -f ${inittmp}.on >/dev/null 2>/dev/null
+        rm -f ${inittmp}.off >/dev/null 2>/dev/null
+        cp /etc/inittab /etc/inittab.tmp
+        cp /etc/inittab.tmp /etc/inittab
+        rm /etc/inittab.tmp
+        sleep 3
+        init q
+        lpsched >/dev/null 2>&1
+        if [ $? = 0 ]
+        then
+                echo "The print spooler has started successfully..."
+        else
+                echo "The printer spool failed to start!"
+                exit
+        fi
+}
+        
+        
+#####################################################################
+#  Procedure:   shut_lp
+#
+#  Purpose:     shutdown the print spooler and check for successful
+#               completion.
+#####################################################################
+shut_lp()
+{
+        wrk_fil=/tmp/$$.prtdef
+        /usr/lib/lpshut > $wrk_fil 2> $wrk_fil
+        if [ $? = 0 ]
+        then
+           echo "Print Spooler shutdown successful..."
+        else
+           grep "lpshut: scheduler not running" $wrk_fil >/dev/null 2>/dev/null
+           if [ $? = 0 ]
+           then
+              echo "Print Spooler shutdown successful..."
+           else
+              echo "The shutdown of the spooler failed, unable to continue!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              rm -f $wrk_fil
+              exit
+           fi
+        fi
+        rm -f $wrk_fil
+}
+
+#####################################################################
+#  Procedure:   start_lp
+#
+#  Purpose:     start the print spooler and check for successful
+#               completion.
+#####################################################################
+start_lp()
+{
+        /usr/bin/enable $printer_name >/dev/null 2>&1
+        if [ $? = 0 ]
+           then
+              echo "Printer $printer_name was successfully enabled..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Printer $printer_name enabled failed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              /usr/lib/lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        /usr/lib/accept $printer_name >/dev/null 2>&1
+        if [ $? = 0 ]
+           then
+              echo "Printer $printer_name was successfully accepted..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Printer $printer_name accept failed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              /usr/lib/lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        init q
+        if [ "$osver" = "10" ]
+        then
+                stty 9600 parenb cs7 parodd ixon ixoff </dev/c${slot_name}_lp
+        else
+                stty 9600 parenb cs7 parodd ixon ixoff </dev/${printer_name} 
+        fi
+        /usr/bin/setprt >/dev/null 2>&1
+        /usr/lib/lpsched > $wrk_fil 2> $wrk_fil
+        if [ $? = 0 ]
+        then
+           echo "Print Spooler startup successful..."
+        else
+           grep "lpsched: scheduler was already active" $wrk_fil
+           if [ $? = 0 ]
+           then
+              echo "Print Spooler startup successful..."
+           else
+              echo "The startup of the spooler failed, unable to continue!"
+              rm -f $wrk_fil
+              exit
+           fi
+        fi
+        rm -f $wrk_fil
+}
+
+#####################################################################           
+#  Procedure:   build_printer_defs_904                                          
+#                                                                               
+#  Purpose:     To build all needed steps to add a printer the the              
+#               system.                                                         
+#####################################################################           
+build_printer_defs_904() 
+{                                                                               
+        cat $init_tab_file | sed '/tty'${slot_name}' /d' > $init_tab_file.tmp   
+        if [ $? = 0 ]                                                           
+        then                                                                    
+           mv $init_tab_file.tmp $init_tab_file                                 
+        fi                                                                      
+        cat $init_tab_file.on | sed '/tty'${slot_name}' /d' > $init_tab_file.on.tmp                                                                             
+        if [ $? = 0 ]                                                           
+        then                                                                    
+           mv $init_tab_file.on.tmp $init_tab_file.on                           
+        fi                                                                      
+        cat $init_tab_file.off | sed '/tty'${slot_name}' /d' > $init_tab_file.off.tmp                                                                           
+        if [ $? = 0 ]                                                           
+        then                                                                    
+           mv $init_tab_file.off.tmp $init_tab_file.off                         
+        fi                                                                      
+	lastchar=`echo $slot_name | cut -c2`
+	case $lastchar in
+		a)num=10;;
+		b)num=11;;
+		c)num=12;;
+		d)num=13;;
+		e)num=14;;
+		f)num=15;;
+		*)num=$lastchar;;
+	esac	
+        mksf -d mux2 -l $lunum -p $num -h /dev/${printer_name}
+        if [ $? != 0 ]                                                          
+        then                                                                    
+              echo "ERROR: Creation of Special File /dev/${printer_name} failed!"|tee -a /JDIS/PROG/SOS/PRTLOG                                                  
+              /usr/lib/lpsched >/dev/null 2>/dev/null                           
+              exit                                                              
+        fi                                                                      
+        rm -f /dev/$tty_name                                                    
+        chmod 666 /dev/${printer_name}                                          
+        sed_script_file=/tmp/sedprt.$$                                          
+        echo "/tty00/a\\" >$sed_script_file                                     
+        echo "$printer_name:$init_run_level:respawn:sleep 999999999 >/dev/${printer_name}" >>$sed_script_file                                                   
+        sed -f $sed_script_file $init_tab_file >$init_tab_file.tmp              
+        mv $init_tab_file.tmp $init_tab_file                                    
+        sed -f $sed_script_file $init_tab_file.on >$init_tab_file.tmp           
+        mv $init_tab_file.tmp $init_tab_file.on                                 
+        sed -f $sed_script_file $init_tab_file.off >$init_tab_file.tmp          
+        mv $init_tab_file.tmp $init_tab_file.off                                
+        rm -f $sed_script_file                                                  
+        echo "stty 9600 parenb cs7 parodd ixon ixoff </dev/${printer_name} " >> /usr/bin/setprt                                                                 
+        /usr/lib/lpadmin -v/dev/${printer_name} -mstandard -p$printer_name      
+        if [ $? = 0 ]                                                           
+           then                                                                 
+              echo "Successful Add of printer $printer_name..."|tee -a /JDIS/PROG/SOS/PRTLOG                                                                    
+           else                                                                 
+              echo "ERROR: Spooler add failed for printer $printer_name!"|tee -a/JDIS/PROG/SOS/PRTLOG                                                          
+              /usr/lib/lpsched >/dev/null 2>/dev/null                           
+              exit                                                              
+        fi                                                                      
+        grep setprt /etc/inittab >/dev/null 2>/dev/null                         
+        if [ $? != 0 ]                                                          
+        then                                                                    
+                echo "sprt:3:once:/usr/bin/setprt" >> /etc/inittab              
+                echo "sprt:3:once:/usr/bin/setprt" >> /etc/inittab.on           
+                echo "sprt:3:once:/usr/bin/setprt" >> /etc/inittab.off          
+        fi                                                                      
+}       
+
+#####################################################################
+#  Procedure:   build_printer_defs_10
+#
+#  Purpose:     To build all needed steps to add a printer the the
+#               system.
+#####################################################################
+build_printer_defs_10()
+{
+        cat $init_tab_file | sed '/tty'${slot_name}' /d' > $init_tab_file.tmp
+        if [ $? = 0 ]
+        then
+           mv $init_tab_file.tmp $init_tab_file
+        fi
+        cat $init_tab_file.on | sed '/tty'${slot_name}' /d' > $init_tab_file.on.tmp
+        if [ $? = 0 ]
+        then
+           mv $init_tab_file.on.tmp $init_tab_file.on
+        fi
+        cat $init_tab_file.off | sed '/tty'${slot_name}' /d' > $init_tab_file.off.tmp
+        if [ $? = 0 ]
+        then
+           mv $init_tab_file.off.tmp $init_tab_file.off
+        fi
+        mksf -d eisa_mux0 -m $minor_node /dev/c${slot_name}_lp   
+        if [ $? != 0 ]
+        then
+              echo "ERROR: Creation of Special File /dev/c${slot_name}_lp failed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              /usr/lib/lpsched >/dev/null 2>/dev/null 
+              exit
+        fi
+        rm -f /dev/$tty_name
+        chmod 666 /dev/c${slot_name}_lp
+        sed_script_file=/tmp/sedprt.$$
+        echo "/tty00/a\\" >$sed_script_file
+        echo "$printer_name:$init_run_level:respawn:sleep 99999999 >/dev/c${slot_name}_lp" >>$sed_script_file
+        sed -f $sed_script_file $init_tab_file >$init_tab_file.tmp
+        mv $init_tab_file.tmp $init_tab_file
+        sed -f $sed_script_file $init_tab_file.on >$init_tab_file.tmp
+        mv $init_tab_file.tmp $init_tab_file.on
+        sed -f $sed_script_file $init_tab_file.off >$init_tab_file.tmp
+        mv $init_tab_file.tmp $init_tab_file.off
+        rm -f $sed_script_file
+        echo "stty 9600 parenb cs7 parodd ixon ixoff </dev/c${slot_name}_lp " >> /usr/bin/setprt
+        lpadmin -v/dev/c${slot_name}_lp -mstandard -p$printer_name
+        if [ $? = 0 ]
+           then
+              echo "Successful Add of printer $printer_name..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Spooler add failed for printer $printer_name!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              mksf -d eisa_mux0 -m $minor_node /dev/tty${slot_name}
+              rm -f /dev/c${slot_name}
+              lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        grep setprt /etc/inittab >/dev/null 2>/dev/null
+        if [ $? != 0 ] 
+        then
+                echo "sprt:3:once:/usr/bin/setprt" >> /etc/inittab
+                echo "sprt:3:once:/usr/bin/setprt" >> /etc/inittab.on
+                echo "sprt:3:once:/usr/bin/setprt" >> /etc/inittab.off
+        fi
+}
+
+#####################################################################
+#  Procedure:   add_termite
+#
+#  Purpose:     add an attached termite printer to the system 
+#####################################################################
+add_termite()
+{
+        chown lp /dev/${tty_name}
+        lpadmin -v/dev/${tty_name} -mlpps -p$printer_name
+        if [ $? = 0 ]
+           then
+              echo "Successful Add of printer $printer_name..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Spooler add failed for printer $printer_name!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        enable $printer_name >/dev/null 2>&1
+        if [ $? = 0 ]
+           then
+              echo "Printer $printer_name enabled was successfully..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Printer $printer_name enabled failed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              lpadmin -x${printer_name} >/dev/null 2>/dev/null
+              lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        accept $printer_name >/dev/null 2>&1
+        if [ $? = 0 ]
+           then
+              echo "Printer $printer_name accept was successful..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Printer $printer_name accept failed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              lpadmin -x${printer_name} >/dev/null 2>/dev/null
+              lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        lpsched > $wrk_fil 2> $wrk_fil
+        if [ $? = 0 ]
+        then
+           echo "Print Spooler startup successful..."
+        else
+           grep "lpsched: scheduler was already active" $wrk_fil
+           if [ $? = 0 ]
+           then
+              echo "Print Spooler startup successful..."
+           else
+              echo "The startup of the spooler failed, unable to continue!"
+              rm -f $wrk_fil
+              exit
+           fi
+        fi
+        rm -f $wrk_fil >/dev/null 2>/dev/null
+}
+
+del_parallel()
+{
+        para_dev=`ls -l /dev/*h6_lp | awk '{print $10}'|sed 's/\/dev\///'`
+        lpstat -s | grep $para_dev >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                printer_tmp=`lpstat -s | grep $para_dev | cut -d\  -f3 | sed 's/://'`
+                printer_name=lp`echo $printer_tmp|cut -c3-4`
+        else
+                echo "ERROR: There is no parallel printer device file on this system!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                lpsched >/dev/null 2>/dev/null
+                exit 1
+        fi
+        lpadmin -x${printer_name} >/dev/null 2>&1
+        if [ $? = 0 ]
+        then 
+                echo "Printer $printer_name removed from print spooler..."|tee -a /JDIS/PROG/SOS/PRTLOG
+        else
+                echo "ERROR: Printer $printer_name NOT REMOVED from spooler!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                exit 
+        fi
+        lpsched >/dev/null 2>/dev/null
+}
+
+
+#####################################################################
+#  Procedure:   add_parallel   
+#
+#  Purpose:     add a parallel printer to the 'D' Systems        
+#####################################################################
+add_parallel()
+{
+        if [ ! -c /dev/*h6_lp ]
+        then
+           echo "ERROR: There is not a parallel port on this system!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit 1
+        else
+           para_dev=`ls -l /dev/*h6_lp | awk '{print $10}'|sed 's/\/dev\///'`
+        fi
+        printer_name=lp`echo $1 | cut -c 3-4`
+        lpstat -s |grep -v default| awk '{print $3}'| grep $printer_name >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                echo "ERROR: There is already a printer defined as $printer_name"|tee -a /JDIS/PROG/SOS/PRTLOG
+                lpsched >/dev/null 2>/dev/null
+                exit 1
+        fi
+        lpstat -s | grep $para_dev >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                echo "ERROR: There is already a printer defined for the parallel port"|tee -a /JDIS/PROG/SOS/PRTLOG
+                lpsched >/dev/null 2>/dev/null
+                exit 1
+        fi
+        lpadmin -v/dev/$para_dev -mstandard -p$printer_name
+        if [ $? = 0 ]
+           then
+              echo "Spooler add successful for printer $printer_name..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Spooler add failed for printer $printer_name!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        enable $printer_name >/dev/null 2>&1
+        if [ $? = 0 ]
+           then
+              echo "Printer $printer_name enable was successful..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Printer $printer_name enabled failed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              lpadmin -x${printer_name} >/dev/null 2>/dev/null
+              lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        accept $printer_name >/dev/null 2>&1
+        if [ $? = 0 ]
+           then
+              echo "Printer $printer_name accept was successful..."|tee -a /JDIS/PROG/SOS/PRTLOG
+           else
+              echo "ERROR: Printer $printer_name accept failed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+              lpadmin -x${printer_name} >/dev/null 2>/dev/null
+              lpsched >/dev/null 2>/dev/null
+              exit
+        fi
+        lpsched > $wrk_fil 2> $wrk_fil
+        if [ $? = 0 ]
+        then
+           echo "Print Spooler startup successful..."
+        else
+           grep "lpsched: scheduler was already active" $wrk_fil
+           if [ $? = 0 ]
+           then
+              echo "Print Spooler startup successful..."
+                lpsched >/dev/null 2>/dev/null
+           else
+              echo "The startup of the spooler failed, unable to continue!"
+              rm -f $wrk_fil
+              exit
+           fi
+        fi
+}
+
+#####################################################################
+#  Procedure:   remove_termite
+#
+#  Purpose:     remove an attached termite printer to the system 
+#####################################################################
+remove_termite()
+{
+        printer_name=lp`echo $1 | cut -c 3-4`
+        lpstat -s |grep -v default| awk '{print $3}'|grep $printer_name >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                device_name=`lpstat -s|grep -v default | grep $printer_name | head -1 | cut -d\  -f4`
+        else
+                echo "ERROR: The printer $printer_name is not currently defined!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                lpsched >/dev/null 2>/dev/null
+                exit
+        fi
+        if [ $printer_name = "lp00" ]
+        then
+                echo "ERROR: The printer lp00 can not be removed!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                lpsched > /dev/null 2> /dev/null
+                exit 1
+        fi
+        echo $device_name | grep tty >/dev/null 2>/dev/null
+        if [ $? != 0 ]
+        then 
+                echo "This is not an HOSTACCESS Printer..."|tee -a /JDIS/PROG/SOS/PRTLOG
+                echo "Please use the option for that type of printer!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                exit 1
+        fi
+        wrk_fil=/tmp/prtdef.$$
+        chown bin:bin $device_name >/dev/null 2>/dev/null
+        lpadmin -x${printer_name}
+        if [ $? = 0 ]
+        then 
+                echo "Printer $printer_name removed from print spooler..."|tee -a /JDIS/PROG/SOS/PRTLOG
+        else
+                echo "ERROR: Printer $printer_name NOT REMOVED from spooler!"|tee -a /JDIS/PROG/SOS/PRTLOG
+                exit 
+        fi
+        lpsched > $wrk_fil 2> $wrk_fil
+        if [ $? = 0 ]
+        then
+           echo "Print Spooler startup successful..."
+        else
+           grep "lpsched: scheduler was already active" $wrk_fil
+           if [ $? = 0 ]
+           then
+              echo "Print Spooler startup successful..."
+           else
+              echo "The startup of the spooler failed, unable to continue!"
+              rm -f $wrk_fil
+              exit
+           fi
+        fi
+        rm -f $wrk_fil >/dev/null 2>/dev/null
+}
+
+#####################################################################
+#  Procedure:   prt_enable    
+#
+#  Purpose:     enable a printer                          
+#####################################################################
+prt_enable()     
+{
+        printer_name=lp`echo $1 | cut -c 3-4`
+        lpstat -s | awk '{print $3}' |grep $printer_name >/dev/null 2>/dev/null
+        if [ $? != 0 ]
+        then 
+           echo "ERROR: Printer $printer_name does not exist!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit 
+        fi
+        /usr/bin/enable $printer_name
+        /usr/lib/accept $printer_name
+        exit
+}
+
+#####################################################################
+#  Procedure:   prt_disable   
+#
+#  Purpose:     disable a printer                          
+#####################################################################
+prt_disable()     
+{
+        printer_name=`echo $1 | tr "[A-Z]" "[a-z]"`
+        lpstat -s | awk '{print $3}'|grep $printer_name >/dev/null 2>/dev/null
+        if [ $? != 0 ]
+        then 
+           echo "ERROR: Printer $printer_name does not exist!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit 
+        fi
+        /usr/bin/disable $printer_name
+        /usr/lib/reject $printer_name
+        exit
+}
+
+#####################################################################
+#  Procedure:   system_default
+#
+#  Purpose:     set the default system printer             
+#####################################################################
+system_default()
+{
+        printer_name=lp`echo $1 | cut -c 3-4`
+        lpstat -s  | awk '{print $3}'|grep $printer_name >/dev/null 2>/dev/null
+        if [ $? != 0 ]
+        then 
+           echo "ERROR: Printer $printer_name does not exist!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit 
+        fi
+        /usr/lib/lpadmin -d$printer_name
+        if [ $? != 0 ]
+        then 
+           echo "ERROR: Printer $printer_name unable to be set as default!"|tee -a /JDIS/PROG/SOS/PRTLOG
+           exit 
+        fi
+        echo "Printer $printer_name is set as the system default printer!"
+        exit
+}
+
+alp_def_rm()
+{
+ 	if [ "$osver" = "10" ]
+	then
+		echo " This option is not supported on 10.x systems!"
+		exit 1
+	fi	
+	alp_dev=/dev/alp`echo $tty_name| sed 's/tty//'`
+	if [ -c $alp_dev ]                                                    
+        then                                                                    
+              	/etc/mkalp -r $alp_dev 2>/dev/null >/dev/null
+	fi  
+        lpstat -s | grep $alp_dev >/dev/null 2>/dev/null
+        if [ $? = 0 ]
+        then
+                printername=`lpstat -s | grep $alp_dev | head -1 | cut -d\  -f3|sed 's/://g'`
+		/usr/lib/lpadmin -x$printername >/dev/null 2>/dev/null
+		if [ $? = 0 ]
+		then
+			echo "Printer ${printername} removed successfully!"
+		else
+			echo "ERROR: Unable to remove printer ${printername}"
+		fi
+        fi
+	/usr/lib/lpsched >/dev/null 2>/dev/null
+}
+	
+alp_def_set()
+{
+ 	if [ "$osver" = "10" ]
+	then
+		echo "This option is not supported on 10.x systems!"
+		exit 1
+	fi	
+	alp_dev=/dev/alp`echo $1| sed 's/\/dev\/tty//'`
+	ttyname=$1
+	printer_name=$2
+	ttytype=$3
+	shut_lp
+	if [ ! -c $alp_dev ]                                                    
+        then                                                                    
+                /etc/mkalp -d${ttyname} -t$ttytype                               
+                echo "Device ${alp_dev} was created successfully!"              
+                /bin/chmod 666 $alp_dev                                         
+        elif [ -c $alp_dev ]                                                    
+        then                                                                    
+                /etc/mkalp -r$alp_dev                                           
+                /etc/mkalp -d${ttyname} -t$ttytype
+                echo "Device ${alp_dev} was created successfully!"              
+                /bin/chmod 666 $alp_dev                                         
+        fi   
+        /usr/lib/lpadmin -p$printer_name -mstandard -v$alp_dev >/dev/null 2>&1  
+        if [ $? != 0 ]                                                          
+        then                                                                    
+                echo "ERROR: Unable to add printer $printer_name to spooler"    
+        fi                                                                      
+        echo "Printer ${printer_name} added to the spooler successfully!"       
+        /usr/lib/lpsched >/dev/null 2>&1
+        if [ $? != 0 ]                                                          
+        then                                                                    
+                echo "ERROR: Unable to start print spooler"                     
+        fi    
+	/usr/lib/accept ${printer_name} 2>/dev/null
+	enable ${printer_name} 2>/dev/null
+}
+	
+#####################################################################
+#  Procedure:   usage_error
+#
+#  Purpose:     diplay message to indicate error in usage
+#####################################################################
+usage_error()
+{
+     echo "Usage:   prtdef -a tty_device_name printer_name"
+     echo "         prtdef -r printer_name"
+     echo "         prtdef -p parallel_printer_name"
+     echo "         prtdef -pd "
+     echo "         prtdef -d termite_printer_name"
+     echo "         prtdef -t termite_tty_device termite_printer_name"
+     echo "         prtdef -def default_printer_name"
+     echo "         prtdef -enb printer_name"
+     echo "         prtdef -dis printer_name"
+     exit
+}
+
+#####################################################################
+# MAINLINE
+#####################################################################
+osver=`uname -a | awk '{print $3}' | cut -d. -f2`
+switch_id=$1
+case $switch_id in
+    -a) if [ $# = 3 ]
+        then 
+                init_var $2 $3;
+                shut_lp;
+                if [ "$osver" = "09" ]
+                then
+                        build_printer_defs_904
+			alp_def_rm
+                else 
+                        build_printer_defs_10
+                fi;
+                start_lp;
+        else
+                usage_error
+        fi;;
+    -r) if [ $# = 4 ]
+        then 
+                init_undo $2 $3 $4;
+                shut_lp;
+                if [ "$osver" = "09" ]
+                then
+                        remove_printer_904
+                else    
+                        remove_printer_10
+                fi;
+        else
+                usage_error
+        fi;;
+    -d) if [ $# = 2 ]
+        then
+                if [ "$osver" = "09" ]
+                then
+			prt=lp`echo $2 | cut -c 3-4`
+                        device_tm=`lpstat -s | grep $prt|head -1 | awk '{print $4}' | sed 's/\/dev\/alp/tty/g'`
+                        /JDIS/PROG/SOS/alpdef -r $device_tm
+                else
+                        shut_lp
+                        remove_termite $2
+                fi;
+        else
+                usage_error
+        fi;;
+    -t) if [ $# = 3 ]
+        then
+                if [ "$osver" = "09" ]
+                then
+                        /JDIS/PROG/SOS/alpdef -a $2 $3
+                else
+                        init_tm $2 $3
+                        shut_lp
+                        add_termite
+                fi;
+        else
+                usage_error
+        fi;;
+    -p) if [ $# = 2 ]
+        then
+                if [ "$osver" = "10" ]
+                then
+                        shut_lp
+                        add_parallel $2
+                else
+                        echo "This option only supported on 10.X systems!"
+                fi;
+        else
+                usage_error
+        fi;;
+    -pd) if [ $# = 1 ]
+        then
+                if [ "$osver" = "10" ]
+                then
+                        shut_lp
+                        del_parallel
+                else
+                        echo "This option only supported on 10.X systems!"
+                fi;             
+        else
+                usage_error
+        fi;;
+    -def) if [ $# = 2 ]
+         then
+                system_default $2
+         else
+                usage_error
+         fi;;
+    -dis) if [ $# = 2 ]
+         then
+                prt_disable $2
+         else
+                usage_error
+         fi;;
+    -enb) if [ $# = 2 ]
+         then
+                prt_enable $2
+         else
+                usage_error
+         fi;;
+    -alp) if [ $# = 4 ]
+	then
+	 	alp_def_set $2 $3 $4
+	else
+		usage_error
+	fi;;
+    -alpr) if [ $# = 2 ]
+	then
+		tty_name=$2
+		shut_lp
+	 	alp_def_rm $2
+	else
+		usage_error
+	fi;;
+    *)  usage_error;;
+esac
+exit 0

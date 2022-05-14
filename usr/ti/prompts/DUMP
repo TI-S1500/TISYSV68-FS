@@ -1,0 +1,93 @@
+# cshf  dump -- Dumps portions of object files 
+#	@(#)DUMP.sh	1.3  91/06/25
+#
+onintr end
+# initialization
+set hflag = "n"
+set sflag = "n"
+set tflag = "n"
+
+prompt "^DUMP -- DUMPS SELECTED PARTS OF AN OBJECT FILE"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Dump Archive Headers:" aflag yesno n\
+	"^Dump String Table:" cflag yesno n\
+	"^Dump File Header:" fflag yesno n\
+	"^Dump Optional Header:" oflag yesno n\
+	"^Dump Relocation Info:" rflag yesno n\
+	"^Dump Line Number Info:" lflag yesno n\
+	"^Suppress Headers:" pflag yesno n\
+	"^Underline File Names:" uflag yesno n\
+	"^Symbolic Representation:" vflag yesno n\
+	"^Select Symbol Table Options:" tflag yesno n\
+	"^Select Section Options:" sflag yesno n\
+	"^Select Function Options:" zflag yesno n\
+	"^#$*"
+
+if ($abort) goto end
+if ($tflag == "y") then
+	prompt "^DUMP -- SYMBOL TABLE OPTIONS":\
+		"^Dump Symbol Table Entries:" tflag yesno n\
+		"^*Starting Symbol Table Entry:" tstart integer\
+		"^*Ending Symbol Table Entry:" tend integer\
+		"^#$*"
+	if ($abort) goto end
+	if ($tstart != "") set tstartopt = -t$tstart 
+	if ($tend != "") set tendopt = +t$tend
+endif
+	
+if ($abort) goto end
+if ($sflag == "y") then
+	prompt "^DUMP -- SECTION OPTIONS":\
+		"^Dump Section Headers:" hflag yesno n\
+		"^Dump Section Contents:" sflag yesno n\
+		"^*Starting Section Number:" dstart integer\
+		"^*Ending Section Number:" dend integer\
+		"^#$*"
+	if ($abort) goto end
+	if ($dstart != "") set dstartopt = -d$dstart 
+	if ($dend != "") set dendopt = +d$dend
+endif
+
+if ($abort) goto end
+if ($zflag == "y") then
+	prompt "^DUMP -- OPTIONS FOR A SPECIFIED FUNCTION"\
+		"^Function Name:" name string \
+		"^*Starting Line Number:" numStart integer\
+		"^*Ending Line Number:" numEnd integer\
+		"^#$*"
+	if ($abort) goto end
+	if ($name != "") then
+		if ($numStart != "") set zstartopt = -z"$name $numStart"
+		if ($numEnd != "") set zendopt = +z" $numEnd"
+	endif
+endif
+	
+if ($abort) goto end
+if ($tflag == "y") set opt = t$opt
+if ($lflag == "y") set opt = l$opt
+if ($rflag == "y") set opt = r$opt
+if ($oflag == "y") set opt = o$opt
+if ($sflag == "y") set opt = s$opt
+if ($hflag == "y") set opt = h$opt
+if ($fflag == "y") set opt = f$opt
+if ($cflag == "y") set opt = c$opt
+if ($aflag == "y") set opt = a$opt
+if ($opt != "") set opt = -$opt
+
+if ($abort) goto end
+echo "=== DUMP COMMAND EXECUTING ==="
+echo dump $opt $tstartopt $tendopt
+echo $dstartopt $dendopt $zstartopt $zendopt $_input_file
+if ($_output_file == "") then
+	dump $opt $tstartopt $tendopt\
+ 	$dstartopt $dendopt $zstartopt $zendopt $_input_file | \
+	pg -cp"Output from DUMP is being piped through pg: "
+else
+	dump $opt $tstartopt $tendopt\
+ 	$dstartopt $dendopt $zstartopt $zendopt $_input_file >$_output_file
+endif
+
+#clean up time
+end:
+unset *flag *opt name *endopt *startopt 

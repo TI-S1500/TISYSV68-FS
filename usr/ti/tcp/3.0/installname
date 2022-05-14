@@ -1,0 +1,310 @@
+#	@(#)installname	1.9 92/03/06 Texas Instruments
+
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1989.  ALL	
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	
+#	ASSOCIATED DOCUMENTATION.					
+
+if [ X$TERM = X ]; then
+	echo "The environment variable TERM is not set."
+	while true; do
+		echo
+		echo "What kind of terminal is this?"
+		echo "          (1):      931"
+		echo "          (2):      924"
+		echo "          (3):      924 in 931 mode"
+		echo "          (4):      928"
+		echo "Enter the number of your selection or actual TERM type: \c"
+		read type
+		type="${type:-vt100}"
+		if [ $type = "1" ]; then
+			TERM=x5
+			break
+		fi
+		if [ $type = "2" ]; then
+			TERM=t1
+			break
+		fi
+		if [ $type = "3" ]; then
+			TERM=t9
+			break
+		fi
+		if [ $type = "4" ]; then
+			TERM=x1
+			break
+		fi
+		echo "Do you want to set TERM to \"$type\" ? [y/n]: \c"
+		read answer
+		if [ "${answer:-y}" = "y" ]; then
+			TERM=$type
+			break
+		fi
+	done
+	export TERM
+fi
+tput clear
+
+forceread() 
+{
+# args: [retryprompt "Please enter $1: \c"] [initialprompt "$2 \c"]
+# does: Force user to enter a non null response
+
+echo "$2 \c"
+while true; do
+	read answer
+	if [ X$answer = X ]; then
+		echo "Please enter $1: \c"
+	else
+		break
+	fi
+done
+}
+
+echo "*************************************************************************"
+echo "*          H O S T / A D D R E S S    R E S O L U T I O N               *"
+echo "*************************************************************************"
+echo "
+
+There are two ways of maintaining host addresses accessable by your machine.
+The first method requires that the /etc/hosts file be maintained on all 
+machines on your network.  
+
+The second method requires that the name server process run on all machines, 
+and at least one machine be designated as the primary server.  The primary 
+server maintains the host/address database.
+
+Included with the special files required for the name server is rfc1033.
+This is an overview of the name server intended for system administrators.
+It is recommended that you print this off and read it before you install the
+name server.
+
+ "
+echo "Do you want to install a nameserver now? [y/n]: \c"
+forceread "[y/n]" ; ok=$answer
+if [ X$ok = Xy -o X$ok = Xyes -o X$ok = XY ]; then
+	cd /usr/ti/tcp
+	echo
+	echo "You will need to provide information about your site."
+	echo "You will have to know the name of your host, the name of your"
+	echo "subdomain, the name of your domain, the internet address of your"
+	echo "machine and the internet address of your primary domain server."
+	echo 
+	echo "If you do not know this information quit by typing <control-c> "
+	echo "now and restart this installation when you have the information."
+	echo "Otherwise enter <return> to continue."
+	read whatever
+	echo
+	echo "Is this machine going to be:"
+	echo "\t(1) a primary server"
+	echo "\t(2) a secondary server"
+	echo "\t(3) a caching only server"
+	echo "\t(4) a remote server "
+	echo "\t(5) restored to the old configuration"
+	echo 
+	echo "Enter number of your selection: \c"
+	forceread "1..5 only"; server=$answer
+	case $server in
+	 1) 
+		while true; do
+		tput clear
+		echo "------------PRIMARY DOMAIN SERVER CONFIGURATION------------"
+		echo
+		set `uname -n`
+		if [ $@ = "sitename" ]; then
+			echo "What is your HOSTNAME? \c"
+			forceread "your HOSTNAME" ; hostname=$answer
+		else
+			hostname=`uname -n`
+		fi
+		echo 
+		echo "What is one-word logon id of the PERSON who is the"
+		echo "System administrator of $hostname? \c"
+		forceread "name" "?" ; person=$answer
+		echo
+		echo 
+		echo "What is the SUBDOMAIN designation of this network?"
+		echo "[for example: bs16.ti.com     has subdomain       ti"
+		echo "              bs16.csc.ti.com has subdomain       csc.ti]"
+		forceread "subdomain" "?" ; subdomain=$answer
+		echo
+		echo "What is the DOMAIN designation of this network?"
+		echo "[In both of the examples above it was \"com\"]"
+		forceread "domain" "?" ; domain=$answer
+		echo
+		echo "What is the INTERNET ADDRESS of this host?"
+		echo "[It must be in the dotted decimal format,i.e. 128.247.31.245]"
+		forceread "address" "?"; address=$answer
+		echo
+		echo Is the following correct?
+		echo "-------------------------------------------"
+		echo "Hostname:                  $hostname"
+		echo "System Administrator id:   $person"
+		echo "Subdomain:                 $subdomain"
+		echo "Domain:                    $domain"
+		echo "Internet Address:          $address"
+		echo "-------------------------------------------"
+		forceread "[y/n]" "[y/n]:"; ok=$answer
+		if [ X$ok = Xy -o X$ok = Xyes -o X$ok = XY ]; then
+			echo 
+			echo "modifying name server configuration files..."
+			./Primary $person $hostname $subdomain $domain $address
+			echo 
+			echo "installing name server configuration files..."
+			exit
+		else
+			continue
+		fi
+		done
+	  ;;
+	 2) 
+		while true; do
+		tput clear
+		echo "------------SECONDARY DOMAIN SERVER CONFIGURATION------------"
+		echo 
+		echo "What is the SUBDOMAIN designation of this network?"
+		echo "[for example: bs16.ti.com     has subdomain       ti"
+		echo "              bs16.csc.ti.com has subdomain       csc.ti]"
+		forceread "subdomain" "?" ; subdomain=$answer
+		echo
+		echo "What is the DOMAIN designation of this network?"
+		echo "[In both of the examples above it was \"com\"]"
+		forceread "domain" "?" ; domain=$answer
+		echo
+		echo "What is the INTERNET ADDRESS of the PRIMARY DOMAIN SERVER ?"
+		echo "[It must be in the dotted decimal format,i.e. 128.247.31.245]"
+		forceread "address" "?" ; paddress=$answer
+		echo
+		echo Is the following correct?
+		echo "----------------------------------------------------"
+		echo "Subdomain:                            $subdomain"
+		echo "Domain:                               $domain"
+		echo "Internet Address of Primary:          $paddress"
+		echo "----------------------------------------------------"
+		forceread "[y/n]" "[y/n]:"; ok=$answer
+		if [ X$ok = Xy -o X$ok = Xyes -o X$ok = XY ]; then
+			echo 
+			echo "modifying name server configuration files..."
+			./Secondary $subdomain $domain $paddress
+			echo 
+			echo "installing name server configuration files..."
+			exit
+		else
+			continue
+		fi
+		done
+	  ;;
+	 3) 
+		while true; do
+		tput clear
+		echo "------------CACHING ONLY DOMAIN SERVER CONFIGURATION------------"
+		echo
+		echo "What is the name of the PRIMARY DOMAIN SERVER?"
+		echo "(name only, without the domain appended)"
+		forceread "name" "?" ; phostname=$answer
+		echo
+		echo "What is the SUBDOMAIN designation of this network?"
+		echo "[for example: bs16.ti.com     has subdomain       ti"
+		echo "              bs16.csc.ti.com has subdomain       csc.ti]"
+		forceread "subdomain" "?" ; subdomain=$answer
+		echo
+		echo "What is the DOMAIN designation of this network?"
+		echo "[In both of the examples above it was \"com\"]"
+		forceread "domain" "?" ; domain=$answer
+		echo
+		echo "What is the INTERNET ADDRESS of the PRIMARY DOMAIN SERVER ?"
+		echo "[It must be in the dotted decimal format,i.e. 128.247.31.245]"
+		forceread "address" "?" ; paddress=$answer
+		echo
+		echo Is the following correct?
+		echo "----------------------------------------------------"
+		echo "Primary Domain Server:                $phostname"
+		echo "Subdomain:                            $subdomain"
+		echo "Domain:                               $domain"
+		echo "Internet Address of Primary:          $paddress"
+		echo "----------------------------------------------------"
+		forceread "[y/n]" "[y/n]:"; ok=$answer
+		if [ X$ok = Xy -o X$ok = Xyes -o X$ok = XY ]; then
+			echo 
+			echo "modifying name server configuration files..."
+			./Caching $phostname $subdomain $domain $paddress
+			echo 
+			echo "installing name server configuration files..."
+			exit
+		else
+			continue
+		fi
+		done
+	  ;;
+	 4) 
+		while true; do
+		tput clear
+		echo "-------------------CLIENT ONLY CONFIGURATION--------------------"
+		echo
+		echo "What is the SUBDOMAIN designation of this network?"
+		echo "[for example: bs16.ti.com     has subdomain       ti"
+		echo "              bs16.csc.ti.com has subdomain       csc.ti]"
+		forceread "subdomain" "?" ; subdomain=$answer
+		echo
+		echo "What is the DOMAIN designation of this network?"
+		echo "[In both of the examples above it was \"com\"]"
+		forceread "domain" "?" ; domain=$answer
+		echo
+		echo "What is the INTERNET ADDRESS of the PRIMARY DOMAIN SERVER ?"
+		echo "[It must be in the dotted decimal format,i.e. 128.247.31.245]"
+		forceread "address" "?" ; paddress=$answer
+		echo
+		echo Is the following correct?
+		echo "----------------------------------------------------"
+		echo "Subdomain:                            $subdomain"
+		echo "Domain:                               $domain"
+		echo "Internet Address of Primary:          $paddress"
+		echo "----------------------------------------------------"
+		forceread "[y/n]" "[y/n]:"; ok=$answer
+		if [ X$ok = Xy -o X$ok = Xyes -o X$ok = XY ]; then
+			echo 
+			echo "creating the /etc/resolv.conf file..."
+			cp ./named/resolv.conf resolv.temp$$
+			echo "domain $subdomain.$domain" >> resolv.temp$$
+			echo "nameserver $paddress" >> resolv.temp$$
+			mv resolv.temp$$ /etc/resolv.conf
+			chmod 644 /etc/resolv.conf
+			exit
+		else
+			continue
+		fi
+		done
+	  ;;
+	 5) 
+		tput clear
+		echo "-------------------RESTORE PREVIOUS CONFIGURATION---------------"
+		echo
+		echo "If you had done a remove of TCP/IP with the removetcp "
+		echo "script from the installation tape, then the old "
+		echo "configuration files for named would have been saved in"
+		echo "/usr/ti/tcp/named/old.  "
+		echo 
+		echo "Do you want to restore the previous configuration? \c"
+		forceread "[y/n]" "[y/n]:"; ok=$answer
+		if [ X$ok = Xy -o X$ok = Xyes -o X$ok = XY ]; then
+			if [ -f /usr/ti/tcp/named/old/named.boot ]; then
+				echo
+				echo "restoring /etc/named.boot ..."
+				mv /usr/ti/tcp/named/old/named.boot /etc
+				echo
+				echo "restoring /usr/lib/named/* ..."
+				mv /usr/ti/tcp/named/old/* /usr/lib/named
+			else
+				echo
+				echo "The named configuration files were not found!"
+			fi
+		else
+			echo
+			echo "No change."
+		fi
+
+	  ;;
+	 *) 
+	  ;;
+	esac
+fi

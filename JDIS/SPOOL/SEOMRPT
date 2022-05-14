@@ -1,0 +1,678 @@
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     1
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 1D
+Srce: Total
+
+
+
+          Percent of Fill                          MTD      YTD
+          ---------------------------------       -----    -----
+          Counter Sales Stocked Items              94.9     95.3
+          Counter Sales All Items                  88.6     87.7
+
+          Shop Sales Stocked Items                 87.3     91.7
+          Shop Sales All Items                     71.4     78.7
+
+          Recondition Sales Stocked Items         100.0    100.0
+          Recondition Sales All Items              66.7     90.0
+
+          Total Sales All Stock Items              94.8     95.1
+          Total Sales All Items                    88.1     87.2
+
+
+          Activity Information                   Cur Dol     Avg Dol       C.D.       Items      Curr %
+          ---------------------------------      -------     -------     -------     -------     -------
+          Retail Sales Last 12 Months             660336      ------      ------      ------
+          Retail Sales Current Month               63357      ------      ------      ------
+
+          Cost of Sales Last 12 Months            497441      493558      404527      ------
+          Cost of Sales Current Month              58764       57945       48199      ------
+
+          Avg. Inventory Last 12 Months           286726      280498      227117       19821
+          Inventory Dollars Current Month         198162      193953      161404       19268
+          Inv. at Cost Zero Sales Last 12          47408       45932       40679        7143       23.9
+
+          Cost of Sales Percent (Cost/Retail)       75.3        74.7        61.3
+
+          Markup Percent                            32.8        33.8        63.2
+
+          Turnover Last 12 Months All Items          1.7         1.8         1.8
+          Turnover Last 12 Months With Sales         2.1         2.1         2.2
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     2
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 1D
+Srce: Total
+
+
+
+                                                          MTD                     YTD
+          Counter Sales                           Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Charge Sales                             11946         363       32759        1350
+          Cash Sales                               38161        2194       87000        4337
+          Warranty Sales                              69           1         395           6
+          Internal Sales                               0           0           0           0
+          Lost Sales Stocked                          39           3         308          25
+          Lost Sales Non-Stock                         0           0         203           4
+          Special Orders Stocked                    4757         134        7386         257
+          Special Orders Non-Stock                  6921         193       18417         510
+
+          Total Counter Sales                      61854        2885      145957        6460
+
+
+          Shop Sales                              Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Charge Sales                               687          16        4517         206
+          Cash Sales                                 536          20        1438          92
+          Warranty Sales                             165           5         519           9
+          Internal Sales                             206          14         623          36
+          Lost Sales Stocked                           0           0         171           4
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                     343           8         802          27
+          Special Orders Non-Stock                  1009          14        2771          62
+
+          Total Shop Sales                          2946          77       10670         432
+
+
+          Reconditioning Sales                    Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Sales                                       19           2         178          18
+          Lost Sales Stocked                           0           0           0           0
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                       0           0           0           0
+          Special Orders Non-Stock                   200           1         211           2
+
+          Total Reconditioning Sales                 219           3         390          20
+
+          Total Part Sales                         65018        2965      157016        6912
+
+
+          Returns                                 Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Returned By Customer                      1506-         48-       6601-        125-
+          Returned By Shop                           155-          7-        270-         11-
+          Returned By Reconditioning                   0           0           0           0
+
+          Total Returns                             1661-         55-       6870-        136-
+
+
+                 Total Net Part Sales              63357        2910      150146        6776
+
+                                                           (Continued)
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     3
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 1D                                              Critical Code Information
+
+
+                                     %Fill    %Fill       Retail       Cost Of
+                                     Stock     All        Sales         Sales    Cost%     Inventory   Zero Sales     Zero
+Crit                                 Month    Month       Month         Month    Month       Month     Inventory      Sales
+Code   Description                    YTD      YTD         L12           L12      L12       Ave L12       Month         %       Turn
+
+00 Class not avail/Not on Prc Bk      99.6     89.7        7,779        7,434     95.6       16,079        5,468      34.0       5.5
+                                      97.4     87.0       53,498       42,883     80.2       34,645
+
+11 Periodic service & consumable      91.5     90.4       13,676       13,277     97.1       31,931        5,445      17.0       5.0
+                                      97.8     96.8      136,494      108,872     79.8       51,455
+
+12 Mach down, less than 2 hr inst     88.4     83.6        2,194        1,992     90.8       14,878        4,613      31.0       1.6
+                                      95.6     90.5       42,892       30,911     72.1       22,174
+
+13 Dealer fabricated parts           100.0    100.0           76           79    104.6        1,087          502      46.0       0.9
+                                      96.3     93.0        1,632        1,259     77.1        1,300
+
+14 Mach down, more than 2 hr inst     95.4     89.0        2,461        2,362     96.0       18,622        3,821      20.0       1.5
+                                      95.2     88.0       59,958       42,819     71.4       26,387
+
+15 Wear/repair                        84.6     78.5        5,683        4,929     86.7       18,782        5,374      28.0       3.1
+                                      95.6     84.7       65,275       46,162     70.7       26,823
+
+20 Re-life parts                      92.5     77.6       18,647       15,916     85.3       46,540        9,401      20.0       4.1
+                                      94.4     77.3      200,367      142,434     71.1       63,927
+
+21 Hardware                           93.2     80.0        1,213          984     81.1       12,746        3,963      31.0       0.9
+                                      93.2     84.3       11,975        8,821     73.7       10,989
+
+22 Safety parts                        0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                      85.7     46.1        1,047          677     64.6          236
+
+50 Re-life parts SLOW MOVING           0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+51 Periodic service SLOW MOVING      100.0    100.0          235          235    100.0        1,975          970      49.0       1.4
+                                      88.3     70.6        2,600        2,069     79.6        2,315
+
+52 Mach down, < 2 hr SLOW MOVING     100.0     78.5          280          248     88.7        1,857          480      25.0       1.6
+                                      80.3     35.5        4,955        3,476     70.1        1,811
+
+53 Dlr fabricated parts SLOW MOV       0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+54 Mach down, > 2 hr SLOW MOVING      84.6     50.0          266          216     81.2        2,249          805      35.0       1.2
+                                      84.1     31.2        7,651        5,228     68.3        2,609
+
+55 Wear/repair SLOW MOVING           100.0     88.8          160          137     86.0          410           94      23.0       4.0
+                                      94.4     85.0          286          228     79.6          287
+
+90 PIP - Auto Ord                      0.0      0.0            0            0      0.0          243           10       4.0       0.0
+                                     100.0     66.6           18          116    644.4          256
+
+91 PIP                                 0.0      0.0            0           15      0.0          447          447     100.0       0.4
+                                       0.0      0.0           28           43    153.6          448
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     4
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 1D                                              Critical Code Information
+
+
+                                     %Fill    %Fill       Retail       Cost Of
+                                     Stock     All        Sales         Sales    Cost%     Inventory   Zero Sales     Zero
+Crit                                 Month    Month       Month         Month    Month       Month     Inventory      Sales
+Code   Description                    YTD      YTD         L12           L12      L12       Ave L12       Month         %       Turn
+
+99 Class not assigned by JD           99.7     98.9       10,721       10,939    102.0       30,318        6,008      19.0       4.3
+                                      99.3     98.3       69,428       59,966     86.4       41,065
+
+
+
+   Total Critical Code - Month        94.7     88.1       63,392       58,764     92.7      198,162       47,408      23.0       3.6
+   Total Critical Code - YTD          96.2     87.5      658,106      495,962     75.4      286,726
+
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     5
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 1M
+Srce: Total
+
+
+
+          Percent of Fill                          MTD      YTD
+          ---------------------------------       -----    -----
+          Counter Sales Stocked Items              98.5     98.3
+          Counter Sales All Items                  83.6     84.2
+
+          Shop Sales Stocked Items                 84.2     94.4
+          Shop Sales All Items                     58.2     72.6
+
+          Recondition Sales Stocked Items         100.0     72.2
+          Recondition Sales All Items             100.0     63.4
+
+          Total Sales All Stock Items              98.0     97.8
+          Total Sales All Items                    82.6     82.9
+
+
+          Activity Information                   Cur Dol     Avg Dol       C.D.       Items      Curr %
+          ---------------------------------      -------     -------     -------     -------     -------
+          Retail Sales Last 12 Months             385844      ------      ------      ------
+          Retail Sales Current Month               43699      ------      ------      ------
+
+          Cost of Sales Last 12 Months            298336      276966      294580      ------
+          Cost of Sales Current Month              43257       39334       44938      ------
+
+          Avg. Inventory Last 12 Months           164235      151478      156420        7743
+          Inventory Dollars Current Month         112659      102945       97857        7660
+          Inv. at Cost Zero Sales Last 12          53355       49726       46860        3478       47.4
+
+          Cost of Sales Percent (Cost/Retail)       77.3        71.8        76.4
+
+          Markup Percent                            29.3        39.3        31.0
+
+          Turnover Last 12 Months All Items          1.8         1.8         1.9
+          Turnover Last 12 Months With Sales         2.7         2.7         2.7
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     6
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 1M
+Srce: Total
+
+
+
+                                                          MTD                     YTD
+          Counter Sales                           Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Charge Sales                              5728         121       22284         757
+          Cash Sales                               31071         993       71659        2730
+          Warranty Sales                             500           1        1079           6
+          Internal Sales                               0           0           0           0
+          Lost Sales Stocked                           0           0          76           9
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                     357          17        1527          50
+          Special Orders Non-Stock                  5268         202       17567         596
+
+          Total Counter Sales                      42925        1334      114115        4139
+
+
+          Shop Sales                              Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Charge Sales                                 0           0         730          44
+          Cash Sales                                 343          20        3906         189
+          Warranty Sales                              94           6        1644          58
+          Internal Sales                              55           6         352          30
+          Lost Sales Stocked                           0           1           1           2
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                      61           5        1665          17
+          Special Orders Non-Stock                   791          17        5302         102
+
+          Total Shop Sales                          1345          54       13598         440
+
+
+          Reconditioning Sales                    Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Sales                                        8           1         364          26
+          Lost Sales Stocked                           0           0           0           0
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                       0           0         159          10
+          Special Orders Non-Stock                     0           0          69           5
+
+          Total Reconditioning Sales                   8           1         592          41
+
+          Total Part Sales                         44277        1389      128305        4620
+
+
+          Returns                                 Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Returned By Customer                       536-         19-       2612-         92-
+          Returned By Shop                            42-          3-         60-          9-
+          Returned By Reconditioning                   0           0           0           0
+
+          Total Returns                              578-         22-       2672-        101-
+
+
+                 Total Net Part Sales              43699        1367      125633        4519
+
+                                                           (Continued)
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     7
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 2D
+Srce: Total
+
+
+
+          Percent of Fill                          MTD      YTD
+          ---------------------------------       -----    -----
+          Counter Sales Stocked Items               0.0      0.0
+          Counter Sales All Items                   0.0      0.0
+
+          Shop Sales Stocked Items                  0.0      0.0
+          Shop Sales All Items                      0.0      0.0
+
+          Recondition Sales Stocked Items           0.0      0.0
+          Recondition Sales All Items               0.0      0.0
+
+          Total Sales All Stock Items               0.0      0.0
+          Total Sales All Items                     0.0      0.0
+
+
+          Activity Information                   Cur Dol     Avg Dol       C.D.       Items      Curr %
+          ---------------------------------      -------     -------     -------     -------     -------
+          Retail Sales Last 12 Months                  0      ------      ------      ------
+          Retail Sales Current Month                   0      ------      ------      ------
+
+          Cost of Sales Last 12 Months                 0           0           0      ------
+          Cost of Sales Current Month                  0           0           0      ------
+
+          Avg. Inventory Last 12 Months              644         534         518          10
+          Inventory Dollars Current Month            648         534         518          10
+          Inv. at Cost Zero Sales Last 12            648         534         518          10      100.0
+
+          Cost of Sales Percent (Cost/Retail)        0.0         0.0         0.0
+
+          Markup Percent                             0.0         0.0         0.0
+
+          Turnover Last 12 Months All Items          0.0         0.0         0.0
+          Turnover Last 12 Months With Sales         0.0         0.0         0.0
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     8
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 2D
+Srce: Total
+
+
+
+                                                          MTD                     YTD
+          Counter Sales                           Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Charge Sales                                 0           0           0           0
+          Cash Sales                                   0           0           0           0
+          Warranty Sales                               0           0           0           0
+          Internal Sales                               0           0           0           0
+          Lost Sales Stocked                           0           0           0           0
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                       0           0           0           0
+          Special Orders Non-Stock                     0           0           0           0
+
+          Total Counter Sales                          0           0           0           0
+
+
+          Shop Sales                              Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Charge Sales                                 0           0           0           0
+          Cash Sales                                   0           0           0           0
+          Warranty Sales                               0           0           0           0
+          Internal Sales                               0           0           0           0
+          Lost Sales Stocked                           0           0           0           0
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                       0           0           0           0
+          Special Orders Non-Stock                     0           0           0           0
+
+          Total Shop Sales                             0           0           0           0
+
+
+          Reconditioning Sales                    Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Sales                                        0           0           0           0
+          Lost Sales Stocked                           0           0           0           0
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                       0           0           0           0
+          Special Orders Non-Stock                     0           0           0           0
+
+          Total Reconditioning Sales                   0           0           0           0
+
+          Total Part Sales                             0           0           0           0
+
+
+          Returns                                 Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Returned By Customer                         0           0           0           0
+          Returned By Shop                             0           0           0           0
+          Returned By Reconditioning                   0           0           0           0
+
+          Total Returns                                0           0           0           0
+
+
+                 Total Net Part Sales                  0           0           0           0
+
+                                                           (Continued)
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:     9
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 2D                                              Critical Code Information
+
+
+                                     %Fill    %Fill       Retail       Cost Of
+                                     Stock     All        Sales         Sales    Cost%     Inventory   Zero Sales     Zero
+Crit                                 Month    Month       Month         Month    Month       Month     Inventory      Sales
+Code   Description                    YTD      YTD         L12           L12      L12       Ave L12       Month         %       Turn
+
+00 Class not avail/Not on Prc Bk       0.0      0.0            0            0      0.0           69           69     100.0       0.0
+                                      97.7     92.2       24,801       17,439     70.3           94
+
+11 Periodic service & consumable       0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+12 Mach down, less than 2 hr inst      0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+13 Dealer fabricated parts             0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+14 Mach down, more than 2 hr inst      0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+15 Wear/repair                         0.0      0.0            0            0      0.0          111          110     100.0       0.0
+                                       0.0      0.0            0            0      0.0          110
+
+20 Re-life parts                       0.0      0.0            0            0      0.0          235          235     100.0       0.0
+                                       0.0      0.0            0            0      0.0          195
+
+21 Hardware                            0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+22 Safety parts                        0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+50 Re-life parts SLOW MOVING           0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+51 Periodic service SLOW MOVING        0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+52 Mach down, < 2 hr SLOW MOVING       0.0      0.0            0            0      0.0          233          232     100.0       0.0
+                                       0.0      0.0            0            0      0.0          231
+
+53 Dlr fabricated parts SLOW MOV       0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+54 Mach down, > 2 hr SLOW MOVING       0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+55 Wear/repair SLOW MOVING             0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+90 PIP - Auto Ord                      0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+91 PIP                                 0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:    10
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: 2D                                              Critical Code Information
+
+
+                                     %Fill    %Fill       Retail       Cost Of
+                                     Stock     All        Sales         Sales    Cost%     Inventory   Zero Sales     Zero
+Crit                                 Month    Month       Month         Month    Month       Month     Inventory      Sales
+Code   Description                    YTD      YTD         L12           L12      L12       Ave L12       Month         %       Turn
+
+99 Class not assigned by JD            0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+
+
+   Total Critical Code - Month         0.0      0.0            0            0      0.0          648          648     100.0       0.0
+   Total Critical Code - YTD          97.7     92.2       24,801       17,439     70.3          631
+
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:    11
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: Grand
+Srce: Total
+
+
+
+          Percent of Fill                          MTD      YTD
+          ---------------------------------       -----    -----
+          Counter Sales Stocked Items              96.0     96.4
+          Counter Sales All Items                  87.0     86.4
+
+          Shop Sales Stocked Items                 86.1     93.0
+          Shop Sales All Items                     65.9     75.6
+
+          Recondition Sales Stocked Items         100.0     81.5
+          Recondition Sales All Items              75.0     72.1
+
+          Total Sales All Stock Items              95.7     96.1
+          Total Sales All Items                    86.4     85.5
+
+
+          Activity Information                   Cur Dol     Avg Dol       C.D.       Items      Curr %
+          ---------------------------------      -------     -------     -------     -------     -------
+          Retail Sales Last 12 Months            1046180      ------      ------      ------
+          Retail Sales Current Month              107056      ------      ------      ------
+
+          Cost of Sales Last 12 Months            795777      770524      699107      ------
+          Cost of Sales Current Month             102021       97279       93137      ------
+
+          Avg. Inventory Last 12 Months           451606      432510      384054       27574
+          Inventory Dollars Current Month         311470      297432      259778       26938
+          Inv. at Cost Zero Sales Last 12         101411       96193       88057       10631       32.6
+
+          Cost of Sales Percent (Cost/Retail)       76.1        73.7        66.8
+
+          Markup Percent                            31.5        35.8        49.7
+
+          Turnover Last 12 Months All Items          1.8         1.8         1.8
+          Turnover Last 12 Months With Sales         2.3         2.3         2.4
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:    12
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: Grand
+Srce: Total
+
+
+
+                                                          MTD                     YTD
+          Counter Sales                           Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Charge Sales                             17674         484       55043        2107
+          Cash Sales                               69232        3187      158659        7067
+          Warranty Sales                             569           2        1474          12
+          Internal Sales                               0           0           0           0
+          Lost Sales Stocked                          39           3         383          34
+          Lost Sales Non-Stock                         0           0         203           4
+          Special Orders Stocked                    5114         151        8913         307
+          Special Orders Non-Stock                 12189         395       35984        1106
+
+          Total Counter Sales                     104778        4219      260072       10599
+
+
+          Shop Sales                              Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Charge Sales                               687          16        5248         250
+          Cash Sales                                 879          40        5344         281
+          Warranty Sales                             260          11        2163          67
+          Internal Sales                             261          20         974          66
+          Lost Sales Stocked                           0           1         172           6
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                     404          13        2466          44
+          Special Orders Non-Stock                  1800          31        8073         164
+
+          Total Shop Sales                          4290         131       24268         872
+
+
+          Reconditioning Sales                    Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Sales                                       27           3         542          44
+          Lost Sales Stocked                           0           0           0           0
+          Lost Sales Non-Stock                         0           0           0           0
+          Special Orders Stocked                       0           0         159          10
+          Special Orders Non-Stock                   200           1         280           7
+
+          Total Reconditioning Sales                 227           4         981          61
+
+          Total Part Sales                        109295        4354      285321       11532
+
+
+          Returns                                 Dollars       Items     Dollars       Items
+          ---------------------------------       -------------------     -------------------
+          Returned By Customer                      2042-         67-       9213-        217-
+          Returned By Shop                           196-         10-        330-         20-
+          Returned By Reconditioning                   0           0           0           0
+
+          Total Returns                             2239-         77-       9543-        237-
+
+
+                 Total Net Part Sales             107057        4277      275778       11295
+
+                                                           (Continued)
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:    13
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: Grand                                           Critical Code Information
+
+
+                                     %Fill    %Fill       Retail       Cost Of
+                                     Stock     All        Sales         Sales    Cost%     Inventory   Zero Sales     Zero
+Crit                                 Month    Month       Month         Month    Month       Month     Inventory      Sales
+Code   Description                    YTD      YTD         L12           L12      L12       Ave L12       Month         %       Turn
+
+00 Class not avail/Not on Prc Bk      99.6     89.7        7,779        7,434     95.6       16,149        5,537      34.0       5.5
+                                      97.5     88.3       78,299       60,322     77.0       34,740
+
+11 Periodic service & consumable      91.5     90.4       13,676       13,277     97.1       31,931        5,445      17.0       5.0
+                                      97.8     96.8      136,494      108,872     79.8       51,455
+
+12 Mach down, less than 2 hr inst     88.4     83.6        2,194        1,992     90.8       14,878        4,613      31.0       1.6
+                                      95.6     90.5       42,892       30,911     72.1       22,174
+
+13 Dealer fabricated parts           100.0    100.0           76           79    104.6        1,087          502      46.0       0.9
+                                      96.3     93.0        1,632        1,259     77.1        1,300
+
+14 Mach down, more than 2 hr inst     95.4     89.0        2,461        2,362     96.0       18,622        3,821      20.0       1.5
+                                      95.2     88.0       59,958       42,819     71.4       26,387
+
+15 Wear/repair                        84.6     78.5        5,683        4,929     86.7       18,892        5,484      29.0       3.1
+                                      95.6     84.7       65,275       46,162     70.7       26,933
+
+20 Re-life parts                      92.5     77.6       18,647       15,916     85.3       46,775        9,636      20.0       4.1
+                                      94.4     77.3      200,367      142,434     71.1       64,123
+
+21 Hardware                           93.2     80.0        1,213          984     81.1       12,746        3,963      31.0       0.9
+                                      93.2     84.3       11,975        8,821     73.7       10,989
+
+22 Safety parts                        0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                      85.7     46.1        1,047          677     64.6          236
+
+50 Re-life parts SLOW MOVING           0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+51 Periodic service SLOW MOVING      100.0    100.0          235          235    100.0        1,975          970      49.0       1.4
+                                      88.3     70.6        2,600        2,069     79.6        2,315
+
+52 Mach down, < 2 hr SLOW MOVING     100.0     78.5          280          248     88.7        2,089          713      34.0       1.4
+                                      80.3     35.5        4,955        3,476     70.1        2,042
+
+53 Dlr fabricated parts SLOW MOV       0.0      0.0            0            0      0.0            0            0       0.0       0.0
+                                       0.0      0.0            0            0      0.0            0
+
+54 Mach down, > 2 hr SLOW MOVING      84.6     50.0          266          216     81.2        2,249          805      35.0       1.2
+                                      84.1     31.2        7,651        5,228     68.3        2,609
+
+55 Wear/repair SLOW MOVING           100.0     88.8          160          137     86.0          410           94      23.0       4.0
+                                      94.4     85.0          286          228     79.6          287
+
+90 PIP - Auto Ord                      0.0      0.0            0            0      0.0          243           10       4.0       0.0
+                                     100.0     66.6           18          116    644.4          256
+
+91 PIP                                 0.0      0.0            0           15      0.0          447          447     100.0       0.4
+                                       0.0      0.0           28           43    153.6          448
+
+
+                                                           (Continued)
+
+Date: 02APR1998                                        MEYER IMPLEMENT, INC.                                             Page:    14
+Time:  9:30                                     End Of Month Management Report - 03/1998                                  (EOMRPT-1)
+Whse: Grand                                           Critical Code Information
+
+
+                                     %Fill    %Fill       Retail       Cost Of
+                                     Stock     All        Sales         Sales    Cost%     Inventory   Zero Sales     Zero
+Crit                                 Month    Month       Month         Month    Month       Month     Inventory      Sales
+Code   Description                    YTD      YTD         L12           L12      L12       Ave L12       Month         %       Turn
+
+99 Class not assigned by JD           99.7     98.9       10,721       10,939    102.0       30,318        6,008      19.0       4.3
+                                      99.3     98.3       69,428       59,966     86.4       41,065
+
+
+
+   Total Critical Code - Month        94.7     88.1       63,392       58,764     92.7      198,810       48,056      24.0       3.5
+   Total Critical Code - YTD          96.3     87.6      682,907      513,401     75.2      287,357
+
+
+
+                                                         (End of Report)
+

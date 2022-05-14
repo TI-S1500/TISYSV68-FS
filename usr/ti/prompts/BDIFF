@@ -1,0 +1,45 @@
+# cshf  bidff -- compares files too large for diff 
+#	@(#)BDIFF.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^BDIFF -- COMPARES FILES TOO LARGE FOR DIFF"\
+	"^File 1:" _input_file acnm $_input_file\
+	"^File 2:" F2 acnm \
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^Segment Length:" nflag integer 3500\
+	"^Print Diagnostics:" sflag yesno y\
+	"^#$*"
+
+if ($abort) goto end
+echo "=== BDIFF COMMAND EXECUTING ==="
+if ("$_input_file" != "-") then
+  if (!(-e $_input_file)) then
+	echo ERROR: $_input_file does not exist
+	set abort = "1"
+  endif
+endif
+if ("$F2" != "-") then
+  if (!(-e $F2)) then
+	echo ERROR: $F2 does not exist
+	set abort = "1"
+  endif
+endif
+if (("$_input_file" == "-") && ("$F2" == "-")) then
+	echo ERROR: Both files are standard input
+	set abort = "1"
+endif
+ 
+if ($abort) goto end
+if ($sflag == "n") set sopt = -s
+if ($_output_file != "") then
+ 	echo bdiff $_input_file $F2 $nflag $sopt ">"$_output_file
+ 	bdiff $_input_file $F2 $nflag $sopt >$_output_file
+	pg -cp"Output from BDIFF is being piped through pg: " $_output_file 
+else
+ 	echo bdiff $_input_file $F2 $nflag $sopt 
+ 	bdiff $_input_file $F2 $nflag $sopt 
+endif
+
+end:
+unset *flag sopt n

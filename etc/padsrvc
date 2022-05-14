@@ -1,0 +1,4 @@
+
+# @(#)padsrvc	1.1 92/06/17
+
+/etc/pad_srvc -f /dev/pad_srvc&

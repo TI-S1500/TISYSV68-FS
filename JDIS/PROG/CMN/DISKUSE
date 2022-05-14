@@ -1,0 +1,73 @@
+**************************
+DISK USAGE BEFORE INSTALL:
+29	/JDIS/PROG/CMN/terminfo_src
+3	/JDIS/PROG/CMN/terminfo/a
+31	/JDIS/PROG/CMN/terminfo/t
+1	/JDIS/PROG/CMN/terminfo/e
+3	/JDIS/PROG/CMN/terminfo/x
+39	/JDIS/PROG/CMN/terminfo
+1097	/JDIS/PROG/CMN/OLDASPEN
+7591	/JDIS/PROG/CMN
+20	/JDIS/PROG/AP
+1056	/JDIS/PROG/AR
+1345	/JDIS/PROG/CG
+35	/JDIS/PROG/COMM/HS
+16	/JDIS/PROG/COMM/HSUNIX
+2311	/JDIS/PROG/COMM
+396	/JDIS/PROG/CSP
+302	/JDIS/PROG/ESIS
+338	/JDIS/PROG/INT
+988	/JDIS/PROG/MF
+3688	/JDIS/PROG/MI
+1187	/JDIS/PROG/MS
+3455	/JDIS/PROG/REP
+1072	/JDIS/PROG/RG
+281	/JDIS/PROG/RN
+139	/JDIS/PROG/Z/CMN
+320	/JDIS/PROG/Z/CG
+263	/JDIS/PROG/Z/MF
+1092	/JDIS/PROG/Z/MI
+77	/JDIS/PROG/Z/MS
+1051	/JDIS/PROG/Z/CSM
+159	/JDIS/PROG/Z/JDPS
+3102	/JDIS/PROG/Z
+89	/JDIS/PROG/SP
+84517	/JDIS/PROG
+194	/JDIS/DATA/DAYEND2
+1049	/JDIS/DATA/MONTHEND
+39806	/JDIS/DATA/MI
+9914	/JDIS/DATA/MF
+1	/JDIS/DATA/MP
+11353	/JDIS/DATA/MS
+112	/JDIS/DATA/DAYEND1
+1	/JDIS/DATA/EPC
+288	/JDIS/DATA/POLLRPTS
+1238	/JDIS/DATA/RG
+3137	/JDIS/DATA/CG
+158	/JDIS/DATA/RN
+1	/JDIS/DATA/SH
+30	/JDIS/DATA/COMM
+55	/JDIS/DATA/CSM
+1	/JDIS/DATA/CSP
+17	/JDIS/DATA/RM
+1	/JDIS/DATA/PREP
+67357	/JDIS/DATA
+-rw-rw-rw-   1 DLR001   group    1810432 Mar 27 18:12 /JDIS/DATA/MS/MSWOH.INX
+-rwxrwxrwx   1 DLR007   group     303104 Mar 28 00:42 /JDIS/DATA/MI/PMMPUR.INX
+-rw-rw-rw-   1 DLR007   group    13877248 Mar 28 00:42 /JDIS/DATA/MI/PRTMST.INX
+-rw-rw-rw-   1 sys999   group     286720 Mar 28 00:42 /JDIS/DATA/MI/ORDER.INX
+-rw-rw-rw-   1 DLR001   group       8192 Sep  9  1994 /JDIS/DATA/CG/SEC.INX
+-rwxrwxrwx   1 DLR060   group      16384 Mar 26 15:25 /JDIS/DATA/CG/CGINVC.INX
+-rw-rw-rw-   1 DLR009   group       8192 Apr  4  1995 /JDIS/DATA/MF/OPCHK.INX
+-rwxrwxrwx   1 DLR060   group      57344 Mar  7 18:01 /JDIS/DATA/MF/BUDGET.INX
+-rw-rw-rw-   1 DLR001   group      57344 Mar  1 08:46 /JDIS/DATA/MF/BUDPRY.INX
++++++++++++++++++++++++
+DISK SPACE AFTER CONV961:
+/                   (/dev/dsk/sys:root):           1577 blocks     2250 i-nodes
+                    total:                        12288 blocks     3072 i-nodes
+/pipe               (/dev/dsk/sys:pipe):            989 blocks      492 i-nodes
+                    total:                         1024 blocks      496 i-nodes
+/usr                (/dev/dsk/sys:usr):           12313 blocks     6795 i-nodes
+                    total:                        32768 blocks     8192 i-nodes
+/JDIS               (/dev/dsk/sys:jdis):         176036 blocks    58527 i-nodes
+                    total:                       448972 blocks    65488 i-nodes

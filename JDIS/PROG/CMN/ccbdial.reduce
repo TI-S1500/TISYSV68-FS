@@ -1,0 +1,5 @@
+:
+tail -100 /usr/adm/comlog/prnt.ccb08.0 >/tmp/prnt.log
+rm /usr/adm/comlog/prnt.ccb08.0
+cp /tmp/prnt.log /usr/adm/comlog/prnt.ccb08.0
+rm /tmp/prnt.log

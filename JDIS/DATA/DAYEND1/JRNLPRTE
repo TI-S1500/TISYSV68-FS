@@ -1,0 +1,18 @@
+
+Date: 07JAN99                                       MEYER IMPLEMENT, INC.                                                 Page:    1
+Time: 11:25        Station: ALL                Transaction Edit Report As Entered                                       (JRNLPRT-01)
+
+ Account No.  Description                  Reference    Control No.    Date      STC  SM/SW  Technician   Amount     SJ   A/P Updt?
+
+   102-01-00  MM INT-DEC                       10799                31DEC98                       1     2,730.96-    80
+   102-02-00  MM INT-DEC                       10799                31DEC98                       1     2,730.96     80
+
+
+ Debit  Transactions =         1    Total Debit  =       2,730.96
+
+Credit  Transactions =         1    Total Credit =       2,730.96-
+
+ Total  Transactions =         2    Total        =            .00
+
+
+                                                          (End of Report)

@@ -1,0 +1,18 @@
+# cshf  pwck - password file checker  
+#	@(#)PWCK.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^PWCK -- CHECKS PASSWORD FILE"\
+	"^THIS IS A SUPER USER COMMAND"\
+	"^Password File Name:" FN acnm /etc/passwd\
+	"^#$*"
+
+if ($abort) goto end
+
+echo "=== PSWK COMMAND EXECUTING ==="
+echo /etc/pwck $FN 
+/etc/pwck $FN 
+
+end:
+unset FN

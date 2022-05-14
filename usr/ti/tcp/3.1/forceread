@@ -1,0 +1,219 @@
+#
+#	@(#)forceread	1.9 93/01/20 Texas Instruments TCP/IP System V
+#	@(#)BUILD(TI):	3.1:/src/comm/tcpip31/usr/src/cmd/objdir/s.forceread: 5/18/93 19:57:28
+
+# Any script sourcing this file should be invoked either by :
+# sh $0 `tty` 0 < readhist_file
+# or by
+# sh $0 `tty` 1
+# Either example above may pass optional 3rd + 4th args $BOLD $NORM, too
+
+# CALLER MUST: set up READHIST, possibly zeroing that file
+# and then source this file : . forceread
+
+# Variables clobbered or used:
+# INTERNAL: closed keyboardp type validch numchs mismatch windsaved
+# RETURNED: answer BOLD NORM realtty clr TERM
+
+# Functions: forceread FAKEread fakereturn flushist loganswer unwind savewind
+
+### echo "EXECUTING: $0 $*"
+# `tty` does NOT work inside a script with stdin redirected from a file
+# and `who am i` does not work (returns "") if never gone to multi-user
+# mode at least once. /dev/tty seems to work for any terminal.
+realtty="${1:-/dev/tty}"
+
+if [ X$TERM = X ]; then
+	echo "The environment variable TERM is not set."
+	while true; do
+		echo
+		echo "What kind of terminal is this?"
+		echo "          (1):      931"
+		echo "          (2):      924"
+		echo "          (3):      924 in 931 mode"
+		echo "          (4):      928"
+		echo "Enter the number of your selection or actual TERM type: \c"
+		read type < $realtty	
+		type="${type:-vt100}"
+		if [ $type = "1" ]; then
+			TERM=x5
+			break
+		fi
+		if [ $type = "2" ]; then
+			TERM=t1
+			break
+		fi
+		if [ $type = "3" ]; then
+			TERM=t9
+			break
+		fi
+		if [ $type = "4" ]; then
+			TERM=x1
+			break
+		fi
+		echo "Do you want to set TERM to \"$type\" ? [y/n]: \c"
+		read answer > $realtty
+		if [ "${answer:-y}" = "y" ]; then
+			TERM=$type
+			break
+		fi
+	done
+	export TERM
+fi
+
+keyboardp="${2:-1}" # Is standard input the keyboard?
+BOLD="${3:-`tput rev`}" ; NORM="${4:-`tput sgr0`}"
+clr="`tput clear`"
+
+fakereturn() {
+	# stdin is file, fake user input of return key
+	# so BOLD inputs appear on screen correctly as displayed 
+	# from stdin coming from a readhist input file
+	if [ $keyboardp = 0 ]; then
+		echo "\n$1\c"
+	else
+		echo "$1"
+	fi
+}
+
+loganswer() { 
+	# this routine can be called by "quit" scripts - see chkccb
+	# log a history of input responses
+	if [ $keyboardp = 0 ]; then
+		echo "$BOLD${1:-<return>}$NORM"
+	fi
+	echo "$1" >> ${READHIST:-/dev/null} ; sync
+}
+
+flushist() {
+	# if a non-repeatable condition occurs and necessitates a
+	# FAKEread be used, and the answer can cause the remaining
+	# imputs of a READHIST file to become invalid, call this
+	# function to "flush" the remaining READHIST - its all we can do!
+	# OR,
+	# if standard input is a file that does not have enough inputs
+	# to handle reads, then read will loop forever. In this case we
+	# must close it and redirect all reads to $realtty
+	if [ $# = 0 -a $keyboardp = 0 ]; then
+		ECHO "\n	  Sorry, the rest of the READHIST input file
+	cannot now be used since your answer changes the order of the prompts.
+	This script is using keyboard input only from now on.\n"
+	fi
+	<&- # closes standard input
+	closed=1
+	keyboardp=1
+}
+
+closed=0
+forceread() 
+{
+# arg1: [retryprompt "Please enter $1: \c"] 
+# arg2: [initialprompt "$2 \c"]
+# arg3: [validchs ""] <- "" means "any" chars are valid, "#" means allow null
+# arg4: [readhistdefault ""] <- only used when arg3 = "#"
+#
+# * Force user to enter a non null response (normally).
+# * if "validchs" arg is entered then only 1 ch matching 
+#   any ch in string validch is allowed.
+# * "validchs" can also be "#" to allow a null line.
+# * If a null line is entered then "readhistdefault" will be returned instead.
+#   This is necessary in order to produce a value for the READHIST.
+#   so that a null line in the history output file is not created.
+# * if $READHIST is set to a a file name, correct responses are
+#   appended to that file. Of course, for this to work all user inputs
+#   must be obtained from forceread instead of read and $READHIST maintained
+#   elsewhere - if it is unset then the responses are NOT saved in a file.
+
+echo "$2 \c" # initial prompt
+while true; do
+	# if standard input is a file that does not have enough inputs
+	# to handle reads, then read will loop forever. In this case we
+	# must close it and redirect all reads to $realtty
+	if [ $closed = 0 ]; then
+		read answer # returns 1 if EOF on standard input
+		if [ $? = 1 ]; then # EOF - close standard input 
+			flushist silently # closes standard input
+			read answer < $realtty
+		fi
+	else
+		read answer < $realtty
+	fi
+		
+	# validate answer: if arg3 supplied, then if it
+	# is "#" allow null response but return "$4", 
+	# else accept any 1-char response contained in string "$3",
+	# else accept any non-null response
+	validch=0 
+	numchs=`echo "$answer\c" | wc -c`
+	numchs="`echo $numchs | cut -f2 -d'	'`" # single tab delimiter
+	if [ X"$3" = X"#" ]; then
+		answer="${answer:-$4}" # default null response to arg4
+		validch=1
+	elif [ -z "$3" ]; then # require any non-null response
+		validch=$numchs
+	else # validate single char in "$answer" matches any char in "$3"
+		if [ "$numchs" != "1" ]; then
+			fakereturn "Enter ONE char then <cr>"
+		else
+			mismatch=`echo "$answer" | sed "s/[$3]//g"`
+			if [ -z "$mismatch" ]; then
+				validch=1
+			fi
+			# indicate AGAIN what kind of input is allowed
+			set "one of \"$3\"" "$2" "$3" "$4"
+		fi
+	fi
+	if [ $validch = 0 ]; then
+		fakereturn "Please enter $1: \c" # reprompt
+	else
+		break
+	fi
+done
+
+# log a history of input responses
+loganswer "$answer"
+}
+
+windsaved=
+savewind() {
+	# save (remember) current line count in READHIST in case
+	# we need to throw away some future responses because the
+	# user decides to "q" quit..
+	if [ -z "$READHIST" ]; then
+		return 0
+	fi
+	windsaved=`wc -l $READHIST`
+	windsaved=`echo $windsaved | cut -f1 -d' '`
+}
+	
+unwind() {
+	# if no args remove 1 line written to the READHIST file or terminal
+	# if $1 is specified (use $windsaved) then KEEP that many lines
+	# Call savewind to remember a place in the READHIST file if you
+	# want to later unwind to that place using global $windsaved lines.
+	# Example: unwind		# drop 1 line
+	# Example: unwind $windsaved	# keep $windsaved lines
+	if [ -z "$READHIST" ]; then
+		return 0
+	fi
+	if [ -s $READHIST ]; then
+		set $1 '$-1' # compute line to goto : $1 defaults to '$-1'
+		echo $1'
++,$d
+w
+q' | ed - $READHIST > /dev/null
+	fi
+}
+
+FAKEread() {
+	# used to call forceread for its error checking but will NOT modify
+	# a READHIST output file nor read from a READHIST input file
+
+	S_READHIST=$READHIST; S_closed=$closed; S_keyboardp=$keyboardp
+
+	READHIST= ; closed=1; keyboardp=1
+
+	forceread "$@" # emulate "read answer < $realtty" with input checking
+
+	READHIST=$S_READHIST; closed=$S_closed ; keyboardp=$S_keyboardp
+}

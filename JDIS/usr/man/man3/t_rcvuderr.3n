@@ -1,0 +1,73 @@
+T_RCVUDERR(3N)                                     T_RCVUDERR(3N)
+
+NAME
+     t_rcvuderr - Receives a unit data error indication
+
+SYNOPSIS
+     #include <tiuser.h>
+
+     int t_rcvuderr(fd, uderr)
+     int fd;
+     struct t_uderr *uderr;
+
+DESCRIPTION
+     This function is used in connectionless mode to receive
+     information concerning an error on a previously sent data
+     unit, and should only be issued following a unit data error
+     indication.  It informs the transport user that a data unit
+     with a specific destination address and protocol options
+     produced an error.  fd identifies the local transport
+     endpoint through which the error report will be received,
+     and uderr points to a t_uderr structure containing the
+     following members:
+          struct netbuf addr;
+          struct netbuf opt;
+          long error;
+
+     netbuf is described in intro(3).  The maxlen [see netbuf in
+     intro(3)] field of addr and opt must be set before issuing
+     this function to indicate the maximum size of the buffer for
+     each.
+
+     On return from this call, the addr structure specifies the
+     destination protocol address of the erroneous data unit, the
+     opt structure identifies protocol-specific options that were
+     associated with the data unit, and error specifies a
+     protocol-dependent error code.
+
+     If the user does not care to identify the data unit that
+     produced an error, uderr can be set to NULL and t_rcvuderr
+     will simply clear the error indication without reporting any
+     information to the user.
+
+     On failure, t_errno can be set to one of the following:
+
+     [TBADF]           The specified file descriptor does not
+                       refer to a transport endpoint.
+
+     [TNOUDERR]        No unit data error indication currently
+                       exists on the specified transport
+                       endpoint.
+
+     [TBUFOVFLW]       The number of bytes allocated for the
+                       incoming protocol address or options is
+                       not sufficient to store the information.
+                       The unit data error information to be
+                       returned in uderr will be discarded.
+
+     [TNOTSUPPORT]     This function is not supported by the
+                       underlying transport provider.
+
+     [TSYSERR]         A system error has occurred during
+                       execution of this function.
+
+
+SEE ALSO
+     intro(3), t_rcvudata(3N), t_sndudata(3N).
+     TI System V Network Programmer's Guide.
+
+DIAGNOSTICS
+     t_rcvuderr returns 0 on successful completion and -1 on
+     failure; t_errno is set to indicate the error.
+
+

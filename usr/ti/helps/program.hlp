@@ -1,0 +1,8 @@
+	program - Programming Tools Menu
+		@(#)program.sh	1.1 87/03/09
+
+	This menu contains a list of sub-menus for program development.
+	  The commands on this menu will help the programmer design,
+	  debug, analyze, maintain, and execute programs.  In addition,
+	  tools for maintaining source code are provided.
+

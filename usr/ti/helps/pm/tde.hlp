@@ -1,0 +1,36 @@
+The TI System V Performance Monitor (PM) software is compatible with any
+24-row by 80-column (or larger) ASCII terminal that supports cursor motion and
+clear screen.  A terminal must be defined with the PM Terminal Definition
+Editor (TDE) before it can access PM.  Definitions are already setup for  
+several terminal types in the /usr/adm/sa/tdecap terminal definition database
+file.
+
+The TDE menu screen contains a menu of the available TDE operations: Add, 
+Help, Quit, Remove, and Show.  This screen also lists all terminals currently
+defined in the database.  The terminal names shown are the same as those
+defined by the TI System V TERM environment variable and maintained in the
+termcap(5) file.  If there is more than one screen of terminal listings, use 
+the "+" and "-" keys to move to the next and previous screens, respectively.
+
+To add a terminal definition to the file, press "a" at the TDE menu screen.
+TDE prompts you for the name of the terminal, a brief description, and the
+escape values for particular terminal functions.  For example, on a 924
+terminal, the Cursor Off sequence is listed in the 924 User's Reference Guide
+as being: CSI ? 2 5 h. To enter this value as hexadecimal numbers, you 
+would type:
+
+	0x1b 0x5b 0x3f 0x32 0x35 0x6c
+
+or to enter as decimal numbers, you would type:
+
+	27 91 63 50 53 108
+
+TDE will determine the base you are using and convert the numbers 
+appropriately. To display the existing terminal definitions, press "s" at 
+the TDE menu screen.  The screen shows the current definitions in the terminal
+database file. To remove a terminal definition, press "r" at the TDE menu 
+screen.  TDE prompts you to enter the terminal name.  Enter the terminal name
+exactly as it appears on the screen. Finally, to exit from TDE, press "q" at 
+the TDE menu screen. TDE updates the terminal definition database file and
+returns to the shell prompt.
+

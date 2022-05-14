@@ -1,0 +1,52 @@
+
+The Process Linear Address ID screens display a list of all active processes
+for a particular CPU.  The number of Process Linear Address ID screens depends 
+on the number of active processes. Use the + and - commands to display the 
+next and previous screens. These screens provide the following information 
+to identify each of the active processes for the current CPU:
+
+    STAT   Shows the current state of the process. The possible processor 
+           states are shown in the following list, where x refers to the 
+           number of the processor that is executing the process.
+
+                0    Non-existent
+
+                Hx   Halted
+
+                Ix   Intermediate
+
+                Rx   Running or runnable
+
+                Sx   Sleeping
+
+                Tx   Stopped
+
+                Wx   Waiting
+
+                Xx   Growing
+
+                Zx   Terminated
+
+    UID   Shows the user ID of the process owner.
+
+    PID   Shows the process ID of the process.  Enter this number if you wish
+          to display detailed information about a specific process.
+
+    C     Shows the processor utilized for scheduling the process.
+
+    STIME Shows the starting time of the process.
+
+    TTY   Identifies the terminal that started and controls the process.
+
+    TIME  Shows the cumulative execution time of the process.
+
+    COMMAND Identifies the command that is performing the process.
+
+To view the Process Linear Address IDs for a different CPU, first access 
+the CPUr screen by slot number (0-f), then use the l (lowercase L) command 
+to display the IDs for that CPU.
+
+To view information on a specific process for the current CPU, enter the PID 
+number for that process. For example, to view detailed information on process 
+number 201, type 201 and press the Enter or Return key. 
+

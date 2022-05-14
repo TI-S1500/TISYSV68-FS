@@ -1,0 +1,1186 @@
+#	@(#)install.scr	4.126 92/08/13 Texas Instruments TCP/IP System V
+#	@(#)BUILD(TI):	3.1:/src/comm/tcpip31/usr/src/cmd/objdir/s.install.scr: 5/18/93 19:57:22
+#
+############################################################################
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1990.  ALL	   #
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.	   #
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT	   #
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND	   #
+#	ASSOCIATED DOCUMENTATION.					   #
+############################################################################
+
+# NOTE:
+# 1. installdir is set by the caller to this script
+#    to point to where the TCP tape files have just been
+#    extracted from tape - usually /usr/tmp
+# 2. Every attempt has been made to make installation non-desctructive
+#    of $installdir so it can be restarted WITHOUT doing a removetcp
+#    and at the end of the script the user can remove the files if desired.
+# 3. Since this script is run by "sh -exv install.scr" then any non-zero
+#    return values can STOP execution. Use set +e and set-e to override.
+umask 2 # just in case someone sets it to other than default
+
+# This is an UN-used feature OS "3.2" is NOT supported on TCP 3.1
+osversion=`uname -v | cut -c1-3`
+
+# if this script is being input redirected to a file
+# then any reads which are unpredictable must bypass
+# the input redirection and go straight to the terminal
+# for repeatablity ...
+#
+
+# Source the forceread function
+if [ -s forceread ]; then
+	. forceread
+else
+	echo "The forceread file is not in the `pwd`."
+	exit 1
+fi
+
+echo "terminal type:	$TERM " > conf.temp
+##./logo < $realtty	# flashy but useless
+
+# add any simple OS-dependent fixes by clobbering files in the
+# installdir ... This file may not even be used if installtcp finds
+# a version of install.scr in the releasedir. If we only ever need to
+# make simple changes, then the "sourcing" below will suffice :
+patchme=/usr/ti/tcp/3.1/install.fix
+if [ -s $patchme ]; then
+	. $patchme
+fi
+
+# Check if enough disk space exists
+echo
+echo Running chkspace script ...
+sh -xv chkspace $realtty $keyboardp $BOLD $NORM
+sync
+
+# Check/install password for TCP/IP.
+sh -xv inst.passwd $realtty $keyboardp $BOLD $NORM
+sync
+
+if [ `cat  /etc/sitename` = sitename ]; then
+	echo "$clr\c"
+echo "*********************************************************************"
+echo "*                     H O S T   D E S I G N A T I O N               *"
+echo "*********************************************************************"
+	echo
+	echo The name for this host has not been set.
+	echo This must be set before you install TCP/IP.
+	echo Set it now or quit.
+	echo
+	echo Do you want to set it now? [y/n]:" \c"
+	FAKEread "it or type CNTR-C to exit" "" "yn"; ok=$answer
+	if [ X$ok = Xy ]; then
+		while true; do
+			echo Enter sitename:" \c"
+			FAKEread "sitename" "" ;sitename=$answer
+			echo Is "$sitename" correct? [y/n]:" \c"
+			FAKEread "[y/n]" "" "yn" ;ok=$answer
+			if [ X$ok = Xy ]; then
+				break
+			else
+				continue	
+			fi
+		done
+		echo $sitename > /etc/sitename
+	else
+		touch normcomp
+		exit 0
+	fi
+fi
+setsite
+echo "sitename:	\c">> conf.temp
+cat /etc/sitename >> conf.temp
+sync
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*             S I T E    N A M E    D E S I G N A T I O N          *"
+echo "********************************************************************"
+echo
+echo "Internet Domain Names consist of three parts: the host name, the "
+echo "subdomain name, and the top-level domain name.  For example, the name "
+echo "of the computer at the Acme Manufacturing Co. is Coyote.  Therefore, "
+echo "the Internet domain name would be:"
+echo
+echo "                        coyote.acme.com"
+echo
+echo "Coyote is the host name, acme is the name of the subdomain and"
+echo "com is the Internet designation for a commercial organization."
+echo "(edu: educational institutions, gov: government institutions,"
+echo "mil: military groups)"
+echo 
+while true; do
+	dot=.
+	echo
+	echo "Your host name is already set to:\t `uname -n`"
+	echo
+	echo "Please enter your subdomain, e.g. acme:\t\c"
+	forceread "subdomain" "" "#" ;sub=$answer
+	echo
+	echo "Please enter your domain, e.g. com:\t\c"
+	forceread "domain" "" "#" ;domain=$answer
+	echo
+	echo "Your machine will be designated as:\t `uname -n`$dot$sub$dot$domain"
+	echo
+	if [ -z "$domain" -o -z "$sub" ]; then
+		echo "${BOLD}WARNING:$NORM You will not be able to use the nameserver"
+		echo "unless you use both a domain and a subdomain."
+		echo
+	fi
+	echo Are these values correct? [y/n]:" \c"
+	forceread "[y/n]" "" "yn" ;ok=$answer
+	if [ "$ok" = y ]; then
+		break
+	fi
+done
+
+sed "s/ZZSUBDOMAIN/$sub/g
+s/ZZDOT/$dot/g
+s/ZZDOMAIN/$domain/g" tcp > tunetcp
+# from now on change tunetcp so that re-starting script
+# will start over with original tcp file...
+sync
+
+echo "subdomain:	$sub" >> conf.temp
+echo "domain:		$domain" >> conf.temp
+
+while true;do
+ echo "$clr\c"
+ echo "********************************************************************"
+ echo "*             M A I L   R E L A Y   H O S T N A M E                *"
+ echo "********************************************************************"
+ echo
+ echo "Sendmail requires a /usr/lib/sendmail.cf configuration file."
+ echo
+ echo "Three types of sendmail.cf files are available:"
+ echo
+ echo "1. relay	- This host handles all mail for a domain and is a relay host"
+ echo "2. node 	- This host handles local mail and forwards the rest to a relay"
+ echo "3. msgid	- This host is a node that understands TI internal %MSGID mail"
+ echo
+ echo "A ${BOLD}relay$NORM type is required if you do not know a mail relay host."
+ echo "A ${BOLD}node$NORM type requires that you specify the hostname of the"
+ echo "mail relay host to handle all non-local mail."
+ echo "An ${BOLD}msgid$NORM type is only used for certain internal TI sites which use"
+ echo "%msgid mail addressing. This modified node type sends non-local mail"
+ echo "to a special mail relay host named hub which must be running mail1500."
+ echo
+ echo "relay: Enter ${BOLD}<return>$NORM to select this host as the Mail Relay, OR"
+ echo "node:  Enter ${BOLD}the hostname of the Mail Relay$NORM, OR"
+ echo "msgid: Enter the word ${BOLD}msgid$NORM to select Mail Relay host hub.$sub$dot$domain: \c"
+ forceread "relay" "" "#" ;relay=$answer
+ if [ -z "$relay" ]; then
+ 	relay=`uname -n`$dot$sub$dot$domain
+ 	cftype=relay
+ elif [ "$relay" = "msgid" ]; then
+ 	relay="hub$dot$sub$dot$domain"
+ cftype=msgid
+ else # mail relay host entered in $relay
+ 	cftype=node
+ fi
+ echo
+ echo Your mail relay host is :"\t\t"$relay
+ echo Your sendmail.cf type is:"\t\t"$cftype
+ echo
+ echo Are these values correct? [y/n]:" \c"
+ forceread "[y/n]" "" "yn" ;ok=$answer
+ if [ "$ok" = y ]; then
+ break
+ fi
+done
+
+echo "mail relay:	$relay, type=$cftype" >> conf.temp
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*      T C P / I P   C O N F I G U R A T I O N   R E S T O R E     *"
+echo "********************************************************************"
+
+useoldwarning='
+
+*** Please, do NOT attempt to type ahead during installation ! ***
+
+"Your old files" are files that removetcp saved in /usr/ti/tcp.
+'
+
+useoldecho() {
+	# print warning ONCE per script ...
+	if [ -n "$useoldwarning" ]; then
+		echo "$useoldwarning\n"
+		useoldwarning=""
+	fi
+}
+
+useoldfile()
+{
+# args: $0 [action{copy} [copy-to-dir{/etc}] [mode{644}] ]
+if [ -s /usr/ti/tcp/$1 ]; then
+	useoldecho
+	echo
+	echo "Do you want to use your old $1 file"
+	echo "instead of creating a new one? [y/n]: \c"
+	FAKEread "[y/n]" "" "yn" ;ok=$answer
+	if [ $ok = y ]; then
+		cp /usr/ti/tcp/$1 ${3:-/etc}/$1
+		chmod ${4:-644} ${3:-/etc}/$1
+	else
+		if [ ${2:-copy} = copy ]; then
+			echo "Creating ${3:-/etc}/$1"
+			cp ./$1 ${3:-/etc}/$1
+			chmod ${4:-644} ${3:-/etc}/$1
+		fi
+	fi
+else
+	if [ ${2:-copy} = copy ]; then
+		echo "Creating ${3:-/etc}/$1"
+		cp ./$1 ${3:-/etc}/$1
+		chmod ${4:-644} ${3:-/etc}/$1
+	fi
+fi
+}
+
+if [ -s /usr/ti/tcp/sendmail.cf ]; then
+	useoldecho
+	echo
+	echo "Do you want to use your old sendmail.cf configuration file"
+	echo "instead of creating a new one? [y/n]: \c"
+	FAKEread "[y/n]" "" "yn" ;ok=$answer
+	if [ X$ok = Xy ]; then
+		cp /usr/ti/tcp/sendmail.cf `uname -n`.cf
+		# Be sure user does not have an old version of
+		# sendmail.cf that refers to the L.sys file which has
+		# changed to Systems with the new UUCP code ..
+		# Also, if old type was mail1500 and pointed to hub, then fix
+		sed -e "s/L.sys/Systems/g" -e '/^CS hub$/d' -e 's/@hub/@$R/' \
+			`uname -n`.cf > sendmail$$.cf
+		mv sendmail$$.cf `uname -n`.cf
+	else
+		cp $cftype.cf `uname -n`.cf
+		./Tune `uname -n`.cf `uname -n` $relay $domain $sub $dot
+	fi
+else
+	cp $cftype.cf `uname -n`.cf
+	./Tune `uname -n`.cf `uname -n` $relay $domain $sub $dot
+fi
+sync
+
+# Any calls to useoldfile must match corresponding 
+# calls to saveoldfile in the removetcp script.
+useoldfile hosts
+useoldfile networks
+useoldfile gateways nocopy
+useoldfile hosts.equiv
+# The old hosts.equiv file possibly saved from old release may have
+# comments in it - they are NOT supported and can cause
+# strange bugs in sendmail addr parsing. Remove comments.
+if [ -s /etc/hosts.equiv ]; then
+	echo 'Removing comments from /etc/hosts.equiv - they are not supported'
+	echo 'g/^#/d
+w
+q' | ed - /etc/hosts.equiv > /dev/null
+	sync
+fi
+useoldfile inetd.conf
+if [ `grep -c bootps /etc/inetd.conf` = 0 ]; then
+###	echo "Adding following line to /etc/inetd.conf to support bootpd:"
+	set +e
+	temp="`grep bootps inetd.conf`"
+	set -e
+	echo "$temp"
+	echo "$temp" >> /etc/inetd.conf
+fi
+useoldfile services
+if [ `grep -c bootpc /etc/services` = 0 ]; then
+###	echo "Adding following line to /etc/services to support bootpd:"
+	set +e
+	temp="`grep bootpc services`"
+	set -e
+	echo "$temp"
+	# insert bootpc line after bootps line
+	echo "/bootps/
+.a
+$temp
+.
+w
+q" | ed - /etc/services > /dev/null
+fi
+
+useoldfile protocols
+useoldfile syslog.conf
+useoldfile bootptab
+#useoldfile snmpd.conf # this is done later ..
+useoldfile snmpd.comm
+useoldfile snmpd.trap
+if [ -r /usr/lib/mail -o -d /usr/lib/mail ]; then 
+	rm -rf /usr/lib/mail
+fi
+
+touch aliases
+useoldfile aliases 	copy /usr/lib 600
+# Insure aliases contains postmaster for RFC822.(See also `man mailaddr`)
+# and mailer-daemon, and adm for accounting (see also `man acct`).
+# Alias each to dummy "sysadmin" and then alias sysadmin
+# to root so that all that mail can go to one place.
+cp /dev/null aliases$$
+for name in postmaster mailer-daemon adm; do
+	set +e
+	line=`grep -i "$name:" /usr/lib/aliases`
+	set -e
+	if [ -z "$line" ]; then
+		if [ $name = adm ]; then # add extra tab ...
+			echo "$name:\t\tsysadmin" >> aliases$$
+		else
+			echo "$name:\tsysadmin" >> aliases$$
+		fi
+	fi
+done
+set +e
+line="`grep -i 'sysadmin:' /usr/lib/aliases`"
+set -e
+if [ -z "$line" ]; then
+	echo "sysadmin:\troot" >> aliases$$
+fi
+if [ -s aliases$$ ]; then
+	cat aliases$$ /usr/lib/aliases > aliases2$$
+	cp aliases2$$ /usr/lib/aliases
+fi
+rm -f aliases$$ aliases2$$
+# After SNMP installation alias file is modified further ...
+
+mkdir -p -m 775 /usr/lib/mail 
+touch /usr/lib/mail/localhosts /usr/lib/mail/uucpindomain
+useoldfile localhosts	nocopy /usr/lib/mail 600
+useoldfile uucpindomain nocopy /usr/lib/mail 600
+
+sysfil=/usr/lib/uucp/Systems
+if [ ! -f $sysfil ]; then
+	touch $sysfil
+	chmod 600 $sysfil
+	chgrp uucp $sysfil
+	chown uucp $sysfil
+fi
+
+#run the script to configure /etc/ccbdev, /etc/tcp and /etc/strcf
+echo
+echo Running chkccb script ...
+sh -xv chkccb $realtty $keyboardp $BOLD $NORM
+sync
+touch ccb.temp
+cat ccb.temp >> conf.temp
+rm -f ccb.temp
+sync
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*     B O O T P D    D A E M O N   C O N F I G U R A T I O N       *"
+echo "********************************************************************"
+echo "
+  The bootpd process implements an Internet Boot Protocol server that can be
+run from inetd. This protocol is useful for downloading fonts and other info
+to X-terminals.  It is also needed by terminal servers. This installation will
+install all the necessary files. If you have no need to support an X-terminal
+or a terminal server you probably do not need bootpd to be enabled.
+  Disabling bootpd will prevent syslog messages due to other machines on your
+network that do use the bootp protocol. Enabling bootpd will require further
+configuration of the bootptab file outside the scope of this installation.
+  If bootpd is enabled, it can be run in two modes: 1. on-demand from the
+/etc/inetd.conf file and 2. as a standalone server using the -s option. 
+The standalone method is desired if there is rather heavy usage of bootpd.
+The /etc/inetd.conf on-demand method is used for low usage of bootpd.
+  You can always change the /etc/inetd.conf and /etc/tcp files after this
+installation if you are not sure. See bootpd man page for further information.
+
+Enter n=no, y=yes (from /etc/inetd.conf), or s=server (standalone bootpd)
+
+Do you want to run bootpd on this host? [y/n/s]: \c"
+forceread "[y/n/s]" "" "yns" ;ok=$answer
+case $ok in
+	y)	# default; already setup this way. Don't echo, $clr follows
+		#echo "Bootpd enabled in /etc/inetd.conf."
+		;;
+	n|s)	# prevent inetd from spawning bootpd process
+		#echo "Bootpd disabled in /etc/inetd.conf"
+		set +e
+		echo 's/^bootps/#bootps/
+w
+q' | ed - /etc/inetd.conf > /dev/null # disable on-demand bootpd
+		if [ $ok = s ]; then
+			#echo "Bootpd -s standalone server mode enabled."
+			echo '/bootpd -s/p
+-,+1s/^#//
+w
+q' | ed tunetcp > /dev/null # enable standalone server
+		fi
+		set -e
+		;;
+esac
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*          T I M E   D A E M O N   C O N F I G U R A T I O N       *"
+echo "********************************************************************"
+echo "
+The TCP/IP package includes the timed utility.  This is a facility that allows
+you to keep the date and time of machines on the network the same.  In order
+for this to work you will have to have the timed process run on all the 
+machines that you want controlled.  You will also have to designate at least
+one machine as a master.  If there are multiple machines that are enabled as
+potential masters, then one will be elected as the master.
+
+Do you want to run timed on this host? [y/n]: \c"
+forceread "[y/n]" "" "yn" ;ok=$answer
+if [ X$ok = Xy ]; then
+	echo
+	echo "Do you want this host to be a potential master? [y/n]: \c"
+	forceread "[y/n]" "" "yn" ;ok=$answer
+	echo
+	echo modifying /etc/tcp...
+	if [ X$ok = Xy ]; then
+		sed "s/\#ZZTKEYM\#/         /g" tunetcp > timetemp$$
+	else
+		sed "s/\#ZZTKEY\#/        /g" tunetcp > timetemp$$
+	fi
+	mv timetemp$$ tunetcp
+fi
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*          S N M P   D A E M O N   C O N F I G U R A T I O N       *"
+echo "********************************************************************"
+echo "
+Included with the this release of TCP/IP is support for the Simple
+Network Management Protocol, SNMP.  SNMP allows a remote management
+station to monitor and control nodes on a network.  In this section
+you may be prompted for information to initialize the snmpd process
+on your host. The SNMP \"contact person\" line should include a mail 
+address and may include an optional name, phone number, etc.
+"
+while true; do
+	if [ -r /usr/ti/tcp/snmpd.conf ]; then
+		person="`grep '^contact=' /usr/ti/tcp/snmpd.conf | cut -f2- -d=`"
+		echo "\nOld snmpd.conf file value for contact person (full mail address):"
+		echo "[ Enter return to take default in line below, or type new value : ]"
+		echo '"'"$person"'"'" \c"
+		# note: arg4 is necessary to make output readhist file
+		# contain the defaulted answer. Otherwise a null line would
+		# be interpreted as an invalid response in the else clause
+		# on the next installation which would throw off the history!
+		forceread "name and mail address of person" "" "#" "$person"; person="$answer"
+
+		location="`grep '^location=' /usr/ti/tcp/snmpd.conf | cut -f2- -d=`"
+		echo "\nOld snmpd.conf file value for system location :"
+		echo "[ Enter return to take default in line below, or type new value : ]"
+		echo '"'"$location"'"'" \c"
+		# note: arg4 is necessary to make output readhist file
+		# - see previous note: arg4 comment above
+		forceread "location" "" "#" "$location"; location="$answer"
+	else
+		echo "\nEnter full mail address of the person responsible for this system: \c"
+		forceread "name and mail address of person"; person="$answer"
+	
+		echo "\nEnter one-line describing the location of this machine: \c"
+		forceread "location"; location="$answer"
+	fi
+
+	echo "\nPerson responsible:	$person"
+	echo "Location:		$location"
+	echo "\nIs this correct? [y/n]: \c"
+	forceread "[y/n]" "" "yn" ;ok=$answer
+	if [ X$ok = Xy ]; then
+		cp snmpd.conf /etc/snmpd.conf
+		echo "contact=$person" >> /etc/snmpd.conf
+		echo "location=$location" >> /etc/snmpd.conf
+		sync
+		break
+	fi
+done
+
+echo "snmp contact and location (/etc/snmp.conf):" >> conf.temp
+cat /etc/snmpd.conf >> conf.temp
+
+# Modify aliases file to make above person get ALL root-type mail:
+# first get a default user name:
+admin="`echo $person | cut -f1 -d'@' | cut -f1 -d' '`"
+admin="${admin:-root}"
+echo
+echo "Mail for snmp, postmaster, mailer-daemon, and adm. can be made to go"
+echo "to ONE user, the System Administrator, via the /usr/lib/aliases file."
+echo "This user can be root, although mail may be read more frequently if"
+echo "it is a regular user on the machine."
+echo
+set +e # enclose a grep, ed and egrep below 
+while true;do
+	echo "Enter user name (as in passwd file) of the System Administrator"
+	echo "or enter mail address if that person is NOT a local user. (default=$admin) :\c"
+	forceread "username or mail addr" "" "#" "$admin" ;admin=$answer
+	if [ `grep -c "^$admin:" /etc/passwd` != 1 \
+		-a `echo "$admin" | grep -c '@'` != 1 ]; then
+		echo "\nSorry, $admin is not a valid user in /etc/passwd."
+		continue
+	fi
+	break
+done
+# Now if $admin is root then aliases file should be already setup. Else
+# remove "sysadmin:root" and replace with "root:sysadmin" and "sysadmin:$admin"
+echo "/sysadmin:/d
+/root:/d
+/adm:/a
+root:\t\tsysadmin
+sysadmin:\t$admin
+.
+w
+q" | ed - /usr/lib/aliases > /dev/null
+###echo "\n### Lines below added or modified in /usr/lib/aliases:"
+###egrep 'sysadmin$|sysadmin:' /usr/lib/aliases
+set -e
+###forceread "" "### Press return to continue: \c" "#" # screen about to clr...
+
+# Put the MIB file and the definitions in /usr/ti/tcp for the user.
+cp agent.mib /usr/ti/tcp
+
+# Make snmp work even if named is never started. snmpd MUST know what
+# the local host name and IP address is.
+if [ ! -f snmp.orig ]; then
+	cp snmp snmp.orig
+fi
+# tunetcp has been modified by chkccb and has ifconfig lines that
+# are the users IP address for the networks that will be used.
+set +e # turn off for grep's
+tempgrep='^	ifconfig|^	slattach' # possible networks
+# ignore local loopback network ...
+egrep -v '^	ifconfig lo0' tunetcp | egrep "$tempgrep" > temp
+netcnt=`wc -l temp`  # next line also squeezes extra whitespace ...
+netcnt=`echo $netcnt | cut -f1 -d' '` # number of networks
+if [ $netcnt = 1 ]; then # one network exists (plus default loopback)
+	# one non-loopback network - use its ip address
+	temp2=`cat temp` # get line. line below squeezes extra whitespace
+	temp2=`echo $temp2 | cut -f3 -d' '` # cut out IP addr
+	# It is possible for a "slattach" IP arg to be a hostname.
+	# if it is is non-numeric, don't use it. The only way this
+	# can happen, since we are using a fresh /etc/tcp file, is
+	# if the user types in a hostname instead of an IP address
+	# which is VERY unlikely, but just in case ...
+	tempch=`echo $temp2 | cut -c1`
+	expr "$tempch" : "[0-9]" >/dev/null # is $tempch numeric?
+	if [ $? = 1 ]; then # non-numeric, assume hostname, ignore it
+		temp2=
+	fi
+else
+	# More than 1 network, let /etc/snmp decide what to do.
+	temp2=
+fi
+rm -f temp
+set -e 
+# Tell /etc/snmp, if possible, this hosts IP addr, since named MAY not run.
+cat snmp.orig | sed "s/ZZIPADDR/$temp2/" > snmp
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*        A S K    R E M A I N I N G    Q U E S T I O N S           *"
+echo "********************************************************************"
+echo 
+echo "The usual TCP/IP man pages will be installed later in this script."
+echo "Do you also want to install the programmers reference man pages? [y/n]: \c"
+FAKEread "[y/n]" "" "yn" ;pmanok=$answer # ask now, do it later
+
+if [ -r /usr/lib/libsocket.a ]; then
+	if [ -r /usr/ti/tcp/libsocket.a ]; then
+		echo "\nAlready saved /usr/lib/libsocket.a in /usr/ti/tcp dir."
+	else
+		echo "\nSaving /usr/lib/libsocket.a to /usr/ti/tcp/libsocket.a"
+		mv /usr/lib/libsocket.a /usr/ti/tcp/libsocket.a
+	fi
+fi
+
+cband= # init to null - used at later point in script ONLY if non-null...
+echo
+echo "Do you wish to build a new kernel when the installation is complete? [y/n]: \c"
+FAKEread "[y/n]" "" "yn" ;ok=$answer
+if [ X$ok = Xy ]; then
+	echo
+	echo "Which boot band would you like the new kernel installed in?"
+	while true; do
+		echo [unx2 or unx3]:" \c"
+		FAKEread "[unx2 or unx3]" "" ;bband=$answer
+		if [ X$bband = Xunx2 -o X$bband = Xunx3 ]; then
+			if [ X$bband = Xunx2 ]; then
+				cband=cfg2
+			else
+				cband=cfg3
+			fi
+			break
+		fi
+		echo
+	done	
+	cd /usr/sys
+	echo
+	mnttab=`ls -l /etc/mnttab`
+	mnttab=`echo $mnttab | cut -f5 -d" "`
+	if [ $mnttab != "0" ]; then
+	while true; do
+		dfvol=`df / | cut -f5 -d"/" | cut -f1 -d:`
+		echo "Partition / was found on system volume: $dfvol."
+		echo -----------------------------------------------------------
+		df / | cut -f1-2 -d:
+		echo -----------------------------------------------------------
+		echo "On which volume do you want this boot band installed?"
+		if [ X$dfvol = X ]; then
+			echo "Enter system volume name: \c"
+		else
+			echo "Enter system volume name (or just return for \"$dfvol\"): \c"
+		fi
+		FAKEread "volume" "" "#" "$dfvol" ;volume=$answer
+		echo "You've specified: $volume.  Is this correct? [y/n]: \c"
+		FAKEread "[y/n]" "" "yn" ;ok=$answer
+		if [ X$ok = Xy ]; then
+			break
+		else
+			continue
+		fi
+	done
+	else # in system never went multi-user then mnttab is null.
+	while true; do
+		dfvol="sys"
+		echo "On which system volume do you want this boot band installed?"
+		echo "Enter system volume name (or just return for \"$dfvol\"): \c"
+		FAKEread "volume" "" "#" "$dfvol" ;volume=$answer
+		echo "You've specified: $volume.  Is this correct? [y/n]: \c"
+		FAKEread "[y/n]" "" "yn" ;ok=$answer
+		if [ X$ok = Xy ]; then
+			break
+		else
+			continue
+		fi
+	done
+	fi
+
+	# $cband, $volume and $bband will be used later in the script ...
+
+	sync
+	echo "boot band:	$bband" >> conf.temp
+	echo "system volume:	$volume" >> conf.temp
+	echo
+	echo "In order to use the default boot partition you will need to"
+	echo "increase the cband parameters along with a \"make default\"."
+	echo "Do you want this script to increase the parameters ? [y/n]: \c"
+	FAKEread "[y/n]" "" "yn" ;ok=$answer
+	if [ X$ok = Xy ]; then
+		setDEFAULT=y # this will be used later in the script ...
+		echo "cband:	/dev/dsk/$volume:cfg1" >> conf.temp
+	else
+		setDEFAULT=n
+		echo 
+		echo "Parameters have not been increased.  Don't forget to "
+		echo "increase them so you can run TCP from default!"
+		echo "You can do this by running the script setcband in"
+		echo "/usr/ti/tcp.  Instructions are contained in that file."
+	fi
+fi # end of "Do you wish to build a new kernel ..."
+
+echo
+## 11 min for full install on bs11 ...
+## 4 min for 68040 cpu ...
+echo "No more questions will be asked for approximately 4 to 11 minutes."
+
+# END OF "ASK REMAINING QUESTIONS"
+cd $installdir
+
+
+echo
+echo "Installing the libraries and header files..."
+( cd ./usr; tar cbf 10 - . ) | ( cd /usr; tar xbvf 10 - )
+sync
+if [ $osversion = "3.2" ]; then
+	rm -f /usr/lib/libsocket_s.a /usr/lib/libsocket_s
+else
+	mv /usr/lib/libsocket_s /shlib/libsocket_s
+	chmod 755 /shlib/libsocket_s
+	chown bin /shlib/libsocket_s
+	chgrp bin /shlib/libsocket_s
+fi
+
+if [ -r /bin/rmail ]; then
+	if [ -r /bin/OLDrmail ]; then
+		echo "\nAlready saved /bin/rmail to /bin/OLDrmail"
+	else
+		echo "\nSaving /bin/rmail to /bin/OLDrmail..."
+		# Below HAS to be a move or else the install from the
+		# commands makefile will not be be able to change the perm's
+		# and esp. the group of /bin mail. It will cause /etc/.bshlogin
+		# to hang doing "mail -e". "mv" is also needed to retain the
+ 		# permisions etc. of /bin/OLDrmail
+		if [ -r /bin/mail ]; then
+			mv /bin/rmail /bin/OLDrmail
+		fi
+
+		# old rmail man page is relative to /usr/man on 3.3 OS
+		# rmail.1.z or could be unpacked
+		set +e 
+		tempfile="`man -w rmail`"
+		temp=$?
+		set -e
+		if [ $temp = 0 ]; then
+			# this first cut is ONLY to insure that there
+			# are not more than ONE man page for rmail ...
+			tempfile="`echo $tempfile | cut -f1 -d ' '`"
+			tempfile="`echo $tempfile | cut -f2- -d'/'`" #strip man1
+			if [ -r /usr/man/man1/$tempfile ]; then
+				echo Saving /usr/man/man1/$tempfile /usr/ti/tcp/MAN$tempfile
+				mv /usr/man/man1/$tempfile /usr/ti/tcp/MAN$tempfile
+			fi
+		fi
+	fi
+fi
+sync
+
+cp commands makecmds /usr/ti/tcp
+chmod 644 commands makecmds
+echo 
+echo "Installing commands arp through whois..."
+if [ $osversion = "3.2" ]; then
+	sh /usr/ti/tcp/makecmds all n > /usr/ti/tcp/commands.out
+else
+ 	sh /usr/ti/tcp/makecmds all y > /usr/ti/tcp/commands.out
+fi
+sync
+
+if [ -f /.cshrc ]; then
+	echo
+	echo Adding /usr/etc to PATH for the super user...
+	# See if already installed, either tcp3.1 OR tcp3.0 versions
+	egrep -v 'added by TCP/IP|set path=.?\( /usr/etc \$path|set path=.?\( \$path /usr/etc' \
+		/.cshrc > pathtemp$$ ; cp pathtemp$$ /.cshrc
+	echo 'set path=( $path /usr/etc ) # added by TCP/IP' >> /.cshrc
+fi
+
+if [ -f /.profile ]; then
+	echo
+	echo Adding /usr/etc to PATH for the root user...
+	# See if already installed, either tcp3.1 OR tcp3.0 versions
+	egrep -v 'added by TCP/IP|PATH=/usr/etc:\$PATH|PATH=\$PATH:/usr/etc' \
+		/.profile > pathtemp$$ ; cp pathtemp$$  /.profile
+	echo 'PATH=$PATH:/usr/etc # added by TCP/IP' >> /.profile
+fi
+rm -f  pathtemp$$
+sync
+
+echo
+echo Adding configuration for sendmail...
+cp /dev/null /usr/lib/sendmail.st
+chown root /usr/lib/sendmail.st
+chmod 644 /usr/lib/sendmail.st
+cp /dev/null /usr/lib/sendmail.fc
+chown root /usr/lib/sendmail.fc
+chmod 644 /usr/lib/sendmail.fc
+rm -f /usr/bin/newaliases  /usr/bin/mailq
+ln -s /usr/lib/sendmail  /usr/bin/mailq
+ln -s /usr/lib/sendmail  /usr/bin/newaliases
+if [ -r /usr/spool/mqueue -o -d /usr/spool/mqueue ]; then 
+	rm -rf /usr/spool/mqueue
+fi
+mkdir -m 755 /usr/spool/mqueue
+chown root /usr/spool/mqueue 
+sync
+
+echo "set sendmail=/usr/lib/sendmail" >> /usr/lib/mailx/mailx.rc
+install -s -f /usr/lib -m 0644 -u root `uname -n`.cf
+mv /usr/lib/`uname -n`.cf /usr/lib/sendmail.cf
+rm `uname -n`.cf
+sync
+
+echo
+echo "Adding the TCP/IP error messages to the master message file..."
+
+cd /usr/ti
+
+#--------------------------MESSAGES-------------------------------------
+if fgrep '<%%> Inserted TCP messages start' master > /dev/null
+then
+        csplit -s -f tcptmp master '/<%%> Inserted TCP messages start/' \
+	                         '/<\*\*> TCP\/IP messages end here/'
+        cat tcptmp00 $installdir/messages tcptmp02 > master.tmp
+        mv master.tmp master
+        rm tcptmp00 tcptmp01 tcptmp02
+else
+        csplit -s -f tcptmp master '/<\*\*> TCP\/IP messages end here/'
+        cat tcptmp00 $installdir/messages tcptmp01 > master.tmp
+        mv master.tmp master
+        rm tcptmp00 tcptmp01
+fi
+sync
+
+#-------------------------KERNEL MESSAGES-------------------------------
+if fgrep '<%%> Inserted TCP kernel messages start' master > /dev/null
+then
+        csplit -s -f tcptmp master '/<%%> Inserted TCP kernel messages start/' \
+	                         '/<\*\*> TCP\/IP kernel messages end here/'
+        cat tcptmp00 $installdir/kmessages tcptmp02 > master.tmp
+        mv master.tmp master
+        rm tcptmp00 tcptmp01 tcptmp02
+else
+        csplit -s -f tcptmp master '/<\*\*> TCP\/IP kernel messages end here/'
+        cat tcptmp00 $installdir/kmessages tcptmp01 > master.tmp
+        mv master.tmp master
+        rm tcptmp00 tcptmp01
+fi
+#-----------------------------------------------------------------------
+
+echo
+echo "Building the new ptext and stext files..."
+# Should not mkmsg DIRECTLY to /ti/[ps]text/USA files!
+# since a default message is retrieved from the file during
+# execution and the wrong message is found if output file is
+# the USA files since the stucture is written to before being read.
+mkmsg master ptext stext
+mv ptext /ti/ptext/USA
+mv stext /ti/stext/USA
+cd $installdir
+sync
+
+echo
+echo Creating /usr/adm/syslog...
+touch /usr/adm/syslog
+
+echo 
+echo Creating the /usr/adm/streams directory...
+if [ ! -d /usr/adm/streams ]; then
+	mkdir /usr/adm/streams
+fi
+
+echo
+echo Creating /usr/spool/rwho...
+if [ -r /usr/spool/rwho -o -d /usr/spool/rwho ]; then 
+	rm -rf /usr/spool/rwho
+fi 
+mkdir -m 775 /usr/spool/rwho 
+
+echo
+echo Creating /usr/spool/locks...
+if [ -r /usr/spool/locks -o -d /usr/spool/locks ]; then  
+	rm -rf /usr/spool/locks
+fi
+# properties below defined in /src/build/s.dirs
+mkdir -m 777 /usr/spool/locks 
+chown uucp /usr/spool/locks
+chgrp uucp /usr/spool/locks
+
+echo "\nCreating /usr/lib/named..."
+if [ -r /usr/lib/named -o -d /usr/lib/named ]; then  
+	rm -rf /usr/lib/named
+fi
+mkdir -m 755 /usr/lib/named 
+cp installname instal2name forceread Caching Secondary Primary /usr/ti/tcp
+cd /usr/ti/tcp
+chmod 744 installname instal2name forceread Primary Secondary Caching
+cd $installdir
+cp named.b.ca named.b.sec named.b.pri named.hosts named.local \
+named.rev named.soa root.cache rfc1033 resolv.conf \
+/usr/ti/tcp/named
+
+echo "\nInstalling the /etc/tcp script..."
+install -s -f /etc -m 0744 -u root tunetcp
+mv /etc/tunetcp /etc/tcp
+rm -f tunetcp
+
+sync
+echo "\nUpdating /etc/download..."
+set +e
+nfs=`grep -c "^nfs start" /etc/download`
+set -e
+if [ "$nfs" = 0 ]; then
+	# just put tcp start at end of file
+	echo 'g/tcp start/d
+$a
+tcp start
+.
+w /etc/download
+q' | ed - /etc/download > /dev/null
+	echo "Added tcp start to end of file"
+else
+	echo 'g/tcp start/d
+/^nfs start/i
+tcp start
+.
+w /etc/download
+q' | ed - /etc/download > /dev/null
+	echo "Added tcp start before nfs start in file"
+fi
+chmod 770 /etc/download
+chgrp root /etc/download
+chown root /etc/download
+sync
+
+echo
+echo Updating /etc/shutdown...
+echo "g/tcp stop/d
+/killall/i
+	/etc/tcp stop
+.
+w
+q" | ed - /etc/shutdown > /dev/null
+chmod 755 /etc/shutdown
+chgrp root /etc/shutdown
+chown root /etc/shutdown
+sync
+
+echo
+echo Updating /bin/sysboot... 
+echo "g/tcp stop/d
+/killall/i
+	/etc/tcp stop
+.
+w
+q" | ed - /bin/sysboot > /dev/null
+chmod 700 /bin/sysboot
+chgrp root /bin/sysboot
+chown root /bin/sysboot
+sync
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*                T C P / I P   M A N   P A G E S                   *"
+echo "********************************************************************"
+echo
+echo "Installing new online user's and administrator's man pages..."
+if [ $osversion = "3.2" ]; then
+	cd man/u_man
+	( tar cbf 10 - . ) | ( cd /usr/catman/u_man; tar xbvf 10 - )
+	cd ../a_man
+	( tar cbf 10 - . ) | ( cd /usr/catman/a_man; tar xbvf 10 - )
+	# pmanok set earlier at top pf script ...
+	if [ X$pmanok = Xy ]; then
+		if [ ! -d /usr/catman/p_man ]; then
+			mkdir /usr/catman/p_man
+			chown bin /usr/catman/p_man
+			chgrp bin /usr/catman/p_man
+			chmod 775 /usr/catman/p_man
+		fi
+		cd ../p_man
+		( tar cbf 10 - . ) | ( cd /usr/catman/p_man; tar xbvf 10 - )
+	fi
+else
+	echo
+	echo "Compressing and installing man pages..."
+	cd man/u_man
+	set +e
+	for file in */*; do
+		pack -f $file  1>&2
+	done
+	set -e
+	( tar cbf 10 - . ) | ( cd /usr/man; tar xbvf 10 - )
+
+	cd ../a_man
+	set +e
+	for file in */*; do
+		pack -f $file 1>&2
+	done
+	unpack man1/Troute.1m 1>&2
+	set -e
+	cp man1/Troute.1m man1/traceroute.1m
+	( tar cbf 10 - . ) | ( cd /usr/man; tar xbvf 10 - )
+
+	if [ X$pmanok = Xy ]; then
+		echo
+		echo "Installing programmers reference man pages..."
+		cd ../p_man
+		echo
+		echo "Compressing and installing man pages..."
+		set +e
+		for file in */*; do
+			pack -f $file 1>&2
+		done
+		set -e
+		( tar cbf 10 - . ) | ( cd /usr/man; tar xbvf 10 - )
+	fi
+fi
+
+sync
+cd $installdir
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*      T C P / I P   D E V I C E   I N S T A L L A T I O N         *"
+echo "********************************************************************"
+
+# remove old style pseudo terminals. Now using /dev/ptmx.
+rm -f /dev/ttyp* 
+rm -f /dev/ptyp*
+rm -f mkvty
+sync
+
+if [ -c /dev/slip ]; then
+	rm -f /dev/slip
+fi
+mknod /dev/slip c 54 65
+echo /dev/slip 
+if [ -c /dev/socksys ]; then
+	rm -f /dev/socksys
+fi
+mknod /dev/socksys c 62 0
+echo /dev/socksys 
+if [ -c /dev/lo0 ]; then
+	rm -f /dev/lo0
+fi
+mknod /dev/lo0 c 51 0
+echo /dev/lo0 
+if [ -c /dev/llcloop ]; then
+	rm -f /dev/llcloop
+fi
+mknod /dev/llcloop c 54 57
+echo /dev/llcloop 
+if [ -c /dev/cl01 ]; then
+	rm -f /dev/cl01
+fi
+mknod /dev/cl01 c 54 0
+echo /dev/cl01 
+if [ -c /dev/tmux ]; then
+	rm /dev/tmux
+fi
+mknod /dev/tmux c 52 0
+echo /dev/tmux 
+
+
+if [ -d /dev/inet ]; then
+	rm -rf /dev/inet
+fi
+
+mkdir /dev/inet
+mknod /dev/inet/arp c 54 60
+echo /dev/inet/arp
+mknod /dev/inet/icmp c 54 56
+echo /dev/inet/icmp
+mknod /dev/inet/ip c 54 55
+echo /dev/inet/ip
+mknod /dev/inet/rip c 54 58
+echo /dev/inet/rip
+mknod /dev/inet/tcp c 54 59
+echo /dev/inet/tcp
+mknod /dev/inet/udp c 54 61
+echo /dev/inet/udp
+
+chmod 755 /dev/inet
+# llcloop and arp are now 666 instead of 644
+chmod 666 /dev/llcloop /dev/slip
+chmod 666 /dev/inet/arp /dev/inet/icmp /dev/inet/ip /dev/inet/rip
+chmod 666 /dev/inet/tcp /dev/inet/udp /dev/socksys
+sync
+
+echo "$clr\c"
+echo "********************************************************************"
+echo "*      T C P / I P   K E R N E L   I N S T A L L A T I O N         *"
+echo "********************************************************************"
+echo "Archiving new kernel parts... "
+
+editmakefile() {
+	# edit /usr/sys/makefile to use tcp.lib instead of old io.lib
+	set +e
+	echo '/tcp.lib/s/tcp.lib //
+/^LIBS/s/io.lib/tcp.lib io.lib/
+w
+g' |  ed - /usr/sys/makefile > /dev/null
+	set -e
+}
+
+echo 
+temp="inet.o arp.o ip.o ip_icmp.o llcloop.o rip.o slip.o socket.o \
+       tcp.o udp.o vty.o ipmux.o"
+
+if [ ! -f /usr/sys/tcp.lib ]; then
+	# probably 3.3.1 os, so switch from io.lib to new tcp.lib
+	cd /usr/sys
+	echo "Creating /usr/sys/tcp.lib..."
+	editmakefile
+	# The system version of inet.o has stubs for tcp and ipmux, too
+	# This one inet.o file can be used to reconstruct tcp.lib
+	# if tcp is removed. Create tcp.lib as it would be shipped.
+	ar -x  io.lib inet.o # get dummy inet.o
+	ar -r tcp.lib inet.o # will create tcp.lib, too.
+	ar -d  io.lib inet.o # remove from io.lib
+	rm -f inet.o
+	cd $installdir
+fi
+
+if [ -r /usr/sys/OLDinet.o ]; then
+	echo Already saved /usr/sys/tcp.lib kernel pieces...
+else
+	echo Saving inet.o of /usr/sys/tcp.lib to /usr/sys/OLDinet.o...
+	ar -x /usr/sys/tcp.lib /usr/sys/inet.o
+	mv /usr/sys/inet.o /usr/sys/OLDinet.o
+fi 
+
+echo Replacing objects in /usr/sys/tcp.lib...
+# ar consumes approx 20 blks + 2 * `di -s /usr/sys/tcp.lib`
+# Setenv TMPDIR to /tmp or somewhere else
+# to enable ar to have enough space to work correctly.
+ar -r /usr/sys/tcp.lib $temp
+sync
+
+cp $installdir/setcband $installdir/clrcband /usr/ti/tcp
+# settings file is modified by chkccb script for slip connections.
+mv $installdir/settings.slip /usr/ti/tcp/settings 
+sync
+
+
+# KERNEL INSTALLATION
+# either $cband $volume $bband and $setDEFAULT are ALL set or none are set.
+
+cd /usr/sys
+if [ -n "$cband" ]; then # user wants to build a new kernel ...
+	echo
+	echo "Making new unix.new..."
+	make 2> /usr/ti/tcp/kernel.out   # error msgs saved here.
+	if [ $? != 0 -o -s /usr/ti/tcp/kernel.out ]; then # any error messages??
+		cat /usr/ti/tcp/kernel.out # echo error message
+		echo "ERROR: making /usr/sys/unix.new failed!!"
+		exit 255
+	fi
+	sync
+	echo
+	echo Installing unix.new in $bband...
+	make $bband VOLNAME=$volume
+	sync
+	echo
+	echo "Setting cband parameters in /dev/dsk/$volume:$cband..."
+	sh /usr/ti/tcp/setcband /dev/dsk/$volume:$cband < /usr/ti/tcp/settings
+	echo "cband:	/dev/dsk/$volume:$cband" >> conf.temp
+	sync
+	if [ ${setDEFAULT:-n} = y ]; then
+		echo "Setting cband parameters in /dev/dsk/$volume:cfg1..."
+		sh /usr/ti/tcp/setcband /dev/dsk/$volume:cfg1 < /usr/ti/tcp/settings
+	fi
+#	echo
+# Save 997 blocks in root file system - it can be recreated anyway.
+#	echo Saving /unix to /unix.noTCP... 
+#	mv /unix /unix.noTCP
+#	sync
+	echo 
+	echo copying /usr/sys/unix.new to /unix...
+	cp /usr/sys/unix.new /unix
+	echo
+	echo TCP/IP and the new kernel are now installed.  Reboot your system.
+else
+	# not making a unix kernel now ...
+	echo
+	echo "Only TCP/IP has been installed.  You will need to rebuild your kernel"
+	echo "with the new tcp.lib, install it in the desired boot band and then reboot"
+	echo "from that correct boot band.  You will also need to increase the cband"
+	echo "parameters for the cband that you wish to boot.  To do this, execute the "
+	echo "script setcband in /usr/ti/tcp.  That script contains instructions at"
+	echo "the top."
+	
+fi
+
+# cleanup
+cd $installdir
+echo "\nTCP installation complete."
+echo "Do you want to remove ALL the files in $installdir ? \c"
+FAKEread "[y/n]" "" "yn" ;ok=$answer
+if [ $ok = y ]; then
+	echo "\nCleaning up..."
+	rm -rf *
+	sync
+fi
+touch normcomp # signal OK completion to installtcp
+sync; sync

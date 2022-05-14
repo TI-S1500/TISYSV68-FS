@@ -1,0 +1,15 @@
+# cshf	what -- prints SCCS identifying information 
+#	@(#)WHAT.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^WHAT -- IDENTIFIES SCCS FILES"\
+       "^File Name(s):" _input_file macnm "$_input_file"\
+       "^#$*"
+
+if ($abort) goto end
+echo "=== WHAT COMMAND EXECUTING ==="
+echo what $_input_file
+what $_input_file
+
+end:

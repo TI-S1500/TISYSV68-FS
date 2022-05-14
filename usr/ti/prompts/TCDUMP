@@ -1,0 +1,49 @@
+#cshf
+#	@(#)TCDUMP.sh	1.1 87/10/13
+#
+# 	(C) COPYRIGHT, TEXAS INSTRUMENTS INCORPORATED, 1985.  ALL
+#	RIGHTS RESERVED.  PROPERTY OF TEXAS INSTRUMENTS INCORPORATED.
+#	RESTRICTED RIGHTS - USE, DUPLICATION, OR DISCLOSURE IS SUBJECT
+#	TO RESTRICTIONS SET FORTH IN TI'S PROGRAM LICENSE AGREEMENT AND
+#	ASSOCIATED DOCUMENTATION.
+# 
+onintr end
+prompt "^TCDUMP -- ENABLES/DISABLES TC DUMP"\
+       "^TC Name(s):" tcnames string All\
+       "^Enable/Disable Dump:" flag "element(E,e=Enable,D,d=Disable)"\
+       "^*Dumpmap Path Name:" map acnm\
+       "^*Output Path Name:" out acnm\
+       "^#$*"
+
+if (! $abort) then
+  if ("$tcnames" == "All") then
+    if ($flag == "Disable") then
+      /usr/bin/tcdump -N
+    else
+      if ($map == "") then
+        /usr/bin/tcdump -D
+      else
+        /usr/bin/tcdump -D -m $map
+      endif
+    endif
+  else
+    if ($flag == "Disable") then
+      /usr/bin/tcdump -n $tcnames
+    else 
+       if ($map == "") then
+         if ($out == "") then
+           /usr/bin/tcdump -d $tcnames
+         else
+           /usr/bin/tcdump -d -o $out $tcnames
+         endif
+       else
+         if ($out == "") then
+           /usr/bin/tcdump -d -m $map $tcnames
+         else
+           /usr/bin/tcdump -d -m $map -o $out $tcnames 
+         endif
+       endif
+    endif
+  endif
+endif
+end:

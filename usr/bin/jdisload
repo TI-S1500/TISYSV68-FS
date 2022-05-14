@@ -1,0 +1,49 @@
+:
+#    jdisload
+#   This command reads the init.jdis command proc into the /once
+#   directory, executes it and then deletes it.
+#
+#
+##############################################################################
+#
+#  For HP machines, frecover used in lieu of tar       30 Jun 1997  DHB
+##############################################################################
+if (test -r /once/init.jdis) then
+  rm /once/init.jdis
+fi
+touch /usr/adm/JDISLOAD.log
+if (test -r /usr/adm/TEMPLOAD.log) then
+  rm /usr/adm/TEMPLOAD.log
+else
+  touch /usr/adm/TEMPLOAD.log
+  grep "%%>" /usr/adm/JDISLOAD.log >> /usr/adm/TEMPLOAD.log
+  grep "&&>" /usr/adm/JDISLOAD.log >> /usr/adm/TEMPLOAD.log
+  mv /usr/adm/TEMPLOAD.log /usr/adm/JDISLOAD.log
+fi
+/bin/echo "%%>#####################################%%>" >>/usr/adm/JDISLOAD.log
+/bin/echo "BEGIN jdisload " >>/usr/adm/JDISLOAD.log
+/bin/echo "%%> `date`" >>/usr/adm/JDISLOAD.log
+
+echo
+echo
+#
+#  First, read in the command script /once/init.jdis
+#
+frecover -f/dev/rmt/0m -v -o -x -i/once/init.jdis 2>&1 | tee -a /usr/adm/JDISLOAD.log
+#
+echo
+echo
+#
+#  Now execute the command
+#
+sh /once/init.jdis | tee -a /usr/adm/JDISLOAD.log
+
+#
+#  Now delete the command from the /once directory
+#
+rm /once/init.jdis | tee -a /usr/adm/JDISLOAD.log
+
+/bin/echo "END   jdisload " >>/usr/adm/JDISLOAD.log
+/bin/echo "%%> `date`" >>/usr/adm/JDISLOAD.log
+# { date; } >>/usr/adm/JDISLOAD.log
+exit 0

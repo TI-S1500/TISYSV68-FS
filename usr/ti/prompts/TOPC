@@ -1,0 +1,37 @@
+# cshf    topc -- transfers a file to a pc 
+#	@(#)TOPC.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^TOPC -- TRANSFERS A FILE FROM HOST TO WORKSTATION"\
+	"^Host File Name:" _input_file acnm $_input_file\
+	"^Workstation File Name:" _output_file string $_output_file\
+	"^Replace Workstation File:" replace yesno n\
+	"^Select Binary or Text (b,t):" crlf\
+	"element(T,t=t,B,b=b)" t\
+	"^Accept Default Options:" opt yesno y\
+	"^#$*"
+if ($opt == "n") then
+	prompt "^TOPC -- ADVANCED OPTIONS"\
+		"^*Timeout in seconds (5-256):" tflag\
+		"range(5,256)" 10\
+		"^*Device Name of Attached Terminal:" dflag string \
+		"^*Trace File Name:" xflag acnm \
+		"^#$*"
+	if ($tflag != "") set topt = "-t "$tflag
+	if ($dflag != "") set dopt = "-d "$dflag
+	if ($xflag != "") set xopt = "-x "$xflag
+endif
+
+if ($abort) goto end
+if ($replace == "y") set options = r$options
+if ($crlf == "b") set options = b$options
+if ($options != "") set options = -$options
+
+echo "=== TOPC COMMAND EXECUTING ==="
+echo topc $options $topt $dopt $xopt $_input_file $_output_file 
+topc $options $topt $dopt $xopt $_input_file $_output_file 
+
+#clean up time
+end:
+unset replace crlf *opt options

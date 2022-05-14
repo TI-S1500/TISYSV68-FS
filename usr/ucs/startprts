@@ -1,0 +1,2 @@
+:
+env SNA_USER=30001 PRT1=LP\$01D /usr/bin/p3287 -f -v 61 -p '/JDIS/PROG/CMN/printdir 1 -a' &

@@ -1,0 +1,35 @@
+
+The slot configuration screen presents the following information for each 
+processor board in the system:
+
+    Slot        Shows the number of the system board slot in which the 
+                processor board resides. The PM software can monitor as 
+                many as 16 system board slots. The slot numbers appear in 
+                decimal format (0-15) on this screen.
+
+    Vendor      Shows the manufacturer of the board. For example, TIAU refers 
+                to Texas Instruments Austin site.
+
+    Part Number Shows the TI part number for this board.
+
+    Revision    Shows the revision level of this board.
+
+    Type        Identifies the board type: CPU, CCB, MSC, NPI (NUPI), CPO,
+                CP2, NP2 (NUPI-2), SPC, and LAN.
+
+    Processor   Identifies the processor on this board.
+
+This screen allows you to see the configuration of your system and the 
+revision levels of the system boards without shutting down the system or 
+opening the system enclosure.
+
+When there are multiple board types in the same slot, as is the case with
+the 1508 and 68040 NuBus (TM) boards, then the additional types and processors
+are listed under the first.  Since they all share the same part number and 
+revision, that will be displayed only once.
+
+Several screens may be needed to displayed all the slots when there are 68040
+NuBus (TM) boards in the system.  Use the + and - commands to display the next
+and previous screens.
+
+

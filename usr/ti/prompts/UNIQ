@@ -1,0 +1,55 @@
+# cshf  uniq -- reports repeated lines in a file 
+#	@(#)UNIQ.sh	1.4 88/04/06
+#
+onintr end
+
+set fields = 0
+set char = 0
+@ count = 0
+while ($count != 1)
+  prompt "^UNIQ -- REPORTS REPEATED LINES IN A FILE"\
+	"^Input File Name:" _input_file acnm $_input_file\
+	"^*Output File Name:" _output_file acnm $_output_file\
+	"^*Number of Fields to Skip:" fields integer $fields\
+	"^*Number of Characters to Skip:" char integer $char\
+	"^SELECT ONLY ONE OF THE FOLLOWING:"\
+	"^Report Only Non-Repeated Lines:" uflag yesno n\
+	"^Report Only Repeated Lines:" dflag yesno n\
+	"^Count of Each Line Occurrence:" cflag yesno n\
+	"^#$*"
+  if ($abort) goto end
+  if ($dflag == "y") @ count++
+  if ($uflag == "y") @ count++
+  if ($cflag == "y") @ count++
+  if ($count != 1) @ count = 0
+end
+
+
+if ($abort) goto end
+echo "=== UNIQ COMMAND EXECUTING ==="
+if ($_input_file == $_output_file) then
+	echo ERROR: Input file and Output file are the same file
+	echo Process aborted
+	goto end
+endif
+
+if ($uflag == "y") set opt = u$opt
+if ($dflag == "y") set opt = d$opt
+if ($cflag == "y") set opt = c$opt
+if ($opt != "") set opt = -$opt
+
+if ($fields != "0") set fcnt = "-"$fields
+if ($char != "0") set ccnt = "+"$char
+
+if ($abort) goto end
+if ($_output_file == "") then
+	echo uniq $opt $fcnt $ccnt $_input_file
+	uniq $opt $fcnt $ccnt $_input_file
+else
+	echo uniq $opt $fcnt $ccnt $_input_file ">"$_output_file
+	uniq $opt $fcnt $ccnt $_input_file >$_output_file
+endif
+
+#clean up time
+end:
+unset *flag *opt field char *cnt

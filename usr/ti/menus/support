@@ -1,0 +1,6 @@
+support:menu:  SYSTEM SUPPORT MENU, Series 1000, Model 1500  :support.hlp
+ERRPT:c:Generates a report of logged errors:
+IPCRM:c:Removes messages, semaphores or shared memory IDs:
+IPCS:c:Reports inter-process communication facilities status:
+activity:m:System Activity Reporting Menu:activity.hlp
+disk:m:Disk Operations Menu:disk.hlp

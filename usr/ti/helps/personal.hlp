@@ -1,0 +1,7 @@
+	personal - Personal Productivity Tools Menu
+		@(#)personal.sh	1.1 87/03/09
+
+	This menu lists tools to help the system user execute a variety 
+	   of non-developmental tasks such as arithmetic calculation, 
+	   numeric conversion, and banner printing.
+

@@ -1,0 +1,41 @@
+############################
+# Define trace information #
+############################
+trace_file=/usr/ucs/putrace
+trace_host=on
+trace_914e=off
+trace_device=on
+trace_ch=on
+###############################
+# Defining node id parameters #
+###############################
+nodeid=dau99
+###########################
+# Define PU   information #
+###########################
+puname=clecdz
+sdlc_devname=/dev/ccb02/sdlc0
+nrzi=on
+sdlc_pollid=01
+#new parameters:
+#   reqdiscont=<yes|no> <default=no>
+#   disc_timeout=<amt of time to disconnect after REQDISCONT request is sent>
+#		 <default=0>
+#   disc_type=<00 - normal and do not send CONTACT immediately;
+#	       01 - normal and send CONTACT immediately;
+#	       80 - immediate and do not send CONTACT immediately;
+#	       81 - immediate and send CONTACT immediately;
+#	       default - 00>
+reqdiscont=yes
+disc_timeout=20
+disc_type=01
+dial=/usr/ucs/sdlc_dial,/dev/ccb02/dial0,/usr/ucs/hayes2400
+xid=019a1508
+connect=originate
+#######################
+# Define lus for pu 1 #
+#######################
+lu=1	lutype=vdt
+lu=2	lutype=vdt
+lu=3	lutype=prt
+userid=30003 device_type=prt device_lu=0103

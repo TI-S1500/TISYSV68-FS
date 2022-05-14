@@ -1,0 +1,35 @@
+# cshf	val -- validates an SCCS file 
+#	@(#)VAL.sh	1.1  87/03/09
+#
+onintr end
+
+prompt "^VAL -- VALIDATES AN SCCS FILE"\
+	"^Input File Name(s):" _input_file macnm "$_input_file"\
+	"^#$*"
+
+if ($abort) goto end
+if ("$_input_file" == "-") then
+	echo "=== VAL COMMAND EXECUTING ==="
+	echo val $_input_file
+	val $_input_file
+else
+	prompt "^VAL -- OPTIONS"\
+		"^*SCCS Delta Version Number:" rflag string \
+		"^Supress Output:" sflag yesno n\
+		"^*Name to Compare With VAL.pr:" mflag string \
+		"^*Type for File Comparison:" yflag string \
+		"^#$*"
+
+	if ($abort) goto end
+	if ($rflag != "") set ropt = -r$rflag
+	if ($sflag == "y") set sopt = -s
+	if ($mflag != "") set mopt = -m$mflag
+	if ($yflag != "") set yopt = -y$yflag
+
+	echo "=== VAL COMMAND EXECUTING ==="
+	echo val $mopt $ropt $sopt $yopt $_input_file
+	val $mopt $ropt $sopt $yopt $_input_file
+endif
+
+end:
+unset *flag *opt 

@@ -1,0 +1,78 @@
+#	backup utility
+#-----------------------------------------------------------------------------
+# COPYRIGHT (c) 1986   TEXAS INSTRUMENTS INCORPORATED   ALL RIGHTS RESERVED
+#-----------------------------------------------------------------------------
+#
+#			 = "@(#)backup.sh	1.3  91/06/25 " ;
+#
+#	This script is a 'humane' provision for selective backups using
+#	the cpio utility to create the backup.  The files to be backed up
+#	can be selected on actual age relative to "now", or selected
+#	cause they have been created or modified more recently than
+#	the mod time of some reference file.
+#
+#	This utility is intended for individuals to use to back up stuff
+#	for their specific needs.  Routine administrative backups
+#	should create scripts similar to /etc/bakup/daily , .../weekly,
+#	and .../monthly and activate them through cron and crontab
+#
+#
+toc=toc$$
+ex_list=ex_list$$
+case $1 in
+-c|-n)	#--------------------------------------Backup based on file age
+	case $# in
+	4)	excl="43__34"  ;   tape=$4 ;;
+	5)	excl=$4        ;   tape=$5 ;;
+	*)	echo wrong number of arguments ; exit
+	esac
+
+	if [ $1 = "-c" ]
+		then	W="( -ctime -$2 -o -mtime -$2 ) "
+		else	W=" -newer $2 "
+		fi
+	#		build the list of files to back up
+	while 	read file
+	do
+		echo look in $file for $W
+		find    $file   $W   -print >>$toc
+	done   < $3
+	#		remove from the list the files in 'excl'
+	if [ $excl != "43__34" ]
+		then
+		while read file
+		do
+			echo exclude $file
+			find $file -print >> $ex_list
+		done  <$excl
+		fgrep -v -f$ex_list $toc >>${toc}XX
+		mv ${toc}XX $toc
+		fi
+	cpio -ocvB     <$toc   >$tape
+	;;
+
+
+-r)	#--------------------------------------Restore files from a backup
+	case $# in
+	0|1)	echo wrong number of arguments ; exit
+	esac
+
+	cpio -icvdB  $3  <$2
+	;;
+
+-i)	#--------------------------------------Generate a table of contents 
+	case $# in
+	2)	;;
+	*)	echo wrong number of arguments ; exit
+	esac
+
+	cpio -itcvB  <$2
+	;;
+
+ *)	#--------------------------------------  ERROR
+	echo illegal option
+	;;
+esac
+rm -f "$toc" "$ex_list"
+toc=""
+ex_list=""

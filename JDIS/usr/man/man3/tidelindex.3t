@@ -1,0 +1,28 @@
+TIDELINDEX(3T)                                     TIDELINDEX(3T)
+
+NAME
+     tidelindex - Deletes an index from a T-ISAM file
+
+SYNOPSIS
+     #include <tisam.h>
+
+     int tidelindex(tifd, tikd)
+     int tifd;
+     struct tikeydesc *tikd;
+
+DESCRIPTION
+     The tidelindex function deletes the index defined by tikd
+     from the T-ISAM file indicated by tifd.  The file must be
+     opened with exclusive access.  The global variables tiflgs,
+     tiflgse, tiflgds, and tiflgde are used to modify
+     tikd.k_flags and tikd.k_flage.
+
+DIAGNOSTICS
+     On error, -1 is returned and tierrno, tierrio, tistat1, and
+     tistat2 are set.  Otherwise, tikd.k_did is set to the unique
+     key ID assigned to tikd.
+
+SEE ALSO
+     isdelindex(3T), tiaddindex(3T), tiopen(3T), tisam(4).
+
+
