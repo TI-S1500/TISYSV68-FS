@@ -8,6 +8,9 @@
 * Each
   [branch](https://github.com/TI-S1500/TISYSV68-FS/branches/all) of the
   repository corresponds to a specific extracted filesystem.
+* Access to this repository is restricted due to the inclusion of
+  ([PII](https://en.wikipedia.org/wiki/Personal_data)), licensed
+  commercial software, and other proprietary materials.
 * *This repository may receive force pushed updates.*
 
 ## Branches
